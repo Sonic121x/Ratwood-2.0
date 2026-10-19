@@ -94,7 +94,7 @@
 	/// Allow crotch to be exposed and bypass clothes check
 	var/bottom_exposed = FALSE
 	/// If TRUE, hide genital visuals only. The organs still function but are now a True/False toggle
-	var/hide_pintle_visuals = FALSE
+	var/list/hidden_genitals = list()
 	/// Bypasses positioning and exposure checks entirely
 	var/freeuse = FALSE
 	// Moved here from proc/get_generic_force_adjective to reduce list initialization/destruction
@@ -1289,7 +1289,7 @@
 	else
 		dat += "</center><center><a href='?src=[REF(src)];task=toggle_bottom_exposed'>[bottom_exposed ? "胯部已露出" : "胯部已遮住"]</a>"
 	if(got_cock || got_pussy || user.getorganslot(ORGAN_SLOT_TESTICLES))
-		dat += " | <a href='?src=[REF(src)];task=toggle_hide_pintle_visuals'>[hide_pintle_visuals ? "生殖器已遮住" : "生殖器露出"]</a>"
+		dat += " | <a href='?src=[REF(src)];task=toggle_hide_pintle_visuals'>隐藏生殖器</a>"
 	dat += " ~|~ <a href='?src=[REF(src)];task=toggle_freeuse'>[freeuse ? "自由使用已开启" : "自由使用已关闭"]</a>"
 	if(current_action && !desire_stop)
 		var/datum/sex_action/action = SEX_ACTION(current_action)
@@ -1387,8 +1387,22 @@
 				bottom_exposed = !bottom_exposed
 				update_exposure()
 		if("toggle_hide_pintle_visuals")
-			hide_pintle_visuals = !hide_pintle_visuals
-			update_exposure()
+			var/list/options = list()
+			if(user.getorganslot(ORGAN_SLOT_PENIS))
+				options["阴茎"] = ORGAN_SLOT_PENIS
+			if(user.getorganslot(ORGAN_SLOT_TESTICLES))
+				options["睾丸"] = ORGAN_SLOT_TESTICLES
+			if(user.getorganslot(ORGAN_SLOT_VAGINA))
+				options["阴道"] = ORGAN_SLOT_VAGINA
+			var/choice = input(user, "要切换哪个部位的显示状态？", "生殖器显示") as null|anything in options
+			if(choice)
+				if(options[choice] in hidden_genitals)
+					hidden_genitals -= options[choice]
+					to_chat(user, span_notice("[choice]现已显示。"))
+				else
+					hidden_genitals += options[choice]
+					to_chat(user, span_notice("[choice]现已隐藏。"))
+				update_exposure()
 		if("toggle_freeuse")
 			freeuse = !freeuse
 			to_chat(user, span_notice("位置与暴露状态检查现已[freeuse ? "禁用" : "启用"]。"))

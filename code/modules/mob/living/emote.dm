@@ -280,6 +280,7 @@
 	key = "flap"
 	key_third_person = "flaps"
 	message = "拍打着翅膀。"
+	sound = 'sound/foley/footsteps/flight_sounds/wingflap1.ogg'
 	restraint_check = TRUE
 	var/wing_time = 20
 
@@ -290,6 +291,7 @@
 	key = "aflap"
 	key_third_person = "aflaps"
 	message = "愤怒地拍打着翅膀！"
+	sound = 'sound/foley/footsteps/flight_sounds/wingflap2.ogg'
 	restraint_check = TRUE
 	wing_time = 10
 
@@ -1399,13 +1401,13 @@
 
 /datum/emote/living/custom/proc/check_invalid(mob/user, input)
 	. = TRUE
-	if(copytext(input,1,5) == "says")
+	if(copytext(input,1,5) == "说")
 		to_chat(user, span_danger("无效的表情动作。"))
-	else if(copytext(input,1,9) == "exclaims")
+	else if(copytext(input,1,9) == "惊呼")
 		to_chat(user, span_danger("无效的表情动作。"))
-	else if(copytext(input,1,6) == "yells")
+	else if(copytext(input,1,6) == "高喊")
 		to_chat(user, span_danger("无效的表情动作。"))
-	else if(copytext(input,1,5) == "asks")
+	else if(copytext(input,1,5) == "问")
 		to_chat(user, span_danger("无效的表情动作。"))
 	else
 		. = FALSE
@@ -1451,7 +1453,7 @@
 
 /datum/emote/living/help/run_emote(mob/user, params, type_override, intentional)
 /*	var/list/keys = list()
-	var/list/message = list("Available emotes, you can use them with say \"*emote\": ")
+	var/list/message = list("可用的表情动作，可通过说出 \"*动作指令\" 来使用： ")
 
 	for(var/key in GLOB.emote_list)
 		for(var/datum/emote/P in GLOB.emote_list[key])
@@ -1571,6 +1573,7 @@
 		/mob/living/carbon/human/verb/emote_growl,
 		/mob/living/carbon/human/verb/emote_bleat,
 		/mob/living/carbon/human/verb/emote_chitter,
+		/mob/living/carbon/human/verb/emote_msqueak,
 		/mob/living/carbon/human/verb/emote_arf,
 		/mob/living/carbon/human/verb/emote_awuff,
 		/mob/living/carbon/human/verb/emote_dcomplain,
@@ -1636,6 +1639,7 @@
 	)
 	var/static/list/moth_tongue_noise_verbs = list(
 		/mob/living/carbon/human/verb/emote_chitter,
+		/mob/living/carbon/human/verb/emote_msqueak,
 	)
 	var/static/list/moth_wing_noise_verbs = list(
 		/mob/living/carbon/human/verb/emote_flutter,
@@ -2168,6 +2172,25 @@
 		set name = "吱吱叫"
 		set category = "发声"
 		emote("chitter", intentional = TRUE, animal = TRUE)
+	else
+		show_tongue_noise_warning()
+		return
+
+/datum/emote/living/msqueak
+	key = "msqueak"
+	key_third_person = "squeaks!"
+	message = "吱吱地叫着！"
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
+	message_muffled = "发出一阵闷闷的吱叫！"
+	vary = TRUE
+	show_runechat = FALSE
+	is_animal = TRUE
+
+/mob/living/carbon/human/verb/emote_msqueak()
+	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/moth))
+		set name = "蛾族吱叫"
+		set category = "发声"
+		emote("msqueak", intentional = TRUE, animal = TRUE)
 	else
 		show_tongue_noise_warning()
 		return

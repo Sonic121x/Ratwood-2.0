@@ -1153,7 +1153,7 @@
 
 /atom/movable/screen/alert/status_effect/debuff/specialcd
 	name = "特殊机动冷却"
-	desc = "我刚用过，必须等等。"
+	desc = "我刚用过这一招，必须等一等。"
 	icon_state = "debuff"
 
 /datum/status_effect/debuff/liver_failure
@@ -1399,4 +1399,18 @@
 	desc = "我身上装备的附魔已被触发，暂时进入休眠状态！"
 	icon_state = "dazed"
 
+/datum/status_effect/debuff/weapon_binded
+	id = "wep_bind_debuff"
+	duration = 5 SECONDS
+	status_type = STATUS_EFFECT_REFRESH
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/weapon_bind_debuff
 
+/datum/status_effect/debuff/weapon_binded/on_apply()
+	. = ..()
+	owner.stamina_add(10)
+
+/atom/movable/screen/alert/status_effect/debuff/weapon_bind_debuff
+	name = "兵刃受制"
+	desc = "我们的兵刃交缠在一起！那狡猾的家伙看穿了我的攻击方向！我无法再从兵刃交缠中获益！"
+	icon = 'icons/mob/combat_debuffs.dmi'
+	icon_state = "weapon_bind_debuff"

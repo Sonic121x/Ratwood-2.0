@@ -98,13 +98,13 @@
 	var/amount = 0
 	var/type = BRUTE
 	var/flag = "blunt"
-	var/penetration = BLUNT_DEFAULT_PENFACTOR
+	var/penetration = PEN_NONE
 	var/obj/item/I = attack_intent.masteritem
 	if(I)
 		amount = get_complex_damage(I, attacker)
 		type = I.damtype
 		flag = I.d_type
-		penetration = flag == "blunt" ? BLUNT_DEFAULT_PENFACTOR : I.armor_penetration + attack_intent.penfactor
+		penetration = flag == "blunt" ? PEN_NONE : attack_intent.penfactor
 		if(attacker.has_status_effect(/datum/status_effect/z121_highwayman_flaws) && z121_highwayman_armor_allowed(attacker))
 			amount *= 1.3
 	else if(isanimal(attacker))
@@ -112,7 +112,7 @@
 		amount = rand(A.melee_damage_lower, A.melee_damage_upper)
 		type = A.melee_damage_type
 		flag = A.d_type
-		penetration = flag == "blunt" ? BLUNT_DEFAULT_PENFACTOR : A.armor_penetration
+		penetration = flag == "blunt" ? PEN_NONE : A.armor_penetration
 	else
 		amount = attacker.get_punch_dmg()
 		if(istype(attacker.rmb_intent, /datum/rmb_intent/strong))
@@ -121,10 +121,27 @@
 	var/mob/living/carbon/human/H = owner
 	var/armor = 0
 	if(istype(H))
-		var/obj/item/clothing/C = H.get_best_worn_armor(check_zone(attacker.zone_selected), flag)
-		armor = (C ? C.armor.getRating(flag) : 0) + H.physiology.armor.getRating(flag)
-		armor = max(0, armor - penetration)
-		amount = max(0, amount - armor) * (1 - H.dna.species.armor / 100)
+		var/zone = check_zone(attacker.zone_selected)
+		var/obj/item/clothing/C = H.get_best_worn_armor(zone, flag)
+		var/tier = C ? C.armor.getRating(flag) : 0
+		if(flag in ARMOR_DR_TYPES)
+			var/list/layers = (flag in ARMOR_DR_ABSORB_TYPES) ? H.get_ordered_coverage_layers(zone, flag) : H.get_best_worn_armor_layered(zone, flag)
+			for(var/layer in layers)
+				tier = max(tier, layers[layer])
+		if(tier > 0)
+			if(flag in ARMOR_DR_ABSORB_TYPES)
+				armor = amount
+			else if(flag in ARMOR_DR_PIERCE_TYPES)
+				armor = amount * (1 - 1 / (1 + 0.2 * tier))
+			else if(penetration < tier)
+				armor = amount * 10
+			else if(flag == "piercing")
+				armor = amount * (penetration == tier ? PEN_PASSTHROUGH_PROJ_EQUAL : PEN_PASSTHROUGH_PROJ_MORE)
+			else if(penetration)
+				armor = amount * (1 - (PEN_PASSTHROUGH_MINIMUM + penetration * PEN_PASSTHROUGH_RATIO))
+		if(I?.sharpness && I.max_blade_int && !(flag in ARMOR_DR_ABSORB_TYPES) && (I.blade_int / I.max_blade_int) <= SHARPNESS_TIER2_THRESHOLD)
+			armor = amount * 10
+		amount = max(0, amount - armor)
 		amount *= 1 - H.physiology.damage_resistance / 100
 		if(type == BRUTE)
 			amount *= H.dna.species.brutemod * H.physiology.brute_mod

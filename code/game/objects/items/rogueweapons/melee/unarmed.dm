@@ -6,7 +6,7 @@
 	animname = "cut"
 	blade_class = BCLASS_CUT
 	hitsound = list('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
-	penfactor = 20
+	penfactor = PEN_LIGHT
 	chargetime = 0
 	swingdelay = 0
 	damfactor = 1.3
@@ -20,7 +20,7 @@
 	animname = "stab"
 	blade_class = BCLASS_STAB
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	penfactor = 25
+	penfactor = PEN_LIGHT
 	chargetime = 0
 	clickcd = CLICK_CD_FAST
 	item_d_type = "stab"
@@ -34,7 +34,7 @@
 	clickcd = CLICK_CD_FAST //Same speed as a katar, but with reduced penetration and half-damage. Main appeal's the chopper.
 
 /datum/intent/katar/thrust/arbelos
-	penfactor = 20
+	penfactor = PEN_LIGHT
 	damfactor = 0.8
 	clickcd = CLICK_CD_QUICK //Slower than a regular thrust, with slightly less penetration and damage. Inverse to the katar.
 
@@ -45,7 +45,7 @@
 	attack_verb = list("拳击", "重击")
 	hitsound = list('sound/combat/hits/punch/punch_hard (1).ogg', 'sound/combat/hits/punch/punch_hard (2).ogg', 'sound/combat/hits/punch/punch_hard (3).ogg')
 	chargetime = 0
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	clickcd = 8
 	swingdelay = 0
 	icon_state = "inpunch"
@@ -60,7 +60,7 @@
 	blade_class = BCLASS_SMASH
 	attack_verb = list("猛砸")
 	hitsound = list('sound/combat/hits/punch/punch_hard (1).ogg', 'sound/combat/hits/punch/punch_hard (2).ogg', 'sound/combat/hits/punch/punch_hard (3).ogg')
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	clickcd = CLICK_CD_MELEE
 	swingdelay = 8
 	icon_state = "insmash"
@@ -129,9 +129,9 @@
 	name = "阿尔贝洛斯"
 	icon_state = "bronzescissor"
 	item_state = "bronzescissor"
-	desc = "一枚磨利的斧头，被装在一只青铜护手之上。它在千禧之交于幽暗地域的角斗竞技场中流行起来， \
-	在格挡来袭打击与劈开头颅这两件事上，它都胜过拳刃。然而，连接斧头与护手的木柄十分脆弱； \
-	只需一记精准的打击，就足以让这件武器彻底失去威胁。"
+	desc = "一枚磨利的斧头，被装在一只青铜护手之上。它在千禧之交于幽暗地域的角斗竞技场中 \
+	流行起来，  在格挡来袭打击与劈开头颅这两件事上，它都胜过拳刃。然而，连接斧头 \
+	与护手的木柄十分脆弱；  只需一记精准的打击，就足以让这件武器彻底失去威胁。"
 	wdefense = 5 //Much higher than usual for most unarmed weapons..
 	max_integrity = 150 //..and tougher, too.
 	max_blade_int = 150 // Reduced sharpness, however, as a result. Such a weapon is built for gladitorial combat, not the rigors of the wilderness. Keep it sharpened
@@ -321,8 +321,8 @@
 /obj/item/rogueweapon/handclaw
 	slot_flags = ITEM_SLOT_HIP
 	name = "铁猎犬爪"
-	desc = "一对大幅弯曲的利爪，仿照荒野猛兽的爪形打造，专为撕开裸露血肉而生。 \
-			它也彰显着格隆恩人对强悍野兽长久不衰的崇拜与敬畏。"
+	desc = "一对大幅弯曲的利爪，仿照荒野猛兽的爪形打造，专为撕开裸露血肉 \
+			而生。  它也彰显着格隆恩人对强悍野兽长久不衰的崇拜与敬畏。"
 	icon_state = "ironclaws"
 	icon = 'icons/roguetown/weapons/unarmed32.dmi'
 	wdefense = 5
@@ -348,8 +348,8 @@
 
 /obj/item/rogueweapon/handclaw/steel
 	name = "钢螳螂爪"
-	desc = "一对钢制利爪，在格隆恩算是罕见之物，毕竟他们并不自行锻钢。 \
-			更长的刃部带来了更优秀的防御能力，但额外重量也拖慢了它们。"
+	desc = "一对钢制利爪，在格隆恩算是罕见之物，毕竟他们并不自行锻钢。  \
+			 更长的刃部带来了更优秀的防御能力，但额外重量也拖慢了它们。"
 	icon_state = "steelclaws"
 	icon = 'icons/roguetown/weapons/unarmed32.dmi'
 	wdefense = 6
@@ -363,9 +363,9 @@
 
 /obj/item/rogueweapon/handclaw/gronn
 	name = "格隆恩兽爪"
-	desc = "一对由北境空原的伊斯卡恩萨满以骨材加固锻成的独特铁爪。 \
-			它们的特殊设计有助于滑入甲片缝隙之间，而轻巧重量也支持迅猛凶狠的连斩。 \
-			'见到那四爪之形，便算见到了北境真正的危险。不是人，也不是土地，而是野兽。在它们眼里，我们皆是猎物。'"
+	desc = "一对由北境空原的伊斯卡恩萨满以骨材加固锻成的独特铁爪。  它们的特殊设计有助于 \
+			滑入甲片缝隙之间，而轻巧重量也支持迅猛凶狠的连斩。  '见到那四爪之形，便算见 \
+			到了北境真正的危险。不是人，也不是土地，而是野兽。在它们眼里，我们皆是猎物。'"
 	icon_state = "gronnclaws"
 	icon = 'icons/roguetown/weapons/unarmed32.dmi'
 	wdefense = 3
@@ -386,8 +386,9 @@
 
 /obj/item/rogueweapon/handclaw/blacksteel
 	name = "黑钢鹰爪"
-	desc = "一对华丽的黑钢鹰爪。尽管北境之土对黑钢并不熟悉，但他们却熟知一种声誉惊人相似的合金；黑过漆黑，不可思议地坚固，据传是神圣物质的残余。\
-			这种武器曾被一位菲亚尔的传奇冠军所挥舞——其英勇，虽已被时光遗忘，却仍在他们所拯救的世界中回响。\
+	desc = "一对华丽的黑钢鹰爪。尽管北境之土对黑钢并不熟悉，但他们却熟知一种声誉惊人相似 \
+			的合金；黑过漆黑，不可思议地坚固，据传是神圣物质的残余。 这种武器曾被一位菲亚 \
+			尔的传奇冠军所挥舞——其英勇，虽已被时光遗忘，却仍在他们所拯救的世界中回响。  \
 			</br>'在此余波中，我知罗网何时布下，但事实是，我悔恨我所遗弃的一切！'"
 	icon_state = "bskatarclaw"
 	icon = 'icons/roguetown/weapons/unarmed32.dmi'
@@ -411,19 +412,19 @@
 	damfactor = 1.2
 	swingdelay = 8
 	clickcd = CLICK_CD_MELEE
-	penfactor = 35
+	penfactor = PEN_MEDIUM
 
 /datum/intent/claw/lunge/steel
 	damfactor = 1.2
 	swingdelay = 12
 	clickcd = CLICK_CD_HEAVY
-	penfactor = 35
+	penfactor = PEN_MEDIUM
 
 /datum/intent/claw/lunge/gronn
 	damfactor = 1.1
 	swingdelay = 5
 	clickcd = 10
-	penfactor = 45
+	penfactor = PEN_MEDIUM
 
 /datum/intent/claw/cut
 	name = "切割"
@@ -433,21 +434,22 @@
 	blade_class = BCLASS_CUT
 	hitsound = list('sound/combat/hits/bladed/smallslash (1).ogg', 'sound/combat/hits/bladed/smallslash (2).ogg', 'sound/combat/hits/bladed/smallslash (3).ogg')
 	item_d_type = "slash"
+	demolition_mod = 0.05
 
 /datum/intent/claw/cut/iron
-	penfactor = 20
+	penfactor = PEN_LIGHT
 	swingdelay = 8
 	damfactor = 1.4
 	clickcd = CLICK_CD_HEAVY
 
 /datum/intent/claw/cut/steel
-	penfactor = 10
+	penfactor = PEN_LIGHT
 	swingdelay = 4
 	damfactor = 1.3
 	clickcd = CLICK_CD_HEAVY
 
 /datum/intent/claw/cut/gronn
-	penfactor = 30
+	penfactor = PEN_LIGHT
 	swingdelay = 0
 	damfactor = 1.1
 	clickcd = CLICK_CD_MELEE
@@ -459,7 +461,7 @@
 	animname = "cut"
 	blade_class = BCLASS_CHOP
 	reach = 1
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	damfactor = 2.5
 	clickcd = CLICK_CD_HEAVY
 	no_early_release = TRUE

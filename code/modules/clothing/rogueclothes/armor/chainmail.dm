@@ -7,7 +7,6 @@
 	icon_state = "haubergeon"
 	armor = ARMOR_MAILLE
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_STEEL
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	blocksound = CHAINHIT
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 	pickup_sound = 'sound/foley/equip/equip_armor_chain.ogg'
@@ -15,6 +14,7 @@
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	armor_class = ARMOR_CLASS_LIGHT //Experimental change; leave unlisted for now? Offers a weight-class advantage over the otherwise-superior hauberk. We'll see how it goes.
+	material_category = ARMOR_MAT_CHAINMAIL
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/ComponentInitialize()
 	. = ..()
@@ -35,9 +35,9 @@
 /obj/item/clothing/suit/roguetown/armor/chainmail/bronze
 	icon_state = "bhaubergeon"
 	name = "青铜锁子短甲"
-	desc = "由数百个相互咬合的青铜环制成的锁甲衫。灵活防护的价值——\
-	尤其在板甲问世之前的数个世纪里——使任何形式的锁子甲都成为相当昂贵的商品；\
-	其价值甚至等同于自身重量的黄金。"
+	desc = "由数百个相互咬合的青铜环制成的锁甲衫。灵活防护的价值—— \
+	 尤其在板甲问世之前的数个世纪里——使任何形式的锁子甲 \
+	都成为相当昂贵的商品； 其价值甚至等同于自身重量的黄金。"
 	armor = ARMOR_BRONZE
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_BRONZE
 	smeltresult = /obj/item/ingot/bronze
@@ -47,6 +47,8 @@
 	desc = "抛光的吉尔青铜环与丝绸交织成短式锁甲衣。百万人的死亡成就了齐佐的升格；若还需再有百万人赴死才能完成她的伟业，那便如此。"
 	icon_state = "ancientchain"
 	smeltresult = /obj/item/ingot/aaslag
+	chunkcolor = "#532e25"
+	material_category = ARMOR_MAT_CHAINMAIL
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/ancient/decrepit
 	name = "破败锁子短甲"
@@ -79,8 +81,8 @@
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/bronze
 	name = "青铜锁子甲"
-	desc = "一件青铜锁甲衣，袖部覆盖双臂与双腿。在古时，这样的护身甲胄在各方面都被视为无可匹敌；\
-	它轻得足以让训练有素的战士行动自如，却仍能挡下箭矢与刀剑。"
+	desc = "一件青铜锁甲衣，袖部覆盖双臂与双腿。在古时，这样的护身甲胄在各方面都被视 \
+	为无可匹敌； 它轻得足以让训练有素的战士行动自如，却仍能挡下箭矢与刀剑。"
 	icon_state = "bhauberk"
 	item_state = "bhauberk"
 	armor = ARMOR_BRONZE
@@ -92,10 +94,11 @@
 	desc = "<font color='A50021'>而在基座之上，浮现出这样几行字：<i>「吾名齐佐，万后之后：」</i></font>"
 	icon_state = "zizohauberk"
 	item_state = "zizohauberk"
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
 	armor_class = ARMOR_CLASS_MEDIUM
-	peel_threshold = 5
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_STEEL + 50
+	chunkcolor = "#363030"
+	material_category = ARMOR_MAT_CHAINMAIL
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/zizo/Initialize(mapload)
 	. = ..()
@@ -106,6 +109,8 @@
 	desc = "抛光的吉尔青铜环与丝绸交织成带袖锁甲衣。让无生者自腐朽中归来，将他们抬升至昔日不可企及的高度；那便是齐佐显现于世的意志。"
 	icon_state = "ancienthauberk"
 	smeltresult = /obj/item/ingot/aaslag
+	chunkcolor = "#532e25"
+	material_category = ARMOR_MAT_CHAINMAIL
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/ancient/decrepit
 	name = "破败锁子甲"
@@ -117,8 +122,7 @@
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/ornate
 	slot_flags = ITEM_SLOT_ARMOR
 	armor_class = ARMOR_CLASS_HEAVY
-	peel_threshold = 4
-	armor = ARMOR_CUIRASS
+	armor = ARMOR_PLATE
 	name = "普赛顿锁子甲"
 	desc = "精美的钢制胸甲，以受祝银饰出沟槽纹，穿在厚重锁子甲之上。虽然它面对箭矢与弩矢时略显无力，但这些层层相扣的防护极擅抵御非人利爪与战斧的打击。 </br>'..邪恶的知识，以及将普赛多尼亚的希望扛在肩上的重负..' </br>... </br>若再添一些受祝银并请铁匠协助，我就能把这件锁子甲改造成一套全身板甲。"
 	icon_state = "ornatehauberk"

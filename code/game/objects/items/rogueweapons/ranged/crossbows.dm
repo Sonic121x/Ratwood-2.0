@@ -32,6 +32,16 @@
 	accfactor = 1.1
 	damage_from_perception = FALSE
 
+/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/get_mechanics_examine(mob/user)
+	. = ..()
+	. += span_info("<b>感知</b>越高，弩的精确度越高；但弩造成的伤害固定， \
+	不受角色属性影响。")
+	. += span_info("弩无法直接从箭袋搭箭，装填需要时间。")
+	if(penfactor < 0)
+		. += span_info("此武器使弩矢的穿甲等级<b>降低 [abs(penfactor)] 级</b>。")
+	else if(penfactor > 0)
+		. += span_info("此武器使弩矢的穿甲等级<b>提高 [penfactor] 级</b>。")
+
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/getonmobprop(tag)
 	. = ..()
 	if(tag)
@@ -161,7 +171,7 @@
 		BB.accuracy += accfactor * (user.STAPER - 8) * 3 // 8+ PER gives +3 per level. Exponential.
 		BB.bonus_accuracy += (user.STAPER - 8) // 8+ PER gives +1 per level. Does not decrease over range.
 		BB.bonus_accuracy += (user.get_skill_level(/datum/skill/combat/crossbows) * 5) // +5 per XBow level.'
-		BB.armor_penetration *= penfactor
+		BB.armor_penetration = max(PEN_NONE, BB.armor_penetration + penfactor)
 		BB.damage *= damfactor
 
 		if(damage_from_perception)
@@ -199,19 +209,19 @@
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/iron
 	name = "军用十字弩"
-	desc = "一种以惊人威力射出弩矢的致命武器。与普通弓不同，\
-	它采用精巧的机械结构来重新挂弦并卡住半长弩矢；这一点的掌握更依赖蛮力而非灵巧。 <br>这是普通十字弩的粗劣版本，以近似钢材的锻铁打造。\
-	熔炼时得不到好钢锭，只有废钢。但它便宜、好用，常从格伦泽尔霍夫特成批进口。其中一些流入了寻常盗匪与拦路劫徒之手。"
+	desc = "一种以惊人威力射出弩矢的致命武器。与普通弓不同， 它采用精巧的机械结构来重新挂弦并卡住半长弩矢；这一 \
+	点的掌握更依赖蛮力而非灵巧。 <br>这是普通十字弩的粗劣版本，以近似钢材的锻铁打造。 熔炼时得不到 \
+	好钢锭，只有废钢。但它便宜、好用，常从格伦泽尔霍夫特成批进口。其中一些流入了寻常盗匪与拦路劫徒之手。"
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = 80
 	damfactor = 1 // Lower than starting
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/ancient
 	name = "远古十字弩"
-	desc = "一件来自异时的致命武器，能以惊人威力射出弩矢。与普通弓不同，它 \
-	采用精巧的机械结构来重新挂弦并卡住半长弩矢；掌握它更多依赖蛮力 \
-	而非灵巧。 <br>昔日，这些机械杰作曾是泽洛尔古老帝国的 \
-	骄傲；如今，它却在齐佐不死远征的掌握中战栗。"
+	desc = "一件来自异时的致命武器，能以惊人威力射出弩矢。与普通弓不同， \
+	它  采用精巧的机械结构来重新挂弦并卡住半长弩矢；掌握它更多 \
+	依赖蛮力  而非灵巧。 <br>昔日，这些机械杰作曾是泽洛 \
+	尔古老帝国的  骄傲；如今，它却在齐佐不死远征的掌握中战栗。"
 	icon_state = "ancientcrossbow0"
 	item_state = "ancientcrossbow"
 	max_integrity = 80
@@ -231,12 +241,12 @@
 	hasloadedsprite = TRUE
 	movingreload = TRUE
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_HIP
-	penfactor = 0.5		//Bolts have 50 pen, this decreases to 25. Should only pen armor with less than 67 protection.
+	penfactor = -1	//Reduces bolt penetration by one tier. A PEN_MEDIUM bolt becomes PEN_LIGHT.
 	damage_from_perception = TRUE
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow/stalker
 	name = "镀金卓尔弩"
-	desc = "一把为幽暗地域与洞穴内的近距离交战专门打造的精简弩，是卓尔刺客的实用利器—— \
+	desc = "一把为幽暗地域与洞穴内的近距离交战专门打造的精简弩，是卓尔刺客的实用利器——   \
 	女士的挚友，男人的终结。其机件调校精密，弩身通体饰金，象征着卓尔女射手的地位。"
 	icon = 'icons/roguetown/weapons/misc32.dmi'
 	icon_state = "drowcrossbowgilded0"
@@ -248,13 +258,13 @@
 	hasloadedsprite = TRUE
 	movingreload = TRUE
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_HIP
-	penfactor = 0.6
+	penfactor = -1
 	damage_from_perception = TRUE
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow/stalker/lesser
 	name = "卓尔弩"
-	desc = "一把为幽暗地域与洞穴内的近距离交战专门打造的精简弩，弩身已磨损严重， \
-	也没有久经沙场的卓尔战士装备上常见的镀金装饰。"
+	desc = "一把为幽暗地域与洞穴内的近距离交战专门打造的精简弩，弩身已磨 \
+	损严重，  也没有久经沙场的卓尔战士装备上常见的镀金装饰。"
 	icon = 'icons/roguetown/weapons/misc32.dmi'
 	icon_state = "drowcrossbow0"
 	item_state = "drowcrossbow"
@@ -266,15 +276,15 @@
 	hasloadedsprite = TRUE
 	movingreload = TRUE
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_HIP
-	penfactor = 0.5		//Bolts have 50 pen, this decreases to 25. Should only pen armor with less than 67 protection.
+	penfactor = -2
 	damage_from_perception = TRUE
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/heavy
 	name = "攻城弩"
 	desc = "一把更重的十字弩——架设式弩炮的基础，如今改造得可供手持使用。弩托正 \
-	下方集成了一个绞盘机构，用以克服攻城弩那骇人的拉力。它装填 \
-	更重、全长度的弩矢；专为粉碎目标而造。 <br>它在格伦泽尔霍夫特的附庸国瓦克兰组装，\
-	并在瓦克兰内战中广泛使用，对大多数地方而言都相当陌生。"
+	  下方集成了一个绞盘机构，用以克服攻城弩那骇人的拉力。它装填  更重 \
+	、全长度的弩矢；专为粉碎目标而造。 <br>它在格伦泽尔霍夫特的附庸国 \
+	瓦克兰组装， 并在瓦克兰内战中广泛使用，对大多数地方而言都相当陌生。"
 	icon = 'icons/roguetown/weapons/misc32.dmi'
 	icon_state = "heavycrossbow0"
 	item_state = "heavycrossbow"
@@ -327,16 +337,16 @@
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/heavy/ancient
 	name = "远古攻城弩"
 	desc = "一把来自异时的更重十字弩——架设式弩炮的基础，如今改造得可供手持 \
-	使用。弩托正下方集成了一个绞盘机构，用以克服攻城弩那骇人的 \
-	拉力。它装填更重、全长度的弩矢；专为粉碎目标而造。 <br>'鲁德马什的城墙在 \
-	齐射下崩裂，而她的病痛从裂缝中渗流而出……'"
+	  使用。弩托正下方集成了一个绞盘机构，用以克服攻城弩那骇人的  \
+	 拉力。它装填更重、全长度的弩矢；专为粉碎目标而造。 <br>' \
+	鲁德马什的城墙在  齐射下崩裂，而她的病痛从裂缝中渗流而出……'"
 	item_state = "ancientheavybow"
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/heavy/relic
 	name = "\"天意\""
-	desc = "在圣奥古斯特雷手中，这把特制的攻城弩射杀了维斯珀磨坊的叛教大主教； \
-	就在一场恐怖仪式即将完成前的片刻。数十年后，它再度被召唤上阵， \
-	去毁灭那些妄图献祭他最伟大作品之人。愿你的瞄准精准，神的孩子——愿你的审判，不受束缚。"
+	desc = "在圣奥古斯特雷手中，这把特制的攻城弩射杀了维斯珀磨坊的叛教大主教；  就在 \
+	一场恐怖仪式即将完成前的片刻。数十年后，它再度被召唤上阵，  去毁灭那些妄 \
+	图献祭他最伟大作品之人。愿你的瞄准精准，神的孩子——愿你的审判，不受束缚。"
 	minstr = 10 //X STR. Intended for use by the Inquisitor, or as a purchased alternative.
 	max_integrity = 200
 	chargingspeed = 50 //Halfway between the standard crossbow and siegebow.
@@ -353,7 +363,7 @@
 //That's an aside to the silver stake, which does 50, instead of the sunderbolt's 35, AND keeps the pen.
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/arbalest
 	name = "索特雷尔重弩"
-	desc = "一种重得惊人的十字弩，专为专业弩手打造。 \
+	desc = "一种重得惊人的十字弩，专为专业弩手打造。   \
 	它经过改造，可以徒手上弦，不过过程相当折磨人。"
 	icon = 'icons/roguetown/weapons/misc32.dmi'
 	icon_state = "psyheavycrossbow0"
@@ -362,10 +372,10 @@
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/heavy_xbow
 	chargingspeed = 60//+20
 	reloadtime = 6 SECONDS//From 8 seconds to 6, this way it's atleast usable in a fight, otherwise Arbalist is just better switching to a normal crossbow.
-	penfactor = 1.5//We want this to go through, no matter what, effectively.
 
 /obj/item/ammo_box/magazine/internal/shot/heavy_xbow
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/heavy_bolt
 	caliber = "heabolt"
 	max_ammo = 1
 	start_empty = TRUE
+

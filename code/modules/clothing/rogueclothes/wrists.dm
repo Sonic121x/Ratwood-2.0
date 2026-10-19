@@ -32,7 +32,6 @@
 	icon_state = "bracers"
 	item_state = "bracers"
 	armor = ARMOR_PLATE
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = PLATEHIT
 	resistance_flags = FIRE_PROOF
 	max_integrity = ARMOR_INT_SIDE_STEEL
@@ -47,6 +46,8 @@
 	desc = "抛光的吉尔青铜护腕紧扣于手腕之上。唯有升格，凡躯的锁链方会断裂；唯有死亡，灵魂才有资格拥抱神性。"
 	icon_state = "ancientbracers"
 	smeltresult = /obj/item/ingot/aaslag
+	chunkcolor = "#532e25"
+	material_category = ARMOR_MAT_PLATE
 
 /obj/item/clothing/wrists/roguetown/bracers/ancient/decrepit
 	name = "残破臂甲"
@@ -96,7 +97,6 @@
 	icon_state = "psybarbs"
 	item_state = "psybarbs"
 	armor = ARMOR_PLATE_BSTEEL
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH, BCLASS_TWIST, BCLASS_PICK)
 	max_integrity = ARMOR_INT_SIDE_BLACKSTEEL
 	alternate_worn_layer = WRISTS_LAYER
 
@@ -129,7 +129,6 @@
 	item_state = "lbracers"
 	max_integrity = ARMOR_INT_SIDE_LEATHER
 	armor = ARMOR_LEATHER
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
 	equip_sound = 'sound/foley/equip/rummaging-01.ogg'
@@ -154,8 +153,7 @@
 	name = "硬化皮臂甲"
 	desc = "硬化皮护臂，能让你的手腕免受钝击之苦。"
 	icon_state = "albracers"
-	armor = ARMOR_LEATHER_GOOD
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST, BCLASS_CHOP, BCLASS_SMASH)
+	armor = ARMOR_PADDED
 	max_integrity = ARMOR_INT_SIDE_HARDLEATHER
 	sellprice = 10
 	salvage_amount = 1
@@ -200,12 +198,11 @@
 	name = "布臂甲"
 	desc = "这个本不该在代码里被直接使用。"
 	smeltresult = null
-	armor = ARMOR_PADDED_GOOD
+	armor = ARMOR_PADDED
 	blade_dulling = DULLING_BASHCHOP
 	icon_state = "nocwrappings"
 	item_state = "nocwrappings"
 	max_integrity = ARMOR_INT_SIDE_STEEL //Heavy leather-tier protection and critical resistances, steel-tier integrity. Integrity boost encourages hand-to-hand parrying. Weaker than the Psydonic Thorns. Uncraftable.
-	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = SOFTHIT
 	anvilrepair = null
 	sewrepair = TRUE
@@ -274,7 +271,6 @@
 	icon_state = "splintarms"
 	item_state = "splintarms"
 	armor = ARMOR_BRIGANDINE
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	blocksound = SOFTHIT
 	max_integrity = ARMOR_INT_SIDE_STEEL
 	anvilrepair = /datum/skill/craft/armorsmithing
@@ -293,8 +289,9 @@
 	icon_state = "zizobracers"
 	item_state = "zizobracers"
 	max_integrity = ARMOR_INT_SIDE_ANTAG
-	peel_threshold = 5
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
+	chunkcolor = "#532e25"
+	material_category = ARMOR_MAT_PLATE
 
 /obj/item/clothing/wrists/roguetown/bracers/zizo/Initialize(mapload)
 	. = ..()
@@ -306,7 +303,7 @@
 	body_parts_covered = ARMS
 	icon_state = "ironsplintarms"
 	item_state = "ironsplintarms"
-	armor = ARMOR_LEATHER_STUDDED
+	armor = ARMOR_BRIGANDINE
 	max_integrity = ARMOR_INT_SIDE_IRON
 	smeltresult = /obj/item/ingot/iron
 
@@ -402,8 +399,8 @@
 
 /obj/item/clothing/wrists/roguetown/bracers/chain/ancient/decrepit
 	name = "破旧锁链袖套"
-	desc = "由数百个相互扣连的环编成的磨损青铜锁子护套。一股衰朽的娼妓气息自这些袖套中散发出来。 \
-	</br>我可以调整这些袖套，让它们垂得更低，而不只是紧贴手腕。"
+	desc = "由数百个相互扣连的环编成的磨损青铜锁子护套。一股衰朽的娼妓气息自这些袖套中散 \
+	发出来。  </br>我可以调整这些袖套，让它们垂得更低，而不只是紧贴手腕。"
 	icon_state = "ancientchainsleevesalt"
 	item_state = "ancientchainsleevesalt"
 	max_integrity = ARMOR_INT_SIDE_DECREPIT
@@ -431,8 +428,8 @@
 
 /obj/item/clothing/wrists/roguetown/bracers/chain/ancient
 	name = "远古锁链袖套"
-	desc = "由数百个相互扣连的环编成的抛光吉尔青铜锁子护套。一股不死的娼妓气息自这些袖套中散发出来。 \
-	</br>我可以调整这些袖套，让它们垂得更低，而不只是紧贴手腕。"
+	desc = "由数百个相互扣连的环编成的抛光吉尔青铜锁子护套。一股不死的娼妓气息自这些袖套中 \
+	散发出来。  </br>我可以调整这些袖套，让它们垂得更低，而不只是紧贴手腕。"
 	icon_state = "ancientchainsleevesalt"
 	item_state = "ancientchainsleevesalt"
 
@@ -459,8 +456,8 @@
 
 /obj/item/clothing/wrists/roguetown/bracers/chain/bronze
 	name = "青铜锁链袖套"
-	desc = "由数百个相互扣连的环编成的青铜锁子护套。一股古旧的娼妓气息自这些袖套中散发出来。 \
-	</br>我可以调整这些袖套，让它们垂得更低，而不只是紧贴手腕。"
+	desc = "由数百个相互扣连的环编成的青铜锁子护套。一股古旧的娼妓气息自这些袖套中散发 \
+	出来。  </br>我可以调整这些袖套，让它们垂得更低，而不只是紧贴手腕。"
 	icon_state = "bchainsleevesalt"
 	item_state = "bchainsleevesalt"
 	blocksound = CHAINHIT
@@ -489,8 +486,8 @@
 
 /obj/item/clothing/wrists/roguetown/bracers/chain
 	name = "锁链袖套"
-	desc = "由数百个相互扣连的环编成的钢制锁子护套。一股难以解释的娼妓气息自这些袖套中散发出来。 \
-	</br>我可以调整这些袖套，让它们垂得更低，而不只是紧贴手腕。"
+	desc = "由数百个相互扣连的环编成的钢制锁子护套。一股难以解释的娼妓气息自这些袖套中散 \
+	发出来。  </br>我可以调整这些袖套，让它们垂得更低，而不只是紧贴手腕。"
 	icon_state = "chainsleevesalt"
 	item_state = "chainsleevesalt"
 	blocksound = CHAINHIT

@@ -233,7 +233,7 @@
 
 /datum/keybinding/living/rest
 	hotkey_keys = list()
-	name = "rest"
+	name = "休息"
 	full_name = "躺下"
 	description = "躺到地上。"
 	var/lastrest = 0
@@ -275,6 +275,22 @@
 	var/mob/living/L = user.mob
 	if (isliving(L))
 		L.look_around()
+
+/datum/keybinding/living/alt_grip
+	hotkey_keys = list("B")
+	name = "alt_grip"
+	full_name = "切换握法"
+	description = "切换手中武器的握法，例如反握锤击式。"
+
+/datum/keybinding/living/alt_grip/down(client/user)
+	var/mob/living/L = user.mob
+	if(!isliving(L))
+		return FALSE
+	var/obj/item/I = L.get_active_held_item()
+	if(I)
+		I.rmb_self(L)
+		return TRUE
+	return FALSE
 
 //layer shifting
 

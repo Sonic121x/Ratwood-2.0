@@ -587,12 +587,12 @@
 
 /obj/item/rogueweapon/shovel/saperka
 	name = "萨佩尔卡"
-	desc = "一把紧凑的钢头手铲，深受开拓者喜爱。\
-	历经百次野外作业，它的套口因撬挖而满是缺痕，刃口也被磨得足以在紧要关头劈开树根，甚至护甲。"
+	desc = "一把紧凑的钢头手铲，深受开拓者喜爱。 历经百次野外作业，它的套口 \
+	因撬挖而满是缺痕，刃口也被磨得足以在紧要关头劈开树根，甚至护甲。"
 	force = 12//It has a gripped state. USE IT!!!!!
 	force_wielded = 28//It's not just a better battleaxe, now. God I hate this thing.
-	possible_item_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle, /datum/intent/mace/smash, /datum/intent/shovelscoop)
-	gripped_intents = list(/datum/intent/axe/cut/battle, /datum/intent/axe/chop/battle, /datum/intent/mace/smash)
+	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/mace/smash, /datum/intent/shovelscoop)
+	gripped_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/mace/smash)
 	icon_state = "saperka"//Temp sprite. Why was this just the shovel icon? I HATE YOU!!!!
 	icon = 'icons/roguetown/weapons/tools.dmi'
 	sharpness = 100
@@ -665,8 +665,8 @@
 //This is effectively an iron quarterstaff, with silver quality, arc intent and chopping. It's a weird thing, but fluff and soulful for Necrans.
 /obj/item/rogueweapon/shovel/mort_staff
 	name = "\proper 殓尸人法杖"
-	desc = "一只沉重的银铲头，配上一根银与乳香木制成的长杆。\
-	依照诸多内克拉教派的惯常做法，它已受香炉烟灰涂抹祝圣，因此能作为施法焦点。"
+	desc = "一只沉重的银铲头，配上一根银与乳香木制成的长杆。 依照诸多内克 \
+	拉教派的惯常做法，它已受香炉烟灰涂抹祝圣，因此能作为施法焦点。"
 	force = 16//Iron quarterstaff level.
 	force_wielded = 22//See above.
 	possible_item_intents = list(SPEAR_BASH, /datum/intent/special/magicarc)//One hand lets you arc divine blast and such.

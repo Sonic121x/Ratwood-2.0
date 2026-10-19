@@ -103,8 +103,7 @@
 	icon_state = "psydonboots"
 	item_state = "psydonboots"
 	max_integrity = ARMOR_INT_SIDE_HARDLEATHER
-	armor = ARMOR_LEATHER_GOOD
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST)	//On par with Heavy Leather Boots.
+	armor = ARMOR_LEATHER
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
 
@@ -129,8 +128,7 @@
 /obj/item/clothing/shoes/roguetown/boots/nobleboot/steppesman
 	name = "阿夫尼克骑靴"
 	desc = "一双结实的骑靴，配有铁跟和黄铜马刺。"
-	armor = ARMOR_LEATHER_GOOD
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST)
+	armor = ARMOR_LEATHER
 	max_integrity = ARMOR_INT_SIDE_HARDLEATHER
 
 /obj/item/clothing/shoes/roguetown/shortboots
@@ -259,9 +257,8 @@
 	desc = "由鞣制皮革缝制而成的结实靴子。样式体面、包裹牢靠，每一步都会发出令人满足的吱呀声。"
 	icon_state = "alboots"
 	item_state = "alboots"
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST)	//Same as gloves
 	max_integrity = ARMOR_INT_SIDE_HARDLEATHER
-	armor = ARMOR_LEATHER_GOOD	//Better than regular leather.
+	armor = ARMOR_LEATHER	//Better than regular leather.
 	color = null
 	cold_protection = FOOT_LEFT | FOOT_RIGHT
 	min_cold_protection_temperature = 50
@@ -278,10 +275,9 @@
 	body_parts_covered = FEET
 	icon_state = "fencerboots"
 	item_state = "fencerboots"
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = SOFTHIT
 	max_integrity = ARMOR_INT_SIDE_HARDLEATHER
-	armor = ARMOR_LEATHER_GOOD
+	armor = ARMOR_LEATHER
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
@@ -294,8 +290,7 @@
 	icon_state = "grenzelboots"
 	item_state = "grenzelboots"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
-	armor = ARMOR_LEATHER_GOOD
+	armor = ARMOR_LEATHER
 	salvage_amount = 1
 	salvage_result = /obj/item/natural/hide/cured
 
@@ -313,7 +308,6 @@
 	name = "靛纹精灵靴"
 	desc = "活木树干在春天仍会开花。它们会让水透过，却从不冰冷。"
 	armor = ARMOR_BLACKOAK //Resistant to blunt and stab, but very weak to slash.
-	prevent_crits = list(BCLASS_BLUNT, BCLASS_SMASH, BCLASS_TWIST, BCLASS_PICK)
 	max_integrity = ARMOR_INT_SIDE_IRON
 	resistance_flags = FIRE_PROOF
 	blocksound = SOFTHIT
@@ -357,7 +351,6 @@
 	body_parts_covered = FEET
 	icon_state = "armorboots"
 	item_state = "armorboots"
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	color = null
 	blocksound = PLATEHIT
 	resistance_flags = FIRE_PROOF
@@ -392,7 +385,7 @@
 	name = "凶暴战靴"
 	desc = "这双板甲靴涌动着推动世界前行的同一种暴力。它们已踩碎过无数头骨。"
 	max_integrity = ARMOR_INT_SIDE_ANTAG
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
 	icon_state = "graggarplateboots"
 
 /obj/item/clothing/shoes/roguetown/boots/armor/graggar/Initialize(mapload)
@@ -405,7 +398,7 @@
 	name = "镀金战靴"
 	desc = "镀金的坟墓终将为蠕虫所拥。"
 	icon_state = "matthiosboots"
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
 
 /obj/item/clothing/shoes/roguetown/boots/armor/matthios/Initialize(mapload)
 	. = ..()
@@ -422,7 +415,9 @@
 	name = "阿凡泰因战靴"
 	desc = "<font color='A50021'>孤寂而平坦的沙海，向远方无尽延伸。</font> </br>‎<font color='FF0000'>向现实的边缘进军，把它的尸骸抛在身后。</font>"
 	icon_state = "zizoboots"
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
+	chunkcolor = "#363030"
+	material_category = ARMOR_MAT_PLATE
 
 /obj/item/clothing/shoes/roguetown/boots/armor/zizo/Initialize(mapload)
 	. = ..()
@@ -438,7 +433,7 @@
 	name = "阿凡泰因织纹铁鞋"
 	desc = "<font color='A50021'>孤寂而平坦的沙海，向远方无尽延伸。</font> </br>‎<font color='FF0000'>向现实的边缘进军，把它的尸骸抛在身后。</font>"
 	max_integrity = ARMOR_INT_SIDE_ANTAG
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
 	icon_state = "zizoboots"
 
 /obj/item/clothing/shoes/roguetown/boots/armor/avantyne/zizo/Initialize(mapload)
@@ -447,7 +442,8 @@
 
 /obj/item/clothing/shoes/roguetown/boots/armor/iron
 	name = "铁板靴"
-	desc = "古老的铁靴，贴合皮革靴面，并以多层铁链甲加固。虽然自定制钢制铁靴问世以来，普赛顿的骑士们已大多弃用此物，\
+	desc = "古老的铁靴，贴合皮革靴面，并以多层铁链甲加固。虽然自定 \
+	制钢制铁靴问世以来，普赛顿的骑士们已大多弃用此物，  \
 	但它依然是那些不愿因膝盖中箭而断送前程之人的绝佳选择。"
 	body_parts_covered = FEET
 	icon_state = "soldierboots"
@@ -492,8 +488,9 @@
 
 /obj/item/clothing/shoes/roguetown/boots/maille
 	name = "链甲靴"
-	desc = "一双皮革靴子，脚面和脚踝处镶有小型钢板加固。每只靴口上方编织了一层厚实的链甲，进一步保护穿戴者的小腿免受伤害。\
-	深受兵士与教士们喜爱，偶尔也会被某些个头还不够高、穿着它们走起路来略显滑稽的勇敢侍从所青睐。"
+	desc = "一双皮革靴子，脚面和脚踝处镶有小型钢板加固。每只靴口上方编织了一层厚 \
+	实的链甲，进一步保护穿戴者的小腿免受伤害。 深受兵士与教士们喜爱，偶 \
+	尔也会被某些个头还不够高、穿着它们走起路来略显滑稽的勇敢侍从所青睐。"
 	body_parts_covered = FEET
 	icon_state = "shalfplateboots"
 	item_state = "shalfplateboots"
@@ -518,8 +515,9 @@
 
 /obj/item/clothing/shoes/roguetown/boots/maille/iron
 	name = "铁链甲靴"
-	desc = "一双皮革靴子，脚面和脚踝处镶有小型铁板加固。每只靴口处编织了一层厚实的链甲，并用铆钉巧妙固定。\
-	因其在普赛顿常被征召的民兵中广泛使用，俗称为‘士兵靴’。"
+	desc = "一双皮革靴子，脚面和脚踝处镶有小型铁板加固。每只靴 \
+	口处编织了一层厚实的链甲，并用铆钉巧妙固定。 因其在 \
+	普赛顿常被征召的民兵中广泛使用，俗称为‘士兵靴’。"
 	icon_state = "soldierboots"
 	item_state = "soldierboots"
 	max_integrity = ARMOR_INT_SIDE_IRON
@@ -527,9 +525,9 @@
 
 /obj/item/clothing/shoes/roguetown/boots/maille/bronze
 	name = "青铜链甲靴"
-	desc = "一双皮革靴子，脚面和脚踝处镶有小型青铜板加固。每只靴口处编织了一层厚实的链甲， \
-	并缝合得恰到好处。在原初西昂崩溃的荣光与天穹帝国的崛起之间，这双鞋底 \
-	承载过无数军队的脚步，踏过那时尚且柔软的草原。"
+	desc = "一双皮革靴子，脚面和脚踝处镶有小型青铜板加固。每只靴口处编织了一层 \
+	厚实的链甲，  并缝合得恰到好处。在原初西昂崩溃的荣光与天穹帝国的崛 \
+	起之间，这双鞋底  承载过无数军队的脚步，踏过那时尚且柔软的草原。"
 	icon_state = "bsoldierboots"
 	item_state = "bsoldierboots"
 	max_integrity = ARMOR_INT_SIDE_BRONZE
@@ -659,7 +657,6 @@
 	sleeved = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 	icon_state = "bplateboots"
 	item_state = "bplateboots"
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	color = null
 	blocksound = PLATEHIT
 	max_integrity = ARMOR_INT_SIDE_BLACKSTEEL
@@ -669,6 +666,8 @@
 	resistance_flags = FIRE_PROOF
 	cold_protection = null
 	min_cold_protection_temperature = BODYTEMP_NORMAL_MIN
+	chunkcolor = "#303036"
+	material_category = ARMOR_MAT_PLATE
 
 /obj/item/clothing/shoes/roguetown/boots/blacksteel/ComponentInitialize()
 	AddComponent(/datum/component/armour_filtering/negative, TRAIT_FENCERDEXTERITY)
@@ -682,7 +681,6 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 	icon_state = "bkboots"
 	item_state = "bkboots"
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_TWIST)
 	color = null
 	blocksound = PLATEHIT
 	max_integrity = ARMOR_INT_SIDE_BLACKSTEEL
@@ -693,6 +691,8 @@
 	resistance_flags = FIRE_PROOF
 	cold_protection = null
 	min_cold_protection_temperature = BODYTEMP_NORMAL_MIN
+	chunkcolor = "#303036"
+	material_category = ARMOR_MAT_PLATE
 
 // ----------------- BLACKSTEEL END -----------------------
 
@@ -718,7 +718,7 @@
 	icon_state = "eastsandals"
 	item_state = "eastsandals"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
-	armor = ARMOR_LEATHER_GOOD
+	armor = ARMOR_LEATHER
 	nudist_approved = TRUE
 
 /obj/item/clothing/shoes/roguetown/boots/horsey

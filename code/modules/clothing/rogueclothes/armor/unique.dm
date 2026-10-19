@@ -3,8 +3,7 @@
 	name = "咒歌者长袍"
 	desc = "法剑士所穿的加固长袍，内有皮革衬垫。"
 	body_parts_covered = COVERAGE_FULL
-	armor = ARMOR_SPELLSINGER
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP, BCLASS_SMASH)
+	armor = ARMOR_LEATHER
 	armor_class = ARMOR_CLASS_LIGHT
 	icon_state = "spellcasterrobe"
 	icon = 'icons/roguetown/clothing/armor.dmi'
@@ -27,8 +26,7 @@
 	break_sound = 'sound/foley/cloth_rip.ogg'
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	body_parts_covered = COVERAGE_FULL
-	armor = ARMOR_SPELLSINGER
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP, BCLASS_SMASH)
+	armor = ARMOR_LEATHER
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
 	sewrepair = TRUE
@@ -46,7 +44,7 @@
 	desc = "缀有红穗的道袍，并缝入了皮革嵌片。看起来比简式长袍更结实。"
 	icon_state = "eastsuit2"
 	item_state = "eastsuit2"
-	armor = ARMOR_LEATHER_STUDDED // Makes it the equivalence of studded with less integrity and better armor 
+	armor = ARMOR_LEATHER // Makes it the equivalence of studded with less integrity and better armor 
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MEDIUM
 
 //craftable variation of eastsuit, essentially requiring the presence of a tailor with relevant materials
@@ -58,14 +56,13 @@
 	icon_state = "eastsuit1"
 	item_state = "eastsuit1"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
-	armor = ARMOR_LEATHER_STUDDED 
+	armor = ARMOR_LEATHER 
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MEDIUM
 
 /obj/item/clothing/suit/roguetown/armor/basiceast/mentorsuit/decorative
 	name = "装饰性导师道袍"
 	desc = "一件纯为东方风格而穿着的旧道袍。"
 	armor = list("blunt" = 0, "slash" = 0, "stab" = 0, "piercing" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = null
 
 
 /obj/item/clothing/suit/roguetown/armor/basiceast/captainrobe
@@ -73,7 +70,7 @@
 	desc = "花纹风格的长袍，据说被灌注了魔法防护。商会说这来自南方的风郡地区。"
 	icon_state = "eastsuit4"
 	item_state = "eastsuit4"
-	armor = ARMOR_LEATHER_STUDDED
+	armor = ARMOR_LEATHER
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER + 25 // Head Honcho gets a buff
 	sellprice = 25
 
@@ -81,7 +78,6 @@
 	name = "装饰性花纹长袍"
 	desc = "纯为东方风格而穿着的花纹长袍。"
 	armor = list("blunt" = 0, "slash" = 0, "stab" = 0, "piercing" = 0, "fire" = 0, "acid" = 0)
-	prevent_crits = null
 
 // this robe spawns on a role that offers no leg protection nor further upgrades to the loadout, in exchange for better roundstart gear
 
@@ -90,7 +86,6 @@
 	desc = "由最古老的精灵德鲁伊以歌与工具共同编织。它仍在吱呀作响，仿佛为逝去时代而悲泣。看起来只有精灵才能穿得上。"
 	allowed_race = list(/datum/species/elf/wood, /datum/species/human/halfelf, /datum/species/elf/dark, /datum/species/elf)
 	armor = ARMOR_BLACKOAK
-	prevent_crits = list(BCLASS_BLUNT, BCLASS_TWIST, BCLASS_PICK, BCLASS_SMASH)
 	body_parts_covered = COVERAGE_FULL
 	icon = 'icons/roguetown/clothing/special/race_armor.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/race_armor.dmi'
@@ -132,8 +127,7 @@
 	desc = "由铁片与皮革拼接而成，用来保护要害。"
 	body_parts_covered = COVERAGE_ALL_BUT_LEGS
 	icon_state = "kurche"
-	armor = ARMOR_CUIRASS	//Essentially really good stab/slash prot, some prot against projectiles too
-	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_STAB)
+	armor = ARMOR_PLATE	//Essentially really good stab/slash prot, some prot against projectiles too
 	blocksound = CHAINHIT
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 	max_integrity = 325	//Oh Lord 25 More Integrity Egads !
@@ -146,8 +140,7 @@
 	desc = "由皮片制成的护甲。"
 	icon_state = "huus"
 	item_state = "huus"
-	armor = ARMOR_LEATHER_GOOD
-	prevent_crits = list(BCLASS_CUT,BCLASS_BLUNT)
+	armor = ARMOR_LEATHER
 	blocksound = SOFTHIT
 	slot_flags = ITEM_SLOT_ARMOR
 	blade_dulling = DULLING_BASHCHOP

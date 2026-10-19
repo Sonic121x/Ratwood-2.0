@@ -58,6 +58,10 @@
 	return
 
 /obj/item/proc/getonmobprop(tag)
+	if(current_alt_grip)
+		var/list/altgrip_prop = current_alt_grip.getonmobprop(src, tag)
+		if(altgrip_prop)
+			return altgrip_prop
 	if(tag)
 		switch(tag)
 			if("gen")
@@ -716,7 +720,7 @@ GLOBAL_LIST_EMPTY(icon_state_cache)
 			new /obj/item/roguecoin/gold/pile(T)
 /*
 /client/verb/wwolf()
-	set category = "DEBUGTEST"
+	set category = "调试指令"
 	set name = "狼人"
 	if(mob.mind)
 		if(mob.mind.has_antag_datum(/datum/antagonist/werewolf, TRUE))

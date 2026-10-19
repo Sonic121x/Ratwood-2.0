@@ -3,8 +3,7 @@
 	desc = "柔韧牛皮甲。轻便，总比没有强。"
 	icon_state = "roguearmor"
 	body_parts_covered = COVERAGE_TORSO
-	armor = ARMOR_LEATHER
-	prevent_crits = list(BCLASS_CUT,BCLASS_BLUNT)
+	armor = ARMOR_LEATHER_NPC
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
 	break_sound = 'sound/foley/cloth_rip.ogg'
@@ -16,6 +15,8 @@
 	salvage_result = /obj/item/natural/hide/cured
 	cold_protection = CHEST
 	min_cold_protection_temperature = BODYTEMP_COLD_LEVEL_ONE_MAX
+	chunkcolor = "#7e5d17"
+	material_category = ARMOR_MAT_LEATHER
 
 /obj/item/clothing/suit/roguetown/armor/leather/ComponentInitialize()
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FENCERDEXTERITY)
@@ -104,23 +105,23 @@
 	desc = "套在带垂片布里甘丁甲外、带有大肩甲的硬化皮革挽具，灌注了登多尔的精华。"
 	icon_state = "forestbrig"
 	armor = ARMOR_BRIGANDINE
-	max_integrity = ARMOR_INT_CHEST_PLATE_BRIGANDINE + 50
+	max_integrity = ARMOR_INT_CHEST_PLATE_BRIGANDINE - 50
 	equip_delay_self = 4 SECONDS
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded/warden/melee
 	name = "护林人胸甲"
 	desc = "带加强肩甲的硬化皮革挽具，罩在锁甲外衣之上。灌注了登多尔的精华，为前线作战而打造得更为坚固。"
-	armor = ARMOR_CUIRASS
+	armor = ARMOR_PLATE
 	armor_class = ARMOR_CLASS_MEDIUM
-	max_integrity = ARMOR_INT_CHEST_MEDIUM_STEEL + 30
+	max_integrity = ARMOR_INT_CHEST_MEDIUM_STEEL
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded/warden/melee/upgraded
 	name = "护林人锁子甲"
 	desc = "以板甲与锁环加固的护林人胸甲，是精心锻造的成果。"
 	icon_state = "forestbrig"
-	armor = ARMOR_CUIRASS
-	max_integrity = ARMOR_INT_CHEST_PLATE_BRIGANDINE + 20
+	armor = ARMOR_PLATE
+	max_integrity = ARMOR_INT_CHEST_PLATE_BRIGANDINE - 50
 	equip_delay_self = 4 SECONDS
 	smeltresult = /obj/item/ingot/steel
 
@@ -130,11 +131,10 @@
 	icon_state = "studleather"
 	item_state = "studleather"
 	blocksound = SOFTHIT
-	armor = ARMOR_LEATHER_STUDDED
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP, BCLASS_SMASH)
+	armor = ARMOR_LEATHER
 	nodismemsleeves = TRUE
 	body_parts_covered = COVERAGE_TORSO
-	max_integrity = ARMOR_INT_CHEST_LIGHT_STEEL//-25 compared to light brig
+	max_integrity = ARMOR_INT_CHEST_LIGHT_ELITE
 	smeltresult = /obj/item/ingot/iron
 	armor_class = ARMOR_CLASS_LIGHT
 
@@ -151,12 +151,11 @@
 
 /obj/item/clothing/suit/roguetown/armor/leather/heavy
 	name = "硬化皮甲"
-	desc = "厚重的公牛皮短上衣，硬挺得几乎能自行站立。它形成一道坚实而护身的披甲 \
-	为穿戴者抵挡打击与风霜。"
+	desc = "厚重的公牛皮短上衣，硬挺得几乎能自行站立。它形成 \
+	一道坚实而护身的披甲  为穿戴者抵挡打击与风霜。"
 	icon_state = "roguearmor_belt"
 	item_state = "roguearmor_belt"
-	armor = ARMOR_LEATHER_GOOD
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP, BCLASS_SMASH)
+	armor = ARMOR_LEATHER
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
 	cold_protection = CHEST
 	min_cold_protection_temperature = BODYTEMP_COLD_LEVEL_ONE_MAX
@@ -170,15 +169,15 @@
 	icon_state = "roguearmor_coat"
 	item_state = "roguearmor_coat"
 	body_parts_covered = COVERAGE_ALL_BUT_ARMS
-	armor = ARMOR_LEATHER_GOOD
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP, BCLASS_SMASH)
+	armor = ARMOR_LEATHER
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
 	cold_protection = CHEST | ARM_RIGHT | ARM_LEFT
 	min_cold_protection_temperature = BODYTEMP_COLD_LEVEL_ONE_MAX
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded/cuirbouilli
 	name = "煮革背心"
-	desc = "一件加衬的背心，以“煮革”加固——即经过处理、水煮并复合层压的皮革。传统上穿在较重的胸甲之下，用以抵御钝击与刺击，但单独穿着也完全可靠，毫无顾虑。"
+	desc = "一件加衬的背心，以“煮革”加固——即经过处理、水煮并复合层压的皮革。传统 \
+	上穿在较重的胸甲之下，用以抵御钝击与刺击，但单独穿着也完全可靠，毫无顾虑。"
 	icon_state = "cuirbouilli"
 	item_state = "cuirbouilli"
 	body_parts_covered = CHEST | VITALS
@@ -194,8 +193,7 @@
 	item_state = "confessorcoat"
 	body_parts_covered = COVERAGE_FULL
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
-	armor = ARMOR_LEATHER_STUDDED
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP, BCLASS_SMASH)
+	armor = ARMOR_LEATHER
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
 
 /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat/zyb
@@ -227,8 +225,7 @@
 	icon_state = "leatherjacketo"
 	item_state = "leatherjacketo"
 	body_parts_covered = COVERAGE_ALL_BUT_LEGS
-	armor = ARMOR_LEATHER_GOOD
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP, BCLASS_SMASH)
+	armor = ARMOR_LEATHER
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
 	cold_protection = CHEST | ARM_LEFT | ARM_RIGHT
 
@@ -238,7 +235,7 @@
 	icon_state = "shadowvest"
 	item_state = "shadowvest"
 	body_parts_covered = COVERAGE_FULL
-	armor = ARMOR_LEATHER_STUDDED
+	armor = ARMOR_LEATHER
 	allowed_race = NON_DWARVEN_RACE_TYPES
 
 /obj/item/clothing/suit/roguetown/armor/leather/heavy/freifechter
@@ -246,7 +243,7 @@
 	desc = "轻便灵活、可系扣的皮夹克，能让你的要害远离伤害。"
 	icon_state = "freijacket"
 	item_state = "freijacket"
-	max_integrity = ARMOR_INT_CHEST_LIGHT_MEDIUM + 35
+	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER + 35
 	detail_tag = "_detail"
 	color = "#5E4440"
 	detail_color = "#c08955"
@@ -309,8 +306,7 @@
 	icon_state = "vest"
 	item_state = "vest"
 	color = "#514339"
-	armor = ARMOR_LEATHER_BAD
-	prevent_crits = list(BCLASS_CUT)
+	armor = ARMOR_LEATHER
 	blocksound = SOFTHIT
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
 	blade_dulling = DULLING_BASHCHOP
@@ -362,9 +358,8 @@
 	resistance_flags = FIRE_PROOF
 
 	slot_flags = ITEM_SLOT_ARMOR
-	armor = ARMOR_LEATHER_GOOD
+	armor = ARMOR_LEATHER
 	body_parts_covered = COVERAGE_ALL_BUT_LEGS
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP, BCLASS_SMASH)
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
 
 	detail_tag = "_detail"
@@ -411,7 +406,7 @@
 	desc = "以精良而耐磨的布料制成的厚重大衣，并经过加固。毕竟世事难料。"
 	icon_state = "hand"
 	item_state = "hand"
-	armor = ARMOR_LEATHER_STUDDED
+	armor = ARMOR_LEATHER
 	body_parts_covered = COVERAGE_ALL_BUT_LEGS
 
 /obj/item/clothing/suit/roguetown/armor/leather/newkeep/heir

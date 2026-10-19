@@ -27,24 +27,31 @@
 	clickcd = CLICK_CD_CHARGED
 	warnie = "mobwarning"
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	penfactor = 50
+	penfactor = PEN_HEAVY
 	item_d_type = "stab"
 	effective_range = 2
 	effective_range_type = EFF_RANGE_EXACT
+
+/datum/intent/spear/thrust/bad
+	name = "弱势突刺"
+	penfactor = PEN_LIGHT
+	damfactor = 1
+	desc = "用并非为刺击设计的长柄武器勉强突刺。不受有效距离限制，但只能刺穿最薄弱的布甲。"
+	effective_range = null
+	effective_range_type = EFF_RANGE_NONE
 
 /datum/intent/spear/thrust/oneh
 	name = "单手突刺"
 	reach = 1
 	swingdelay = 4
-	penfactor = 45
-	desc = "刺击目标。单手持矛无法发挥长矛的全部威力。"
+	penfactor = PEN_MEDIUM
 	clickcd = CLICK_CD_RESIST
 	effective_range = null
 	effective_range_type = EFF_RANGE_NONE
 	sharpness_penalty = 3
 
 /datum/intent/spear/thrust/militia
-	penfactor = 40
+	penfactor = PEN_MEDIUM
 
 /datum/intent/spear/thrust/pike		//EXPERIMENTAL
 	name = "长枪远刺"
@@ -61,7 +68,7 @@
 	clickcd = CLICK_CD_HEAVY + 4
 	swingdelay = 6
 	damfactor = 1.5
-	penfactor = 35
+	penfactor = PEN_MEDIUM
 	reach = 2
 	effective_range = 2
 	icon_state = "inlance"
@@ -69,13 +76,13 @@
 
 
 /datum/intent/spear/thrust/blunted
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
 
 /datum/intent/spear/bash
 	name = "猛砸"
 	blade_class = BCLASS_BLUNT
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	icon_state = "inbash"
 	attack_verb = list("猛砸", "打击")
 	damfactor = NONBLUNT_BLUNT_DAMFACTOR
@@ -177,71 +184,13 @@
 	cleave = /datum/cleave_pattern/horizontal_sweep
 	desc = "一记横扫，会斩开身前的所有目标。"
 
-/datum/intent/sword/cut/zwei
-	desc = "如同普通劈砍，只不过你挥舞的是一把巨剑。"
-	reach = 2
-
-/datum/intent/sword/thrust/zwei
-	desc = "攻击距离更远的刺击。"
-	reach = 2
-
-/datum/intent/sword/cut/zwei/cleave
-	name = "裂斩"
-	icon_state = "incleave"
-	desc = "一记凶悍的劈斩，会连第一个目标身后的第二个目标一并斩开。能造成巨大伤害，却对护甲毫无作用。"
-	attack_verb = list("劈开", "斩穿")
-	clickcd = CLICK_CD_HEAVY
-	penfactor = BLUNT_DEFAULT_PENFACTOR
-	damfactor = 2.5
-	reach = 1 // No!!
-	cleave = /datum/cleave_pattern/forward_cleave
-	misscost = 10
-	intent_intdamage_factor = 0.25
-	sharpness_penalty = 2
-	accuracy_modifier = -15
-/datum/intent/sword/cut/zwei/sweep
-	name = "横扫斩"
-	icon_state = "insweep"
-	desc = "一记沉重的横扫，会斩开身前的所有目标。"
-	attack_verb = list("横扫", "横斩")
-	reach = 1
-	clickcd = CLICK_CD_MASSIVE
-	cleave = /datum/cleave_pattern/horizontal_sweep
-
-/datum/intent/sword/thrust/estoc
-	name = "突刺"
-	desc = "精准地刺出。除了黑钢之类的东西，你能刺穿一切。"
-	penfactor = 57	//At 57 pen + 25 base (82 total), you will always pen 80 stab armor, but you can't do it at range unlike a spear.
-	clickcd = CLICK_CD_CHARGED
-
-/datum/intent/sword/lunge
-	name = "突进"
-	icon_state = "inimpale"
-	attack_verb = list("突进刺击")
-	animname = "stab"
-	blade_class = BCLASS_STAB
-	desc = "攻击距离为两格的刺击。难以有效穿透护甲。"
-	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
-	reach = 2
-	damfactor = 1.3	//Zwei will still deal ~7-10 more damage at the same range, depending on user's STR.
-	swingdelay = 8
-	effective_range = 2
-	effective_range_type = EFF_RANGE_EXACT
-
-/datum/intent/sword/lunge/estoc
-	damfactor = 1.2
-	desc = "从远处刺击。能刺穿皮革，却无法穿透金属。"
-	penfactor = 37//25 base, +5, at 67. More for applying bleed through armour, since it's a needle.
-	swingdelay = 0
-	clickcd = CLICK_CD_CHARGED
-
 /datum/intent/sword/bash
 	name = "十字护手砸击"
 	blade_class = BCLASS_BLUNT
 	desc = "用剑的十字护手猛击目标。"
 	icon_state = "inbash"
 	attack_verb = list("猛砸", "打击")
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	damfactor = 1.1
 	clickcd = 15
 	swingdelay = 2
@@ -253,24 +202,26 @@
 /datum/intent/rend
 	name = "撕裂"
 	icon_state = "inrend"
-	attack_verb = list("撕裂")
-	animname = "cut"
+	attack_verb = list("撕裂", "劈开")
+	animname = "chop"
 	blade_class = BCLASS_CHOP
+	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
 	reach = 1
-	desc = "重创裸露的血肉。几乎无法损伤护甲，还会严重磨损武器的锋刃。"
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	swingdelay = 1 SECONDS
+	swingdelay_type = SWINGDELAY_PENALTY
+	penfactor = PEN_NONE
 	damfactor = 2.5
 	clickcd = CLICK_CD_CHARGED
 	no_early_release = TRUE
-	hitsound = list('sound/combat/hits/bladed/genslash (1).ogg', 'sound/combat/hits/bladed/genslash (2).ogg', 'sound/combat/hits/bladed/genslash (3).ogg')
 	item_d_type = "slash"
 	misscost = 10
-	intent_intdamage_factor = 0.25
-	sharpness_penalty = 2
+	intent_intdamage_factor = 0.05
+	demolition_mod = 0.05
+
 
 /datum/intent/rend/reach
 	name = "长距撕裂"
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	misscost = 5
 	desc = "从远处撕裂裸露的血肉。仅在恰好相距两格时有效。"
 	clickcd = CLICK_CD_HEAVY
@@ -278,6 +229,10 @@
 	reach = 2
 	effective_range = 2
 	effective_range_type = EFF_RANGE_EXACT
+
+/datum/intent/rend/apophis
+	damfactor = 2.2
+	intent_intdamage_factor = 0.2
 
 /datum/intent/rend/reach/partizan
 	name = "撕裂突刺"
@@ -289,27 +244,6 @@
 	item_d_type = "stab"
 	intent_intdamage_factor = 0.1//You're not chopping, unlike a standard rend.
 
-/datum/intent/partizan/peel
-	name = "剥甲"
-	icon_state = "inpeel"
-	attack_verb = list("<font color ='#e7e7e7'>剥甲攻击</font>")
-	animname = "cut"
-	blade_class = BCLASS_PEEL
-	hitsound = list('sound/combat/hits/blunt/metalblunt (1).ogg', 'sound/combat/hits/blunt/metalblunt (2).ogg', 'sound/combat/hits/blunt/metalblunt (3).ogg')
-	clickcd = CLICK_CD_CHARGED
-	penfactor = BLUNT_DEFAULT_PENFACTOR
-	swingdelay = 0
-	damfactor = 0.01
-	item_d_type = "slash"
-	peel_divisor = 4
-	reach = 2
-
-//Old partizan peel, for the naginata.
-/datum/intent/partizan/peel/nag
-	attack_verb = list("<font color ='#e7e7e7'>无力地剥甲攻击</font>")
-	swingdelay = 5
-	peel_divisor = 5
-
 /datum/intent/spear/bash/ranged/quarterstaff
 	damfactor = 1
 	//We want chipping, m'lord.
@@ -319,38 +253,12 @@
 /datum/intent/spear/thrust/quarterstaff
 	blade_class = BCLASS_BLUNT
 	hitsound = list('sound/combat/hits/blunt/bluntsmall (1).ogg', 'sound/combat/hits/blunt/bluntsmall (2).ogg')
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	damfactor = 1.3 // Adds up to be slightly stronger than an unenhanced ebeak strike.
 	clickcd = CLICK_CD_CHARGED
 	//We want chipping, m'lord.
 	blunt_chipping = TRUE
 	blunt_chip_strength = BLUNT_CHIP_MINUSCULE//See above.
-
-/datum/intent/spear/thrust/lance
-	damfactor = 1.5 // Turns its base damage into 30 on the 2hand thrust. It keeps the spear thrust one handed.
-
-/datum/intent/lance
-	name = "骑枪冲刺"
-	icon_state = "inlance"
-	desc = "用来把人串成烤肉。对护甲毫无用处。"
-	attack_verb = list("枪刺", "贯穿", "刺穿")
-	animname = "stab"
-	item_d_type = "stab"
-	penfactor = BLUNT_DEFAULT_PENFACTOR // Not a mistake, to prevent it from nuking through armor.
-	chargetime = 4 SECONDS
-	damfactor = 4 // 80 damage on hit. It is gonna hurt.
-	reach = 2// extra range comes from your cleave aoe
-	effective_range = 2
-	effective_range_type = EFF_RANGE_ABOVE
-	blunt_chipping = TRUE
-	blunt_chip_strength = BLUNT_CHIP_ABSURD // 32 damage chip at full charge, funny!
-	cleave = /datum/cleave_pattern/lance
-
-/datum/intent/lance/onehand
-	chargetime = 4 SECONDS
-	swingdelay = 1 SECONDS
-	damfactor = 4 // 25% less damage
-	cleave = /datum/cleave_pattern/lance
 
 //polearm objs ฅ^•ﻌ•^ฅ
 
@@ -717,8 +625,8 @@
 
 /obj/item/rogueweapon/spear/billhook/zizo
 	name = "阿凡泰因钩镰"
-	desc = "一件扭曲的收获器具，其钩刃上滋生着晶状的恶意。它是纯粹颠覆的武器，\
-	专为将格里莫里亚的虚假偶像拖入泥土之中而造。"
+	desc = "一件扭曲的收获器具，其钩刃上滋生着晶状的恶意。它是纯粹颠 \
+	覆的武器， 专为将格里莫里亚的虚假偶像拖入泥土之中而造。"
 	icon = 'icons/roguetown/weapons/polearms64.dmi'
 	icon_state = "zizobillhook"
 	unenchantable = TRUE
@@ -729,7 +637,7 @@
 	force = 30
 	force_wielded = 35
 	wdefense = 9
-	throwforce = 35 
+	throwforce = 35
 	special = /datum/special_intent/polearm_backstep
 
 /obj/item/rogueweapon/spear/billhook/zizo/Initialize(mapload)
@@ -991,7 +899,7 @@
 	smeltresult = /obj/item/ingot/steel
 
 /obj/item/rogueweapon/halberd/bardiche
-	possible_item_intents = list(/datum/intent/spear/thrust/eaglebeak/oneh, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
+	possible_item_intents = list(/datum/intent/spear/thrust/bad, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
 	gripped_intents = list(/datum/intent/spear/cut, /datum/intent/spear/cut/bardiche/cleave, /datum/intent/spear/cut/glaive/sweep, SPEAR_BASH)
 	name = "长柄战斧"
 	desc = "一种优美的戟斧变体。加固过的长杆让它在对抗打击时更为耐久。"
@@ -1019,15 +927,15 @@
 
 /obj/item/rogueweapon/halberd/bardiche/stalker
 	name = "卓尔长柄战斧"
-	desc = "虽然与寻常卓尔掠袭者使用的铁制长柄战斧相似，这柄优雅的长柄武器却显得更为夺目。 \
-	卓尔骑兵的长柄战斧锻造精良，重心平衡，无论是在蜘蛛背上单手挥舞， \
-	还是徒步作战时双手持握，都能劈开敌军杂兵。"
+	desc = "虽然与寻常卓尔掠袭者使用的铁制长柄战斧相似，这柄优雅的长柄武器却 \
+	显得更为夺目。  卓尔骑兵的长柄战斧锻造精良，重心平衡，无论是在 \
+	蜘蛛背上单手挥舞，  还是徒步作战时双手持握，都能劈开敌军杂兵。"
 	icon = 'icons/roguetown/weapons/polearms64.dmi'
 	icon_state = "drowbardiche"
 	force = 25
 	force_wielded = 28//-2 force
 	possible_item_intents = list(SPEAR_THRUST, /datum/intent/spear/cut/glaive, /datum/intent/axe/chop/scythe, /datum/intent/dagger/sucker_punch)
-	gripped_intents = list(/datum/intent/spear/thrust/glaive, /datum/intent/spear/cut/glaive/sweep, /datum/intent/spear/cut/bardiche/cleave/chop, /datum/intent/dagger/sucker_punch)
+	gripped_intents = list(/datum/intent/spear/thrust, /datum/intent/spear/cut/glaive/sweep, /datum/intent/spear/cut/bardiche/cleave/chop, /datum/intent/dagger/sucker_punch)
 	wdefense = 4//-2 def given how good it's intents are
 	max_blade_int = 160//-40 blade integ
 	smeltresult = /obj/item/ingot/steel
@@ -1047,8 +955,8 @@
 
 /obj/item/rogueweapon/halberd/blacksteel
 	name = "黑钢戟"
-	desc = "一柄华丽的黑钢戟。它是十六世纪骑士所能获得的最佳战争利器，尤其是在最高宫廷中吸引窈窕淑女方面。\
-	在柄上裹一段布料以展示你的纹章。"
+	desc = "一柄华丽的黑钢戟。它是十六世纪骑士所能获得的最佳战争利器，尤其是 \
+	在最高宫廷中吸引窈窕淑女方面。 在柄上裹一段布料以展示你的纹章。"
 	icon_state = "bs_halberd"
 	icon = 'icons/roguetown/weapons/polearms64.dmi'
 	smeltresult = /obj/item/ingot/blacksteel
@@ -1157,8 +1065,8 @@
 	)
 
 /obj/item/rogueweapon/halberd/glaive
-	possible_item_intents = list(/datum/intent/spear/thrust/oneh, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
-	gripped_intents = list(/datum/intent/spear/thrust/glaive, /datum/intent/spear/cut/glaive, /datum/intent/spear/cut/glaive/sweep, SPEAR_BASH)
+	possible_item_intents = list(/datum/intent/spear/thrust/bad, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
+	gripped_intents = list(/datum/intent/spear/cut/glaive, /datum/intent/spear/cut/glaive/sweep, /datum/intent/spear/thrust/bad, SPEAR_BASH)
 	name = "偃月刀"
 	desc = "一柄装在长杆上的弧刃武器，尤其擅长防守，但制造成本不低。"
 	icon_state = "glaive"
@@ -1181,10 +1089,10 @@
 /obj/item/rogueweapon/eaglebeak
 	force = 15
 	force_wielded = 30
-	possible_item_intents = list(/datum/intent/spear/thrust/eaglebeak/oneh)
-	gripped_intents = list(/datum/intent/spear/bash/eaglebeak, /datum/intent/mace/smash/eaglebeak, /datum/intent/spear/thrust/eaglebeak, /datum/intent/mace/warhammer/pick/ranged)
-	name = "钢制卢塞恩锤"
-	desc = "一柄坚固钢制的卢塞恩锤。沉重的锤头用来砸裂颅骨，尖刺用来凿穿头盔，枪尖则能像任何长柄兵器一样突刺——这一切都装在一根加固的长杆之上。以正义之力折断骨头与异见。任何贵族听了，都会觉得反贼颅骨碎裂之声悦耳动听。"
+	possible_item_intents = list(/datum/intent/spear/thrust/bad)
+	gripped_intents = list(/datum/intent/spear/bash/eaglebeak, /datum/intent/mace/smash/eaglebeak, /datum/intent/spear/thrust/bad)
+	name = "鹰喙枪"
+	desc = "一根加固长杆，顶端装有华饰钢制鹰首，以锋利的喙尖刺穿敌人，造成重创。"
 	icon_state = "eaglebeak"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	pixel_y = -16
@@ -1217,10 +1125,10 @@
 
 /obj/item/rogueweapon/eaglebeak/blacksteel
 	name = "黑钢卢塞恩锤"
-	desc = "一柄华丽的黑钢卢塞恩锤。专为击杀板甲对手而造，它带有破甲锥尖与扩张的锤头；分别擅长刺穿与震碎合金。\
-	在柄上裹上一段布料以展示你的纹章。"
-	possible_item_intents = list(/datum/intent/spear/bash/eaglebeak, /datum/intent/mace/smash/eaglebeak, /datum/intent/spear/thrust/eaglebeak/oneh)
-	gripped_intents = list(/datum/intent/spear/bash/eaglebeak, /datum/intent/mace/smash/eaglebeak, /datum/intent/spear/thrust, /datum/intent/mace/warhammer/pick/ranged)
+	desc = "一柄华丽的黑钢卢塞恩锤。专为击杀板甲对手而造，它带有破甲锥尖与扩张的 \
+	锤头；分别擅长刺穿与震碎合金。 在柄上裹上一段布料以展示你的纹章。"
+	possible_item_intents = list(/datum/intent/spear/bash/eaglebeak, /datum/intent/mace/smash/eaglebeak, /datum/intent/spear/thrust/bad)
+	gripped_intents = list(/datum/intent/spear/bash/eaglebeak, /datum/intent/mace/smash/eaglebeak, /datum/intent/spear/thrust)
 	icon_state = "bs_eaglebeak"
 	icon = 'icons/roguetown/weapons/polearms64.dmi'
 	smeltresult = /obj/item/ingot/blacksteel
@@ -1289,25 +1197,6 @@
 	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 150
 
-// A worse thrust for weapons specialized in other damage type like cut or blunt
-/datum/intent/spear/thrust/eaglebeak
-	penfactor = 20
-	damfactor = 0.9
-
-/datum/intent/spear/thrust/eaglebeak/oneh
-	name = "单手突刺"
-	reach = 1
-	swingdelay = 4
-	clickcd = CLICK_CD_RESIST
-	effective_range = null
-	effective_range_type = EFF_RANGE_NONE
-	sharpness_penalty = 3
-
-/datum/intent/spear/thrust/glaive
-	penfactor = 50
-	damfactor = 1.1
-	chargetime = 0
-
 /datum/intent/mace/smash/eaglebeak
 	reach = 2
 	clickcd = CLICK_CD_HEAVY // Slightly longer since it has RANGE. Don't want to increase charge time more since it is unreliable.
@@ -1352,9 +1241,9 @@
 
 /obj/item/rogueweapon/spear/bronze/winged
 	name = "青铜翼矛"
-	desc = "一根古风十足的长杆，顶端饰有带翼的青铜矛头。张开的刃缘能拦下偏斜的攻势，\
-	令咆哮的敌人无法再进一步刺入、以伤及其持握者。 </br>学者们认为，这种形制的长柄武器是为对抗维丝林尼克的海魔而造，\
-	时间正值那个如今已被神话化的赛昂纪元崩溃之际。"
+	desc = "一根古风十足的长杆，顶端饰有带翼的青铜矛头。张开的刃缘能拦下偏斜的攻势， 令咆哮 \
+	的敌人无法再进一步刺入、以伤及其持握者。 </br>学者们认为，这种形制的长柄武 \
+	器是为对抗维丝林尼克的海魔而造， 时间正值那个如今已被神话化的赛昂纪元崩溃之际。"
 	icon_state = "bronzewingedspear"
 	item_state = "bronzewingedspear"
 	wdefense = 6 //Functionally the same, but with +1 DEF.
@@ -1384,330 +1273,24 @@
 
 // these only exist for Thespian because someone at Azure didn't think to let the spear just spawn at our players feet if the hand is full... whatever, no strap is auraful
 /obj/item/rogueweapon/spear/bronze/strapless
-	desc = "一根古风十足的长杆，顶端饰有青铜矛头。无论设计还是用途都十分古老，\
-	它轻盈的重量曾与前文明军团士兵高耸的巨盾相得益彰。如今虽少见于死地之外，\
-	但这种轻巧的平衡让它很适合单手突刺与投掷。 </br>这柄长矛的木纹上还系着一条细带，\
-	让它无需巨兵背带便能收挂起来。"
+	desc = "一根古风十足的长杆，顶端饰有青铜矛头。无论设计还是用途都十分古老 \
+	， 它轻盈的重量曾与前文明军团士兵高耸的巨盾相得益彰。如今虽少见于 \
+	死地之外， 但这种轻巧的平衡让它很适合单手突刺与投掷。 </br> \
+	这柄长矛的木纹上还系着一条细带， 让它无需巨兵背带便能收挂起来。"
 	slot_flags = ITEM_SLOT_BACK //Option-unique, uncraftable. Ensures the loadout doesn't implode on itself.
 	equip_delay_self = 2 SECONDS
 	unequip_delay_self = 2 SECONDS
 	inv_storage_delay = 1 SECONDS
 
 /obj/item/rogueweapon/spear/bronze/winged/strapless
-	desc = "一根古风十足的长杆，顶端饰有带翼的青铜矛头。张开的刃缘能拦下偏斜的攻势，\
-	令咆哮的敌人无法再进一步刺入、以伤及其持握者。 </br>学者们认为，这种形制的长柄武器是为对抗维丝林尼克的海魔而造，\
-	时间正值那个如今已被神话化的赛昂纪元崩溃之际。 </br>这柄长矛的木纹上还系着一条细带，\
-	让它无需巨兵背带便能收挂起来。"
+	desc = "一根古风十足的长杆，顶端饰有带翼的青铜矛头。张开的刃缘能拦下偏斜的攻势， 令咆哮 \
+	的敌人无法再进一步刺入、以伤及其持握者。 </br>学者们认为，这种形制的长柄 \
+	武器是为对抗维丝林尼克的海魔而造， 时间正值那个如今已被神话化的赛昂纪元崩溃之 \
+	际。 </br>这柄长矛的木纹上还系着一条细带， 让它无需巨兵背带便能收挂起来。"
 	slot_flags = ITEM_SLOT_BACK //Ditto.
 	equip_delay_self = 2 SECONDS
 	unequip_delay_self = 2 SECONDS
 	inv_storage_delay = 1 SECONDS
-
-/obj/item/rogueweapon/greatsword
-	force = 14
-	force_wielded = 35
-	possible_item_intents = list(/datum/intent/sword/chop,/datum/intent/sword/strike) //bash is for nonlethal takedowns, only targets limbs
-	// Design Intent: I have a big fucking sword and I want to cut everything in sight.
-	gripped_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/thrust/zwei, /datum/intent/sword/cut/zwei/cleave, /datum/intent/sword/cut/zwei/sweep)
-	alt_intents = list(/datum/intent/effect/daze, /datum/intent/sword/strike, /datum/intent/sword/bash)
-	name = "大剑"
-	desc = "说不定真能把什么东西都一剑劈成两半！"
-	icon_state = "gsw"
-	parrysound = list(
-		'sound/combat/parry/bladed/bladedlarge (1).ogg',
-		'sound/combat/parry/bladed/bladedlarge (2).ogg',
-		'sound/combat/parry/bladed/bladedlarge (3).ogg',
-		)
-	icon = 'icons/roguetown/weapons/64.dmi'
-	pixel_y = -16
-	pixel_x = -16
-	inhand_x_dimension = 64
-	inhand_y_dimension = 64
-	bigboy = TRUE
-	gripsprite = TRUE
-	wlength = WLENGTH_GREAT
-	w_class = WEIGHT_CLASS_BULKY
-	minstr = 9
-	smeltresult = /obj/item/ingot/steel
-	associated_skill = /datum/skill/combat/swords
-	max_blade_int = 300
-	wdefense = 5
-	smelt_bar_num = 3
-	special = /datum/special_intent/greatsword_swing
-
-/obj/item/rogueweapon/greatsword/getonmobprop(tag)
-	. = ..()
-	if(tag)
-		switch(tag)
-			if("gen")
-				return list("shrink" = 0.6,"sx" = -6,"sy" = 6,"nx" = 6,"ny" = 7,"wx" = 0,"wy" = 5,"ex" = -1,"ey" = 7,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -50,"sturn" = 40,"wturn" = 50,"eturn" = -50,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
-			if("wielded")
-				return list("shrink" = 0.6,"sx" = 9,"sy" = -4,"nx" = -7,"ny" = 1,"wx" = -9,"wy" = 2,"ex" = 10,"ey" = 2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 5,"sturn" = -190,"wturn" = -170,"eturn" = -10,"nflip" = 8,"sflip" = 8,"wflip" = 1,"eflip" = 0)
-			if("onbelt")
-				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
-			if("altgrip")
-				return list("shrink" = 0.6,"sx" = 4,"sy" = 0,"nx" = -7,"ny" = 1,"wx" = -8,"wy" = 0,"ex" = 8,"ey" = -1,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -135,"sturn" = -35,"wturn" = 45,"eturn" = 145,"nflip" = 8,"sflip" = 8,"wflip" = 1,"eflip" = 0)
-
-/obj/item/rogueweapon/greatsword/ancient
-	name = "远古大剑"
-	desc = "一柄由打磨光亮的吉尔青铜锻成的巨刃。你的族类终会在狂怒与毁灭中认清自身本性。你们将踏上群星之路，把它们一颗接一颗燃尽。直到最后一颗星辰也化作尘埃，你才会明白，祂试图将你们从人类最大的敌人手中拯救出来；那便是虚无。"
-	icon_state = "ancient_gsw"
-	smeltresult = /obj/item/ingot/aaslag
-
-/obj/item/rogueweapon/greatsword/ancient/decrepit
-	name = "朽败大剑"
-	desc = "一柄以残旧青铜铸成的巨刃。它大得已经不能称作剑了；它庞大、厚重、沉猛，而且粗糙得过了头。说到底，这玩意更像是一大块尚未锻好的生铁。"
-	force = 10
-	force_wielded = 25
-	max_integrity = 150
-	blade_dulling = DULLING_SHAFT_CONJURED
-	color = "#bb9696"
-	anvilrepair = null
-	randomize_blade_int_on_init = TRUE
-
-/obj/item/rogueweapon/greatsword/iron
-	name = "铁制大剑"
-	desc = "以铁锻成。比钢制同类更沉，也没那么结实，但该干的活它照样能干。"
-	icon_state = "igsw"
-	max_blade_int = 200
-	max_integrity = 200
-	wdefense = 4
-	smelt_bar_num = 3
-	smeltresult = /obj/item/ingot/iron
-
-/obj/item/rogueweapon/greatsword/zwei
-	name = "克莱摩大剑"
-	desc = "这把剑比寻常大剑长得多，而且平衡也相当不错！"
-	icon_state = "claymore"
-	smeltresult = /obj/item/ingot/iron
-	smelt_bar_num = 3
-	max_blade_int = 220
-	wdefense = 4
-	force = 12
-	force_wielded = 30
-
-/obj/item/rogueweapon/greatsword/grenz
-	name = "钢制双手剑"
-	icon_state = "steelzwei"
-	smeltresult = /obj/item/ingot/steel
-	smelt_bar_num = 3
-	max_blade_int = 240
-	wdefense = 4
-	force = 14
-	force_wielded = 35
-
-/obj/item/rogueweapon/greatsword/grenz/flamberge
-	name = "钢制焰形剑"
-	desc = "这是格伦泽尔霍夫特式“双手剑”的近亲，深受奥塔瓦贵族青睐。其名源自那独特的火焰形剑身；这种工艺唯有普赛顿最出色的武匠方能驾驭。"
-	icon_state = "steelflamberge"
-	max_blade_int = 200
-	max_integrity = 180
-	wdefense = 6
-	force = 14
-	force_wielded = 35
-/obj/item/rogueweapon/greatsword/grenz/flamberge/getonmobprop(tag)
-	. = ..()
-	if(tag)
-		switch(tag)
-			if("gen")
-				return list("shrink" = 0.6,"sx" = -6,"sy" = 6,"nx" = 6,"ny" = 7,"wx" = 0,"wy" = 5,"ex" = -1,"ey" = 7,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -50,"sturn" = 40,"wturn" = 50,"eturn" = -50,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
-			if("wielded")
-				return list("shrink" = 0.6,"sx" = 9,"sy" = -4,"nx" = -7,"ny" = 1,"wx" = -9,"wy" = 2,"ex" = 10,"ey" = 2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 5,"sturn" = -190,"wturn" = -170,"eturn" = -10,"nflip" = 8,"sflip" = 8,"wflip" = 1,"eflip" = 0)
-			if("onback")
-				return list("shrink" = 0.6,"sx" = -1,"sy" = 2,"nx" = 0,"ny" = 2,"wx" = 2,"wy" = 1,"ex" = 0,"ey" = 1,"nturn" = 0,"sturn" = 0,"wturn" = 70,"eturn" = 15,"nflip" = 1,"sflip" = 1,"wflip" = 1,"eflip" = 1,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
-
-/obj/item/rogueweapon/greatsword/zizo
-	name = "阿凡泰因大剑"
-	desc = "具现化的诅咒；一位异界勇士的巨兵，最厚重的甲胄与最坚韧的血肉都无法令它退却。\
-	别让任何人阻挡祂门徒的行军——朝着那丝线噼啪溅裂的伤口前进。夺回你与生俱来的权利，升入彼岸的天堂，否则便死于尝试。"
-	icon_state = "zizogsw"
-	unenchantable = TRUE
-	force = 20
-	force_wielded = 40
-	max_blade_int = 500
-	max_integrity = 500
-
-/obj/item/rogueweapon/greatsword/zizo/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "巨剑")
-
-/obj/item/rogueweapon/greatsword/grenz/flamberge/ravox
-	name = "箴罚"
-	desc = "一柄会令人联想到希望的剑。仿佛能看见那些披着碎裂板甲、肩披焦黑肩甲的人，\
-	侍立在祂身侧。为纠正祂犯下的过错，他们曾试图向神圣暴政降下谴罚。\
-	<small>即便到了现在，它仍带着灰烬的气味。</small>"
-	icon_state = "ravoxflamberge"
-	max_integrity = 240
-	max_blade_int = 240
-	wdefense = 7//You are truly unique, m'lord.
-
-/obj/item/rogueweapon/greatsword/grenz/flamberge/blacksteel
-	name = "黑钢焰形剑"
-	desc = "这是一种并不常见的剑，拥有标志性的波浪形剑身，而铸造它的金属同样稀有。\
-	人们认为剑刃上的起伏让它呈现出火焰般的姿态，使其看上去格外骇人。\
-	“燃火之剑”常常是奥塔瓦史诗与其他骑士故事中的主角。"
-	icon_state = "blackflamb"
-	force = 25
-	force_wielded = 40
-	max_blade_int = 200
-	smeltresult = /obj/item/ingot/blacksteel
-
-/obj/item/rogueweapon/greatsword/psygsword
-	name = "普赛顿大剑"
-	desc = "据说，一位普赛顿铁匠曾在圣玛勒姆亲自引导下锻出这柄可怖巨刃，并受命去斩杀那头盘踞奥塔瓦农地的恶魔。后来人们寻回了它的设计、加以研究，却只打造了寥寥几件仿品，因为他们相信复制会令其锋芒减退。"
-	icon_state = "silverexealt"
-	minstr = 11//+2, in exchange for the better defense. Is this really a problem? C'mon. It didn't need -5 force.
-	wdefense = 6
-	is_silver = TRUE
-	smeltresult = /obj/item/ingot/silverblessed
-
-/obj/item/rogueweapon/greatsword/psygsword/ComponentInitialize()
-	AddComponent(\
-		/datum/component/silverbless,\
-		pre_blessed = BLESSING_NONE,\
-		silver_type = SILVER_PSYDONIAN,\
-		added_force = 0,\
-		added_blade_int = 50,\
-		added_int = 50,\
-		added_def = 2,\
-	)
-
-/obj/item/rogueweapon/greatsword/psygsword/relic
-	name = "伪经"
-	desc = "在奥塔瓦的镶嵌画中，圣拉沃克斯除鹰喙头盔与裹裆布外几乎一丝不挂，常被描绘成手执这般骇人大兵器，对抗黑暗之星格拉格。无论这件圣遗物是否真由神明亲手挥舞，它无可比拟的力量都足以命令最强大的敌人倒下。"
-	icon_state = "psygsword"
-	possible_item_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/thrust/exe, /datum/intent/sword/chop/heavy, /datum/intent/sword/strike)
-	gripped_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/rend, /datum/intent/sword/thrust/exe, /datum/intent/sword/chop/cleave)
-
-/obj/item/rogueweapon/greatsword/psygsword/relic/ComponentInitialize()
-	AddComponent(\
-		/datum/component/silverbless,\
-		pre_blessed = BLESSING_PSYDONIAN,\
-		silver_type = SILVER_PSYDONIAN,\
-		added_force = 0,\
-		added_blade_int = 100,\
-		added_int = 100,\
-		added_def = 2,\
-	)
-
-/obj/item/rogueweapon/greatsword/bsword/psy
-	name = "被遗忘之刃"
-	desc = "“愿祂之名终归无人再记。”"
-	icon_state = "oldpsybroadsword"
-	force = 20
-	force_wielded = 25
-	minstr = 11
-	wdefense = 6
-	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/chop, /datum/intent/sword/thrust, /datum/intent/rend/krieg)
-	gripped_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/chop, /datum/intent/sword/lunge, /datum/intent/sword/thrust/estoc)
-	alt_intents = list(/datum/intent/effect/daze, /datum/intent/sword/strike, /datum/intent/sword/bash)
-	is_silver = TRUE
-	smeltresult = /obj/item/ingot/silver
-
-/obj/item/rogueweapon/greatsword/bsword/psy/ComponentInitialize()
-	AddComponent(\
-		/datum/component/silverbless,\
-		pre_blessed = BLESSING_NONE,\
-		silver_type = SILVER_PSYDONIAN,\
-		added_force = 0,\
-		added_blade_int = 0,\
-		added_int = 50,\
-		added_def = 2,\
-	)
-
-/obj/item/rogueweapon/greatsword/bsword/psy/relic
-	name = "信条"
-	desc = "普赛顿的祈祷与忒尼斯人铁匠齐心协力，只为铸成一把足以诛灭四魔的兵器。圣拉沃克斯偏爱这种沉重巨刃，用它去毁灭那些威胁祂羊群之人。护手上的普赛圣十字连诺克最微弱的一缕光都能映出。你就是那道光，去为他们指路吧。"
-	icon_state = "psybroadsword"
-	force = 25
-	force_wielded = 25
-	is_silver = TRUE
-	smeltresult = /obj/item/ingot/silver
-
-/obj/item/rogueweapon/greatsword/bsword/psy/getonmobprop(tag)
-	. = ..()
-	if(tag)
-		switch(tag)
-			if("gen") return list("shrink" = 0.5, "sx" = -14, "sy" = -8, "nx" = 15, "ny" = -7, "wx" = -10, "wy" = -5, "ex" = 7, "ey" = -6, "northabove" = 0, "southabove" = 1, "eastabove" = 1, "westabove" = 0, "nturn" = -13, "sturn" = 110, "wturn" = -60, "eturn" = -30, "nflip" = 1, "sflip" = 1, "wflip" = 8, "eflip" = 1)
-			if("wielded") return list("shrink" = 0.6,"sx" = 9,"sy" = -4,"nx" = -7,"ny" = 1,"wx" = -9,"wy" = 2,"ex" = 10,"ey" = 2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 5,"sturn" = -190,"wturn" = -170,"eturn" = -10,"nflip" = 8,"sflip" = 8,"wflip" = 1,"eflip" = 0)
-			if("onback") return list("shrink" = 0.5, "sx" = -1, "sy" = 2, "nx" = 0, "ny" = 2, "wx" = 2, "wy" = 1, "ex" = 0, "ey" = 1, "nturn" = 0, "sturn" = 0, "wturn" = 70, "eturn" = 15, "nflip" = 1, "sflip" = 1, "wflip" = 1, "eflip" = 1, "northabove" = 1, "southabove" = 0, "eastabove" = 0, "westabove" = 0)
-			if("onbelt") return list("shrink" = 0.3, "sx" = -4, "sy" = -6, "nx" = 5, "ny" = -6, "wx" = 0, "wy" = -6, "ex" = -1, "ey" = -6, "nturn" = 100, "sturn" = 156, "wturn" = 90, "eturn" = 180, "nflip" = 0, "sflip" = 0, "wflip" = 0, "eflip" = 0, "northabove" = 0, "southabove" = 1, "eastabove" = 1, "westabove" = 0)
-
-/obj/item/rogueweapon/greatsword/bsword/psy/relic/ComponentInitialize()
-	AddComponent(\
-		/datum/component/silverbless,\
-		pre_blessed = BLESSING_PSYDONIAN,\
-		silver_type = SILVER_PSYDONIAN,\
-		added_force = 0,\
-		added_blade_int = 100,\
-		added_int = 100,\
-		added_def = 2,\
-	)
-
-/obj/item/rogueweapon/greatsword/bsword/psy/unforgotten
-	name = "未被遗忘之刃"
-	desc = "大审判官阿奇博尔德曾记下这样一次远征：七名勇敢的裁决者深入格朗尼亚积雪覆顶的荒原，只为根除邪恶。据说他们的领袖、神圣教令官吉耶曼，披甲与黑钢异端苦战了七天七夜，直到普赛顿认可了他的坚忍。最终留下的只有他的剑，而那枚普赛圣十字仍缠在剑柄上，以作追念。"
-	icon_state = "forgottenblade"
-	is_silver = TRUE
-	smeltresult = /obj/item/ingot/silver
-
-/obj/item/rogueweapon/greatsword/bsword/psy/unforgotten/ComponentInitialize()
-	AddComponent(\
-		/datum/component/silverbless,\
-		pre_blessed = BLESSING_NONE,\
-		silver_type = SILVER_PSYDONIAN,\
-		added_force = 0,\
-		added_blade_int = 50,\
-		added_int = 50,\
-		added_def = 2,\
-	)
-
-/obj/item/rogueweapon/estoc
-	name = "穿甲刺剑"
-	desc = "这把剑拥有一段相当修长而尖细的剑身，专门用于刺入敌人护甲的\
-	缝隙之间。它的剑柄紧紧缠着黑色皮革。"
-	icon_state = "estoc"
-	icon = 'icons/roguetown/weapons/64.dmi'
-	pixel_y = -16
-	pixel_x = -16
-	inhand_x_dimension = 64
-	inhand_y_dimension = 64
-	force = 12
-	force_wielded = 25
-	possible_item_intents = list(
-		/datum/intent/sword/thrust,
-		/datum/intent/sword/strike,
-	)
-	gripped_intents = list(
-		/datum/intent/sword/thrust/estoc,
-		/datum/intent/sword/lunge/estoc,
-		/datum/intent/sword/peel/big,
-		/datum/intent/sword/strike,
-	)
-	bigboy = TRUE
-	gripsprite = TRUE
-	special = /datum/special_intent/piercing_lunge
-	wlength = WLENGTH_GREAT
-	w_class = WEIGHT_CLASS_BULKY
-	minstr = 8
-	smeltresult = /obj/item/ingot/steel
-	associated_skill = /datum/skill/combat/swords
-	max_blade_int = 400
-	max_integrity = 300
-	wdefense = 3
-	wdefense_wbonus = 6
-	smelt_bar_num = 2
-
-/obj/item/rogueweapon/estoc/getonmobprop(tag)
-	. = ..()
-	if(tag)
-		switch(tag)
-			if("gen")
-				return list("shrink" = 0.6, "sx" = -6, "sy" = 7, "nx" = 6, "ny" = 8, "wx" = 0, "wy" = 6, "ex" = -1, "ey" = 8, "northabove" = 0, "southabove" = 1, "eastabove" = 1, "westabove" = 0, "nturn" = -50, "sturn" = 40, "wturn" = 50, "eturn" = -50, "nflip" = 0, "sflip" = 8, "wflip" = 8, "eflip" = 0)
-			if("wielded")
-				return list("shrink" = 0.6,"sx" = 9,"sy" = -4,"nx" = -7,"ny" = 1,"wx" = -9,"wy" = 2,"ex" = 10,"ey" = 2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 5,"sturn" = -190,"wturn" = -170,"eturn" = -10,"nflip" = 8,"sflip" = 8,"wflip" = 1,"eflip" = 0)
-			if("onback")
-				return list("shrink" = 0.6,"sx" = -1,"sy" = 2,"nx" = 0,"ny" = 2,"wx" = 2,"wy" = 1,"ex" = 0,"ey" = 1,"nturn" = 0,"sturn" = 0,"wturn" = 70,"eturn" = 15,"nflip" = 1,"sflip" = 1,"wflip" = 1,"eflip" = 1,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
 
 /obj/item/rogueweapon/woodstaff/naledi
 	name = "纳莱迪战杖"
@@ -1742,8 +1325,8 @@
 //Only a 'woodenstaff' for the purpose of CDR on spells.
 /obj/item/rogueweapon/woodstaff/sojourner
 	name = "行旅者法杖"
-	desc = "这是一柄旧普赛顿长矛残留下来的部分。它的矛尖已经磨钝，倒刺和三叉形矛首也全被拆去。\
-	如今它承担着更高贵的使命，成了行旅者施法用的法杖。不过若力气够大，仍能把钝尖狠狠干出去。"
+	desc = "这是一柄旧普赛顿长矛残留下来的部分。它的矛尖已经磨钝，倒刺和三叉形矛首也全被拆去。 如 \
+	今它承担着更高贵的使命，成了行旅者施法用的法杖。不过若力气够大，仍能把钝尖狠狠干出去。"
 	icon_state = "psystaff"//Temp
 	possible_item_intents = list(SPEAR_BASH, /datum/intent/special/magicarc)
 	gripped_intents = list(/datum/intent/spear/thrust/blunted, /datum/intent/special/magicarc, /datum/intent/mace/smash/wood/ranged)
@@ -1796,8 +1379,8 @@
 
 /obj/item/rogueweapon/woodstaff/quarterstaff/blacksteel
 	name = "黑钢长杖"
-	desc = "一柄以黑钢端头加固的长杖。也许有人会认为，这样优雅的设计实在不适合那些通常会使用这种武器的人们；\
-	但话说回来，我们又有什么资格评判呢？"
+	desc = "一柄以黑钢端头加固的长杖。也许有人会认为，这样优雅的设计实在不适合那 \
+	些通常会使用这种武器的人们； 但话说回来，我们又有什么资格评判呢？"
 	force = 20
 	force_wielded = 30
 	icon_state = "quarterstaff_blacksteel"
@@ -1855,12 +1438,12 @@
 	force = 8	//Not a possible one-handed weapon. Also too heavy!
 	force_wielded = 30
 	possible_item_intents = list(SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
-	gripped_intents = list(SPEAR_THRUST, PARTIZAN_REND, PARTIZAN_PEEL, SPEAR_BASH)
+	gripped_intents = list(SPEAR_THRUST, SPEAR_CUT, PARTIZAN_REND)
 	icon_state = "partizan"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	minstr = 12//Easily hit by knights and other dedicated combat roles
 	max_blade_int = 200
-	wdefense = 6
+	wdefense = 8 // It IS a parrying spear after all.
 	wdefense_wbonus = 3	//9 when wielded. Identical to glaive.
 	throwforce = 12	//Not a throwing weapon. Too heavy!
 	icon_angle_wielded = 50
@@ -1879,8 +1462,8 @@
 
 /obj/item/rogueweapon/spear/boar
 	name = "猎猪矛"
-	desc = "一柄带宽大矛头、且在矛头下方装有一对横翼的长矛。这对矛翼就是为了防止野猪顺着矛身继续猛冲越过矛尖。\
-	它在格挡与拦停冲锋敌人时也同样好用。"
+	desc = "一柄带宽大矛头、且在矛头下方装有一对横翼的长矛。这对矛翼就是为了防止 \
+	野猪顺着矛身继续猛冲越过矛尖。 它在格挡与拦停冲锋敌人时也同样好用。"
 	icon = 'icons/roguetown/weapons/polearms64.dmi'
 	icon_state = "boarspear"
 	force_wielded = 33 // 10% base damage increase
@@ -1901,8 +1484,8 @@
 
 /obj/item/rogueweapon/spear/otava
 	name = "奥塔瓦战旗"
-	desc = "一面承载奥塔瓦公国色彩的旗帜，被改造成了一柄可怖的钢制长枪。\
-	只有奥塔瓦圣座麾下最忠诚的人才会手持此物。"
+	desc = "一面承载奥塔瓦公国色彩的旗帜，被改造成了一柄可怖的钢 \
+	制长枪。 只有奥塔瓦圣座麾下最忠诚的人才会手持此物。"
 	icon = 'icons/roguetown/weapons/polearms64.dmi'
 	icon_state = "standard"
 	force = 15	//ideally, two-hands
@@ -1966,60 +1549,6 @@
 	desc = "一种地区性的耳匙形骑枪，握柄雕工精细，并饰有一面草原民旗帜的色彩。"
 	icon_state = "avspear"
 
-/obj/item/rogueweapon/spear/lance
-	name = "骑枪"
-	desc = "一种专为骑乘作战设计的长杆武器，使用时需夹在腋下平持。它装有护臂托，防止手臂在撞击时顺着\
-	枪杆向前滑去。"
-	icon = 'icons/roguetown/weapons/polearms64.dmi'
-	icon_state = "lance"
-	force = 15 // Its gonna sucks for 1 handed use
-	force_wielded = 20 // Lower damage because a 3 tiles thrust without full charge time still deal base damage.
-	wdefense = 4 // 2 Lower than spear
-	max_integrity = 200
-	max_blade_int = 200 // Better sharpness
-	possible_item_intents = list(SPEAR_THRUST_1H, /datum/intent/lance/onehand, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
-	gripped_intents = list(/datum/intent/spear/thrust/lance, /datum/intent/lance, SPEAR_BASH)
-	resistance_flags = null
-	smeltresult = /obj/item/ingot/steel
-
-/obj/item/rogueweapon/spear/lance/attackby(obj/item/W, mob/living/user, params)
-	..()
-	if(istype(W, /obj/item/natural/cloth) && !detail_tag)
-		var/choice = input(user, "选择一种颜色。", "旗帜") as anything in GLOB.colorlist
-		user.visible_message(span_warning("[user]给[src]挂上了一面旗帜。"))
-		user.transferItemToLoc(W, src, FALSE, FALSE)
-		detail_color = GLOB.colorlist[choice]
-		detail_tag = "detail"
-		update_icon()
-
-/obj/item/rogueweapon/spear/lance/update_icon()
-	cut_overlays()
-	if(get_detail_tag())
-		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
-		pic.appearance_flags = RESET_COLOR
-		if(get_detail_color())
-			pic.color = get_detail_color()
-		add_overlay(pic)
-
-/obj/item/rogueweapon/spear/lance/attack_self(mob/living/user)
-	. = ..()
-	update_icon()
-
-/obj/item/rogueweapon/spear/lance/blacksteel
-	name = "黑钢骑枪"
-	desc = "一柄华丽的黑钢骑枪，专为骑乘赛加兽进行马上比武而设计。即便如此，在格伦泽尔霍夫特，身着黑钢甲胄的骑士们步战时将其作为长矛使用也并不罕见。\
-	在柄上裹一段布料以展示你的纹章。"
-	icon_state = "bs_lance"
-	force = 20
-	force_wielded = 25
-	wdefense_wbonus = 2 //+1 over the traditional spear, once wielded.
-	max_integrity = 300
-	max_blade_int = 300
-	resistance_flags = FIRE_PROOF
-	smeltresult = /obj/item/ingot/blacksteel
-	possible_item_intents = list(/datum/intent/spear/thrust, /datum/intent/lance/onehand, SPEAR_BASH)
-	gripped_intents = list(/datum/intent/spear/thrust/lance, /datum/intent/lance, SPEAR_BASH)
-
 /obj/item/rogueweapon/spear/naginata
 	name = "薙刀"
 	desc = "一种传统的风军长柄兵器，兼具长矛的攻击距离与弯刃的斩切威力。由于风军锻刃工艺较为脆弱，武匠们让它的刀刃能通过杆端木楔轻松拆换，以便在折断后迅速更替。"
@@ -2046,8 +1575,8 @@
 				return list("shrink" = 0.6,"sx" = 4,"sy" = -2,"nx" = -3,"ny" = -2,"wx" = -5,"wy" = -1,"ex" = 3,"ey" = -2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 7,"sturn" = -7,"wturn" = 16,"eturn" = -22,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
 
 /obj/item/rogueweapon/halberd/capglaive
-	possible_item_intents = list(/datum/intent/spear/thrust/eaglebeak/oneh, SPEAR_BASH)
-	gripped_intents = list(/datum/intent/spear/thrust/glaive, /datum/intent/spear/cut/glaive, /datum/intent/spear/cut/glaive/sweep, SPEAR_BASH)
+	possible_item_intents = list(/datum/intent/spear/thrust/bad, SPEAR_BASH)
+	gripped_intents = list(/datum/intent/spear/cut/glaive, /datum/intent/spear/cut/glaive/sweep, /datum/intent/spear/thrust, SPEAR_BASH)
 	name = "“裁决者”"
 	desc = "偃月刀本就已经够难打造了，而这把偏偏还是用黑钢制成。它是为卫队长量身铸造的艺术品，也是用来伸张正义、庇护弱者的兵器。"
 	force = 17
@@ -2091,9 +1620,9 @@
 
 /obj/item/rogueweapon/spear/nomad
 	name = "游牧矛"
-	desc = "这是一种颇为古怪的长矛。你单手便已足够掌控它，再怎么借力也无济于事。\
-	对尚未习惯它的人来说，它的配重可谓相当别扭。\
-	即便如此，它依旧是沙井游牧民战斗方式的延伸：臂上架盾，手中持矛。"
+	desc = "这是一种颇为古怪的长矛。你单手便已足够掌控它，再怎么借力也无 \
+	济于事。 对尚未习惯它的人来说，它的配重可谓相当别扭。 即便 \
+	如此，它依旧是沙井游牧民战斗方式的延伸：臂上架盾，手中持矛。"
 	icon_state = "nomadspear"//Temp sprite.
 	force = 25
 	minstr = 6//-2
@@ -2104,169 +1633,62 @@
 	gripsprite = FALSE
 	smeltresult = /obj/item/ingot/steel
 
-/////////////////////
-// Special Weapon! //
-/////////////////////
-
-
-/datum/intent/sword/thrust/estoc/dragonslayer
-	name = "穿刺"
-	icon_state = "inimpale"
-	penfactor = 55
-	attack_verb = list("贯穿", "刺穿")
-	reach = 2
-	damfactor = 1.25
-	clickcd = 55
-	swingdelay = 15
-	cleave = /datum/cleave_pattern/lance
-
-/datum/intent/sword/chop/dragonslayer
-	name = "开膛"
-	icon_state = "inrend"
-	blade_class = BCLASS_CHOP
-	attack_verb = list("劈开", "剖开")
-	animname = "chop"
-	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
-	penfactor = 40
-	damfactor = 2
-	swingdelay = 15
-	reach = 2
-	clickcd = 55
-	item_d_type = "slash"
-
-/datum/intent/sword/smash/dragonslayer
-	name = "粉碎"
-	blade_class = BCLASS_SMASH
-	attack_verb = list("猛敲", "粉碎")
-	hitsound = list('sound/combat/hits/blunt/frying_pan(1).ogg', 'sound/combat/hits/blunt/frying_pan(2).ogg', 'sound/combat/hits/blunt/frying_pan(3).ogg', 'sound/combat/hits/blunt/frying_pan(4).ogg')
-	penfactor = BLUNT_DEFAULT_PENFACTOR
-	reach = 2
-	damfactor = 2.5
-	swingdelay = 25
-	clickcd = 55
-	icon_state = "insmash"
-	item_d_type = "blunt"
-
-/datum/intent/sword/sucker_punch/dragonslayer
-	name = "避无可避的重拳"
-	icon_state = "inpunch"
-	attack_verb = list("拳击", "扼击", "重击")
-	animname = "strike"
-	blade_class = BCLASS_BLUNT
-	hitsound = list('sound/combat/hits/blunt/bluntsmall (1).ogg', 'sound/combat/hits/blunt/bluntsmall (2).ogg', 'sound/combat/hits/kick/kick.ogg')
-	damfactor = 4
-	penfactor = BLUNT_DEFAULT_PENFACTOR
-	clickcd = 55
-	recovery = 15
-	item_d_type = "blunt"
-	parriable_intent = FALSE
-	dodgeable_intent = FALSE
-
-/datum/intent/sword/flay/dragonslayer
-	name = "剥皮"
-	icon_state = "inpeel"
-	attack_verb = list("<font color ='#e7e7e7'>剥皮撕扯</font>")
-	animname = "cut"
-	blade_class = BCLASS_PEEL
-	hitsound = list('sound/combat/hits/blunt/frying_pan(1).ogg', 'sound/combat/hits/blunt/frying_pan(2).ogg', 'sound/combat/hits/blunt/frying_pan(3).ogg', 'sound/combat/hits/blunt/frying_pan(4).ogg')
-	reach = 2
-	penfactor = BLUNT_DEFAULT_PENFACTOR
-	swingdelay = 15
-	clickcd = 50
-	damfactor = 0.5
-	item_d_type = "slash"
-	peel_divisor = 1
-
-/datum/intent/sword/cut/exe/sweep/dragonslayer
-	name = "斩首横扫"
-	icon_state = "insweep"
-	attack_verb = list("横扫", "横斩")
-	clickcd = CLICK_CD_GLACIAL
-	reach = 2
-	damfactor = 2 // Hits harder but clunkier
-	cleave = /datum/cleave_pattern/frontal_arc
-	desc = "一记沉重的横扫，会斩开身前的所有目标。"
-
-//
-
-/obj/item/rogueweapon/sword/long/exe/berserk/dragonslayer
-	name = "\"屠魔者\""
-	desc = "“那东西已经大得不能称作剑了。太大、太厚、太重，也太粗糙。不，它更像是一大块银锭。”</br>它庞大得令人胆寒，强大得难以想象，而最重要的是，它本身就是勇气的证明。"
-	icon_state = "machaslayer"
-	icon = 'icons/roguetown/weapons/swords64.dmi'
-	wlength = WLENGTH_GREAT
-	w_class = WEIGHT_CLASS_BULKY
-	possible_item_intents = list(/datum/intent/sword/thrust/estoc/dragonslayer, /datum/intent/sword/sucker_punch/dragonslayer, /datum/intent/sword/flay/dragonslayer)
-	gripped_intents = list(/datum/intent/sword/chop/dragonslayer, /datum/intent/sword/thrust/estoc/dragonslayer, /datum/intent/sword/smash/dragonslayer, /datum/intent/sword/cut/exe/sweep/dragonslayer)
-	force = 35
-	force_wielded = 55
-	minstr = 15
-	minstr_req = TRUE//You MUST have the required strength. No exceptions.
-	wdefense = 15
-	var/coverage = 65//greatsword ds3 has 65 physical def. This is completely arbitrary but should be funny
-	max_integrity = 555
-	max_blade_int = 555
-	alt_intents = null
-	is_silver = TRUE
-	smeltresult = /obj/item/rogueweapon/sword/long/exe/berserk//Too thick to completely melt.
-
-/obj/item/rogueweapon/sword/long/exe/berserk/dragonslayer/ComponentInitialize()
-	AddComponent(\
-		/datum/component/silverbless,\
-		pre_blessed = BLESSING_PSYDONIAN,\
-		silver_type = SILVER_PSYDONIAN,\
-		added_force = 0,\
-		added_blade_int = 0,\
-		added_int = 0,\
-		added_def = 0,\
-	)
-
-//snowflake coverage passive blocking for the funny super sword
-/obj/item/rogueweapon/sword/long/exe/berserk/dragonslayer/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the projectile", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
-	SEND_SIGNAL(src, COMSIG_ITEM_HIT_REACT, args)
-	var/mob/attacker
-	var/obj/item/I
-	if(attack_type == THROWN_PROJECTILE_ATTACK)
-		if(istype(hitby, /obj/item))
-			I = hitby
-		if(I?.thrownby)
-			attacker = I.thrownby
-	if(attack_type == PROJECTILE_ATTACK)
-		var/obj/projectile/P = hitby
-		if(P?.firer)
-			attacker = P.firer
-	if(attacker && istype(attacker))
-		if (!owner.can_see_cone(attacker))
-			return FALSE
-		if(obj_broken)
-			return FALSE
-		if(prob(coverage))
-			owner.visible_message(span_danger("[owner]将[src]抡出一道弧线，把[hitby]打飞出去！"))
-			playsound(src, BLADEWOOSH_LARGE, 100, TRUE, -1) //HOME RUN!!!
-			return TRUE
-	return FALSE
-
-//Elven weapons sprited and added by Jam
-
-/obj/item/rogueweapon/greatsword/elf
-	possible_item_intents = list(/datum/intent/sword/chop,/datum/intent/sword/strike) //bash is for nonlethal takedowns, only targets limbs
-	// Design Intent: It is pretty purely a two-handed weapon. In one hand it's a bit clumsy.
-	gripped_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/rend, /datum/intent/sword/thrust/zwei, /datum/intent/sword/strike/bad)
-	alt_intents = list(null)//can't be alt-gripped. Sharpness is greater to compensate.
-	name = "精灵弯刃"
-	desc = "精灵弯刃是一种传统兵器，运用它既像起舞，也像施以死亡。顺着流水般的轨迹，让它的锋路直抵敌人的喉咙。"
-	icon_state = "elfcurveblade"
-	wlength = WLENGTH_LONG//less reach than greatsword!
-	minstr = 7//lighter
-	wdefense = 8//better defence than greatsword
-	max_blade_int = 350 // 50 more than greatsword.
-	sellprice = 60
-
-
 /obj/item/rogueweapon/spear/naginata/elf
 	name = "精灵枪刃"
 	desc = "一种精灵兵器，将精灵式优雅流畅的长刃与修长握柄结合在一起。它才是森林国度真正的守望者。"
 	icon_state = "elfglaive"
-	gripped_intents = list(/datum/intent/rend/reach, /datum/intent/spear/cut/naginata, PARTIZAN_PEEL, SPEAR_BASH) // Better peeling than a Naginata
+	gripped_intents = list(/datum/intent/rend/reach, /datum/intent/spear/cut/naginata, SPEAR_BASH)
 	max_blade_int = 200 // Elven design makes it sharper than Kazengunese stuff
 	sellprice = 60
+
+/obj/item/rogueweapon/spear/partizan/baotha
+	name = "蜜惑剑矛"
+	desc = "将余人拒于一臂之外，免得回忆的苦痛成为你的重负。"
+	force = 30
+	force_wielded = 35
+	possible_item_intents = list(/datum/intent/sword/thrust/long, /datum/intent/sword/cut/long, /datum/intent/sword/strike, /datum/intent/sword/thrust/heavy)
+	gripped_intents = list(SPEAR_THRUST, /datum/intent/spear/cut, /datum/intent/spear/cut/baotha/rend, /datum/intent/spear/cut/glaive/sweep)
+	icon_state = "swordstaff"
+	icon = 'icons/roguetown/weapons/polearms64.dmi'
+	parrysound = list('sound/combat/parry/bladed/bladedmedium (1).ogg', 'sound/combat/parry/bladed/bladedmedium (2).ogg', 'sound/combat/parry/bladed/bladedmedium (3).ogg',)
+	pickup_sound = 'sound/foley/equip/swordlarge1.ogg'
+	minstr = 4
+	thrown_bclass = BCLASS_PIERCE
+	max_blade_int = 250
+	max_integrity = 300
+	throwforce = 45 //Pierce the heavens!
+	wdefense = 5
+	wdefense_wbonus = 5
+	wbalance = WBALANCE_NORMAL
+	unenchantable = TRUE
+	smeltresult = null
+	slot_flags = ITEM_SLOT_BACK //No need for a supplemental greatweapon strap.
+	equip_delay_self = 2 SECONDS
+	unequip_delay_self = 2 SECONDS
+	inv_storage_delay = 1 SECONDS
+	icon_angle_wielded = null
+
+/obj/item/rogueweapon/spear/partizan/baotha/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/cursed_item, TRAIT_DEPRAVED, "SWORDSPEAR")
+
+/obj/item/rogueweapon/spear/partizan/baotha/getonmobprop(tag)
+	. = ..()
+	if(tag)
+		switch(tag)
+			if("gen") return list("shrink" = 0.7, "sx" = -14, "sy" = -8, "nx" = 9, "ny" = -6, "wx" = -6, "wy" = -6, "ex" = -1, "ey" = -4, "northabove" = 0, "southabove" = 1, "eastabove" = 1, "westabove" = 0, "nturn" = -10, "sturn" = 108, "wturn" = -72, "eturn" = -10, "nflip" = 1, "sflip" = 1, "wflip" = 8, "eflip" = 1)
+			if("wielded") return list("shrink" = 0.75, "sx" = 5, "sy" = -3, "nx" = -5, "ny" = -3, "wx" = -5, "wy" = -3, "ex" = 3, "ey" = -4, "northabove" = 0, "southabove" = 1, "eastabove" = 1, "westabove" = 0, "nturn" = 6, "sturn" = -8, "wturn" = 10, "eturn"= -10, "nflip" = 8, "sflip" = 0, "wflip" = 8, "eflip" = 0)
+
+/datum/intent/spear/cut/baotha/rend
+	name = "撕裂斩"
+	icon_state = "inrend"
+	attack_verb = list("撕裂")
+	desc = "凶狠地斩开血肉。"
+	clickcd = CLICK_CD_HEAVY
+	reach = 2
+	damfactor = 1.8
+	penfactor = PEN_NONE
+	misscost = 10
+	intent_intdamage_factor = 0.25
+	sharpness_penalty = 2
+	accuracy_modifier = -15

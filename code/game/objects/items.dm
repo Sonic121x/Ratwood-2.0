@@ -75,7 +75,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	var/body_parts_covered = 0 //see setup.dm for appropriate bit flags
 	var/body_parts_covered_dynamic = 0
-	var/body_parts_inherent	= 0 //bodypart coverage areas you cannot peel off because it wouldn't make any sense (peeling chest off of torso armor, hands off of gloves, head off of helmets, etc)
+	var/body_parts_inherent	= 0 //bodypart coverage areas that are always covered (chest on torso armor, hands on gloves, head on helmets, etc)
 	var/surgery_cover = TRUE // binary, whether this item is considered covering its bodyparts in respect to surgery. Tattoos, etc. are false.
 	var/gas_transfer_coefficient = 1 // for leaking gas from turf to mask and vice-versa (for masks right now, but at some point, i'd like to include space helmets)
 	var/permeability_coefficient = 1 // for chemicals/diseases
@@ -147,7 +147,14 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	var/bigboy = FALSE //used to center screen_loc when in hand
 	var/wielded = FALSE
 	var/altgripped = FALSE
-	var/list/alt_intents //these replace main intents
+	/// Ordered alternate grip states cycled by right-click while the item is held.
+	var/list/alt_grips
+	/// Currently applied alternate grip state datum.
+	var/datum/alt_grip/current_alt_grip
+	/// 1-based index into alt_grips for the currently applied state.
+	var/current_alt_grip_index = 0
+	/// Original values for vars overridden by the active alt grip state.
+	var/list/alt_grip_restore_vars
 	var/list/gripped_intents //intents while gripped, replacing main intents
 	var/isaltgripsharp = FALSE //In the edge case an alt gripped weapon should remain sharp, then change this to true
 	var/force_wielded = 0
@@ -317,7 +324,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 				getmoboverlay(i,prop,behind=FALSE,mirrored=TRUE)
 				getmoboverlay(i,prop,behind=TRUE,mirrored=TRUE)
 
-	wdefense_dynamic = wdefense
+	update_wdefense_dynamic()
 	update_force_dynamic()
 
 	. = ..()
@@ -548,13 +555,32 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		to_chat(usr, output)
 
 	if(href_list["explainintdamage"])
-		var/output = span_info("用于乘算命中时对护甲造成的伤害。")
+		var/output = span_info("命中时，对护甲造成的伤害乘以此系数。\n招架时，若该系数高于对物破坏系数，也用于放大对盾牌造成的耐久伤害。")
 		if(!usr.client.prefs.no_examine_blocks)
 			output = examine_block(output)
 		to_chat(usr, output)
 
+	if(href_list["explainshieldcoverage"])
+		var/output = span_info("从正面被动格挡来袭投射物的几率。\n盾牌格挡投射物时承受四分之一伤害，招架近战时承受固定耐久伤害。\n重型武器会对盾牌造成更多耐久伤害，取攻击者的对物破坏系数与护甲破坏系数中较高者作为倍率。")
+		if(!usr.client.prefs.no_examine_blocks)
+			output = examine_block(output)
+		to_chat(usr, output)
+
+	if(href_list["explainpenfactor"])
+		var/output = span_info("穿甲能力决定本次攻击能否突破护甲。\n\
+		每件护甲都有防护等级：轻型、中型、重型或黑钢。\n\
+		穿甲等级高于护甲等级：全部伤害穿透。\n\
+		穿甲等级等于护甲等级：部分伤害穿透，护甲吸收其余伤害。\n\
+		穿甲等级低于护甲等级：伤害被完全挡住。\n\
+		若护甲不防护该伤害类型，任何攻击都能穿透，包括没有穿甲能力的攻击。\n\
+		钝击、灼烧与酸蚀不采用这套穿甲判定，而使用伤害减免机制。")
+		if(!usr.client.prefs.no_examine_blocks)
+			output = examine_block(output)
+		to_chat(usr, output)
+
+
 	if(href_list["explaindemolitionmod"])
-		var/output = span_info("用于乘算攻击物件时造成的伤害。")
+		var/output = span_info("攻击物体时，对其造成的伤害乘以此系数。\n招架时，若该系数高于护甲破坏系数，也用于放大对盾牌造成的耐久伤害。")
 		if(!usr.client.prefs.no_examine_blocks)
 			output = examine_block(output)
 		to_chat(usr, output)
@@ -566,10 +592,15 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			output = examine_block(output)
 		to_chat(usr, output)
 
+	if(href_list["showaltgrip"])
+		if(!usr.canUseTopic(src, be_close=TRUE))
+			return
+		show_altgrip(usr, href_list["showaltgrip"])
+
 	if(href_list["inspect"])
 		if(!usr.canUseTopic(src, be_close=TRUE))
 			return
-		var/list/inspec = list(span_notice("[src.name] 的属性"))
+		var/list/inspec = list(span_notice("[name]的属性"))
 		if(minstr)
 			inspec += "\n<b>最低力量：</b> [minstr]"
 		if(minstr_req)
@@ -600,8 +631,12 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 					inspec += "巨型"
 			inspec += " <span class='info'><a href='?src=[REF(src)];explainlength=1'>{?}</a></span>"
 
-		if(alt_intents)
-			inspec += "\n<b>变更握法（手持时右键）</b>"
+		if(has_altgrip_modes())
+			inspec += "\n<b>变换握法（右键／B 键／Ctrl＋滚轮）</b>"
+			var/list/alt_grip_lines = get_altgrip_lines(src, usr)
+			if(length(alt_grip_lines))
+				for(var/alt_grip_line in alt_grip_lines)
+					inspec += "\n[alt_grip_line]"
 
 		var/shafttext = get_blade_dulling_text(src, verbose = TRUE)
 		if(shafttext)
@@ -629,11 +664,12 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			if(W.special)
 				inspec += "[W.special.get_examine()]"
 
+		if(istype(src, /obj/item/rogueweapon/shield))
+			var/obj/item/rogueweapon/shield/S = src
+			inspec += "\n<b>被动格挡投射物：</b> [S.coverage]% <span class='info'><a href='?src=[REF(src)];explainshieldcoverage=1'>{?}</a></span>"
+
 		if(intdamage_factor != 1 && force >= 5)
 			inspec += "\n<b>完整度伤害：</b> [intdamage_factor * 100]% <span class='info'><a href='?src=[REF(src)];explainintdamage=1'>{?}</a></span>"
-
-		if(demolition_mod != 1 && force >= 5)
-			inspec += "\n<b>对物修正：</b> [demolition_mod * 100]% <span class='info'><a href='?src=[REF(src)];explaindemolitionmod=1'>{?}</a></span>"
 
 //**** CLOTHING STUFF
 
@@ -644,37 +680,15 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			if(C.body_parts_covered)
 				inspec += "\n<b>覆盖部位：<br></b>"
 				inspec += " | "
-				if(C.body_parts_covered == C.body_parts_covered_dynamic)
-					for(var/zone in body_parts_covered2organ_names(C.body_parts_covered))
-						inspec += "<b>[capitalize(zone)]</b> | "
-				else
-					var/list/zones = list()
-					//We have some part peeled, so we turn the printout into precise mode and highlight the missing coverage.
-					for(var/zoneorg in body_parts_covered2organ_names(C.body_parts_covered, precise = TRUE))
-						zones += zoneorg
-					for(var/zonedyn in body_parts_covered2organ_names(C.body_parts_covered_dynamic, precise = TRUE))
-						inspec += "<b>[capitalize(zonedyn)]</b> | "
-						if(zonedyn in zones)
-							zones.Remove(zonedyn)
-					for(var/zone in zones)
-						inspec += "<b><font color = '#7e0000'>[capitalize(zone)]</font></b> | "
+			var/list/zonelist = body_parts_covered2organ_names(C.body_parts_covered)
+			var/count = 0
+			for(var/zone in zonelist)
+				var/add_divider = TRUE
+				if(count == (length(zonelist) - 1))
+					add_divider = FALSE
+				inspec += "<b>[capitalize(zone)]</b> [add_divider ? "| " : ""]"
+				count++
 				inspec += "<br>"
-			if(C.body_parts_inherent)
-				inspec += "<b>不可剥离部位：</b>"
-				var/list/inherentList = body_parts_covered2organ_names(C.body_parts_inherent)
-				if(length(inherentList) == 1)
-					inspec += "<b><font color = '#77cde2'>[capitalize(inherentList[1])]</font></b>"
-				else
-					inspec += "| "
-					for(var/zone in inherentList)
-						inspec += "<b><font color = '#77cde2'>[capitalize(zone)]</b></font> | "
-			if(C.prevent_crits)
-				if(length(C.prevent_crits))
-					inspec += "\n<b>防止重创：</b>"
-					for(var/X in C.prevent_crits)
-						if(X == BCLASS_PICK)	//BCLASS_PICK is named "stab", and "stabbing" is its own damage class. Prevents confusion.
-							X = "凿击"
-						inspec += ("\n<b>[list(BCLASS_BLUNT = "钝击", BCLASS_SMASH = "猛砸", BCLASS_CUT = "切割", BCLASS_CHOP = "劈砍", BCLASS_STAB = "刺击", BCLASS_LASHING = "鞭打", BCLASS_PIERCE = "穿刺", BCLASS_TWIST = "扭转", BCLASS_PUNCH = "拳击", BCLASS_BITE = "撕咬", BCLASS_BURN = "灼烧", BCLASS_PEEL = "剥离", BCLASS_PUNISH = "惩戒", BCLASS_EFFECT = "效果", BCLASS_SUNDER = "破甲")[X] || capitalize(X)]</b>")
 				inspec += "<br>"
 			var/thermal_text = C.thermal_examine_text()
 			if(thermal_text)
@@ -729,8 +743,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		return TRUE
 	if(wlength != WLENGTH_NORMAL)
 		return TRUE
-	if(alt_intents || gripped_intents || twohands_required)
-		return TRUE
 	if(can_parry || max_blade_int)
 		return TRUE
 	if(associated_skill && associated_skill.name)
@@ -782,8 +794,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 				length_text = "巨型"
 		if(length_text)
 			lines += "<b>长度：</b> [length_text]"
-	if(alt_intents)
-		lines += "<b>变更握法：</b> 手持时右键"
 	var/shaft_text = get_blade_dulling_text(src, verbose = TRUE)
 	if(shaft_text)
 		lines += "<b>柄身：</b> [html_encode(shaft_text)]"
@@ -889,7 +899,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	//If the item is in a storage item, take it out
 	if(inv_storage_delay && SEND_SIGNAL(loc, COMSIG_CONTAINS_STORAGE))
-		if(!move_after(user, inv_storage_delay, target = iscarbon(loc) ? src : src.loc, progress = TRUE))
+		if(!move_after(user, inv_storage_delay, target = iscarbon(loc) ? src : loc, progress = TRUE))
 			return
 	SEND_SIGNAL(loc, COMSIG_TRY_STORAGE_TAKE, src, user.loc, TRUE)
 	if(QDELETED(src)) //moving it out of the storage to the floor destroyed it.
@@ -910,11 +920,11 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			wield(user)
 
 /atom/proc/ontable()
-	if(!isturf(src.loc))
+	if(!isturf(loc))
 		return FALSE
-	for(var/obj/structure/table/T in src.loc)
+	for(var/obj/structure/table/T in loc)
 		return TRUE
-	for(var/obj/machinery/anvil/A in src.loc)
+	for(var/obj/machinery/anvil/A in loc)
 		return TRUE
 	return FALSE
 
@@ -1072,7 +1082,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		return 0
 	if(!M)
 		return FALSE
-	if(HAS_TRAIT(M, TRAIT_CHUNKYFINGERS) && (!equipper || equipper == M) && src.type != /obj/item/grabbing/bite) //If a zombie's trying to put something on without assistance that's not a bite
+	if(HAS_TRAIT(M, TRAIT_CHUNKYFINGERS) && (!equipper || equipper == M) && type != /obj/item/grabbing/bite) //If a zombie's trying to put something on without assistance that's not a bite
 		to_chat(M, span_warning("……什么？"))
 		return FALSE
 
@@ -1121,9 +1131,9 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		to_chat(user, span_warning("我在这颗脑子上找不到任何有机眼球！"))
 		return
 
-	src.add_fingerprint(user)
+	add_fingerprint(user)
 
-	playsound(loc, src.hitsound, 30, TRUE, -1)
+	playsound(loc, hitsound, 30, TRUE, -1)
 
 	user.do_attack_animation(M)
 
@@ -1142,7 +1152,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	else
 		M.take_bodypart_damage(7)
 
-	log_combat(user, M, "attacked", "[src.name]", "(INTENT: [uppertext(user.used_intent)])")
+	log_combat(user, M, "攻击", "血族始祖", "(INTENT: [uppertext(user.used_intent)])")
 
 	var/obj/item/organ/eyes/eyes = M.getorganslot(ORGAN_SLOT_EYES)
 	if (!eyes)
@@ -1591,84 +1601,123 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			if(H.mouth == src)
 				H.update_inv_mouth()
 
-/obj/item/proc/ungrip(mob/living/carbon/user, show_message = TRUE)
-	if(!user)
-		return
-	if(twohands_required)
-		if(!wielded)
-			return
-		if(show_message)
-			to_chat(user, span_notice("我放下了[src]。"))
-		show_message = FALSE
+/obj/item/proc/clear_grip_state()
+	if(!wielded && !altgripped)
+		return FALSE
 	if(wielded)
 		wielded = FALSE
 		if(force_wielded)
 			update_force_dynamic()
-		wdefense_dynamic = wdefense
+		update_wdefense_dynamic()
 	if(altgripped)
+		clear_altgrip_state()
 		altgripped = FALSE
-		wielded = FALSE
-		if(isaltgripsharp == FALSE)
-			sharpness = IS_SHARP
-		if(force_wielded)
-			update_force_dynamic()
-		wdefense_dynamic = wdefense
 	update_transform()
+	icon_angle = initial(icon_angle)
+	return TRUE
+
+/obj/item/proc/can_wield_two_handed(mob/living/carbon/user)
+	if(user.get_inactive_held_item())
+		to_chat(user, span_warning("我得先空出一只手。"))
+		return FALSE
+	if(user.get_num_arms() < 2)
+		to_chat(user, span_warning("我的手不够用。"))
+		return FALSE
+	if (obj_broken)
+		to_chat(user, span_warning("它已经彻底坏了。"))
+		return FALSE
+	if (istype(src, /obj/item/contraption))
+		var/obj/item/contraption/i = src
+		if (i.current_charge <= 0)
+			to_chat(user, span_warning("尚未充能。"))
+			return FALSE
+	return TRUE
+
+/obj/item/proc/ungrip(mob/living/carbon/user, show_message = TRUE, show_balloon = FALSE)
+	if(twohands_required)
+		if(!wielded)
+			return
+		if(user && show_message)
+			to_chat(user, span_notice("我放下了[src]。"))
+		show_message = FALSE
+	if(!clear_grip_state())
+		return
+	if(!user)
+		return
 	if(user.get_item_by_slot(SLOT_BACK) == src)
 		user.update_inv_back()
 	else
 		user.update_inv_hands()
 	if(show_message)
 		to_chat(user, "<span class='notice'>我将[src]恢复为正常持握。</span>")
+	if(show_balloon)
+		show_altgrip_balloon(user, "常规握法")
 	if(user.get_active_held_item() == src)
 		user.update_a_intents()
-	icon_angle = initial(icon_angle)
 	return
 
-/obj/item/proc/altgrip(mob/living/carbon/user)
+/obj/item/proc/cycle_altgrip(mob/living/carbon/user, direction = 1)
+	if(!length(alt_grips) || !direction)
+		return FALSE
+
+	var/message
+	var/next_index
+	var/datum/alt_grip/next_state
+	var/index_step = 1
+	if(direction < 0)
+		index_step = -1
 	if(altgripped)
-		return
-	if(user.get_inactive_held_item())
-		to_chat(user, span_warning("我得先空出一只手。"))
-		return
-	if(user.get_num_arms() < 2)
-		to_chat(user, span_warning("我的手不够用。"))
-		return
-	if (obj_broken)
-		to_chat(user, span_warning("它已经彻底坏了。"))
-		return
+		next_index = current_alt_grip_index + index_step
+	else
+		if(direction > 0)
+			next_index = 1
+		else
+			next_index = length(alt_grips)
+
+	while(next_index >= 1 && next_index <= length(alt_grips))
+		next_state = get_altgrip_state(next_index)
+		if(next_state && next_state.usable_by(src, user))
+			break
+		next_state = null
+		next_index += index_step
+
+	if(!next_state)
+		if(altgripped)
+			ungrip(user, TRUE, TRUE)
+			user.changeNext_move(CLICK_CD_QUICK)
+			return TRUE
+		return FALSE
+	if(next_state.is_two_handed(src) && !can_wield_two_handed(user))
+		return FALSE
+	if(!set_altgrip_state(next_index))
+		return FALSE
 	altgripped = TRUE
 	update_transform()
-	to_chat(user, span_notice("我改用另一种方式握持[src]。"))
-	playsound(loc, pick('sound/combat/weaponr1.ogg','sound/combat/weaponr2.ogg'), 100, TRUE)
+	user.update_inv_hands()
+	message = get_altgrip_message(user)
+	to_chat(user, span_notice(message))
+	show_altgrip_balloon(user)
 	if(user.get_active_held_item() == src)
-		if(alt_intents)
-			user.update_a_intents()
-			wielded = TRUE
-			if(force_wielded)
-				update_force_dynamic()
-			wdefense_dynamic = (wdefense + wdefense_wbonus)
-			user.update_inv_hands()
-			if(isaltgripsharp == TRUE)
-				return
-			sharpness = IS_BLUNT
+		user.update_a_intents()
+	user.changeNext_move(CLICK_CD_RAPID)
+	return TRUE
+
+/obj/item/proc/altgrip(mob/living/carbon/user)
+	return cycle_altgrip(user, 1)
+
 
 /obj/item/proc/wield(mob/living/carbon/user, show_message = TRUE)
-	if(wielded)
+	if(wielded && !altgripped)
 		return
-	if(user.get_inactive_held_item())
-		to_chat(user, span_warning("我得先空出一只手。"))
+	if(!gripped_intents)
 		return
-	if(user.get_num_arms() < 2)
-		to_chat(user, span_warning("我的手不够用。"))
+	if(!can_wield_two_handed(user))
 		return
-	if (obj_broken)
-		to_chat(user, span_warning("它已经彻底坏了。"))
-		return
+	clear_grip_state()
 	wielded = TRUE
 	if(force_wielded)
 		update_force_dynamic()
-	wdefense_dynamic = (wdefense + wdefense_wbonus)
+	update_wdefense_dynamic()
 	update_transform()
 	if(show_message)
 		to_chat(user, span_notice("我双手握住了[src]。"))
@@ -1686,13 +1735,15 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	. = ..()
 	if(twohands_required)
 		return
-	if(wielded) //Trying to unwield it. Ratwood edit. Original: (altgripped || wielded)
+	if(altgripped || wielded) //Trying to unwield it
 		ungrip(user)
 		return
-	if(alt_intents && !gripped_intents)
+	if(has_altgrip_modes() && !gripped_intents)
 		altgrip(user)
+		return
 	if(gripped_intents)
 		wield(user)
+		return
 
 /obj/item/equip_to_best_slot(mob/M)
 	if(..())
@@ -1707,15 +1758,22 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(istype(src, /obj/item/clothing))
 		var/obj/item/clothing/C = src
 		if(C.armor)
-			var/defense = "<u><b>吸收：</b></u><br>"
 			var/datum/armor/def_armor = C.armor
-			defense += "[colorgrade_rating("钝击", def_armor.blunt, elaborate = TRUE)] | "
-			defense += "[colorgrade_rating("劈砍", def_armor.slash, elaborate = TRUE)] | "
-			defense += "[colorgrade_rating("刺击", def_armor.stab, elaborate = TRUE)] | "
-			defense += "[colorgrade_rating("穿刺", def_armor.piercing, elaborate = TRUE)] "
-			str += "[defense]<br>"
+			if(!def_armor.blunt && !def_armor.slash && !def_armor.stab && !def_armor.piercing)
+				str += "<b>没有护甲！</b>"
+			else
+				var/defense = "[SPAN_TOOLTIP("各等级提高护甲承受对应打击的有效耐久。被吸收的攻击不会造成生命伤害，必须先击破护甲。", "<u><b>吸收：</b></u>")] [colorgrade_rating("钝击", def_armor.blunt, elaborate = TRUE, max_tier = 5)]"
+				defense += "<br>"
+				defense += "[SPAN_TOOLTIP("护甲等级越高，伤害减免越强。减免后的伤害仍会伤及生命，护甲承受被挡住的部分。", "<u><b>减免：</b></u>")] [colorgrade_rating("灼烧", def_armor.fire, elaborate = TRUE, max_tier = 5)]"
+				defense += " | [colorgrade_rating("酸蚀", def_armor.acid, elaborate = TRUE, max_tier = 5)]"
+				defense += "<br>"
+				defense += "[SPAN_TOOLTIP("Blocks attacks below this tier (Armor takes all damage). Same tier penetrates 20% (80% goes to armor). Exceeding tier penetrates fully.", "<u><b>BLOCK:</b></u>")] "
+				defense += "[colorgrade_rating("劈砍", def_armor.slash, elaborate = TRUE)] | "
+				defense += "[colorgrade_rating("刺击", def_armor.stab, elaborate = TRUE)] | "
+				defense += "[colorgrade_rating("穿刺", def_armor.piercing, elaborate = TRUE)]"
+				str += "[defense]<br>"
 		else
-			str += "没有防护"
+			str += "<b>没有护甲！</b>"
 	return str
 
 /obj/item/proc/temp_to_cold_tier(temp)
@@ -1767,7 +1825,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		var/covers = thermal_flags_to_zone_text(src.cold_protection)
 
 		out += "<b>耐寒：</b> [tier]"
-		out += " | 保温部位：[covers]"
+		out += " | Insulates: [covers]"
 
 	// --- Heat ---
 	if(src.heat_protection && src.max_heat_protection_temperature)
@@ -1775,7 +1833,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		var/covers = thermal_flags_to_zone_text(src.heat_protection)
 
 		out += "<b>耐热：</b> [tier]"
-		out += " | 隔热部位：[covers]"
+		out += " | Insulates: [covers]"
 
 	if(!length(out))
 		return null
@@ -1817,8 +1875,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		return FALSE
 
 	obj_destroyed = TRUE
-	if(src.anvilrepair)
-		if(src.smeltresult == /obj/item/ingot/iron)
+	if(anvilrepair)
+		if(smeltresult == /obj/item/ingot/iron)
 			new /obj/item/scrap(get_turf(src))
 			if(prob(20))
 				new /obj/item/scrap(get_turf(src))
@@ -1841,110 +1899,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	damage.alpha = 150
 	add_overlay(damage)
 
-/// Proc that is only called with the Peel intent. Stacks consecutive hits, shreds coverage once a threshold is met. Thresholds are defined on /obj/item
-/obj/item/proc/peel_coverage(bodypart, divisor, mob/living/carbon/human/owner)
-	var/coveragezone = attackzone2coveragezone(bodypart)
-	if((body_parts_inherent & coveragezone))
-		playsound(src, 'sound/combat/failpeel.ogg', 100, TRUE)
-		visible_message(span_warning("剥离命中了过于厚实的部位！"))
-		last_peeled_limb = coveragezone
-		reset_peel()
-		return
-	if(!last_peeled_limb || coveragezone == last_peeled_limb)
-		var/peel_goal = peel_threshold
-		if(divisor > peel_goal)
-			peel_goal = divisor
-
-		var/list/peeledpart = body_parts_covered2organ_names(coveragezone, precise = TRUE)
-
-		if(peel_count < peel_goal)
-			if(last_peel_stack_time == world.time)
-				return
-			last_peel_stack_time = world.time
-			peel_count++
-
-		if(peel_count >= peel_goal)
-			body_parts_covered_dynamic &= ~coveragezone
-			playsound(src, 'sound/foley/peeled_coverage.ogg', 100)
-			var/parttext
-			if(length(peeledpart))
-				parttext = peeledpart[1]	//There should really only be one bodypart that gets exposed here.
-			visible_message("<font color = '#f5f5f5'><b>[parttext ? parttext : "覆盖部位"]</font></b>从[src]上被剥开了！")
-			var/balloon_msg = "<font color = '#bb1111'>[parttext] 已被剥开！</font>"
-			if(length(peeledpart))
-				balloon_alert_to_viewers(balloon_msg, balloon_msg, DEFAULT_MESSAGE_RANGE)
-			reset_peel(success = TRUE)
-		else
-			if(owner)
-				owner.visible_message(span_info("剥离击中了[src]！<b>[ROUND_UP(peel_count)]</b>！"))
-			var/balloon_msg = "剥离！\Roman[ROUND_UP(peel_count)] <br><font color = '#8b7330'>[peeledpart[1]]！</font>"
-			var/has_guarded = HAS_TRAIT(owner, TRAIT_DECEIVING_MEEKNESS)
-			if(length(peeledpart) && !has_guarded)
-				filtered_balloon_alert(TRAIT_COMBAT_AWARE, balloon_msg)
-			else if(length(peeledpart) && has_guarded)
-				if(prob(10))
-					balloon_msg = "<i>已防住……</i>"
-					filtered_balloon_alert(TRAIT_COMBAT_AWARE, balloon_msg)
-	else
-		last_peeled_limb = coveragezone
-		reset_peel()
-
 /obj/item/proc/repair_coverage()
 	body_parts_covered_dynamic = body_parts_covered
-	reset_peel()
-
-/obj/item/proc/reset_peel(success = FALSE)
-	if(peel_count > 0 && !success)
-		visible_message(span_info("[src]上的剥离层数消失了！"))
-	peel_count = 0
-
-/obj/item/proc/reduce_peel(amt)
-	if(peel_count > amt)
-		peel_count -= amt
-	else
-		peel_count = 0
-	visible_message(span_info("[src]上的剥离层数降至[peel_count == 0 ? "无" : "[peel_count]"]！"))
-
-/proc/attackzone2coveragezone(location)
-	switch(location)
-		if(BODY_ZONE_HEAD)
-			return HEAD
-		if(BODY_ZONE_PRECISE_EARS)
-			return EARS
-		if(BODY_ZONE_PRECISE_SKULL)
-			return HAIR
-		if(BODY_ZONE_PRECISE_NOSE)
-			return NOSE
-		if(BODY_ZONE_PRECISE_NECK)
-			return NECK
-		if(BODY_ZONE_PRECISE_L_EYE)
-			return LEFT_EYE
-		if(BODY_ZONE_PRECISE_R_EYE)
-			return RIGHT_EYE
-		if(BODY_ZONE_PRECISE_MOUTH)
-			return MOUTH
-		if(BODY_ZONE_CHEST)
-			return CHEST
-		if(BODY_ZONE_PRECISE_STOMACH)
-			return VITALS
-		if(BODY_ZONE_PRECISE_GROIN)
-			return GROIN
-		if(BODY_ZONE_L_ARM)
-			return ARM_LEFT
-		if(BODY_ZONE_R_ARM)
-			return ARM_RIGHT
-		if(BODY_ZONE_L_LEG)
-			return LEG_LEFT
-		if(BODY_ZONE_R_LEG)
-			return LEG_RIGHT
-		if(BODY_ZONE_PRECISE_L_HAND)
-			return HAND_LEFT
-		if(BODY_ZONE_PRECISE_R_HAND)
-			return HAND_RIGHT
-		if(BODY_ZONE_PRECISE_L_FOOT)
-			return FOOT_LEFT
-		if(BODY_ZONE_PRECISE_R_FOOT)
-			return FOOT_RIGHT
 
 /obj/item/examine(mob/user)
 	. = ..()
@@ -2069,7 +2025,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		return TRUE
 	return FALSE
 
-// The mob carrying this, through any depth of containers. Returns the innermost carrier if nested in more than one.
 /obj/item/proc/find_items_mob_carrier()
 	if(ismob(loc))
 		return loc
@@ -2077,3 +2032,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(ismob(nested_loc))
 			return nested_loc
 	return null
+
+/obj/item/proc/update_wdefense_dynamic()
+	wdefense_dynamic = (wielded ? (wdefense + wdefense_wbonus) : wdefense)

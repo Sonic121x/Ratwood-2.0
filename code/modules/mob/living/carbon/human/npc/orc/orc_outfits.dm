@@ -13,7 +13,7 @@
 
 // Underarmored orc with incomplete protection, bone axe / spear, and slow speed
 /datum/outfit/job/roguetown/orc/npc/footsoldier/pre_equip(mob/living/carbon/human/H)
-	name = "Orc Footsoldier"
+	name = "兽人步兵"
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	if(prob(50))
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
@@ -57,7 +57,7 @@
 
 // Slightly armored orc with slight facial protection, incomplete chainmail and spear / sword
 /datum/outfit/job/roguetown/orc/npc/marauder/pre_equip(mob/living/carbon/human/H)
-	name = "Orc Marauder"
+	name = "兽人掠夺者"
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	armor = /obj/item/clothing/suit/roguetown/armor/chainmail
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/light
@@ -109,6 +109,7 @@
 	H.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+	ADD_TRAIT(src, TRAIT_CRIT_THRESHOLD, TRAIT_GENERIC)
 
 // Lightly armored orc in light armor with no pain stun, and grappling oriented weapons
 /datum/outfit/job/roguetown/orc/npc/berserker/pre_equip(mob/living/carbon/human/H)

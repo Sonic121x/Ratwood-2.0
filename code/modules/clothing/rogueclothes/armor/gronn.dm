@@ -2,9 +2,9 @@
 
 /obj/item/clothing/head/roguetown/helmet/bascinet/atgervi/gronn
 	name = "掠袭者头盔"
-	desc = "以硬化皮革制成并雕有兽骨头面，外形近似人类头颅的头盔，来自空寂北境的独特设计。 \
-			据说在伊斯卡恩，这副面容足以惊走战场上败者的亡魂 \
-			并阻止内克拉或驼鹿之灵让他们化作幽魂徘徊。"
+	desc = "以硬化皮革制成并雕有兽骨头面，外形近似人类头颅的头盔，来自 \
+			空寂北境的独特设计。  据说在伊斯卡恩，这副面容足以惊走战场 \
+			上败者的亡魂  并阻止内克拉或驼鹿之灵让他们化作幽魂徘徊。"
 	icon = 'icons/roguetown/clothing/special/gronn.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/gronn.dmi'
 	icon_state = "gronnleatherhelm"
@@ -18,28 +18,27 @@
 
 /obj/item/clothing/suit/roguetown/armor/leather/heavy/gronn
 	name = "掠袭者披肩"
-	desc = "以骨骼与硬化皮革精心制成的披肩。在保持轻便的同时，对荒野威胁提供卓越防护， \
-			伊斯卡恩流行在肩头饰以狼皮与狼头，让伟兽始终伴你左右。"
+	desc = "以骨骼与硬化皮革精心制成的披肩。在保持轻便的同时，对荒野威胁提供卓 \
+			越防护，  伊斯卡恩流行在肩头饰以狼皮与狼头，让伟兽始终伴你左右。"
 	icon = 'icons/roguetown/clothing/special/gronn.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/gronn.dmi'
 	icon_state = "gronnleatherarmor"
 	item_state = "gronnleatherarmor"
-	armor = ARMOR_GRONN_LIGHT
+	armor = ARMOR_LEATHER
 	cold_protection = CHEST
 	min_cold_protection_temperature = 50
 
 /obj/item/clothing/under/roguetown/trou/leather/gronn
 	name = "毛皮裤"
-	desc = "一条沿腿部加有骨质强化的硬化皮裤， \
-			野性十足的设计，对钝击与劈砍有出色防护，也能抵御野兽的袭击。"
+	desc = "一条沿腿部加有骨质强化的硬化皮裤，  野性十足的 \
+			设计，对钝击与劈砍有出色防护，也能抵御野兽的袭击。"
 	icon_state = "gronnleatherpants"
 	item_state = "gronnleatherpants"
-	armor = ARMOR_GRONN_LIGHT
-	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH)
+	armor = ARMOR_LEATHER
 	max_integrity = ARMOR_INT_LEG_HARDLEATHER
 	icon = 'icons/roguetown/clothing/special/gronn.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/gronn.dmi'
-	armor = ARMOR_GRONN_LIGHT
+	armor = ARMOR_LEATHER
 	cold_protection = GROIN
 	min_cold_protection_temperature = 50
 
@@ -56,9 +55,9 @@
 
 /obj/item/clothing/gloves/roguetown/angle/gronnfur
 	name = "毛衬骨手套"
-	desc = "一双硬化皮手套，腕部加有骨质强化\
-			与手背相连，能提供卓越防护，抵御\
-			野兽之爪，以及采集者常遇见的自然荆棘与植物抓伤。"
+	desc = "一双硬化皮手套，腕部加有骨质强化 与手 \
+			背相连，能提供卓越防护，抵御 野兽之爪， \
+			以及采集者常遇见的自然荆棘与植物抓伤。"
 	icon_state = "gronnfurgloves"
 	item_state = "gronnfurgloves"
 	icon = 'icons/roguetown/clothing/special/gronn.dmi'
@@ -79,11 +78,10 @@
 	icon_state = "gronnfurhood"
 	item_state = "gronnfurhood"
 	bloody_icon = 'icons/effects/blood64.dmi'
-	armor = ARMOR_LEATHER_GOOD
+	armor = ARMOR_LEATHER
 	flags_inv = HIDEEARS|HIDEFACE
 	worn_x_dimension = 32
 	worn_y_dimension = 48
-	prevent_crits = list(BCLASS_BLUNT, BCLASS_TWIST)
 	anvilrepair = null
 	smeltresult = null
 	sewrepair = TRUE
@@ -203,15 +201,15 @@
 
 /obj/item/clothing/head/roguetown/helmet/bascinet/atgervi/gronn/ownel
 	name = "欧内尔头盔"
-	desc = "一顶能很好保护双眼与头部的全覆面头盔， \
-			据说在格隆，涂有刺眼金色染料的狭缝能赋予佩戴者如鸟般锐利的目光。"
+	desc = "一顶能很好保护双眼与头部的全覆面头盔，  据说在格隆 \
+			，涂有刺眼金色染料的狭缝能赋予佩戴者如鸟般锐利的目光。"
 	icon_state = "gronnhelm"
 	item_state = "gronnhelm"
 
 /obj/item/clothing/suit/roguetown/armor/brigandine/gronn
 	name = "拜林锁子甲"
-	desc = "一件异域设计的锁子甲衫，外覆皮革外衣 \
-			提供额外防护与更佳行动性。常被海上劫掠者使用。"
+	desc = "一件异域设计的锁子甲衫，外覆皮革外衣  提供 \
+			额外防护与更佳行动性。常被海上劫掠者使用。"
 	icon = 'icons/roguetown/clothing/special/gronn.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/gronn.dmi'
 	icon_state = "gronnchain"
@@ -239,8 +237,8 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/bucket/gronn
 	name = "怯薛角盔"
-	desc = "带角的铁盔，异域风格的独特设计。\
-		其造型仿照传说中自遥远之地入侵而来的骑士形象。粗暴而朴实。"
+	desc = "带角的铁盔，异域风格的独特设计。 其造型仿照传 \
+		说中自遥远之地入侵而来的骑士形象。粗暴而朴实。"
 	icon = 'icons/roguetown/clothing/special/gronn.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/gronn.dmi'
 	bloody_icon = 'icons/effects/blood64.dmi'
@@ -284,9 +282,9 @@
 
 /obj/item/clothing/shoes/roguetown/boots/armor/iron/gronn
 	name = "怯薛铁靴"
-	desc = "铁靴，以皮带系缚。 \
-			防护出色，一则古老传说讲述了一位伟大战士鏖战千秋，直到 \
-			一名英雄以长矛刺穿了他的脚。许多人因此格外重视足部防护。"
+	desc = "铁靴，以皮带系缚。  防护出色，一则古老传说讲 \
+			述了一位伟大战士鏖战千秋，直到  一名英雄以 \
+			长矛刺穿了他的脚。许多人因此格外重视足部防护。"
 	icon = 'icons/roguetown/clothing/special/gronn.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/gronn.dmi'
 	icon_state = "gronnplateboots"

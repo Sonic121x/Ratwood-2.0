@@ -64,8 +64,7 @@
 
 /obj/item/clothing/head/roguetown/roguehood/reinforced
 	name = "加固兜帽"
-	armor = ARMOR_REINFORCED_HOOD
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
+	armor = ARMOR_LEATHER
 	max_integrity = 120//+20 over base. -30 from previous value.
 	blocksound = SOFTHIT
 	nudist_approved = FALSE // armored
@@ -119,9 +118,8 @@
 	name = "衬垫头巾"
 	desc = "常见于长途穿越沙漠的人们，既能抵御酷热，也多少能防住那些在凉爽夜里游荡的野兽。"
 	max_integrity = 100
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK|ITEM_SLOT_NECK
-	armor = ARMOR_SPELLSINGER //basically the same as a warscholar hood
+	armor = ARMOR_LEATHER //basically the same as a warscholar hood
 	item_state = "hijab"
 	icon_state = "deserthood"
 	naledicolor = TRUE
@@ -294,8 +292,7 @@
 	body_parts_covered = NECK | HEAD | HAIR
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
-	armor = ARMOR_SPELLSINGER
+	armor = ARMOR_LEATHER
 	dynamic_hair_suffix = ""
 	edelay_type = 1
 	adjustable = CAN_CADJUST
@@ -312,8 +309,7 @@
 	body_parts_covered = NECK | HEAD | HAIR
 	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
-	armor = ARMOR_SPELLSINGER
+	armor = ARMOR_LEATHER
 	dynamic_hair_suffix = ""
 	edelay_type = 1
 	adjustable = CAN_CADJUST
@@ -327,9 +323,7 @@
 	name = "大祭司披巾"
 	desc = "一顶厚实兜帽，既可在需要时罩住整个头部，也可只当围巾使用。布料掺入施法纤维，能同时抵御恶魔与凡人。"
 	max_integrity = 100
-	resistance_flags = FIRE_PROOF
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
-	armor = ARMOR_SPELLSINGER
+	armor = ARMOR_LEATHER
 	icon_state = "deserthood"
 	item_state = "deserthood"
 	naledicolor = TRUE
@@ -341,9 +335,7 @@
 	name = "教宗披巾"
 	desc = "一顶纤薄兜帽，布料虽薄却致密，富有弹性又柔韧，保证活动自如。布料掺入施法纤维，能同时抵御恶魔与凡人。"
 	max_integrity = 100
-	resistance_flags = FIRE_PROOF
-	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
-	armor = ARMOR_SPELLSINGER
+	armor = ARMOR_LEATHER
 	icon_state = "monkhood"
 	item_state = "monkhood"
 	naledicolor = TRUE
@@ -353,20 +345,19 @@
 
 /obj/item/clothing/head/roguetown/roguehood/sojourner
 	name = "旅者罩巾"
-	desc = "一件传统衣物，由那些穿越纳莱迪诅咒沙丘、熬过孤寂朝圣的人所携带。 \
-	像头盔一样，它能挡下致命一击；但与头盔不同，它也能避免你的咒文出错。 </br>\
-	'..我们曾受试炼；我们也曾有纵欲与堕落之地。我们本该肩并着肩守望兄弟姐妹，确保无人坠落。 \
-	可我们全都失足了。我们全都放任一切变成如今这副模样。 \
-	那些游荡街头、从床边掳走孩子、吞食妻子并折断丈夫的恶魔。 \
-	它们就是我们，是我们亲手造出的扭曲与堕落。它们是人类眼中的人类，由我们自身扭曲的奥术显化而成..'"
+	desc = "一件传统衣物，由那些穿越纳莱迪诅咒沙丘、熬过孤寂朝圣的人所携带。  像头盔一 \
+	样，它能挡下致命一击；但与头盔不同，它也能避免你的咒文出错。 </br> ' \
+	..我们曾受试炼；我们也曾有纵欲与堕落之地。我们本该肩并着肩守望兄弟姐妹，确 \
+	保无人坠落。  可我们全都失足了。我们全都放任一切变成如今这副模样。  那些游 \
+	荡街头、从床边掳走孩子、吞食妻子并折断丈夫的恶魔。  它们就是我们，是我们亲 \
+	手造出的扭曲与堕落。它们是人类眼中的人类，由我们自身扭曲的奥术显化而成..'"
 	icon_state = "surghood"
 	item_state = "surghood"
 	color = "#a88d8d"
 	resistance_flags = FIRE_PROOF
-	armor = ARMOR_SPELLSINGER //Higher-tier protection for pugilist-centric classes. Fits the 'glass cannon' style, and prevents instant death through a glancing headshot on the intended archetype.
+	armor = ARMOR_LEATHER //Higher-tier protection for pugilist-centric classes. Fits the 'glass cannon' style, and prevents instant death through a glancing headshot on the intended archetype.
 	blade_dulling = DULLING_BASHCHOP
 	body_parts_covered = HEAD|HAIR|EARS
 	max_integrity = ARMOR_INT_SIDE_STEEL //High leather-tier protection and critical resistances, steel-tier integrity. Integrity boost encourages hand-to-hand parrying. Weaker than the Psydonic Thorns.
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = SOFTHIT
 	nudist_approved = FALSE // armored

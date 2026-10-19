@@ -603,6 +603,21 @@
 	desc = "我已经用过了。必须等待。"
 	icon_state = "strikecd"
 
+/datum/status_effect/debuff/bindcd
+	id = "bindcd"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/bindcd
+	duration = 15 SECONDS
+
+/datum/status_effect/debuff/bindcd/on_creation(mob/living/new_owner, new_dur)
+	if(new_dur)
+		duration = new_dur
+	return ..()
+
+/atom/movable/screen/alert/status_effect/debuff/bindcd
+	name = "交缠冷却"
+	desc = "不能指望奇招次次奏效。"
+	icon_state = "bindcd"
+
 //---- Special CD
 /datum/status_effect/debuff/specialcd
 	id = "specialcd"
@@ -616,7 +631,7 @@
 
 /atom/movable/screen/alert/status_effect/debuff/specialcd
 	name = "精准打击冷却"
-	desc = "我已经用过了。必须等待。"
+	desc = "我刚用过这一招，必须等一等。"
 	icon_state = "strikecd"
 
 // Magical mishaps

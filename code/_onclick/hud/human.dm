@@ -1,7 +1,7 @@
 /atom/movable/screen/human
 
 /atom/movable/screen/human/toggle
-	name = "toggle"
+	name = "切换"
 	icon_state = "toggle"
 
 /atom/movable/screen/human/toggle/handle_click()
@@ -23,7 +23,7 @@
 	targetmob.hud_used.hidden_inventory_update(usr)
 
 /atom/movable/screen/human/equip
-	name = "equip"
+	name = "装备"
 	icon_state = "act_equip"
 
 /atom/movable/screen/human/equip/handle_click()
@@ -180,6 +180,12 @@
 	cdmid.hud = src
 	cdmid.screen_loc = "WEST-3:0,SOUTH+7"
 	static_inventory += cdmid
+
+	defdelay = new /atom/movable/screen/action_bar/defensedelay/defdelay()
+	defdelay.hud = src
+	defdelay.screen_loc = "WEST-1:-5,SOUTH+10:15"
+	static_inventory += defdelay
+
 
 	build_hand_slots()
 
@@ -417,6 +423,10 @@
 
 	energy = new /atom/movable/screen/energy()
 	infodisplay += energy
+
+	feint_bar = new /atom/movable/screen/feint()
+	infodisplay += feint_bar
+
 	for(var/atom/movable/screen/inventory/inv in (static_inventory + toggleable_inventory))
 		if(inv.slot_id)
 			inv.hud = src
@@ -493,7 +503,7 @@
 	static_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory()
-	inv_box.name = "mask"
+	inv_box.name = "面具"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "mask"
 	inv_box.screen_loc = ui_mask
@@ -501,7 +511,7 @@
 	toggleable_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory()
-	inv_box.name = "neck"
+	inv_box.name = "项链"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "neck"
 	inv_box.screen_loc = ui_neck
@@ -556,7 +566,7 @@
 	static_inventory += using
 
 	inv_box = new /atom/movable/screen/inventory()
-	inv_box.name = "gloves"
+	inv_box.name = "手套"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "gloves"
 	inv_box.screen_loc = ui_gloves
@@ -572,7 +582,7 @@
 	toggleable_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory()
-	inv_box.name = "ears"
+	inv_box.name = "耳朵"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "ears"
 	inv_box.screen_loc = ui_ears
@@ -580,7 +590,7 @@
 	toggleable_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory()
-	inv_box.name = "head"
+	inv_box.name = "头部"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "head"
 	inv_box.screen_loc = ui_head
@@ -588,7 +598,7 @@
 	toggleable_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory()
-	inv_box.name = "shoes"
+	inv_box.name = "鞋子"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "shoes"
 	inv_box.screen_loc = ui_shoes
@@ -596,7 +606,7 @@
 	toggleable_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory()
-	inv_box.name = "belt"
+	inv_box.name = "腰带"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "belt"
 //	inv_box.icon_full = "template_small"

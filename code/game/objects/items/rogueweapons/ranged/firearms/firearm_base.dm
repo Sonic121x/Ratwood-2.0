@@ -23,9 +23,9 @@ At least, it should. Fingers crossed.
 /obj/item/powderflask
 	name = "火药瓶"
 	icon = 'modular_helmsguard/icons/obj/items/arquebus_items.dmi'
-	desc = "对门外汉而言，烟火药简直像某种奥术把戏。 \
-	它的制法在格里莫里亚大多数地区都已失传，只在兹班图之类的地方尚能见到。 \
-	可如今？你手里就有一瓶。务必看紧它。"
+	desc = "对门外汉而言，烟火药简直像某种奥术把戏。  它的制法 \
+	在格里莫里亚大多数地区都已失传，只在兹班图之类的地 \
+	方尚能见到。  可如今？你手里就有一瓶。务必看紧它。"
 	icon_state = "powderflask"
 	item_state = "powderflask"
 	slot_flags = SLOT_BELT_L | SLOT_BELT_R | ITEM_SLOT_NECK | ITEM_SLOT_HIP
@@ -182,8 +182,6 @@ At least, it should. Fingers crossed.
 	if(altgripped || wielded) //Trying to unwield it
 		ungrip(user)
 		return
-	if(alt_intents)
-		altgrip(user)
 	if(gripped_intents)
 		wield(user)
 	update_icon()

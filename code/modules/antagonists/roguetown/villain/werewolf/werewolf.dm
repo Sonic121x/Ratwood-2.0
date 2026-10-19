@@ -1,7 +1,7 @@
 /datum/antagonist/werewolf
 	name = "维尔沃夫"
-	roundend_category = "狼人"
-	antagpanel_category = "狼人"
+	roundend_category = "Werewolves"
+	antagpanel_category = "Werewolf"
 	job_rank = ROLE_WEREWOLF
 	confess_lines = list(
 		"我体内的野兽正在咆哮！",
@@ -133,7 +133,6 @@
 	body_parts_covered = FULL_BODY
 	body_parts_inherent = FULL_BODY
 	armor = ARMOR_WWOLF
-	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST)
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
 	sewrepair = FALSE

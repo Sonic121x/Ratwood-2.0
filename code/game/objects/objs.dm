@@ -13,10 +13,6 @@
 	var/demolition_mod = 1
 
 	var/datum/armor/armor
-	var/last_peeled_limb
-	var/peel_count = 0
-	var/last_peel_stack_time = -1
-	var/peel_threshold = 3
 	var/obj_integrity	//defaults to max_integrity
 	var/max_integrity = 500
 	var/integrity_failure = 0 //0 if we have no special broken behavior, otherwise is a percentage of at what point the obj breaks. 0.5 being 50%
@@ -287,7 +283,7 @@
 		our_turf.platform_atom_count--
 
 /obj/merge_conflict_marker
-	name = "---Merge Conflict Marker---"
-	desc = "Mapping helper."
+	name = "——合并冲突标记——"
+	desc = "地图编辑辅助对象。"
 	icon = 'icons/obj/merge_conflict_marker.dmi'
 	icon_state = "merge_conflict_marker"

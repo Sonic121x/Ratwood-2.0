@@ -320,3 +320,20 @@
 	REMOVE_TRAIT(owner, TRAIT_ANTIMAGIC, TRAIT_STATUS_EFFECT(id))
 	owner.visible_message("<span class='warning'>[owner] 身上暗淡的灵光消散了……</span>")
 
+/datum/status_effect/buff/weapon_binded
+	id = "wep_bind_buff"
+	duration = 10 SECONDS
+	status_type = STATUS_EFFECT_REFRESH
+	alert_type = /atom/movable/screen/alert/status_effect/buff/weapon_bind_buff
+	mob_effect_layer = MOB_EFFECT_LAYER_BINDED
+	mob_effect_icon_state = "eff_binded"
+
+/datum/status_effect/buff/weapon_binded/on_apply()
+	. = ..()
+	owner.stamina_add(-20)
+
+/atom/movable/screen/alert/status_effect/buff/weapon_bind_buff
+	name = "交缠占优"
+	desc = "兵刃交缠时我占了上风！我早已看穿对方的攻击方向！短时间内，我的招架能力增强！"
+	icon = 'icons/mob/combat_debuffs.dmi'
+	icon_state = "weapon_bind_buff"

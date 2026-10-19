@@ -4,14 +4,14 @@
 /datum/species/harpy
 	name = "Harpy"
 	id = "harpy"
-	desc = "<b>哈比</b><br>\
-	哈比常被人称为\"歌鸟\"或\"喜鹊\"，乍看之下形似半兽裔。\
-	然而，这些生灵的确切本质是一个更为复杂、充满争议的话题，其中有许多未知细节。\
-	她们起源于伊特鲁斯卡的悬崖，但学者们对其创造者究竟是何方神祇争执不休——究竟是巴奥莎、伊欧拉、马西奥斯，甚至佩斯特拉之手，至今没有定论。\
-	许多人因她们狡黠且占有欲强的天性而对其心怀不信任，但也有不少人欣赏她们的聪慧与美貌，这些游牧民每至一座新城，往往被当地人以礼貌的距离接纳。\
-	<span style='color: #cc0f0f;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>-3 体质 | -2 力量</span> |<span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'> +1 感知 | +1 智力 | +2 速度</b></span> </br> \
-	<span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>飞行 | 天生歌唱 | 强力咬击</b></span> </br> \
-	<span style='color: #cc0f0f;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>无法穿靴</span> | <span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #00０;'>轻微坠落伤害减免 </span></b>"
+	desc = "<b>哈比</b><br> 哈比常被人称为\"歌鸟\"或\"喜鹊\"，乍看之下形似半兽裔。 然而，这些生灵的确切本质是一个更为复杂、充满争议的话题，其中有许多未知细节。 她们起源于伊特鲁斯卡的悬崖，但学者们对其创造者究竟是何 \
+	方神祇争执不休——究竟是巴奥莎、伊欧拉、马西奥斯，甚至佩斯特拉之手，至今没有定论。 许多人因她们狡黠且占有欲强的天性而对其心怀不信任，但也有不少人欣赏她们的聪慧与美貌，这些游牧民每至一座新城，往往被当地人以礼貌的距离接纳。  \
+	<span style='color: #cc0f0f;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>-3  \
+	体质 | -2 力量</span> |<span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px  \
+	1px 0 #000;'> +1 感知 | +1 智力 | +2 速度</b></span> </br>  <span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000, \
+	1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>飞行 | 天生歌唱 | 强力咬击</b></span> </br>  <span style='color: #cc0f \
+	0f;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>无法穿靴</span> | <span style='c \
+	olor: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #00０;'>轻微坠落伤害减免 </span></b>"
 
 	expanded_desc = "<b>哈比</b><br>\
 	哈比常被人称为\"歌鸟\"或\"喜鹊\"，乍看之下形似半兽裔。\
@@ -219,8 +219,7 @@
 	icon_state = null
 	body_parts_covered = FEET|LEGS
 	body_parts_inherent = FEET|LEGS
-	armor = list("blunt" = 90, "slash" = 90, "stab" = 50, "piercing" = 20, "fire" = 0, "acid" = 0)
-	prevent_crits = list(BCLASS_CUT, BCLASS_CHOP, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST)
+	armor = ARMOR_PADDED
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
 	sewrepair = FALSE

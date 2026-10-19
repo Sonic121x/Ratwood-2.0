@@ -75,19 +75,19 @@
 		return ""
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_L_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NOSE)
 			return "beak"
 		if(BODY_ZONE_PRECISE_MOUTH)
 			return "beak"
 		if(BODY_ZONE_PRECISE_SKULL)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_EARS)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NECK)
-			return "neck"
+			return "脖子"
 		if(BODY_ZONE_PRECISE_L_HAND)
 			return "wing"
 		if(BODY_ZONE_PRECISE_R_HAND)
@@ -97,7 +97,7 @@
 		if(BODY_ZONE_PRECISE_R_FOOT)
 			return "leg"
 		if(BODY_ZONE_HEAD)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_R_LEG)
 			return "leg"
 		if(BODY_ZONE_L_LEG)
@@ -125,7 +125,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/rogue/chicken/Life()
 	..()
-	if(!stat && (production > 29) && egg_type && isturf(loc) && !enemies.len)
+	if(!stat && (production > 29) && egg_type && isturf(loc) && !LAZYLEN(enemies))
 		testing("laying egg with [production] production")
 		if(locate(/obj/structure/fluff/nest) in loc)
 			visible_message(span_alertalien("[src] [pick(layMessage)]"))

@@ -37,6 +37,7 @@
 #define TRAIT_MAGEARMOR "魔法障壁"
 #define TRAIT_DECEIVING_MEEKNESS "伪弱藏锋"
 #define TRAIT_CRITICAL_RESISTANCE "重创抗性"
+#define TRAIT_CRIT_THRESHOLD "NPC Respect Crit Threshold"
 #define TRAIT_JOURNEYS_END "旅程终点"
 #define TRAIT_BLOOD_RESISTANCE "血稠" //50% less bleeding
 #define TRAIT_CRITICAL_WEAKNESS "重创弱性"
@@ -118,6 +119,7 @@
 #define TRAIT_DREAMWALKER "梦行者"
 #define TRAIT_PONYGIRL_RIDEABLE "坐骑" //riding
 #define TRAIT_BLACKLEG	"黑腿" //Rig coin flips and dice. Fluvian exclusive.
+#define TRAIT_BEWINGED "有翼" // gives u +1 to jump. I like to add & remove this via organ.
 #define TRAIT_DEATHBYSNUSNU "床榻摧折者" //What do you think? Pelvis crushing and increased pain.
 #define TRAIT_HUMEN_INGENUITY "人类巧思"//25% cheaper sleep levels.
 #define TRAIT_JACKOFALLTRADES "万事通"	//Reduces skill up cost
@@ -336,10 +338,10 @@
 #define TRAIT_MONK_ROBE "圣袍"
 #define TRAIT_BLACKOAK "血脉视野"
 #define TRAIT_VENOMOUS "毒腺"
-#define TRAIT_OVERTHERETIC "显露异端" //Applied on someone who has rites buffs. Armour, rituos, etc.
+#define TRAIT_OVERTHERETIC "显露异端"//Applied on someone who has rites buffs. Armour, rituos, etc.
 #define TRAIT_SPELL_DISPERSION "屏障离散"
 #define TRAIT_CONVICTION "坚定信念" //Can hear Tennite prayers. Praying heals and provides nutrition.
-#define TRAIT_STANDARD_BEARER "执旗官" //Can use the keep's standard to provide buffs and rally the retinue.
+#define TRAIT_STANDARD_BEARER "执旗官"//Can use the keep's standard to provide buffs and rally the retinue.
 #define TRAIT_WHITE_STAG "白鹿庇佑"
 
 // Economic Roles Traits
@@ -633,6 +635,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_COMBAT_AWARE = span_notice("我敏锐的感官与直觉，让我在战斗中也能轻松注意到重要细节。"),
 	TRAIT_DREAMWALKER = span_warning("我同时行走于梦境与现实之间。我的心智正一点点磨损，但我所见终将化为真实。"),
 	TRAIT_BLACKLEG = span_warning("我的族裔与赛利克斯天生相连。这让我能在掷硬币与骰子时稍稍偏转命运，令结果向我倾斜。"),
+	TRAIT_BEWINGED = span_notice("我在跳跃时振动双翼，因此能够跳得更远！"),
 	TRAIT_OVERTHERETIC = span_bloody("我已经亮出了自己的底牌。如今圣地反倒成了我的克星。"),
 	TRAIT_DEATHBYSNUSNU = "只要我有心，我在床笫之间便会是个凶暴的伴侣，足以一并折断对方的骨盆与意志。",
 	TRAIT_HUMEN_INGENUITY = span_notice("和我的大多数同胞一样，我受到了知识的眷顾。学习对我来说更为轻松。"),

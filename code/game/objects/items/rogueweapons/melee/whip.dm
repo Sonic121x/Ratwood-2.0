@@ -39,7 +39,7 @@
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	recovery = 7
-	penfactor = 30
+	penfactor = PEN_LIGHT
 	reach = 3
 	icon_state = "inlash"
 	item_d_type = "slash"
@@ -53,7 +53,7 @@
 	chargetime = 0
 	recovery = 10
 	damfactor = 1.1
-	penfactor = 20
+	penfactor = PEN_LIGHT
 	reach = 2
 	icon_state = "incrack"
 	item_d_type = "slash"
@@ -67,7 +67,7 @@
 	chargetime = 0
 	recovery = 5
 	damfactor = 1.2							//No range, gets bonus damage - using this even on weak SHOULD let you get perma-scars then.
-	penfactor = BLUNT_DEFAULT_PENFACTOR		//No pen cus punishment intent.
+	penfactor = PEN_NONE		//No pen cus punishment intent.
 	reach = 1								//No range, cus not meant to be a flat-out combat intent.
 	icon_state = "inpunish"
 	item_d_type = "slash"
@@ -80,7 +80,7 @@
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
 	recovery = 7
-	penfactor = 30 // Total AP potential of 53-55, discounting strength bonuses. Will likely penetrate non-slash resistant light armor, but fail to chunk through maille and plate.
+	penfactor = PEN_MEDIUM // Total AP potential of 53-55, discounting strength bonuses. Will likely penetrate non-slash resistant light armor, but fail to chunk through maille and plate.
 	reach = 3
 	icon_state = "inlash"
 	item_d_type = "slash"
@@ -89,7 +89,7 @@
 /datum/intent/whip/crack/blunt
 	name = "钝击"
 	blade_class = BCLASS_BLUNT
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	recovery = 6
 	reach = 2			//Less range than a normal whip by 1 compared to crack.
 	icon_state = "instrike"
@@ -233,6 +233,7 @@
 	reach = 3
 	icon_state = "inlash"
 	item_d_type = "slash"
+	no_early_release = TRUE
 
 /datum/intent/whip/lash/urumi/heavy
 	name = "重型软剑鞭挞"//i'm a hack
@@ -271,6 +272,7 @@
 	reach = 2
 	icon_state = "incrack"
 	item_d_type = "slash"
+	no_early_release = TRUE
 
 /datum/intent/whip/thrust // elden ring nonsense, but cool
 	name = "软剑突刺"
@@ -287,6 +289,7 @@
 	item_d_type = "stab"
 	effective_range = 3
 	effective_range_type = EFF_RANGE_EXACT
+	no_early_release = TRUE
 
 /datum/intent/whip/thrust/heavy // elden ring nonsense, but cool
 	name = "软剑突刺"
@@ -364,8 +367,8 @@
 
 /obj/item/rogueweapon/whip/urumi/spider
 	name = "卓尔软剑"
-	desc = "两条泛着幽暗微光的柔韧剑刃，从缠着一小片蛛丝的鎏金剑柄向外盘卷延伸。 \
-	带护手的剑柄揭示了这件武器的残酷用途：无论以刃斩击，还是以柄重击，都要让卓尔的敌人屈膝倒地。"
+	desc = "两条泛着幽暗微光的柔韧剑刃，从缠着一小片蛛丝的鎏金剑柄向外盘卷延伸。  带护手的剑 \
+	柄揭示了这件武器的残酷用途：无论以刃斩击，还是以柄重击，都要让卓尔的敌人屈膝倒地。"
 	icon_state = "spider_urumi"
 	force = 31//+1, same as spider whip
 	minstr = 10

@@ -357,7 +357,7 @@ GLOBAL_LIST_EMPTY(instrument_band_lobbies)
 				soundloop.volume = clamp(curvol, 10, 100)
 				soundloop.repeat_sound = loop_enabled
 				if(!soundloop.start(user))
-					to_chat(user, span_warning("无法演奏，当前没有可用的声音通道。请稍后再试。"))
+					to_chat(user, span_warning("无法演奏：没有可用的音频通道，请稍后重试。"))
 					return
 				playing = TRUE
 				user.apply_status_effect(/datum/status_effect/buff/playing_music, stressevent, note_color)
@@ -477,7 +477,7 @@ GLOBAL_LIST_EMPTY(instrument_band_lobbies)
 				soundloop.volume = clamp(curvol, 10, 100)
 				soundloop.repeat_sound = loop_enabled
 				if(!soundloop.start(user))
-					to_chat(user, span_warning("无法播放，当前没有可用音频通道。稍后再试。"))
+					to_chat(user, span_warning("无法演奏：没有可用的音频通道，请稍后重试。"))
 					return
 				playing = TRUE
 				user.apply_status_effect(/datum/status_effect/buff/playing_music, stressevent, note_color)
@@ -789,7 +789,7 @@ GLOBAL_LIST_EMPTY(instrument_band_lobbies)
 	force = 15
 	force_wielded = 35
 	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, SPEAR_BASH)
-	gripped_intents = list(/datum/intent/axe/cut/battle/greataxe, /datum/intent/axe/chop/battle/greataxe, SPEAR_BASH)
+	gripped_intents = list(/datum/intent/axe/cut/long, /datum/intent/axe/chop/long, SPEAR_BASH)
 	associated_skill = /datum/skill/combat/axes
 	song_list = list("安息" = 'sound/music/instruments/ztrato (1).ogg',
 	"雷霆" = 'sound/music/instruments/ztrato (2).ogg',

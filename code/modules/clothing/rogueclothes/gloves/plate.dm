@@ -3,7 +3,6 @@
 	desc = "以钢材制成的板甲护手。为双手提供全面而可靠的防护。"
 	icon_state = "gauntlets"
 	armor = ARMOR_PLATE
-	prevent_crits = list(BCLASS_CHOP, BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
 	resistance_flags = FIRE_PROOF
 	blocksound = PLATEHIT
 	max_integrity = ARMOR_INT_SIDE_STEEL
@@ -35,6 +34,9 @@
 	desc = "抛光的吉尔布兰兹机件精密相连，包覆张开的双手。'怜悯'与'纯真'不过是愚昧者高举的辞藻; 无须愧疚地洒下他们的血吧，好让世界得以照她的形象重铸。"
 	icon_state = "agauntlets"
 	smeltresult = /obj/item/ingot/aaslag
+	chunkcolor = "#532e25"
+	material_category = ARMOR_MAT_PLATE
+	material_category = ARMOR_MAT_PLATE
 
 /obj/item/clothing/gloves/roguetown/plate/ancient/decrepit
 	name = "破败板甲护手"
@@ -48,7 +50,7 @@
 	name = "凶暴护手"
 	desc = "承载着这个世界原动力, 暴力的板甲护手。"
 	max_integrity = ARMOR_INT_SIDE_ANTAG
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
 	icon_state = "graggarplategloves"
 
 /obj/item/clothing/gloves/roguetown/plate/graggar/Initialize(mapload)
@@ -60,7 +62,7 @@
 	desc = "多少人曾把性命贱卖，"
 	icon_state = "matthiosgloves"
 	max_integrity = ARMOR_INT_SIDE_ANTAG
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
 
 /obj/item/clothing/gloves/roguetown/plate/matthios/Initialize(mapload)
 	. = ..()
@@ -78,7 +80,9 @@
 	desc = "<font color='A50021'><i>「看看祂的杰作吧，尔等强者，然后绝望！」</i></font>"
 	icon_state = "zizogauntlets"
 	max_integrity = ARMOR_INT_SIDE_ANTAG
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
+	chunkcolor = "#363030"
+	material_category = ARMOR_MAT_PLATE
 
 /obj/item/clothing/gloves/roguetown/plate/zizo/Initialize(mapload)
 	. = ..()
@@ -95,7 +99,7 @@
 	desc = "<font color='A50021'><i>「看看祂的杰作吧，尔等强者，然后绝望！」</i></font>"
 	armor_class = ARMOR_CLASS_MEDIUM
 	max_integrity = ARMOR_INT_SIDE_ANTAG
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
 	icon_state = "zizoplategauntlets_med"
 
 /obj/item/clothing/gloves/roguetown/plate/medium/zizo/Initialize(mapload)

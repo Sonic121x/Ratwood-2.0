@@ -376,7 +376,7 @@
 	icon_state = "arrow_proj"
 	damage = 20
 	damage_type = BRUTE
-	armor_penetration = 10
+	armor_penetration = PEN_LIGHT
 	accuracy = 60
 	npc_simple_damage_mult = 1.2
 	embedchance = 0

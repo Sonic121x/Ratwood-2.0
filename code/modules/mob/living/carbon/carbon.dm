@@ -318,7 +318,7 @@
 	var/dat = {"
 	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><HR>
 	<B><FONT size=3>[name]</FONT></B>
-	<HR>
+	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><HR>
 	<BR><B>头部：</B> <A href='?src=[REF(src)];item=[SLOT_HEAD]'>[(head && !(head.item_flags & ABSTRACT)) ? head.name : "无"]</A>"}
 
 	var/list/obscured = check_obscured_slots()
@@ -807,7 +807,6 @@
 	if(status_flags & GODMODE)
 		return
 	var/total_burn	= 0
-//	var/total_brute	= 0
 	var/total_stamina = 0
 	var/total_tox = getToxLoss()
 	var/total_oxy = getOxyLoss()
@@ -1133,6 +1132,20 @@
 			cure_blind(UNCONSCIOUS_BLIND)
 			return
 		if(((blood_volume in -INFINITY to BLOOD_VOLUME_SURVIVE) && !HAS_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE)) || IsUnconscious() || IsSleeping() || getOxyLoss() > 75 || (HAS_TRAIT(src, TRAIT_DEATHCOMA)) || (health <= HEALTH_THRESHOLD_FULLCRIT && !HAS_TRAIT(src, TRAIT_NOHARDCRIT)))
+			if(stat != UNCONSCIOUS) // Transition into hardcrit — announce once
+				if((blood_volume in -INFINITY to BLOOD_VOLUME_SURVIVE) && !HAS_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE))
+					visible_message(span_danger("<b>[src]倒了下去，皮肤惨白如纸！</b>"), \
+						span_userdanger("我的血……已经流干了。我感觉不到四肢了。"))
+				else if(getOxyLoss() > 75)
+					visible_message(span_danger("<b>[src]倒了下去，嘴唇一片青紫！</b>"), \
+						span_userdanger("我无法呼吸……整个世界都暗了下来。"))
+				else if(health <= HEALTH_THRESHOLD_FULLCRIT)
+					if(getBruteLoss() >= getFireLoss())
+						visible_message(span_danger("<b>[src]倒了下去，浑身是血，骨肉破碎！</b>"), \
+							span_userdanger("我的骨头全碎了……我撑不下去了。"))
+					else
+						visible_message(span_danger("<b>[src]倒了下去，焦黑的血肉仍冒着烟！</b>"), \
+							span_userdanger("灼痛……已经夺走了我的一切。"))
 			stat = UNCONSCIOUS
 			cure_holdbreath() // In case you passed out from holding breathe
 			if(ishuman(src))

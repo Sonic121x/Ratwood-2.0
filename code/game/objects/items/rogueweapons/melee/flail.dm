@@ -31,7 +31,7 @@
 	attack_verb = list("打击", "击打")
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
 	chargetime = 0
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	icon_state = "instrike"
 	item_d_type = "blunt"
 	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
@@ -52,7 +52,7 @@
 	chargetime = 0
 	recovery = 15
 	damfactor = 1.2 // Extra damage. Flail babe flail.
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	clickcd = CLICK_CD_CHARGED // Higher delay for a powerful ranged attack
 	reach = 2
 	icon_state = "instrike"
@@ -123,7 +123,7 @@
 	attack_verb = list("横扫", "横抽")
 	animname = "strike"
 	hitsound = list('sound/combat/hits/blunt/flailhit.ogg')
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	damfactor = 1.5
 	item_d_type = "blunt"
 	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
@@ -368,8 +368,8 @@
 
 /obj/item/rogueweapon/flail/peasantwarflail/stalker
 	name = "卓尔尖刺巨型连枷"
-	desc = "一颗装有利刃与尖刺的暗色秘银球，悬挂在带刺的链条末端。对于体格更为健壮的卓尔骑兵而言， \
-	没有什么武器能比这些可怖的巨型连枷更具威力。尖刺很容易挂满血肉；这正是刻意设计的效果。"
+	desc = "一颗装有利刃与尖刺的暗色秘银球，悬挂在带刺的链条末端。对于体格更为健壮的卓尔骑兵而言，  \
+	 没有什么武器能比这些可怖的巨型连枷更具威力。尖刺很容易挂满血肉；这正是刻意设计的效果。"
 	icon = 'icons/roguetown/weapons/blunt64.dmi'
 	icon_state = "drowgreatflail"
 	possible_item_intents = list(/datum/intent/flail/strike, /datum/intent/dagger/sucker_punch)//always be punching
@@ -385,8 +385,8 @@
 
 /obj/item/rogueweapon/flail/peasantwarflail/stalker/alt
 	name = "卓尔巨型连枷"
-	desc = "一颗暗色秘银球，悬挂在带刺的链条末端。对于体格更为健壮的卓尔骑兵而言， \
-	没有什么武器能比这些可怖的巨型连枷更具威力。"
+	desc = "一颗暗色秘银球，悬挂在带刺的链条末端。对于体格更为健壮的卓尔 \
+	骑兵而言，  没有什么武器能比这些可怖的巨型连枷更具威力。"
 	icon_state = "drowgreatflailb"
 	possible_item_intents = list(/datum/intent/flail/strike/matthiosflail, /datum/intent/dagger/sucker_punch)//we use the better intents here since it's fully focused on blunt damage
 	gripped_intents = list(/datum/intent/flail/strike/matthiosflail, /datum/intent/mace/smash/flail/matthiosflail, /datum/intent/flail/sweep)
@@ -408,8 +408,8 @@
 	name = "黑钢连枷"
 	icon_state = "bs_flail"
 	possible_item_intents = list(/datum/intent/flail/strike, /datum/intent/mace/smash/flailrange, /datum/intent/flail/sweep)
-	desc = "一柄优雅的黑钢连枷。其沉重分量使其在击退板甲对手方面无可匹敌，只要使用者 \
-	有足够的耐力挥动其合金链身。"
+	desc = "一柄优雅的黑钢连枷。其沉重分量使其在击退板甲对手方面 \
+	无可匹敌，只要使用者  有足够的耐力挥动其合金链身。"
 	smeltresult = /obj/item/ingot/blacksteel
 	max_integrity = 250
 	minstr = 12

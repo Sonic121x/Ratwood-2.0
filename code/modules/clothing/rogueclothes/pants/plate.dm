@@ -7,7 +7,6 @@
 //	adjustable = CAN_CADJUST
 	sewrepair = FALSE
 	armor = ARMOR_PLATE
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	blocksound = PLATEHIT
 	max_integrity = ARMOR_INT_LEG_STEEL_PLATE
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
@@ -20,7 +19,6 @@
 	smelt_bar_num = 2
 	resistance_flags = FIRE_PROOF
 	armor_class = ARMOR_CLASS_HEAVY
-	peel_threshold = 4
 
 /obj/item/clothing/under/roguetown/platelegs/Initialize(mapload)
 	. = ..()
@@ -41,6 +39,8 @@
 	desc = "抛光的吉尔布兰兹甲片层叠于丝质腿铠之上。唯有少数拥抱不死之人得以在齐佐升格时幸存；如今，他们统御着那些奉她之名进军、誓要撕裂造物的不死军团。"
 	icon_state = "ancientplate_legs"
 	smeltresult = /obj/item/ingot/aaslag
+	chunkcolor = "#532e25"
+	material_category = ARMOR_MAT_PLATE
 
 /obj/item/clothing/under/roguetown/platelegs/ancient/decrepit
 	name = "残破板甲腿铠"
@@ -53,7 +53,7 @@
 	name = "凶暴护腿"
 	desc = "这副板甲腿铠涌动着推动世界运转的原初暴力。"
 	icon_state = "graggarplatelegs"
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
 	max_integrity = ARMOR_INT_LEG_ANTAG
 
 /obj/item/clothing/under/roguetown/platelegs/graggar/Initialize(mapload)
@@ -65,8 +65,7 @@
 	name = "镀金护腿"
 	desc = "且看我这副外在之貌："
 	icon_state = "matthioslegs"
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH, BCLASS_PICK)
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
 
 /obj/item/clothing/under/roguetown/platelegs/matthios/Initialize(mapload)
 	. = ..()
@@ -85,9 +84,8 @@
 	name = "阿凡泰因下装"
 	desc = "<font color='A50021'>旁侧再无一物留存。那具庞大残骸的废墟四周，唯有空旷与荒芜。</font>"
 	icon_state = "zizocloth"
-	armor = ARMOR_ASCENDANT
-	peel_threshold = 5
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH, BCLASS_PICK)
+	armor = ARMOR_PLATE_BSTEEL
+	chunkcolor = "#363030"
 
 /obj/item/clothing/under/roguetown/platelegs/zizo/Initialize(mapload)
 	. = ..()
@@ -108,11 +106,10 @@
 	name = "阿凡泰因法衣"
 	desc = "<font color='A50021'>旁侧再无一物留存。那具庞大残骸的废墟四周，唯有空旷与荒芜。</font>"
 	icon_state = "zizoplatelegs_med"
-	armor = ARMOR_ASCENDANT
+	armor = ARMOR_PLATE_BSTEEL
 	max_integrity = ARMOR_INT_LEG_ANTAG
-	peel_threshold = 5
 	armor_class = ARMOR_CLASS_MEDIUM
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT, BCLASS_SMASH, BCLASS_PICK)
+	chunkcolor = "#363030"
 
 /obj/item/clothing/under/roguetown/platelegs/medium/zizo/Initialize(mapload)
 	. = ..()

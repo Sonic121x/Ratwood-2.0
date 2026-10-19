@@ -6,7 +6,6 @@
 	item_state = "chain_legs"
 	sewrepair = FALSE
 	armor = ARMOR_MAILLE
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	blocksound = CHAINHIT
 	max_integrity = ARMOR_INT_LEG_STEEL_CHAIN
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
@@ -32,7 +31,6 @@
 	item_state = "splintlegs"
 	max_integrity = ARMOR_INT_LEG_BRIGANDINE
 	armor = ARMOR_BRIGANDINE
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
 	blocksound = SOFTHIT
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
 	pickup_sound = 'sound/foley/equip/equip_armor_chain.ogg'
@@ -59,8 +57,7 @@
 	icon_state = "ironsplintlegs"
 	item_state = "ironsplintlegs"
 	max_integrity = ARMOR_INT_LEG_IRON_CHAIN
-	armor = ARMOR_LEATHER_STUDDED
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_CHOP, BCLASS_BLUNT)
+	armor = ARMOR_LEATHER
 	blocksound = SOFTHIT
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/iron
@@ -115,6 +112,8 @@
 	sleevetype = "achainkilt"
 	smeltresult = /obj/item/ingot/aaslag
 	anvilrepair = /datum/skill/craft/armorsmithing
+	chunkcolor = "#532e25"
+	material_category = ARMOR_MAT_CHAINMAIL
 
 /obj/item/clothing/under/roguetown/chainlegs/kilt/ancient/decrepit
 	name = "残破锁甲裙铠"
@@ -150,7 +149,7 @@
 	desc = "以钢板制成的腿甲，对钝击和投射物有额外防护。这一套是专门为队长量身打造的。"
 	icon_state = "capplateleg"
 	item_state = "capplateleg"
-	armor = ARMOR_CUIRASS // Unique armor, uniquely good value coverage.
+	armor = ARMOR_PLATE // Unique armor, uniquely good value coverage.
 	max_integrity = ARMOR_INT_LEG_STEEL_PLATE // Integrity of plate chausses.
 	armor_class = ARMOR_CLASS_HEAVY
 	icon = 'icons/roguetown/clothing/special/captain.dmi'

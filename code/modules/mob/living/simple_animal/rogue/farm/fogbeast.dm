@@ -163,19 +163,19 @@ GLOBAL_LIST_INIT(valid_fogbeast_colors, list("White" = COLOR_WHITE, "Gray" = COL
 		return ""
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_L_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NOSE)
 			return "snout"
 		if(BODY_ZONE_PRECISE_MOUTH)
 			return "snout"
 		if(BODY_ZONE_PRECISE_SKULL)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_EARS)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NECK)
-			return "neck"
+			return "脖子"
 		if(BODY_ZONE_PRECISE_L_HAND)
 			return "foreleg"
 		if(BODY_ZONE_PRECISE_R_HAND)
@@ -185,9 +185,9 @@ GLOBAL_LIST_INIT(valid_fogbeast_colors, list("White" = COLOR_WHITE, "Gray" = COL
 		if(BODY_ZONE_PRECISE_R_FOOT)
 			return "leg"
 		if(BODY_ZONE_PRECISE_STOMACH)
-			return "stomach"
+			return "腹部"
 		if(BODY_ZONE_HEAD)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_R_LEG)
 			return "leg"
 		if(BODY_ZONE_L_LEG)
@@ -283,7 +283,7 @@ GLOBAL_LIST_INIT(valid_fogbeast_colors, list("White" = COLOR_WHITE, "Gray" = COL
 	blade_class = BCLASS_BLUNT
 	hitsound = "punch_hard"
 	chargetime = 0
-	penfactor = 10
+	penfactor = PEN_NONE
 	swingdelay = 0
 	item_d_type = "blunt"
 	clickcd = SAIGA_ATTACK_SPEED

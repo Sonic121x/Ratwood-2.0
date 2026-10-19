@@ -54,7 +54,7 @@
 // /obj/item/clothing/suit/roguetown/armor/chainmail/janissary //SPRITE ALREADY USED BY ATGERVI STUFF!
 // 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
 // 	name = "Janissary Mail"
-// 	desc = "A longer steel maille that protects the legs, still doesn't protect against arrows though."
+// 	desc = "更长的钢制锁子甲，连腿部也能保护，不过依然挡不住箭矢。"
 // 	body_parts_covered = COVERAGE_FULL
 // 	icon_state = "atgervi_raider_mail"
 // 	item_state = "atgervi_raider_mail"
@@ -103,7 +103,7 @@
 
 // /obj/item/clothing/head/roguetown/helmet/janissary
 // 	name = "Janissaries Helm"
-// 	desc = "A helmet with too much style."
+// 	desc = "一顶风格过多的头盔。"
 // 	icon_state = "atgervi_raider"
 // 	item_state = "atgervi_raider"
 // 	mob_overlay_icon = 'modular_deserttown/icons/clothing/onmob/head32x48.dmi'
@@ -749,8 +749,7 @@
 	icon_state = "shalal"//change when I get around to it
 	item_state = "shalal"
 	color = "#d4c7bf"
-	armor = ARMOR_LEATHER_GOOD
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_TWIST)	//Same as gloves
+	armor = ARMOR_LEATHER
 	max_integrity = ARMOR_INT_SIDE_HARDLEATHER
 
 	

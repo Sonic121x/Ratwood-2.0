@@ -1399,7 +1399,7 @@
 	var/weapons_choice = input(H, "选择你的武器。", "来自那位女士的兵刃") as anything in weapons
 	switch(weapons_choice)
 		if("阿凡泰因大剑")
-			r_hand = /obj/item/rogueweapon/greatsword/zizo
+			r_hand = /obj/item/rogueweapon/greatsword/avantyne
 			l_hand = /obj/item/rogueweapon/scabbard/gwstrap
 		if("阿凡泰因长剑")
 			r_hand = /obj/item/rogueweapon/sword/long/zizo
@@ -1487,7 +1487,7 @@
 			user.say("黄金与白银，供祂享用！！")
 			if(!do_after(user, 5 SECONDS))
 				return
-			user.say("零钱也好，百枚也罢，成千上万之财，交易者皆来者不拒！！")
+			user.say("十枚、百枚、千枚钱币，交易者将其尽数吞食！！")
 			if(!do_after(user, 5 SECONDS))
 				return
 			user.say("以兵刃索取，以兵刃夺取！！")
@@ -1503,7 +1503,7 @@
 			user.say("窗扉已开，交易既成！！")
 			if(!do_after(user, 5 SECONDS))
 				return
-			user.say("十枚也好，百枚也罢，成千上万之财，交易者皆来者不拒！！")
+			user.say("十枚、百枚、千枚钱币，交易者将其尽数吞食！！")
 			if(!do_after(user, 5 SECONDS))
 				return
 			user.say("交易者啊，尽情吞吃这头贪婪的肥猪吧！！")
@@ -1932,11 +1932,30 @@
 			for(var/mob/living/carbon/human/persononrune in onrune)
 				if(HAS_TRAIT(persononrune, TRAIT_DEPRAVED))
 					folksonrune += persononrune
-			var/target = input(user, "选择一名承受者") as null|anything in folksonrune
+			var/mob/living/carbon/human/target = input(user, "选择宿主") as null|anything in folksonrune
 			if(!target)
+				return
+			if(HAS_TRAIT(target, TRAIT_NUDIST))
+				to_chat(user, "目标是裸体主义者，无法穿戴护甲！")
 				return
 			if(!do_after(user, 5 SECONDS))
 				return
+			var/list/armor_options = list(
+				"巴奥莎胸甲" = image(icon = 'icons/roguetown/clothing/special/baotha.dmi', icon_state = "baothachest"),
+				"蜜惑板甲" = image(icon = 'icons/roguetown/clothing/armor.dmi', icon_state = "baothaplate"),
+			)
+			var/armor_choice = show_radial_menu(user, src, armor_options, require_near = TRUE, tooltips = TRUE)
+			if(!armor_choice)
+				return
+
+			var/list/weapon_options = list(
+				"完美苦痛" = image(icon = 'icons/roguetown/weapons/whips32.dmi', icon_state = "baotha_whip"),
+				"蜜惑剑矛" = image(icon = 'icons/roguetown/weapons/polearms64.dmi', icon_state = "swordstaff"),
+			)
+			var/weapon_choice = show_radial_menu(user, src, weapon_options, require_near = TRUE, tooltips = TRUE)
+			if(!weapon_choice)
+				weapon_choice = "完美苦痛"
+
 			user.say("女神，我的女神……")
 			if(!do_after(user, 5 SECONDS))
 				return
@@ -1946,10 +1965,10 @@
 			user.say("让所有注视我的人见到你的美丽，并为之绝望！！")
 			if(!do_after(user, 5 SECONDS))
 				return
-			icon_state = "baotha_active"
+			icon_state = "baotha_chalky"
 			user.apply_status_effect(/datum/status_effect/debuff/ritesexpended)
-			baothaarmor(target)
-			addtimer(VARSET_CALLBACK(src, icon_state, "baotha_active"), 120)
+			baothaarmor(target, armor_choice, weapon_choice)
+			addtimer(VARSET_CALLBACK(src, icon_state, "pestra_chalky"), 120)
 
 /obj/structure/ritualcircle/baotha/proc/baothaconversion(mob/living/carbon/human/target)
 	if(!target || QDELETED(target) || target.loc != loc)
@@ -2004,10 +2023,30 @@
 		target.apply_damage(100, BRUTE, BODY_ZONE_CHEST)
 		loc.visible_message(span_cult("[target]胆敢违抗巴奥莎，在符文上剧烈挣扎、扭动。"))
 
-/obj/structure/ritualcircle/baotha/proc/baothaarmor(mob/living/carbon/human/target)
+/obj/structure/ritualcircle/baotha/proc/baothaarmor(mob/living/carbon/human/target, armor_choice, weapon_choice)
 	if(!HAS_TRAIT(target, TRAIT_DEPRAVED))
 		loc.visible_message(span_cult("仪式拒绝了未蒙祂宠爱之人"))
 		return
+	if(!armor_choice)
+		armor_choice = "巴奥莎胸甲"
+	switch(armor_choice)
+		if("巴奥莎胸甲")
+			target.equipOutfit(/datum/outfit/job/roguetown/baothaarmor)	
+		if("蜜惑板甲")
+			target.equipOutfit(/datum/outfit/job/roguetown/baothalightarmor)
+	if(!weapon_choice)
+		weapon_choice = "完美苦痛"
+	switch(weapon_choice)
+		if("完美苦痛")
+			target.put_in_hands(new /obj/item/rogueweapon/whip/baotha(target), TRUE)
+			if(HAS_TRAIT(target, TRAIT_RITUALIST))
+				target.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT)
+				target.adjust_skillrank_down_to(/datum/skill/combat/polearms, SKILL_LEVEL_APPRENTICE)
+		if("蜜惑剑矛")
+			target.put_in_hands(new /obj/item/rogueweapon/spear/partizan/baotha(target), TRUE)
+			if(HAS_TRAIT(target, TRAIT_RITUALIST))
+				target.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT)
+				target.adjust_skillrank_down_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_APPRENTICE)
 	target.Stun(60)
 	target.Knockdown(60)
 	to_chat(target, span_userdanger("美妙的痛苦！"))
@@ -2018,8 +2057,15 @@
 		target.Paralyze(120)
 	else
 		loc.visible_message(span_cult("巨钩从符文中伸出，刺入[target]的脚踝，将其拖到符文上，又刺入其手腕。灵辉从胸口被扯出，重新凝成护甲。 "))
-	addtimer(CALLBACK(src, PROC_REF(baothaarmor_stage2), target), 20)
-//TIME FOR THE ONE. Exclusive to ABSOLVERS NO LONGER!. Allows conversion, deconversion and removal of rite armour. Only LUX FREAKS aka absolver and sigmata have access to the deconversion and stripping.
+	spawn(20)
+		playsound(loc, 'sound/combat/hits/onmetal/grille (2).ogg', 50)
+		target.apply_status_effect(/datum/status_effect/debuff/devitalised)
+		if(!HAS_TRAIT(target, TRAIT_OVERTHERETIC))
+			ADD_TRAIT(target, TRAIT_OVERTHERETIC, TRAIT_MIRACLE)
+		spawn(40)
+			to_chat(target, span_purple("所有人都会爱上你，并为之绝望。"))
+
+//TIME FOR THE ONE. Exclusive to ABSOLVERS. Allowing conversion, deconversion and removal of rite armour.
 //'Lesser' expenditure allows us to have a stopgap to this, while not entirely making poultice farming useless.
 
 

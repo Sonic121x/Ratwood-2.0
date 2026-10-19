@@ -3,7 +3,6 @@
 	desc = "由相扣钢环制成的护手。除了箭矢外，对常见兵器都有不错的防护。"
 	icon_state = "cgloves"
 	armor = ARMOR_MAILLE
-	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT)
 	resistance_flags = FIRE_PROOF
 	blocksound = CHAINHIT
 	max_integrity = ARMOR_INT_SIDE_STEEL
@@ -26,6 +25,7 @@
 	desc = "抛光的吉尔布兰兹环精巧相连，织成连指护手。那条丝线已经断裂，再也无法愈合; 齐佐的升格已注定如此。在她门徒之手中，阻碍世界得救的最后障碍将被拆毁: 生命。"
 	icon_state = "acgloves"
 	smeltresult = /obj/item/ingot/aaslag
+	chunkcolor = "#532e25"
 
 /obj/item/clothing/gloves/roguetown/chain/ancient/decrepit
 	name = "破败锁子护手"
@@ -75,8 +75,8 @@
 /obj/item/clothing/gloves/roguetown/chain/bronze
 	icon_state = "bcgloves"
 	name = "青铜锁甲护手"
-	desc = "以环环相扣的青铜环编成的连指护手。它能让战士自如地完成\
-	几乎任何动作，无论是给长弓上弦，还是挥舞长剑。"
+	desc = "以环环相扣的青铜环编成的连指护手。它能让战士自如地完 \
+	成 几乎任何动作，无论是给长弓上弦，还是挥舞长剑。"
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/bronze
 	max_integrity = ARMOR_INT_SIDE_BRONZE

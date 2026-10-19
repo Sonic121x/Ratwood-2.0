@@ -4,7 +4,7 @@
 	blade_class = BCLASS_BLUNT
 	icon_state = "inbash"
 	attack_verb = list("猛砸", "打击")
-	penfactor = BLUNT_DEFAULT_PENFACTOR
+	penfactor = PEN_NONE
 	item_d_type = "blunt"
 	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
 	//We want chipping, m'lord.
@@ -274,7 +274,7 @@
 	desc = "铲子在民兵的生涯里始终有其意义。只不过这把长柄战斧如今不再负责挖尸坑，而是负责把尸坑填满。"
 	icon_state = "peasantwaraxe"
 	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
-	gripped_intents = list(/datum/intent/rend/reach, /datum/intent/axe/chop/battle/greataxe, /datum/intent/sword/peel/big, SPEAR_BASH)
+	gripped_intents = list(/datum/intent/rend/reach, /datum/intent/axe/chop/long, SPEAR_BASH)
 	force = 15
 	force_wielded = 25
 	minstr = 10
@@ -289,7 +289,7 @@
 	desc = "“你觉得普赛顿留在天界，是不是也因为祂害怕自己造出的东西？” </br>一把银铲，也许出自某个走投无路的掘墓人之手，被临时改造成了一件长柄兵器。"
 	icon_state = "silvershovelwaraxe"
 	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, SPEAR_BASH) //bash is for nonlethal takedowns, only targets limbs
-	gripped_intents = list(/datum/intent/rend/reach, /datum/intent/axe/chop/battle/greataxe, /datum/intent/sword/peel/big, SPEAR_BASH)
+	gripped_intents = list(/datum/intent/rend/reach, /datum/intent/axe/chop/long, SPEAR_BASH)
 	force = 15
 	force_wielded = 25
 	minstr = 11
@@ -542,7 +542,7 @@
 	desc = "这把猎剑被恰如其分地称作“农夫的弯刀”，其刃身经过重新回火，专为猎杀最危险的猎物而生。那布满锯齿的刃缘正适合撕开血肉与锁甲。"
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/strike)
 	icon_state = "maciejowski"
-	gripped_intents = list(/datum/intent/rend, /datum/intent/sword/chop/militia, /datum/intent/sword/peel, /datum/intent/sword/strike)
+	gripped_intents = list(/datum/intent/rend, /datum/intent/sword/chop/militia, /datum/intent/sword/strike)
 	force = 18
 	force_wielded = 25
 	anvilrepair = /datum/skill/craft/carpentry
@@ -553,7 +553,7 @@
 /obj/item/rogueweapon/sword/falchion/militia/bronze
 	name = "科皮斯"
 	desc = "弯刃刀的远古前身，覆以青铜——可对上迎面送来的躯干，杀伤力丝毫不减。弯曲的握柄紧贴合持握者之手，令其意志能以可怖的力道加诸袭击者乃至大魔君之流。"
-	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/chop/militia, /datum/intent/sword/thrust/long/deep, /datum/intent/sword/strike)//no peel but very fun intents. This little chopper rocks
+	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/chop/militia, /datum/intent/sword/thrust/long/deep, /datum/intent/sword/strike)
 	icon_state = "kopis"
 	sheathe_icon = "kopis"
 	gripped_intents = list(/datum/intent/rend, /datum/intent/sword/chop/militia, /datum/intent/sword/thrust/long/deep, /datum/intent/sword/strike)
@@ -641,7 +641,7 @@
 				"<span class='danger'>好冷……</span>",
 				"<span class='danger'>放了我们吧……求你了……</span>",
 				"<span class='danger'>内克拉……带……我们走……</span>")
-//			H.visible_message("profane dagger whispers, \"[message]\"")
+//			H.visible_message("亵渎匕首低语道：“[message]”")
 			to_chat(M, "亵渎匕首低语道：“[message]”")
 		else
 			var/message = pick(
@@ -656,7 +656,7 @@
 				"<span class='danger'>等等……我是不是认识你？</span>",
 				"<span class='danger'>我还以为你是……我的朋友……</span>",
 				"<span class='danger'>我已经被困在这里多久了……</span>")
-//			H.visible_message("profane dagger whispers, \"[message]\"")
+//			H.visible_message("亵渎匕首低语道：“[message]”")
 			to_chat(M, "亵渎匕首低语道：“[message]”")
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/profane/pre_attack(mob/living/carbon/human/target, mob/living/user = usr, params)
@@ -783,9 +783,9 @@
 //Big ol' flag that they keep to give bonuses, used by the manorguard standard bearer.
 /obj/item/rogueweapon/spear/keep_standard
 	name = "公爵战旗"
-	desc = "本地领主的旗帜，被装在黑钢长枪上，化作致命的战争兵器。 \
-	据说执掌此旗之人会为其家门，以及守护他的人，带来莫大好运。 \
-	<small>枪锋附近有符文微微泛光。这无疑是奥术的征兆。</small>"
+	desc = "本地领主的旗帜，被装在黑钢长枪上，化作致命的战争兵器。  据说执 \
+	掌此旗之人会为其家门，以及守护他的人，带来莫大好运。  <smal \
+	l>枪锋附近有符文微微泛光。这无疑是奥术的征兆。</small>"
 	force = 12//Use this in TWO HANDS.
 	force_wielded = 34//+4. +1 from boar spear.
 	throwforce = 32//It'll be funny. Trust.
@@ -808,16 +808,15 @@
 //At least, when I make them into their own weapon class.
 //May as well make it unique, in some regard, until that point.
 /obj/item/rogueweapon/spear/keep_standard/poleaxe
-	desc = "本地领主的旗帜，被装在长柄战斧上，化作致命的战争兵器。 \
-	据说执掌此旗之人会为其家门，以及守护他的人，带来莫大好运。 \
-	<small>武器顶端附近的符文偶尔会在瞬息之间亮起。这无疑是奥术的征兆。</small>"
+	desc = "本地领主的旗帜，被装在长柄战斧上，化作致命的战争兵器。  据说执掌此旗 \
+	之人会为其家门，以及守护他的人，带来莫大好运。  <small>武器顶 \
+	端附近的符文偶尔会在瞬息之间亮起。这无疑是奥术的征兆。</small>"
 	force_wielded = 30//-4. You know why. Look at the intents.
 	minstr = 12//+1 over the eagle's beak.
 	max_blade_int = 200//+20 over the eagle's beak. -60 from the pike.
 	max_integrity = 260//-40 from parent. No longer blacksteel, but great all the same.
 	smeltresult = /obj/item/ingot/steel
-	gripped_intents = list(/datum/intent/spear/thrust/eaglebeak, /datum/intent/spear/bash/poleaxe, \
-	/datum/intent/axe/cut/battle/greataxe, /datum/intent/axe/chop/battle/greataxe)//You get special intents, you special guy, you...
+	gripped_intents = list(/datum/intent/spear/thrust, /datum/intent/axe/cut/long, /datum/intent/spear/bash/ranged, /datum/intent/mace/smash/eaglebeak) // GET THEM OFF OF ME!!! OOOUGH!!!
 	icon_state = "standard"
 	secondary_tag = TRUE
 
