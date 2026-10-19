@@ -96,7 +96,7 @@
 
 // 不改变护甲检查的签名、参数或返回值，仅为专属投射物补充命中记录。
 // 盾牌拦截、反射和未命中不会进入这次主线护甲检查，因而不能触发流血。
-/mob/living/run_armor_check(def_zone = null, attack_flag = "blunt", absorb_text = null, soften_text = null, armor_penetration, penetrated_text, damage, blade_dulling, peeldivisor, intdamfactor, used_weapon = null)
+/mob/living/run_armor_check(def_zone = null, attack_flag = "blunt", absorb_text = null, soften_text = null, armor_penetration = PEN_NONE, penetrated_text, damage, blade_dulling, intdamfactor, used_weapon = null, pen_info)
 	. = ..()
 	var/obj/projectile/energy/sectumsempra_bolt/bolt = used_weapon
 	if(istype(bolt) && !QDELETED(bolt))
