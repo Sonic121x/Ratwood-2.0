@@ -391,7 +391,7 @@
 	H.swap_rmb_intent(num=1)
 
 /obj/effect/oneway
-	name = "one way effect"
+	name = "单向效果"
 	desc = ""
 	icon = 'icons/effects/mapping_helpers.dmi'
 	icon_state = "field_dir"

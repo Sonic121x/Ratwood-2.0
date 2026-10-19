@@ -156,9 +156,9 @@
 		extradefroll = prob(prob2defend)
 		defender_dualw = TRUE
 
-	var/text = "Roll to parry... [HAS_TRAIT(attacker, TRAIT_DECEIVING_MEEKNESS) ? "???" : prob2defend]%"
+	var/text = "招架判定……[HAS_TRAIT(attacker, TRAIT_DECEIVING_MEEKNESS) ? "???" : prob2defend]%"
 	if(defender_dualw)
-		text += " Twice! Disadvantage! [!HAS_TRAIT(attacker, TRAIT_DECEIVING_MEEKNESS) ? "([(prob2defend / 100) * (prob2defend / 100) * 100]%)" : ""]"
+		text += " 劣势判定，需连续成功两次！[!HAS_TRAIT(attacker, TRAIT_DECEIVING_MEEKNESS) ? "（[(prob2defend / 100) * (prob2defend / 100) * 100]%）" : ""]"
 
 	if(has_status_effect(/datum/status_effect/swingdelay/penalty))
 		prob2defend -= 50
@@ -177,7 +177,7 @@
 				if(intenty.masteritem.wbalance < WBALANCE_NORMAL && attacker.STASTR > src.STASTR) //enemy weapon is heavy, so get a bonus scaling on strdiff
 					stamina_drained = stamina_drained + ( intenty.masteritem.wbalance * ((attacker.STASTR - src.STASTR) * STAM_DRAIN_PER_STR_DIFF_HEAVY_BAL) )
 	else
-		text += span_warning(" The enemy defeated my parry!")
+		text += span_warning(" 敌人突破了我的招架！")
 	if(src.client?.prefs.showrolls)
 		to_chat(src, span_info("[text]"))
 

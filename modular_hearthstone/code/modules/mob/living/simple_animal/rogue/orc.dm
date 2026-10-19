@@ -109,7 +109,7 @@
 	melee_damage_lower = 30
 	melee_damage_upper = 30
 	armor_penetration = PEN_NONE
-	attack_verb_continuous = list("刺击", "slashes", "刺穿")
+	attack_verb_continuous = list("刺击", "挥砍", "刺穿")
 	attack_verb_simple = "刺击"
 	attack_sound = 'sound/blank.ogg'
 	loot = list(/obj/effect/mob_spawn/human/orc/corpse/savageorc,

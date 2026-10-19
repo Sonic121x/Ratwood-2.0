@@ -430,7 +430,7 @@
 
 /*
 /obj/item/clothing/mask/rogue/facemask/prisoner
-	name = "cursed mask"
+	name = "诅咒面具"
 	icon_state = "cursemask"
 	desc = "一副会锁死在头上的铁面具，几乎不可能自行摘下。看起来像是附着了某种邪恶魔法……"
 	body_parts_covered = NONE //So that surgery can be done through the mask.

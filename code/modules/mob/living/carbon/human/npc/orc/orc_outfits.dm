@@ -13,7 +13,7 @@
 
 // Underarmored orc with incomplete protection, bone axe / spear, and slow speed
 /datum/outfit/job/roguetown/orc/npc/footsoldier/pre_equip(mob/living/carbon/human/H)
-	name = "Orc Footsoldier"
+	name = "兽人步兵"
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	if(prob(50))
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/hide

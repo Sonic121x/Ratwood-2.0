@@ -1487,7 +1487,7 @@
 			user.say("黄金与白银，供祂享用！！")
 			if(!do_after(user, 5 SECONDS))
 				return
-			user.say("Pieces Tens, Hundreds, Thousands. The transactor feeds 'pon them all!!")
+			user.say("十枚、百枚、千枚钱币，交易者将其尽数吞食！！")
 			if(!do_after(user, 5 SECONDS))
 				return
 			user.say("以兵刃索取，以兵刃夺取！！")
@@ -1503,7 +1503,7 @@
 			user.say("窗扉已开，交易既成！！")
 			if(!do_after(user, 5 SECONDS))
 				return
-			user.say("Pieces Tens, Hundreds, Thousands. The transactor feeds 'pon them all!!")
+			user.say("十枚、百枚、千枚钱币，交易者将其尽数吞食！！")
 			if(!do_after(user, 5 SECONDS))
 				return
 			user.say("交易者啊，尽情吞吃这头贪婪的肥猪吧！！")
@@ -1932,29 +1932,29 @@
 			for(var/mob/living/carbon/human/persononrune in onrune)
 				if(HAS_TRAIT(persononrune, TRAIT_DEPRAVED))
 					folksonrune += persononrune
-			var/mob/living/carbon/human/target = input(user, "Choose a host") as null|anything in folksonrune
+			var/mob/living/carbon/human/target = input(user, "选择宿主") as null|anything in folksonrune
 			if(!target)
 				return
 			if(HAS_TRAIT(target, TRAIT_NUDIST))
-				to_chat(user, "The target is a nudist and cannot wear armor!")
+				to_chat(user, "目标是裸体主义者，无法穿戴护甲！")
 				return
 			if(!do_after(user, 5 SECONDS))
 				return
 			var/list/armor_options = list(
-				"Baothan Cuirass" = image(icon = 'icons/roguetown/clothing/special/baotha.dmi', icon_state = "baothachest"),
-				"Saccharine Plate Armor" = image(icon = 'icons/roguetown/clothing/armor.dmi', icon_state = "baothaplate"),
+				"巴奥莎胸甲" = image(icon = 'icons/roguetown/clothing/special/baotha.dmi', icon_state = "baothachest"),
+				"蜜惑板甲" = image(icon = 'icons/roguetown/clothing/armor.dmi', icon_state = "baothaplate"),
 			)
 			var/armor_choice = show_radial_menu(user, src, armor_options, require_near = TRUE, tooltips = TRUE)
 			if(!armor_choice)
 				return
 
 			var/list/weapon_options = list(
-				"Perfect Agony" = image(icon = 'icons/roguetown/weapons/whips32.dmi', icon_state = "baotha_whip"),
-				"Saccharine Swordspear" = image(icon = 'icons/roguetown/weapons/polearms64.dmi', icon_state = "swordstaff"),
+				"完美苦痛" = image(icon = 'icons/roguetown/weapons/whips32.dmi', icon_state = "baotha_whip"),
+				"蜜惑剑矛" = image(icon = 'icons/roguetown/weapons/polearms64.dmi', icon_state = "swordstaff"),
 			)
 			var/weapon_choice = show_radial_menu(user, src, weapon_options, require_near = TRUE, tooltips = TRUE)
 			if(!weapon_choice)
-				weapon_choice = "Perfect Agony"
+				weapon_choice = "完美苦痛"
 
 			user.say("女神，我的女神……")
 			if(!do_after(user, 5 SECONDS))
@@ -2028,21 +2028,21 @@
 		loc.visible_message(span_cult("仪式拒绝了未蒙祂宠爱之人"))
 		return
 	if(!armor_choice)
-		armor_choice = "Baothan Cuirass"
+		armor_choice = "巴奥莎胸甲"
 	switch(armor_choice)
-		if("Baothan Cuirass")
+		if("巴奥莎胸甲")
 			target.equipOutfit(/datum/outfit/job/roguetown/baothaarmor)	
-		if("Saccharine Plate Armor")
+		if("蜜惑板甲")
 			target.equipOutfit(/datum/outfit/job/roguetown/baothalightarmor)
 	if(!weapon_choice)
-		weapon_choice = "Perfect Agony"
+		weapon_choice = "完美苦痛"
 	switch(weapon_choice)
-		if("Perfect Agony")
+		if("完美苦痛")
 			target.put_in_hands(new /obj/item/rogueweapon/whip/baotha(target), TRUE)
 			if(HAS_TRAIT(target, TRAIT_RITUALIST))
 				target.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT)
 				target.adjust_skillrank_down_to(/datum/skill/combat/polearms, SKILL_LEVEL_APPRENTICE)
-		if("Saccharine Swordspear")
+		if("蜜惑剑矛")
 			target.put_in_hands(new /obj/item/rogueweapon/spear/partizan/baotha(target), TRUE)
 			if(HAS_TRAIT(target, TRAIT_RITUALIST))
 				target.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT)

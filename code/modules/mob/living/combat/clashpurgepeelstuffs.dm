@@ -326,7 +326,7 @@
 			sfx = pick_bind_sfx(soundcategory)
 			if(sfx)
 				playsound(src, sfx, 100, TRUE, 2)
-			visible_message(span_notice("[src] binds their weapon with [user]'s! They saw that attack coming!"))
+			visible_message(span_notice("[src]的兵刃与[user]的交缠在一起！看来早已料到了这一击！"))
 			return TRUE
 		else
 			return FALSE

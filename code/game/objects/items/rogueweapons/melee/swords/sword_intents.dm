@@ -2,7 +2,7 @@
 //intent datums ฅ^•ﻌ•^ฅ
 
 /datum/intent/sword/cut
-	name = "cut"
+	name = "劈砍"
 	icon_state = "incut"
 	attack_verb = list("切开", "挥砍")
 	animname = "cut"
@@ -95,7 +95,7 @@
 	intent_intdamage_factor = 0.5
 
 /datum/intent/sword/thrust/long/halfsword
-	name = "halfsword thrust"
+	name = "半剑突刺"
 	icon_state = "inimpale"
 	clickcd = CLICK_CD_CHARGED
 	penfactor = PEN_HEAVY
@@ -107,7 +107,7 @@
 	swingdelay_type = SWINGDELAY_CANCEL
 
 /datum/intent/sword/thrust/long/halfsword/jab
-	name = "jab"
+	name = "快刺"
 	icon_state = "instab"
 	attack_verb = list("刺拳击打")
 	penfactor = PEN_LIGHT
@@ -142,18 +142,18 @@
 
 /datum/intent/sword/strike/bash/mordhau
 	damfactor = 0.8
-	name = "mordhau bash"
+	name = "反握锤击"
 	icon_state = "inbash"
 	attack_verb = list("猛砸", "敲击")
 
 /datum/intent/sword/strike/bash/mordhau/smash
-	name = "mordhau smash"
+	name = "反握重砸"
 	icon_state = "insmash"
-	attack_verb = list("猛砸", "pummels", "pounds")
+	attack_verb = list("猛砸", "连续痛击", "重击")
 	chargedrain = 1.8
 	chargetime = 12
 	damfactor = 1
-	desc = "A powerful strike that delivers STR scaling knockback and slowdown to the target. The amount of inflicted knockback scales off your Strength, ranging from X (1 tile) to XII (2 tiles). </br>Cannot inflict any knockback or slowdown if your Strength is below X. </br>Cannot be used consecutively more than every 5 seconds on the same target. </br>Prone targets halve the knockback distance. </br>Not fully charging the attack limits knockback to 1 tile."
+	desc = "使出强力一击，击退并减速目标，击退距离随力量提升：力量达到 X 时击退一格，达到 XII 时击退两格。</br>力量低于 X 时无法造成击退或减速。</br>对同一目标施加此效果的间隔至少为五秒。</br>倒地目标的击退距离减半。</br>未完全蓄力时，最多击退一格。"
 	var/maxrange = 2
 
 /datum/intent/sword/strike/bash/mordhau/smash/spec_on_apply_effect(mob/living/H, mob/living/user, params)
@@ -181,14 +181,14 @@
 		force = H.move_force)
 
 /datum/intent/sword/strike/penalty
-	name = "heavy blunted swing"
+	name = "钝面重挥"
 	icon_state = "incut"
 	swingdelay_type = SWINGDELAY_PENALTY
 	swingdelay = 1 SECONDS
 	damfactor = 1.3
 
 /datum/intent/sword/strike/cancel
-	name = "sluggish blunted swing"
+	name = "钝面缓挥"
 	icon_state = "inchop"
 	swingdelay_type = SWINGDELAY_CANCEL
 	swingdelay = 1 SECONDS
@@ -212,7 +212,7 @@
 	name = "进步突刺"
 	icon_state = "instabmaster"
 	desc = "摆出长架势，向前进步时借整个上身之力突刺，充分发挥刺击的威力。"
-	attack_verb =  list("skillfully impales", "巧妙地穿刺", "deftly stabs")
+	attack_verb =  list("熟练地刺穿", "巧妙地穿刺", "灵巧地刺击")
 	// Your stabs are more effective at breaking heavy armor, and penetrating light armor like a rapier. But do less damage.
 	// This effectively means you do 1.2x damage to armor, but 0.8x damage to flesh.
 	penfactor = PEN_MEDIUM
@@ -246,7 +246,7 @@
 
 /datum/intent/effect/daze/longsword/clinch
 	name = "贴身柄击"
-	desc = "Get too close to your opponent for them to attack you easily, slamming the pommel of your sword into their face. Very briefly reduces opponent's strength and constitution, making it more difficult for them to escape grabs. Can only be performed one-handed. Works on the head, skull, nose, and mouth."
+	desc = "贴近对手，使其难以攻击，并用剑首猛撞其面部。极短时间内降低对手的力量与体质，使其更难挣脱擒拿。仅可单手施展，可攻击头部、颅骨、鼻子和嘴部。"
 	icon_state = "inpunish"
 	attack_verb = list("强行贴身横斩")
 	target_parts = list(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_NOSE, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_SKULL, BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_R_EYE)
@@ -262,7 +262,7 @@
 /datum/intent/sword/thrust/long/halfsword/frei
 	name = "半剑式"
 	icon_state = "inimpale"
-	desc = "Grip the dull portion of your longsword with either hand and use it as leverage to deliver precise, powerful strikes that can dig into gaps in plate and push past maille. Can only be performed half-sworded."
+	desc = "一手握住长剑未开刃的部分，以此借力，施展精准而有力的刺击，钻入板甲缝隙并穿透锁子甲。仅可采用半剑握法施展。"
 	attack_verb = list("刺穿", "贯穿")
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
 	// This does the exact same damage through steel armor as a normal longsword but can crit through armor.
@@ -284,7 +284,7 @@
 
 /datum/intent/effect/daze/longsword
 	name = "反握柄击"
-	desc = "Quickly flip your weapon around to the blunt end and slam an opponent in the throat, mouth, or nose, affecting their ability to breathe properly. Slow, and can be cancelled by being hit, but applies a long-lasting debuff. Can only be performed in roof guard."
+	desc = "迅速翻转武器，用钝端猛砸对手的喉咙、嘴或鼻子，妨碍其呼吸。动作缓慢，受击会被打断，但造成的削弱持续较久。仅可采用高位架势施展。"
 	attack_verb = list("娴熟地猛击")
 	intent_effect = /datum/status_effect/debuff/dazed/longsword
 	// Compared to regular daze, this attack is slower and requires you hit harder to reach zones.
@@ -294,7 +294,7 @@
 
 /datum/intent/effect/daze/longsword2h
 	name = "怒击突刺"
-	desc = "Block the opponent's weapon with a strike of your own and advance into a thrust towards the eyes, affecting their vision severely. Can only be performed in half-sword, and can only target the eyes."
+	desc = "以一记打击挡住对手的武器，顺势前进刺向其双眼，严重妨碍视力。仅可采用半剑握法施展，且只能瞄准眼睛。"
 	attack_verb = list("娴熟地戳刺")
 	intent_effect = /datum/status_effect/debuff/dazed/longsword2h
 	target_parts = list(BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_L_EYE)
@@ -348,7 +348,7 @@
 // A heavy cut different from sabre's by emphasis on demolition mod
 // But not as good as that of axe
 /datum/intent/sword/cut/falx/heavy
-	name = "heavy swing"
+	name = "重挥"
 	icon_state = "inhack"
 	blade_class = BCLASS_CHOP
 	damfactor = 1.4
@@ -389,10 +389,10 @@
 	demolition_mod = 0.05
 
 /datum/intent/sword/cut/rend/messer
-	name = "all-out swing"
+	name = "全力挥斩"
 	icon_state = "inhack"
-	desc = "Fully commit all of your strength into a singular, brutal chop of the messer's sharpened edge. Ineffective against armored opponents, and leaves you exposed during the swing. Twice as punishing to your stamina if you miss, compared to a True Strike, but doubly impossible to parry against."
-	attack_verb = list("brutishly chops", "recklessly cleaves")
+	desc = "将全部力量倾注于战刀锋刃的一次凶狠劈斩。对披甲敌人效果不佳，挥击时也会露出破绽。落空时的体力惩罚是精准一击的两倍，对方招架起来同样更加困难。"
+	attack_verb = list("凶猛地劈砍", "不顾一切地斩开")
 	animname = "chop"
 	blade_class = BCLASS_CHOP
 	hitsound = list('sound/combat/hits/bladed/genchop (1).ogg', 'sound/combat/hits/bladed/genchop (2).ogg', 'sound/combat/hits/bladed/genchop (3).ogg')
@@ -450,7 +450,7 @@
 		playsound(mastermob, pick('sound/combat/rend_start.ogg'), 100, FALSE)
 
 /datum/intent/sword/chop/cleave/super
-	name = "unstoppable cleave"
+	name = "势不可挡之斩"
 	penfactor = PEN_BSTEEL
 
 // GREATSWORDS
@@ -531,16 +531,16 @@
 
 //Banded iron sword intents
 /datum/intent/sword/chop/powerstrike
-	name = "power strike"
-	desc = "Heft your nine-pound iron sword backwards and slam it down into your opponent for a devastating blow... As long as you land it. Keeping the attack ready costs stamina."
-	attack_verb = list("power-strikes")
+	name = "强力一击"
+	desc = "将九磅重的铁剑向后抡起，再猛然砸向敌人，造成毁灭性打击……前提是能够命中。维持蓄势会消耗体力。"
+	attack_verb = list("全力猛击")
 	chargetime = 7
 	swingdelay = 9
 	penfactor = PEN_MEDIUM
 	chargedrain = 1.2
 
 /datum/intent/sword/cut/short/banded
-	name = "flurry"
-	desc = "Swing your sword wildly without much purpose to deal a static amount of damage."
+	name = "乱舞"
+	desc = "毫无章法地疯狂挥剑，造成固定伤害。"
 	clickcd = 6		//Faster than a sabre
 	damfactor = 2.17	//Base damage of 15

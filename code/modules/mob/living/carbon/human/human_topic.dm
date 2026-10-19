@@ -408,7 +408,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 						coverage_exposed.Remove(READABLE_ZONE_MOUTH, READABLE_ZONE_EYES, READABLE_ZONE_NOSE)
 
 			if(!is_stupid)
-				dat += "<tr><td colspan='6'><b><center>BODY:</center></b></tr><tr><td>NAME</td><td>LAYERS</td><td>BLUNT</td><td>SLASH</td><td>STAB</td><td>PIERCE</td></tr>"
+				dat += "<tr><td colspan='6'><b><center>身体：</center></b></tr><tr><td>部位</td><td>层数</td><td>钝击</td><td>劈砍</td><td>刺击</td><td>穿刺</td></tr>"
 			if(length(coverage))
 				var/str
 				if(!is_smart && !is_normal)	//We get a significantly simplified printout if we don't have the stats / trait
@@ -424,9 +424,9 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 						str += "<tr><td><b>[thing]</b></td><td><b>[coverage[thing]]</b></td><td>[colorgrade_rating("", blunt_max[thing], TRUE)]</td><td>[colorgrade_rating("", slash_max[thing], TRUE)]</td><td>[colorgrade_rating("", stab_max[thing], TRUE)]</td><td>[colorgrade_rating("", piercing_max[thing], TRUE)]</td></tr>"
 					dat += str
 				else
-					dat += "<tr><td colspan='6'><b><center>I don't know! Just hit them!</center></b></td></tr>"
+					dat += "<tr><td colspan='6'><b><center>我看不明白！打就是了！</center></b></td></tr>"
 			else
-				dat += "<tr><td colspan='6'><b><center>They're wearing nothing. The naked man fears no pickpocket.</center></b></td></tr>"
+				dat += "<tr><td colspan='6'><b><center>此人一丝不挂，赤条条的人自然不怕扒手。</center></b></td></tr>"
 			dat += "</table></span>"
 
 			dat += "<span style='width:30%;text-align:center;vertical-align: text-top;box-sizing:border-box'>"
@@ -529,7 +529,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 		if(5)
 			color = "#c757af"
 		else
-			return "[label] (Invalid tier [tier]! Contact coders.)"
+			return "[label]（无效等级 [tier]！请联系开发者。）"
 	// Build dot display
 	var/dots = ""
 	for(var/i in 1 to max_tier)
@@ -537,7 +537,7 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 			dots += "<font color='[color]'>&#9679;</font>"
 		else
 			dots += "<font color='#404040'>&#9675;</font>"
-	return "<font color='[color]'>[label]</font> [dots]"
+	return "<font color='[color]'>[list("BLUNT" = "钝击", "SLASH" = "劈砍", "STAB" = "刺击", "PIERCING" = "穿刺", "FIRE" = "灼烧", "BURN" = "灼烧", "ACID" = "酸蚀")[label] || label]</font> [dots]"
 
 /proc/skilldiff_report(input)
 	switch (input)

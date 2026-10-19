@@ -279,8 +279,8 @@
 /datum/keybinding/living/alt_grip
 	hotkey_keys = list("B")
 	name = "alt_grip"
-	full_name = "Alt Grip"
-	description = "Switch to an alternate grip on the held weapon, such as mordhau."
+	full_name = "切换握法"
+	description = "切换手中武器的握法，例如反握锤击式。"
 
 /datum/keybinding/living/alt_grip/down(client/user)
 	var/mob/living/L = user.mob

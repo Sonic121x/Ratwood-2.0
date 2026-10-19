@@ -1153,7 +1153,7 @@
 
 /atom/movable/screen/alert/status_effect/debuff/specialcd
 	name = "特殊机动冷却"
-	desc = "I used it. I must wait."
+	desc = "我刚用过这一招，必须等一等。"
 	icon_state = "debuff"
 
 /datum/status_effect/debuff/liver_failure
@@ -1410,7 +1410,7 @@
 	owner.stamina_add(10)
 
 /atom/movable/screen/alert/status_effect/debuff/weapon_bind_debuff
-	name = "Weapon Binded"
-	desc = "Our weapons binded! That conniving sod knew right where I was aiming! I can't benefit from a weapon bind!"
+	name = "兵刃受制"
+	desc = "我们的兵刃交缠在一起！那狡猾的家伙看穿了我的攻击方向！我无法再从兵刃交缠中获益！"
 	icon = 'icons/mob/combat_debuffs.dmi'
 	icon_state = "weapon_bind_debuff"

@@ -1956,8 +1956,8 @@
 	icon_state = "clash"
 
 /atom/movable/screen/alert/status_effect/buff/clash/limbguard
-	name = "Limb Guard"
-	desc = span_notice("I have focused my attention to guarding one limb. I shall deflect projectiles and blows to that limb with ease.")
+	name = "部位防护"
+	desc = span_notice("我正专注防护一个身体部位，能够轻易挡开射向或击向该处的攻击。")
 	icon_state = "limbguard"
 
 /datum/status_effect/buff/clash/limbguard
@@ -2078,7 +2078,7 @@
 
 /datum/status_effect/buff/clash/limbguard/proc/perform_disarm(mob/living/carbon/human/target)
 	var/obj/item/I = target.get_active_held_item()
-	owner.visible_message(span_boldwarning("[owner] anticipated the strike, disarming [target] in a decisive guard!"))
+	owner.visible_message(span_boldwarning("[owner]预判了攻击，以果断的防御缴了[target]的械！"))
 	owner.flash_fullscreen("whiteflash")
 	target.flash_fullscreen("whiteflash")
 	var/datum/effect_system/spark_spread/S = new()
@@ -2112,7 +2112,7 @@
 		IP = RP.handle_drop()
 	if(check_zone(hit_zone) == protected_zone)
 		do_sparks(2, TRUE, get_turf(IP))
-		target.visible_message(span_warning("[target] deflects \the [IP]!"))
+		target.visible_message(span_warning("[target]挡开了[IP]！"))
 		if(istype(IP, /obj/item))
 			var/obj/item/I = IP
 			I.throw_at(get_step(target, get_dir(target, I)), 3, 1, target)

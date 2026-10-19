@@ -1573,9 +1573,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			var/append_message = ""
 			if(target_held_item)
 				if(knocked_item)
-					append_message = "causing them to drop [target_held_item]"
+					append_message = "使其掉落了[target_held_item]"
 				else
-					append_message = "loosening their grip on [target_held_item]"
+					append_message = "使其握不稳[target_held_item]"
 
 			if(target.pulling)
 				var/painpercent = (target.get_complex_pain() / target.pain_threshold) * 100
@@ -1583,7 +1583,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 				if(target.grab_state > GRAB_PASSIVE && painchance)
 					target.grab_state = GRAB_PASSIVE
-					append_message = "causing them to loosen up on [target.pulling]"
+					append_message = "使其松开了对[target.pulling]的抓握"
 					target.visible_message(
 						span_danger("[target.name]抓着[target.pulling]的手松动了！"),
 						span_warning("我抓着[target.pulling]的手松动了！"),
@@ -1599,7 +1599,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 						null,
 						COMBAT_MESSAGE_RANGE
 					)
-					append_message = "causing them to let go of [target.pulling]"
+					append_message = "使其放开了[target.pulling]"
 					target.stop_pulling(TRUE)
 					playsound(target.loc, 'sound/combat/grabbreak.ogg', 50, TRUE, -1)
 

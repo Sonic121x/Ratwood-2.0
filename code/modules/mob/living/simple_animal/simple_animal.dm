@@ -563,7 +563,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		var/is_shift_middle = modifiers["shift"] || user?.client?.keys_held["Shift"]
 		if(is_shift_middle)
 			if(has_buckled_mobs())
-				to_chat(user, span_warning("I can't remove [src]'s saddle while someone is mounted."))
+				to_chat(user, span_warning("有人骑乘时，我无法卸下[src]的鞍具。"))
 				return
 			user.visible_message(span_notice("[user]开始拆卸[src]的马鞍。"), span_notice("我开始拆卸[src]的马鞍。"))
 			if(do_after(user, 30, target = src))
@@ -597,7 +597,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 		var/is_shift_middle = modifiers["shift"] || user?.client?.keys_held["Shift"]
 		if(is_shift_middle)
 			if(has_buckled_mobs())
-				to_chat(user, span_warning("I can't remove [src]'s saddle while someone is mounted."))
+				to_chat(user, span_warning("有人骑乘时，我无法卸下[src]的鞍具。"))
 				return
 			user.visible_message(span_notice("[user]开始拆卸[src]的马鞍。"), span_notice("我开始拆卸[src]的马鞍。"))
 			if(do_after(user, 30, target = src))

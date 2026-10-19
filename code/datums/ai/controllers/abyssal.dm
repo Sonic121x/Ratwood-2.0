@@ -217,13 +217,13 @@
 			target.Knockdown(SHOVE_KNOCKDOWN_SOLID)
 			target.drop_all_held_items()
 			target.visible_message(span_danger("[user.name]猛冲向[target.name]，将其撞倒！"),
-			span_danger("I'm knocked down from a devestating leg swipe by the [user.name]!"), span_hear("我听见一阵凶狠的咔哒声，紧接着传来一声闷响！"), COMBAT_MESSAGE_RANGE, user)
+			span_danger("[user.name]凶狠地扫中我的腿，把我击倒了！"), span_hear("我听见一阵凶狠的咔哒声，紧接着传来一声闷响！"), COMBAT_MESSAGE_RANGE, user)
 			log_combat(user, target, "kicked", "knocking them down")
 		else if(target_table)
 			target.Knockdown(SHOVE_KNOCKDOWN_TABLE)
 			target.drop_all_held_items()
-			target.visible_message(span_danger("[user.name] charges [target.name] onto \the [target_table]!"),
-			span_danger("I'm knocked down from a devestating leg swipe by the [user.name]!"), span_hear("我听见一阵凶狠的咔哒声，紧接着传来一声闷响！"), COMBAT_MESSAGE_RANGE, user)
+			target.visible_message(span_danger("[user.name]把[target.name]撞到了[target_table]上！"),
+			span_danger("[user.name]凶狠地扫中我的腿，把我击倒了！"), span_hear("我听见一阵凶狠的咔哒声，紧接着传来一声闷响！"), COMBAT_MESSAGE_RANGE, user)
 			target.throw_at(target_table, 1, 1, null, FALSE) //1 speed throws with no spin are basically just forcemoves with a hard collision check
 			log_combat(user, target, "kicked", "onto [target_table] (table)")
 		else if(target_collateral_mob)
@@ -231,7 +231,7 @@
 			target.drop_all_held_items()
 			target_collateral_mob.Knockdown(SHOVE_KNOCKDOWN_COLLATERAL)
 			target.visible_message(span_danger("[user.name] 猛冲着把 [target.name] 撞向了 [target_collateral_mob.name]！"),
-			span_danger("I'm knocked down from a devestating leg swipe by the [user.name]!"), span_hear("我听见一阵凶狠的咔哒声，紧接着传来一声闷响！"), COMBAT_MESSAGE_RANGE, user)
+			span_danger("[user.name]凶狠地扫中我的腿，把我击倒了！"), span_hear("我听见一阵凶狠的咔哒声，紧接着传来一声闷响！"), COMBAT_MESSAGE_RANGE, user)
 			log_combat(user, target, "kicked", "into [target_collateral_mob.name]")
 	else
 		target.visible_message(span_danger("[user.name] 猛冲向 [target.name]！"),

@@ -108,7 +108,7 @@
 
 		if(bookweapon.has_altgrip_modes())
 			var/alt_grip_names = bookweapon.get_altgrip_names()
-			html += "\n<b>GRIP: ALT-GRIP (Inhand RMB / Hotkey)"
+			html += "\n<b>握法：变换握法（手持时右键／快捷键）"
 			if(alt_grip_names)
 				html += ": [alt_grip_names]"
 			html += "</b><br>"

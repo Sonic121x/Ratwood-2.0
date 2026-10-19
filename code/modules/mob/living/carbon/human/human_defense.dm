@@ -95,12 +95,12 @@
 			if(has_status_effect(/datum/status_effect/debuff/exposed))
 				full_dmg = TRUE
 				playsound(src, 'sound/combat/exposed_pop.ogg', 100, TRUE)
-				visible_message("<span class = 'combatsecondarybodypart'>[src] suffers a savage hit to their armor while exposed!</span>")
+				visible_message("<span class = 'combatsecondarybodypart'>[src]露出破绽，护甲遭到猛烈一击！</span>")
 				remove_status_effect(/datum/status_effect/debuff/exposed)
 				emote("pain", forced = TRUE)
 			else if(has_status_effect(/datum/status_effect/debuff/vulnerable))
 				playsound(src, 'sound/combat/vulnerable_pop.ogg', 100, TRUE)
-				visible_message(span_biginfo("[src] is struck into their armor while vulnerable!"))
+				visible_message(span_biginfo("[src]在防备薄弱时遭到攻击，护甲受到重击！"))
 				remove_status_effect(/datum/status_effect/debuff/vulnerable)
 				emote("groan", forced = TRUE)
 

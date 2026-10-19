@@ -221,7 +221,7 @@
 
 	//head
 	if(head && !(SLOT_HEAD in obscured))
-		var/str = "[m3] [head.generate_tooltip(head.get_examine_string(user))] on [m2] head. "
+		var/str = "[m3] [head.generate_tooltip(head.get_examine_string(user))]戴在[m2]头上。"
 		var/head_condition = head.integrity_check(is_smart)
 		str += head_condition
 		if(is_stupid)
@@ -269,7 +269,7 @@
 		var/str
 		if(istype(cloak, /obj/item/clothing))
 			var/obj/item/clothing/CL = cloak
-			str = "[m3] [CL.generate_tooltip(CL.get_examine_string(user))] on [m2] shoulders. "
+			str = "[m3] [CL.generate_tooltip(CL.get_examine_string(user))]披在[m2]肩上。"
 		else
 			str = "[m1]肩上披着[get_examine_item_name_with_hover(user, cloak)]。 "
 		str += cloak.integrity_check(is_smart)
@@ -300,7 +300,7 @@
 	var/datum/component/forensics/FR = GetComponent(/datum/component/forensics)
 	//gloves
 	if(gloves && !(SLOT_GLOVES in obscured))
-		var/str = "[m3] [gloves.generate_tooltip(gloves.get_examine_string(user))] on [m2] hands. "
+		var/str = "[m3] [gloves.generate_tooltip(gloves.get_examine_string(user))]戴在[m2]手上。"
 		str += gloves.integrity_check(is_smart)
 		if(is_stupid)
 			str = "[m3]某种手套！"
@@ -352,7 +352,7 @@
 
 	//shoes
 	if(shoes && !(SLOT_SHOES in obscured))
-		var/str = "[m3] [shoes.generate_tooltip(shoes.get_examine_string(user))] on [m2] feet. "
+		var/str = "[m3] [shoes.generate_tooltip(shoes.get_examine_string(user))]穿在[m2]脚上。"
 		str += shoes.integrity_check(is_smart)
 		if(is_stupid)
 			str = "[m1]脚上穿着某种鞋子！"
@@ -360,7 +360,7 @@
 
 	//mask
 	if(wear_mask && !(SLOT_WEAR_MASK in obscured))
-		var/str = "[m3] [wear_mask.generate_tooltip(wear_mask.get_examine_string(user))] on [m2] face. "
+		var/str = "[m3] [wear_mask.generate_tooltip(wear_mask.get_examine_string(user))]戴在[m2]脸上。"
 		str += wear_mask.integrity_check(is_smart)
 		if(is_stupid)
 			str = "[m1]脸上戴着什么东西！"
@@ -371,7 +371,7 @@
 		var/str
 		if(istype(mouth, /obj/item/clothing))
 			var/obj/item/clothing/CM = mouth
-			str = "[m3] [CM.generate_tooltip(CM.get_examine_string(user))] in [m2] mouth. "
+			str = "[m3] [CM.generate_tooltip(CM.get_examine_string(user))]含在[m2]嘴里。"
 		else
 			str = "[m1]嘴里含着[get_examine_item_name_with_hover(user, mouth)]。 "
 		str += mouth.integrity_check(is_smart)
@@ -400,7 +400,7 @@
 
 	//ring
 	if(wear_ring && !(SLOT_RING in obscured) && !HAS_TRAIT(wear_ring, TRAIT_EXAMINE_SKIP))
-		var/str = "[m3] [wear_ring.generate_tooltip(wear_ring.get_examine_string(user))] on [m2] hands. "
+		var/str = "[m3] [wear_ring.generate_tooltip(wear_ring.get_examine_string(user))]戴在[m2]手上。"
 		if(is_smart && istype(wear_ring, /obj/item/clothing/ring/active))
 			var/obj/item/clothing/ring/active/AR = wear_ring
 			if(AR.cooldowny)
@@ -414,7 +414,7 @@
 
 	//wrists
 	if(wear_wrists && !(SLOT_WRISTS in obscured))
-		var/str = "[m3] [wear_wrists.generate_tooltip(wear_wrists.get_examine_string(user))] on [m2] wrists."
+		var/str = "[m3] [wear_wrists.generate_tooltip(wear_wrists.get_examine_string(user))]戴在[m2]手腕上。"
 		str += wear_wrists.integrity_check(is_smart)
 		if (is_stupid)
 			str = "[m1]手腕上戴着什么东西！"
@@ -1136,7 +1136,7 @@
 				if (istype(H.patron, /datum/patron/inhumen))
 					. += span_userdanger("异端！耻辱！")
 				if (istype(H.patron, /datum/patron/old_god))
-					. += span_userdanger("HEATHEN! SHAME!")
+					. += span_userdanger("异教徒！可耻！")
 */
 		if(name in GLOB.outlawed_players)
 			. += span_userdanger("法外之徒！")

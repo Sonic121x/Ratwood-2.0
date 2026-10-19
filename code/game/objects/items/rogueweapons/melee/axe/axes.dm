@@ -112,7 +112,7 @@
 
 /obj/item/rogueweapon/stoneaxe/hurlbat
 	name = "投掷斧"
-	desc = "With the sleek, lightweight design of a tossblade and the stopping power of a battleaxe, the hurlbat's tricky design allows it to strike its targets with deadly efficiency. Although its historic origin is disputed, it is often-seen amongst Varangian Bounty-Hunters and ruthless Steppesmen."
+	desc = "投掷斧轻巧流畅的构型兼具投刃的灵便与战斧的制止力，精巧的设计使它能致命而高效地命中目标。虽然它的起源众说纷纭，却常见于瓦兰吉安赏金猎人与冷酷无情的草原人之手。"
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH
 	wlength = WLENGTH_SHORT
 	w_class = WEIGHT_CLASS_SMALL

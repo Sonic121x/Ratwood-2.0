@@ -30,7 +30,7 @@
 	item_d_type = "slash"
 
 /datum/intent/axe/thrust
-	name = "tip thrust"
+	name = "尖端突刺"
 	animname = "stab"
 	icon_state = "instab"
 	warnie = "mobwarning"
@@ -43,7 +43,7 @@
 	attack_verb = list("突刺")
 
 /datum/intent/axe/rangedthrust
-	name = "thrust"
+	name = "突刺"
 	blade_class = BCLASS_STAB
 	attack_verb = list("突刺")
 	animname = "stab"
@@ -55,7 +55,7 @@
 	hitsound = list('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg')
 	penfactor = PEN_MEDIUM
 	item_d_type = "stab"
-	desc = "A committed thrust with the poleaxe's spike. It only bites through armor at full extension, exactly two paces away, and leaves you vulnerable as you recover the swing."
+	desc = "全力刺出戟斧的尖刺。只有在完全伸展、相距恰好两格时才能刺穿护甲，收招时也会使你露出破绽。"
 	swingdelay = 8
 	swingdelay_type = SWINGDELAY_PENALTY
 	effective_range = 2
@@ -111,5 +111,5 @@
 	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
 
 /datum/intent/axe/bash/battle
-	name = "heavy bash"
+	name = "重砸"
 	damfactor = 0.8 //Buttstrokes, in essence. +20% damage over the standard variant.

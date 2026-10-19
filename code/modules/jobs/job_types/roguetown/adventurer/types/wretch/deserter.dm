@@ -491,7 +491,7 @@
 
 /obj/effect/proc_holder/spell/invoked/order/brotherhood
 	name = "为了兄弟会！"
-	desc = "Orders an underling to stand up and fight without fear or pain."
+	desc = "命令部下挺身战斗，无惧恐惧与痛楚。"
 	overlay_state = "onfeet"
 	chargedrain = 0
 	chargetime = 0

@@ -49,8 +49,8 @@
 				return list("shrink" = 0.6,"sx" = -1,"sy" = 1,"nx" = 0,"ny" = 1,"wx" = 2,"wy" = 0,"ex" = 0,"ey" = 0,"nturn" = 0,"sturn" = 0,"wturn" = 70,"eturn" = 15,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
 
 /obj/item/rogueweapon/greatsword/elfgsword
-	name = "elven kriegsmesser"
-	desc = "An elegant greatsword, crested with a glistening blade that - in spite of its intimidating length - is mysteriously light. Unlike most elven masterworks, the grip is dressed in rosaleather; a foreboding symbol, christening it as a weapon of war against those who'd threaten elvekind."
+	name = "精灵双手大刀"
+	desc = "一柄优雅的巨剑，闪亮的长刃虽长得骇人，却轻盈得不可思议。与多数精灵大师之作不同，它的握柄包覆着玫瑰皮革；这是一道不祥的宣告，昭示它将用来讨伐威胁精灵一族的敌人。"
 	icon_state = "elfkriegmesser"
 	item_state = "elfkriegmesser"
 	minstr = 10
@@ -59,7 +59,7 @@
 
 /obj/item/rogueweapon/greatsword/iron
 	name = "铁制大剑"
-	desc = "A massive sword of iron, requiring both hands to properly wield. Heftier and less sturdier than its steel equivalent - but it still does the job."
+	desc = "一柄需要双手才能妥善挥动的巨型铁剑。比同类钢剑更沉、更不结实，但仍能胜任杀敌的职责。"
 	icon_state = "igsw"
 	max_blade_int = 200
 	max_integrity = 200
@@ -69,7 +69,7 @@
 
 /obj/item/rogueweapon/greatsword/ancient/decrepit
 	name = "朽败大剑"
-	desc = "A massive blade, wrought in rotted metal. It is too big to be called a sword; massive, thick, heavy, and far too rough. Indeed, this blade was more like a heap of raw metal."
+	desc = "一柄由腐朽金属打造的巨刃。它大得难以称为剑，厚重、沉笨，粗糙得不像话。与其说是剑，不如说是一堆未经雕琢的生铁。"
 	force = 10
 	force_wielded = 25
 	max_integrity = 150
@@ -99,7 +99,7 @@
 	force_wielded = 35
 
 /obj/item/rogueweapon/greatsword/grenz
-	name = "zweihander"
+	name = "双手剑"
 	icon_state = "steelzwei"
 	smeltresult = /obj/item/ingot/steel
 	smelt_bar_num = 3
@@ -109,7 +109,7 @@
 	force_wielded = 35
 
 /obj/item/rogueweapon/greatsword/grenz/flamberge
-	name = "flamberge"
+	name = "焰形剑"
 	desc = "这是格伦泽尔霍夫特式“双手剑”的近亲，深受奥塔瓦贵族青睐。其名源自那独特的火焰形剑身；这种工艺唯有普赛顿最出色的武匠方能驾驭。"
 	icon_state = "steelflamberge"
 	max_blade_int = 180
@@ -128,8 +128,8 @@
 				return list("shrink" = 0.6,"sx" = -1,"sy" = 2,"nx" = 0,"ny" = 2,"wx" = 2,"wy" = 1,"ex" = 0,"ey" = 1,"nturn" = 0,"sturn" = 0,"wturn" = 70,"eturn" = 15,"nflip" = 1,"sflip" = 1,"wflip" = 1,"eflip" = 1,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
 
 /obj/item/rogueweapon/greatsword/grenz/flamberge/malum
-	name = "forgefiend flamberge"
-	desc = "This sword's creation took a riddle in its own making. A great sacrifice was made for a blade of perfect quality."
+	name = "炉魔焰形剑"
+	desc = "这把剑的诞生本身就是一道谜。为了铸成一柄品质完美的利刃，有人付出了巨大的牺牲。"
 	icon_state = "malumflamberge"
 	max_integrity = 200
 	max_blade_int = 200
@@ -185,10 +185,10 @@
 		used = TRUE
 
 /obj/item/rogueweapon/greatsword/silver
-	name = "silver greatsword"
-	desc = "A greatsword with a massive blade of pure silver. Such is favored amongst the Order of Syonica's paladins: a faith-militance that \
-	seeks to safeguard those who've taken pilgrimage towards Azuria. </br>'There is no fate, but what we make for ourselves. It is not the will of \
-	gods that will determine Psydonia's fate.. but instead, the hope of its children.'"
+	name = "银制巨剑"
+	desc = "一柄装有巨大纯银剑刃的巨剑，深受西奥尼卡教团圣武士的青睐。这个武装修会致力于 \
+	保护前往苍蓝之地的朝圣者。</br>“命运并非天定，而是由我们亲手铸就。决定普赛多尼亚未来的， \
+	并非诸神的意志，而是她的儿女心中的希望。”"
 	icon_state = "silverexealt"
 	force = 8
 	force_wielded = 25
@@ -210,8 +210,8 @@
 
 /obj/item/rogueweapon/greatsword/psygsword
 	name = "普赛顿大剑"
-	desc = "It is said that a Psydonian smith was guided by Saint Malum himself to forge such a formidable blade, and given the task to slay a \
-	daemon preying on the Otavan farmlands. The design was retrieved, studied, and only a few replicas made - for they believe it dulls its edge."
+	desc = "相传，一位普赛顿信徒铁匠受圣玛勒姆亲自指引，铸成了这柄威武的利刃，奉命斩杀 \
+	肆虐奥塔万农田的恶魔。其图样后来被寻回并加以研究，却只造出少量仿品——他们相信，仿造会使原刃失去锋芒。"
 	icon_state = "silverexealt"
 	force = 8
 	force_wielded = 30
@@ -232,10 +232,10 @@
 	)
 
 /obj/item/rogueweapon/greatsword/psygsword/relic
-	name = "\"Apocrypha\""
-	desc = "In Otava's grandest mosaics, Saint Ravox - bare in all but a beaked helmet and loincloth - is depicted wielding such an imposing \
-	greatweapon against the Sinistar, Graggar. Regardless of whether this relic was actually wielded by divinity-or-not, its unparallel strength \
-	will nevertheless command even the greatest foes to fall. Stand fast, childe o' God, and drive the unforgivable back to Hell."
+	name = "“秘典”"
+	desc = "在奥塔瓦最宏伟的马赛克壁画中，圣拉沃克斯仅戴着喙盔、系着腰布，手持如此威严的巨兵， \
+	迎战凶星格拉加尔。无论这件圣物是否真曾为神明所持，其无与伦比的力量 \
+	仍足以令最强大的敌人倒下。站稳吧，神的孩子，将那些不可饶恕者逐回地狱。"
 	force = 30
 	force_wielded = 35
 	icon_state = "psygsword"
@@ -272,8 +272,8 @@
 
 /obj/item/rogueweapon/greatsword/bsword/psy
 	name = "被遗忘之刃"
-	desc = "'Let His name be naught but forgot'n.' </br>The remnants of a legendary champion, who's name has been lost to the annals of tyme. Even so, the tarnished \
-	silver still glimmers with otherworldly strength; to exorcise, to eradicate, and to endure."
+	desc = "“愿祂之名不再被遗忘。”</br>一位传奇勇士留下的遗物，其姓名早已湮没于岁月。即便如此，黯淡的 \
+	银刃仍闪烁着超凡的力量，誓要驱邪、除恶、坚忍到底。"
 	icon_state = "oldpsybroadsword"
 	force = 15
 	force_wielded = 25
@@ -298,9 +298,9 @@
 
 /obj/item/rogueweapon/greatsword/bsword/psy/unforgotten
 	name = "未被遗忘之刃"
-	desc = "'Let His name be naught but forgot'n.' </br>High Inquisitor Archibald once recorded an expedition of seven brave Adjudicators into Gronnian snow-felled wastes to \
-	root out evil. Its leader, Holy Ordinator Guillemin, was said to have held on for seven daes and seven nights against darksteel-clad heretics before Psydon acknowledged his \
-	endurance. Nothing but his blade remained - his psycross wrapped around its hilt in rememberance."
+	desc = "“愿祂之名不再被遗忘。”</br>大审判官阿奇博尔德曾记下一支由七位英勇裁决者组成的远征队，深入格隆恩积雪荒原 \
+	铲除邪恶。相传领队圣律令官吉耶曼面对身披暗钢甲的异端坚守了七天七夜，终于让普赛顿认可了他的 \
+	坚忍。最后只留下他的剑，普赛圣十字缠绕剑柄，寄托追思。"
 	icon_state = "forgottenblade"
 	is_silver = TRUE
 	smeltresult = /obj/item/ingot/silver
@@ -317,9 +317,9 @@
 	)
 
 /obj/item/rogueweapon/greatsword/bsword/psy/relic
-	name = "\"Creed\""
-	desc = "Psydonian prayers and Tennite smiths, working as one to craft a weapon to slay the Four. A heavy and large blade, favored by Saint Ravox, to lay \
-	waste to those who threaten His flock. The crossguard's psycross reflects even the faintest of Noc's light. You're the light - show them the way."
+	name = "“信条”"
+	desc = "普赛顿信徒的祈祷与十神信徒铁匠的技艺合而为一，铸成诛灭四恶神的武器。此刃巨大沉重，深得圣拉沃克斯青睐，用以 \
+	扫除威胁祂子民的敌人。护手上的普赛圣十字映照着诺克最微弱的光。你就是光，为他们照亮前路。"
 	icon_state = "psybroadsword"
 	force = 25
 	force_wielded = 25
@@ -347,9 +347,9 @@
 	)
 
 /obj/item/rogueweapon/greatsword/avantyne
-	name = "avantyne-threaded greatsword"
-	desc = "Malediction made manifest; the greatweapon of an otherworldly champion, unfazed by the thickest plates and the toughest flesh. Let no one stop the \
-	march of Her disciples, towards the filament's sputtering wound. Take thine birthright and ascend to the heavens beyond, or die trying."
+	name = "阿凡泰因织纹巨剑"
+	desc = "诅咒化作实形，异世勇士的巨兵，无惧最厚重的板甲与最坚韧的血肉。谁也休想阻挡 \
+	祂的信徒向天幕上那道迸裂的伤口进军。夺回与生俱来的权利，登临天外，或为此战死。"
 	gripped_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/sword/thrust/estoc, /datum/intent/sword/cut/zwei/cleave, /datum/intent/sword/cut/zwei/sweep)
 	icon_state = "zizogsw"
 	force = 20
@@ -363,9 +363,9 @@
 
 /obj/item/rogueweapon/estoc
 	name = "穿甲刺剑"
-	desc = "这把剑拥有一段相当修长而尖细的剑身，专门用于刺入敌人护甲的\
-	gaps in an opponent's armor. The hilt is wrapped tight in black leather, and the crossguard is uniquely \
-	adorned with opposingly-curved quillons; perfect for parrying the poised perforations of opponents."
+	desc = "剑刃修长而渐细，专为刺入敌人护甲的缝隙而打造。 \
+	握柄紧裹黑色皮革，护手两端的弯角朝相反方向卷曲， \
+	格外适合架开敌人蓄势待发的穿刺。"
 	icon_state = "estoc"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	pixel_y = -16
@@ -554,7 +554,7 @@
 	// Design Intent: It is pretty purely a two-handed weapon. In one hand it's a bit clumsy.
 	gripped_intents = list(/datum/intent/sword/cut/zwei, /datum/intent/rend, /datum/intent/sword/thrust/zwei, /datum/intent/sword/strike/bad)
 	alt_grips = null // can't be alt-gripped
-	name = "elvish curveblade"
+	name = "精灵曲刃剑"
 	desc = "精灵弯刃是一种传统兵器，运用它既像起舞，也像施以死亡。顺着流水般的轨迹，让它的锋路直抵敌人的喉咙。"
 	icon_state = "elfcurveblade"
 	wlength = WLENGTH_LONG// Less reach than greatsword!

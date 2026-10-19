@@ -357,7 +357,7 @@ GLOBAL_LIST_EMPTY(instrument_band_lobbies)
 				soundloop.volume = clamp(curvol, 10, 100)
 				soundloop.repeat_sound = loop_enabled
 				if(!soundloop.start(user))
-					to_chat(user, span_warning("Could not play - no sound channels available. Try again in a moment."))
+					to_chat(user, span_warning("无法演奏：没有可用的音频通道，请稍后重试。"))
 					return
 				playing = TRUE
 				user.apply_status_effect(/datum/status_effect/buff/playing_music, stressevent, note_color)
@@ -477,7 +477,7 @@ GLOBAL_LIST_EMPTY(instrument_band_lobbies)
 				soundloop.volume = clamp(curvol, 10, 100)
 				soundloop.repeat_sound = loop_enabled
 				if(!soundloop.start(user))
-					to_chat(user, span_warning("Could not play - no sound channels available. Try again in a moment."))
+					to_chat(user, span_warning("无法演奏：没有可用的音频通道，请稍后重试。"))
 					return
 				playing = TRUE
 				user.apply_status_effect(/datum/status_effect/buff/playing_music, stressevent, note_color)

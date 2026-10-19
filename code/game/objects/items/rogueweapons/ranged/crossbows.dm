@@ -34,13 +34,13 @@
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Crossbows increase in accuracy with a higher <b>PERCEPTION</b>, but deal a static amount of damage \
-	regardless of character stats.")
-	. += span_info("Crossbows cannot be nocked directly from their quiver and require time to load.")
+	. += span_info("<b>感知</b>越高，弩的精确度越高；但弩造成的伤害固定， \
+	不受角色属性影响。")
+	. += span_info("弩无法直接从箭袋搭箭，装填需要时间。")
 	if(penfactor < 0)
-		. += span_info("This weapon <b>reduces</b> bolt penetration by <b>[abs(penfactor)]</b> tier(s).")
+		. += span_info("此武器使弩矢的穿甲等级<b>降低 [abs(penfactor)] 级</b>。")
 	else if(penfactor > 0)
-		. += span_info("This weapon <b>increases</b> bolt penetration by <b>[penfactor]</b> tier(s).")
+		. += span_info("此武器使弩矢的穿甲等级<b>提高 [penfactor] 级</b>。")
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/getonmobprop(tag)
 	. = ..()

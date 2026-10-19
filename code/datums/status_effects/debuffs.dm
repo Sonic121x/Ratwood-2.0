@@ -614,8 +614,8 @@
 	return ..()
 
 /atom/movable/screen/alert/status_effect/debuff/bindcd
-	name = "Bind Cooldown"
-	desc = "Can't expect the magic to work every time."
+	name = "交缠冷却"
+	desc = "不能指望奇招次次奏效。"
 	icon_state = "bindcd"
 
 //---- Special CD
@@ -631,7 +631,7 @@
 
 /atom/movable/screen/alert/status_effect/debuff/specialcd
 	name = "精准打击冷却"
-	desc = "I used it. I must wait."
+	desc = "我刚用过这一招，必须等一等。"
 	icon_state = "strikecd"
 
 // Magical mishaps

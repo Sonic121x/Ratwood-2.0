@@ -333,7 +333,7 @@
 	owner.stamina_add(-20)
 
 /atom/movable/screen/alert/status_effect/buff/weapon_bind_buff
-	name = "Weapon Bind"
-	desc = "Our weapons binded in my favour! I knew right where they were gonna hit me! My parrying is improved for a short while!"
+	name = "交缠占优"
+	desc = "兵刃交缠时我占了上风！我早已看穿对方的攻击方向！短时间内，我的招架能力增强！"
 	icon = 'icons/mob/combat_debuffs.dmi'
 	icon_state = "weapon_bind_buff"

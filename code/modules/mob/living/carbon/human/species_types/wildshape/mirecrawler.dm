@@ -35,7 +35,7 @@
 
 // mirecrawler SPECIES DATUM //
 /datum/species/mirecrawler
-	name = "Lesser Mire Crawler"
+	name = "弱小沼爬兽"
 	id = "dendormirecrawler"
 	species_traits = list(NO_UNDERWEAR, NO_ORGAN_FEATURES, NO_BODYPART_FEATURES)
 	inherent_traits = list(

@@ -209,7 +209,7 @@
 	hitsound = "genslash"
 	penfactor = PEN_LIGHT
 	blade_class = BCLASS_CUT
-	attack_verb = list("cuts", "slashes")
+	attack_verb = list("切开", "挥砍")
 	miss_text = "扑了个空！"
 	miss_sound = "bluntwooshlarge"
 	item_d_type = "slash"
@@ -223,14 +223,14 @@
 	penfactor = PEN_NONE
 
 /datum/intent/simple/gnoll_cut
-	name = "chopping claw"
+	name = "劈砍利爪"
 	hitsound = "genslash"
 	penfactor = PEN_HEAVY
 	icon_state = "inchop"
 	miss_text = "扑了个空！"
 	miss_sound = "bluntwooshlarge"
 	icon_state = "inchop"
-	attack_verb = list("claws", "mauls", "eviscerates")
+	attack_verb = list("爪击", "猛撕", "开膛破肚")
 	animname = "chop"
 	blade_class = BCLASS_CHOP
 	item_d_type = "slash"

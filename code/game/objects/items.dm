@@ -555,32 +555,32 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		to_chat(usr, output)
 
 	if(href_list["explainintdamage"])
-		var/output = span_info("Multiplies the damage done to armor on hit.\nAlso multiplies durability damage dealt to shields on parry (if higher than Anti-Object Mod).")
+		var/output = span_info("命中时，对护甲造成的伤害乘以此系数。\n招架时，若该系数高于对物破坏系数，也用于放大对盾牌造成的耐久伤害。")
 		if(!usr.client.prefs.no_examine_blocks)
 			output = examine_block(output)
 		to_chat(usr, output)
 
 	if(href_list["explainshieldcoverage"])
-		var/output = span_info("Chance to passively block incoming projectiles. Only works from the front.\nShields take quarter damage from blocked projectiles and fixed durability damage from melee parries.\nHeavy weapons deal more durability damage to shields — the higher of the attacker's Anti-Object Mod or Integrity Damage is used as a multiplier.")
+		var/output = span_info("从正面被动格挡来袭投射物的几率。\n盾牌格挡投射物时承受四分之一伤害，招架近战时承受固定耐久伤害。\n重型武器会对盾牌造成更多耐久伤害，取攻击者的对物破坏系数与护甲破坏系数中较高者作为倍率。")
 		if(!usr.client.prefs.no_examine_blocks)
 			output = examine_block(output)
 		to_chat(usr, output)
 
 	if(href_list["explainpenfactor"])
-		var/output = span_info("Armor Penetration whether this attack goes through armor.\n\
-		Each armor piece has a blocking tier (Light, Medium, Heavy, Blacksteel).\n\
-		Penetration > armor tier: 100% damage goes through.\n\
-		Penetration = armor tier: 20% damage through. Armor absorbs remaining %.\n\
-		Penetration < armor tier: Fully blocked.\n\
-		All attacks go through armor with no protection of that type, including attacks with no armor penetration.\n\
-		Blunt / Burn / Acid attacks bypass this system entirely and use damage reduction instead.")
+		var/output = span_info("穿甲能力决定本次攻击能否突破护甲。\n\
+		每件护甲都有防护等级：轻型、中型、重型或黑钢。\n\
+		穿甲等级高于护甲等级：全部伤害穿透。\n\
+		穿甲等级等于护甲等级：部分伤害穿透，护甲吸收其余伤害。\n\
+		穿甲等级低于护甲等级：伤害被完全挡住。\n\
+		若护甲不防护该伤害类型，任何攻击都能穿透，包括没有穿甲能力的攻击。\n\
+		钝击、灼烧与酸蚀不采用这套穿甲判定，而使用伤害减免机制。")
 		if(!usr.client.prefs.no_examine_blocks)
 			output = examine_block(output)
 		to_chat(usr, output)
 
 
 	if(href_list["explaindemolitionmod"])
-		var/output = span_info("Multiplies the damage done to objects when hitting them.\nAlso multiplies durability damage dealt to shields on parry (if higher than Integrity Damage).")
+		var/output = span_info("攻击物体时，对其造成的伤害乘以此系数。\n招架时，若该系数高于护甲破坏系数，也用于放大对盾牌造成的耐久伤害。")
 		if(!usr.client.prefs.no_examine_blocks)
 			output = examine_block(output)
 		to_chat(usr, output)
@@ -600,7 +600,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(href_list["inspect"])
 		if(!usr.canUseTopic(src, be_close=TRUE))
 			return
-		var/list/inspec = list(span_notice("Properties of [name]"))
+		var/list/inspec = list(span_notice("[name]的属性"))
 		if(minstr)
 			inspec += "\n<b>最低力量：</b> [minstr]"
 		if(minstr_req)
@@ -632,7 +632,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			inspec += " <span class='info'><a href='?src=[REF(src)];explainlength=1'>{?}</a></span>"
 
 		if(has_altgrip_modes())
-			inspec += "\n<b>ALT-GRIP (RCLICK/HOTKEY(B)/CTRL+SCRLWHL)</b>"
+			inspec += "\n<b>变换握法（右键／B 键／Ctrl＋滚轮）</b>"
 			var/list/alt_grip_lines = get_altgrip_lines(src, usr)
 			if(length(alt_grip_lines))
 				for(var/alt_grip_line in alt_grip_lines)
@@ -666,7 +666,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 		if(istype(src, /obj/item/rogueweapon/shield))
 			var/obj/item/rogueweapon/shield/S = src
-			inspec += "\n<b>PASSIVE PROJECTILE BLOCK:</b> [S.coverage]% <span class='info'><a href='?src=[REF(src)];explainshieldcoverage=1'>{?}</a></span>"
+			inspec += "\n<b>被动格挡投射物：</b> [S.coverage]% <span class='info'><a href='?src=[REF(src)];explainshieldcoverage=1'>{?}</a></span>"
 
 		if(intdamage_factor != 1 && force >= 5)
 			inspec += "\n<b>完整度伤害：</b> [intdamage_factor * 100]% <span class='info'><a href='?src=[REF(src)];explainintdamage=1'>{?}</a></span>"
@@ -1629,7 +1629,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if (istype(src, /obj/item/contraption))
 		var/obj/item/contraption/i = src
 		if (i.current_charge <= 0)
-			to_chat(user, span_warning("Not charged."))
+			to_chat(user, span_warning("尚未充能。"))
 			return FALSE
 	return TRUE
 
@@ -1651,7 +1651,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(show_message)
 		to_chat(user, "<span class='notice'>我将[src]恢复为正常持握。</span>")
 	if(show_balloon)
-		show_altgrip_balloon(user, "normal grip")
+		show_altgrip_balloon(user, "常规握法")
 	if(user.get_active_held_item() == src)
 		user.update_a_intents()
 	return
@@ -1760,20 +1760,20 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(C.armor)
 			var/datum/armor/def_armor = C.armor
 			if(!def_armor.blunt && !def_armor.slash && !def_armor.stab && !def_armor.piercing)
-				str += "<b>NO ARMOR!</b>"
+				str += "<b>没有护甲！</b>"
 			else
-				var/defense = "[SPAN_TOOLTIP("Each tier increases effective HP of the armor by 20%. Absorbed attacks never reach HP. The armor must be broken first.", "<u><b>ABSORB:</b></u>")] [colorgrade_rating("BLUNT", def_armor.blunt, elaborate = TRUE, max_tier = 5)]"
+				var/defense = "[SPAN_TOOLTIP("各等级提高护甲承受对应打击的有效耐久。被吸收的攻击不会造成生命伤害，必须先击破护甲。", "<u><b>吸收：</b></u>")] [colorgrade_rating("钝击", def_armor.blunt, elaborate = TRUE, max_tier = 5)]"
 				defense += "<br>"
-				defense += "[SPAN_TOOLTIP("Each tier reduces damage by 20% of base. Reduced damage still reaches HP. Armor absorbs what was blocked.", "<u><b>REDUCE:</b></u>")] [colorgrade_rating("BURN", def_armor.fire, elaborate = TRUE, max_tier = 5)]"
-				defense += " | [colorgrade_rating("ACID", def_armor.acid, elaborate = TRUE, max_tier = 5)]"
+				defense += "[SPAN_TOOLTIP("护甲等级越高，伤害减免越强。减免后的伤害仍会伤及生命，护甲承受被挡住的部分。", "<u><b>减免：</b></u>")] [colorgrade_rating("灼烧", def_armor.fire, elaborate = TRUE, max_tier = 5)]"
+				defense += " | [colorgrade_rating("酸蚀", def_armor.acid, elaborate = TRUE, max_tier = 5)]"
 				defense += "<br>"
 				defense += "[SPAN_TOOLTIP("Blocks attacks below this tier (Armor takes all damage). Same tier penetrates 20% (80% goes to armor). Exceeding tier penetrates fully.", "<u><b>BLOCK:</b></u>")] "
-				defense += "[colorgrade_rating("SLASH", def_armor.slash, elaborate = TRUE)] | "
-				defense += "[colorgrade_rating("STAB", def_armor.stab, elaborate = TRUE)] | "
-				defense += "[colorgrade_rating("PIERCING", def_armor.piercing, elaborate = TRUE)]"
+				defense += "[colorgrade_rating("劈砍", def_armor.slash, elaborate = TRUE)] | "
+				defense += "[colorgrade_rating("刺击", def_armor.stab, elaborate = TRUE)] | "
+				defense += "[colorgrade_rating("穿刺", def_armor.piercing, elaborate = TRUE)]"
 				str += "[defense]<br>"
 		else
-			str += "<b>NO ARMOR!</b>"
+			str += "<b>没有护甲！</b>"
 	return str
 
 /obj/item/proc/temp_to_cold_tier(temp)

@@ -223,7 +223,7 @@
 					html += "巨长<br>"
 
 		if(bookweapon.has_altgrip_modes())
-			html += "\n<b>GRIP: ALT-GRIP (RCLICK/HOTKEY(B)/CTRL+SCRLWHL)</b><br>"
+			html += "\n<b>握法：变换握法（右键／B 键／Ctrl＋滚轮）</b><br>"
 			var/list/alt_grip_lines = bookweapon.get_altgrip_lines(src, user)
 			if(length(alt_grip_lines))
 				for(var/alt_grip_line in alt_grip_lines)

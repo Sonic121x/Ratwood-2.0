@@ -410,7 +410,7 @@
 		if (1601 to 35000)
 			. += "[src] offers the wearer robust protection from fire."
 	if(damaged_clothes)
-		. += span_warning("It looks damaged!")
+		. += span_warning("看起来已经受损！")
 	var/datum/component/storage/pockets = GetComponent(/datum/component/storage)
 	if(pockets)
 		var/list/how_cool_are_your_threads = list("<span class='notice'>")
@@ -706,12 +706,12 @@ BLIND     // can't see anything
 		return examine_text
 
 	var/str
-	str += "<b>ABSORPTION:</b> [colorgrade_rating("🔨 BLUNT", armor.blunt, elaborate = TRUE, max_tier = 5)]<br>"
+	str += "<b>吸收：</b> [colorgrade_rating("🔨 钝击", armor.blunt, elaborate = TRUE, max_tier = 5)]<br>"
 	str += "<b>BLOCK:</b> "
-	str += "[colorgrade_rating("🪓 SLASH", armor.slash, elaborate = TRUE)] | "
-	str += "[colorgrade_rating("🗡️ STAB", armor.stab, elaborate = TRUE)] | "
-	str += "[colorgrade_rating("🏹 PIERCE", armor.piercing, elaborate = TRUE)]"
-	str += "<br><b>RESIST:</b> [colorgrade_rating("🔥 FIRE", armor.fire, elaborate = TRUE)]"
+	str += "[colorgrade_rating("🪓 劈砍", armor.slash, elaborate = TRUE)] | "
+	str += "[colorgrade_rating("🗡️ 刺击", armor.stab, elaborate = TRUE)] | "
+	str += "[colorgrade_rating("🏹 穿刺", armor.piercing, elaborate = TRUE)]"
+	str += "<br><b>抗性：</b> [colorgrade_rating("🔥 灼烧", armor.fire, elaborate = TRUE)]"
 	examine_text = "<font color = '#ffffff'>[examine_text]</font>"
 	return SPAN_TOOLTIP_DANGEROUS_HTML(str, examine_text)
 

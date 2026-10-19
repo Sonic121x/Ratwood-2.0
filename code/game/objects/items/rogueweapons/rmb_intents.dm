@@ -210,7 +210,7 @@
 
 	if(L.has_status_effect(/datum/status_effect/buff/weapon_binded))
 		perc = 0
-		special_msg = span_warning("They had my tricks figured out and are too aware!")
+		special_msg = span_warning("对方已经看穿我的伎俩，戒备得太严了！")
 		newcd = 10 SECONDS
 
 	var/datum/status_effect/buff/clash/guard = L.has_status_effect(/datum/status_effect/buff/clash)
@@ -223,7 +223,7 @@
 
 	if(L.has_status_effect(/datum/status_effect/buff/clash))
 		L.remove_status_effect(/datum/status_effect/buff/clash)
-		to_chat(user, span_notice("[L.p_their(TRUE)] Guard disrupted!"))
+		to_chat(user, span_notice("[L.p_their(TRUE)]的防御被打乱了！"))
 		newcd = ((BASE_RCLICK_CD + 10 SECONDS))
 		perc = 100
 
@@ -275,10 +275,10 @@
 		if(user.IsImmobilized() || user.IsOffBalanced()) //Not usable while we're offbalanced or immobilized
 			return
 		if(user.m_intent == MOVE_INTENT_RUN)
-			to_chat(user, span_warning("I can't focus on this while running."))
+			to_chat(user, span_warning("奔跑时我无法集中精神做这个。"))
 			return
 		if(user.magearmor == FALSE && HAS_TRAIT(user, TRAIT_MAGEARMOR))	//The magearmor is ACTIVE, so we can't Guard. (Yes, it's active while FALSE / 0.)
-			to_chat(user, span_warning("I'm already focusing on my mage armor!"))
+			to_chat(user, span_warning("我已经在专注维持法师护甲了！"))
 			return
 		user.apply_status_effect(/datum/status_effect/buff/clash)
 

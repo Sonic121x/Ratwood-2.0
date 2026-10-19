@@ -127,7 +127,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/dwarven
 	name = "负怨者矮人板甲"
-	desc = "A sturdy set of dwarven plate armor, forged in the old ways. It cannot be worked on without intrinsic dwarven knowledge."
+	desc = "一套依循古法锻造的坚固矮人板甲，没有矮人与生俱来的工艺知识便无法修整。"
 	icon = 'icons/roguetown/clothing/special/race_armor.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/race_armor.dmi'
 	allowed_race = list(/datum/species/dwarf, /datum/species/dwarf/mountain)
@@ -141,7 +141,7 @@
 // Smith: Maille-tier protection, medium armor class
 /obj/item/clothing/suit/roguetown/armor/plate/full/dwarven/smith
 	name = "负怨者板条铁围"
-	desc = "A mixture of plate and maille, worn by dwarven smiths. It cannot be worked on without intrinsic dwarven knowledge."
+	desc = "矮人铁匠穿戴的板甲与锁甲混合护具，没有矮人与生俱来的工艺知识便无法修整。"
 	icon_state = "dsmithchest"
 	item_state = "dsmithchest"
 	armor = ARMOR_PLATE
@@ -152,7 +152,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/dwarven
 	name = "负怨者矮人头盔"
-	desc = "A hardy dwarven helmet. It lets one's dwarvenly beard to poke out."
+	desc = "一顶坚固的矮人头盔，留出了让矮人胡须伸出的空隙。"
 	body_parts_covered = (HEAD | MOUTH | NOSE | EYES | EARS | NECK)	//This specifically omits hair so you could hang your beard out of the helm
 	armor = ARMOR_PLATE
 	allowed_race = list(/datum/species/dwarf, /datum/species/dwarf/mountain)
@@ -167,13 +167,13 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/dwarven/smith
 	name = "负怨者匠师头盔"
-	desc = "A hardy dwarven helmet. It lets one's dwarvenly beard to poke out."
+	desc = "一顶坚固的矮人头盔，留出了让矮人胡须伸出的空隙。"
 	icon_state = "dsmithhead"
 	item_state = "dsmithhead"
 
 /obj/item/clothing/gloves/roguetown/plate/dwarven
 	name = "负怨者矮人臂铠"
-	desc = "Forged to fit the stubbiest of fingers."
+	desc = "为最短粗的手指量身锻造。"
 	icon = 'icons/roguetown/clothing/special/race_armor.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/race_armor.dmi'
 	sleeved = null
@@ -185,7 +185,7 @@
 
 /obj/item/clothing/shoes/roguetown/boots/armor/dwarven
 	name = "负怨者矮人战靴"
-	desc = "Clatters mightily."
+	desc = "走动时铿锵作响。"
 	icon = 'icons/roguetown/clothing/special/race_armor.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/race_armor.dmi'
 	allowed_race = list(/datum/species/dwarf, /datum/species/dwarf/mountain)

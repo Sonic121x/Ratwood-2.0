@@ -87,7 +87,7 @@
 
 //Ranged mace-like mode - merc unique for Nagaika (steppesman)
 /datum/intent/whip/crack/blunt
-	name = "bludgeon"
+	name = "钝击"
 	blade_class = BCLASS_BLUNT
 	penfactor = PEN_NONE
 	recovery = 6

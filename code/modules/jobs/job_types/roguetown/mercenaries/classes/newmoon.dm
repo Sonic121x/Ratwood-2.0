@@ -3,7 +3,7 @@
 	tutorial = "兹班图的新月咒剑士，是拉尔维斯廷某片未知地域中一座已然覆灭的诺克修道院的幸存者，\
 	那曾是兹班图帝国境内十神最后一处重要据点。\
 	在腐朽之灾的重压下，他们的修院生活与虔诚信念迅速崩塌，被迫从孤绝苦修的日子跌入普通佣兵的生涯；\
-	into that of a common sellsword; Noc�s blessings proving rather useful when slaying monsters and men alike. \
+	沦为普通佣兵；诺克的赐福在斩杀怪物与凡人时都颇为有用。 \
 	无论出于何种缘由，你如今来到了这片地界，向出价最高者献上自己的技艺。知识即力量。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(

@@ -33,10 +33,10 @@
 	effective_range_type = EFF_RANGE_EXACT
 
 /datum/intent/spear/thrust/bad
-	name = "weak thrust"
+	name = "弱势突刺"
 	penfactor = PEN_LIGHT
 	damfactor = 1
-	desc = "A weak thrust from a polearm not designed for stabbing. Doesn't care about effective range,\ but also incapable of piercing all but the weakest cloth armor."
+	desc = "用并非为刺击设计的长柄武器勉强突刺。不受有效距离限制，但只能刺穿最薄弱的布甲。"
 	effective_range = null
 	effective_range_type = EFF_RANGE_NONE
 
@@ -1091,8 +1091,8 @@
 	force_wielded = 30
 	possible_item_intents = list(/datum/intent/spear/thrust/bad)
 	gripped_intents = list(/datum/intent/spear/bash/eaglebeak, /datum/intent/mace/smash/eaglebeak, /datum/intent/spear/thrust/bad)
-	name = "eagle's beak"
-	desc = "A reinforced pole affixed with an ornate steel eagle's head, of which its beak is intended to pierce with great harm."
+	name = "鹰喙枪"
+	desc = "一根加固长杆，顶端装有华饰钢制鹰首，以锋利的喙尖刺穿敌人，造成重创。"
 	icon_state = "eaglebeak"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	pixel_y = -16
@@ -1642,8 +1642,8 @@
 	sellprice = 60
 
 /obj/item/rogueweapon/spear/partizan/baotha
-	name = "Saccharine Swordspear"
-	desc = "Keep the rest at arm's length, lest you're burdened with the pain of rememberance."
+	name = "蜜惑剑矛"
+	desc = "将余人拒于一臂之外，免得回忆的苦痛成为你的重负。"
 	force = 30
 	force_wielded = 35
 	possible_item_intents = list(/datum/intent/sword/thrust/long, /datum/intent/sword/cut/long, /datum/intent/sword/strike, /datum/intent/sword/thrust/heavy)
@@ -1680,10 +1680,10 @@
 			if("wielded") return list("shrink" = 0.75, "sx" = 5, "sy" = -3, "nx" = -5, "ny" = -3, "wx" = -5, "wy" = -3, "ex" = 3, "ey" = -4, "northabove" = 0, "southabove" = 1, "eastabove" = 1, "westabove" = 0, "nturn" = 6, "sturn" = -8, "wturn" = 10, "eturn"= -10, "nflip" = 8, "sflip" = 0, "wflip" = 8, "eflip" = 0)
 
 /datum/intent/spear/cut/baotha/rend
-	name = "rending slash"
+	name = "撕裂斩"
 	icon_state = "inrend"
 	attack_verb = list("撕裂")
-	desc = "A vicious slash that tears through flesh."
+	desc = "凶狠地斩开血肉。"
 	clickcd = CLICK_CD_HEAVY
 	reach = 2
 	damfactor = 1.8

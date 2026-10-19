@@ -370,7 +370,7 @@
 							playsound(my_turf, used_intent.miss_sound, 100, FALSE)
 							if(used_intent.miss_text)
 								visible_message(span_warning("[src] [used_intent.miss_text]!"), \
-												span_warning("I [used_intent.miss_text]!"))
+												span_warning("我[used_intent.miss_text]！"))
 					aftermiss()
 					atkswinging = null
 					//update_warning()

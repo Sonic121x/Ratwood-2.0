@@ -222,8 +222,8 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_DEPRAVED, "鞭")
 
 /obj/item/clothing/head/roguetown/helmet/light/baotha
-	name = "Saccharine Sallet"
-	desc = "A beauty so unnatural, yet unlike any kind of beauty you've ever seen before.."
+	name = "蜜惑萨雷特盔"
+	desc = "一种违背常理的美，却又不同于你曾见过的任何美丽之物……"
 	icon_state = "baothahelm"
 	item_state = "baothahelm"
 	body_parts_covered = HEAD | HAIR | EARS | MOUTH | EYES
@@ -236,8 +236,8 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_DEPRAVED, "HELMET")
 
 /obj/item/clothing/neck/roguetown/coif/baotha
-	name = "Saccharine Veil"
-	desc = "Submission to darkness.."
+	name = "蜜惑面纱"
+	desc = "臣服于黑暗……"
 	icon_state = "baothacoif"
 	item_state = "baothacoif"
 	item_flags = DROPDEL
@@ -259,8 +259,8 @@
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 
 /obj/item/clothing/suit/roguetown/armor/plate/fluted/baotha
-	name = "Saccharine Plate Armor"
-	desc = "A light piece of plated armor. Powerful Baothan Magycks protect the exposed flesh yet grants the armor some lighter properties at the cost of durability.."
+	name = "蜜惑板甲"
+	desc = "一件轻巧的板甲。强大的巴奥莎魔法保护着裸露的血肉，使甲胄更为轻盈，代价则是较低的耐久……"
 	icon_state = "baothaplate"
 	item_state = "baothaplate"
 	max_integrity = ARMOR_INT_CHEST_PLATE_ANTAG - 350 //Halved durability, compared to traditional Ascendant-tier armor.
@@ -274,8 +274,8 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_DEPRAVED, "护甲")
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/baotha
-	name = "Saccharine Vestments"
-	desc = "A woven garment, imbued with Baothan Magicks, yet still exposing a vital area of the body.. A welcoming of the pain and pleasure of a blade.."
+	name = "蜜惑法衣"
+	desc = "一件灌注巴奥莎魔法的织衣，却仍露着身体的要害……仿佛在欢迎刀刃带来的痛苦与欢愉……"
 	icon_state = "baothagamb"
 	armor_class = ARMOR_CLASS_LIGHT
 	armor = ARMOR_PADDED
@@ -297,7 +297,7 @@
 
 
 /obj/item/clothing/wrists/roguetown/bracers/leather/baotha
-	name = "Saccharine Cuffs"
+	name = "蜜惑腕饰"
 	desc = "镀金臂甲，保护双臂。"
 	icon_state = "baothabracers"
 	armor = ARMOR_PADDED
@@ -310,8 +310,8 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_DEPRAVED, "BRACERS")
 
 /obj/item/clothing/under/roguetown/baotha/skirt
-	name = "Saccharine Fauldcoat"
-	desc = "Weaved from one's lux, combined with powerful Baothan Magicks to form a fashionable, yet protective, skirt."
+	name = "蜜惑甲裙"
+	desc = "以自身灵辉编织，结合强大的巴奥莎魔法，化作一条时髦而不失防护力的裙装。"
 	armor = ARMOR_PADDED
 	icon_state = "baothaskirt"
 	resistance_flags = FIRE_PROOF
@@ -325,8 +325,8 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_DEPRAVED, "SKIRT")
 
 /obj/item/clothing/gloves/roguetown/plate/baotha
-	name = "Saccharine Gauntlets"
-	desc = "Powerful Baothan magicks woven to protect the flesh under soft hands.."
+	name = "蜜惑护手"
+	desc = "强大的巴奥莎魔法交织成网，保护柔嫩双手下的血肉……"
 	icon_state = "baothagloves"
 	item_state = "baothagloves"
 	max_integrity = ARMOR_INT_SIDE_ANTAG - 150
@@ -338,8 +338,8 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_DEPRAVED, "GLOVES")
 
 /obj/item/clothing/shoes/roguetown/boots/armor/baotha
-	name = "Saccharine Heels"
-	desc = "Baothan Magicks strung around the explosed flesh.. Fashioned into a pair of heels, to protect the soft supple flesh underneath.."
+	name = "蜜惑高跟鞋"
+	desc = "巴奥莎魔法缠绕裸露的血肉，塑成一双高跟鞋，保护下方柔嫩的肌肤……"
 	icon_state = "baothaboots"
 	item_state = "baothaboots"
 	max_integrity = ARMOR_INT_SIDE_ANTAG - 150

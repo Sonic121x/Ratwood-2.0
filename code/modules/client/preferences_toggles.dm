@@ -825,11 +825,11 @@
 
 /client/verb/toggle_hitzonetext() // Whether the user can see a text popup for where they got hit.
 	set category = "选项"
-	set name = "Toggle Hitzone Text"
+	set name = "切换受击部位提示"
 	if(prefs)
 		prefs.floating_text_toggles ^= HITZONE_TEXT
 		prefs.save_preferences()
-	to_chat(src, "You will[prefs.floating_text_toggles & HITZONE_TEXT ? "" : " not"] see floating text for where you were hit.")
+	to_chat(src, "你将[prefs.floating_text_toggles & HITZONE_TEXT ? "看到" : "不再看到"]受击部位的浮动提示。")
 
 /client/verb/toggle_floatingtext() // Whether the user can see the balloon pop ups at all.
 	set category = "选项"

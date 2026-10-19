@@ -13,8 +13,8 @@
 
 /obj/item/ammo_casing/caseless/rogue/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Projectiles have maximum and minimum falloff ranges, with particular falloff factors for damage.")
-	. += span_info("If the target is hit between the maximum and minimum tile range, then the full force is delivered.")
+	. += span_info("投射物有最小与最大衰减距离，以及对应的伤害衰减系数。")
+	. += span_info("目标位于最小与最大距离之间时，投射物可造成完整伤害。")
 
 //bolts ฅ^•ﻌ•^ฅ
 

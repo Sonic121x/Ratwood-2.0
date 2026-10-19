@@ -751,7 +751,7 @@
 	name = "行刑长剑"
 	desc = "一柄沉重的阔剑，锋刃锐利得令人胆寒，专为将头颅从肩颈上斩落而造。由于它本质上是刑具而非战阵兵器，\
 	它并没有多数制式阔剑那种便于刺击的剑尖。不过，若你有足够的力量挥动这样一柄武器，\
-	then that probably won't stop you from finding a way. Wielding the sword in a single hand enables unwieldy, armor-penetrating strikes. Wielding it with two hands enables hefty, flesh-sundering attacks."
+	那么你多半仍会设法找到挥动它的办法。单手持握可施展笨拙却能穿甲的打击，双手持握则能使出沉重而撕裂血肉的攻击。"
 	possible_item_intents = list(/datum/intent/sword/chop/heavy, /datum/intent/sword/thrust/heavy, /datum/intent/sword/cut, /datum/intent/sword/strike)
 	gripped_intents = list(/datum/intent/sword/thrust/exe, /datum/intent/sword/cut/exe/cleave, /datum/intent/sword/cut/exe/sweep,	/datum/intent/sword/cut/rend)
 	alt_grips = null
@@ -1319,7 +1319,7 @@
 	damfactor = 0.9		//10% worse	than base
 
 /datum/intent/sword/cut/sabre/heavy
-	name = "precise swing"
+	name = "精准挥击"
 	icon_state = "inhack"
 	blade_class = BCLASS_CHOP
 	damfactor = 1.5

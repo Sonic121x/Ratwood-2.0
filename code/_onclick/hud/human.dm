@@ -1,7 +1,7 @@
 /atom/movable/screen/human
 
 /atom/movable/screen/human/toggle
-	name = "toggle"
+	name = "切换"
 	icon_state = "toggle"
 
 /atom/movable/screen/human/toggle/handle_click()
@@ -23,7 +23,7 @@
 	targetmob.hud_used.hidden_inventory_update(usr)
 
 /atom/movable/screen/human/equip
-	name = "equip"
+	name = "装备"
 	icon_state = "act_equip"
 
 /atom/movable/screen/human/equip/handle_click()

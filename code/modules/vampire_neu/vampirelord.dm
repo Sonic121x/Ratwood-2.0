@@ -252,5 +252,5 @@
 	name = "灵魂之典"
 	icon_state = "tome"
 	pixel_x = -16
-	var/list/useoptions = list("Create Death Knight", "Steal the Sun")
+	var/list/useoptions = list("创造死亡骑士", "窃取太阳")
 	var/sunstolen = FALSE

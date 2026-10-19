@@ -68,8 +68,8 @@
 	return TRUE
 
 /atom/movable/screen/action_bar/defensedelay
-	name = "defense readiness"
-	desc = "My readiness to defend. If the light is gone, I cannot dodge or parry."
+	name = "防御就绪"
+	desc = "我的防御准备状态。指示灯熄灭时，我无法闪避或招架。"
 	icon = 'icons/mob/roguehud.dmi'
 	icon_state = "defdelay0"
 	mouse_opacity = TRUE

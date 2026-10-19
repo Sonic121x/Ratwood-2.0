@@ -750,8 +750,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<br><br>"
 
 			dat += "<b>Custom Job Preferences:</b><BR>"
-			dat += "<a href='?_src_=prefs;preference=ai_core_icon;task=input'><b>Preferred AI Core Display:</b> [preferred_ai_core_display]</a><br>"
-			dat += "<a href='?_src_=prefs;preference=sec_dept;task=input'><b>Preferred Security Department:</b> [prefered_security_department]</a><BR></td>"
+			dat += "<a href='?_src_=prefs;preference=ai_core_icon;task=input'><b>偏好的 AI 核心外观：</b> [preferred_ai_core_display]</a><br>"
+			dat += "<a href='?_src_=prefs;preference=sec_dept;task=input'><b>偏好的安保部门：</b> [prefered_security_department]</a><BR></td>"
 */
 			var/datum/bark/B = GLOB.bark_list[bark_id]
 			dat += "<br>"
@@ -877,8 +877,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 //			dat += "<b>Ghost PDA:</b> <a href='?_src_=prefs;preference=ghost_pda'>[(chat_toggles & CHAT_GHOSTPDA) ? "All Messages" : "Nearest Creatures"]</a><br>"
 
 /*			if(unlock_content)
-				dat += "<b>Ghost Form:</b> <a href='?_src_=prefs;task=input;preference=ghostform'>[ghost_form]</a><br>"
-				dat += "<B>Ghost Orbit: </B> <a href='?_src_=prefs;task=input;preference=ghostorbit'>[ghost_orbit]</a><br>"
+				dat += "<b>幽灵形态：</b> <a href='?_src_=prefs;task=input;preference=ghostform'>[ghost_form]</a><br>"
+				dat += "<B>幽灵环绕轨迹：</B> <a href='?_src_=prefs;task=input;preference=ghostorbit'>[ghost_orbit]</a><br>"
 
 			var/button_name = "若显示此文本，说明发生了错误。"
 			switch(ghost_accs)
@@ -889,7 +889,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				if(GHOST_ACCS_NONE)
 					button_name = GHOST_ACCS_NONE_NAME
 
-			dat += "<b>Ghost Accessories:</b> <a href='?_src_=prefs;task=input;preference=ghostaccs'>[button_name]</a><br>"
+			dat += "<b>幽灵饰品：</b> <a href='?_src_=prefs;task=input;preference=ghostaccs'>[button_name]</a><br>"
 
 			switch(ghost_others)
 				if(GHOST_OTHERS_THEIR_SETTING)
@@ -899,7 +899,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				if(GHOST_OTHERS_SIMPLE)
 					button_name = GHOST_OTHERS_SIMPLE_NAME
 
-			dat += "<b>Ghosts of Others:</b> <a href='?_src_=prefs;task=input;preference=ghostothers'>[button_name]</a><br>"
+			dat += "<b>其他幽灵的显示：</b> <a href='?_src_=prefs;task=input;preference=ghostothers'>[button_name]</a><br>"
 			dat += "<br>"
 
 			dat += "<b>收入通知:</b> <a href='?_src_=prefs;preference=income_pings'>[(chat_toggles & CHAT_BANKCARD) ? "开启" : "静音"]</a><br>"
@@ -941,7 +941,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 					else
 						p_map += " (No longer exists)"
 				if(CONFIG_GET(flag/preference_map_voting))
-					dat += "<b>Preferred Map:</b> <a href='?_src_=prefs;preference=preferred_map;task=input'>[p_map]</a><br>"
+					dat += "<b>偏好地图：</b> <a href='?_src_=prefs;preference=preferred_map;task=input'>[p_map]</a><br>"
 */
 
 //			dat += "<b>Play Lobby Music:</b> <a href='?_src_=prefs;preference=lobby_music'>[(toggles & SOUND_LOBBY) ? "Enabled":"Disabled"]</a><br>"
@@ -2345,15 +2345,15 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				if("img_gallery")
 
 					if(img_gallery.len >= 3)
-						to_chat(user, "You already have three images in your gallery!")
+						to_chat(user, "你的图库已经有三张图片了！")
 						return
 
 					to_chat(user, "<span class='notice'>请使用["<span class='bold'>您角色的图片</span>"]以保持沉浸感。最后，["<span class='bold'>不要使用真实照片或任何不够严肃的图像。</span>"]</span>")
 					to_chat(user, "<span class='notice'>如果照片在游戏内无法正常显示，请确保它是一个可以在浏览器中正常打开的直接图像链接。</span>")
 					to_chat(user, "<span class='notice'>请注意，三张图片并排显示并自适应填充水平矩形。因此，垂直图像效果最佳。</span>")
-					to_chat(user, "<span class='notice'>You can only have a maximum of ["<span class='bold'>THREE IMAGES</span>"] in your gallery at a time.</span>")
+					to_chat(user, "<span class='notice'>图库中同时最多只能保存["<span class='bold'>三张图片</span>"]。</span>")
 
-					var/new_galleryimg = tgui_input_text(user, "Input the image link (https, hosts: gyazo, lensdump, imgbox, catbox, imgbb, filegarden):", "图库图像",  encode = FALSE)
+					var/new_galleryimg = tgui_input_text(user, "输入图片链接（须使用 https，支持 gyazo、lensdump、imgbox、catbox、imgbb、filegarden）：", "图库图像",  encode = FALSE)
 
 					if(new_galleryimg == null)
 						return
@@ -2373,15 +2373,15 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				if("nsfw_img_gallery")
 
 					if(nsfw_img_gallery.len >= 3)
-						to_chat(user, "You already have three images in your gallery!")
+						to_chat(user, "你的图库已经有三张图片了！")
 						return
 
 					to_chat(user, "<span class='notice'>请使用["<span class='bold'>您角色的图片</span>"]以保持沉浸感。最后，["<span class='bold'>不要使用真实照片或任何不够严肃的图像。</span>"]</span>")
 					to_chat(user, "<span class='notice'>如果照片在游戏内无法正常显示，请确保它是一个可以在浏览器中正常打开的直接图像链接。</span>")
 					to_chat(user, "<span class='notice'>请注意，三张图片并排显示并自适应填充水平矩形。因此，垂直图像效果最佳。</span>")
-					to_chat(user, "<span class='notice'>You can only have a maximum of ["<span class='bold'>THREE IMAGES</span>"] in your gallery at a time.</span>")
+					to_chat(user, "<span class='notice'>图库中同时最多只能保存["<span class='bold'>三张图片</span>"]。</span>")
 
-					var/new_galleryimg = tgui_input_text(user, "Input the image link (https, hosts: gyazo, lensdump, imgbox, catbox, imgbb, filegarden):", "图库图像",  encode = FALSE)
+					var/new_galleryimg = tgui_input_text(user, "输入图片链接（须使用 https，支持 gyazo、lensdump、imgbox、catbox、imgbb、filegarden）：", "图库图像",  encode = FALSE)
 
 					if(new_galleryimg == null)
 						return
@@ -2684,13 +2684,13 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 /*
 				if("color_ethereal")
-					var/new_etherealcolor = input(user, "选择你的以太颜色", "Character Preference") as null|anything in GLOB.color_list_ethereal
+					var/new_etherealcolor = input(user, "选择你的以太颜色", "角色偏好") as null|anything in GLOB.color_list_ethereal
 					if(new_etherealcolor)
 						features["ethcolor"] = GLOB.color_list_ethereal[new_etherealcolor]
 
 				if("legs")
 					var/new_legs
-					new_legs = input(user, "选择角色的腿部：", "Character Preference") as null|anything in GLOB.legs_list
+					new_legs = input(user, "选择角色的腿部：", "角色偏好") as null|anything in GLOB.legs_list
 					if(new_legs)
 						features["legs"] = new_legs
 */
@@ -3577,7 +3577,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			if(ispath(L[1],/datum/skill))
 				var/datum/skill/S = L[1]
 				name = initial(S.name)
-			dat += "["\Roman[L[2]]"] 级[L[2] > 1 ? "" : ""] of <b>[name]</b>[L[3] ? ", 最高达到 <b>[SSskills.level_names_plain[L[3]]]</b>" : ""] <br>"
+			dat += "["\Roman[L[2]]"] 级[L[2] > 1 ? "" : ""]<b>[name]</b>[L[3] ? "，最高达到 <b>[SSskills.level_names_plain[L[3]]]</b>" : ""] <br>"
 		dat += "</font>"
 	if(length(V.added_traits))
 		dat += "<font color = '#a3ffe0'><font size = 3>此美德赋予以下特征：<br>"

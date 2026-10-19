@@ -1134,18 +1134,18 @@
 		if(((blood_volume in -INFINITY to BLOOD_VOLUME_SURVIVE) && !HAS_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE)) || IsUnconscious() || IsSleeping() || getOxyLoss() > 75 || (HAS_TRAIT(src, TRAIT_DEATHCOMA)) || (health <= HEALTH_THRESHOLD_FULLCRIT && !HAS_TRAIT(src, TRAIT_NOHARDCRIT)))
 			if(stat != UNCONSCIOUS) // Transition into hardcrit — announce once
 				if((blood_volume in -INFINITY to BLOOD_VOLUME_SURVIVE) && !HAS_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE))
-					visible_message(span_danger("<b>[src] collapses, [src.p_their()] skin pale as parchment!</b>"), \
-						span_userdanger("My blood... there is nothing left. I cannot feel my limbs."))
+					visible_message(span_danger("<b>[src]倒了下去，皮肤惨白如纸！</b>"), \
+						span_userdanger("我的血……已经流干了。我感觉不到四肢了。"))
 				else if(getOxyLoss() > 75)
-					visible_message(span_danger("<b>[src] collapses, [src.p_their()] lips turning blue!</b>"), \
-						span_userdanger("I cannot breathe... the world grows dark."))
+					visible_message(span_danger("<b>[src]倒了下去，嘴唇一片青紫！</b>"), \
+						span_userdanger("我无法呼吸……整个世界都暗了下来。"))
 				else if(health <= HEALTH_THRESHOLD_FULLCRIT)
 					if(getBruteLoss() >= getFireLoss())
-						visible_message(span_danger("<b>[src] collapses, broken and bloodied!</b>"), \
-							span_userdanger("My bones are shattered... I cannot go on."))
+						visible_message(span_danger("<b>[src]倒了下去，浑身是血，骨肉破碎！</b>"), \
+							span_userdanger("我的骨头全碎了……我撑不下去了。"))
 					else
-						visible_message(span_danger("<b>[src] collapses, [src.p_their()] flesh charred and smoking!</b>"), \
-							span_userdanger("The burning... it has taken everything from me."))
+						visible_message(span_danger("<b>[src]倒了下去，焦黑的血肉仍冒着烟！</b>"), \
+							span_userdanger("灼痛……已经夺走了我的一切。"))
 			stat = UNCONSCIOUS
 			cure_holdbreath() // In case you passed out from holding breathe
 			if(ishuman(src))

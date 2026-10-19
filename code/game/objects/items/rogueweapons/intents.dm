@@ -157,7 +157,7 @@
 		inspec += "\n<b>有效距离:</b> [suffix] [effective_range] 步"
 	if(damfactor != 1)
 		inspec += "\n<b>伤害:</b> [damfactor]"
-	inspec += "\n<b>Armor Penetration:</b> [penfactor > PEN_NONE ? colorgrade_rating(uppertext(item_d_type), penfactor) : "<font color='#808080'>NONE</font>"]"
+	inspec += "\n<b>穿甲能力：</b> [penfactor > PEN_NONE ? colorgrade_rating(uppertext(item_d_type), penfactor) : "<font color='#808080'>无</font>"]"
 	if(masteritem)
 		inspec += " <span class='info'><a href='?src=[REF(masteritem)];explainpenfactor=1'>{?}</a></span>"
 	if(get_chargetime())
@@ -199,44 +199,44 @@
 				str +="|[bodyzone2readablezone(part)]|"
 			inspec += str
 	if(intent_intdamage_factor != 1)
-		inspec += "\n<b>Integrity Damage:</b> [intent_intdamage_factor * 100]%"
+		inspec += "\n<b>护甲破坏系数：</b> [intent_intdamage_factor * 100]%"
 		if(masteritem)
 			inspec += " <span class='info'><a href='?src=[REF(masteritem)];explaindemolitionmod=1'>{?}</a></span>"
 	if(demolition_mod != 1)
-		inspec += "\n<b>Demolition Modifier:</b> [demolition_mod * 100]%"
+		inspec += "\n<b>对物破坏系数：</b> [demolition_mod * 100]%"
 		if(masteritem)
 			inspec += " <span class='info'><a href='?src=[REF(masteritem)];explaindemolitionmod=1'>{?}</a></span>"
 	if(sharpness_penalty)
 		inspec += "\n该意图每次攻击都会额外消耗一些锋利度。"
 	if(swingdelay > 0)
-		inspec += "\n<b>Attack Delay:</b> "
+		inspec += "\n<b>攻击前摇：</b> "
 		if(swingdelay <= 4)
-			inspec += "<font color='#fa4'>Moderate</font>"
+			inspec += "<font color='#fa4'>适中</font>"
 		else if(swingdelay <= 8)
-			inspec += "<font color='#f44'>Significant</font>"
+			inspec += "<font color='#f44'>明显</font>"
 		else
-			inspec += "<font color='#f22'>Heavy</font>"
+			inspec += "<font color='#f22'>漫长</font>"
 	if(swingdelay_type)
-		inspec += " | Type: "
+		inspec += " | 类型： "
 		switch(swingdelay_type)
 			if(SWINGDELAY_NORMAL)
-				inspec += SPAN_TOOLTIP("The swing will be without any unusual effects.", "<font color='#e6e6e6'><u>Normal</u></font>")
+				inspec += SPAN_TOOLTIP("挥击时不会产生额外效果。", "<font color='#e6e6e6'><u>普通</u></font>")
 			if(SWINGDELAY_PENALTY)
-				inspec += SPAN_TOOLTIP("The swing will reduce my defense by a significant amount.", "<font color='#dab141'><u>Difficult</u></font>")
+				inspec += SPAN_TOOLTIP("挥击期间，我的防御能力会大幅降低。", "<font color='#dab141'><u>吃力</u></font>")
 			if(SWINGDELAY_CANCEL, SWINGDELAY_CANCELSLOW)
-				inspec += SPAN_TOOLTIP("I will have no chance to defend while swinging, and a strike against me will interrupt it.", "<font color='#a70d0d'><u>Rigid</u></font>")
+				inspec += SPAN_TOOLTIP("挥击期间我无法防御，受到攻击还会打断挥击。", "<font color='#a70d0d'><u>僵直</u></font>")
 
 	if(blunt_chipping)
 		var/chip_strength
 		switch(blunt_chip_strength)
 			if(BLUNT_CHIP_MINUSCULE)
-				chip_strength = "minuscule"
+				chip_strength = "微量"
 			if(BLUNT_CHIP_WEAK)
-				chip_strength = "middling"
+				chip_strength = "少量"
 			if(BLUNT_CHIP_STRONG)
-				chip_strength = "considerable"
+				chip_strength = "可观"
 			if(BLUNT_CHIP_ABSURD)
-				chip_strength = "significant"
+				chip_strength = "大量"
 		inspec += "\n若目标没有衬垫防护，将有[chip_strength]的伤害绕过护甲。"
 
 	if(cleave)

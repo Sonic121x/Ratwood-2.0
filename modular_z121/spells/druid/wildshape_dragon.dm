@@ -177,7 +177,7 @@
 	clickcd = 10
 	icon_state = "incut"
 	blade_class = BCLASS_CUT
-	attack_verb = list("claws", "mauls", "tears")
+	attack_verb = list("爪击", "猛撕", "撕裂")
 	animname = "cut"
 	hitsound = "genslash"
 	penfactor = PEN_LIGHT

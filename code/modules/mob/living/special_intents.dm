@@ -10,8 +10,8 @@ At the moment the pattern is manually designated using coordinates in tile_coord
 This allows the devs to draw whatever shape they want at the cost of it feeling a little quirky.
 */
 /datum/special_intent
-	var/name = "special intent"
-	var/desc = "desc"
+	var/name = "特殊招式"
+	var/desc = "说明"
 
 	var/mob/living/howner
 	var/atom/movable/iparent
@@ -684,9 +684,9 @@ SPECIALS START HERE
 #define GAREN_WAVE2 1.4 SECONDS
 
 /datum/special_intent/limbguard
-	name = "Limb Guard"
-	desc = "Raise your shield to protect a limb. You will deflect projectiles and anyone striking that limb will be severely penalized. \n\
-		You cannot regain stamina while this is active. It can be cancelled by jumping, kicking or by using MMB again with the same shield out."
+	name = "部位防护"
+	desc = "举起盾牌保护一个身体部位，挡开来袭的投射物，并使攻击该处的敌人受到严重惩罚。 \n\
+		维持期间无法恢复体力。跳跃、踢击，或继续持着同一面盾牌再次按中键，均可取消。"
 	respect_adjacency = FALSE
 	cooldown = 30 SECONDS
 	stamcost = 30

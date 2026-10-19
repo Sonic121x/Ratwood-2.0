@@ -1453,7 +1453,7 @@
 
 /datum/emote/living/help/run_emote(mob/user, params, type_override, intentional)
 /*	var/list/keys = list()
-	var/list/message = list("Available emotes, you can use them with say \"*emote\": ")
+	var/list/message = list("可用的表情动作，可通过说出 \"*动作指令\" 来使用： ")
 
 	for(var/key in GLOB.emote_list)
 		for(var/datum/emote/P in GLOB.emote_list[key])
@@ -2181,14 +2181,14 @@
 	key_third_person = "squeaks!"
 	message = "吱吱地叫着！"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	message_muffled = "makes a muffled squeak!"
+	message_muffled = "发出一阵闷闷的吱叫！"
 	vary = TRUE
 	show_runechat = FALSE
 	is_animal = TRUE
 
 /mob/living/carbon/human/verb/emote_msqueak()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/moth))
-		set name = "Moth Squeak"
+		set name = "蛾族吱叫"
 		set category = "发声"
 		emote("msqueak", intentional = TRUE, animal = TRUE)
 	else
