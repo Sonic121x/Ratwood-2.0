@@ -236,8 +236,8 @@ GLOBAL_LIST_EMPTY(icon_state_cache)
 #ifdef TESTSERVER
 
 /client/verb/output_inhands()
-	set category = "INHANDS"
-	set name = "Output Variables"
+	set category = "手持物品"
+	set name = "输出变量"
 	set desc = ""
 
 	var/mob/living/carbon/human/LI = mob
@@ -262,8 +262,8 @@ GLOBAL_LIST_EMPTY(icon_state_cache)
 			to_chat(mob, "[tegst.Join()]")
 
 /client/verb/inhand_xplus()
-	set category = "INHANDS"
-	set name = "X+1"
+	set category = "手持物品"
+	set name = "横向+1"
 
 	if(!isliving(mob))
 		return
@@ -313,8 +313,8 @@ GLOBAL_LIST_EMPTY(icon_state_cache)
 	LI.update_inv_back()
 
 /client/verb/inhand_xminus()
-	set category = "INHANDS"
-	set name = "X-1"
+	set category = "手持物品"
+	set name = "横向-1"
 
 	if(!isliving(mob))
 		return
@@ -364,8 +364,8 @@ GLOBAL_LIST_EMPTY(icon_state_cache)
 	LI.update_inv_back()
 
 /client/verb/inhand_yplus()
-	set category = "INHANDS"
-	set name = "Y+1"
+	set category = "手持物品"
+	set name = "纵向+1"
 
 	if(!isliving(mob))
 		return
@@ -415,8 +415,8 @@ GLOBAL_LIST_EMPTY(icon_state_cache)
 	LI.update_inv_back()
 
 /client/verb/inhand_yminus()
-	set category = "INHANDS"
-	set name = "Y-1"
+	set category = "手持物品"
+	set name = "纵向-1"
 
 	if(!isliving(mob))
 		return
@@ -466,8 +466,8 @@ GLOBAL_LIST_EMPTY(icon_state_cache)
 	LI.update_inv_back()
 
 /client/verb/inhand_flip()
-	set category = "INHANDS"
-	set name = "FLIP"
+	set category = "手持物品"
+	set name = "翻转"
 
 	if(!isliving(mob))
 		return
@@ -530,8 +530,8 @@ GLOBAL_LIST_EMPTY(icon_state_cache)
 	LI.update_inv_back()
 
 /client/verb/inhand_turnplus()
-	set category = "INHANDS"
-	set name = "Turn +1"
+	set category = "手持物品"
+	set name = "旋转+1"
 
 	if(!isliving(mob))
 		return
@@ -583,8 +583,8 @@ GLOBAL_LIST_EMPTY(icon_state_cache)
 	LI.update_inv_back()
 
 /client/verb/inhand_turnminus()
-	set category = "INHANDS"
-	set name = "Turn -1"
+	set category = "手持物品"
+	set name = "旋转-1"
 
 	if(!isliving(mob))
 		return
@@ -636,8 +636,8 @@ GLOBAL_LIST_EMPTY(icon_state_cache)
 	LI.update_inv_back()
 
 /client/verb/inhand_scaleplus()
-	set category = "INHANDS"
-	set name = "Shrink+0.1"
+	set category = "手持物品"
+	set name = "缩放+0.1"
 
 	if(!isliving(mob))
 		return
@@ -674,8 +674,8 @@ GLOBAL_LIST_EMPTY(icon_state_cache)
 	LI.update_inv_back()
 
 /client/verb/inhand_scaleminus()
-	set category = "INHANDS"
-	set name = "Shrink-0.1"
+	set category = "手持物品"
+	set name = "缩放-0.1"
 
 	if(!isliving(mob))
 		return
@@ -712,27 +712,27 @@ GLOBAL_LIST_EMPTY(icon_state_cache)
 	LI.update_inv_back()
 
 /client/verb/give_me_money()
-	set category = "DEBUGTEST"
-	set name = "GiveMeMoney"
+	set category = "调试指令"
+	set name = "给我钱"
 	if(mob)
 		var/turf/T = get_turf(mob)
 		if(T)
 			new /obj/item/roguecoin/gold/pile(T)
 /*
 /client/verb/wwolf()
-	set category = "DEBUGTEST"
-	set name = "Werewolf"
+	set category = "调试指令"
+	set name = "狼人"
 	if(mob.mind)
 		if(mob.mind.has_antag_datum(/datum/antagonist/werewolf, TRUE))
-			to_chat(mob, "I am already a werewolf.")
+			to_chat(mob, "我已经是狼人了。")
 		else
 			var/datum/antagonist/werewolf/new_antag = new /datum/antagonist/werewolf()
 			mob.mind.add_antag_datum(new_antag)
 */
 
 /client/verb/zoomtest()
-	set category = "DEBUGTEST"
-	set name = "ZoomTest"
+	set category = "调试指令"
+	set name = "缩放测试"
 	if(mob)
 		if(iscarbon(mob))
 			var/mob/living/carbon/C = mob
@@ -745,8 +745,8 @@ GLOBAL_LIST_EMPTY(icon_state_cache)
 				animate(transform = -newmatrix, time = 5, easing = QUAD_EASING)
 
 /client/verb/zoomteststop()
-	set category = "DEBUGTEST"
-	set name = "ZoomTestEnd"
+	set category = "调试指令"
+	set name = "结束缩放测试"
 	if(mob)
 		if(iscarbon(mob))
 			var/mob/living/carbon/C = mob
@@ -757,14 +757,14 @@ GLOBAL_LIST_EMPTY(icon_state_cache)
 
 #ifdef TESTING
 /client/verb/door_test_button()
-	set category = "DEBUGTEST"
-	set name = "door_test_button"
+	set category = "调试指令"
+	set name = "门测试按钮"
 	if(mob)
 		var/mob/M = mob
 		if(isturf(M.loc))
 			var/turf/T = M.loc
 			for(var/obj/structure/mineral_door/D in T)
-				to_chat(M, "DOOR - [D]")
-				to_chat(M, "LOCKID: [D.lockid]")
-				to_chat(M, "LOCKSTATUS: [D.locked]")
+				to_chat(M, "门 - [D]")
+				to_chat(M, "锁ID：[D.lockid]")
+				to_chat(M, "锁定状态：[D.locked]")
 #endif

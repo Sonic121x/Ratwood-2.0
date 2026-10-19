@@ -23,7 +23,7 @@
 	return ..()
 
 /datum/advclass/vampire_spawn
-	name = "Vampire Spawn"
+	name = "吸血鬼子嗣"
 	outfit = /datum/outfit/job/roguetown/vampire_spawn
 
 	category_tags = list(CTAG_VAMPIRE_SPAWN)
@@ -64,56 +64,56 @@
 
 	if(H.mind)
 		var/weapons = list(
-			"Longsword + Crossbow",
-			"Billhook + Recurve Bow",
-			"Grand Mace + Longbow", 
-			"Sabre + Recurve Bow",
-			"Claymore",
-			"Great Mace",
-			"Battle Axe",
-			"Greataxe",
-			"Estoc",
-			"Lucerne",
-			"Partizan",
+			"长剑与十字弩",
+			"钩镰枪与反曲弓",
+			"巨型钉头锤与紫杉长弓",
+			"军刀与反曲弓",
+			"克莱摩大剑",
+			"巨型钉头锤",
+			"战斧",
+			"钢巨斧",
+			"穿甲刺剑",
+			"卢塞恩锤",
+			"帕提赞长戟",
 		)
-		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
 		switch(weapon_choice)
-			if("Longsword + Crossbow")
+			if("长剑与十字弩")
 				beltl = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/long
 				beltr = /obj/item/quiver/bolts
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
-			if("Billhook + Recurve Bow")
+			if("钩镰枪与反曲弓")
 				r_hand = /obj/item/rogueweapon/spear/billhook
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				beltr = /obj/item/quiver/arrows
 				beltl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
-			if("Grand Mace + Longbow")
+			if("巨型钉头锤与紫杉长弓")
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow
 				beltr = /obj/item/quiver/arrows
 				beltl = /obj/item/rogueweapon/mace/goden/steel
-			if("Sabre + Recurve Bow")
+			if("军刀与反曲弓")
 				l_hand = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/sabre
 				beltr = /obj/item/quiver/arrows
 				beltl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
-			if("Claymore")
+			if("克莱摩大剑")
 				r_hand = /obj/item/rogueweapon/greatsword/zwei
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
-			if("Great Mace")
+			if("巨型钉头锤")
 				r_hand = /obj/item/rogueweapon/mace/goden/steel
-			if("Battle Axe")
+			if("战斧")
 				r_hand = /obj/item/rogueweapon/stoneaxe/battle
-			if("Greataxe")
+			if("钢巨斧")
 				r_hand = /obj/item/rogueweapon/greataxe/steel
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
-			if("Estoc")
+			if("穿甲刺剑")
 				r_hand = /obj/item/rogueweapon/estoc
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
-			if("Lucerne")
+			if("卢塞恩锤")
 				r_hand = /obj/item/rogueweapon/eaglebeak/lucerne
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
-			if("Partizan")
+			if("帕提赞长戟")
 				r_hand = /obj/item/rogueweapon/spear/partizan
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 
@@ -122,33 +122,33 @@
 
 	if(H.mind)
 		var/helmets = list(
-			"Pigface Bascinet" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface,
-			"Guard Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/guard,
-			"Barred Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/sheriff,
-			"Bucket Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/bucket,
-			"Knight Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight,
-			"Visored Sallet"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored,
-			"Snouted Visored Sallet"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted,
-			"Armet"				= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet,
-			"Snouted Armet"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/snouted,
-			"Hounskull Bascinet" = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull,
-			"Roundface Bascinet"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface,
-			"Snouted Roundface Bascinet"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/snouted,
-			"Etruscan Bascinet" = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan,
-			"Slitted Kettle"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle,
-			"None"
+			"猪面盆盔" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface,
+			"钢萨伏依盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/guard,
+			"栅栏头盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/sheriff,
+			"桶盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/bucket,
+			"骑士头盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight,
+			"带面罩萨勒盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored,
+			"带吻部面罩萨雷特盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted,
+			"阿米特盔"				= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet,
+			"带吻部阿米特盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/snouted,
+			"犬首盆盔" = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull,
+			"圆面盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface,
+			"带吻部圆面盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/snouted,
+			"伊特鲁斯卡盆盔" = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan,
+			"开缝锅盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle,
+			"无"
 		)
-		var/helmchoice = input(H, "Choose your Helm.", "TAKE UP HELMS") as anything in helmets
-		if(helmchoice != "None")
+		var/helmchoice = input(H, "选择你的头盔。", "整备盔甲") as anything in helmets
+		if(helmchoice != "无")
 			head = helmets[helmchoice]
 
 		var/armors = list(
-			"Brigandine"		= /obj/item/clothing/suit/roguetown/armor/brigandine/retinue,
-			"Coat of Plates"	= /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates,
-			"Steel Cuirass"		= /obj/item/clothing/suit/roguetown/armor/plate/half,
-			"Fluted Cuirass"	= /obj/item/clothing/suit/roguetown/armor/plate/half/fluted,
+			"板甲衣"		= /obj/item/clothing/suit/roguetown/armor/brigandine/retinue,
+			"板片外衣"	= /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates,
+			"钢胸甲"		= /obj/item/clothing/suit/roguetown/armor/plate/half,
+			"沟槽胸甲"	= /obj/item/clothing/suit/roguetown/armor/plate/half/fluted,
 		)
-		var/armorchoice = input(H, "Choose your armor.", "TAKE UP ARMOR") as anything in armors
+		var/armorchoice = input(H, "选择你的护甲。", "整备护甲") as anything in armors
 		armor = armors[armorchoice]
 
 	backpack_contents = list(

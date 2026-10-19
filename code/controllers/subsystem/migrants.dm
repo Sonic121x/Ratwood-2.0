@@ -96,7 +96,7 @@ SUBSYSTEM_DEF(migrants)
 	log_game("Migrants: FAILED to spawn wave: [wave_type]")
 	wave_cooldown[wave_type] = world.time + get_fail_cooldown(wave)
 	for(var/client/client as anything in get_wave_candidates(wave_type))
-		to_chat(client, span_boldwarning("The wave you queued for, [wave.name], failed to gather enough people and scattered into the mist. You have left the queue."))
+		to_chat(client, span_boldwarning("你排队等待的[wave.name]未能召集足够的人手，已消散在迷雾中。你已退出队列。"))
 	if(track == MIGRANT_TRACK_TRIUMPH)
 		refund_wave_contributions(wave)
 	reset_wave_queue(wave_type)
@@ -147,7 +147,7 @@ SUBSYSTEM_DEF(migrants)
 	spawned_waves[used_wave_type] += 1
 
 	reset_wave_contributions(wave)
-	message_admins("MIGRANTS: Spawned wave: [wave.name] (players: [assignments.len]) at [ADMIN_VERBOSEJMP(spawn_location)]")
+	message_admins("移民：已在 [ADMIN_VERBOSEJMP(spawn_location)] 生成批次：[wave.name]（玩家：[assignments.len] 人）")
 
 	return TRUE
 
@@ -311,7 +311,7 @@ SUBSYSTEM_DEF(migrants)
 	if(spawn_on_location)
 		character.forceMove(assignment.spawn_location)
 
-	to_chat(character, span_alertsyndie("I am a [role.name]!"))
+	to_chat(character, span_alertsyndie("我是一名[role.name]！"))
 	var/wave_greet = isnull(greet_text) ? wave.greet_text : greet_text
 	if(wave_greet)
 		to_chat(character, span_notice("[wave_greet]"))
@@ -454,7 +454,7 @@ SUBSYSTEM_DEF(migrants)
 
 	var/current_triumph = SStriumphs.get_triumphs(player.ckey)
 	if(current_triumph < amount)
-		to_chat(player, span_warning("You don't have enough triumph! You have [current_triumph], need [amount]."))
+		to_chat(player, span_warning("你的凯旋点不足！你有 [current_triumph] 点，需要 [amount] 点。"))
 		return FALSE
 
 	player.adjust_triumphs(-amount, TRUE, "Wave influence: [wave.name]")
@@ -470,10 +470,10 @@ SUBSYSTEM_DEF(migrants)
 		global_triumph_contributions[player.ckey][wave_type] = 0
 	global_triumph_contributions[player.ckey][wave_type] += amount
 
-	to_chat(player, span_notice("You've contributed [amount] triumph to '[wave.name]'. Total: [wave.triumph_total]/[wave.triumph_threshold]"))
+	to_chat(player, span_notice("你已为“[wave.name]”贡献 [amount] 点凯旋点。总贡献：[wave.triumph_total]/[wave.triumph_threshold]"))
 
 	if(wave.triumph_total >= wave.triumph_threshold)
-		message_admins("TRIUMPH: Wave '[wave.name]' has reached its triumph threshold ([wave.triumph_total]/[wave.triumph_threshold]) and will be prioritized!")
+		message_admins("凯旋点：移民批次‘[wave.name]’已达到凯旋点门槛（[wave.triumph_total]/[wave.triumph_threshold]），将被优先选择！")
 		log_game("TRIUMPH: Wave '[wave.name]' reached triumph threshold via player contributions")
 
 	return TRUE
@@ -509,7 +509,7 @@ SUBSYSTEM_DEF(migrants)
 		SStriumphs.triumph_adjust(amount, ckey)
 		var/client/client = GLOB.directory[ckey]
 		if(client)
-			to_chat(client, span_nicegreen("[wave.name] failed to arrive - your [amount] pledged triumph has been refunded."))
+			to_chat(client, span_nicegreen("[wave.name]未能抵达，你贡献的 [amount] 点凯旋点已返还。"))
 	wave.triumph_contributions.Cut()
 	wave.triumph_total = 0
 	for(var/ckey in global_triumph_contributions)
@@ -533,12 +533,12 @@ SUBSYSTEM_DEF(migrants)
 		var/datum/migrant_role/role = MIGRANT_ROLE(role_type)
 		slots += "[wave.optional_roles[role_type]] [role.name]"
 
-	var/line = "<b>A wave is forming: [wave.name]</b>"
+	var/line = "<b>一批移民正在集结：[wave.name]</b>"
 	if(length(needs))
-		line += "<br>Needs: [needs.Join(", ")]."
+		line += "<br>必需角色：[needs.Join(", ")]。"
 	if(length(slots))
-		line += "<br>Slots open for [slots.Join(", ")]."
-	line += "<br><a href='?src=[REF(src)];open_panel=1'>Click to join.</a> [wave_wait_time / (1 SECONDS)]s remaining."
+		line += "<br>可选名额：[slots.Join(", ")]。"
+	line += "<br><a href='?src=[REF(src)];open_panel=1'>点击加入。</a> 剩余 [wave_wait_time / (1 SECONDS)] 秒。"
 	for(var/mob/dead/new_player/lobby_nerd in GLOB.player_list)
 		if(!lobby_nerd.client)
 			continue
@@ -621,17 +621,17 @@ SUBSYSTEM_DEF(migrants)
 	return migrants
 
 /client/proc/admin_force_next_migrant_wave()
-	set category = "-Server-"
-	set name = "Force Migrant Wave"
+	set category = "-服务器-"
+	set name = "强制生成移民批次"
 	if(!holder)
 		return
 	. = TRUE
 	var/mob/user = usr
-	message_admins("Admin [key_name_admin(user)] is forcing the next migrant wave.")
-	var/picked_wave_type = input(user, "Choose migrant wave to force:", "Migrants")  as null|anything in GLOB.migrant_waves
+	message_admins("管理员 [key_name_admin(user)] 正在强制生成下一批移民。")
+	var/picked_wave_type = input(user, "选择要强制生成的移民批次：", "移民")  as null|anything in GLOB.migrant_waves
 	if(!picked_wave_type)
 		return
-	message_admins("Admin [key_name_admin(user)] forced next migrant wave: [picked_wave_type]")
+	message_admins("管理员 [key_name_admin(user)] 强制生成了下一批移民：[picked_wave_type]")
 	log_game("Admin [key_name_admin(user)] forced next migrant wave: [picked_wave_type]")
 	var/datum/migrant_wave/wave = MIGRANT_WAVE(picked_wave_type)
 	SSmigrants.begin_forming(wave.track, picked_wave_type, forced = TRUE)

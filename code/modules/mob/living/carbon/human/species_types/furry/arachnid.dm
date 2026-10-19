@@ -5,12 +5,12 @@
 	name = "Arachnid"
 	id = "arachnid"
 	clothes_id = "lamia"
-	desc = "<b>Arachnid</b><br>\
-	(+1 Strength, -1 Speed, Webwalk Trait, Longstrider Trait, Venomous Trait)"
+	desc = "<b>蛛形族</b><br>\
+	(+1 力量, -1 速度, 蛛行特质, 长腿特质, 毒液特质)"
 
 	expanded_desc = ""
 
-	skin_tone_wording = "Brood"
+	skin_tone_wording = "族群"
 
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR, LIPS, HAIR, FACEHAIR, STUBBLE, SPIDER_ABDOMEN, OLDGREY, MUTCOLORS)

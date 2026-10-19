@@ -56,18 +56,18 @@
 	if(dragged != user)
 		return
 	if(!user.can_do_sex())
-		to_chat(user, "<span class='warning'>I can't do this.</span>")
+		to_chat(user, "<span class='warning'>我现在做不到这个。</span>")
 		return
 	if(!user?.client?.prefs.sexable)
-		to_chat(user, "<span class='warning'>I don't want to touch [target]. (Your ERP preference, in the options)</span>")
+		to_chat(user, "<span class='warning'>我不想碰[target]。（这是我在选项里的情色角色扮演偏好设置）</span>")
 		return
 	if(!target?.client?.prefs)
-		to_chat(user, span_warning("[target] is simply not there. I can't do this."))
+		to_chat(user, span_warning("[target]根本就不在那里。我做不到这个。"))
 		log_combat(user, target, "tried ERP menu against d/ced")
 		return
 	if(!target.client.prefs.sexable)
-		to_chat(user, "<span class='warning'>[target] doesn't want to be touched. (Their ERP preference, in the options)</span>")
-		to_chat(target, "<span class='warning'>[user] failed to touch you. (Your ERP preference, in the options)</span>")
+		to_chat(user, "<span class='warning'>[target]不想被碰触。（这是对方在选项里的情色角色扮演偏好设置）</span>")
+		to_chat(target, "<span class='warning'>[user]没能碰到你。（这是你在选项里的情色角色扮演偏好设置）</span>")
 		log_combat(user, target, "tried unwanted ERP menu against")
 		return
 	user.sexcon.start(target)
@@ -80,14 +80,14 @@
 	var/datum/bodypart_feature/pits/pit_hair = described?.get_bodypart_feature_of_slot(BODYPART_FEATURE_PITS)
 	switch(pit_hair?.accessory_type)
 		if(/datum/sprite_accessory/pits/trim)
-			return pick("trimmed armpit", "stubbly armpit", "prickly armpit")
+			return pick("修剪整齐的腋下", "带着短毛的腋下", "毛茬扎人的腋下")
 		if(/datum/sprite_accessory/pits/moderate)
-			return pick("fluffy pit", "wispy-haired armpit", "downy armpit")
+			return pick("毛茸茸的腋下", "长着细毛的腋下", "覆着绒毛的腋下")
 		if(/datum/sprite_accessory/pits/hairy)
-			return pick("hairy pit", "unshaved pit", "bushy armpit")
+			return pick("多毛的腋下", "未经剃毛的腋下", "毛发浓密的腋下")
 		if(/datum/sprite_accessory/pits/extreme)
-			return pick("jungle-bushed pit", "unkempt pit", "overgrown armpit")
-	return "armpit"
+			return pick("毛发丛生的腋下", "毛发凌乱的腋下", "毛发过于茂盛的腋下")
+	return "腋下"
 
 /datum/sex_controller/proc/make_sucking_noise()
 	if (!user || QDELETED(user) || !istype(user))
@@ -207,9 +207,9 @@
 			prob_for_impreg =  min(prob_for_impreg * 2, IMPREG_PROB_MAX)
 		if(prob(prob_for_impreg))
 			if(wife.mpreg)
-				to_chat(wife, span_love("I feel a surge of warmth inside me again..."))
+				to_chat(wife, span_love("我又一次感到体内涌起一阵暖意……"))
 				return
-			to_chat(wife, span_love("I feel a strange surge of warmth inside me... Am I pregnant?.."))
+			to_chat(wife, span_love("我感到体内涌起一阵奇异的暖流……难道我怀孕了？……"))
 			wife.mpreg = TRUE
 			record_round_statistic(STATS_IMPREGNATIONS)
 		else
@@ -261,8 +261,8 @@
 /mob/living/carbon/human/proc/get_chest_word()
 	var/obj/item/organ/breasts/chest = getorganslot(ORGAN_SLOT_BREASTS)
 	if(chest?.is_pecs())
-		return "pecs"
-	return "breasts"
+		return "胸肌"
+	return "乳房"
 
 /datum/sex_controller/proc/Adjacent_Or_Closet(atom/neighbor)
 	if(istype(user.loc, /obj/structure/closet) || istype(user.loc, /obj/structure/handcart) || istype(neighbor.loc, /obj/structure/closet) || istype(neighbor.loc, /obj/structure/handcart)) // within container

@@ -3,21 +3,21 @@
 	plane = -3
 
 /obj/structure/drape/desert
-	name = "desert drape"
-	desc = "Made from durable fabric, it serves its purpose."
+	name = "沙漠挂帘"
+	desc = "由耐用布料制成，能发挥其应有的作用。"
 	icon = 'modular_deserttown/icons/drapes.dmi'
 	icon_state = "desertdrape"
 
 /datum/crafting_recipe/roguetown/structure/zybdrape
-	name = "desert drape"
+	name = "沙漠挂帘"
 	result = /obj/structure/drape/desert
 	reqs = list(/obj/item/natural/cloth = 2)
 	craftdiff = 1
 	ignoredensity = TRUE
 
 /obj/structure/drape/zybantine
-	name = "zybantine drape"
-	desc = "Made from prestigious fabric, a display of wealth."
+	name = "兹班图挂帘"
+	desc = "以名贵布料制成，是财富的展示。"
 	icon = 'modular_deserttown/icons/drapes.dmi'
 	icon_state = "zybantinedrape1"
 	color = "#a3a3a3"
@@ -27,7 +27,7 @@
 	icon_state = "zybantinedrape[rand(1, 2)]"
 
 /datum/crafting_recipe/roguetown/structure/zybdrapefancy
-	name = "fancy zybantine drape"
+	name = "精致兹班图挂帘"
 	result = /obj/structure/drape/zybantine
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/silk= 2 )
 	craftdiff = 4
@@ -36,34 +36,34 @@
 
 //cushion
 /obj/item/cushion/desert1
-	name = "desert cushion"
+	name = "沙漠坐垫"
 	icon = 'modular_deserttown/icons/cushions.dmi'
 	icon_state = "desertcushion1"
 
 /obj/item/cushion/desert2
-	name = "desert cushion"
+	name = "沙漠坐垫"
 	icon = 'modular_deserttown/icons/cushions.dmi'
 	icon_state = "desertcushion2"
 
 /obj/item/cushion/zybantine
-	name = "zybantine cushion"
+	name = "兹班图坐垫"
 	icon = 'modular_deserttown/icons/cushions.dmi'
 	icon_state = "zybantinecushion"
 
 /datum/crafting_recipe/roguetown/sewing/zybcushion1
-	name = "desert cushion (yellow)"
+	name = "黄色沙漠坐垫"
 	result = list(/obj/item/cushion/desert1)
 	reqs = list(/obj/item/natural/cloth = 2)
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/sewing/zybcushion2
-	name = "desert cushion (grey)"
+	name = "灰色沙漠坐垫"
 	result = list(/obj/item/cushion/desert2)
 	reqs = list(/obj/item/natural/cloth = 2)
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/sewing/zybcushionfancy
-	name = "zybantine cushion"
+	name = "兹班图坐垫"
 	result = list(/obj/item/cushion/zybantine)
 	reqs = list(/obj/item/natural/silk = 2)
 	craftdiff = 4
@@ -74,46 +74,46 @@
 
 
 /obj/structure/fermentation_keg/sandpot
-	name = "sand pot"
-	desc = "A common clay pot used for storing and sometimes fermenting fluids. Favoured over wooden barrels in the desert of Zybantium due to the relative scarcity of wood."
+	name = "沙陶罐"
+	desc = "一种常见的黏土罐，用于储存，有时也用于发酵液体。在兹班提姆沙漠中，因木材相对稀缺，它比木桶更受欢迎。"
 	icon = 'modular_deserttown/icons/pots.dmi'
 	icon_state = "sandpot1"
 
 /datum/crafting_recipe/roguetown/structure/sandpot
-	name = "sand pot"
+	name = "沙陶罐"
 	result = /obj/structure/fermentation_keg/sandpot
 	reqs = list(/obj/item/natural/clay = 1)
-	verbage_simple = "make"
-	verbage = "makes"
+	verbage_simple = "制作"
+	verbage = "制作"
 	skillcraft = /datum/skill/craft/ceramics
 	craftdiff = 1
 
 /obj/structure/fermentation_keg/fancypot
-	name = "fancy pot"
-	desc = "Decorative and Practical!"
+	name = "精致陶罐"
+	desc = "既美观又实用！"
 	icon = 'modular_deserttown/icons/pots.dmi'
 	icon_state = "fancypot1"
 
 /datum/crafting_recipe/roguetown/structure/fancypot
-	name = "sand pot (fancy)"
+	name = "精致陶罐"
 	result = /obj/structure/fermentation_keg/fancypot
 	reqs = list(/obj/item/natural/clay = 1)
-	verbage_simple = "make"
-	verbage = "makes"
+	verbage_simple = "制作"
+	verbage = "制作"
 	skillcraft = /datum/skill/craft/ceramics
 	craftdiff = 3
 
 /obj/item/reagent_containers/glass/bucket/tinypot
-	name = "tiny pot"
+	name = "小陶罐"
 	icon = 'modular_deserttown/icons/pots.dmi'
 	icon_state = "tinypot1"
 
 /datum/crafting_recipe/roguetown/structure/tinypot
-	name = "small clay pot"
+	name = "小黏土罐"
 	result = /obj/item/reagent_containers/glass/bucket/tinypot
 	reqs = list(/obj/item/natural/clay = 1)
-	verbage_simple = "make"
-	verbage = "makes"
+	verbage_simple = "制作"
+	verbage = "制作"
 	skillcraft = /datum/skill/craft/ceramics
 	craftdiff = 2
 
@@ -191,7 +191,7 @@
 
 ///
 /obj/machinery/light/rogue/campfire/fireplace/desert
-	name = "desert fireplace"
+	name = "沙漠壁炉"
 	icon = 'modular_deserttown/icons/fireplace.dmi'
 	icon_state = "fireplace1"
 	base_state = "fireplace"
@@ -201,7 +201,7 @@
 	cookonme = FALSE
 
 /datum/crafting_recipe/roguetown/structure/fireplace/desert
-	name = "desert fireplace"
+	name = "沙漠壁炉"
 	result = /obj/machinery/light/rogue/campfire/fireplace/desert
 	// reqs = list(/obj/item/grown/log/tree/small = 1,
 	// 			/obj/item/natural/stoneblock = 3)
@@ -214,7 +214,7 @@
 ///////////
 
 /obj/structure/pillar
-	name = "pillar"
+	name = "柱子"
 	desc = ""
 	icon = 'modular_deserttown/icons/sandpillar.dmi'
 	opacity = 0
@@ -236,16 +236,16 @@
 	icon_state = "sandpillar1"
 
 /datum/crafting_recipe/roguetown/structure/pillar/desert
-	name = "sandstone pillar"
+	name = "砂岩柱子"
 	result = /obj/structure/pillar/sand1
 	reqs = list(/obj/item/natural/stone = 2)
-	verbage_simple = "builds"
-	verbage = "builds"
+	verbage_simple = "建造"
+	verbage = "建造"
 	skillcraft = /datum/skill/craft/masonry
 	craftdiff = 4
 
 /obj/structure/large_pillar
-	name = "pillar"
+	name = "石柱"
 	desc = ""
 	icon = 'modular_deserttown/icons/temple_objects_tall.dmi'
 	opacity = 0
@@ -277,8 +277,8 @@
 	icon_state = "tall_pillar_5"
 
 /obj/structure/obelisk
-	name = "ancient obelisk"
-	desc = "An ancient obelisk. It has archaic inscriptions in the stone work- ancient Drakian, maybe?"
+	name = "古代方尖碑"
+	desc = "一座古代方尖碑。石面上刻着古老的铭文——也许是古代龙裔文字？"
 	icon = 'modular_deserttown/icons/temple_objects_verytall.dmi'
 	opacity = 0
 	max_integrity = 1000
@@ -301,23 +301,23 @@
 
 /obj/structure/obelisk/proc/attempt_translate(mob/living/user)
 	if(!translation)
-		to_chat(user, span_notice("You find nothing decipherable on the obelisk."))
+		to_chat(user, span_notice("你在方尖碑上找不到任何能解读的文字。"))
 		return
-	to_chat(user, span_notice("You begin studying the archaic inscriptions..."))
+	to_chat(user, span_notice("你开始研究这些古老的铭文……"))
 	if(!do_after(user, 3 SECONDS, target = src))
 		return
 	var/chance = 	clamp(20 + (user.STAINT - 10) * 6, 0, 100)
 	if(prob(chance))
-		to_chat(user, span_notice("Understanding dawns on you: [translation]"))
+		to_chat(user, span_notice("你终于明白了：[translation]"))
 	else
-		to_chat(user, span_warning("The drakian script remains indecipherable to you."))
+		to_chat(user, span_warning("你仍然无法解读这些龙裔文字。"))
 
 /obj/structure/obelisk/destroyed
-	desc = "An ancient obelisk. Whatever magic it once held is long since gone, damaged beyond function."
+	desc = "一座古代方尖碑。它已损毁到无法使用，曾经蕴含的魔力也早已消散。"
 	icon_state = "obelisk_destroyed"
 
 /obj/structure/obelisk/active
-	desc = "An ancient obelisk"
+	desc = "一座古代方尖碑"
 	icon_state = "obelisk_short"
 	var/scan_range = 3					// how far it reaches out to players
 	var/list/mob/living/carbon/human/targets = list()
@@ -441,8 +441,8 @@
 // --- Restore variant ---
 
 /atom/movable/screen/alert/status_effect/buff/obelisk_power
-	name = "Invigorated"
-	desc = "The obelisk replenishes my energy."
+	name = "活力焕发"
+	desc = "方尖碑正在恢复我的精力。"
 	icon_state = "buff"
 
 /datum/status_effect/buff/energy_shift/obelisk_power
@@ -455,8 +455,8 @@
 // --- Drain variant ---
 
 /atom/movable/screen/alert/status_effect/debuff/leyline_drain
-	name = "Drained"
-	desc = "The obelisk pulls energy from my body."
+	name = "精力流失"
+	desc = "方尖碑正在抽取我体内的能量。"
 	icon_state = "leyline_drain"
 
 /datum/status_effect/buff/energy_shift/leyline_drain
@@ -476,8 +476,8 @@
 	icon_state = "obelisk_writing_damaged"
 
 /obj/structure/ozymandias
-	name = "ruined ancient statue"
-	desc = "Look upon my works ye Mighty, and despair!"
+	name = "残破的古代雕像"
+	desc = "强者啊，看看我的功业，然后绝望吧！"
 	icon = 'modular_deserttown/icons/temple_objects_big.dmi'
 	icon_state = "ozymandias"
 	opacity = 0
@@ -493,8 +493,8 @@
 	plane = GAME_PLANE_UPPER
 
 /obj/structure/ancienthead
-	name = "ruined ancient statue"
-	desc = "Colors fade, temples crumble, empires fall..."
+	name = "残破的古代雕像"
+	desc = "色彩褪去，神殿崩塌，帝国覆灭……"
 	icon = 'modular_deserttown/icons/temple_objects_big.dmi'
 	icon_state = "head"
 	opacity = 0
@@ -510,7 +510,7 @@
 	plane = GAME_PLANE_UPPER
 
 /obj/structure/dualpillar
-	name = "dual pillar"
+	name = "双柱"
 	desc = ""
 	icon = 'modular_deserttown/icons/temple_objects_big.dmi'
 	icon_state = "dual_pillar_1"
@@ -545,7 +545,7 @@
 
 
 /obj/structure/table/templestoneslab
-	name = "stone slab"
+	name = "石板"
 	desc = ""
 	icon = 'modular_deserttown/icons/temple_objects.dmi'
 	icon_state = "slab_1"
@@ -567,30 +567,30 @@
 	icon_state = "slab_5"
 
 /client/proc/admin_move_oasis()
-	set name = "Move Mirage Oasis"
+	set name = "移动幻景绿洲"
 	set category = "-GameMaster-"
-	set desc = "Force the mirage oasis to relocate to a random marker now"
+	set desc = "立即将幻景绿洲强制移动至一个随机标记处"
 
 	if(!GLOB.mirage_controller)
-		to_chat(usr, span_warning("No mirage controller exists - has one been initialized this round?"))
+		to_chat(usr, span_warning("没有幻景控制器。本回合是否已初始化过控制器？"))
 		return
 
 	if(!GLOB.mirage_markers.len)
-		to_chat(usr, span_warning("No mirage markers found on this map."))
+		to_chat(usr, span_warning("此地图上未找到幻景标记。"))
 		return
 
 	var/success = GLOB.mirage_controller.MoveOasis()
 	if(success)
-		message_admins("[key_name(usr)] forced the mirage oasis to relocate.")
+		message_admins("[key_name(usr)] 强制移动了幻景绿洲。")
 		log_admin("[key_name(usr)] forced the mirage oasis to relocate.")
 	else
-		to_chat(usr, span_warning("Couldn't find a clear marker to relocate to - all candidates may be occupied."))
+		to_chat(usr, span_warning("找不到可供移动的空闲标记，所有候选位置可能均被占用。"))
 
 /// Quicksand
 
 /obj/structure/quicksand
-	name = "quicksand"
-	desc = "The sand shifts unnaturally beneath your feet."
+	name = "流沙"
+	desc = "你脚下的沙子正诡异地流动。"
 	icon = 'modular_deserttown/icons/quicksand.dmi'
 	icon_state = "quicksand"
 
@@ -622,14 +622,14 @@
 		return
 	buckle_mob(Living, TRUE, check_loc = FALSE)
 	SEND_SIGNAL(src, COMSIG_MOB_OVERLAY_FORCE_UPDATE, Living)
-	visible_message(span_warning("[Living] sinks into the quicksand!"))
+	visible_message(span_warning("[Living]陷入了流沙！"))
 	START_PROCESSING(SSobj, src)
 
 /obj/structure/quicksand/user_unbuckle_mob(mob/living/buckled_mob, mob/living/user)
 	var/mob/living/carbon/human/Human = buckled_mob
 	var/escape_amount = max(CEILING((20 - user.STASTR) / 2, 1), 2)
 	var/escape_time = escape_amount SECONDS
-	user.visible_message(span_warning("[user] struggles to escape the quicksand!"))
+	user.visible_message(span_warning("[user]挣扎着想逃出流沙！"))
 
 	if(!do_after(user, escape_time, FALSE, src))
 		return
@@ -640,13 +640,13 @@
 	SEND_SIGNAL(src, COMSIG_MOB_OVERLAY_FORCE_REMOVE, Human)
 	Human.stamina_add(75)
 
-	visible_message(span_notice("[buckled_mob] drags themselves free of the quicksand!"))
+	visible_message(span_notice("[buckled_mob]挣脱了流沙！"))
 
 /obj/structure/quicksand/attackby(obj/item/I, mob/user, params)
 
 	if(istype(I, /obj/item/rogueweapon/shovel))
 		playsound(loc,'sound/items/dig_shovel.ogg', 100, TRUE)
-		to_chat(user, span_info("I start digging up \the [name]..."))
+		to_chat(user, span_info("我开始挖掘\the [name]……"))
 		if(do_after(user, 5 SECONDS, src))
 			playsound(loc,'sound/items/empty_shovel.ogg', 100, TRUE)
 			qdel(src)
@@ -657,11 +657,11 @@
 	if(has_buckled_mobs())
 		var/person = buckled_mobs[1].name
 		if(user == buckled_mobs[1])
-			person = "themself"
-		user.visible_message(span_warning("[user.name] starts to pull [person] out of the quicksand!"))
+			person = "自己"
+		user.visible_message(span_warning("[user.name]开始将[person]拉出流沙！"))
 		if(do_after(user, 2 SECONDS))
 			unbuckle_mob(buckled_mobs[1], TRUE)
-			user.visible_message(span_warning("[user.name] pulls [person] out of the quicksand."))
+			user.visible_message(span_warning("[user.name]将[person]拉出了流沙。"))
 	. = ..()
 
 /obj/structure/quicksand/process()
@@ -675,12 +675,12 @@
 	return
 
 /datum/crafting_recipe/roguetown/quicksand
-	name = "quicksand pit"
+	name = "流沙坑"
 	result = /obj/structure/quicksand
 	reqs = list(/datum/reagent/water = 240)
 	time = 10 SECONDS
-	verbage_simple = "mixes together"
-	verbage = "mixes together"
+	verbage_simple = "混合制成"
+	verbage = "混合制成"
 	craftsound = 'sound/foley/Building-01.ogg'
 	craftdiff = 0
 
@@ -695,8 +695,8 @@
 ////decorative templestuff
 
 /obj/structure/fluff/templedebris
-	name = "sand pile"
-	desc = "A pile of loose sand."
+	name = "沙堆"
+	desc = "一堆松散的沙子。"
 	icon_state = "sandpile"
 	var/sandamt = 5
 	icon = 'modular_deserttown/icons/temple_objects.dmi'
@@ -705,85 +705,85 @@
 	climb_offset = 10
 
 /obj/structure/fluff/templedebris/pillar
-	name = "ruined pillar"
-	desc = "The destroyed remains of a pillar."
+	name = "残破的石柱"
+	desc = "一根石柱被摧毁后留下的残骸。"
 	icon_state = "pillar_1"
 /obj/structure/fluff/templedebris/pillar2
-	name = "ruined pillar"
-	desc = "The destroyed remains of a pillar."
+	name = "残破的石柱"
+	desc = "一根石柱被摧毁后留下的残骸。"
 	icon_state = "pillar_2"
 /obj/structure/fluff/templedebris/pillar3
-	name = "ruined pillar"
-	desc = "The destroyed remains of a pillar."
+	name = "残破的石柱"
+	desc = "一根石柱被摧毁后留下的残骸。"
 	icon_state = "pillar_3"
 /obj/structure/fluff/templedebris/pillar4
-	name = "ruined pillar"
-	desc = "The destroyed remains of a pillar."
+	name = "残破的石柱"
+	desc = "一根石柱被摧毁后留下的残骸。"
 	icon_state = "pillar_4"
 /obj/structure/fluff/templedebris/debris
-	name = "ruined pillar"
-	desc = "The destroyed remains of a pillar."
+	name = "残破的石柱"
+	desc = "一根石柱被摧毁后留下的残骸。"
 	icon_state = "debris_1"
 /obj/structure/fluff/templedebris/debris2
-	name = "ruined pillar"
-	desc = "The destroyed remains of a pillar."
+	name = "残破的石柱"
+	desc = "一根石柱被摧毁后留下的残骸。"
 	icon_state = "debris_2"
 /obj/structure/fluff/templedebris/debris3
-	name = "rocky debris"
-	desc = "The destroyed remains of some old stone object."
+	name = "碎石残骸"
+	desc = "某件古老石制物品被摧毁后留下的残骸。"
 	icon_state = "debris_3"
 /obj/structure/fluff/templedebris/debris4
-	name = "rocky debris"
-	desc = "The destroyed remains of some old stone object."
+	name = "碎石残骸"
+	desc = "某件古老石制物品被摧毁后留下的残骸。"
 	icon_state = "debris_4"
 /obj/structure/fluff/templedebris/debris5
-	name = "rocky debris"
-	desc = "The destroyed remains of some old stone object."
+	name = "碎石残骸"
+	desc = "某件古老石制物品被摧毁后留下的残骸。"
 	icon_state = "debris_5"
 /obj/structure/fluff/templedebris/ruinedslab
-	name = "cracked slab"
-	desc = "A stone slab now ruined and broken."
+	name = "开裂的石板"
+	desc = "一块破损碎裂的石板。"
 	icon_state = "slab_6"
 /obj/structure/fluff/templedebris/ruinedslab2
-	name = "cracked slab"
-	desc = "A stone slab now ruined and broken."
+	name = "开裂的石板"
+	desc = "一块破损碎裂的石板。"
 	icon_state = "slab_7"
 /obj/structure/fluff/templedebris/bricks
-	name = "pile of bricks"
-	desc = "A some stone bricks left about."
+	name = "石砖堆"
+	desc = "一些散落的石砖。"
 	icon_state = "smallbricks_1"
 /obj/structure/fluff/templedebris/bricks2
-	name = "pile of bricks"
-	desc = "A some stone bricks left about."
+	name = "石砖堆"
+	desc = "一些散落的石砖。"
 	icon_state = "smallbricks_2"
 /obj/structure/fluff/templedebris/bricks3
-	name = "pile of bricks"
-	desc = "A some stone bricks left about."
+	name = "石砖堆"
+	desc = "一些散落的石砖。"
 	icon_state = "smallbricks_3"
 ////chairs
 
 /obj/structure/chair/wood/zybantine
-	name = "zybantine chair"
+	name = "兹班图椅子"
 	icon = 'modular_deserttown/icons/chairs.dmi'
 	icon_state = "zybantinechair"
 
 /obj/structure/chair/wood/rogue/throne/zybantine
-	name = "zybantine throne"
+	name = "兹班图王座"
 	icon_state = "zybantinethrone"
 	icon = 'modular_deserttown/icons/throne.dmi'
 	pixel_x = -16
 
 /datum/crafting_recipe/roguetown/structure/chair/zyb
-	name = "wooden chair"
+	name = "木椅"
 	result = /obj/structure/chair/wood/zybantine
 	reqs = list(/obj/item/grown/log/tree/small = 1)
-	verbage_simple = "construct"
-	verbage = "constructs"
+	verbage_simple = "建造"
+	verbage = "建造"
 	skillcraft = /datum/skill/craft/carpentry
 
 
 /obj/structure/chair/sofa
-	name = "old ratty sofa"
+	name = "破旧鼠啮沙发"
 	buildstackamount = 1
 	item_chair = null
 
@@ -798,14 +798,14 @@
 
 
 /obj/structure/chair/zybantine_sofa/right
-	name = "zybantine sofa"
+	name = "兹班图沙发"
 	icon_state = "zybantinesofa_right"
 	icon = 'modular_deserttown/icons/chairs.dmi'
 	buildstackamount = 1
 	item_chair = null
 
 /obj/structure/chair/zybantine_sofa/left
-	name = "zybantine sofa"
+	name = "兹班图沙发"
 	icon_state = "zybantinesofa_left"
 	icon = 'modular_deserttown/icons/chairs.dmi'
 	buildstackamount = 1
@@ -814,8 +814,8 @@
 //Sandrocks
 
 /obj/structure/sandrock
-	name = "sandrock"
-	desc = "A large desert rock protuding from the ground."
+	name = "沙岩"
+	desc = "一块从地面突出的巨大沙漠岩石。"
 	icon_state = "rock1"
 	icon = 'modular_deserttown/icons/sandrock.dmi'
 	opacity = 0
@@ -847,7 +847,7 @@
 	icon_state = "sandrock4"
 
 /obj/item/natural/rock/desert
-	name = "sand rock"
+	name = "沙质岩石"
 	icon = 'modular_deserttown/icons/small_sandrock.dmi'
 	icon_state = "sandrock1"
 
@@ -859,7 +859,7 @@
 //bush
 
 /obj/structure/flora/roguegrass/bush/desert
-	name = "saigahorn"
+	name = "沙羚角"
 	desc = ""
 	icon = 'modular_deserttown/icons/flora.dmi'
 	icon_state = "saigahorn1"
@@ -869,8 +869,8 @@
 	icon_state = "saigahorn[rand(1, 3)]"
 
 /obj/structure/flora/roguegrass/bush/desertshrub
-	name = "treelet"
-	desc = "A rounded bush-like tree or perhaps tree-like bush native to Zybantium. A valuable source of wood in the sparse desert."
+	name = "小树"
+	desc = "一种生长于兹班图的圆球状灌木般的树，或树般的灌木。在这片稀疏沙漠中是一种宝贵的木材来源。"
 	icon = 'modular_deserttown/icons/flora.dmi'
 	icon_state = "bushshrub1"
 	attacked_sound = 'sound/misc/woodhit.ogg'
@@ -882,8 +882,8 @@
 	icon_state = "bushshrub[pick(1,2)]"
 
 /obj/structure/flora/roguetree/palm
-	name = "palm tree"
-	desc = "Scant, precious shade."
+	name = "棕榈树"
+	desc = "稀少而宝贵的荫凉。"
 	icon = 'modular_deserttown/icons/bigpalm.dmi'
 	icon_state = "palm1"
 	stump_type = /obj/structure/flora/roguetree/stump/palm
@@ -896,8 +896,8 @@
 	icon_state = "palm[rand(1,2)]"
 
 /obj/structure/flora/roguetree/stump/palm
-	name = "tree stump"
-	desc = "Shade no more."
+	name = "树桩"
+	desc = "再无荫凉。"
 	icon_state = "palmstump1"
 	icon = 'modular_deserttown/icons/bigpalm.dmi'
 	stump_type = null
@@ -918,7 +918,7 @@
 //Stairs
 
 /obj/structure/stairs/desert
-	name = "sand stairs"
+	name = "沙漠阶梯"
 	icon = 'modular_deserttown/icons/sandstairs.dmi'
 	icon_state = "sandstairs"
 	max_integrity = 600
@@ -949,8 +949,8 @@
 //weapons
 
 /obj/item/rogueweapon/shield/iron/zybantine
-	name = "brass shield"
-	desc = "A sturdy shield of Zybantium make."
+	name = "黄铜盾"
+	desc = "一面兹班图制造的坚固盾牌。"
 	icon = 'modular_deserttown/icons/items/desertweapons32.dmi'
 	icon_state = "zybshield"
 	max_integrity = 250
@@ -960,8 +960,8 @@
 	smeltresult = /obj/item/ingot/bronze
 
 /obj/item/rogueweapon/woodstaff/riddle_of_steel/serpent
-	name = "\improper Staff of the Serpent"
-	desc = "A mysterious golden staff shaped like a snake. You could swear its staring at you"
+	name = "\proper 蛇之杖"
+	desc = "一根神秘的金色手杖，形如一条蛇。你几乎可以发誓它在盯着你看。"
 	icon = 'modular_deserttown/icons/items/desertweapons64.dmi'
 	icon_state = "snakestaff"
 
@@ -973,8 +973,8 @@
 // 	icon_state = "Kmesser"
 
 /obj/structure/fluff/traveltile/alashurentrance
-	desc = "Awake from this dream. The road to Al-Ashur awaits."
-	name = "To Al-Ashur"
+	desc = "从这梦境中醒来。通往阿尔-阿舒尔之路正等着你。"
+	name = "前往阿尔-阿舒尔"
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "underworldportal"
 
@@ -987,8 +987,8 @@
 
 //Decor
 /obj/structure/vase
-	name = "fancy pot"
-	desc = "Decorative and Practical!"
+	name = "精致罐子"
+	desc = "既美观又实用！"
 	icon = 'modular_deserttown/icons/pots.dmi'
 	icon_state = "fancypot1"
 	anchored = TRUE
@@ -1003,8 +1003,8 @@
 	base_state = "stained-blue"
 
 /obj/structure/flora/roguegrass/desertgrass
-	name = "desert grass"
-	desc = "Dry grass struggling to survive in the arid climate."
+	name = "沙漠草"
+	desc = "在干旱气候中挣扎求存的枯草。"
 	icon = 'modular_deserttown/icons/flora.dmi'
 	icon_state = "desertgrass1"
 

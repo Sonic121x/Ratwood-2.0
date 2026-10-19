@@ -1,7 +1,7 @@
 /datum/job/roguetown/heartfelt/hand
 	title = "Hand of Heartfelt"
-	tutorial = "You are the Hand of Heartfelt, burdened by the perception of failure in protecting your Lord's domain. \
-	Despite doubts from others, your loyalty remains steadfast as you journey to these lands, determined to fulfill your duties."
+	tutorial = "你是 赤心 的执政之手，背负着未能守住领主疆土的骂名。\
+	纵使旁人对你心存怀疑，你依旧忠诚不改，踏上前往此地的旅程，决意履行自己的职责。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = ACCEPTED_RACES
 	outfit = /datum/outfit/job/roguetown/heartfelt/hand
@@ -10,7 +10,7 @@
 	job_traits = list(TRAIT_NOBLE, TRAIT_HEARTFELT)
 	social_rank = SOCIAL_RANK_NOBLE
 	advclass_cat_rolls = list(CTAG_HFT_HAND)
-
+	display_title = "赤心执政之手"
 	job_subclasses = list(
 		/datum/advclass/heartfelt/hand/marshal,
 		/datum/advclass/heartfelt/hand/steward,
@@ -34,9 +34,9 @@
 
 
 /datum/advclass/heartfelt/hand/marshal
-	name = "Marshal of Heartfelt"
-	tutorial = "Renowned for your command of war, you laid down your blade in peaceful years, but peace died with Heartfelt. \
-	Pressed once more into service by tragedy, you climb towards these lands."
+	name = "赤心 战帅"
+	tutorial = "你以统兵善战闻名，曾在和平岁月里放下兵刃，但随着 赤心 的衰亡，和平也一并死去了。\
+	悲剧再度将你推回役途，你于是踏上前往此地的道路。"
 	outfit = /datum/outfit/job/roguetown/heartfelt/hand/marshal
 	category_tags = list(CTAG_HFT_HAND)
 	subclass_social_rank = SOCIAL_RANK_NOBLE
@@ -67,7 +67,7 @@
 	subclass_virtues = list(
 		/datum/virtue/utility/riding
 	)
-	subclass_stashed_items = list("Caparison (Heartfelt)" = /obj/item/caparison/heartfelt)
+	subclass_stashed_items = list("赤心鞍饰毯" = /obj/item/caparison/heartfelt)
 
 /datum/outfit/job/roguetown/heartfelt/hand/marshal/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -96,18 +96,18 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/heartfelt/forheartfelt)
 		H.mind.AddSpell(new/obj/effect/proc_holder/spell/invoked/order/heartfelt/focustarget)
 		H.verbs |= list(/mob/living/carbon/human/mind/proc/setordersheartfelt)
-	var/helmet = list("Etruscan Bascinet","Volf Plate Helmet","Beak Helmet","Visored Sallet","Snouted Visored Sallet",)
-	var/helmet_choice = input("Choose your Helm.", "TAKE UP HELMS") as anything in helmet
+	var/helmet = list("伊特鲁斯卡盆盔","沃尔夫面甲头盔","鸟喙头盔","带面罩萨勒盔","带吻部面罩萨雷特盔",)
+	var/helmet_choice = input("选择你的头盔。", "披挂头盔") as anything in helmet
 	switch(helmet_choice)
-		if("Etruscan Bascinet")
+		if("伊特鲁斯卡盆盔")
 			head = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan
-		if("Volf Plate Helmet") 
+		if("沃尔夫面甲头盔")
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/volfplate
-		if("Beak Helmet") // GUUUUTS NO GUTS NOOOOO
+		if("鸟喙头盔") // GUUUUTS NO GUTS NOOOOO
 			head = /obj/item/clothing/head/roguetown/helmet/heavy/beakhelm
-		if("Visored Sallet")
+		if("带面罩萨勒盔")
 			head = /obj/item/clothing/head/roguetown/helmet/sallet/visored
-		if("Snouted Visored Sallet")
+		if("带吻部面罩萨雷特盔")
 			head = /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted
 		else
 			head = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan
@@ -117,10 +117,10 @@
 /***************************************************************/
 
 /datum/advclass/heartfelt/hand/steward
-	name = "Steward of Heartfelt"
-	tutorial = "You are the Steward of Heartfelt, once the quiet architect behind the barony's \
-	order—keeper of ledgers, harvests, and the lifeblood that sustained your people. \
-	Pressed once more into service by tragedy, you climb towards these lands."
+	name = "赤心 总管"
+	tutorial = "你是 赤心 的总管，曾是这座男爵领秩序背后沉默的营造者。\
+	账册、收成，以及维系子民生计的一切脉络，都曾由你掌管。\
+	悲剧再度将你推回役途，你于是踏上前往此地的道路。"
 	outfit = /datum/outfit/job/roguetown/heartfelt/hand/steward
 	category_tags = list(CTAG_HFT_HAND)
 	subclass_social_rank = SOCIAL_RANK_NOBLE
@@ -150,7 +150,7 @@
 	subclass_virtues = list(
 		/datum/virtue/utility/riding
 	)
-	subclass_stashed_items = list("Caparison (Heartfelt)" = /obj/item/caparison/heartfelt)
+	subclass_stashed_items = list("赤心鞍饰毯" = /obj/item/caparison/heartfelt)
 
 /datum/outfit/job/roguetown/heartfelt/hand/steward/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -182,9 +182,9 @@
 /***************************************************************/
 
 /datum/advclass/heartfelt/hand/advisor
-	name = "Advisor of Heartfelt"
-	tutorial = "You are the Advisor of Heartfelt, trusted for your measured counsel and keen insight into matters of state. \
-	Bound once more to serve in the wake of ruin, you climb towards these lands."
+	name = "赤心 顾问"
+	tutorial = "你是 赤心 的顾问，因沉稳的谏言与敏锐的政务洞察而深受信赖。\
+	在故土倾覆之后，你再度被命运束缚于侍奉之责，并踏上前往此地的道路。"
 	outfit = /datum/outfit/job/roguetown/heartfelt/hand/advisor
 	category_tags = list(CTAG_HFT_HAND)
 	subclass_social_rank = SOCIAL_RANK_NOBLE
@@ -217,7 +217,7 @@
 	subclass_virtues = list(
 		/datum/virtue/utility/riding
 	)
-	subclass_stashed_items = list("Caparison (Heartfelt)" = /obj/item/caparison/heartfelt)
+	subclass_stashed_items = list("赤心鞍饰毯" = /obj/item/caparison/heartfelt)
 
 	var/list/spells = list(
 		/obj/effect/proc_holder/spell/self/message,
@@ -250,8 +250,8 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/convertrole/heartfelt)
 
 	if(H.age == AGE_OLD)
-		H.change_stat("speed", -1)
-		H.change_stat("strength", -1)
-		H.change_stat("intelligence", 1)
-		H.change_stat("perception", 1)
+		H.change_stat(STATKEY_SPD, -1)
+		H.change_stat(STATKEY_STR, -1)
+		H.change_stat(STATKEY_INT, 1)
+		H.change_stat(STATKEY_PER, 1)
 		H?.mind.adjust_spellpoints(3)

@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur
 	icon = 'modular_hearthstone/icons/mob/newminotaur.dmi'
-	name = "Minotaur"
+	name = "牛头人"
 	icon_state = "MinotaurMale"
 	icon_living = "MinotaurMale"
 	icon_dead = "MinotaurMale_dead"
@@ -122,19 +122,19 @@
 		return ""
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_L_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NOSE)
-			return "nose"
+			return "鼻子"
 		if(BODY_ZONE_PRECISE_MOUTH)
-			return "mouth"
+			return "嘴巴"
 		if(BODY_ZONE_PRECISE_SKULL)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_EARS)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NECK)
-			return "neck"
+			return "脖子"
 		if(BODY_ZONE_PRECISE_L_HAND)
 			return "foreleg"
 		if(BODY_ZONE_PRECISE_R_HAND)
@@ -144,11 +144,11 @@
 		if(BODY_ZONE_PRECISE_R_FOOT)
 			return "leg"
 		if(BODY_ZONE_PRECISE_STOMACH)
-			return "stomach"
+			return "腹部"
 		if(BODY_ZONE_PRECISE_GROIN)
 			return "tail"
 		if(BODY_ZONE_HEAD)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_R_LEG)
 			return "leg"
 		if(BODY_ZONE_L_LEG)
@@ -160,9 +160,9 @@
 	return ..()
 
 /datum/intent/simple/minotaur_unarmed
-	name = "minotaur unarmed"
+	name = "牛头人徒手攻击"
 	icon_state = "instrike"
-	attack_verb = list("punches", "strikes", "kicks", "steps on", "crushes", "bites")
+	attack_verb = list("挥拳猛击", "重击", "踢踹", "践踏", "碾碎", "撕咬")
 	animname = "blank22"
 	blade_class = BCLASS_CUT
 	hitsound = "smallslash"
@@ -173,9 +173,9 @@
 	clickcd = MINOTAUR_ATTACK_SPEED
 
 /datum/intent/simple/minotaur_axe
-	name = "minotaur axe"
+	name = "牛头人战斧"
 	icon_state = "instrike"
-	attack_verb = list("hacks at", "slashes", "chops", "steps on", "crushes", "bites")
+	attack_verb = list("劈砍", "斩击", "砍剁", "践踏", "碾碎", "撕咬")
 	animname = "blank22"
 	blade_class = BCLASS_CUT
 	hitsound = "genchop"
@@ -192,14 +192,14 @@
 
 // Dungeon-taur - Less health then normal.
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur/wounded
-	name = "Wounded Minotaur"
+	name = "受伤的牛头人"
 	icon_state = "wminotaur"
 	icon_living = "wminotaur"
 	health = 400	//Regular is 600.
 	maxHealth = 400
 
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur/axe/wounded
-	name = "Wounded Minotaur"
+	name = "受伤的牛头人"
 	icon_state = "wminotaur_axe"
 	icon_living = "wminotaur_axe"
 	health = 400	//Regular is 600.
@@ -207,7 +207,7 @@
 
 //Same as usual wounded, unique for orc dungeon. Prisoner-minotaur, doesn't attack orcs for dungeon related stuff.
 /mob/living/simple_animal/hostile/retaliate/rogue/minotaur/wounded/chained
-	name = "Chained Minotaur"
+	name = "锁链牛头人"
 	icon_state = "chainedminotaur"
 	icon_living = "chainedminotaur"
 	icon_dead = "chainedminotaur_dead"

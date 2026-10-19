@@ -43,8 +43,8 @@
 	var/datum/objective/improve_craft/new_objective = new(owner = chosen_one.mind)
 	chosen_one.mind.add_personal_objective(new_objective)
 
-	to_chat(chosen_one, span_userdanger("YOU ARE GOD'S CHOSEN!"))
-	to_chat(chosen_one, span_notice("Malum wants you to hone your craft! Improve your crafting skills to earn Malum's favor!"))
+	to_chat(chosen_one, span_userdanger("你是神的选民！"))
+	to_chat(chosen_one, span_notice("玛勒姆要你磨炼手艺！提升制作技能，赢得玛勒姆的青睐！"))
 	chosen_one.playsound_local(chosen_one, 'sound/magic/dwarf_chant01.ogg', 100)
 
 	chosen_one.mind.announce_personal_objectives()

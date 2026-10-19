@@ -1,8 +1,8 @@
 #define TERRITORIAL_FILTER "territorial_rage"
 
 /atom/movable/screen/alert/status_effect/territorial_rage
-	name = "Territorial Rage"
-	desc = "The heartbeast is tearing you apart!"
+	name = "领地暴怒"
+	desc = "心兽正试图把你撕成碎片！"
 
 /datum/status_effect/territorial_rage
 	id = "territorial_rage"
@@ -20,7 +20,7 @@
 	owner.Immobilize(duration)
 	owner.add_filter(TERRITORIAL_FILTER, 2, list("type" = "outline", "color" = outline_color, "alpha" = 210, "size" = 2))
 	owner.update_icon()
-	to_chat(owner, span_userdanger("The heartbeast's tendrils grab you and start pulling you apart!"))
+	to_chat(owner, span_userdanger("心兽的触须抓住了你，开始把你活活撕裂！"))
 
 	animate(owner, pixel_y = owner.pixel_y + 8, time = 0.5 SECONDS, easing = SINE_EASING)
 
@@ -46,7 +46,7 @@
 		// Lower back down
 		animate(L, pixel_y = L.pixel_y - 8, time = 0.5 SECONDS, easing = SINE_EASING)
 	
-	owner.visible_message(span_danger("The tendrils release [owner]!"))
+	owner.visible_message(span_danger("触须松开了[owner]！"))
 
 /datum/status_effect/territorial_rage/proc/remove_limb(mob/living/carbon/C)
 	if(limb_removed)
@@ -82,7 +82,7 @@
 		to_remove = right_leg
 	
 	if(to_remove)
-		C.visible_message(span_userdanger("[C]'s [to_remove.name] is torn off by the tendrils!"))
+		C.visible_message(span_userdanger("[C]的[to_remove.name]被触须撕下了！"))
 		to_remove.dismember(damage = 999)
 
 		var/obj/effect/temp_visual/dir_setting/bloodsplatter/splatter = new(get_turf(C), pick(GLOB.cardinals))
@@ -92,7 +92,7 @@
 /datum/status_effect/territorial_rage/proc/remove_head(mob/living/carbon/C)
 	var/obj/item/bodypart/head = C.get_bodypart(BODY_ZONE_HEAD)
 	if(head)
-		C.visible_message(span_userdanger("[C]'s head is violently torn off by the tendrils!"))
+		C.visible_message(span_userdanger("[C]的头被触须猛烈地撕下了！"))
 		head.dismember(damage = 999, vorpal = TRUE)
 		C.adjustBruteLoss(200)
 		var/obj/effect/temp_visual/dir_setting/bloodsplatter/splatter = new(get_turf(C), pick(GLOB.cardinals))

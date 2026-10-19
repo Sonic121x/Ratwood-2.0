@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/mirespider
 	icon = 'modular_hearthstone/icons/mob/mirespider_small.dmi'
-	name = "mire crawler"
+	name = "泥沼爬蛛"
 	icon_state = "crawler"
 	icon_living = "crawler"
 	icon_dead = "crawler_dead"
@@ -146,7 +146,7 @@
 
 /mob/living/simple_animal/hostile/rogue/mirespider_lurker
 	icon = 'modular_hearthstone/icons/mob/mirespider_big.dmi'
-	name = "mire lurker"
+	name = "泥沼伏蛛"
 	icon_state = "lurker"
 	icon_living = "lurker"
 	icon_dead = "lurker_dead"
@@ -194,10 +194,8 @@
 
 /mob/living/simple_animal/hostile/rogue/mirespider_lurker/mushroom
 	icon = 'icons/mob/mirespider_shroom.dmi'
-	desc = "While recognizable as a mire lurker, this specimen appears to suffer a gigantic \
-	fungal growth over its rear end. It reeks of the smell of mold, and tar-like secretions \
-	drip from its mandibles. Something here is horribly wrong."
-	name = "mire lurker?"
+	desc = "虽然仍能辨认出这是泥沼伏蛛，但这个个体的后半身明显被巨大的真菌增生所覆盖。它散发着浓烈霉味，焦油般的分泌物正从螯肢间滴落。这里有某种极其可怖的异变。"
+	name = "泥沼伏蛛？"
 	icon_state = "mushroom"
 	icon_living = "mushroom"
 	icon_dead = "mushroom_dead"
@@ -261,7 +259,7 @@
 
 /mob/living/simple_animal/hostile/rogue/mirespider_paralytic
 	icon = 'modular_hearthstone/icons/mob/mirespider_small.dmi'
-	name = "aragn"
+	name = "麻痹蛛"
 	icon_state = "aragn"
 	icon_living = "aragn"
 	icon_dead = "aragn_dead"
@@ -310,8 +308,8 @@
 
 /obj/random/spider
 	icon = 'modular_hearthstone/icons/mob/mirespider_small.dmi'
-	name = "random spider spawner"
-	desc = "YOU SHOULD NOT BE SEEING THIS, GO YELL AT KETRAI."
+	name = "随机蜘蛛生成器"
+	desc = "你本不该看到这个，快去找凯特莱。"
 	icon_state = "crawler"
 
 /obj/random/spider/Initialize(mapload)

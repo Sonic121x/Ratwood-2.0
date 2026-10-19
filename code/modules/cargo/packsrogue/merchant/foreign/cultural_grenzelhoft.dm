@@ -1,116 +1,116 @@
 /datum/supply_pack/rogue/grenzelhoft
-	group = "Cultural Stock"
-	crate_name = "Grenzelhoft crate"
+	group = "文化货物" // English: Cultural Stock
+	crate_name = "格伦泽尔霍夫特货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 	not_in_public = TRUE
 
 /datum/supply_pack/rogue/grenzelhoft/zweihander
-	name = "Zweihander"
+	name = "钢制双手剑"
 	cost = 200
 	contains = list(/obj/item/rogueweapon/greatsword/grenz)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/grenzelhoft/kriegmesser
-	name = "Kriegmesser"
+	name = "双手大刀"
 	cost = 130
 	contains = list(/obj/item/rogueweapon/sword/long/kriegmesser)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/grenzelhoft/halberd
-	name = "Halberd"
+	name = "戟斧"
 	cost = 120
 	contains = list(/obj/item/rogueweapon/halberd)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/grenzelhoft/partizan
-	name = "Partizan"
+	name = "帕提赞长戟"
 	cost = 150
 	contains = list(/obj/item/rogueweapon/spear/partizan)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/grenzelhoft/seax
-	name = "Grenzelhoftian Seax"
+	name = "格伦泽尔霍夫特赛克斯短刀"
 	cost = 70
 	contains = list(/obj/item/rogueweapon/huntingknife/combat)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/grenzelhoft/kampfmesser
-	name = "Kampfmesser"
+	name = "赛克斯短刀"
 	cost = 70
 	contains = list(/obj/item/rogueweapon/huntingknife/combat)
 	ship_qty_min = 2
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/grenzelhoft/blacksteel_cuirass
-	name = "Blacksteel Cuirass"
+	name = "黑钢胸甲"
 	cost = 420
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/blacksteel_half_plate)
 	ship_qty_min = 1
 	ship_qty_max = 1
 
 /datum/supply_pack/rogue/grenzelhoft/heavy_gambeson
-	name = "Grenzelhoftian Heavy Gambeson"
+	name = "格伦泽尔霍夫特长摆衬衣"
 	cost = 100
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/grenzelhoft)
 	ship_qty_min = 1
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/grenzelhoft/plumed_hat
-	name = "Grenzelhoftian Plume Hat"
+	name = "格伦泽尔霍夫特羽饰帽"
 	cost = 60
 	contains = list(/obj/item/clothing/head/roguetown/grenzelhofthat)
 	ship_qty_min = 2
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/grenzelhoft/boots
-	name = "Grenzelhoft Boots"
+	name = "格伦泽尔霍夫特长靴"
 	cost = 45
 	contains = list(/obj/item/clothing/shoes/roguetown/boots/grenzelhoft)
 	ship_qty_min = 2
 	ship_qty_max = 5
 
 /datum/supply_pack/rogue/grenzelhoft/gloves
-	name = "Grenzelhoft Gloves"
+	name = "格伦泽尔霍夫特手套"
 	cost = 40
 	contains = list(/obj/item/clothing/gloves/roguetown/angle/grenzelgloves)
 	ship_qty_min = 2
 	ship_qty_max = 5
 
 /datum/supply_pack/rogue/grenzelhoft/pants
-	name = "Grenzelhoftian Paumpers"
+	name = "格伦泽尔霍夫特绗缝裤"
 	cost = 50
 	contains = list(/obj/item/clothing/under/roguetown/heavy_leather_pants/grenzelpants)
 	ship_qty_min = 2
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/grenzelhoft/merc_tabard
-	name = "Heiligsoldner Tabard"
+	name = "格伦泽尔霍夫特佣兵罩袍"
 	cost = 70
 	contains = list(/obj/item/clothing/cloak/stabard/grenzelhoft)
 	ship_qty_min = 1
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/grenzelhoft/crossbow
-	name = "crossbow"
+	name = "十字弩"
 	cost = 220
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow)
 	ship_qty_min = 1
 	ship_qty_max = 1
 
 /datum/supply_pack/rogue/grenzelhoft/fyrebolts
-	name = "Quiver of Pyroclastic Bolts"
+	name = "爆燃弩矢箭袋"
 	cost = 60
 	contains = list(/obj/item/quiver/pyrobolts)
 	ship_qty_min = 1
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/grenzelhoft/almain_rivet
-	name = "Almain Rivet Harness"
+	name = "阿尔曼铆钉甲套装"
 	no_name_quantity = TRUE
 	cost = 200
 	contains = list(
@@ -127,7 +127,7 @@
 	ship_qty_max = 4
 
 /datum/supply_pack/rogue/grenzelhoft/coppiette
-	name = "Coppiette"
+	name = "风干肉条"
 	cost = 35
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/coppiette,
@@ -138,7 +138,7 @@
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/grenzelhoft/salami
-	name = "Hartwald Salami"
+	name = "哈特瓦尔德烟熏香肠"
 	cost = 35
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/salami,
@@ -149,7 +149,7 @@
 	ship_qty_max = 3
 
 /datum/supply_pack/rogue/grenzelhoft/hardybread
-	name = "Hardy Sea Biscuit"
+	name = "硬饼"
 	cost = 25
 	contains = list(
 		/obj/item/reagent_containers/food/snacks/rogue/crackerscooked,
@@ -161,7 +161,7 @@
 	ship_qty_max = 5
 
 /datum/supply_pack/rogue/grenzelhoft/ring_vitality
-	name = "Ring of Vitality"
+	name = "活力之戒"
 	cost = 450
 	contains = list(/obj/item/clothing/ring/statonyx)
 	ship_qty_min = 1

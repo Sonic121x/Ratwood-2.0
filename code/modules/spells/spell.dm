@@ -99,7 +99,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 		return TRUE
 
 	if(caller.ranged_ability != src || ranged_ability_user != caller) //I'm not actually sure how these would trigger, but, uh, safety, I guess?
-		to_chat(caller, span_info("<b>[caller.ranged_ability.name]</b> has been disabled."))
+		to_chat(caller, span_info("<b>[caller.ranged_ability.name]</b> 已被禁用。"))
 		caller.ranged_ability.remove_ranged_ability()
 		return TRUE //TRUE for failed, FALSE for passed.
 	if(ranged_clickcd_override >= 0)
@@ -143,14 +143,14 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 	update_icon()
 
 /obj/effect/proc_holder/spell
-	name = "Spell"
+	name = "法术"
 	desc = ""
-	panel = "Spells"
+	panel = "法术"
 	var/sound = null //The sound the spell makes when it is cast
 	/// Item conjured by this spell, unsummoned when a new one is conjured or the spell is lost.
 	var/obj/item/conjured_item
 	/// Fills in "The <item>'s borders begin to ...!" when the conjured item is unsummoned.
-	var/conjured_dispel_desc = "shimmer and fade, before it vanishes entirely"
+	var/conjured_dispel_desc = "闪烁、淡去，直至完全消失"
 	/// Outline colour for this spell's conjured item, null uses the component's own default.
 	var/conjured_item_glow
 	anchored = TRUE // Crap like fireball projectiles are proc_holders, this is needed so fireballs don't get blown back into your face via atmos etc.
@@ -168,7 +168,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 	var/recharge_time = 50 //recharge time in deciseconds if charge_type = "recharge" or starting charges if charge_type = "charges"
 	var/charge_counter = 0 //can only cast spells if it equals recharge, ++ each decisecond if charge_type = "recharge" or -- each cast if charge_type = "charges"
 	var/last_process_time = 0 //tracks world.time of last process() call for delta-time cooldown
-	var/still_recharging_msg = span_info("The spell is still recharging.")
+	var/still_recharging_msg = span_info("法术仍在充能。")
 
 	var/cast_without_targets = FALSE
 	var/breaks_invisibility = TRUE
@@ -285,19 +285,19 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 	if(skill_level > 0)
 		var/skill_mod = chargetime * skill_level * CHARGE_REDUCTION_PER_SKILL
 		if(skill_mod > 0)
-			breakdown += span_smallgreen("  Skill: -[DisplayTimeText(skill_mod)]")
+			breakdown += span_smallgreen("  技能：-[DisplayTimeText(skill_mod)]")
 	var/obj/item/book/spellbook/sbook = user.is_holding_item_of_type(/obj/item/book/spellbook)
 	if(sbook && sbook?.open)
 		var/book_mod = chargetime * sbook.get_cdr()
 		if(book_mod > 0)
-			breakdown += span_smallgreen("  Spellbook: -[DisplayTimeText(book_mod)]")
+			breakdown += span_smallgreen("  奥术秘典：-[DisplayTimeText(book_mod)]")
 	var/obj/item/rogueweapon/staff = user.is_holding_item_of_type(/obj/item/rogueweapon/)
 	if(staff && staff.cast_time_reduction)
 		var/staff_mod = chargetime * staff.cast_time_reduction
 		if(staff_mod > 0)
-			breakdown += span_smallgreen("  Staff: -[DisplayTimeText(staff_mod)]")
+			breakdown += span_smallgreen("  法杖：-[DisplayTimeText(staff_mod)]")
 	if(HAS_TRAIT(user, TRAIT_LEYLINE_HASTE))
-		breakdown += span_smallgreen("  <font color='#00e1ff'>Ley Lines (-25%)</font>")
+		breakdown += span_smallgreen("  <font color='#00e1ff'>地脉 (-25%)</font>")
 	return breakdown
 
 /obj/effect/proc_holder/spell/proc/get_cooldown_breakdown(mob/living/user)
@@ -305,11 +305,11 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 	if(user.STAINT > SPELL_SCALING_THRESHOLD)
 		var/diff = min(user.STAINT, SPELL_POSITIVE_SCALING_THRESHOLD) - SPELL_SCALING_THRESHOLD
 		var/int_mod = initial(recharge_time) * diff * COOLDOWN_REDUCTION_PER_INT
-		breakdown += span_smallgreen("  Intelligence: -[DisplayTimeText(int_mod)]")
+		breakdown += span_smallgreen("  智力：-[DisplayTimeText(int_mod)]")
 	else if(user.STAINT < SPELL_SCALING_THRESHOLD)
 		var/diffy = SPELL_SCALING_THRESHOLD - user.STAINT
 		var/int_mod = initial(recharge_time) * diffy * COOLDOWN_REDUCTION_PER_INT
-		breakdown += span_smallred("  Intelligence: +[DisplayTimeText(int_mod)]")
+		breakdown += span_smallred("  智力：+[DisplayTimeText(int_mod)]")
 	return breakdown
 
 /obj/effect/proc_holder/spell/proc/get_fatigue_breakdown(mob/living/user)
@@ -317,26 +317,26 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 	var/skill_level = user.get_skill_level(associated_skill)
 	if(skill_level > 0)
 		var/skill_mod = releasedrain * skill_level * FATIGUE_REDUCTION_PER_SKILL
-		breakdown += span_smallgreen("  Skill: -[skill_mod]")
+		breakdown += span_smallgreen("  技能：-[skill_mod]")
 	if(user.STAINT > SPELL_SCALING_THRESHOLD)
 		var/diff = min(user.STAINT, SPELL_POSITIVE_SCALING_THRESHOLD) - SPELL_SCALING_THRESHOLD
 		var/int_mod = releasedrain * diff * FATIGUE_REDUCTION_PER_INT
-		breakdown += span_smallgreen("  Intelligence: -[int_mod]")
+		breakdown += span_smallgreen("  智力：-[int_mod]")
 	else if(user.STAINT < SPELL_SCALING_THRESHOLD)
 		var/diffy = SPELL_SCALING_THRESHOLD - user.STAINT
 		var/int_mod = releasedrain * diffy * FATIGUE_REDUCTION_PER_INT
-		breakdown += span_smallred("  Intelligence: +[int_mod]")
+		breakdown += span_smallred("  智力：+[int_mod]")
 	if(!user.check_armor_skill())
-		breakdown += span_smallred("  Untrained armor: +[UNTRAINED_ARMOR_STAM_PENALTY]")
+		breakdown += span_smallred("  护甲训练不足：+[UNTRAINED_ARMOR_STAM_PENALTY]")
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		var/ac = H.highest_ac_worn()
 		if(ac == ARMOR_CLASS_HEAVY)
 			var/armor_mod = releasedrain * HEAVY_ARMOR_STAM_PENALTY
-			breakdown += span_smallred("  Armor weight: +[armor_mod]")
+			breakdown += span_smallred("  护甲重量：+[armor_mod]")
 		else if(ac == ARMOR_CLASS_MEDIUM)
 			var/armor_mod = releasedrain * MEDIUM_ARMOR_STAM_PENALTY
-			breakdown += span_smallred("  Armor weight: +[armor_mod]")
+			breakdown += span_smallred("  护甲重量：+[armor_mod]")
 	return breakdown
 
 /obj/effect/proc_holder/spell/proc/calculate_cooldown(mob/living/user)
@@ -359,44 +359,44 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 /obj/effect/proc_holder/spell/proc/get_spell_statistics(mob/living/user)
 	var/list/stats = list()
 	if(range)
-		stats += span_info("Range: [range] tiles")
+		stats += span_info("射程：[range]格")
 	var/base_ct = chargetime
 	if(base_ct > 0)
 		var/dynamic_ct = user ? calculate_chargetime(user) : base_ct
 		if(dynamic_ct != base_ct)
-			stats += span_info("Charge time: [DisplayTimeText(base_ct)] (current: [DisplayTimeText(dynamic_ct)])")
+			stats += span_info("蓄力时间：[DisplayTimeText(base_ct)]（当前：[DisplayTimeText(dynamic_ct)]）")
 			if(user)
 				stats += get_chargetime_breakdown(user)
 		else
-			stats += span_info("Charge time: [DisplayTimeText(base_ct)]")
+			stats += span_info("蓄力时间：[DisplayTimeText(base_ct)]")
 	else
-		stats += span_info("Charge time: None")
+		stats += span_info("蓄力时间：无")
 	var/base_cd = initial(recharge_time)
 	if(base_cd)
 		var/dynamic_cd = user ? calculate_cooldown(user) : base_cd
 		if(dynamic_cd != base_cd)
-			stats += span_info("Cooldown: [DisplayTimeText(base_cd)] (current: [DisplayTimeText(dynamic_cd)])")
+			stats += span_info("冷却时间：[DisplayTimeText(base_cd)]（当前：[DisplayTimeText(dynamic_cd)]）")
 			if(user)
 				stats += get_cooldown_breakdown(user)
 		else
-			stats += span_info("Cooldown: [DisplayTimeText(base_cd)]")
+			stats += span_info("冷却时间：[DisplayTimeText(base_cd)]")
 	var/base_fd = releasedrain
 	if(base_fd > 0)
 		var/dynamic_fd = user ? calculate_fatigue_drain(user) : base_fd
 		if(dynamic_fd != base_fd)
-			stats += span_info("Stamina cost: [base_fd] (current: [dynamic_fd])")
+			stats += span_info("耐力消耗：[base_fd]（当前：[dynamic_fd]）")
 			if(user)
 				stats += get_fatigue_breakdown(user)
 		else
-			stats += span_info("Stamina cost: [base_fd]")
+			stats += span_info("耐力消耗：[base_fd]")
 	if(devotion_cost)
-		stats += span_info("Devotion cost: [devotion_cost]")
+		stats += span_info("虔诚消耗：[devotion_cost]")
 	return stats
 
 /obj/effect/proc_holder/spell/proc/cast_check(skipcharge, mob/user = usr) //checks if the spell can be cast based on its settings; skipcharge is used when an additional cast_check is called inside the spell
 	if(player_lock)
 		if(!user.mind || !(src in user.mind.spell_list) && !(src in user.mob_spell_list))
-			to_chat(user, span_warning("I shouldn't have this spell! Something's wrong..."))
+			to_chat(user, span_warning("我不该拥有这个法术！出问题了……"))
 			return FALSE
 	else
 		if(!(src in user.mob_spell_list))
@@ -405,77 +405,77 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 
 	var/turf/T = get_turf(user)
 	if(is_centcom_level(T.z) && !centcom_cancast) //Certain spells are not allowed on the centcom zlevel
-		to_chat(user, span_warning("I can't cast this spell here!"))
+		to_chat(user, span_warning("我不能在这里施放这个法术！"))
 		return FALSE
 
 	if(!charge_check(user))
 		return FALSE
 
 	if(user.stat && !stat_allowed)
-		to_chat(user, span_warning("Not when I am incapacitated!"))
+		to_chat(user, span_warning("我失去行动能力时不能这么做！"))
 		return FALSE
 
 	if(!ignore_cockblock && HAS_TRAIT(user, TRAIT_SPELLCOCKBLOCK))
-		to_chat(user, span_warning("I can't cast spells!"))
+		to_chat(user, span_warning("我无法施法！"))
 		return FALSE
 
 	if(HAS_TRAIT(user, TRAIT_CURSE_NOC))
-		to_chat(user, span_warning("My magicka has left me..."))
+		to_chat(user, span_warning("我的魔力已经离我而去……"))
 		return FALSE
 
 	if(!antimagic_allowed)
 		var/antimagic = user.anti_magic_check(TRUE, FALSE, FALSE, 0, TRUE)
 		if(antimagic && !HAS_TRAIT(user, TRAIT_SPELL_DISPERSION))
 			if(isatom(antimagic))
-				to_chat(user, span_info("[antimagic] is interfering with my magic."))
+				to_chat(user, span_info("[antimagic]正在干扰我的魔法。"))
 			else
-				to_chat(user, span_warning("Magic seems to flee from you, you can't gather enough power to cast this spell."))
+				to_chat(user, span_warning("魔法似乎在远离我，我无法聚集足够的力量施放这个法术。"))
 			return FALSE
 
 	if(!phase_allowed && istype(user.loc, /obj/effect/dummy))
-		to_chat(user, span_warning("[name] cannot be cast unless I am completely manifested in the material plane!"))
+		to_chat(user, span_warning("只有在我完全显现于物质位面时才能施放[name]！"))
 		return FALSE
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if((invocation_type == "whisper" || invocation_type == "shout") && (((!H.can_speak_vocal() || HAS_TRAIT(H, TRAIT_GARGLE_SPEECH)) && !(mute_allowed && HAS_TRAIT(H, TRAIT_PERMAMUTE) && !H.check_mouth_grabbed())) || !H.getorganslot(ORGAN_SLOT_TONGUE)))
-			to_chat(user, span_warning("I can't get the words out!"))
+			to_chat(user, span_warning("我说不出咒语！"))
 			return FALSE
 		// Spells cannot be cast using sign language (check specifically for SIGNLANG flag)
 		if((invocation_type == "whisper" || invocation_type == "shout"))
 			var/datum/language/default_lang = H.get_default_language()
 			if(default_lang && (initial(default_lang.flags) & SIGNLANG))
-				to_chat(user, span_warning("I cannot cast spells using [initial(default_lang.name)]! I need to speak the words aloud!"))
+				to_chat(user, span_warning("我不能用[initial(default_lang.name)]来施法！我必须把咒语大声念出来！"))
 				return FALSE
 
 		if(HAS_TRAIT(H, TRAIT_PARALYSIS) && !stat_allowed)
-			to_chat(user, span_warning("My body is paralyzed!"))
+			to_chat(user, span_warning("我的身体麻痹了！"))
 			return FALSE
 
 		if(moving_mount_blocks_cast(H))
-			to_chat(user, span_warning("The thing I'm riding needs to stop moving first."))
+			to_chat(user, span_warning("我骑乘的对象需要先停止移动。"))
 			return FALSE
 
 		if(miracle && !H.devotion?.check_devotion(src))
-			to_chat(H, span_warning("I don't have enough devotion!"))
+			to_chat(H, span_warning("我的虔诚不足！"))
 			return FALSE
 		if(gesture_required)
 			if(H.buckled && H.buckled.buckle_blocks_spells)
-				to_chat(user, span_warning("[H.buckled] prevents me from casting [name]!"))
+				to_chat(user, span_warning("[H.buckled]使我无法施放[name]！"))
 				return FALSE
 			if(H.handcuffed)
-				to_chat(user, span_warning("[name] cannot be cast with my hands tied up!"))
+				to_chat(user, span_warning("双手被绑时我无法施放[name]！"))
 				return FALSE
 			if(!H.has_active_hand())
-				to_chat(user, span_warning("I can't cast this without functional hands!"))
+				to_chat(user, span_warning("没有能用的手我无法施放这个法术！"))
 				return FALSE
 
 	else
 		if(clothes_req || human_req)
-			to_chat(user, span_warning("This spell can only be cast by humans!"))
+			to_chat(user, span_warning("这个法术只能由人类施放！"))
 			return FALSE
 		if(nonabstract_req && (isbrain(user)))
-			to_chat(user, span_warning("This spell can only be cast by physical beings!"))
+			to_chat(user, span_warning("这个法术只能由实体生物施放！"))
 			return FALSE
 
 	if(req_items.len)
@@ -491,14 +491,15 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 				var/obj/item/M = I
 				missing_names.Add(M.name)
 		if(!met_requirement)
-			to_chat(user, span_warning("I'm missing [missing_names.Join(", ")] to cast this."))
+			var/missing_list = missing_names.Join(", ")
+			to_chat(user, span_warning("我缺少[missing_list]，无法施放此法术。"))
 			return FALSE
 
 	if(req_inhand)
 		if(!istype(user.get_active_held_item(), req_inhand))
 			var/obj/item/M = req_inhand
 			var/req_name = M.name
-			to_chat(user, span_warning("I'm missing [req_name] in my hand to cast this."))
+			to_chat(user, span_warning("我手中缺少[req_name]，无法施放此法术。"))
 			return FALSE
 
 	if(!skipcharge)
@@ -526,7 +527,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 				return FALSE
 		if("charges")
 			if(!charge_counter)
-				to_chat(user, span_warning("[name] has no charges left!"))
+				to_chat(user, span_warning("[name]已没有剩余次数！"))
 				return FALSE
 	return TRUE
 
@@ -559,7 +560,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 	. = ..()
 	START_PROCESSING(SSfastprocess, src)
 
-	still_recharging_msg = span_warning("[name] is still recharging!")
+	still_recharging_msg = span_warning("[name] 仍在充能！")
 	charge_counter = recharge_time
 	last_process_time = world.time
 
@@ -590,7 +591,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 /obj/effect/proc_holder/spell/proc/dispel_conjured_item()
 	if(!conjured_item)
 		return
-	conjured_item.visible_message(span_warning("The [conjured_item]'s borders begin to [conjured_dispel_desc]!"))
+	conjured_item.visible_message(span_warning("[conjured_item]的轮廓开始[conjured_dispel_desc]！"))
 	qdel(conjured_item)
 	conjured_item = null
 
@@ -656,7 +657,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 			else
 				radius = 1
 			if(get_dist(targets[1], user) > radius)
-				to_chat(user, span_warning("It's too far!"))
+				to_chat(user, span_warning("太远了！"))
 				revert_cast()
 				return
 			var/atom/A = targets[1]
@@ -667,7 +668,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 			if(A.z < user.z)
 				source_turf = get_step_multiz(source_turf, DOWN)
 			if(!(target_turf in view(source_turf)))
-				to_chat(user, span_warning("I do not have line of sight! Casting on nearest tile."))
+				to_chat(user, span_warning("我没有视线！将改为施放到最近的地块。"))
 				var/list/possible_targets = getline(source_turf, target_turf)
 				for(var/i = possible_targets.len; i > 0; i--) // Since turfs added by the getline are in ordered by distance, we need to start from the end
 					var/atom/closest_tile = possible_targets[i]
@@ -695,7 +696,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 					L.stamina_add(fatigue)
 			if(L.has_status_effect(/datum/status_effect/buff/clash))
 				var/mob/living/carbon/human/H = user
-				H.bad_guard(span_warning("I can't focus while casting spells!"), cheesy = TRUE)
+				H.bad_guard(span_warning("我在施法时无法集中注意！"), cheesy = TRUE)
 		if(action)
 			action.UpdateButtonIcon()
 		return TRUE
@@ -750,7 +751,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 	if(devotion_cost && ishuman(user))
 		var/mob/living/carbon/human/devotee = user
 		devotee.devotion?.update_devotion(-devotion_cost)
-		to_chat(devotee, "<font color='purple'>I [devotion_cost > 0 ? "lost" : "gained"] [abs(devotion_cost)] devotion.</font>")
+		to_chat(devotee, "<font color='purple'>我[devotion_cost > 0 ? "失去" : "获得"] [abs(devotion_cost)]点虔诚。</font>")
 
 	if(user.mmb_intent && user.mmb_intent.mob_light)
 		QDEL_NULL(user.mmb_intent.mob_light)
@@ -837,11 +838,11 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 						continue
 					possible_targets += M
 
-				//targets += input("Choose the target for the spell.", "Targeting") as mob in possible_targets
+				//targets += input("选择法术目标。", "选择目标") as mob in possible_targets
 				//Adds a safety check post-input to make sure those targets are actually in range.
 				var/mob/M
 				if(!random_target)
-					M = input("Choose the target for the spell.", "Targeting") as null|mob in sortNames(possible_targets)
+					M = input("选择法术目标。", "选择目标") as null|mob in sortNames(possible_targets)
 				else
 					switch(random_target_priority)
 						if(TARGET_RANDOM)
@@ -992,19 +993,19 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 	perform(null,user=user)
 
 /obj/effect/proc_holder/spell/self/basic_heal //This spell exists mainly for debugging purposes, and also to show how casting works
-	name = "Lesser Heal"
+	name = "次级治疗"
 	desc = ""
 	human_req = TRUE
 	clothes_req = FALSE
 	recharge_time = 100
-	invocations = list("Victus sano!")
+	invocations = list("伤痛，平息。")
 	invocation_type = "whisper"
 	school = "restoration"
 	sound = 'sound/blank.ogg'
 
 /obj/effect/proc_holder/spell/self/basic_heal/cast(mob/living/carbon/human/user) //Note the lack of "list/targets" here. Instead, use a "user" var depending on mob requirements.
 	//Also, notice the lack of a "for()" statement that looks through the targets. This is, again, because the spell can only have a single target.
-	user.visible_message(span_warning("A wreath of gentle light passes over [user]!"), span_info("I wreath myself in healing light!"))
+	user.visible_message(span_warning("一圈柔和的光辉拂过[user]!"), span_info("我让治疗之光环绕自身！"))
 	user.adjustBruteLoss(-10)
 	user.adjustFireLoss(-10)
 

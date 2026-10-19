@@ -3,8 +3,8 @@
 #define TAB_MANAGESCOMS 3
 
 /obj/structure/roguemachine/crier
-	name = "rous master"
-	desc = "The crier's most trusted friend."
+	name = "鼠群主控"
+	desc = "报信人最可信赖的朋友。"
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "crier_machine"
 	density = TRUE
@@ -25,7 +25,7 @@
 			playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 			return
 		else
-			to_chat(user, span_warning("Wrong key."))
+			to_chat(user, span_warning("钥匙不对。"))
 			return
 	if(istype(P, /obj/item/storage/keyring))
 		var/obj/item/storage/keyring/K = P
@@ -37,7 +37,7 @@
 				locked = !locked
 				playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 				return
-		to_chat(user, span_warning("Wrong key."))
+		to_chat(user, span_warning("钥匙不对。"))
 		return
 
 /obj/structure/roguemachine/crier/Topic(href, href_list)
@@ -50,10 +50,10 @@
 		var/obj/structure/broadcast_horn/paid/H = locate(href_list["togglehorn"])
 		if(H && (H in SSroguemachine.broadcaster_machines))
 			H.is_locked = !H.is_locked
-			to_chat(usr, span_notice("You [H.is_locked ? "lock" : "unlock"] [H]."))
+			to_chat(usr, span_notice("你[H.is_locked ? "锁上了" : "解开了"][H]。"))
 	if(href_list["withdraw"])
 		if(total_payments <= 0)
-			to_chat(usr, span_warning("No mammon to withdraw."))
+			to_chat(usr, span_warning("没有可提取的玛门。"))
 			return
 
 		var/amount = total_payments
@@ -65,7 +65,7 @@
 		while(amount >= 1)
 			new /obj/item/roguecoin/copper(get_turf(src))
 			amount -= 1
-		to_chat(usr, span_notice("You withdraw the broadcaster payments."))
+		to_chat(usr, span_notice("你取出了广播器收入。"))
 
 	return attack_hand(usr)
 
@@ -74,7 +74,7 @@
 	if(.)
 		return
 	if(locked)
-		to_chat(user, span_warning("It's locked. Of course."))
+		to_chat(user, span_warning("锁着呢，当然。"))
 		return
 	user.changeNext_move(CLICK_CD_INTENTCAP)
 	playsound(loc, 'sound/misc/keyboard_enter.ogg', 100, FALSE, -1)
@@ -82,18 +82,18 @@
 	var/contents
 	switch(current_tab)
 		if(TAB_ROUSMAIN)
-			contents += "<center>ROUS MASTER<BR>"
-			contents += "Total stored mammon: [total_payments]<br><br>"
-			contents += "<a href='?src=\ref[src];withdraw=1'>Withdraw All</a><br>"
+			contents += "<center>鼠群主控<BR>"
+			contents += "当前存储玛门：[total_payments]<br><br>"
+			contents += "<a href='?src=\ref[src];withdraw=1'>全部取出</a><br>"
 			contents += "--------------<BR>"
-			contents += "<a href='?src=\ref[src];switchtab=[TAB_SCOMLOG]'>\[Broadcast Log\]</a><BR>"
-			contents += "<a href='?src=\ref[src];switchtab=[TAB_MANAGESCOMS]'>\[Manage Broadcasters\]</a><BR>"
+			contents += "<a href='?src=\ref[src];switchtab=[TAB_SCOMLOG]'>\[广播记录\]</a><BR>"
+			contents += "<a href='?src=\ref[src];switchtab=[TAB_MANAGESCOMS]'>\[管理广播器\]</a><BR>"
 			contents += "</center>"
 
 		if(TAB_SCOMLOG)
-			contents += "<center><b>BROADCAST LOG</b></center><hr>"
+			contents += "<center><b>广播记录</b></center><hr>"
 			if(!length(GLOB.broadcast_list))
-				contents += "<i>No broadcasts logged yet.</i><br>"
+				contents += "<i>尚无广播记录。</i><br>"
 			else
 				// Show most recent first
 				for(var/i = length(GLOB.broadcast_list), i > 0, i--)
@@ -102,22 +102,22 @@
 					var/tag = entry["tag"]
 					var/time = entry["timestamp"]
 
-					contents += "[tag ? " ( [tag] )" : ""] broadcasted at [time]:<br>"
+					contents += "[tag ? " ( [tag] )" : ""]于[time]广播：<br>"
 					contents += "[msg]<br><hr>"
 
-			contents += "<br><a href='?src=\ref[src];switchtab=[TAB_ROUSMAIN]'>\[Back\]</a>"
+			contents += "<br><a href='?src=\ref[src];switchtab=[TAB_ROUSMAIN]'>\[返回\]</a>"
 
 		if(TAB_MANAGESCOMS)
-			contents += "<center><b>Manage Broadcasters</b></center><hr>"
+			contents += "<center><b>管理广播器</b></center><hr>"
 
 			if(!length(SSroguemachine.broadcaster_machines))
-				contents += "<i>No broadcasters found.</i><br>"
+				contents += "<i>未找到广播器。</i><br>"
 			else
 				for(var/obj/structure/broadcast_horn/paid/H in SSroguemachine.broadcaster_machines)
-					var/locked_text = H.is_locked ? "Locked" : "Unlocked"
-					contents += "Streetpipe [H.broadcaster_tag ? " ( [H.broadcaster_tag] )" : ""] "
-					contents += "<span style='float:right;'>[locked_text] <a href='?src=\ref[src];togglehorn=\ref[H]'>\[Toggle\]</a></span><br>"
-			contents += "<br><a href='?src=\ref[src];switchtab=[TAB_ROUSMAIN]'>\[Back\]</a>"
+					var/locked_text = H.is_locked ? "已锁定" : "未锁定"
+					contents += "街巷传声筒 [H.broadcaster_tag ? " ( [H.broadcaster_tag] )" : ""] "
+					contents += "<span style='float:right;'>[locked_text] <a href='?src=\ref[src];togglehorn=\ref[H]'>\[切换\]</a></span><br>"
+			contents += "<br><a href='?src=\ref[src];switchtab=[TAB_ROUSMAIN]'>\[返回\]</a>"
 
 	if(!canread)
 		contents = stars(contents)

@@ -1,7 +1,7 @@
 
 /datum/supply_pack/rogue/Knave
-	group = "Knave"
-	crate_name = "Gifts of Shadows"
+	group = "无赖" // English: Knave
+	crate_name = "暗影的馈赠"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 //////////
@@ -9,22 +9,22 @@
 //////////
 
 /datum/supply_pack/rogue/Knave/leather/lhelmet
-	name = "Leather Helmet"
+	name = "皮革头盔"
 	cost = 5
 	contains = list(/obj/item/clothing/head/roguetown/helmet/leather)
 
 /datum/supply_pack/rogue/Knave/leather/hlhelmet
-	name = "Hardened Leather Helmet"
+	name = "硬化皮革头盔"
 	cost = 10
 	contains = list(/obj/item/clothing/head/roguetown/helmet/leather/advanced)
 
 /datum/supply_pack/rogue/Knave/leather/khelmet
-	name = "Kettle Helmet"
+	name = "锅盔"
 	cost = 20
 	contains = list(/obj/item/clothing/head/roguetown/helmet/kettle)
 
 /datum/supply_pack/rogue/Knave/leather/plhood
-	name = "Padded Leather Hood"
+	name = "衬垫皮革兜帽"
 	cost = 25
 	contains = list(/obj/item/clothing/head/roguetown/helmet/leather/armorhood)
 
@@ -33,17 +33,17 @@
 //////////
 
 /datum/supply_pack/rogue/Knave/gorget
-	name = "Gorget"
+	name = "护喉"
 	cost = 20
 	contains = list(/obj/item/clothing/neck/roguetown/gorget)
 
 /datum/supply_pack/rogue/Knave/gorget
-	name = "Steel Coif"
+	name = "锁链护头巾"
 	cost = 30
 	contains = list(/obj/item/clothing/neck/roguetown/chaincoif)
 
 /datum/supply_pack/rogue/Knave/coif/hpcoif
-	name = "Heavy Padded Coif"
+	name = "厚实衬垫护头巾"
 	cost = 35
 	contains = list(/obj/item/clothing/neck/roguetown/coif/heavypadding)
 
@@ -52,37 +52,37 @@
 ///////////
 
 /datum/supply_pack/rogue/Knave/gambeson
-	name = "Gambeson"
+	name = "绗缝护甲衣"
 	cost = 5
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson)
 
 /datum/supply_pack/rogue/Knave/hgambeson
-	name = "Heavy Gambeson"
+	name = "加厚绗缝护甲衣"
 	cost = 20
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy)
 
 /datum/supply_pack/rogue/Knave/leather
-	name = "Leather Armor"
+	name = "皮甲"
 	cost = 10
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather)
 
 /datum/supply_pack/rogue/Knave/leather/lcorslet
-	name = "Leather Corslet"
+	name = "皮胸衣"
 	cost = 20
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/bikini)
 
 /datum/supply_pack/rogue/Knave/leather/studded
-	name = "Studded Leather Armor"
+	name = "铆钉皮甲"
 	cost = 20
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/studded)
 
 /datum/supply_pack/rogue/Knave/leather/heavy
-	name = "Hardened Leather Armor"
+	name = "硬化皮甲"
 	cost = 20
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/heavy)
 
 /datum/supply_pack/rogue/Knave/leather/hcoat
-	name = "Hardened Leather Coat"
+	name = "硬化皮大衣"
 	cost = 30
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/heavy/coat)
 
@@ -91,27 +91,27 @@
 ///////////////////
 
 /datum/supply_pack/rogue/Knave/leather/Lbracers
-	name = "Leather Bracers"
+	name = "皮臂甲"
 	cost = 5
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
 
 /datum/supply_pack/rogue/Knave/leather/hbracers
-	name = "Hardened Leather Bracers"
+	name = "硬化皮臂甲"
 	cost = 10
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather/heavy)
 
 /datum/supply_pack/rogue/Knave/leather/lgloves
-	name = "Leather Gloves"
+	name = "皮手套"
 	cost = 5
 	contains = list(/obj/item/clothing/gloves/roguetown/leather)
 
 /datum/supply_pack/rogue/Knave/leather/hlgloves
-	name = "Heavy Leather Gloves"
+	name = "重型皮手套"
 	cost = 10
 	contains = list(/obj/item/clothing/gloves/roguetown/angle)
 
 /datum/supply_pack/rogue/Knave/leather/flgloves
-	name = "Fingerless Leather Gloves"
+	name = "露指皮手套"
 	cost = 10
 	contains = list(/obj/item/clothing/gloves/roguetown/fingerless_leather)
 
@@ -120,12 +120,12 @@
 ///////////////
 
 /datum/supply_pack/rogue/Knave/leather/pants
-	name = "Leather Trousers"
+	name = "皮裤"
 	cost = 10
 	contains = list(/obj/item/clothing/under/roguetown/trou/leather)
 
 /datum/supply_pack/rogue/Knave/leather/hpants
-	name = "Hardened Leather Trousers"
+	name = "硬化皮裤"
 	cost = 20
 	contains = list(/obj/item/clothing/under/roguetown/heavy_leather_pants)
 
@@ -134,67 +134,67 @@
 /////////////////////
 
 /datum/supply_pack/rogue/Knave/placejapan
-	name = "Kazengunese Dagger"
+	name = "钢短刀"
 	cost = 25
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel/kazengun)
 
 /datum/supply_pack/rogue/Knave/parrydag
-	name = "Parry Dagger"
+	name = "钢制格挡匕首"
 	cost = 20
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel/parrying)
 
 /datum/supply_pack/rogue/Knave/krisdag
-	name = "Kris Dagger"
+	name = "波刃匕首"
 	cost = 20
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel/kris)
 
 /datum/supply_pack/rogue/Knave/rondeldag
-	name = "Rondel Dagger"
+	name = "圆盘匕首"
 	cost = 30
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel/rondel)
 
 /datum/supply_pack/rogue/Knave/saildagger
-	name = "Etruscan Sail Dagger"
+	name = "船帆匕首"
 	cost = 30
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel/parrying/vaquero)
 
 /datum/supply_pack/rogue/Knave/Navaja
-	name = "Navaja"
+	name = "纳瓦哈折刀"
 	cost = 20
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/navaja)
 
 /datum/supply_pack/rogue/Knave/elfdagger
-	name = "Elven Dagger"
+	name = "精灵匕首"
 	cost = 40
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/silver/elvish)
 
 /datum/supply_pack/rogue/Knave/rapier
-	name = "Rapier"
+	name = "刺剑"
 	cost = 20
 	contains = list(/obj/item/rogueweapon/sword/rapier)
 
 /datum/supply_pack/rogue/Knave/cuprapier
-	name = "Etruscan Rapier"
+	name = "杯护手刺剑"
 	cost = 30
 	contains = list(/obj/item/rogueweapon/sword/rapier/vaquero)
 
 /datum/supply_pack/rogue/Knave/sabre
-	name = "Sabre"
+	name = "军刀"
 	cost = 20
 	contains = list(/obj/item/rogueweapon/sword/sabre)
 
 /datum/supply_pack/rogue/Knave/messer
-	name = "Messer"
+	name = "钢猎剑"
 	cost = 20
 	contains = list(/obj/item/rogueweapon/sword/short/messer)
 
 /datum/supply_pack/rogue/Knave/falchion
-	name = "Falchion"
+	name = "法刀"
 	cost = 20
 	contains = list(/obj/item/rogueweapon/sword/short/falchion)
 
 /datum/supply_pack/rogue/Knave/estoc
-	name = "Estoc"
+	name = "穿甲刺剑"
 	cost = 40
 	contains = list(/obj/item/rogueweapon/estoc)
 
@@ -203,42 +203,42 @@
 //////////////////////
 
 /datum/supply_pack/rogue/Knave/bow
-	name = "Bow"
+	name = "单木弓"
 	cost = 10
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/bow)
 
 /datum/supply_pack/rogue/Knave/crossbow
-	name = "Crossbow"
+	name = "十字弩"
 	cost = 20
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow)
 
 /datum/supply_pack/rogue/Knave/recurvebow
-	name = "Recurve Bow"
+	name = "反曲弓"
 	cost = 20
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve)
 
 /datum/supply_pack/rogue/Knave/longbow
-	name = "Longbow"
+	name = "紫杉长弓"
 	cost = 40
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow)
 
 /datum/supply_pack/rogue/Knave/slurbow
-	name = "Slurbow"
+	name = "轻弩"
 	cost = 40
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow)
 
 /datum/supply_pack/rogue/Knave/steeltossblades
-	name = "Steel Tossblade Belt"
+	name = "钢飞刀腰带"
 	cost = 20
 	contains = list(/obj/item/storage/belt/rogue/leather/knifebelt/black/steel)
 
 /datum/supply_pack/rogue/Knave/steeltossblade
-	name = "Single Steel Tossblade"
+	name = "单把钢制投刃"
 	cost = 5
 	contains = list(/obj/item/rogueweapon/huntingknife/throwingknife/steel)
 
 /datum/supply_pack/rogue/Knave/silvertossblade
-	name = "Single Silver Tossblade"
+	name = "单把银制投刃"
 	cost = 25 // Because I can imagine how annoying these would be. 
 	contains = list(/obj/item/rogueweapon/huntingknife/throwingknife/silver)
 
@@ -247,27 +247,27 @@
 /////////////////////////////
 
 /datum/supply_pack/rogue/Knave/quiver
-	name = "Empty Quiver"
+	name = "空箭袋"
 	cost = 5
 	contains = list(/obj/item/quiver)
 
 /datum/supply_pack/rogue/Knave/quivers/arrows
-	name = "Quiver of Arrows"
+	name = "一袋箭矢"
 	cost = 10
 	contains = list(/obj/item/quiver/arrows)
 
 /datum/supply_pack/rogue/Knave/quivers/bolts
-	name = "Quiver of Bolts"
+	name = "一袋弩矢"
 	cost = 20
 	contains = list(/obj/item/quiver/bolts)
 
 /datum/supply_pack/rogue/Knave/Sarrows
-	name = "Steel Bodkin Arrow"
+	name = "钢锥头箭"
 	cost = 3
 	contains = list(/obj/item/ammo_casing/caseless/rogue/arrow/steel)
 
 /datum/supply_pack/rogue/Knave/Warrows
-	name = "Water Arrows (x5)"
+	name = "水箭 ×5"
 	cost = 1
 	contains = list(
 	/obj/item/ammo_casing/caseless/rogue/arrow/water,
@@ -278,7 +278,7 @@
 	)
 
 /datum/supply_pack/rogue/Knave/Wbolts
-	name = "Water Bolts (x5)"
+	name = "水弩矢 ×5"
 	cost = 1
 	contains = list(
 	/obj/item/ammo_casing/caseless/rogue/bolt/water,
@@ -289,17 +289,17 @@
 	)
 
 /datum/supply_pack/rogue/Knave/Parrows
-	name = "Poisoned Arrow"
+	name = "毒箭"
 	cost = 3
 	contains = list(/obj/item/ammo_casing/caseless/rogue/arrow/poison)
 
 /datum/supply_pack/rogue/Knave/pyroarrows
-	name = "Pyroclastic Arrow"
+	name = "燃火箭"
 	cost = 3
 	contains = list(/obj/item/ammo_casing/caseless/rogue/arrow/pyro)
 
 /datum/supply_pack/rogue/Knave/pyrobolts
-	name = "Pyroclastic bolt"
+	name = "燃火弩矢"
 	cost = 3
 	contains = list(/obj/item/ammo_casing/caseless/rogue/bolt/pyro)
 
@@ -308,31 +308,31 @@
 /////////////
 
 /datum/supply_pack/rogue/Knave/Mancatcher
-	name = "Mancatcher"
+	name = "捕兽夹"
 	cost = 10
 	contains = list(/obj/item/restraints/legcuffs/beartrap)
 
 /datum/supply_pack/rogue/Knave/lockpicks
-	name = "Lockpick ring"
+	name = "撬锁工具环"
 	cost = 10
 	contains = list(/obj/item/lockpickring/mundane)
 
 /datum/supply_pack/rogue/Knave/stampoison
-	name = "Fatigue Poison"
+	name = "耐力毒药"
 	cost = 60
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/stampoison)
 
 /datum/supply_pack/rogue/Knave/strongstampoison
-	name = "Strong Fatigue Poison"
+	name = "强效耐力毒药"
 	cost = 150
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/strongstampoison)
 
 /datum/supply_pack/rogue/Knave/jackberrypoison
-	name = "Jackberry Poison"
+	name = "杰克莓毒药"
 	cost = 40 // You can make it yourself.
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/berrypoison)
 
 /datum/supply_pack/rogue/Knave/antidote
-	name = "Antidote"
+	name = "解毒剂"
 	cost = 40 // Friendly fire or misshaps.
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/antidote)

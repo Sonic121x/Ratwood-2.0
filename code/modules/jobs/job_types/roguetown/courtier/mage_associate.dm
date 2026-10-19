@@ -1,5 +1,6 @@
 /datum/job/roguetown/wapprentice
 	title = "Magicians Associate"
+	display_title = "法师侍从"
 	flag = MAGEASSOCIATE
 	department_flag = COURTIERS
 	faction = "Station"
@@ -10,7 +11,7 @@
 	spells = list(/obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 	advclass_cat_rolls = list(CTAG_WASSOCIATE = 20)
 
-	tutorial = "Your master once saw potential in you, although you are uncertain if they still do, given how rigorous and difficult your studies have been. The path to using magic is a treacherous and untamed one, and you are still decades away from calling yourself even a journeyman in the field. Listen and serve, and someday you will earn your hat."
+	tutorial = "你的导师曾在你身上看见过潜力，尽管以如今这般严苛艰难的学业来看，你也不确定他们是否仍这么想。魔法之路危险难驯，而你距离能自称这一行的熟手，恐怕还差上数十年。听令，服侍，总有一天你会赢得属于自己的帽子。"
 
 	outfit = /datum/outfit/job/roguetown/wapprentice
 
@@ -41,8 +42,8 @@
 	shoes = /obj/item/clothing/shoes/roguetown/gladiator // FANCY SANDALS
 
 /datum/advclass/wapprentice/associate
-	name = "Magician Associate"
-	tutorial = "You were once an apprentice, though through your studies and practice you've mastered the basics of the arcyne. You now spend your days working under your master, honing your skills so that you might one day be considered a true master yourself."
+	name = "法师侍从"
+	tutorial = "你曾只是个学徒，但经过学习与实践，你已经掌握了奥术的基础。如今你继续在导师手下做事、磨练本领，只为有朝一日也能被视作真正的大师。"
 	outfit = /datum/outfit/job/roguetown/wapprentice/associate
 
 	category_tags = list(CTAG_WASSOCIATE)
@@ -92,8 +93,8 @@
 			H.cmode_music = 'sound/music/combat_heretic.ogg'
 
 /datum/advclass/wapprentice/alchemist
-	name = "Alchemist Associate"
-	tutorial = "During your studies, you became less focused on the arcyne and instead turned yourself to your true passion, alchemy. Through the art of transmutation, you have learned that the elements (much like the arcyne) can be maniupulated and bent to your will."
+	name = "炼金侍从"
+	tutorial = "在求学过程中，你渐渐不再专注于奥术本身，而是转向了自己真正热爱的炼金术。借由嬗变之艺，你已明白元素与奥术一样，都能被操弄、被扭转，最终服从于你的意志。"
 	outfit = /datum/outfit/job/roguetown/wapprentice/alchemist
 
 	category_tags = list(CTAG_WASSOCIATE)
@@ -146,20 +147,20 @@
 		if(/datum/patron/inhumen/zizo)
 			H.cmode_music = 'sound/music/combat_heretic.ogg'
 	if(H.mind)
-		var/weapons = list("Applied Alchemy","Magical Medicine")
-		var/weapon_choice = input(H, "Choose your tools.", "CHOOSE YOUR DISCIPLINE.") as anything in weapons
+		var/weapons = list("实用炼金","魔导医学")
+		var/weapon_choice = input(H, "选择你的工具。", "选择你的专攻。") as anything in weapons
 		switch(weapon_choice)
-			if("Applied Alchemy")
+			if("实用炼金")
 				H.adjust_skillrank_up_to(/datum/skill/craft/alchemy, 4, TRUE)
 				l_hand = /obj/item/clothing/neck/roguetown/skullamulet/alchemist
-			if("Magical Medicine")
+			if("魔导医学")
 				l_hand = /obj/item/storage/belt/rogue/surgery_bag
 				H.adjust_skillrank_up_to(/datum/skill/misc/medicine, 4, TRUE)
 
 
 /datum/advclass/wapprentice/apprentice
-	name = "Magician Apprentice"
-	tutorial = "Your master once saw potential in you, although you are uncertain if they still do, given how rigorous and difficult your studies have been. The path to using magic is a treacherous and untamed one, and you are still decades away from calling yourself even a journeyman in the field. Listen and serve, and someday you will earn your hat."
+	name = "法师学徒"
+	tutorial = "你的导师曾在你身上看见过潜力，尽管以如今这般严苛艰难的学业来看，你也不确定他们是否仍这么想。魔法之路危险难驯，而你距离能自称这一行的熟手，恐怕还差上数十年。听令，服侍，总有一天你会赢得属于自己的帽子。"
 	outfit = /datum/outfit/job/roguetown/wapprentice/apprentice
 
 	category_tags = list(CTAG_WASSOCIATE)
@@ -201,8 +202,8 @@
 /obj/effect/proc_holder/spell/invoked/aerosolize/wave/amulet
 
 /obj/item/clothing/neck/roguetown/skullamulet/alchemist
-	name = "sulphur amulet"
-	desc = "This yellow skull is the sigil of alchemists across Ferentia.<br>It reeks with a rotten odor."
+	name = "硫磺护符"
+	desc = "这枚黄色骷髅是费伦提亚各地炼金术士的标志。<br>它散发着腐臭。"
 	var/active_item
 
 /obj/item/clothing/neck/roguetown/skullamulet/alchemist/equipped(mob/living/user, slot)
@@ -212,7 +213,7 @@
 	else if(slot == SLOT_NECK)
 		var/mob/living/carbon/human/H = user
 		active_item = TRUE
-		to_chat(user, span_green("'..all the world is a fluid; it takes but one hand to make a ripple..'"))
+		to_chat(user, span_green("'……世间万物皆如流水，只需一只手便能泛起涟漪……'"))
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/aerosolize/wave/amulet)
 	return
 
@@ -220,7 +221,7 @@
 	..()
 	if(active_item && ishuman(user))
 		var/mob/living/carbon/human/H = user
-		to_chat(user, span_green("'..the air is clean and still once more.'"))
+		to_chat(user, span_green("'……空气再度清新而宁静。'"))
 		H.mind.RemoveSpell(/obj/effect/proc_holder/spell/invoked/aerosolize/wave/amulet)
 		active_item = FALSE
 	return

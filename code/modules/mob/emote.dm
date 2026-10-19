@@ -16,7 +16,7 @@
 			if(world.time < next_emote)
 				return
 
-	var/list/key_emotes = GLOB.emote_list[act]
+	var/list/key_emotes = GLOB.emote_list[list("r力量" = "strength", "r感知" = "perception", "r智力" = "intelligence", "r体质" = "constitution", "r意志" = "willpower", "r速度" = "speed", "r幸运" = "fortune")[act] || act]
 	var/mute_time = 0
 	if(!length(key_emotes) || custom_param)
 		if(intentional)

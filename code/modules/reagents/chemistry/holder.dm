@@ -85,7 +85,7 @@
 // external list is list of reagent types = amounts
 /datum/reagents/proc/log_list(external_list)
 	if((external_list && !length(external_list)) || !length(reagent_list))
-		return "no reagents"
+		return "无试剂"
 
 	var/list/data = list()
 	if(external_list)
@@ -376,7 +376,7 @@
 	update_total()
 
 /datum/reagents/proc/remove_addiction(datum/reagent/R)
-	to_chat(my_atom, "<span class='notice'>I feel like you've gotten over your need for [R.name].</span>")
+	to_chat(my_atom, "<span class='notice'>我觉得自己已经不再渴求[R.name]了。</span>")
 	addiction_list.Remove(R)
 	qdel(R)
 
@@ -871,7 +871,7 @@
 					out += "[intensity_desc] [scent_desc]"
 				else
 					out += "[scent_desc]"
-	return english_list(out, "something")
+	return english_list(out, "某种难以辨认的气味", "和", "、")
 
 /datum/reagents/proc/generate_taste_message(minimum_percent=15)
 	// the lower the minimum percent, the more sensitive the message is.
@@ -916,7 +916,7 @@
 				else
 					out += "[taste_desc]"
 
-	return english_list(out, "something")
+	return english_list(out, "某种难以辨认的味道", "和", "、")
 
 /datum/reagents/proc/expose_temperature(temperature, coeff=0.02)
 	if(istype(my_atom,/obj/item/reagent_containers))

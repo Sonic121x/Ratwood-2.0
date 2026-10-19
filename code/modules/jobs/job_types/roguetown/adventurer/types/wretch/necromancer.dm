@@ -1,6 +1,6 @@
 /datum/advclass/wretch/necromancer
-	name = "Necromancer"
-	tutorial = "You have been ostracized and hunted by society for your dark magics and perversion of life."
+	name = "死灵法师"
+	tutorial = "你因施展黑暗魔法、亵渎生命而遭到社会排斥与追猎。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/wretch/necromancer
@@ -29,7 +29,7 @@
 		/datum/skill/misc/medicine = SKILL_LEVEL_JOURNEYMAN, //For lux extractions.
 	)
 	subclass_stashed_items = list(
-		"Sewing Kit" = /obj/item/repair_kit,
+		"缝纫工具包" = /obj/item/repair_kit,
 	)
 /datum/outfit/job/roguetown/wretch/necromancer/pre_equip(mob/living/carbon/human/H)
 	head = /obj/item/clothing/head/roguetown/necromhood
@@ -74,26 +74,26 @@
 	H.grant_language(/datum/language/undead)
 
 	var/staffs = list(
-		"ronts-focused staff",
-		"blortz-focused staff",
-		"saffira-focused staff",
-		"gemerald-focused staff",
-		"amethyst-focused staff",
-		"toper-focused staff",
+		"隆兹石聚焦法杖",
+		"布洛兹石聚焦法杖",
+		"蓝晶聚焦法杖",
+		"翠晶聚焦法杖",
+		"紫水晶聚焦法杖",
+		"托珀石聚焦法杖",
 	)
-	var/staffchoice = input(H, H, "Choose your staff", "Available staffs") as anything in staffs
+	var/staffchoice = input(H, H, "选择你的法杖", "可选法杖") as anything in staffs
 	switch(staffchoice)
-		if("ronts-focused staff")
+		if("隆兹石聚焦法杖")
 			backr = /obj/item/rogueweapon/woodstaff/ruby
-		if("blortz-focused staff")
+		if("布洛兹石聚焦法杖")
 			backr = /obj/item/rogueweapon/woodstaff/quartz
-		if("saffira-focused staff")
+		if("蓝晶聚焦法杖")
 			backr = /obj/item/rogueweapon/woodstaff/sapphire
-		if("gemerald-focused staff")
+		if("翠晶聚焦法杖")
 			backr = /obj/item/rogueweapon/woodstaff/emerald
-		if("amethyst-focused staff")
+		if("紫水晶聚焦法杖")
 			backr = /obj/item/rogueweapon/woodstaff/amethyst
-		if("toper-focused staff")
+		if("托珀石聚焦法杖")
 			backr = /obj/item/rogueweapon/woodstaff/toper
 
 /datum/mind

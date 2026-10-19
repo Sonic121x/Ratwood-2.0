@@ -1,6 +1,6 @@
 /obj/item/clothing/gloves/roguetown/angle
-	name = "heavy leather gloves"
-	desc = "A heavier pair of leather gloves with extra padding. These look like they can take some beating. Fair melee protection and decent durability."
+	name = "重型皮手套"
+	desc = "一副更厚重、额外加垫的皮手套。看起来很能挨打。近战防护尚可，耐用度也不错。"
 	icon_state = "angle"
 	armor = ARMOR_LEATHER
 	resistance_flags = FIRE_PROOF
@@ -22,8 +22,8 @@
 	AddComponent(/datum/component/armour_filtering/negative, TRAIT_MAGEDEXTERITY)
 
 /obj/item/clothing/gloves/roguetown/angle/grenzelgloves
-	name = "grenzelhoft gloves"
-	desc = "Regal gloves of Grenzelhoftian design, more a fashion statement than actual protection."
+	name = "格伦泽尔霍夫特手套"
+	desc = "格伦泽尔霍夫特风格的华贵手套，与其说是防具，不如说是时尚宣言。"
 	icon_state = "grenzelgloves"
 	item_state = "grenzelgloves"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
@@ -33,21 +33,21 @@
 	AddComponent(/datum/component/armour_filtering/positive, TRAIT_MAGEDEXTERITY) //Once again, if I see non-grenzelhoftian mages start running this every round, this is going away.
 
 /obj/item/clothing/gloves/roguetown/angle/grenzelgloves/blacksmith
-	name = "forge gauntlets"
+	name = "炉匠护手"
 	color = "#ffffff"
 	heat_protection = HAND_LEFT | HAND_RIGHT
 	max_heat_protection_temperature = 600
 
 /obj/item/clothing/gloves/roguetown/angle/grenzelgloves/freifechter
-	name = "fencing gloves"
-	desc = "A pair of hardened leather gloves used by fencers who aren't exactly convinced of losing a finger to a particularly strong feder cut. The inside is padded for extra durability."
+	name = "击剑手套"
+	desc = "一副硬化皮革手套，供不想被练习长剑的猛烈劈砍削掉手指的击剑手使用。内有衬垫，更加耐用。"
 	max_integrity = ARMOR_INT_SIDE_HARDLEATHER + 50
 	icon_state = "freigloves"
 	item_state = "freigloves"
 
 /obj/item/clothing/gloves/roguetown/angle/pontifex
-	name = "rune-scrybed wrappings"
-	desc = "Paper and cloth bandages enscrybed with powerful naledian runes. They do an ample job of protecting their user's hands in combat."
+	name = "符文缠手"
+	desc = "以纸与布缠成的绷带，上面写满强大的纳雷迪符文。它们足以在战斗中好好保护佩戴者的双手。"
 	icon_state = "clothwraps"
 	item_state = "clothwraps"
 	color = "#ffffff"

@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/troll/axe
-	name = "troll skull-splitter"
-	desc = "This one seems smarter than the rest... And its axe could cut a man in two."
+	name = "裂颅巨魔"
+	desc = "这只似乎比其他巨魔聪明些……而它的斧头足以把人劈成两半。"
 	icon = 'icons/roguetown/mob/monster/trolls/troll_axe.dmi'
 	perfect_butcher_results = list(
 		/obj/item/reagent_containers/food/snacks/rogue/meat/steak/troll = 5,
@@ -20,9 +20,9 @@
 	loot = list(/obj/item/rogueweapon/stoneaxe/woodcut/troll)
 
 /datum/intent/simple/troll_axe
-	name = "troll axe"
+	name = "巨魔斧"
 	icon_state = "instrike"
-	attack_verb = list("hacks at", "slashes", "chops", "crushes")
+	attack_verb = list("劈砍", "挥砍", "砍劈", "碾压")
 	animname = "blank22"
 	hitsound = "genchop"
 	blade_class = BCLASS_CHOP

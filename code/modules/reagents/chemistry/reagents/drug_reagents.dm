@@ -1,12 +1,12 @@
 /datum/reagent/drug
-	name = "Drug"
+	name = "药物"
 	metabolization_rate = 0.1
-	taste_description = "bitterness"
+	taste_description = "苦味"
 	var/trippy = TRUE //Does this drug make you trip?
 
 /datum/reagent/drug/space_drugs
-	name = "Space drugs"
-	description = "An illegal chemical compound used as drug."
+	name = "太空毒品"
+	description = "一种被当作毒品使用的非法化合物。"
 	color = "#60A584" // rgb: 96, 165, 132
 	overdose_threshold = 30
 
@@ -53,7 +53,7 @@
 	filters += filter(type="angular_blur",x=5,y=5,size=1)
 
 /datum/reagent/drug/space_drugs/overdose_start(mob/living/M)
-	to_chat(M, "<span class='danger'>I start tripping hard!</span>")
+	to_chat(M, "<span class='danger'>我开始严重致幻了！</span>")
 
 /datum/reagent/drug/space_drugs/overdose_process(mob/living/M)
 	M.adjustToxLoss(0.1 * REAGENTS_EFFECT_MULTIPLIER, 0)
@@ -61,12 +61,12 @@
 	..()
 
 /datum/reagent/drug/nicotine
-	name = "Nicotine"
-	description = "Slightly reduces stun times. If overdosed it will deal toxin and oxygen damage."
+	name = "尼古丁"
+	description = "能略微缩短眩晕时间；过量则会造成毒素与缺氧伤害。"
 	reagent_state = LIQUID
 	color = "#60A584" // rgb: 96, 165, 132
 	addiction_threshold = 999
-	taste_description = "smoke"
+	taste_description = "烟味"
 	trippy = FALSE
 	overdose_threshold = 999
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
@@ -93,8 +93,8 @@
 	return TRUE
 
 /datum/reagent/drug/crank
-	name = "Crank"
-	description = "Reduces stun times by about 200%. If overdosed or addicted it will deal significant Toxin, Brute and Brain damage."
+	name = "烈性兴奋剂"
+	description = "可大幅缩短眩晕时间；若过量或成瘾，会造成明显的毒素、钝伤与脑损伤。"
 	reagent_state = LIQUID
 	color = "#FA00C8"
 	overdose_threshold = 20
@@ -102,7 +102,7 @@
 
 /datum/reagent/drug/crank/on_mob_life(mob/living/carbon/M)
 	if(prob(5))
-		var/high_message = pick("You feel jittery.", "You feel like you gotta go fast.", "You feel like you need to step it up.")
+		var/high_message = pick("你感到浑身发颤。", "你觉得自己必须快起来。", "你觉得自己该再提把劲。")
 		to_chat(M, "<span class='notice'>[high_message]</span>")
 	M.AdjustStun(-20, FALSE)
 	M.AdjustKnockdown(-20, FALSE)
@@ -141,8 +141,8 @@
 	return TRUE
 
 /datum/reagent/drug/methamphetamine
-	name = "Methamphetamine"
-	description = "Reduces stun times by about 300%, speeds the user up, and allows the user to quickly recover stamina while dealing a small amount of Brain damage. If overdosed the subject will move randomly, laugh randomly, drop items and suffer from Toxin and Brain damage. If addicted the subject will constantly jitter and drool, before becoming dizzy and losing motor control and eventually suffer heavy toxin damage."
+	name = "甲基苯丙胺"
+	description = "能大幅缩短眩晕时间、提高速度并快速恢复体力，但会造成轻微脑损伤；过量会引发失控、狂笑、掉落物品以及毒素和脑损伤，成瘾后症状还会持续恶化。"
 	reagent_state = LIQUID
 	color = "#FAFAFA"
 	overdose_threshold = 20
@@ -158,7 +158,7 @@
 	..()
 
 /datum/reagent/drug/methamphetamine/on_mob_life(mob/living/carbon/M)
-	var/high_message = pick("You feel hyper.", "You feel like you need to go faster.", "You feel like you can run the world.")
+	var/high_message = pick("你感到异常亢奋。", "你觉得自己还得更快。", "你觉得自己能掌控一切。")
 	if(prob(5))
 		to_chat(M, "<span class='notice'>[high_message]</span>")
 
@@ -182,7 +182,7 @@
 	if(prob(20))
 		M.emote("laugh")
 	if(prob(33))
-		M.visible_message("<span class='danger'>[M]'s hands flip out and flail everywhere!</span>")
+		M.visible_message("<span class='danger'>[M]的双手突然失控，胡乱挥舞起来！</span>")
 		M.drop_all_held_items()
 	..()
 	M.adjustToxLoss(1, 0)
@@ -225,13 +225,13 @@
 	return TRUE
 
 /datum/reagent/drug/aranesp
-	name = "Aranesp"
-	description = "Amps you up, gets you going, and rapidly restores stamina damage. Side effects include breathlessness and toxicity."
+	name = "阿拉奈斯普"
+	description = "能让你迅速振作并快速恢复体力，但副作用包括气短与毒性。"
 	reagent_state = LIQUID
 	color = "#78FFF0"
 
 /datum/reagent/drug/aranesp/on_mob_life(mob/living/carbon/M)
-	var/high_message = pick("You feel amped up.", "You feel ready.", "You feel like you can push it to the limit.")
+	var/high_message = pick("你感到干劲十足。", "你觉得自己已经准备好了。", "你觉得自己能逼近极限。")
 	if(prob(5))
 		to_chat(M, "<span class='notice'>[high_message]</span>")
 	M.adjustStaminaLoss(-18, 0)
@@ -243,8 +243,8 @@
 	return TRUE
 
 /datum/reagent/drug/happiness
-	name = "Happiness"
-	description = "Fills you with ecstasic numbness and causes minor brain damage. Highly addictive. If overdosed causes sudden mood swings."
+	name = "欢欣"
+	description = "让人沉浸在欣快的麻木中，并造成轻微脑损伤；极易成瘾，过量还会引发剧烈情绪波动。"
 	reagent_state = LIQUID
 	color = "#FFF378"
 	addiction_threshold = 10
@@ -307,8 +307,8 @@
 	return TRUE
 
 /datum/reagent/drug/pumpup
-	name = "Pump-Up"
-	description = "Take on the world! A fast acting, hard hitting drug that pushes the limit on what you can handle."
+	name = "强效振奋剂"
+	description = "来征服世界吧！这是一种起效极快、药劲猛烈、会把承受极限一路推高的药物。"
 	reagent_state = LIQUID
 	color = "#e38e44"
 	metabolization_rate = 2 * REAGENTS_METABOLISM
@@ -326,7 +326,7 @@
 	M.Jitter(5)
 
 	if(prob(5))
-		to_chat(M, "<span class='notice'>[pick("Go! Go! GO!", "You feel ready...", "You feel invincible...")]</span>")
+		to_chat(M, "<span class='notice'>[pick("上！上！上！", "你准备好了……", "你感觉自己无可战胜……")]</span>")
 	if(prob(15))
 		M.losebreath++
 		M.adjustToxLoss(2, 0)
@@ -334,7 +334,7 @@
 	return TRUE
 
 /datum/reagent/drug/pumpup/overdose_start(mob/living/M)
-	to_chat(M, "<span class='danger'>I can't stop shaking, my heart beats faster and faster...</span>")
+	to_chat(M, "<span class='danger'>我抖得停不下来，心跳越来越快了……</span>")
 
 /datum/reagent/drug/pumpup/overdose_process(mob/living/M)
 	M.Jitter(5)
@@ -359,12 +359,12 @@
 	. = ..()
 
 /datum/reagent/drug/mentha // distinct from SS13 menthol, for the mentha zigs
-	name = "Mentha"
-	description = "Extract from the mentha herb. Produces a cooling sensation."
+	name = "薄荷"
+	description = "薄荷的提取物，会带来清凉的感觉。"
 	reagent_state = LIQUID
 	color = "#3eb489"
 	addiction_threshold = 999
-	taste_description = "mentha"
+	taste_description = "薄荷"
 	trippy = FALSE
 	overdose_threshold = 999
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
@@ -386,12 +386,12 @@
 	return TRUE
 
 /datum/reagent/drug/blackberry
-	name = "Blackberry"
-	description = "Extract from the blackberry. Produces a sweet-tart sensation."
+	name = "黑莓"
+	description = "黑莓的提取物，会带来酸甜的感觉。"
 	reagent_state = LIQUID
 	color = "#4D0135"
 	addiction_threshold = 999
-	taste_description = "blackberry"
+	taste_description = "黑莓"
 	trippy = FALSE
 	overdose_threshold = 999
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
@@ -413,12 +413,12 @@
 	return TRUE
 	
 /datum/reagent/drug/apple 
-	name = "Apple"
-	description = "Extract from the apple. Produces a sourness and coolness sensation."
+	name = "苹果"
+	description = "苹果的提取物，会带来酸涩和清凉的感觉。"
 	reagent_state = LIQUID
 	color = "#AF4D43"
 	addiction_threshold = 999
-	taste_description = "apple"
+	taste_description = "苹果"
 	trippy = FALSE
 	overdose_threshold = 999
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
@@ -437,12 +437,12 @@
 	return TRUE
 
 /datum/reagent/drug/chocolate 
-	name = "Chocolate"
-	description = "Extract from the chocolate. Produces a sourness and coolness sensation."
+	name = "巧克力"
+	description = "巧克力的提取物，会带来酸涩和清凉的感觉。"
 	reagent_state = LIQUID
 	color = "#7B3F00"
 	addiction_threshold = 999
-	taste_description = "chocolate"
+	taste_description = "巧克力"
 	trippy = FALSE
 	overdose_threshold = 999
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
@@ -463,12 +463,12 @@
 	return TRUE
 
 /datum/reagent/drug/strawberry 
-	name = "Strawberry"
-	description = "Extract from the strawberry. Produces a sourness and coolness sensation."
+	name = "草莓"
+	description = "草莓的提取物，会带来酸涩和清凉的感觉。"
 	reagent_state = LIQUID
 	color = "#FC5A8D"
 	addiction_threshold = 999
-	taste_description = "strawberry"
+	taste_description = "草莓"
 	trippy = FALSE
 	overdose_threshold = 999
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
@@ -489,12 +489,12 @@
 	return TRUE
 
 /datum/reagent/drug/carrot  
-	name = "Carrot"
-	description = "Extract from the carrot. Produces a sourness and coolness sensation."
+	name = "胡萝卜"
+	description = "胡萝卜的提取物，会带来酸涩和清凉的感觉。"
 	reagent_state = LIQUID
 	color = "#ED9121"
 	addiction_threshold = 999
-	taste_description = "carrot"
+	taste_description = "胡萝卜"
 	trippy = FALSE
 	overdose_threshold = 999
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
@@ -515,12 +515,12 @@
 	return TRUE
 
 /datum/reagent/drug/lime
-	name = "Lime"
-	description = "Extract from the lime. Produces a sourness and coolness sensation."
+	name = "青柠"
+	description = "青柠的提取物，会带来酸涩和清凉的感觉。"
 	reagent_state = LIQUID
 	color = "#BFFF00"
 	addiction_threshold = 999
-	taste_description = "lime"
+	taste_description = "青柠"
 	trippy = FALSE
 	overdose_threshold = 999
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
@@ -542,12 +542,12 @@
 	return TRUE
 
 /datum/reagent/drug/salvia
-	name = "Salvia"
-	description = "Extract from the salvia. Produces a spicy, earthy and bitter sensation."
+	name = "鼠尾草"
+	description = "鼠尾草的提取物，会带来辛辣、土腥和苦涩的感觉。"
 	reagent_state = LIQUID
 	color = "#FF33FF"
 	addiction_threshold = 999
-	taste_description = "salvia"
+	taste_description = "鼠尾草"
 	trippy = FALSE
 	overdose_threshold = 999
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
@@ -568,12 +568,12 @@
 	return TRUE
 
 /datum/reagent/drug/valeriana
-	name = "Valeriana"
-	description = "Extract from the valeriana. Produces a bitter-spicy and tart sensation."
+	name = "缬草"
+	description = "缬草的提取物，会带来苦辣和酸涩的感觉。"
 	reagent_state = LIQUID
 	color = "#4a3c5f"
 	addiction_threshold = 999
-	taste_description = "valeriana"
+	taste_description = "缬草"
 	trippy = FALSE
 	overdose_threshold = 999
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
@@ -584,7 +584,7 @@
 	if(prob(20))
 		M.drowsyness += 3
 		M.emote("yawn")
-		M.visible_message("<span class='notice'>[M]'s looks sleepy and relaxed</span>")
+		M.visible_message("<span class='notice'>[M]看起来困倦而放松。</span>")
 	..()
 
 
@@ -595,12 +595,12 @@
 	return TRUE
 
 /datum/reagent/drug/calendula
-	name = "Calendula"
-	description = "Extract from the calendula. Produces a bitter-spicy and tart sensation."
+	name = "金盏花"
+	description = "金盏花的提取物，会带来苦辣和酸涩的感觉。"
 	reagent_state = LIQUID
 	color = "#a57006"
 	addiction_threshold = 999
-	taste_description = "calendula"
+	taste_description = "金盏花"
 	trippy = FALSE
 	overdose_threshold = 30 // lower, cuz of it's healing properties
 	metabolization_rate = 0.2 * REAGENTS_METABOLISM
@@ -630,12 +630,12 @@
 	. = 1
 
 /datum/reagent/drug/petun
-	name = "Petun"
-	description = "A highly concentrated form of nicotine. Produces a causes sore throat and mild relaxation."
+	name = "浓缩烟草精"
+	description = "一种高浓度的尼古丁制剂，会引起喉咙疼痛和轻微的放松感。"
 	reagent_state = LIQUID
 	color = "#7ed9ad"
 	addiction_threshold = 999
-	taste_description = "concentrated bitterness"
+	taste_description = "浓烈的苦味"
 	trippy = FALSE
 	overdose_threshold = 999
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
@@ -649,7 +649,7 @@
 	if(prob(10))
 		M.emote(pick("drool","sigh"))
 	if(prob(5))
-		M.visible_message("<span class='notice'>[M]'s pleasantly relaxing.</span>")
+		M.visible_message("<span class='notice'>[M]惬意地放松下来。</span>")
 	..()
 
 /datum/reagent/drug/petun/on_mob_life(mob/living/carbon/M)
@@ -665,12 +665,12 @@
 	return TRUE
 
 /datum/reagent/drug/jacksberries
-	name = "jacksberries"
-	description = "Extract from the jacksberries. Produces a causes sore throat and mild relaxation."
+	name = "杰克莓"
+	description = "杰克莓的提取物，会引起喉咙疼痛和轻微的放松感。"
 	reagent_state = LIQUID
 	color = "#57628C"
 	addiction_threshold = 999
-	taste_description = "jacksberries"
+	taste_description = "杰克莓"
 	trippy = FALSE
 	overdose_threshold=999
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
@@ -694,12 +694,12 @@
 	return TRUE
 
 /datum/reagent/drug/abyss
-	name = "Abyss"
-	description = "Extract from the jacksberries. Produces a causes sore throat and mild relaxation."
+	name = "深渊"
+	description = "杰克莓的提取物，会引起喉咙疼痛和轻微的放松感。"
 	reagent_state = LIQUID
 	color = "#5С0120"
 	addiction_threshold = 999
-	taste_description = "jacksberries"
+	taste_description = "杰克莓"
 	trippy = FALSE
 	overdose_threshold=999
 	metabolization_rate = 0.1 * REAGENTS_METABOLISM
@@ -713,7 +713,7 @@
 	if(prob(10))
 		M.emote(pick("drool","gasp"))
 	if(prob(3))
-		M.visible_message("<span class='notice'>[M]'s feels slightly uneasy, <span class='notice'>[M]'s gaze appears puzzled and distant</span>")
+		M.visible_message("<span class='notice'>[M]感到有些不安，<span class='notice'>[M]的目光显得困惑而恍惚。</span>")
 	..()
 
 /datum/reagent/drug/abyss/on_mob_life(mob/living/carbon/M)

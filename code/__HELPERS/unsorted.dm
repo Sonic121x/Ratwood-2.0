@@ -1157,7 +1157,7 @@ rough example of the "cone" made by the 3 dirs checked
 
 /proc/pick_closest_path(value, list/matches = get_fancy_list_of_atom_types())
 	if (value == FALSE) //nothing should be calling us with a number, so this is safe
-		value = input("Enter type to find (blank for all, cancel to cancel)", "Search for type") as null|text
+		value = input("输入要查找的类型（留空列出全部，取消则退出）", "搜索类型") as null|text
 		if (isnull(value))
 			return
 	value = trim(value)
@@ -1171,7 +1171,7 @@ rough example of the "cone" made by the 3 dirs checked
 	if(matches.len==1)
 		chosen = matches[1]
 	else
-		chosen = input("Select a type", "Pick Type", matches[1]) as null|anything in sortList(matches)
+		chosen = input("选择一个类型", "选择类型", matches[1]) as null|anything in sortList(matches)
 		if(!chosen)
 			return
 	chosen = matches[chosen]
@@ -1289,17 +1289,17 @@ GLOBAL_REAL_VAR(list/stack_trace_storage)
 /proc/weightclass2text(w_class)
 	switch(w_class)
 		if(WEIGHT_CLASS_TINY)
-			. = "tiny"
+			. = "微型"
 		if(WEIGHT_CLASS_SMALL)
-			. = "small"
+			. = "小型"
 		if(WEIGHT_CLASS_NORMAL)
-			. = "normal-sized"
+			. = "中型"
 		if(WEIGHT_CLASS_BULKY)
-			. = "bulky"
+			. = "大型"
 		if(WEIGHT_CLASS_HUGE)
-			. = "huge"
+			. = "巨型"
 		if(WEIGHT_CLASS_GIGANTIC)
-			. = "gigantic"
+			. = "超巨型"
 		else
 			. = ""
 

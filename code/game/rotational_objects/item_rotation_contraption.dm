@@ -64,7 +64,7 @@
 		transform = resize
 		if(resize_factor)
 			transform = transform.Scale(resize_factor, resize_factor)
-	name = item_name || (initial(parent_type.name) + " item")
+	name = item_name || (initial(parent_type.name) + "部件")
 	desc = initial(parent_type.desc)
 	placed_type = parent_type
 
@@ -85,7 +85,7 @@
 		if(istype(structure, placed_type))
 			return
 
-	visible_message("[user] starts placing down [src].", "You start to place [src].")
+	visible_message("[user] 开始放置 [src]。", "我开始放置 [src]。")
 	if(!do_after(user, 1.2 SECONDS - user?.get_skill_level(/datum/skill/craft/engineering), T))
 		return
 	var/obj/structure/structure = new placed_type(T)
@@ -111,12 +111,12 @@
 	. = ..()
 	if(in_stack > 1)
 		var/base = item_name || initial(placed_type.name)
-		var/suffix = "s"
+		var/suffix = "件"
 		if(copytext(base, length(base)) in list("s", "x", "z")) // "gearboxes", not "gearboxs"
-			suffix = "es"
-		name = "pile of [base][suffix] x [in_stack]"
+			suffix = "件"
+		name = "[base] ×[in_stack][suffix]"
 	else
-		name = item_name || (initial(placed_type.name) + " item")
+		name = item_name || (initial(placed_type.name) + "部件")
 
 /obj/item/rotation_contraption/attackby(obj/item/I, mob/living/user, params)
 	. = ..()
@@ -128,7 +128,7 @@
 		return
 
 	I:in_stack += in_stack
-	visible_message("[user] collects [src].")
+	visible_message("[user] 收起了 [src]。")
 	qdel(src)
 	//I.update_appearance(UPDATE_NAME)
 	I.vand_update_appearance(UPDATE_NAME)
@@ -141,7 +141,7 @@
 	// reskin to the wood-shaft sprite and a distinct name (it still places a rotation_piece)
 	item_icon = 'icons/roguetown/misc/shafts.dmi'
 	item_icon_state = "woodshaft"
-	item_name = "engineering shaft"
+	item_name = "工造传动轴"
 	contraption_transform = FALSE // show the wood-shaft sprite upright, not the diamond look
 
 /obj/item/rotation_contraption/large_cog

@@ -370,7 +370,7 @@
 							playsound(my_turf, used_intent.miss_sound, 100, FALSE)
 							if(used_intent.miss_text)
 								visible_message(span_warning("[src] [used_intent.miss_text]!"), \
-												span_warning("I [used_intent.miss_text]!"))
+												span_warning("我[used_intent.miss_text]！"))
 					aftermiss()
 					atkswinging = null
 					//update_warning()
@@ -427,7 +427,7 @@
 				if((istype(W, offh) || istype(offh, W)) && W != offh && !(L.check_arm_grabbed(L.get_inactive_hand_index())) && (L.last_used_double_attack <= world.time))
 					if(L.stamina_add(2))
 						L.last_used_double_attack = world.time + 3 SECONDS
-						L.visible_message(span_warning("There's an opening! I strike with my off-hand weapon!"))
+						L.visible_message(span_warning("有破绽！我用副手武器出击！"))
 						offh.melee_attack_chain(src, A, params)
 	else
 		if(ismob(A))
@@ -662,7 +662,7 @@ GLOBAL_LIST_EMPTY(reach_dummy_pool)
 		for(var/AC in atomrefs)
 			var/AD = "[AC] ([atomcounts[AC]])"
 			atomy[AD] = atomrefs[AC]
-	var/atom/AB = input(user, "What will I take?","Items on [src.name ? "\the [src.name]:" : "the floor:"]",null) as null|anything in atomy
+	var/atom/AB = input(user, "我要拿什么？","[src.name ? "[src.name]上的物品：" : "地上的物品："]",null) as null|anything in atomy
 	if(!AB)
 		return
 	if(QDELETED(atomy[AB]))

@@ -49,15 +49,15 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 
 	var/spell_points
 	var/used_spell_points
-	var/movemovemovetext = "Move!!"
-	var/takeaimtext = "Take aim!!"
-	var/holdtext = "Hold!!"
-	var/onfeettext = "On your feet!!"
-	var/focustargettext = "Focus target!!"
-	var/retreattext = "Fall back!!"
-	var/bolstertext = "Hold the line!!"
-	var/brotherhoodtext = "Stand proud, for the Brotherhood!!"
-	var/chargetext = "Chaaaaaarge!!"
+	var/movemovemovetext = "前进！！"
+	var/takeaimtext = "瞄准！！"
+	var/holdtext = "坚守！！"
+	var/onfeettext = "站起来！！"
+	var/focustargettext = "集中攻击目标！！"
+	var/retreattext = "撤退！！"
+	var/bolstertext = "守住阵线！！"
+	var/brotherhoodtext = "昂首挺胸，为了兄弟会！！"
+	var/chargetext = "冲——锋！！"
 
 	//Prince champion vars.
 	var/mob/living/carbon/champion = null
@@ -184,16 +184,16 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 		known_people[H.real_name]["VCOLOR"] = H.voice_color
 		var/used_title = H.get_role_title()
 		if(!used_title)
-			used_title = "unknown"
+			used_title = "未知"
 		known_people[H.real_name]["FJOB"] = used_title
 		var/referred_gender
 		switch(H.pronouns)
 			if(HE_HIM)
-				referred_gender = "Male"
+				referred_gender = "男性"
 			if(SHE_HER)
-				referred_gender = "Female"
+				referred_gender = "女性"
 			else
-				referred_gender = "Androgynous"
+				referred_gender = "中性"
 		known_people[H.real_name]["FGENDER"] = referred_gender
 		if(H.dna && H.dna.species)
 			known_people[H.real_name]["FSPECIES"] = H.dna.species.name
@@ -224,16 +224,16 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 				M.known_people[H.real_name]["VCOLOR"] = H.voice_color
 				var/used_title = H.get_role_title()
 				if(!used_title)
-					used_title = "unknown"
+					used_title = "未知"
 				M.known_people[H.real_name]["FJOB"] = used_title
 				var/referred_gender
 				switch(H.pronouns)
 					if(HE_HIM)
-						referred_gender = "Male"
+						referred_gender = "男性"
 					if(SHE_HER)
-						referred_gender = "Female"
+						referred_gender = "女性"
 					else
-						referred_gender = "Androgynous"
+						referred_gender = "中性"
 				M.known_people[H.real_name]["FGENDER"] = referred_gender
 				M.known_people[H.real_name]["FSPECIES"] = H.dna.species.name
 				M.known_people[H.real_name]["FAGE"] = H.age
@@ -276,21 +276,21 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 	if(!known_people.len)
 		return
 	known_people = sortList(known_people)
-	var/contents = "<center>People that [name] knows:</center><BR>"
+	var/contents = "<center>[name]认识的人：</center><BR>"
 	for(var/P in known_people)
 		var/fcolor = known_people[P]["VCOLOR"]
 		if(!fcolor)
 			continue
 		var/fjob = known_people[P]["FJOB"]
 		var/fgender = known_people[P]["FGENDER"]
-		var/fspecies = known_people[P]["FSPECIES"]
+		var/fspecies = get_species_display_name(known_people[P]["FSPECIES"])
 		var/fage = known_people[P]["FAGE"]
 		var/fhouse = known_people[P]["FHOUSE"]
 		var/fheresy = known_people[P]["FHERESY"]
 		if(fcolor && fjob)
 			if (fheresy)
 				contents +="<B><font color=#f1d669>[fheresy]</font></B> "
-			contents += "<B><font color=#[fcolor];text-shadow:0 0 10px #8d5958, 0 0 20px #8d5958, 0 0 30px #8d5958, 0 0 40px #8d5958, 0 0 50px #e60073, 0 0 60px #8d5958, 0 0 70px #8d5958;>[P]</font></B><BR>[fjob], [fspecies], [capitalize(fgender)], [fage][fhouse ? "<br><b>House [fhouse]</b>" : ""]"
+			contents += "<B><font color=#[fcolor];text-shadow:0 0 10px #8d5958, 0 0 20px #8d5958, 0 0 30px #8d5958, 0 0 40px #8d5958, 0 0 50px #e60073, 0 0 60px #8d5958, 0 0 70px #8d5958;>[P]</font></B><BR>[fjob], [fspecies], [capitalize(fgender)], [fage][fhouse ? "<br><b>家族 [fhouse]</b>" : ""]"
 			contents += "<BR>"
 	var/datum/browser/popup = new(user, "PEOPLEIKNOW", "", 260, 400)
 	popup.set_content(contents)
@@ -480,20 +480,20 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 	creator.faction |= current.faction
 
 	if(creator.mind.special_role)
-		message_admins("[ADMIN_LOOKUPFLW(current)] has been created by [ADMIN_LOOKUPFLW(creator)], an antagonist.")
-		to_chat(current, span_danger("Despite my creators current allegiances, my true master remains [creator.real_name]. If their loyalties change, so do yours. This will never change unless my creator's body is destroyed."))
+		message_admins("[ADMIN_LOOKUPFLW(current)] 由反派 [ADMIN_LOOKUPFLW(creator)] 创造。")
+		to_chat(current, span_danger("无论我造物主当下效忠何方，我真正的主人始终是[creator.real_name]。若其忠诚改变，我也会随之改变。除非造物主的肉身被毁，这一点永远不会改变。"))
 
 /datum/mind/proc/show_memory(mob/recipient, window=1)
 	if(!recipient)
 		recipient = current
-	var/output = "<B>[current.real_name]'s Memories:</B><br>"
+	var/output = "<meta charset=\"UTF-8\"><B>[current.real_name]的记忆：</B><br>"
 	output += memory
 
 	if(personal_objectives.len)
-		output += "<B>Personal Objectives:</B>"
+		output += "<B>个人目标：</B>"
 		var/personal_count = 1
 		for(var/datum/objective/objective in personal_objectives)
-			output += "<br><B>Personal Goal #[personal_count]</B>: [objective.explanation_text][objective.completed ? " (COMPLETED)" : ""]"
+			output += "<br><B>个人目标 #[personal_count]</B>: [objective.explanation_text][objective.completed ? "（已完成）" : ""]"
 			personal_count++
 		output += "<br>"
 
@@ -503,10 +503,10 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 		all_objectives |= A.objectives
 
 	if(all_objectives.len)
-		output += "<B>Objectives:</B>"
+		output += "<B>目标：</B>"
 		var/antag_obj_count = 1
 		for(var/datum/objective/objective in all_objectives)
-			output += "<br><B>[objective.flavor] #[antag_obj_count]</B>: [objective.explanation_text][objective.completed ? " (COMPLETED)" : ""]"
+			output += "<br><B>[objective.flavor] #[antag_obj_count]</B>: [objective.explanation_text][objective.completed ? "（已完成）" : ""]"
 			antag_obj_count++
 
 	if(window)
@@ -517,21 +517,21 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 
 /// output current targets to the player
 /datum/mind/proc/recall_targets(mob/recipient, window=1)
-	var/output = "<B>[recipient.real_name]'s Hitlist:</B><br>"
+	var/output = "<meta charset=\"UTF-8\"><B>[recipient.real_name]的猎杀名单：</B><br>"
 	for(var/mob/living/carbon in GLOB.mob_living_list) // Iterate through all mobs in the world
 		if((carbon.real_name != recipient.real_name) && (HAS_TRAIT(carbon, TRAIT_ASSASSIN_TARGET)) && (!istype(carbon, /mob/living/carbon/human/dummy)))//To be on the list they must be hunted, not be the user and not be a dummy (There is a dummy that has all vices for some reason)
 			output += "<br>[carbon.real_name]"
 			output += "<br>[carbon.real_name]"
 			if (carbon.job)
 				output += " - [carbon.job]"
-	output += "<br>Your creed is blood, your faith is steel. You will not rest until these souls are yours. Use the profane dagger to trap their souls for Graggar."
+	output += "<br>我的信条是鲜血，我的信仰是钢铁。在这些灵魂尽归我所有之前，我绝不会停歇。用那把渎神匕首替格拉加尔囚禁他们的灵魂。"
 
 	if(window)
 		recipient << browse("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'></head><body>[output]</body></html>","window=memory")
 
 // Graggar culling event - tells people where the other is.
 /datum/mind/proc/recall_culling(mob/recipient, window=1)
-	var/output = "<B>[recipient.real_name]'s Rival:</B><br>"
+	var/output = "<meta charset=\"UTF-8\"><B>[recipient.real_name]的宿敌：</B><br>"
 	for(var/datum/culling_duel/D in GLOB.graggar_cullings)
 		var/mob/living/carbon/human/challenger = D.challenger.resolve()
 		var/mob/living/carbon/human/target = D.target.resolve()
@@ -549,42 +549,42 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 		if(recipient == challenger)
 			if(target)
 				if(target_heart && target_heart.owner && target_heart.owner != target) // Rival is not gone but their heart is in someone else
-					output += "<br>[target.real_name], the [target.job]"
-					output += "<br>Your rival's heart beats in [target_heart.owner.real_name]'s chest in [target_heart_location]"
-					output += "<br>Retrieve and consume it to claim victory! Graggar will not forgive failure."
+					output += "<br>[target.real_name]，[target.job]"
+					output += "<br>我宿敌的心脏正在[target_heart.owner.real_name]位于[target_heart_location]的胸腔中跳动"
+					output += "<br>取回并吞食它，以此夺取胜利！格拉加尔不会宽恕失败。"
 				else
-					output += "<br>[target.real_name], the [target.job]"
-					output += "<br>Eat your rival's heart before they eat YOURS! Graggar will not forgive failure."
+					output += "<br>[target.real_name]，[target.job]"
+					output += "<br>在宿敌吞食我的心脏之前，先把对方的心脏吃掉！格拉加尔不会宽恕失败。"
 			else if(target_heart)
 				if(target_heart.owner && target_heart.owner != recipient)
-					output += "<br>Rival's Heart"
-					output += "<br>It's currently inside [target_heart.owner.real_name]'s chest in [target_heart_location]"
-					output += "<br>Your rival's heart beats in another's chest. Retrieve and consume it to claim victory!"
+					output += "<br>宿敌之心"
+					output += "<br>它现在正位于[target_heart.owner.real_name]在[target_heart_location]的胸腔中"
+					output += "<br>宿敌的心脏正在他人胸腔中跳动。取回并吞食它，以此夺取胜利！"
 				else
-					output += "<br>Rival's Heart"
-					output += "<br>It's somewhere in the [target_heart_location]"
-					output += "<br>Your rival's heart is exposed bare! Consume it to claim victory!"
+					output += "<br>宿敌之心"
+					output += "<br>它位于[target_heart_location]的某处"
+					output += "<br>宿敌的心脏已暴露在外！吞食它，以此夺取胜利！"
 			else
 				continue
 
 		else if(recipient == target)
 			if(challenger)
 				if(challenger_heart && challenger_heart.owner && challenger_heart.owner != challenger) // Rival is not gone but their heart is in someone else
-					output += "<br>[challenger.real_name], the [challenger.job]"
-					output += "<br>Your rival's heart beats in [challenger_heart.owner.real_name]'s chest in [challenger_heart_location]"
-					output += "<br>Retrieve and consume it to claim victory! Graggar will not forgive failure."
+					output += "<br>[challenger.real_name]，[challenger.job]"
+					output += "<br>我宿敌的心脏正在[challenger_heart.owner.real_name]位于[challenger_heart_location]的胸腔中跳动"
+					output += "<br>取回并吞食它，以此夺取胜利！格拉加尔不会宽恕失败。"
 				else
-					output += "<br>[challenger.real_name], the [challenger.job]"
-					output += "<br>Eat your rival's heart before he eat YOURS! Graggar will not forgive failure."
+					output += "<br>[challenger.real_name]，[challenger.job]"
+					output += "<br>在宿敌吞食我的心脏之前，先把对方的心脏吃掉！格拉加尔不会宽恕失败。"
 			else if(challenger_heart)
 				if(challenger_heart.owner && challenger_heart.owner != recipient)
-					output += "<br>Rival's Heart"
-					output += "<br>It's currently inside [challenger_heart.owner.real_name]'s chest in [challenger_heart_location]"
-					output += "<br>Your rival's heart beats in another's chest. Retrieve and consume it to claim victory!"
+					output += "<br>宿敌之心"
+					output += "<br>它现在正位于[challenger_heart.owner.real_name]在[challenger_heart_location]的胸腔中"
+					output += "<br>宿敌的心脏正在他人胸腔中跳动。取回并吞食它，以此夺取胜利！"
 				else
-					output += "<br>Rival's Heart"
-					output += "<br>It's somewhere in the [challenger_heart_location]"
-					output += "<br>Your rival's heart is exposed bare! Consume it to claim victory!"
+					output += "<br>宿敌之心"
+					output += "<br>它位于[challenger_heart_location]的某处"
+					output += "<br>宿敌的心脏已暴露在外！吞食它，以此夺取胜利！"
 			else
 				continue
 
@@ -602,18 +602,18 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 	if(href_list["remove_antag"])
 		var/datum/antagonist/A = locate(href_list["remove_antag"]) in antag_datums
 		if(!istype(A))
-			to_chat(usr,span_warning("Invalid antagonist ref to be removed."))
+			to_chat(usr,span_warning("要移除的反派引用无效。"))
 			return
 		A.admin_remove(usr)
 
 	if (href_list["role_edit"])
-		var/new_role = input("Select new role", "Assigned role", assigned_role) as null|anything in sortList(get_all_jobs())
+		var/new_role = input("选择新角色", "已分配角色", assigned_role) as null|anything in sortList(get_all_jobs())
 		if (!new_role)
 			return
 		assigned_role = new_role
 
 	else if (href_list["memory_edit"])
-		var/new_memo = copytext(sanitize(input("Write new memory", "Memory", memory) as null|message),1,MAX_MESSAGE_LEN)
+		var/new_memo = copytext(sanitize(input("编写新记忆", "记忆", memory) as null|message),1,MAX_MESSAGE_LEN)
 		if (isnull(new_memo))
 			return
 		memory = new_memo
@@ -633,7 +633,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 					objective_pos = A.objectives.Find(old_objective)
 					break
 			if(!old_objective)
-				to_chat(usr,"Invalid objective.")
+				to_chat(usr,"目标无效。")
 				return
 		else
 			if(href_list["target_antag"])
@@ -647,10 +647,10 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 					if(1)
 						target_antag = antag_datums[1]
 					else
-						var/datum/antagonist/target = input("Which antagonist gets the objective:", "Antagonist", "(new custom antag)") as null|anything in sortList(antag_datums) + "(new custom antag)"
+						var/datum/antagonist/target = input("将目标分配给哪个反派：", "反派", "（新建自定义反派）") as null|anything in sortList(antag_datums) + "（新建自定义反派）"
 						if (QDELETED(target))
 							return
-						else if(target == "(new custom antag)")
+						else if(target == "（新建自定义反派）")
 							target_antag = add_antag_datum(/datum/antagonist/custom)
 						else
 							target_antag = target
@@ -662,7 +662,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 			if(old_objective.name in GLOB.admin_objective_list)
 				def_value = old_objective.name
 
-		var/selected_type = input("Select objective type:", "Objective type", def_value) as null|anything in GLOB.admin_objective_list
+		var/selected_type = input("选择目标类型：", "目标类型", def_value) as null|anything in GLOB.admin_objective_list
 		selected_type = GLOB.admin_objective_list[selected_type]
 		if (!selected_type)
 			return
@@ -673,7 +673,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 			new_objective.owner = src
 			new_objective.admin_edit(usr)
 			target_antag.objectives += new_objective
-			message_admins("[key_name_admin(usr)] added a new objective for [current]: [new_objective.explanation_text]")
+			message_admins("[key_name_admin(usr)] 为 [current] 添加了新目标：[new_objective.explanation_text]")
 			log_admin("[key_name(usr)] added a new objective for [current]: [new_objective.explanation_text]")
 		else
 			if(old_objective.type == selected_type)
@@ -687,7 +687,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 				new_objective.admin_edit(usr)
 				target_antag.objectives -= old_objective
 				target_antag.objectives.Insert(objective_pos, new_objective)
-			message_admins("[key_name_admin(usr)] edited [current]'s objective to [new_objective.explanation_text]")
+			message_admins("[key_name_admin(usr)] 将 [current] 的目标改为 [new_objective.explanation_text]")
 			log_admin("[key_name(usr)] edited [current]'s objective to [new_objective.explanation_text]")
 
 	else if (href_list["obj_delete"])
@@ -698,10 +698,10 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 				A.objectives -= objective
 				break
 		if(!objective)
-			to_chat(usr,"Invalid objective.")
+			to_chat(usr,"目标无效。")
 			return
 		//qdel(objective) Needs cleaning objective destroys
-		message_admins("[key_name_admin(usr)] removed an objective for [current]: [objective.explanation_text]")
+		message_admins("[key_name_admin(usr)] 移除了 [current] 的目标：[objective.explanation_text]")
 		log_admin("[key_name(usr)] removed an objective for [current]: [objective.explanation_text]")
 
 	else if(href_list["obj_completed"])
@@ -712,7 +712,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 				objective = objective
 				break
 		if(!objective)
-			to_chat(usr,"Invalid objective.")
+			to_chat(usr,"目标无效。")
 			return
 		objective.completed = !objective.completed
 		log_admin("[key_name(usr)] toggled the win state for [current]'s objective: [objective.explanation_text]")
@@ -750,7 +750,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 	var/obj_count = 1
 	for(var/datum/antagonist/antag_datum_ref in antag_datums)
 		if(length(antag_datum_ref.objectives))
-			to_chat(current, span_notice("Your [antag_datum_ref.name] objectives:"))
+			to_chat(current, span_notice("我的[antag_datum_ref.name]目标："))
 			for(var/datum/objective/O in antag_datum_ref.objectives)
 				O.update_explanation_text()
 				to_chat(current, "<B>[O.flavor] #[obj_count]</B>: [O.explanation_text]")
@@ -762,7 +762,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 		var/personal_count = 1
 		for(var/datum/objective/O in personal_objectives)
 			O.update_explanation_text()
-			to_chat(current, "<B>Personal Goal #[personal_count]</B>: [O.explanation_text]")
+			to_chat(current, "<B>个人目标 #[personal_count]</B>: [O.explanation_text]")
 			personal_count++
 
 /// Announce all objectives (both types)
@@ -986,7 +986,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 		if(user_area?.no_special_item_retrieval) // area does not allow fetching special items, return
 			return
 		if(user.mind.special_items && user.mind.special_items.len)
-			var/item = input(user, "What will I take?", "STASH") as null|anything in user.mind.special_items
+			var/item = input(user, "我要取出什么？", "储藏") as null|anything in user.mind.special_items
 			if(item)
 				if(user.Adjacent(host_object))
 					if(user.mind.special_items[item])
@@ -1016,9 +1016,9 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 
 							// Add subtle examination text to indicate this is a loadout reproduction
 							if(I.desc)
-								I.desc += " The overall look and feel of the item suggests this may be a mere reproduction."
+								I.desc += " 这件物品的整体外观与手感都表明，它也许只是一件仿制品。"
 							else
-								I.desc = "The overall look and feel of the item suggests this may be a mere reproduction."
+								I.desc = "这件物品的整体外观与手感都表明，它也许只是一件仿制品。"
 
 							// Set sellprice to 0
 							I.sellprice = 0

@@ -62,8 +62,8 @@ SUBSYSTEM_DEF(job)
 		SSmapping.map_adjustment.job_change()
 	return 1
 
-
 /datum/controller/subsystem/job/proc/GetJob(rank)
+	RETURN_TYPE(/datum/job)
 	if(!occupations.len)
 		SetupOccupations()
 	return name_occupations[rank]
@@ -877,7 +877,7 @@ SUBSYSTEM_DEF(job)
 	if(PopcapReached())
 		JobDebug("Popcap overflow Check observer located, Player: [player]")
 	JobDebug("Player rejected :[player]")
-	to_chat(player, "<b>I couldn't find a job to be..</b>")
+	to_chat(player, "<b>我没能找到可以担任的职位……</b>")
 	unassigned -= player
 	player.ready = PLAYER_NOT_READY
 
@@ -1025,7 +1025,7 @@ SUBSYSTEM_DEF(job)
 	if(istype(P.virtue, /datum/virtue/utility/resident))
 		return TRUE
 
-	if(P.statpack?.name == "Virtuous" && istype(P.virtuetwo, /datum/virtue/utility/resident))
+	if(P.statpack?.name == "德能" && istype(P.virtuetwo, /datum/virtue/utility/resident)) //需对齐modular_azurepeak/statpacks/wildcard.dm datum/statpack/wildcard/virtuous 的名字
 		return TRUE
 
 	return FALSE

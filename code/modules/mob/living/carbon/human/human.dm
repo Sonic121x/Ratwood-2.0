@@ -8,9 +8,9 @@
 		if(held_item.get_sharpness() && held_item.wlength == WLENGTH_SHORT)
 			if(has_stubble)
 				if(user == src)
-					user.visible_message("<span class='danger'>[user] starts to shave [user.p_their()] stubble with [held_item].</span>")
+					user.visible_message("<span class='danger'>[user]开始用[held_item]刮自己的胡茬。</span>")
 				else
-					user.visible_message("<span class='danger'>[user] starts to shave [src]'s stubble with [held_item].</span>")
+					user.visible_message("<span class='danger'>[user]开始用[held_item]刮[src]的胡茬。</span>")
 				if(do_after(user, 50, needhand = 1, target = src))
 					has_stubble = FALSE
 					update_hair()
@@ -18,9 +18,9 @@
 					held_item.melee_attack_chain(user, src, params)
 			else if(facial_hairstyle != "None")
 				if(user == src)
-					user.visible_message("<span class='danger'>[user] starts to shave [user.p_their()] facehairs with [held_item].</span>")
+					user.visible_message("<span class='danger'>[user]开始用[held_item]刮自己的胡须。</span>")
 				else
-					user.visible_message("<span class='danger'>[user] starts to shave [src]'s facehairs with [held_item].</span>")
+					user.visible_message("<span class='danger'>[user]开始用[held_item]刮[src]的胡须。</span>")
 				if(do_after(user, 50, needhand = 1, target = src))
 					facial_hairstyle = "None"
 					update_hair()
@@ -38,7 +38,7 @@
 			if(!underwear)
 				modular_handle_chastity_middleclick_strip(user)
 				return
-			src.visible_message(span_notice("[user] begins to take off [(src==user)?" ":"[src]'s"][underwear]..."))
+			src.visible_message(span_notice("[user]开始脱下[(src==user)?"自己的":"[src]的"][underwear]..."))
 			if(do_after(user, 30, needhand = 1, target = src))
 				var/obj/item/bodypart/chest = get_bodypart(BODY_ZONE_CHEST)
 				var/obj/item/undies/undies = underwear
@@ -51,7 +51,7 @@
 		if(get_location_accessible(src, BODY_ZONE_PRECISE_GROIN, skipundies = TRUE))
 			if(!legwear_socks)
 				return
-			src.visible_message(span_notice("[user] begins to take off [(src==user)?" ":"[src]'s"][legwear_socks]..."))
+			src.visible_message(span_notice("[user]开始脱下[(src==user)?"自己的":"[src]的"][legwear_socks]..."))
 			if(do_after(user, 30, needhand = 1, target = src))
 				var/obj/item/bodypart/chest = get_bodypart(BODY_ZONE_CHEST)
 				var/obj/item/legwears/legwears = legwear_socks
@@ -62,7 +62,7 @@
 			return
 	if(HAS_TRAIT(src, TRAIT_PONYGIRL_RIDEABLE))
 		var/mob/living/livinguser = user
-		user.visible_message(span_notice("[livinguser] is trying to mount [src]..."))
+		user.visible_message(span_notice("[livinguser]正试着骑到[src]身上..."))
 		if(!do_after(livinguser, 15, target = src))
 			return
 		if(!istype(livinguser))
@@ -131,17 +131,17 @@
 
 /mob/living/carbon/human/proc/toggle_keen_ears()
 	if(!HAS_TRAIT(src, TRAIT_KEENEARS))
-		to_chat(src, span_warning("I do not possess keen ears."))
+		to_chat(src, span_warning("我没有敏锐的听觉。"))
 		return FALSE
 	keen_ears_disabled = !keen_ears_disabled
 	if(keen_ears_disabled)
-		to_chat(src, span_notice("Your keen ears are now dulled."))
+		to_chat(src, span_notice("你的敏锐听觉已钝化。"))
 	else
-		to_chat(src, span_notice("Your keen ears are now sharp again."))
+		to_chat(src, span_notice("你的听觉再次变得敏锐。"))
 	return !keen_ears_disabled
 
 /mob/living/carbon/human/verb/toggle_keen_ears_ic()
-	set name = "Toggle Keen Ears"
+	set name = "切换敏锐听觉"
 	set category = "IC"
 	toggle_keen_ears()
 
@@ -155,18 +155,18 @@
 	switch(rand(1,4))
 		if(1)
 			affecting = get_bodypart(pick(BODY_ZONE_R_LEG, BODY_ZONE_L_LEG))
-			chat_message = span_danger("I fall on my [affecting]!")
+			chat_message = span_danger("我摔到了自己的[affecting]！")
 		if(2)
 			affecting = get_bodypart(pick(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM))
-			chat_message = span_danger("I fall on my arm!")
+			chat_message = span_danger("我摔到了手臂！")
 		if(3)
 			affecting = get_bodypart(BODY_ZONE_CHEST)
-			chat_message = span_danger("I fall flat! I'm winded!")
+			chat_message = span_danger("我摔趴在地，喘不过气了！")
 			emote("gasp")
 			adjustOxyLoss(50)
 		if(4)
 			affecting = get_bodypart(BODY_ZONE_HEAD)
-			chat_message = span_danger("I fall on my head!")
+			chat_message = span_danger("我摔到了头！")
 	if(affecting && apply_damage(dam, BRUTE, affecting, run_armor_check(affecting, "blunt", damage = dam)))
 		update_damage_overlays()
 		if(levels >= 1)
@@ -215,10 +215,10 @@
 		var/datum/antagonist/vampire/VD = mind.has_antag_datum(/datum/antagonist/vampire)
 		if(VD)
 			if(statpanel("Stats"))
-				stat("Vitae:", bloodpool)
+				stat("血能：", bloodpool)
 		if((mind.assigned_role == "Shepherd") || (mind.assigned_role == "Inquisitor"))
 			if(statpanel("Status"))
-				stat("Confessions sent: [GLOB.confessors.len]")
+				stat("已发送告解：[GLOB.confessors.len]")
 
 	return //RTchange
 
@@ -230,9 +230,9 @@
 	dat += "<table>"
 
 	if(handcuffed)
-		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_HANDCUFFED]'>Remove [handcuffed]</A></td></tr>"
+		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_HANDCUFFED]'>移除[handcuffed]</A></td></tr>"
 	if(legcuffed)
-		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_LEGCUFFED]'>Remove [legcuffed]</A></td></tr>"
+		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_LEGCUFFED]'>移除[legcuffed]</A></td></tr>"
 
 	dat += "<tr><td><hr></td></tr>"
 
@@ -249,114 +249,114 @@
 
 	//head
 	if(SLOT_HEAD in obscured)
-		dat += "<tr><td><font color=grey>Obscured</font></td></tr>"
+		dat += "<tr><td><font color=grey>被遮挡</font></td></tr>"
 	else
-		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_HEAD]'>[(head && !(head.item_flags & ABSTRACT)) ? head : "<font color=grey>Head</font>"]</A></td></tr>"
+		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_HEAD]'>[(head && !(head.item_flags & ABSTRACT)) ? head : "<font color=grey>头部</font>"]</A></td></tr>"
 
 	if(SLOT_WEAR_MASK in obscured)
-		dat += "<tr><td><font color=grey>Obscured</font></td></tr>"
+		dat += "<tr><td><font color=grey>被遮挡</font></td></tr>"
 	else
-		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_WEAR_MASK]'>[(wear_mask && !(wear_mask.item_flags & ABSTRACT)) ? wear_mask : "<font color=grey>Mask</font>"]</A></td></tr>"
+		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_WEAR_MASK]'>[(wear_mask && !(wear_mask.item_flags & ABSTRACT)) ? wear_mask : "<font color=grey>面具</font>"]</A></td></tr>"
 
 	if(SLOT_MOUTH in obscured)
-		dat += "<tr><td><font color=grey>Obscured</font></td></tr>"
+		dat += "<tr><td><font color=grey>被遮挡</font></td></tr>"
 	else
-		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_MOUTH]'>[(mouth && !(mouth.item_flags & ABSTRACT)) ? mouth : "<font color=grey>Mouth</font>"]</A></td></tr>"
+		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_MOUTH]'>[(mouth && !(mouth.item_flags & ABSTRACT)) ? mouth : "<font color=grey>嘴部</font>"]</A></td></tr>"
 
 	if(SLOT_NECK in obscured)
-		dat += "<tr><td><font color=grey>Obscured</font></td></tr>"
+		dat += "<tr><td><font color=grey>被遮挡</font></td></tr>"
 	else
-		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_NECK]'>[(wear_neck && !(wear_neck.item_flags & ABSTRACT)) ? wear_neck : "<font color=grey>Neck</font>"]</A></td></tr>"
+		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_NECK]'>[(wear_neck && !(wear_neck.item_flags & ABSTRACT)) ? wear_neck : "<font color=grey>颈部</font>"]</A></td></tr>"
 
 	dat += "<tr><td><hr></td></tr>"
 
 //	dat += "<tr><td><B>BACK</B></td></tr>"
 
 	if(SLOT_CLOAK in obscured)
-		dat += "<tr><td><font color=grey>Obscured</font></td></tr>"
+		dat += "<tr><td><font color=grey>被遮挡</font></td></tr>"
 	else
-		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_CLOAK]'>[(cloak && !(cloak.item_flags & ABSTRACT)) ? cloak : "<font color=grey>Cloak</font>"]</A></td></tr>"
+		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_CLOAK]'>[(cloak && !(cloak.item_flags & ABSTRACT)) ? cloak : "<font color=grey>斗篷</font>"]</A></td></tr>"
 
 	if(SLOT_BACK_R in obscured)
-		dat += "<tr><td><font color=grey>Obscured</font></td></tr>"
+		dat += "<tr><td><font color=grey>被遮挡</font></td></tr>"
 	else
-		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_BACK_R]'>[(backr && !(backr.item_flags & ABSTRACT)) ? backr : "<font color=grey>Back</font>"]</A></td></tr>"
+		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_BACK_R]'>[(backr && !(backr.item_flags & ABSTRACT)) ? backr : "<font color=grey>背部</font>"]</A></td></tr>"
 
 	if(SLOT_BACK_L in obscured)
-		dat += "<tr><td><font color=grey>Obscured</font></td></tr>"
+		dat += "<tr><td><font color=grey>被遮挡</font></td></tr>"
 	else
-		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_BACK_L]'>[(backl && !(backl.item_flags & ABSTRACT)) ? backl : "<font color=grey>Back</font>"]</A></td></tr>"
+		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_BACK_L]'>[(backl && !(backl.item_flags & ABSTRACT)) ? backl : "<font color=grey>背部</font>"]</A></td></tr>"
 
 	dat += "<tr><td><hr></td></tr>"
 
 //	dat += "<tr><td><B>TORSO</B></td></tr>"
 
 	if(SLOT_ARMOR in obscured)
-		dat += "<tr><td><font color=grey>Obscured</font></td></tr>"
+		dat += "<tr><td><font color=grey>被遮挡</font></td></tr>"
 	else
-		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_ARMOR]'>[(wear_armor && !(wear_armor.item_flags & ABSTRACT)) ? wear_armor : "<font color=grey>Armor</font>"]</A></td></tr>"
+		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_ARMOR]'>[(wear_armor && !(wear_armor.item_flags & ABSTRACT)) ? wear_armor : "<font color=grey>护甲</font>"]</A></td></tr>"
 
 	if(SLOT_SHIRT in obscured)
-		dat += "<tr><td><font color=grey>Obscured</font></td></tr>"
+		dat += "<tr><td><font color=grey>被遮挡</font></td></tr>"
 	else
-		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_SHIRT]'>[(wear_shirt && !(wear_shirt.item_flags & ABSTRACT)) ? wear_shirt : "<font color=grey>Shirt</font>"]</A></td></tr>"
+		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_SHIRT]'>[(wear_shirt && !(wear_shirt.item_flags & ABSTRACT)) ? wear_shirt : "<font color=grey>上衣</font>"]</A></td></tr>"
 
 	if(SLOT_GLOVES in obscured)
-		dat += "<tr><td><font color=grey>Obscured</font></td></tr>"
+		dat += "<tr><td><font color=grey>被遮挡</font></td></tr>"
 	else
-		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_GLOVES]'>[(gloves && !(gloves.item_flags & ABSTRACT)) ? gloves : "<font color=grey>Gloves</font>"]</A></td></tr>"
+		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_GLOVES]'>[(gloves && !(gloves.item_flags & ABSTRACT)) ? gloves : "<font color=grey>手套</font>"]</A></td></tr>"
 
 	if(SLOT_RING in obscured)
-		dat += "<tr><td><font color=grey>Obscured</font></td></tr>"
+		dat += "<tr><td><font color=grey>被遮挡</font></td></tr>"
 	else
-		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_RING]'>[(wear_ring && !(wear_ring.item_flags & ABSTRACT)) ? wear_ring : "<font color=grey>Ring</font>"]</A></td></tr>"
+		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_RING]'>[(wear_ring && !(wear_ring.item_flags & ABSTRACT)) ? wear_ring : "<font color=grey>戒指</font>"]</A></td></tr>"
 
 	if(SLOT_WRISTS in obscured)
-		dat += "<tr><td><font color=grey>Obscured</font></td></tr>"
+		dat += "<tr><td><font color=grey>被遮挡</font></td></tr>"
 	else
-		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_WRISTS]'>[(wear_wrists && !(wear_wrists.item_flags & ABSTRACT)) ? wear_wrists : "<font color=grey>Wrists</font>"]</A></td></tr>"
+		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_WRISTS]'>[(wear_wrists && !(wear_wrists.item_flags & ABSTRACT)) ? wear_wrists : "<font color=grey>手腕</font>"]</A></td></tr>"
 
 	dat += "<tr><td><hr></td></tr>"
 
 //	dat += "<tr><td><B>WAIST</B></td></tr>"
 
 	if(SLOT_BELT in obscured)
-		dat += "<tr><td><font color=grey>Obscured</font></td></tr>"
+		dat += "<tr><td><font color=grey>被遮挡</font></td></tr>"
 	else
-		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_BELT]'>[(belt && !(belt.item_flags & ABSTRACT)) ? belt : "<font color=grey>Belt</font>"]</A></td></tr>"
+		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_BELT]'>[(belt && !(belt.item_flags & ABSTRACT)) ? belt : "<font color=grey>腰带</font>"]</A></td></tr>"
 
 	if(SLOT_BELT_R in obscured)
-		dat += "<tr><td><font color=grey>Obscured</font></td></tr>"
+		dat += "<tr><td><font color=grey>被遮挡</font></td></tr>"
 	else
-		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_BELT_R]'>[(beltr && !(beltr.item_flags & ABSTRACT)) ? beltr : "<font color=grey>Hip</font>"]</A></td></tr>"
+		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_BELT_R]'>[(beltr && !(beltr.item_flags & ABSTRACT)) ? beltr : "<font color=grey>腰侧</font>"]</A></td></tr>"
 
 	if(SLOT_BELT_L in obscured)
-		dat += "<tr><td><font color=grey>Obscured</font></td></tr>"
+		dat += "<tr><td><font color=grey>被遮挡</font></td></tr>"
 	else
-		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_BELT_L]'>[(beltl && !(beltl.item_flags & ABSTRACT)) ? beltl : "<font color=grey>Hip</font>"]</A></td></tr>"
+		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_BELT_L]'>[(beltl && !(beltl.item_flags & ABSTRACT)) ? beltl : "<font color=grey>腰侧</font>"]</A></td></tr>"
 
 	dat += "<tr><td><hr></td></tr>"
 
 //	dat += "<tr><td><B>LEGS</B></td></tr>"
 
 	if(SLOT_PANTS in obscured)
-		dat += "<tr><td><font color=grey>Obscured</font></td></tr>"
+		dat += "<tr><td><font color=grey>被遮挡</font></td></tr>"
 	else
-		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_PANTS]'>[(wear_pants && !(wear_pants.item_flags & ABSTRACT)) ? wear_pants : "<font color=grey>Trousers</font>"]</A></td></tr>"
+		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_PANTS]'>[(wear_pants && !(wear_pants.item_flags & ABSTRACT)) ? wear_pants : "<font color=grey>裤子</font>"]</A></td></tr>"
 
 	if(SLOT_SHOES in obscured)
-		dat += "<tr><td><font color=grey>Obscured</font></td></tr>"
+		dat += "<tr><td><font color=grey>被遮挡</font></td></tr>"
 	else
-		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_SHOES]'>[(shoes && !(shoes.item_flags & ABSTRACT)) ? shoes : "<font color=grey>Boots</font>"]</A></td></tr>"
+		dat += "<tr><td><A href='?src=[REF(src)];item=[SLOT_SHOES]'>[(shoes && !(shoes.item_flags & ABSTRACT)) ? shoes : "<font color=grey>靴子</font>"]</A></td></tr>"
 
 	dat += "<tr><td><hr></td></tr>"
 
 #ifdef MATURESERVER
 	if(get_location_accessible(src, BODY_ZONE_PRECISE_GROIN, skipundies = TRUE))
-		dat += "<tr><td><BR><B>Underwear:</B> <A href='?src=[REF(src)];undiesthing=1'>[!underwear ? "Nothing" : "Remove"]</A></td></tr>"
+		dat += "<tr><td><BR><B>内衣：</B> <A href='?src=[REF(src)];undiesthing=1'>[!underwear ? "无" : "移除"]</A></td></tr>"
 	dat += "<tr><td><hr></td></tr>"
 	if(get_location_accessible(src, BODY_ZONE_PRECISE_GROIN, skipundies = TRUE))
-		dat += "<tr><td><BR><B>Legwear:</B> <A href='?src=[REF(src)];legwearsthing=1'>[!legwear_socks ? "Nothing" : "Remove"]</A></td></tr>"
+		dat += "<tr><td><BR><B>袜子：</B> <A href='?src=[REF(src)];legwearsthing=1'>[!legwear_socks ? "无" : "移除"]</A></td></tr>"
 		var/chastity_row = modular_strippanel_chastity_row()
 		if(chastity_row)
 			dat += "<tr><td><hr></td></tr>"
@@ -399,7 +399,7 @@
 					. = 0
 	if(!. && error_msg && user)
 		// Might need re-wording.
-		to_chat(user, span_alert("There is no exposed flesh or thin material [above_neck(target_zone) ? "on [p_their()] head" : "on [p_their()] body"]."))
+		to_chat(user, span_alert("[p_their()]的[above_neck(target_zone) ? "头部" : "身体"]没有裸露的皮肤或薄材料覆盖的部位。"))
 
 //Used for new human mobs created by cloning/constructing/podding
 /mob/living/carbon/human/proc/set_cloned_appearance()
@@ -415,20 +415,20 @@
 	CHECK_DNA_AND_SPECIES(C)
 
 	if(C.stat == DEAD || (HAS_TRAIT(C, TRAIT_FAKEDEATH)))
-		to_chat(src, span_warning("[C.name] is dead!"))
+		to_chat(src, span_warning("[C.name]已经死了！"))
 		return
 	if(is_mouth_covered())
-		to_chat(src, span_warning("Remove your mask first!"))
+		to_chat(src, span_warning("先摘下我的面罩！"))
 		return 0
 	if(C.is_mouth_covered())
-		to_chat(src, span_warning("Remove [p_their()] mask first!"))
+		to_chat(src, span_warning("先摘下[C]的面罩！"))
 		return 0
 
 	if(C.cpr_time < world.time + 30)
-		visible_message(span_notice("[src] is trying to perform CPR on [C.name]!"), \
-						span_notice("I try to perform CPR on [C.name]... Hold still!"))
+		visible_message(span_notice("[src]正试着为[C.name]进行心肺复苏！"), \
+						span_notice("我试着为[C.name]进行心肺复苏... 别动！"))
 		if(!do_mob(src, C))
-			to_chat(src, span_warning("I fail to perform CPR on [C]!"))
+			to_chat(src, span_warning("我没能为[C]完成心肺复苏！"))
 			return 0
 
 		var/they_breathe = !HAS_TRAIT(C, TRAIT_NOBREATH)
@@ -437,7 +437,7 @@
 		if(C.health > C.crit_threshold)
 			return
 
-		src.visible_message(span_notice("[src] performs CPR on [C.name]!"), span_notice("I perform CPR on [C.name]."))
+		src.visible_message(span_notice("[src]为[C.name]进行了心肺复苏！"), span_notice("我为[C.name]进行了心肺复苏。"))
 		C.cpr_time = world.time
 		log_combat(src, C, "CPRed")
 
@@ -445,11 +445,11 @@
 			var/suff = min(C.getOxyLoss(), 7)
 			C.adjustOxyLoss(-suff)
 			C.updatehealth()
-			to_chat(C, span_unconscious("I feel a breath of fresh air enter your lungs... It feels good..."))
+			to_chat(C, span_unconscious("我感觉一口新鲜空气进入肺中... 真舒服..."))
 		else if(they_breathe && !they_lung)
-			to_chat(C, span_unconscious("I feel a breath of fresh air... but you don't feel any better..."))
+			to_chat(C, span_unconscious("我感觉到一口新鲜空气... 却没有好转..."))
 		else
-			to_chat(C, span_unconscious("I feel a breath of fresh air... which is a sensation you don't recognise..."))
+			to_chat(C, span_unconscious("我感觉到一口新鲜空气... 这种感觉十分陌生..."))
 
 /mob/living/carbon/human/cuff_resist(obj/item/I)
 	if(..())
@@ -488,13 +488,13 @@
 
 /mob/living/carbon/human/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
 	if(!(mobility_flags & MOBILITY_UI))
-		to_chat(src, span_warning("I can't do that right now!"))
+		to_chat(src, span_warning("我现在做不到！"))
 		return FALSE
 	if(incapacitated())
-		to_chat(src, span_warning("I can't do that right now!"))
+		to_chat(src, span_warning("我现在做不到！"))
 		return FALSE
 	if(be_close && !in_range(M, src))
-		to_chat(src, span_warning("I am too far away!"))
+		to_chat(src, span_warning("我离得太远了！"))
 		return FALSE
 	return TRUE
 
@@ -727,8 +727,8 @@
 /mob/living/carbon/human/vomit(lost_nutrition = 10, blood = 0, stun = 1, distance = 0, message = 1, toxic = 0)
 	if(blood && (NOBLOOD in dna.species.species_traits) && !HAS_TRAIT(src, TRAIT_TOXINLOVER))
 		if(message)
-			visible_message(span_warning("[src] dry heaves!"), \
-							span_danger("I try to throw up, but there's nothing in your stomach!"))
+			visible_message(span_warning("[src]干呕着！"), \
+							span_danger("我想吐，可胃里什么都没有！"))
 		if(stun)
 			Immobilize(200)
 		return 1
@@ -737,10 +737,10 @@
 /mob/living/carbon/human/vv_get_dropdown()
 	. = ..()
 	VV_DROPDOWN_OPTION("", "---------")
-	VV_DROPDOWN_OPTION(VV_HK_REAPPLY_PREFS, "Reapply Preferences")
-	VV_DROPDOWN_OPTION(VV_HK_SET_SPECIES, "Set Species")
-	VV_DROPDOWN_OPTION(VV_HK_PURGE_PARTOF_SLOT, "Purge Part of Slot")
-	VV_DROPDOWN_OPTION(VV_HK_PURGE_SLOT, "Purge Slot")
+	VV_DROPDOWN_OPTION(VV_HK_REAPPLY_PREFS, "重新应用偏好设置")
+	VV_DROPDOWN_OPTION(VV_HK_SET_SPECIES, "设置种族")
+	VV_DROPDOWN_OPTION(VV_HK_PURGE_PARTOF_SLOT, "清除栏位中的指定部分")
+	VV_DROPDOWN_OPTION(VV_HK_PURGE_SLOT, "清除栏位")
 
 /mob/living/carbon/human/vv_do_topic(list/href_list)
 	. = ..()
@@ -749,9 +749,9 @@
 			return
 		if(!client || !client.prefs)
 			return
-		if(alert(usr,"This will irreversibly purge an INDIVIDUAL PORTION of this slot. Is this what you want?","DON'T FATFINGER THIS","PURGE","Nevermind") == "PURGE")
-			if(alert(usr,"The next prompt will not have a Nevermind option. Are you sure you want this?","ITS NOT REVERSIBLE","Yes","Nevermind") == "Yes")
-				var/choice = alert(usr,"What would you like to purge?","ITS TOO LATE NOW","Flavor","Notes","Extra")
+		if(alert(usr,"此操作将不可逆地清除该角色栏位中的某一部分。确定继续吗？","请勿误操作","清除","取消") == "清除")
+			if(alert(usr,"下一步将无法取消。确定继续吗？","此操作无法撤销","是","取消") == "是")
+				var/choice = list("角色描述" = "Flavor", "备注" = "Notes", "额外信息" = "Extra")[alert(usr,"要清除哪部分？","此时已无法取消","角色描述","备注","额外信息")]
 				if(choice)
 					var/datum/mind/purge_mind = mind || last_mind
 					purge_mind?.player_card?.vv_purge(choice)
@@ -793,8 +793,8 @@
 			return
 		if(!client || !client.prefs)
 			return
-		if(alert(usr,"This will irreversibly purge this ENTIRE character's slot (OOC, FT, OOC Ex.)","PURGE","PURGE","Nevermind") == "PURGE")
-			if(alert(usr,"This cannot be undone. Are you sure?","DON'T FATFINGER THIS","Yes","No") == "Yes")
+		if(alert(usr,"此操作将不可逆地清除整个角色栏位的场外信息、角色描述和场外额外信息。","清除角色栏位","清除","取消") == "清除")
+			if(alert(usr,"此操作无法撤销。确定继续吗？","请勿误操作","是","否") == "是")
 				var/datum/mind/purge_mind = mind || last_mind
 				purge_mind?.player_card?.vv_purge("All")
 				flavortext = null
@@ -826,9 +826,9 @@
 					client.prefs?.nsfw_img_gallery = list()
 					client.prefs?.save_preferences()
 					client.prefs?.save_character()
-					to_chat(usr, span_warn("Slot purged successfully."))
+					to_chat(usr, span_warn("角色栏位已成功清除。"))
 				else
-					to_chat(usr, span_warn("Slot purged partially. (Client inaccessible -- likely disconnected)"))
+					to_chat(usr, span_warn("角色栏位仅部分清除。（无法访问客户端，可能已断开连接）"))
 	if(href_list[VV_HK_REAPPLY_PREFS])
 		if(!check_rights(R_SPAWN))
 			return
@@ -845,10 +845,10 @@
 	if(href_list[VV_HK_SET_SPECIES])
 		if(!check_rights(R_SPAWN))
 			return
-		var/result = input(usr, "Please choose a new species","Species") as null|anything in GLOB.species_list
+		var/result = input(usr, "请选择新的种族","种族") as null|anything in GLOB.species_list
 		if(result)
 			var/newtype = GLOB.species_list[result]
-			admin_ticket_log("[key_name_admin(usr)] has modified the bodyparts of [src] to [result]")
+			admin_ticket_log("[key_name_admin(usr)] 将 [src] 的身体部位修改为 [result]")
 			set_species(newtype)
 
 /mob/living/carbon/human/MouseDrop_T(atom/dragged, mob/living/user)
@@ -858,7 +858,7 @@
 			//If they dragged themselves and we're currently aggressively grabbing them try to piggyback (not on cmode)
 			if(user == target && can_piggyback(target))
 				if(cmode)
-					to_chat(target, span_warning("[src] won't let you on!"))
+					to_chat(target, span_warning("[src]不肯让你爬上背！"))
 					return FALSE
 				piggyback(target)
 				return TRUE
@@ -899,33 +899,33 @@
 
 	if(can_be_firemanned(target) && !incapacitated(FALSE, TRUE))
 		if(backnotshoulder)
-			visible_message(span_notice("[src] starts lifting [target] onto their back.."))
+			visible_message(span_notice("[src]开始将[target]背起.."))
 		else
-			visible_message(span_notice("[src] starts lifting [target] onto their shoulder.."))
+			visible_message(span_notice("[src]开始把[target]扛到肩上.."))
 		if(do_after(src, carrydelay, TRUE, target))
 			//Second check to make sure they're still valid to be carried
 			if(can_be_firemanned(target) && !incapacitated(FALSE, TRUE))
 				buckle_mob(target, TRUE, TRUE, 90, 0, 0)
 				return
-	to_chat(src, span_warning("I fail to carry [target]."))
+	to_chat(src, span_warning("我没能背起[target]。"))
 
 /mob/living/carbon/human/proc/piggyback(mob/living/carbon/target)
 	if(can_piggyback(target))
-		visible_message(span_notice("[target] starts to climb onto [src]..."))
+		visible_message(span_notice("[target]开始爬到[src]身上..."))
 		if(do_after(target, 15, target = src))
 			if(can_piggyback(target))
 				if(target.incapacitated(FALSE, TRUE) || incapacitated(FALSE, TRUE))
-					to_chat(target, span_warning("I can't piggyback ride [src]."))
+					to_chat(target, span_warning("我无法让[src]背着我。"))
 					return
 				buckle_mob(target, TRUE, TRUE, FALSE, 0, 0)
 	else
-		to_chat(target, span_warning("I can't piggyback ride [src]."))
+		to_chat(target, span_warning("我无法让[src]背着我。"))
 
 /mob/living/carbon/human/buckle_mob(mob/living/target, force = FALSE, check_loc = TRUE, lying_buckle = FALSE, hands_needed = 0, target_hands_needed = 0)
 	if(!force)//humans are only meant to be ridden through piggybacking and special cases
 		return
 	if(!is_type_in_typecache(target, can_ride_typecache))
-		target.visible_message(span_warning("[target] really can't seem to mount [src]..."))
+		target.visible_message(span_warning("[target]似乎怎么也爬不上[src]的背……"))
 		return
 	buckle_lying = lying_buckle
 	var/datum/component/riding/human/riding_datum = LoadComponent(/datum/component/riding/human)
@@ -942,12 +942,12 @@
 
 	if(hands_needed || target_hands_needed)
 		if(hands_needed && !equipped_hands_self)
-			src.visible_message(span_warning("[src] can't get a grip on [target] because their hands are full!"),
-				span_warning("I can't get a grip on [target] because your hands are full!"))
+			src.visible_message(span_warning("[src]双手拿满了东西，抓不住[target]！"),
+				span_warning("我的双手拿满了东西，抓不住[target]！"))
 			return
 		else if(target_hands_needed && !equipped_hands_target)
-			target.visible_message(span_warning("[target] can't get a grip on [src] because their hands are full!"),
-				span_warning("I can't get a grip on [src] because your hands are full!"))
+			target.visible_message(span_warning("[target]双手拿满了东西，抓不住[src]！"),
+				span_warning("我的双手拿满了东西，抓不住[src]！"))
 			return
 
 	//stop_pulling()
@@ -967,7 +967,7 @@
 	remove_movespeed_modifier(MOVESPEED_ID_SHOVE)
 	var/active_item = get_active_held_item()
 	if(is_type_in_typecache(active_item, GLOB.shove_disarming_types))
-		visible_message(span_warning("[src.name] regains their grip on \the [active_item]!"), span_warning("I regain your grip on \the [active_item]"), null, COMBAT_MESSAGE_RANGE)
+		visible_message(span_warning("[src.name]重新握紧了[active_item]！"), span_warning("我重新握紧了[active_item]"), null, COMBAT_MESSAGE_RANGE)
 
 /mob/living/carbon/human/do_after_coefficent()
 	. = ..()
@@ -1130,20 +1130,20 @@
 /mob/living/carbon/human/update_mobility()
 	. = ..()
 	if(!(mobility_flags & MOBILITY_CANSTAND) && mouth?.spitoutmouth)
-		visible_message(span_warning("[src] spits out [mouth]."))
+		visible_message(span_warning("[src]吐出了[mouth]。"))
 		dropItemToGround(mouth, silent = FALSE)
 
 /mob/living/carbon/human/proc/cold_warn()
 	if(src.bodytemperature <= BODYTEMP_COLD_LEVEL_ONE_MAX)
-		to_chat(src, span_danger("I feel so cold and numb, I can't stop shivering."))
+		to_chat(src, span_danger("我又冷又麻，止不住地颤抖。"))
 	else
-		to_chat(src, span_warning("Everything is cold."))
+		to_chat(src, span_warning("一切都冷冰冰的。"))
 	return
 /mob/living/carbon/human/proc/heat_warn()
 	if(src.bodytemperature >= BODYTEMP_HEAT_LEVEL_ONE_MAX)
-		to_chat(src, span_danger("My lips feel cracked and dry, and it is unbearably hot."))
+		to_chat(src, span_danger("我的嘴唇干裂，热得实在难以忍受。"))
 	else
-		to_chat(src, span_warning("Sweat drips down my brow."))
+		to_chat(src, span_warning("汗水从我的额头滴下。"))
 	return
 
 /mob/living/carbon/human/proc/apply_hypothermia()
@@ -1181,7 +1181,7 @@
 	var/obj/item/bodypart/BP = get_bodypart(def_zone)
 
 	if(BP)
-		to_chat(src, span_warning("I feel painfully cold in my [BP]..."))
+		to_chat(src, span_warning("我的[BP]冷得发疼……"))
 		BP.add_wound(/datum/wound/hypothermia)
 
 
@@ -1198,7 +1198,7 @@
 		if(istype(W, /datum/wound/heatexhaustion)||istype(W, /datum/wound/heatstroke))
 			return
 	if(BP)
-		to_chat(H, span_userdanger("My head is spinning and I feel terrible!"))
+		to_chat(H, span_userdanger("我头晕目眩，难受极了！"))
 		BP.add_wound(/datum/wound/heatexhaustion)
 		BP.update_disabled()
 
@@ -1216,8 +1216,8 @@
 
 	if(found)
 		visible_message(
-			span_notice("[src]'s breathing steadies as the heat leaves their body."),
-			span_notice("The cold helps draw the heat out of your body.")
+			span_notice("随着体内的热量散去，[src]的呼吸平稳了下来。"),
+			span_notice("寒冷帮助你散去体内的热量。")
 		)
 
 /mob/living/carbon/human/proc/apply_weather_temperature(base_delta, exposure_temp = null)

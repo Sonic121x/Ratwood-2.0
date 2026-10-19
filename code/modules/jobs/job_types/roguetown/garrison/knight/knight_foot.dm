@@ -1,7 +1,7 @@
 /datum/advclass/knight/footknight
-	name = "Foot Knight"
-	tutorial = "You are accustomed to traditional foot-soldiery, masterfully proficient in swords, flails, or maces. \
-	Your fortitude and mastery with the versatile combination of a shield and weapon makes you a fearsome opponent to take down!"
+	name = "步战骑士"
+	tutorial = "你早已习惯传统的步战之道，对剑、连枷与钉锤的运用都已炉火纯青。 \
+	你的坚韧与盾兵武器并用的老练技巧，使你成为极难撂倒的可怕对手！"
 	outfit = /datum/outfit/job/roguetown/knight/footknight
 
 	category_tags = list(CTAG_ROYALGUARD)
@@ -35,21 +35,21 @@
 
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("Longsword","Flail","Warhammer","Sabre")
-		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+		var/weapons = list("长剑","铁连枷","钢战锤","军刀")
+		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("Longsword")
+			if("长剑")
 				beltl = /obj/item/rogueweapon/scabbard/sword/noble
 				l_hand = /obj/item/rogueweapon/sword/long
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
-			if("Flail")
+			if("铁连枷")
 				l_hand = /obj/item/rogueweapon/flail/sflail
 				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_MASTER, TRUE)
-			if ("Warhammer")
+			if("钢战锤")
 				beltr = /obj/item/rogueweapon/mace/warhammer/steel
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_MASTER, TRUE)
-			if("Sabre")
+			if("军刀")
 				beltl = /obj/item/rogueweapon/scabbard/sword/noble
 				l_hand = /obj/item/rogueweapon/sword/sabre
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
@@ -59,36 +59,36 @@
 	backl = /obj/item/rogueweapon/shield/tower/metal
 	if(H.mind)
 		var/helmets = list(
-			"Pigface Bascinet" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface,
-			"Savoyard Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/guard,
-			"Barred Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/sheriff,
-			"Bucket Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/bucket,
-			"Knight Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight,
-			"Visored Sallet"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored,
-			"Snouted Visored Sallet"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted,
-			"Armet"				= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet,
-			"Snouted Armet"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/snouted,
-			"Hounskull Bascinet" = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull,
-			"Roundface Bascinet"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface,
-			"Snouted Roundface Bascinet"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/snouted,
-			"Etruscan Bascinet" = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan,
-			"Slitted Kettle"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle,
-			"Froggemund Helmet"	= /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth,
-			"None"
+			"猪面盆盔" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface,
+			"钢萨伏依盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/guard,
+			"栅栏头盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/sheriff,
+			"桶盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/bucket,
+			"骑士头盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight,
+			"带面罩萨勒盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored,
+			"带吻部面罩萨雷特盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted,
+			"阿米特盔"				= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet,
+			"带吻部阿米特盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/snouted,
+			"犬首盆盔" = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull,
+			"圆面盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface,
+			"带吻部圆面盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/snouted,
+			"伊特鲁斯卡盆盔" = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan,
+			"开缝锅盔" = /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle,
+			"蛙嘴盔" = /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth,
+			"无"
 		)
-		var/helmchoice = input(H, "Choose your Helm.", "TAKE UP HELMS") as anything in helmets
-		if(helmchoice != "None")
+		var/helmchoice = input(H, "选择你的头盔。", "整备头盔") as anything in helmets
+		if(helmchoice != "无")
 			head = helmets[helmchoice]
 
 		var/armors = list(
-			"Brigandine"		= /obj/item/clothing/suit/roguetown/armor/brigandine/retinue,
-			"Coat of Plates"	= /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates,
-			"Steel Cuirass"		= /obj/item/clothing/suit/roguetown/armor/plate/half,
-			"Fluted Cuirass"	= /obj/item/clothing/suit/roguetown/armor/plate/half/fluted,
-			"Full Plate"		= /obj/item/clothing/suit/roguetown/armor/plate/full,
-			"Ornate Full Plate"	= /obj/item/clothing/suit/roguetown/armor/plate/full/fluted,
+			"板甲衣"		= /obj/item/clothing/suit/roguetown/armor/brigandine/retinue,
+			"板片外衣"	= /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates,
+			"钢胸甲"		= /obj/item/clothing/suit/roguetown/armor/plate/half,
+			"沟槽胸甲"	= /obj/item/clothing/suit/roguetown/armor/plate/half/fluted,
+			"板甲"		= /obj/item/clothing/suit/roguetown/armor/plate/full,
+			"沟槽板甲"	= /obj/item/clothing/suit/roguetown/armor/plate/full/fluted,
 		)
-		var/armorchoice = input(H, "Choose your armor.", "TAKE UP ARMOR") as anything in armors
+		var/armorchoice = input(H, "选择你的护甲。", "整备护甲") as anything in armors
 		armor = armors[armorchoice]
 
 	backpack_contents = list(

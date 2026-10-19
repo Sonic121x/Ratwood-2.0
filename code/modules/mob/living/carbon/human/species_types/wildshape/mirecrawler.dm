@@ -1,5 +1,5 @@
 /mob/living/carbon/human/species/wildshape/mirecrawler //The baseline and tracker of the wildshapes
-	name = "Mire Crawler"
+	name = "沼泽爬行者"
 	race = /datum/species/mirecrawler
 	footstep_type = FOOTSTEP_MOB_CLAW
 	ambushable = FALSE
@@ -30,12 +30,12 @@
 
 		AddSpell(new /obj/effect/proc_holder/spell/self/spiderfangs/mire)
 		AddSpell(new /obj/effect/proc_holder/spell/self/weaveweb)
-		real_name = "lesser mire crawler"
+		real_name = "小型沼泽爬行者"
 
 
 // mirecrawler SPECIES DATUM //
 /datum/species/mirecrawler
-	name = "Lesser Mire Crawler"
+	name = "弱小沼爬兽"
 	id = "dendormirecrawler"
 	species_traits = list(NO_UNDERWEAR, NO_ORGAN_FEATURES, NO_BODYPART_FEATURES)
 	inherent_traits = list(
@@ -95,7 +95,7 @@
 // WOLF SPECIFIC ITEMS //
 /obj/item/clothing/suit/roguetown/armor/skin_armor/spider_skin
 	slot_flags = null
-	name = "pitiful carapace"
+	name = "单薄甲壳"
 	desc = ""
 	icon_state = null
 	body_parts_covered = FULL_BODY
@@ -125,7 +125,7 @@
 	ADD_TRAIT(src, TRAIT_NOEMBED, TRAIT_GENERIC)
 
 /obj/effect/proc_holder/spell/self/spiderfangs/mire
-	name = "Spider Fangs"
+	name = "蜘蛛獠牙"
 	desc = "!"
 	overlay_state = "claws"
 	antimagic_allowed = TRUE
@@ -144,25 +144,25 @@
 			user.dropItemToGround(active, TRUE)
 		if(istype(inactive, /obj/item/rogueweapon/spider_fang/mire) && inactive != active)
 			user.dropItemToGround(inactive, TRUE)
-		to_chat(user, span_notice("My fangs retract."))
+		to_chat(user, span_notice("我的獠牙缩回了。"))
 		extendid = FALSE
 	else
 		l = new(user, 1)
 		r = new(user, 2)
 		user.put_in_hands(l, TRUE, FALSE, TRUE)
 		user.put_in_hands(r, TRUE, FALSE, TRUE)
-		to_chat(user, span_notice("My fangs extend."))
+		to_chat(user, span_notice("我的獠牙伸出了。"))
 		extendid = TRUE
 
 /datum/intent/simple/spider/mire
-	name = "monch"
+	name = "啃咬"
 	clickcd = 6 //Very fast.
 	icon_state = "incut"
 	blade_class = BCLASS_CUT
-	attack_verb = list("bites, chomps")
+	attack_verb = list("啃咬、噬咬")
 	animname = "cut"
 	hitsound = "genslash"
 	penfactor = 5
-	miss_text = "slashes the air with its fangs!"
+	miss_text = "用尖牙咬了个空！"
 	miss_sound = "bluntswoosh"
 	item_d_type = "slash"

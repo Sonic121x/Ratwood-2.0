@@ -8,8 +8,8 @@
 	item_state = "martyrsword"
 	lefthand_file = 'icons/mob/inhands/weapons/roguemartyr_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/roguemartyr_righthand.dmi'
-	name = "martyr sword"
-	desc = "A relic from the Holy See's own vaults. It simmers with godly energies, and will only yield to the hands of those who have taken the Oath."
+	name = "殉道之剑"
+	desc = "一件出自圣座金库的圣遗物。其上翻涌着神性能量，只会向立下誓约之人屈服。"
 	max_blade_int = 200
 	max_integrity = 300
 	parrysound = "bladedmedium"
@@ -69,7 +69,7 @@
 		AddComponent(/datum/component/martyrweapon, active_intents, active_intents_wielded, safe_damage, safe_damage_wielded)
 
 /obj/item/rogueweapon/sword/long/martyr/proc/anti_stall()
-	src.visible_message(span_danger("The Martyr's sword dissolved into sparkling dust, which instantly rose up and was carried away by the wind."))
+	src.visible_message(span_danger("殉道之剑化作闪烁的尘埃，随即腾起，随风而逝。"))
 	qdel(src)
 
 /obj/item/rogueweapon/sword/long/martyr/attack_hand(mob/user)
@@ -79,21 +79,21 @@
 		if(J.title == "Bishop" || J.title == "Martyr")
 			return ..()
 		else if (H.job in GLOB.church_positions)
-			to_chat(user, span_warning("You feel a jolt of holy energies just for a split second, and then the sword slips from your grasp! You are not devout enough."))
+			to_chat(user, span_warning("一股神圣能量瞬间震过全身，随后剑便从掌中滑脱！你的虔诚还不够。"))
 			return FALSE
 		else if(istype(H.patron, /datum/patron/inhumen))
 			var/datum/component/martyrweapon/marty = GetComponent(/datum/component/martyrweapon)
-			to_chat(user, span_warning("YOU FOOL! IT IS ANATHEMA TO YOU! GET AWAY!"))
+			to_chat(user, span_warning("蠢货！此物是你的克星！快离开！"))
 			H.Stun(40)
 			H.Knockdown(40)
 			if(marty.is_active) //Inhumens are touching this while it's active, very fucking stupid of them
-				visible_message(span_warning("[H] lets out a painful shriek as the sword lashes out at them!"))
+				visible_message(span_warning("[H] 被长剑反噬，发出痛苦的尖叫！"))
 				H.emote("agony")
 				H.adjust_fire_stacks(5)
 				H.ignite_mob()
 			return FALSE
 		else	//Everyone else
-			to_chat(user, span_warning("A painful jolt across your entire body sends you to the ground. You cannot touch this thing."))
+			to_chat(user, span_warning("一阵痛苦的冲击贯穿全身，将你掀倒在地。你碰不得这东西。"))
 			H.emote("groan", forced = TRUE)
 			H.Stun(10)
 			return FALSE
@@ -124,8 +124,8 @@
 	icon_state = "martyraxe"
 	icon = 'icons/roguetown/weapons/axes64.dmi'
 	item_state = "martyraxe"
-	name = "martyr axe"
-	desc = "A relic from the Holy See's own vaults. It simmers with godly energies, and will only yield to the hands of those who have taken the Oath."
+	name = "殉道之斧"
+	desc = "一件出自圣座金库的圣遗物。其上翻涌着神性能量，只会向立下誓约之人屈服。"
 	max_blade_int = 250
 	max_integrity = 9999
 	bigboy = 1
@@ -184,7 +184,7 @@
 		AddComponent(/datum/component/martyrweapon, active_intents, active_intents_wielded, safe_damage, safe_damage_wielded)
 
 /obj/item/rogueweapon/greataxe/steel/doublehead/martyr/proc/anti_stall()
-	src.visible_message(span_danger("The Martyr's axe dissolved into sparkling dust, which instantly rose up and was carried away by the wind."))
+	src.visible_message(span_danger("殉道之斧化作闪烁的尘埃，随即腾起，随风而逝。"))
 	qdel(src)
 
 /obj/item/rogueweapon/greataxe/steel/doublehead/martyr/attack_hand(mob/user)
@@ -194,21 +194,21 @@
 		if(J.title == "Bishop" || J.title == "Martyr")
 			return ..()
 		else if (H.job in GLOB.church_positions)
-			to_chat(user, span_warning("You feel a jolt of holy energies just for a split second, and then the axe slips from your grasp! You are not devout enough."))
+			to_chat(user, span_warning("一股神圣能量瞬间震过全身，随后斧头便从掌中滑脱！你的虔诚还不够。"))
 			return FALSE
 		else if(istype(H.patron, /datum/patron/inhumen))
 			var/datum/component/martyrweapon/marty = GetComponent(/datum/component/martyrweapon)
-			to_chat(user, span_warning("YOU FOOL! IT IS ANATHEMA TO YOU! GET AWAY!"))
+			to_chat(user, span_warning("蠢货！此物是你的克星！快离开！"))
 			H.Stun(40)
 			H.Knockdown(40)
 			if(marty.is_active) //Inhumens are touching this while it's active, very fucking stupid of them
-				visible_message(span_warning("[H] lets out a painful shriek as the axe lashes out at them!"))
+				visible_message(span_warning("[H]被战斧反噬，发出痛苦的尖叫！"))
 				H.emote("agony")
 				H.adjust_fire_stacks(5)
 				H.ignite_mob()
 			return FALSE
 		else	//Everyone else
-			to_chat(user, span_warning("A painful jolt across your entire body sends you to the ground. You cannot touch this thing."))
+			to_chat(user, span_warning("一阵痛苦的冲击贯穿全身，将你掀倒在地。你碰不得这东西。"))
 			H.emote("groan")
 			H.Stun(10)
 			return FALSE
@@ -231,8 +231,8 @@
 	icon_state = "martyrmace"
 	icon = 'icons/roguetown/weapons/blunt64.dmi'
 	item_state = "martyrmace"
-	name = "martyr mace"
-	desc = "A relic from the Holy See's own vaults. It simmers with godly energies, and will only yield to the hands of those who have taken the Oath."
+	name = "殉道之锤"
+	desc = "一件出自圣座金库的圣遗物。其上翻涌着神性能量，只会向立下誓约之人屈服。"
 	max_integrity = 9999
 	bigboy = 1
 	wlength = WLENGTH_LONG
@@ -286,7 +286,7 @@
 		AddComponent(/datum/component/martyrweapon, active_intents, active_intents_wielded, safe_damage, safe_damage_wielded)
 
 /obj/item/rogueweapon/mace/goden/martyr/proc/anti_stall()
-	src.visible_message(span_danger("The Martyr's mace dissolved into sparkling dust, which instantly rose up and was carried away by the wind."))
+	src.visible_message(span_danger("殉道之锤化作闪烁的尘埃，随即腾起，随风而逝。"))
 	qdel(src)
 
 /obj/item/rogueweapon/mace/goden/martyr/attack_hand(mob/user)
@@ -296,21 +296,21 @@
 		if(J.title == "Bishop" || J.title == "Martyr")
 			return ..()
 		else if (H.job in GLOB.church_positions)
-			to_chat(user, span_warning("You feel a jolt of holy energies just for a split second, and then the mace slips from your grasp! You are not devout enough."))
+			to_chat(user, span_warning("一股神圣能量瞬间震过全身，随后钉锤便从掌中滑脱！你的虔诚还不够。"))
 			return FALSE
 		else if(istype(H.patron, /datum/patron/inhumen))
 			var/datum/component/martyrweapon/marty = GetComponent(/datum/component/martyrweapon)
-			to_chat(user, span_warning("YOU FOOL! IT IS ANATHEMA TO YOU! GET AWAY!"))
+			to_chat(user, span_warning("蠢货！此物是你的克星！快离开！"))
 			H.Stun(40)
 			H.Knockdown(40)
 			if(marty.is_active) //Inhumens are touching this while it's active, very fucking stupid of them
-				visible_message(span_warning("[H] lets out a painful shriek as the mace lashes out at them!"))
+				visible_message(span_warning("[H]被钉锤反噬，发出痛苦的尖叫！"))
 				H.emote("agony")
 				H.adjust_fire_stacks(5)
 				H.ignite_mob()
 			return FALSE
 		else	//Everyone else
-			to_chat(user, span_warning("A painful jolt across your entire body sends you to the ground. You cannot touch this thing."))
+			to_chat(user, span_warning("一阵痛苦的冲击贯穿全身，将你掀倒在地。你碰不得这东西。"))
 			H.emote("groan")
 			H.Stun(10)
 			return FALSE
@@ -333,8 +333,8 @@
 	icon_state = "martyrtrident"
 	icon = 'icons/roguetown/weapons/polearms64.dmi'
 	item_state = "martyrtrident"
-	name = "martyr trident"
-	desc = "A relic from the Holy See's own vaults. It simmers with godly energies, and will only yield to the hands of those who have taken the Oath."
+	name = "殉道三叉戟"
+	desc = "一件出自圣座金库的圣遗物。其上翻涌着神性能量，只会向立下誓约之人屈服。"
 	max_integrity = 9999
 	bigboy = 1
 	wlength = WLENGTH_LONG
@@ -389,7 +389,7 @@
 		AddComponent(/datum/component/martyrweapon, active_intents, active_intents_wielded, safe_damage, safe_damage_wielded)
 
 /obj/item/rogueweapon/spear/partizan/martyr/proc/anti_stall()
-	src.visible_message(span_danger("The Martyr's spear dissolved into sparkling dust, which instantly rose up and was carried away by the wind."))
+	src.visible_message(span_danger("殉道三叉戟化作闪烁的尘埃，随即腾起，随风而逝。"))
 	qdel(src)
 
 /obj/item/rogueweapon/spear/partizan/martyr/attack_hand(mob/user)
@@ -399,21 +399,21 @@
 		if(J.title == "Bishop" || J.title == "Martyr")
 			return ..()
 		else if (H.job in GLOB.church_positions)
-			to_chat(user, span_warning("You feel a jolt of holy energies just for a split second, and then the spear slips from your grasp! You are not devout enough."))
+			to_chat(user, span_warning("一股神圣能量瞬间震过全身，随后三叉戟便从掌中滑脱！你的虔诚还不够。"))
 			return FALSE
 		else if(istype(H.patron, /datum/patron/inhumen))
 			var/datum/component/martyrweapon/marty = GetComponent(/datum/component/martyrweapon)
-			to_chat(user, span_warning("YOU FOOL! IT IS ANATHEMA TO YOU! GET AWAY!"))
+			to_chat(user, span_warning("蠢货！此物是你的克星！快离开！"))
 			H.Stun(40)
 			H.Knockdown(40)
 			if(marty.is_active) //Inhumens are touching this while it's active, very fucking stupid of them
-				visible_message(span_warning("[H] lets out a painful shriek as the spear lashes out at them!"))
+				visible_message(span_warning("[H]被三叉戟反噬，发出痛苦的尖叫！"))
 				H.emote("agony")
 				H.adjust_fire_stacks(5)
 				H.ignite_mob()
 			return FALSE
 		else	//Everyone else
-			to_chat(user, span_warning("A painful jolt across your entire body sends you to the ground. You cannot touch this thing."))
+			to_chat(user, span_warning("一阵痛苦的冲击贯穿全身，将你掀倒在地。你碰不得这东西。"))
 			H.emote("groan")
 			H.Stun(10)
 			return FALSE
@@ -428,8 +428,8 @@
 	return ..()
 
 /obj/item/clothing/cloak/martyr
-	name = "martyr cloak"
-	desc = "An elegant cloak in the colors of Astrata. Looks like it can only fit Humen-sized people."
+	name = "殉道披风"
+	desc = "一件采用 阿斯特拉塔 配色的优雅披风，看起来只适合人类体型的人穿着。"
 	color = null
 	icon_state = "martyrcloak"
 	item_state = "martyrcloak"
@@ -441,8 +441,8 @@
 	flags_inv = HIDECROTCH|HIDEBOOB
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/holysee
-	name = "holy silver plate"
-	desc = "Silver-clad plate for the guardians and the warriors, for the spears and shields of the Ten."
+	name = "圣银板甲"
+	desc = "为守卫与战士打造的镀银板甲，供十神麾下执矛持盾者穿戴。"
 	icon = 'icons/roguetown/clothing/special/martyr.dmi'
 	icon_state = "silverarmor"
 	item_state = "silverarmor"
@@ -468,17 +468,17 @@
 			return ..()
 		else if(istype(H.patron, /datum/patron/inhumen))
 			var/datum/component/martyrweapon/marty = GetComponent(/datum/component/martyrweapon)
-			to_chat(user, span_warning("YOU FOOL! IT IS ANATHEMA TO YOU! GET AWAY!"))
+			to_chat(user, span_warning("蠢货！此物是你的克星！快离开！"))
 			H.Stun(40)
 			H.Knockdown(40)
 			if(marty.is_active) //Inhumens are touching this while it's active, very fucking stupid of them
-				visible_message(span_warning("[H] lets out a painful shriek as the plate lashes out at them!"))
+				visible_message(span_warning("[H]被板甲反噬，发出痛苦的尖叫！"))
 				H.emote("agony")
 				H.adjust_fire_stacks(5)
 				H.ignite_mob()
 			return FALSE
 		else	//Everyone else
-			to_chat(user, span_warning("A painful jolt across your entire body sends you to the ground. You cannot touch this thing."))
+			to_chat(user, span_warning("一阵痛苦的冲击贯穿全身，将你掀倒在地。你碰不得这东西。"))
 			H.emote("groan")
 			H.Stun(10)
 			return FALSE
@@ -486,8 +486,8 @@
 		return FALSE
 
 /obj/item/clothing/gloves/roguetown/plate/holysee
-	name = "holy silver plate gauntlets"
-	desc = "Silver-clad plate for the guardians and the warriors, for the spears and shields of the Ten."
+	name = "圣银板甲手套"
+	desc = "为守卫与战士打造的镀银板甲，供十神麾下执矛持盾者穿戴。"
 	icon = 'icons/roguetown/clothing/special/martyr.dmi'
 	icon_state = "silvergloves"
 	item_state = "silvergloves"
@@ -511,21 +511,21 @@
 		if((H.job in GLOB.church_positions))
 			return ..()
 		else if (H.job in GLOB.church_positions)
-			to_chat(user, span_warning("You feel a jolt of holy energies just for a split second, and then the gloves slips from your grasp! You are not devout enough."))
+			to_chat(user, span_warning("一股神圣能量瞬间震过全身，随后手套便从掌中滑脱！你的虔诚还不够。"))
 			return FALSE
 		else if(istype(H.patron, /datum/patron/inhumen))
 			var/datum/component/martyrweapon/marty = GetComponent(/datum/component/martyrweapon)
-			to_chat(user, span_warning("YOU FOOL! IT IS ANATHEMA TO YOU! GET AWAY!"))
+			to_chat(user, span_warning("蠢货！此物是你的克星！快离开！"))
 			H.Stun(40)
 			H.Knockdown(40)
 			if(marty.is_active) //Inhumens are touching this while it's active, very fucking stupid of them
-				visible_message(span_warning("[H] lets out a painful shriek as the gloves lashes out at them!"))
+				visible_message(span_warning("[H]被手套反噬，发出痛苦的尖叫！"))
 				H.emote("agony")
 				H.adjust_fire_stacks(5)
 				H.ignite_mob()
 			return FALSE
 		else	//Everyone else
-			to_chat(user, span_warning("A painful jolt across your entire body sends you to the ground. You cannot touch this thing."))
+			to_chat(user, span_warning("一阵痛苦的冲击贯穿全身，将你掀倒在地。你碰不得这东西。"))
 			H.emote("groan")
 			H.Stun(10)
 			return FALSE
@@ -533,8 +533,8 @@
 		return FALSE
 
 /obj/item/clothing/shoes/roguetown/boots/armor/holysee
-	name = "holy silver plated boots"
-	desc = "Silver-clad plate for the guardians and the warriors, for the spears and shields of the Ten."
+	name = "圣银甲靴"
+	desc = "为守卫与战士打造的镀银板甲，供十神麾下执矛持盾者穿戴。"
 	icon = 'icons/roguetown/clothing/special/martyr.dmi'
 	icon_state = "silverboots"
 	item_state = "silverboots"
@@ -559,21 +559,21 @@
 		if((H.job in GLOB.church_positions))
 			return ..()
 		else if (H.job in GLOB.church_positions)
-			to_chat(user, span_warning("You feel a jolt of holy energies just for a split second, and then the boots slips from your grasp! You are not devout enough."))
+			to_chat(user, span_warning("一股神圣能量瞬间震过全身，随后靴子便从掌中滑脱！你的虔诚还不够。"))
 			return FALSE
 		else if(istype(H.patron, /datum/patron/inhumen))
 			var/datum/component/martyrweapon/marty = GetComponent(/datum/component/martyrweapon)
-			to_chat(user, span_warning("YOU FOOL! IT IS ANATHEMA TO YOU! GET AWAY!"))
+			to_chat(user, span_warning("蠢货！此物是你的克星！快离开！"))
 			H.Stun(40)
 			H.Knockdown(40)
 			if(marty.is_active) //Inhumens are touching this while it's active, very fucking stupid of them
-				visible_message(span_warning("[H] lets out a painful shriek as the boots lashes out at them!"))
+				visible_message(span_warning("[H]被靴子反噬，发出痛苦的尖叫！"))
 				H.emote("agony")
 				H.adjust_fire_stacks(5)
 				H.ignite_mob()
 			return FALSE
 		else	//Everyone else
-			to_chat(user, span_warning("A painful jolt across your entire body sends you to the ground. You cannot touch this thing."))
+			to_chat(user, span_warning("一阵痛苦的冲击贯穿全身，将你掀倒在地。你碰不得这东西。"))
 			H.emote("groan")
 			H.Stun(10)
 			return FALSE
@@ -581,8 +581,8 @@
 		return FALSE
 
 /obj/item/clothing/under/roguetown/platelegs/holysee
-	name = "holy silver chausses"
-	desc = "Plate leggings of silver forged for the Holy See's forces. A sea of silver to descend upon evil."
+	name = "圣银护腿"
+	desc = "为圣座军势锻造的银制板甲护腿，如银潮般压向邪恶。"
 	icon = 'icons/roguetown/clothing/special/martyr.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/martyr.dmi'
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_pants.dmi'
@@ -607,21 +607,21 @@
 		if((H.job in GLOB.church_positions))
 			return ..()
 		else if (H.job in GLOB.church_positions)
-			to_chat(user, span_warning("You feel a jolt of holy energies just for a split second, and then the chausses slips from your grasp! You are not devout enough."))
+			to_chat(user, span_warning("一股神圣能量瞬间震过全身，随后护腿便从掌中滑脱！你的虔诚还不够。"))
 			return FALSE
 		else if(istype(H.patron, /datum/patron/inhumen))
 			var/datum/component/martyrweapon/marty = GetComponent(/datum/component/martyrweapon)
-			to_chat(user, span_warning("YOU FOOL! IT IS ANATHEMA TO YOU! GET AWAY!"))
+			to_chat(user, span_warning("蠢货！此物是你的克星！快离开！"))
 			H.Stun(40)
 			H.Knockdown(40)
 			if(marty.is_active) //Inhumens are touching this while it's active, very fucking stupid of them
-				visible_message(span_warning("[H] lets out a painful shriek as the chausess lashes out at them!"))
+				visible_message(span_warning("[H]被护腿反噬，发出痛苦的尖叫！"))
 				H.emote("agony")
 				H.adjust_fire_stacks(5)
 				H.ignite_mob()
 			return FALSE
 		else	//Everyone else
-			to_chat(user, span_warning("A painful jolt across your entire body sends you to the ground. You cannot touch this thing."))
+			to_chat(user, span_warning("一阵痛苦的冲击贯穿全身，将你掀倒在地。你碰不得这东西。"))
 			H.emote("groan")
 			H.Stun(10)
 			return FALSE
@@ -629,8 +629,8 @@
 		return FALSE
 
 /obj/item/clothing/head/roguetown/helmet/heavy/holysee
-	name = "holy silver bascinet"
-	desc = "Branded by the Holy See, these helms are worn by it's chosen warriors. A bastion of hope in the dark nite."
+	name = "圣银尖盔"
+	desc = "这些头盔烙有圣座印记，由其钦选战士佩戴，是黑夜中希望的堡垒。"
 	icon = 'icons/roguetown/clothing/special/martyr.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/martyrhelmets.dmi'
 	bloody_icon = 'icons/effects/blood64.dmi'
@@ -659,21 +659,21 @@
 		if((H.job in GLOB.church_positions))
 			return ..()
 		else if (H.job in GLOB.church_positions)
-			to_chat(user, span_warning("You feel a jolt of holy energies just for a split second, and then the helmet slips from your grasp! You are not devout enough."))
+			to_chat(user, span_warning("一股神圣能量瞬间震过全身，随后头盔便从掌中滑脱！你的虔诚还不够。"))
 			return FALSE
 		else if(istype(H.patron, /datum/patron/inhumen))
 			var/datum/component/martyrweapon/marty = GetComponent(/datum/component/martyrweapon)
-			to_chat(user, span_warning("YOU FOOL! IT IS ANATHEMA TO YOU! GET AWAY!"))
+			to_chat(user, span_warning("蠢货！此物是你的克星！快离开！"))
 			H.Stun(40)
 			H.Knockdown(40)
 			if(marty.is_active) //Inhumens are touching this while it's active, very fucking stupid of them
-				visible_message(span_warning("[H] lets out a painful shriek as the helmet lashes out at them!"))
+				visible_message(span_warning("[H]被头盔反噬，发出痛苦的尖叫！"))
 				H.emote("agony")
 				H.adjust_fire_stacks(5)
 				H.ignite_mob()
 			return FALSE
 		else	//Everyone else
-			to_chat(user, span_warning("A painful jolt across your entire body sends you to the ground. You cannot touch this thing."))
+			to_chat(user, span_warning("一阵痛苦的冲击贯穿全身，将你掀倒在地。你碰不得这东西。"))
 			H.emote("groan")
 			H.Stun(10)
 			return FALSE
@@ -684,8 +684,8 @@
 	AddComponent(/datum/component/adjustable_clothing, (HEAD|EARS|HAIR), (HIDEEARS|HIDEHAIR), null, 'sound/items/visor.ogg', null, UPD_HEAD)	//Standard helmet
 
 /obj/item/clothing/head/roguetown/helmet/heavy/holysee/alt
-	name = "holy silver armet"
-	desc = "Branded by the Holy See, these helms are worn by it's chosen warriors. A bastion of hope in the dark nite."
+	name = "圣银闭面盔"
+	desc = "这些头盔烙有圣座印记，由其钦选战士佩戴，是黑夜中希望的堡垒。"
 	icon = 'icons/roguetown/clothing/special/martyr.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/martyrhelmets.dmi'
 	bloody_icon = 'icons/effects/blood64.dmi'
@@ -700,8 +700,8 @@
 	smeltresult = null
 
 /obj/item/clothing/cloak/holysee
-	name = "holy silver vestments"
-	desc = "A set of vestments worn by the Holy See's forces, silver embroidery and seals of light ordain it as a bastion against evil."
+	name = "圣银法衣"
+	desc = "一套由圣座军势穿着的法衣，银线刺绣与光辉封印使其成为抵御邪恶的堡垒。"
 	icon = 'icons/roguetown/clothing/special/martyr.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/martyr.dmi'
 	icon_state = "silvertabard"
@@ -730,7 +730,7 @@
 
 /obj/item/clothing/cloak/holysee/MiddleClick(mob/user)
 	overarmor = !overarmor
-	to_chat(user, span_info("I [overarmor ? "wear the tabard over my armor" : "wear the tabard under my armor"]."))
+	to_chat(user, span_info("[overarmor ? "我将罩袍披在护甲外" : "我将罩袍穿在护甲内"]。"))
 	if(overarmor)
 		alternate_worn_layer = TABARD_LAYER
 	else

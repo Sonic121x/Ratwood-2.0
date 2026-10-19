@@ -25,8 +25,8 @@
 #define UPGRADE_NOTAX		(1<<0)
 
 /obj/structure/roguemachine/goldface
-	name = "GOLDFACE"
-	desc = "Gilded tombs do worms enfold."
+	name = "金面"
+	desc = "镀金的墓穴，终会被蠕虫包裹。"
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = "streetvendor1"
 	density = TRUE
@@ -43,7 +43,7 @@
 	/// When TRUE, the TGUI exposes the Cultural Stock/Harbor/Market tabs. Goldface only.
 	var/is_command_center = TRUE
 	// Motto displayed at the top of the vendor interface
-	var/motto = "GOLDFACE - In the name of greed."
+	var/motto = "金面 - 以贪欲之名。"
 	lockid = "merchant"
 	// Which job can access profit from this vendor
 	var/profit_id = list("Merchant", "Shophand")
@@ -55,37 +55,37 @@
 	// Pioneer) and "Things" are the bandit Hoardmaster's stock, job-gated there - the legacy goldface
 	// never sold them, so they are deliberately NOT listed here.
 	var/list/categories = list(
-		"Alcohols",
-		"Apparel",
-		"Consumable",
-		"Cosmetics", // Ratwood pack groups the upstream list dropped
-		"Food",
-		"Games",
-		"Gems",
-		"Instruments",
-		"Luxury",
-		"Livestock",
-		"Magic",
-		"Perfumes",
-		"Seeds",
-		"Substances",
-		"Tools",
-		"Wardrobe",
-		"Zadpacks",
+		"酒类", // English: Alcohols
+		"服饰", // English: Apparel
+		"消耗品", // English: Consumable
+		"化妆品", // Ratwood pack groups the upstream list dropped | English: Cosmetics
+		"食品", // English: Food
+		"游戏用品", // English: Games
+		"宝石", // English: Gems
+		"乐器", // English: Instruments
+		"奢侈品", // English: Luxury
+		"牲畜", // English: Livestock
+		"魔法用品", // English: Magic
+		"香水", // English: Perfumes
+		"种子", // English: Seeds
+		"烟草与药粉", // English: Substances
+		"工具", // English: Tools
+		"衣装", // English: Wardrobe
+		"扎德鸟包", // English: Zadpacks
 	)
 	var/list/categories_gamer = list(
-		"Adventuring Supplies",
-		"Armor (Light)",
-		"Armor (Iron)",
-		"Armor (Bronze)",
-		"Armor (Steel)",
-		"Armor (Exotic)",
-		"Potions",
-		"Weapons (Ranged)",
-		"Weapons (Iron and Shields)",
-		"Weapons (Bronze)",
-		"Weapons (Steel)",
-		"Weapons (Foreign)",
+		"冒险用品", // English: Adventuring Supplies
+		"护甲（轻型）", // English: Armor (Light)
+		"护甲（铁）", // English: Armor (Iron)
+		"护甲（青铜）", // English: Armor (Bronze)
+		"护甲（钢）", // English: Armor (Steel)
+		"护甲（异域）", // English: Armor (Exotic)
+		"药水", // English: Potions
+		"武器（远程）", // English: Weapons (Ranged)
+		"武器（铁制与盾牌）", // English: Weapons (Iron and Shields)
+		"武器（青铜）", // English: Weapons (Bronze)
+		"武器（钢）", // English: Weapons (Steel)
+		"武器（异域）", // English: Weapons (Foreign)
 	)
 	var/is_public = FALSE // Whether it is a public access vendor.
 	var/extra_fee = 0 // Public-tier Porters/Gnomes margin tacked onto base price. Meant to make publicface very unprofitable until Gnomes are unlocked and the margin flows to the Merchant Fund.
@@ -96,92 +96,92 @@
 	var/tariff_evaded_here = 0
 
 /obj/structure/roguemachine/goldface/public
-	name = "SILVERFACE"
+	name = "银面"
 	extra_fee = 0.5
 	is_public = TRUE
 	locked = FALSE
 	is_command_center = FALSE
-	motto = "SILVERFACE - Commerce for all."
+	motto = "银面 - 人人皆可经商。"
 	// There's no profit but this is for futureproofing
 	profit_id = list("Merchant", "Shophand")
 	value_record_key = STATS_SILVERFACE_VALUE_SPENT
 	categories = list(
-		"Adventuring Supplies",
-		"Alcohols",
-		"Consumable",
-		"Cosmetics", // Ratwood pack groups restored from the pre-port SILVERFACE
-		"Food",
-		"Games",
-		"Gems",
-		"Instruments",
-		"Luxury",
-		"Livestock",
-		"Magic",
-		"Perfumes",
-		"Seeds",
-		"Substances",
-		"Tools",
-		"Weapons (Foreign)",
+		"冒险用品", // English: Adventuring Supplies
+		"酒类", // English: Alcohols
+		"消耗品", // English: Consumable
+		"化妆品", // Ratwood pack groups restored from the pre-port SILVERFACE | English: Cosmetics
+		"食品", // English: Food
+		"游戏用品", // English: Games
+		"宝石", // English: Gems
+		"乐器", // English: Instruments
+		"奢侈品", // English: Luxury
+		"牲畜", // English: Livestock
+		"魔法用品", // English: Magic
+		"香水", // English: Perfumes
+		"种子", // English: Seeds
+		"烟草与药粉", // English: Substances
+		"工具", // English: Tools
+		"武器（异域）", // English: Weapons (Foreign)
 	)
 	categories_gamer = list()
 
 /obj/structure/roguemachine/goldface/public/examine()
 	. = ..()
-	. += "<span class='info'>A public version of the GOLDFACE. The company charges a hefty fee for its usage. Per agreement, it cannot be locked by anyone.</span>"
+	. += "<span class='info'>金面的公开版。公司为其使用收取高额费用。依照协议，任何人都无法将其上锁。</span>"
 
 /obj/structure/roguemachine/goldface/public/smith
-	name = "Smithy's SILVERFACE"
+	name = "铁匠的银面"
 	lockid = "crafterguild"
 	profit_id = list("Guildsman", "Guildmaster", "Tailor")
 	categories = list(
-		"Armor (Iron)",
-		"Armor (Bronze)",
-		"Armor (Steel)",
-		"Armor (Exotic)",
-		"Weapons (Ranged)",
-		"Weapons (Iron and Shields)",
-		"Weapons (Bronze)",
-		"Weapons (Steel)",
+		"护甲（铁）", // English: Armor (Iron)
+		"护甲（青铜）", // English: Armor (Bronze)
+		"护甲（钢）", // English: Armor (Steel)
+		"护甲（异域）", // English: Armor (Exotic)
+		"武器（远程）", // English: Weapons (Ranged)
+		"武器（铁制与盾牌）", // English: Weapons (Iron and Shields)
+		"武器（青铜）", // English: Weapons (Bronze)
+		"武器（钢）", // English: Weapons (Steel)
 	)
 	categories_gamer = list()
 
 /obj/structure/roguemachine/goldface/public/tailor
-	name = "Tailor's SILVERFACE"
+	name = "裁缝的银面"
 	lockid = "tailor"
 	profit_id = list("Guildsman", "Guildmaster", "Tailor")
 	categories = list(
-		"Apparel",
-		"Wardrobe",
-		"Armor (Light)",
+		"服饰", // English: Apparel
+		"衣装", // English: Wardrobe
+		"护甲（轻型）", // English: Armor (Light)
 	)
 	categories_gamer = list()
 
 /obj/structure/roguemachine/goldface/public/apothecary
-	name = "Apothecary's SILVERFACE"
+	name = "药剂师的银面"
 	lockid = "physician"
 	profit_id = list("Head Physician","Apothecary")
 	categories = list(
-		"Potions",
+		"药水", // English: Potions
 	)
 	categories_gamer = list()
 
 /obj/structure/roguemachine/goldface/public/wretch_cat
-	name = "Vile Vheslie"
-	desc = "A ferocious little beast that hoards a mountain of goods under its home. The dreaded creechur is willing to part waes with its lower quality items..for a price."
+	name = "邪恶的维丝莉"
+	desc = "一只凶猛的小兽，在它的巢穴下囤积着堆积如山的货物。这只可怕的生物愿意以一定代价，割舍它那些品质较低的物品……"
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "vheslie"
 	lockid = "Vheslie"
 	profit_id = list("Guildsman", "Guildmaster", "Tailor")
 	categories = list(
-		"Apparel",
-		"Adventuring Supplies",
-		"Armor (Iron)",
-		"Alcohols",
-		"Consumable",
-		"Potions",
-		"Weapons (Ranged)",
-		"Weapons (Iron and Shields)",
-		"Wardrobe"
+		"服饰", // English: Apparel
+		"冒险用品", // English: Adventuring Supplies
+		"护甲（铁）", // English: Armor (Iron)
+		"酒类", // English: Alcohols
+		"消耗品", // English: Consumable
+		"药水", // English: Potions
+		"武器（远程）", // English: Weapons (Ranged)
+		"武器（铁制与盾牌）", // English: Weapons (Iron and Shields)
+		"衣装" // English: Wardrobe
 	)
 	categories_gamer = list()
 
@@ -194,13 +194,13 @@
 	if(SSmerchant_trade?.current_kinship_realm)
 		var/datum/foreign_realm/KR = SSmerchant_trade.realms[SSmerchant_trade.current_kinship_realm]
 		if(KR)
-			. += span_info("The Realm of <b>[KR.name]</b> recognize the Factor as kin - buys cost -[round((1 - KINSHIP_BUY_MULT) * 100)]% and bulk-demand payouts gain +[round((KINSHIP_SELL_MULT - 1) * 100)]%.")
+			. += span_info("<b>[KR.name]</b>认同商行管事为同乡 - 购买价格降低[round((1 - KINSHIP_BUY_MULT) * 100)]%，大宗需求货款增加[round((KINSHIP_SELL_MULT - 1) * 100)]%。")
 	if(SSmerchant_trade && ishuman(user))
 		var/agent_realm = SSmerchant_trade.get_agent_personal_kinship_realm(user)
 		if(agent_realm && agent_realm != SSmerchant_trade.current_kinship_realm)
 			var/datum/foreign_realm/AKR = SSmerchant_trade.realms[agent_realm]
 			if(AKR)
-				. += span_info("As an Agent, you personally recognize <b>[AKR.name]</b> as kin - your goldface buys from their ships cost -[round((1 - KINSHIP_BUY_MULT) * 100)]%.")
+				. += span_info("身为代理人，你与<b>[AKR.name]</b>有个人同乡关系 - 你通过金面向该国船舶购买货物时，价格降低[round((1 - KINSHIP_BUY_MULT) * 100)]%。")
 
 /obj/structure/roguemachine/goldface/proc/get_effective_fee()
 	if(is_public && SSmerchant_trade?.gnome_automation_unlocked)
@@ -242,7 +242,7 @@
 	if(istype(P, /obj/item/roguekey))
 		var/obj/item/roguekey/K = P
 		if(is_public)
-			to_chat(user, span_warning("This is a public vendor. Keys won't work here."))
+			to_chat(user, span_warning("这是公共售货机，无法使用钥匙。"))
 			return
 		if(K.lockid == lockid)
 			locked = !locked
@@ -252,14 +252,14 @@
 				SStgui.close_uis(src)
 			return
 		else
-			to_chat(user, span_warning("Wrong key."))
+			to_chat(user, span_warning("钥匙不对。"))
 			return
 	else if(istype(P, /obj/item/storage/keyring))
 		var/right_key = FALSE
 		for(var/obj/item/roguekey/KE in P.contents)
 			if(KE.lockid == lockid)
 				if(is_public)
-					to_chat(user, span_warning("This is a public vendor. Keys won't work here."))
+					to_chat(user, span_warning("这是公共售货机，无法使用钥匙。"))
 					return
 				right_key = TRUE
 				locked = !locked
@@ -269,7 +269,7 @@
 					SStgui.close_uis(src)
 				return
 		if(!right_key)
-			to_chat(user, span_warning("Wrong key."))
+			to_chat(user, span_warning("钥匙不对。"))
 			return
 	if(istype(P, /obj/item/roguecoin/gilbranze))
 		return
@@ -295,7 +295,7 @@
 	if(!ishuman(user))
 		return
 	if(locked)
-		to_chat(user, span_warning("It's locked. Of course."))
+		to_chat(user, span_warning("它锁着。当然。"))
 		return
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -339,7 +339,7 @@
 	if(is_public)
 		var/effective_pct = round(get_effective_fee() * 100)
 		data["public_margin_pct"] = effective_pct
-		data["public_margin_label"] = SSmerchant_trade?.gnome_automation_unlocked ? "Gnomes' Margin" : "Porters' Margin"
+		data["public_margin_label"] = SSmerchant_trade?.gnome_automation_unlocked ? "侏儒加价" : "挑夫加价"
 	var/list/all_cats = list()
 	for(var/c in categories)
 		all_cats += c
@@ -577,7 +577,7 @@
 		if(!PA)
 			continue
 		if(PA.ship_chance < 100)
-			result += "[PA.name] (rare)"
+			result += "[PA.name] (稀有)"
 		else
 			result += PA.name
 	return result
@@ -720,15 +720,15 @@
 				return TRUE
 			var/list/options = list()
 			if(upgrade_flags & UPGRADE_NOTAX)
-				options += "Enable Paying Taxes"
+				options["恢复缴税"] = "Enable Paying Taxes"
 			else
-				options += "Stop Paying Taxes"
-			var/select = input(usr, "Please select an option.", "", null) as null|anything in options
+				options["停止缴税"] = "Stop Paying Taxes"
+			var/select = input(usr, "请选择一项。", "", null) as null|anything in options
 			if(!select)
 				return TRUE
 			if(!usr.canUseTopic(src, BE_CLOSE) || (locked && !is_public))
 				return TRUE
-			switch(select)
+			switch(options[select])
 				if("Enable Paying Taxes")
 					upgrade_flags &= ~UPGRADE_NOTAX
 				if("Stop Paying Taxes")
@@ -752,7 +752,7 @@
 			var/cost = compute_pack_price(PA)
 			var/tax_amt = compute_pack_tax(PA)
 			if(budget < cost)
-				say("Not enough!")
+				say("钱不够！")
 				return TRUE
 			budget -= cost
 			record_round_statistic(value_record_key, cost)
@@ -773,7 +773,7 @@
 				if(margin > 0)
 					SStreasury.mint(SStreasury.merchant_fund, margin, "Company Gnomes margin ([src.name])")
 					SSmerchant_trade.gnome_margin_collected += margin
-					SSmerchant_trade.log_fund_movement("Gnomes margin ([src.name])", margin)
+					SSmerchant_trade.log_fund_movement("侏儒加价（[src.name]）", margin)
 			if(cost > 0 && SSmerchant_trade)
 				var/passive = round(cost * FAVOR_PASSIVE_TRADE_FRACTION)
 				SSmerchant_trade.adjust_merchant_favor(passive)
@@ -813,7 +813,7 @@
 			var/ship_id = "[params["ship_id"]]"
 			var/datum/trade_ship/source_ship = SSmerchant_trade.find_ship_by_id(ship_id)
 			if(!source_ship || source_ship.dock_state != TRADE_SHIP_STATE_DOCKED)
-				to_chat(H, span_warning("That vessel is no longer at the pier."))
+				to_chat(H, span_warning("那艘船已不在码头。"))
 				return TRUE
 			var/discounted_base = round(PA.cost * (100 - TRADE_CULTURAL_SHIP_DISCOUNT_PERCENT) / 100)
 			var/kin_saving = 0
@@ -828,10 +828,10 @@
 			if(!(upgrade_flags & UPGRADE_NOTAX) && !bypass_tax)
 				total_cost += tax_amt
 			if(budget < total_cost)
-				say("Not enough!")
+				say("钱不够！")
 				return TRUE
 			if(!SSmerchant_trade.consume_cultural_stock(source_ship, path))
-				to_chat(H, span_warning("That stock is no longer available."))
+				to_chat(H, span_warning("该货物已不再供应。"))
 				return TRUE
 			budget -= total_cost
 			record_round_statistic(value_record_key, total_cost)
@@ -852,7 +852,7 @@
 					spawned.atc_sealed = TRUE
 			source_ship.favor_earned += discounted_base
 			var/tariff_active_cultural = !(upgrade_flags & UPGRADE_NOTAX) && !bypass_tax
-			to_chat(H, span_notice("You buy [PA.name] from [source_ship.ship_name] for [total_cost]m[tariff_active_cultural && tax_amt > 0 ? " (incl. [tax_amt]m Crown duty)" : ""][kin_saving > 0 ? " (Kinship saved [kin_saving]m)" : ""]."))
+			to_chat(H, span_notice("你花费[total_cost]m从[source_ship.ship_name]购得[PA.name][tariff_active_cultural && tax_amt > 0 ? "（含[tax_amt]m王室关税）" : ""][kin_saving > 0 ? "（同乡优惠节省[kin_saving]m）" : ""]。"))
 			playsound(loc, 'sound/misc/gold_misc.ogg', 70, FALSE, -1)
 			return TRUE
 		if("catalog_buy")
@@ -864,7 +864,7 @@
 				return TRUE
 			var/kin_access = !isnull(SSmerchant_trade.catalog_access_basis(C, H))
 			if(!SSmerchant_trade.catalog_unlocked(cid) && !kin_access)
-				to_chat(H, span_warning("The [C.name] is not open."))
+				to_chat(H, span_warning("[C.name]尚未开放。"))
 				return TRUE
 			var/path = text2path(params["pack"])
 			if(!ispath(path, /datum/supply_pack) || !(path in C.stock))
@@ -873,7 +873,7 @@
 			if(!PA)
 				return TRUE
 			if(SSmerchant_trade.catalog_stock_remaining(cid, path) <= 0)
-				to_chat(H, span_warning("The [C.name] has none of that left. Wait until the next restock."))
+				to_chat(H, span_warning("[C.name]的该商品已售罄。请等待下次补货。"))
 				return TRUE
 			var/base_cost = PA.cost
 			var/kin_saving = 0
@@ -887,7 +887,7 @@
 			if(tariff_active)
 				total_cost += tax_amt
 			if(budget < total_cost)
-				say("Not enough!")
+				say("钱不够！")
 				return TRUE
 			budget -= total_cost
 			SSmerchant_trade.consume_catalog_stock(cid, path)
@@ -907,7 +907,7 @@
 				var/obj/item/spawned = new pathi(get_turf(usr))
 				if(istype(spawned))
 					spawned.atc_sealed = TRUE
-			to_chat(H, span_notice("You order [PA.name] from the [C.name] for [total_cost]m[tariff_active && tax_amt > 0 ? " (incl. [tax_amt]m Crown duty)" : ""][kin_saving > 0 ? " (Kinship saved [kin_saving]m)" : ""]."))
+			to_chat(H, span_notice("你花费[total_cost]m从[C.name]订购了[PA.name][tariff_active && tax_amt > 0 ? "（含[tax_amt]m王室关税）" : ""][kin_saving > 0 ? "（同乡优惠节省[kin_saving]m）" : ""]。"))
 			playsound(loc, 'sound/misc/gold_misc.ogg', 70, FALSE, -1)
 			return TRUE
 		if("bulk_buy")
@@ -920,7 +920,7 @@
 				return TRUE
 			var/datum/trade_ship/source_ship = SSmerchant_trade.find_ship_by_id(ship_id)
 			if(!source_ship || source_ship.dock_state != TRADE_SHIP_STATE_DOCKED)
-				to_chat(H, span_warning("That vessel is no longer at the pier."))
+				to_chat(H, span_warning("那艘船已不在码头。"))
 				return TRUE
 			var/list/line = null
 			for(var/list/L in source_ship.bulk_supplies)
@@ -928,15 +928,15 @@
 					line = L
 					break
 			if(!line)
-				to_chat(H, span_warning("That cargo is no longer on offer."))
+				to_chat(H, span_warning("该货物已不再出售。"))
 				return TRUE
 			var/datum/trade_good/TG = GLOB.trade_goods[good_id]
 			if(!TG || (!TG.item_type && !TG.purchase_item_type))
-				to_chat(H, span_warning("That cargo cannot be handled at this pier."))
+				to_chat(H, span_warning("此码头无法装卸该货物。"))
 				return TRUE
 			qty = min(qty, line["qty_target"] - line["qty_fulfilled"])
 			if(qty < 1)
-				to_chat(H, span_warning("That cargo is sold out."))
+				to_chat(H, span_warning("该货物已售罄。"))
 				return TRUE
 			var/unit_cost = line["offered_price"]
 			var/gross = unit_cost * qty
@@ -952,7 +952,7 @@
 			var/tariff_float = SStreasury.get_tax_rate(TAX_CATEGORY_IMPORT_TARIFF) * gross
 			var/total_cost = gross + (tariff_active ? round(tariff_float) : 0)
 			if(budget < total_cost)
-				say("Not enough!")
+				say("钱不够！")
 				return TRUE
 			line["qty_fulfilled"] += qty
 			budget -= total_cost
@@ -979,7 +979,7 @@
 						spawned.reagents.add_reagent(TG.reagent_type, TG.required_volume)
 			source_ship.favor_earned += gross
 			playsound(loc, 'sound/misc/gold_misc.ogg', 70, FALSE, -1)
-			to_chat(H, span_notice("You buy [qty] [TG.name] from [source_ship.ship_name] for [total_cost]m[tariff_active && tariff_float > 0 ? " (incl. [round(tariff_float)]m Crown duty)" : ""][kin_saving > 0 ? " (Kinship saved [kin_saving]m)" : ""]."))
+			to_chat(H, span_notice("你花费[total_cost]m从[source_ship.ship_name]购得[qty]份[TG.name][tariff_active && tariff_float > 0 ? "（含[round(tariff_float)]m王室关税）" : ""][kin_saving > 0 ? "（同乡优惠节省[kin_saving]m）" : ""]。"))
 			return TRUE
 		if("set_levy")
 			if(!is_command_center || !(H.job in profit_id) || !SSmerchant_trade)
@@ -988,40 +988,40 @@
 			if(isnull(requested))
 				return TRUE
 			var/applied = SSmerchant_trade.set_merchant_levy(requested)
-			to_chat(H, span_notice("Merchant's levy set to <b>[applied]%</b>."))
+			to_chat(H, span_notice("商人征缴比例已设为<b>[applied]%</b>。"))
 			playsound(loc, 'sound/misc/gold_misc.ogg', 70, FALSE, -1)
 			return TRUE
 		if("set_gnome_margin")
 			if(!is_command_center || !(H.job in profit_id) || !SSmerchant_trade)
 				return TRUE
 			if(!SSmerchant_trade.gnome_automation_unlocked)
-				to_chat(H, span_warning("The Company Gnomes have not been called in yet."))
+				to_chat(H, span_warning("尚未请来公司的侏儒。"))
 				return TRUE
 			var/requested = text2num(params["percent"])
 			if(isnull(requested))
 				return TRUE
 			var/applied = SSmerchant_trade.set_silverface_margin(requested)
-			to_chat(H, span_notice("Silverface margin set to <b>[applied]%</b>. The Gnomes adjust their pricing accordingly."))
+			to_chat(H, span_notice("银面加价已设为<b>[applied]%</b>。侏儒会相应调整定价。"))
 			playsound(loc, 'sound/misc/gold_misc.ogg', 70, FALSE, -1)
 			return TRUE
 		if("unlock_gnomes")
-			if(try_favor_unlock(H, SSmerchant_trade?.gnome_automation_unlocked, GNOME_AUTOMATION_FAVOR, "The Company Gnomes are already on the books.", "Not enough favor with the Company to call in the gnomes."))
+			if(try_favor_unlock(H, SSmerchant_trade?.gnome_automation_unlocked, GNOME_AUTOMATION_FAVOR, "公司的侏儒已经受雇。", "你在公司的恩惠不足，无法请来侏儒。"))
 				if(SSmerchant_trade.unlock_gnome_automation())
-					scom_announce("The Ferentian Trading Company has dispatched a gnomish crew to staff the public stalls.")
-					to_chat(H, span_notice("The Company Gnomes are now staffing every Silverface. Their margin flows to your fund."))
+					scom_announce("费伦提亚贸易公司已派出一队侏儒，接管公共摊位。")
+					to_chat(H, span_notice("公司的侏儒现已接管所有银面。加价收入将流入你的基金。"))
 					playsound(loc, 'sound/misc/gold_misc.ogg', 70, FALSE, -1)
 			return TRUE
 		if("rent_pier")
-			if(try_favor_unlock(H, SSmerchant_trade?.extra_pier_rented, ADDITIONAL_PIER_FAVOR, "The extra pier is already paid up for the week.", "Not enough favor with the Company to lean on the dockmaster."))
+			if(try_favor_unlock(H, SSmerchant_trade?.extra_pier_rented, ADDITIONAL_PIER_FAVOR, "额外泊位本周的租金已经付清。", "你在公司的恩惠不足，无法说动码头主管。"))
 				if(SSmerchant_trade.rent_extra_pier())
-					scom_announce("Word travels along the wharf - the fishermen's pier has been let to the Ferentian Trading Company for the week.")
-					to_chat(H, span_notice("The extra pier is yours. The harbor can now hold one more vessel at a time."))
+					scom_announce("码头传来消息 - 渔民码头本周已租给费伦提亚贸易公司。")
+					to_chat(H, span_notice("额外泊位归你使用了。港口现在可以同时多容纳一艘船。"))
 					playsound(loc, 'sound/misc/gold_misc.ogg', 70, FALSE, -1)
 			return TRUE
 		if("unlock_auto_hailer")
-			if(try_favor_unlock(H, SSmerchant_trade?.auto_hailer_unlocked, AUTO_HAILER_FAVOR, "The harbor crew already has a retainer with the Company.", "Not enough favor with the Company to retain the harbor crew."))
+			if(try_favor_unlock(H, SSmerchant_trade?.auto_hailer_unlocked, AUTO_HAILER_FAVOR, "港口人员已与公司签订长期雇佣协议。", "你在公司的恩惠不足，无法长期雇用港口人员。"))
 				if(SSmerchant_trade.unlock_auto_hailer())
-					to_chat(H, span_notice("The harbor crew is on retainer. Toggle the Auto-Hailer when you wish them to work."))
+					to_chat(H, span_notice("港口人员现已受雇。需要他们工作时，请启用自动呼船。"))
 					playsound(loc, 'sound/misc/gold_misc.ogg', 70, FALSE, -1)
 			return TRUE
 		if("unlock_catalog")
@@ -1031,23 +1031,23 @@
 			var/datum/merchant_catalog/C = SSmerchant_trade.catalogs[cid]
 			if(!C)
 				return TRUE
-			if(try_favor_unlock(H, SSmerchant_trade.catalog_unlocked(cid), C.favor_cost, "The [C.name] is already open to the company.", "Not enough favor with the Company to open the [C.name]."))
+			if(try_favor_unlock(H, SSmerchant_trade.catalog_unlocked(cid), C.favor_cost, "[C.name]已向公司开放。", "你在公司的恩惠不足，无法开通[C.name]。"))
 				if(SSmerchant_trade.unlock_catalog(cid))
-					scom_announce("The Ferentian Trading Company has secured a trade agreement with the [C.name].")
-					to_chat(H, span_notice("The [C.name] is now open to the company."))
+					scom_announce("费伦提亚贸易公司已与[C.name]达成贸易协议。")
+					to_chat(H, span_notice("[C.name]现已向公司开放。"))
 					playsound(loc, 'sound/misc/gold_misc.ogg', 70, FALSE, -1)
 			return TRUE
 		if("toggle_auto_hailer")
 			if(!is_command_center || !(H.job in profit_id) || !SSmerchant_trade)
 				return TRUE
 			if(!SSmerchant_trade.auto_hailer_unlocked)
-				to_chat(H, span_warning("The harbor crew is not yet on retainer."))
+				to_chat(H, span_warning("尚未雇用港口人员。"))
 				return TRUE
 			if(SSmerchant_trade.toggle_auto_hailer())
 				if(SSmerchant_trade.auto_hailer_on)
-					to_chat(H, span_notice("The harbor crew begins their rounds. Ships will be hailed and dismissed in your absence."))
+					to_chat(H, span_notice("港口人员开始值勤。你不在时，他们会负责招呼船舶入港并遣船离港。"))
 				else
-					to_chat(H, span_notice("The harbor crew stands down. The wharf returns to your sole judgement."))
+					to_chat(H, span_notice("港口人员停止值勤。码头再次完全由你管理。"))
 				playsound(loc, 'sound/misc/gold_misc.ogg', 70, FALSE, -1)
 			return TRUE
 
@@ -1065,14 +1065,14 @@
 /obj/structure/roguemachine/goldface/proc/handle_hail_result(result, datum/trade_ship/ship, mob/user)
 	switch(result)
 		if("ok")
-			to_chat(user, span_notice("You signal the [ship.ship_name] to make port. She is being brought in now."))
+			to_chat(user, span_notice("你向[ship.ship_name]发出入港信号。它正被引入港口。"))
 			speak_captain_hail(ship, user)
 		if("no_hails")
-			to_chat(user, span_warning("You have no hails left to spend today."))
+			to_chat(user, span_warning("你今日的呼船次数已用尽。"))
 		if("no_dock_spots")
-			to_chat(user, span_warning("The pier is full. Send a docked vessel away first."))
+			to_chat(user, span_warning("泊位已满。请先让一艘停泊的船离港。"))
 		if("ship_gone")
-			to_chat(user, span_warning("That vessel is no longer answering hails."))
+			to_chat(user, span_warning("那艘船已不再回应呼唤。"))
 
 /obj/structure/roguemachine/goldface/proc/speak_captain_hail(datum/trade_ship/ship, mob/user)
 	if(!ship)
@@ -1083,16 +1083,16 @@
 	var/line = realm.pick_hail_line()
 	if(!line)
 		return
-	say("Captain [ship.captain_name] sends their greeting: \"[line]\"")
+	say("[ship.captain_name]船长向你致意：\"[line]\"")
 
 /obj/structure/roguemachine/goldface/proc/handle_send_away_result(result, mob/user)
 	switch(result)
 		if("ok")
-			to_chat(user, span_notice("You signal the vessel to cast off. The pier is yours again."))
+			to_chat(user, span_notice("你示意船舶解缆离港。泊位又空出来了。"))
 		if("early")
-			to_chat(user, span_warning("She has only just tied up. Give the captain a few moments to settle their business."))
+			to_chat(user, span_warning("它才刚刚靠泊。请给船长一点时间处理生意。"))
 		if("ship_gone")
-			to_chat(user, span_warning("There is no vessel by that name at the pier."))
+			to_chat(user, span_warning("码头没有这个名字的船舶。"))
 
 /obj/structure/roguemachine/goldface/obj_break(damage_flag)
 	..()

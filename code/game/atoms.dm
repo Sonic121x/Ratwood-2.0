@@ -381,17 +381,17 @@
  * COMSIG_ATOM_GET_EXAMINE_NAME signal
  */
 /atom/proc/get_examine_name(mob/user)
-	. = "\a [src]"
-	var/list/override = list(gender == PLURAL ? "some" : "a", " ", "[name]")
+	. = "[src]"
+	var/list/override = list(gender == PLURAL ? "一些" : "", "", "[name]")
 	if(article)
-		. = "[article] [src]"
+		. = "[article][src]"
 		override[EXAMINE_POSITION_ARTICLE] = article
 	if(SEND_SIGNAL(src, COMSIG_ATOM_GET_EXAMINE_NAME, user, override) & COMPONENT_EXNAME_CHANGED)
 		. = override.Join("")
 
 ///Generate the full examine string of this atom (including icon for goonchat)
 /atom/proc/get_examine_string(mob/user, thats = FALSE)
-	return "[thats? "That's ":""][get_examine_name(user)]"
+	return "[thats? "那是":""][get_examine_name(user)]"
 
 /atom/proc/get_inspect_button()
 	return ""
@@ -414,9 +414,9 @@
 		if(reagents.flags & TRANSPARENT)
 			if(length(reagents.reagent_list))
 				if(user.can_see_reagents() || (user.Adjacent(src) && (user.get_skill_level(/datum/skill/craft/alchemy) >= 2 || HAS_TRAIT(user, TRAIT_CICERONE)))) //Show each individual reagent
-					. += "It contains:"
+					. += "它包含："
 					for(var/datum/reagent/R in reagents.reagent_list)
-						. += "[round(R.volume, 0.1)] [UNIT_FORM_STRING(round(R.volume, 0.1))] of <font color=[R.color]>[R.name]</font>"
+						. += "[round(R.volume, 0.1)] [UNIT_FORM_STRING(round(R.volume, 0.1))]的<font color=[R.color]>[R.name]</font>"
 				else //Otherwise, just show the total volume
 					var/total_volume = 0
 					var/reagent_color
@@ -424,16 +424,16 @@
 						total_volume += R.volume
 					reagent_color = mix_color_from_reagents(reagents.reagent_list)
 					if(total_volume < 1)
-						. += "It contains less than 1 [UNIT_FORM_STRING(1)] of <font color=[reagent_color]>something.</font>"
+						. += "它包含少于 1 [UNIT_FORM_STRING(1)]的<font color=[reagent_color]>某种物质。</font>"
 					else
-						. += "It contains [round(total_volume)] [UNIT_FORM_STRING(round(total_volume))] of <font color=[reagent_color]>something.</font>"
+						. += "它包含 [round(total_volume)] [UNIT_FORM_STRING(round(total_volume))]的<font color=[reagent_color]>某种物质。</font>"
 			else
-				. += "Nothing."
+				. += "里面什么也没有。"
 		else if(reagents.flags & AMOUNT_VISIBLE)
 			if(reagents.total_volume)
-				. += span_notice("It has [round(reagents.total_volume)] [UNIT_FORM_STRING(round(reagents.total_volume))] left.")
+				. += span_notice("它还剩下 [round(reagents.total_volume)] [UNIT_FORM_STRING(round(reagents.total_volume))]。")
 			else
-				. += span_danger("It's empty.")
+				. += span_danger("它是空的。")
 
 		//SNIFFING
 		if (user.zone_selected == BODY_ZONE_PRECISE_NOSE && get_dist(src, user) <= 1)
@@ -443,8 +443,8 @@
 				var/obj/item/reagent_containers/container = src
 				is_closed = !container.spillable
 			if(is_closed == FALSE && reagents.total_volume) // if the container is open, and there's liquids in there
-				user.visible_message(span_info("[user] takes a whiff of [src]..."), span_info("I take a whiff of [src]..."))
-				. += span_notice("I smell [src.reagents.generate_scent_message()].")
+				user.visible_message(span_info("[user]闻了闻[src]……"), span_info("我闻了闻[src]……"))
+				. += span_notice("我闻到的气味是：[src.reagents.generate_scent_message()]。")
 				if (HAS_TRAIT(user, TRAIT_ALCHEMY_EXPERT))
 					var/full_reagents = ""
 					for (var/datum/reagent/R in reagents.reagent_list)
@@ -452,7 +452,7 @@
 							if (full_reagents)
 								full_reagents += ", "
 							full_reagents += "[LOWER_TEXT(R.name)]"
-					. += span_notice("My expert nose lets me distinguish this liquid as [full_reagents].")
+					. += span_notice("凭借训练有素的嗅觉，我辨认出这份液体中含有[full_reagents]。")
 
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 
@@ -517,7 +517,7 @@
 		return
 	if(buckle_message_cooldown <= world.time)
 		buckle_message_cooldown = world.time + 25
-		to_chat(user, "<span class='warning'>I should try resisting.</span>")
+		to_chat(user, "<span class='warning'>我应该试着挣脱。</span>")
 	return
 
 /// Handle what happens when your contents are exploded by a bomb
@@ -662,7 +662,7 @@
 	while (do_after(user, 10, TRUE, src, FALSE, CALLBACK(STR, TYPE_PROC_REF(/datum/component/storage, handle_mass_item_insertion), things, src_object, user, progress)))
 		stoplag(1)
 	qdel(progress)
-	to_chat(user, "<span class='notice'>I dump as much of [src_object.parent]'s contents [STR.insert_preposition]to [src] as I can.</span>")
+	to_chat(user, "<span class='notice'>我尽可能把[src_object.parent]里的东西全都倒[STR.insert_preposition]到[src]里。</span>")
 	STR.orient2hud(user)
 	STR.update_icon()
 	src_object.update_icon()
@@ -810,27 +810,27 @@
 	if(!ismovableatom(src))
 		var/turf/curturf = get_turf(src)
 		if(curturf)
-			. += "<option value='?_src_=holder;[HrefToken()];adminplayerobservecoodjump=1;X=[curturf.x];Y=[curturf.y];Z=[curturf.z]'>Jump To</option>"
-	VV_DROPDOWN_OPTION(VV_HK_MODIFY_TRANSFORM, "Modify Transform")
-	VV_DROPDOWN_OPTION(VV_HK_ADD_REAGENT, "Add Reagent")
-	VV_DROPDOWN_OPTION(VV_HK_TRIGGER_EXPLOSION, "Explosion")
-	VV_DROPDOWN_OPTION(VV_HK_ADD_AI, "Add AI controller")
+			. += "<option value='?_src_=holder;[HrefToken()];adminplayerobservecoodjump=1;X=[curturf.x];Y=[curturf.y];Z=[curturf.z]'>跳转到此处</option>"
+	VV_DROPDOWN_OPTION(VV_HK_MODIFY_TRANSFORM, "修改变换矩阵")
+	VV_DROPDOWN_OPTION(VV_HK_ADD_REAGENT, "添加试剂")
+	VV_DROPDOWN_OPTION(VV_HK_TRIGGER_EXPLOSION, "引发爆炸")
+	VV_DROPDOWN_OPTION(VV_HK_ADD_AI, "添加 AI 控制器")
 
 /atom/vv_do_topic(list/href_list)
 	. = ..()
 	if(href_list[VV_HK_ADD_REAGENT] && check_rights(R_VAREDIT))
 		if(!reagents)
-			var/amount = input(usr, "Specify the reagent size of [src]", "Set Reagent Size", 50) as num|null
+			var/amount = input(usr, "指定 [src] 的试剂容量", "设置试剂容量", 50) as num|null
 			if(amount)
 				create_reagents(amount)
 
 		if(reagents)
 			var/chosen_id
-			switch(alert(usr, "Choose a method.", "Add Reagents", "Search", "Choose from a list", "I'm feeling lucky"))
-				if("Search")
+			switch(alert(usr, "选择添加方式。", "添加试剂", "搜索", "从列表选择", "随机选择"))
+				if("搜索")
 					var/valid_id
 					while(!valid_id)
-						chosen_id = input(usr, "Enter the ID of the reagent you want to add.", "Search reagents") as null|text
+						chosen_id = input(usr, "输入要添加的试剂 ID。", "搜索试剂") as null|text
 						if(isnull(chosen_id)) //Get me out of here!
 							break
 						if (!ispath(text2path(chosen_id)))
@@ -840,39 +840,39 @@
 						else
 							valid_id = TRUE
 						if(!valid_id)
-							to_chat(usr, "<span class='warning'>A reagent with that ID doesn't exist!</span>")
-				if("Choose from a list")
-					chosen_id = input(usr, "Choose a reagent to add.", "Choose a reagent.") as null|anything in sortList(subtypesof(/datum/reagent), GLOBAL_PROC_REF(cmp_typepaths_asc))
-				if("I'm feeling lucky")
+							to_chat(usr, "<span class='warning'>不存在具有该 ID 的试剂！</span>")
+				if("从列表选择")
+					chosen_id = input(usr, "选择要添加的试剂。", "选择试剂") as null|anything in sortList(subtypesof(/datum/reagent), GLOBAL_PROC_REF(cmp_typepaths_asc))
+				if("随机选择")
 					chosen_id = pick(subtypesof(/datum/reagent))
 			if(chosen_id)
-				var/amount = input(usr, "Choose the amount to add.", "Choose the amount.", reagents.maximum_volume) as num|null
+				var/amount = input(usr, "选择添加量。", "选择数量", reagents.maximum_volume) as num|null
 				if(amount)
 					reagents.add_reagent(chosen_id, amount)
 					log_admin("[key_name(usr)] has added [amount] units of [chosen_id] to [src]")
-					message_admins("<span class='notice'>[key_name(usr)] has added [amount] units of [chosen_id] to [src]</span>")
+					message_admins("<span class='notice'>[key_name(usr)] 向 [src] 添加了 [amount] 单位的 [chosen_id]</span>")
 	if(href_list[VV_HK_TRIGGER_EXPLOSION] && check_rights(R_FUN))
 		usr.client.cmd_admin_explosion(src)
 	if(href_list[VV_HK_MODIFY_TRANSFORM] && check_rights(R_VAREDIT))
-		var/result = input(usr, "Choose the transformation to apply","Transform Mod") as null|anything in list("Scale","Translate","Rotate")
+		var/result = input(usr, "选择要应用的变换","修改变换矩阵") as null|anything in list("缩放","平移","旋转")
 		var/matrix/M = transform
 		switch(result)
-			if("Scale")
-				var/x = input(usr, "Choose x mod","Transform Mod") as null|num
-				var/y = input(usr, "Choose y mod","Transform Mod") as null|num
+			if("缩放")
+				var/x = input(usr, "输入 X 轴缩放系数","修改变换矩阵") as null|num
+				var/y = input(usr, "输入 Y 轴缩放系数","修改变换矩阵") as null|num
 				if(!isnull(x) && !isnull(y))
 					transform = M.Scale(x,y)
-			if("Translate")
-				var/x = input(usr, "Choose x mod","Transform Mod") as null|num
-				var/y = input(usr, "Choose y mod","Transform Mod") as null|num
+			if("平移")
+				var/x = input(usr, "输入 X 轴位移","修改变换矩阵") as null|num
+				var/y = input(usr, "输入 Y 轴位移","修改变换矩阵") as null|num
 				if(!isnull(x) && !isnull(y))
 					transform = M.Translate(x,y)
-			if("Rotate")
-				var/angle = input(usr, "Choose angle to rotate","Transform Mod") as null|num
+			if("旋转")
+				var/angle = input(usr, "输入旋转角度","修改变换矩阵") as null|num
 				if(!isnull(angle))
 					transform = M.Turn(angle)
 	if(href_list[VV_HK_AUTO_RENAME] && check_rights(R_VAREDIT))
-		var/newname = input(usr, "What do you want to rename this to?", "Automatic Rename") as null|text
+		var/newname = input(usr, "要将其重命名为什么？", "自动重命名") as null|text
 		if(newname)
 			vv_auto_rename(newname)
 
@@ -991,7 +991,7 @@
 /atom/proc/multitool_check_buffer(user, obj/item/I, silent = FALSE)
 	if(!istype(I, /obj/item/multitool))
 		if(user && !silent)
-			to_chat(user, "<span class='warning'>[I] has no data buffer!</span>")
+			to_chat(user, "<span class='warning'>[I]没有数据缓冲区！</span>")
 		return FALSE
 	return TRUE
 

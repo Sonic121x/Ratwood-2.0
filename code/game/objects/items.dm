@@ -6,7 +6,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 // more... RPG-like.
 
 /obj/item
-	name = "item"
+	name = "物品"
 	var/original_name = null // Stores the original name if item was renamed
 	icon = 'icons/obj/items_and_weapons.dmi'
 	///icon state name for inhanf overlays
@@ -465,7 +465,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	return
 
 /obj/item/verb/move_to_top()
-	set name = "Move To Top"
+	set name = "移到最上层"
 	set hidden = 1
 	set src in oview(1)
 
@@ -485,109 +485,109 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	. = ..()
 
 	if(href_list["explainshaft"])
-		var/output = span_info("Your weapon's shaft determines what kind of damage it is weak and strong against. Shafts other than Grand & Conjured Shaft can be swapped out.\n\
-		<b>Metal Shaft</b>: [DULLFACTOR_COUNTERED_BY]x vs Blunt/Smash, [DULLFACTOR_COUNTERS] vs Cut/Chop. 1x Everything Else. \n\
-		<b>Reinforced Shaft</b>: [DULLFACTOR_COUNTERED_BY]x vs Stab/Pick, [DULLFACTOR_COUNTERS] vs Blunt/Smash. 1x Everything Else. \n\
-		<b>Wooden Shaft</b>: [DULLFACTOR_COUNTERED_BY]x vs Cut/Chop, [DULLFACTOR_COUNTERS] vs Blunt/Smash. 1x Everything Else. \n\
-		<b>Grand Shaft</b>: [DULLFACTOR_ANTAG]x vs Everything but Smash. 1x vs Smash. Only present on certain special weapons. \n\
-		<b>Conjured Shaft</b>: [DULLFACTOR_COUNTERED_BY]x vs Everything. Present on Conjured or Decrepit weapons. Also meant to represent crumbling weapons. \n\
+		var/output = span_info("武器的柄身决定了它更怕哪类伤害、又更克制哪类伤害。除了巨构柄身与召唤柄身外，其他柄身都可以更换。\n\
+		<b>金属柄身</b>：对钝击/猛砸承受 [DULLFACTOR_COUNTERED_BY]x，对切割/劈砍承受 [DULLFACTOR_COUNTERS]。其余皆为 1x。 \n\
+		<b>加固柄身</b>：对刺击/凿击承受 [DULLFACTOR_COUNTERED_BY]x，对钝击/猛砸承受 [DULLFACTOR_COUNTERS]。其余皆为 1x。 \n\
+		<b>木制柄身</b>：对切割/劈砍承受 [DULLFACTOR_COUNTERED_BY]x，对钝击/猛砸承受 [DULLFACTOR_COUNTERS]。其余皆为 1x。 \n\
+		<b>巨构柄身</b>：除猛砸外，对所有伤害承受 [DULLFACTOR_ANTAG]x；对猛砸为 1x。只会出现在某些特殊武器上。 \n\
+		<b>召唤柄身</b>：对所有伤害都承受 [DULLFACTOR_COUNTERED_BY]x。常见于召唤武器或破败武器，也可用来表示正在崩解的兵器。 \n\
 		")
 		if(!usr.client.prefs.no_examine_blocks)
 			output = examine_block(output)
 		to_chat(usr, output)
 
 	if(href_list["explaindef"])
-		var/output = span_info("Each point of defense adds 10% to your parry chance.\n\
-		Your parry chance is increased by 20% per skill level in the weapon, and reduced by 20% per skill level of your attacker.\n\
-		Defense is often increased when you wield a weapon two-handed.")
+		var/output = span_info("每 1 点防御都会为你的招架几率增加 10%。\n\
+		你在该武器上的每一级技能都会让招架几率提高 20%，而攻击者的每一级对应技能都会让你的招架几率降低 20%。\n\
+		双手持握武器时，防御数值通常也会提升。")
 		if(!usr.client.prefs.no_examine_blocks)
 			output = examine_block(output)
 		to_chat(usr, output)
 
 	if(href_list["explainlength"])
-		var/output = span_info("A short weapon gains +10% accuracy on hitting any bodypart and can only attack the legs from the ground.\n\
-		A long weapon can hit chest or below from the ground, and can hit the feet while standing.\n\
-		A great weapon can hit any bodypart from anywhere.")
+		var/output = span_info("短武器在命中任意部位时获得 +10% 精准度，但倒地时只能攻击腿部。\n\
+		长武器倒地时可以打到胸口及以下部位，站立时还能攻击脚部。\n\
+		巨型武器则能在任何位置攻击任何身体部位。")
 		if(!usr.client.prefs.no_examine_blocks)
 			output = examine_block(output)
 		to_chat(usr, output)
 
 	if(href_list["explainbalance"])
-		var/output = span_info("A heavy weapon is easier to dodge, and inflicts 2 stamina damage per level of strength differences on a parrying defender. \n\
-		A swift balance weapon reduce the enemy's parry chance by 10% per level of speed difference, by up to 30%, \n\
-		If the defender have higher perception however, the penalty is reduced by 10% per point of difference, down to none.\n\
-		Intelligence also reduces the penalty by 3% per point of difference, down to none.")
+		var/output = span_info("沉重武器更容易被闪避，并且每相差 1 点力量，都会让成功招架的防守者额外承受 2 点体力伤害。 \n\
+		迅捷平衡的武器会按双方速度差，每点使敌人的招架几率降低 10 个百分点，最多降低 30 个百分点。 \n\
+		但如果防守者感知更高，这项惩罚会按每点差值减少 10 个百分点，直到归零。\n\
+		如果防守者智力更高，这项惩罚还会按每点差值减少 3 个百分点，直到归零。")
 		if(!usr.client.prefs.no_examine_blocks)
 			output = examine_block(output)
 		to_chat(usr, output)
 
-	var/additional_explanation = "This determines the damage dealt by this weapon. Force is increased / decrease by strength above / below 10 by 10% per point of differences,\n\
-	Each point of strength at 15 or above only applies an additional +3% damage, except on punches. Damage is also multiplied by damage factor on intents. \n\
-	Both multiplication are applied to the base number, and does not multiply each other. Reduced sharpness decrease the contribution of strength\n\
-	Force, combined with armor penetration on an intent determines whether an attack penetrate the target's armor. Armor penetrating attack deals less damage to the armor itself."
+	var/additional_explanation = "这项数值决定了武器造成的伤害。力量高于或低于 10 的部分，每差 1 点就会让力度提高或降低 10%。\n\
+	当力量达到 15 及以上时，之后每一点只会额外提供 +3% 伤害，拳击除外。伤害还会再乘上意图附带的伤害系数。 \n\
+	这两项乘算都以基础值为准，彼此不会再次相乘。锋锐度降低时，力量带来的加成也会随之下降。\n\
+	力度结合意图上的护甲穿透后，将决定攻击能否穿透目标护甲。穿甲攻击对护甲本身造成的伤害会更低。"
 	if(href_list["showforce"])
-		var/output = span_info("Actual Force: ([force]). [additional_explanation]")
+		var/output = span_info("实际力度：([force])。[additional_explanation]")
 		if(!usr.client.prefs.no_examine_blocks)
 			output = examine_block(output)
 		to_chat(usr, output)
 
 	if(href_list["showforcewield"])
-		var/output = span_info("Wielded Force: ([force_wielded]). [additional_explanation]")
+		var/output = span_info("双手持握力度：([force_wielded])。[additional_explanation]")
 		if(!usr.client.prefs.no_examine_blocks)
 			output = examine_block(output)
 		to_chat(usr, output)
 
 	if(href_list["explainsharpness"])
-		var/output = span_info("Bladed weapons have sharpness. At [SHARPNESS_TIER1_THRESHOLD * 100]%, damage factor and strength damage starts to fall off gradually. \n\
-		At [SHARPNESS_TIER1_FLOOR * 100]%, strength and damage factor no longer applies. Below [SHARPNESS_TIER2_THRESHOLD * 100]%, the base damage value also starts to decline\n\
-		Sharpness declines by [SHARPNESS_ONHIT_DECAY] on parry for bladed weapon.\n\
-		A grindstone can restore max sharpness, whereas other sources will degrade 0.5 max integrity per sharpening.")
+		var/output = span_info("刃类武器拥有锋锐度。当锋锐度低于 [SHARPNESS_TIER1_THRESHOLD * 100]% 时，伤害系数与力量加成会开始逐步衰减。 \n\
+		当锋锐度低于 [SHARPNESS_TIER1_FLOOR * 100]% 时，力量与伤害系数将不再生效。低于 [SHARPNESS_TIER2_THRESHOLD * 100]% 后，基础伤害也会开始下降。\n\
+		刃类武器每次成功招架，锋锐度都会下降 [SHARPNESS_ONHIT_DECAY]。\n\
+		砂轮可以恢复最大锋锐度，而其他磨锋方式每次都会额外损失 0.5 最大完整度。")
 		if(!usr.client.prefs.no_examine_blocks)
 			output = examine_block(output)
 		to_chat(usr, output)
 
 	if(href_list["explaindurability"])
-		var/output = span_info("How durable your item is. On weapons, [INTEG_PARRY_DECAY] is lost on parry on a main hand bladed weapon. \n\
-		Blunt weapon or off-hand weapon loses [INTEG_PARRY_DECAY_NOSHARP] per parry instead. \n\
-		On armor, the blunt rating of an armor multiplies its effective durability against blunt damage.")
+		var/output = span_info("这表示你的物品有多耐用。武器方面，主手刃类武器每次招架都会损失 [INTEG_PARRY_DECAY]。 \n\
+		钝器或副手武器则会在每次招架时损失 [INTEG_PARRY_DECAY_NOSHARP]。 \n\
+		护甲方面，护甲的钝击评级会乘算它对钝击伤害的有效耐久。")
 		if(!usr.client.prefs.no_examine_blocks)
 			output = examine_block(output)
 		to_chat(usr, output)
 
 	if(href_list["explainintdamage"])
-		var/output = span_info("Multiplies the damage done to armor on hit.\nAlso multiplies durability damage dealt to shields on parry (if higher than Anti-Object Mod).")
+		var/output = span_info("命中时，对护甲造成的伤害乘以此系数。\n招架时，若该系数高于对物破坏系数，也用于放大对盾牌造成的耐久伤害。")
 		if(!usr.client.prefs.no_examine_blocks)
 			output = examine_block(output)
 		to_chat(usr, output)
 
 	if(href_list["explainshieldcoverage"])
-		var/output = span_info("Chance to passively block incoming projectiles. Only works from the front.\nShields take quarter damage from blocked projectiles and fixed durability damage from melee parries.\nHeavy weapons deal more durability damage to shields — the higher of the attacker's Anti-Object Mod or Integrity Damage is used as a multiplier.")
+		var/output = span_info("从正面被动格挡来袭投射物的几率。\n盾牌格挡投射物时承受四分之一伤害，招架近战时承受固定耐久伤害。\n重型武器会对盾牌造成更多耐久伤害，取攻击者的对物破坏系数与护甲破坏系数中较高者作为倍率。")
 		if(!usr.client.prefs.no_examine_blocks)
 			output = examine_block(output)
 		to_chat(usr, output)
 
 	if(href_list["explainpenfactor"])
-		var/output = span_info("Armor Penetration whether this attack goes through armor.\n\
-		Each armor piece has a blocking tier (Light, Medium, Heavy, Blacksteel).\n\
-		Penetration > armor tier: 100% damage goes through.\n\
-		Penetration = armor tier: 20% damage through. Armor absorbs remaining %.\n\
-		Penetration < armor tier: Fully blocked.\n\
-		All attacks go through armor with no protection of that type, including attacks with no armor penetration.\n\
-		Blunt / Burn / Acid attacks bypass this system entirely and use damage reduction instead.")
+		var/output = span_info("穿甲能力决定本次攻击能否突破护甲。\n\
+		每件护甲都有防护等级：轻型、中型、重型或黑钢。\n\
+		穿甲等级高于护甲等级：全部伤害穿透。\n\
+		穿甲等级等于护甲等级：部分伤害穿透，护甲吸收其余伤害。\n\
+		穿甲等级低于护甲等级：伤害被完全挡住。\n\
+		若护甲不防护该伤害类型，任何攻击都能穿透，包括没有穿甲能力的攻击。\n\
+		钝击、灼烧与酸蚀不采用这套穿甲判定，而使用伤害减免机制。")
 		if(!usr.client.prefs.no_examine_blocks)
 			output = examine_block(output)
 		to_chat(usr, output)
 
 
 	if(href_list["explaindemolitionmod"])
-		var/output = span_info("Multiplies the damage done to objects when hitting them.\nAlso multiplies durability damage dealt to shields on parry (if higher than Integrity Damage).")
+		var/output = span_info("攻击物体时，对其造成的伤害乘以此系数。\n招架时，若该系数高于护甲破坏系数，也用于放大对盾牌造成的耐久伤害。")
 		if(!usr.client.prefs.no_examine_blocks)
 			output = examine_block(output)
 		to_chat(usr, output)
 
 	if(href_list["explainskill"])
-		var/output = span_info("The skill associated with this weapon. Each level gives +20% to your parry chance, -20% to your opponent's parry chance. \n\
-		The same is applied to dodge but with a +/-10% bonus. It also adds +8% chance to hit the body part you're aiming for.")
+		var/output = span_info("与此武器关联的技能。每提升一级，都会让你的招架几率 +20%，并让对手的招架几率 -20%。 \n\
+		闪避同样适用，但加成为 +/-10%。此外，它还会额外提供 +8% 命中目标部位的几率。")
 		if(!usr.client.prefs.no_examine_blocks)
 			output = examine_block(output)
 		to_chat(usr, output)
@@ -600,39 +600,39 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(href_list["inspect"])
 		if(!usr.canUseTopic(src, be_close=TRUE))
 			return
-		var/list/inspec = list(span_notice("Properties of [name]"))
+		var/list/inspec = list(span_notice("[name]的属性"))
 		if(minstr)
-			inspec += "\n<b>MIN.STR:</b> [minstr]"
+			inspec += "\n<b>最低力量：</b> [minstr]"
 		if(minstr_req)
-			inspec += "\n<b>NO HALVING ON WIELD</b>"
+			inspec += "\n<b>双手持握时最低力量要求不减半</b>"
 
 		if(force)
-			inspec += "\n<b>FORCE:</b> [get_force_string(force)] <span class='info'><a href='?src=[REF(src)];showforce=1'>{?}</a></span>"
+			inspec += "\n<b>力度：</b> [get_force_string(force)] <span class='info'><a href='?src=[REF(src)];showforce=1'>{?}</a></span>"
 		if(gripped_intents && !wielded)
 			if(force_wielded)
-				inspec += "\n<b>WIELDED FORCE:</b> [get_force_string(force_wielded)] <span class='info'><a href='?src=[REF(src)];showforcewield=1'>{?}</a></span>"
+				inspec += "\n<b>双手力度：</b> [get_force_string(force_wielded)] <span class='info'><a href='?src=[REF(src)];showforcewield=1'>{?}</a></span>"
 
 		if(wbalance)
-			inspec += "\n<b>BALANCE: </b>"
+			inspec += "\n<b>平衡：</b>"
 			if(wbalance == WBALANCE_HEAVY)
-				inspec += "Heavy"
+				inspec += "沉重"
 			if(wbalance == WBALANCE_SWIFT)
-				inspec += "Swift"
+				inspec += "迅捷"
 			inspec += " <span class='info'><a href='?src=[REF(src)];explainbalance=1'>{?}</a></span>"
 
 		if(wlength != WLENGTH_NORMAL)
-			inspec += "\n<b>LENGTH:</b> "
+			inspec += "\n<b>长度：</b> "
 			switch(wlength)
 				if(WLENGTH_SHORT)
-					inspec += "Short"
+					inspec += "短"
 				if(WLENGTH_LONG)
-					inspec += "Long"
+					inspec += "长"
 				if(WLENGTH_GREAT)
-					inspec += "Great"
+					inspec += "巨型"
 			inspec += " <span class='info'><a href='?src=[REF(src)];explainlength=1'>{?}</a></span>"
 
 		if(has_altgrip_modes())
-			inspec += "\n<b>ALT-GRIP (RCLICK/HOTKEY(B)/CTRL+SCRLWHL)</b>"
+			inspec += "\n<b>变换握法（右键／B 键／Ctrl＋滚轮）</b>"
 			var/list/alt_grip_lines = get_altgrip_lines(src, usr)
 			if(length(alt_grip_lines))
 				for(var/alt_grip_line in alt_grip_lines)
@@ -640,24 +640,24 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 		var/shafttext = get_blade_dulling_text(src, verbose = TRUE)
 		if(shafttext)
-			inspec += "\n<b>SHAFT:</b> [shafttext] <span class='info'><a href='?src=[REF(src)];explainshaft=1'>{?}</a></span>"
+			inspec += "\n<b>柄身：</b> [shafttext] <span class='info'><a href='?src=[REF(src)];explainshaft=1'>{?}</a></span>"
 
 		if(gripped_intents)
-			inspec += "\n<b>TWO-HANDED</b>"
+			inspec += "\n<b>双手武器</b>"
 
 		if(twohands_required)
-			inspec += "\n<b>BULKY</b>"
+			inspec += "\n<b>笨重</b>"
 
 		if(can_parry)
-			inspec += "\n<b>DEFENSE:</b> [wdefense_dynamic] <span class='info'><a href='?src=[REF(src)];explaindef=1'>{?}</a></span>"
+			inspec += "\n<b>防御：</b> [wdefense_dynamic] <span class='info'><a href='?src=[REF(src)];explaindef=1'>{?}</a></span>"
 
 		if(max_blade_int)
-			inspec += "\n<b>SHARPNESS:</b> "
+			inspec += "\n<b>锋锐度：</b> "
 			var/percent = round(((blade_int / max_blade_int) * 100), 1)
 			inspec += "[percent]% ([blade_int]) <span class='info'><a href='?src=[REF(src)];explainsharpness=1'>{?}</a></span>"
 
 		if(associated_skill && associated_skill.name)
-			inspec += "\n<b>SKILL:</b> [associated_skill.name] <span class='info'><a href='?src=[REF(src)];explainskill=1'>{?}</a></span>"
+			inspec += "\n<b>技能：</b> [associated_skill.name] <span class='info'><a href='?src=[REF(src)];explainskill=1'>{?}</a></span>"
 
 		if(istype(src, /obj/item/rogueweapon))
 			var/obj/item/rogueweapon/W = src
@@ -666,10 +666,10 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 		if(istype(src, /obj/item/rogueweapon/shield))
 			var/obj/item/rogueweapon/shield/S = src
-			inspec += "\n<b>PASSIVE PROJECTILE BLOCK:</b> [S.coverage]% <span class='info'><a href='?src=[REF(src)];explainshieldcoverage=1'>{?}</a></span>"
+			inspec += "\n<b>被动格挡投射物：</b> [S.coverage]% <span class='info'><a href='?src=[REF(src)];explainshieldcoverage=1'>{?}</a></span>"
 
 		if(intdamage_factor != 1 && force >= 5)
-			inspec += "\n<b>INTEGRITY DAMAGE:</b> [intdamage_factor * 100]% <span class='info'><a href='?src=[REF(src)];explainintdamage=1'>{?}</a></span>"
+			inspec += "\n<b>完整度伤害：</b> [intdamage_factor * 100]% <span class='info'><a href='?src=[REF(src)];explainintdamage=1'>{?}</a></span>"
 
 //**** CLOTHING STUFF
 
@@ -678,7 +678,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			inspec += "<br>"
 			inspec += C.defense_examine()
 			if(C.body_parts_covered)
-				inspec += "\n<b>COVERAGE: <br></b>"
+				inspec += "\n<b>覆盖部位：<br></b>"
 				inspec += " | "
 			var/list/zonelist = body_parts_covered2organ_names(C.body_parts_covered)
 			var/count = 0
@@ -697,7 +697,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 //**** General durability
 
 		if(max_integrity)
-			inspec += "\n<b>DURABILITY:</b> "
+			inspec += "\n<b>耐久：</b> "
 			var/eff_maxint = max_integrity - (max_integrity * integrity_failure)
 			var/eff_currint = max(obj_integrity - (max_integrity * integrity_failure), 0)
 			var/ratio =	(eff_currint / eff_maxint)
@@ -710,14 +710,14 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			var/str
 			switch(C.armor_class)
 				if(ARMOR_CLASS_NONE)
-					str = "None"
+					str = "无"
 				if(ARMOR_CLASS_LIGHT)
-					str = "Light"
+					str = "轻型"
 				if(ARMOR_CLASS_MEDIUM)
-					str = "Medium"
+					str = "中型"
 				if(ARMOR_CLASS_HEAVY)
-					str = "Heavy"
-			inspec += "\n<b>ARMOR CLASS:</b> [str]"
+					str = "重型"
+			inspec += "\n<b>护甲等级：</b> [str]"
 
 		var/output = "[inspec.Join()]"
 		if(!usr.client.prefs.no_examine_blocks)
@@ -768,54 +768,54 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 /obj/item/proc/get_hover_examine_stat_lines(mob/user, self_examine = FALSE)
 	var/list/lines = list()
 	if(minstr)
-		lines += "<b>MIN.STR:</b> [minstr]"
+		lines += "<b>最低力量：</b> [minstr]"
 	if(minstr_req)
-		lines += "<b>NO HALVING ON WIELD</b>"
+		lines += "<b>双手持握时最低力量要求不减半</b>"
 	if(force)
-		lines += "<b>FORCE:</b> [get_force_string(force)]"
+		lines += "<b>力度：</b> [get_force_string(force)]"
 	if(gripped_intents && force_wielded)
-		lines += "<b>WIELDED FORCE:</b> [get_force_string(force_wielded)]"
+		lines += "<b>双手力度：</b> [get_force_string(force_wielded)]"
 	if(wbalance)
 		var/balance_text = ""
 		if(wbalance == WBALANCE_HEAVY)
-			balance_text = "Heavy"
+			balance_text = "沉重"
 		if(wbalance == WBALANCE_SWIFT)
-			balance_text = "Swift"
+			balance_text = "迅捷"
 		if(balance_text)
-			lines += "<b>BALANCE:</b> [balance_text]"
+			lines += "<b>平衡：</b> [balance_text]"
 	if(wlength != WLENGTH_NORMAL)
 		var/length_text = ""
 		switch(wlength)
 			if(WLENGTH_SHORT)
-				length_text = "Short"
+				length_text = "短"
 			if(WLENGTH_LONG)
-				length_text = "Long"
+				length_text = "长"
 			if(WLENGTH_GREAT)
-				length_text = "Great"
+				length_text = "巨型"
 		if(length_text)
-			lines += "<b>LENGTH:</b> [length_text]"
+			lines += "<b>长度：</b> [length_text]"
 	var/shaft_text = get_blade_dulling_text(src, verbose = TRUE)
 	if(shaft_text)
-		lines += "<b>SHAFT:</b> [html_encode(shaft_text)]"
+		lines += "<b>柄身：</b> [html_encode(shaft_text)]"
 	if(gripped_intents)
-		lines += "<b>TWO-HANDED</b>"
+		lines += "<b>双手武器</b>"
 	if(twohands_required)
-		lines += "<b>BULKY</b>"
+		lines += "<b>笨重</b>"
 	if(can_parry)
-		lines += "<b>DEFENSE:</b> [wdefense_dynamic]"
+		lines += "<b>防御：</b> [wdefense_dynamic]"
 	if(max_blade_int)
 		var/blade_percent = round(((blade_int / max_blade_int) * 100), 1)
-		lines += "<b>SHARPNESS:</b> [blade_percent]% ([blade_int])"
+		lines += "<b>锋锐度：</b> [blade_percent]% ([blade_int])"
 	if(associated_skill && associated_skill.name)
-		lines += "<b>SKILL:</b> [html_encode(associated_skill.name)]"
+		lines += "<b>技能：</b> [html_encode(associated_skill.name)]"
 	if(intdamage_factor != 1 && force >= 5)
-		lines += "<b>INTEGRITY DAMAGE:</b> [intdamage_factor * 100]%"
+		lines += "<b>完整度伤害：</b> [intdamage_factor * 100]%"
 	if(demolition_mod != 1 && force >= 5)
-		lines += "<b>ANTI-OBJECT MOD:</b> [demolition_mod * 100]%"
+		lines += "<b>对物修正：</b> [demolition_mod * 100]%"
 	if(self_examine)
 		var/true_durability = get_true_durability_percent_text()
 		if(true_durability)
-			lines += "<b>Durability:</b> [true_durability]"
+			lines += "<b>耐久：</b> [true_durability]"
 	return lines
 
 /obj/item/proc/get_hover_examine_html(mob/user, self_examine = FALSE)
@@ -827,7 +827,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(length(stat_lines))
 		sections += stat_lines.Join("<br>")
 	if(original_name && original_name != name)
-		sections += "<font color='#888888'>Originally: [html_encode(original_name)]</font>"
+		sections += "<font color='#888888'>原名：[html_encode(original_name)]</font>"
 	return sections.Join("<br>")
 
 
@@ -850,14 +850,14 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	if(twohands_required)
 		if(user.get_num_arms() < 2)
-			to_chat(user, span_warning("[src] is too bulky to carry in one hand!"))
+			to_chat(user, span_warning("[src]太过笨重，没法单手拿起！"))
 			return
 		var/obj/item/twohanded/required/H
 		H = user.get_inactive_held_item()
 		if(get_dist(src,user) > 1)
 			return
 		if(H != null)
-			to_chat(user, span_warning("[src] is too bulky to carry in one hand!"))
+			to_chat(user, span_warning("[src]太过笨重，没法单手拿起！"))
 			return
 
 	if(w_class == WEIGHT_CLASS_GIGANTIC)
@@ -875,9 +875,9 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 		if(can_handle_hot)
 			extinguish()
-			user.visible_message(span_warning("[user] puts out the fire on [src]."))
+			user.visible_message(span_warning("[user]扑灭了[src]上的火。"))
 		else
-			user.visible_message(span_warning("[user] burns [user.p_their()] hand putting out the fire on [src]!"))
+			user.visible_message(span_warning("[user]在扑灭[src]上的火时烧伤了[user.p_their()]手！"))
 			extinguish()
 			var/obj/item/bodypart/affecting = C.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
 			if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
@@ -888,7 +888,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		var/mob/living/carbon/C = user
 		if(istype(C))
 			if(!C.gloves || (!(C.gloves.resistance_flags & (UNACIDABLE|ACID_PROOF))))
-				to_chat(user, span_warning("The acid on [src] burns my hand!"))
+				to_chat(user, span_warning("[src]上的酸液灼伤了我的手！"))
 				var/obj/item/bodypart/affecting = C.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
 				if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
 					C.update_damage_overlays()
@@ -939,10 +939,10 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 // afterattack() and attack() prototypes moved to _onclick/item_attack.dm for consistency
 
-/obj/item/proc/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
+/obj/item/proc/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "攻击", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	SEND_SIGNAL(src, COMSIG_ITEM_HIT_REACT, args)
 	if(prob(final_block_chance))
-		owner.visible_message(span_danger("[owner] blocks [attack_text] with [src]!"))
+		owner.visible_message(span_danger("[owner]用[src]挡下了[attack_text]！"))
 		return 1
 	return 0
 
@@ -1067,7 +1067,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(V_lord && V_lord.generation >= GENERATION_METHUSELAH)
 			return
 
-		to_chat(M, span_userdanger("I can't pick up the silver, it is my BANE!"))
+		to_chat(M, span_userdanger("我碰不了白银，它是我的克星！"))
 		M.Knockdown(10)
 		M.Paralyze(10)
 		M.adjustFireLoss(25)
@@ -1078,12 +1078,12 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	//	user.add_stress(/datum/stressevent/blessed_weapon)
 	if(twohands_required)
 		if(!disable_warning)
-			to_chat(M, span_warning("[src] is too bulky to carry with anything but my hands!"))
+			to_chat(M, span_warning("[src]太过笨重，除了双手外没法用别的方式拿起！"))
 		return 0
 	if(!M)
 		return FALSE
 	if(HAS_TRAIT(M, TRAIT_CHUNKYFINGERS) && (!equipper || equipper == M) && type != /obj/item/grabbing/bite) //If a zombie's trying to put something on without assistance that's not a bite
-		to_chat(M, span_warning("...What?"))
+		to_chat(M, span_warning("……什么？"))
 		return FALSE
 
 	return M.can_equip(src, slot, disable_warning, bypass_equip_delay_self)
@@ -1091,7 +1091,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 /obj/item/verb/verb_pickup()
 	set src in oview(1)
 	set hidden = 1
-	set name = "Pick up"
+	set name = "拾取"
 
 	if(usr.incapacitated() || !Adjacent(usr))
 		return
@@ -1124,11 +1124,11 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	if(M.is_eyes_covered())
 		// you can't stab someone in the eyes wearing a mask!
-		to_chat(user, span_warning("You're going to need to remove [M.p_their()] eye protection first!"))
+		to_chat(user, span_warning("我得先把[M.p_their()]的护眼装备摘掉！"))
 		return
 
 	if(isbrain(M))
-		to_chat(user, span_warning("I cannot locate any organic eyes on this brain!"))
+		to_chat(user, span_warning("我在这颗脑子上找不到任何有机眼球！"))
 		return
 
 	add_fingerprint(user)
@@ -1138,12 +1138,12 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	user.do_attack_animation(M)
 
 	if(M != user)
-		M.visible_message(span_danger("[user] has stabbed [M] in the eye with [src]!"), \
-							span_danger("[user] stabs you in the eye with [src]!"))
+		M.visible_message(span_danger("[user]用[src]刺中了[M]的眼睛！"), \
+							span_danger("[user]用[src]刺中了你的眼睛！"))
 	else
 		user.visible_message( \
-			span_danger("[user] has stabbed [user.p_them()]self in the eyes with [src]!"), \
-			span_danger("I stab myself in the eyes with [src]!") \
+			span_danger("[user]用[src]刺中了[user.p_them()]自己的眼睛！"), \
+			span_danger("我用[src]刺中了自己的眼睛！") \
 		)
 	if(is_human_victim)
 		var/mob/living/carbon/human/U = M
@@ -1152,7 +1152,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	else
 		M.take_bodypart_damage(7)
 
-	log_combat(user, M, "attacked", "[name]", "(INTENT: [uppertext(user.used_intent)])")
+	log_combat(user, M, "攻击", "血族始祖", "(INTENT: [uppertext(user.used_intent)])")
 
 	var/obj/item/organ/eyes/eyes = M.getorganslot(ORGAN_SLOT_EYES)
 	if (!eyes)
@@ -1162,20 +1162,20 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(eyes.damage >= 10)
 		M.adjust_blurriness(15)
 		if(M.stat != DEAD)
-			to_chat(M, span_danger("My eyes start to bleed profusely!"))
+			to_chat(M, span_danger("我的眼睛开始大量流血！"))
 		if(!(HAS_TRAIT(M, TRAIT_BLIND) || HAS_TRAIT(M, TRAIT_NEARSIGHT)))
-			to_chat(M, span_danger("I become nearsighted!"))
+			to_chat(M, span_danger("我变得近视了！"))
 		M.become_nearsighted(EYE_DAMAGE)
 		if(prob(50))
 			if(M.stat != DEAD)
 				if(M.drop_all_held_items())
-					to_chat(M, span_danger("I drop what I'm holding and clutch at my eyes!"))
+					to_chat(M, span_danger("我丢下手里的东西，死死捂住了眼睛！"))
 			M.adjust_blurriness(10)
 			M.Unconscious(20)
 			M.Paralyze(40)
 		if (prob(eyes.damage - 10 + 1))
 			M.become_blind(EYE_DAMAGE)
-			to_chat(M, span_danger("I go blind!"))
+			to_chat(M, span_danger("我失明了！"))
 
 /obj/item/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	if(hit_atom && !QDELETED(hit_atom))
@@ -1382,7 +1382,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 /obj/item/proc/ignition_effect(atom/A, mob/user)
 	if(get_temperature())
-		. = "<span class='notice'>[user] lights [A] with [src].</span>"
+		. = "<span class='notice'>[user]用[src]点燃了[A]。</span>"
 	else
 		. = ""
 
@@ -1403,7 +1403,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		// Override for children that want more than 1 ash per item (Bundle as pseudo-stack)
 		for(var/i in 1 to amount)
 			var/obj/item/ash/A = new ash_type(T)
-			A.desc += "\nLooks like this used to be \an [name] some time ago."
+			A.desc += "\n这看起来曾经是[name]。"
 		..()
 
 /obj/item/acid_melt()
@@ -1432,19 +1432,19 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 /obj/item/proc/get_force_string(force)
 	switch(force)
 		if(0 to 9)
-			return "Puny"
+			return "孱弱"
 		if(10 to 14)
-			return "Weak"
+			return "轻弱"
 		if(15 to 19)
-			return "Modest"
+			return "普通"
 		if(20 to 24)
-			return "Fine"
+			return "精良"
 		if(25 to 29)
-			return "Great"
+			return "强劲"
 		if(30 to 35)
-			return "Grand"
+			return "卓越"
 		else
-			return "Mighty"
+			return "惊世"
 
 /obj/item/MouseEntered(location, control, params)
 	. = ..()
@@ -1618,18 +1618,18 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 /obj/item/proc/can_wield_two_handed(mob/living/carbon/user)
 	if(user.get_inactive_held_item())
-		to_chat(user, span_warning("I need a free hand first."))
+		to_chat(user, span_warning("我得先空出一只手。"))
 		return FALSE
 	if(user.get_num_arms() < 2)
-		to_chat(user, span_warning("I don't have enough hands."))
+		to_chat(user, span_warning("我的手不够用。"))
 		return FALSE
 	if (obj_broken)
-		to_chat(user, span_warning("It's completely broken."))
+		to_chat(user, span_warning("它已经彻底坏了。"))
 		return FALSE
 	if (istype(src, /obj/item/contraption))
 		var/obj/item/contraption/i = src
 		if (i.current_charge <= 0)
-			to_chat(user, span_warning("Not charged."))
+			to_chat(user, span_warning("尚未充能。"))
 			return FALSE
 	return TRUE
 
@@ -1638,7 +1638,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(!wielded)
 			return
 		if(user && show_message)
-			to_chat(user, span_notice("I drop [src]."))
+			to_chat(user, span_notice("我放下了[src]。"))
 		show_message = FALSE
 	if(!clear_grip_state())
 		return
@@ -1649,9 +1649,9 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	else
 		user.update_inv_hands()
 	if(show_message)
-		to_chat(user, "<span class='notice'>I wield [src] normally.</span>")
+		to_chat(user, "<span class='notice'>我将[src]恢复为正常持握。</span>")
 	if(show_balloon)
-		show_altgrip_balloon(user, "normal grip")
+		show_altgrip_balloon(user, "常规握法")
 	if(user.get_active_held_item() == src)
 		user.update_a_intents()
 	return
@@ -1720,7 +1720,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	update_wdefense_dynamic()
 	update_transform()
 	if(show_message)
-		to_chat(user, span_notice("I wield [src] with both hands."))
+		to_chat(user, span_notice("我双手握住了[src]。"))
 	if(!wieldsound)
 		playsound(loc, pick('sound/combat/weaponr1.ogg','sound/combat/weaponr2.ogg'), 100, TRUE)
 	if(twohands_required)
@@ -1760,62 +1760,62 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(C.armor)
 			var/datum/armor/def_armor = C.armor
 			if(!def_armor.blunt && !def_armor.slash && !def_armor.stab && !def_armor.piercing)
-				str += "<b>NO ARMOR!</b>"
+				str += "<b>没有护甲！</b>"
 			else
-				var/defense = "[SPAN_TOOLTIP("Each tier increases effective HP of the armor by 20%. Absorbed attacks never reach HP. The armor must be broken first.", "<u><b>ABSORB:</b></u>")] [colorgrade_rating("BLUNT", def_armor.blunt, elaborate = TRUE, max_tier = 5)]"
+				var/defense = "[SPAN_TOOLTIP("各等级提高护甲承受对应打击的有效耐久。被吸收的攻击不会造成生命伤害，必须先击破护甲。", "<u><b>吸收：</b></u>")] [colorgrade_rating("钝击", def_armor.blunt, elaborate = TRUE, max_tier = 5)]"
 				defense += "<br>"
-				defense += "[SPAN_TOOLTIP("Each tier reduces damage by 20% of base. Reduced damage still reaches HP. Armor absorbs what was blocked.", "<u><b>REDUCE:</b></u>")] [colorgrade_rating("BURN", def_armor.fire, elaborate = TRUE, max_tier = 5)]"
-				defense += " | [colorgrade_rating("ACID", def_armor.acid, elaborate = TRUE, max_tier = 5)]"
+				defense += "[SPAN_TOOLTIP("护甲等级越高，伤害减免越强。减免后的伤害仍会伤及生命，护甲承受被挡住的部分。", "<u><b>减免：</b></u>")] [colorgrade_rating("灼烧", def_armor.fire, elaborate = TRUE, max_tier = 5)]"
+				defense += " | [colorgrade_rating("酸蚀", def_armor.acid, elaborate = TRUE, max_tier = 5)]"
 				defense += "<br>"
 				defense += "[SPAN_TOOLTIP("Blocks attacks below this tier (Armor takes all damage). Same tier penetrates 20% (80% goes to armor). Exceeding tier penetrates fully.", "<u><b>BLOCK:</b></u>")] "
-				defense += "[colorgrade_rating("SLASH", def_armor.slash, elaborate = TRUE)] | "
-				defense += "[colorgrade_rating("STAB", def_armor.stab, elaborate = TRUE)] | "
-				defense += "[colorgrade_rating("PIERCING", def_armor.piercing, elaborate = TRUE)]"
+				defense += "[colorgrade_rating("劈砍", def_armor.slash, elaborate = TRUE)] | "
+				defense += "[colorgrade_rating("刺击", def_armor.stab, elaborate = TRUE)] | "
+				defense += "[colorgrade_rating("穿刺", def_armor.piercing, elaborate = TRUE)]"
 				str += "[defense]<br>"
 		else
-			str += "<b>NO ARMOR!</b>"
+			str += "<b>没有护甲！</b>"
 	return str
 
 /obj/item/proc/temp_to_cold_tier(temp)
 	if(isnull(temp))
-		return "None"
+		return "无"
 
 	if(temp < BODYTEMP_COLD_LEVEL_ONE_MAX)
-		return "<font color='#023E8A'>Very Cold</font>"
+		return "<font color='#023E8A'>非常寒冷</font>"
 	if(temp < BODYTEMP_NORMAL_MIN)
-		return "<font color='#99e6ff'>Cold</font>"
+		return "<font color='#99e6ff'>寒冷</font>"
 
-	return "None"
+	return "无"
 
 /obj/item/proc/temp_to_heat_tier(temp)
 	if(isnull(temp))
-		return "None"
+		return "无"
 
 	if(temp > BODYTEMP_HEAT_LEVEL_ONE_MAX)
-		return "<font color='#DC143C?'>Very Hot</font>"
+		return "<font color='#DC143C?'>非常炎热</font>"
 	if(temp > BODYTEMP_NORMAL_MAX)
-		return "<font color='#ffff00'>Hot</font>"
+		return "<font color='#ffff00'>炎热</font>"
 
-	return "None"
+	return "无"
 
 /obj/item/proc/thermal_flags_to_zone_text(flags)
 	if(!flags)
-		return "None"
+		return "无"
 
 	var/list/parts = list()
 
-	if(flags & HEAD) parts += "Head"
-	if(flags & CHEST) parts += "Chest"
-	if(flags & GROIN) parts += "Groin"
-	if(flags & ARMS) parts += "Arms"
-	if(flags & LEGS) parts += "Legs"
-	if(flags & HANDS) parts += "Hands"
-	if(flags & FEET) parts += "Feet"
+	if(flags & HEAD) parts += "头部"
+	if(flags & CHEST) parts += "胸部"
+	if(flags & GROIN) parts += "裆部"
+	if(flags & ARMS) parts += "手臂"
+	if(flags & LEGS) parts += "腿部"
+	if(flags & HANDS) parts += "手部"
+	if(flags & FEET) parts += "脚部"
 
 	if(!length(parts))
-		return "Unknown"
+		return "未知"
 
-	return english_list(parts)
+	return english_list(parts, and_text = "和", comma_text = "、")
 /obj/item/clothing/proc/thermal_examine_text()
 	var/list/out = list()
 
@@ -1824,7 +1824,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		var/tier = temp_to_cold_tier(src.min_cold_protection_temperature)
 		var/covers = thermal_flags_to_zone_text(src.cold_protection)
 
-		out += "<b>COLD RESISTANCE:</b> [tier]"
+		out += "<b>耐寒：</b> [tier]"
 		out += " | Insulates: [covers]"
 
 	// --- Heat ---
@@ -1832,13 +1832,13 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		var/tier = temp_to_heat_tier(src.max_heat_protection_temperature)
 		var/covers = thermal_flags_to_zone_text(src.heat_protection)
 
-		out += "<b>HEAT RESISTANCE:</b> [tier]"
+		out += "<b>耐热：</b> [tier]"
 		out += " | Insulates: [covers]"
 
 	if(!length(out))
 		return null
 
-	return "<br><b><u>THERMAL RESISTANCE:</u></b><br>" + jointext(out, "<br>")
+	return "<br><b><u>温度抗性：</u></b><br>" + jointext(out, "<br>")
 
 /obj/item/obj_break(damage_flag)
 	lose_polish()//call to remove polish bonus on armor/weaps when broken. lives in /blacksmith/items.dm
@@ -1852,7 +1852,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(altgripped || wielded)
 		ungrip(M, FALSE)
 
-	to_chat(M, "\The [src] BREAKS...!")
+	to_chat(M, "[src]碎裂了……！")
 
 /obj/item/obj_fix(mob/user, full_repair = TRUE)
 	..()
@@ -1906,7 +1906,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	. = ..()
 	// Show original name if item was renamed
 	if(original_name && original_name != name)
-		. += "<span style='font-size:0.8em;color:#888'>Originally: [original_name]</span>"
+		. += "<span style='font-size:0.8em;color:#888'>原名：[original_name]</span>"
 	if(isliving(user))
 		var/mob/living/L = user
 		if(L.STAINT < 9)
@@ -1914,12 +1914,12 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(isnull(anvilrepair) && isnull(sewrepair))
 		return .
 	else
-		var/str = "This object can be repaired using "
+		var/str = "这个物品可以使用"
 		if(anvilrepair)
 			var/datum/skill/S = anvilrepair		//Should only ever be a skill or null
-			str += "<b>[initial(S.name)]</b> and a hammer."
+			str += "<b>[initial(S.name)]</b>和一把锤子修理。"
 		if(sewrepair)
-			str += "<b>Sewing</b> and a needle."
+			str += "<b>缝纫</b>和一根针修理。"
 		str = span_info(str)
 		. += str
 

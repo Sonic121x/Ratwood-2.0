@@ -174,7 +174,7 @@ GLOBAL_LIST_INIT(drowraider_aggro, world.file2list("strings/rt/drowaggrolines.tx
 /mob/living/carbon/human/species/elf/dark/drowraider/scourge/after_creation()
 	..()
 	job = "Drow Scourge"
-	real_name = "[real_name] [pick("the Scourge", "the Lasher", "the Venomed", "the Spiderkin", "the Flenser")]"
+	real_name = "[real_name] [pick("灾厄使者", "鞭笞者", "毒染者", "蜘蛛之裔", "剥皮者")]"
 	name = real_name
 	ADD_TRAIT(src, TRAIT_BADTRAINER, TRAIT_GENERIC)
 	equipOutfit(new /datum/outfit/job/roguetown/human/species/elf/dark/drowraider)

@@ -6,9 +6,9 @@
 
 /datum/laws_menu
 	/// Announcement header when laws are changed
-	var/change_announcement_text = "LAWS AMENDED"
+	var/change_announcement_text = "法令修订"
 	/// Announcement header when all laws are purged
-	var/purge_announcement_text = "LAWS PURGED"
+	var/purge_announcement_text = "法令废除"
 	/// Maximum number of laws permitted
 	var/max_laws = 20
 
@@ -22,7 +22,7 @@
 /datum/laws_menu/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "LawsMenu", "Laws of the Land")
+		ui = new(user, src, "LawsMenu", "领地法令")
 		ui.open()
 
 /datum/laws_menu/ui_static_data(mob/user)
@@ -64,7 +64,7 @@
 
 			// Check if anything actually changed
 			if(lists_equal(clean_laws, GLOB.laws_of_the_land))
-				to_chat(usr, span_notice("The laws remain unchanged."))
+				to_chat(usr, span_notice("法令没有变化。"))
 				return FALSE
 
 			GLOB.laws_of_the_land = clean_laws
@@ -78,9 +78,9 @@
 				for(var/i in 1 to length(GLOB.laws_of_the_land))
 					law_lines += "[i]. [GLOB.laws_of_the_land[i]]"
 				var/law_text = jointext(law_lines, "\n")
-				priority_announce("[ruler_title] [ruler_name] has modified the laws of the land.\n\n[law_text]", change_announcement_text, pick('sound/misc/new_law.ogg', 'sound/misc/new_law2.ogg'), "Captain")
+				priority_announce("[ruler_title] [ruler_name]修订了领地法令。\n\n[law_text]", change_announcement_text, pick('sound/misc/new_law.ogg', 'sound/misc/new_law2.ogg'), "Captain")
 			else
-				priority_announce("All laws of the land have been purged!", purge_announcement_text, 'sound/misc/lawspurged.ogg', "Captain")
+				priority_announce("领地的所有法令均已废除！", purge_announcement_text, 'sound/misc/lawspurged.ogg', "Captain")
 
 			return TRUE
 
@@ -89,7 +89,7 @@
 			if(!length(GLOB.laws_of_the_land))
 				return FALSE
 			GLOB.laws_of_the_land = list()
-			priority_announce("All laws of the land have been purged!", purge_announcement_text, 'sound/misc/lawspurged.ogg', "Captain")
+			priority_announce("领地的所有法令均已废除！", purge_announcement_text, 'sound/misc/lawspurged.ogg', "Captain")
 			return TRUE
 
 /datum/laws_menu/ui_state(mob/user)

@@ -25,12 +25,12 @@
 /datum/proc/vv_get_dropdown()
 	. = list()
 	VV_DROPDOWN_OPTION("", "---")
-	VV_DROPDOWN_OPTION(VV_HK_CALLPROC, "Call Proc")
-	VV_DROPDOWN_OPTION(VV_HK_MARK, "Mark Object")
-	VV_DROPDOWN_OPTION(VV_HK_DELETE, "Delete")
-	VV_DROPDOWN_OPTION(VV_HK_EXPOSE, "Show VV To Player")
-	VV_DROPDOWN_OPTION(VV_HK_ADDCOMPONENT, "Add Component/Element")
-	VV_DROPDOWN_OPTION(VV_HK_MODIFY_TRAITS, "Modify Traits")
+	VV_DROPDOWN_OPTION(VV_HK_CALLPROC, "调用过程")
+	VV_DROPDOWN_OPTION(VV_HK_MARK, "标记对象")
+	VV_DROPDOWN_OPTION(VV_HK_DELETE, "删除")
+	VV_DROPDOWN_OPTION(VV_HK_EXPOSE, "向玩家展示变量查看器")
+	VV_DROPDOWN_OPTION(VV_HK_ADDCOMPONENT, "添加组件/元素")
+	VV_DROPDOWN_OPTION(VV_HK_MODIFY_TRAITS, "修改特性")
 
 //This proc is only called if everything topic-wise is verified. The only verifications that should happen here is things like permission checks!
 //href_list is a reference, modifying it in these procs WILL change the rest of the proc in topic.dm of admin/view_variables!

@@ -7,8 +7,8 @@
 #define TRAIT_CITIZENRY_LETTER "citizenry_letter"
 
 /obj/item/citizenry_letter
-	name = "Letter of Citizenry"
-	desc = "A sealed letter from the Nerve Master, bearing the Steward's signature."
+	name = "市民资格文书"
+	desc = "一封来自神经主的密封文书，上面有宫廷总管的签名。"
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "paper"
 	w_class = WEIGHT_CLASS_TINY
@@ -19,23 +19,23 @@
 
 /obj/item/citizenry_letter/examine(mob/user)
 	. = ..()
-	var/signature = issuer_name || "the Nerve Master"
+	var/signature = issuer_name || "神经主"
 	var/year = issuer_year || CALENDAR_EPOCH_YEAR
-	. += span_info("The letter reads: <i>\"Be it known to all who read this writ, that the bearer, upon claiming this letter, is enrolled as a Citizen of the Vale and raised to the station of Burgher, bearing the protections and obligations attending that rank under the Golden Bull of Kingsfield.\"</i>")
-	. += span_info("<i>Signed in the year [year], [signature].</i>")
-	. += span_notice("Left-click in hand to claim its rights.")
+	. += span_info("文书上写着：<i>\"凡阅此文书者皆应知悉：持有者一经接受本文书，即获登记为谷地公民，并晋为市民，享有《王田金玺诏书》赋予该身份的保障，同时承担相应义务。\"</i>")
+	. += span_info("<i>签署于 [year] 年，签署人：[signature]。</i>")
+	. += span_notice("将其拿在手中并点击鼠标左键，即可接受文书授予的权利。")
 
 /obj/item/citizenry_letter/attack_self(mob/living/carbon/human/user)
 	if(!istype(user))
 		return ..()
 	if(HAS_TRAIT(user, TRAIT_RESIDENT))
-		to_chat(user, span_warning("I am already a Citizen of the Vale."))
+		to_chat(user, span_warning("我已经是谷地公民了。"))
 		return
 	if(user.job == "Steward" || user.job == "Grand Duke")
-		to_chat(user, span_warning("This letter is meant for another. I must hand it over."))
+		to_chat(user, span_warning("这封文书是给别人的，我必须交给对方。"))
 		return
-	user.visible_message(span_notice("[user] unfolds the letter and accepts its seal."), \
-		span_notice("I claim the rights of Citizenry and Burghership granted by this letter."))
+	user.visible_message(span_notice("[user]展开文书，接受了印玺授予的资格。"), \
+		span_notice("我接受本文书授予的公民权与市民资格。"))
 	ADD_TRAIT(user, TRAIT_RESIDENT, TRAIT_CITIZENRY_LETTER)
 	playsound(get_turf(user), 'sound/misc/gold_license.ogg', 60, FALSE, -1)
 	qdel(src)

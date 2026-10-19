@@ -1,11 +1,11 @@
 // 'basic' language; spoken by default.
 /datum/language/common
-	name = "Imperial"
+	name = "帝国语"
 	desc = ""
-	speech_verb = "says"
-	whisper_verb = "whispers"
-	exclaim_verb = "yells"
-	ask_verb = "asks"
+	speech_verb = "说道"
+	whisper_verb = "低语"
+	exclaim_verb = "大喊"
+	ask_verb = "问道"
 	key = "i"
 	default_priority = 100
 //	spans = list(SPAN_HUMAN)

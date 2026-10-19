@@ -11,40 +11,40 @@ GLOBAL_LIST_INIT(towner_smith_caravan_factions, list(
 
 GLOBAL_LIST_INIT(towner_smith_caravan_varieties, list(
 	CARAVAN_VARIETY_IRON = list(
-		"label" = "Iron & Steel",
-		"blurb" = "Iron and steel ingots.",
+		"label" = "铁与钢",
+		"blurb" = "铁锭与钢锭。",
 		"tiers" = list(
 			TOWNER_POSTING_TIER_MEDIUM = list(
-				list("path" = /obj/item/ingot/iron, "min" = 11, "max" = 15, "noun" = "iron"),
-				list("path" = /obj/item/ingot/steel, "min" = 5, "max" = 8, "noun" = "steel"),
+				list("path" = /obj/item/ingot/iron, "min" = 11, "max" = 15, "noun" = "铁锭"),
+				list("path" = /obj/item/ingot/steel, "min" = 5, "max" = 8, "noun" = "钢锭"),
 			),
 			TOWNER_POSTING_TIER_HARD = list(
-				list("path" = /obj/item/ingot/iron, "min" = 18, "max" = 24, "noun" = "iron"),
-				list("path" = /obj/item/ingot/steel, "min" = 10, "max" = 14, "noun" = "steel"),
+				list("path" = /obj/item/ingot/iron, "min" = 18, "max" = 24, "noun" = "铁锭"),
+				list("path" = /obj/item/ingot/steel, "min" = 10, "max" = 14, "noun" = "钢锭"),
 			),
 		),
 	),
 	CARAVAN_VARIETY_BRONZE = list(
-		"label" = "Bronze",
-		"blurb" = "Cast bronze ingots.",
+		"label" = "青铜",
+		"blurb" = "铸造的青铜锭。",
 		"tiers" = list(
 			TOWNER_POSTING_TIER_MEDIUM = list(
-				list("path" = /obj/item/ingot/bronze, "min" = 8, "max" = 10, "noun" = "bronze"),
+				list("path" = /obj/item/ingot/bronze, "min" = 8, "max" = 10, "noun" = "青铜锭"),
 			),
 			TOWNER_POSTING_TIER_HARD = list(
-				list("path" = /obj/item/ingot/bronze, "min" = 14, "max" = 16, "noun" = "bronze"),
+				list("path" = /obj/item/ingot/bronze, "min" = 14, "max" = 16, "noun" = "青铜锭"),
 			),
 		),
 	),
 	CARAVAN_VARIETY_BULLION = list(
-		"label" = "Bullion",
-		"blurb" = "A strongbox of gold bullion.",
+		"label" = "金锭",
+		"blurb" = "装满一保险箱的金锭。",
 		"tiers" = list(
 			TOWNER_POSTING_TIER_MEDIUM = list(
-				list("path" = /obj/item/ingot/gold, "min" = 3, "max" = 4, "noun" = "gold"),
+				list("path" = /obj/item/ingot/gold, "min" = 3, "max" = 4, "noun" = "金锭"),
 			),
 			TOWNER_POSTING_TIER_HARD = list(
-				list("path" = /obj/item/ingot/gold, "min" = 6, "max" = 7, "noun" = "gold"),
+				list("path" = /obj/item/ingot/gold, "min" = 6, "max" = 7, "noun" = "金锭"),
 			),
 		),
 	),
@@ -57,7 +57,7 @@ GLOBAL_LIST_INIT(towner_caravan_tier_tp, list(
 
 /datum/quest/kill/recovery/towner/smith_caravan
 	quest_type = QUEST_TOWNER_SMITH_CARAVAN
-	parcel_label = "recovered ingots"
+	parcel_label = "失落的锭块"
 
 /datum/quest/kill/recovery/towner/smith_caravan/get_eligible_regions()
 	return GLOB.towner_smith_caravan_regions
@@ -72,19 +72,19 @@ GLOBAL_LIST_INIT(towner_caravan_tier_tp, list(
 	if(title)
 		return title
 	if(quest_giver_name)
-		return "[quest_giver_name]'s Caravan"
-	return "A Caravan Gone Missing"
+		return "[quest_giver_name]的商队"
+	return "失踪的商队"
 
 /datum/quest/kill/recovery/towner/smith_caravan/get_objective_text()
-	return "Clear the wreck and carry the strongbox back to [quest_giver_name || "the smith"]."
+	return "清理残骸，并把保险箱带回给[quest_giver_name || "铁匠"]。"
 
 /datum/quest/kill/recovery/towner/smith_caravan/get_writ_intro()
-	var/region = target_spawn_area || "the wilds"
-	var/raiders = faction ? faction.name_plural : "brigands"
-	return "[quest_giver_name || "The smith"]'s wagon was lost on the road within [region], taken by [raiders]. They call for hands to clear the wreck and bring the strongbox home."
+	var/region = target_spawn_area || "荒野"
+	var/raiders = faction ? faction.name_plural : "匪帮"
+	return "[quest_giver_name || "铁匠"]的货车在[region]的路上失踪，被[raiders]夺去。他们呼唤人手去清理残骸，并把保险箱带回家。"
 
 /datum/quest/kill/recovery/towner/smith_caravan/get_parcel_desc()
-	return "A parcel magickally sealed for [quest_giver_name] - only they can open it."
+	return "为[quest_giver_name]以魔法封存的包裹——唯其本人可开启。"
 
 /datum/quest/kill/recovery/towner/smith_caravan/pick_region_faction_for(datum/threat_region/TR)
 	var/list/weights = list()

@@ -1,7 +1,7 @@
 /datum/advclass/blacksmith
-	name = "Blacksmith"
-	tutorial = "A skilled blacksmith, able to forge capable weapons for warriors in the bog, \
-	only after building a forge for themselves of course"
+	name = "铁匠"
+	tutorial = "你是一名手艺娴熟的铁匠，能为沼泽中的战士打造称手的兵器，\
+	当然，前提是你得先给自己搭起一座铁匠炉。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/adventurer/blacksmith
@@ -60,18 +60,18 @@
 
 	if(H.mind)
 		var/molds = list(
-			"Iron sword mold" = /obj/item/mold/sword,
-			"Iron axe mold" = /obj/item/mold/axe,
-			"Iron mace mold" = /obj/item/mold/mace,
-			"Iron knife mold" = /obj/item/mold/knife,
-			"Iron polearm mold" = /obj/item/mold/polearm,
-			"Iron plate" = /obj/item/mold/plate
+			"剑刃模具" = /obj/item/mold/sword,
+			"斧刃模具" = /obj/item/mold/axe,
+			"锤头模具" = /obj/item/mold/mace,
+			"刀片模具" = /obj/item/mold/knife,
+			"长柄刃模具" = /obj/item/mold/polearm,
+			"甲片模具" = /obj/item/mold/plate
 		)
 		var/mold_names = list()
 		for (var/name in molds)
 			mold_names += name
 		for (var/i = 1 to 2)
-			var/mold_choice = input(H, "Choose your starting molds", "Select") as anything in mold_names
+			var/mold_choice = input(H, "选择你的起始模具", "选择") as anything in mold_names
 			if (i == 1)
 				l_hand = molds[mold_choice]
 			else

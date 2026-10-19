@@ -191,10 +191,10 @@
 	. = ..()
 	if(G.trigger_guard == TRIGGER_GUARD_NORMAL)
 		if(HAS_TRAIT(src, TRAIT_CHUNKYFINGERS) || HAS_TRAIT(src, TRAIT_GNARLYDIGITS))
-			to_chat(src, span_warning("My meaty finger is much too large for the trigger guard!"))
+			to_chat(src, span_warning("我的手指太粗，伸不进扳机护圈！"))
 			return FALSE
 	if(HAS_TRAIT(src, TRAIT_NOGUNS))
-		to_chat(src, span_warning("I can't bring myself to use a ranged weapon!"))
+		to_chat(src, span_warning("我无法让自己使用远程武器！"))
 		return FALSE
 
 /mob/living/carbon/human/get_policy_keywords()
@@ -314,7 +314,7 @@
 	animate(src, alpha = 0, time = 0 SECONDS, easing = EASE_IN)
 	src.mob_timers[MT_INVISIBILITY] = world.time + timeinvis
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/mob/living/carbon/human, update_sneak_invis), TRUE), timeinvis)
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, visible_message), span_warning("[src] fades back into view."), span_notice("You become visible again.")), timeinvis)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom/movable, visible_message), span_warning("[src]的身影逐渐显现。"), span_notice("你重新显现了。")), timeinvis)
 
 /mob/living/carbon/human/proc/create_walk_to(duration, mob/living/walk_to)
 	ADD_TRAIT(src, TRAIT_MOVEMENT_BLOCKED, VAMPIRE_TRAIT)

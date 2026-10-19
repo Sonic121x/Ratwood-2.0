@@ -58,7 +58,7 @@
 		var/datum/book_entry/probe = T
 		var/nm = initial(probe.name)
 		var/cat = initial(probe.category)
-		var/label = "\[[cat]\] [nm]"
+		var/label = "\[[list("Common" = "通用", "Merchant" = "商人", "Steward" = "宫廷总管", "Underground" = "地下")[cat] || cat]\] [nm]"
 		label_to_type[label] = T
 		if(category && cat == category)
 			matching_labels += label
@@ -70,7 +70,7 @@
 	if(!length(options))
 		return
 
-	var/picked = input(user, "Which chapter would I like to read?", "The Comprehensive Guide to the [SSmapping.map_adjustment.realm_name] Economy") as null|anything in options
+	var/picked = input(user, "我想阅读哪一章？", "[SSmapping.map_adjustment.realm_name]经济全指南") as null|anything in options
 	if(!picked)
 		return
 	var/picked_type = label_to_type[picked]

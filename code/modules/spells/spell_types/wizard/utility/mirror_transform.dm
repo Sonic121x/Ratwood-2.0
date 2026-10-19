@@ -1,6 +1,6 @@
 /obj/effect/proc_holder/spell/invoked/mirror_transform  // Changed from targeted to invoked
-	name = "Mirror Transform"
-	desc = "Temporarily grants you the ability to use mirrors to change your appearance."
+	name = "镜变术"
+	desc = "暂时赋予你借助镜子改变外貌的能力。"
 	clothes_req = FALSE
 	charge_type = "recharge"
 	associated_skill = /datum/skill/magic/arcane
@@ -15,7 +15,7 @@
 	no_early_release = TRUE
 	movement_interrupt = FALSE
 	spell_tier = 1
-	invocations = list("Effingo")
+	invocations = list("镜中改形。")
 	invocation_type = "whisper"
 	hide_charge_effect = TRUE
 	charging_slowdown = 3
@@ -30,7 +30,7 @@
 		return
 
 	ADD_TRAIT(H, TRAIT_MIRROR_MAGIC, TRAIT_GENERIC)
-	H.visible_message(span_notice("[H]'s reflection shimmers briefly."), span_notice("You feel a connection to mirrors forming..."))
+	H.visible_message(span_notice("[H] 的镜中倒影短暂地摇曳了一下。"), span_notice("我感觉自己与镜面建立起了一丝联系……"))
 	
 	addtimer(CALLBACK(src, PROC_REF(remove_mirror_magic), H), 5 MINUTES)
 	return TRUE  // Return TRUE for successful cast
@@ -38,7 +38,7 @@
 /obj/effect/proc_holder/spell/invoked/mirror_transform/proc/remove_mirror_magic(mob/living/carbon/human/H)
 	if(!QDELETED(H))
 		REMOVE_TRAIT(H, TRAIT_MIRROR_MAGIC, TRAIT_GENERIC)
-		to_chat(H, span_warning("Your connection to mirrors fades away."))
+		to_chat(H, span_warning("我与镜面的联系消散了。"))
 
 /proc/perform_mirror_transform(mob/living/carbon/human/H)
 	// Handles the actual appearance changing part of the spell. For reasons unknown to man, this previously lived exclusively on the mirror object.
@@ -46,25 +46,25 @@
 		return
 	var/should_update = FALSE
 	var/force_bodypart_update = FALSE
-	var/list/choices = list("reset appearance", "hairstyle", "facial hairstyle", "accessory", "pubes", "pits", "face detail", "crest", "horns", "horn color", "ears", "ear color one", "ear color two", "tail", "tail color one", "tail color two", "tail feature", "tail feature color", "wings", "wing color one", "wing color two", "frills", "frill color", "antennas", "antenna color", "snout", "snout color", "head feature", "head feature color", "neck feature", "neck feature color", "back feature", "back feature color", "descriptors", "hair color", "facial hair color", "eye color", "skin color", "mutant color", "mutant color 2", "mutant color 3", "natural gradient", "natural gradient color", "dye gradient", "dye gradient color", "penis", "penis color", "penis color 2", "testicles", "testicles color", "breasts", "breasts color", "vagina", "vagina color", "breast size", "penis size", "testicle size")
-	var/chosen = input(H, "Change what?", "Appearance") as null|anything in choices
+	var/list/choices = list("重置外观", "发型", "胡须造型", "装饰", "阴毛", "腋毛", "面部细节", "头冠", "角", "角的颜色", "耳朵", "耳朵主色", "耳朵副色", "尾巴", "尾巴主色", "尾巴副色", "尾部特征", "尾部特征颜色", "翅膀", "翅膀主色", "翅膀副色", "颈褶", "颈褶颜色", "触角", "触角颜色", "口鼻", "口鼻颜色", "头部特征", "头部特征颜色", "颈部特征", "颈部特征颜色", "背部特征", "背部特征颜色", "外貌描述", "发色", "胡须颜色", "眼睛颜色", "肤色", "异种体色", "异种体色2", "异种体色3", "天然渐变", "天然渐变颜色", "染色渐变", "染色渐变颜色", "阴茎", "阴茎主色", "阴茎副色", "睾丸", "睾丸颜色", "乳房", "乳房颜色", "阴道", "阴道颜色", "乳房大小", "阴茎大小", "睾丸大小")
+	var/chosen = input(H, "要改变什么？", "外貌") as null|anything in choices
 
 	if(!chosen)
 		return
 
 	switch(chosen)
-		if("reset appearance")
+		if("重置外观")
 			if(!H.client || !H.client.prefs)
-				to_chat(H, span_warning("You don't have character preferences saved!"))
+				to_chat(H, span_warning("我没有保存角色外观偏好！"))
 				return
 			
 			// Verify this is the same character by checking if the preference slot's name matches
 			if(H.client.prefs.real_name != H.real_name)
-				to_chat(H, span_warning("You can only reset to the appearance of the character you are currently playing!"))
+				to_chat(H, span_warning("我只能重置为当前所玩角色的外貌！"))
 				return
 			
-			var/confirm = alert(H, "Reset your appearance to match your character preferences? This will reapply all physical features, colors, and descriptors but won't change your name, skills, or abilities.", "Reset Appearance", "Yes", "No")
-			if(confirm != "Yes")
+			var/confirm = alert(H, "要将外貌重置为角色偏好中的样子吗？这会重新应用全部外形特征、颜色与描述，但不会改变姓名、技能或能力。", "重置外貌", "是", "否")
+			if(confirm != "是")
 				return
 			
 			if(!H.client || !H.client.prefs)
@@ -72,7 +72,7 @@
 			
 			// Double-check after the alert (in case player switched slots)
 			if(H.client.prefs.real_name != H.real_name)
-				to_chat(H, span_warning("You can only reset to the appearance of the character you are currently playing!"))
+				to_chat(H, span_warning("我只能重置为当前所玩角色的外貌！"))
 				return
 			
 			// Store the original name, age, and other non-physical attributes
@@ -96,17 +96,17 @@
 			H.update_hair()
 			H.update_body_parts(TRUE)
 			
-			to_chat(H, span_notice("Your appearance has been reset to match your character preferences."))
+			to_chat(H, span_notice("我的外貌已重置为角色偏好中的样子。"))
 			should_update = TRUE
 
-		if("hairstyle")
+		if("发型")
 			var/datum/customizer_choice/bodypart_feature/hair/head/humanoid/hair_choice = CUSTOMIZER_CHOICE(/datum/customizer_choice/bodypart_feature/hair/head/humanoid)
 			var/list/valid_hairstyles = list()
 			for(var/hair_type in hair_choice.sprite_accessories)
 				var/datum/sprite_accessory/hair/head/hair = new hair_type()
 				valid_hairstyles[hair.name] = hair_type
 
-			var/new_style = input(H, "Choose your hairstyle", "Hair Styling") as null|anything in valid_hairstyles
+			var/new_style = input(H, "选择发型", "发型调整") as null|anything in valid_hairstyles
 			if(new_style)
 				var/obj/item/bodypart/head/head = H.get_bodypart(BODY_ZONE_HEAD)
 				if(head && head.bodypart_features)
@@ -137,8 +137,8 @@
 						H.update_hair()
 						should_update = TRUE
 
-		if("hair color")
-			var/new_hair_color = color_pick_sanitized(H, "Choose your hair color", "Hair Color", H.hair_color)
+		if("发色")
+			var/new_hair_color = color_pick_sanitized(H, "选择头发颜色", "头发颜色", H.hair_color)
 			if(new_hair_color)
 				var/obj/item/bodypart/head/head = H.get_bodypart(BODY_ZONE_HEAD)
 				if(head && head.bodypart_features)
@@ -171,8 +171,8 @@
 						H.update_body_parts()
 						should_update = TRUE
 
-		if("facial hair color")
-			var/new_facial_hair_color = color_pick_sanitized(H, "Choose your facial hair color", "Facial Hair Color", H.facial_hair_color)
+		if("胡须颜色")
+			var/new_facial_hair_color = color_pick_sanitized(H, "选择面部毛发颜色", "面部毛发颜色", H.facial_hair_color)
 			if(new_facial_hair_color)
 				var/obj/item/bodypart/head/head = H.get_bodypart(BODY_ZONE_HEAD)
 				if(head && head.bodypart_features)
@@ -199,8 +199,8 @@
 						head.add_bodypart_feature(new_facial)
 						should_update = TRUE
 
-		if("eye color")
-			var/new_eye_color = color_pick_sanitized(H, "Choose your eye color", "Eye Color", H.eye_color)
+		if("眼睛颜色")
+			var/new_eye_color = color_pick_sanitized(H, "选择眼睛颜色", "眼睛颜色", H.eye_color)
 			if(new_eye_color)
 				new_eye_color = sanitize_hexcolor(new_eye_color, 6, TRUE)
 				var/obj/item/organ/eyes/eyes = H.getorganslot(ORGAN_SLOT_EYES)
@@ -214,41 +214,41 @@
 				H.update_body_parts()
 				should_update = TRUE
 
-		if("skin color")
-			var/new_color = color_pick_sanitized(H, "Choose your skin color", "Skin Color", H.skin_tone)
+		if("肤色")
+			var/new_color = color_pick_sanitized(H, "选择肤色", "肤色", H.skin_tone)
 			if(new_color)
 				H.skin_tone = new_color
 				H.update_body()
 				should_update = TRUE
 
-		if("mutant color")
-			var/new_color = color_pick_sanitized(H, "Choose your mutant color", "Mutant Color", H.dna.features["mcolor"] || "#FFFFFF")
+		if("异种体色")
+			var/new_color = color_pick_sanitized(H, "选择你的突变色", "突变色", H.dna.features["mcolor"] || "#FFFFFF")
 			if(new_color)
 				H.dna.features["mcolor"] = new_color
 				H.update_body()
 				should_update = TRUE
 
-		if("mutant color 2")
-			var/new_color = color_pick_sanitized(H, "Choose your mutant color 2", "Mutant Color 2", H.dna.features["mcolor2"] || "#FFFFFF")
+		if("异种体色2")
+			var/new_color = color_pick_sanitized(H, "选择你的第二突变色", "突变色 2", H.dna.features["mcolor2"] || "#FFFFFF")
 			if(new_color)
 				H.dna.features["mcolor2"] = new_color
 				H.update_body()
 				should_update = TRUE
 
-		if("mutant color 3")
-			var/new_color = color_pick_sanitized(H, "Choose your mutant color 3", "Mutant Color 3", H.dna.features["mcolor3"] || "#FFFFFF")
+		if("异种体色3")
+			var/new_color = color_pick_sanitized(H, "选择你的第三突变色", "突变色 3", H.dna.features["mcolor3"] || "#FFFFFF")
 			if(new_color)
 				H.dna.features["mcolor3"] = new_color
 				H.update_body()
 				should_update = TRUE
 
-		if("natural gradient")
+		if("天然渐变")
 			var/datum/customizer_choice/bodypart_feature/hair/head/humanoid/hair_choice = CUSTOMIZER_CHOICE(/datum/customizer_choice/bodypart_feature/hair/head/humanoid)
 			var/list/valid_gradients = list()
 			for(var/gradient_type in GLOB.hair_gradients)
 				valid_gradients[gradient_type] = gradient_type
 
-			var/new_style = input(H, "Choose your natural gradient", "Hair Gradient") as null|anything in valid_gradients
+			var/new_style = input(H, "选择自然渐变", "头发渐变") as null|anything in valid_gradients
 			if(new_style)
 				var/obj/item/bodypart/head/head = H.get_bodypart(BODY_ZONE_HEAD)
 				if(head && head.bodypart_features)
@@ -274,8 +274,8 @@
 						head.add_bodypart_feature(new_hair)
 						should_update = TRUE
 
-		if("natural gradient color")
-			var/new_gradient_color = color_pick_sanitized(H, "Choose your natural gradient color", "Natural Gradient Color", H.hair_color)
+		if("天然渐变颜色")
+			var/new_gradient_color = color_pick_sanitized(H, "选择自然渐变颜色", "自然渐变颜色", H.hair_color)
 			if(new_gradient_color)
 				var/obj/item/bodypart/head/head = H.get_bodypart(BODY_ZONE_HEAD)
 				if(head && head.bodypart_features)
@@ -304,13 +304,13 @@
 						head.add_bodypart_feature(new_hair)
 						should_update = TRUE
 
-		if("dye gradient")
+		if("染色渐变")
 			var/datum/customizer_choice/bodypart_feature/hair/head/humanoid/hair_choice = CUSTOMIZER_CHOICE(/datum/customizer_choice/bodypart_feature/hair/head/humanoid)
 			var/list/valid_gradients = list()
 			for(var/gradient_type in GLOB.hair_gradients)
 				valid_gradients[gradient_type] = gradient_type
 
-			var/new_style = input(H, "Choose your dye gradient", "Hair Gradient") as null|anything in valid_gradients
+			var/new_style = input(H, "选择染色渐变", "头发渐变") as null|anything in valid_gradients
 			if(new_style)
 				var/obj/item/bodypart/head/head = H.get_bodypart(BODY_ZONE_HEAD)
 				if(head && head.bodypart_features)
@@ -336,8 +336,8 @@
 						head.add_bodypart_feature(new_hair)
 						should_update = TRUE
 
-		if("dye gradient color")
-			var/new_gradient_color = color_pick_sanitized(H, "Choose your dye gradient color", "Dye Gradient Color", H.hair_color)
+		if("染色渐变颜色")
+			var/new_gradient_color = color_pick_sanitized(H, "选择染色渐变颜色", "染色渐变颜色", H.hair_color)
 			if(new_gradient_color)
 				var/obj/item/bodypart/head/head = H.get_bodypart(BODY_ZONE_HEAD)
 				if(head && head.bodypart_features)
@@ -366,14 +366,14 @@
 						head.add_bodypart_feature(new_hair)
 						should_update = TRUE
 
-		if("facial hairstyle")
+		if("胡须造型")
 			var/datum/customizer_choice/bodypart_feature/hair/facial/humanoid/facial_choice = CUSTOMIZER_CHOICE(/datum/customizer_choice/bodypart_feature/hair/facial/humanoid)
 			var/list/valid_facial_hairstyles = list()
 			for(var/facial_type in facial_choice.sprite_accessories)
 				var/datum/sprite_accessory/hair/facial/facial = new facial_type()
 				valid_facial_hairstyles[facial.name] = facial_type
 
-			var/new_style = input(H, "Choose your facial hairstyle", "Hair Styling") as null|anything in valid_facial_hairstyles
+			var/new_style = input(H, "选择面部毛发样式", "毛发调整") as null|anything in valid_facial_hairstyles
 			if(new_style)
 				var/obj/item/bodypart/head/head = H.get_bodypart(BODY_ZONE_HEAD)
 				if(head && head.bodypart_features)
@@ -399,14 +399,14 @@
 						H.update_hair()
 						should_update = TRUE
 
-		if("accessory")
+		if("装饰")
 			var/datum/customizer_choice/bodypart_feature/accessory/accessory_choice = CUSTOMIZER_CHOICE(/datum/customizer_choice/bodypart_feature/accessory)
-			var/list/valid_accessories = list("none")
+			var/list/valid_accessories = list("无")
 			for(var/accessory_type in accessory_choice.sprite_accessories)
 				var/datum/sprite_accessory/accessory/acc = new accessory_type()
 				valid_accessories[acc.name] = accessory_type
 
-			var/new_style = input(H, "Choose your accessory", "Accessory Styling") as null|anything in valid_accessories
+			var/new_style = input(H, "选择饰品", "饰品调整") as null|anything in valid_accessories
 			if(new_style)
 				var/obj/item/bodypart/head/head = H.get_bodypart(BODY_ZONE_HEAD)
 				if(head && head.bodypart_features)
@@ -416,20 +416,20 @@
 						break
 
 					// Add new accessory if not "none"
-					if(new_style != "none")
+					if(new_style != "无")
 						var/datum/bodypart_feature/accessory/accessory_feature = new()
 						accessory_feature.set_accessory_type(valid_accessories[new_style], H.hair_color, H)
 						head.add_bodypart_feature(accessory_feature)
 					should_update = TRUE
 
-		if("face detail")
+		if("面部细节")
 			var/datum/customizer_choice/bodypart_feature/face_detail/face_choice = CUSTOMIZER_CHOICE(/datum/customizer_choice/bodypart_feature/face_detail)
-			var/list/valid_details = list("none")
+			var/list/valid_details = list("无")
 			for(var/detail_type in face_choice.sprite_accessories)
 				var/datum/sprite_accessory/face_detail/detail = new detail_type()
 				valid_details[detail.name] = detail_type
 
-			var/new_detail = input(H, "Choose your face detail", "Face Detail") as null|anything in valid_details
+			var/new_detail = input(H, "选择面部细节", "面部细节") as null|anything in valid_details
 			if(new_detail)
 				var/obj/item/bodypart/head/head = H.get_bodypart(BODY_ZONE_HEAD)
 				if(head && head.bodypart_features)
@@ -439,14 +439,14 @@
 						break
 
 					// Add new face detail if not "none"
-					if(new_detail != "none")
+					if(new_detail != "无")
 						var/datum/bodypart_feature/face_detail/detail_feature = new()
 						detail_feature.set_accessory_type(valid_details[new_detail], H.hair_color, H)
 						head.add_bodypart_feature(detail_feature)
 					should_update = TRUE
 
-		if("pubes")
-			var/list/valid_pubes = list("none")
+		if("阴毛")
+			var/list/valid_pubes = list("无")
 			for(var/pubes_type in subtypesof(/datum/sprite_accessory/pubes))
 				if(is_abstract(pubes_type))
 					continue
@@ -455,7 +455,7 @@
 					continue
 				valid_pubes[pube_accessory.name] = pubes_type
 
-			var/new_pubes = input(H, "Style your pubic hair", "Pube Styling") as null|anything in valid_pubes
+			var/new_pubes = input(H, "选择阴毛样式", "阴毛造型") as null|anything in valid_pubes
 			if(new_pubes)
 				var/obj/item/bodypart/chest = H.get_bodypart(BODY_ZONE_CHEST)
 				if(chest)
@@ -464,7 +464,7 @@
 						current_pubes = pubes_feature
 						break
 
-					if(new_pubes == "none")
+					if(new_pubes == "无")
 						if(current_pubes)
 							chest.remove_bodypart_feature(current_pubes)
 							should_update = TRUE
@@ -490,8 +490,8 @@
 						should_update = TRUE
 						force_bodypart_update = TRUE
 
-		if("pits")
-			var/list/valid_pits = list("none")
+		if("腋毛")
+			var/list/valid_pits = list("无")
 			for(var/pits_type in subtypesof(/datum/sprite_accessory/pits))
 				if(is_abstract(pits_type))
 					continue
@@ -500,7 +500,7 @@
 					continue
 				valid_pits[pits_accessory.name] = pits_type
 
-			var/new_pits = input(H, "Style your armpit hair", "Pithair Styling") as null|anything in valid_pits
+			var/new_pits = input(H, "选择腋毛样式", "腋毛造型") as null|anything in valid_pits
 			if(new_pits)
 				var/obj/item/bodypart/chest = H.get_bodypart(BODY_ZONE_CHEST)
 				if(chest)
@@ -509,7 +509,7 @@
 						current_pits = pits_feature
 						break
 
-					if(new_pits == "none")
+					if(new_pits == "无")
 						if(current_pits)
 							chest.remove_bodypart_feature(current_pits)
 							should_update = TRUE
@@ -535,8 +535,8 @@
 						should_update = TRUE
 						force_bodypart_update = TRUE
 
-		if("penis")
-			var/list/valid_penis_types = list("none")
+		if("阴茎")
+			var/list/valid_penis_types = list("无")
 			for(var/choice_path in subtypesof(/datum/customizer_choice/organ/penis))
 				var/datum/customizer_choice/organ/penis/choice = new choice_path()
 				if(!choice?.organ_type)
@@ -551,9 +551,9 @@
 					"accessory_type" = accessory_type,
 				)
 
-			var/new_style = input(H, "Choose your penis type", "Penis Customization") as null|anything in valid_penis_types
+			var/new_style = input(H, "选择阴茎样式", "阴茎调整") as null|anything in valid_penis_types
 			if(new_style)
-				if(new_style == "none")
+				if(new_style == "无")
 					var/obj/item/organ/penis/penis = H.getorganslot(ORGAN_SLOT_PENIS)
 					if(penis)
 						penis.Remove(H)
@@ -588,7 +588,7 @@
 					H.update_body()
 					should_update = TRUE
 
-		if("penis color")
+		if("阴茎主色")
 			var/obj/item/organ/penis/penis = H.getorganslot(ORGAN_SLOT_PENIS)
 			if(penis)
 				var/list/current_colors = list()
@@ -596,7 +596,7 @@
 					current_colors = color_string_to_list(penis.accessory_colors)
 				if(!length(current_colors))
 					current_colors = list(H.dna.features["mcolor"] || "#FFFFFF", H.dna.features["mcolor"] || "#FFFFFF")
-				var/new_color = color_pick_sanitized(H, "Choose your primary penis color", "Penis Color", current_colors[1])
+				var/new_color = color_pick_sanitized(H, "选择阴茎主色", "阴茎颜色", current_colors[1])
 				if(new_color)
 					penis.Remove(H)
 					current_colors[1] = sanitize_hexcolor(new_color, 6, TRUE)
@@ -605,9 +605,9 @@
 					H.update_body()
 					should_update = TRUE
 			else
-				to_chat(H, span_warning("You don't have a penis!"))
+				to_chat(H, span_warning("我没有阴茎！"))
 
-		if("penis color 2")
+		if("阴茎副色")
 			var/obj/item/organ/penis/penis = H.getorganslot(ORGAN_SLOT_PENIS)
 			if(penis)
 				var/list/current_colors = list()
@@ -615,7 +615,7 @@
 					current_colors = color_string_to_list(penis.accessory_colors)
 				if(!length(current_colors))
 					current_colors = list(H.dna.features["mcolor"] || "#FFFFFF", H.dna.features["mcolor"] || "#FFFFFF")
-				var/new_color = color_pick_sanitized(H, "Choose your secondary penis color (sheath/detail)", "Penis Color 2", current_colors[2])
+				var/new_color = color_pick_sanitized(H, "选择阴茎副色（包皮/细节）", "阴茎颜色 2", current_colors[2])
 				if(new_color)
 					penis.Remove(H)
 					current_colors[2] = sanitize_hexcolor(new_color, 6, TRUE)
@@ -624,17 +624,17 @@
 					H.update_body()
 					should_update = TRUE
 			else
-				to_chat(H, span_warning("You don't have a penis!"))
+				to_chat(H, span_warning("我没有阴茎！"))
 
-		if("testicles")
-			var/list/valid_testicle_types = list("none")
+		if("睾丸")
+			var/list/valid_testicle_types = list("无")
 			for(var/testicle_path in subtypesof(/datum/sprite_accessory/testicles))
 				var/datum/sprite_accessory/testicles/testicles = new testicle_path()
 				valid_testicle_types[testicles.name] = testicle_path
 
-			var/new_style = input(H, "Choose your testicles type", "Testicles Customization") as null|anything in valid_testicle_types
+			var/new_style = input(H, "选择睾丸样式", "睾丸调整") as null|anything in valid_testicle_types
 			if(new_style)
-				if(new_style == "none")
+				if(new_style == "无")
 					var/obj/item/organ/testicles/testicles = H.getorganslot(ORGAN_SLOT_TESTICLES)
 					if(testicles)
 						testicles.Remove(H)
@@ -652,7 +652,7 @@
 					H.update_body()
 					should_update = TRUE
 
-		if("testicles color")
+		if("睾丸颜色")
 			var/obj/item/organ/testicles/testicles = H.getorganslot(ORGAN_SLOT_TESTICLES)
 			if(testicles)
 				var/list/current_colors = list()
@@ -660,7 +660,7 @@
 					current_colors = color_string_to_list(testicles.accessory_colors)
 				if(!length(current_colors))
 					current_colors = list(H.dna.features["mcolor"] || "#FFFFFF")
-				var/new_color = color_pick_sanitized(H, "Choose your testicles color", "Testicles Color", current_colors[1])
+				var/new_color = color_pick_sanitized(H, "选择睾丸颜色", "睾丸颜色", current_colors[1])
 				if(new_color)
 					testicles.Remove(H)
 					current_colors[1] = sanitize_hexcolor(new_color, 6, TRUE)
@@ -669,18 +669,18 @@
 					H.update_body()
 					should_update = TRUE
 			else
-				to_chat(H, span_warning("You don't have testicles!"))
+				to_chat(H, span_warning("我没有睾丸！"))
 
-		if("breasts")
-			var/list/valid_breast_types = list("none")
+		if("乳房")
+			var/list/valid_breast_types = list("无")
 			for(var/breast_path in subtypesof(/datum/sprite_accessory/breasts))
 				var/datum/sprite_accessory/breasts/breasts = new breast_path()
 				valid_breast_types[breasts.name] = breast_path
 
-			var/new_style = input(H, "Choose your breast type", "Breast Customization") as null|anything in valid_breast_types
+			var/new_style = input(H, "选择胸部样式", "胸部调整") as null|anything in valid_breast_types
 
 			if(new_style)
-				if(new_style == "none")
+				if(new_style == "无")
 					var/obj/item/organ/breasts/breasts = H.getorganslot(ORGAN_SLOT_BREASTS)
 					if(breasts)
 						breasts.Remove(H)
@@ -699,7 +699,7 @@
 					H.update_body()
 					should_update = TRUE
 
-		if("breasts color")
+		if("乳房颜色")
 			var/obj/item/organ/breasts/breasts = H.getorganslot(ORGAN_SLOT_BREASTS)
 			if(breasts)
 				var/list/current_colors = list()
@@ -707,7 +707,7 @@
 					current_colors = color_string_to_list(breasts.accessory_colors)
 				if(!length(current_colors))
 					current_colors = list(H.dna.features["mcolor"] || "#FFFFFF")
-				var/new_color = color_pick_sanitized(H, "Choose your breasts color", "Breasts Color", current_colors[1])
+				var/new_color = color_pick_sanitized(H, "选择胸部颜色", "胸部颜色", current_colors[1])
 				if(new_color)
 					breasts.Remove(H)
 					current_colors[1] = sanitize_hexcolor(new_color, 6, TRUE)
@@ -716,18 +716,18 @@
 					H.update_body()
 					should_update = TRUE
 			else
-				to_chat(H, span_warning("You don't have breasts!"))
+				to_chat(H, span_warning("我没有胸部！"))
 
-		if("vagina")
-			var/list/valid_vagina_types = list("none")
+		if("阴道")
+			var/list/valid_vagina_types = list("无")
 			for(var/vagina_path in subtypesof(/datum/sprite_accessory/vagina))
 				var/datum/sprite_accessory/vagina/vagina = new vagina_path()
 				valid_vagina_types[vagina.name] = vagina_path
 
-			var/new_style = input(H, "Choose your vagina type", "Vagina Customization") as null|anything in valid_vagina_types
+			var/new_style = input(H, "选择阴道样式", "阴道调整") as null|anything in valid_vagina_types
 
 			if(new_style)
-				if(new_style == "none")
+				if(new_style == "无")
 					var/obj/item/organ/vagina/vagina = H.getorganslot(ORGAN_SLOT_VAGINA)
 					if(vagina)
 						vagina.Remove(H)
@@ -745,7 +745,7 @@
 					H.update_body()
 					should_update = TRUE
 
-		if("vagina color")
+		if("阴道颜色")
 			var/obj/item/organ/vagina/vagina = H.getorganslot(ORGAN_SLOT_VAGINA)
 			if(vagina)
 				var/list/current_colors = list()
@@ -753,7 +753,7 @@
 					current_colors = color_string_to_list(vagina.accessory_colors)
 				if(!length(current_colors))
 					current_colors = list(H.dna.features["mcolor"] || "#FFFFFF")
-				var/new_color = color_pick_sanitized(H, "Choose your vagina color", "Vagina Color", current_colors[1])
+				var/new_color = color_pick_sanitized(H, "选择阴道颜色", "阴道颜色", current_colors[1])
 				if(new_color)
 					vagina.Remove(H)
 					current_colors[1] = sanitize_hexcolor(new_color, 6, TRUE)
@@ -762,43 +762,43 @@
 					H.update_body()
 					should_update = TRUE
 			else
-				to_chat(H, span_warning("You don't have a vagina!"))
+				to_chat(H, span_warning("我没有阴道！"))
 
-		if("breast size")
-			var/list/breast_sizes = list("Flat", "Slight", "Small", "Moderate", "Large", "Generous", "Heavy", "Massive", "Heaping", "Obscene")
-			var/new_size = input(H, "Choose your breast size", "Breast Size") as null|anything in breast_sizes
+		if("乳房大小")
+			var/list/breast_sizes = list("平坦", "轻微", "小巧", "适中", "丰满", "丰盈", "沉重", "巨大", "堆涌", "夸张")
+			var/new_size = input(H, "选择胸部大小", "胸部大小") as null|anything in breast_sizes
 			if(new_size)
 				var/obj/item/organ/breasts/breasts = H.getorganslot(ORGAN_SLOT_BREASTS)
 				if(breasts)
 					var/size_num
 					switch(new_size)
-						if("Flat")
+						if("平坦")
 							size_num = 0
-						if("Slight")
+						if("轻微")
 							size_num = 1
-						if("Small")
+						if("小巧")
 							size_num = 2
-						if("Moderate")
+						if("适中")
 							size_num = 3
-						if("Large")
+						if("丰满")
 							size_num = 4
-						if("Generous")
+						if("丰盈")
 							size_num = 5
-						if("Heavy")
+						if("沉重")
 							size_num = 6
-						if("Massive")
+						if("巨大")
 							size_num = 7
-						if("Heaping")
+						if("堆涌")
 							size_num = 8
-						if("Obscene")
+						if("夸张")
 							size_num = 9
 
 					breasts.breast_size = size_num
 					H.update_body()
 					should_update = TRUE
 
-		if("penis size")
-			var/new_size = input(H, "Choose your penis size", "Penis Size") as null|anything in GLOB.named_penis_sizes
+		if("阴茎大小")
+			var/new_size = input(H, "选择阴茎大小", "阴茎大小") as null|anything in GLOB.named_penis_sizes
 			if(new_size)
 				var/obj/item/organ/penis/penis = H.getorganslot(ORGAN_SLOT_PENIS)
 				if(penis)
@@ -806,34 +806,34 @@
 					H.update_body()
 					should_update = TRUE
 
-		if("testicle size")
-			var/list/testicle_sizes = list("small", "average", "large")
-			var/new_size = input(H, "Choose your testicle size", "Testicle Size") as null|anything in testicle_sizes
+		if("睾丸大小")
+			var/list/testicle_sizes = list("小", "中", "大")
+			var/new_size = input(H, "选择睾丸大小", "睾丸大小") as null|anything in testicle_sizes
 			if(new_size)
 				var/obj/item/organ/testicles/testicles = H.getorganslot(ORGAN_SLOT_TESTICLES)
 				if(testicles)
 					var/size_num
 					switch(new_size)
-						if("small")
+						if("小")
 							size_num = 1
-						if("average")
+						if("中")
 							size_num = 2
-						if("large")
+						if("大")
 							size_num = 3
 
 					testicles.ball_size = size_num
 					H.update_body()
 					should_update = TRUE
 
-		if("tail")
-			var/list/valid_tails = list("none")
+		if("尾巴")
+			var/list/valid_tails = list("无")
 			for(var/tail_path in subtypesof(/datum/sprite_accessory/tail))
 				var/datum/sprite_accessory/tail/tail = new tail_path()
 				valid_tails[tail.name] = tail_path
 
-			var/new_style = input(H, "Choose your tail", "Tail Customization") as null|anything in valid_tails
+			var/new_style = input(H, "选择尾巴", "尾巴调整") as null|anything in valid_tails
 			if(new_style)
-				if(new_style == "none")
+				if(new_style == "无")
 					var/obj/item/organ/tail/tail = H.getorganslot(ORGAN_SLOT_TAIL)
 					if(tail)
 						tail.Remove(H)
@@ -854,7 +854,7 @@
 					H.update_body()
 					should_update = TRUE
 
-		if("tail color one")
+		if("尾巴主色")
 			var/obj/item/organ/tail/tail = H.getorganslot(ORGAN_SLOT_TAIL)
 			if(tail)
 				var/list/current_colors = list()
@@ -862,7 +862,7 @@
 					current_colors = color_string_to_list(tail.accessory_colors)
 				if(!length(current_colors))
 					current_colors = list(H.dna.features["mcolor"] || "#FFFFFF", H.dna.features["mcolor"] || "#FFFFFF")
-				var/new_color = color_pick_sanitized(H, "Choose your primary tail color", "Tail Color One", current_colors[1])
+				var/new_color = color_pick_sanitized(H, "选择尾巴主色", "尾巴颜色一", current_colors[1])
 				if(new_color)
 					tail.Remove(H)
 					current_colors[1] = sanitize_hexcolor(new_color, 6, TRUE)
@@ -872,9 +872,9 @@
 					H.update_body()
 					should_update = TRUE
 			else
-				to_chat(H, span_warning("You don't have a tail!"))
+				to_chat(H, span_warning("我没有尾巴！"))
 
-		if("tail color two")
+		if("尾巴副色")
 			var/obj/item/organ/tail/tail = H.getorganslot(ORGAN_SLOT_TAIL)
 			if(tail)
 				var/list/current_colors = list()
@@ -882,7 +882,7 @@
 					current_colors = color_string_to_list(tail.accessory_colors)
 				if(!length(current_colors))
 					current_colors = list(H.dna.features["mcolor"] || "#FFFFFF", H.dna.features["mcolor"] || "#FFFFFF")
-				var/new_color = color_pick_sanitized(H, "Choose your secondary tail color", "Tail Color Two", current_colors[2])
+				var/new_color = color_pick_sanitized(H, "选择尾巴副色", "尾巴颜色二", current_colors[2])
 				if(new_color)
 					tail.Remove(H)
 					current_colors[2] = sanitize_hexcolor(new_color, 6, TRUE)
@@ -892,16 +892,16 @@
 					H.update_body()
 					should_update = TRUE
 			else
-				to_chat(H, span_warning("You don't have a tail!"))
-		if("ears")
-			var/list/valid_ears = list("none")
+				to_chat(H, span_warning("我没有尾巴！"))
+		if("耳朵")
+			var/list/valid_ears = list("无")
 			for(var/ears_path in subtypesof(/datum/sprite_accessory/ears))
 				var/datum/sprite_accessory/ears/ears = new ears_path()
 				valid_ears[ears.name] = ears_path
 
-			var/new_style = input(H, "Choose your ears", "Ears Customization") as null|anything in valid_ears
+			var/new_style = input(H, "选择耳朵", "耳朵调整") as null|anything in valid_ears
 			if(new_style)
-				if(new_style == "none")
+				if(new_style == "无")
 					var/obj/item/organ/ears/ears = H.getorganslot(ORGAN_SLOT_EARS)
 					if(ears)
 						ears.Remove(H)
@@ -919,7 +919,7 @@
 					H.update_body()
 					should_update = TRUE
 
-		if("ear color one")
+		if("耳朵主色")
 			var/obj/item/organ/ears/ears = H.getorganslot(ORGAN_SLOT_EARS)
 			if(ears)
 				var/list/current_colors = list()
@@ -927,7 +927,7 @@
 					current_colors = color_string_to_list(ears.accessory_colors)
 				if(!length(current_colors))
 					current_colors = list(H.dna.features["mcolor"] || "#FFFFFF", H.dna.features["mcolor"] || "#FFFFFF")
-				var/new_color = color_pick_sanitized(H, "Choose your primary ear color", "Ear Color One", current_colors[1])
+				var/new_color = color_pick_sanitized(H, "选择耳朵主色", "耳朵颜色一", current_colors[1])
 				if(new_color)
 					ears.Remove(H)
 					current_colors[1] = sanitize_hexcolor(new_color, 6, TRUE)
@@ -937,9 +937,9 @@
 					H.update_body()
 					should_update = TRUE
 			else
-				to_chat(H, span_warning("You don't have ears!"))
+				to_chat(H, span_warning("我没有耳朵！"))
 
-		if("ear color two")
+		if("耳朵副色")
 			var/obj/item/organ/ears/ears = H.getorganslot(ORGAN_SLOT_EARS)
 			if(ears)
 				var/list/current_colors = list()
@@ -947,7 +947,7 @@
 					current_colors = color_string_to_list(ears.accessory_colors)
 				if(!length(current_colors))
 					current_colors = list(H.dna.features["mcolor"] || "#FFFFFF", H.dna.features["mcolor"] || "#FFFFFF")
-				var/new_color = color_pick_sanitized(H, "Choose your secondary ear color", "Ear Color Two", current_colors[2])
+				var/new_color = color_pick_sanitized(H, "选择耳朵副色", "耳朵颜色二", current_colors[2])
 				if(new_color)
 					ears.Remove(H)
 					current_colors[2] = sanitize_hexcolor(new_color, 6, TRUE)
@@ -957,17 +957,17 @@
 					H.update_body()
 					should_update = TRUE
 			else
-				to_chat(H, span_warning("You don't have ears!"))
+				to_chat(H, span_warning("我没有耳朵！"))
 
-		if("wings")
-			var/list/valid_wings = list("none")
+		if("翅膀")
+			var/list/valid_wings = list("无")
 			for(var/wings_path in subtypesof(/datum/sprite_accessory/wings))
 				var/datum/sprite_accessory/wings/wings = new wings_path()
 				valid_wings[wings.name] = wings_path
 
-			var/new_style = input(H, "Choose your wings", "Wings Customization") as null|anything in valid_wings
+			var/new_style = input(H, "选择翅膀", "翅膀调整") as null|anything in valid_wings
 			if(new_style)
-				if(new_style == "none")
+				if(new_style == "无")
 					var/obj/item/organ/wings/wings = H.getorganslot(ORGAN_SLOT_WINGS)
 					if(wings)
 						wings.Remove(H)
@@ -985,7 +985,7 @@
 					H.update_body()
 					should_update = TRUE
 
-		if("wing color one")
+		if("翅膀主色")
 			var/obj/item/organ/wings/wings = H.getorganslot(ORGAN_SLOT_WINGS)
 			if(wings)
 				var/list/current_colors = list()
@@ -993,7 +993,7 @@
 					current_colors = color_string_to_list(wings.accessory_colors)
 				if(!length(current_colors))
 					current_colors = list(H.dna.features["mcolor"] || "#FFFFFF", H.dna.features["mcolor"] || "#FFFFFF")
-				var/new_color = color_pick_sanitized(H, "Choose your primary wing color", "Wing Color One", current_colors[1])
+				var/new_color = color_pick_sanitized(H, "选择翅膀主色", "翅膀颜色一", current_colors[1])
 				if(new_color)
 					wings.Remove(H)
 					current_colors[1] = sanitize_hexcolor(new_color, 6, TRUE)
@@ -1002,9 +1002,9 @@
 					H.update_body()
 					should_update = TRUE
 			else
-				to_chat(H, span_warning("You don't have wings!"))
+				to_chat(H, span_warning("我没有翅膀！"))
 
-		if("wing color two")
+		if("翅膀副色")
 			var/obj/item/organ/wings/wings = H.getorganslot(ORGAN_SLOT_WINGS)
 			if(wings)
 				var/list/current_colors = list()
@@ -1012,7 +1012,7 @@
 					current_colors = color_string_to_list(wings.accessory_colors)
 				if(!length(current_colors))
 					current_colors = list(H.dna.features["mcolor"] || "#FFFFFF", H.dna.features["mcolor"] || "#FFFFFF")
-				var/new_color = color_pick_sanitized(H, "Choose your secondary wing color", "Wing Color Two", current_colors[2])
+				var/new_color = color_pick_sanitized(H, "选择翅膀副色", "翅膀颜色二", current_colors[2])
 				if(new_color)
 					wings.Remove(H)
 					current_colors[2] = sanitize_hexcolor(new_color, 6, TRUE)
@@ -1021,17 +1021,17 @@
 					H.update_body()
 					should_update = TRUE
 			else
-				to_chat(H, span_warning("You don't have wings!"))
+				to_chat(H, span_warning("我没有翅膀！"))
 
-		if("frills")
-			var/list/valid_frills = list("none")
+		if("颈褶")
+			var/list/valid_frills = list("无")
 			for(var/frills_path in subtypesof(/datum/sprite_accessory/frills))
 				var/datum/sprite_accessory/frills/frills = new frills_path()
 				valid_frills[frills.name] = frills_path
 
-			var/new_style = input(H, "Choose your frills", "Frills Customization") as null|anything in valid_frills
+			var/new_style = input(H, "选择鳍褶", "鳍褶调整") as null|anything in valid_frills
 			if(new_style)
-				if(new_style == "none")
+				if(new_style == "无")
 					var/obj/item/organ/frills/frills = H.getorganslot(ORGAN_SLOT_FRILLS)
 					if(frills)
 						frills.Remove(H)
@@ -1049,7 +1049,7 @@
 					H.update_body()
 					should_update = TRUE
 
-		if("frill color")
+		if("颈褶颜色")
 			var/obj/item/organ/frills/frills = H.getorganslot(ORGAN_SLOT_FRILLS)
 			if(frills)
 				var/list/current_colors = list()
@@ -1057,7 +1057,7 @@
 					current_colors = color_string_to_list(frills.accessory_colors)
 				if(!length(current_colors))
 					current_colors = list(H.dna.features["mcolor"] || H.skin_tone || "#FFFFFF")
-				var/new_color = color_pick_sanitized(H, "Choose your frill color", "Frill Color", current_colors[1])
+				var/new_color = color_pick_sanitized(H, "选择鳍褶颜色", "鳍褶颜色", current_colors[1])
 				if(new_color)
 					frills.Remove(H)
 					current_colors[1] = sanitize_hexcolor(new_color, 6, TRUE)
@@ -1066,17 +1066,17 @@
 					H.update_body()
 					should_update = TRUE
 			else
-				to_chat(H, span_warning("You don't have frills!"))
+				to_chat(H, span_warning("我没有鳍褶！"))
 
-		if("antennas")
-			var/list/valid_antennas = list("none")
+		if("触角")
+			var/list/valid_antennas = list("无")
 			for(var/antennas_path in subtypesof(/datum/sprite_accessory/antenna))
 				var/datum/sprite_accessory/antenna/antennas = new antennas_path()
 				valid_antennas[antennas.name] = antennas_path
 
-			var/new_style = input(H, "Choose your antennas", "Antennas Customization") as null|anything in valid_antennas
+			var/new_style = input(H, "选择触角", "触角调整") as null|anything in valid_antennas
 			if(new_style)
-				if(new_style == "none")
+				if(new_style == "无")
 					var/obj/item/organ/antennas/antennas = H.getorganslot(ORGAN_SLOT_ANTENNAS)
 					if(antennas)
 						antennas.Remove(H)
@@ -1094,7 +1094,7 @@
 					H.update_body()
 					should_update = TRUE
 
-		if("antenna color")
+		if("触角颜色")
 			var/obj/item/organ/antennas/antennas = H.getorganslot(ORGAN_SLOT_ANTENNAS)
 			if(antennas)
 				var/list/current_colors = list()
@@ -1102,7 +1102,7 @@
 					current_colors = color_string_to_list(antennas.accessory_colors)
 				if(!length(current_colors))
 					current_colors = list(H.dna.features["mcolor"] || H.skin_tone || "#FFFFFF")
-				var/new_color = color_pick_sanitized(H, "Choose your antenna color", "Antenna Color", current_colors[1])
+				var/new_color = color_pick_sanitized(H, "选择触角颜色", "触角颜色", current_colors[1])
 				if(new_color)
 					antennas.Remove(H)
 					current_colors[1] = sanitize_hexcolor(new_color, 6, TRUE)
@@ -1111,17 +1111,17 @@
 					H.update_body()
 					should_update = TRUE
 			else
-				to_chat(H, span_warning("You don't have antennas!"))
+				to_chat(H, span_warning("我没有触角！"))
 
-		if("snout")
-			var/list/valid_snouts = list("none")
+		if("口鼻")
+			var/list/valid_snouts = list("无")
 			for(var/snout_path in subtypesof(/datum/sprite_accessory/snout))
 				var/datum/sprite_accessory/snout/snout = new snout_path()
 				valid_snouts[snout.name] = snout_path
 
-			var/new_style = input(H, "Choose your snout", "Snout Customization") as null|anything in valid_snouts
+			var/new_style = input(H, "选择吻部", "吻部调整") as null|anything in valid_snouts
 			if(new_style)
-				if(new_style == "none")
+				if(new_style == "无")
 					var/obj/item/organ/snout/snout = H.getorganslot(ORGAN_SLOT_SNOUT)
 					if(snout)
 						snout.Remove(H)
@@ -1139,7 +1139,7 @@
 					H.update_body()
 					should_update = TRUE
 
-		if("snout color")
+		if("口鼻颜色")
 			var/obj/item/organ/snout/snout = H.getorganslot(ORGAN_SLOT_SNOUT)
 			if(snout)
 				var/list/current_colors = list()
@@ -1147,7 +1147,7 @@
 					current_colors = color_string_to_list(snout.accessory_colors)
 				if(!length(current_colors))
 					current_colors = list(H.dna.features["mcolor"] || H.skin_tone || "#FFFFFF")
-				var/new_color = color_pick_sanitized(H, "Choose your snout color", "Snout Color", current_colors[1])
+				var/new_color = color_pick_sanitized(H, "选择吻部颜色", "吻部颜色", current_colors[1])
 				if(new_color)
 					snout.Remove(H)
 					current_colors[1] = sanitize_hexcolor(new_color, 6, TRUE)
@@ -1156,17 +1156,17 @@
 					H.update_body()
 					should_update = TRUE
 			else
-				to_chat(H, span_warning("You don't have a snout!"))
+				to_chat(H, span_warning("我没有吻部！"))
 
-		if("tail feature")
-			var/list/valid_tail_features = list("none")
+		if("尾部特征")
+			var/list/valid_tail_features = list("无")
 			for(var/tail_feature_path in subtypesof(/datum/sprite_accessory/tail_feature))
 				var/datum/sprite_accessory/tail_feature/tail_feature = new tail_feature_path()
 				valid_tail_features[tail_feature.name] = tail_feature_path
 
-			var/new_style = input(H, "Choose your tail feature", "Tail Feature Customization") as null|anything in valid_tail_features
+			var/new_style = input(H, "选择尾部特征", "尾部特征调整") as null|anything in valid_tail_features
 			if(new_style)
-				if(new_style == "none")
+				if(new_style == "无")
 					var/obj/item/organ/tail_feature/tail_feature = H.getorganslot(ORGAN_SLOT_TAIL_FEATURE)
 					if(tail_feature)
 						tail_feature.Remove(H)
@@ -1184,7 +1184,7 @@
 					H.update_body()
 					should_update = TRUE
 
-		if("tail feature color")
+		if("尾部特征颜色")
 			var/obj/item/organ/tail_feature/tail_feature = H.getorganslot(ORGAN_SLOT_TAIL_FEATURE)
 			if(tail_feature)
 				var/list/current_colors = list()
@@ -1192,7 +1192,7 @@
 					current_colors = color_string_to_list(tail_feature.accessory_colors)
 				if(!length(current_colors))
 					current_colors = list(H.dna.features["mcolor"] || H.skin_tone || "#FFFFFF")
-				var/new_color = color_pick_sanitized(H, "Choose your tail feature color", "Tail Feature Color", current_colors[1])
+				var/new_color = color_pick_sanitized(H, "选择尾部特征颜色", "尾部特征颜色", current_colors[1])
 				if(new_color)
 					tail_feature.Remove(H)
 					current_colors[1] = sanitize_hexcolor(new_color, 6, TRUE)
@@ -1201,17 +1201,17 @@
 					H.update_body()
 					should_update = TRUE
 			else
-				to_chat(H, span_warning("You don't have a tail feature!"))
+				to_chat(H, span_warning("我没有尾部特征！"))
 
-		if("head feature")
-			var/list/valid_head_features = list("none")
+		if("头部特征")
+			var/list/valid_head_features = list("无")
 			for(var/head_feature_path in subtypesof(/datum/sprite_accessory/head_feature))
 				var/datum/sprite_accessory/head_feature/head_feature = new head_feature_path()
 				valid_head_features[head_feature.name] = head_feature_path
 
-			var/new_style = input(H, "Choose your head feature", "Head Feature Customization") as null|anything in valid_head_features
+			var/new_style = input(H, "选择头部特征", "头部特征调整") as null|anything in valid_head_features
 			if(new_style)
-				if(new_style == "none")
+				if(new_style == "无")
 					var/obj/item/organ/head_feature/head_feature = H.getorganslot(ORGAN_SLOT_HEAD_FEATURE)
 					if(head_feature)
 						head_feature.Remove(H)
@@ -1229,7 +1229,7 @@
 					H.update_body()
 					should_update = TRUE
 
-		if("head feature color")
+		if("头部特征颜色")
 			var/obj/item/organ/head_feature/head_feature = H.getorganslot(ORGAN_SLOT_HEAD_FEATURE)
 			if(head_feature)
 				var/list/current_colors = list()
@@ -1237,7 +1237,7 @@
 					current_colors = color_string_to_list(head_feature.accessory_colors)
 				if(!length(current_colors))
 					current_colors = list(H.dna.features["mcolor"] || H.skin_tone || "#FFFFFF")
-				var/new_color = color_pick_sanitized(H, "Choose your head feature color", "Head Feature Color", current_colors[1])
+				var/new_color = color_pick_sanitized(H, "选择头部特征颜色", "头部特征颜色", current_colors[1])
 				if(new_color)
 					head_feature.Remove(H)
 					current_colors[1] = sanitize_hexcolor(new_color, 6, TRUE)
@@ -1246,17 +1246,17 @@
 					H.update_body()
 					should_update = TRUE
 			else
-				to_chat(H, span_warning("You don't have a head feature!"))
+				to_chat(H, span_warning("我没有头部特征！"))
 
-		if("neck feature")
-			var/list/valid_neck_features = list("none")
+		if("颈部特征")
+			var/list/valid_neck_features = list("无")
 			for(var/neck_feature_path in subtypesof(/datum/sprite_accessory/neck_feature))
 				var/datum/sprite_accessory/neck_feature/neck_feature = new neck_feature_path()
 				valid_neck_features[neck_feature.name] = neck_feature_path
 
-			var/new_style = input(H, "Choose your neck feature", "Neck Feature Customization") as null|anything in valid_neck_features
+			var/new_style = input(H, "选择颈部特征", "颈部特征调整") as null|anything in valid_neck_features
 			if(new_style)
-				if(new_style == "none")
+				if(new_style == "无")
 					var/obj/item/organ/neck_feature/neck_feature = H.getorganslot(ORGAN_SLOT_NECK_FEATURE)
 					if(neck_feature)
 						neck_feature.Remove(H)
@@ -1274,7 +1274,7 @@
 					H.update_body()
 					should_update = TRUE
 
-		if("neck feature color")
+		if("颈部特征颜色")
 			var/obj/item/organ/neck_feature/neck_feature = H.getorganslot(ORGAN_SLOT_NECK_FEATURE)
 			if(neck_feature)
 				var/list/current_colors = list()
@@ -1282,7 +1282,7 @@
 					current_colors = color_string_to_list(neck_feature.accessory_colors)
 				if(!length(current_colors))
 					current_colors = list(H.dna.features["mcolor"] || H.skin_tone || "#FFFFFF")
-				var/new_color = color_pick_sanitized(H, "Choose your neck feature color", "Neck Feature Color", current_colors[1])
+				var/new_color = color_pick_sanitized(H, "选择颈部特征颜色", "颈部特征颜色", current_colors[1])
 				if(new_color)
 					neck_feature.Remove(H)
 					current_colors[1] = sanitize_hexcolor(new_color, 6, TRUE)
@@ -1291,17 +1291,17 @@
 					H.update_body()
 					should_update = TRUE
 			else
-				to_chat(H, span_warning("You don't have a neck feature!"))
+				to_chat(H, span_warning("我没有颈部特征！"))
 
-		if("back feature")
-			var/list/valid_back_features = list("none")
+		if("背部特征")
+			var/list/valid_back_features = list("无")
 			for(var/back_feature_path in subtypesof(/datum/sprite_accessory/back_feature))
 				var/datum/sprite_accessory/back_feature/back_feature = new back_feature_path()
 				valid_back_features[back_feature.name] = back_feature_path
 
-			var/new_style = input(H, "Choose your back feature", "Back Feature Customization") as null|anything in valid_back_features
+			var/new_style = input(H, "选择背部特征", "背部特征调整") as null|anything in valid_back_features
 			if(new_style)
-				if(new_style == "none")
+				if(new_style == "无")
 					var/obj/item/organ/back_feature/back_feature = H.getorganslot(ORGAN_SLOT_BACK_FEATURE)
 					if(back_feature)
 						back_feature.Remove(H)
@@ -1319,7 +1319,7 @@
 					H.update_body()
 					should_update = TRUE
 
-		if("back feature color")
+		if("背部特征颜色")
 			var/obj/item/organ/back_feature/back_feature = H.getorganslot(ORGAN_SLOT_BACK_FEATURE)
 			if(back_feature)
 				var/list/current_colors = list()
@@ -1327,7 +1327,7 @@
 					current_colors = color_string_to_list(back_feature.accessory_colors)
 				if(!length(current_colors))
 					current_colors = list(H.dna.features["mcolor"] || H.skin_tone || "#FFFFFF")
-				var/new_color = color_pick_sanitized(H, "Choose your back feature color", "Back Feature Color", current_colors[1])
+				var/new_color = color_pick_sanitized(H, "选择背部特征颜色", "背部特征颜色", current_colors[1])
 				if(new_color)
 					back_feature.Remove(H)
 					current_colors[1] = sanitize_hexcolor(new_color, 6, TRUE)
@@ -1336,16 +1336,16 @@
 					H.update_body()
 					should_update = TRUE
 			else
-				to_chat(H, span_warning("You don't have a back feature!"))
+				to_chat(H, span_warning("我没有背部特征！"))
 
-		if("crest")
+		if("头冠")
 			var/datum/customizer_choice/bodypart_feature/crest/crest_choice = CUSTOMIZER_CHOICE(/datum/customizer_choice/bodypart_feature/crest)
-			var/list/valid_crests = list("none")
+			var/list/valid_crests = list("无")
 			for(var/crest_type in crest_choice.sprite_accessories)
 				var/datum/sprite_accessory/crests/crest = new crest_type()
 				valid_crests[crest.name] = crest_type
 
-			var/new_style = input(H, "Choose your crest", "Crest Styling") as null|anything in valid_crests
+			var/new_style = input(H, "选择冠饰", "冠饰调整") as null|anything in valid_crests
 			if(new_style)
 				var/obj/item/bodypart/head/head = H.get_bodypart(BODY_ZONE_HEAD)
 				if(head && head.bodypart_features)
@@ -1355,13 +1355,13 @@
 						break
 
 					// Add new crest if not "none"
-					if(new_style != "none")
+					if(new_style != "无")
 						var/datum/bodypart_feature/crest/crest_feature = new()
 						crest_feature.set_accessory_type(valid_crests[new_style], H.hair_color, H)
 						head.add_bodypart_feature(crest_feature)
 					should_update = TRUE
 
-		if("descriptors")
+		if("外貌描述")
 			// Build list of descriptor categories
 			var/list/descriptor_categories = list()
 			for(var/choice_type in typesof(/datum/descriptor_choice))
@@ -1370,7 +1370,7 @@
 				var/datum/descriptor_choice/choice = DESCRIPTOR_CHOICE(choice_type)
 				descriptor_categories[choice.name] = choice_type
 			
-			var/chosen_category = input(H, "Which descriptor category?", "Descriptor Category") as null|anything in descriptor_categories
+			var/chosen_category = input(H, "要修改哪一类描述？", "描述类别") as null|anything in descriptor_categories
 			if(!chosen_category)
 				return
 			
@@ -1384,7 +1384,7 @@
 				var/datum/mob_descriptor/desc = MOB_DESCRIPTOR(desc_type)
 				descriptor_options[desc.name] = desc_type
 			
-			var/chosen_descriptor_name = input(H, "Choose your [chosen_category]", "[chosen_category] Selection") as null|anything in descriptor_options
+			var/chosen_descriptor_name = input(H, "选择你的[chosen_category]", "[chosen_category] 选择") as null|anything in descriptor_options
 			if(!chosen_descriptor_name)
 				return
 			
@@ -1401,17 +1401,17 @@
 			
 			// Add new descriptor
 			H.add_mob_descriptor(new_descriptor_type)
-			to_chat(H, span_notice("Your [chosen_category] has been changed to [chosen_descriptor_name]."))
+			to_chat(H, span_notice("我的[chosen_category]已改为[chosen_descriptor_name]。"))
 
-		if("horns")
-			var/list/valid_horns = list("none")
+		if("角")
+			var/list/valid_horns = list("无")
 			for(var/horns_path in subtypesof(/datum/sprite_accessory/horns))
 				var/datum/sprite_accessory/horns/horns = new horns_path()
 				valid_horns[horns.name] = horns_path
 
-			var/new_style = input(H, "Choose your horns", "Horns Customization") as null|anything in valid_horns
+			var/new_style = input(H, "选择角", "角调整") as null|anything in valid_horns
 			if(new_style)
-				if(new_style == "none")
+				if(new_style == "无")
 					var/obj/item/organ/horns/horns = H.getorganslot(ORGAN_SLOT_HORNS)
 					if(horns)
 						horns.Remove(H)
@@ -1429,7 +1429,7 @@
 					H.update_body()
 					should_update = TRUE
 
-		if("horn color")
+		if("角的颜色")
 			var/obj/item/organ/horns/horns = H.getorganslot(ORGAN_SLOT_HORNS)
 			if(horns)
 				var/list/current_colors = list()
@@ -1437,7 +1437,7 @@
 					current_colors = color_string_to_list(horns.accessory_colors)
 				if(!length(current_colors))
 					current_colors = list(H.dna.features["mcolor"] || H.skin_tone || "#FFFFFF")
-				var/new_color = color_pick_sanitized(H, "Choose your horn color", "Horn Color", current_colors[1])
+				var/new_color = color_pick_sanitized(H, "选择角的颜色", "角的颜色", current_colors[1])
 				if(new_color)
 					horns.Remove(H)
 					current_colors[1] = sanitize_hexcolor(new_color, 6, TRUE)
@@ -1446,7 +1446,7 @@
 					H.update_body()
 					should_update = TRUE
 			else
-				to_chat(H, span_warning("You don't have horns!"))
+				to_chat(H, span_warning("我没有角！"))
 
 
 	if(should_update)

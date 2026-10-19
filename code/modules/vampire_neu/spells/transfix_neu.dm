@@ -1,5 +1,5 @@
 /obj/effect/proc_holder/spell/targeted/transfix_neu
-	name = "Transfix"
+	name = "摄心"
 	overlay_state = "transfix"
 
 	associated_skill = /datum/skill/magic/blood
@@ -37,18 +37,18 @@
 
 /obj/effect/proc_holder/spell/targeted/transfix_neu/cast(list/targets, mob/user = usr)
 	if(!length(targets))
-		to_chat(user, span_warning("There are no mortals nearby..."))
+		to_chat(user, span_warning("附近没有凡人……"))
 		revert_cast(user)
 		return
 
-	transfix_msg = input(user, "Soothe them. Dominate them. Speak and they will succumb.", "Transfix") as message|null
+	transfix_msg = input(user, "安抚他们，支配他们。开口吧，他们便会屈服。", "摄心") as message|null
 	if(!transfix_msg || length(transfix_msg) < 10)
-		to_chat(user, span_userdanger("This not enough to ensnare their mind!"))
+		to_chat(user, span_userdanger("这还不足以俘获他们的心智！"))
 		revert_cast()
 		return
 
 	if(!powerful)
-		var/mob/selected = input(user, "Ensnare the mind of which mortal?", "Transfix") as null|anything in targets
+		var/mob/selected = input(user, "要俘获哪个凡人的心智？", "摄心") as null|anything in targets
 		if(QDELETED(src) || QDELETED(user) || QDELETED(selected))
 			revert_cast(user)
 			return
@@ -58,7 +58,7 @@
 	var/bloodroll = roll(bloodskill, blood_dice)
 	user.say(transfix_msg, forced = "spell ([name])")
 	if(powerful)
-		user.visible_message("<font color='red'>[user]'s eyes glow a ghastly red as they project their will outwards!</font>")
+		user.visible_message("<font color='red'>[user]向外释放意志，双眼泛起骇人的红光！</font>")
 
 	for(var/mob/living/carbon/human/target as anything in targets)
 		var/current_will_dice = will_dice + (target.cmode ? 1 : 0)
@@ -70,23 +70,23 @@
 
 		if(!powerful)
 			for(var/obj/item/clothing/neck/roguetown/psicross/silver/I in target.contents) //Subpath fix.
-				var/extra = "!"
+				var/extra = "！"
 				if(knowledgable)
-					extra = ", I sense the caster was [user]!"
-				to_chat(target, "<font color='white'>The silver psycross shines and protect me from unholy magic[extra]</font>")
-				to_chat(user, span_userdanger("[target] has my BANE! It causes me to fail to ensnare their mind!"))
+					extra = "，我感知到施法者是[user]！"
+				to_chat(target, "<font color='white'>银制普赛圣十字闪耀着光芒，保护我免受邪秽魔法侵袭[extra]</font>")
+				to_chat(user, span_userdanger("[target]持有我的克星！我因此无法俘获对方的心智！"))
 				break
 
 		if(bloodroll >= willroll)
 			target.drowsyness = min(target.drowsyness + 50, 150)
 			switch(target.drowsyness)
 				if(0 to 50)
-					to_chat(target, "You feel like a curtain is coming over your mind.")
-					to_chat(user, "The mind of [target] gives way slightly.")
+					to_chat(target, "你感觉心智仿佛被一层帷幕笼罩。")
+					to_chat(user, "[target]的心防稍稍松动了。")
 					target.Slowdown(20)
 				if(51 to 90)
-					to_chat(target, "Your eyelids force themselves shut as you feel intense lethargy.")
-					to_chat(user, "[target] will not be able to resist much more.")
+					to_chat(target, "强烈的困倦袭来，你的眼皮不由自主地合上。")
+					to_chat(user, "[target]已经撑不了多久了。")
 					target.eyesclosed = TRUE
 					target.become_blind("eyelids")
 					if(target.hud_used)
@@ -94,8 +94,8 @@
 							eyet.update_icon(target)
 					target.Slowdown(50)
 				if(91 to INFINITY)
-					to_chat(target, span_userdanger("You can't take it anymore. Your legs give out as you fall into the dreamworld."))
-					to_chat(user, "[target] is mine now.")
+					to_chat(target, span_userdanger("你再也无法承受。双腿一软，你坠入了梦境。"))
+					to_chat(user, "[target]现在归我了。")
 					target.eyesclosed = TRUE
 					target.become_blind("eyelids")
 					if(target.hud_used)
@@ -110,7 +110,7 @@
 			var/magicpower = round(target.get_skill_level(/datum/skill/magic/arcane) * 0.6, 1)
 			var/roll = roll(1 + holypower + magicpower, 5)
 			if(roll > bloodroll)
-				to_chat(target, "I feel like the unholy magic came from [user]. I should use my magic or miracles on them.")
+				to_chat(target, "我感觉这邪秽魔法来自[user]。我应该对其施展魔法或神迹。")
 
-		to_chat(user, span_userdanger("I fail to ensnare the mind of [target]!"))
-		to_chat(target, span_userdanger("Something is wrong in this place."))
+		to_chat(user, span_userdanger("我没能俘获[target]的心智！"))
+		to_chat(target, span_userdanger("这个地方有些不对劲。"))

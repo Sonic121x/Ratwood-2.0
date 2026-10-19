@@ -985,7 +985,7 @@
 		if(L.alpha == 0 && L.rogue_sneaking)
 			// we just got hit by something hidden so try and find them
 			if (prob(5))
-				visible_message(span_notice("[src] begins searching around frantically..."))
+				visible_message(span_notice("[src]开始疯狂地四处搜寻..."))
 			var/extra_chance = (health <= maxHealth * 50) ? 30 : 0 // if we're below half health, we're way more alert
 			if (!npc_detect_sneak(L, extra_chance))
 				return
@@ -1042,7 +1042,7 @@
 	if (prob(probby))
 		// whoops it saw us
 		target.mob_timers[MT_FOUNDSNEAK] = world.time
-		to_chat(target, span_danger("[src] sees me! I'm found!"))
+		to_chat(target, span_danger("[src]看见我了！我被发现了！"))
 		target.update_sneak_invis(TRUE)
 		return TRUE
 	else
@@ -1111,6 +1111,6 @@
 	status_type = STATUS_EFFECT_UNIQUE
 
 /atom/movable/screen/alert/status_effect/debuff/swapped_intent_npc
-	name = "Swapped Intent Cooldown (NPC)"
-	desc = "I swapped my weapon intent, I must wait before I can do it again."
+	name = "武器意图切换冷却（NPC）"
+	desc = "我刚切换过武器意图，必须等一会儿才能再次切换。"
 	icon_state = "strikecd"

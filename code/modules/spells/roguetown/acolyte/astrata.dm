@@ -1,6 +1,6 @@
 /obj/effect/proc_holder/spell/invoked/ignition
-	name = "Ignition"
-	desc = "Ignite a flammable object at range."
+	name = "点燃"
+	desc = "远程点燃一个可燃物体。"
 	overlay_icon = 'icons/mob/actions/astratamiracles.dmi'
 	action_icon = 'icons/mob/actions/astratamiracles.dmi'
 	overlay_state = "ignite"
@@ -24,17 +24,17 @@
 	if(isobj(targets[1]))
 		var/obj/O = targets[1]
 		if(O.fire_act())
-			user.visible_message("<font color='yellow'>[user] points at [O], igniting it with sacred flames!</font>")
+			user.visible_message("<font color='yellow'>[user] 指向 [O]，以圣焰将其点燃！</font>")
 			return TRUE
 		else
-			to_chat(user, span_warning("You point at [O], but it fails to catch fire."))
+			to_chat(user, span_warning("你指向 [O]，但它并没有燃起来。"))
 			return FALSE
 	revert_cast()
 	return FALSE
 
 /obj/effect/proc_holder/spell/invoked/revive
-	name = "Anastasis"
-	desc = "Focus Astratas energy though a stationary psycross, reviving the target from death."
+	name = "再临"
+	desc = "通过固定不动的圣十字引导阿斯特拉塔的力量，将目标自死亡中唤回。"
 	overlay_icon = 'icons/mob/actions/astratamiracles.dmi'
 	action_icon = 'icons/mob/actions/astratamiracles.dmi'
 	overlay_state = "resurrect"
@@ -87,13 +87,13 @@
 		revert_cast()
 		return FALSE
 	if(GLOB.tod == "night")
-		to_chat(user, span_warning("Let there be light."))
+		to_chat(user, span_warning("应有光。"))
 	for(var/obj/structure/fluff/psycross/S in oview(5, user))
 		S.AOE_flash(user, range = 8)
 	if(target.mob_biotypes & MOB_UNDEAD) //positive energy harms the undead
 		target.visible_message(
-			span_danger("[target] is unmade by holy light!"),
-			span_userdanger("I'm unmade by holy light!")
+			span_danger("[target] 被圣光彻底湮灭！"),
+			span_userdanger("我被圣光彻底湮灭了！")
 		)
 		target.gib()
 		return TRUE
@@ -105,12 +105,12 @@
 		ghost.mind.transfer_to(target, TRUE)
 	target.grab_ghost(force = TRUE) // even suicides
 	if(!target.mind.active)
-		to_chat(user, "[target] will not return from afterlife.")
+		to_chat(user, "[target] 不愿自来世归返。")
 		revert_cast()
 		return FALSE
 	target.adjustOxyLoss(-target.getOxyLoss()) //Ye Olde CPR
 	if(!target.revive(full_heal = FALSE))
-		to_chat(user, span_warning("Nothing happens."))
+		to_chat(user, span_warning("什么也没有发生。"))
 		revert_cast()
 		return FALSE
 	testing("revived2")
@@ -118,7 +118,7 @@
 	target.Jitter(100)
 	record_round_statistic(STATS_ASTRATA_REVIVALS)
 	target.update_body()
-	target.visible_message(span_notice("[target] is revived by holy light!"), span_green("I awake from the void."))
+	target.visible_message(span_notice("[target] 在圣光中复苏了！"), span_green("我自虚无之中醒来。"))
 	if(revive_pq && !HAS_TRAIT(target, TRAIT_IWASREVIVED) && user?.ckey)
 		adjust_playerquality(revive_pq, user.ckey)
 		ADD_TRAIT(target, TRAIT_IWASREVIVED, "[type]")
@@ -134,14 +134,14 @@
 	for(var/obj/structure/fluff/psycross/S in oview(5, user))
 		found = S
 	if(!found)
-		to_chat(user, span_warning("I need a holy cross."))
+		to_chat(user, span_warning("我需要一座圣十字。"))
 		return FALSE
 	return TRUE
 
 //T0. Removes cone vision for a dynamic duration.
 /obj/effect/proc_holder/spell/self/astrata_gaze
-	name = "Astratan Gaze"
-	desc = "Removes the limit on your vision, letting you see behind you for a time, lasts longer during the dae and gives a perception bonus to those skilled and holy arts."
+	name = "阿斯特拉塔之视"
+	desc = "暂时解除你的视野限制，让你连身后也能看见；在白昼持续更久，并为精于神迹技能者提供感知加成。"
 	overlay_icon = 'icons/mob/actions/astratamiracles.dmi'
 	action_icon = 'icons/mob/actions/astratamiracles.dmi'
 	overlay_state = "gaze"
@@ -152,7 +152,7 @@
 	sound = 'sound/magic/astrata_choir.ogg'
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = FALSE
-	invocations = list("Astrata show me true.")
+	invocations = list("阿斯特拉塔，让我得见真相。")
 	invocation_type = "shout"
 	recharge_time = 120 SECONDS
 	devotion_cost = 30
@@ -167,8 +167,8 @@
 	return TRUE
 
 /atom/movable/screen/alert/status_effect/buff/astrata_gaze
-	name = "Astratan's Gaze"
-	desc = "She shines through me, illuminating all injustice."
+	name = "阿斯特拉塔之视"
+	desc = "她的光辉穿过我身，照亮一切不义。"
 	icon_state = "astrata_gaze"
 
 /datum/status_effect/buff/astrata_gaze
@@ -192,7 +192,7 @@
 		duration *= 2
 	if(per_bonus > 0)
 		effectedstats = list(STATKEY_PER = per_bonus)
-	to_chat(owner, span_info("She shines through me! I can perceive all clear as dae!"))
+	to_chat(owner, span_info("她的光辉穿过我身！我如今万物尽收眼底，清晰如昼！"))
 	. = ..()
 
 /datum/status_effect/buff/astrata_gaze/on_remove()
@@ -324,19 +324,19 @@
 				BP.receive_damage(damage_per_target)
 
 				if(world.time > next_message)
-					C.visible_message(span_danger("[C]'s [BP.name] is cut by holy flames!"))
+					C.visible_message(span_danger("圣火切开了[C]的[BP.name]！"))
 					next_message = world.time + message_cooldown
 				target.update_damage_overlays()
 
 				// Dismember limb if damage exceeds max
 				if(BP.brute_dam >= BP.max_damage)
 					BP.dismember()
-					C.visible_message(span_danger("[C]'s [BP.name] is dismembered violently by cutting flames!"))
+					C.visible_message(span_danger("锋利的火焰猛烈地斩断了[C]的[BP.name]！"))
 		else
 			// Simple brute damage for non-carbons
 			target.adjustBruteLoss(damage_per_target * simple_mob_bonus)
 			if(world.time > next_message)
-				target.visible_message(span_danger("[target] is cut by holy flames!"))
+				target.visible_message(span_danger("圣火割伤了[target]！"))
 				next_message = world.time + message_cooldown
 
 	// Apply self-damage to caster
@@ -369,14 +369,14 @@
 // Immolation Spell
 // =====================
 /obj/effect/proc_holder/spell/invoked/immolation
-	name = "Immolation"
-	desc = "Ignite a target in holy flames, burning those that surround them. Fire burns brighter within devout Astratans."
+	name = "圣焰焚身"
+	desc = "以圣焰点燃目标，灼烧其周围之人。若目标是虔诚的阿斯特拉塔信徒，火势将燃得更盛。"
 	overlay_icon = 'icons/mob/actions/astratamiracles.dmi'
 	action_icon = 'icons/mob/actions/astratamiracles.dmi'
 	overlay_state = "immolation"
 	range = 2
 	chargetime = 0.5 SECONDS
-	invocations = list("By sacred fire, be cleansed!")
+	invocations = list("受圣火净化吧！")
 	sound = 'sound/magic/fireball.ogg'
 	recharge_time = 600 SECONDS
 	miracle = TRUE
@@ -388,7 +388,7 @@
 
 	var/datum/component/immolation/existing = user.GetComponent(/datum/component/immolation)
 	if(existing)
-		to_chat(user, span_warning("You are already channeling someone"))
+		to_chat(user, span_warning("你已经在维系一名目标了。"))
 		revert_cast()
 		return FALSE
 
@@ -397,9 +397,9 @@
 		return FALSE
 
 	// Channeling requirement
-	user.visible_message(span_danger("[user] begins lighting [target] ablaze with strange, divine fire!"))
+	user.visible_message(span_danger("[user] 开始以诡异的神圣烈焰点燃 [target]！"))
 	if(!do_after(user, 1 SECONDS, target = target))
-		to_chat(user, span_warning("Astratan might requires unwavering focus to channel!"))
+		to_chat(user, span_warning("阿斯特拉塔 的威能需要毫不动摇的专注方可引导！"))
 		revert_cast()
 		return FALSE
 
@@ -412,11 +412,11 @@
 	target.AddComponent(/datum/component/immolation/partner, target, user, holy_skill, is_astrata)
 
 	// Visual feedback
-	user.visible_message(span_notice("Holy flames erupt from [user]'s hands and engulf [target]!"))
+	user.visible_message(span_notice("神圣烈焰自 [user] 手中迸发，将 [target] 吞没！"))
 	if(!is_astrata)
-		target.visible_message(span_danger("[target] lights ablaze with sacred fire. Fire cutting like a blade in a small area around them."))
+		target.visible_message(span_danger("[target] 被圣火点燃，周围一小片区域都被如刀锋般切割的火焰席卷。"))
 	else
-		target.visible_message(span_danger("[target] lights ablaze with a grand, roaring pyre of divinity. Fire slashing violently like a blade in a small area around them."))
+		target.visible_message(span_danger("[target] 被庄严咆哮的神性烈焰所吞没，周围一小片区域都被如刀锋般狂暴劈斩的火焰笼罩。"))
 	return TRUE
 
 // =====================
@@ -432,15 +432,15 @@
 	var/flaming_hot = FALSE
 
 /atom/movable/screen/alert/status_effect/immolation
-	name = "Immolated"
-	desc = "Holy flames consume you! Anyone will be cut down for stepping near."
+	name = "圣焰焚身"
+	desc = "神圣烈焰正在吞噬你！任何靠近的人都会被其灼伤。"
 	icon_state = "immolation"
 
 /datum/status_effect/immolation/on_creation(mob/living/new_owner, light_ablaze)
 	flaming_hot = light_ablaze
 	. = ..()
 	if(!flaming_hot)
-		linked_alert.desc = "I'm channeling Immolation onto someone to burn all those that step near, I must remain close to them."
+		linked_alert.desc = "我正在将“圣焰焚身”维系在某人身上，以焚烧所有靠近者；我必须始终待在其附近。"
 
 /datum/status_effect/immolation/on_apply()
 	if(!owner.get_filter(IMMOLATION_FILTER))
@@ -471,11 +471,11 @@
 
 //Choosing between Lance/Spear
 /obj/effect/proc_holder/spell/self/astratan_path
-	name = "Path of Order"
+	name = "秩序之路"
 	overlay_icon = 'icons/mob/actions/astratamiracles.dmi'
 	action_icon = 'icons/mob/actions/astratamiracles.dmi'
 	overlay_state = "order"
-	desc = "Astrata blesses your mind, allowing you to choose <b>Her</b> method of bringing order."
+	desc = "阿斯特拉塔赐福你的心智，让你选择以 <b>她</b> 的哪种方式贯彻秩序。"
 	miracle = TRUE
 	devotion_cost = 100
 	recharge_time = 10 MINUTES
@@ -486,16 +486,16 @@
 
 /obj/effect/proc_holder/spell/self/astratan_path/cast(list/targets, mob/user)
 	. = ..()
-	var/choice = alert(user, "YOUR MARTIAL ARM, M'LORD?", "TAKE UP STRENGTH", "Lance", "Spear")
+	var/choice = alert(user, "你要执掌哪一种武装神迹？", "承担神威", "圣枪", "圣矛")
 	switch(choice)
-		if("Lance")
+		if("圣枪")
 			if(user.mind?.has_spell(/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt/sacred_flame_rogue))//No stacking.
 				revert_cast()
 			else
 				user.mind?.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt/sacred_flame_rogue)
 				if(user.mind?.has_spell(/obj/effect/proc_holder/spell/self/astratan_spear))//No, thanks.
 					user.mind?.RemoveSpell(/obj/effect/proc_holder/spell/self/astratan_spear)
-		if("Spear")
+		if("圣矛")
 			if(user.mind?.has_spell(/obj/effect/proc_holder/spell/self/astratan_spear))//No stacking. Again. As funny as a dozen of these were.
 				revert_cast()
 			else
@@ -507,15 +507,15 @@
 
 //Summoning the spear.
 /obj/effect/proc_holder/spell/self/astratan_spear
-	name = "Summon Spear"
+	name = "召唤圣矛"
 	overlay_icon = 'icons/mob/actions/astratamiracles.dmi'
 	action_icon = 'icons/mob/actions/astratamiracles.dmi'
 	overlay_state = "spear"
-	desc = "An ancient miracle, honed by those who'd served as Astrata's martial arm in the second era. \
-	With such, you may beseech Astrata for a mote of Her power."
+	desc = "这是源远流长的古老圣迹，由第二纪元那些曾作为阿斯特拉塔武装之臂 \
+	而战的人不断磨练。 借此，你可以向阿斯特拉塔祈求她的一缕神力。"
 	clothes_req = FALSE
 	sound = 'sound/magic/blade_burst.ogg'
-	invocations = list("Lady of Order, guide my hand!")
+	invocations = list("秩序圣女，请引导我的手！")
 	invocation_type = "shout"
 	recharge_time = 30 SECONDS
 	chargedrain = 0
@@ -535,8 +535,8 @@
 
 //The spear itself. A summoned weapon you charge(throw for now) for an AoE effect.
 /obj/item/rogueweapon/light_spear
-	name = "lightning spear"
-	desc = "A spear of light, pulled from Her domain. Throw far. Strike true."
+	name = "雷光圣矛"
+	desc = "一柄自她之领域中抽出的光之长矛。掷之可远，击之必正。"
 	icon_state = "astratan_spear"//Martyr sword without the hilt, for now. Temp.
 	icon = 'icons/roguetown/weapons/64.dmi'
 	w_class = WEIGHT_CLASS_GIGANTIC
@@ -597,13 +597,13 @@
 	qdel(src)
 
 /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt/sacred_flame_rogue
-	name = "Fire Lance"
-	desc = "Deals damage and ignites target, Deals extra damage to undead."
+	name = "烈焰长枪"
+	desc = "造成伤害并点燃目标，对亡灵造成额外伤害。"
 	overlay_icon = 'icons/mob/actions/astratamiracles.dmi'
 	action_icon = 'icons/mob/actions/astratamiracles.dmi'
 	overlay_state = "sacredflame"
 	sound = 'sound/magic/bless.ogg'
-	invocations = list("By fire, be cleansed!")//Not so sacred.
+	invocations = list("受烈火净化吧！")//Not so sacred.
 	req_items = list(/obj/item/clothing/neck/roguetown/psicross)
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = TRUE
@@ -614,7 +614,7 @@
 
 /obj/projectile/magic/astratablast
 	damage = 25
-	name = "lance of holy fire"
+	name = "圣火长枪"
 	nodamage = FALSE
 	damage_type = BURN
 	speed = 0.3
@@ -633,17 +633,17 @@
 	if(ismob(target))
 		var/mob/living/M = target
 		if(M.anti_magic_check())
-			visible_message(span_warning("[src] fizzles on contact with [target]!"))
+			visible_message(span_warning("[src]触及[target]时消散了！"))
 			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
 			qdel(src)
 			return BULLET_ACT_BLOCK
 		if(M.mob_biotypes & biotype_we_look_for || istype(M, /mob/living/simple_animal/hostile/rogue/skeleton))
 			damage *= fuck_that_guy_multiplier
 			M.adjust_fire_stacks(10)
-			visible_message(span_warning("[target] erupts in flame upon being struck by [src]!"))
+			visible_message(span_warning("[target]被[src]击中，浑身燃起火焰！"))
 			M.ignite_mob()
 		else
 			M.adjust_fire_stacks(4)
-			visible_message(span_warning("[src] ignites [target]!"))
+			visible_message(span_warning("[src]点燃了[target]！"))
 			M.ignite_mob()
 	return FALSE

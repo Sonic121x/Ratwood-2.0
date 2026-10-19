@@ -1,24 +1,24 @@
 /datum/supply_pack/rogue/blackmarket_exotics
-	group = "Exotic Import"
-	crate_name = "suspicious crate"
+	group = "异域进口品" // English: Exotic Import
+	crate_name = "可疑的货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/blackmarket_exotics/scrying
-	name = "Scrying Orb"
+	name = "占卜球"
 	cost = 750
 	contains = list(/obj/item/scrying)
 
 /datum/supply_pack/rogue/blackmarket_exotics/nomag
-	name = "Ring of Null Magic"
+	name = "反魔之戒"
 	cost = 300
 	contains = list(/obj/item/clothing/ring/active/nomag)
 
 /datum/supply_pack/rogue/blackmarket_exotics/riddleofsteel
-	name = "Riddle of Steel"
+	name = "钢铁之谜"
 	cost = 1000
 	contains = list(/obj/item/riddleofsteel)
 
 /datum/supply_pack/rogue/blackmarket_exotics/luxwine
-	name = "Luxintenebre (Wine)"
+	name = "光暗同酿葡萄酒"
 	cost = 150
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/luxwine)

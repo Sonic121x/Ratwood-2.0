@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 
+import { NAVIGATOR_CATEGORY_LABELS } from '../../common/displayNames';
 import {
   cardStyle,
   dashedFrameStyle,
@@ -21,7 +22,6 @@ import {
   type NoticeboardData,
   type RealmDemandRow,
 } from '../types';
-
 const FILL_YELLOW = 0.50;
 const FILL_RED = 0.85;
 const DEMAND_WARM = 1.001;
@@ -170,7 +170,7 @@ const RealmDemandMatrix = (props: {
   if (realms.length === 0 || allBuckets.length === 0) {
     return (
       <div style={{ ...matrixContainerStyle, color: INK_FAINT, fontStyle: 'italic' }}>
-        The factors have no realm intelligence to share.
+        商行管事们没有可分享的国度情报.
       </div>
     );
   }
@@ -191,12 +191,12 @@ const RealmDemandMatrix = (props: {
           marginBottom: 4,
         }}
       >
-        A summary of what each foreign realm demands. Hail a ship from a realm to raise the demand for its categories at the Navigator. Valuables and Seafood keep their full price even with no ship in port; every other category pays only half until a buyer arrives.
+        各外国国度需求的概览. 在引航机处呼唤某国度的船只, 可提升其类别在该处的需求. 贵重品与海鲜即使在无船在港时也保持全价; 其他类别在买家到来前只按半价支付.
       </div>
       <table style={matrixTableStyle}>
         <thead>
           <tr>
-            <th style={matrixCornerStyle}>Category</th>
+            <th style={matrixCornerStyle}>类别</th>
             {realmDemandSets.map(({ realm }) => (
               <th key={realm.realm_id} style={matrixRealmHeaderStyle} title={realm.name}>
                 {realm.name}
@@ -207,7 +207,7 @@ const RealmDemandMatrix = (props: {
         <tbody>
           {allBuckets.map((bucket) => (
             <tr key={bucket}>
-              <td style={matrixBucketLabelStyle}>{bucket}</td>
+              <td style={matrixBucketLabelStyle}>{NAVIGATOR_CATEGORY_LABELS[bucket] || bucket}</td>
               {realmDemandSets.map(({ realm, set }) => (
                 <td key={realm.realm_id} style={matrixCellStyle}>
                   {set.has(bucket) ? (
@@ -272,7 +272,7 @@ export const MarketView = ({
           padding: '24px 0',
         }}
       >
-        The factors have nothing to report just yet.
+        商行管事们暂时还没有可报告的消息.
       </div>
     );
   }
@@ -287,7 +287,7 @@ export const MarketView = ({
             color: INK,
           }}
         >
-          {headerLabel ?? 'State of the Markets'}
+          {headerLabel ?? '市场概况'}
         </div>
         {market.theme_dispatch && (
           <div
@@ -323,7 +323,7 @@ export const MarketView = ({
             fontSize: FONT_BODY,
           }}
         >
-          {loreOpen ? '[ hide market notes ]' : '[ how the markets work ]'}
+          {loreOpen ? '[ 隐藏市场说明 ]' : '[ 市场如何运作 ]'}
         </div>
         <div
           onClick={() => setMatrixOpen(!matrixOpen)}
@@ -335,8 +335,8 @@ export const MarketView = ({
           }}
         >
           {matrixOpen
-            ? '[ hide realms demand matrix ]'
-            : '[ show realms demand matrix ]'}
+            ? '[ 隐藏国度需求矩阵 ]'
+            : '[ 显示国度需求矩阵 ]'}
         </div>
         {matrixOpen && (
           <RealmDemandMatrix
@@ -347,19 +347,19 @@ export const MarketView = ({
         {loreOpen && (
           <div style={{ ...dashedFrameStyle, marginTop: 8 }}>
             <p style={{ margin: '0 0 6px 0' }}>
-              Wares lifted from the Navigator pass into the warehouses of the Ferentian Trading Company, sorted by category. Each week the factors weigh which goods are scarce and which lie in glut, and the Navigator&apos;s payouts shift accordingly.
+              从引航机吊起的货物会按类别分入费伦提亚贸易公司的仓库. 每周商行管事们都会权衡哪些货物短缺、哪些货物过剩, 引航机的支付额也随之变动.
             </p>
             <p style={{ margin: '0 0 6px 0' }}>
-              <b style={{ color: SEAL_GREEN }}>Saturation</b> tracks the warehouse stockpile. While there is room, goods sell at face value. When the warehouse fills, the market refuses further intake.
+              <b style={{ color: SEAL_GREEN }}>饱和</b>追踪仓库的储备量. 只要还有空间, 货物就按面值出售. 一旦仓库装满, 市场便拒绝再收货.
             </p>
             <p style={{ margin: '0 0 6px 0' }}>
-              <b style={{ color: SEAL_AMBER }}>Demand</b> spikes when foreign vessels make port. Their captains pay above market for what they want. When the ship sails, the demand sails with it.
+              <b style={{ color: SEAL_AMBER }}>需求</b>会在外国船只靠港时飙升. 船长为想要的货物支付高于市场的价格. 船一离港, 需求也随之而去.
             </p>
             <p style={{ margin: '0 0 6px 0' }}>
-              <b>Hailing a ship</b> raises its demand and draws inventory from the warehouse, opening room for more sales while the ship is in port.
+              <b>呼唤一艘船</b>会提升其需求, 并从仓库中取走存货, 在船只停港期间腾出更多销售空间.
             </p>
             <p style={{ margin: 0 }}>
-              A <b style={{ color: SEAL_AMBER }}>Black Market</b> runs in the shadows. It holds half the capacity of the legitimate warehouse, takes no demand boost from foreign ships, and its prices are independent of the regular market. Each day, smugglers and small boats quietly drain its stock, opening room over time.
+              阴影中另有一条 <b style={{ color: SEAL_AMBER }}>黑市</b>在运作. 它的容量只有合法仓库的一半, 也不会因外国船只获得需求加成, 其价格更独立于常规市场. 每天都有走私者与小船悄悄抽走它的存货, 随着时间腾出空间.
             </p>
 
           </div>
@@ -369,7 +369,7 @@ export const MarketView = ({
       <div style={feedGridStyle}>
         <div style={feedColumnStyle}>
           <div style={feedTitleStyle}>
-            <span style={{ color: SEAL_RED }}>Hot</span> - buyers hunger for these
+            <span style={{ color: SEAL_RED }}>热销</span> - 买家正渴求这些货物
           </div>
           {hot.length === 0 ? (
             <div
@@ -380,12 +380,12 @@ export const MarketView = ({
                 padding: '6px 0',
               }}
             >
-              No category is in special demand right now.
+              目前没有类别处于特别需求之中.
             </div>
           ) : (
             hot.map((c) => (
               <div key={c.category} style={feedRowStyle}>
-                <span title={c.category}>{c.category}</span>
+                <span title={c.category}>{NAVIGATOR_CATEGORY_LABELS[c.category] || c.category}</span>
                 <span
                   style={{
                     color: demandColor(c.demand_mult),
@@ -401,7 +401,7 @@ export const MarketView = ({
 
         <div style={feedColumnStyle}>
           <div style={feedTitleStyle}>
-            <span style={{ color: SEAL_BLUE }}>Filling Up</span> - warehouses nearing capacity
+            <span style={{ color: SEAL_BLUE }}>渐满</span> - 仓库接近容量上限
           </div>
           {crashed.length === 0 ? (
             <div
@@ -412,19 +412,19 @@ export const MarketView = ({
                 padding: '6px 0',
               }}
             >
-              No warehouse near capacity. Plenty of room to sell.
+              没有仓库接近容量上限. 仍有充足空间可供出售.
             </div>
           ) : (
             crashed.map((c) => (
               <div key={c.category} style={feedRowStyle}>
-                <span title={c.category}>{c.category}</span>
+                <span title={c.category}>{NAVIGATOR_CATEGORY_LABELS[c.category] || c.category}</span>
                 <span
                   style={{
                     color: fillColor(c.fill_ratio, c.refused),
                     fontWeight: 'bold',
                   }}
                 >
-                  {c.refused ? 'REFUSING' : formatPct(c.fill_ratio)}
+                  {c.refused ? '拒收' : formatPct(c.fill_ratio)}
                 </span>
               </div>
             ))
@@ -433,25 +433,25 @@ export const MarketView = ({
       </div>
 
       <div style={cardStyle}>
-        <div style={feedTitleStyle}>The Full Ledger</div>
+        <div style={feedTitleStyle}>完整账目</div>
         <div style={ledgerGridStyle}>
           {[leftCol, rightCol].map((col, idx) => (
             <div key={idx}>
               <div style={ledgerHeaderStyle}>
-                <span>Category</span>
-                <span style={{ textAlign: 'right' }}>Warehouse</span>
-                <span style={{ textAlign: 'center' }}>Demand</span>
+                <span>类别</span>
+                <span style={{ textAlign: 'right' }}>仓库</span>
+                <span style={{ textAlign: 'center' }}>需求</span>
               </div>
               {col.map((c) => {
                 const refused = c.refused;
                 const fillCol = fillColor(c.fill_ratio, refused);
                 const demCol = demandColor(c.demand_mult);
                 const warehouseText = refused
-                  ? 'FULL'
+                  ? '已满'
                   : `${c.consumed}/${c.capacity}m`;
                 return (
                   <div key={c.category} style={ledgerRowStyle}>
-                    <span style={ledgerNameStyle} title={c.category}>{c.category}</span>
+                    <span style={ledgerNameStyle} title={c.category}>{NAVIGATOR_CATEGORY_LABELS[c.category] || c.category}</span>
                     <span
                       style={{
                         textAlign: 'right',

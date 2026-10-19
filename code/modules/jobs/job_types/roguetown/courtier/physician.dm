@@ -1,5 +1,6 @@
 /datum/job/roguetown/physician
 	title = "Head Physician"
+	display_title = "首席医师"
 	flag = PHYSICIAN
 	department_flag = NOBLEMEN
 	faction = "Station"
@@ -9,9 +10,9 @@
 	allowed_races = ACCEPTED_RACES
 	allowed_sexes = list(MALE, FEMALE)
 	display_order = JDO_PHYSICIAN
-	tutorial = "You are a master physician and the current head of the clinic. \
-		Oversee your clinic and the apothecaries under you. \
-		As a member of the upper class, expect to treat nobility. You have access to accommodate this."
+	tutorial = "你是一位医术高超的大医者，也是当前诊所的负责人。\
+		管理你的诊所，以及你麾下的药剂师们。\
+		身为上层阶级的一员，你应当准备好为贵族诊治，而你也拥有与之相称的权限。"
 	outfit = /datum/outfit/job/roguetown/physician
 	whitelist_req = TRUE
 	advclass_cat_rolls = list(CTAG_COURTPHYS = 2)
@@ -30,10 +31,10 @@
 	spells = list(/obj/effect/proc_holder/spell/invoked/takeapprentice)
 
 /datum/advclass/physician
-	name = "Head Physician"
-	tutorial = "You are a master physician and the current head of the clinic. \
-		Oversee your clinic and the apothecaries under you. \
-		As a member of the upper class, expect to treat nobility. You have access to accommodate this."
+	name = "首席医师"
+	tutorial = "你是一位医术高超的大医者，也是当前诊所的负责人。\
+		管理你的诊所，以及你麾下的药剂师们。\
+		身为上层阶级的一员，你应当准备好为贵族诊治，而你也拥有与之相称的权限。"
 	outfit = /datum/outfit/job/roguetown/physician/basic
 	category_tags = list(CTAG_COURTPHYS)
 	subclass_stats = list(
@@ -61,22 +62,22 @@
 	job_bitflag = BITFLAG_ROYALTY
 
 /datum/outfit/job/roguetown/physician
-	name = "Physician"
+	name = "医师"
 	jobtype = /datum/job/roguetown/physician
 
 /datum/advclass/physician/post_equip(mob/living/carbon/human/H)
 	. = ..()
 	var/list/mask_options = list(
-		"Original plague mask" = /obj/item/clothing/mask/rogue/physician,
-		"Head physician's plague mask" = /obj/item/clothing/mask/rogue/physician/head,
-		"Both (head physician's mask equipped)" = "both",
+		"瘟疫面具" = /obj/item/clothing/mask/rogue/physician,
+		"首席医师面具" = /obj/item/clothing/mask/rogue/physician/head,
+		"两者都要（佩戴首席医师面具）" = "both",
 	)
-	var/mask_choice = input(H, "Choose your plague mask.", "HEAD PHYSICIAN") as null|anything in mask_options
+	var/mask_choice = input(H, "选择你的瘟疫面具。", "首席医师") as null|anything in mask_options
 	if(!mask_choice)
 		return
 
 	var/mask_type = mask_options[mask_choice]
-	if(mask_choice == "Both (head physician's mask equipped)")
+	if(mask_choice == "两者都要（佩戴首席医师面具）")
 		var/obj/item/clothing/mask/original_mask = new /obj/item/clothing/mask/rogue/physician(H)
 		var/obj/item/storage/satchel = H.get_item_by_slot(SLOT_BACK_L)
 		if(!satchel || !SEND_SIGNAL(satchel, COMSIG_TRY_STORAGE_INSERT, original_mask, null, TRUE, TRUE))

@@ -17,9 +17,9 @@ import {
 import { type TabProps } from './types';
 
 const DENOMS = [
-  { id: 'GOLD', label: 'Gold', value: 10 },
-  { id: 'SILVER', label: 'Silver', value: 5 },
-  { id: 'BRONZE', label: 'Bronze', value: 1 },
+  { id: 'GOLD', label: '金币', value: 10 },
+  { id: 'SILVER', label: '银币', value: 5 },
+  { id: 'BRONZE', label: '铜币', value: 1 },
 ];
 
 export const PersonalTab = ({ data, act }: TabProps) => {
@@ -44,9 +44,9 @@ export const PersonalTab = ({ data, act }: TabProps) => {
 
   return (
     <div style={cardStyle}>
-      <div style={sectionHeaderStyle}>Personal Account</div>
+      <div style={sectionHeaderStyle}>个人账户</div>
       <div style={fieldRowStyle}>
-        <div style={fieldLabelStyle}>Balance</div>
+        <div style={fieldLabelStyle}>余额</div>
         <div style={fieldValueStyle}>
           <span style={{ color: SEAL_AMBER, fontWeight: 'bold' }}>
             {data.account_balance}m
@@ -54,9 +54,9 @@ export const PersonalTab = ({ data, act }: TabProps) => {
         </div>
       </div>
 
-      <div style={sectionHeaderStyle}>Withdraw Coin</div>
+      <div style={sectionHeaderStyle}>提取钱币</div>
       <div style={fieldRowStyle}>
-        <div style={fieldLabelStyle}>Denomination</div>
+        <div style={fieldLabelStyle}>面额</div>
         <div style={fieldValueStyle}>
           {DENOMS.map((d) => (
             <button
@@ -79,7 +79,7 @@ export const PersonalTab = ({ data, act }: TabProps) => {
         </div>
       </div>
       <div style={fieldRowStyle}>
-        <div style={fieldLabelStyle}>Coins</div>
+        <div style={fieldLabelStyle}>枚数</div>
         <div style={fieldValueStyle}>
           <input
             type="number"
@@ -90,7 +90,7 @@ export const PersonalTab = ({ data, act }: TabProps) => {
             style={{ ...inkInputStyle, width: 90 }}
           />
           <span style={{ marginLeft: 6, color: INK_FAINT }}>
-            (max 20; total {totalDraw}m)
+            （最多 20 枚；合计 {totalDraw}m）
           </span>
         </div>
       </div>
@@ -107,46 +107,46 @@ export const PersonalTab = ({ data, act }: TabProps) => {
             setCoinAmount('');
           }}
         >
-          Draw Coin
+          提取钱币
         </button>
       </div>
 
-      <div style={sectionHeaderStyle}>Active Loan</div>
+      <div style={sectionHeaderStyle}>未结贷款</div>
       {!loan && (
         <div style={{ color: INK_SOFT }}>
-          No outstanding loan on your record.
+          你的记录中没有未结的贷款。
         </div>
       )}
       {!!loan && (
         <>
           <div style={fieldRowStyle}>
-            <div style={fieldLabelStyle}>Creditor</div>
+            <div style={fieldLabelStyle}>债权人</div>
             <div style={fieldValueStyle}>{loan.creditor}</div>
           </div>
           <div style={fieldRowStyle}>
-            <div style={fieldLabelStyle}>Owed</div>
+            <div style={fieldLabelStyle}>所欠</div>
             <div style={fieldValueStyle}>
-              {loan.remaining}m of {loan.principal}m principal at{' '}
-              {loan.interest_pct}%/day
+              尚欠 {loan.remaining}m，本金 {loan.principal}m，日息{' '}
+              {loan.interest_pct}%
             </div>
           </div>
           <div style={fieldRowStyle}>
-            <div style={fieldLabelStyle}>Status</div>
+            <div style={fieldLabelStyle}>状态</div>
             <div style={fieldValueStyle}>
               {loan.defaulted ? (
                 <span style={{ color: SEAL_RED, fontWeight: 'bold' }}>
-                  DEFAULTED on day {loan.due_on_day}
+                  已于第 {loan.due_on_day} 天违约
                 </span>
               ) : (
                 <span>
-                  Due day {loan.due_on_day} ({loan.days_until_due} day
-                  {loan.days_until_due === 1 ? '' : 's'} remaining)
+                  到期日第 {loan.due_on_day} 天（尚余 {loan.days_until_due}
+                  {' '}天）
                 </span>
               )}
             </div>
           </div>
           <div style={fieldRowStyle}>
-            <div style={fieldLabelStyle}>Repay</div>
+            <div style={fieldLabelStyle}>偿还</div>
             <div style={fieldValueStyle}>
               <input
                 type="number"
@@ -156,7 +156,7 @@ export const PersonalTab = ({ data, act }: TabProps) => {
                 onChange={(e) => setRepayAmount(e.target.value)}
                 style={{ ...inkInputStyle, width: 110 }}
               />
-              <span style={{ marginLeft: 6, color: INK_FAINT }}>mammon</span>
+              <span style={{ marginLeft: 6, color: INK_FAINT }}>玛门</span>
             </div>
           </div>
           <div style={{ marginTop: 6, textAlign: 'right' }}>
@@ -169,7 +169,7 @@ export const PersonalTab = ({ data, act }: TabProps) => {
                 setRepayAmount('');
               }}
             >
-              Repay
+              偿还
             </button>
           </div>
         </>

@@ -23,12 +23,12 @@
 
 /obj/item/proc/altgrip_name(datum/alt_grip/grip, mob/user, mob/living/carbon/wielder = null)
 	if(!grip)
-		return "alternate grip"
+		return "变换握法"
 	if(!can_see_altgrip_name(user, wielder))
-		return "alternate grip"
+		return "变换握法"
 	if(grip.name)
 		return grip.name
-	return "alternate grip"
+	return "变换握法"
 
 /obj/item/proc/get_altgrip_names(mob/user)
 	if(!has_altgrip_modes())
@@ -43,7 +43,7 @@
 		if(required_traits_text)
 			grip_name += span_info(" [required_traits_text]")
 		if(grip.is_two_handed(src))
-			grip_name += span_danger(" (2H)")
+			grip_name += span_danger("（双手）")
 		grip_names += grip_name
 	if(!length(grip_names))
 		return null
@@ -61,14 +61,14 @@
 		parts += "<span style='margin-left: 1.2em'>- <b>[altgrip_name(grip, user)]</b></span>"
 		parts += "<span class='info'><a href='?src=[REF(link_source)];[href_key]=[index]'>{?}</a></span>"
 		if(grip.is_two_handed(src))
-			parts += span_danger("(2H)")
+			parts += span_danger("（双手）")
 		else
-			parts += span_notice("(1H)")
+			parts += span_notice("（单手）")
 		var/required_traits_text = grip.get_trait_text()
 		if(required_traits_text)
 			parts += span_info(required_traits_text)
 		if(!grip.usable_by(src, user))
-			parts += span_danger("(Unavailable)")
+			parts += span_danger("（不可用）")
 		lines += jointext(parts, " ")
 	if(!length(lines))
 		return null
@@ -97,25 +97,25 @@
 	var/list/overrides = grip.get_var_overrides(src)
 	var/list/text = list()
 	text += "<b>[altgrip_name(grip, user)]</b>"
-	text += "<br><b>Hands:</b> [grip.is_two_handed(src) ? "Two-handed" : "One-handed"]"
+	text += "<br><b>用手要求：</b> [grip.is_two_handed(src) ? "双手" : "单手"]"
 	var/trait_text = grip.get_trait_text()
-	text += "<br><b>Required Trait:</b> [trait_text ? trait_text : "None"]"
+	text += "<br><b>所需特性：</b> [trait_text ? trait_text : "无"]"
 	var/skill_text = grip.get_skill_text(src)
-	text += "<br><b>Weapon Skill:</b> [skill_text ? skill_text : "None"]"
-	text += "<br><b>Intents:</b> [format_altgrip_intents(grip.get_grip_intents(src))]"
-	text += "<br><b>Weapon Stat Changes:</b> [format_altgrip_stats(grip, overrides)]"
+	text += "<br><b>武器技能：</b> [skill_text ? skill_text : "无"]"
+	text += "<br><b>攻击意图：</b> [format_altgrip_intents(grip.get_grip_intents(src))]"
+	text += "<br><b>武器属性变化：</b> [format_altgrip_stats(grip, overrides)]"
 	return text.Join("")
 
 /obj/item/proc/format_altgrip_intents(list/intents)
 	if(!length(intents))
-		return "Uses the weapon's normal intents."
+		return "沿用武器的常规攻击意图。"
 	var/list/intent_lines = list()
 	for(var/intent_entry as anything in intents)
 		intent_lines += format_altgrip_intent(intent_entry)
 	return jointext(intent_lines, "<br>")
 
 /obj/item/proc/format_altgrip_intent(intent_entry)
-	var/intent_name = "Unknown"
+	var/intent_name = "未知"
 	var/damfactor = 1
 	var/penfactor = PEN_NONE
 	var/reach = 1
@@ -136,13 +136,13 @@
 		item_d_type = intent_datum.item_d_type
 	var/list/details = list("[intent_name]")
 	if(damfactor != 1)
-		details += "Damage x[damfactor]"
+		details += "伤害 ×[damfactor]"
 	if(penfactor > PEN_NONE)
-		details += "AP [colorgrade_rating(uppertext(item_d_type), penfactor)]"
+		details += "穿甲 [colorgrade_rating(uppertext(item_d_type), penfactor)]"
 	else
-		details += "AP <font color='#808080'>NONE</font>"
+		details += "穿甲 <font color='#808080'>无</font>"
 	if(reach != 1)
-		details += "Reach [reach]"
+		details += "距离 [reach]"
 	return jointext(details, " | ")
 
 /obj/item/proc/format_altgrip_stats(datum/alt_grip/grip, list/overrides)
@@ -150,21 +150,21 @@
 	var/base_force = get_altgrip_base_value("force", force)
 	var/grip_force = get_altgrip_force(grip, overrides)
 	if(grip_force != base_force)
-		stat_lines += "Force: [base_force] -> [grip_force]"
+		stat_lines += "力度：[base_force] → [grip_force]"
 	var/base_defense = get_altgrip_base_value("wdefense", wdefense)
 	var/grip_defense = get_altgrip_defense(grip, overrides)
 	if(grip_defense != base_defense)
-		stat_lines += "Defense: [base_defense] -> [grip_defense]"
+		stat_lines += "防御：[base_defense] → [grip_defense]"
 	var/base_length = get_altgrip_base_value("wlength", wlength)
 	var/grip_length = get_altgrip_value(overrides, "wlength", base_length)
 	if(grip_length != base_length)
-		stat_lines += "Length: [get_altgrip_length(base_length)] -> [get_altgrip_length(grip_length)]"
+		stat_lines += "长度：[get_altgrip_length(base_length)] → [get_altgrip_length(grip_length)]"
 	var/base_balance = get_altgrip_base_value("wbalance", wbalance)
 	var/grip_balance = get_altgrip_value(overrides, "wbalance", base_balance)
 	if(grip_balance != base_balance)
-		stat_lines += "Balance: [get_altgrip_balance(base_balance)] -> [get_altgrip_balance(grip_balance)]"
+		stat_lines += "平衡：[get_altgrip_balance(base_balance)] → [get_altgrip_balance(grip_balance)]"
 	if(!length(stat_lines))
-		return "No direct weapon stat changes."
+		return "不会直接改变武器属性。"
 	return jointext(stat_lines, "<br>")
 
 /obj/item/proc/get_altgrip_base_value(var_name, fallback)
@@ -190,20 +190,20 @@
 /obj/item/proc/get_altgrip_length(length_value)
 	switch(length_value)
 		if(WLENGTH_SHORT)
-			return "Short"
+			return "短"
 		if(WLENGTH_LONG)
-			return "Long"
+			return "长"
 		if(WLENGTH_GREAT)
-			return "Great"
-	return "Normal"
+			return "巨型"
+	return "普通"
 
 /obj/item/proc/get_altgrip_balance(balance_value)
 	switch(balance_value)
 		if(WBALANCE_HEAVY)
-			return "Heavy"
+			return "沉重"
 		if(WBALANCE_SWIFT)
-			return "Swift"
-	return "Normal"
+			return "迅捷"
+	return "普通"
 
 /obj/item/proc/get_altgrip_intents()
 	if(!current_alt_grip)
@@ -220,17 +220,17 @@
 	var/grip_name = altgrip_name(current_alt_grip, user)
 	var/two_handed_text = ""
 	if(current_alt_grip.is_two_handed(src))
-		two_handed_text = " with both hands"
+		two_handed_text = "以双手"
 	if(grip_name)
-		if(grip_name == "alternate grip")
-			return "I shift [src] into an [grip_name][two_handed_text]."
-		return "I shift [src] into a [grip_name][two_handed_text]."
+		if(grip_name == "变换握法")
+			return "我[two_handed_text]改变[src]的握法。"
+		return "我[two_handed_text]将[src]改为[grip_name]。"
 
 /obj/item/proc/get_altgrip_balloon(mob/user)
 	if(!current_alt_grip)
-		return "normal grip"
+		return "常规握法"
 	var/balloon_name = altgrip_name(current_alt_grip, user)
-	if(balloon_name != "alternate grip")
+	if(balloon_name != "变换握法")
 		if(length(balloon_name) > 5 && LOWER_TEXT(copytext(balloon_name, length(balloon_name) - 4)) == " grip")
 			balloon_name = copytext(balloon_name, 1, length(balloon_name) - 4)
 	return "[balloon_name]!"
@@ -314,7 +314,7 @@
 
 
 /datum/alt_grip
-	var/name = "alternate grip"
+	var/name = "变换握法"
 	/// Whether this grip state counts as being wielded with both hands.
 	var/two_handed = FALSE
 	/// Intents exposed while this grip state is active.
@@ -426,7 +426,7 @@
 
 
 /datum/alt_grip/mordhau
-	name = "mordhau"
+	name = "反握锤击式"
 	two_handed = TRUE
 
 /datum/alt_grip/mordhau/sword
@@ -601,7 +601,7 @@
 	var_overrides = null
 
 /datum/alt_grip/halfsword
-	name = "halfsword"
+	name = "半剑握法"
 	two_handed = TRUE
 	skill_req = SKILL_LEVEL_JOURNEYMAN
 	grip_intents = list(
@@ -659,7 +659,7 @@
 	)
 
 /datum/alt_grip/halfsword/frei
-	name = "mezza spada"
+	name = "半剑式"
 	trait_applied = list(TRAIT_LONGSWORDSMAN)
 	additive_var_overrides = list(
 		"wdefense" = 2
@@ -672,7 +672,7 @@
 	)
 
 /datum/alt_grip/mordhau/sword/frei
-	name = "abrazare"
+	name = "近身缠斗式"
 	two_handed = TRUE
 	additive_var_overrides = list(
 		"wdefense" = -4

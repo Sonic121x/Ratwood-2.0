@@ -66,7 +66,7 @@
 	* Deletes itself if it is ever not in my hand, or if you should have no access to TK.
 */
 /obj/item/tk_grab
-	name = "Telekinetic Grab"
+	name = "念力抓取"
 	desc = ""
 	icon = 'icons/obj/magic.dmi'//Needs sprites
 	icon_state = "2"
@@ -153,7 +153,7 @@
 /proc/tkMaxRangeCheck(mob/user, atom/target)
 	var/d = get_dist(user, target)
 	if(d > TK_MAXRANGE)
-		to_chat(user, span_warning("My mind won't reach that far."))
+		to_chat(user, span_warning("我的念力够不到那么远。"))
 		return
 	return TRUE
 
@@ -193,7 +193,7 @@
 	. += focus_overlay
 
 /obj/item/tk_grab/suicide_act(mob/user)
-	user.visible_message(span_suicide("[user] is using [user.p_their()] telekinesis to choke [user.p_them()]self! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message(span_suicide("[user]正用念动力掐住自己的脖子！看起来是想自杀！"))
 	return (OXYLOSS)
 
 

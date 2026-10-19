@@ -1,5 +1,7 @@
 /datum/job/roguetown/prisonerr
 	title = "Prisoner (Town)"
+	display_title = "囚犯（城镇）"
+	f_title = "囚犯（城镇）"
 	flag = PRISONERR
 	department_flag = PEASANTS
 	faction = "Station"
@@ -9,7 +11,7 @@
 
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = ACCEPTED_RACES
-	tutorial = "How does it feel to be the rat in the cage? You're alone and at the mercy of your captors, kept around as a hostage. You spend your days waiting for the oft chance someone comes to pay your ransom. Might as well start praying to whatever god you find solace in."
+	tutorial = "当笼中的老鼠是什么滋味？你孤身一人，只能任凭看守摆布，被当作人质活着。你日复一日地等着，盼望总有那么一线机会，会有人替你付清赎金。趁现在，最好赶紧向任何还能给你慰藉的神明祈祷吧。"
 
 	outfit = /datum/outfit/job/roguetown/prisonerr
 	bypass_jobban = TRUE
@@ -43,7 +45,7 @@
 
 // Prisoner-specific subclasses, inheriting from towner roles
 /datum/outfit/job/roguetown/prisoner_farmer
-	name = "Prisoner Farmer"
+	name = "囚犯农夫"
 
 /datum/outfit/job/roguetown/prisoner_farmer/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	if(!H) return
@@ -68,9 +70,9 @@
 		if(H.age == AGE_OLD)
 			H.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
 			H.adjust_skillrank(/datum/skill/labor/butchering, 1, TRUE)
-		H.change_stat("strength", 1)
-		H.change_stat("constitution", 1)
-		H.change_stat("speed", 1)
+		H.change_stat(STATKEY_STR, 1)
+		H.change_stat(STATKEY_CON, 1)
+		H.change_stat(STATKEY_SPD, 1)
 		ADD_TRAIT(H, TRAIT_SEEDKNOW, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_LONGSTRIDER, TRAIT_GENERIC)
@@ -78,11 +80,11 @@
 /datum/advclass/prisoner_farmer
 	parent_type = /datum/advclass
 	outfit = /datum/outfit/job/roguetown/prisoner_farmer
-	name = "Prisoner Farmer"
+	name = "囚犯农夫"
 	category_tags = list(CTAG_PRISONER)
 
 /datum/outfit/job/roguetown/prisoner_thug
-	name = "Prisoner Thug"
+	name = "囚犯恶棍"
 
 /datum/outfit/job/roguetown/prisoner_thug/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	if(!H) return
@@ -101,21 +103,21 @@
 	H.adjust_skillrank(/datum/skill/labor/fishing, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
-	H.change_stat("strength", 2)
-	H.change_stat("willpower", 1)
-	H.change_stat("constitution", 3)
-	H.change_stat("speed", -1)
-	H.change_stat("intelligence", -1)
+	H.change_stat(STATKEY_STR, 2)
+	H.change_stat(STATKEY_WIL, 1)
+	H.change_stat(STATKEY_CON, 3)
+	H.change_stat(STATKEY_SPD, -1)
+	H.change_stat(STATKEY_INT, -1)
 	H.grant_language(/datum/language/thievescant)
 
 /datum/advclass/prisoner_thug
 	parent_type = /datum/advclass
 	outfit = /datum/outfit/job/roguetown/prisoner_thug
-	name = "Prisoner Thug"
+	name = "囚犯恶棍"
 	category_tags = list(CTAG_PRISONER)
 
 /datum/outfit/job/roguetown/prisoner_carpenter
-	name = "Prisoner Carpenter"
+	name = "囚犯木匠"
 
 /datum/outfit/job/roguetown/prisoner_carpenter/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	if(!H) return
@@ -135,20 +137,20 @@
 	H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/labor/lumberjacking, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
-	H.change_stat("strength", 1)
-	H.change_stat("willpower", 2)
-	H.change_stat("constitution", 1)
-	H.change_stat("intelligence", 1)
-	H.change_stat("speed", -1)
+	H.change_stat(STATKEY_STR, 1)
+	H.change_stat(STATKEY_WIL, 2)
+	H.change_stat(STATKEY_CON, 1)
+	H.change_stat(STATKEY_INT, 1)
+	H.change_stat(STATKEY_SPD, -1)
 
 /datum/advclass/prisoner_carpenter
 	parent_type = /datum/advclass
 	outfit = /datum/outfit/job/roguetown/prisoner_carpenter
-	name = "Prisoner Carpenter"
+	name = "囚犯木匠"
 	category_tags = list(CTAG_PRISONER)
 
 /datum/outfit/job/roguetown/prisoner_blacksmith
-	name = "Prisoner Blacksmith"
+	name = "囚犯铁匠"
 
 /datum/outfit/job/roguetown/prisoner_blacksmith/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	if(!H) return
@@ -162,20 +164,20 @@
 	H.adjust_skillrank(/datum/skill/craft/weaponsmithing, 5, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/smelting, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-	H.change_stat("strength", 2)
-	H.change_stat("intelligence", 1)
-	H.change_stat("willpower", 2)
-	H.change_stat("constitution", 2)
+	H.change_stat(STATKEY_STR, 2)
+	H.change_stat(STATKEY_INT, 1)
+	H.change_stat(STATKEY_WIL, 2)
+	H.change_stat(STATKEY_CON, 2)
 	ADD_TRAIT(H, TRAIT_TRAINED_SMITH, TRAIT_GENERIC)
 
 /datum/advclass/prisoner_blacksmith
 	parent_type = /datum/advclass
 	outfit = /datum/outfit/job/roguetown/prisoner_blacksmith
-	name = "Prisoner Blacksmith"
+	name = "囚犯铁匠"
 	category_tags = list(CTAG_PRISONER)
 
 /datum/outfit/job/roguetown/prisoner_hunter
-	name = "Prisoner Hunter"
+	name = "囚犯猎人"
 
 /datum/outfit/job/roguetown/prisoner_hunter/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	if(!H) return
@@ -199,9 +201,9 @@
 	H.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/tracking, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-	H.change_stat("intelligence", 1)
-	H.change_stat("perception", 2)
-	H.change_stat("speed", 2)
+	H.change_stat(STATKEY_INT, 1)
+	H.change_stat(STATKEY_PER, 2)
+	H.change_stat(STATKEY_SPD, 2)
 	ADD_TRAIT(H, TRAIT_OUTDOORSMAN, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_WOODSMAN, TRAIT_GENERIC)
@@ -209,15 +211,14 @@
 /datum/advclass/prisoner_hunter
 	parent_type = /datum/advclass
 	outfit = /datum/outfit/job/roguetown/prisoner_hunter
-	name = "Prisoner Hunter"
+	name = "囚犯猎人"
 	category_tags = list(CTAG_PRISONER)
 
 /datum/outfit/job/roguetown/prisoner_minstrel
-	name = "Prisoner Minstrel"
+	name = "囚犯吟游者"
 
 /datum/outfit/job/roguetown/prisoner_minstrel/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	if(!H) return
-	if(H) to_chat(H, "DEBUG: prisoner_minstrel pre_equip called")
 	..() // Call base prisoner outfit for collar/loincloth
 	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
@@ -231,9 +232,9 @@
 	H.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-	H.change_stat("speed", 3)
-	H.change_stat("willpower", 2)
-	H.change_stat("perception", 1)
+	H.change_stat(STATKEY_SPD, 3)
+	H.change_stat(STATKEY_WIL, 2)
+	H.change_stat(STATKEY_PER, 1)
 	ADD_TRAIT(H, TRAIT_KEENEARS, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
@@ -242,13 +243,13 @@
 /datum/advclass/prisoner_minstrel
 	parent_type = /datum/advclass
 	outfit = /datum/outfit/job/roguetown/prisoner_minstrel
-	name = "Prisoner Minstrel"
+	name = "囚犯吟游者"
 	category_tags = list(CTAG_PRISONER)
 
 /datum/advclass/prisoner_butcher
 	parent_type = /datum/advclass
 	outfit = /datum/outfit/job/roguetown/prisoner_butcher
-	name = "Prisoner Butcher"
+	name = "囚犯屠夫"
 	category_tags = list(CTAG_PRISONER)
 
 /datum/outfit/job/roguetown/prisoner_butcher/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
@@ -264,14 +265,14 @@
 	H.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/labor/butchering, 5, TRUE)
-	H.change_stat("strength", 1)
-	H.change_stat("willpower", 2)
-	H.change_stat("constitution", 2)
+	H.change_stat(STATKEY_STR, 1)
+	H.change_stat(STATKEY_WIL, 2)
+	H.change_stat(STATKEY_CON, 2)
 
 /datum/advclass/prisoner_cheesemaker
 	parent_type = /datum/advclass
 	outfit = /datum/outfit/job/roguetown/prisoner_cheesemaker
-	name = "Prisoner Cheesemaker"
+	name = "囚犯奶酪匠"
 	category_tags = list(CTAG_PRISONER)
 
 /datum/outfit/job/roguetown/prisoner_cheesemaker/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
@@ -291,14 +292,14 @@
 	H.adjust_skillrank(/datum/skill/craft/cooking, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/labor/farming, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
-	H.change_stat("intelligence", 2)
-	H.change_stat("constitution", 2)
-	H.change_stat("willpower", 1)
+	H.change_stat(STATKEY_INT, 2)
+	H.change_stat(STATKEY_CON, 2)
+	H.change_stat(STATKEY_WIL, 1)
 
 /datum/advclass/prisoner_seamstress
 	parent_type = /datum/advclass
 	outfit = /datum/outfit/job/roguetown/prisoner_seamstress
-	name = "Prisoner Seamster"
+	name = "囚犯缝纫工"
 	category_tags = list(CTAG_PRISONER)
 
 /datum/outfit/job/roguetown/prisoner_seamstress/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
@@ -312,15 +313,15 @@
 	H.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/tanning, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-	H.change_stat("intelligence", 2)
-	H.change_stat("speed", 2)
-	H.change_stat("perception", 1)
-	H.change_stat("strength", -1)
+	H.change_stat(STATKEY_INT, 2)
+	H.change_stat(STATKEY_SPD, 2)
+	H.change_stat(STATKEY_PER, 1)
+	H.change_stat(STATKEY_STR, -1)
 
 /datum/advclass/prisoner_potter
 	parent_type = /datum/advclass
 	outfit = /datum/outfit/job/roguetown/prisoner_potter
-	name = "Prisoner Potter"
+	name = "囚犯陶工"
 	category_tags = list(CTAG_PRISONER)
 
 /datum/outfit/job/roguetown/prisoner_potter/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
@@ -335,15 +336,15 @@
 	H.adjust_skillrank(/datum/skill/craft/masonry, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/ceramics, 5, TRUE)
-	H.change_stat("willpower", 2)
-	H.change_stat("constitution", 1)
-	H.change_stat("perception", 2)
-	H.change_stat("speed", -1)
+	H.change_stat(STATKEY_WIL, 2)
+	H.change_stat(STATKEY_CON, 1)
+	H.change_stat(STATKEY_PER, 2)
+	H.change_stat(STATKEY_SPD, -1)
 
 /datum/advclass/prisoner_towndoctor
 	parent_type = /datum/advclass
 	outfit = /datum/outfit/job/roguetown/prisoner_towndoctor
-	name = "Prisoner Barber Surgeon"
+	name = "囚犯理发医师"
 	category_tags = list(CTAG_PRISONER)
 
 /datum/outfit/job/roguetown/prisoner_towndoctor/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
@@ -360,14 +361,14 @@
 	H.adjust_skillrank(/datum/skill/misc/medicine, 5, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/sewing, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
-	H.change_stat("intelligence", 3)
-	H.change_stat("fortune", 1)
+	H.change_stat(STATKEY_INT, 3)
+	H.change_stat(STATKEY_LCK, 1)
 	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_NOSTINK)
 
 /datum/advclass/prisoner_drunkard
 	parent_type = /datum/advclass
 	outfit = /datum/outfit/job/roguetown/prisoner_drunkard
-	name = "Prisoner Gambler"
+	name = "囚犯赌徒"
 	category_tags = list(CTAG_PRISONER)
 
 /datum/outfit/job/roguetown/prisoner_drunkard/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
@@ -379,15 +380,15 @@
 	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-	H.change_stat("intelligence", -2)
-	H.change_stat("constitution", 1)
-	H.change_stat("strength", 1)
-	H.change_stat("fortune", 2)
+	H.change_stat(STATKEY_INT, -2)
+	H.change_stat(STATKEY_CON, 1)
+	H.change_stat(STATKEY_STR, 1)
+	H.change_stat(STATKEY_LCK, 2)
 
 /datum/advclass/prisoner_witch
 	parent_type = /datum/advclass
 	outfit = /datum/outfit/job/roguetown/prisoner_witch
-	name = "Prisoner Witch"
+	name = "囚犯女巫"
 	category_tags = list(CTAG_PRISONER)
 
 /datum/outfit/job/roguetown/prisoner_witch/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
@@ -405,13 +406,13 @@
 		H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 		H.adjust_skillrank(/datum/skill/craft/carpentry, 2, TRUE)
 		H.mind.adjust_spellpoints(6)
-		H.change_stat("intelligence", 3)
-		H.change_stat("speed", 2)
-		H.change_stat("fortune", 1)
+		H.change_stat(STATKEY_INT, 3)
+		H.change_stat(STATKEY_SPD, 2)
+		H.change_stat(STATKEY_LCK, 1)
 		if(H.age == AGE_OLD)
-			H.change_stat("speed", -1)
-			H.change_stat("intelligence", 1)
-			H.change_stat("fortune", 1)
+			H.change_stat(STATKEY_SPD, -1)
+			H.change_stat(STATKEY_INT, 1)
+			H.change_stat(STATKEY_LCK, 1)
 	ADD_TRAIT(H, TRAIT_RITUALIST, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DEATHSIGHT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_WITCH, TRAIT_GENERIC)
@@ -424,7 +425,7 @@
 /datum/advclass/prisoner_miner
 	parent_type = /datum/advclass
 	outfit = /datum/outfit/job/roguetown/prisoner_miner
-	name = "Prisoner Miner"
+	name = "囚犯矿工"
 	category_tags = list(CTAG_PRISONER)
 
 /datum/outfit/job/roguetown/prisoner_miner/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
@@ -445,17 +446,17 @@
 	H.adjust_skillrank(/datum/skill/labor/mining, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/smelting, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-	H.change_stat("strength", 2)
-	H.change_stat("willpower", 1)
-	H.change_stat("constitution", 2)
-	H.change_stat("fortune", 2)
+	H.change_stat(STATKEY_STR, 2)
+	H.change_stat(STATKEY_WIL, 1)
+	H.change_stat(STATKEY_CON, 2)
+	H.change_stat(STATKEY_LCK, 2)
 	ADD_TRAIT(H, TRAIT_DARKVISION, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_LEGENDARY_MINER, TRAIT_GENERIC)
 
 /datum/advclass/prisoner_woodcutter
 	parent_type = /datum/advclass
 	outfit = /datum/outfit/job/roguetown/prisoner_woodcutter
-	name = "Prisoner Woodcutter"
+	name = "囚犯伐木工"
 	category_tags = list(CTAG_PRISONER)
 
 /datum/outfit/job/roguetown/prisoner_woodcutter/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
@@ -488,4 +489,3 @@
 		pants = /obj/item/clothing/under/roguetown/tights/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 		armor = /obj/item/clothing/suit/roguetown/shirt/tunic/random
-

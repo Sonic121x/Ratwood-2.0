@@ -13,14 +13,14 @@
 
 /obj/item/ammo_casing/caseless/rogue/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Projectiles have maximum and minimum falloff ranges, with particular falloff factors for damage.")
-	. += span_info("If the target is hit between the maximum and minimum tile range, then the full force is delivered.")
+	. += span_info("投射物有最小与最大衰减距离，以及对应的伤害衰减系数。")
+	. += span_info("目标位于最小与最大距离之间时，投射物可造成完整伤害。")
 
 //bolts ฅ^•ﻌ•^ฅ
 
 /obj/item/ammo_casing/caseless/rogue/bolt
-	name = "bolt"
-	desc = "A durable iron bolt that will pierce a skull easily."
+	name = "弩矢"
+	desc = "一支结实的铁制弩矢，轻易就能贯穿头骨。"
 	projectile_type = /obj/projectile/bullet/reusable/bolt
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust)
 	caliber = "regbolt"
@@ -31,43 +31,43 @@
 	force = 10
 
 /obj/item/ammo_casing/caseless/rogue/bolt/bronze
-	name = "bronze bolt"
-	desc = "Bronze and wood, fitted by-hand to fashion a bolt's fuselage. The \
-	design, perfected over a millennium of trial-and-error, sails with tremendous haste."
+	name = "青铜弩矢"
+	desc = "青铜与木材，手工装配成弩矢的箭身。历经千 \
+	年试错而臻完善的此设计，飞行时迅疾无比。"
 	icon_state = "bronzebolt"
 	projectile_type = /obj/projectile/bullet/reusable/bolt/bronze
 
 /obj/item/ammo_casing/caseless/rogue/bolt/ancient
-	name = "ancient bolt"
-	desc = "An ancient bolt, tipped with polished gilbranze. The razor-thin tip resembles a sabot more than an arrowhead; something that most alloys cannot reliably withstand."
+	name = "远古弩矢"
+	desc = "一支远古弩矢，尖端镶有打磨过的吉尔青铜。其锋刃薄如剃刀，与其说像箭头，不如说像弹托；大多数合金都难以可靠抵挡。"
 	icon_state = "ancientbolt"
 	projectile_type = /obj/projectile/bullet/reusable/bolt/ancient
 
 /obj/item/ammo_casing/caseless/rogue/bolt/decrepit
-	name = "decrepit bolt"
-	desc = "An ancient bolt, tipped with frayed bronze. It lacks the luster that it once held, many centuries ago."
+	name = "破旧弩矢"
+	desc = "一支古老弩矢，尖端为磨损青铜。它早已失去数百年前那份光泽。"
 	icon_state = "ancientbolt"
 	projectile_type = /obj/projectile/bullet/reusable/bolt/decrepit
 	color = "#bb9696"
 
 /obj/item/ammo_casing/caseless/rogue/bolt/blunt
-	name = "practice bolt"
-	desc = "A crossbow bolt headed with a padded wad. More annoying than deadly."
+	name = "训练弩矢"
+	desc = "一支前端包有软垫的弩矢。更烦人，而非致命。"
 	projectile_type = /obj/projectile/bullet/reusable/bolt/blunt
 	possible_item_intents = list(/datum/intent/mace/strike)
 	icon_state = "bolt_blunt"
 	force = 5
 
 /obj/item/ammo_casing/caseless/rogue/bolt/heavyblunt
-	name = "heavy blunt bolt"
-	desc = "A crossbow bolt with a fat metal head. Built to break bones."
+	name = "重型钝头弩矢"
+	desc = "一支装有厚重金属头的弩矢。就是用来砸断骨头的。"
 	projectile_type = /obj/projectile/bullet/reusable/bolt/heavyblunt
 	possible_item_intents = list(/datum/intent/mace/strike)
 	icon_state = "bolt_blunt_heavy"
 	force = 10
 
 /obj/projectile/bullet/reusable/bolt
-	name = "bolt"
+	name = "弩矢"
 	damage = 70
 	damage_type = BRUTE
 	armor_penetration = PEN_HEAVY
@@ -119,15 +119,15 @@
 	speed = 0.25
 
 /obj/item/ammo_casing/caseless/rogue/bolt/blacksteel
-	name = "blacksteel bolt"
-	desc = "A magnificent bolt of blacksteel, sharp enough to pierce straight through plate armor."
+	name = "黑钢弩矢"
+	desc = "一支精工锻造的黑钢弩矢，锋利得足以直接贯穿板甲。"
 	projectile_type = /obj/projectile/bullet/reusable/bolt/blacksteel
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust)
 	caliber = "regbolt"
 	icon_state = "blacksteelbolt"
 
 /obj/projectile/bullet/reusable/bolt/blacksteel
-	name = "blacksteel bolt"
+	name = "黑钢弩矢"
 	damage = 70
 	armor_penetration = PEN_BSTEEL
 	icon_state = "blacksteelbolt_proj"
@@ -155,10 +155,10 @@
 //arrows ฅ^•ﻌ•^ฅ
 
 /obj/item/ammo_casing/caseless/rogue/arrow
-	name = "arrow"
-	desc = "Some devices are so simple in their nature and austere in their scope \
-	that they feel as if they've sprung into being without mortal intervention. \
-	Consult your gods."
+	name = "箭"
+	desc = "有些造物的本质如此简单，用途如此朴素， \
+	 让人几乎觉得它们并非出自凡人之手， 而 \
+	是自天地之间自然诞生。去问问你的神吧。"
 	projectile_type = /obj/projectile/bullet/reusable/arrow
 	caliber = "arrow"
 	icon = 'icons/roguetown/weapons/ammo.dmi'
@@ -169,58 +169,58 @@
 	max_integrity = 10
 
 /obj/item/ammo_casing/caseless/rogue/arrow/blunt
-	name = "blunt arrow"
-	desc = "For when you really need to kill a zad."
+	name = "钝头箭"
+	desc = "献给那些你真的非杀一头扎德不可的时候。"
 	icon_state = "arrow_blunt"
 	projectile_type = /obj/projectile/bullet/reusable/arrow/blunt
 	force = 5
 	possible_item_intents = list(/datum/intent/mace/strike)
 
 /obj/item/ammo_casing/caseless/rogue/arrow/stone
-	name = "stone arrow"
-	desc = "A simple dowel sports lashed flint knapped and honed to a razor edge. Folk \
-	wisdom holds that these cut finer than iron heads, but they tend to shatter \
-	on impact with armor."
+	name = "石箭"
+	desc = "一根简单箭杆上绑着打制后磨得锋利如剃刀 \
+	的燧石箭头。民间常说这种箭头比铁制箭头切 \
+	得更利，但一旦撞上甲胄，也更容易碎裂。"
 	max_integrity = 5
 	projectile_type = /obj/projectile/bullet/reusable/arrow/stone
 
 /obj/item/ammo_casing/caseless/rogue/arrow/bronze
-	name = "bronze flight arrow"
+	name = "青铜飞箭"
 	icon_state = "bronzearrow"
-	desc = "Bronze, quenched and batonned onto a feathered stick. The stories scribed along its imperfect edge could fill a hundred tomes; lost to antiquity, but remembered through sheer generational instinct."
+	desc = "青铜淬火后，被锻压到一根带羽的箭杆上。那不甚完美的箭身上所铭刻的故事，足以写满上百卷典籍；它们早已湮没于远古，却凭着一代代纯粹的本能流传至今。"
 	max_integrity = 8
 	projectile_type = /obj/projectile/bullet/reusable/arrow/bronze
 
 /obj/item/ammo_casing/caseless/rogue/arrow/iron
-	name = "iron broadhead arrow"
+	name = "铁阔头箭"
 	icon_state = "ironarrow"
-	desc = "Bundles of steam straightened dowels are notched at one end and fastened \
-	to iron-heads on another. With flight feathers lashed it will fly true to its \
-	shooters will."
+	desc = "一根经蒸汽矫直的箭杆，一端开槽， \
+	另一端装着铁制箭头。系上尾羽后，它 \
+	就会忠实地飞向射手意志所指之处。"
 	projectile_type = /obj/projectile/bullet/reusable/arrow/iron
 
 /obj/item/ammo_casing/caseless/rogue/arrow/iron/decrepit
-	name = "decrepit broadhead arrow"
-	desc = "An arrow; one end, tipped with flattened and frayed bronze - the other, inlaid with decayed feathers. The alloy's decrepity forces it to burst into shrapnel upon impact, shredding flesh."
+	name = "破旧阔头箭"
+	desc = "一支箭，一端装着扁平而磨损的青铜箭头，另一端嵌着腐朽羽毛。这种衰败合金会在命中时炸裂成碎片，把血肉撕得稀烂。"
 	icon_state = "ancientarrow"
 	projectile_type = /obj/projectile/bullet/reusable/arrow/iron/decrepit
 	color = "#bb9696"
 
 /obj/item/ammo_casing/caseless/rogue/arrow/steel
-	name = "steel bodkin arrow"
+	name = "钢锥头箭"
 	icon_state = "steelarrow"
-	desc = "Bundles of steam straightened dowels are notched at one end and fastened \
-	to steel-heads on another. Crafted for more well-prepared targets."
+	desc = "一根经蒸汽矫直的箭杆，一端开槽，另一端装着钢制 \
+	箭头。它正是为了对付那些准备更充分的目标而造。"
 	projectile_type = /obj/projectile/bullet/reusable/arrow/steel
 
 /obj/item/ammo_casing/caseless/rogue/arrow/steel/ancient
-	name = "ancient bodkin arrow"
-	desc = "An arrow; one end, tipped with a sharpened rod of polished gilbranze - the other, inlaid with feathers. The razor-thin tip resembles a sabot; an alloyed sliver that can punch straight through steel."
+	name = "远古锥头箭"
+	desc = "一支箭，一端装着磨尖的抛光吉尔青铜细杆，另一端嵌有羽毛。那薄如刀锋的尖端更像脱壳穿甲体，是足以直接洞穿钢铁的合金细片。"
 	icon_state = "ancientarrow"
 	projectile_type = /obj/projectile/bullet/reusable/arrow/steel/ancient
 
 /obj/projectile/bullet/reusable/arrow
-	name = "arrow"
+	name = "箭"
 	damage = 20
 	damage_type = BRUTE
 	npc_simple_damage_mult = 2
@@ -253,7 +253,7 @@
 		L.mind.add_sleep_experience(/datum/skill/combat/bows, L.STAINT * skill_multiplier)
 
 /obj/projectile/bullet/reusable/arrow/blunt
-	name = "blunt arrow"
+	name = "钝头箭"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/blunt
 	damage = 15
 	armor_penetration = PEN_NONE
@@ -261,12 +261,12 @@
 	woundclass = BCLASS_BLUNT
 
 /obj/projectile/bullet/reusable/arrow/stone
-	name = "stone arrow"
+	name = "石箭"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/stone
 	accuracy = 60
 
 /obj/projectile/bullet/reusable/arrow/iron
-	name = "broadhead arrow"
+	name = "阔头箭"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/iron
 
 	damage = 40
@@ -275,13 +275,13 @@
 	npc_simple_damage_mult = 2
 
 /obj/projectile/bullet/reusable/arrow/iron/decrepit
-	name = "decrepit broadhead arrow"
+	name = "破旧阔头箭"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/iron/decrepit
 	damage = 20
 	armor_penetration = PEN_NONE
 
 /obj/projectile/bullet/reusable/arrow/steel
-	name = "bodkin arrow"
+	name = "锥头箭"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/steel
 
 	accuracy = 75
@@ -292,11 +292,11 @@
 	npc_simple_damage_mult = 3
 
 /obj/projectile/bullet/reusable/arrow/steel/ancient
-	name = "ancient bodkin arrow"
+	name = "远古锥头箭"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/steel/ancient
 
 /obj/projectile/bullet/reusable/arrow/bronze
-	name = "bronze flight arrow"
+	name = "青铜飞箭"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/bronze
 	icon_state = "bronzearrow_proj"
 	damage = 50
@@ -306,14 +306,14 @@
 	speed = 0.15 // Faster!
 
 /obj/item/ammo_casing/caseless/rogue/arrow/blacksteel
-	name = "blacksteel arrow"
+	name = "黑钢箭"
 	icon_state = "blacksteelarrow"
-	desc = "A magnificent arrow of blacksteel. It shreds flesh, pierces armor, and \
-	always lands where one aims; perfect, yet marred by a prohibitively high cost."
+	desc = "一支精工锻造的黑钢箭。它撕裂血肉、贯穿铠甲， 并且永 \
+	远落在射手瞄定之处；完美无瑕，唯独造价高昂得令人却步。"
 	projectile_type = /obj/projectile/bullet/reusable/arrow/blacksteel
 
 /obj/projectile/bullet/reusable/arrow/blacksteel
-	name = "blacksteel arrow"
+	name = "黑钢箭"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/blacksteel
 	damage = 50
 	armor_penetration = PEN_HEAVY
@@ -326,23 +326,23 @@
 
 
 /obj/item/ammo_casing/caseless/rogue/arrow/poison
-	name = "poisoned arrow"
-	desc = "Bundles of steam straightened dowels are notched at one end and fastened \
-	to razor heads on another. Furrels cut into the arrow-head with an intoxicating concoction. \
-	within."
+	name = "毒箭"
+	desc = "一根经蒸汽矫直的箭杆，一端开槽，另 \
+	一端装着锋利箭头。箭头上开有凹槽 \
+	，内里灌注着令人昏沉的毒药混合物。"
 	projectile_type = /obj/projectile/bullet/reusable/arrow/poison
 	icon_state = "ironarrow_poison"
 	max_integrity = 10 // same as normal arrow; usually breaks on impact with a mob anyway
 
 /obj/item/ammo_casing/caseless/rogue/arrow/stone/poison
-	name = "poisoned stone arrow"
-	desc = "A simple dowel sports lashed flint honed to a razor edge and knapped \
-	with furrels for carrying poison residue."
+	name = "毒石箭"
+	desc = "一根简单箭杆上绑着磨得锋利如剃刀的燧石箭 \
+	头，箭头上还开有细槽，用来残留并携带毒物。"
 	projectile_type = /obj/projectile/bullet/reusable/arrow/poison/stone
 	icon_state = "arrow_poison"
 
 /obj/projectile/bullet/reusable/arrow/poison
-	name = "poison iron arrow"
+	name = "毒铁箭"
 	damage = 20
 	damage_type = BRUTE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
@@ -357,7 +357,7 @@
 	drowsy = 5
 
 /obj/projectile/bullet/reusable/arrow/poison/stone
-	name = "poison stone arrow"
+	name = "毒石箭"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/stone
 
 
@@ -365,8 +365,8 @@
 
 
 /obj/item/ammo_casing/caseless/rogue/bolt/pyro
-	name = "pyroclastic bolt"
-	desc = "A bolt smeared with a flammable tincture."
+	name = "燃火弩矢"
+	desc = "一支涂满易燃药剂的弩矢。"
 	projectile_type = /obj/projectile/bullet/bolt/pyro
 	possible_item_intents = list(/datum/intent/mace/strike)
 	caliber = "regbolt"
@@ -377,8 +377,8 @@
 	force = 10
 
 /obj/projectile/bullet/bolt/pyro
-	name = "pyroclastic bolt"
-	desc = "A bolt smeared with a flammable tincture."
+	name = "燃火弩矢"
+	desc = "一支涂满易燃药剂的弩矢。"
 	damage = 20
 	damage_type = BRUTE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
@@ -402,8 +402,8 @@
 
 
 /obj/item/ammo_casing/caseless/rogue/bolt/water
-	name = "water bolt"
-	desc = "A bolt with its tip containing a glass ampule filled with water. It will shatter on impact, useful for taking out pesky lights."
+	name = "水囊弩矢"
+	desc = "一支前端嵌着装水玻璃小瓶的弩矢。它会在命中时碎裂，特别适合打灭烦人的灯火。"
 	projectile_type = /obj/projectile/bullet/bolt/water
 	possible_item_intents = list(/datum/intent/mace/strike)
 	caliber = "regbolt"
@@ -414,8 +414,8 @@
 	force = 0
 
 /obj/projectile/bullet/bolt/water
-	name = "water bolt"
-	desc = "A bolt with its tip containing a glass ampule filled with water. It will shatter on impact, useful for taking out pesky lights."
+	name = "水囊弩矢"
+	desc = "一支前端嵌着装水玻璃小瓶的弩矢。它会在命中时碎裂，特别适合打灭烦人的灯火。"
 	damage = 0
 	damage_type = BRUTE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
@@ -447,8 +447,8 @@
 		O.extinguish()
 //pyro arrows
 /obj/item/ammo_casing/caseless/rogue/arrow/pyro
-	name = "pyroclastic arrow"
-	desc = "An arrow with its tip drenched in a flammable tincture."
+	name = "燃火箭"
+	desc = "一支箭，箭头浸透了易燃药剂。"
 	projectile_type = /obj/projectile/bullet/arrow/pyro
 	possible_item_intents = list(/datum/intent/mace/strike)
 	caliber = "arrow"
@@ -459,8 +459,8 @@
 	force = 10
 
 /obj/projectile/bullet/arrow/pyro
-	name = "pyroclatic arrow"
-	desc = "An arrow with its tip drenched in a flammable tincture."
+	name = "燃火箭"
+	desc = "一支箭，箭头浸透了易燃药剂。"
 	damage = 15
 	damage_type = BRUTE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
@@ -483,8 +483,8 @@
 	M.ignite_mob()
 
 /obj/item/ammo_casing/caseless/rogue/arrow/water
-	name = "water arrow"
-	desc = "An arrow with its tip containing a glass ampule filled with water. It will shatter on impact, useful for taking out pesky lights."
+	name = "水囊箭"
+	desc = "一支前端嵌着装水玻璃小瓶的箭矢。它会在命中时碎裂，特别适合打灭烦人的灯火。"
 	projectile_type = /obj/projectile/bullet/arrow/water
 	possible_item_intents = list(/datum/intent/mace/strike)
 	caliber = "arrow"
@@ -495,8 +495,8 @@
 	force = 0
 
 /obj/projectile/bullet/arrow/water
-	name = "water arrow"
-	desc = "An arrow with its tip containing a glass ampule filled with water. It will shatter on impact, useful for taking out pesky lights."
+	name = "水囊箭"
+	desc = "一支前端嵌着装水玻璃小瓶的箭矢。它会在命中时碎裂，特别适合打灭烦人的灯火。"
 	damage = 0
 	damage_type = BRUTE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
@@ -521,7 +521,7 @@
 		O.extinguish()
 
 /obj/projectile/bullet/reusable/arrow/poison/stone
-	name = "stone arrow"
+	name = "石箭"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/arrow/stone
 
 //mob projectiles
@@ -555,7 +555,7 @@
 	speed = 2
 //deep one stone
 /obj/projectile/bullet/reusable/deepone
-	name = "stone"
+	name = "石块"
 	damage = 25
 	damage_type = BRUTE
 	armor_penetration = PEN_MEDIUM
@@ -571,7 +571,7 @@
 
 //Spider projectiles
 /obj/projectile/bullet/spider
-	name = "web glob"
+	name = "蛛网团"
 	damage = 10
 	damage_type = BRUTE
 	icon = 'modular/Mapping/icons/webbing.dmi'
@@ -585,7 +585,7 @@
 	speed = 1
 
 /obj/projectile/bullet/spider_shroom
-	name = "web glob"
+	name = "蛛网团"
 	damage = 10
 	damage_type = BRUTE
 	icon = 'modular/Mapping/icons/webbing.dmi'
@@ -637,7 +637,7 @@
 /obj/structure/spider/stickyweb/mirespider/CanPass(atom/movable/mover, turf/target)
 	if(isliving(mover))
 		if(prob(25) && !HAS_TRAIT(mover, TRAIT_WEBWALK))
-			to_chat(mover, "<span class='danger'>I get stuck in \the [src] for a moment.</span>")
+			to_chat(mover, "<span class='danger'>我一时被[src]缠住了。</span>")
 			return FALSE
 	else if(istype(mover, /obj/projectile))
 		return prob(85)
@@ -648,8 +648,8 @@
 /obj/item/ammo_casing/caseless/rogue/javelin
 	force = 14
 	throw_speed = 3		//1 lower than throwing knives, it hits harder + embeds more.
-	name = "iron javelin"
-	desc = "A tool used for centuries, as early as recorded history. This one is tipped with a iron head; standard among militiamen and irregulars alike."
+	name = "铁标枪"
+	desc = "一种自有文字记载以来便沿用数百年的工具。这一支装着铁头，是民兵与杂牌部队的标准配备。"
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "ijavelin"
 	wlength = WLENGTH_NORMAL
@@ -681,8 +681,8 @@
 /obj/item/ammo_casing/caseless/rogue/javelin/steel
 	force = 16
 	armor_penetration = PEN_HEAVY
-	name = "steel javelin"
-	desc = "A tool used for centuries, as early as recorded history. This one is tipped with a steel head; perfect for piercing armor!"
+	name = "钢标枪"
+	desc = "一种自有文字记载以来便沿用数百年的工具。这一支装着钢头，最适合用来刺穿护甲！"
 	icon_state = "javelin"
 	max_integrity = 100						//In-line with other stabbing weapons.
 	throwforce = 28							//Equal to steel knife BUT this has peircing damage type so..
@@ -690,13 +690,13 @@
 	embedding = list("embedded_pain_multiplier" = 4, "embed_chance" = 45, "embedded_fall_chance" = 10) //Better than steel throwing knife by 10%
 
 /obj/item/ammo_casing/caseless/rogue/javelin/steel/ancient
-	name = "ancient javelin"
-	desc = "A missile of polished gilbranze. Old Syon had drowned beneath His tears, and Her ascension had brought forth this world's end - so that You, with the killing blow, could become God."
+	name = "远古标枪"
+	desc = "一枚抛光吉尔青铜投射体。古西昂沉没于祂的泪水之下，而她的飞升带来了此世的终结，只为了让你在挥出致命一击时，得以成神。"
 	icon_state = "ajavelin"
 
 /obj/item/ammo_casing/caseless/rogue/javelin/steel/ancient/decrepit
-	name = "decrepit javelin"
-	desc = "A missile of frayed bronze. Before you is your weapon; that which rose Man out of the mud, and brought the Beasts of Old Syon to heel. When were you last aware of any other part of you? Do you recall seeing the world in any other way?"
+	name = "破旧标枪"
+	desc = "一枚磨损青铜投射体。你眼前的便是你的武器；正是它使人类从泥泞中站起，也令古西昂的诸兽低头。你上次意识到自己还有别的部分是什么时候？你还记得曾以其他方式看待这个世界吗？"
 	force = 9
 	armor_penetration = PEN_MEDIUM
 	max_integrity = 50		
@@ -705,8 +705,8 @@
 	anvilrepair = null
 
 /obj/item/ammo_casing/caseless/rogue/javelin/bronze
-	name = "bronze javelin"
-	desc = "A tool used for centuries, as early as recorded history. This one is tipped with a bronze head, wide and serrated - a death knell to the unarmored, and a staggering wound to the beplated."
+	name = "青铜标枪"
+	desc = "一种自有文字记载以来便沿用数百年的工具。这一支装着宽大而带锯齿的青铜枪头——对无甲者是丧钟，对披甲者则是令人踉跄的重创。"
 	icon_state = "bjavelin"
 	force = 20
 	throwforce = 36	//Devastating against unarmored foes, but with nearly halved armor penetration.
@@ -716,8 +716,8 @@
 	smeltresult = null // 1 Ingot = 2 Javelins
 
 /obj/item/ammo_casing/caseless/rogue/javelin/silver
-	name = "silver javelin"
-	desc = "A tool used for centuries, as early as recorded history. This one appears to be tipped with a silver head. Decorative, perhaps.. or for some sort of specialized hunter."
+	name = "白银标枪"
+	desc = "一种自有文字记载以来便沿用数百年的工具。这一支似乎装着银头。也许只是装饰品……或者是某类专门猎手的武器。"
 	icon_state = "sjavelin"
 	is_silver = TRUE
 	throwforce = 25							//Less than steel because it's.. silver. Good at killing vampires/WW's still.
@@ -744,8 +744,8 @@
 		return//abort
 
 /obj/item/ammo_casing/caseless/rogue/javelin/blacksteel
-	name = "blacksteel javelin"
-	desc = "A tool used for centuries, as early as recorded history. This one is tipped with a blacksteel head; unstoppable by even the finest plate armor!"
+	name = "黑钢标枪"
+	desc = "一种自有文字记载以来便沿用数百年的工具。这一支装着黑钢枪头；即便最精良的板甲也无法阻挡！"
 	icon_state = "bs_javelin"
 	max_integrity = 50						//In-line with other stabbing weapons.
 	force = 18
@@ -758,8 +758,8 @@
 //sling bullets
 
 /obj/item/ammo_casing/caseless/rogue/sling_bullet //parent of sling ammo and the temporary sling bullet for stones. shouldn't ever be seen
-	name = "soaring stone"
-	desc = "You shouldn't be seeing this."
+	name = "飞翔石"
+	desc = "你本不该看到这个。"
 	projectile_type = /obj/projectile/bullet/sling_bullet
 	caliber = "slingbullet"
 	icon = 'icons/roguetown/weapons/ammo.dmi'
@@ -771,80 +771,80 @@
 	max_integrity = 20
 
 /obj/item/ammo_casing/caseless/rogue/sling_bullet/stone //these should be seen
-	name = "stone sling bullet"
-	desc = "A stone refined for wrath."
+	name = "石制投石弹"
+	desc = "一块为愤怒而打磨的石头。"
 	projectile_type = /obj/projectile/bullet/reusable/sling_bullet/stone
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "stone_sling_bullet"
 
 /obj/item/ammo_casing/caseless/rogue/sling_bullet/bronze
-	name = "bronze sling bullet"
-	desc = "A small bronze sphere. It feels deceptively heavy in the palm of your hand."
+	name = "青铜投石弹"
+	desc = "一颗小巧的青铜球。握在掌中时，它比看起来沉得多。"
 	projectile_type = /obj/projectile/bullet/reusable/sling_bullet/bronze
 	icon_state = "bronze_sling_bullet"
 
 /obj/item/ammo_casing/caseless/rogue/sling_bullet/decrepit
-	name = "decrepit sling bullet"
-	desc = "A pellet of frayed bronze. The alloy flakes apart in your grasp, staining the palm with flecks of brown-and-red."
+	name = "破旧投石弹"
+	desc = "一颗由磨损青铜制成的弹丸。合金会在你掌中剥落，把手心染上一点点棕红色碎屑。"
 	projectile_type = /obj/projectile/bullet/reusable/sling_bullet/decrepit
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "ancient_sling_bullet"
 	color = "#bb9696"
 
 /obj/item/ammo_casing/caseless/rogue/sling_bullet/ancient
-	name = "ancient sling bullet"
-	desc = "A pellet of polished gilbranze. The bigger they are, the harder they'll fall; be it Man or God."
+	name = "远古投石弹"
+	desc = "一颗抛光吉尔青铜弹丸。无论是人还是神，越庞大者，倒下时也越沉重。"
 	projectile_type = /obj/projectile/bullet/reusable/sling_bullet/ancient
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "ancient_sling_bullet"
 
 /obj/item/ammo_casing/caseless/rogue/sling_bullet/iron
-	name = "iron sling bullet"
-	desc = "Not to be mistakened for a ball bearing."
+	name = "铁制投石弹"
+	desc = "别把它误认成轴承钢珠。"
 	projectile_type = /obj/projectile/bullet/reusable/sling_bullet/iron
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "iron_sling_bullet"
 
 /obj/item/ammo_casing/caseless/rogue/sling_bullet/steel
-	name = "steel sling bullet"
-	desc = "A heavy, durable sphere of steel, able to punch a hole in most armours."
+	name = "钢制投石弹"
+	desc = "一颗沉重而耐用的钢球，足以击穿大多数护甲。"
 	projectile_type = /obj/projectile/bullet/reusable/sling_bullet/steel
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "steel_sling_bullet"
 
 /obj/item/ammo_casing/caseless/rogue/sling_bullet/steelblessed
-	name = "holy steel sling bullet"
-	desc = "A heavy, durable sphere of steel, blessed with divine energy to strike down undead."
+	name = "神圣钢制投石弹"
+	desc = "一颗沉重而耐用的钢球，受神圣能量祝圣，用以击倒亡灵。"
 	projectile_type = /obj/projectile/bullet/reusable/sling_bullet/steelblessed
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "steelholy_sling_bullet"
 
 /obj/item/ammo_casing/caseless/rogue/sling_bullet/silver
-	name = "silver sling bullet"
-	desc = "A ball of silver, terrible metal for an projectile yet no undead ever enjoyed a ball of their anathema placed inside their chest."
+	name = "银制投石弹"
+	desc = "一颗银球。银本不是做投射物的好材料，可从来没有哪个亡灵，乐意被一颗自己的克星打进胸膛。"
 	projectile_type = /obj/projectile/bullet/reusable/sling_bullet/silver
 	is_silver = TRUE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "silver_sling_bullet"
 
 /obj/item/ammo_casing/caseless/rogue/sling_bullet/silverblessed
-	name = "blessed silver sling bullet"
-	desc = "A round piece of blessed silver, the matherial weakness burned away in divine flames. Let the undead beware, for this is a weapon of the divine."
+	name = "祝圣银制投石弹"
+	desc = "一颗祝圣过的银弹，其材质中的弱点已在神圣烈焰中焚尽。让亡灵们当心吧，因为这是一件神圣之兵器。"
 	projectile_type = /obj/projectile/bullet/reusable/sling_bullet/silverblessed
 	is_silver = TRUE
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "holysilver_sling_bullet"
 
 /obj/item/ammo_casing/caseless/rogue/sling_bullet/blacksteel
-	name = "blacksteel sling bullet"
-	desc = "An elegant sphere of blacksteel. This bullet bores through plate and meat like a comet. Once it's reached terminal velocity, you might want to duck."
+	name = "黑钢投石弹"
+	desc = "一颗精致的黑钢圆弹。这枚弹丸如彗星般洞穿板甲与血肉。一旦它达到终点速度，你最好赶紧低头。"
 	projectile_type = /obj/projectile/bullet/reusable/sling_bullet/blacksteel
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "bs_sling_bullet"
 
 /obj/projectile/bullet/sling_bullet //not reusable since stones will break on impact. i couldnt figure out how to prevent that
-	name = "sling bullet"
-	desc = "If you're reading this: duck."
+	name = "投石弹"
+	desc = "如果你能看到这行字：快低头。"
 	damage = 25
 	damage_type = BRUTE
 	armor_penetration = PEN_NONE
@@ -875,8 +875,8 @@
 		L.mind.add_sleep_experience(/datum/skill/combat/slings, L.STAINT * skill_multiplier)
 
 /obj/projectile/bullet/reusable/sling_bullet //parent for proper reusable sling bullets
-	name = "sling bullet"
-	desc = "If you're reading this: duck."
+	name = "投石弹"
+	desc = "如果你能看到这行字：快低头。"
 	damage = 25
 	damage_type = BRUTE
 	armor_penetration = PEN_NONE
@@ -908,7 +908,7 @@
 		L.mind.add_sleep_experience(/datum/skill/combat/slings, L.STAINT * skill_multiplier)
 
 /obj/projectile/bullet/reusable/sling_bullet/stone
-	name = "stone sling bullet"
+	name = "石制投石弹"
 	damage = 30 //proper stones are better
 	armor_penetration = PEN_NONE
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/stone
@@ -916,7 +916,7 @@
 	icon_state = "musketball_proj"
 
 /obj/projectile/bullet/reusable/sling_bullet/bronze
-	name = "bronze sling bullet"
+	name = "青铜投石弹"
 	damage = 35
 	armor_penetration = PEN_LIGHT //Slightly more damage, but with -33% AP.
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/bronze
@@ -924,7 +924,7 @@
 	icon_state = "bronzeslingbullet_proj"
 
 /obj/projectile/bullet/reusable/sling_bullet/decrepit
-	name = "decrepit sling bullet"
+	name = "破旧投石弹"
 	damage = 15
 	armor_penetration = PEN_NONE
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/decrepit
@@ -932,7 +932,7 @@
 	icon_state = "musketball_proj"
 
 /obj/projectile/bullet/reusable/sling_bullet/ancient
-	name = "ancient sling bullet"
+	name = "远古投石弹"
 	damage = 30
 	armor_penetration = PEN_MEDIUM
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/ancient
@@ -940,7 +940,7 @@
 	icon_state = "musketball_proj"
 
 /obj/projectile/bullet/reusable/sling_bullet/iron
-	name = "iron sling bullet"
+	name = "铁制投石弹"
 	damage = 30
 	armor_penetration = PEN_MEDIUM
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/iron
@@ -948,7 +948,7 @@
 	icon_state = "musketball_proj"
 
 /obj/projectile/bullet/reusable/sling_bullet/steel
-	name = "steel sling bullet"
+	name = "钢制投石弹"
 	damage = 30
 	armor_penetration = PEN_HEAVY // extra  50% armour pierce over iron
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/steel
@@ -957,7 +957,7 @@
 	color = "#1f1d19"
 
 /obj/projectile/bullet/reusable/sling_bullet/steelblessed
-	name = "holy steel sling bullet"
+	name = "神圣钢制投石弹"
 	damage = 30
 	armor_penetration = PEN_HEAVY // extra  50% armour pierce over iron
 	npc_simple_damage_mult = 4 // Ai doesnt need nice things
@@ -973,10 +973,10 @@
 		M.apply_damage(10, BURN)
 		M.adjust_fire_stacks(2, /datum/status_effect/fire_handler/fire_stacks/sunder/blessed) // weaker then silver version
 		M.ignite_mob()
-		visible_message(span_warning("[target] erupts in divine flames upon being struck by [src]!"))
+		visible_message(span_warning("[target]被[src]击中，身上顿时燃起神圣的火焰！"))
 
 /obj/projectile/bullet/reusable/sling_bullet/silver
-	name = "silver sling bullet"
+	name = "银制投石弹"
 	damage = 25   // 5 less damage and 10 less ap, but extra damage on silver weak
 	armor_penetration = PEN_LIGHT
 	npc_simple_damage_mult = 5 // AI doesnt need nice things
@@ -992,10 +992,10 @@
 		M.adjust_fire_stacks(2, /datum/status_effect/fire_handler/fire_stacks/sunder)
 		M.ignite_mob()
 		M.apply_damage(20, BURN)
-		visible_message(span_warning("[target] erupts in flames upon being struck by [src]!"))
+		visible_message(span_warning("[target]被[src]击中后爆燃起来！"))
 
 /obj/projectile/bullet/reusable/sling_bullet/silverblessed
-	name = "blessed silver sling bullet"
+	name = "祝圣银制投石弹"
 	damage = 35   // better then bronze because divine power
 	armor_penetration = PEN_MEDIUM
 	npc_simple_damage_mult = 6 // AI doesnt need nice things (+ blessed)
@@ -1011,10 +1011,10 @@
 		M.apply_damage(30, BURN)
 		M.adjust_fire_stacks(4, /datum/status_effect/fire_handler/fire_stacks/sunder/blessed)
 		M.ignite_mob()
-		visible_message(span_warning("[target] erupts in divine flames upon being struck by [src]!"))
+		visible_message(span_warning("[target]被[src]击中后，在神圣烈焰中爆燃！"))
 
 /obj/projectile/bullet/reusable/sling_bullet/blacksteel
-	name = "blacksteel sling bullet"
+	name = "黑钢投石弹"
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "blacksteelslingbullet_proj"
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/sling_bullet/blacksteel
@@ -1022,8 +1022,8 @@
 	armor_penetration = PEN_HEAVY
 
 /obj/item/ammo_casing/caseless/rogue/bolt/holy
-	name = "sunderbolt"
-	desc = "A silver-tipped bolt, containing a small vial of holy water. Though it inflicts lesser wounds on living flesh, it exceeds when employed against the unholy; a snap and a crack, followed by a fiery surprise. </br>'One baptism for the remission of sins.'"
+	name = "裂灭弩矢"
+	desc = "一支银尖弩矢，内部装有一小瓶圣水。它对活体血肉造成的伤口较浅，但对不洁之物却格外有效；断裂与爆响之后，便是炽烈的惊喜。 <br>“一次洗礼，赦免诸罪。”"
 	projectile_type = /obj/projectile/bullet/reusable/bolt/holy
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust)
 	caliber = "regbolt"
@@ -1034,7 +1034,7 @@
 	force = 10
 
 /obj/projectile/bullet/reusable/bolt/holy
-	name = "sunderbolt"
+	name = "裂灭弩矢"
 	damage = 35 //Halved damage, but same penetration.
 	damage_type = BRUTE
 	armor_penetration = PEN_HEAVY
@@ -1053,8 +1053,8 @@
 
 //Heavy bolts, for the funny heavy crossbow.
 /obj/item/ammo_casing/caseless/rogue/heavy_bolt
-	name = "heavy bolt"
-	desc = "A durable steel bolt. It will pierce anything easily, perhaps by mass alone."
+	name = "重型弩矢"
+	desc = "一支结实的钢制弩矢。也许光靠质量，它就足以轻松刺穿任何东西。"
 	projectile_type = /obj/projectile/bullet/reusable/heavy_bolt
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust)
 	caliber = "heabolt"
@@ -1067,7 +1067,7 @@
 //+10 damage/pen from bolt.
 //Pen increase on heavy crossbow assures these will, effectively, ALWAYS go through.
 /obj/projectile/bullet/reusable/heavy_bolt
-	name = "heavy bolt"
+	name = "重型弩矢"
 	damage = 80
 	damage_type = BRUTE
 	armor_penetration = PEN_BSTEEL
@@ -1083,8 +1083,8 @@
 	npc_simple_damage_mult = 2
 
 /obj/item/ammo_casing/caseless/rogue/heavy_bolt/holy
-	name = "stake bolt"
-	desc = "A silver stake, affixed with fins. Drive back the darkness!"
+	name = "木桩弩矢"
+	desc = "一根装有尾翼的白银木桩。把黑暗钉回去！"
 	projectile_type = /obj/projectile/bullet/reusable/heavy_bolt/holy
 	icon_state = "heavy_stake"//Temp sprite.
 	max_integrity = 30
@@ -1092,7 +1092,7 @@
 	is_silver = TRUE
 
 /obj/projectile/bullet/reusable/heavy_bolt/holy
-	name = "stake bolt"
+	name = "木桩弩矢"
 	damage = 50
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/heavy_bolt/holy
 	hitsound = 'sound/combat/hits/hi_bolt (3).ogg'
@@ -1102,9 +1102,9 @@
 	npc_simple_damage_mult = 5//RAAAAAA
 
 /obj/item/ammo_casing/caseless/rogue/heavy_bolt/tempest
-	name = "tempest bolt"
-	desc = "The warding around this feels <b>heavy</b>. A payload of some sort in the nose. \
-	What exactly is this meant for?"
+	name = "风暴弩矢"
+	desc = "缠绕其上的防护术让人感觉<b>沉重</b>。矢头 \
+	里似乎装着某种载荷。 这东西究竟是拿来做什么的？"
 	projectile_type = /obj/projectile/bullet/reusable/heavy_bolt/tempest
 	icon_state = "tempest_bolt"//Temp sprite.
 	max_integrity = 30
@@ -1113,7 +1113,7 @@
 
 //The super evil murderfuck bolt.
 /obj/projectile/bullet/reusable/heavy_bolt/tempest
-	name = "tempest bolt"
+	name = "风暴弩矢"
 	damage = 25
 	ammo_type = /obj/item/ammo_casing/caseless/rogue/heavy_bolt/tempest
 	hitsound = 'sound/combat/hits/hi_bolt (1).ogg'

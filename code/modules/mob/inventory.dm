@@ -128,14 +128,14 @@
 /mob/proc/get_held_index_name(i)
 	var/list/hand = list()
 	if(i > 2)
-		hand += "upper "
+		hand += "上方的"
 	var/num = 0
 	if(!(i % 2))
 		num = i-2
-		hand += "right hand"
+		hand += "右手"
 	else
 		num = i-1
-		hand += "left hand"
+		hand += "左手"
 	num -= (num*0.5)
 	if(num > 1) //"upper left hand #1" seems weird, but "upper left hand #2" is A-ok
 		hand += " #[num]"
@@ -203,7 +203,7 @@
 	if((I.is_silver || I.smeltresult == /obj/item/ingot/silver) && (HAS_TRAIT(src, TRAIT_SILVER_WEAK) &&  !has_status_effect(STATUS_EFFECT_ANTIMAGIC)))
 		var/datum/antagonist/vampire/V_lord = mind?.has_antag_datum(/datum/antagonist/vampire)
 		if(!istype(V_lord) || V_lord?.generation < GENERATION_METHUSELAH)
-			to_chat(src, span_userdanger("I can't pick up the silver, it is my BANE!"))
+			to_chat(src, span_userdanger("我拿不了银制品，它是我的克星！"))
 			Knockdown(10)
 			Paralyze(10)
 			adjustFireLoss(25)
@@ -321,7 +321,7 @@
 				var/mob/living/carbon/human/H = src
 				for(var/Item in H.get_equipped_items()) // Find this item
 					if(Item == I)
-						to_chat(src, span_warn("I can't remove \the [I.name]!"))
+						to_chat(src, span_warn("我没法取下[I.name]！"))
 						return FALSE
 	var/hand_index = get_held_index_of_item(I)
 	if(hand_index)
@@ -448,7 +448,7 @@
 
 /obj/item/proc/equip_to_best_slot(mob/M)
 	if(src != M.get_active_held_item())
-		to_chat(M, span_warning("I are not holding anything to equip!"))
+		to_chat(M, span_warning("我手上没有可以穿戴的东西！"))
 		return FALSE
 
 	if(M.equip_to_appropriate_slot(src))
@@ -469,7 +469,7 @@
 		if(SEND_SIGNAL(I, COMSIG_TRY_STORAGE_INSERT, src, M))
 			return TRUE
 
-	to_chat(M, span_warning("I couldn't equip that."))
+	to_chat(M, span_warning("我没法穿戴那件东西。"))
 	return FALSE
 
 

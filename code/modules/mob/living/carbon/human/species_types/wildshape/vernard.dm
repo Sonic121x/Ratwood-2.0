@@ -1,5 +1,5 @@
 /mob/living/carbon/human/species/wildshape/fox //The baseline and tracker of the wildshapes 
-	name = "Vernard"
+	name = "维纳德狐"
 	race = /datum/species/shapefox
 	footstep_type = FOOTSTEP_MOB_CLAW
 	ambushable = FALSE
@@ -25,13 +25,13 @@
 		AddSpell(new /obj/effect/proc_holder/spell/self/foxclaws)
 		faction += "wolfs" // Foxes have the same faction code-wise so leaving it for now
 		if (src.client.prefs?.wildshape_name)
-			real_name = "vernard ([stored_mob.real_name])"
+			real_name = "维纳德狐（[stored_mob.real_name]）"
 		else
-			real_name = "vernard"
+			real_name = "维纳德狐"
 
 // FOX SPECIES DATUM //
 /datum/species/shapefox
-	name = "vernard"
+	name = "维纳德狐"
 	id = "shapefox"
 	species_traits = list(NO_UNDERWEAR, NO_ORGAN_FEATURES, NO_BODYPART_FEATURES)
 	inherent_traits = list(
@@ -89,7 +89,7 @@
 // FOX SPECIFIC ITEMS //
 /obj/item/clothing/suit/roguetown/armor/skin_armor/fox_skin
 	slot_flags = null
-	name = "fox's skin"
+	name = "狐狸皮"
 	desc = ""
 	icon_state = null
 	body_parts_covered = FULL_BODY
@@ -102,20 +102,20 @@
 	item_flags = DROPDEL
 
 /datum/intent/simple/fox //Like a less defense dagger
-	name = "claw"
+	name = "爪击"
 	clickcd = 10
 	icon_state = "incut"
 	blade_class = BCLASS_CUT
-	attack_verb = list("claws", "mauls", "eviscerates")
+	attack_verb = list("爪击", "撕咬", "撕裂")
 	animname = "cut"
 	hitsound = "genslash"
 	penfactor = 10
-	miss_text = "slashes the air!"
+	miss_text = "挥爪划过空气！"
 	miss_sound = "bluntswoosh"
 	item_d_type = "slash"
 
 /obj/item/rogueweapon/fox_claw //Like a less defense dagger
-	name = "fox claw"
+	name = "狐狸爪"
 	desc = ""
 	item_state = null
 	lefthand_file = null
@@ -161,7 +161,7 @@
 
 // FOX SPELLS //
 /obj/effect/proc_holder/spell/self/foxclaws
-	name = "Vernard Claws"
+	name = "维纳德狐爪"
 	desc = "!"
 	overlay_state = "claws"
 	antimagic_allowed = TRUE
@@ -181,12 +181,12 @@
 			user.dropItemToGround(active, TRUE)
 		if(istype(inactive, /obj/item/rogueweapon/fox_claw) && inactive != active)
 			user.dropItemToGround(inactive, TRUE)
-		to_chat(user, span_notice("My claws retract."))
+		to_chat(user, span_notice("我的利爪缩回了。"))
 		extended = FALSE
 	else
 		l = new(user, 1)
 		r = new(user, 2)
 		user.put_in_hands(l, TRUE, FALSE, TRUE)
 		user.put_in_hands(r, TRUE, FALSE, TRUE)
-		to_chat(user, span_notice("My claws extend."))
+		to_chat(user, span_notice("我的利爪伸出了。"))
 		extended = TRUE

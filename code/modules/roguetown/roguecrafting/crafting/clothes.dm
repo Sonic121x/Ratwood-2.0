@@ -1,22 +1,22 @@
 /datum/crafting_recipe/roguetown/survival/skullmask
 	display_category = ITEM_CAT_CLOTH_MASK
-	name = "skull mask"
-	category = "Clothes"
+	name = "骷髅面具"
+	category = "服饰"
 	result = /obj/item/clothing/mask/rogue/skullmask
 	reqs = list(
 		/obj/item/natural/bone = 3,
 		/obj/item/natural/fibers = 1,
 		)
 	sellprice = 10
-	verbage_simple = "craft"
-	verbage = "crafted"
+	verbage_simple = "制作"
+	verbage = "制作"
 	craftdiff = 0
 
 
 /datum/crafting_recipe/roguetown/survival/antlerhood
 	display_category = ITEM_CAT_GARMENT_COMMON
-	name = "antlerhood"
-	category = "Clothes"
+	name = "鹿角兜帽"
+	category = "服饰"
 	result = /obj/item/clothing/head/roguetown/antlerhood
 	reqs = list(
 		/obj/item/natural/hide = 1,
@@ -25,14 +25,14 @@
 	sellprice = 12
 	tools = list(/obj/item/needle)
 	skillcraft = /datum/skill/craft/sewing
-	verbage_simple = "sew"
-	verbage = "sews"
+	verbage_simple = "缝制"
+	verbage = "缝制"
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/survival/tribalrags
 	display_category = ITEM_CAT_GARMENT_COMMON
-	name = "tribal rags"
-	category = "Clothes"
+	name = "部族破布衣"
+	category = "服饰"
 	result = /obj/item/clothing/suit/roguetown/shirt/tribalrag
 	reqs = list(
 		/obj/item/natural/hide = 1,
@@ -41,59 +41,59 @@
 	sellprice = 6
 	tools = list(/obj/item/needle)
 	skillcraft = /datum/skill/craft/sewing
-	verbage_simple = "sew"
-	verbage = "sews"
+	verbage_simple = "缝制"
+	verbage = "缝制"
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/leather/neck/leather_collar
 	display_category = ITEM_CAT_ARMOR_NECK
-	name = "leather collar"
-	category = "Clothes"
+	name = "皮革颈圈"
+	category = "服饰"
 	result = /obj/item/clothing/neck/roguetown/collar/leather
 	reqs = list(/obj/item/natural/hide/cured = 1)
 	tools = list(/obj/item/needle)
 	time = 8 SECONDS
-	category = "Leatherwork"
+	category = "皮革工艺"
 	subcategory = CAT_NONE
 	always_availible = TRUE
 
 /datum/crafting_recipe/roguetown/leather/neck/catbell_collar
 	display_category = ITEM_CAT_ARMOR_NECK
-	name = "catbell collar"
+	name = "猫铃颈圈"
 	result = /obj/item/clothing/neck/roguetown/collar/catbell
 	reqs = list(/obj/item/natural/hide/cured = 1, /obj/item/catbell = 1)
 	tools = list(/obj/item/needle)
 	time = 10 SECONDS
-	category = "Leatherwork"
+	category = "皮革工艺"
 	subcategory = CAT_NONE
 	always_availible = TRUE
 
 /datum/crafting_recipe/roguetown/leather/neck/cowbell_collar
 	display_category = ITEM_CAT_ARMOR_NECK
-	name = "cowbell collar"
+	name = "牛铃颈圈"
 	result = /obj/item/clothing/neck/roguetown/collar/cowbell
 	reqs = list(/obj/item/natural/hide/cured = 1, /obj/item/catbell/cow = 1)
 	tools = list(/obj/item/needle)
 	time = 10 SECONDS
-	category = "Leatherwork"
+	category = "皮革工艺"
 	subcategory = CAT_NONE
 	always_availible = TRUE
 
 /datum/crafting_recipe/roguetown/leather/neck/leather_leash
 	display_category = ITEM_CAT_TAILOR_MISC
-	name = "leather leash"
+	name = "皮制牵绳"
 	result = /obj/item/leash/leather
 	reqs = list(/obj/item/natural/hide/cured = 1)
 	tools = list(/obj/item/needle)
 	time = 10 SECONDS
-	category = "Leatherwork"
+	category = "皮革工艺"
 	subcategory = CAT_NONE
 	always_availible = TRUE
 
 /datum/crafting_recipe/roguetown/survival/goodluckcharm
 	display_category = ITEM_CAT_TAILOR_MISC
-	name = "cabbit's foot luck charm"
-	category = "Clothes"
+	name = "幸运护符"
+	category = "服饰"
 	result = /obj/item/clothing/neck/roguetown/luckcharm // +1 fortune when worn
 	reqs = list(
 		/obj/item/natural/rabbitsfoot = 1,
@@ -105,8 +105,8 @@
 
 /datum/crafting_recipe/roguetown/survival/bouquet_rosa
 	display_category = ITEM_CAT_TAILOR_MISC
-	name = "rosa bouquet"
-	category = "Clothes"
+	name = "玫瑰花束"
+	category = "服饰"
 	result = /obj/item/bouquet/rosa
 	reqs = list(
 		/obj/item/alch/rosa = 4,
@@ -114,13 +114,13 @@
 		/obj/item/paper/scroll = 1,
 		)
 	craftdiff = 0
-	verbage_simple = "arranged"
-	verbage = "arranges"
+	verbage_simple = "整理"
+	verbage = "整理"
 
 /datum/crafting_recipe/roguetown/survival/bouquet_salvia
 	display_category = ITEM_CAT_TAILOR_MISC
-	name = "salvia bouquet"
-	category = "Clothes"
+	name = "鼠尾草花束"
+	category = "服饰"
 	result = /obj/item/bouquet/salvia
 	reqs = list(
 		/obj/item/alch/salvia = 4,
@@ -128,13 +128,13 @@
 		/obj/item/paper/scroll = 1,
 		)
 	craftdiff = 0
-	verbage_simple = "arranged"
-	verbage = "arranges"
+	verbage_simple = "整理"
+	verbage = "整理"
 
 /datum/crafting_recipe/roguetown/survival/bouquet_matricaria
 	display_category = ITEM_CAT_TAILOR_MISC
-	name = "matricaria bouquet"
-	category = "Clothes"
+	name = "洋甘菊花束"
+	category = "服饰"
 	result = /obj/item/bouquet/matricaria
 	reqs = list(
 		/obj/item/alch/matricaria = 4,
@@ -142,13 +142,13 @@
 		/obj/item/paper/scroll = 1,
 		)
 	craftdiff = 0
-	verbage_simple = "arranged"
-	verbage = "arranges"
+	verbage_simple = "整理"
+	verbage = "整理"
 
 /datum/crafting_recipe/roguetown/survival/bouquet_calendula
 	display_category = ITEM_CAT_TAILOR_MISC
-	name = "calendula bouquet"
-	category = "Clothes"
+	name = "金盏花花束"
+	category = "服饰"
 	result = /obj/item/bouquet/calendula
 	reqs = list(
 		/obj/item/alch/calendula = 4,
@@ -156,37 +156,37 @@
 		/obj/item/paper/scroll = 1,
 		)
 	craftdiff = 0
-	verbage_simple = "arranged"
-	verbage = "arranges"
+	verbage_simple = "整理"
+	verbage = "整理"
 
 /datum/crafting_recipe/roguetown/survival/flowercrown_rosa
 	display_category = ITEM_CAT_TAILOR_MISC
-	name = "rosa crown"
-	category = "Clothes"
+	name = "玫瑰花冠"
+	category = "服饰"
 	result = /obj/item/flowercrown/rosa
 	reqs = list(
 		/obj/item/alch/rosa = 4,
 		/obj/item/natural/fibers = 2,
 		)
 	craftdiff = 0
-	verbage_simple = "tied"
-	verbage = "ties"
+	verbage_simple = "系扎"
+	verbage = "系扎"
 
 /datum/crafting_recipe/roguetown/survival/flowercrown_salvia
 	display_category = ITEM_CAT_TAILOR_MISC
-	name = "salvia crown"
-	category = "Clothes"
+	name = "鼠尾草花冠"
+	category = "服饰"
 	result = /obj/item/flowercrown/salvia
 	reqs = list(
 		/obj/item/alch/salvia = 4,
 		/obj/item/natural/fibers = 2,
 		)
 	craftdiff = 0
-	verbage_simple = "tied"
-	verbage = "ties"
+	verbage_simple = "系扎"
+	verbage = "系扎"
 
 /datum/crafting_recipe/roguetown/survival/flowercrown_matricaria
-	name = "matricaria crown"
+	name = "洋甘菊花冠"
 	category = "Clothes"
 	result = /obj/item/flowercrown/matricaria
 	reqs = list(
@@ -194,11 +194,11 @@
 		/obj/item/natural/fibers = 2,
 		)
 	craftdiff = 0
-	verbage_simple = "tied"
-	verbage = "ties"
+	verbage_simple = "系扎"
+	verbage = "系扎"
 
 /datum/crafting_recipe/roguetown/survival/flowercrown_calendula
-	name = "calendula crown"
+	name = "金盏花花冠"
 	category = "Clothes"
 	result = /obj/item/flowercrown/calendula
 	reqs = list(
@@ -206,11 +206,11 @@
 		/obj/item/natural/fibers = 2,
 		)
 	craftdiff = 0
-	verbage_simple = "tied"
-	verbage = "ties"
+	verbage_simple = "系扎"
+	verbage = "系扎"
 
 /datum/crafting_recipe/roguetown/survival/flowercrown_manabloom
-	name = "manabloom crown"
+	name = "法绽花花冠"
 	category = "Clothes"
 	result = /obj/item/flowercrown/manabloom
 	reqs = list(
@@ -218,11 +218,11 @@
 		/obj/item/natural/fibers = 2,
 		)
 	craftdiff = 0
-	verbage_simple = "tied"
-	verbage = "ties"
+	verbage_simple = "系扎"
+	verbage = "系扎"
 
 /datum/crafting_recipe/roguetown/survival/flowercrown_rosa_thorns
-	name = "rosa crown with thorns"
+	name = "带刺玫瑰花冠"
 	category = "Clothes"
 	result = /obj/item/flowercrown/rosa/thorns
 	reqs = list(
@@ -231,25 +231,25 @@
 		/obj/item/alch/rosa = 3,
 		)
 	craftdiff = 0
-	verbage_simple = "tied"
-	verbage = "ties"
+	verbage_simple = "系扎"
+	verbage = "系扎"
 
 /datum/crafting_recipe/roguetown/survival/flowercrown_rosa_gray
-	name = "gray flower crown"
+	name = "灰色花冠"
 	category = "Clothes"
 	result = /obj/item/flowercrown/rosa/dyecrown
 	reqs = list(
 		/obj/item/natural/fibers = 2
 		)
 	craftdiff = 0
-	verbage_simple = "tied"
-	verbage = "ties"
+	verbage_simple = "系扎"
+	verbage = "系扎"
 
 // Amulet
 /datum/crafting_recipe/roguetown/survival/pearlcross
 	display_category = ITEM_CAT_TAILOR_MISC
-	name = "amulet (pearls)"
-	category = "Clothes"
+	name = "珍珠护符"
+	category = "服饰"
 	result = /obj/item/clothing/neck/roguetown/psicross/pearl
 	reqs = list(
 		/obj/item/natural/fibers = 1,
@@ -259,8 +259,8 @@
 
 /datum/crafting_recipe/roguetown/survival/bpearlcross
 	display_category = ITEM_CAT_TAILOR_MISC
-	name = "amulet (blue pearls) "
-	category = "Clothes"
+	name = "蓝色珍珠护符"
+	category = "服饰"
 	result = /obj/item/clothing/neck/roguetown/psicross/bpearl
 	reqs = list(
 		/obj/item/natural/fibers = 1,
@@ -270,8 +270,8 @@
 
 /datum/crafting_recipe/roguetown/survival/shellnecklace
 	display_category = ITEM_CAT_TAILOR_MISC
-	name = "shell necklace"
-	category = "Clothes"
+	name = "牡蛎贝壳项链"
+	category = "服饰"
 	result = /obj/item/clothing/neck/roguetown/psicross/shell
 	reqs = list(
 		/obj/item/oystershell = 5,
@@ -280,8 +280,8 @@
 
 /datum/crafting_recipe/roguetown/survival/shellbracelet
 	display_category = ITEM_CAT_TAILOR_MISC
-	name = "shell bracelet"
-	category = "Clothes"
+	name = "贝壳手环"
+	category = "服饰"
 	result = /obj/item/clothing/neck/roguetown/psicross/shell/bracelet
 	reqs = list(
 		/obj/item/oystershell = 3,
@@ -290,8 +290,8 @@
 
 /datum/crafting_recipe/roguetown/survival/abyssoramulet
 	display_category = ITEM_CAT_TAILOR_MISC
-	name = "amulet of abyssor"
-	category = "Clothes"
+	name = "阿比索尔护符"
+	category = "服饰"
 	result = /obj/item/clothing/neck/roguetown/psicross/abyssor
 	reqs = list(
 		/obj/item/natural/fibers = 1,
@@ -300,8 +300,8 @@
 
 /datum/crafting_recipe/roguetown/survival/woodcross
 	display_category = ITEM_CAT_TAILOR_MISC
-	name = "wooden psycross"
-	category = "Clothes"
+	name = "木制教十字"
+	category = "服饰"
 	result = /obj/item/clothing/neck/roguetown/psicross/wood
 	reqs = list(
 		/obj/item/natural/fibers = 2,
@@ -310,8 +310,8 @@
 
 /datum/crafting_recipe/roguetown/survival/wickercloak
 	display_category = ITEM_CAT_GARMENT_COMMON
-	name = "wicker cloak"
-	category = "Clothes"
+	name = "柳枝斗篷"
+	category = "服饰"
 	result = /obj/item/clothing/cloak/wickercloak
 	reqs = list(
 		/obj/item/natural/dirtclod = 1,
@@ -321,8 +321,8 @@
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/survival/mentorhat
-	name = "worn bamboo hat"
-	category = "Clothes"
+	name = "旧竹笠"
+	category = "服饰"
 	result = /obj/item/clothing/head/roguetown/mentorhat
 	reqs = list(
 		/obj/item/grown/log/tree/small = 1,
@@ -333,7 +333,7 @@
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/survival/decorative_mentorhat
-	name = "decorative bamboo hat"
+	name = "装饰竹笠"
 	category = "Clothes"
 	result = /obj/item/clothing/head/roguetown/mentorhat/decorative
 	reqs = list(

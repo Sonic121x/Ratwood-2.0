@@ -8,8 +8,8 @@
 
 /datum/buildmode_mode/copy/show_help(client/c)
 	to_chat(c, span_notice("***********************************************************"))
-	to_chat(c, span_notice("Left Mouse Button on obj/turf/mob   = Spawn a Copy of selected target"))
-	to_chat(c, span_notice("Right Mouse Button on obj/mob = Select target to copy"))
+	to_chat(c, span_notice("左键点击物体/地块/生物 = 生成所选目标的副本"))
+	to_chat(c, span_notice("右键点击物体/生物 = 选择要复制的目标"))
 	to_chat(c, span_notice("***********************************************************"))
 
 /datum/buildmode_mode/copy/handle_click(client/c, params, obj/object)
@@ -24,5 +24,5 @@
 			log_admin("Build Mode: [key_name(c)] copied [stored] to [AREACOORD(object)]")
 	else if(right_click)
 		if(ismovableatom(object)) // No copying turfs for now.
-			to_chat(c, span_notice("[object] set as template."))
+			to_chat(c, span_notice("已将 [object] 设为模板。"))
 			stored = object

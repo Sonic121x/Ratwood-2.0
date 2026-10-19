@@ -60,7 +60,7 @@
 	if(length(candidates) < antag_amt)
 		if(.)
 			. += ", "
-		. += "Not Enough Candidates!"
+		. += "候选人数不足！"
 
 	return .
 
@@ -132,7 +132,7 @@
 	var/list/picked_mobs = list()
 	for(var/i in 1 to antag_count)
 		if(!length(candidates))
-			message_admins("A roleset event got fewer antags then its antag_count and may not function correctly.")
+			message_admins("角色组事件获得的反派人数少于 antag_count 设定值，可能无法正常运行。")
 			break
 
 		var/mob/candidate = pick_n_take(candidates)

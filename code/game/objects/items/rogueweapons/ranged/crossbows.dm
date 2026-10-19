@@ -1,8 +1,8 @@
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 	has_item_quality = TRUE
-	name = "crossbow"
-	desc = "A deadly weapon that shoots a bolt with terrific power."
+	name = "十字弩"
+	desc = "一种能以惊人威力射出弩矢的致命武器。"
 	icon = 'icons/roguetown/weapons/misc32.dmi'
 	icon_state = "crossbow0"
 	item_state = "crossbow"
@@ -21,7 +21,7 @@
 	var/hasloadedsprite = FALSE
 	force = 10
 	var/cocked = FALSE
-	cartridge_wording = "bolt"
+	cartridge_wording = "弩矢"
 	load_sound = 'sound/foley/nockarrow.ogg'
 	fire_sound = 'sound/combat/Ranged/crossbow-small-shot-02.ogg'
 	anvilrepair = /datum/skill/craft/weaponsmithing
@@ -34,13 +34,13 @@
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Crossbows increase in accuracy with a higher <b>PERCEPTION</b>, but deal a static amount of damage \
-	regardless of character stats.")
-	. += span_info("Crossbows cannot be nocked directly from their quiver and require time to load.")
+	. += span_info("<b>感知</b>越高，弩的精确度越高；但弩造成的伤害固定， \
+	不受角色属性影响。")
+	. += span_info("弩无法直接从箭袋搭箭，装填需要时间。")
 	if(penfactor < 0)
-		. += span_info("This weapon <b>reduces</b> bolt penetration by <b>[abs(penfactor)]</b> tier(s).")
+		. += span_info("此武器使弩矢的穿甲等级<b>降低 [abs(penfactor)] 级</b>。")
 	else if(penfactor > 0)
-		. += span_info("This weapon <b>increases</b> bolt penetration by <b>[penfactor]</b> tier(s).")
+		. += span_info("此武器使弩矢的穿甲等级<b>提高 [penfactor] 级</b>。")
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/getonmobprop(tag)
 	. = ..()
@@ -129,7 +129,7 @@
 		..()
 	else
 		if(!cocked)
-			to_chat(user, span_info("I step on the stirrup and use all my might..."))
+			to_chat(user, span_info("我踩住弩镫，使出全身力气上弦……"))
 			if(!movingreload)
 				if(do_after(user, reloadtime - user.STASTR, target = user))
 					playsound(user, 'sound/combat/Ranged/crossbow_medium_reload-01.ogg', 100, FALSE)
@@ -139,7 +139,7 @@
 					playsound(user, 'sound/combat/Ranged/crossbow_medium_reload-01.ogg', 100, FALSE)
 					cocked = TRUE
 		else
-			to_chat(user, span_warning("I carefully de-cock the crossbow."))
+			to_chat(user, span_warning("我小心地让十字弩退弦。"))
 			cocked = FALSE
 	update_icon()
 
@@ -150,7 +150,7 @@
 				return
 			..()
 		else
-			to_chat(user, span_warning("I need to cock the bow first."))
+			to_chat(user, span_warning("我得先给弩上弦。"))
 
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
@@ -208,28 +208,28 @@
 	start_empty = TRUE
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/iron
-	name = "munition crossbow"
-	desc = "A deadly weapon that shoots a bolt with terrific power. Unlike the common bow, \
-	it uses a sophisticated mechanism to renock - and retain - its half-length bolts; a \
-	matter that relies more on raw strength than dexterity to master. </br>An cruder version of the common crossbow built with wrought iron with steel like property. When smelted, it does not yield good steel ingot but trash steel. but it is cheap and it works well and is often imported en masse from Grenzelhoft. Some of them find their way into the hands of common brigands and highwaymen."
+	name = "军用十字弩"
+	desc = "一种以惊人威力射出弩矢的致命武器。与普通弓不同， 它采用精巧的机械结构来重新挂弦并卡住半长弩矢；这一 \
+	点的掌握更依赖蛮力而非灵巧。 <br>这是普通十字弩的粗劣版本，以近似钢材的锻铁打造。 熔炼时得不到 \
+	好钢锭，只有废钢。但它便宜、好用，常从格伦泽尔霍夫特成批进口。其中一些流入了寻常盗匪与拦路劫徒之手。"
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = 80
 	damfactor = 1 // Lower than starting
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/ancient
-	name = "ancient crossbow"
-	desc = "A deadly weapon from another tyme, which shoots a bolt with terrific power. Unlike the common bow, it \
-	uses a sophisticated mechanism to renock - and retain - its half-length bolts; a matter that relies more on raw \
-	strength than dexterity to master. </br>Once, these mechanical delights bristled the arms of Zaelorian's ancient \
-	empire; now, it shudders in the grasp of Zizo's deathless crusade."
+	name = "远古十字弩"
+	desc = "一件来自异时的致命武器，能以惊人威力射出弩矢。与普通弓不同， \
+	它  采用精巧的机械结构来重新挂弦并卡住半长弩矢；掌握它更多 \
+	依赖蛮力  而非灵巧。 <br>昔日，这些机械杰作曾是泽洛 \
+	尔古老帝国的  骄傲；如今，它却在齐佐不死远征的掌握中战栗。"
 	icon_state = "ancientcrossbow0"
 	item_state = "ancientcrossbow"
 	max_integrity = 80
 	damfactor = 1 // Lower than starting
 	
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow
-	name = "slurbow"
-	desc = "A lighter weight crossbow with a distinct barrel shroud holding the bolt in place. Light enough to arm by hand. <br>They're popular among among highwaymen and the patrolling lamplighters of Otava."
+	name = "轻弩"
+	desc = "一种较轻的十字弩，带有明显的导槽护罩以固定弩矢。轻到可以徒手上弦。<br>它很受拦路盗匪与奥塔瓦巡夜点灯人欢迎。"
 	icon = 'icons/roguetown/weapons/misc32.dmi'
 	icon_state = "slurbow0"
 	item_state = "slurbow"
@@ -245,9 +245,9 @@
 	damage_from_perception = TRUE
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow/stalker
-	name = "gilded drow crossbow"
-	desc = "A stripped-down crossbow specifically made for the small engagement ranges of the Underdark and caverns. A practical tool of the Drow assassin - \
-	a lady's friend is a man's end. The machining is finely tuned, and the whole of the bow is ornamented in gold - a symbol of rank among drow markswomen."
+	name = "镀金卓尔弩"
+	desc = "一把为幽暗地域与洞穴内的近距离交战专门打造的精简弩，是卓尔刺客的实用利器——   \
+	女士的挚友，男人的终结。其机件调校精密，弩身通体饰金，象征着卓尔女射手的地位。"
 	icon = 'icons/roguetown/weapons/misc32.dmi'
 	icon_state = "drowcrossbowgilded0"
 	item_state = "drowcrossbowgilded"
@@ -262,9 +262,9 @@
 	damage_from_perception = TRUE
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow/stalker/lesser
-	name = "drow crossbow"
-	desc = "A stripped-down crossbow specifically made for the small engagement ranges of the Underdark and caverns. The body is well worn \
-	and lacks the gilding one commonly sees on the equipment of established Drow warriors."
+	name = "卓尔弩"
+	desc = "一把为幽暗地域与洞穴内的近距离交战专门打造的精简弩，弩身已磨 \
+	损严重，  也没有久经沙场的卓尔战士装备上常见的镀金装饰。"
 	icon = 'icons/roguetown/weapons/misc32.dmi'
 	icon_state = "drowcrossbow0"
 	item_state = "drowcrossbow"
@@ -280,11 +280,11 @@
 	damage_from_perception = TRUE
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/heavy
-	name = "siegebow"
-	desc = "A heavier weight crossbow - the basis of a mounted ballista, made fit for handheld usage. Integrated just \
-	beneath the stock is a windlass mechanism, necessary to surmount the siegebow's titanic draw-strength. It loads \
-	heavier, full-length bolts; purpose-made to pulverize. </br>Assembled in the Grenzelhoft clientstate Vakra and \
-	used extensively in the vakra civilwar, it is foreign to most lands."
+	name = "攻城弩"
+	desc = "一把更重的十字弩——架设式弩炮的基础，如今改造得可供手持使用。弩托正 \
+	  下方集成了一个绞盘机构，用以克服攻城弩那骇人的拉力。它装填  更重 \
+	、全长度的弩矢；专为粉碎目标而造。 <br>它在格伦泽尔霍夫特的附庸国 \
+	瓦克兰组装， 并在瓦克兰内战中广泛使用，对大多数地方而言都相当陌生。"
 	icon = 'icons/roguetown/weapons/misc32.dmi'
 	icon_state = "heavycrossbow0"
 	item_state = "heavycrossbow"
@@ -318,16 +318,16 @@
 
 /datum/intent/shoot/crossbow/heavy/prewarning()
 	if(mastermob)
-		mastermob.visible_message(span_warning("[mastermob] readies [masteritem]!"))
+		mastermob.visible_message(span_warning("[mastermob]端起了[masteritem]！"))
 		playsound(mastermob, pick('sound/combat/Ranged/crossbow_medium_reload-02.ogg'), 100, FALSE)
 
 /datum/intent/arc/crossbow/heavy/prewarning()
 	if(mastermob)
-		mastermob.visible_message(span_warning("[mastermob] readies [masteritem] for a precise shot!"))
+		mastermob.visible_message(span_warning("[mastermob]端起[masteritem]，准备弧射！"))
 		playsound(mastermob, pick('sound/combat/Ranged/crossbow_medium_reload-02.ogg'), 100, FALSE)
 
 /datum/intent/buttstroke/heavy
-	name = "heavy buttstroke"
+	name = "弩托重击"
 	damfactor = 1.15
 	swingdelay = 6
 	icon_state = "instrike"
@@ -335,18 +335,18 @@
 	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR - 0.45 //Reduces integrity damage modifier to +15%.
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/heavy/ancient
-	name = "ancient siegebow"
-	desc = "A heavier weight crossbow from another tyme - the basis of a mounted ballista, made fit for handheld \
-	usage. Integrated just beneath the stock is a windlass mechanism, necessary to surmount the siegebow's titanic \
-	draw-strength. It loads heavier, full-length bolts; purpose-made to pulverize. </br>'Rudmarsch's walls broke \
-	beneath the volley, and Her sickness petered through the cracks..'"
+	name = "远古攻城弩"
+	desc = "一把来自异时的更重十字弩——架设式弩炮的基础，如今改造得可供手持 \
+	  使用。弩托正下方集成了一个绞盘机构，用以克服攻城弩那骇人的  \
+	 拉力。它装填更重、全长度的弩矢；专为粉碎目标而造。 <br>' \
+	鲁德马什的城墙在  齐射下崩裂，而她的病痛从裂缝中渗流而出……'"
 	item_state = "ancientheavybow"
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/heavy/relic
-	name = "\"Providence\""
-	desc = "In the hands of Saint Augustere, this specially-hewn siegebow felled the traitorous Archbishop of Vespermill; \
-	mere moments before the completion of a terrible ritual. Decades later, it has been called into action once more \
-	to destroy those who'd seek to sacrifice His greatest works. May thy aim be true, childe o' God - and thy judgement, unfettered."
+	name = "\"天意\""
+	desc = "在圣奥古斯特雷手中，这把特制的攻城弩射杀了维斯珀磨坊的叛教大主教；  就在 \
+	一场恐怖仪式即将完成前的片刻。数十年后，它再度被召唤上阵，  去毁灭那些妄 \
+	图献祭他最伟大作品之人。愿你的瞄准精准，神的孩子——愿你的审判，不受束缚。"
 	minstr = 10 //X STR. Intended for use by the Inquisitor, or as a purchased alternative.
 	max_integrity = 200
 	chargingspeed = 50 //Halfway between the standard crossbow and siegebow.
@@ -355,16 +355,16 @@
 	item_state = "relicpsyheavycrossbow"
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/heavy/relic/marque
-	name = "\"Epistle\""
-	desc = "'I cannot explain what happened in those halls, your eminence..' </br>'..I can only have faith that I did the right thing.'"
+	name = "\"书信\""
+	desc = "'我无法解释那些厅堂里发生了什么，阁下……' <br>'……我只能相信，我做的是对的。'"
 
 //Pseudo-Arbalest. This thing is intended to be fuckhuge, but it's using a temp sprite.
 //Retains an identical damage to the standard crossbow. The pen is what makes this.
 //That's an aside to the silver stake, which does 50, instead of the sunderbolt's 35, AND keeps the pen.
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/arbalest
-	name = "sauterelle"
-	desc = "An incredibly heavy crossbow, designed for a dedicated arbalist to wield. \
-	Modified to be loaded by hand. A tedious affair."
+	name = "索特雷尔重弩"
+	desc = "一种重得惊人的十字弩，专为专业弩手打造。   \
+	它经过改造，可以徒手上弦，不过过程相当折磨人。"
 	icon = 'icons/roguetown/weapons/misc32.dmi'
 	icon_state = "psyheavycrossbow0"
 	item_state = "psyheavycrossbow"

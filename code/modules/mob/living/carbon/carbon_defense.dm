@@ -62,8 +62,8 @@
 				if(isturf(I.loc))
 					I.attack_hand(src)
 					if(get_active_held_item() == I) //if our attack_hand() picks up the item...
-						visible_message("<span class='warning'>[src] catches [I]!</span>", \
-										"<span class='danger'>I catch [I] in mid-air!</span>")
+						visible_message("<span class='warning'>[src]接住了[I]！</span>", \
+										"<span class='danger'>我凌空接住了[I]！</span>")
 						throw_mode_off()
 						return 1
 	..()
@@ -99,20 +99,20 @@
 		used_limb = parse_zone(I.sublimb_grabbed)
 
 	if(used_limb)
-		target.visible_message(span_danger("[src] grabs [target]'s [span_userdanger(used_limb)]."), \
-						span_danger("[src] grabs my [span_userdanger(used_limb)]!"), span_hear("I hear shuffling."), null, src)
-		to_chat(src, span_danger("I grab [target]'s [span_userdanger(used_limb)]."))
+		target.visible_message(span_danger("[src]抓住了[target]的[span_userdanger(used_limb)]。"), \
+						span_danger("[src]抓住了我的[span_userdanger(used_limb)]！"), span_hear("我听到一阵窸窣声。"), null, src)
+		to_chat(src, span_danger("我抓住了[target]的[span_userdanger(used_limb)]。"))
 	else
-		target.visible_message(span_danger("[src] grabs [target]."), \
-						span_userdanger("[src] grabs me!"), span_hear("I hear shuffling."), null, src)
-		to_chat(src, span_danger("I grab [target]."))
+		target.visible_message(span_danger("[src]抓住了[target]。"), \
+						span_userdanger("[src]抓住了我！"), span_hear("我听到一阵窸窣声。"), null, src)
+		to_chat(src, span_danger("我抓住了[target]。"))
 
 	if(used_limb && target.client && target.hud_used && target.hud_used.zone_select)
 		var/atom/movable/screen/zone_sel/zone_sel = target.hud_used.zone_select
 		zone_sel.flash_limb(I.sublimb_grabbed, "#d19e13") // grab = orange
 
 /mob/living/carbon/send_grabbed_message(mob/living/carbon/user)
-	var/used_limb = "chest"
+	var/used_limb = "胸部"
 	var/obj/item/grabbing/I
 	if(user.active_hand_index == 1)
 		I = user.r_grab
@@ -124,13 +124,13 @@
 	if(HAS_TRAIT(user, TRAIT_NOTIGHTGRABMESSAGE))
 		return
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		visible_message("<span class='danger'>[user] firmly grips [src]'s [used_limb]!</span>",
-						"<span class='danger'>[user] firmly grips my [used_limb]!</span>", "<span class='hear'>I hear aggressive shuffling!</span>", null, user)
-		to_chat(user, "<span class='danger'>I firmly grip [src]'s [used_limb]!</span>")
+		visible_message("<span class='danger'>[user]牢牢抓住了[src]的[used_limb]！</span>",
+						"<span class='danger'>[user]牢牢抓住了我的[used_limb]！</span>", "<span class='hear'>我听到激烈的扭打声！</span>", null, user)
+		to_chat(user, "<span class='danger'>我牢牢抓住了[src]的[used_limb]！</span>")
 	else
-		visible_message("<span class='danger'>[user] tightens [user.p_their()] grip on [src]'s [used_limb]!</span>", \
-						"<span class='danger'>[user] tightens [user.p_their()] grip on my [used_limb]!</span>", "<span class='hear'>I hear aggressive shuffling!</span>", null, user)
-		to_chat(user, "<span class='danger'>I tighten my grip on [src]'s [used_limb]!</span>")
+		visible_message("<span class='danger'>[user]更用力地抓紧了[src]的[used_limb]！</span>", \
+						"<span class='danger'>[user]更用力地抓紧了我的[used_limb]！</span>", "<span class='hear'>我听到激烈的扭打声！</span>", null, user)
+		to_chat(user, "<span class='danger'>我更用力地抓紧了[src]的[used_limb]！</span>")
 
 /mob/living/carbon/proc/precise_attack_check(zone, obj/item/bodypart/affecting) //for striking eyes, throat, etc
 	if(zone && affecting)
@@ -213,7 +213,7 @@
 		return
 	affecting = get_bodypart(check_zone(useder)) //precise attacks, on yourself or someone you are grabbing
 	if(!affecting) //missing limb
-		to_chat(user, span_warning("Unfortunately, there's nothing there."))
+		to_chat(user, span_warning("可惜，那里空无一物。"))
 		return FALSE
 	SEND_SIGNAL(I, COMSIG_ITEM_ATTACK_ZONE, src, user, affecting)
 	user.mob_timers[MT_SNEAKATTACK] = world.time //Stops you from sneaking after hitting someone else.
@@ -265,7 +265,7 @@
 		return FALSE
 
 	if(!get_bodypart(check_zone(user.zone_selected)))
-		to_chat(user, "<span class='warning'>[src] is missing that.</span>")
+		to_chat(user, "<span class='warning'>[src]没有那个部位。</span>")
 		return FALSE
 
 	if(!user.cmode)
@@ -280,7 +280,7 @@
 		if(possible_len)
 			var/datum/surgery_step/done_step
 			if(possible_len > 1)
-				var/input = input(user, "Which surgery step do you want to perform?", "PESTRA", ) as null|anything in possible_steps
+				var/input = input(user, "你想执行哪个手术步骤？", "佩斯特拉", ) as null|anything in possible_steps
 				if(input)
 					done_step = possible_steps[input]
 			else
@@ -368,7 +368,7 @@
 
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
 	if(on_fire)
-		to_chat(M, "<span class='warning'>I can't put [p_them()] out with just my bare hands!</span>")
+		to_chat(M, "<span class='warning'>我没法徒手扑灭[src]身上的火！</span>")
 		return
 
 //	if(!(mobility_flags & MOBILITY_STAND))
@@ -377,8 +377,8 @@
 //			return
 //		M.visible_message("<span class='notice'>[M] shakes [src] trying to get [p_them()] up!</span>", "<span class='notice'>I shake [src] trying to get [p_them()] up!</span>")
 //	else
-	M.visible_message("<span class='notice'>[M] shakes [src].</span>", \
-				"<span class='notice'>I shake [src] to get [p_their()] attention.</span>")
+	M.visible_message("<span class='notice'>[M]摇了摇[src]。</span>", \
+				"<span class='notice'>我摇了摇[src]，试图引起其注意。</span>")
 	shake_camera(src, 2, 1)
 	for(var/datum/brain_trauma/trauma in M.get_traumas())
 		trauma.on_hug(M, src)
@@ -406,16 +406,16 @@
 			return
 
 		if (damage == 1)
-			to_chat(src, "<span class='warning'>My eyes sting a little.</span>")
+			to_chat(src, "<span class='warning'>我的眼睛有些刺痛。</span>")
 			if(prob(40))
 				eyes.applyOrganDamage(1)
 
 		else if (damage == 2)
-			to_chat(src, "<span class='warning'>My eyes burn.</span>")
+			to_chat(src, "<span class='warning'>我的眼睛火辣辣地疼。</span>")
 			eyes.applyOrganDamage(rand(2, 4))
 
 		else if( damage >= 3)
-			to_chat(src, "<span class='warning'>My eyes itch and burn severely!</span>")
+			to_chat(src, "<span class='warning'>我的眼睛又痒又痛，像着了火一样！</span>")
 			eyes.applyOrganDamage(rand(12, 16))
 
 		if(eyes.damage > 10)
@@ -425,20 +425,20 @@
 			if(eyes.damage > 20)
 				if(prob(eyes.damage - 20))
 					if(!HAS_TRAIT(src, TRAIT_NEARSIGHT))
-						to_chat(src, "<span class='warning'>My eyes start to burn badly!</span>")
+						to_chat(src, "<span class='warning'>我的眼睛开始剧烈灼痛！</span>")
 					become_nearsighted(EYE_DAMAGE)
 
 				else if(prob(eyes.damage - 25))
 					if(!HAS_TRAIT(src, TRAIT_BLIND))
-						to_chat(src, "<span class='warning'>I can't see anything!</span>")
+						to_chat(src, "<span class='warning'>我什么都看不见了！</span>")
 					eyes.applyOrganDamage(eyes.maxHealth)
 
 			else
-				to_chat(src, "<span class='warning'>My eyes are really starting to hurt. This can't be good for you!</span>")
+				to_chat(src, "<span class='warning'>我的眼睛开始疼得厉害。这样下去可不妙！</span>")
 		return 1
 	else if(damage == 0) // just enough protection
 		if(prob(20))
-			to_chat(src, "<span class='notice'>Something bright flashes in the corner of my vision!</span>")
+			to_chat(src, "<span class='notice'>我的眼角余光中闪过一道亮光！</span>")
 
 
 /mob/living/carbon/soundbang_act(intensity = 1, stun_pwr = 20, damage_pwr = 5, deafen_pwr = 15)
@@ -459,13 +459,13 @@
 			adjustEarDamage(ear_damage,deaf)
 
 			if(ears.damage >= 15)
-				to_chat(src, "<span class='warning'>My ears start to ring badly!</span>")
+				to_chat(src, "<span class='warning'>我的耳朵开始剧烈嗡鸣！</span>")
 				if(prob(ears.damage - 5))
-					to_chat(src, "<span class='danger'>I can't hear anything!</span>")
+					to_chat(src, "<span class='danger'>我什么都听不见了！</span>")
 					ears.damage = min(ears.damage, ears.maxHealth)
 					// you need earmuffs, inacusiate, or replacement
 			else if(ears.damage >= 5)
-				to_chat(src, "<span class='warning'>My ears start to ring!</span>")
+				to_chat(src, "<span class='warning'>我的耳朵开始嗡嗡作响！</span>")
 			SEND_SOUND(src, sound('sound/blank.ogg',0,1,0,250))
 		return effect_amount //how soundbanged we are
 

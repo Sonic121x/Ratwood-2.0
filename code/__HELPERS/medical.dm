@@ -1,98 +1,98 @@
 /proc/parse_zone(zone, obj/item/bodypart/affecting = null)
 	// this helps adapt older code
 	if(affecting?.body_zone == BODY_ZONE_TAUR)
-		return "tauric half"
+		return "兽形下身"
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_HAND)
-			return "right hand"
+			return "右手"
 		if(BODY_ZONE_PRECISE_L_HAND)
-			return "left hand"
+			return "左手"
 		if(BODY_ZONE_L_ARM)
-			return "left arm"
+			return "左臂"
 		if(BODY_ZONE_R_ARM)
-			return "right arm"
+			return "右臂"
 		if(BODY_ZONE_L_LEG)
-			return "left leg"
+			return "左腿"
 		if(BODY_ZONE_R_LEG)
-			return "right leg"
+			return "右腿"
 		if(BODY_ZONE_PRECISE_L_FOOT)
-			return "left foot"
+			return "左脚"
 		if(BODY_ZONE_PRECISE_R_FOOT)
-			return "right foot"
+			return "右脚"
 		if(BODY_ZONE_TAUR)
-			return "tauric half"
+			return "兽形下身"
 		if(BODY_ZONE_PRECISE_NECK)
-			return "throat"
+			return "咽喉"
 		if(BODY_ZONE_PRECISE_GROIN)
-			return "groin"
+			return "腹股沟"
 		if(BODY_ZONE_PRECISE_EARS)	//we want the chatlog to say 'grabbed his ear' not 'grabbed his ears' etc
-			return "ear"
+			return "耳朵"
 		if(BODY_ZONE_PRECISE_R_EYE)
-			return "right eye"
+			return "右眼"
 		if(BODY_ZONE_PRECISE_L_EYE)
-			return "left eye"
+			return "左眼"
 		if(BODY_ZONE_PRECISE_NOSE)
-			return "nose"
+			return "鼻子"
 		if(BODY_ZONE_PRECISE_R_INHAND)
-			return "right hand"
+			return "右手"
 		if(BODY_ZONE_PRECISE_L_INHAND)
-			return "left hand"
+			return "左手"
 		if(BODY_ZONE_PRECISE_SKULL)
-			return "skull"
+			return "颅骨"
 		if(BODY_ZONE_PRECISE_MOUTH)
-			return "mouth"
-	return zone
+			return "嘴巴"
+	return zone == BODY_ZONE_HEAD ? "头部" : (zone == BODY_ZONE_CHEST ? "胸部" : (zone == BODY_ZONE_PRECISE_STOMACH ? "腹部" : (list("body" = "身体", "torso" = "躯干", "foreleg" = "前肢", "leg" = "腿部", "tail" = "尾巴", "wing" = "翅膀", "snout" = "口鼻", "beak" = "喙", "belly" = "腹部", "claw" = "爪子", "arm" = "手臂", "hand" = "手部", "foot" = "足部", "bladed arm" = "刃臂")[zone] || zone)))
 
 /proc/parse_organ_slot(slot)
 	switch(slot)
 		if(ORGAN_SLOT_BRAIN)
-			return "brain"
+			return "大脑"
 		if(ORGAN_SLOT_APPENDIX)
-			return "appendix"
+			return "阑尾"
 		if(ORGAN_SLOT_RIGHT_ARM_AUG)
-			return "right arm implant"
+			return "右臂植入物"
 		if(ORGAN_SLOT_LEFT_ARM_AUG)
-			return "left arm implant"
+			return "左臂植入物"
 		if(ORGAN_SLOT_STOMACH)
-			return "stomach"
+			return "胃"
 		if(ORGAN_SLOT_STOMACH_AID)
-			return "stomach aid"
+			return "胃部辅助器"
 		if(ORGAN_SLOT_BREATHING_TUBE)
-			return "breathing tube"
+			return "呼吸管"
 		if(ORGAN_SLOT_EARS)
-			return "ears"
+			return "耳朵"
 		if(ORGAN_SLOT_EYES)
-			return "eyes"
+			return "眼睛"
 		if(ORGAN_SLOT_LUNGS)
-			return "lungs"
+			return "肺"
 		if(ORGAN_SLOT_HEART)
-			return "heart"
+			return "心脏"
 		if(ORGAN_SLOT_ZOMBIE)
-			return "zombie gland"
+			return "僵尸腺体"
 		if(ORGAN_SLOT_THRUSTERS)
-			return "thrusters"
+			return "推进器"
 		if(ORGAN_SLOT_HUD)
-			return "eye implant"
+			return "眼部植入物"
 		if(ORGAN_SLOT_LIVER)
-			return "liver"
+			return "肝脏"
 		if(ORGAN_SLOT_TONGUE)
-			return "tongue"
+			return "舌头"
 		if(ORGAN_SLOT_VOICE)
-			return "vocal cords"
+			return "声带"
 		if(ORGAN_SLOT_ADAMANTINE_RESONATOR)
-			return "adamantine resonator"
+			return "精金共鸣器"
 		if(ORGAN_SLOT_HEART_AID)
-			return "heart aid"
+			return "心脏辅助器"
 		if(ORGAN_SLOT_BRAIN_ANTIDROP)
-			return "brain antidrop implant"
+			return "脑部防脱手植入物"
 		if(ORGAN_SLOT_BRAIN_ANTISTUN)
-			return "brain antistun implant"
+			return "脑部抗眩晕植入物"
 		if(ORGAN_SLOT_TAIL)
-			return "tail"
+			return "尾巴"
 		if(ORGAN_SLOT_PARASITE_EGG)
-			return "parasite egg"
+			return "寄生虫卵"
 		if(ORGAN_SLOT_REGENERATIVE_CORE)
-			return "regenerative core"
+			return "再生核心"
 	return slot
 
 /proc/parse_zone_fancy(zone, combat, combattarget, closeby, turnedaround, ontheground, grabbing, squinting, uncovered, dicked, pussied, strength, self = FALSE)
@@ -100,202 +100,202 @@
 		if(BODY_ZONE_PRECISE_R_HAND)
 			if(closeby && !combat)
 				if(squinting)
-					return "fingers"
-				return "hands"
+					return "手指"
+				return "双手"
 			else
-				return "arms"
+				return "双臂"
 		if(BODY_ZONE_PRECISE_L_HAND)
 			if(closeby && !combat)
 				if(squinting)
-					return "fingers"
-				return "hands"
+					return "手指"
+				return "双手"
 			else
-				return "arms"
+				return "双臂"
 		if(BODY_ZONE_PRECISE_R_INHAND)
 			if(closeby && !combat)
 				if(squinting)
-					return "fingers"
-				return "hands"
+					return "手指"
+				return "双手"
 			else
-				return "arms"
+				return "双臂"
 		if(BODY_ZONE_PRECISE_L_INHAND)
 			if(closeby && !combat)
 				if(squinting)
-					return "fingers"
-				return "hands"
+					return "手指"
+				return "双手"
 			else
-				return "arms"
+				return "双臂"
 		if(BODY_ZONE_L_ARM)
 			if(closeby && !combat)
 				if(grabbing)
-					return "armpits"
-				return "shoulders"
+					return "腋窝"
+				return "肩膀"
 			if(closeby && squinting && strength && combat && combattarget)
-				return "biceps"
+				return "肱二头肌"
 			else
-				return "arms"
+				return "双臂"
 		if(BODY_ZONE_R_ARM)
 			if(closeby && !combat)
 				if(grabbing)
-					return "armpits"
-				return "shoulders"
+					return "腋窝"
+				return "肩膀"
 			if(closeby && squinting && strength && combat && combattarget)
-				return "biceps"
+				return "肱二头肌"
 			else
-				return "arms"
+				return "双臂"
 		if(BODY_ZONE_L_LEG)
 			if(closeby && !combat)
 				if(squinting)
-					return "thighs"
-				return "knees"
+					return "大腿"
+				return "膝盖"
 			if(closeby && squinting && strength && combat && combattarget)
-				return "calves"
+				return "小腿"
 			else
-				return "legs"
+				return "双腿"
 		if(BODY_ZONE_R_LEG)
 			if(closeby && !combat)
 				if(squinting)
-					return "thighs"
-				return "knees"
+					return "大腿"
+				return "膝盖"
 			if(closeby && squinting && strength && combat && combattarget)
-				return "calves"
+				return "小腿"
 			else
-				return "legs"
+				return "双腿"
 		if(BODY_ZONE_PRECISE_L_FOOT)
 			if(ontheground && closeby && squinting && uncovered)
 				if(combat)
-					return "toes"
-				return "soles"
+					return "脚趾"
+				return "脚底"
 			if(turnedaround && closeby && !combat && uncovered)
-				return "ankles"
+				return "脚踝"
 			if(closeby && !combat)
 				if(!uncovered)
-					return "shoes"
-				return "feet"
-			return "legs"
+					return "鞋子"
+				return "双脚"
+			return "双腿"
 		if(BODY_ZONE_PRECISE_R_FOOT)
 			if(ontheground && closeby && squinting && uncovered)
 				if(combat)
-					return "toes"
-				return "soles"
+					return "脚趾"
+				return "脚底"
 			if(turnedaround && closeby && !combat && uncovered)
-				return "ankles"
+				return "脚踝"
 			if(closeby && !combat)
 				if(!uncovered)
-					return "shoes"
-				return "feet"
-			return "legs"
+					return "鞋子"
+				return "双脚"
+			return "双腿"
 		if(BODY_ZONE_PRECISE_STOMACH)
 			if(!turnedaround)
 				if(closeby && squinting && strength && combat && combattarget && uncovered)
-					return "abs"
+					return "腹肌"
 				if(closeby && !combat)
 					if(squinting)
-						return "waist"
+						return "腰部"
 					if(grabbing)
-						return "belly"
-					return "stomach"
+						return "肚子"
+					return "腹部"
 			if(closeby && !combat)
-				return "lower back"
+				return "腰背"
 			else
-				return "body"
+				return "身体"
 		if(BODY_ZONE_CHEST)
 			if(!turnedaround)
 				if(closeby && squinting && strength && combat && combattarget && uncovered)
-					return "pecs"
+					return "胸肌"
 				if(closeby && !combat)
 					if(squinting && uncovered)
-						return "breasts"
-					return "chest"
+						return "乳房"
+					return "胸部"
 			if(closeby && squinting && strength && combat && combattarget && uncovered)
-				return "lats"
+				return "背阔肌"
 			if(closeby && !combat && !self)
-				return "back"
+				return "背部"
 			else
-				return "body"
+				return "身体"
 		if(BODY_ZONE_PRECISE_GROIN)
 			if((turnedaround && !self) || (self && !squinting && combat))
 				if(closeby && grabbing && squinting && ontheground && !combat && uncovered && !self)
-					return "asshole"
-				return "ass"
+					return "肛门"
+				return "屁股"
 			if(closeby && !combat)
 				if(squinting)
 					if(dicked && pussied)
 						if(uncovered)
-							return "cock and slit"
+							return "阴茎和阴户"
 						else
-							return "bulge"
+							return "裆部隆起"
 					else if(dicked)
 						if(uncovered)
-							return "cock"
+							return "阴茎"
 						else
-							return "bulge"
+							return "裆部隆起"
 					else if(pussied)
 						if(uncovered)
-							return "slit"
+							return "阴户"
 						else
-							return "camel toe"
-				return "crotch"
+							return "裆部轮廓"
+				return "裆部"
 			if(squinting && combat)
-				return "hips"
+				return "胯部"
 			else
-				return "groin"
+				return "腹股沟"
 		if(BODY_ZONE_PRECISE_NECK)
 			if(self)
 				return FALSE
 			if(closeby && !turnedaround && !combat)
-				return "neck"
-			return "head"
+				return "颈部"
+			return "头部"
 		if(BODY_ZONE_PRECISE_EARS)
 			if(self)
 				return FALSE
 			if(closeby && !combat && uncovered)
-				return "ears"
+				return "耳朵"
 			else
-				return "head"
+				return "头部"
 		if(BODY_ZONE_PRECISE_R_EYE)
 			if(self)
 				return FALSE
 			if(closeby && !turnedaround && !combat && uncovered)
 				if(squinting)
-					return "cheeks"
-				return "eyes"
+					return "脸颊"
+				return "眼睛"
 			else
-				return "head"
+				return "头部"
 		if(BODY_ZONE_PRECISE_L_EYE)
 			if(self)
 				return FALSE
 			if(closeby && !turnedaround && !combat && uncovered)
 				if(squinting)
-					return "cheeks"
-				return "eyes"
+					return "脸颊"
+				return "眼睛"
 			else
-				return "head"
+				return "头部"
 		if(BODY_ZONE_PRECISE_NOSE)
 			if(self)
 				return FALSE
 			if(closeby && !turnedaround && !combat && uncovered)
-				return "nose"
+				return "鼻子"
 			else
-				return "head"
+				return "头部"
 		if(BODY_ZONE_HEAD)
 			if(self)
 				return FALSE
 			if(closeby && !turnedaround && !combat && uncovered)
 				if(squinting)
-					return "chin"
-				return "face"
+					return "下巴"
+				return "面部"
 			else
-				return "head"
+				return "头部"
 		if(BODY_ZONE_PRECISE_SKULL)
 			if(self)
 				return FALSE
 			if(closeby && !combat && uncovered)
 				if(squinting && !turnedaround)
-					return "forehead"
-				return "hair"
+					return "额头"
+				return "头发"
 			else
-				return "head"
+				return "头部"
 		if(BODY_ZONE_PRECISE_MOUTH)
 			if(self)
 				return FALSE
@@ -303,10 +303,10 @@
 				if(!combat)
 					if(squinting)
 						if(prob(1))
-							return "seductive lips"
-						return "lips"
-					return "mouth"
-				return "jaw"
+							return "诱人的双唇"
+						return "嘴唇"
+					return "嘴巴"
+				return "下颌"
 			else
-				return "head"
-	return zone
+				return "头部"
+	return parse_zone(zone)

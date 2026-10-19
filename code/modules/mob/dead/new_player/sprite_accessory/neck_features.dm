@@ -7,117 +7,117 @@
 
 /datum/sprite_accessory/neck_feature/moth_fluff
 	abstract_type = /datum/sprite_accessory/neck_feature/moth_fluff
-	color_key_name = "Fluff"
+	color_key_name = "绒毛"
 	icon = 'icons/mob/sprite_accessory/neck_features/moth_fluff.dmi'
 	default_colors = list("#FFFFFF")
 
 /datum/sprite_accessory/neck_feature/moth_fluff/plain
-	name = "Plain"
+	name = "素色"
 	icon_state = "plain"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/monarch
-	name = "Monarch"
+	name = "帝王蝶"
 	icon_state = "monarch"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/luna
-	name = "Luna"
+	name = "月神"
 	icon_state = "luna"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/atlas
-	name = "Atlas"
+	name = "阿特拉斯"
 	icon_state = "atlas"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/reddish
-	name = "Reddish"
+	name = "淡红"
 	icon_state = "redish"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/royal
-	name = "Royal"
+	name = "皇家"
 	icon_state = "royal"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/gothic
-	name = "Gothic"
+	name = "哥特"
 	icon_state = "gothic"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/lovers
-	name = "Lovers"
+	name = "恋人"
 	icon_state = "lovers"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/whitefly
-	name = "White Fly"
+	name = "白蝇"
 	icon_state = "whitefly"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/punished
-	name = "Burnt Off"
+	name = "烧焦"
 	icon_state = "burnt_off"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/firewatch
-	name = "Firewatch"
+	name = "火警瞭望"
 	icon_state = "firewatch"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/deathhead
-	name = "Deathshead"
+	name = "骷髅天蛾"
 	icon_state = "deathhead"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/poison
-	name = "Poison"
+	name = "毒纹"
 	icon_state = "poison"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/ragged
-	name = "Ragged"
+	name = "残破"
 	icon_state = "ragged"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/moonfly
-	name = "Moon Fly"
+	name = "月蛾"
 	icon_state = "moonfly"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/snow
-	name = "Snow"
+	name = "雪"
 	icon_state = "snow"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/oakworm
-	name = "Oak Worm"
+	name = "橡木蚕"
 	icon_state = "oakworm"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/jungle
-	name = "Jungle"
+	name = "丛林"
 	icon_state = "jungle"
 
 /datum/sprite_accessory/neck_feature/moth_fluff/witchwing
-	name = "Witch Wing"
+	name = "巫翼"
 	icon_state = "witchwing"
 
 /datum/sprite_accessory/neck_feature/mammal_fluff
 	abstract_type = /datum/sprite_accessory/neck_feature/mammal_fluff
-	color_key_name = "Fluff"
+	color_key_name = "绒毛"
 	icon = 'icons/mob/sprite_accessory/neck_features/mammal_fluff.dmi'
 
 /datum/sprite_accessory/neck_feature/mammal_fluff/fluff
-	name = "Fluff"
+	name = "绒毛"
 	icon_state = "fluff"
 
 /datum/sprite_accessory/neck_feature/mammal_fluff/fluff_front
-	name = "Fluff (Top)"
+	name = "绒毛（顶部）"
 	icon_state = "ffluff"
 	relevant_layers = list(BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/neck_feature/mammal_fluff/fluff_dual
-	name = "Fluff Dual"
+	name = "绒毛（双色）"
 	icon_state = "fluffdual"
 	color_keys = 2
-	color_key_names = list("Fluff", "Front")
+	color_key_names = list("绒毛", "前侧")
 
 /datum/sprite_accessory/neck_feature/mammal_fluff/fluff_dual_front
-	name = "Fluff Dual (Top)"
+	name = "绒毛（双色）（顶部）"
 	icon_state = "ffluffdual"
 	relevant_layers = list(BODY_FRONT_LAYER)
 	color_keys = 2
-	color_key_names = list("Fluff", "Front")
+	color_key_names = list("绒毛", "前侧")
 
 /datum/sprite_accessory/neck_feature/mammal_fluff/insect_m
-	name = "Insect (Male)"
+	name = "昆虫（男）"
 	icon_state = "insectm"
 
 /datum/sprite_accessory/neck_feature/mammal_fluff/insect_f
-	name = "Insect (Female)"
+	name = "昆虫（女）"
 	icon_state = "insectf"

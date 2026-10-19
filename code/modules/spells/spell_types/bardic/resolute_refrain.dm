@@ -1,6 +1,6 @@
 /obj/effect/proc_holder/spell/invoked/song/resolute_refrain
-	name = "Resolute Refrain"
-	desc = "A steadying melody that bolsters your allies' constitution."
+	name = "坚定副歌"
+	desc = "一首稳重的旋律，增强盟友的体魄。"
 	overlay_state = "melody_t1_base"
 	action_icon_state = "melody_t1_base"
 
@@ -14,7 +14,7 @@
 		return TRUE
 	else
 		revert_cast()
-		to_chat(user, span_warning("I must be playing something to inspire my audience!"))
+		to_chat(user, span_warning("我必须先演奏，才能鼓舞听众！"))
 		return
 
 /datum/status_effect/buff/playing_melody/resolute_refrain
@@ -27,8 +27,8 @@
 	)
 
 /atom/movable/screen/alert/status_effect/buff/song/resolute_refrain
-	name = "Resolute Refrain"
-	desc = "This steady melody hardens my resolve. I feel tougher, more resilient."
+	name = "坚定副歌"
+	desc = "这首稳重的旋律坚定了我的决心。我感觉更强韧了。"
 	icon_state = "buff"
 
 /datum/status_effect/buff/song/resolute_refrain

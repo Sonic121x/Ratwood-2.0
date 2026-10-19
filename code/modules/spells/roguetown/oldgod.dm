@@ -1,5 +1,5 @@
 /obj/effect/proc_holder/spell/invoked/psydonlux_tamper
-	name = "WEEP"
+	name = "泣血"
 	overlay_icon = 'icons/mob/actions/psydonmiracles.dmi'
 	action_icon = 'icons/mob/actions/psydonmiracles.dmi'
 	overlay_state = "WEEP"
@@ -8,10 +8,10 @@
 	chargetime = 0
 	range = 2
 	warnie = "sydwarning"
-	desc = "Bleed for the target, taking their wounds and refilling their blood level."
+	desc = "为目标流出自己的鲜血，承受他们的伤口，并为其补足血量。"
 	movement_interrupt = FALSE
 	sound = 'sound/magic/psydonbleeds.ogg'
-	invocations = list("I BLEED, SO THAT YOU MIGHT ENDURE!")
+	invocations = list("我以鲜血代偿，好让你得以撑下去！")
 	invocation_type = "none"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = FALSE
@@ -21,19 +21,19 @@
 
 /obj/effect/proc_holder/spell/invoked/psydonlux_tamper/cast(list/targets, mob/living/user)
 	if(!ishuman(targets[1]))
-		to_chat(user, span_warning("Their Lux doesn't need to be purified."))
+		to_chat(user, span_warning("对方的灵辉无需净化。"))
 		revert_cast()
 		return FALSE
 
 	var/mob/living/carbon/human/H = targets[1]
 
 	if(H == user)
-		to_chat(user, span_warning("My own Lux maintains purity."))
+		to_chat(user, span_warning("我自身的灵辉仍维持着纯净。"))
 		revert_cast()
 		return FALSE
 
 	if(H.stat == DEAD)
-		to_chat(user, span_warning("[H]'s Lux is gone. I can't do anything, anymore."))
+		to_chat(user, span_warning("[H] 的灵辉已经离去。我已无能为力。"))
 		user.emote("cry")
 		revert_cast()
 		return FALSE
@@ -49,7 +49,7 @@
 
 		if(tw_List.len)
 			playsound(get_turf(user), 'sound/magic/psydonbleeds.ogg', 50, TRUE)
-			C_caster.visible_message(span_warning("A thread of silvery lux spools out from [C_caster] and attaches to [C_target], softly aglow..."), span_warning("You begin twining your lux together with [C_target], drawing forth their wounds unto yourself..."))
+			C_caster.visible_message(span_warning("一缕银色灵辉从[C_caster]身上延伸而出，连上[C_target]，散发着柔和的光芒……"), span_warning("你开始将自己的灵辉与[C_target]的灵辉交织，将对方的伤口转移到自己身上……"))
 			var/static/list/disallowed_wounds = typecacheof(list(/datum/wound/dismemberment, /datum/wound/facial, /datum/wound/fracture/head, /datum/wound/fracture/neck, /datum/wound/cbt/permanent, /datum/wound/grievous/pre_decapitation, /datum/wound/grievous/pre_skullshatter))
 			for(var/datum/wound/targetwound in tw_List)
 				if(disallowed_wounds[targetwound.type])
@@ -65,10 +65,10 @@
 					targetwound.set_bleed_rate(pre_bleeding) // but we have to manually force a bleed_rate reset for it to cache properly
 					if(targetwound.severity >= WOUND_SEVERITY_SEVERE)
 						if(HAS_TRAIT(H, TRAIT_INQUISITION))
-							to_chat(H, span_notice("You feel your wounds slipping away."))
+							to_chat(H, span_notice("你感到自己的伤口正悄然消逝。"))
 						else
-							to_chat(H, span_danger("You feel a tear as a fragment of your lux is replaced!"))
-						C_caster.visible_message(span_danger("Twisting threads of silvery lux blossom upon [C_caster]'s flesh, conveying [targetwound] upon [C_caster.p_their()] [c_BP.name]!"), span_boldwarning("You shudder in pain as a [targetwound] violently weeps into being upon your [c_BP.name]!"))
+							to_chat(H, span_danger("你感到一阵撕裂，仿佛有一缕灵辉被替换掉了！"))
+						C_caster.visible_message(span_danger("扭动的银色灵辉之线在[C_caster]的皮肉上绽开，将[targetwound]转移到了[C_caster.p_their()]的[c_BP.name]上！"), span_boldwarning("你的[c_BP.name]上骤然裂开一道[targetwound]，令你痛得浑身颤抖！"))
 					new /obj/effect/temp_visual/psyheal_rogue(get_turf(H), "#487e97")
 					new /obj/effect/temp_visual/psyheal_rogue(get_turf(user), "#487e97")
 					C_target.Beam(C_caster, icon_state="heal_psycross", icon='modular_azurepeak/icons/effects/miracle-healing.dmi', time = 5)
@@ -81,30 +81,30 @@
 		H.set_blood_volume(BLOOD_VOLUME_NORMAL)
 		user.adjust_blood_volume(-(blood_transfer))
 		if(HAS_TRAIT(H, TRAIT_INQUISITION))
-			to_chat(H, span_notice("You feel blood flowing back into your body."))
+			to_chat(H, span_notice("我感到血液重新流回了体内。"))
 		else
-			to_chat(H, span_warning("You feel your lux shiver as your blood replenishes!"))
-		user.visible_message(span_warning("A sudden pallor overtakes [user] as [user.p_their()] lyfeblood flees [user.p_their()] pores and into [H]!"), span_warning("You feel your blood drain into [H]!"))
+			to_chat(H, span_warning("随着血液得到补充，我感到自己的灵辉一阵战栗！"))
+		user.visible_message(span_warning("一阵苍白骤然笼罩了[user]，[user.p_their()]的命髓从毛孔中涌出，流入[H]体内！"), span_warning("你感到自己的血液流入[H]体内！"))
 		new /obj/effect/temp_visual/psyheal_rogue(get_turf(H), "#487e97")
 		new /obj/effect/temp_visual/psyheal_rogue(get_turf(user), "#487e97")
 
 	if(!wounds_wept && !blood_wept)
-		to_chat(user, span_warning("There is no reason to purify [H]."))
+		to_chat(user, span_warning("[H]无需净化。"))
 		revert_cast()
 		return FALSE
 
 	// Notify the user and target
-	to_chat(user, span_notice("You purify their Lux with the merging of theirs and your own, for a mote."))
+	to_chat(user, span_notice("片刻之间，我以彼此相融的灵辉净化了对方。"))
 	if(HAS_TRAIT(H, TRAIT_INQUISITION))
-		to_chat(H, span_notice("Your wounds are being removed by the silver string."))
+		to_chat(H, span_notice("你的伤口正被那银色的丝线抹去。"))
 	else
-		to_chat(H, span_danger("You feel something grabbing at your Lux, stealing parts of it!"))
-		to_chat(H, span_notice("Your wounds seem to be vanishing."))
+		to_chat(H, span_danger("你感觉有什么东西正攫住你的灵辉，窃走其中一部分！"))
+		to_chat(H, span_notice("你的伤口似乎在渐渐消失。"))
 	return TRUE
 
 /obj/effect/proc_holder/spell/self/psydonrespite
-	name = "RESPITE"
-	desc = "At the cost of some lyfe sustaining blood, I can stand still to focus on mending my injuries."
+	name = "息憩"
+	desc = "以少许维系生命的鲜血为代价，我可以静立原地，专心修补自身伤势。"
 	overlay_icon = 'icons/mob/actions/psydonmiracles.dmi'
 	action_icon = 'icons/mob/actions/psydonmiracles.dmi'
 	overlay_state = "RESPITE"
@@ -183,14 +183,14 @@
 	var/bruthealval = -7 + psicross_bonus + sit_bonus1
 	var/burnhealval = -7 + psicross_bonus + sit_bonus2
 
-	to_chat(H, span_info("I take a moment to collect myself..."))
+	to_chat(H, span_info("我稍作停顿，收束心神……"))
 
 	if(HAS_TRAIT(user, TRAIT_LUX_FREAK) && zcross_trigger) // LUX ABOMINATIONS WONT STOP SO EASLY!!!
-		user.visible_message(span_warning("[user] shuddered but they eyes flash silver and they keep on going."), span_userdanger("Cold shoots through my spine and dark laughs resounds, but i focus on my lux and ENDURE."))
+		user.visible_message(span_warning("[user]浑身一颤，但双眼闪过银光，随即继续施术。"), span_userdanger("一阵寒意贯穿我的脊背，黑暗的狂笑回荡不止，但我凝神于自己的灵辉，硬撑了下来。"))
 		zcross_trigger = FALSE
 
 	if(zcross_trigger)
-		user.visible_message(span_warning("[user] shuddered. Something's very wrong."), span_userdanger("Cold shoots through my spine. Something laughs at me for trying."))
+		user.visible_message(span_warning("[user] 猛地一颤。情况很不对劲。"), span_userdanger("一股寒意窜上我的脊背。有什么东西在嘲笑我的尝试。"))
 		user.playsound_local(user, 'sound/misc/zizo.ogg', 25, FALSE)
 		user.adjustBruteLoss(25)
 		return FALSE
@@ -203,19 +203,19 @@
 		H.adjustFireLoss(burnhealval)
 		H.set_blood_volume(max(H.get_blood_volume()-6, 0))//Don't sit here and heal all day. Thanks.
 		if (conditional_buff)
-			to_chat(user, span_info("My pain gives way to a sense of furthered clarity before returning again, dulled."))
+			to_chat(user, span_info("疼痛短暂退去，化作更清晰的意识，随后又钝钝地回到我身上。"))
 		user.devotion?.update_devotion(-20)
-		to_chat(user, "<font color='purple'>I lose 20 devotion!</font>")
+		to_chat(user, "<font color='purple'>我失去了 20 点虔诚！</font>")
 		cast(user)
 		return TRUE
 	else
-		to_chat(H, span_warning("My thoughts and sense of quiet escape me."))
+		to_chat(H, span_warning("我的思绪与那份宁静从指缝间溜走了。"))
 		return FALSE
 
 
 /obj/effect/proc_holder/spell/self/psydonpersist
-	name = "PERSIST"
-	desc = "Stand still to focus on mending your injuries. You shall PERSIST."
+	name = "坚持"
+	desc = "静立不动，专心修补你的伤势。你必须坚持下去。"
 	overlay_icon = 'icons/mob/actions/psydonmiracles.dmi'
 	action_icon = 'icons/mob/actions/psydonmiracles.dmi'
 	overlay_state = "PERSIST"
@@ -294,14 +294,14 @@
 	var/bruthealval = -14 + psicross_bonus + sit_bonus1
 	var/burnhealval = -14 + psicross_bonus + sit_bonus2
 
-	to_chat(H, span_info("I focus on my insides and start to weave my flesh back together.")) // Why is he better then other psydonites? He is a lux freak that knows exactly what he is doing instead of just immitating miracles
+	to_chat(H, span_info("我凝神于自己体内，开始将血肉重新编织起来。")) // Why is he better then other psydonites? He is a lux freak that knows exactly what he is doing instead of just immitating miracles
 
 	if(HAS_TRAIT(user, TRAIT_LUX_FREAK) && zcross_trigger) // LUX ABOMINATIONS WONT STOP SO EASLY!!! Kind of redoundant here since this is absolver special and he alwys has it, but futureprofing
-		user.visible_message(span_warning("[user] shuddered but they eyes flash silver and they keep on going."), span_userdanger("Cold shoots through my spine and dark laughs resounds, but i focus on my lux and ENDURE."))
+		user.visible_message(span_warning("[user]浑身一颤，但双眼闪过银光，随即继续施术。"), span_userdanger("一阵寒意贯穿我的脊背，黑暗的狂笑回荡不止，但我凝神于自己的灵辉，硬撑了下来。"))
 		zcross_trigger = FALSE
 	
 	if(zcross_trigger)
-		user.visible_message(span_warning("[user] shuddered. Something's very wrong."), span_userdanger("Cold shoots through my spine. Something laughs at me for trying."))
+		user.visible_message(span_warning("[user]猛地一颤。情况非常不对劲。"), span_userdanger("一股寒意窜过我的脊背。有什么东西正在嘲笑我的尝试。"))
 		user.playsound_local(user, 'sound/misc/zizo.ogg', 25, FALSE)
 		user.adjustBruteLoss(25)
 		return FALSE
@@ -313,22 +313,22 @@
 		H.adjustBruteLoss(bruthealval)
 		H.adjustFireLoss(burnhealval)
 		if (conditional_buff)
-			to_chat(user, span_info("My lux fills the wounds and forces the flesh to knit back together."))
+			to_chat(user, span_info("我的灵辉涌入伤口，迫使血肉重新弥合。"))
 		user.devotion?.update_devotion(-60)
-		to_chat(user, "<font color='purple'>I lose 60 devotion!</font>")
+		to_chat(user, "<font color='purple'>我失去了 60 点虔诚！</font>")
 		cast(user)
 		return TRUE
 	else
-		to_chat(H, span_warning("I lose my focus and control over my lux escapes me."))  
+		to_chat(H, span_warning("我失去了专注，对灵辉的掌控也离我而去。"))
 		return FALSE
 
 
 /obj/effect/proc_holder/spell/invoked/psydonabsolve
-	name = "ABSOLVE"
+	name = "赦免"
 	overlay_icon = 'icons/mob/actions/psydonmiracles.dmi'
 	action_icon = 'icons/mob/actions/psydonmiracles.dmi'
 	overlay_state = "ABSOLVE"
-	desc = "Absolve the target, taking their damage as your own, potentially even shouldering their death at the cost of your Lyfe."
+	desc = "赦免目标，将其伤害转移到自己身上，甚至可能以你的性命为代价代其赴死。"
 	releasedrain = 20
 	chargedrain = 0
 	chargetime = 0
@@ -336,7 +336,7 @@
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
 	sound = 'sound/magic/psyabsolution.ogg'
-	invocations = list("BE ABSOLVED!")
+	invocations = list("得蒙赦免吧！")
 	invocation_type = "none"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = FALSE
@@ -347,14 +347,14 @@
 /obj/effect/proc_holder/spell/invoked/psydonabsolve/cast(list/targets, mob/living/user)
 
 	if(!ishuman(targets[1]))
-		to_chat(user, span_warning("ABSOLUTION is for those who walk in HIS image!"))
+		to_chat(user, span_warning("“赦免”只对行于祂之形象下的人有效！"))
 		revert_cast()
 		return FALSE
 
 	var/mob/living/carbon/human/H = targets[1]
 
 	if(H == user)
-		to_chat(user, span_warning("You cannot ABSOLVE yourself!"))
+		to_chat(user, span_warning("我不能对自己施展“赦免”！"))
 		revert_cast()
 		return FALSE
 
@@ -363,20 +363,20 @@
 		if(!H.check_revive(user))
 			revert_cast()
 			return FALSE
-		if(alert(user, "REACH OUT AND PULL?", "THERE'S NO LUX IN THERE", "NO", "YES") != "YES")
+		if(alert(user, "要伸手将其拉回来吗？", "其中已无灵辉", "否", "是") != "是")
 			revert_cast()
 			return FALSE
-		to_chat(user, span_warning("You attempt to revive [H] by ABSOLVING them!"))
+		to_chat(user, span_warning("我试图以“赦免”将 [H] 拉回人世！"))
 		// Dramatic effect
-		user.visible_message(span_danger("[user] grabs [H] by the wrists, silvery lux thread pouring from their hands!"))  
+		user.visible_message(span_danger("[user]一把抓住了[H]的手腕，银色的灵辉之线自其手中倾泻而出！"))
 
-		if(alert(H, "They want to ABSOLVE you. Will you let them?", "ABSOLUTION", "I'll allow it", "I refuse") != "I'll allow it")
-			H.visible_message(span_notice("Nothing happens."))
+		if(alert(H, "对方想要赦免你。你愿意吗？", "赦免", "我愿接受", "我拒绝") != "我愿接受")
+			H.visible_message(span_notice("什么也没有发生。"))
 			return FALSE
 		// Create visual effects
 		H.apply_status_effect(/datum/status_effect/buff/psyvived)
 		// Kill the caster
-		user.say("MY LYFE FOR YOURS! LYVE, AS DOES HE!", forced = TRUE)
+		user.say("我以此命换彼命！活下去，如他一般！", forced = TRUE)
 		user.death()
 		// Revive the target
 		H.revive(full_heal = TRUE, admin_revive = FALSE)
@@ -389,7 +389,7 @@
 		ADD_TRAIT(H, TRAIT_IWASREVIVED, "[type]")
 		H.apply_status_effect(/datum/status_effect/buff/psyvived)
 		user.apply_status_effect(/datum/status_effect/buff/psyvived)
-		H.visible_message(span_notice("[H] is ABSOLVED!"), span_green("I awake from the void, covered in inert silver threads."))  
+		H.visible_message(span_notice("[H]被赦免回生了！"), span_green("我自虚无中醒来，浑身覆满失去活性的银色丝线。"))
 		H.mind.remove_antag_datum(/datum/antagonist/zombie)
 		H.remove_status_effect(/datum/status_effect/debuff/rotted_zombie)	//Removes the rotted-zombie debuff if they have it - Failsafe for it.
 		H.apply_status_effect(/datum/status_effect/debuff/revived)	//Temp debuff on revive, your stats get hit temporarily. Doubly so if having rotted.
@@ -419,7 +419,7 @@
 	user.adjustCloneLoss(clone_transfer)
 
 	// Visual effects
-	user.visible_message(span_danger("Silvery threads of lux explode from [user] and hit [H] ABSOLVING their suffering!"))
+	user.visible_message(span_danger("银色的灵辉之线自[user]身上迸发而出，击中[H]，赦免了其苦痛！"))
 	new /obj/effect/temp_visual/psyheal_rogue(get_turf(H), "#aa1717")
 	new /obj/effect/temp_visual/psyheal_rogue(get_turf(H), "#aa1717")
 	new /obj/effect/temp_visual/psyheal_rogue(get_turf(H), "#aa1717")
@@ -429,21 +429,21 @@
 	new /obj/effect/temp_visual/psyheal_rogue(get_turf(user), "#aa1717")
 
 	// Notify the user and target
-	to_chat(user, span_warning("You pull on [H]'s lux, ABSOLVING them of their injuries!"))
+	to_chat(user, span_warning("我牵动[H]的灵辉，赦免了他们的伤势！"))
 	if(HAS_TRAIT(H, TRAIT_INQUISITION)) // inqusition is used to it
-		to_chat(user, span_notice("You feel pull on your soul as [user], ABSOLVES you of your suferring."))
+		to_chat(user, span_notice("你感到自己的灵魂被牵动，[user]赦免了你的苦痛。"))
 	else
-		to_chat(H, span_danger("You feel a terrible tear as a part of your soul is torn away by silver thread!")) // Someone just tore away something from your lux, that isn't calm  
-		to_chat(H, span_notice("Your wounds seem to mysteriously vanish and your burderns lighten."))
+		to_chat(H, span_danger("你感到一阵可怕的撕裂，灵魂的一部分被银线生生扯走！")) // Someone just tore away something from your lux, that isn't calm  
+		to_chat(H, span_notice("你的伤口似乎神秘地消失了，你的负担也随之减轻。"))
 	return TRUE
 
 // Weaker absolve for the Stigmata adventurer
 /obj/effect/proc_holder/spell/invoked/psydonamend	
-	name = "AMEND"
+	name = "分担"
 	overlay_icon = 'icons/mob/actions/psydonmiracles.dmi'
 	action_icon = 'icons/mob/actions/psydonmiracles.dmi'
 	overlay_state = "ABSOLVE"
-	desc = "A lesser form of the mighty art of ABSOLUTION, bereft of its means to revive. Transfers the wounds from your target to you. Use carefully."
+	desc = "这是强大神艺“赦免”的弱化形式，不具备复活之能，只会将目标的伤势转移到你身上。务必谨慎使用。"
 	releasedrain = 20
 	chargedrain = 0
 	chargetime = 0
@@ -451,7 +451,7 @@
 	warnie = "sydwarning"
 	movement_interrupt = FALSE
 	sound = 'sound/magic/psyabsolution.ogg'
-	invocations = list("BE AMENDED!")
+	invocations = list("由我来分担！")
 	invocation_type = "none"
 	associated_skill = /datum/skill/magic/holy
 	antimagic_allowed = FALSE
@@ -462,14 +462,14 @@
 /obj/effect/proc_holder/spell/invoked/psydonamend/cast(list/targets, mob/living/user)
 
 	if(!ishuman(targets[1]))
-		to_chat(user, span_warning("AMENDMENT is for those who walk in HIS image!"))
+		to_chat(user, span_warning("“分担”只对行于祂之形象下的人有效！"))
 		revert_cast()
 		return FALSE
 	
 	var/mob/living/carbon/human/H = targets[1]
 	
 	if(H == user)
-		to_chat(user, span_warning("You cannot AMEND yourself!"))
+		to_chat(user, span_warning("我不能对自己施展“分担”！"))
 		revert_cast()
 		return FALSE
 
@@ -485,7 +485,7 @@
 	var/clone_transfer = H.getCloneLoss()
 
 	if (oxy_transfer >= 150)
-		if (alert(user, "THEY ARE ASHEN WITH STILLED BREATH. AMENDMENT MAY INSTANTLY KILL YOU, STIGMATA. PROCEED?", "SELF-PRESERVATION", "YES", "NO") != "YES")
+		if (alert(user, "对方面如死灰、呼吸停滞。施展“分担”可能会立刻害死你，受印者。还要继续吗？", "自保", "是", "否") != "是")
 			revert_cast()
 			return
 	
@@ -504,7 +504,7 @@
 	user.adjustCloneLoss(clone_transfer)
 
 	// Visual effects
-	user.visible_message(span_danger("Silvery thread of lux shoots from [user] and hits [H] AMENDING their suffering!"))
+	user.visible_message(span_danger("银色的灵辉之线自[user]身上射出，击中[H]，分担了其苦痛！"))
 	new /obj/effect/temp_visual/psyheal_rogue(get_turf(H), "#aa1717") 
 	new /obj/effect/temp_visual/psyheal_rogue(get_turf(H), "#aa1717") 
 	new /obj/effect/temp_visual/psyheal_rogue(get_turf(H), "#aa1717") 
@@ -514,11 +514,11 @@
 	new /obj/effect/temp_visual/psyheal_rogue(get_turf(user), "#aa1717") 
 	
 	// Notify the user and target
-	to_chat(user, span_warning("You pull on [H]'s lux, AMENDING their injuries!"))
+	to_chat(user, span_warning("我牵动[H]的灵辉，修补了他们的伤势！"))
 	if(HAS_TRAIT(H, TRAIT_INQUISITION)) // inqusition is used to it
-		to_chat(user, span_notice("You feel pull on your soul as [user], AMENDS your suferring."))
+		to_chat(user, span_notice("你感到自己的灵魂被牵动，[user]分担了你的苦痛。"))
 	else
-		to_chat(H, span_danger("You feel a terrible tear as a part of your soul is torn away by silver thread!")) // someone just torn away something from your lux, that isn't calm
-		to_chat(H, span_notice("Your wounds seem to mysteriously vanish and your burdens lighten."))
+		to_chat(H, span_danger("你感到一阵可怕的撕裂，灵魂的一部分被银线生生扯走！")) // someone just torn away something from your lux, that isn't calm
+		to_chat(H, span_notice("你的伤口似乎神秘地消失了，你的负担也随之减轻。"))
 	
 	return TRUE

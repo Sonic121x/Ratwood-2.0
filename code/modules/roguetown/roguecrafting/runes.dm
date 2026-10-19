@@ -16,13 +16,13 @@
 	return FALSE
 
 /obj/item/rune/proc/on_start(mob/user)
-	to_chat(user, "<span class='notice'>I start reading [name]...</span>")
+	to_chat(user, "<span class='notice'>我开始阅读[name]...</span>")
 
 /obj/item/rune/proc/on_stopped(mob/user)
-	to_chat(user, "<span class='notice'>I stop reading...</span>")
+	to_chat(user, "<span class='notice'>我停止阅读...</span>")
 
 /obj/item/rune/proc/on_finished(mob/user)
-	to_chat(user, "<span class='notice'>I finish reading [name]!</span>")
+	to_chat(user, "<span class='notice'>我读完了[name]！</span>")
 
 /obj/item/rune/proc/onlearned(mob/user)
 	qdel(src)
@@ -32,10 +32,10 @@
 		//to_chat(user, "<span class='warning'>You're already reading this!</span>")
 		return FALSE
 	if(already_known(user))
-		to_chat(user, "<span class='notice'>I already know this spell.</span>")
+		to_chat(user, "<span class='notice'>我已经学会这个法术了。</span>")
 		return FALSE
 	if(!user.get_skill_level(/datum/skill/magic/arcane))
-		to_chat(user, "<span class='warning'>I don't have the knowledge to learn this spell.</span>")
+		to_chat(user, "<span class='warning'>我的知识不足以学习这个法术。</span>")
 		return FALSE
 	on_start(user)
 	reading = TRUE
@@ -53,67 +53,67 @@
 
 //Spells
 /obj/item/rune/spell
-	name = "rune"
+	name = "符文"
 	pages_to_mastery = 3
 	var/spell
-	var/spellname = "no spell"
+	var/spellname = "无法术"
 	icon_state = "spellbookpower1_0" //temporary sprite
 
 /obj/item/rune/spell/on_start(mob/user)
-	user.visible_message("<span class='warning'>[user] begins siphoning the rune.</span>")
+	user.visible_message("<span class='warning'>[user]开始汲取符文的力量。</span>")
 
 /obj/item/rune/spell/on_finished(mob/user)
 	for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
 		if(knownspell.type == spell)
 			spell = null
 	if(spell)
-		to_chat(user, "<span class='notice'>The power of [spellname] is emblazened in your mind!</span>")
+		to_chat(user, "<span class='notice'>[spellname]的力量烙印在你的脑海中！</span>")
 		var/obj/effect/proc_holder/spell/S = new spell
 		user.mind.AddSpell(S)
 		if(user.get_skill_level(/datum/skill/magic/arcane) <= 5)
 			user.adjust_experience(/datum/skill/magic/arcane, 100, FALSE)
 	else if(user.get_skill_level(/datum/skill/magic/arcane) <= 5)
-		to_chat(user, "<span class='notice'>Arcane power is emblazened in your mind!</span>")
+		to_chat(user, "<span class='notice'>奥术力量烙印在你的脑海中！</span>")
 		user.adjust_experience(/datum/skill/magic/arcane, 150, FALSE)
-	user.visible_message("<span class='warning'>[src] glows dark, and then crumbles!</span>")
+	user.visible_message("<span class='warning'>[src]泛起幽暗的光芒，随后碎裂！</span>")
 	qdel(src)
 
 /obj/item/rune/spell/fire_rune
 	spell = /obj/effect/proc_holder/spell/invoked/projectile/fireball
-	spellname = "fireball"
+	spellname = "火球术"
 	// icon_state = "fire_rune"
-	name = "fire rune"
-	desc = "Warm with power."
-	remarks = list("To understand these archaic things...", "Just catching them on fire won't do...", "Accounting for crosswinds... really?", "I think I just burned my hand...")
+	name = "火焰符文"
+	desc = "散发着温热的力量。"
+	remarks = list("要理解这些古老之物……", "光把它们点着可不行……", "还得把侧风算进去……真的？", "我好像刚把手烧到了……")
 
 /obj/item/rune/spell/water_rune
 	spell = /obj/effect/proc_holder/spell/targeted/ethereal_jaunt
-	spellname = "ethereal jaunt"
+	spellname = "以太漫游"
 	// icon_state = "water_rune"
-	name = "water rune"
-	desc = "A bit moist."
-	remarks = list("To understand these archaic things...", "Mana flows through all living things...", "This spell will fatigue me...", "The spell should flow like water...")
+	name = "水之符文"
+	desc = "有些潮湿。"
+	remarks = list("想要理解这些古老之物……", "法力流淌于一切活物之中……", "这个法术会让我疲惫……", "法术应如流水般流转……")
 
 /obj/item/rune/spell/air_rune
 	spell = /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt
-	spellname = "lightning"
+	spellname = "闪电术"
 	// icon_state = "air_rune"
-	name = "air rune"
-	desc = "Cool to the touch."
-	remarks = list("To understand these archaic things...", "Done properly this could...", "I think I just shocked my hand...")
+	name = "风之符文"
+	desc = "摸起来很凉。"
+	remarks = list("想要理解这些古老之物……", "若施放得当，这也许能……", "我好像刚把手电麻了……")
 
 /obj/item/rune/spell/earth_rune
 	spell = /obj/effect/proc_holder/spell/invoked/projectile/fetch
-	spellname = "fetch"
+	spellname = "牵引术"
 	// icon_state = "earth_rune"
-	name = "earth rune"
-	desc = "Heavier than it looks."
-	remarks = list("To understand these archaic things...", "I can only pull, not push...", "My mind feels like mud...")
+	name = "土之符文"
+	desc = "比看起来更沉。"
+	remarks = list("想要理解这些古老之物……", "我只能拉，不能推……", "我的脑子像泥浆一样沉重……")
 
 /obj/item/rune/spell/blank_rune
 	spell = null
-	spellname = "arcane magic"
+	spellname = "奥术魔法"
 	// icon_state = "blank_rune"
-	name = "rune essence"
-	desc = "The source of magic in our world."
-	remarks = list("My head hurts...", "I'll never understand this!", "I don't want to look away...")
+	name = "符文精华"
+	desc = "我们这个世界中魔法的源头。"
+	remarks = list("我头好痛……", "我永远也搞不懂这个！", "我不想把视线移开……")

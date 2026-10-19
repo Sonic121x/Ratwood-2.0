@@ -48,7 +48,7 @@ const secondsLeft = (expires_at: number, server_time: number) =>
 export const FellowshipPanel = () => {
   const { data } = useBackend<FellowshipData>();
   return (
-    <Window title="Fellowship" width={520} height={560}>
+    <Window title="冒险团" width={520} height={560}>
       <Window.Content>
         {data.in_fellowship ? <FellowshipView /> : <NoFellowshipView />}
       </Window.Content>
@@ -63,12 +63,12 @@ const NoFellowshipView = () => {
   return (
     <Stack vertical fill>
       <Stack.Item>
-        <Section title="Form a Fellowship">
+        <Section title="组建冒险团">
           <Stack>
             <Stack.Item grow>
               <Input
                 fluid
-                placeholder="Fellowship name"
+                placeholder="冒险团名称"
                 value={name}
                 onChange={(value) => setName(value)}
                 maxLength={32}
@@ -80,20 +80,20 @@ const NoFellowshipView = () => {
                 disabled={name.trim().length < 3}
                 onClick={() => act('create', { name: name.trim() })}
               >
-                Found
+                创建
               </Button>
             </Stack.Item>
           </Stack>
           <div style={{ marginTop: '6px', opacity: 0.8 }}>
-            Fellowship members can turn in each other&apos;s contracts at the
-            Grand Contract Ledger, and leaders gain extra contract slots.
+            冒险团成员可以在大契约台账处互相代为交付彼此的契约,
+            首领则能获得额外的契约名额.
           </div>
         </Section>
       </Stack.Item>
       <Stack.Item grow>
-        <Section title="Pending Invitations" fill scrollable>
+        <Section title="待处理的邀请" fill scrollable>
           {invites.length === 0 ? (
-            <i>You have no pending invitations.</i>
+            <i>你没有任何待处理的邀请.</i>
           ) : (
             <Table>
               {invites.map((inv) => (
@@ -102,9 +102,9 @@ const NoFellowshipView = () => {
                     <b>{inv.fellowship_name}</b>
                     <br />
                     <span style={{ opacity: 0.7 }}>
-                      Led by {inv.leader_name} &middot; {inv.member_count}/
-                      {inv.max_members} members &middot;{' '}
-                      {secondsLeft(inv.expires_at, data.server_time)}s left
+                      由 {inv.leader_name} 领导 &middot; {inv.member_count}/
+                      {inv.max_members} 名成员 &middot;{' '}
+                      剩余 {secondsLeft(inv.expires_at, data.server_time)}秒
                     </span>
                   </Table.Cell>
                   <Table.Cell collapsing>
@@ -113,7 +113,7 @@ const NoFellowshipView = () => {
                       color="good"
                       onClick={() => act('accept_invite', { ref: inv.ref })}
                     >
-                      Accept
+                      接受
                     </Button>
                   </Table.Cell>
                 </Table.Row>
@@ -138,13 +138,13 @@ const FellowshipView = () => {
           <Stack>
             <Stack.Item grow>
               {data.leader_present ? (
-                <>Led by <b>{data.leader_name}</b></>
+                <>由 <b>{data.leader_name}</b> 领导</>
               ) : (
-                <i>Leaderless (the founder is gone).</i>
+                <i>无首领 (创建者已离去).</i>
               )}
               <br />
               <span style={{ opacity: 0.7 }}>
-                {members.length} / {data.max_members} members
+                {members.length} / {data.max_members} 名成员
               </span>
             </Stack.Item>
             <Stack.Item>
@@ -154,7 +154,7 @@ const FellowshipView = () => {
                   color="bad"
                   onClick={() => act('disband')}
                 >
-                  Disband
+                  解散
                 </Button>
               ) : (
                 <Button
@@ -162,7 +162,7 @@ const FellowshipView = () => {
                   color="bad"
                   onClick={() => act('leave')}
                 >
-                  Leave
+                  离开
                 </Button>
               )}
             </Stack.Item>
@@ -170,21 +170,21 @@ const FellowshipView = () => {
         </Section>
       </Stack.Item>
       <Stack.Item>
-        <Section title="Shared Contracts">
-          Any member may turn in a fellow&apos;s completed contract at the Grand
-          Contract Ledger, even if the holder has fallen. The reward is credited
-          to whoever hands it in, using their own tax exemption status, if any.
+        <Section title="共享契约">
+          任何成员都可以在大契约台账处代为交付同伴已完成的契约,
+          即便持有人已经倒下. 奖赏会记入实际交付者的名下,
+          并适用其自身的免税状态 (若有).
         </Section>
       </Stack.Item>
       <Stack.Item grow>
-        <Section title="Members" fill scrollable>
+        <Section title="成员" fill scrollable>
           <Table>
             {members.map((m) => (
               <Table.Row key={m.name}>
                 <Table.Cell>
                   {m.name}
-                  {!!m.is_leader && ' (Leader)'}
-                  {!!m.is_self && ' (You)'}
+                  {!!m.is_leader && ' (首领)'}
+                  {!!m.is_self && ' (你)'}
                 </Table.Cell>
                 <Table.Cell collapsing>
                   {isLeader && !m.is_self && !m.is_leader && (
@@ -193,7 +193,7 @@ const FellowshipView = () => {
                       color="bad"
                       onClick={() => act('kick', { name: m.name })}
                     >
-                      Kick
+                      移出
                     </Button>
                   )}
                 </Table.Cell>
@@ -205,19 +205,19 @@ const FellowshipView = () => {
       {isLeader && (
         <Stack.Item>
           <Section
-            title="Invitations"
+            title="邀请"
             buttons={
               <Button
                 icon="user-plus"
                 disabled={members.length >= (data.max_members || 6)}
                 onClick={() => act('invite')}
               >
-                Invite Nearby
+                邀请附近的人
               </Button>
             }
           >
             {outgoing.length === 0 ? (
-              <i>No pending invitations.</i>
+              <i>没有待处理的邀请.</i>
             ) : (
               <Table>
                 {outgoing.map((inv) => (
@@ -226,7 +226,7 @@ const FellowshipView = () => {
                       {inv.name}
                       <span style={{ opacity: 0.6 }}>
                         {' '}
-                        &middot; {secondsLeft(inv.expires_at, data.server_time)}s left
+                        &middot; 剩余 {secondsLeft(inv.expires_at, data.server_time)}秒
                       </span>
                     </Table.Cell>
                     <Table.Cell collapsing>
@@ -234,7 +234,7 @@ const FellowshipView = () => {
                         icon="times"
                         onClick={() => act('rescind', { name: inv.name })}
                       >
-                        Rescind
+                        撤回
                       </Button>
                     </Table.Cell>
                   </Table.Row>

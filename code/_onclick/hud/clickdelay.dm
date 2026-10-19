@@ -24,7 +24,7 @@
 	var/atom/movable/screen/action_bar/defensedelay/defdelay
 
 /atom/movable/screen/action_bar/clickdelay
-	name = "click delay"
+	name = "点击冷却"
 	icon = 'icons/mob/roguehud.dmi'
 	icon_state = ""
 	mouse_opacity = 0
@@ -56,7 +56,7 @@
 /datum/hud/var/atom/movable/screen/action_bar/resistdelay/resistdelay
 
 /atom/movable/screen/action_bar/resistdelay
-	name = "resist delay"
+	name = "挣脱冷却"
 	icon = 'icons/mob/roguehud.dmi'
 	icon_state = ""
 
@@ -68,8 +68,8 @@
 	return TRUE
 
 /atom/movable/screen/action_bar/defensedelay
-	name = "defense readiness"
-	desc = "My readiness to defend. If the light is gone, I cannot dodge or parry."
+	name = "防御就绪"
+	desc = "我的防御准备状态。指示灯熄灭时，我无法闪避或招架。"
 	icon = 'icons/mob/roguehud.dmi'
 	icon_state = "defdelay0"
 	mouse_opacity = TRUE

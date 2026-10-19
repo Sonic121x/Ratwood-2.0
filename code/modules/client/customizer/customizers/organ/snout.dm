@@ -1,10 +1,10 @@
 /datum/customizer/organ/snout
 	abstract_type = /datum/customizer/organ/snout
-	name = "Snout"
+	name = "吻部"
 
 /datum/customizer_choice/organ/snout
 	abstract_type = /datum/customizer_choice/organ/snout
-	name = "Snout"
+	name = "吻部"
 	organ_type = /obj/item/organ/snout
 	organ_slot = ORGAN_SLOT_SNOUT
 
@@ -18,7 +18,7 @@
 	default_disabled = FALSE
 
 /datum/customizer_choice/organ/snout/lizard
-	name = "Lizard Snout"
+	name = "蜥蜴吻部"
 	organ_type = /obj/item/organ/snout/lizard
 	generic_random_pick = TRUE
 	sprite_accessories = list(
@@ -42,7 +42,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/snout/vulpkanin)
 
 /datum/customizer_choice/organ/snout/vulpkanin
-	name = "Vulpkian Snout"
+	name = "维纳丁吻部"
 	organ_type = /obj/item/organ/snout/vulpkanin
 	sprite_accessories = list(
 		/datum/sprite_accessory/snout/lcanid,
@@ -97,7 +97,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/snout/lupian)
 
 /datum/customizer_choice/organ/snout/lupian
-	name = "Lupian Snout"
+	name = "卢皮安吻部"
 	organ_type = /obj/item/organ/snout/lupian
 	sprite_accessories = list(
 		/datum/sprite_accessory/snout/husky,
@@ -133,7 +133,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/snout/tajaran)
 
 /datum/customizer_choice/organ/snout/tajaran
-	name = "Tajaran Snout"
+	name = "塔巴西吻部"
 	organ_type = /obj/item/organ/snout/tajaran
 	sprite_accessories = list(
 		/datum/sprite_accessory/snout/tajaran,
@@ -178,7 +178,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/snout/anthro/dullahan)
 
 /datum/customizer_choice/organ/snout/anthro
-	name = "Wild-Kin Snout"
+	name = "兽裔吻部"
 	organ_type = /obj/item/organ/snout/anthro
 	sprite_accessories = list(
 		/datum/sprite_accessory/snout/bird,
@@ -283,7 +283,7 @@
 		)
 
 /datum/customizer_choice/organ/snout/anthro/dullahan
-	name = "Dullahan Snout"
+	name = "杜拉汉吻部"
 	organ_type = /obj/item/organ/snout/anthro
 	sprite_accessories = list(
 		/datum/sprite_accessory/snout/bird,
@@ -393,7 +393,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/snout/akula)
 
 /datum/customizer_choice/organ/snout/akula
-	name = "Axian Snout"
+	name = "阿克西安吻部"
 	organ_type = /obj/item/organ/snout/akula
 	sprite_accessories = list(
 		/datum/sprite_accessory/snout/shark,
@@ -415,7 +415,7 @@
 		)
 
 /datum/customizer_choice/organ/snout/lamia
-	name = "Lamian Snout"
+	name = "拉弥亚吻部"
 	organ_type = /obj/item/organ/snout/akula
 	sprite_accessories = list(
 		/datum/sprite_accessory/snout/shark,
@@ -438,7 +438,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/snout/tabaxi)
 
 /datum/customizer_choice/organ/snout/tabaxi
-	name = "Tabaxian Snout"
+	name = "塔巴西吻部"
 	organ_type = /obj/item/organ/snout/cat
 	sprite_accessories = list(
 	    /datum/sprite_accessory/snout/cat,
@@ -460,13 +460,13 @@
 		)
 
 /datum/customizer/organ/snout/harpy
-	name = "Harpy Beak"
+	name = "哈比喙"
 	customizer_choices = list(/datum/customizer_choice/organ/snout/harpy)
 	allows_disabling = TRUE
 	default_disabled = TRUE
 
 /datum/customizer_choice/organ/snout/harpy
-	name = "Harpy Beak"
+	name = "哈比喙"
 	organ_type = /obj/item/organ/snout/harpy
 	sprite_accessories = list(
 		/datum/sprite_accessory/snout/bird,

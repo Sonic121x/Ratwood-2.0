@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/dragon
 	icon = 'modular/icons/mob/96x96/ratwood_dragon.dmi'
-	name = "dragon"
+	name = "龙"
 	icon_state = "dragon"
 	icon_living = "dragon"
 	icon_dead = "dragon_dead"
@@ -12,7 +12,7 @@
 	emote_see = null
 	speak_chance = 1
 	turns_per_move = 3
-	speak_emote = list("growls")
+	speak_emote = list("低吼")
 	see_in_dark = 6
 	move_to_delay = 3
 	base_intents = list(/datum/intent/simple/bite/dragon_bite)
@@ -148,19 +148,19 @@
 		return ""
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_L_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NOSE)
-			return "nose"
+			return "鼻子"
 		if(BODY_ZONE_PRECISE_MOUTH)
-			return "mouth"
+			return "嘴巴"
 		if(BODY_ZONE_PRECISE_SKULL)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_EARS)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NECK)
-			return "neck"
+			return "脖子"
 		if(BODY_ZONE_PRECISE_L_HAND)
 			return "foreleg"
 		if(BODY_ZONE_PRECISE_R_HAND)
@@ -170,11 +170,11 @@
 		if(BODY_ZONE_PRECISE_R_FOOT)
 			return "leg"
 		if(BODY_ZONE_PRECISE_STOMACH)
-			return "stomach"
+			return "腹部"
 		if(BODY_ZONE_PRECISE_GROIN)
 			return "tail"
 		if(BODY_ZONE_HEAD)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_R_LEG)
 			return "leg"
 		if(BODY_ZONE_L_LEG)
@@ -192,7 +192,7 @@
 	penfactor = PEN_HEAVY // It is a dragon so it bites hard
 
 /obj/projectile/magic/aoe/dragon_breath
-	name = "fire hairball"
+	name = "火焰团"
 	icon_state = "fireball"
 	damage = 10
 	damage_type = BRUTE
@@ -213,7 +213,7 @@
 /mob/living/simple_animal/hostile/retaliate/rogue/dragon/broodmother
 	health = DRAGON_BROODMOTHER_HEALTH
 	maxHealth = DRAGON_BROODMOTHER_HEALTH
-	name = "dragon broodmother"
+	name = "龙族育母"
 	ranged_cooldown_time = 20 SECONDS
 	var/datum/action/cooldown/mob_cooldown/fire_breath/cone/fire_breath
 	butcher_results = list(

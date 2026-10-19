@@ -8,7 +8,7 @@
 	needs_processing = FALSE
 
 /atom/movable/screen/alert/status_effect/moodbad
-	name = "Stressed"
+	name = "压力沉重"
 	desc = ""
 	icon_state = "stressb"
 
@@ -19,7 +19,7 @@
 	needs_processing = FALSE
 
 /atom/movable/screen/alert/status_effect/moodvbad
-	name = "Max Stress"
+	name = "压力爆表"
 	desc = ""
 	icon_state = "stressvb"
 
@@ -30,7 +30,7 @@
 	needs_processing = FALSE
 
 /atom/movable/screen/alert/status_effect/moodgood
-	name = "Inner Peace"
+	name = "内心平静"
 	desc = ""
 	icon_state = "stressg"
 
@@ -41,7 +41,7 @@
 	needs_processing = FALSE
 
 /atom/movable/screen/alert/status_effect/moodvgood
-	name = "Max Peace"
+	name = "极致平静"
 	desc = ""
 	icon_state = "stressvg"
 
@@ -63,8 +63,8 @@
 	owner.swing_state = TRUE
 
 /atom/movable/screen/alert/status_effect/swingdelay
-	name = "Swinging!"
-	desc = "I am swinging my weapon! Why did I have the time to read this?!"
+	name = "正在挥击！"
+	desc = "我正在挥动武器！我怎么还有空看这段说明？！"
 	icon = 'icons/mob/combat_debuffs.dmi'
 	icon_state = "swingdelay"
 
@@ -73,8 +73,8 @@
 	mob_effect_icon_state = "eff_swingdelay_penalty"
 
 /atom/movable/screen/alert/status_effect/swingdelay/penalty
-	name = "Swinging with a penalty!"
-	desc = "I am swinging my weapon! My guard is weaker! Pay attention to the screen, not here, you loon!"
+	name = "挥击露隙！"
+	desc = "我正在挥动武器，防守变弱了！看好战场，别盯着这里！"
 	icon_state = "swingdelay_penalty"
 
 /datum/status_effect/swingdelay/disrupt
@@ -100,6 +100,6 @@
 	return is_disrupted
 
 /atom/movable/screen/alert/status_effect/swingdelay/disrupt
-	name = "Swinging fiercely!"
-	desc = "THEY WILL JAB ME AND INTERRUPT THE ATTACK YOU GOBLINBRAINED WRETCH! LOOK AT THE ENEMY!!!"
+	name = "正在全力挥击！"
+	desc = "对方一记快刺就能打断我的攻击！快看敌人，别发呆了！！！"
 	icon_state = "swingdelay_disrupt"

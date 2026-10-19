@@ -1,194 +1,194 @@
 
 /datum/supply_pack/rogue/wardrobe
-	group = "Wardrobe"
-	crate_name = "merchant guild's crate"
+	group = "衣装" // English: Wardrobe
+	crate_name = "商人公会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 
 /datum/supply_pack/rogue/wardrobe/hat/witchhat
-	name = "Witch-Hunter's Hat"
+	name = "扣饰帽子"
 	cost = 10
 	contains = list(
 					/obj/item/clothing/head/roguetown/puritan,
 				)
 
 /datum/supply_pack/rogue/wardrobe/hat/physicianhat
-	name = "Physician's Hat"
+	name = "医生帽子"
 	cost = 10
 	contains = list(
 					/obj/item/clothing/head/roguetown/physician,
 				)
 
 /datum/supply_pack/rogue/wardrobe/hat/nightmanhat
-	name = "Teller's Hat"
+	name = "说书人帽子"
 	cost = 10
 	contains = list(
 					/obj/item/clothing/head/roguetown/nightman,
 				)
 
 /datum/supply_pack/rogue/wardrobe/hat/bardhat
-	name = "Minstrel's Hat"
+	name = "吟游诗人的帽子"
 	cost = 10
 	contains = list(
 					/obj/item/clothing/head/roguetown/bardhat,
 				)
 
 /datum/supply_pack/rogue/wardrobe/hat/articap
-	name = "Artificer's Cap"
+	name = "工匠帽"
 	cost = 10
 	contains = list(
 					/obj/item/clothing/head/roguetown/articap,
 				)
 
 /datum/supply_pack/rogue/wardrobe/suits/artijacket
-	name = "Artificer Jacket"
+	name = "工匠夹克"
 	cost = 30
 	contains = list(
 					/obj/item/clothing/suit/roguetown/armor/leather/jacket/artijacket,
 				)
 
 /datum/supply_pack/rogue/wardrobe/masks/specs
-	name = "Spectacles"
+	name = "眼镜"
 	cost = 25
 	contains = list(
 					/obj/item/clothing/mask/rogue/spectacles,
 				)
 
 /datum/supply_pack/rogue/wardrobe/masks/goldspecs
-	name = "Golden Spectacles"
+	name = "金色眼镜"
 	cost = 60
 	contains = list(
 					/obj/item/clothing/mask/rogue/spectacles/golden,
 				)
 
 /datum/supply_pack/rogue/wardrobe/cloaks/bhalfcloaks
-	name = "Half-Cloak"
+	name = "半斗篷"
 	cost = 20
 	contains = list(
 					/obj/item/clothing/cloak/half,
 				)
 
 /datum/supply_pack/rogue/wardrobe/cloaks/raincloak
-	name = "Raincloak"
+	name = "雨披"
 	cost = 15
 	contains = list(
 					/obj/item/clothing/cloak/raincloak/blue,
 				)
 
 /datum/supply_pack/rogue/wardrobe/suits/dressgen
-	name = "Simple Dress"
+	name = "丝质内裙"
 	cost = 15
 	contains = list(
 					/obj/item/clothing/suit/roguetown/shirt/dress/gen,
 				)
 
 /datum/supply_pack/rogue/wardrobe/suits/robes
-	name = "Robes"
+	name = "长袍"
 	cost = 20
 	contains = list(
 					/obj/item/clothing/suit/roguetown/shirt/robe,
 				)
 
 /datum/supply_pack/rogue/wardrobe/suits/formal
-	name = "Formal Silks"
+	name = "丝质衬衣"
 	cost = 30
 	contains = list(
 					/obj/item/clothing/suit/roguetown/shirt/undershirt/puritan,
 				)
 
 /datum/supply_pack/rogue/wardrobe/gloves/fgloves
-	name = "Fingerless Gloves"
+	name = "露指手套"
 	cost = 5
 	contains = list(
 					/obj/item/clothing/gloves/roguetown/fingerless,
 				)
 
 /datum/supply_pack/rogue/wardrobe/pants/formal
-	name = "Formal Pants"
+	name = "黑色紧身裤"
 	cost = 20
 	contains = list(
 					/obj/item/clothing/under/roguetown/tights/black,
 				)
 
 /datum/supply_pack/rogue/wardrobe/shoes/noble
-	name = "Noble Boots"
+	name = "贵族长靴"
 	cost = 30
 	contains = list(
 					/obj/item/clothing/shoes/roguetown/boots/nobleboot,
 				)
 
 /datum/supply_pack/rogue/wardrobe/shoes/shalal
-	name = "Shalal Shoes"
+	name = "巴布什鞋"
 	cost = 10
 	contains = list(
 					/obj/item/clothing/shoes/roguetown/shalal,
 				)
 
 /datum/supply_pack/rogue/wardrobe/shoes/sandals
-	name = "Sandals"
+	name = "皮凉鞋"
 	cost = 5
 	contains = list(
 					/obj/item/clothing/shoes/roguetown/gladiator,
 				)
 
 /datum/supply_pack/rogue/wardrobe/suits/exoticsilkbra
-	name = "Exotic Silk Bra"
+	name = "异域丝绸胸衣"
 	cost = 30
 	contains = list(
 					/obj/item/clothing/suit/roguetown/shirt/exoticsilkbra,
 				)
 
 /datum/supply_pack/rogue/wardrobe/suits/anklets
-	name = "Exotic Silk Anklets"
+	name = "金质踝饰"
 	cost = 30
 	contains = list(
 					/obj/item/clothing/shoes/roguetown/anklets,
 				)
 
 /datum/supply_pack/rogue/wardrobe/suits/exoticsilkbelt
-	name = "Exotic Silk Belt"
+	name = "异域丝绸腰带"
 	cost = 30
 	contains = list(
 					/obj/item/storage/belt/rogue/leather/exoticsilkbelt,
 				)
 
 /datum/supply_pack/rogue/wardrobe/suits/exoticsilkmask
-	name = "Exotic Silk Mask"
+	name = "异域丝绸面纱"
 	cost = 30
 	contains = list(
 					/obj/item/clothing/mask/rogue/exoticsilkmask,
 				)
 
 /datum/supply_pack/rogue/wardrobe/caparison/caparison
-	name = "Caparison"
+	name = "鞍饰毯"
 	cost = 25
 	contains = list(
 					/obj/item/caparison,
 				)
 
 /datum/supply_pack/rogue/wardrobe/caparison/caparison_psy
-	name = "Psydonic Caparison"
+	name = "普赛顿鞍饰毯"
 	cost = 25
 	contains = list(
 					/obj/item/caparison/psy,
 				)
 
 /datum/supply_pack/rogue/wardrobe/caparison/caparison_astrata
-	name = "Astratan Caparison"
+	name = "阿斯特拉塔鞍饰毯"
 	cost = 25
 	contains = list(
 					/obj/item/caparison/astrata,
 				)
 
 /datum/supply_pack/rogue/wardrobe/caparison/caparison_eora
-	name = "Eoran Caparison"
+	name = "伊欧拉鞍饰毯"
 	cost = 25
 	contains = list(
 					/obj/item/caparison/eora
 				)
 
 /datum/supply_pack/rogue/wardrobe/caparison/caparison_fogbeast
-	name = "Fogbeast Caparison"
+	name = "雾兽鞍饰毯"
 	cost = 25
 	contains = list(
 					/obj/item/caparison/fogbeast,

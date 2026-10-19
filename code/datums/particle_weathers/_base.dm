@@ -54,16 +54,16 @@
 	// ==== Modify these ====
 
 	/// name of weather
-	var/name = "space wind"
+	var/name = "空间狂风"
 	/// description of weather
-	var/desc = "Heavy gusts of wind blanket the area, periodically knocking down anyone caught in the open."
+	var/desc = "强劲阵风席卷整片区域，任何暴露在外的人都可能时不时被掀翻在地。"
 
 	//messages to send at different severities
 	var/list/weather_messages = list()
 	//warning message that plays when weather is picked
 	var/warning_message
 	//warning message just before weather fires
-	var/late_warning_message = span_greenannounce("The realms wind blows as weather begins to turn.")
+	var/late_warning_message = span_greenannounce("界域之风吹起，天气即将转变。")
 	// Sounds to play at different severities - order from lowest to highest
 	var/list/weather_sounds = list()
 	var/list/indoor_weather_sounds = list()
@@ -359,34 +359,34 @@
 
 /client/proc/run_particle_weather()
 	set category = "-GameMaster-"
-	set name = "Weather - Particle"
-	set desc = "Triggers a particle weather"
+	set name = "天气 - 粒子"
+	set desc = "触发一场粒子天气"
 
 
 	if(!holder)
 		return
 
-	var/weather_type = input("Choose a weather", "Weather")  as null|anything in sortList(subtypesof(/datum/particle_weather), /proc/cmp_typepaths_asc)
+	var/weather_type = input("选择一种天气", "天气")  as null|anything in sortList(subtypesof(/datum/particle_weather), /proc/cmp_typepaths_asc)
 	if(!weather_type)
 		return
 
 	SSParticleWeather.run_weather(weather_type, TRUE)
 
-	message_admins("[key_name_admin(usr)] started weather of type [weather_type].")
+	message_admins("[key_name_admin(usr)] 启动了 [weather_type] 类型的天气。")
 	log_admin("[key_name(usr)] started weather of type [weather_type].")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Run Particle Weather")
 
 /client/proc/run_custom_particle_weather()
 	set category = "-GameMaster-"
-	set name = "Weather - Color Particle"
-	set desc = "Triggers a particle weather"
+	set name = "天气 - 彩色粒子"
+	set desc = "触发一场粒子天气"
 
 
 
 	if(!holder)
 		return
 
-	var/weather_type = input("Choose a weather", "Weather")  as null|anything in sortList(subtypesof(/datum/particle_weather), /proc/cmp_typepaths_asc)
+	var/weather_type = input("选择一种天气", "天气")  as null|anything in sortList(subtypesof(/datum/particle_weather), /proc/cmp_typepaths_asc)
 	if(!weather_type)
 		return
 
@@ -401,13 +401,13 @@
 	"Gold" = "#f9a602"
 	)
 
-	var/color = input("Choose a weather color", "Weather")  as null|anything in selectable_colors
+	var/color = list("基础雨色" = "Base Rain", "基础雪色" = "Base Snow", "黑色" = "Black", "橄榄色" = "Olive", "绿色" = "Green", "品红色" = "Magenta", "红色" = "Red", "金色" = "Gold")[input("选择天气颜色", "天气") as null|anything in list("基础雨色", "基础雪色", "黑色", "橄榄色", "绿色", "品红色", "红色", "金色")]
 	if(!color )
 		color = "#ccffff" //base rain color
 
 	SSParticleWeather.run_weather(weather_type, TRUE, color)
 
-	message_admins("[key_name_admin(usr)] started weather of type [weather_type].")
+	message_admins("[key_name_admin(usr)] 启动了 [weather_type] 类型的天气。")
 	log_admin("[key_name(usr)] started weather of type [weather_type].")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Run Custom Particle Weather")
 

@@ -132,7 +132,7 @@
 	log_game("The round has ended.")
 	dump_chronicle_stats() // weekly economy-stats disk dump (data/chronicle_stats/)
 
-	to_chat(world, "<BR><BR><BR><span class='reallybig'>So ends this tale on Ratwood Keep.</span>")
+	to_chat(world, "<BR><BR><BR><span class='reallybig'>腐木要塞的这段故事就此落幕。</span>")
 	get_end_reason()
 
 	var roundend_music = pick('sound/music/roundend.ogg','sound/music/roundend2.ogg','sound/music/roundend3.ogg')
@@ -148,7 +148,7 @@
 			if(H.get_triumphs() < 0)
 				H.adjust_triumphs(1)
 			if(H.unspent_quirk_points > 0)
-				to_chat(H, "\n<font color='purple'>TRIUMPH[H.unspent_quirk_points > 1 ? "S" : ""] AWARDED for [H.unspent_quirk_points] unspent quirk point[H.unspent_quirk_points > 1 ? "s" : ""].</font>")
+				to_chat(H, "\n<font color='purple'>你因剩余[H.unspent_quirk_points]点未使用的怪癖点数而获得凯旋点奖赏。</font>")
 				H.playsound_local(get_turf(H), 'sound/misc/notice (2).ogg', 100, FALSE, pressure_affected = FALSE)
 				H.adjust_triumphs(H.unspent_quirk_points)
 				H.unspent_quirk_points = 0
@@ -156,7 +156,7 @@
 			if((GLOB.round_join_times[H.ckey] + 45 MINUTES) < world.time)
 				var/datum/job/job = SSjob.GetJob(H.job)
 				if(job && job.round_contrib_points)
-					to_chat(H, "\n<font color='purple'><b>[job.round_contrib_points]</b> ROUND CONTRIBUTOR POINTS AWARDED. Thank you for playing!</font>")
+					to_chat(H, "\n<font color='purple'>获得 <b>[job.round_contrib_points]</b> 点轮次贡献点。感谢游玩！</font>")
 					add_roundpoints(job.round_contrib_points, H.ckey)
 	add_roundplayed(key_list)
 	update_god_rankings()
@@ -169,7 +169,7 @@
 		cb.InvokeAsync()
 	LAZYCLEARLIST(round_end_events)
 
-	to_chat(world, "Round ID: [GLOB.rogue_round_id]")
+	to_chat(world, "轮次编号：[GLOB.rogue_round_id]")
 
 	sleep(5 SECONDS)
 
@@ -224,27 +224,27 @@
 	var/end_reason
 
 	if(!check_for_lord())
-		end_reason = pick("Without a Duke, they were doomed to become slaves of Zizo.",
-						"Without a Duke, they were doomed to be eaten by nite creachers.",
-						"Without a Duke, they were doomed to become victims of Gehenna.",
-						"Without a Duke, they were doomed to enjoy a mass-suicide.",
-						"Without a Duke, the Lich made them his playthings.",
-						"Without a Duke, some jealous rival reigned in tyranny.",
-						"Without a Duke, the town was abandoned.")
+		end_reason = pick("没有公爵，他们注定沦为齐佐的奴隶。",
+						"没有公爵，他们注定被夜间怪物吞食。",
+						"没有公爵，他们注定成为地狱的受害者。",
+						"没有公爵，他们注定走向集体自尽。",
+						"没有公爵，巫妖将他们变成了自己的玩物。",
+						"没有公爵，嫉妒的对手实行了暴政。",
+						"没有公爵，小镇遭到了遗弃。")
 
 	if(vampire_werewolf() == "vampire")
-		end_reason = "When the Vampires finished sucking the town dry, they moved on to the next one."
+		end_reason = "吸血鬼榨干小镇后，转向了下一个目标。"
 	if(vampire_werewolf() == "werewolf")
-		end_reason = "The Werevolves formed an unholy clan, marauding Ratwood Keep until the end of its daes."
+		end_reason = "狼人组成了亵渎的族群，劫掠腐木要塞直至其末日。"
 
 	if(SSmapping.retainer.head_rebel_decree)
-		end_reason = "The peasant rebels took control of the throne, hail the new community!"
+		end_reason = "农民起义军夺取了王座，向新共同体致敬！"
 
 
 	if(end_reason)
 		to_chat(world, span_bigbold("[end_reason]."))
 	else
-		to_chat(world, span_bigbold("The town has managed to survive another week."))
+		to_chat(world, span_bigbold("小镇又成功熬过了一周。"))
 
 /datum/controller/subsystem/ticker/proc/gamemode_report()
 	var/list/all_teams = list()
@@ -253,7 +253,7 @@
 	var/list/header_parts
 	if(GLOB.antagonist_teams.len || GLOB.antagonists.len)
 		header_parts += "<br>"
-		header_parts += "<div style='text-align: center; font-size: 1.2em;'>VILLAINS:</div>"
+		header_parts += "<div style='text-align: center; font-size: 1.2em;'>反派：</div>"
 		header_parts += "<hr class='paneldivider'>"
 		to_chat(world, header_parts)
 
@@ -335,21 +335,21 @@
 	if(GLOB.round_id)
 		var/statspage = CONFIG_GET(string/roundstatsurl)
 		var/info = statspage ? "<a href='?action=openLink&link=[url_encode(statspage)][GLOB.round_id]'>[GLOB.round_id]</a>" : GLOB.round_id
-		parts += "[FOURSPACES]Round ID: <b>[info]</b>"
-	parts += "[FOURSPACES]Shift Duration: <B>[DisplayTimeText(world.time - SSticker.round_start_time)]</B>"
+		parts += "[FOURSPACES]回合编号：<b>[info]</b>"
+	parts += "[FOURSPACES]回合时长：<B>[DisplayTimeText(world.time - SSticker.round_start_time, chinese = TRUE)]</B>"
 	var/total_players = GLOB.joined_player_list.len
 	if(total_players)
-		parts+= "[FOURSPACES]Total Population: <B>[total_players]</B>"
+		parts+= "[FOURSPACES]总人数：<B>[total_players]</B>"
 		if(station_evacuated)
-			parts += "<BR>[FOURSPACES]Evacuation Rate: <B>[popcount[POPCOUNT_ESCAPEES]] ([PERCENT(popcount[POPCOUNT_ESCAPEES]/total_players)]%)</B>"
-		parts += "[FOURSPACES]Survival Rate: <B>[popcount[POPCOUNT_SURVIVORS]] ([PERCENT(popcount[POPCOUNT_SURVIVORS]/total_players)]%)</B>"
+			parts += "<BR>[FOURSPACES]撤离人数及比例：<B>[popcount[POPCOUNT_ESCAPEES]] ([PERCENT(popcount[POPCOUNT_ESCAPEES]/total_players)]%)</B>"
+		parts += "[FOURSPACES]存活人数及比例：<B>[popcount[POPCOUNT_SURVIVORS]] ([PERCENT(popcount[POPCOUNT_SURVIVORS]/total_players)]%)</B>"
 		if(SSblackbox.first_death)
 			var/list/ded = SSblackbox.first_death
 			if(ded.len)
-				parts += "[FOURSPACES]First Death: <b>[ded["name"]], [ded["role"]], at [ded["area"]]. Damage taken: [ded["damage"]].[ded["last_words"] ? " Their last words were: \"[ded["last_words"]]\"" : ""]</b>"
+				parts += "[FOURSPACES]首位死者：<b>[ded["name"]]，[ded["role"]]，死于[ded["area"]]。受到的伤害：[ded["damage"]]。[ded["last_words"] ? " 遗言：\"[ded["last_words"]]\"" : ""]</b>"
 			//ignore this comment, it fixes the broken sytax parsing caused by the " above
 			else
-				parts += "[FOURSPACES]<i>Nobody died this shift!</i>"
+				parts += "[FOURSPACES]<i>本轮无人死亡！</i>"
 	return parts.Join("<br>")
 
 /client/proc/roundend_report_file()
@@ -382,14 +382,14 @@
 		if(M.stat != DEAD && !isbrain(M))
 			if(round_end)
 				parts += "<div class='panel greenborder'>"
-				parts += "<span class='greentext'>I managed to survive the events on [station_name()] as [M.real_name].</span>"
+				parts += "<span class='greentext'>我以[M.real_name]的身份，在[station_name()]的变故中幸存。</span>"
 			else
 				parts += "<div class='panel greenborder'>"
-				parts += "<span class='greentext'>I managed to survive the events on [station_name()] as [M.real_name].</span>"
+				parts += "<span class='greentext'>我以[M.real_name]的身份，在[station_name()]的变故中幸存。</span>"
 
 		else
 			parts += "<div class='panel redborder'>"
-			parts += "<span class='redtext'>I did not survive the events on [station_name()]...</span>"
+			parts += "<span class='redtext'>我没能在[station_name()]的变故中幸存……</span>"
 	else
 		parts += "<div class='panel stationborder'>"
 	parts += "<br>"
@@ -413,7 +413,7 @@
 /datum/controller/subsystem/ticker/proc/medal_report()
 	if(GLOB.commendations.len)
 		var/list/parts = list()
-		parts += span_header("Medal Commendations:")
+		parts += span_header("勋章表彰：")
 		for (var/com in GLOB.commendations)
 			parts += com
 		return "<div class='panel stationborder'>[parts.Join("<br>")]</div>"
@@ -427,7 +427,7 @@
 	// Header
 	parts += "<div class='panel stationborder'>"
 	if(GLOB.personal_objective_minds.len)
-		parts += "<div style='text-align: center; font-size: 1.2em;'>GODS' CHAMPIONS:</div>"
+		parts += "<div style='text-align: center; font-size: 1.2em;'>诸神的勇士：</div>"
 		parts += "<hr class='paneldivider'>"
 
 	// Process all minds with personal objectives
@@ -453,14 +453,14 @@
 		if(mind.current)
 			name_with_title = printplayer(mind)
 		else
-			name_with_title = "<b>Unknown Champion</b>"
+			name_with_title = "<b>无名勇士</b>"
 
 		parts += "[name_with_title]"
 
 		var/obj_count = 1
 		for(var/datum/objective/objective as anything in mind.personal_objectives)
-			var/result = objective.check_completion() ? span_greentext("TRIUMPH!") : span_redtext("FAIL")
-			parts += "<B>Goal #[obj_count]</B>: [objective.explanation_text] - [result]"
+			var/result = objective.check_completion() ? span_greentext("凯旋！") : span_redtext("失败")
+			parts += "<B>目标 #[obj_count]</B>: [objective.explanation_text] - [result]"
 			obj_count++
 
 		if(current_index < last_index)
@@ -468,12 +468,12 @@
 		CHECK_TICK
 
 	if(!has_any_objectives)
-		parts += "<div style='text-align: center;'>No personal objectives were assigned this round.</div>"
+		parts += "<div style='text-align: center;'>本回合未分配个人目标。</div>"
 	else if(failed_chosen > 0)
 		if(failed_chosen == 1)
-			parts += "<div style='text-align: center;'>1 god's chosen has failed to become a champion.</div>"
+			parts += "<div style='text-align: center;'>1 位神选者未能成为勇士。</div>"
 		else
-			parts += "<div style='text-align: center;'>[failed_chosen] gods' chosen have failed to become champions.</div>"
+			parts += "<div style='text-align: center;'>[failed_chosen] 位神选者未能成为勇士。</div>"
 
 	parts += "</div>"
 
@@ -536,17 +536,17 @@
 	var/datum/action/report/R = new
 	C.player_details.player_actions += R
 	R.Grant(C.mob)
-	to_chat(C,"<a href='?src=[REF(R)];report=1'>Show roundend report again</a>")
+	to_chat(C,"<a href='?src=[REF(R)];report=1'>再次查看回合结算报告</a>")
 
 /datum/controller/subsystem/ticker/proc/give_show_playerlist_button(client/C)
 	set waitfor = 0
-	to_chat(C,"<a href='?src=[C];playerlistrogue=1'>* SHOW PLAYER LIST *</a>")
-	to_chat(C,"<a href='byond://?src=[C];viewstats=1'>* View Statistics *</a>")
+	to_chat(C,"<a href='?src=[C];playerlistrogue=1'>* 查看玩家列表 *</a>")
+	to_chat(C,"<a href='byond://?src=[C];viewstats=1'>* 查看统计数据 *</a>")
 	C.show_round_stats(pick_assoc(GLOB.featured_stats))
 	C.commendsomeone(forced = TRUE)
 
 /datum/action/report
-	name = "Show roundend report"
+	name = "查看回合结算报告"
 	button_icon_state = "round_end"
 
 /datum/action/report/Trigger()
@@ -566,20 +566,20 @@
 /proc/printplayer(datum/mind/ply, fleecheck)
 	var/jobtext = ""
 	if(ply.assigned_role)
-		jobtext = " the <b>[ply.assigned_role]</b>"
+		jobtext = "（<b>[SSjob.GetJob(ply.assigned_role)?.display_title || ply.assigned_role]</b>）"
 	var/usede = ply.key
 	if(ply.key)
 		usede = ckey(ply.key)
 		if(ckey(ply.key) in GLOB.anonymize)
 			usede = get_fake_key(ckey(ply.key))
-	var/text = "<b>[usede]</b> was <b>[ply.name]</b>[jobtext] and"
+	var/text = "<b>[usede]</b> 扮演了 <b>[ply.name]</b>[jobtext]，并"
 	if(ply.current)
 		if(ply.current.stat == DEAD)
-			text += span_redtext(" died.")
+			text += span_redtext("已死亡。")
 		else
-			text += span_greentext(" survived.")
+			text += span_greentext("存活了下来。")
 	else
-		text += span_redtext(" died.")
+		text += span_redtext("已死亡。")
 	return text
 
 /proc/printplayerlist(list/players,fleecheck)
@@ -599,9 +599,9 @@
 	var/count = 1
 	for(var/datum/objective/objective in objectives)
 		if(objective.check_completion())
-			objective_parts += "<b>Objective #[count]</b>: [objective.explanation_text] <span class='greentext'>Success!</span>"
+			objective_parts += "<b>目标 #[count]</b>: [objective.explanation_text] <span class='greentext'>成功！</span>"
 		else
-			objective_parts += "<b>Objective #[count]</b>: [objective.explanation_text] <span class='redtext'>Fail.</span>"
+			objective_parts += "<b>目标 #[count]</b>: [objective.explanation_text] <span class='redtext'>失败。</span>"
 		count++
 	return objective_parts.Join("<br>")
 

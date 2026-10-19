@@ -1,16 +1,16 @@
 /datum/sex_action/titjob
-	name = "Use their tits to get off"
+	name = "用对方乳房磨弄自己"
 	target_sex_part = SEX_PART_BREASTS
 	user_sex_part = SEX_PART_COCK
 
 /datum/sex_action/titjob/get_display_name(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	return "Use their [target.get_chest_word()] to get off"
+	return "用对方的[target.get_chest_word()]磨弄自己"
 
 /datum/sex_action/titjob/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] grabs [target]'s [target.get_chest_word()] and shoves [user.p_their()] cock inbetween!"))
+	user.visible_message(span_warning("[user]抓住了[target]的[target.get_chest_word()]，将[user.p_their()]的肉棒挤了进去！"))
 
 /datum/sex_action/titjob/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] fucks [target]'s [target.get_chest_word()]."))
+	user.sexcon_action_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()]用[target]的[target.get_chest_word()]磨弄着自己。"))
 	user.sexcon.outercourse_noise(user)
 
 	user.sexcon.perform_sex_action(user, 2, 4, TRUE)
@@ -18,7 +18,7 @@
 	user.sexcon.handle_passive_ejaculation(target)
 
 /datum/sex_action/titjob/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(span_warning("[user] pulls [user.p_their()] cock out from inbetween [target]'s [target.get_chest_word()]."))
+	user.visible_message(span_warning("[user]把[user.p_their()]的肉棒从[target]的[target.get_chest_word()]间抽了出来。"))
 
 /datum/sex_action/titjob/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user.sexcon.finished_check())

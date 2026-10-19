@@ -1,15 +1,15 @@
 /proc/ferentia_locality(mob/living/carbon/human/H)
-	var/is_local = input(H, "Are you a local?", "Ferentia Kingdom") as anything in list("I am from these lands", "I am a foreigner")
+	var/is_local = input(H, "你是本地人吗？", "费伦提亚王国") as anything in list("我来自谷地", "我是外乡人")
 	switch(is_local)
-		if("I am from these lands")
+		if("我来自谷地")
 			REMOVE_TRAIT(H, TRAIT_OUTLANDER, JOB_TRAIT)
 		else
-			to_chat(H, span_notice("I have arrived at this duchy's mercenary guild after travelling from a different county within the Ferentian kingdom."))
+			to_chat(H, span_notice("我从费伦提亚王国的另一处郡地远道而来，抵达了谷地的佣兵行会。"))
 
 
 /datum/advclass/mercenary/ferentia
-	name = "Sellknight"
-	tutorial = "Combat experience and skill doesn't pay for lodging, mammons do. A knight only in appearance, you took to the mercenary guild to sell your services as sword-toting muscle to the highest bidder."
+	name = "卖命骑士"
+	tutorial = "战斗经验与武艺可付不起食宿，真能买单的是马蒙。你只是看起来像个骑士，于是投身佣兵行会，把自己这副持剑卖力的身板卖给出价最高的人。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/mercenary/ferentia_sellknight
@@ -39,42 +39,42 @@
 
 /datum/outfit/job/roguetown/mercenary/ferentia_sellknight/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("Combat experience and skill doesn't pay for lodging, mammons do. A knight only in appearance, you took to the mercenary guild to sell your services as sword-toting muscle to the highest bidder."))
+	to_chat(H, span_warning("战斗经验与武艺可付不起食宿，真能买单的是马蒙。你只是看起来像个骑士，于是投身佣兵行会，把自己这副持剑卖力的身板卖给出价最高的人。"))
 	if(H.mind)
-		var/weapons = list("Greatsword", "Longsword & Shield", "Rapier & Buckler")
-		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+		var/weapons = list("大剑", "长剑与鸢盾", "刺剑与小圆盾")
+		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
 		switch(weapon_choice)
-			if("Greatsword")
+			if("大剑")
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				r_hand = /obj/item/rogueweapon/greatsword
-			if("Longsword & Shield")
+			if("长剑与鸢盾")
 				beltl = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/long
 				backl = /obj/item/rogueweapon/shield/tower/metal
-			if("Rapier & Buckler")
+			if("刺剑与小圆盾")
 				beltl = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/rapier
 				backl = /obj/item/rogueweapon/shield/buckler
 		var/helmets = list(
-			"Pigface Bascinet" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface,
-			"Guard Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/guard,
-			"Barred Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/sheriff,
-			"Bucket Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/bucket,
-			"Knight Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight,
-			"Visored Sallet"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored,
-			"Snouted Visored Sallet"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted,
-			"Armet"				= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet,
-			"Snouted Armet"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/snouted,
-			"Hounskull Bascinet" = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull,
-			"Roundface Bascinet"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface,
-			"Snouted Roundface Bascinet"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/snouted,
-			"Etruscan Bascinet" = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan,
-			"Slitted Kettle" = /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle,
-			"Froggemund Helmet"	= /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth,
-			"None"
+			"猪面盆盔" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface,
+			"钢萨伏依盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/guard,
+			"栅栏头盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/sheriff,
+			"桶盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/bucket,
+			"骑士头盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight,
+			"带面罩萨勒盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored,
+			"带吻部面罩萨雷特盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted,
+			"阿米特盔"				= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet,
+			"带吻部阿米特盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/snouted,
+			"犬首盆盔" = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull,
+			"圆面盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface,
+			"带吻部圆面盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/snouted,
+			"伊特鲁斯卡盆盔" = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan,
+			"开缝锅盔" = /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle,
+			"蛙嘴盔" = /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth,
+			"无"
 		)
-		var/helmchoice = input(H, "Choose your Helm.", "TAKE UP HELMS") as anything in helmets
-		if(helmchoice != "None")
+		var/helmchoice = input(H, "选择你的头盔。", "整备头盔") as anything in helmets
+		if(helmchoice != "无")
 			head = helmets[helmchoice]
 	wrists = /obj/item/clothing/wrists/roguetown/splintarms //We're lowkey kinda poor, so mostly iron armor for anything which isn't vital
 	belt = /obj/item/storage/belt/rogue/leather
@@ -96,8 +96,8 @@
 	H.merctype = 17
 
 /datum/advclass/mercenary/ferentia/sellspear
-	name = "Sellspear"
-	tutorial = "Faceless and numerous, the mercenary guild is occupied by many of your ilk. Maille and polearms are as easily used by the unskilled as they are effective."
+	name = "卖命枪兵"
+	tutorial = "像你这样无名而众多的人，正塞满了整座佣兵行会。锁子甲与长柄武器既适合未经细训的人使用，也同样足够有效。"
 	outfit = /datum/outfit/job/roguetown/mercenary/ferentia_sellspear
 	traits_applied = list(TRAIT_MEDIUMARMOR)
 	subclass_stats = list( //Extremely all-rounder statline for an extremely all-rounder weapon class and middling armor class. You are John Spearman
@@ -122,30 +122,30 @@
 
 /datum/outfit/job/roguetown/mercenary/ferentia_sellspear/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("Faceless and numerous, the mercenary guild is occupied by many of your ilk. Maille and polearms are as easily used by the unskilled as they are effective."))
+	to_chat(H, span_warning("像你这样无名而众多的人，正塞满了整座佣兵行会。锁子甲与长柄武器既适合未经细训的人使用，也同样足够有效。"))
 	if(H.mind)
-		var/weapons = list("Halberd", "Partizan", "Lucerne", "Billhook")
-		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+		var/weapons = list("戟斧", "帕提赞长戟", "钢制卢塞恩锤", "钩镰枪")
+		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
 		switch(weapon_choice)
-			if("Halberd")
+			if("戟斧")
 				r_hand = /obj/item/rogueweapon/halberd
-			if("Partizan")
+			if("帕提赞长戟")
 				r_hand = /obj/item/rogueweapon/spear/partizan
-			if("Lucerne")
+			if("钢制卢塞恩锤")
 				r_hand = /obj/item/rogueweapon/eaglebeak
-			if("Billhook")
+			if("钩镰枪")
 				r_hand =/obj/item/rogueweapon/spear/billhook
 		var/helmets = list(
-			"Simple Helmet" 	= /obj/item/clothing/head/roguetown/helmet,
-			"Kettle Helmet" 	= /obj/item/clothing/head/roguetown/helmet/kettle,
-			"Bascinet Helmet"	= /obj/item/clothing/head/roguetown/helmet/bascinet,
-			"Sallet Helmet"		= /obj/item/clothing/head/roguetown/helmet/sallet,
-			"Winged Helmet" 	= /obj/item/clothing/head/roguetown/helmet/winged,
-			"Skull Cap"			= /obj/item/clothing/head/roguetown/helmet/skullcap,
-			"None"
+			"简易头盔" 	= /obj/item/clothing/head/roguetown/helmet,
+			"锅盔" 	= /obj/item/clothing/head/roguetown/helmet/kettle,
+			"盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet,
+			"萨雷特盔"		= /obj/item/clothing/head/roguetown/helmet/sallet,
+			"翼饰帽" 	= /obj/item/clothing/head/roguetown/helmet/winged,
+			"骷髅帽"			= /obj/item/clothing/head/roguetown/helmet/skullcap,
+			"无"
 		)
-		var/helmchoice = input(H, "Choose your Helm.", "TAKE UP HELMS") as anything in helmets
-		if(helmchoice != "None")
+		var/helmchoice = input(H, "选择你的头盔。", "整备头盔") as anything in helmets
+		if(helmchoice != "无")
 			head = helmets[helmchoice]
 	l_hand = /obj/item/rogueweapon/sword
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
@@ -170,8 +170,8 @@
 	H.merctype = 17
 
 /datum/advclass/mercenary/ferentia/sellblade
-	name = "Sellblade"
-	tutorial = "An expert with a blade and nimble on your feet, those of your ability are something of a rare sight in the mercenary guild. Nevertheless effective at accomplishing the dirty work of others as you merge with the shadows, striking fast and deadly."
+	name = "卖命刀客"
+	tutorial = "你既精于刀刃，又步伐轻捷，像你这样的人在佣兵行会里算得上少见。可一旦融入阴影，为他人干那些见不得光的脏活时，你依旧高效得可怕，出手又快又致命。"
 	outfit = /datum/outfit/job/roguetown/mercenary/ferentia_sellblade
 	subclass_languages = list(/datum/language/thievescant)
 	traits_applied = list(TRAIT_DODGEEXPERT, TRAIT_SEEPRICES_SHITTY) //Obligatory fast and nimble dodge expert class, specializing in either daggers or stabby swift weighted swords
@@ -193,20 +193,20 @@
 		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
 		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
 	)
-	extra_context = "This subclass gains Expert skill in their weapon of choice, be it swords or knives."
+	extra_context = "该分支会在所选武器上获得专家级熟练，无论你选的是剑还是匕首。"
 
 /datum/outfit/job/roguetown/mercenary/ferentia_sellblade/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("An expert with a blade and nimble on your feet, those of your ability are something of a rare sight in the mercenary guild. Nevertheless effective at accomplishing the dirty work of others as you merge with the shadows, striking fast and deadly."))
+	to_chat(H, span_warning("你既精于刀刃，又步伐轻捷，像你这样的人在佣兵行会里算得上少见。可一旦融入阴影，为他人干那些见不得光的脏活时，你依旧高效得可怕，出手又快又致命。"))
 	if(H.mind)
-		var/weapons = list("Rapier", "Dagger")
-		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+		var/weapons = list("刺剑", "钢匕首")
+		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
 		switch(weapon_choice)
-			if("Rapier")
+			if("刺剑")
 				r_hand = /obj/item/rogueweapon/sword/rapier
 				beltl = /obj/item/rogueweapon/scabbard/sword
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
-			if("Dagger")
+			if("钢匕首")
 				r_hand = /obj/item/rogueweapon/huntingknife/idagger/steel
 				beltl = /obj/item/rogueweapon/scabbard/sheath
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_EXPERT, TRUE)
@@ -232,8 +232,8 @@
 	H.merctype = 17
 
 /datum/advclass/mercenary/ferentia/thug
-	name = "Hired Thug"
-	tutorial = "The mercenary guild is teeming with corn-fed brutes looking to make mammons off the only thing they're good at - while simple-minded describes you best, you possess brute strength and a heavy club. Sometimes that's all you need to solve problems in lyfe."
+	name = "受雇打手"
+	tutorial = "佣兵行会里挤满了像你这样吃壮了身板、只会靠一把子蛮力挣马蒙的莽汉。头脑简单这词用来形容你最贴切，但你也确实拥有蛮横的力气和一根沉重棍棒。有时候，解决问题就只需要这些。"
 	outfit = /datum/outfit/job/roguetown/mercenary/ferentia_thug
 	subclass_languages = list(/datum/language/thievescant)
 	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_BIGGUY, TRAIT_SEEPRICES_SHITTY, TRAIT_DRUNK_HEALING)
@@ -254,34 +254,34 @@
 		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
 		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
 	)
-	extra_context = "This subclass gains Expert skill in their weapon of choice, be it maces or unarmed."
+	extra_context = "该分支会在所选战斗方式上获得专家级熟练，无论你选的是锤类还是徒手。"
 
 /datum/outfit/job/roguetown/mercenary/ferentia_thug/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("The mercenary guild is teeming with corn-fed brutes looking to make mammons off the only thing they're good at - while simple-minded describes you best, you possess brute strength and a heavy club. Sometimes that's all you need to solve problems in lyfe."))
+	to_chat(H, span_warning("佣兵行会里挤满了像你这样吃壮了身板、只会靠一把子蛮力挣马蒙的莽汉。头脑简单这词用来形容你最贴切，但你也确实拥有蛮横的力气和一根沉重棍棒。有时候，解决问题就只需要这些。"))
 	if(H.mind)
-		var/weapons = list("Mace", "Warhammer", "WHO NEEDS A CLUB? I HAVE MY HANDS!")
-		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+		var/weapons = list("钢钉头锤", "钢战锤", "要什么棍棒？老子有这双手！")
+		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
 		switch(weapon_choice)
-			if("Mace")
+			if("钢钉头锤")
 				r_hand = /obj/item/rogueweapon/mace/steel
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT, TRUE)
-			if("Warhammer")
+			if("钢战锤")
 				r_hand = /obj/item/rogueweapon/mace/warhammer/steel
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT, TRUE)
-			if("WHO NEEDS A CLUB? I HAVE MY HANDS!")
+			if("要什么棍棒？老子有这双手！")
 				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT, TRUE)
 				ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
-		var/techniques = list("Dropkick - Pushback + Extra Damage", "Chokeslam - Stamina Damage", "Stunner - Dazed Debuff", "Headbutt - Vulnerable Debuff") // cool wrestling moves
-		var/technique_choice = input(H,"Choose your TECHNIQUE.", "TOSS THEM.") as anything in techniques
+		var/techniques = list("腾空飞踢 - 击退与额外伤害", "锁喉摔 - 体力伤害", "碎颚摔 - 眩晕减益", "头槌 - 易伤减益") // cool wrestling moves
+		var/technique_choice = input(H,"选择你的技法。", "将敌人摔出去") as anything in techniques
 		switch(technique_choice)
-			if("Dropkick - Pushback + Extra Damage")
+			if("腾空飞踢 - 击退与额外伤害")
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/dropkick)
-			if("Chokeslam - Stamina Damage")
+			if("锁喉摔 - 体力伤害")
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/chokeslam)
-			if("Stunner - Dazed Debuff")
+			if("碎颚摔 - 眩晕减益")
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/stunner)
-			if("Headbutt - Vulnerable Debuff")
+			if("头槌 - 易伤减益")
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/headbutt)
 
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
@@ -306,8 +306,8 @@
 	H.merctype = 17
 
 /datum/advclass/mercenary/ferentia/crossbowman
-	name = "Light Crossbowman"
-	tutorial = "Once a member of a guard mayhaps - you recieved training in bludgeons and crossbows, serving as a ferentia yet numerous and effective ranged service to the mercenary guild."
+	name = "轻装弩手"
+	tutorial = "也许你曾是某支卫队的一员，接受过棍棒与十字弩的训练，如今则以费伦提亚人中常见却可靠的远程战力身份，为佣兵行会效劳。"
 	outfit = /datum/outfit/job/roguetown/mercenary/ferentia_crossbowman
 	traits_applied = list(TRAIT_KEENEARS) //Guardmaxing
 	subclass_stats = list( //You're a little bit more tailored to the crossbowman identity than the Grenzelhoft crossbowman which is more of a utility role
@@ -333,26 +333,26 @@
 
 /datum/outfit/job/roguetown/mercenary/ferentia_crossbowman/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("Once a member of a guard, mayhaps - you recieved training in bludgeons and crossbows, serving as a ferentia yet numerous and effective ranged service to the mercenary guild."))
+	to_chat(H, span_warning("也许你曾是某支卫队的一员，接受过棍棒与十字弩的训练，如今则以 费伦提亚 人中常见却可靠的远程战力身份，为佣兵行会效劳。"))
 	if(H.mind)
-		var/armor_options = list("Light Brigandine", "Studded Leather Vest")
-		var/armor_choice = input(H, "Choose your armor.", "DRESS UP") as anything in armor_options
+		var/armor_options = list("轻型板甲衣", "铆钉皮甲")
+		var/armor_choice = input(H, "选择你的护甲。", "整备着装") as anything in armor_options
 		switch(armor_choice)
-			if("Light Brigandine")
+			if("轻型板甲衣")
 				armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light
-			if("Studded Leather Vest")
+			if("铆钉皮甲")
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/studded
 		var/helmets = list(
-			"Simple Helmet" 	= /obj/item/clothing/head/roguetown/helmet,
-			"Kettle Helmet" 	= /obj/item/clothing/head/roguetown/helmet/kettle,
-			"Bascinet Helmet"	= /obj/item/clothing/head/roguetown/helmet/bascinet,
-			"Sallet Helmet"		= /obj/item/clothing/head/roguetown/helmet/sallet,
-			"Winged Helmet" 	= /obj/item/clothing/head/roguetown/helmet/winged,
-			"Skull Cap"			= /obj/item/clothing/head/roguetown/helmet/skullcap,
-			"None"
+			"简易头盔" 	= /obj/item/clothing/head/roguetown/helmet,
+			"锅盔" 	= /obj/item/clothing/head/roguetown/helmet/kettle,
+			"盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet,
+			"萨雷特盔"		= /obj/item/clothing/head/roguetown/helmet/sallet,
+			"翼饰帽" 	= /obj/item/clothing/head/roguetown/helmet/winged,
+			"骷髅帽"			= /obj/item/clothing/head/roguetown/helmet/skullcap,
+			"无"
 		)
-		var/helmchoice = input(H, "Choose your Helm.", "TAKE UP HELMS") as anything in helmets
-		if(helmchoice != "None")
+		var/helmchoice = input(H, "选择你的头盔。", "整备头盔") as anything in helmets
+		if(helmchoice != "无")
 			head = helmets[helmchoice]
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	belt = /obj/item/storage/belt/rogue/leather
@@ -376,8 +376,8 @@
 	H.merctype = 17
 
 /datum/advclass/mercenary/ferentia/longbowman
-	name = "Longbowman"
-	tutorial = "You've trained since you were young with a bow hunting game in the forest. You know the woods like you know the vitals of a wild saiga. In the mercenary guild, it's not hard to think of a brigand as a bipedal saiga."
+	name = "长弓手"
+	tutorial = "你自幼便在林间持弓猎兽，对森林的熟悉程度不下于你对野生赛加羚要害的了解。在佣兵行会里，把土匪看成两条腿的赛加羚并不算难。"
 	outfit = /datum/outfit/job/roguetown/mercenary/ferentia_longbowman
 	traits_applied = list(TRAIT_OUTDOORSMAN, TRAIT_WOODSMAN, TRAIT_SURVIVAL_EXPERT) //Warden at home
 	subclass_stats = list( //Minus three weighted stats but they get woodsman to specialize them in being forest battlers, maybe try and get hired by the wardens pal
@@ -406,19 +406,19 @@
 		/datum/skill/labor/butchering = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/craft/cooking = SKILL_LEVEL_APPRENTICE,
 	)
-	extra_context = "This subclass gains Journeyman skill in their weapon of choice, be it axes or knives. Furthermore, this subclass possesses less stats compared to others to compensate for its Woodsman trait granting it a higher overall stat total when its conditions are met."
+	extra_context = "该分支会在所选武器上获得熟练级技能，无论你选的是斧还是匕首。此外，此分支的基础属性略低，以平衡“老练林人”特质在满足条件时带来的更高总体强度。"
 
 /datum/outfit/job/roguetown/mercenary/ferentia_longbowman/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("You've trained since you were young with a bow hunting game in the forest. You know the woods like you know the vitals of a wild saiga. In the mercenary guild, it's not hard to think of a brigand as a bipedal saiga."))
+	to_chat(H, span_warning("你自幼便在林间持弓猎兽，对森林的熟悉程度不下于你对野生赛加羚要害的了解。在佣兵行会里，把土匪看成两条腿的赛加羚并不算难。"))
 	if(H.mind)
-		var/weapons = list("Axe", "Dagger")
-		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+		var/weapons = list("普拉斯基斧", "钢匕首")
+		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
 		switch(weapon_choice)
-			if("Axe")
+			if("普拉斯基斧")
 				r_hand = /obj/item/rogueweapon/stoneaxe/woodcut/pick
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_JOURNEYMAN, TRUE)
-			if("Dagger")
+			if("钢匕首")
 				r_hand = /obj/item/rogueweapon/huntingknife/idagger/steel
 				beltl = /obj/item/rogueweapon/scabbard/sheath
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_JOURNEYMAN, TRUE)

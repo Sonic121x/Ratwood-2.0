@@ -19,7 +19,7 @@
 ///the issue is they would need atleast a 2x2 to smooth proper.
 /obj/structure/hotspring
 	abstract_type = /obj/structure/hotspring
-	name = "hot spring"
+	name = "温泉"
 	icon = 'icons/obj/structures/hotspring.dmi'
 	icon_state = "hotspring"
 	nomouseover = TRUE
@@ -74,7 +74,7 @@
 				var/mob/living/carbon/human/bather = user
 				bather.relaxing_bath(2)
 				return
-			user.visible_message(span_info("[user] starts to wash in [src]."))
+			user.visible_message(span_info("[user]开始在[src]中洗浴。"))
 			if(do_after(L, 3 SECONDS, target = src))
 				wash_atom(user, CLEAN_STRONG)
 				user.remove_stress(/datum/stressevent/sewertouched)
@@ -84,7 +84,7 @@
 				if(user.bodytemperature > BODYTEMP_NORMAL_MAX)	//washing yourself helps to cool you off.
 					user.adjust_bodytemperature(-75)
 		else
-			user.visible_message(span_info("[user] starts to wash [item2wash] in [src]."))
+			user.visible_message(span_info("[user]开始在[src]中清洗[item2wash]。"))
 			if(do_after(L, 30, target = src))
 				wash_atom(item2wash, CLEAN_STRONG)
 				L.update_inv_hands()
@@ -168,7 +168,7 @@
 	edge = TRUE
 
 /obj/structure/flora/hotspring_rocks
-	name = "large rock"
+	name = "大岩石"
 
 	icon = 'icons/obj/structures/hotspring.dmi'
 	icon_state = "bigrock"
@@ -176,11 +176,11 @@
 	density = TRUE
 
 /obj/structure/flora/hotspring_rocks/grassy
-	name = "grassy large rock"
+	name = "覆草大岩石"
 	icon_state = "bigrock_grass"
 
 /obj/structure/flora/hotspring_rocks/small
-	name = "small rock"
+	name = "小岩石"
 	density = FALSE
 	icon_state = "stones_1"
 
@@ -197,21 +197,21 @@
 	icon_state = "stones_5"
 
 /obj/machinery/light/rogue/torchholder/hotspring
-	name = "stone lantern"
-	desc = "A stone lantern, built in Kazengunese style. It is believed these lanterns attracts spirits and guide their way."
+	name = "石灯笼"
+	desc = "一座风郡式石灯笼。人们相信这些灯笼会吸引灵魂，并为它们引路。"
 	icon = 'icons/obj/structures/hotspring.dmi'
 	icon_state = "stonelantern1"
 	torch_off_state = "stonelantern0"
 	base_state = "stonelantern"
 
 /obj/machinery/light/rogue/torchholder/hotspring/standing
-	name = "standing stone lantern"
+	name = "立式石灯笼"
 	icon_state = "stonelantern_standing1"
 	torch_off_state = "stonelantern_standing0"
 	base_state = "stonelantern_standing"
 
 /obj/effect/lily_petal
-	name = "lily petals"
+	name = "百合花瓣"
 	icon = 'icons/obj/structures/hotspring.dmi'
 	icon_state = "lilypetals1"
 
@@ -222,7 +222,7 @@
 	icon_state = "lilypetals3"
 
 /obj/structure/chair/hotspring_bench
-	name = "park bench"
+	name = "公园长椅"
 	icon_state = "parkbench_sofamiddle"
 	icon = 'icons/obj/structures/hotspring.dmi'
 	buildstackamount = 1
@@ -239,9 +239,9 @@
 	icon_state = "parkbench_corner"
 
 /obj/structure/flora/sakura
-	name = "cherry blossom tree"
-	desc = "A tree that has been introduced from the far east. A symbol of the transience of life. In the islands of Kazengun,\
-	it is strongly associated with both romance and death. On the mainland, it is known as a representation of brotherhood.\ "
+	name = "樱花树"
+	desc = "一种从远东引入的树木，象征着生命的短暂。在风郡诸岛，\
+	它与爱情和死亡紧密相连；而在大陆上，它则象征着兄弟情谊。\ "
 	icon = 'icons/obj/structures/sakura_tree.dmi'
 	icon_state = "sakura_tree"
 	obj_flags = CAN_BE_HIT | IGNORE_SINK
@@ -272,4 +272,4 @@
 	. = ..()
 	if(iscarbon(user))
 		user.add_stress(/datum/stressevent/sakura_view)
-		to_chat(user, span_green("The gentle flutter of petals calms my spirit."))
+		to_chat(user, span_green("花瓣轻轻飘落，让我的心灵安宁下来。"))

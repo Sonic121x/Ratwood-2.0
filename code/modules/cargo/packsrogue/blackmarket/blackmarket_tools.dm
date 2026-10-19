@@ -1,84 +1,84 @@
 /datum/supply_pack/rogue/blackmarket_tools
-	group = "General Labour"
-	crate_name = "suspicious chest"
+	group = "杂务用品" // English: General Labour
+	crate_name = "可疑的箱子"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/blackmarket_tools/chain
-	name = "Length of Chain"
+	name = "铁链"
 	cost = 5
 	contains = list(/obj/item/rope/chain)
 
 /datum/supply_pack/rogue/blackmarket_tools/needle
-	name = "Sewing Needle"
+	name = "缝合针"
 	cost = 5
 	contains = list(/obj/item/needle)
 
 /datum/supply_pack/rogue/blackmarket_tools/woodstaff
-	name = "Six Foot Pole"
+	name = "木杖"
 	cost = 5
 	contains = list(/obj/item/rogueweapon/woodstaff)
 
 /datum/supply_pack/rogue/blackmarket_tools/pouches
-	name = "Pouch"
+	name = "束口袋"
 	cost = 5
 	contains = list(/obj/item/storage/belt/rogue/pouch)
 
 /datum/supply_pack/rogue/blackmarket_tools/keyring
-	name = "Keyring"
+	name = "钥匙圈"
 	cost = 10
 	contains = list(/obj/item/storage/keyring)
 
 /datum/supply_pack/rogue/blackmarket_tools/satchel
-	name = "Satchel"
+	name = "挎包"
 	cost = 15
 	contains = list(/obj/item/storage/backpack/rogue/satchel)
 
 /datum/supply_pack/rogue/blackmarket_tools/bedroll
-	name = "Bedroll"
+	name = "卷起的铺盖卷"
 	cost = 15
 	contains = list(/obj/item/bedroll)
 
 /datum/supply_pack/rogue/blackmarket_tools/waterskin
-	name = "Waterskin"
+	name = "水囊"
 	cost = 15
 	contains = list(/obj/item/reagent_containers/glass/bottle/waterskin)
 
 /datum/supply_pack/rogue/blackmarket_tools/backpack
-	name = "Backpack"
+	name = "背包"
 	cost = 30
 	contains = list(/obj/item/storage/backpack/rogue/backpack)
 
 /datum/supply_pack/rogue/blackmarket_tools/prarml
-	name = "Prosthetic Wood Arm (L)"
+	name = "木制左义臂"
 	cost = 40
 	contains = list(/obj/item/bodypart/l_arm/prosthetic/woodleft)
 
 /datum/supply_pack/rogue/blackmarket_tools/prarmr
-	name = "Prosthetic Wood Arm (R)"
+	name = "木制右义臂"
 	cost = 40
 	contains = list(/obj/item/bodypart/r_arm/prosthetic/woodright)
 
 /datum/supply_pack/rogue/blackmarket_tools/prlegl
-	name = "Prosthetic Wood Leg (L)"
+	name = "木制左义腿"
 	cost = 15
 	contains = list(/obj/item/bodypart/l_leg/prosthetic)
 
 /datum/supply_pack/rogue/blackmarket_tools/prlegr
-	name = "Prosthetic Wood Leg (R)"
+	name = "木制右义腿"
 	cost = 15
 	contains = list(/obj/item/bodypart/r_leg/prosthetic)
 
 /datum/supply_pack/rogue/blackmarket_tools/prarmlbrz
-	name = "Prostethic Bronze Arm (L)"
+	name = "可选部位青铜义肢"
 	cost = 200
 	contains = list(/obj/item/contraption/bronzeprosthetic)
 
 /datum/supply_pack/rogue/blackmarket_tools/grapplinghook
-	name =	"Climbing Machine"
+	name =	"青铜抓钩发射器"
 	cost =	250
 	contains = list(/obj/item/grapplinghook)
 
 /datum/supply_pack/rogue/blackmarket_tools/golem_skillcore
-	name ="Golem Skill Exhibitor (Self-Service)"
+	name ="自助式改装构装体技能拓展器"
 	cost = 50
 	contains = list(/obj/item/construct_skill_core/blackmarket)

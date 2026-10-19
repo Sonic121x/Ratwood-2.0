@@ -1,5 +1,5 @@
 // This code handles different species in the game.
-
+#include "species_display.dm"
 GLOBAL_LIST_EMPTY(roundstart_races)
 
 /datum/species
@@ -79,7 +79,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	/// this is sorta... weird. it basically lets you equip stuff that usually needs jumpsuits without one, like belts and pockets and ids
 	var/nojumpsuit = 0
 	/// affects the speech message
-	var/say_mod = "says"
+	var/say_mod = "说"
 	// Default mutant bodyparts for this species. Don't forget to set one for every mutant bodypart you allow this species to have.
 	var/list/default_features = MANDATORY_FEATURE_LIST
 	// Visible CURRENT bodyparts that are unique to a species. DO NOT USE THIS AS A LIST OF ALL POSSIBLE BODYPARTS AS IT WILL FUCK SHIT UP! Changes to this list for non-species specific bodyparts (ie cat ears and tails) should be assigned at organ level if possible. Layer hiding is handled by handle_mutant_bodyparts() below.
@@ -138,7 +138,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	///List of factions the mob gain upon gaining this species.
 	var/list/inherent_factions
 
-	var/attack_verb = "punch"	// punch-specific attack verb
+	var/attack_verb = "拳击"	// punch-specific attack verb
 	var/sound/attack_sound = 'sound/combat/hits/punch/punch (1).ogg'
 	var/sound/miss_sound = 'sound/blank.ogg'
 
@@ -155,7 +155,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/changesource_flags = NONE
 
 	/// Wording for skin tone on examine and on character setup
-	var/skin_tone_wording = "Skin Tone"
+	var/skin_tone_wording = "肤色"
 	/// Bodyparts to override base ones.
 	var/list/bodypart_overrides = list()
 	/// List of organs this species has.
@@ -797,7 +797,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				return FALSE
 			if(DIGITIGRADE in species_traits)
 				if(!disable_warning)
-					to_chat(H, span_warning("The footwear around here isn't compatible with my feet!"))
+					to_chat(H, span_warning("这里的鞋子不适合我的脚！"))
 				return FALSE
 			return equip_delay_self_check(I, H, bypass_equip_delay_self)
 		if(SLOT_BELT)
@@ -903,7 +903,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 			if(!H.wear_pants && !nojumpsuit && (!O || O.status != BODYPART_ROBOTIC))
 				if(!disable_warning)
-					to_chat(H, span_warning("I need a jumpsuit before you can attach this [I.name]!"))
+					to_chat(H, span_warning("我得先穿上衣裤才能挂上[I.name]！"))
 				return FALSE
 			if(I.slot_flags & ITEM_SLOT_DENYPOCKET)
 				return FALSE
@@ -919,7 +919,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 			if(!H.wear_pants && !nojumpsuit && (!O || O.status != BODYPART_ROBOTIC))
 				if(!disable_warning)
-					to_chat(H, span_warning("I need a jumpsuit before you can attach this [I.name]!"))
+					to_chat(H, span_warning("我得先穿上衣裤才能挂上[I.name]！"))
 				return FALSE
 			if(I.slot_flags & ITEM_SLOT_DENYPOCKET)
 				return FALSE
@@ -933,15 +933,15 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				return FALSE
 			if(!H.wear_armor)
 				if(!disable_warning)
-					to_chat(H, span_warning("I need a suit before you can attach this [I.name]!"))
+					to_chat(H, span_warning("我得先穿上外衣才能挂上[I.name]！"))
 				return FALSE
 			if(!H.wear_armor.allowed)
 				if(!disable_warning)
-					to_chat(H, span_warning("I somehow have a suit with no defined allowed items for suit storage, stop that."))
+					to_chat(H, span_warning("我这件外衣没有可存放物品的设置，不能往上挂东西。"))
 				return FALSE
 			if(I.w_class > WEIGHT_CLASS_BULKY)
 				if(!disable_warning)
-					to_chat(H, span_warning("The [I.name] is too big to attach!")) //should be src?
+					to_chat(H, span_warning("[I.name]太大了，挂不上去！")) //should be src?
 				return FALSE
 			return FALSE
 		if(SLOT_HANDCUFFED)
@@ -987,7 +987,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(HAS_TRAIT(H, TRAIT_CHUNKYFINGERS))
 		return do_after(H, 5 MINUTES, target = H)
 	if(I.equip_delay_self > 10)
-		H.visible_message(span_smallnotice("[H] start putting on [I]..."), span_smallnotice("I start putting on [I]..."))
+		H.visible_message(span_smallnotice("[H]开始穿戴[I]..."), span_smallnotice("我开始穿戴[I]..."))
 	if(I.edelay_type)
 		return move_after(H, minone(I.equip_delay_self-H.STASPD), target = H)
 	else
@@ -1232,9 +1232,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 /datum/species/proc/grab(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
 	if(target.check_block())
-		target.visible_message(span_warning("[target] blocks [user]'s grab!"), \
-						span_danger("I block [user]'s grab!"), span_hear("I hear a swoosh!"), COMBAT_MESSAGE_RANGE, user)
-		to_chat(user, span_warning("My grab at [target] was blocked!"))
+		target.visible_message(span_warning("[target]挡住了[user]的擒拿！"), \
+						span_danger("我挡住了[user]的擒拿！"), span_hear("我听到一阵破空声！"), COMBAT_MESSAGE_RANGE, user)
+		to_chat(user, span_warning("我对[target]的擒拿被挡住了！"))
 		return FALSE
 	if(attacker_style && attacker_style.grab_act(user,target))
 		return TRUE
@@ -1263,12 +1263,12 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 ///This proc handles punching damage. IMPORTANT: Our owner is the TARGET and not the USER in this proc. For whatever reason...
 /datum/species/proc/harm(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_warning("I don't want to harm [target]!"))
+		to_chat(user, span_warning("我不想伤害[target]！"))
 		return FALSE
 	if(target.check_block())
-		target.visible_message(span_warning("[target] blocks [user]'s attack!"), \
-						span_danger("I block [user]'s attack!"), span_hear("I hear a swoosh!"), COMBAT_MESSAGE_RANGE, user)
-		to_chat(user, span_warning("My attack at [target] was blocked!"))
+		target.visible_message(span_warning("[target]挡住了[user]的攻击！"), \
+						span_danger("我挡住了[user]的攻击！"), span_hear("我听到一阵破空声！"), COMBAT_MESSAGE_RANGE, user)
+		to_chat(user, span_warning("我对[target]的攻击被挡住了！"))
 		return FALSE
 	if(attacker_style && attacker_style.harm_act(user,target))
 		return TRUE
@@ -1312,7 +1312,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					user.ignite_mob()
 				else
 					if(prob(30))
-						to_chat(user, span_warning("The foul blessing of the Undermaiden hurts us!"))
+						to_chat(user, span_warning("冥下侍女的邪恶祝福伤害了我们！"))
 				user.adjust_blurriness(2)
 				user.adjustBruteLoss(rand(5, 10))
 				user.apply_status_effect(/datum/status_effect/churned, target)
@@ -1324,7 +1324,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					user.ignite_mob()
 				else
 					if(prob(30))
-						to_chat(user, span_warning("Some matter of force harms us!"))
+						to_chat(user, span_warning("某种力量伤害了我们！"))
 				user.adjust_blurriness(2)
 				user.adjustBruteLoss(rand(10, 15))
 
@@ -1338,7 +1338,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(!damage || !affecting || prob(miss_chance))//future-proofing for species that have 0 damage/weird cases where no zone is targeted
 			playsound(target.loc, user.dna.species.miss_sound, 25, TRUE, -1)
 			target.visible_message(span_danger("[user]'s [atk_verb] misses [target]!"), \
-							span_danger("I avoid [user]'s [atk_verb]!"), span_hear("I hear a swoosh!"), COMBAT_MESSAGE_RANGE, user)
+							span_danger("I avoid [user]'s [atk_verb]!"), span_hear("我听到一阵破空声！"), COMBAT_MESSAGE_RANGE, user)
 			to_chat(user, span_warning("My [atk_verb] misses [target]!"))
 			log_combat(user, target, "attempted to punch")
 			return FALSE
@@ -1349,7 +1349,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		var/obj/item/bodypart/affecting = target.get_bodypart(check_zone(selzone))
 
 		if(!affecting)
-			to_chat(user, span_warning("Unfortunately, there's nothing there."))
+			to_chat(user, span_warning("可惜，那里空无一物。"))
 			return 0
 
 		if(!target.lying_attack_check(user))
@@ -1398,22 +1398,22 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 							span_userdanger("I'm [atk_verb]ed by [user]![target.next_attack_msg.Join()]"), span_hear("I hear a sickening sound of flesh hitting flesh!"), COMBAT_MESSAGE_RANGE, user)
 			to_chat(user, span_danger("I [atk_verb] [target]![target.next_attack_msg.Join()]"))
 */
-		var/message_verb = "punched"
+		var/message_verb = "拳击"
 		if(user.used_intent)
 			message_verb = "[pick(user.used_intent.attack_verb)]"
 		var/message_hit_area = ""
 		if(selzone)
-			message_hit_area = " in the [span_userdanger(parse_zone(selzone, affecting))]"
-		var/attack_message = "[user] [message_verb] [target][message_hit_area]!"
-		var/attack_message_local = "[user] [message_verb] me[message_hit_area]!"
+			message_hit_area = "的[span_userdanger(parse_zone(selzone, affecting))]"
+		var/attack_message = "[user][message_verb][target][message_hit_area]！"
+		var/attack_message_local = "[user][message_verb]我[message_hit_area]！"
 		target.visible_message(span_danger("[attack_message][target.next_attack_msg.Join()]"),\
 			span_danger("[attack_message_local][target.next_attack_msg.Join()]"), null, COMBAT_MESSAGE_RANGE)
 		target.next_attack_msg.Cut()
 
 /*		if((target.stat != DEAD) && damage >= user.dna.species.punchstunthreshold)
-			target.visible_message(span_danger("[user] knocks [target] down!"), \
-							span_danger("You're knocked down by [user]!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
-			to_chat(user, span_danger("I knock [target] down!"))
+			target.visible_message(span_danger("[user]击倒了[target]！"), \
+							span_danger("我被[user]击倒了！"), span_hear("我听到激烈的扭打声，随后是一声重响！"), COMBAT_MESSAGE_RANGE, user)
+			to_chat(user, span_danger("我击倒了[target]！"))
 			var/knockdown_duration = 40 + (target.getStaminaLoss() + (target.getBruteLoss()*0.5))*0.8 //50 total damage = 40 base stun + 40 stun modifier = 80 stun duration, which is the old base duration
 			target.apply_effect(knockdown_duration, EFFECT_KNOCKDOWN, armor_block)
 			target.forcesay(GLOB.hit_appends)
@@ -1429,9 +1429,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 /datum/species/proc/disarm(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
 	if(target.check_block())
-		target.visible_message(span_warning("[user]'s shove is blocked by [target]!"), \
-						span_danger("I block [user]'s shove!"), span_hear("I hear a swoosh!"), COMBAT_MESSAGE_RANGE, user)
-		to_chat(user, span_warning("My shove at [target] was blocked!"))
+		target.visible_message(span_warning("[target]挡住了[user]的推搡！"), \
+						span_danger("我挡住了[user]的推搡！"), span_hear("我听到一阵破空声！"), COMBAT_MESSAGE_RANGE, user)
+		to_chat(user, span_warning("我对[target]的推搡被挡住了！"))
 		return FALSE
 	if(attacker_style && attacker_style.disarm_act(user,target))
 		return TRUE
@@ -1475,9 +1475,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 /*		if(target.IsKnockdown() && !target.IsParalyzed())
 			target.Paralyze(SHOVE_CHAIN_PARALYZE)
-			target.visible_message(span_danger("[user.name] kicks [target.name] onto their side!"),
-							span_danger("You're kicked onto my side by [user.name]!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
-			to_chat(user, span_danger("I kick [target.name] onto their side!"))
+			target.visible_message(span_danger("[user.name]一脚把[target.name]踢得侧翻在地！"),
+							span_danger("[user.name]一脚把我踢得侧翻在地！"), span_hear("我听到激烈的扭打声，随后是一声重响！"), COMBAT_MESSAGE_RANGE, user)
+			to_chat(user, span_danger("我一脚把[target.name]踢得侧翻在地！"))
 			addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living, SetKnockdown), 0), SHOVE_CHAIN_PARALYZE)
 			log_combat(user, target, "kicks", "onto their side (paralyzing)")*/
 
@@ -1499,26 +1499,26 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				target.Knockdown(SHOVE_KNOCKDOWN_SOLID)
 				target.drop_all_held_items()
 				target.visible_message(
-					span_danger("[user.name] shoves [target.name], knocking them down!"),
-					span_danger("You're knocked down from a shove by [user.name]!"),
-					span_hear("I hear aggressive shuffling followed by a loud thud!"),
+					span_danger("[user.name]把[target.name]推倒在地！"),
+					span_danger("我被[user.name]推倒在地！"),
+					span_hear("我听到激烈的扭打声，随后是一声重响！"),
 					COMBAT_MESSAGE_RANGE,
 					user
 				)
-				to_chat(user, span_danger("I shove [target.name], knocking them down!"))
+				to_chat(user, span_danger("我把[target.name]推倒在地！"))
 				log_combat(user, target, "shoved", null, "knocking them down")
 
 			else if(target_table)
 				target.Knockdown(SHOVE_KNOCKDOWN_TABLE)
 				target.drop_all_held_items()
 				target.visible_message(
-					span_danger("[user.name] shoves [target.name] onto \the [target_table]!"),
-					span_danger("I'm shoved onto \the [target_table] by [user.name]!"),
-					span_hear("I hear aggressive shuffling followed by a loud thud!"),
+					span_danger("[user.name]把[target.name]推到了[target_table]上！"),
+					span_danger("我被[user.name]推到了[target_table]上！"),
+					span_hear("我听到激烈的扭打声，随后是一声重响！"),
 					COMBAT_MESSAGE_RANGE,
 					user
 				)
-				to_chat(user, span_danger("I shove [target.name] onto \the [target_table]!"))
+				to_chat(user, span_danger("我把[target.name]推到了[target_table]上！"))
 				target.throw_at(target_table, 1, 1, null, FALSE) //1 speed throws with no spin are basically just forcemoves with a hard collision check
 				log_combat(user, target, "shoved", null, "onto [target_table] (table)")
 
@@ -1527,24 +1527,24 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				target.drop_all_held_items()
 				target_collateral_mob.Knockdown(SHOVE_KNOCKDOWN_COLLATERAL)
 				target.visible_message(
-					span_danger("[user.name] shoves [target.name] into [target_collateral_mob.name]!"),
-					span_danger("I'm shoved into [target_collateral_mob.name] by [user.name]!"),
-					span_hear("I hear aggressive shuffling followed by a loud thud!"),
+					span_danger("[user.name]推得[target.name]撞上了[target_collateral_mob.name]！"),
+					span_danger("[user.name]推得我撞上了[target_collateral_mob.name]！"),
+					span_hear("我听到激烈的扭打声，随后是一声重响！"),
 					COMBAT_MESSAGE_RANGE,
 					user
 				)
-				to_chat(user, span_danger("I shove [target.name] into [target_collateral_mob.name]!"))
+				to_chat(user, span_danger("我推得[target.name]撞上了[target_collateral_mob.name]！"))
 				log_combat(user, target, "shoved", null, "into [target_collateral_mob.name]")
 
 		else
 			target.visible_message(
-				span_danger("[user.name] shoves [target.name]!"),
-				span_danger("I'm shoved by [user.name]!"),
-				span_hear("I hear aggressive shuffling!"),
+				span_danger("[user.name]推搡了[target.name]！"),
+				span_danger("我被[user.name]推了一把！"),
+				span_hear("我听到激烈的扭打声！"),
 				COMBAT_MESSAGE_RANGE,
 				user
 			)
-			to_chat(user, span_danger("I shove [target.name]!"))
+			to_chat(user, span_danger("我推搡了[target.name]！"))
 			var/target_held_item = target.get_active_held_item()
 			var/knocked_item = FALSE
 			if(!is_type_in_typecache(target_held_item, GLOB.shove_disarming_types))
@@ -1553,8 +1553,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				target.add_movespeed_modifier(MOVESPEED_ID_SHOVE, multiplicative_slowdown = SHOVE_SLOWDOWN_STRENGTH)
 				if(target_held_item)
 					target.visible_message(
-						span_danger("[target.name]'s grip on \the [target_held_item] loosens!"),
-						span_warning("My grip on \the [target_held_item] loosens!"),
+						span_danger("[target.name]握着[target_held_item]的手松动了！"),
+						span_warning("我握着[target_held_item]的手松动了！"),
 						null,
 						COMBAT_MESSAGE_RANGE
 					)
@@ -1564,8 +1564,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				target.dropItemToGround(target_held_item)
 				knocked_item = TRUE
 				target.visible_message(
-					span_danger("[target.name] drops \the [target_held_item]!"),
-					span_warning("I drop \the [target_held_item]!"),
+					span_danger("[target.name]丢下了[target_held_item]！"),
+					span_warning("我丢下了[target_held_item]！"),
 					null,
 					COMBAT_MESSAGE_RANGE
 				)
@@ -1573,9 +1573,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			var/append_message = ""
 			if(target_held_item)
 				if(knocked_item)
-					append_message = "causing them to drop [target_held_item]"
+					append_message = "使其掉落了[target_held_item]"
 				else
-					append_message = "loosening their grip on [target_held_item]"
+					append_message = "使其握不稳[target_held_item]"
 
 			if(target.pulling)
 				var/painpercent = (target.get_complex_pain() / target.pain_threshold) * 100
@@ -1583,10 +1583,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 				if(target.grab_state > GRAB_PASSIVE && painchance)
 					target.grab_state = GRAB_PASSIVE
-					append_message = "causing them to loosen up on [target.pulling]"
+					append_message = "使其松开了对[target.pulling]的抓握"
 					target.visible_message(
-						span_danger("[target.name]'s grip on [target.pulling] loosens up!"),
-						span_warning("My grip on [target.pulling] loosens up!"),
+						span_danger("[target.name]抓着[target.pulling]的手松动了！"),
+						span_warning("我抓着[target.pulling]的手松动了！"),
 						null,
 						COMBAT_MESSAGE_RANGE
 					)
@@ -1594,12 +1594,12 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 				else if(target.grab_state <= GRAB_PASSIVE && painchance)
 					target.visible_message(
-						span_danger("[target.name]'s grip on [target.pulling] drops!"),
-						span_warning("My grip on [target.pulling] drops!"),
+						span_danger("[target.name]松开了[target.pulling]！"),
+						span_warning("我松开了[target.pulling]！"),
 						null,
 						COMBAT_MESSAGE_RANGE
 					)
-					append_message = "causing them to let go of [target.pulling]"
+					append_message = "使其放开了[target.pulling]"
 					target.stop_pulling(TRUE)
 					playsound(target.loc, 'sound/combat/grabbreak.ogg', 50, TRUE, -1)
 
@@ -1608,7 +1608,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 //shameless copypaste
 /datum/species/proc/kicked(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_warning("I don't want to harm [target]!"))
+		to_chat(user, span_warning("我不想伤害[target]！"))
 		return FALSE
 	if(user.IsKnockdown())
 		return FALSE
@@ -1617,7 +1617,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	SEND_SIGNAL(user, COMSIG_MOB_KICKED, target)
 	if(!HAS_TRAIT(user, TRAIT_GARROTED))
 		if(user.check_leg_grabbed(1) || user.check_leg_grabbed(2))
-			to_chat(user, span_notice("I can't move my leg!"))
+			to_chat(user, span_notice("我的腿动不了！"))
 			return
 	if(user.stamina >= user.max_stamina)
 		return FALSE
@@ -1644,13 +1644,13 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				if(affecting)
 					affecting.bodypart_attacked_by(BCLASS_BLUNT, damage, user, selzone, crit_message = TRUE)
 					if(!HAS_TRAIT(user, TRAIT_LAMIAN_TAIL))
-						target.visible_message(span_danger("[user] stomps [target]![target.next_attack_msg.Join()]"), \
-						span_danger("I'm stomped by [user]![target.next_attack_msg.Join()]"), span_hear("I hear a sickening kick!"), COMBAT_MESSAGE_RANGE, user)
-						to_chat(user, span_danger("I stomp on [target]![target.next_attack_msg.Join()]"))
+						target.visible_message(span_danger("[user]踩踏了[target]！[target.next_attack_msg.Join()]"), \
+						span_danger("我被[user]踩踏了！[target.next_attack_msg.Join()]"), span_hear("我听到令人作呕的踢击声！"), COMBAT_MESSAGE_RANGE, user)
+						to_chat(user, span_danger("我踩踏了[target]！[target.next_attack_msg.Join()]"))
 					else
-						target.visible_message(span_danger("[user] crushes [target] underneath them![target.next_attack_msg.Join()]"), \
-						span_danger("[user] crushes me underneath them![target.next_attack_msg.Join()]"), span_hear("I hear a sickening kick!"), COMBAT_MESSAGE_RANGE, user)
-						to_chat(user, span_danger("I crush [target] underneath myself![target.next_attack_msg.Join()]"))
+						target.visible_message(span_danger("[user]把[target]压在身下碾压！[target.next_attack_msg.Join()]"), \
+						span_danger("[user]把我压在身下碾压！[target.next_attack_msg.Join()]"), span_hear("我听到令人作呕的踢击声！"), COMBAT_MESSAGE_RANGE, user)
+						to_chat(user, span_danger("我把[target]压在身下碾压！[target.next_attack_msg.Join()]"))
 			target.next_attack_msg.Cut()
 			log_combat(user, target, "kicked", null, "(AIMED: [uppertext(parse_zone(user.zone_selected))])")
 
@@ -1664,7 +1664,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 			return TRUE
 		else
-			to_chat(user, span_warning("I'm too close to get a good kick in."))
+			to_chat(user, span_warning("我离得太近，踢不开腿。"))
 			return FALSE
 	else
 		if(!target.kick_attack_check(user))
@@ -1705,9 +1705,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				target.Knockdown(SHOVE_KNOCKDOWN_HUMAN)
 				target.drop_all_held_items()
 				target.throw_at(target_shove_turf, 1, 1)
-				target.visible_message(span_danger("[user.name] kicks [target.name], knocking them back!"),
-				span_danger("I'm knocked back from a kick by [user.name]!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
-				to_chat(user, span_danger("I kick [target.name], knocking them back!"))
+				target.visible_message(span_danger("[user.name]一脚踢退了[target.name]！"),
+				span_danger("我被[user.name]一脚踢退了！"), span_hear("我听到激烈的扭打声，随后是一声重响！"), COMBAT_MESSAGE_RANGE, user)
+				to_chat(user, span_danger("我一脚踢退了[target.name]！"))
 				log_combat(user, target, "kicked", "knocking them back")
 
 			else
@@ -1715,13 +1715,13 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					target.Knockdown(target.IsOffBalanced() ? SHOVE_KNOCKDOWN_SOLID : 100)
 					target.drop_all_held_items()
 					if(!HAS_TRAIT(user, TRAIT_LAMIAN_TAIL))
-						target.visible_message(span_danger("[user.name] kicks [target.name], knocking them down!"),
-						span_danger("I'm knocked down from a kick by [user.name]!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
-						to_chat(user, span_danger("I kick [target.name], knocking them down!"))
+						target.visible_message(span_danger("[user.name]一脚踢倒了[target.name]！"),
+						span_danger("我被[user.name]一脚踢倒了！"), span_hear("我听到激烈的扭打声，随后是一声重响！"), COMBAT_MESSAGE_RANGE, user)
+						to_chat(user, span_danger("我一脚踢倒了[target.name]！"))
 					else
-						target.visible_message(span_danger("[user.name] pulls [target.name] right down onto the ground!"),
-						span_danger("I'm pulled down by [user.name]'s tail!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
-						to_chat(user, span_danger("I pull [target.name], right down onto the ground!"))
+						target.visible_message(span_danger("[user.name]把[target.name]拽倒在地！"),
+						span_danger("[user.name]的尾巴把我拽倒了！"), span_hear("我听到激烈的扭打声，随后是一声重响！"), COMBAT_MESSAGE_RANGE, user)
+						to_chat(user, span_danger("我把[target.name]拽倒在地！"))
 					log_combat(user, target, "kicked", "knocking them down")
 
 		if(shove_blocked && !target.is_shove_knockdown_blocked() && !target.buckled)
@@ -1741,26 +1741,26 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				target.Knockdown(SHOVE_KNOCKDOWN_SOLID)
 				target.drop_all_held_items()
 				if(!HAS_TRAIT(user, TRAIT_LAMIAN_TAIL))
-					target.visible_message(span_danger("[user.name] kicks [target.name], knocking them down!"),
-									span_danger("I'm knocked down from a kick by [user.name]!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
-					to_chat(user, span_danger("I kick [target.name], knocking them down!"))
+					target.visible_message(span_danger("[user.name]一脚踢倒了[target.name]！"),
+									span_danger("我被[user.name]一脚踢倒了！"), span_hear("我听到激烈的扭打声，随后是一声重响！"), COMBAT_MESSAGE_RANGE, user)
+					to_chat(user, span_danger("我一脚踢倒了[target.name]！"))
 				else
-					target.visible_message(span_danger("[user.name] tailslams [target.name], knocking them down!"),
-									span_danger("I'm knocked down from a tailslam by [user.name]!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
-					to_chat(user, span_danger("I slam [target.name] with my tail, knocking them down!"))
+					target.visible_message(span_danger("[user.name]用尾巴扫倒了[target.name]！"),
+									span_danger("我被[user.name]的尾巴扫倒了！"), span_hear("我听到激烈的扭打声，随后是一声重响！"), COMBAT_MESSAGE_RANGE, user)
+					to_chat(user, span_danger("我用尾巴扫倒了[target.name]！"))
 				log_combat(user, target, "kicked", "knocking them down")
 			else if(target_table)
 				target.Knockdown(SHOVE_KNOCKDOWN_TABLE)
 				target.drop_all_held_items()
 				if(!HAS_TRAIT(user, TRAIT_LAMIAN_TAIL))
-					target.visible_message(span_danger("[user.name] kicked [target.name] onto \the [target_table]!"),
-									span_danger("I'm kicked onto \the [target_table] by [user.name]!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
-					to_chat(user, span_danger("I kick [target.name] onto \the [target_table]!"))
+					target.visible_message(span_danger("[user.name]把[target.name]踢到了[target_table]上！"),
+									span_danger("我被[user.name]踢到了[target_table]上！"), span_hear("我听到激烈的扭打声，随后是一声重响！"), COMBAT_MESSAGE_RANGE, user)
+					to_chat(user, span_danger("我把[target.name]踢到了[target_table]上！"))
 					target.throw_at(target_table, 1, 1, null, FALSE) //1 speed throws with no spin are basically just forcemoves with a hard collision check
 				else
-					target.visible_message(span_danger("[user.name]'s tail pushed [target.name] onto \the [target_table]!"),
-									span_danger("I'm pushed onto \the [target_table] by [user.name]'s tail!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
-					to_chat(user, span_danger("I push [target.name] onto \the [target_table] with my tail!"))
+					target.visible_message(span_danger("[user.name]用尾巴把[target.name]推到了[target_table]上！"),
+									span_danger("[user.name]用尾巴把我推到了[target_table]上！"), span_hear("我听到激烈的扭打声，随后是一声重响！"), COMBAT_MESSAGE_RANGE, user)
+					to_chat(user, span_danger("我用尾巴把[target.name]推到了[target_table]上！"))
 					target.throw_at(target_table, 1, 1, null, FALSE) //1 speed throws with no spin are basically just forcemoves with a hard collision check
 				log_combat(user, target, "kicked", "onto [target_table] (table)")
 			else if(target_collateral_mob)
@@ -1768,23 +1768,23 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				target.drop_all_held_items()
 				target_collateral_mob.Knockdown(SHOVE_KNOCKDOWN_COLLATERAL)
 				if(!HAS_TRAIT(user, TRAIT_LAMIAN_TAIL))
-					target.visible_message(span_danger("[user.name] kicks [target.name] into [target_collateral_mob.name]!"),
-						span_danger("I'm kicked into [target_collateral_mob.name] by [user.name]!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
-					to_chat(user, span_danger("I kick [target.name] into [target_collateral_mob.name]!"))
+					target.visible_message(span_danger("[user.name]一脚踢得[target.name]撞上了[target_collateral_mob.name]！"),
+						span_danger("[user.name]一脚踢得我撞上了[target_collateral_mob.name]！"), span_hear("我听到激烈的扭打声，随后是一声重响！"), COMBAT_MESSAGE_RANGE, user)
+					to_chat(user, span_danger("我一脚踢得[target.name]撞上了[target_collateral_mob.name]！"))
 				else
-					target.visible_message(span_danger("[user.name]'s tail slams [target.name] into [target_collateral_mob.name]!"),
-						span_danger("I'm slammed into [target_collateral_mob.name] by [user.name]'s tail!"), span_hear("I hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)
-					to_chat(user, span_danger("I slam [target.name] into [target_collateral_mob.name] with my tail!"))
+					target.visible_message(span_danger("[user.name]的尾巴把[target.name]扫向了[target_collateral_mob.name]！"),
+						span_danger("[user.name]的尾巴把我扫向了[target_collateral_mob.name]！"), span_hear("我听到激烈的扭打声，随后是一声重响！"), COMBAT_MESSAGE_RANGE, user)
+					to_chat(user, span_danger("我用尾巴把[target.name]扫向了[target_collateral_mob.name]！"))
 				log_combat(user, target, "kicked", "into [target_collateral_mob.name]")
 		else
 			if(!HAS_TRAIT(user, TRAIT_LAMIAN_TAIL))
-				target.visible_message(span_danger("[user.name] kicks [target.name]!"),
-								span_danger("I'm kicked by [user.name]!"), span_hear("I hear aggressive shuffling!"), COMBAT_MESSAGE_RANGE, user)
-				to_chat(user, span_danger("I kick [target.name]!"))
+				target.visible_message(span_danger("[user.name]踢中了[target.name]！"),
+								span_danger("我被[user.name]踢中了！"), span_hear("我听到激烈的扭打声！"), COMBAT_MESSAGE_RANGE, user)
+				to_chat(user, span_danger("我踢中了[target.name]！"))
 			else
-				target.visible_message(span_danger("[user.name] tailslams [target.name]!"),
-								span_danger("I'm tailslammed by [user.name]!"), span_hear("I hear aggressive shuffling!"), COMBAT_MESSAGE_RANGE, user)
-				to_chat(user, span_danger("I slam [target.name] with my tail!"))
+				target.visible_message(span_danger("[user.name]用尾巴猛击了[target.name]！"),
+								span_danger("我被[user.name]的尾巴猛击了！"), span_hear("我听到激烈的扭打声！"), COMBAT_MESSAGE_RANGE, user)
+				to_chat(user, span_danger("我用尾巴猛击了[target.name]！"))
 			log_combat(user, target, "kicked", null, "(AIMED: [uppertext(parse_zone(user.zone_selected))])")
 
 
@@ -1821,9 +1821,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		attacker_style = M.mind.martial_art
 	if((M != H) && M.used_intent.type != INTENT_HELP && H.check_shields(M, 0, M.name, attack_type = UNARMED_ATTACK))
 		log_combat(M, H, "attempted to touch")
-		H.visible_message(span_warning("[M] attempts to touch [H]!"), \
-						span_danger("[M] attempts to touch you!"), span_hear("I hear a swoosh!"), COMBAT_MESSAGE_RANGE, M)
-		to_chat(M, span_warning("I attempt to touch [H]!"))
+		H.visible_message(span_warning("[M]试图碰触[H]！"), \
+						span_danger("[M]试图碰触你！"), span_hear("我听到一阵破空声！"), COMBAT_MESSAGE_RANGE, M)
+		to_chat(M, span_warning("我试图碰触[H]！"))
 		return 0
 	SEND_SIGNAL(M, COMSIG_MOB_ATTACK_HAND, M, H, attacker_style)
 	if(SEND_SIGNAL(H, COMSIG_MOB_ATTACKED_BY_HAND, M, H, attacker_style) & COMPONENT_HAND_NO_ATTACK)
@@ -1835,7 +1835,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 		if(INTENT_GRAB)
 			if(!M.has_hand_for_held_index(M.active_hand_index, TRUE)) //we obviously have a hadn, but we need to check for fingers/prosthetics
-				to_chat(M, span_warning("I can't move the fingers."))
+				to_chat(M, span_warning("我的手指动不了。"))
 				return
 			grab(M, H, attacker_style)
 			return
@@ -1849,11 +1849,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 /datum/species/proc/spec_attacked_by(obj/item/I, mob/living/user, obj/item/bodypart/affecting, intent, mob/living/carbon/human/H, selzone)
 	// Allows you to put in item-specific reactions based on species
 	if(user != H)
-		if(H.check_shields(I, I.force, "the [I.name]", MELEE_ATTACK, I.armor_penetration))
+		if(H.check_shields(I, I.force, "[I.name]", MELEE_ATTACK, I.armor_penetration))
 			return 0
 	if(H.check_block())
-		H.visible_message(span_warning("[H] blocks [I]!"), \
-						span_danger("I block [I]!"))
+		H.visible_message(span_warning("[H]挡住了[I]！"), \
+						span_danger("我挡住了[I]！"))
 		return 0
 
 	SEND_SIGNAL(H, COMSIG_SPECIES_ATTACKED_BY)
@@ -1931,7 +1931,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		var/text = "[bodyzone2readablezone(selzone)]..."
 		if(HAS_TRAIT(user, TRAIT_DECEIVING_MEEKNESS))
 			if(prob(10))
-				text = "<i>I can't tell...</i>"
+				text = "<i>我看不出来……</i>"
 			else
 				text = null
 		if(text)
@@ -1970,7 +1970,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				if(user.used_intent.blunt_chipping)//We won't check for blunt. Just that it's able. For funny reasons.
 					var/blunt_chip_block = H.run_armor_check(selzone, "blunt", armor_penetration = 80)//I hate this. So much.
 					H.apply_damage(Iforce * user.used_intent.blunt_chip_strength, BRUTE, def_zone, blunt_chip_block)//, spread_damage = TRUE)
-					H.next_attack_msg += " <span class='warning'>and yet the force punches through!</span>"//But sometimes it lies!
+					H.next_attack_msg += " <span class='warning'>但冲击力仍然穿透了护甲！</span>"//But sometimes it lies!
 		if(!nodmg)
 			post_reduction_dmg = (post_weakness_dmg - armor_block)
 //			var/has_vuln_or_exposed = (H.has_status_effect(/datum/status_effect/debuff/exposed) || H.has_status_effect(/datum/status_effect/debuff/vulnerable)) //UNATOMIZABLE CODE FOR THE THE PR THAT WILL FOLLOW
@@ -1986,13 +1986,13 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					H.emote("embed")
 					H.Stun(10)
 					playsound(H.loc, "genblunt", 100, FALSE, -1)
-					user.visible_message(span_notice("[user] embeds [I] within [H]'s [affecting.name]!"), span_notice("I embed my [I] in [H]'s [affecting.name]."))
+					user.visible_message(span_notice("[user]将[I]刺入了[H]的[affecting.name]！"), span_notice("我将[I]刺入了[H]的[affecting.name]。"))
 					var/list/targets = list(H)
 					if(do_after_mob(user,targets, 10, progress = 0, uninterruptible = 1, required_mobility_flags = null))
 						affecting.receive_damage(I.embedding.embedded_unsafe_removal_pain_multiplier*I.w_class) //It hurts to rip it out, get surgery you dingus.
 						H.emote("paincrit", forced = TRUE)
 						playsound(H, 'sound/foley/flesh_rem.ogg', 100, TRUE, -2)
-						user.visible_message(span_notice("[user] rips [I] out of [H]'s [affecting.name]!"), span_notice("I rip [I] from [H]'s [affecting.name]."))
+						user.visible_message(span_notice("[user]从[H]的[affecting.name]中猛地拔出了[I]！"), span_notice("我从[H]的[affecting.name]中猛地拔出了[I]。"))
 			I.do_special_attack_effect(user, affecting, intent, H, selzone)
 			if(user.mind)
 				user.dodgetime = (clamp(user.dodgetime - 2, 0, CLICK_CD_DODGE))
@@ -2549,7 +2549,7 @@ GLOBAL_VAR_INIT(cold_breath_overlay, mutable_appearance(
 	if(H.stat || !(H.mobility_flags & MOBILITY_STAND))
 		return FALSE
 	if(H.wear_armor && ((H.wear_armor.flags_inv & HIDEJUMPSUIT) && (!H.wear_armor.species_exception || !is_type_in_list(src, H.wear_armor.species_exception))))	//Jumpsuits have tail holes, so it makes sense they have wing holes too
-		to_chat(H, span_warning("My suit blocks my wings from extending!"))
+		to_chat(H, span_warning("我的衣服挡住了翅膀，无法展开！"))
 		return FALSE
 	var/turf/T = get_turf(H)
 	if(!T)
@@ -2562,7 +2562,7 @@ GLOBAL_VAR_INIT(cold_breath_overlay, mutable_appearance(
 	if(H.buckled)
 		buckled_obj = H.buckled
 
-	to_chat(H, span_notice("My wings spazz out and launch you!"))
+	to_chat(H, span_notice("我的翅膀猛地乱扇，把我带了起来！"))
 
 	playsound(H.loc, 'sound/blank.ogg', 100, TRUE, -3)
 
@@ -2598,7 +2598,7 @@ GLOBAL_VAR_INIT(cold_breath_overlay, mutable_appearance(
 		H.CloseWings()
 
 /datum/action/innate/flight
-	name = "Toggle Flight"
+	name = "切换飞行"
 	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_STUN
 	button_icon_state = ""
 
@@ -2608,9 +2608,9 @@ GLOBAL_VAR_INIT(cold_breath_overlay, mutable_appearance(
 	if(S.CanFly(H))
 		S.ToggleFlight(H)
 		if(!(H.movement_type & FLYING))
-			to_chat(H, span_notice("I settle gently back onto the ground..."))
+			to_chat(H, span_notice("我轻轻落回地面……"))
 		else
-			to_chat(H, span_notice("I beat my wings and begin to hover gently above the ground..."))
+			to_chat(H, span_notice("我扇动翅膀，开始轻轻悬浮在地面上方……"))
 			H.set_resting(FALSE, TRUE)
 
 /datum/species/proc/knockback(obj/item/I, mob/living/target, mob/living/user, nodmg)
@@ -2668,7 +2668,7 @@ GLOBAL_VAR_INIT(cold_breath_overlay, mutable_appearance(
 		Paralyze(15)
 
 /client/proc/view_species_info(species_info)
-	var/datum/browser/popup = new(src.mob, "species_info", "<center>BESTIARY</center>", 460, 550)
+	var/datum/browser/popup = new(src.mob, "species_info", "<center>种族图鉴</center>", 460, 550)
 	popup.set_content(species_info)
 	popup.open()
 

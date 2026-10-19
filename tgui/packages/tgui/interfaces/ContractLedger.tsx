@@ -72,12 +72,35 @@ const STANDING_FILTER = 'Standing';
 const DIFFICULTIES = ['Easy', 'Medium', 'Hard'];
 const FILTER_BUTTONS = [ALL_DIFFICULTIES, STANDING_FILTER, ...DIFFICULTIES];
 
+const FILTER_LABELS: Record<string, string> = {
+  All: '全部',
+  Standing: '常设',
+  Easy: '简单',
+  Medium: '中等',
+  Hard: '困难',
+};
+
+const QUEST_TYPE_LABELS: Record<string, string> = {
+  Retrieval: '寻回',
+  Courier: '递送',
+  Kill: '击杀',
+  'Clear Out': '清剿',
+  Raid: '突袭',
+  Bounty: '悬赏',
+  Recovery: '追回',
+  'Blockade Defense': '封锁防御',
+  'Hoard Recovery': '寻宝',
+  'Smith Caravan': '铁匠商队',
+  'Ore Vein': '矿脉',
+  'Notorious Bounty': '恶名悬赏',
+};
+
 type LedgerMode = { kind: 'contracts' } | { kind: 'dynamic'; role: string };
 
 const DYNAMIC_TAB_LABELS: Record<string, string> = {
-  innkeeper: 'Rumors',
-  steward: 'Commissions',
-  towner: 'Postings',
+  innkeeper: '流言',
+  steward: '委任',
+  towner: '告示',
 };
 
 const renderDynamicPanel = (role: string) => {
@@ -143,7 +166,7 @@ export const ContractLedger = () => {
 
   return (
     <Window
-      title="Grand Contract Ledger"
+      title="大契约台账"
       width={1000}
       height={760}
       theme="grimoire"
@@ -160,7 +183,7 @@ export const ContractLedger = () => {
                   }
                   onClick={() => setMode({ kind: 'contracts' })}
                 >
-                  Grand Contract Ledger
+                  大契约台账
                 </span>
                 {dynamicRoles.map((role) => (
                   <span key={role}>
@@ -181,7 +204,7 @@ export const ContractLedger = () => {
               </>
             ) : (
               <span className="ContractLedger__HeaderStatic">
-                Grand Contract Ledger
+                大契约台账
               </span>
             )}
           </div>
@@ -202,7 +225,7 @@ export const ContractLedger = () => {
                     }
                     onClick={() => setActiveRegion(region)}
                   >
-                    {region} ({count})
+                    {FILTER_LABELS[region] || region} ({count})
                   </div>
                 );
               })}
@@ -225,7 +248,7 @@ export const ContractLedger = () => {
                     selected={isActive}
                     onClick={() => setActiveDifficulty(diff)}
                   >
-                    {diff} ({count})
+                    {FILTER_LABELS[diff] || diff} ({count})
                   </Button>
                 );
               })}
@@ -237,8 +260,8 @@ export const ContractLedger = () => {
               renderDynamicPanel(activeDynamicRole)
             ) : filtered.length === 0 ? (
               <div className="ContractLedger__Empty">
-                No contracts match this filter. Broaden your search or return
-                later.
+                没有契约符合此筛选. 请放宽条件,
+                或稍后再来.
               </div>
             ) : (
               <div className="ContractLedger__Grid">
@@ -277,20 +300,20 @@ const ContractCard = (props: { contract: Contract }) => {
     cantAfford ||
     fellowshipShort;
   const title = noAccount
-    ? 'No bank account. Register with a Nervelock first.'
+    ? '没有银行账户. 请先在神经锁上注册.'
     : takeCooldown > 0
-      ? `Guild cooldown, wait ${takeCooldown}s before signing another.`
+      ? `行会冷却中, 再签署一份前请等待 ${takeCooldown}s.`
       : atCap
-        ? `You already hold ${data.active_max} contracts.`
+        ? `你已持有 ${data.active_max} 份契约.`
         : cantAfford
-          ? `Requires ${c.deposit} mammon in your account.`
+          ? `需要账户中有 ${c.deposit} 玛门.`
           : fellowshipShort
-            ? `Requires a Fellowship of ${c.required_fellowship_size}, you have ${data.user_fellowship_size || 0}.`
+            ? `需要一支 ${c.required_fellowship_size} 人的冒险团, 你目前有 ${data.user_fellowship_size || 0} 人.`
             : undefined;
   const stamps: { label: string; modifier: string }[] = [];
-  if (c.is_rumor) stamps.push({ label: 'RUMORED!', modifier: 'rumor' });
-  if (c.is_defense) stamps.push({ label: 'COMMISSIONED', modifier: 'commissioned' });
-  if (c.levy_exempt) stamps.push({ label: 'LEVY EXEMPT', modifier: 'exempt' });
+  if (c.is_rumor) stamps.push({ label: '传言!', modifier: 'rumor' });
+  if (c.is_defense) stamps.push({ label: '已受命', modifier: 'commissioned' });
+  if (c.levy_exempt) stamps.push({ label: '免征关税', modifier: 'exempt' });
   const contentTopPad = stamps.length > 0 ? 8 + stamps.length * 16 : 0;
   return (
     <div className="ContractLedger__Card">
@@ -311,22 +334,26 @@ const ContractCard = (props: { contract: Contract }) => {
         {c.title}
       </div>
       <div className="ContractLedger__CardRow">
-        <span className="ContractLedger__CardLabel">Locale</span>
+        <span className="ContractLedger__CardLabel">地点</span>
         <span className="ContractLedger__CardValue">
-          {c.area || c.region || 'Unknown'}
+          {c.area || c.region || '未知'}
         </span>
       </div>
       <div className="ContractLedger__CardRow">
-        <span className="ContractLedger__CardLabel">Type</span>
-        <span className="ContractLedger__CardValue">{c.type}</span>
+        <span className="ContractLedger__CardLabel">类型</span>
+        <span className="ContractLedger__CardValue">
+          {QUEST_TYPE_LABELS[c.type] || c.type}
+        </span>
       </div>
       <div className="ContractLedger__CardRow">
-        <span className="ContractLedger__CardLabel">Difficulty</span>
-        <span className="ContractLedger__CardValue">{c.difficulty}</span>
+        <span className="ContractLedger__CardLabel">难度</span>
+        <span className="ContractLedger__CardValue">
+          {FILTER_LABELS[c.difficulty] || c.difficulty}
+        </span>
       </div>
       {c.required_fellowship_size > 0 && (
         <div className="ContractLedger__CardRow">
-          <span className="ContractLedger__CardLabel">Fellowship</span>
+          <span className="ContractLedger__CardLabel">冒险团</span>
           <span
             className="ContractLedger__CardValue"
             style={{
@@ -335,12 +362,12 @@ const ContractCard = (props: { contract: Contract }) => {
             }}
           >
             {data.user_fellowship_size || 0} / {c.required_fellowship_size}
-            {fellowshipShort ? ' (short)' : ''}
+            {fellowshipShort ? ' (不足)' : ''}
           </span>
         </div>
       )}
       <div className="ContractLedger__CardRow">
-        <span className="ContractLedger__CardLabel">Reward</span>
+        <span className="ContractLedger__CardLabel">奖赏</span>
         <span className="ContractLedger__CardValue">{c.reward}</span>
       </div>
       {(() => {
@@ -354,7 +381,7 @@ const ContractCard = (props: { contract: Contract }) => {
             {!c.levy_exempt && data.tax_rate > 0 && (
               <div className="ContractLedger__CardRow">
                 <span className="ContractLedger__CardLabel">
-                  Crown Levy ({Math.round(data.tax_rate * 100)}%)
+                  王室关税 ({Math.round(data.tax_rate * 100)}%)
                 </span>
                 <span className="ContractLedger__CardValue" style={{ color: '#c44' }}>
                   -{levy}
@@ -364,7 +391,7 @@ const ContractCard = (props: { contract: Contract }) => {
             {guildRate > 0 && (
               <div className="ContractLedger__CardRow">
                 <span className="ContractLedger__CardLabel">
-                  Guild Cut ({Math.round(guildRate * 100)}%)
+                  行会抽成 ({Math.round(guildRate * 100)}%)
                 </span>
                 <span className="ContractLedger__CardValue" style={{ color: '#c44' }}>
                   -{guild}
@@ -373,7 +400,7 @@ const ContractCard = (props: { contract: Contract }) => {
             )}
             {(levy > 0 || guild > 0) && (
               <div className="ContractLedger__CardRow">
-                <span className="ContractLedger__CardLabel">Purse</span>
+                <span className="ContractLedger__CardLabel">实得</span>
                 <span className="ContractLedger__CardValue" style={{ fontWeight: 'bold' }}>
                   {purse}
                 </span>
@@ -383,20 +410,20 @@ const ContractCard = (props: { contract: Contract }) => {
         );
       })()}
       <div className="ContractLedger__CardRow">
-        <span className="ContractLedger__CardLabel">Deposit</span>
+        <span className="ContractLedger__CardLabel">押金</span>
         <span className="ContractLedger__CardValue">{c.deposit}</span>
       </div>
       <div className="ContractLedger__CardRow">
-        <span className="ContractLedger__CardLabel">Lapses</span>
+        <span className="ContractLedger__CardLabel">失效</span>
         <span className="ContractLedger__CardValue">
-          {c.lapse_minutes > 0 ? `~${c.lapse_minutes}m` : '<1m'}
+          {c.lapse_minutes > 0 ? `~${c.lapse_minutes}分钟` : '<1分钟'}
         </span>
       </div>
       {c.threat_bands > 0 && (
         <div className="ContractLedger__CardRow">
-          <span className="ContractLedger__CardLabel">Clears</span>
+          <span className="ContractLedger__CardLabel">清除</span>
           <span className="ContractLedger__CardValue">
-            {c.threat_bands} band{c.threat_bands === 1 ? '' : 's'} of threat
+            {c.threat_bands} 波威胁
           </span>
         </div>
       )}
@@ -411,7 +438,7 @@ const ContractCard = (props: { contract: Contract }) => {
           title={title}
           onClick={() => act('sign', { ref: c.ref })}
         >
-          Sign
+          签署
         </button>
       </div>
     </div>
@@ -428,20 +455,20 @@ const ActiveStrip = (props: {
   const gateRemaining = data.townie_gate_remaining || 0;
   const takeCooldown = data.take_cooldown_remaining || 0;
   const blockReason = !data.has_account
-    ? 'You have no bank account. Register with a Nervelock before signing any contract.'
+    ? '你没有银行账户. 签署任何契约前, 请先在神经锁上注册.'
     : takeCooldown > 0
-      ? `Guild cooldown active, wait ${takeCooldown}s before signing another contract.`
+      ? `行会冷却中, 再签署一份契约前请等待 ${takeCooldown}秒.`
       : null;
   const fellowshipBonus = data.active_fellowship_bonus || 0;
   const fellowshipNote =
     fellowshipBonus > 0
-      ? `+${fellowshipBonus} from leading your Fellowship`
-      : 'Form a Fellowship for more contract slots.';
+      ? `+${fellowshipBonus} 来自你领导的冒险团`
+      : '组建一支冒险团以获得更多契约名额.';
   return (
     <div className="ContractLedger__ActiveStrip">
       <div className="ContractLedger__ActiveStripHeader">
         <span>
-          Your Contracts ({props.active.length} / {props.activeMax})
+          你的契约 ({props.active.length} / {props.activeMax})
           <span
             style={{
               marginLeft: '10px',
@@ -457,11 +484,11 @@ const ActiveStrip = (props: {
             ml={0.5}
             icon="question-circle"
             selected={showFellowshipHelp}
-            tooltip="Fellowship benefits"
+            tooltip="冒险团福利"
             onClick={() => setShowFellowshipHelp(true)}
           />
         </span>
-        <span>Nervelock Balance: {props.balance} Mammons</span>
+        <span>神经锁余额: {props.balance} 玛门</span>
       </div>
       {!!data.can_proxy_turnin && (
         <div
@@ -472,28 +499,28 @@ const ActiveStrip = (props: {
             marginBottom: '4px',
           }}
         >
-          You may turn in any completed contract here on its holder&apos;s
-          behalf - the reward is credited to the holder, and you take no cut.
+          你可以在此代契约持有人交付任何已完成的契约, 奖赏会记入
+          持有人名下, 你不会抽取任何分成.
         </div>
       )}
       {showFellowshipHelp && (
         <Dialog
-          title="Form a Fellowship for more benefits"
+          title="组建冒险团以获得更多福利"
           width="420px"
           onClose={() => setShowFellowshipHelp(false)}
         >
           <div style={{ padding: '10px 14px', fontSize: '0.95em' }}>
             <div style={{ marginBottom: '6px' }}>
-              Open the IC tab to form a fellowship and invite people nearby.
+              打开 IC 标签页以组建冒险团, 并邀请附近的人.
             </div>
             <div style={{ marginBottom: '6px' }}>
-              Lead a fellowship of 2+ for more contract slots (+1 at 2 members,
-              +2 at 3+).
+              带领一支 2 人及以上的冒险团可获得更多契约名额 (+1 于 2 人时,
+              +2 于 3 人及以上).
             </div>
             <div>
-              Fellowship members may turn in each other&apos;s contracts. It is
-              credited to the one turning it in, using their tax exemption
-              status, if any.
+              冒险团成员可以互相代为交付彼此的契约.
+              奖赏会记入实际交付者的名下,
+              并适用其免税状态 (若有).
             </div>
           </div>
         </Dialog>
@@ -509,7 +536,7 @@ const ActiveStrip = (props: {
       {props.active.length === 0 ? (
         <div className="ContractLedger__ActiveRow">
           <span className="ContractLedger__ActiveRow__Meta">
-            You hold no active contracts.
+            你没有任何生效中的契约.
           </span>
         </div>
       ) : (
@@ -517,20 +544,21 @@ const ActiveStrip = (props: {
           <div key={a.ref} className="ContractLedger__ActiveRow">
             <span className="ContractLedger__ActiveRow__Title">{a.title}</span>
             <span className="ContractLedger__ActiveRow__Meta">
-              {a.type} &middot; {a.difficulty} &middot;{' '}
-              {a.region || a.area || 'Unknown'}
+              {QUEST_TYPE_LABELS[a.type] || a.type} &middot;{' '}
+              {FILTER_LABELS[a.difficulty] || a.difficulty} &middot;{' '}
+              {a.region || a.area || '未知'}
               {a.progress_required > 1 &&
                 ` - ${a.progress_current}/${a.progress_required}`}
-              {!!a.complete && ' - ready to turn in'}
+              {!!a.complete && ' - 可以交付'}
             </span>
             {!a.complete && (
               <Button
                 icon="times"
                 color="bad"
-                tooltip="Forfeit deposit and void the contract."
+                tooltip="没收押金并作废该契约."
                 onClick={() => act('abandon', { ref: a.ref })}
               >
-                Abandon
+                放弃
               </Button>
             )}
           </div>

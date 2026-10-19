@@ -1,5 +1,5 @@
 /datum/intent/spell
-	name = "spell"
+	name = "法术"
 	tranged = 1
 	chargedrain = 0
 	chargetime = 0
@@ -9,7 +9,7 @@
 /datum/intent/spell/can_charge()
 	var/obj/effect/proc_holder/spell/spell_ability = mastermob.ranged_ability
 	if(istype(spell_ability) && !spell_ability.charge_check(mastermob, TRUE))
-		to_chat(mastermob, span_warning("This spell needs time to recharge!"))
+		to_chat(mastermob, span_warning("这个法术还需要时间充能！"))
 		return FALSE
 	return TRUE
 

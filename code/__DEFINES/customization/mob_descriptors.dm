@@ -28,19 +28,19 @@
 #define CUSTOM_PREFIX_AMOUNT 5 //Keep this to match the max
 
 #define CUSTOM_PREFIX_INPUT_LIST list(\
-	"Has a" = CUSTOM_PREFIX_HAS_A,\
-	"Has an" = CUSTOM_PREFIX_HAS_AN,\
-	"Is" = CUSTOM_PREFIX_IS,\
-	"Looks" = CUSTOM_PREFIX_LOOKS,\
-	"Has" = CUSTOM_PREFIX_HAS\
+	"有一个（a）" = CUSTOM_PREFIX_HAS_A,\
+	"有一个（an）" = CUSTOM_PREFIX_HAS_AN,\
+	"是" = CUSTOM_PREFIX_IS,\
+	"看起来" = CUSTOM_PREFIX_LOOKS,\
+	"有" = CUSTOM_PREFIX_HAS\
 )
 
 #define CUSTOM_PREFIX_TRANSLATION_LIST list(\
-	"[CUSTOM_PREFIX_HAS_A]" = "Has a",\
-	"[CUSTOM_PREFIX_HAS_AN]" = "Has an",\
-	"[CUSTOM_PREFIX_IS]" = "Is",\
-	"[CUSTOM_PREFIX_LOOKS]" = "Looks",\
-	"[CUSTOM_PREFIX_HAS]" = "Has"\
+	"[CUSTOM_PREFIX_HAS_A]" = "有一个（a）",\
+	"[CUSTOM_PREFIX_HAS_AN]" = "有一个（an）",\
+	"[CUSTOM_PREFIX_IS]" = "是",\
+	"[CUSTOM_PREFIX_LOOKS]" = "看起来",\
+	"[CUSTOM_PREFIX_HAS]" = "有"\
 )
 
 #define CUSTOM_DESCRIPTOR_TYPE_LIST list(\
@@ -75,13 +75,13 @@
 )
 
 #define CUSTOM_ARTICLE_INPUT_LIST list(\
-	"a" = CUSTOM_PREFIX_HAS_A,\
-	"an" = CUSTOM_PREFIX_HAS_AN\
+	"一个（a）" = CUSTOM_PREFIX_HAS_A,\
+	"一个（an）" = CUSTOM_PREFIX_HAS_AN\
 )
 
 #define CUSTOM_ARTICLE_TRANSLATION_LIST list(\
-	"[CUSTOM_PREFIX_HAS_A]" = "a",\
-	"[CUSTOM_PREFIX_HAS_AN]" = "an"\
+	"[CUSTOM_PREFIX_HAS_A]" = "一个（a）",\
+	"[CUSTOM_PREFIX_HAS_AN]" = "一个（an）"\
 )
 
 #define MOB_DESCRIPTOR(descriptor_type) GLOB.mob_descriptors[descriptor_type]

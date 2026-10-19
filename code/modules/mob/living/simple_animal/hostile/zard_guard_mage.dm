@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/rogue/sissean_jailer_mage
-	name = "Sissean Jailer"
+	name = "西斯恩狱卒"
 	desc = ""
 	icon = 'icons/mob/zard_guard_mage.dmi'
 	icon_state = "zard_guard_mage"
@@ -19,7 +19,7 @@
 	ranged = 1
 	rapid = 1
 	rapid_fire_delay = 10
-	ranged_message = "casts a spell"
+	ranged_message = "施放了一个法术"
 	ranged_cooldown = 0
 	ranged_cooldown_time = 45
 	ranged_ignores_vision = TRUE
@@ -47,7 +47,7 @@
 	if(ismob(target))
 		var/mob/M = target
 		if(M.anti_magic_check())
-			visible_message(span_warning("[src] fizzles on contact with [target]!"))
+			visible_message(span_warning("[src]接触到[target]后消散了！"))
 			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
 			qdel(src)
 			return BULLET_ACT_BLOCK
@@ -58,7 +58,7 @@
 	qdel(src)
 
 /obj/projectile/magic/sissean_jailer_mage/lightning
-	name = "bolt of lightning"
+	name = "闪电箭"
 	tracer_type = /obj/effect/projectile/tracer/stun
 	muzzle_type = null
 	impact_type = null
@@ -76,7 +76,7 @@
 	if(ismob(target))
 		var/mob/M = target
 		if(M.anti_magic_check())
-			visible_message(span_warning("[src] fizzles on contact with [target]!"))
+			visible_message(span_warning("[src]接触到[target]后消散了！"))
 			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
 			qdel(src)
 			return BULLET_ACT_BLOCK
@@ -91,19 +91,19 @@
 		return ""
 	switch(zone)
 		if(BODY_ZONE_PRECISE_R_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_L_EYE)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NOSE)
-			return "nose"
+			return "鼻子"
 		if(BODY_ZONE_PRECISE_MOUTH)
-			return "mouth"
+			return "嘴巴"
 		if(BODY_ZONE_PRECISE_SKULL)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_EARS)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_PRECISE_NECK)
-			return "neck"
+			return "脖子"
 		if(BODY_ZONE_PRECISE_L_HAND)
 			return "foreleg"
 		if(BODY_ZONE_PRECISE_R_HAND)
@@ -113,11 +113,11 @@
 		if(BODY_ZONE_PRECISE_R_FOOT)
 			return "leg"
 		if(BODY_ZONE_PRECISE_STOMACH)
-			return "stomach"
+			return "腹部"
 		if(BODY_ZONE_PRECISE_GROIN)
 			return "tail"
 		if(BODY_ZONE_HEAD)
-			return "head"
+			return "头部"
 		if(BODY_ZONE_R_LEG)
 			return "leg"
 		if(BODY_ZONE_L_LEG)
@@ -129,9 +129,9 @@
 	return ..()
 
 /obj/effect/oneway/psy_bog //one way barrier to the boss room. Can be despawned with the key the boss drops.
-	name = "magical barrier"
+	name = "魔法屏障"
 	max_integrity = 99999
-	desc = "Victory or death - once you pass this point you will either triumph or fall. Recommended 6 players or more."
+	desc = "胜利或死亡——一旦越过此处，你要么凯旋，要么倒下。建议至少6名玩家同行。"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
 	invisibility = SEE_INVISIBLE_LIVING
@@ -140,13 +140,13 @@
 /obj/effect/oneway/psy_bog/attackby(obj/item/W, mob/user, params)
 	. = ..()
 	if(istype(W, /obj/item/roguekey/psy_bog/exit))
-		visible_message(span_boldannounce("The magical barrier disperses!"))
+		visible_message(span_boldannounce("魔法屏障消散了！"))
 		qdel(src)
 
 /obj/effect/oneway/psy_bog_two //one way barrier to the boss room. Can be despawned with the key the boss drops.
-	name = "magical barrier"
+	name = "魔法屏障"
 	max_integrity = 99999
-	desc = "Victory or death - once you pass this point you will either triumph or fall. Recommended 6 players or more."
+	desc = "胜利或死亡——一旦越过此处，你要么凯旋，要么倒下。建议至少6名玩家同行。"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
 	invisibility = SEE_INVISIBLE_LIVING
@@ -155,19 +155,19 @@
 /obj/effect/oneway/psy_bog_two/attackby(obj/item/W, mob/user, params)
 	. = ..()
 	if(istype(W, /obj/item/roguekey/psy_bog/two))
-		visible_message(span_boldannounce("The magical barrier disperses!"))
+		visible_message(span_boldannounce("魔法屏障消散了！"))
 		qdel(src)
 
 
 //Loot
 /obj/item/roguekey/psy_bog/exit
-	name = "Rusted key"
-	desc = "A strange key...ever enduring."
+	name = "生锈的钥匙"
+	desc = "一把奇怪的钥匙……经久不坏。"
 	icon_state = "rustkey"
 	lockid = "psy_bog_dung_lootkey"
 
 /obj/item/roguekey/psy_bog/two
-	name = "Rusted key"
-	desc = "A strange key...ever enduring."
+	name = "生锈的钥匙"
+	desc = "一把奇怪的钥匙……经久不坏。"
 	icon_state = "rustkey"
 	lockid = "psy_bog_dung_lootkey_two"

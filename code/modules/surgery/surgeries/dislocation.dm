@@ -1,5 +1,5 @@
 /datum/surgery/relocate_bone
-	name = "Bone relocation"
+	name = "脱臼复位"
 	target_mobtypes = list(/mob/living/carbon/human)
 	possible_locs = list(
 		BODY_ZONE_PRECISE_SKULL,
@@ -24,7 +24,7 @@
 	)
 
 /datum/surgery_step/relocate_bone
-	name = "Relocate bones"
+	name = "复位脱臼"
 	time = 6.4 SECONDS
 	accept_hand = TRUE
 	implements = list(
@@ -44,15 +44,15 @@
 	return bodypart.has_wound(/datum/wound/dislocation)
 
 /datum/surgery_step/relocate_bone/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I begin to set the bone in [target]'s [parse_zone(target_zone)]..."),
-		span_notice("[user] begins to relocate the bone in [target]'s [parse_zone(target_zone)]."),
-		span_notice("[user] begins to relocate the bone in [target]'s [parse_zone(target_zone)]."))
+	display_results(user, target, span_notice("我开始为[target]的[parse_zone(target_zone)]复位脱臼……"),
+		span_notice("[user]开始为[target]的[parse_zone(target_zone)]复位脱臼。"),
+		span_notice("[user]开始为[target]的[parse_zone(target_zone)]复位脱臼。"))
 	return TRUE
 
 /datum/surgery_step/relocate_bone/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I successfully relocate the bone in [target]'s [parse_zone(target_zone)]."),
-		span_notice("[user] successfully relocate the bone in [target]'s [parse_zone(target_zone)]!"),
-		span_notice("[user] successfully relocate the bone in [target]'s [parse_zone(target_zone)]!"))
+	display_results(user, target, span_notice("我成功为[target]的[parse_zone(target_zone)]复位了脱臼。"),
+		span_notice("[user]成功为[target]的[parse_zone(target_zone)]复位了脱臼！"),
+		span_notice("[user]成功为[target]的[parse_zone(target_zone)]复位了脱臼！"))
 	var/obj/item/bodypart/bodypart = target.get_bodypart(check_zone(target_zone))
 	if(bodypart)
 		for(var/datum/wound/dislocation/bone in bodypart.wounds)

@@ -1,5 +1,5 @@
 /mob/living/carbon/human
-	name = "Unknown"
+	name = "未知"
 	real_name = "Unknown"
 	icon = 'icons/mob/human.dmi'
 	icon_state = "human_basic"
@@ -35,7 +35,7 @@
 	var/eye_color = "000"
 
 	var/voice_color = "a0a0a0"
-	var/nickname = "Please Change Me"
+	var/nickname = "请修改昵称"
 	var/highlight_color = "#FF0000"
 	var/detail_color = "000"
 

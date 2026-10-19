@@ -74,7 +74,7 @@
 
 		var/markstring
 		if(!(VV_MARKED_DATUM in restricted_classes))
-			markstring = "[VV_MARKED_DATUM] (CURRENT: [(istype(holder) && istype(holder.marked_datum))? holder.marked_datum.type : "NULL"])"
+			markstring = "[VV_MARKED_DATUM]（当前：[(istype(holder) && istype(holder.marked_datum))? holder.marked_datum.type : "NULL"]）"
 			classes += markstring
 
 		if(restricted_classes)
@@ -83,31 +83,31 @@
 		if(extra_classes)
 			classes += extra_classes
 
-		.["class"] = input(src, "What kind of data?", "Variable Type", default_class) as null|anything in classes
+		.["class"] = input(src, "选择数据类型：", "变量类型", default_class) as null|anything in classes
 		if(holder && holder.marked_datum && .["class"] == markstring)
 			.["class"] = VV_MARKED_DATUM
 
 	switch(.["class"])
 		if(VV_TEXT)
-			.["value"] = input("Enter new text:", "Text", current_value) as null|text
+			.["value"] = input("输入新文本：", "文本", current_value) as null|text
 			if(.["value"] == null)
 				.["class"] = null
 				return
 		if(VV_MESSAGE)
-			.["value"] = input("Enter new text:", "Text", current_value) as null|message
+			.["value"] = input("输入新文本：", "文本", current_value) as null|message
 			if(.["value"] == null)
 				.["class"] = null
 				return
 
 
 		if(VV_NUM)
-			.["value"] = input("Enter new number:", "Num", current_value) as null|num
+			.["value"] = input("输入新数值：", "数值", current_value) as null|num
 			if(.["value"] == null)
 				.["class"] = null
 				return
 
 		if(VV_BITFIELD)
-			.["value"] = input_bitfield(usr, "Editing bitfield: [var_name]", var_name, current_value)
+			.["value"] = input_bitfield(usr, "编辑位字段：[var_name]", var_name, current_value)
 			if(.["value"] == null)
 				.["class"] = null
 				return
@@ -128,11 +128,11 @@
 			var/type = current_value
 			var/error = ""
 			do
-				type = input("Enter type:[error]", "Type", type) as null|text
+				type = input("输入类型：[error]", "类型", type) as null|text
 				if(!type)
 					break
 				type = text2path(type)
-				error = "\nType not found, Please try again"
+				error = "\n未找到该类型，请重试"
 			while(!type)
 			if(!type)
 				.["class"] = null
@@ -146,7 +146,7 @@
 				.["class"] = null
 				return
 			var/list/things = vv_reference_list(type, subtypes)
-			var/value = input("Select reference:", "Reference", current_value) as null|anything in things
+			var/value = input("选择引用：", "引用", current_value) as null|anything in things
 			if(!value)
 				.["class"] = null
 				return
@@ -159,7 +159,7 @@
 				.["class"] = null
 				return
 			var/list/things = vv_reference_list(type, subtypes)
-			var/value = input("Select reference:", "Reference", current_value) as null|anything in things
+			var/value = input("选择引用：", "引用", current_value) as null|anything in things
 			if(!value)
 				.["class"] = null
 				return
@@ -172,26 +172,26 @@
 				.["class"] = null
 				return
 			var/list/things = vv_reference_list(type, subtypes)
-			var/value = input("Select reference:", "Reference", current_value) as null|anything in things
+			var/value = input("选择引用：", "引用", current_value) as null|anything in things
 			if(!value)
 				.["class"] = null
 				return
 			.["value"] = things[value]
 
 		if(VV_CLIENT)
-			.["value"] = input("Select reference:", "Reference", current_value) as null|anything in GLOB.clients
+			.["value"] = input("选择引用：", "引用", current_value) as null|anything in GLOB.clients
 			if(.["value"] == null)
 				.["class"] = null
 				return
 
 		if(VV_FILE)
-			.["value"] = input("Pick file:", "File") as null|file
+			.["value"] = input("选择文件：", "文件") as null|file
 			if(.["value"] == null)
 				.["class"] = null
 				return
 
 		if(VV_ICON)
-			.["value"] = input("Pick icon:", "Icon") as null|icon
+			.["value"] = input("选择图标：", "图标") as null|icon
 			if(.["value"] == null)
 				.["class"] = null
 				return
@@ -234,11 +234,11 @@
 			var/type = current_value
 			var/error = ""
 			do
-				type = input("Enter type:[error]", "Type", type) as null|text
+				type = input("输入类型：[error]", "类型", type) as null|text
 				if(!type)
 					break
 				type = text2path(type)
-				error = "\nType not found, Please try again"
+				error = "\n未找到该类型，请重试"
 			while(!type)
 			if(!type)
 				.["class"] = null
@@ -256,15 +256,15 @@
 		if(VV_TEXT_LOCATE)
 			var/datum/D
 			do
-				var/ref = input("Enter reference:", "Reference") as null|text
+				var/ref = input("输入引用：", "引用") as null|text
 				if(!ref)
 					break
 				D = locate(ref)
 				if(!D)
-					alert("Invalid ref!")
+					alert("引用无效！")
 					continue
 				if(!D.can_vv_mark())
-					alert("Datum can not be marked!")
+					alert("无法标记此数据对象！")
 					continue
 			while(!D)
 			.["type"] = D.type

@@ -1,5 +1,5 @@
 /obj/structure/gearbox
-	name = "gearbox"
+	name = "齿轮箱"
 	icon = 'icons/obj/rotation_machines.dmi'
 	icon_state = "gearbox-horizontal"
 

@@ -53,26 +53,26 @@
 	var/obj/item/bodypart/affecting
 	if(prob(66))
 		affecting = get_bodypart("[pick("r","l")]_leg")
-		to_chat(src, "<span class='warning'>I land on my leg!</span>")
+		to_chat(src, "<span class='warning'>我落地时撞到了腿！</span>")
 		if(affecting && apply_damage((levels * 10), BRUTE, affecting))		// 100 brute damage
 			update_damage_overlays()
 	else
 		switch(rand(1,3))
 			if(1)
 				affecting = get_bodypart("[pick("r","l")]_arm")
-				to_chat(src, "<span class='warning'>I land on my arm!</span>")
+				to_chat(src, "<span class='warning'>我落地时撞到了手臂！</span>")
 				if(affecting && apply_damage((levels * 10), BRUTE, affecting))		// 100 brute damage
 					update_damage_overlays()
 			if(2)
 				affecting = get_bodypart("chest")
-				to_chat(src, "<span class='warning'>I land on my chest!</span>")
+				to_chat(src, "<span class='warning'>我落地时撞到了胸部！</span>")
 				adjustOxyLoss(50)
 				emote("breathgasp")
 				if(affecting && apply_damage((levels * 10), BRUTE, affecting))		// 100 brute damage
 					update_damage_overlays()
 			if(3)
 				affecting = get_bodypart("head")
-				to_chat(src, "<span class='warning'>I land on my head!</span>")
+				to_chat(src, "<span class='warning'>我落地时撞到了头！</span>")
 				if(levels > 2)
 					AdjustUnconscious(levels * 100)
 					if(affecting && apply_damage((levels * 10), BRUTE, affecting))		// 100 brute damage
@@ -93,7 +93,7 @@
 	if(item_in_hand) //this segment checks if the item in your hand is twohanded.
 		if(istype(item_in_hand))
 			if(item_in_hand.wielded == 1)
-				to_chat(usr, "<span class='warning'>My other hand is too busy holding [item_in_hand].</span>")
+				to_chat(usr, "<span class='warning'>我的另一只手正握着[item_in_hand.name]，腾不出来。</span>")
 				return FALSE
 	if(atkswinging || atkreleasing)
 		stop_attack(FALSE)
@@ -115,7 +115,7 @@
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 		if(H.has_status_effect(/datum/status_effect/buff/clash))
-			H.bad_guard(span_warning("I swapped away from the weapon!"))
+			H.bad_guard(span_warning("我切换到了没握武器的手！"))
 	return TRUE
 
 
@@ -152,7 +152,7 @@
 		if(possible_len)
 			var/datum/surgery_step/done_step
 			if(possible_len > 1)
-				var/input = input(user, "Which surgery step do you want to perform?", "PESTRA", ) as null|anything in possible_steps
+				var/input = input(user, "你想进行哪一步手术？", "佩斯特拉", ) as null|anything in possible_steps
 				if(input)
 					done_step = possible_steps[input]
 			else
@@ -185,8 +185,8 @@
 		if(hurt)
 			victim.take_bodypart_damage(10,check_armor = TRUE)
 			take_bodypart_damage(10,check_armor = TRUE)
-			visible_message("<span class='danger'>[src] crashes into [victim]!",\
-				"<span class='danger'>I violently crash into [victim]!</span>")
+			visible_message("<span class='danger'>[src]撞上了[victim]！",\
+				"<span class='danger'>我狠狠地撞上了[victim]！</span>")
 		playsound(src,"genblunt",100,TRUE)
 
 
@@ -272,19 +272,19 @@
 			dropItemToGround(I, silent = TRUE)
 
 			if(HAS_TRAIT(src, TRAIT_PACIFISM) && I.throwforce)
-				to_chat(src, "<span class='notice'>I set [I] down gently on the ground.</span>")
+				to_chat(src, "<span class='notice'>我把[I.name]轻轻放在地上。</span>")
 				return
 
 
 	if(thrown_thing)
 		if(src in thrown_thing.buckled_mobs) //Buckling to a chair and then grab-throwing the chair
-			to_chat(src, span_notice("I am not tricky enough to throw [thrown_thing] while I am buckled to it."))
+			to_chat(src, span_notice("我被固定在[thrown_thing.name]上，没法连自己一起扔出去。"))
 			return
 		// Admin alert for coin throws
 		if(istype(thrown_thing, /obj/item/roguecoin))
 			var/obj/item/roguecoin/coin = thrown_thing
 			var/coin_text = coin.quantity > 1 ? "[coin.quantity] [coin.name]" : coin.name
-			message_admins("[ADMIN_LOOKUPFLW(src)] has thrown [coin_text] at [target] ([AREACOORD(target)])")
+			message_admins("[ADMIN_LOOKUPFLW(src)] 向 [target]（[AREACOORD(target)]）投掷了 [coin_text]")
 			log_admin("[key_name(src)] has thrown [coin_text] at [target] ([AREACOORD(target)])")
 
 		if(!thrown_speed)
@@ -292,8 +292,8 @@
 		if(!thrown_range)
 			thrown_range = thrown_thing.throw_range
 		do_attack_animation(target, no_effect = TRUE)
-		visible_message("<span class='danger'>[src] throws [thrown_thing].</span>", \
-						"<span class='danger'>I toss [thrown_thing].</span>")
+		visible_message("<span class='danger'>[src]掷出了[thrown_thing]。</span>", \
+						"<span class='danger'>我掷出了[thrown_thing]。</span>")
 		log_message("has thrown [thrown_thing]", LOG_ATTACK)
 		thrown_thing.safe_throw_at(target, thrown_range, thrown_speed, src, null, null, null, move_force)
 		changeNext_move(CLICK_CD_MELEE)
@@ -316,41 +316,41 @@
 /mob/living/carbon/show_inv(mob/user)
 	user.set_machine(src)
 	var/dat = {"
-	<HR>
+	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><HR>
 	<B><FONT size=3>[name]</FONT></B>
-	<HR>
-	<BR><B>Head:</B> <A href='?src=[REF(src)];item=[SLOT_HEAD]'>[(head && !(head.item_flags & ABSTRACT)) ? head : "Nothing"]</A>"}
+	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><HR>
+	<BR><B>头部：</B> <A href='?src=[REF(src)];item=[SLOT_HEAD]'>[(head && !(head.item_flags & ABSTRACT)) ? head.name : "无"]</A>"}
 
 	var/list/obscured = check_obscured_slots()
 
 	if(SLOT_NECK in obscured)
-		dat += "<BR><B>Neck:</B> Obscured"
+		dat += "<BR><B>颈部：</B> 被遮挡"
 	else
-		dat += "<BR><B>Neck:</B> <A href='?src=[REF(src)];item=[SLOT_NECK]'>[(wear_neck && !(wear_neck.item_flags & ABSTRACT)) ? (wear_neck) : "Nothing"]</A>"
+		dat += "<BR><B>颈部：</B> <A href='?src=[REF(src)];item=[SLOT_NECK]'>[(wear_neck && !(wear_neck.item_flags & ABSTRACT)) ? (wear_neck.name) : "无"]</A>"
 
 	if(SLOT_WEAR_MASK in obscured)
-		dat += "<BR><B>Mask:</B> Obscured"
+		dat += "<BR><B>面具：</B> 被遮挡"
 	else
-		dat += "<BR><B>Mask:</B> <A href='?src=[REF(src)];item=[SLOT_WEAR_MASK]'>[(wear_mask && !(wear_mask.item_flags & ABSTRACT))	? wear_mask	: "Nothing"]</a>"
+		dat += "<BR><B>面具：</B> <A href='?src=[REF(src)];item=[SLOT_WEAR_MASK]'>[(wear_mask && !(wear_mask.item_flags & ABSTRACT))	? wear_mask.name	: "无"]</a>"
 
 	for(var/i in 1 to held_items.len)
 		var/obj/item/I = get_item_for_held_index(i)
-		dat += "<BR><B>[get_held_index_name(i)]:</B> </td><td><A href='?src=[REF(src)];item=[SLOT_HANDS];hand_index=[i]'>[(I && !(I.item_flags & ABSTRACT)) ? I : "Nothing"]</a>"
+		dat += "<BR><B>[get_held_index_name(i)]:</B> </td><td><A href='?src=[REF(src)];item=[SLOT_HANDS];hand_index=[i]'>[(I && !(I.item_flags & ABSTRACT)) ? I.name : "无"]</a>"
 
-	dat += "<BR><B>Back:</B> <A href='?src=[REF(src)];item=[SLOT_BACK]'>[back ? back : "Nothing"]</A>"
+	dat += "<BR><B>背部：</B> <A href='?src=[REF(src)];item=[SLOT_BACK]'>[back ? back.name : "无"]</A>"
 
 	if(handcuffed)
-		dat += "<BR><A href='?src=[REF(src)];item=[SLOT_HANDCUFFED]'>Handcuffed</A>"
+		dat += "<BR><A href='?src=[REF(src)];item=[SLOT_HANDCUFFED]'>手部束缚</A>"
 	if(legcuffed)
-		dat += "<BR><A href='?src=[REF(src)];item=[SLOT_LEGCUFFED]'>Legcuffed</A>"
+		dat += "<BR><A href='?src=[REF(src)];item=[SLOT_LEGCUFFED]'>腿部束缚</A>"
 
 	var/datum/status_effect/bugged/effect = has_status_effect(/datum/status_effect/bugged)
 	if(effect && HAS_TRAIT(user, TRAIT_INQUISITION))
-		dat += "<BR><A href='?src=[REF(src)];item=[effect.device]'>BUGGED</A>"
+		dat += "<BR><A href='?src=[REF(src)];item=[effect.device]'>被窃听</A>"
 
 	dat += {"
 	<BR>
-	<BR><A href='?src=[REF(user)];mach_close=mob[REF(src)]'>Close</A>
+	<BR><A href='?src=[REF(user)];mach_close=mob[REF(src)]'>关闭</A>
 	"}
 	user << browse(dat, "window=mob[REF(src)];size=325x500")
 	onclose(user, "mob[REF(src)]")
@@ -389,15 +389,15 @@
 				buckle_cd += S.breakoutextra
 			if(istype(S, /obj/structure/bondage/torture_table) && !handcuffed)
 				buckle_cd = 3 MINUTES
-		visible_message("<span class='warning'>[src] attempts to struggle free!</span>", \
-					"<span class='notice'>I attempt to struggle free...</span>")
+		visible_message("<span class='warning'>[src]试图挣脱束缚！</span>", \
+					"<span class='notice'>我试图挣脱束缚...</span>")
 		if(do_after(src, buckle_cd, 0, target = src))
 			if(!buckled)
 				return
 			buckled.user_unbuckle_mob(src,src)
 		else
 			if(src && buckled)
-				to_chat(src, "<span class='warning'>I fail to struggle free!</span>")
+				to_chat(src, "<span class='warning'>我没能挣脱束缚！</span>")
 	else
 		buckled.user_unbuckle_mob(src,src)
 
@@ -418,9 +418,9 @@
 		adjust_fire_stacks(-5, /datum/status_effect/fire_handler/fire_stacks/sunder)
 		adjust_fire_stacks(-5, /datum/status_effect/fire_handler/fire_stacks/divine)
 		adjust_fire_stacks(-5, /datum/status_effect/fire_handler/fire_stacks/sunder/blessed)
-		visible_message(span_warning("[src] rolls on the ground, trying to put [p_them()]self out!"))
+		visible_message(span_warning("[src]在地上打滚，试图扑灭身上的火焰！"))
 	else
-		visible_message(span_notice("[src] pats the flames to extinguish them."))
+		visible_message(span_notice("[src]拍打着身上的火焰，试图将其扑灭。"))
 	addtimer(CALLBACK(src, PROC_REF(check_try_extinguish)), 3 SECONDS)
 
 /mob/living/carbon/proc/check_try_extinguish()
@@ -428,14 +428,14 @@
 		extinguish_mob(TRUE)
 
 /mob/living/carbon/resist_leash()
-	to_chat(src, span_notice("I reach for the hook on my collar..."))
+	to_chat(src, span_notice("我伸手去解项圈上的挂钩..."))
 	//Determine how long it takes to remove the leash
 	var/deleash = 15
 	if(src.handcuffed)
 		deleash = 60
 	if(move_after(src, deleash, 0, target = src))
 		if(!QDELETED(src))
-			to_chat(src, "<span class='warning'>[src] has removed their leash!</span>")
+			to_chat(src, "<span class='warning'>[src]解开了牵绳！</span>")
 			src.remove_status_effect(/datum/status_effect/leash_pet)
 
 /mob/living/carbon/resist_restraints()
@@ -471,8 +471,8 @@
 	//outlived its attempt, so fall through and start fresh rather than lock the item forever
 	if((I.item_flags & BEING_REMOVED) && doing)
 		doing = FALSE
-		visible_message("<span class='warning'>[src] stops struggling with [I].</span>", \
-						"<span class='warning'>I stop struggling with [I].</span>")
+		visible_message("<span class='warning'>[src]停止挣脱[I]。</span>", \
+						"<span class='warning'>我停止挣脱[I]。</span>")
 		log_message("stopped struggling out of [I]", LOG_ATTACK, color = "orange")
 		return
 	I.item_flags |= BEING_REMOVED
@@ -491,18 +491,18 @@
 		cuff_break = INSTANT_CUFFBREAK
 		breakouttime = I.breakouttime
 	if(!cuff_break)
-		to_chat(src, "<span class='notice'>I attempt to remove [I]...</span>")
+		to_chat(src, "<span class='notice'>我试着解开[I]...</span>")
 		if(do_after(src, breakouttime, 0, target = src))
 			clear_cuffs(I, cuff_break)
 		else
-			to_chat(src, "<span class='danger'>I fail to remove [I]!</span>")
+			to_chat(src, "<span class='danger'>我没能解开[I]！</span>")
 
 	else if(cuff_break == FAST_CUFFBREAK)
-		to_chat(src, "<span class='notice'>I attempt to break [I]...</span>")
+		to_chat(src, "<span class='notice'>我试着挣断[I]...</span>")
 		if(do_after(src, breakouttime, 0, target = src))
 			clear_cuffs(I, cuff_break)
 		else
-			to_chat(src, "<span class='danger'>I fail to break [I]!</span>")
+			to_chat(src, "<span class='danger'>我没能挣断[I]！</span>")
 
 	else if(cuff_break == INSTANT_CUFFBREAK)
 		clear_cuffs(I, cuff_break)
@@ -547,10 +547,10 @@
 	//getting free clears the breakout cooldown, or a fast escape leaves you locked out of everything
 	//for the remainder of the 10 seconds resist_restraints charged up front. Same as uncuff() does
 	changeNext_move(0, override = TRUE)
-	visible_message("[cuff_break ? "<span class='danger'>" : "<span class='warning'>"][src] manages to [cuff_break ? "break" : "slip"] out of [I]!</span>")
+	visible_message("[cuff_break ? "<span class='danger'>" : "<span class='warning'>"][src]成功[cuff_break ? "挣断" : "挣脱"]了[I]！</span>")
 	if(cuff_break)
 		playsound(src, 'sound/misc/chain_snap.ogg', 100, FALSE, 10)
-	to_chat(src, "<span class='notice'>I [cuff_break ? "break" : "slip"] out of [I]!</span>")
+	to_chat(src, "<span class='notice'>我[cuff_break ? "挣断" : "挣脱"]了[I]！</span>")
 
 	if(istype(I, /obj/item/net))
 		if(has_status_effect(/datum/status_effect/debuff/netted))
@@ -622,14 +622,14 @@
 /mob/living/Stat()
 	..()
 	if(statpanel("Stats"))
-		stat("STR: \Roman [STASTR]")
-		stat("PER: \Roman [STAPER]")
-		stat("INT: \Roman [STAINT]")
-		stat("CON: \Roman [STACON]")
-		stat("WIL: \Roman [STAWIL]")
-		stat("SPD: \Roman [STASPD]")
-		stat("FOR: \Roman [STALUC]")
-		stat("PATRON: [patron]")
+		stat("力量: \Roman [STASTR]")
+		stat("感知: \Roman [STAPER]")
+		stat("智力: \Roman [STAINT]")
+		stat("体质: \Roman [STACON]")
+		stat("意志: \Roman [STAWIL]")
+		stat("速度: \Roman [STASPD]")
+		stat("幸运: \Roman [STALUC]")
+		stat("信仰: [patron]")
 
 /mob/living/carbon/Stat()
 	..()
@@ -658,15 +658,15 @@
 			if(world.time > mob_timers["puke"] + 16 SECONDS)
 				mob_timers["puke"] = world.time
 				if(getorgan(/obj/item/organ/stomach))
-					to_chat(src, "<span class='warning'>I'm going to puke...</span>")
+					to_chat(src, "<span class='warning'>我要吐了...</span>")
 					addtimer(CALLBACK(src, PROC_REF(vomit), 50), rand(8 SECONDS, 15 SECONDS))
 			else
 				if(prob(3))
-					to_chat(src, "<span class='warning'>I feel sick...</span>")
+					to_chat(src, "<span class='warning'>我觉得恶心...</span>")
 		else
 			if(getorgan(/obj/item/organ/stomach))
 				mob_timers["puke"] = world.time
-				to_chat(src, "<span class='warning'>I'm going to puke...</span>")
+				to_chat(src, "<span class='warning'>我要吐了...</span>")
 				addtimer(CALLBACK(src, PROC_REF(vomit), 50), rand(8 SECONDS, 15 SECONDS))
 	add_nausea(-1)
 
@@ -702,22 +702,22 @@
 		if(vomitrelay && ishuman(vomitrelay.loc))
 			var/mob/living/carbon/human/parent = vomitrelay.loc
 			if(message)
-				visible_message("<span class='danger'>[vomitrelay] throws up all over [parent]!</span>", \
-								"<span class='danger'>I puke all over [parent]!</span>")
+				visible_message("<span class='danger'>[vomitrelay.name]吐了[parent]一身！</span>", \
+								"<span class='danger'>我吐了[parent]一身！</span>")
 				parent.add_stress(/datum/stressevent/vomitother)
 				src.add_stress(/datum/stressevent/vomitedonother)
 			distance = 0
 		else if(is_mouth_covered()) //make this add a blood/vomit overlay later it'll be hilarious
 			if(message)
-				visible_message("<span class='danger'>[src] throws up all over [p_them()]self!</span>", \
-								"<span class='danger'>I puke all over myself!</span>")
+				visible_message("<span class='danger'>[src]吐了自己一身！</span>", \
+								"<span class='danger'>我吐了自己一身！</span>")
 				if(iscarbon(src))
 					var/mob/living/carbon/C = src
 					C.add_stress(/datum/stressevent/vomitself)
 			distance = 0
 		else
 			if(message)
-				visible_message("<span class='danger'>[vomit_source] pukes!</span>", "<span class='danger'>I puke!</span>")
+				visible_message("<span class='danger'>[vomit_source.name]吐了！</span>", "<span class='danger'>我吐了！</span>")
 				if(iscarbon(src))
 					var/mob/living/carbon/C = src
 					C.add_stress(/datum/stressevent/vomit)
@@ -725,7 +725,7 @@
 		if(NOBLOOD in dna?.species?.species_traits || (INVISBLOOD in dna.species.species_traits)) //OV EDIT
 			return TRUE
 		if(message)
-			visible_message("<span class='danger'>[vomit_source] coughs up blood!</span>", "<span class='danger'>I cough up blood!</span>")
+			visible_message("<span class='danger'>[vomit_source.name]咳出了血！</span>", "<span class='danger'>我咳出了血！</span>")
 
 	if(stun)
 		Immobilize(59)
@@ -1134,18 +1134,18 @@
 		if(((blood_volume in -INFINITY to BLOOD_VOLUME_SURVIVE) && !HAS_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE)) || IsUnconscious() || IsSleeping() || getOxyLoss() > 75 || (HAS_TRAIT(src, TRAIT_DEATHCOMA)) || (health <= HEALTH_THRESHOLD_FULLCRIT && !HAS_TRAIT(src, TRAIT_NOHARDCRIT)))
 			if(stat != UNCONSCIOUS) // Transition into hardcrit — announce once
 				if((blood_volume in -INFINITY to BLOOD_VOLUME_SURVIVE) && !HAS_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE))
-					visible_message(span_danger("<b>[src] collapses, [src.p_their()] skin pale as parchment!</b>"), \
-						span_userdanger("My blood... there is nothing left. I cannot feel my limbs."))
+					visible_message(span_danger("<b>[src]倒了下去，皮肤惨白如纸！</b>"), \
+						span_userdanger("我的血……已经流干了。我感觉不到四肢了。"))
 				else if(getOxyLoss() > 75)
-					visible_message(span_danger("<b>[src] collapses, [src.p_their()] lips turning blue!</b>"), \
-						span_userdanger("I cannot breathe... the world grows dark."))
+					visible_message(span_danger("<b>[src]倒了下去，嘴唇一片青紫！</b>"), \
+						span_userdanger("我无法呼吸……整个世界都暗了下来。"))
 				else if(health <= HEALTH_THRESHOLD_FULLCRIT)
 					if(getBruteLoss() >= getFireLoss())
-						visible_message(span_danger("<b>[src] collapses, broken and bloodied!</b>"), \
-							span_userdanger("My bones are shattered... I cannot go on."))
+						visible_message(span_danger("<b>[src]倒了下去，浑身是血，骨肉破碎！</b>"), \
+							span_userdanger("我的骨头全碎了……我撑不下去了。"))
 					else
-						visible_message(span_danger("<b>[src] collapses, [src.p_their()] flesh charred and smoking!</b>"), \
-							span_userdanger("The burning... it has taken everything from me."))
+						visible_message(span_danger("<b>[src]倒了下去，焦黑的血肉仍冒着烟！</b>"), \
+							span_userdanger("灼痛……已经夺走了我的一切。"))
 			stat = UNCONSCIOUS
 			cure_holdbreath() // In case you passed out from holding breathe
 			if(ishuman(src))
@@ -1259,7 +1259,7 @@
 			O.Remove(src)
 			O.forceMove(drop_location())
 	if(organs_amt)
-		to_chat(user, "<span class='notice'>I retrieve some of [src]\'s internal organs!</span>")
+		to_chat(user, "<span class='notice'>我取出了[src]的一些内脏！</span>")
 
 /mob/living/carbon/extinguish_mob(itemz = TRUE)
 	if(itemz)
@@ -1314,19 +1314,19 @@
 /mob/living/carbon/vv_get_dropdown()
 	. = ..()
 	VV_DROPDOWN_OPTION("", "---------")
-	VV_DROPDOWN_OPTION(VV_HK_MODIFY_BODYPART, "Modify bodypart")
-	VV_DROPDOWN_OPTION(VV_HK_MODIFY_ORGANS, "Modify organs")
-	VV_DROPDOWN_OPTION(VV_HK_HALLUCINATION, "Hallucinate")
-	VV_DROPDOWN_OPTION(VV_HK_MARTIAL_ART, "Give Martial Arts")
-	VV_DROPDOWN_OPTION(VV_HK_GIVE_TRAUMA, "Give Brain Trauma")
-	VV_DROPDOWN_OPTION(VV_HK_CURE_TRAUMA, "Cure Brain Traumas")
+	VV_DROPDOWN_OPTION(VV_HK_MODIFY_BODYPART, "修改身体部位")
+	VV_DROPDOWN_OPTION(VV_HK_MODIFY_ORGANS, "修改器官")
+	VV_DROPDOWN_OPTION(VV_HK_HALLUCINATION, "引发幻觉")
+	VV_DROPDOWN_OPTION(VV_HK_MARTIAL_ART, "授予武术")
+	VV_DROPDOWN_OPTION(VV_HK_GIVE_TRAUMA, "施加脑部创伤")
+	VV_DROPDOWN_OPTION(VV_HK_CURE_TRAUMA, "治愈脑部创伤")
 
 /mob/living/carbon/vv_do_topic(list/href_list)
 	. = ..()
 	if(href_list[VV_HK_MODIFY_BODYPART])
 		if(!check_rights(R_SPAWN))
 			return
-		var/edit_action = input(usr, "What would you like to do?","Modify Body Part") as null|anything in list("add","remove", "augment")
+		var/edit_action = list("添加" = "add", "移除" = "remove", "改造" = "augment")[input(usr, "要执行什么操作？","修改身体部位") as null|anything in list("添加","移除", "改造")]
 		if(!edit_action)
 			return
 		var/list/limb_list = list()
@@ -1339,7 +1339,7 @@
 			limb_list = list(BODY_ZONE_HEAD, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 			for(var/obj/item/bodypart/B as anything in bodyparts)
 				limb_list -= B.body_zone
-		var/result = input(usr, "Please choose which body part to [edit_action]","[capitalize(edit_action)] Body Part") as null|anything in sortList(limb_list)
+		var/result = input(usr, "请选择要[list("add" = "添加", "remove" = "移除", "augment" = "改造")[edit_action]]的身体部位","修改身体部位") as null|anything in sortList(limb_list)
 		if(result)
 			var/obj/item/bodypart/BP = get_bodypart(result)
 			switch(edit_action)
@@ -1347,22 +1347,22 @@
 					if(BP)
 						BP.drop_limb()
 					else
-						to_chat(usr, "<span class='boldwarning'>[src] doesn't have such bodypart.</span>")
+						to_chat(usr, "<span class='boldwarning'>[src] 没有该身体部位。</span>")
 				if("add")
 					if(BP)
-						to_chat(usr, "<span class='boldwarning'>[src] already has such bodypart.</span>")
+						to_chat(usr, "<span class='boldwarning'>[src] 已有该身体部位。</span>")
 					else
 						if(!regenerate_limb(result))
-							to_chat(usr, "<span class='boldwarning'>[src] cannot have such bodypart.</span>")
+							to_chat(usr, "<span class='boldwarning'>[src] 无法拥有该身体部位。</span>")
 				if("augment")
 					if(ishuman(src))
 						if(BP)
 							BP.change_bodypart_status(BODYPART_ROBOTIC, TRUE, TRUE)
 						else
-							to_chat(usr, "<span class='boldwarning'>[src] doesn't have such bodypart.</span>")
+							to_chat(usr, "<span class='boldwarning'>[src] 没有该身体部位。</span>")
 					else
-						to_chat(usr, "<span class='boldwarning'>Only humans can be augmented.</span>")
-		admin_ticket_log("[key_name_admin(usr)] has modified the bodyparts of [src]")
+						to_chat(usr, "<span class='boldwarning'>只有人形生物能接受改造。</span>")
+		admin_ticket_log("[key_name_admin(usr)] 修改了 [src] 的身体部位")
 	if(href_list[VV_HK_MODIFY_ORGANS])
 		if(!check_rights(NONE))
 			return
@@ -1375,49 +1375,49 @@
 		for(var/i in artpaths)
 			var/datum/martial_art/M = i
 			artnames[initial(M.name)] = M
-		var/result = input(usr, "Choose the martial art to teach","JUDO CHOP") as null|anything in sortNames(artnames)
+		var/result = input(usr, "选择要传授的武术","传授武术") as null|anything in sortNames(artnames)
 		if(!usr)
 			return
 		if(QDELETED(src))
-			to_chat(usr, "<span class='boldwarning'>Mob doesn't exist anymore.</span>")
+			to_chat(usr, "<span class='boldwarning'>生物已不存在。</span>")
 			return
 		if(result)
 			var/chosenart = artnames[result]
 			var/datum/martial_art/MA = new chosenart
 			MA.teach(src)
 			log_admin("[key_name(usr)] has taught [MA] to [key_name(src)].")
-			message_admins("<span class='notice'>[key_name_admin(usr)] has taught [MA] to [key_name_admin(src)].</span>")
+			message_admins("<span class='notice'>[key_name_admin(usr)] 向 [key_name_admin(src)] 传授了 [MA]。</span>")
 	if(href_list[VV_HK_GIVE_TRAUMA])
 		if(!check_rights(NONE))
 			return
 		var/list/traumas = subtypesof(/datum/brain_trauma)
-		var/result = input(usr, "Choose the brain trauma to apply","Traumatize") as null|anything in sortList(traumas, GLOBAL_PROC_REF(cmp_typepaths_asc))
+		var/result = input(usr, "选择要施加的脑部创伤","施加脑部创伤") as null|anything in sortList(traumas, GLOBAL_PROC_REF(cmp_typepaths_asc))
 		if(!usr)
 			return
 		if(QDELETED(src))
-			to_chat(usr, "Mob doesn't exist anymore")
+			to_chat(usr, "生物已不存在")
 			return
 		if(!result)
 			return
 		var/datum/brain_trauma/BT = gain_trauma(result)
 		if(BT)
 			log_admin("[key_name(usr)] has traumatized [key_name(src)] with [BT.name]")
-			message_admins("<span class='notice'>[key_name_admin(usr)] has traumatized [key_name_admin(src)] with [BT.name].</span>")
+			message_admins("<span class='notice'>[key_name_admin(usr)] 向 [key_name_admin(src)] 施加了 [BT.name]。</span>")
 	if(href_list[VV_HK_CURE_TRAUMA])
 		if(!check_rights(NONE))
 			return
 		cure_all_traumas(TRAUMA_RESILIENCE_ABSOLUTE)
 		log_admin("[key_name(usr)] has cured all traumas from [key_name(src)].")
-		message_admins("<span class='notice'>[key_name_admin(usr)] has cured all traumas from [key_name_admin(src)].</span>")
+		message_admins("<span class='notice'>[key_name_admin(usr)] 治愈了 [key_name_admin(src)] 的全部脑部创伤。</span>")
 	if(href_list[VV_HK_HALLUCINATION])
 		if(!check_rights(NONE))
 			return
 		var/list/hallucinations = subtypesof(/datum/hallucination)
-		var/result = input(usr, "Choose the hallucination to apply","Send Hallucination") as null|anything in sortList(hallucinations, GLOBAL_PROC_REF(cmp_typepaths_asc))
+		var/result = input(usr, "选择要施加的幻觉","施加幻觉") as null|anything in sortList(hallucinations, GLOBAL_PROC_REF(cmp_typepaths_asc))
 		if(!usr)
 			return
 		if(QDELETED(src))
-			to_chat(usr, "Mob doesn't exist anymore")
+			to_chat(usr, "生物已不存在")
 			return
 		if(result)
 			new result(src, TRUE)
@@ -1448,14 +1448,14 @@
 		return FALSE
 
 /mob/living/carbon/resist_leash()
-	to_chat(src, span_notice("I reach for the hook on my collar..."))
+	to_chat(src, span_notice("我伸手去解项圈上的挂钩..."))
 	//Determine how long it takes to remove the leash
 	var/deleash = 5 SECONDS
 	if(src.handcuffed)
 		deleash = 20 SECONDS
 	if(move_after(src, deleash, 0, target = src))
 		if(!QDELETED(src))
-			to_chat(src, "<span class='warning'>[src] has removed their leash!</span>")
+			to_chat(src, "<span class='warning'>[src]解开了牵绳！</span>")
 			src.remove_status_effect(/datum/status_effect/leash_pet)
 
 /mob/living/carbon/can_buckle()

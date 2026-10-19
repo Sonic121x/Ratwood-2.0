@@ -1,8 +1,8 @@
 //CON/WIL with a saiga. A polearm footman but not actually.
 //An odd combination of stats and skills, rounded out by a saiga and the funny riding trait.
 /datum/advclass/manorguard/cavalry
-	name = "Cavalryman"
-	tutorial = "You are a professional soldier of the realm, specializing in the steady beat of hoof falls. Lighter and more expendable then the knights, you charge with lance in hand."
+	name = "骑兵"
+	tutorial = "你是王国的职业军士，专精于马蹄轰鸣的冲阵之道。你比骑士更轻装，也更容易被拿去消耗，但你仍会手执长枪，直冲敌阵。"
 	outfit = /datum/outfit/job/roguetown/manorguard/cavalry
 
 	category_tags = list(CTAG_MENATARMS)
@@ -32,13 +32,13 @@
 		/datum/skill/misc/tracking = SKILL_LEVEL_JOURNEYMAN,	//Best tracker. Might as well give it something to stick-out utility wise.
 	)
 
-	extra_context = "This class is restricted from using the Equestrian virtue."
+	extra_context = "该职业不能选择“骑术娴熟”美德。"
 
 	virtue_restrictions = list(
 		/datum/virtue/utility/riding
 	)
-	subclass_stashed_items = list("Caparison (Saiga)" = /obj/item/caparison, "Caparison (Fogbeast)" = /obj/item/caparison/fogbeast)
-	extra_context = "This subclass receives a caparison in its stash. Use the Saiga or Fogbeast version depending on your mount."
+	subclass_stashed_items = list("赛加羚鞍饰毯" = /obj/item/caparison, "雾兽鞍饰毯" = /obj/item/caparison/fogbeast)
+	extra_context = "该子职业的藏匿物品中有一条鞍饰毯。请根据坐骑选择赛加羚羊或雾兽款式。"
 
 /datum/outfit/job/roguetown/manorguard/cavalry/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -47,14 +47,14 @@
 	beltl = /obj/item/rogueweapon/mace/cudgel
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("Bardiche","Sword & Shield")
-		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+		var/weapons = list("长柄战斧","军刀与木盾")
+		var/weapon_choice = input(H, "选择你的武器。", "拿起武器") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("Bardiche")
+			if("长柄战斧")
 				r_hand = /obj/item/rogueweapon/halberd/bardiche
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
-			if("Sword & Shield")
+			if("军刀与木盾")
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/sabre
 				backl = /obj/item/rogueweapon/shield/wood
@@ -68,33 +68,33 @@
 			)
 		H.verbs |= /mob/proc/haltyell
 
-		var/armor_options = list("Brigandine Set", "Maille Set")
-		var/armor_choice = input(H, "Choose your armor.", "TAKE UP ARMS") as anything in armor_options
+		var/armor_options = list("轻型板甲衣套装", "鳞甲套装")
+		var/armor_choice = input(H, "选择你的护甲。", "穿上护甲") as anything in armor_options
 
 		switch(armor_choice)
-			if("Brigandine Set")
+			if("轻型板甲衣套装")
 				armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light/retinue
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 				wrists = /obj/item/clothing/wrists/roguetown/splintarms
 				pants = /obj/item/clothing/under/roguetown/splintlegs
 
-			if("Maille Set")
+			if("鳞甲套装")
 				armor = /obj/item/clothing/suit/roguetown/armor/plate/scale
 				shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/iron
 				wrists = /obj/item/clothing/wrists/roguetown/bracers
 				pants = /obj/item/clothing/under/roguetown/chainlegs
 
 		var/helmets = list(
-		"Simple Helmet" 	= /obj/item/clothing/head/roguetown/helmet,
-		"Kettle Helmet" 	= /obj/item/clothing/head/roguetown/helmet/kettle,
-		"Bascinet Helmet"		= /obj/item/clothing/head/roguetown/helmet/bascinet,
-		"Sallet Helmet"		= /obj/item/clothing/head/roguetown/helmet/sallet,
-		"Winged Helmet" 	= /obj/item/clothing/head/roguetown/helmet/winged,
-		"Skull Cap"			= /obj/item/clothing/head/roguetown/helmet/skullcap,
-		"None"
+		"简易头盔" 	= /obj/item/clothing/head/roguetown/helmet,
+		"锅盔" 	= /obj/item/clothing/head/roguetown/helmet/kettle,
+		"盆盔"		= /obj/item/clothing/head/roguetown/helmet/bascinet,
+		"萨雷特盔"		= /obj/item/clothing/head/roguetown/helmet/sallet,
+		"翼饰帽" 	= /obj/item/clothing/head/roguetown/helmet/winged,
+		"骷髅帽"			= /obj/item/clothing/head/roguetown/helmet/skullcap,
+		"无"
 		)
-		var/helmchoice = input(H, "Choose your Helm.", "TAKE UP HELMS") as anything in helmets
-		if(helmchoice != "None")
+		var/helmchoice = input(H, "选择你的头盔。", "戴上头盔") as anything in helmets
+		if(helmchoice != "无")
 			head = helmets[helmchoice]
 
 	if (H.mind)

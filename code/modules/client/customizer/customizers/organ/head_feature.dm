@@ -1,10 +1,10 @@
 /datum/customizer/organ/head_feature
 	abstract_type = /datum/customizer/organ/head_feature
-	name = "Head"
+	name = "头部"
 
 /datum/customizer_choice/organ/head_feature
 	abstract_type = /datum/customizer_choice/organ/head_feature
-	name = "Head"
+	name = "头部"
 	organ_type = /obj/item/organ/head_feature
 	organ_slot = ORGAN_SLOT_HEAD_FEATURE
 
@@ -12,7 +12,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/head_feature/skrell_hair)
 
 /datum/customizer_choice/organ/head_feature/skrell_hair
-	name = "Skrell Hair"
+	name = "斯克雷尔头发"
 	organ_type = /obj/item/organ/head_feature/skrell_hair
 	sprite_accessories = list(
 		/datum/sprite_accessory/head_feature/skrell_hair/long,
@@ -23,7 +23,7 @@
 	customizer_choices = list(/datum/customizer_choice/organ/head_feature/xeno_head)
 
 /datum/customizer_choice/organ/head_feature/xeno_head
-	name = "Xeno Head"
+	name = "异形头部"
 	organ_type = /obj/item/organ/head_feature/xeno_head
 	sprite_accessories = list(
 		/datum/sprite_accessory/head_feature/xeno_head/standard,

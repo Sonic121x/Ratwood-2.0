@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Input } from 'tgui-core/components';
-
+import { NativeButton, NativeSpan } from '../components/Localized';
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 import {
@@ -76,11 +76,11 @@ const maxWeightForTier = (tier: number): number => {
 };
 
 const weightLabel = (wc: number): string => {
-  if (wc <= WEIGHT_CLASS_TINY) return 'tiny';
-  if (wc === WEIGHT_CLASS_SMALL) return 'small';
-  if (wc === WEIGHT_CLASS_NORMAL) return 'normal';
-  if (wc === WEIGHT_CLASS_BULKY) return 'bulky';
-  return 'too heavy';
+  if (wc <= WEIGHT_CLASS_TINY) return '微小';
+  if (wc === WEIGHT_CLASS_SMALL) return '小型';
+  if (wc === WEIGHT_CLASS_NORMAL) return '普通';
+  if (wc === WEIGHT_CLASS_BULKY) return '大件';
+  return '过重';
 };
 
 type ZadcoteData = {
@@ -146,21 +146,21 @@ const ReserveHeader = (props: {
   const bombsReady = data.bomb_cooldown_remaining <= 0;
   return (
     <div style={{ position: 'relative' }}>
-      <button
+      <NativeButton
         type="button"
-        title="Open the zadcote handbook"
+        title="Open the zadcote handbook" display_title="打开扎德鸟舍手册"
         style={{ ...inkButtonStyle({}), position: 'absolute', top: 8, right: 8 }}
         onClick={onHelp}
       >
         ?
-      </button>
-      <div style={{ ...titleStyle, paddingRight: '40px' }}>{data.motto || 'Zadcote'}</div>
-      <div style={subtitleStyle}>A flock of trained zads at your call.</div>
+      </NativeButton>
+      <div style={{ ...titleStyle, paddingRight: '40px' }}>{data.motto || '扎德鸟舍'}</div>
+      <div style={subtitleStyle}>一群训练有素的扎德鸟，随时听候差遣。</div>
       <hr style={rulerStyle} />
       <div style={cardStyle}>
         <div style={fieldRowStyle}>
           <HeaderStat
-            label="Reserve"
+            label="留舍数量"
             value={
               <>
                 <span style={{ color: lowReserve ? SEAL_RED : INK, fontWeight: 'bold' }}>
@@ -171,7 +171,7 @@ const ReserveHeader = (props: {
             }
           />
           <HeaderStat
-            label="Flights"
+            label="在途批次"
             value={
               <>
                 <span style={{ fontWeight: 'bold' }}>{data.flights}</span>
@@ -180,7 +180,7 @@ const ReserveHeader = (props: {
             }
           />
           <HeaderStat
-            label="Bombs"
+            label="炸弹"
             value={
               <>
                 <span style={{ fontWeight: 'bold' }}>{data.bomb_stock}</span>
@@ -190,7 +190,7 @@ const ReserveHeader = (props: {
           />
           {!bombsReady && (
             <HeaderStat
-              label="Bombs ready in"
+              label="炸弹补充倒计时"
               value={
                 <span style={{ color: SEAL_AMBER, fontWeight: 'bold' }}>
                   {formatCountdown(data.bomb_cooldown_remaining)}
@@ -200,16 +200,16 @@ const ReserveHeader = (props: {
           )}
           {data.allows_voyeur && (
             <HeaderStat
-              label="Scrying fund"
+              label="窥视资金"
               value={
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
                   <div>
                     <span style={{ color: data.voyeur_fund < data.voyeur_cost ? SEAL_RED : INK, fontWeight: 'bold' }}>
                       {data.voyeur_fund}m
                     </span>
-                    <span style={{ color: INK_SOFT }}> ({data.voyeur_cost}m / scry)</span>
+                    <span style={{ color: INK_SOFT }}> （{data.voyeur_cost}m / 次窥视）</span>
                   </div>
-                  <button
+                  <NativeButton display_title={data.voyeur_fund <= 0 ? '窥视盆已空。' : `将窥视盆中的 ${data.voyeur_fund}m 提取为硬币。`}
                     type="button"
                     disabled={data.voyeur_fund <= 0}
                     style={inkButtonStyle({ disabled: data.voyeur_fund <= 0 })}
@@ -223,8 +223,8 @@ const ReserveHeader = (props: {
                       act('withdraw_voyeur');
                     }}
                   >
-                    Withdraw
-                  </button>
+                    提取
+                  </NativeButton>
                 </div>
               }
             />
@@ -241,7 +241,7 @@ const StatusPill = (props: { slot: ZadcoteSlot }) => {
     const direction = slot.flight_direction === 'return' ? 'returning' : 'outbound';
     const arriving = slot.flight_arrival_seconds ?? 0;
     return (
-      <span
+      <NativeSpan display_title={`扎德鸟正在${direction === 'returning' ? '返航' : '去程飞行'}，将于 ${formatCountdown(arriving)} 后抵达`}
         style={{
           color: SEAL_AMBER,
           fontWeight: 'bold',
@@ -249,13 +249,13 @@ const StatusPill = (props: { slot: ZadcoteSlot }) => {
         }}
         title={`A flight is ${direction}, arriving in ${formatCountdown(arriving)}`}
       >
-        {direction}
+        {direction === 'returning' ? '返航中' : '去程中'}
         {slot.flight_zads ? ` (${slot.flight_zads})` : ''}
         {' — '}
         <span style={{ color: INK_SOFT, fontWeight: 'normal', fontVariantNumeric: 'tabular-nums' }}>
           {formatCountdown(arriving)}
         </span>
-      </span>
+      </NativeSpan>
     );
   }
   if (slot.severed) {
@@ -267,7 +267,7 @@ const StatusPill = (props: { slot: ZadcoteSlot }) => {
           fontSize: FONT_BODY,
         }}
       >
-        Severed
+        已断开
       </span>
     );
   }
@@ -280,7 +280,7 @@ const StatusPill = (props: { slot: ZadcoteSlot }) => {
           fontSize: FONT_BODY,
         }}
       >
-        Awaiting a cage
+        等待连接鸟笼
       </span>
     );
   }
@@ -292,7 +292,7 @@ const StatusPill = (props: { slot: ZadcoteSlot }) => {
         fontSize: FONT_BODY,
       }}
     >
-      Linked
+      已连结
     </span>
   );
 };
@@ -366,14 +366,14 @@ const SendPanel = (props: {
     .map((item) => item.ref);
 
   const refusedReason = (() => {
-    if (slot.severed) return 'The zadlink is severed.';
-    if (!slot.bonded) return 'No cage is bonded to this slot.';
-    if (slot.in_flight) return 'A flight is already on this slot.';
-    if (slot.cage_occupied) return 'That zadcage is already occupied.';
-    if (slot.cage_has_payload) return 'Unclaimed parcels still sit in that cage.';
-    if (data.flights >= data.flight_cap) return 'Too many flights in the air.';
-    if (data.reserve < effectiveZads) return `Only ${data.reserve} zads remain in the cote.`;
-    if (overLimit) return `Message exceeds ${MESSAGE_MAX} characters.`;
+    if (slot.severed) return '扎德鸟连结已断开。';
+    if (!slot.bonded) return '此栏位尚未连接鸟笼。';
+    if (slot.in_flight) return '此栏位已有扎德鸟在途。';
+    if (slot.cage_occupied) return '该扎德鸟笼已被占用。';
+    if (slot.cage_has_payload) return '该鸟笼内还有未领取的包裹。';
+    if (data.flights >= data.flight_cap) return '在途批次过多。';
+    if (data.reserve < effectiveZads) return `鸟舍中只剩 ${data.reserve} 只扎德鸟。`;
+    if (overLimit) return `消息超过 ${MESSAGE_MAX} 字符。`;
     return null;
   })();
 
@@ -405,16 +405,16 @@ const SendPanel = (props: {
             fontWeight: 'bold',
           }}
         >
-          Dispatch to {slot.label}
+          寄往 {slot.label}
         </span>
         <button type="button" style={inkButtonStyle({})} onClick={onClose}>
-          Close
+          关闭
         </button>
       </div>
 
       <div style={{ marginBottom: '8px' }}>
         <div style={{ display: 'flex', alignItems: 'baseline' }}>
-          <div style={{ ...captionStyle, flex: 1 }}>Message</div>
+          <div style={{ ...captionStyle, flex: 1 }}>消息</div>
           <div
             style={{
               color: overLimit ? SEAL_RED : INK_FAINT,
@@ -442,7 +442,7 @@ const SendPanel = (props: {
       </div>
 
       <div style={{ marginBottom: '8px', opacity: bombs > 0 ? 0.4 : 1 }}>
-        <div style={captionStyle}>Payload in hand</div>
+        <div style={captionStyle}>手持载荷</div>
         {bombs > 0 ? (
           <div
             style={{
@@ -452,7 +452,7 @@ const SendPanel = (props: {
               padding: '4px 0',
             }}
           >
-            Bombs are loaded - no other payload will fly with them.
+            已装载炸弹，无法同时携带其他物品。
           </div>
         ) : data.payload_in_hand.length === 0 ? (
           <div
@@ -463,7 +463,7 @@ const SendPanel = (props: {
               padding: '4px 0',
             }}
           >
-            Hold a parcel in your active hand to send it with the zad.
+            用当前选中的手拿着包裹，即可交由扎德鸟寄送。
           </div>
         ) : (
           data.payload_in_hand.map((item) => {
@@ -502,7 +502,7 @@ const SendPanel = (props: {
                   }}
                 >
                   {tooHeavy
-                    ? `${weightLabel(item.w_class)} - needs more zads`
+                    ? `${weightLabel(item.w_class)} - 需要更多扎德鸟`
                     : weightLabel(item.w_class)}
                 </span>
               </label>
@@ -513,7 +513,7 @@ const SendPanel = (props: {
 
       <div style={{ display: 'flex', gap: '24px', marginBottom: '8px' }}>
         <div>
-          <div style={captionStyle}>Zads</div>
+          <div style={captionStyle}>扎德鸟</div>
           <SegmentedPicker
             options={[1, 2, 3]}
             value={effectiveZads}
@@ -525,15 +525,15 @@ const SendPanel = (props: {
           />
           <div style={{ color: INK_FAINT, fontSize: FONT_SMALL, marginTop: '4px' }}>
             {effectiveZads === 1
-              ? '1 zad: tiny or small parcel.'
+              ? '1 只扎德鸟：微小或小型包裹。'
               : effectiveZads === 2
-                ? '2 zads: pouch, helmet, or normal-sized item.'
-                : '3 zads: bulky parcel, large container, or a great weapon.'}
+                ? '2 只扎德鸟：小袋、头盔或普通大小的物品。'
+                : '3 只扎德鸟：大件包裹、大型容器或重型武器。'}
           </div>
         </div>
         {bombsAvailable && (
           <div>
-            <div style={captionStyle}>Bottlebombs</div>
+            <div style={captionStyle}>瓶装炸弹</div>
             <SegmentedPicker
               options={bombOptions}
               value={bombs}
@@ -547,19 +547,19 @@ const SendPanel = (props: {
       </div>
       {bombs > 0 && (
         <div style={{ marginBottom: '8px' }}>
-          <div style={captionStyle}>Bomb caw (optional, 40 chars)</div>
+          <div style={captionStyle}>投弹喊话（选填，40 字符）</div>
           <Input
             fluid
             value={bombCaw}
             maxLength={40}
-            placeholder="The zads will caw this before they drop. Leave blank for silence."
+            placeholder="扎德鸟会在投弹前喊出这句话。留空则保持安静。"
             onChange={setBombCaw}
           />
         </div>
       )}
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-        <button
+        <NativeButton display_title={refusedReason ?? '放飞扎德鸟'}
           type="button"
           disabled={!sendable}
           style={inkButtonStyle({ disabled: !sendable })}
@@ -577,8 +577,8 @@ const SendPanel = (props: {
             onClose();
           }}
         >
-          Send
-        </button>
+          寄送
+        </NativeButton>
         {refusedReason && (
           <span style={{ color: SEAL_RED, fontSize: FONT_BODY }}>
             {refusedReason}
@@ -619,7 +619,7 @@ const SlotNameField = (props: {
       <Input
         value={draft}
         onChange={setDraft}
-        placeholder={`Slot ${slot.slot}`}
+        placeholder={`栏位 ${slot.slot}`}
         maxLength={32}
         width="220px"
       />
@@ -632,7 +632,7 @@ const SlotNameField = (props: {
           act('set_slot_name', { slot: slot.slot, name: draft });
         }}
       >
-        Set
+        设定
       </button>
     </div>
   );
@@ -665,7 +665,7 @@ const SlotRow = (props: {
         </div>
       </div>
       <div style={{ display: 'flex', gap: '4px', marginTop: '4px', justifyContent: 'flex-end' }}>
-        <button
+        <NativeButton display_title={slot.in_flight ? '通过此栏位寄送。当前在途的扎德鸟会先落地。' : '通过此栏位寄送。'}
           type="button"
           style={inkButtonStyle({ disabled: slot.severed })}
           disabled={slot.severed}
@@ -676,10 +676,10 @@ const SlotRow = (props: {
           }
           onClick={onToggle}
         >
-          {expanded ? 'Hide' : 'Send'}
-        </button>
+          {expanded ? '收起' : '寄送'}
+        </NativeButton>
         {data.allows_voyeur && (
-          <button
+          <NativeButton display_title={!fundsOk ? `窥视资金不足。向扎德鸟舍投入玛门币（需要 ${data.voyeur_cost}m）。` : canVoyeur ? `通过连结的扎德鸟窥视，消耗鸟舍窥视资金 ${data.voyeur_cost}m。` : '无法窥视。'}
             type="button"
             style={inkButtonStyle({ disabled: !canVoyeur })}
             disabled={!canVoyeur}
@@ -695,10 +695,10 @@ const SlotRow = (props: {
               act('voyeur', { slot: slot.slot });
             }}
           >
-            Scry
-          </button>
+            窥视
+          </NativeButton>
         )}
-        <button
+        <NativeButton display_title={slot.allow_summons ? '允许召唤：持笼者可以随时召唤扎德鸟。' : '禁止召唤：持笼者无法召唤扎德鸟。'}
           type="button"
           style={inkButtonStyle({ disabled: !canSever })}
           disabled={!canSever}
@@ -712,9 +712,9 @@ const SlotRow = (props: {
             act('toggle_summons', { slot: slot.slot });
           }}
         >
-          {slot.allow_summons ? 'Summons: on' : 'Summons: off'}
-        </button>
-        <button
+          {slot.allow_summons ? '召唤：允许' : '召唤：禁止'}
+        </NativeButton>
+        <NativeButton display_title={canSever ? '断开此扎德鸟连结。在途的扎德鸟会先完成行程。' : '没有可断开的连结。'}
           type="button"
           style={inkButtonStyle({ disabled: !canSever })}
           disabled={!canSever}
@@ -728,8 +728,8 @@ const SlotRow = (props: {
             act('sever', { slot: slot.slot });
           }}
         >
-          Sever
-        </button>
+          断开
+        </NativeButton>
       </div>
       {expanded && !slot.severed && slot.bonded && (
         <SendPanel data={data} slot={slot} act={act} onClose={onToggle} />
@@ -744,16 +744,16 @@ export const Zadcote = () => {
   const [tab, setTab] = useState<'slots' | 'log'>('slots');
 
   return (
-    <Window title="Zadcote" width={720} height={760} theme="parchment">
+    <Window title="Zadcote" display_title="扎德鸟舍" width={720} height={760} theme="parchment">
       <Window.Content scrollable>
         <div style={pageStyle}>
           <ReserveHeader data={data} onHelp={() => act('help')} act={act} />
           <div style={{ display: 'flex', gap: '6px', margin: '8px 0' }}>
             <TabButton active={tab === 'slots'} onClick={() => setTab('slots')}>
-              Zadlinks
+              扎德鸟连结
             </TabButton>
             <TabButton active={tab === 'log'} onClick={() => setTab('log')}>
-              Mail Ledger {data.mail_log.length > 0 ? `(${data.mail_log.length})` : ''}
+              邮递账簿 {data.mail_log.length > 0 ? `(${data.mail_log.length})` : ''}
             </TabButton>
           </div>
           {tab === 'slots' && (
@@ -767,7 +767,7 @@ export const Zadcote = () => {
                     padding: '6px 0',
                   }}
                 >
-                  No zadlinks. Strike a zadcage on the cote to bond one.
+                  暂无扎德鸟连结。用扎德鸟笼敲击鸟舍即可建立连结。
                 </div>
               ) : (
                 data.slots.map((slot) => (
@@ -840,7 +840,7 @@ const MailColumn = (props: {
           borderBottomColor: accent,
         }}
       >
-        {title} ({entries.length})
+        {title === 'SENT' ? '已寄出' : title === 'RECEIVED' ? '已收回' : title} ({entries.length})
       </div>
       {entries.length === 0 ? (
         <div
@@ -852,7 +852,7 @@ const MailColumn = (props: {
             fontSize: FONT_SMALL,
           }}
         >
-          Nothing yet.
+          暂无记录。
         </div>
       ) : (
         entries.map((entry, idx) => {
@@ -889,29 +889,29 @@ const MailColumn = (props: {
                 if (zads <= 0) return null;
                 const verb =
                   entry.kind === 'returned'
-                    ? 'Returned'
+                    ? '已返回'
                     : entry.summoned
-                      ? 'Summoned'
-                      : 'Sent';
+                      ? '已召唤'
+                      : '已派出';
                 return (
                   <div style={{ color: INK_SOFT, fontSize: FONT_SMALL, paddingLeft: '8px' }}>
-                    {verb}: {zads} zad{zads === 1 ? '' : 's'}
+                    {verb}：{zads} 只扎德鸟
                   </div>
                 );
               })()}
               {entry.items && entry.items.length > 0 ? (
                 <div style={{ color: INK_SOFT, fontSize: FONT_SMALL, paddingLeft: '8px' }}>
-                  {entry.kind === 'sent' ? 'Carried' : 'Brought'}: {entry.items.join(', ')}
+                  {entry.kind === 'sent' ? '寄出物品' : '带回物品'}：{entry.items.join('、')}
                 </div>
               ) : null}
               {entry.kind === 'sent' && (entry.bombs ?? 0) > 0 ? (
                 <div style={{ color: SEAL_RED, fontSize: FONT_SMALL, paddingLeft: '8px' }}>
-                  {entry.bombs} bottlebomb{entry.bombs === 1 ? '' : 's'} attached
+                  携带 {entry.bombs} 枚瓶装炸弹
                 </div>
               ) : null}
               {entry.kind === 'returned' && (entry.lost ?? 0) > 0 ? (
                 <div style={{ color: SEAL_RED, fontSize: FONT_SMALL, paddingLeft: '8px' }}>
-                  {entry.lost} of {entry.zads_used} zad{entry.zads_used === 1 ? '' : 's'} lost to exhaustion
+                  {entry.zads_used} 只扎德鸟中有 {entry.lost} 只因力竭而损失
                 </div>
               ) : null}
               {hasMessage && expanded && (

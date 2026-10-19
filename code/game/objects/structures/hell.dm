@@ -63,7 +63,7 @@ GLOBAL_LIST_EMPTY(hellspawns)
 			isinhell = TRUE
 
 /mob/dead/observer/say_verb(message as text)
-	set name = "Say"
+	set name = "说话"
 	set category = "IC"
 	set hidden = 1
 
@@ -76,7 +76,7 @@ GLOBAL_LIST_EMPTY(hellspawns)
 #endif
 
 /obj/structure/fluff/psyexit
-	name = "escape"
+	name = "出口"
 	icon = 'icons/roguetown/misc/hell.dmi'
 	icon_state = "hellexit"
 	alpha = 150
@@ -108,7 +108,7 @@ GLOBAL_LIST_EMPTY(hellspawns)
 		user.returntolobby()
 
 /obj/structure/fluff/helljailer
-	name = "jailer"
+	name = "狱卒"
 	icon = 'icons/roguetown/mob/monster/hellkeeper.dmi'
 	icon_state = "hellkeeper"
 	density = FALSE

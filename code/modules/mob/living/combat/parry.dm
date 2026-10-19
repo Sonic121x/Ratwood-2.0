@@ -156,9 +156,9 @@
 		extradefroll = prob(prob2defend)
 		defender_dualw = TRUE
 
-	var/text = "Roll to parry... [HAS_TRAIT(attacker, TRAIT_DECEIVING_MEEKNESS) ? "???" : prob2defend]%"
+	var/text = "招架判定……[HAS_TRAIT(attacker, TRAIT_DECEIVING_MEEKNESS) ? "???" : prob2defend]%"
 	if(defender_dualw)
-		text += " Twice! Disadvantage! [!HAS_TRAIT(attacker, TRAIT_DECEIVING_MEEKNESS) ? "([(prob2defend / 100) * (prob2defend / 100) * 100]%)" : ""]"
+		text += " 劣势判定，需连续成功两次！[!HAS_TRAIT(attacker, TRAIT_DECEIVING_MEEKNESS) ? "（[(prob2defend / 100) * (prob2defend / 100) * 100]%）" : ""]"
 
 	if(has_status_effect(/datum/status_effect/swingdelay/penalty))
 		prob2defend -= 50
@@ -177,7 +177,7 @@
 				if(intenty.masteritem.wbalance < WBALANCE_NORMAL && attacker.STASTR > src.STASTR) //enemy weapon is heavy, so get a bonus scaling on strdiff
 					stamina_drained = stamina_drained + ( intenty.masteritem.wbalance * ((attacker.STASTR - src.STASTR) * STAM_DRAIN_PER_STR_DIFF_HEAVY_BAL) )
 	else
-		text += span_warning(" The enemy defeated my parry!")
+		text += span_warning(" 敌人突破了我的招架！")
 	if(src.client?.prefs.showrolls)
 		to_chat(src, span_info("[text]"))
 
@@ -187,7 +187,7 @@
 			if(magearmor == 0)
 				magearmor = 1
 				apply_status_effect(/datum/status_effect/buff/magearmor)
-				to_chat(src, span_boldwarning("My mage armor absorbs the hit and dissipates!"))
+				to_chat(src, span_boldwarning("我的法师护甲吸收了这一击，随之消散！"))
 				return TRUE
 			else
 				return FALSE
@@ -195,7 +195,7 @@
 			if(scalearmor == 0)
 				scalearmor = 1
 				apply_status_effect(/datum/status_effect/buff/scalearmor)
-				to_chat(src, span_boldwarning("My scales absorb the hit and dissipate the force!"))
+				to_chat(src, span_boldwarning("我的鳞片承受了这一击，化解了冲击！"))
 				return TRUE
 			else
 				return FALSE
@@ -312,7 +312,7 @@
 
 	var/mob/living/carbon/human/blocker = src
 	if(!blocker.stamina_add(parrydrain))
-		to_chat(src, span_warning("I'm too tired to parry!"))
+		to_chat(src, span_warning("我太累了，无法招架！"))
 		return FALSE //crush through
 	if(weapon)
 		playsound(get_turf(src), pick(weapon.parrysound), 100, FALSE)
@@ -320,9 +320,9 @@
 		record_round_statistic(STATS_PARRIES)
 		log_combat(src, attacker, "parried", weapon, defense_log_note(attacker))
 	if(istype(rmb_intent, /datum/rmb_intent/riposte))
-		visible_message(span_boldwarning("<b>[src]</b> ripostes [attacker] with [weapon]!"))
+		visible_message(span_boldwarning("<b>[src]</b>用[weapon]反击了[attacker]！"))
 	else
-		visible_message(span_boldwarning("<b>[src]</b> parries [attacker] with [weapon]!"))
+		visible_message(span_boldwarning("<b>[src]</b>用[weapon]架开了[attacker]的攻击！"))
 	if(!iscarbon(attacker))	//Non-carbon mobs never make it to the proper parry proc where the other calculations are done.
 		if(weapon.max_blade_int)
 			weapon.remove_bintegrity(SHARPNESS_ONHIT_DECAY, attacker)
@@ -336,13 +336,13 @@
 		var/mob/living/carbon/human/H = src
 		if(H.stamina_add(parrydrain))
 			playsound(get_turf(src), pick(parry_sound), 100, FALSE)
-			visible_message(span_warning("<b>[src]</b> parries [attacker]!"))
+			visible_message(span_warning("<b>[src]</b>架开了[attacker]的攻击！"))
 			if(client)
 				record_round_statistic(STATS_PARRIES)
 				log_combat(src, attacker, "parried", null, defense_log_note(attacker))
 			return TRUE
 		else
-			to_chat(src, span_boldwarning("I'm too tired to parry!"))
+			to_chat(src, span_boldwarning("我太累了，无法招架！"))
 			return FALSE
 	else
 		if(client)

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { SHIP_TYPE_LABELS } from '../../common/displayNames';
 import {
   compactButtonStyle,
   denseRowStyle,
@@ -21,13 +22,12 @@ import {
 } from '../../common/parchment';
 import type { ActFn, BulkLine, HarborRealm, HarborShip } from '../types';
 import { RealmCard } from './RealmCard';
-
 const formatDuration = (totalSeconds: number) => {
-  if (totalSeconds <= 0) return 'now';
+  if (totalSeconds <= 0) return '现在';
   const minutes = Math.floor(totalSeconds / 60);
-  if (minutes < 1) return 'less than a minute';
-  if (minutes === 1) return '1 minute';
-  return `${minutes} minutes`;
+  if (minutes < 1) return '不到一分钟';
+  if (minutes === 1) return '1 分钟';
+  return `${minutes} 分钟`;
 };
 
 const SMALL_WORDS = new Set([
@@ -75,9 +75,9 @@ type DemandGroup = 'goods' | 'food' | 'drinks';
 const DEMAND_GROUP_ORDER: DemandGroup[] = ['goods', 'food', 'drinks'];
 
 const DEMAND_GROUP_LABEL: Record<DemandGroup, string> = {
-  goods: 'Goods',
-  food: 'Food',
-  drinks: 'Drinks',
+  goods: '货物',
+  food: '食物',
+  drinks: '饮料',
 };
 
 const tagToDemandGroup = (tag?: string): DemandGroup => {
@@ -136,8 +136,8 @@ const DemandLineRow = (props: { line: BulkLine }) => {
       }}
       title={
         hasKin
-          ? `Buying ${line.qty_target} ${titleCase(line.good_name)} at ${displayedPrice}m each (Kinship +${displayedPrice - line.offered_price}m over base ${line.offered_price}m). ${line.qty_fulfilled} delivered so far.`
-          : `Buying ${line.qty_target} ${titleCase(line.good_name)} at ${line.offered_price}m each (${line.qty_fulfilled} delivered so far)`
+          ? `收购 ${line.qty_target} ${titleCase(line.good_name)}, 单价 ${displayedPrice}m (亲缘 +${displayedPrice - line.offered_price}m, 基础价 ${line.offered_price}m). 目前已交付 ${line.qty_fulfilled}.`
+          : `收购 ${line.qty_target} ${titleCase(line.good_name)}, 单价 ${line.offered_price}m (目前已交付 ${line.qty_fulfilled})`
       }
     >
       <span style={ellipsisCellStyle}>{titleCase(line.good_name)}</span>
@@ -199,8 +199,8 @@ const SupplyLineRow = (props: {
       }}
       title={
         hasKin
-          ? `Selling ${titleCase(line.good_name)} at ${unitPrice}m each (Kinship -${line.offered_price - unitPrice}m off ${line.offered_price}m). ${line.qty_fulfilled} of ${line.qty_target} sold.`
-          : `Selling ${titleCase(line.good_name)} at ${line.offered_price}m each (${line.qty_fulfilled} of ${line.qty_target} sold)`
+          ? `出售 ${titleCase(line.good_name)}, 单价 ${unitPrice}m (亲缘 -${line.offered_price - unitPrice}m, 原价 ${line.offered_price}m). 已售出 ${line.qty_fulfilled} / ${line.qty_target}.`
+          : `出售 ${titleCase(line.good_name)}, 单价 ${line.offered_price}m (已售出 ${line.qty_fulfilled} / ${line.qty_target})`
       }
     >
       <span style={ellipsisCellStyle}>{titleCase(line.good_name)}</span>
@@ -227,7 +227,7 @@ const SupplyLineRow = (props: {
         </span>
       )}
       {soldOut ? (
-        <span style={{ color: INK_FAINT }}>sold</span>
+        <span style={{ color: INK_FAINT }}>已售罄</span>
       ) : (
         <>
           <input
@@ -258,8 +258,8 @@ const SupplyLineRow = (props: {
             disabled={cantAfford}
             title={
               cantAfford
-                ? `Need ${totalCost}m, have ${budget}m`
-                : `Buy ${safeQty} for ${totalCost}m`
+                ? `需要 ${totalCost}m, 持有 ${budget}m`
+                : `以 ${totalCost}m 购买 ${safeQty}`
             }
             onClick={() =>
               act('bulk_buy', {
@@ -269,7 +269,7 @@ const SupplyLineRow = (props: {
               })
             }
           >
-            Buy
+            购买
           </button>
         </>
       )}
@@ -311,7 +311,7 @@ export const ShipRow = (props: Props) => {
           <div style={{ color: INK, fontWeight: 'bold', fontSize: FONT_TITLE }}>
             {!!ship.auto_hailed && (
               <span
-                title="This vessel sailed in unbidden while no Merchant was tending the harbor. Dismiss her freely with no penalty."
+                title="此船在无商人看管港口时擅自驶入. 你可无偿将其遣走, 不受惩罚."
                 style={{
                   marginRight: '6px',
                   padding: '0 4px',
@@ -324,25 +324,25 @@ export const ShipRow = (props: Props) => {
                   verticalAlign: 'middle',
                 }}
               >
-                DRIFTED IN
+                漂入
               </span>
             )}
             {ship.ship_name}
           </div>
           {ship.captain_name && (
             <div style={{ color: INK_SOFT, fontSize: FONT_BODY }}>
-              Captain {ship.captain_name}
-              {ship.port_of_origin ? ` - sailing from ${ship.port_of_origin}` : ''}
+              船长 {ship.captain_name}
+              {ship.port_of_origin ? ` - 来自 ${ship.port_of_origin}` : ''}
             </div>
           )}
           {!ship.captain_name && ship.port_of_origin && (
             <div style={{ color: INK_SOFT, fontSize: FONT_BODY }}>
-              Sailing from {ship.port_of_origin}
+              来自 {ship.port_of_origin}
             </div>
           )}
           {ship.seconds_until_departure !== undefined && (
             <div style={{ color: SEAL_AMBER, fontSize: FONT_LEAD }}>
-              Departs in {formatDuration(ship.seconds_until_departure)}
+              {formatDuration(ship.seconds_until_departure)}后离港
             </div>
           )}
         </div>
@@ -356,7 +356,7 @@ export const ShipRow = (props: Props) => {
           }}
         >
           <div
-            title={`Tonnage scales goods on offer and expected favor. 100t baseline = 1.00x, 800t galleon caps at 2.00x. This vessel: ${ship.tonnage_mult.toFixed(2)}x.`}
+            title={`吨位会影响可供货物的数量与预期恩惠. 100t 为基准 = 1.00x, 800t 大帆船封顶 2.00x. 本船: ${ship.tonnage_mult.toFixed(2)}x.`}
             style={{ position: 'relative' }}
           >
             {realm ? (
@@ -377,7 +377,7 @@ export const ShipRow = (props: Props) => {
                   cursor: 'pointer',
                   borderBottom: `1px dotted ${SEAL_AMBER}`,
                 }}
-                title="Click to see what this realm typically wants and sells"
+                title="点击查看该国度的常规需求与出售之物"
               >
                 {ship.realm_id}
               </button>
@@ -387,7 +387,7 @@ export const ShipRow = (props: Props) => {
               </span>
             )}
             <span style={{ color: INK_FAINT }}> &middot; </span>
-            {ship.ship_type} &middot; {ship.tonnage}t
+            {SHIP_TYPE_LABELS[ship.ship_type] || ship.ship_type} &middot; {ship.tonnage}t
             {ship.tonnage_mult > 1.0 && (
               <span style={{ color: SEAL_AMBER }}>
                 {' '}({ship.tonnage_mult.toFixed(2)}x)
@@ -446,7 +446,7 @@ export const ShipRow = (props: Props) => {
                       padding: '0 4px',
                       lineHeight: 1,
                     }}
-                    title="Close"
+                    title="关闭"
                   >
                     ✕
                   </button>
@@ -458,11 +458,11 @@ export const ShipRow = (props: Props) => {
           {ship.expected_favor > 0 && (
             <div
               style={{ color: SEAL_AMBER }}
-              title={`Send-off favor: Honored at 100% of target gives you the full delivered value as favor plus a refunded hail. Partial at 50% gives you half delivered value as favor. Below 50% is Dishonored and costs ${Math.round(250 * ship.tonnage_mult)}m favor for this vessel.`}
+              title={`送行恩惠: 达成目标 100% 为受敬, 你可获得全额交付价值作为恩惠, 并退还招呼. 达成 50% 为部分, 你可获得半数交付价值作为恩惠. 低于 50% 为失敬, 该船将扣除 ${Math.round(250 * ship.tonnage_mult)}m 恩惠.`}
             >
               {!!ship.is_kin && (
                 <span
-                  title="Kin ship - Kinship Bonus applies"
+                  title="亲缘船只 - 亲缘加成生效"
                   style={{
                     marginRight: '6px',
                     padding: '0 4px',
@@ -475,10 +475,10 @@ export const ShipRow = (props: Props) => {
                     verticalAlign: 'middle',
                   }}
                 >
-                  KIN
+                  亲缘
                 </span>
               )}
-              Favor: {ship.favor_earned}m / {ship.expected_favor}m
+              恩惠: {ship.favor_earned}m / {ship.expected_favor}m
             </div>
           )}
         </div>
@@ -488,10 +488,10 @@ export const ShipRow = (props: Props) => {
               type="button"
               style={inkButtonStyle({ disabled: !!hailDisabled })}
               disabled={!!hailDisabled}
-              title={hailDisabled ? hailDisabledReason : 'Hail this vessel'}
+              title={hailDisabled ? hailDisabledReason : '招呼此船'}
               onClick={onHail}
             >
-              Hail
+              招呼
             </button>
           </div>
         )}
@@ -503,14 +503,14 @@ export const ShipRow = (props: Props) => {
               disabled={!ship.can_send_away}
               title={
                 ship.auto_hailed
-                  ? 'This vessel drifted in - dismiss her freely, no penalty.'
+                  ? '此船自行漂入 - 可无偿将其遣走, 不受惩罚.'
                   : ship.can_send_away
-                    ? 'Send this vessel away early.'
-                    : 'She has only just docked.'
+                    ? '提前将这艘船送走.'
+                    : '她刚刚才靠岸.'
               }
               onClick={onSendAway}
             >
-              Send Away
+              遣走
             </button>
           </div>
         )}
@@ -538,7 +538,7 @@ export const ShipRow = (props: Props) => {
                 marginBottom: '3px',
               }}
             >
-              Buying
+              收购
             </div>
             {ship.bulk_demands?.length ? (
               (() => {
@@ -566,7 +566,7 @@ export const ShipRow = (props: Props) => {
               })()
             ) : (
               <div style={{ color: INK_FAINT, fontSize: FONT_SMALL, fontStyle: 'italic' }}>
-                Nothing wanted.
+                无所需求.
               </div>
             )}
           </div>
@@ -584,7 +584,7 @@ export const ShipRow = (props: Props) => {
                 marginBottom: '3px',
               }}
             >
-              Selling
+              出售
             </div>
             {ship.bulk_supplies?.length ? (
               ship.bulk_supplies.map((line) => (
@@ -598,7 +598,7 @@ export const ShipRow = (props: Props) => {
               ))
             ) : (
               <div style={{ color: INK_FAINT, fontSize: FONT_SMALL, fontStyle: 'italic' }}>
-                Nothing on offer.
+                暂无供货.
               </div>
             )}
           </div>

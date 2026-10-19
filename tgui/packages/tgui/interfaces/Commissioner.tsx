@@ -35,13 +35,13 @@ export const Commissioner = () => {
   if (activeTab === 'config' && !isGuildmaster) activeTab = 'browse';
 
   return (
-    <Window width={880} height={720} theme="parchment">
+    <Window display_title="委托官" width={880} height={720} theme="parchment">
       <Window.Content scrollable>
         <div style={pageStyle}>
-          <div style={titleStyle}>The Commissioner</div>
+          <div style={titleStyle}>委托官</div>
           <div style={subtitleStyle}>
-            Commission smithing and engineering work. Coin held in escrow until
-            the order is fulfilled.
+            发布锻造与工程委托。款项将由机器托管，
+            直至订单完成。
           </div>
           <div style={rulerStyle} />
 
@@ -55,13 +55,13 @@ export const Commissioner = () => {
             }}
           >
             <span style={{ color: SEAL_AMBER }}>
-              Escrow held
+              托管款项
             </span>
             <span style={{ color: INK, fontWeight: 'bold', marginRight: 12 }}>
               {data.budget}m
             </span>
             <span style={{ color: SEAL_AMBER }}>
-              Your deposit
+              你的存款
             </span>
             <span style={{ color: INK, fontWeight: 'bold' }}>
               {data.my_deposit}m
@@ -73,7 +73,7 @@ export const Commissioner = () => {
                 color: INK_SOFT,
               }}
             >
-              Insert coins into the machine to deposit.
+              将钱币投入机器即可存款。
             </span>
           </div>
 
@@ -82,26 +82,26 @@ export const Commissioner = () => {
               style={tabStyle(activeTab === 'browse')}
               onClick={() => setTab('browse')}
             >
-              Browse
+              浏览
             </div>
             <div
               style={tabStyle(activeTab === 'manifest')}
               onClick={() => setTab('manifest')}
             >
-              Manifest {manifestCount > 0 && `(${manifestCount})`}
+              委托清单 {manifestCount > 0 && `(${manifestCount})`}
             </div>
             <div
               style={tabStyle(activeTab === 'orders')}
               onClick={() => setTab('orders')}
             >
-              Orders {orderCount > 0 && `(${orderCount})`}
+              订单 {orderCount > 0 && `(${orderCount})`}
             </div>
             {isGuildmaster && (
               <div
                 style={tabStyle(activeTab === 'config')}
                 onClick={() => setTab('config')}
               >
-                Guildmaster
+                公会会长
               </div>
             )}
           </div>

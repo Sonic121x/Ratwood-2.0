@@ -1,6 +1,6 @@
 /obj/structure/shisha
-	name = "shisha pipe"
-	desc = "A traditional shisha pipe."
+	name = "水烟壶"
+	desc = "传统的水烟壶。"
 	icon = 'icons/roguetown/misc/64x64.dmi'
 	icon_state = "zbuski"
 	density = FALSE
@@ -24,14 +24,14 @@
 	if(istype(I, /obj/item/reagent_containers/powder)) // Accepts all powders. Flour included.
 		var/obj/item/reagent_containers/powder/powder = I
 		if(!powder.reagents?.total_volume)
-			to_chat(user, span_notice("[I] is useless for shisha."))
+			to_chat(user, span_notice("[I]对水烟壶毫无用处。"))
 			return
 
 		if(reagents.maximum_volume < reagents.total_volume + powder.reagents.total_volume)
-			to_chat(user, span_notice("[src] is already tightly packed."))
+			to_chat(user, span_notice("[src]已经塞得满满当当了。"))
 			return
 
-		to_chat(user, span_notice("I pack [src] with [powder]."))
+		to_chat(user, span_notice("我把[powder]填进了[src]。"))
 		powder.reagents.trans_to(reagents, powder.reagents.total_volume, transfered_by = user)
 		user.dropItemToGround(powder)
 		qdel(powder)
@@ -39,17 +39,17 @@
 	else if(istype(I, /obj/item/reagent_containers/food/snacks/grown))
 		var/obj/item/reagent_containers/food/snacks/grown/tobacco = I
 		if(!tobacco.pipe_reagents?.len)
-			to_chat(user, span_notice("[I] is useless for shisha."))
+			to_chat(user, span_notice("[I]对水烟壶毫无用处。"))
 			return
 
 		var/new_reagents_amt = 0
 		for(var/id in tobacco.pipe_reagents)
 			new_reagents_amt += tobacco.pipe_reagents[id]
 		if(reagents.maximum_volume < reagents.total_volume + new_reagents_amt)
-			to_chat(user, span_notice("[src] is already tightly packed."))
+			to_chat(user, span_notice("[src]已经塞得满满当当了。"))
 			return
 
-		to_chat(user, span_notice("I pack [src] with [tobacco]."))
+		to_chat(user, span_notice("我把[tobacco]填进了[src]。"))
 		reagents.add_reagent_list(tobacco.pipe_reagents)
 		user.dropItemToGround(tobacco)
 		qdel(tobacco)
@@ -64,10 +64,10 @@
 
 	if(mouthpiece?.loc == src)
 		user.put_in_active_hand(mouthpiece)
-		to_chat(user, span_notice("You grab \the [src]'s [mouthpiece]."))
+		to_chat(user, span_notice("我取下了[src]上的[mouthpiece]。"))
 		return TRUE
 	else
-		to_chat(user, span_notice("\The [src] is already in use!"))
+		to_chat(user, span_notice("[src]已经有人在用了！"))
 		return TRUE
 
 /// Called when mouthpiece needs to be reattached, either by user's click or drop.
@@ -96,15 +96,15 @@
 	return ..()
 
 /obj/structure/shisha/hookah
-	name = "shisha pipe"
-	desc = "A traditional shisha pipe."
+	name = "水烟管"
+	desc = "一根传统的水烟管。"
 	icon = 'icons/roguetown/misc/structure.dmi'
 	icon_state = "hookah"
 	anchored = FALSE
 
 /obj/item/hookah_mouthpiece
-	name = "hookah mouthpiece"
-	desc = "Pestra knows how many tongues this thing has seen so far."
+	name = "水烟嘴"
+	desc = "天知道这东西到现在被多少张嘴含过。"
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "mouthpiece"
 	force = 5 // To hit someone with it.
@@ -115,7 +115,7 @@
 	var/mob/smoker_user = null
 
 /datum/intent/smoke
-	name = "smoke"
+	name = "抽吸"
 	icon_state = "insmoke"
 	chargetime = 0
 	noaa = TRUE
@@ -167,10 +167,10 @@
 		var/mob/living/carbon/human/smoker = M
 
 		if(smoker != user)
-			user.visible_message(span_danger("[user] attempts to force [smoker] to take a puff from \the [src]."), \
-								span_danger("I attempt to force [smoker] to puff \the [src]."))
+			user.visible_message(span_danger("[user]试图强迫[smoker]吸一口[src]。"), \
+								span_danger("我试图强迫[smoker]吸一口[src]。"))
 		else
-			to_chat(smoker, span_notice("You take a pleasant puff from \the [src]."))	
+			to_chat(smoker, span_notice("我惬意地吸了一口[src]。"))	
 
 		shisha.reagents.reaction(smoker, INGEST, min(REAGENTS_METABOLISM / smoke_amount, 1))
 		if(!shisha.reagents.trans_to(smoker, smoke_amount))
@@ -185,7 +185,7 @@
 	SIGNAL_HANDLER
 	var/obj/structure/shisha/parent_shisha = parent_hookah?.resolve()
 	if(get_dist(moved, parent_shisha) > 2)
-		to_chat(moved, span_notice("[src] flies out of my hands! I walked too far away from [parent_shisha]."))
+		to_chat(moved, span_notice("[src]从我手里飞了出去！我离[parent_shisha]太远了。"))
 		moved.dropItemToGround(src, TRUE, TRUE)
 
 /obj/item/hookah_mouthpiece/Destroy()
@@ -196,8 +196,8 @@
 	return ..()
 
 /obj/item/portable_hookah
-	name = "handheld shisha pipe"
-	desc = "A smaller, portable version of a traditional shisha. Perfect for smoking on the move."
+	name = "手持水烟斗"
+	desc = "传统水烟斗的小型便携版本，适合随身携带并吸食水烟。"
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "shisha_hand"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -226,14 +226,14 @@
 	if(istype(I, /obj/item/reagent_containers/powder))
 		var/obj/item/reagent_containers/powder/powder = I
 		if(!powder.reagents?.total_volume)
-			to_chat(user, span_notice("[I] is useless for shisha."))
+			to_chat(user, span_notice("[I]不能用来吸食水烟。"))
 			return
 
 		if(reagents.total_volume >= reagents.maximum_volume)
-			to_chat(user, span_notice("[src] is already tightly packed."))
+			to_chat(user, span_notice("[src]已经塞得满满当当了。"))
 			return
 
-		to_chat(user, span_notice("I pack [src] with [powder]."))
+		to_chat(user, span_notice("我把[powder]填进了[src]。"))
 		powder.reagents.trans_to(reagents, powder.reagents.total_volume, transfered_by = user)
 		user.dropItemToGround(powder)
 		qdel(powder)
@@ -242,17 +242,17 @@
 	else if(istype(I, /obj/item/reagent_containers/food/snacks/grown))
 		var/obj/item/reagent_containers/food/snacks/grown/tobacco = I
 		if(!tobacco.pipe_reagents?.len)
-			to_chat(user, span_notice("[I] is useless for shisha."))
+			to_chat(user, span_notice("[I]不能用来吸食水烟。"))
 			return
 
 		var/new_reagents_amt = 0
 		for(var/id in tobacco.pipe_reagents)
 			new_reagents_amt += tobacco.pipe_reagents[id]
 		if(reagents.total_volume >= reagents.maximum_volume)
-			to_chat(user, span_notice("[src] is already tightly packed."))
+			to_chat(user, span_notice("[src]已经塞得满满当当了。"))
 			return
 
-		to_chat(user, span_notice("I pack [src] with [tobacco]."))
+		to_chat(user, span_notice("我把[tobacco]填进了[src]。"))
 		reagents.add_reagent_list(tobacco.pipe_reagents)
 		user.dropItemToGround(tobacco)
 		qdel(tobacco)
@@ -263,10 +263,10 @@
 /obj/item/portable_hookah/attack(mob/M, mob/user, obj/target)
 	if(user.used_intent.type == /datum/intent/smoke)
 		if(!lit)
-			to_chat(user, span_warning("[src] is not lit! You need a flame to light it."))
+			to_chat(user, span_warning("[src]还没点燃！我需要用火焰点燃它。"))
 			return
 		if(!reagents?.total_volume)
-			to_chat(user, span_warning("[src] is empty! There's nothing to smoke."))
+			to_chat(user, span_warning("[src]是空的！里面没有可供吸食的东西。"))
 			return
 
 		playsound(get_turf(src), 'sound/foley/shisha_gurgle.ogg', rand(50, 70), FALSE, -1)
@@ -282,10 +282,10 @@
 		var/smoke_amount = reagents.maximum_volume / reagents.total_volume
 
 		if(smoker != user)
-			user.visible_message(span_danger("[user] attempts to force [smoker] to take a puff from \the [src]."), \
-								span_danger("I attempt to force [smoker] to puff \the [src]."))
+			user.visible_message(span_danger("[user]试图强迫[smoker]吸一口[src]。"), \
+								span_danger("我试图强迫[smoker]吸一口[src]。"))
 		else
-			to_chat(smoker, span_notice("You take a pleasant puff from \the [src]."))		
+			to_chat(smoker, span_notice("我惬意地吸了一口[src]。"))		
 
 		reagents.reaction(user, INGEST, min(REAGENTS_METABOLISM / smoke_amount, 1))
 		if(!reagents.trans_to(smoker, smoke_amount))
@@ -298,22 +298,22 @@
 
 
 		if(!reagents.total_volume)
-			to_chat(smoker, span_warning("\The [src] goes out as the smoking mix burns out."))
+			to_chat(smoker, span_warning("烟料燃尽，[src]熄灭了。"))
 			extinguish()
 
 	else
 		if(lit)
-			user.visible_message(span_notice("[user] extinguishes \the [src]."), span_notice("You extinguish \the [src]."))
+			user.visible_message(span_notice("[user]熄灭了[src]。"), span_notice("我熄灭了[src]。"))
 			extinguish()
 		else
-			to_chat(user, span_notice("[src] is already cold. Use a heat source on it to light it up."))
+			to_chat(user, span_notice("[src]已经冷了。用热源接触它即可点燃。"))
 
 /obj/item/portable_hookah/proc/light_shisha(mob/user)
 	if(lit)
 		return
 	if(!reagents?.total_volume)
 		if(user)
-			to_chat(user, span_warning("You can't light \the [src] while it's empty! Pack it first."))
+			to_chat(user, span_warning("[src]空着时无法点燃！我得先填入烟料。"))
 		return
 
 	lit = TRUE
@@ -321,7 +321,7 @@
 	icon_state = "shisha_hand_lit"
 	playsound(src.loc, 'sound/items/firelight.ogg', 100)
 	if(user)
-		user.visible_message(span_notice("[user] lights \the [src] with a satisfying hiss."), span_notice("You light \the [src]. Candle flame is so romantic."))
+		user.visible_message(span_notice("[user]点燃了[src]，发出悦耳的嘶嘶声。"), span_notice("我点燃了[src]。烛火真浪漫。"))
 	update_icon()
 
 /obj/item/portable_hookah/extinguish()

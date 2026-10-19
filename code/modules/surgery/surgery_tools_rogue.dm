@@ -1,6 +1,6 @@
 /obj/item/rogueweapon/surgery
-	name = "surgical tool"
-	desc = "Something that will tear your guts apart."
+	name = "手术工具"
+	desc = "会撕裂你内脏的东西。"
 	icon = 'icons/roguetown/items/surgery.dmi'
 	item_state = "bone_dagger"
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
@@ -28,8 +28,8 @@
 	item_flags |= SURGICAL_TOOL //let's not stab patients for fun
 
 /obj/item/rogueweapon/surgery/scalpel
-	name = "scalpel"
-	desc = "A tool used to carve precisely into the flesh of the sickly."
+	name = "手术刀"
+	desc = "用于在病患肉体上进行精准切割的工具。"
 	icon_state = "scalpel"
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/thrust)
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH
@@ -40,8 +40,8 @@
 	smeltresult = null
 
 /obj/item/rogueweapon/surgery/saw
-	name = "saw"
-	desc = "A tool used to carve through bone."
+	name = "骨锯"
+	desc = "用于切骨的工具。"
 	icon_state = "bonesaw"
 	possible_item_intents = list(/datum/intent/dagger/cut, /datum/intent/dagger/chop/cleaver)
 	slot_flags = ITEM_SLOT_HIP
@@ -58,8 +58,8 @@
 	smeltresult = null
 
 /obj/item/rogueweapon/surgery/hemostat
-	name = "forceps"
-	desc = "A tool used to clamp down on soft tissue."
+	name = "手术钳"
+	desc = "用于夹持软组织的工具。"
 	icon_state = "forceps"
 	possible_item_intents = list(/datum/intent/use)
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH
@@ -71,17 +71,17 @@
 	smeltresult = null
 
 /obj/item/rogueweapon/surgery/hemostat/first //Three different types now to allow multiple surgical sites at once.
-	name = "\improper Tarsis forceps"
+	name = "\proper 塔尔西斯钳"
 
 /obj/item/rogueweapon/surgery/hemostat/second
-	name = "\improper Sisrat forceps"
+	name = "\proper 西斯拉特钳"
 
 /obj/item/rogueweapon/surgery/hemostat/third
-	name = "\improper Medella forceps"
+	name = "\proper 梅德拉钳"
 
 /obj/item/rogueweapon/surgery/retractor
-	name = "speculum"
-	desc = "A tool used to spread tissue open for surgical access."
+	name = "扩张器"
+	desc = "用于撑开组织以进行手术操作的工具。"
 	icon_state = "speculum"
 	possible_item_intents = list(/datum/intent/use)
 	slot_flags = ITEM_SLOT_HIP
@@ -97,8 +97,8 @@
 	smeltresult = null
 
 /obj/item/rogueweapon/surgery/bonesetter
-	name = "bone forceps"
-	desc = "A tool used to clamp down on hard tissue."
+	name = "骨钳"
+	desc = "用于夹持硬组织的工具。"
 	icon_state = "bonesetter"
 	possible_item_intents = list(/datum/intent/use)
 	slot_flags = ITEM_SLOT_HIP|ITEM_SLOT_MOUTH
@@ -110,8 +110,8 @@
 	smeltresult = null
 
 /obj/item/rogueweapon/surgery/cautery
-	name = "cautery iron"
-	desc = "A tool used to cauterize wounds. Heat it up before use."
+	name = "烙铁"
+	desc = "用于烧灼伤口的工具。使用前先加热。"
 	icon_state = "cauteryiron"
 	possible_item_intents = list(/datum/intent/use, /datum/intent/mace/strike, /datum/intent/mace/smash)
 	slot_flags = ITEM_SLOT_HIP
@@ -136,7 +136,7 @@
 /obj/item/rogueweapon/surgery/cautery/examine(mob/user)
 	. = ..()
 	if(heated)
-		. += span_warning("The tip is hot to the touch.")
+		. += span_warning("尖端摸起来很烫。")
 
 /obj/item/rogueweapon/surgery/cautery/update_icon_state()
 	. = ..()
@@ -153,7 +153,7 @@
 		if(forge.on)
 			heating = 20
 	if(heating)
-		user.visible_message(span_info("[user] heats [src]."))
+		user.visible_message(span_info("[user]加热了[src]。"))
 		fire_act(heating)
 		return TRUE
 	return ..()
@@ -183,8 +183,8 @@
 	update_icon()
 
 /obj/item/rogueweapon/surgery/cautery/branding
-	name = "branding iron"
-	desc = "A iron that is well-writ upon flesh. Heat it up before use."
+	name = "烙印铁"
+	desc = "在肉体上留下铭文的烙铁。使用前先加热。"
 	icon_state = "brandingiron"
 	possible_item_intents = list(/datum/intent/use)
 	var/setbranding = null
@@ -194,12 +194,12 @@
 	var/branding_count = 0
 
 /obj/item/rogueweapon/surgery/cautery/branding/slave
-	name = "slaver branding iron"
-	desc = "Used to claim ownership on lost property. Heat it up before use."
+	name = "奴隶烙印铁"
+	desc = "用于在失物上标记所有权。使用前先加热。"
 
 /obj/item/rogueweapon/surgery/cautery/branding/crude
-	name = "crude branding stick"
-	desc = "It's made of coal, string and a stick. Looks like I can brand myself with it at least two times before it snaps. Heat it up before use."
+	name = "粗糙烙印棍"
+	desc = "由煤炭、绳子和一根棍子制成。看起来在断裂之前至少能给自己烙印两次。使用前先加热。"
 	icon_state = "brandingiron_crude"
 	branding_damage = 10
 	branding_low_quality = TRUE
@@ -208,14 +208,14 @@
 /obj/item/rogueweapon/surgery/cautery/branding/examine(mob/user)
 	. = ..()
 	if(remove_existing_brand)
-		. += span_warning("It is set to remove existing brands.")
+		. += span_warning("设置为移除现有烙印。")
 	else
 		if(!setbranding || !length(setbranding))
-			. += span_warning("There is no branding symbol set yet.")
+			. += span_warning("尚未设置烙印符号。")
 		if(enslave)
-			. += span_warning("It will imprint [setbranding], a permanent mark of ownership")
+			. += span_warning("将印下[setbranding]，一个永久的所有权标记。")
 		else
-			. += span_warning("It will imprint [setbranding]")
+			. += span_warning("将印下[setbranding]")
 
 /obj/item/rogueweapon/surgery/cautery/branding/attack_self(mob/living/user)
 	. = ..()
@@ -223,31 +223,31 @@
 		return
 	if(!user.cmode)
 		if(heated)
-			to_chat(user, span_warning("It is too hot to change the symbols!"))
+			to_chat(user, span_warning("太烫了，无法更换符号！"))
 			return
-		var/list/options = list("Set symbol", "Toggle permanent slave mark", "Toggle remove existing brand", "Cancel")
-		var/choice = tgui_input_list(user, "What would you like to do with the branding iron?", "Branding Iron", options, null, 10 SECONDS)
+		var/list/options = list("设置符号", "切换永久奴隶标记", "切换移除现有烙印", "取消")
+		var/choice = tgui_input_list(user, "你想对这个烙印铁做些什么？", "烙印铁", options, null, 10 SECONDS)
 		switch(choice)
-			if("Set symbol")
-				var/inputty = stripped_input(user, "What would you like to set the brand?\nExample: a small drawing of a rous head", "Enter branding description", null, 64)
+			if("设置符号")
+				var/inputty = stripped_input(user, "你想设置什么烙印？\n例如：一幅小小的大鼠头像", "输入烙印描述", null, 64)
 				if(inputty)
 					setbranding = inputty
-					to_chat(user, span_warning("I swap the [!branding_low_quality ? "iron" : "coal"] tip so it will imprint [setbranding]."))
+					to_chat(user, span_warning("我更换了[!branding_low_quality ? "铁制" : "煤炭"]尖端，它将印下[setbranding]。"))
 				else
-					to_chat(user, span_info("I clear the current branding symbol."))
+					to_chat(user, span_info("我清除了当前的烙印符号。"))
 					setbranding = null
-			if("Toggle permanent slave mark")
+			if("切换永久奴隶标记")
 				enslave = !enslave
 				if(enslave)
-					to_chat(user, span_warning("I set the iron to leave a permanent mark of slavery."))
+					to_chat(user, span_warning("我将铁烙设置为留下永久的奴隶标记。"))
 				else
-					to_chat(user, span_info("I set the iron to leave a simple brand only."))
-			if("Toggle remove existing brand")
+					to_chat(user, span_info("我将铁烙设置为只留下简单的烙印。"))
+			if("切换移除现有烙印")
 				remove_existing_brand = !remove_existing_brand
 				if(remove_existing_brand)
-					to_chat(user, span_warning("I set the iron to burn away existing brands."))
+					to_chat(user, span_warning("我将铁烙设置为烧去现有的烙印。"))
 				else
-					to_chat(user, span_info("I set the iron to imprint new brands."))
+					to_chat(user, span_info("我将铁烙设置为印下新的烙印。"))
 	..()
 // Stops someone being marked as owned if they already are. Needs to be removed before it can proceed (does not affect normal branding)
 /obj/item/rogueweapon/surgery/cautery/branding/proc/target_has_active_ownership_mark(mob/living/carbon/human/target)
@@ -451,7 +451,7 @@
 		return FALSE
 	var/text_var = target_data["text_var"]
 	if(length(holder.vars[text_var]))
-		to_chat(user, span_warning("I reburn over the existing marking."))
+		to_chat(user, span_warning("我在原有印记上重新烙烧。"))
 	holder.vars[text_var] = branding_text
 	set_holder_ownership_data(holder, should_enslave, user)
 	return TRUE
@@ -499,29 +499,29 @@
 		if("branded_writing" in organ.vars && length(organ.vars["branded_writing"]))
 			return TRUE
 	return FALSE
-
+GLOBAL_LIST_INIT(branding_zone_display_names, list("Head" = "头部", "Chest" = "胸部", "Left Arm" = "左臂", "Right Arm" = "右臂", "Left Leg" = "左腿", "Right Leg" = "右腿", "Tauric Half" = "兽形下身", "Hind" = "臀部", "Stomach" = "腹部", "Neck" = "颈部", "Breasts" = "乳房", "Dick" = "阴茎", "Vagina" = "阴道", "Testes" = "睾丸", "Mouth" = "嘴部"))
 // Keeps the do_after announcement text centralized for both modes
 /obj/item/rogueweapon/surgery/cautery/branding/proc/send_branding_attempt_messages(mob/living/user, mob/living/carbon/human/target, final_answer, branding_self)
 	if(!branding_self)
 		if(remove_existing_brand)
-			user.visible_message(span_warning("[user] slowly wields [src] towards [target]'s [LOWER_TEXT(final_answer)] to burn away an old mark."))
-			to_chat(target, span_userdanger("[user] is trying to burn away a brand on my [LOWER_TEXT(final_answer)]!"))
+			user.visible_message(span_warning("[user]缓缓将[src]伸向[target]的[GLOB.branding_zone_display_names[final_answer] || final_answer]，准备烧去旧烙印。"))
+			to_chat(target, span_userdanger("[user]正试着烧去我[GLOB.branding_zone_display_names[final_answer] || final_answer]上的烙印！"))
 		else
-			user.visible_message(span_warning("[user] slowly wields [src] towards [target]'s [LOWER_TEXT(final_answer)]."))
-			to_chat(target, span_userdanger("[user] is trying to brand me on the [LOWER_TEXT(final_answer)]!"))
+			user.visible_message(span_warning("[user]缓缓将[src]伸向[target]的[GLOB.branding_zone_display_names[final_answer] || final_answer]。"))
+			to_chat(target, span_userdanger("[user]正试着在我的[GLOB.branding_zone_display_names[final_answer] || final_answer]上烙印！"))
 	else
 		if(remove_existing_brand)
-			user.visible_message(span_warning("[user] slowly wields [src] onto [user.p_their()] [LOWER_TEXT(final_answer)] to burn away an old mark."))
+			user.visible_message(span_warning("[user]缓缓将[src]贴向自己的[GLOB.branding_zone_display_names[final_answer] || final_answer]，准备烧去旧烙印。"))
 		else
-			user.visible_message(span_warning("[user] slowly wields [src] onto [user.p_their()] [LOWER_TEXT(final_answer)]."))
+			user.visible_message(span_warning("[user]缓缓将[src]贴向自己的[GLOB.branding_zone_display_names[final_answer] || final_answer]。"))
 
 /obj/item/rogueweapon/surgery/cautery/branding/proc/send_branding_result_messages(mob/living/user, mob/living/carbon/human/target, description_recoil, final_answer, branding_text)
 	if(remove_existing_brand)
-		user.visible_message(span_info("[target] [description_recoil] as \the [src] sears away a brand on [target.p_their()] [LOWER_TEXT(final_answer)]!"))
-		to_chat(target, span_userdanger("A brand has been burned away!"))
+		user.visible_message(span_info("[src]烧去了[target]的[GLOB.branding_zone_display_names[final_answer] || final_answer]上的烙印，令其[description_recoil]！"))
+		to_chat(target, span_userdanger("一道烙印被烧去了！"))
 	else
-		user.visible_message(span_info("[target] [description_recoil] as \the [src] sears a mark on [target.p_their()] [LOWER_TEXT(final_answer)]! The fresh brand shows [span_boldwarning(branding_text)]."))
-		to_chat(target, span_userdanger("You have been branded!"))
+		user.visible_message(span_info("[src]在[target]的[GLOB.branding_zone_display_names[final_answer] || final_answer]上烙下印记，令其[description_recoil]！新烙印的内容是[span_boldwarning(branding_text)]。"))
+		to_chat(target, span_userdanger("你被烙下了印记！"))
 
 // Single entry point for action-phase combat logs
 /obj/item/rogueweapon/surgery/cautery/branding/proc/log_branding_action(mob/living/user, mob/living/carbon/human/target, action_type, final_answer, branding_text, branding_delay, ownership_state, enslave)
@@ -553,10 +553,10 @@
 	if(!heated)
 		return ..()
 	if(!remove_existing_brand && !length(setbranding))
-		to_chat(user, span_warning("There is nothing to brand, add some symbols before using again."))
+		to_chat(user, span_warning("没有可烙印的内容，请先添加一些符号再使用。"))
 		return TRUE
 	if(!ishuman(A))
-		to_chat(user, span_warning("I cannot brand [A]."))
+		to_chat(user, span_warning("我无法给[A]烙印。"))
 		return TRUE
 	var/mob/living/carbon/human/target = A
 	var/precise_zone = user.zone_selected // We need this up here to stay consistent past the do_after.
@@ -564,12 +564,12 @@
 	var/obj/item/bodypart/branding_part = target.get_bodypart(body_zone)
 	var/branding_self = user == target
 	if(!get_location_accessible(target, user.zone_selected))
-		to_chat(user, span_warning("That part is obstructed by clothing."))
+		to_chat(user, span_warning("那处被衣物遮住了。"))
 		return TRUE
 
 	// Get the area we want to brand, and then prompt the user for what to brand/whether we should brand that zone.
 	if(QDELETED(branding_part) || !istype(branding_part))
-		to_chat(user, span_warning("They don't have this part..."))
+		to_chat(user, span_warning("对方没有这个部位……"))
 		return TRUE
 
 	var/list/zone_data = build_branding_zone_data(target, precise_zone, body_zone, branding_part)
@@ -582,29 +582,29 @@
 
 	if(length(zone_options))
 		zone_options = zone_options.Copy()
-		zone_options += "Cancel"
+		zone_options += "取消"
 	else // failsafe
 		if(covered)
-			to_chat(user, span_warning("That part is covered!"))
+			to_chat(user, span_warning("那个部位被遮挡了！"))
 		else
-			to_chat(user, span_warning("It doesn't seem like this part can be branded!"))
+			to_chat(user, span_warning("这个部位似乎无法烙印！"))
 		return TRUE
 
 	if(remove_existing_brand)
 		var/list/removable_options = filter_zone_options_for_brand_removal(zone_data["options"], branding_part, penis, vagina, testes, tits)
 		if(!length(removable_options))
-			to_chat(user, span_warning("There are no removable brands on any accessible body part."))
+			to_chat(user, span_warning("所有可触及的身体部位上都没有可移除的烙印。"))
 			return TRUE
-		removable_options += "Cancel"
+		removable_options += "取消"
 		zone_options = removable_options
 
 	var/branding_text = remove_existing_brand ? null : setbranding // No switcheroos partway through.
 	var/final_answer // String. The button the user clicks on when prompted which part to brand.
 
 	// Prompt before do_after
-	final_answer = tgui_alert(user, "What do you wish to [remove_existing_brand ? "remove" : "brand"]?", "Please answer in [DisplayTimeText(10 SECONDS)]!", zone_options, 10 SECONDS)
+	final_answer = tgui_alert(user, "你想要[remove_existing_brand ? "移除" : "烙印"]什么？", "请于[DisplayTimeText(10 SECONDS)]内选择！", zone_options, 10 SECONDS)
 
-	if(!final_answer || final_answer == "Cancel")
+	if(!final_answer || final_answer == "取消")
 		return TRUE
 
 	// Reject branding if disallowed by prefs. Doing it here hides less away from the user.
@@ -612,27 +612,27 @@
 		switch(final_answer)
 			if("Breasts", "Dick", "Vagina", "Testes")
 				if(!target.client)
-					to_chat(user, span_warning("[target] can't receive a brand here right now."))
+					to_chat(user, span_warning("[target]现在无法在这里接受烙印。"))
 					log_combat(user, target, "Branding on offline mob blocked: \"[branding_text]\" on [final_answer]")
 					return TRUE
 				if(!target.client.prefs?.sensitive_brands)
-					to_chat(user, span_warning("[target] has sensitive brands disabled."))
-					to_chat(target, span_warning("A branding attempt on my [LOWER_TEXT(final_answer)] was blocked by preferences."))
+					to_chat(user, span_warning("[target]已禁用敏感部位烙印。"))
+					to_chat(target, span_warning("一次对我[GLOB.branding_zone_display_names[final_answer] || final_answer]的烙印尝试被偏好设置阻止了。"))
 					log_combat(user, target, "Branding prefblocked: \"[branding_text]\" on [final_answer]")
 					return TRUE
 			if("Head")
 				if(!target.client)
-					to_chat(user, span_warning("[target] can't receive a brand here right now."))
+					to_chat(user, span_warning("[target]现在无法在这里接受烙印。"))
 					log_combat(user, target, "Branding on offline mob blocked: \"[branding_text]\" on [final_answer]")
 					return TRUE
 				if(!target.client.prefs?.facial_brands)
-					to_chat(user, span_warning("[target] has facial brands disabled."))
-					to_chat(target, span_warning("A branding attempt on my [LOWER_TEXT(final_answer)] was blocked by preferences."))
+					to_chat(user, span_warning("[target]已禁用面部烙印。"))
+					to_chat(target, span_warning("一次对我[GLOB.branding_zone_display_names[final_answer] || final_answer]的烙印尝试被偏好设置阻止了。"))
 					log_combat(user, target, "Branding prefblocked: \"[branding_text]\" on [final_answer]")
 					return TRUE
 
 	if(!remove_existing_brand && enslave && target_has_active_ownership_mark(target))
-		to_chat(user, span_warning("I cannot mark them as owned, they already have a mark of ownership! I need to burn that away first..."))
+		to_chat(user, span_warning("对方已有归属印记，我无法再次标记！得先烧掉原来的印记……"))
 		return TRUE
 
 	// A part has been selected, now we start printing messages to chat and showing the do_after
@@ -640,7 +640,7 @@
 	if(!branding_self) 
 		if(branding_low_quality)
 			if(!target.compliance)  // we can only brand ourselves OR the other character must be compliant
-				to_chat(user, span_warning("[target]'s moving too much to let me [remove_existing_brand ? "burn away old marks from" : "brand"] [target.p_them()]!"))
+				to_chat(user, span_warning("[target]动得太厉害了，让我无法[remove_existing_brand ? "烧去[target.p_them()]身上的旧印记" : "给[target.p_them()]烙印"]！"))
 				return TRUE
 			branding_delay += 3 SECONDS // if they are compliant then there will still be an added delay
 	else
@@ -666,7 +666,7 @@
 	// Rebuild options after do_after so limb/coverage changes cannot apply to stale selections
 	var/list/live_zone_data = rebuild_branding_selection_data(target, precise_zone)
 	if(!length(live_zone_data))
-		to_chat(user, span_warning("They no longer have that part."))
+		to_chat(user, span_warning("对方已没有那个部位了。"))
 		return TRUE
 	branding_part = live_zone_data["branding_part"]
 	penis = live_zone_data["penis"]
@@ -677,31 +677,31 @@
 	if(remove_existing_brand)
 		zone_options = filter_zone_options_for_brand_removal(zone_options, branding_part, penis, vagina, testes, tits)
 	if(!(final_answer in zone_options))
-		to_chat(user, span_warning("That body part is no longer available for [remove_existing_brand ? "brand removal" : "branding"]."))
+		to_chat(user, span_warning("那个身体部位已无法进行[remove_existing_brand ? "烙印移除" : "烙印"]。"))
 		return TRUE
 
 	// Attempt to re-get the part and place the brand
-	var/description_recoil = target.stat < UNCONSCIOUS ? pick("recoils", "writhes", "thrashes", "suffers") : "lays still"
+	var/description_recoil = target.stat < UNCONSCIOUS ? pick("抽搐", "扭动", "挣扎", "颤抖") : "一动不动"
 	var/apply_knockdown = selection_applies_knockdown(final_answer)
 	var/apply_message = TRUE
 	var/list/selected_target_data = get_brand_target_data(final_answer, branding_part, penis, vagina, testes, tits)
 	if(remove_existing_brand)
 		if(final_answer == "Mouth")
-			to_chat(user, span_warning("That burn cannot be removed this way."))
+			to_chat(user, span_warning("那处灼伤无法通过这种方式移除。"))
 			return TRUE
 		if(!clear_brand_from_target_data(selected_target_data, user))
-			to_chat(user, span_warning("There is no existing brand to remove there."))
+			to_chat(user, span_warning("那里没有可移除的烙印。"))
 			return TRUE
 	else
 		switch(final_answer)
 			if("Mouth")
-				user.visible_message(span_info("[target] [description_recoil] as \the [src] sears onto [target.p_their()] lips! The branding leaves an unrecognizable burn."))
+				user.visible_message(span_info("[src]烙上[target]的嘴唇，令其[description_recoil]！烙印留下了一处难以辨认的灼伤。"))
 				target.apply_status_effect(/datum/status_effect/mouth_branded)
-				to_chat(target, span_userdanger("Your mouth has been seared!"))
+				to_chat(target, span_userdanger("你的嘴被烫伤了！"))
 				apply_message = FALSE
 			else
 				if(!apply_brand_to_target_data(user, selected_target_data, branding_text, enslave))
-					to_chat(user, span_warning("There's a problem with branding this body part."))
+					to_chat(user, span_warning("给这个身体部位烙印时出了问题。"))
 					return TRUE
 
 	if(length(selected_target_data))
@@ -727,7 +727,7 @@
 	if(branding_count > 0)
 		branding_count--
 		if(branding_count == 0)
-			to_chat(user, span_warning("\The [src] snaps in your hands, it's broken!"))
+			to_chat(user, span_warning("\The [src]在你手中断裂了，它坏了！"))
 			playsound(user, 'sound/items/seedextract.ogg', 100, FALSE)
 			qdel(src)
 	return TRUE
@@ -740,22 +740,22 @@
 	alert_type = /atom/movable/screen/alert/status_effect/mouth_branded
 
 /atom/movable/screen/alert/status_effect/mouth_branded
-	name = "Burned Mouth"
-	desc = "I can't feel my lips!"
+	name = "烧伤的嘴"
+	desc = "我感觉不到我的嘴唇了！"
 
 /datum/status_effect/mouth_branded/on_apply()
 	ADD_TRAIT(owner, TRAIT_GARGLE_SPEECH, TRAIT_STATUS_EFFECT(id))
-	to_chat(owner, span_warning("My mouth... It BURNS!"))
+	to_chat(owner, span_warning("我的嘴……烧起来了！"))
 	return ..()
 
 /datum/status_effect/mouth_branded/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_GARGLE_SPEECH, TRAIT_STATUS_EFFECT(id))
 	if(owner.stat == CONSCIOUS)
-		to_chat(owner, span_userdanger("I can barely feel my lips again."))
+		to_chat(owner, span_userdanger("我几乎又能感觉到嘴唇了。"))
 
 /obj/item/rogueweapon/surgery/hammer
-	name = "examination hammer"
-	desc = "A small hammer used to check a patient's reactions and diagnose their condition."
+	name = "检查锤"
+	desc = "用于检查病人反应并诊断病情的小锤。"
 	icon_state = "kneehammer"
 	possible_item_intents = list(/datum/intent/use, /datum/intent/mace/strike, /datum/intent/mace/smash)
 	slot_flags = ITEM_SLOT_HIP
@@ -778,11 +778,11 @@
 		return ..()
 	if(ishuman(A))
 		if(A == user)
-			user.visible_message("<span class='info'>[user] begins smacking themself with a small hammer.</span>")
+			user.visible_message("<span class='info'>[user]开始用小锤子敲打自己。</span>")
 		else
-			user.visible_message("<span class='info'>[user] begins to smack [A] with a small hammer.</span>")
+			user.visible_message("<span class='info'>[user]开始用小锤子敲打[A]。</span>")
 		if(do_after(user, ((medskill > SKILL_LEVEL_EXPERT) ? 1 SECONDS : 2.5 SECONDS), target = A))
-			A.visible_message("<span class='info'>[A] jerks their knee after the hammer strikes!</span>")
+			A.visible_message("<span class='info'>锤击后[A]的膝盖弹跳了一下！</span>")
 			if(prob(1))
 				playsound(user, 'sound/misc/bonk.ogg', 100, FALSE, -1)
 			var/mob/living/carbon/human/human_target = A
@@ -795,8 +795,8 @@
 
 //All are subtypes of the regular tools with worse behavior success chances.
 /obj/item/rogueweapon/surgery/saw/improv
-	name = "improvised saw"
-	desc = "A tool used to carve through bone crudely, but better than nothing."
+	name = "简易骨锯"
+	desc = "用于切骨的粗糙工具。不如真正的骨锯那样顺畅。"
 	icon_state = "bonesaw_wood"
 	force = 12
 	throwforce = 12
@@ -806,22 +806,22 @@
 	sharpness = IS_BLUNT
 
 /obj/item/rogueweapon/surgery/hemostat/improv
-	name = "improvised clamp"
-	desc = "A tool used to clamp down on soft tissue. A poor alternative to metal but better than nothing."
+	name = "简易夹具"
+	desc = "用于夹持软组织的工具。比金属件差但总比没有好。"
 	icon_state = "forceps_wood"
 	tool_behaviour = TOOL_IMPROVISED_HEMOSTAT
 
 /obj/item/rogueweapon/surgery/retractor/improv
-	name = "improvised retractor"
-	desc = "A tool used to spread tissue open for surgical access in a tentative manner."
+	name = "简易扩张器"
+	desc = "一种试探性地撑开组织以进行手术操作的工具。"
 	icon_state = "speculum_wood"
 	wdefense = 3
 	wbalance = 1
 	tool_behaviour = TOOL_IMPROVISED_RETRACTOR
 
 /obj/item/rogueweapon/surgery/scalpel/improv
-	name = "improvised Scalpel"
-	desc = "A crude stone blade, it will cut but the precision is to be desired"
+	name = "简易手术刀"
+	desc = "粗糙的石刀，能切割但精确度堪忧。"
 	icon_state = "scalpel_wood"
 	force = 8
 	throwforce = 8

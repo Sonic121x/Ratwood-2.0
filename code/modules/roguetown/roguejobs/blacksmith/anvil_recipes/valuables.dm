@@ -5,45 +5,45 @@
 	i_type = "Valuables"
 
 /datum/anvil_recipe/valuables/gold
-	name = "Statue, Gold"
+	name = "黄金雕像"
 	req_bar = /obj/item/ingot/gold
 	created_item = /obj/item/roguestatue/gold
 	display_category = ITEM_CAT_DECORATION
 	craftdiff = SKILL_LEVEL_EXPERT
 
 /datum/anvil_recipe/valuables/silver
-	name = "Statue, Silver"
+	name = "白银雕像"
 	req_bar = /obj/item/ingot/silver
 	created_item = /obj/item/roguestatue/silver
 	display_category = ITEM_CAT_DECORATION
 	craftdiff = SKILL_LEVEL_EXPERT
 
 /datum/anvil_recipe/valuables/iron
-	name = "Statue, Iron"
+	name = "铁制雕像"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/roguestatue/iron
 	display_category = ITEM_CAT_DECORATION
 
 /datum/anvil_recipe/valuables/decrepit
-	name = "Statue, Decrepit" // decrepit
+	name = "衰朽雕像" // decrepit
 	req_bar = /obj/item/ingot/decrepit
 	created_item = /obj/item/roguestatue/decrepit
 	display_category = ITEM_CAT_DECORATION
 
 /datum/anvil_recipe/valuables/steel
-	name = "Statue, Steel"
+	name = "钢制雕像"
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/roguestatue/steel
 	display_category = ITEM_CAT_DECORATION
 
 /datum/anvil_recipe/valuables/blacksteel
-	name = "Statue, Blacksteel"
+	name = "黑钢雕像"
 	req_bar = /obj/item/ingot/blacksteel
 	created_item = /obj/item/roguestatue/blacksteel
 	display_category = ITEM_CAT_DECORATION
 /*
 /datum/anvil_recipe/valuables/eargol
-	name = "gold earrings"
+	name = "黄金耳环"
 	req_bar = /obj/item/ingot/gold
 	created_item = list(/obj/item/rogueacc/eargold,
 						/obj/item/rogueacc/eargold,
@@ -51,7 +51,7 @@
 	type = "Valuables"
 
 /datum/anvil_recipe/valuables/earsil
-	name = "silver earrings"
+	name = "白银耳环"
 	req_bar = /obj/item/ingot/silver
 	created_item = list(/obj/item/rogueacc/earsilver,
 						/obj/item/rogueacc/earsilver,
@@ -59,7 +59,7 @@
 //	i_type = "Valuables"
 
 /datum/anvil_recipe/valuables/ringg
-	name = "Rings, Gold (x3)"
+	name = "金戒指 ×3"
 	req_bar = /obj/item/ingot/gold
 	created_item = /obj/item/clothing/ring/gold
 	display_category = ITEM_CAT_VALUABLES_RINGS
@@ -67,14 +67,14 @@
 	createditem_num = 3
 
 /datum/anvil_recipe/valuables/ringa
-	name = "Rings, Decrepit (x3)"
+	name = "破旧戒指 ×3"
 	req_bar = /obj/item/ingot/decrepit
 	created_item = /obj/item/clothing/ring/decrepit
 	display_category = ITEM_CAT_VALUABLES_RINGS
 	createditem_num = 3
 
 /datum/anvil_recipe/valuables/rings
-	name = "Rings, Silver (x3)"
+	name = "银戒指 ×3"
 	req_bar = /obj/item/ingot/silver
 	created_item = /obj/item/clothing/ring/silver
 	display_category = ITEM_CAT_VALUABLES_RINGS
@@ -82,21 +82,21 @@
 	createditem_num = 3
 
 /datum/anvil_recipe/valuables/ringbs
-	name = "Rings, Blacksteel (x3)"
+	name = "黑钢戒指 ×3"
 	req_bar = /obj/item/ingot/blacksteel
 	created_item = /obj/item/clothing/ring/blacksteel
 	display_category = ITEM_CAT_VALUABLES_RINGS
 	createditem_num = 3
 
 /datum/anvil_recipe/valuables/ornateamulet
-	name = "Ornate Amulet"
+	name = "华美护符"
 	req_bar = /obj/item/ingot/gold
 	created_item = /obj/item/clothing/neck/roguetown/ornateamulet
 	display_category = ITEM_CAT_VALUABLES_HOLY
 	craftdiff = SKILL_LEVEL_EXPERT
 
 /datum/anvil_recipe/valuables/skullamulet
-	name = "Skull Amulet"
+	name = "骷髅护符"
 	req_bar = /obj/item/ingot/gold
 	created_item = /obj/item/clothing/neck/roguetown/skullamulet
 	display_category = ITEM_CAT_VALUABLES_HOLY
@@ -104,7 +104,7 @@
 
 //Gold Rings
 /datum/anvil_recipe/valuables/emeringg
-	name = "Gemerald Ring, Gold (+1 Gemerald)"
+	name = "金绿宝石戒指，另需1颗翠晶"
 	req_bar = /obj/item/ingot/gold
 	additional_items = list(/obj/item/roguegem/green)
 	craftdiff = SKILL_LEVEL_EXPERT
@@ -112,7 +112,7 @@
 	display_category = ITEM_CAT_VALUABLES_RINGS
 
 /datum/anvil_recipe/valuables/rubyg
-	name = "Rontz Ring, Gold (+1 Rontz)"
+	name = "金红宝石戒指，另需1颗隆兹石"
 	req_bar = /obj/item/ingot/gold
 	craftdiff = SKILL_LEVEL_EXPERT
 	additional_items = list(/obj/item/roguegem/ruby)
@@ -120,7 +120,7 @@
 	display_category = ITEM_CAT_VALUABLES_RINGS
 
 /datum/anvil_recipe/valuables/topazg
-	name = "Toper Ring, Gold (+1 Toper)"
+	name = "金黄宝石戒指，另需1颗托珀石"
 	req_bar = /obj/item/ingot/gold
 	craftdiff = SKILL_LEVEL_EXPERT
 	additional_items = list(/obj/item/roguegem/yellow)
@@ -128,7 +128,7 @@
 	display_category = ITEM_CAT_VALUABLES_RINGS
 
 /datum/anvil_recipe/valuables/quartzg
-	name = "Blortz Ring, Gold (+1 Blortz)"
+	name = "金布洛兹戒指，另需1颗石英"
 	req_bar = /obj/item/ingot/gold
 	craftdiff = SKILL_LEVEL_EXPERT
 	additional_items = list(/obj/item/roguegem/blue)
@@ -137,7 +137,7 @@
 	display_category = ITEM_CAT_VALUABLES_RINGS
 
 /datum/anvil_recipe/valuables/sapphireg
-	name = "Saffira Ring, Gold (+1 Saffira)"
+	name = "金紫宝石戒指，另需1颗蓝晶"
 	req_bar = /obj/item/ingot/gold
 	craftdiff = SKILL_LEVEL_EXPERT
 	additional_items = list(/obj/item/roguegem/violet)
@@ -145,7 +145,7 @@
 	display_category = ITEM_CAT_VALUABLES_RINGS
 
 /datum/anvil_recipe/valuables/diamondg
-	name = "Dorpel Ring, Gold (+1 Dorpel)"
+	name = "金多佩尔戒指，另需1颗多佩尔石"
 	req_bar = /obj/item/ingot/gold
 	craftdiff = SKILL_LEVEL_EXPERT
 	additional_items = list(/obj/item/roguegem/diamond)
@@ -153,21 +153,21 @@
 	display_category = ITEM_CAT_VALUABLES_RINGS
 
 /datum/anvil_recipe/valuables/signet
-	name = "Signet Ring"
+	name = "金印戒"
 	req_bar = /obj/item/ingot/gold
 	craftdiff = SKILL_LEVEL_EXPERT
 	created_item = /obj/item/clothing/ring/signet
 	display_category = ITEM_CAT_VALUABLES_RINGS
 
 /datum/anvil_recipe/valuables/signet/silver
-	name = "Blessed Silver Signet Ring"
+	name = "银印戒"
 	craftdiff = SKILL_LEVEL_MASTER
 	req_bar = /obj/item/ingot/silverblessed
 	created_item = /obj/item/clothing/ring/signet/silver
 	display_category = ITEM_CAT_VALUABLES_RINGS
 
 /datum/anvil_recipe/valuables/signet/silver/inq
-	name = "Blessed Silver Signet Ring"
+	name = "银印戒"
 	craftdiff = SKILL_LEVEL_MASTER
 	req_bar = /obj/item/ingot/silverblessed/bullion
 	created_item = /obj/item/clothing/ring/signet/silver
@@ -176,7 +176,7 @@
 // Silver ingots are now in play, and as such, the steel rings have been converted to silver with their value adjusted accordingly. -Kyogon
 
 /datum/anvil_recipe/valuables/emerings
-	name = "Gemerald Ring, Silver (+1 Gemerald)"
+	name = "银绿宝石戒指，另需1颗翠晶"
 	req_bar = /obj/item/ingot/silver
 	craftdiff = SKILL_LEVEL_MASTER
 	additional_items = list(/obj/item/roguegem/green)
@@ -184,7 +184,7 @@
 	display_category = ITEM_CAT_VALUABLES_RINGS
 
 /datum/anvil_recipe/valuables/rubys
-	name = "Rontz Ring, Silver (+1 Rontz)"
+	name = "银红宝石戒指，另需1颗隆兹石"
 	req_bar = /obj/item/ingot/silver
 	craftdiff = SKILL_LEVEL_MASTER
 	additional_items = list(/obj/item/roguegem/ruby)
@@ -192,7 +192,7 @@
 	display_category = ITEM_CAT_VALUABLES_RINGS
 
 /datum/anvil_recipe/valuables/topazs
-	name = "Toper Ring, Silver (+1 Toper)"
+	name = "银黄宝石戒指，另需1颗托珀石"
 	req_bar = /obj/item/ingot/silver
 	craftdiff = SKILL_LEVEL_MASTER
 	additional_items = list(/obj/item/roguegem/yellow)
@@ -200,7 +200,7 @@
 	display_category = ITEM_CAT_VALUABLES_RINGS
 
 /datum/anvil_recipe/valuables/quartzs
-	name = "Blortz Ring, Silver (+1 Blortz)"
+	name = "银布洛兹戒指，另需1颗石英"
 	req_bar = /obj/item/ingot/silver
 	craftdiff = SKILL_LEVEL_MASTER
 	additional_items = list(/obj/item/roguegem/blue)
@@ -208,7 +208,7 @@
 	display_category = ITEM_CAT_VALUABLES_RINGS
 
 /datum/anvil_recipe/valuables/sapphires
-	name = "Saffira Ring, Silver (+1 Saffira)"
+	name = "银紫宝石戒指，另需1颗蓝晶"
 	req_bar = /obj/item/ingot/silver
 	craftdiff = SKILL_LEVEL_MASTER
 	additional_items = list(/obj/item/roguegem/violet)
@@ -216,7 +216,7 @@
 	display_category = ITEM_CAT_VALUABLES_RINGS
 
 /datum/anvil_recipe/valuables/diamonds
-	name = "Dorpel Ring, Silver (+1 Dorpel)"
+	name = "银多佩尔戒指，另需1颗多佩尔石"
 	req_bar = /obj/item/ingot/silver
 	craftdiff = SKILL_LEVEL_MASTER
 	additional_items = list(/obj/item/roguegem/diamond)
@@ -224,7 +224,7 @@
 	display_category = ITEM_CAT_VALUABLES_RINGS
 
 /datum/anvil_recipe/valuables/terminus
-	name = "Terminus Est (+1 Gold Bar, +1 Steel, +1 Rontz)"
+	name = "“终焉已至”，另需1块金锭、1块钢锭、1颗隆兹石"
 	req_bar = /obj/item/ingot/gold
 	additional_items = list(/obj/item/ingot/gold, /obj/item/ingot/steel, /obj/item/roguegem/ruby)
 	created_item = /obj/item/rogueweapon/sword/long/exe/cloth
@@ -234,7 +234,7 @@
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/valuables/dragon
-	name = "Dragonstone Ring (Secret!)"
+	name = "龙石戒指 — 秘密配方"
 	req_bar = /obj/item/ingot/blacksteel
 	hides_from_books = TRUE
 	additional_items = list(/obj/item/ingot/gold, /obj/item/roguegem/blue, /obj/item/roguegem/violet, /obj/item/clothing/neck/roguetown/psicross/silver)
@@ -243,7 +243,7 @@
 	display_category = ITEM_CAT_VALUABLES_RINGS
 
 /datum/anvil_recipe/valuables/zcross_iron
-	name = "Inverted Psycross"
+	name = "倒置普赛圣十字"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/clothing/neck/roguetown/psicross/inhumen
 	display_category = ITEM_CAT_VALUABLES_HOLY
@@ -251,28 +251,28 @@
 
 //blacksteel Rings
 /datum/anvil_recipe/valuables/emeringbs
-	name = "Gemerald Ring, Blacksteel (+1 Gemerald)"
+	name = "黑钢绿宝石戒指，另需1颗翠晶"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/roguegem/green)
 	created_item = /obj/item/clothing/ring/emeraldbs
 	display_category = ITEM_CAT_VALUABLES_RINGS
 
 /datum/anvil_recipe/valuables/rubybs
-	name = "Rontz Ring, Blacksteel (+1 Rontz)"
+	name = "黑钢红宝石戒指，另需1颗隆兹石"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/roguegem/ruby)
 	created_item = /obj/item/clothing/ring/rubybs
 	display_category = ITEM_CAT_VALUABLES_RINGS
 
 /datum/anvil_recipe/valuables/topazbs
-	name = "Toper Ring, Blacksteel (+1 Toper)"
+	name = "黑钢黄宝石戒指，另需1颗托珀石"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/roguegem/yellow)
 	created_item = /obj/item/clothing/ring/topazbs
 	display_category = ITEM_CAT_VALUABLES_RINGS
 
 /datum/anvil_recipe/valuables/quartzbs
-	name = "Blortz Ring, Blacksteel (+1 Blortz)"
+	name = "黑钢布洛兹戒指，另需1颗石英"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/roguegem/blue)
 	created_item = /obj/item/clothing/ring/quartzbs
@@ -280,21 +280,21 @@
 	display_category = ITEM_CAT_VALUABLES_RINGS
 
 /datum/anvil_recipe/valuables/sapphirebs
-	name = "Saffira Ring, Blacksteel (+1 Saffira)"
+	name = "黑钢紫宝石戒指，另需1颗蓝晶"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/roguegem/violet)
 	created_item = /obj/item/clothing/ring/sapphirebs
 	display_category = ITEM_CAT_VALUABLES_RINGS
 
 /datum/anvil_recipe/valuables/diamondbs
-	name = "Dorpel Ring, Blacksteel (+1 Dorpel)"
+	name = "黑钢多佩尔戒指，另需1颗多佩尔石"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/roguegem/diamond)
 	created_item = /obj/item/clothing/ring/diamondbs
 	display_category = ITEM_CAT_VALUABLES_RINGS
 
 /datum/anvil_recipe/valuables/hope
-	name = "Ring Of Omnipotence (Secret!)"
+	name = "全能之戒 — 秘密配方"
 	req_bar = /obj/item/ingot/silver
 	hides_from_books = TRUE
 	additional_items = list(/obj/item/clothing/ring/statgemerald, /obj/item/clothing/ring/statonyx, /obj/item/clothing/ring/statamythortz, /obj/item/clothing/ring/statrontz)
@@ -303,7 +303,7 @@
 	display_category = ITEM_CAT_VALUABLES_RINGS
 
 /datum/anvil_recipe/valuables/anointedberserksword
-	name = "Anointed Berserkers Sword (Secret!)"
+	name = "受膏狂战士之剑 — 秘密配方"
 	req_bar = /obj/item/ingot/component/glutcrystal
 	hides_from_books = TRUE
 	additional_items = list(/obj/item/rogueweapon/sword/long/exe/berserk)
@@ -312,8 +312,8 @@
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /obj/item/rogueweapon/sword/long/exe/berserk/gnoll
-	name = "anointed berserkers sword"
-	desc = "A raw heap of iron, hewn into an intimidatingly massive cleaver. Most could never aspire to effectively swing such a laborsome blade about; those few that have the strength, however, can force even the strongest opponents to stagger back. </br>The thrummage of your heart matches the otherworldly aura that has overtaken this blade. Someone's smiling down upon you, but it certainly isn't who you think it is."
+	name = "受膏狂战士之剑"
+	desc = "一大块粗铁被凿成令人胆寒的巨型砍刀。大多数人根本无力有效挥动如此沉重的刀刃；少数力气足够的人，却能凭它将最强的对手也逼得踉跄后退。 </br>你的心跳与笼罩刀刃的异界气息产生了共鸣。有人正从高处向你微笑，但那绝不是你以为的那一位。"
 	max_blade_int = 666
 
 /obj/item/rogueweapon/sword/long/exe/berserk/gnoll/Initialize(mapload)
@@ -323,7 +323,7 @@
 //
 
 /datum/anvil_recipe/valuables/daemonslayer
-	name = "Daemonslayer (Secret!)"
+	name = "\"屠魔者\" — 秘密配方"
 	req_bar = /obj/item/ingot/silver
 	hides_from_books = TRUE
 	additional_items = list(/obj/item/rogueweapon/sword/long/exe/berserk/gnoll, /obj/item/rogueweapon/sword/long/exe/silver, /obj/item/ingot/draconic, /obj/item/ingot/weeping, /obj/item/riddleofsteel)

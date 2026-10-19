@@ -158,7 +158,7 @@ GLOBAL_LIST_INIT(hedgeknight_aggro, world.file2list("strings/rt/hedgeknightaggro
 	skin_tone = "5f5f70"
 
 	if(prob(1))
-		real_name = "Taras Mura"
+		real_name = "塔拉斯·穆拉"
 	update_hair()
 	update_body()
 
@@ -214,13 +214,13 @@ GLOBAL_LIST_INIT(hedgeknight_aggro, world.file2list("strings/rt/hedgeknightaggro
 /mob/living/carbon/human/species/human/northern/deranged_knight/death(gibbed, nocutscene)
 	if(preset == "matthios")
 		if(prob(95))
-			say("Matthios, I have failed you...", forced = TRUE)
+			say("马西奥斯，我辜负了祢……", forced = TRUE)
 		else
-			say("Matthios, is this true?!", forced = TRUE)
+			say("马西奥斯，这是真的吗？！", forced = TRUE)
 	else if(preset == "zizo")
-		say("Zizo, forgive me!", forced = TRUE)
+		say("齐佐，宽恕我！", forced = TRUE)
 	else if(preset == "graggar")
-		say("No more... Blood!")
+		say("不要再……流血了！")
 	emote("painscream")
 	. = ..()
 	if(!gibbed)

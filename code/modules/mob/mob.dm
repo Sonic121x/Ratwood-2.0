@@ -290,7 +290,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 			continue
 		var/mob/living/L = M
 		if(istype(L) && L.STAPER <= 8)
-			to_chat(L, span_warning("You hear something... somewhere!"))
+			to_chat(L, span_warning("你听到某处……传来了什么声音！"))
 			continue
 		listening += M
 
@@ -302,15 +302,15 @@ GLOBAL_VAR_INIT(mobids, 1)
 			if(L.z > src.z)
 				switch(zdiff)
 					if(1)
-						strz = "below"
+						strz = "下方"
 					if(2 to 999)
-						strz = "far below"
+						strz = "更下方"
 			if(L.z < src.z)
 				switch(zdiff)
 					if(1)
-						strz = "above"
+						strz = "上方"
 					if(2 to 999)
-						strz = "far above"
+						strz = "更上方"
 		if(directional)
 			var/dir = get_dir(L, src)
 			strdir = dir2text(dir)
@@ -318,7 +318,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 		//If there's a z difference: "A rock can be heard falling" + "from" + "below/above/etc" + "and" + "northeast"
 		//No z difference: "A rock can be heard falling" + "from" + "northeast"
 		//No dir difference:"A rock can be heard falling" + "from" + "above"
-		var/fullmsg = span_warning("[message] from [strz ? "<b>[strz]</b>" : ""][strdir ? "[strz ? " and " : ""]<b>[strdir]</b>" : ""].")
+		var/fullmsg = span_warning("[message]，来自[strz ? "<b>[strz]</b>" : ""][strdir ? "[strz ? "与" : ""]<b>[strdir]</b>" : ""]。")
 		to_chat(L, fullmsg)
 /**
  * Show a message to all mobs in earshot of this one
@@ -392,7 +392,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 			qdel(W)
 		else
 			if(!disable_warning)
-				to_chat(src, "<span class='warning'>I couldn't equip that.</span>")
+				to_chat(src, "<span class='warning'>我没法把那东西装备上。</span>")
 		return FALSE
 	equip_to_slot(W, slot, redraw_mob, initial) //This proc should not ever fail.
 	update_a_intents()
@@ -500,7 +500,7 @@ GLOBAL_VAR_INIT(mobids, 1)
  * for why this isn't atom/verb/examine()
  */
 /mob/verb/examinate(atom/A as mob|obj|turf in view()) //It used to be oview(12), but I can't really say why
-	set name = "Examine"
+	set name = "查看"
 	set category = "IC"
 	set hidden = 1
 
@@ -509,21 +509,21 @@ GLOBAL_VAR_INIT(mobids, 1)
 		return
 
 	if(is_blind(src))
-		to_chat(src, span_warning("Something is there but I can't see it!"))
+		to_chat(src, span_warning("那里有什么东西，但我看不见！"))
 		return
 
 	if(isliving(src) && src.m_intent != MOVE_INTENT_SNEAK && src.stat != DEAD)
-		var/target = "\the [A]"
-		var/message = "[src] looks at"
+		var/target = "[A.name]"
+		var/message = "[src]注视着"
 		if(!isturf(A))
 			if(A == src)
-				message = "[src] looks over"
-				target = "themselves"
+				message = "[src]打量着"
+				target = "自己"
 			if(A.loc == src)
-				target = "[src.p_their()] [A.name]"
+				target = "[src.p_their()][A.name]"
 			if(A.loc.loc == src)
-				message = "[src] looks into"
-				target = "[src.p_their()] [A.loc.name]"
+				message = "[src]查看着"
+				target = "[src.p_their()][A.loc.name]"
 			if(isliving(A))
 				var/mob/living/T = A
 				var/hitzone = T.simple_limb_hit(zone_selected)
@@ -542,7 +542,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 							if(G.sublimb_grabbed == zone_selected)
 								grabbing = TRUE
 				if(!ishuman(T) && hitzone)
-					target = "\the [T.name]'s [hitzone]"
+					target = "[T.name]的[hitzone]"
 				else if(ishuman(T))
 					var/mob/living/carbon/human/target_human = T
 					if(target_human.getorganslot(ORGAN_SLOT_PENIS))
@@ -554,10 +554,10 @@ GLOBAL_VAR_INIT(mobids, 1)
 					if(T == src)
 						var/parsed_zone = parse_zone_fancy(zone_selected, cmode, cmode, Adjacent(T), behind, T.resting, grabbing, fixedeye, uncovered, penised, pussied, strcheck, TRUE)
 						if(parsed_zone)
-							target = "[src.p_their()] [parsed_zone]"
+							target = "[src.p_their()][parsed_zone]"
 					else
-						target = "[T]'s [parse_zone_fancy(zone_selected, cmode, T.cmode, Adjacent(T), behind, T.resting, grabbing, fixedeye, uncovered, penised, pussied, strcheck)]"
-			visible_message(span_emote("[message] [target]."))
+						target = "[T.name]的[parse_zone_fancy(zone_selected, cmode, T.cmode, Adjacent(T), behind, T.resting, grabbing, fixedeye, uncovered, penised, pussied, strcheck)]"
+			visible_message(span_emote("[message][target]。"))
 
 	var/list/result = A.examine(src)
 	if(result)
@@ -602,7 +602,7 @@ GLOBAL_VAR_INIT(mobids, 1)
  * Calls attack self on the item and updates the inventory hud for hands
  */
 /mob/verb/mode()
-	set name = "Activate Held Object"
+	set name = "使用手持物品"
 	set hidden = 1
 	set src = usr
 
@@ -620,7 +620,7 @@ GLOBAL_VAR_INIT(mobids, 1)
  * This actually gets the mind datums notes
  */
 /mob/verb/memory()
-	set name = "Notes"
+	set name = "笔记"
 	set category = "IC"
 	set desc = ""
 	if(mind)
@@ -632,7 +632,7 @@ GLOBAL_VAR_INIT(mobids, 1)
  * Add a note to the mind datum
  */
 /mob/verb/add_memory(msg as message)
-	set name = "AddNote"
+	set name = "添加笔记"
 	set category = "IC"
 	if(mind)
 		if (world.time < memory_throttle_time)
@@ -653,20 +653,20 @@ GLOBAL_VAR_INIT(mobids, 1)
  * Only works if flag/norespawn is allowed in config
  */
 /mob/verb/abandon_mob()
-	set name = "{ABANDON MOB}"
-	set category = "Options"
+	set name = "{放弃角色}"
+	set category = "选项"
 	set hidden = 1
 	if(!check_rights(0))
 		return
 	if (CONFIG_GET(flag/norespawn))
 		return
 	if ((stat != DEAD || !( SSticker )))
-		to_chat(usr, "<span class='boldnotice'>I must be dead to use this!</span>")
+		to_chat(usr, "<span class='boldnotice'>我必须在死亡后才能使用这个！</span>")
 		return
 
 	log_game("[key_name(usr)] used abandon mob.")
 
-	to_chat(src, "<span class='info'>Returned to lobby successfully.</span>")
+	to_chat(src, "<span class='info'>已成功返回大厅。</span>")
 
 	if(!client)
 		log_game("[key_name(usr)] AM failed due to disconnect.")
@@ -692,7 +692,7 @@ GLOBAL_VAR_INIT(mobids, 1)
  * Sometimes helps if the user is stuck in another perspective or camera
  */
 /mob/verb/cancel_camera()
-	set name = "{RESET CAMERA}"
+	set name = "{重置视角}"
 	set hidden = TRUE
 	set category = null
 	reset_perspective(null)
@@ -801,43 +801,56 @@ GLOBAL_VAR_INIT(mobids, 1)
 	var/days = "黄昏之日"
 	switch(get_current_day_of_week())
 		if(1)
-			days = "MOON'S DAE"
+			days = "月神之日"
 		if(2)
-			days = "TIW'S DAE"
+			days = "战神之日"
 		if(3)
-			days = "WEDDING'S DAE"
+			days = "婚约之日"
 		if(4)
-			days = "THULE'S DAE"
+			days = "极北之日"
 		if(5)
-			days = "FREYJA'S DAE"
+			days = "爱与丰饶之日"
 		if(6)
-			days = "SATURN'S DAE"
+			days = "土星之日"
 		if(7)
-			days = "SUN'S DAE"
+			days = "太阳之日"
+
+	// 汉化当时
+	var/tod_zh
+	if (GLOB.tod == "dawn")
+		tod_zh = "黎明"
+	else if (GLOB.tod == "day")
+		tod_zh = "白昼"
+	else if (GLOB.tod == "dusk")
+		tod_zh = "黄昏"
+	else if (GLOB.tod == "night")
+		tod_zh = "夜晚"
+	else
+		tod_zh = null
 
 	if(client)
-		if(statpanel("RoundInfo"))
-			stat(null, "MAP: [SSmapping.current_map?.map_name || "Loading..."]")
+		if(statpanel("回合信息"))
+			stat(null, "地图: [SSmapping.current_map?.map_name || "加载中..."]")
 			var/datum/map_config/cached = SSmap_vote.next_map_config
 			if(cached)
-				stat(null, "Next Map: [cached.map_name]")
-			stat(null, "ROUND ID: [GLOB.rogue_round_id ? GLOB.rogue_round_id : "NULL"]")
-			stat(null, "ROUND TIME: [time2text(STATION_TIME_PASSED(), "hh:mm:ss", 0)] [world.time - SSticker.round_start_time]")
+				stat(null, "下张地图: [cached.map_name]")
+			stat(null, "回合 ID: [GLOB.rogue_round_id ? GLOB.rogue_round_id : "NULL"]")
+			stat(null, "时间: [time2text(STATION_TIME_PASSED(), "hh:mm:ss", 0)] [world.time - SSticker.round_start_time]")
 
 			if(SSgamemode.roundvoteend)
-				stat("ROUND END: [DisplayTimeText(time_left)]")
+				stat("回合结束: [DisplayTimeText(time_left)]")
 			if(client?.holder)
-				stat(null, "ROUND TrueTime: [worldtime2text()] [world.time]")
-			stat(null, "STORYTELLER: [SSgamemode.storyteller_name]")
-			stat(null, "TIMEOFDAY: [days] ᛉ [uppertext(GLOB.tod)] ᛉ [station_time_timestamp("hh:mm")]")
-			stat(null, "IC Time: [station_time_timestamp()] [station_time()]")
-			stat(null, "PING: [round(client.lastping, 1)]ms (Average: [round(client.avgping, 1)]ms)")
-			stat(null, "TIME DILATION: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)")
+				stat(null, "回合真实时间:[worldtime2text()] [world.time]")
+			stat(null, "叙事者: [SSgamemode.storyteller_name]")
+			stat(null, "日期与时间: [days] ᛉ [uppertext(tod_zh)] ᛉ [station_time_timestamp("hh:mm")]")
+			stat(null, "IC 时间: [station_time_timestamp()] [station_time()]")
+			stat(null, "延迟: [round(client.lastping, 1)]ms (平均延迟: [round(client.avgping, 1)]ms)")
+			stat(null, "时间膨胀: [round(SStime_track.time_dilation_current,1)]% 平均时间膨胀:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)")
 			if(!CONFIG_GET(flag/disable_memory_stats))
-				stat(null, "Memory: [SSmemory_stats.last_rss_mb ? "[SSmemory_stats.last_rss_mb] MB/3900 MB" : "sampling..."]")
+				stat(null, "内存: [SSmemory_stats.last_rss_mb ? "[SSmemory_stats.last_rss_mb] MB/3900 MB" : "取样中..."]")
 			if(check_rights(R_ADMIN,0))
 				stat(null, SSmigrants.get_status_line())
-				stat(null, "Player count: [GLOB.clients.len]") // If someone deletes this again I will slap your balls
+				stat(null, "玩家个数: [GLOB.clients.len]") // If someone deletes this again I will slap your balls
 
 	if(client && client.holder && check_rights(R_DEBUG,0))
 		if(statpanel("MC"))
@@ -1088,7 +1101,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 		return mind.grab_ghost(force = force)
 
 ///Notify a ghost that it's body is being cloned
-/mob/proc/notify_ghost_cloning(message = "Someone is trying to revive you. Re-enter your corpse if you want to be revived!", sound = 'sound/blank.ogg', atom/source = null, flashwindow)
+/mob/proc/notify_ghost_cloning(message = "有人正试图复活你。如果你希望复活，请重新进入自己的尸体！", sound = 'sound/blank.ogg', atom/source = null, flashwindow)
 	var/mob/dead/observer/ghost = get_ghost()
 	if(ghost)
 		ghost.notify_cloning(message, sound, source, flashwindow)
@@ -1305,11 +1318,11 @@ GLOBAL_VAR_INIT(mobids, 1)
 /mob/proc/can_read(obj/O, silent = FALSE)
 	if(is_blind(src) || eye_blurry)
 		if(!silent)
-			to_chat(src, "<span class='warning'>I'm too blind to read.</span>")
+			to_chat(src, "<span class='warning'>我瞎得看不了字。</span>")
 		return
 	if(!is_literate())
 		if(!silent)
-			to_chat(src, "<span class='warning'>I can't make sense of these verba.</span>")
+			to_chat(src, "<span class='warning'>我无法理解这些文字。</span>")
 		return
 	return TRUE
 
@@ -1330,15 +1343,15 @@ GLOBAL_VAR_INIT(mobids, 1)
 /mob/vv_get_dropdown()
 	. = ..()
 	VV_DROPDOWN_OPTION("", "---------")
-	VV_DROPDOWN_OPTION(VV_HK_GIB, "Gib")
-	VV_DROPDOWN_OPTION(VV_HK_GIVE_SPELL, "Give Spell")
-	VV_DROPDOWN_OPTION(VV_HK_REMOVE_SPELL, "Remove Spell")
-	VV_DROPDOWN_OPTION(VV_HK_GODMODE, "Toggle Godmode")
-	VV_DROPDOWN_OPTION(VV_HK_DROP_ALL, "Drop Everything")
-	VV_DROPDOWN_OPTION(VV_HK_REGEN_ICONS, "Regenerate Icons")
-	VV_DROPDOWN_OPTION(VV_HK_PLAYER_PANEL, "Show player panel")
-	VV_DROPDOWN_OPTION(VV_HK_DIRECT_CONTROL, "Assume Direct Control")
-	VV_DROPDOWN_OPTION(VV_HK_OFFER_GHOSTS, "Offer Control to Ghosts")
+	VV_DROPDOWN_OPTION(VV_HK_GIB, "炸成碎块")
+	VV_DROPDOWN_OPTION(VV_HK_GIVE_SPELL, "授予法术")
+	VV_DROPDOWN_OPTION(VV_HK_REMOVE_SPELL, "移除法术")
+	VV_DROPDOWN_OPTION(VV_HK_GODMODE, "切换无敌模式")
+	VV_DROPDOWN_OPTION(VV_HK_DROP_ALL, "丢下所有物品")
+	VV_DROPDOWN_OPTION(VV_HK_REGEN_ICONS, "重新生成图标")
+	VV_DROPDOWN_OPTION(VV_HK_PLAYER_PANEL, "显示玩家面板")
+	VV_DROPDOWN_OPTION(VV_HK_DIRECT_CONTROL, "直接接管")
+	VV_DROPDOWN_OPTION(VV_HK_OFFER_GHOSTS, "向幽灵开放控制权")
 
 /mob/vv_do_topic(list/href_list)
 	. = ..()
@@ -1394,7 +1407,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 
 ///Show the language menu for this mob
 /mob/verb/open_language_menu()
-	set name = "Open Language Menu"
+	set name = "打开语言菜单"
 	set category = "IC"
 	set hidden = 0
 

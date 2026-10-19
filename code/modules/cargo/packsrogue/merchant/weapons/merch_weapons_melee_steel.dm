@@ -1,12 +1,12 @@
 // Steel Weapons - Base price of 35 per steel ingot
 // Minimum price of 40
 /datum/supply_pack/rogue/steel_weapons
-	group = "Weapons (Steel)"
-	crate_name = "merchant guild's crate"
+	group = "武器（钢）" // English: Weapons (Steel)
+	crate_name = "商会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/steel_weapons/dagger
-	name = "Dagger"
+	name = "钢匕首"
 	cost = 40 // 1 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/huntingknife/idagger/steel,
@@ -14,49 +14,49 @@
 
 
 /datum/supply_pack/rogue/steel_weapons/katar
-	name = "Katar"
+	name = "拳刃"
 	cost = 40 // 1 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/katar
 				)
 
 /datum/supply_pack/rogue/steel_weapons/steelknuckle
-	name = "Steel Knuckle"
+	name = "钢指虎"
 	cost = 40 // 1 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/knuckles
 				)
 
 /datum/supply_pack/rogue/steel_weapons/rapier
-	name = "Rapier"
+	name = "刺剑"
 	cost = 40 // 1 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/sword/rapier,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/cutlass
-	name = "Cutlass"
+	name = "短弯刀"
 	cost = 40 // 1 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/sword/cutlass,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/shortsword
-	name = "Shortsword"
+	name = "短剑"
 	cost = 40 // 1 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/sword/short,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/falchion
-	name = "Falchion"
+	name = "法刀"
 	cost = 40 // 1 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/sword/short/falchion,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/messer
-	name = "Messer"
+	name = "钢猎剑"
 	cost = 40 // 1 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/sword/short/messer,
@@ -65,186 +65,186 @@
 // No one order generic sword I CBA
 
 /datum/supply_pack/rogue/steel_weapons/sabre
-	name = "Sabre"
+	name = "军刀"
 	cost = 40 // 1 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/sword/sabre,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/flail
-	name = "Flail"
+	name = "铁连枷"
 	cost = 40 // 1 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/flail/sflail,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/warhammer
-	name = "Warhammer"
+	name = "钢战锤"
 	cost = 40 // 1 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/mace/warhammer/steel,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/quarterstaff
-	name = "Reinforced Quarterstaff - Steel"
+	name = "钢制四分杖"
 	cost = 40 // 1 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/woodstaff/quarterstaff/steel,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/longsword
-	name = "Longsword"
+	name = "长剑"
 	cost = 70 // 2 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/sword/long,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/broadsword
-	name = "Broadsword"
+	name = "钢制阔剑"
 	cost = 70 // 2 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/sword/long/broadsword/steel,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/kriegmesser
-	name = "Kriegsmesser"
+	name = "双手大刀"
 	cost = 70 // 2 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/sword/long/kriegmesser,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/battleaxe
-	name = "Battle Axe"
+	name = "战斧"
 	cost = 70 // 2 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/stoneaxe/battle,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/mace
-	name = "Mace"
+	name = "钢钉头锤"
 	cost = 70 // 2 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/mace/steel,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/greatsword
-	name = "Greatsword"
+	name = "大剑"
 	cost = 105 // 3 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/greatsword,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/zweihander
-	name = "Zweihander"
+	name = "钢制双手剑"
 	cost = 105 // 3 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/greatsword/grenz,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/flamberge
-	name = "Steel Flamberge"
+	name = "钢制焰形剑"
 	cost = 105
 	contains = list(
 		/obj/item/rogueweapon/greatsword/grenz/flamberge
 	)
 
 /datum/supply_pack/rogue/steel_weapons/estoc
-	name = "Estoc"
+	name = "穿甲刺剑"
 	cost = 70 // 2 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/estoc,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/greataxe
-	name = "Greataxe"
+	name = "钢巨斧"
 	cost = 75 // 2 Steel Ingot, 1 Small Log
 	contains = list(
 					/obj/item/rogueweapon/greataxe/steel,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/greataxedoublehead
-	name = "Greataxe, Double-Headed"
+	name = "双头钢巨斧"
 	cost = 110 // 3 Steel Ingot, 1 Small Log
 	contains = list(
 					/obj/item/rogueweapon/greataxe/steel/doublehead,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/billhook
-	name = "Billhook"
+	name = "钩镰枪"
 	cost = 40 // 1 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/spear/billhook,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/halberd
-	name = "Halberd"
+	name = "戟斧"
 	cost = 75 // 2 Steel Ingot, 1 Small Log
 	contains = list(
 					/obj/item/rogueweapon/halberd,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/eaglebeak
-	name = "Lucerne"
+	name = "钢制卢塞恩锤"
 	cost = 75 // 2 Steel Ingot, 1 Small Log
 	contains = list(
 					/obj/item/rogueweapon/eaglebeak,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/grandmace
-	name = "Grand Mace"
+	name = "巨型钉头锤"
 	cost = 75 // 2 Steel Ingot, 1 Small Log
 	contains = list(
 					/obj/item/rogueweapon/mace/goden/steel,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/greatflail
-	name = "Greatflail"
+	name = "巨型连枷"
 	cost = 80 // 2 Steel Ingot, 1 Small Log, 1 Chain
 	contains = list(/obj/item/rogueweapon/flail/peasantwarflail/steel)
 
 /datum/supply_pack/rogue/steel_weapons/partizan
-	name = "Partizan"
+	name = "帕提赞长戟"
 	cost = 80 // 2 Steel Ingot, 1 Small Log. Slight increase cuz gated behind skill 4
 	contains = list(
 					/obj/item/rogueweapon/spear/partizan,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/boarspear
-	name = "Boar Spear"
+	name = "猎猪矛"
 	cost = 80 // 2 Steel Ingot, 1 Small Log. Slight increase cuz gated behind skill 4
 	contains = list(
 					/obj/item/rogueweapon/spear/boar,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/lance
-	name = "Lance"
+	name = "骑枪"
 	cost = 80 // 2 Steel Ingot, 1 Small Log. Slight increase cuz gated behind skill 4
 	contains = list(
 					/obj/item/rogueweapon/spear/lance,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/fishingspear
-	name = "Fishing Spear"
+	name = "渔叉"
 	cost = 75 // 2 Steel Ingot, 1 Small Log.
 	contains = list(
 					/obj/item/rogueweapon/fishspear,
 				)
 /datum/supply_pack/rogue/steel_weapons/rhomphaia
-	name = "Rhomphaia"
+	name = "罗姆法亚弯剑"
 	cost = 70 // 2 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/sword/long/rhomphaia,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/falx
-	name = "Falx"
+	name = "法尔克斯弯刀"
 	cost = 40 // 1 Steel Ingot
 	contains = list(
 					/obj/item/rogueweapon/sword/falx,
 				)
 
 /datum/supply_pack/rogue/steel_weapons/glaive
-	name = "Glaive"
+	name = "偃月刀"
 	cost = 105 // 3 Steel Ingot, 1 Small Log
 	contains = list(
 					/obj/item/rogueweapon/halberd/glaive,

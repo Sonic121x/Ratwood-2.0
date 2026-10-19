@@ -12,32 +12,32 @@
 	var/style = "info"
 	switch(item_quality)
 		if(ITEM_QUALITY_LOOTED)
-			word = "scavenged"
+			word = "捡来的"
 			style = "warning"
 		if(ITEM_QUALITY_RUINED)
-			word = "ruined"
+			word = "损毁"
 			style = "warning"
 		if(ITEM_QUALITY_AWFUL)
-			word = "awful"
+			word = "糟糕"
 			style = "warning"
 		if(ITEM_QUALITY_CRUDE)
-			word = "crude"
+			word = "粗制"
 			style = "warning"
 		if(ITEM_QUALITY_ROUGH)
-			word = "rough"
+			word = "粗糙"
 		if(ITEM_QUALITY_STANDARD)
-			word = "standard"
+			word = "标准"
 		if(ITEM_QUALITY_FINE)
-			word = "fine"
+			word = "精良"
 		if(ITEM_QUALITY_FLAWLESS)
-			word = "flawless"
+			word = "无瑕"
 			style = "green"
 		if(ITEM_QUALITY_MASTERWORK)
-			word = "masterwork"
+			word = "杰作"
 			style = "green"
 	if(!word)
 		return null
-	return list("text" = "Quality: <b>[capitalize(word)]</b> ([qpct]% value)", "style" = style)
+	return list("text" = "品质：<b>[capitalize(word)]</b>（价值为标准的 [qpct]%）", "style" = style)
 
 /obj/item/examine(mob/user) //This might be spammy. Remove?
 	. = ..()
@@ -53,52 +53,52 @@
 	var/cat_tag = display_cat ? "<b>[display_cat]</b>" : ""
 
 	// The price traits gate ONLY the mammon value - category and quality are always shown.
-	var/value_line = "Value: Unknown"
+	var/value_line = "价值：未知"
 	if(HAS_TRAIT(user, TRAIT_SEEPRICES) || simpleton_price || isobserver(user))
 		var/appraised_value = appraise_price()
 		if(appraised_value > 0)
-			value_line = "Value: [appraised_value] mammon"
+			value_line = "价值：[appraised_value] 玛门币"
 	else if(HAS_TRAIT(user, TRAIT_SEEPRICES_SHITTY))
 		var/real_value = appraise_price()
 		if(real_value > 0)
 			var/static/fumbling_seed = text2num(GLOB.rogue_round_id)
 			var/fumbled_value = max(1, round(real_value + (real_value * clamp(noise_hash(real_value, fumbling_seed) - 0.25, -0.25, 0.25)), 1))
-			value_line = "Value: ~[fumbled_value] mammon (uncertain)"
+			value_line = "价值：约 [fumbled_value] 玛门币（不确定）"
 	// Category always rides along with the value line.
-	. += span_info("[value_line][cat_tag ? " - [cat_tag]" : ""].")
+	. += span_info("[value_line][cat_tag ? " - [cat_tag]" : ""]。")
 	
 	var/list/quality_data = quality_examine_suffix()
 	if(quality_data)
 		switch(quality_data["style"])
 			if("warning")
-				. += span_warning("[quality_data["text"]].")
+				. += span_warning("[quality_data["text"]]。")
 			if("green")
-				. += span_green("[quality_data["text"]].")
+				. += span_green("[quality_data["text"]]。")
 			else
-				. += span_info("[quality_data["text"]].")
+				. += span_info("[quality_data["text"]]。")
 
 	if(smeltresult)
 		var/obj/item/smelted = smeltresult
-		. += span_info("Smelts into [smelted.name].")
+		. += span_info("可被熔炼成[smelted.name]。")
 
 	if(nudist_approved)
 		if(HAS_TRAIT(user, TRAIT_NUDE_SLEEPER))
-			. += span_smallnotice("I can tolerate having this on when I sleep.")
+			. += span_smallnotice("穿着这个睡觉我也能接受。")
 		else if(HAS_TRAIT(user, TRAIT_NUDIST))
-			. += span_smallnotice("I can tolerate wearing this.")
+			. += span_smallnotice("穿这个我倒是不介意。")
 
 
 	var/list/seals = list()
 	if(atc_sealed)
-		seals += "ATC seal"
+		seals += "费伦提亚贸易公司封印"
 	if(unmintable)
-		seals += "town-property stamp"
+		seals += "城镇财产印记"
 	if(length(seals))
-		. += span_info("Marked with [english_list(seals)] - the navigator will not take it.")
+		. += span_info("带有[english_list(seals, and_text = "和")] - 引航机不会收购它。")
 	else if(was_crafted)
-		. += span_info("It appears to be crafted by the hand of a local artisan.")
+		. += span_info("它看起来出自当地工匠之手。")
 	else if(is_carved)
-		. += span_info("It is a carved item.")
+		. += span_info("这是一件雕刻品。")
 	for(var/datum/examine_effect/E in examine_effects)
 		E.trigger(user)
 
@@ -112,21 +112,21 @@
 	var/result
 
 	if(obj_broken)
-		return span_warning("It's broken.")
+		return span_warning("它完全损坏了。")
 	switch(int_percent)
 		if(1 to 15)
-			result = span_warning("It's nearly broken.")
+			result = span_warning("它快要散架了。")
 		if(16 to 30)
-			result = span_warning("It's severely damaged.")
+			result = span_warning("它严重损坏了。")
 		if(31 to 80)
-			result = span_warning("It's damaged.")
+			result = span_warning("它受损了。")
 		if(80 to 99)
-			result = span_warning("It's a little damaged.")
+			result = span_warning("它有一点损坏。")
 	return result
 
 /obj/item/clothing/integrity_check(elaborate = FALSE)
 	if(obj_broken)
-		return span_warning("It's broken.")
+		return span_warning("它完全损坏了。")
 
 	var/eff_maxint = max_integrity - (max_integrity * integrity_failure)
 	var/eff_currint = max(obj_integrity - (max_integrity * integrity_failure), 0)
@@ -136,12 +136,11 @@
 	if(percent < 100)
 		switch(percent)
 			if(1 to 15)
-				result = span_warning("It's nearly broken.")
+				result = span_warning("它快要散架了。")
 			if(16 to 30)
-				result = span_warning("It's severely damaged.")
+				result = span_warning("它严重损坏了。")
 			if(31 to 80)
-				result = span_warning("It's damaged.")
+				result = span_warning("它受损了。")
 			if(80 to 99)
-				result = span_warning("It's a little damaged.")
+				result = span_warning("它有一点损坏。")
 	return result
-

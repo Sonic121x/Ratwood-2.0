@@ -1,6 +1,6 @@
 /datum/advclass/mercenary/warscholar
-	name = "Naledi Hierophant"
-	tutorial ="You are a Naledi Hierophant, a magician who studied under cloistered sages, well-versed in all manners of arcyne. You prioritize enhancing your teammates and distracting foes while staying in the backline."
+	name = "纳莱迪 大司教"
+	tutorial ="你是一名 纳莱迪 大司教，曾随隐修贤者研习法道，通晓各类奥术。你更擅长留在后阵，强化同伴并扰乱敌人。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = RACES_ALL_KINDS
 	outfit = /datum/outfit/job/roguetown/mercenary/warscholar
@@ -40,20 +40,20 @@
 /datum/outfit/job/roguetown/mercenary/warscholar/pre_equip(mob/living/carbon/human/H)
 	..()
 	var/list/naledicolors = sortList(list(
-		"GOLD" = "#C8BE6D",
-		"PALE PURPLE" = "#9E93FF",
-		"BLUE" = "#A7B4F6",
-		"BRICK BROWN" = "#773626",
-		"PURPLE" = "#B542AC",
-		"GREEN" = "#62a85f",
-		"BLUE" = "#A9BFE0",
-		"RED" = "#ED6762",
-		"ORANGE" = "#EDAF6D",
-		"PINK" = "#EDC1D5",
-		"MAROON" = "#5F1F34",
-		"BLACK" = "#242526"
+		"金色" = "#C8BE6D",
+		"淡紫色" = "#9E93FF",
+		"蓝色" = "#A7B4F6",
+		"砖褐色" = "#773626",
+		"紫色" = "#B542AC",
+		"绿色" = "#62a85f",
+		"浅蓝色" = "#A9BFE0",
+		"红色" = "#ED6762",
+		"橙色" = "#EDAF6D",
+		"粉色" = "#EDC1D5",
+		"栗色" = "#5F1F34",
+		"黑色" = "#242526"
 	))
-	to_chat(H, span_warning("You are a Naledi Hierophant, a magician who studied under cloistered sages, well-versed in all manners of arcyne. You prioritize enhancing your teammates and distracting foes while staying in the backline."))
+	to_chat(H, span_warning("你是一名 纳莱迪 大司教，曾随隐修贤者研习法道，通晓各类奥术。你更擅长留在后阵，强化同伴并扰乱敌人。"))
 	if(H.age == AGE_OLD)
 		H.adjust_skillrank_up_to(/datum/skill/magic/arcane, 5, TRUE)
 		H.change_stat(STATKEY_SPD, -1)
@@ -61,7 +61,7 @@
 		H.change_stat(STATKEY_PER, 1)
 		H.mind?.adjust_spellpoints(6)
 	if(H.mind)
-		detailcolor = input("Choose a color.", "NALEDIAN COLORPLEX") as anything in naledicolors
+		detailcolor = input("选择一种颜色。", "纳莱迪 配色") as anything in naledicolors
 		detailcolor = naledicolors[detailcolor]
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/giants_strength)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/longstrider)
@@ -96,8 +96,8 @@
 	H.merctype = 14
 
 /datum/advclass/mercenary/warscholar/pontifex
-	name = "Naledi Pontifex"
-	tutorial = "You are a Naledi Pontifex, a warrior trained into a hybridized style of movement-controlling magic and hand-to-hand combat. Your chosen Path determines your specialization, though you'll never match another mage in pure magical power. Instead, you manifest an imitation of a shard of PSYDON's blade and rely on trickery and battlefield control."
+	name = "纳莱迪·教长"
+	tutorial = "你是一名纳莱迪教长，修习的是控场法术与徒手搏杀相融合的独门战技。你的魔法造诣虽不及专职法师，但论及正面搏杀，却比大多数施法者更为致命。你将冷静与技艺凝练为纯粹的杀意，使其化作一柄奥术之刃，仿若普赛顿神剑碎片的回响。"
 	outfit = /datum/outfit/job/roguetown/mercenary/warscholar_pontifex
 	subclass_languages = list(/datum/language/celestial)
 	traits_applied = list(TRAIT_DODGEEXPERT, TRAIT_CIVILIZEDBARBARIAN, TRAIT_ARCYNE_T1, TRAIT_NALEDI)
@@ -130,42 +130,42 @@
 /datum/outfit/job/roguetown/mercenary/warscholar_pontifex/pre_equip(mob/living/carbon/human/H)
 	..()
 	var/list/naledicolors = sortList(list(
-		"GOLD" = "#C8BE6D",
-		"PALE PURPLE" = "#9E93FF",
-		"BLUE" = "#A7B4F6",
-		"BRICK BROWN" = "#773626",
-		"PURPLE" = "#B542AC",
-		"GREEN" = "#62a85f",
-		"BLUE" = "#A9BFE0",
-		"RED" = "#ED6762",
-		"ORANGE" = "#EDAF6D",
-		"PINK" = "#EDC1D5",
-		"MAROON" = "#5F1F34",
-		"BLACK" = "#242526"
+		"金色" = "#C8BE6D",
+		"淡紫色" = "#9E93FF",
+		"蓝色" = "#A7B4F6",
+		"砖褐色" = "#773626",
+		"紫色" = "#B542AC",
+		"绿色" = "#62a85f",
+		"浅蓝色" = "#A9BFE0",
+		"红色" = "#ED6762",
+		"橙色" = "#EDAF6D",
+		"粉色" = "#EDC1D5",
+		"栗色" = "#5F1F34",
+		"黑色" = "#242526"
 	))
-	to_chat(H, span_warning("You are a Naledi Pontifex, a warrior trained into a hybridized style of movement-controlling magic and hand-to-hand combat. Though your abilities in magical fields are lacking, you are far more dangerous than other magi in a straight fight. You manifest your calm, practiced skill into a killing intent that takes the shape of an arcyne blade."))
+	to_chat(H, span_warning("你是一名 纳莱迪 教长，接受过将控场法术与徒手搏杀结合的复合式训练。虽说你在纯魔法领域不算出众，但正面厮杀时却比大多数法师更为致命。你将冷静而娴熟的技艺凝为杀意，使其化作一柄奥术之刃。"))
 	if(H.mind)
-		detailcolor = input("Choose a color.", "NALEDIAN COLORPLEX") as anything in naledicolors
+		detailcolor = input("选择一种颜色。", "纳莱迪 配色") as anything in naledicolors
 		detailcolor = naledicolors[detailcolor]
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/summonrogueweapon/bladeofpsydon)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/shadowstep)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fetch)
 		H.mind.AddSpell(new/obj/effect/proc_holder/spell/invoked/projectile/repel)
-		var/weapons = list("Path of War","Path of Control","Path of Shadows","Path of Survival")
-		var/weapon_choice = input(H, "Choose your path.", "WHAT PATH DO YOU WALK?") as anything in weapons
+		var/weapons = list("战争之道","掌控之道","暗影之道","生存之道")
+		var/weapon_choice = input(H, "选择你的道路。", "你将踏上哪条道路？") as anything in weapons
 		switch(weapon_choice)
-			if("Path of War")//Weak combat stuff only
+			if("战争之道")//Weak combat stuff only
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/airblade)//longer CD than arcane bolt but more versatile
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/enchant_weapon)
-			if("Path of Control")//Battlefield control, minimal damage dealing
+			if("掌控之道")//Battlefield control, minimal damage dealing
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/ensnare)
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/forcewall/greater)
-			if("Path of Shadows")//Sneaky trickster punchmage
+			if("暗影之道")//Sneaky trickster punchmage
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/lesserknock)
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/invisibility)
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/blindness/warscholar)
-			if("Path of Survival")//Trade magic for skills
+			if("生存之道")//Trade magic for skills
 				H.adjust_skillrank_up_to(/datum/skill/misc/medicine, 3, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/craft/cooking, 3, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/craft/alchemy, 2, TRUE)
@@ -195,8 +195,8 @@
 	H.merctype = 14
 
 /datum/advclass/mercenary/warscholar/vizier
-	name = "Naledi Vizier"
-	tutorial = "You are a Naledi Vizier. Your research into miracles and holy incantations has lead you to esoteric magycks. Though psydonians have long struggled to channel their all-father's divinity, The Great City of Naledi came the closest with it's Origin Magic."
+	name = "纳莱迪维齐尔"
+	tutorial = "你是一名纳莱迪维齐尔。你对神迹与圣咒的研究将你引向了深奥的秘法。尽管普赛顿信徒长期以来难以引导其众父的神性，但纳莱迪大城凭借其原初魔法最接近达成这一成就。"
 	outfit = /datum/outfit/job/roguetown/mercenary/warscholar_vizier
 	traits_applied = list(TRAIT_MAGEARMOR, TRAIT_ARCYNE_T3, TRAIT_ALCHEMY_EXPERT, TRAIT_NALEDI, TRAIT_MEDICINE_EXPERT, TRAIT_MAGEDEXTERITY)
 	subclass_stats = list(
@@ -230,20 +230,20 @@
 /datum/outfit/job/roguetown/mercenary/warscholar_vizier/pre_equip(mob/living/carbon/human/H)
 	..()
 	var/list/naledicolors = sortList(list(
-		"GOLD" = "#C8BE6D",
-		"PALE PURPLE" = "#9E93FF",
-		"BLUE" = "#A7B4F6",
-		"BRICK BROWN" = "#773626",
-		"PURPLE" = "#B542AC",
-		"GREEN" = "#62a85f",
-		"BLUE" = "#A9BFE0",
-		"RED" = "#ED6762",
-		"ORANGE" = "#EDAF6D",
-		"PINK" = "#EDC1D5",
-		"MAROON" = "#5F1F34",
-		"BLACK" = "#242526"
+		"金色" = "#C8BE6D",
+		"淡紫色" = "#9E93FF",
+		"蓝色" = "#A7B4F6",
+		"砖褐色" = "#773626",
+		"紫色" = "#B542AC",
+		"绿色" = "#62a85f",
+		"浅蓝色" = "#A9BFE0",
+		"红色" = "#ED6762",
+		"橙色" = "#EDAF6D",
+		"粉色" = "#EDC1D5",
+		"栗色" = "#5F1F34",
+		"黑色" = "#242526"
 	))
-	to_chat(H, span_warning("You are a Naledi Vizier. Your research into miracles and holy incantations has lead you to esoteric magycks. Though psydonians have long struggled to channel their all-father's divinity, The Great City of Naledi came the closest with it's Origin Magic."))
+	to_chat(H, span_warning("你是一名纳莱迪维齐尔。你对神迹与圣咒的研究将你引向了深奥的秘法。尽管普赛顿信徒长期以来难以引导其众父的神性，但纳莱迪大城凭借其原初魔法最接近达成这一成就。"))
 	if(H.age == AGE_OLD)
 		H.adjust_skillrank_up_to(/datum/skill/magic/arcane, 3, TRUE)
 		H.change_stat(STATKEY_SPD, -1)
@@ -274,7 +274,7 @@
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_miracles(H, cleric_tier = CLERIC_T4, passive_gain = CLERIC_REGEN_MAJOR, start_maxed = TRUE)	//Starts off maxed out.
 	if(H.mind)
-		detailcolor = input("Choose a color.", "NALEDIAN COLORPLEX") as anything in naledicolors
+		detailcolor = input("选择一种颜色。", "纳莱迪 配色") as anything in naledicolors
 		detailcolor = naledicolors[detailcolor]
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/frostbolt) // because other clerics get holy bolt and so you're not entirely pressured to take combat spells
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)

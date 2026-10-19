@@ -8,7 +8,7 @@ GLOBAL_LIST_INIT(quirks, init_subtypes_assoc(/datum/quirk))
 /datum/quirk/New()
 	. = ..()
 	if(!istype(src, /datum/quirk/none))
-		name += " ([point_cost] Q-Point[point_cost == 1 ? "" : "s"])"
+		name += " ([point_cost] 特质点)"
 
 /proc/apply_quirk(mob/living/carbon/human/recipient, datum/quirk/quirk_type)
 	if(!quirk_type || istype(quirk_type, /datum/quirk/none))
@@ -19,5 +19,5 @@ GLOBAL_LIST_INIT(quirks, init_subtypes_assoc(/datum/quirk))
 	return applied
 
 /datum/quirk/none
-	name = "None"
-	desc = "No quirk chosen."
+	name = "无"
+	desc = "未选择任何特质。"

@@ -64,11 +64,11 @@ SUBSYSTEM_DEF(familytree)
 
 /datum/controller/subsystem/familytree/Initialize()
 	ruling_family = new /datum/heritage(null, "Royal", /datum/species/human/northern)
-	//Blank starter families that we can customize for players.
-	for(var/pioneer_household in preset_family_species)
-		for(var/I = 1 to 2)
-			families += new /datum/heritage(null, null, pioneer_household)
-
+	for(var/species_name in get_selectable_species()) // KUKU
+		preset_family_species |= list(GLOB.species_list[species_name]) // KUKU
+	for(var/pioneer_household in preset_family_species) // KUKU
+		for(var/I = 1 to 2) // KUKU
+			families += new /datum/heritage(null, null, pioneer_household) // KUKU
 	return ..()
 
 /datum/controller/subsystem/familytree/proc/GetAgeValue(age_string)
@@ -177,7 +177,7 @@ SUBSYSTEM_DEF(familytree)
 
 /datum/controller/subsystem/familytree/proc/AddRoyal(mob/living/carbon/human/H, status)
 	if(!ruling_family.housename)
-		ruling_family.housename = " Royal"
+		ruling_family.housename = " 王室"
 	var/datum/family_member/member = ruling_family.CreateFamilyMember(H)
 	if(!member)
 		return
@@ -304,12 +304,12 @@ SUBSYSTEM_DEF(familytree)
 
 /datum/controller/subsystem/familytree/proc/GenerateRoyalName(gender, generation)
 	var/list/male_names = list(
-		"King" = list("Otto", "Arnulf", "Ludwig", "Henri", "Louis", "Francois"),
-		"Prince" = list("Karl", "Konrad", "Heinrich", "Raoul", "Hugues")
+		"King" = list("奥托", "阿尔努尔夫", "路德维希", "亨利", "路易", "弗朗索瓦"),
+		"Prince" = list("卡尔", "康拉德", "海因里希", "拉乌尔", "于格")
 	)
 	var/list/female_names = list(
-		"Queen" = list("Hildegard", "Freya", "Helga", "Jeanne", "Adeline"),
-		"Princess" = list("Karoline", "Hedwig", "Anneliese", "Elise")
+		"Queen" = list("希尔德加德", "芙蕾雅", "赫尔加", "让娜", "阿德琳"),
+		"Princess" = list("卡罗琳", "海德维希", "安妮莉泽", "埃莉泽")
 	)
 
 	var/title
@@ -322,7 +322,7 @@ SUBSYSTEM_DEF(familytree)
 		names = female_names[title]
 
 	var/list/roman_numerals = list("I", "II", "III", "IV", "V")
-	return "[title] [pick(names)] [pick(roman_numerals)]"
+	return "[title == "King" ? "国王" : title == "Prince" ? "王子" : title == "Queen" ? "女王" : "公主"] [pick(names)] [pick(roman_numerals)]"
 
 /datum/controller/subsystem/familytree/proc/AssignToHouse(mob/living/carbon/human/H)
 	if(!H)
@@ -522,7 +522,7 @@ SUBSYSTEM_DEF(familytree)
 				return
 
 	// Create entirely new house if no match found
-	if(our_race != "Aasimar" && our_race != "Doll" && our_race != "Golem")
+	if(H.dna?.species) // KUKU
 		var/datum/heritage/new_house = new /datum/heritage(H, null, H.dna.species.type)
 		families += new_house
 

@@ -2,7 +2,7 @@
 
 
 /obj/effect/proc_holder/spell/invoked
-	name = "invoked spell"
+	name = "引导法术"
 	range = 7
 	selection_type = "range"
 	no_early_release = TRUE
@@ -66,7 +66,7 @@
 	var/goal = get_chargetime() //if we have no chargetime then we can freely cast (and no early release flag was not set)
 	if(no_early_release) //This is to stop half-channeled spells from casting as the repeated-casts somehow bypass into this function.
 		if(percentage_progress < 100 && charge_progress < goal)//Conditions for failure: a) not 100% progress, b) charge progress less than goal
-			to_chat(usr, span_warning("[name] was not finished charging! It fizzles."))
+			to_chat(usr, span_warning("[name]尚未完成蓄力！它就此溃散了。"))
 			revert_cast(caller)
 			return FALSE
 	if(perform(list(target), TRUE, user = ranged_ability_user))
@@ -121,11 +121,11 @@
 	var/list/stats = ..(user)
 	// Remove the casting range line - not meaningful for projectile spells
 	for(var/i in stats)
-		if(findtext(i, "Range:"))
+		if(findtext(i, "射程："))
 			stats -= i
 			break
 	// Show the projectile's actual range
 	var/proj_range = initial(projectile_type.range)
 	if(proj_range)
-		stats.Insert(1, span_info("Projectile range: [proj_range] tiles"))
+		stats.Insert(1, span_info("飞射物射程：[proj_range]格"))
 	return stats

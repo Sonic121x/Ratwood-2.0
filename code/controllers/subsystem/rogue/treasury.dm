@@ -363,16 +363,16 @@ SUBSYSTEM_DEF(treasury)
 		record_round_statistic(STATS_DIRECT_TREASURY_TRANSFERS, amt)
 		if(!mint_new)
 			record_treasury_payout(usr, istype(target, /mob/living) ? target : null, amt, is_salary)
-		send_ooc_note(source ? "<b>NERVELOCK:</b> You received [amt]m. ([source])" : "<b>NERVELOCK</b> You received [amt]m.", name = target_name)
+		send_ooc_note(source ? "<b>神经锁:</b> 你收到了 [amt]m. ([source])" : "<b>神经锁</b> 你收到了 [amt]m.", name = target_name)
 		log_game("CROWN GRANT: [usr ? key_name(usr) : "system"] granted [amt]m to [istype(target, /mob/living) ? key_name(target) : target_name] via [source || "unknown"]")
 	else
 		if(SSgamemode?.roundvoteend)
-			send_ooc_note("<b>NERVELOCK:</b> Error: The round is ending. No further fines may be levied.", name = target_name)
+			send_ooc_note("<b>神经锁:</b> 错误: 本轮即将结束. 无法再征收罚款.", name = target_name)
 			return FALSE
 		var/mob/living/fine_owner = istype(target, /mob/living) ? target : null
 		if(fine_owner && is_tax_exempt(fine_owner, TAX_CATEGORY_FINE))
 			record_tax_exemption(TAX_CATEGORY_FINE, abs(amt))
-			send_ooc_note("<b>NERVELOCK:</b> Error: By decree, they cannot be fined.", name = target_name)
+			send_ooc_note("<b>神经锁:</b> 错误: 依据敕令, 对方不能被处以罚款.", name = target_name)
 			log_game("FINE REFUSED: [usr ? key_name(usr) : "system"] attempted to fine [key_name(fine_owner)] [abs(amt)]m but they were Charter-exempt")
 			return FALSE
 		var/fine_amt = abs(amt)
@@ -385,15 +385,15 @@ SUBSYSTEM_DEF(treasury)
 				fine_amt = max_fine
 		if(fine_amt <= 0)
 			if(fine_owner && has_been_fined_today(fine_owner))
-				send_ooc_note("<b>NERVELOCK:</b> Error: They have already been fined today.", name = target_name)
+				send_ooc_note("<b>神经锁:</b> 错误: 对方今日已被处以罚款.", name = target_name)
 			else
-				send_ooc_note("<b>NERVELOCK:</b> Error: No fineable amount remains.", name = target_name)
+				send_ooc_note("<b>神经锁:</b> 错误: 已无可罚金额.", name = target_name)
 			return FALSE
 		if(!transfer(account, discretionary_fund, fine_amt, "[TAX_CATEGORY_FINE] ([source])"))
-			send_ooc_note("<b>NERVELOCK:</b> Error: Insufficient funds in the account to complete the fine.", name = target_name)
+			send_ooc_note("<b>神经锁:</b> 错误: 账户资金不足以支付罚款.", name = target_name)
 			return FALSE
 		record_round_statistic(STATS_FINES_INCOME, fine_amt)
-		send_ooc_note(source ? "<b>NERVELOCK:</b> You were fined [fine_amt]m. ([source])" : "<b>NERVELOCK:</b> You were fined [fine_amt]m.", name = target_name)
+		send_ooc_note(source ? "<b>神经锁:</b> 你被处以 [fine_amt]m 罚款. ([source])" : "<b>神经锁:</b> 你被处以 [fine_amt]m 罚款.", name = target_name)
 		log_game("FINE: [usr ? key_name(usr) : "system"] fined [istype(target, /mob/living) ? key_name(target) : target_name] [fine_amt]m via [source || "unknown"]")
 		if(fine_owner)
 			notify_fine_applied(fine_owner, fine_amt)
@@ -422,7 +422,7 @@ SUBSYSTEM_DEF(treasury)
 	if(!account)
 		return
 	if(account.balance < amt)
-		send_ooc_note("<b>NERVELOCK:</b> Error: Insufficient funds in the account to complete the withdrawal.", name = target_name)
+		send_ooc_note("<b>神经锁：</b> 错误：账户余额不足，无法完成取款。", name = target_name)
 		return
 	if(!burn(account, amt, "NERVELOCK withdraw by [target_name]"))
 		return
@@ -445,7 +445,7 @@ SUBSYSTEM_DEF(treasury)
 		return FALSE
 	record_round_statistic(STATS_NOBLE_INCOME_TOTAL, payout)
 	total_noble_income += payout
-	send_ooc_note("<b>NERVELOCK:</b> You received [payout]m. ([source])", name = recipient.real_name)
+	send_ooc_note("<b>神经锁：</b> 你收到了[payout]m。([recipient.job == "Merchant" ? "费伦提亚贸易公司" : "贵族庄园"])", name = recipient.real_name)
 	return TRUE
 
 /datum/controller/subsystem/treasury/proc/distribute_estate_incomes()
@@ -602,7 +602,7 @@ SUBSYSTEM_DEF(treasury)
 		total_units += export_qty
 		record_material_flow(MATERIAL_FLOW_OUT, MATERIAL_SOURCE_LOCAL_EXPORT, D.item_type, export_qty, revenue)
 		if(!silent)
-			lines += "[export_qty] [D.name] to [region.name] for [revenue]m"
+			lines += "向[region.name]出口 [export_qty] 份[D.name]并获得 [revenue]m"
 	return list("revenue" = total_revenue, "units" = total_units, "lines" = lines)
 
 /datum/controller/subsystem/treasury/proc/remove_person(mob/living/person)
@@ -616,7 +616,7 @@ SUBSYSTEM_DEF(treasury)
 
 /datum/controller/subsystem/treasury/proc/apply_rate_adjustments(list/adjustments, mob/requester, good_announcement_text, bad_announcement_text)
 	if(GLOB.dayspassed <= levy_rates_changed_day)
-		to_chat(requester, span_warning("Crown levies have already been adjusted today - come back tomorrow."))
+		to_chat(requester, span_warning("今日已调整过王室税率，请明日再来。"))
 		return
 	var/datum/decree/concordat = get_decree(DECREE_ZENITSTADT_CONCORDAT)
 	var/concordat_active = concordat?.active ? TRUE : FALSE
@@ -642,11 +642,11 @@ SUBSYSTEM_DEF(treasury)
 			bad_guy = TRUE
 		tax_rates[category] = new_rate
 		var/pretty = get_tax_category_pretty_name(category)
-		var/verb = new_rate > old_rate ? "raised" : "reduced"
-		lines += "[pretty] [verb] from [old_pct]% to [new_pct]%."
+		var/verb = new_rate > old_rate ? "提高" : "降低"
+		lines += "[pretty]的征收比例由 [old_pct]% [verb]至 [new_pct]%。"
 
 	if(rejected_concordat)
-		to_chat(requester, span_warning("The Concordat of Zenitstadt forbids any levy below [round(CONCORDAT_TITHE_RATE * 100)]% while in force - the Church's tithe must be honoured."))
+		to_chat(requester, span_warning("《泽尼特施塔特协约》生效期间，任何税率均不得低于 [round(CONCORDAT_TITHE_RATE * 100)]%，必须保障教会应得的什一税。"))
 
 	if(!length(lines))
 		return
@@ -654,7 +654,7 @@ SUBSYSTEM_DEF(treasury)
 	levy_rates_changed_day = GLOB.dayspassed
 	var/final_text = jointext(lines, "<br>")
 	if(concordat_active)
-		final_text += "<br><i>By the Concordat of Zenitstadt, [round(CONCORDAT_TITHE_RATE * 100)]% of every taxed transaction is tithed to the Church of the Ten, drawn from the Crown's share.</i>"
+		final_text += "<br><i>根据《泽尼特施塔特协约》，每笔应税交易金额的 [round(CONCORDAT_TITHE_RATE * 100)]% 将作为什一税拨给十神教会，从王室所得份额中扣除。</i>"
 	var/final_announcement_text = bad_guy ? bad_announcement_text : good_announcement_text
 	priority_announce(final_text, final_announcement_text, pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain", strip_html = FALSE)
 	log_game("TAX RATES: [requester ? key_name(requester) : "system"] changed levy rates - [jointext(lines, " | ")]")
@@ -663,22 +663,22 @@ SUBSYSTEM_DEF(treasury)
 /// from crossing-the-zero (tax → subsidy or vice versa) so the announcement reads correctly.
 /datum/controller/subsystem/treasury/proc/describe_rate_change(old_rate, new_rate)
 	if(old_rate == 0 && new_rate < 0)
-		return "subsidy set at [-new_rate]m/day"
+		return "人头补贴设为每日 [-new_rate]m"
 	if(old_rate < 0 && new_rate == 0)
-		return "subsidy ended"
+		return "人头补贴已取消"
 	if(old_rate < 0 && new_rate > 0)
-		return "subsidy replaced by a [new_rate]m/day tax"
+		return "人头补贴改为每日 [new_rate]m 的人头税"
 	if(old_rate > 0 && new_rate < 0)
-		return "tax replaced by a [-new_rate]m/day subsidy"
+		return "人头税改为每日 [-new_rate]m 的人头补贴"
 	if(old_rate < 0 && new_rate < 0)
-		var/verb = (-new_rate) > (-old_rate) ? "increased" : "reduced"
-		return "subsidy [verb] from [-old_rate]m/day to [-new_rate]m/day"
-	var/verb = new_rate > old_rate ? "raised" : "reduced"
-	return "tax [verb] from [old_rate]m/day to [new_rate]m/day"
+		var/verb = (-new_rate) > (-old_rate) ? "提高" : "降低"
+		return "人头补贴由每日 [-old_rate]m [verb]至每日 [-new_rate]m"
+	var/verb = new_rate > old_rate ? "提高" : "降低"
+	return "人头税由每日 [old_rate]m [verb]至每日 [new_rate]m"
 
 /datum/controller/subsystem/treasury/proc/apply_poll_rate_adjustments(list/adjustments, mob/requester, good_announcement_text, bad_announcement_text)
 	if(GLOB.dayspassed <= poll_rates_changed_day)
-		to_chat(requester, span_warning("Poll tax rates have already been adjusted today - come back tomorrow."))
+		to_chat(requester, span_warning("今日已调整过人头税，请明日再来。"))
 		return
 	if(!islist(adjustments))
 		return
@@ -703,7 +703,7 @@ SUBSYSTEM_DEF(treasury)
 			bad_guy = TRUE
 		poll_projection_dirty = TRUE
 		var/pretty = get_poll_tax_category_pretty_name(category)
-		lines += "[pretty] poll [describe_rate_change(old_rate, new_rate)]."
+		lines += "[pretty]的[describe_rate_change(old_rate, new_rate)]。"
 
 	if(!length(lines))
 		return
@@ -716,17 +716,17 @@ SUBSYSTEM_DEF(treasury)
 /datum/controller/subsystem/treasury/proc/get_tax_category_pretty_name(category)
 	switch(category)
 		if(TAX_CATEGORY_CONTRACT_LEVY)
-			return "Contract Levy"
+			return "契约税"
 		if(TAX_CATEGORY_HEADEATER_LEVY)
-			return "Headeater Levy"
+			return "食首税"
 		if(TAX_CATEGORY_IMPORT_TARIFF)
-			return "Import Tariff"
+			return "进口税"
 		if(TAX_CATEGORY_EXPORT_DUTY)
-			return "Export Duty"
+			return "出口税"
 		if(TAX_CATEGORY_RECOVERED_SPOILS)
-			return "Recovered Spoils"
+			return "追回赃款"
 		if(TAX_CATEGORY_FINE)
-			return "Fine"
+			return "罚款"
 	return capitalize(category)
 
 /datum/controller/subsystem/treasury/proc/withdraw_money_treasury(amt, target)
@@ -784,27 +784,27 @@ SUBSYSTEM_DEF(treasury)
 /datum/controller/subsystem/treasury/proc/get_poll_tax_category_pretty_name(category)
 	switch(category)
 		if(POLL_TAX_CAT_NOBLE)
-			return "Noble"
+			return "贵族"
 		if(POLL_TAX_CAT_CLERGY)
-			return "Clergy"
+			return "神职"
 		if(POLL_TAX_CAT_INQUISITION)
-			return "Inquisition"
+			return "宗教审判所"
 		if(POLL_TAX_CAT_COURTIER)
-			return "Courtier"
+			return "廷臣"
 		if(POLL_TAX_CAT_GARRISON)
-			return "Garrison"
+			return "驻军"
 		if(POLL_TAX_CAT_GUILDS)
-			return "Guilds"
+			return "行会"
 		if(POLL_TAX_CAT_MERCHANT)
-			return "Merchant"
+			return "商人"
 		if(POLL_TAX_CAT_BURGHER)
-			return "Burgher"
+			return "市民"
 		if(POLL_TAX_CAT_ADVENTURER)
-			return "Adventurer"
+			return "冒险者"
 		if(POLL_TAX_CAT_MERCENARY)
-			return "Mercenary"
+			return "佣兵"
 		if(POLL_TAX_CAT_PEASANT)
-			return "Peasant"
+			return "农民"
 	return capitalize(category)
 
 /datum/controller/subsystem/treasury/proc/record_poll_tax_by_category(category, amount)
@@ -942,40 +942,40 @@ SUBSYSTEM_DEF(treasury)
 	if(!H || days <= 0)
 		return FALSE
 	if(SSticker?.round_start_time && (world.time - SSticker.round_start_time) < POLL_TAX_ADVANCE_LOCKOUT)
-		to_chat(H, span_warning("The Crown's ledgers have not yet opened for the day. Try again later."))
+		to_chat(H, span_warning("王室今日尚未开始记账，请稍后再来。"))
 		return FALSE
 	var/datum/fund/account = get_account(H)
 	if(!account)
 		return FALSE
 	var/category = get_poll_tax_category(H)
 	if(!category)
-		to_chat(H, span_warning("The Crown does not tax your class."))
+		to_chat(H, span_warning("王室不向你所属的阶层征税。"))
 		return FALSE
 	if(is_poll_tax_charter_exempt(H, category))
-		to_chat(H, span_warning("Your class is exempt from poll tax by decree."))
+		to_chat(H, span_warning("依照法令，你所属的阶层免缴人头税。"))
 		return FALSE
 	var/rate = get_poll_tax_rate_for(H, category)
 	if(rate < 0)
-		to_chat(H, span_warning("Your class currently receives a Crown subsidy - there is nothing to advance."))
+		to_chat(H, span_warning("你所属的阶层目前领取王室补贴，无需预缴税款。"))
 		return FALSE
 	if(rate == 0)
 		rate = POLL_TAX_ADVANCE_FALLBACK_RATE
 	var/existing_advance = poll_tax_advance_days[H] || 0
 	var/room = POLL_TAX_MAX_ADVANCE_DAYS - existing_advance
 	if(room <= 0)
-		to_chat(H, span_warning("You already hold the maximum of [POLL_TAX_MAX_ADVANCE_DAYS] days of Poll Tax advance."))
+		to_chat(H, span_warning("你已预缴 [POLL_TAX_MAX_ADVANCE_DAYS] 天的人头税，达到预缴上限。"))
 		return FALSE
 	if(days > room)
 		days = room
 	var/total_cost = rate * days
 	if(account.balance < total_cost)
-		to_chat(H, span_warning("Insufficient balance. Need [total_cost]m for [days] days."))
+		to_chat(H, span_warning("余额不足。预缴 [days] 天需要 [total_cost]m。"))
 		return FALSE
 	if(!transfer(account, discretionary_fund, total_cost, "Poll Tax advance ([days] days)"))
 		return FALSE
 	record_poll_tax_by_category(category, total_cost)
 	poll_tax_advance_days[H] = existing_advance + days
-	to_chat(H, span_notice("You have advanced [days] day[days == 1 ? "" : "s"] of Poll Tax ([total_cost]m total). Advance held: [poll_tax_advance_days[H]] day[poll_tax_advance_days[H] == 1 ? "" : "s"]."))
+	to_chat(H, span_notice("你已预缴 [days] 天的人头税（共 [total_cost]m）。目前预缴余额可抵扣 [poll_tax_advance_days[H]] 天。"))
 	log_game("POLL TAX ADVANCE: [key_name(H)] prepaid [days] days ([total_cost]m) of poll tax as [category]")
 	return TRUE
 
@@ -1024,7 +1024,7 @@ SUBSYSTEM_DEF(treasury)
 			record_treasury_expense(TREASURY_FLOW_SUBSIDY, get_poll_tax_category_pretty_name(category), subsidy)
 			// Record as a negative against the category - the breakdown shows net Crown intake.
 			record_poll_tax_by_category(category, -subsidy)
-			to_chat(owner, span_notice("<b>POLL SUBSIDY:</b> [subsidy]m granted by the Crown."))
+			to_chat(owner, span_notice("<b>人头补贴：</b>王室已向你发放 [subsidy]m。"))
 			continue
 
 		var/advance = poll_tax_advance_days[owner] || 0
@@ -1034,7 +1034,7 @@ SUBSYSTEM_DEF(treasury)
 				poll_tax_advance_days -= owner
 			else
 				poll_tax_advance_days[owner] = advance
-			to_chat(owner, span_notice("<b>POLL TAX:</b> Covered by advance. [advance] day[advance == 1 ? "" : "s"] remaining."))
+			to_chat(owner, span_notice("<b>人头税：</b>已由预缴税款抵扣，剩余预缴税款可抵扣 [advance] 天。"))
 			continue
 
 		var/owed_this_tick = rate + (poll_tax_owed[owner] || 0)
@@ -1052,12 +1052,12 @@ SUBSYSTEM_DEF(treasury)
 
 		if(paid > 0)
 			record_poll_tax_by_category(category, paid)
-			to_chat(owner, span_notice("<b>POLL TAX:</b> [paid]m collected."))
+			to_chat(owner, span_notice("<b>人头税：</b>已征收 [paid]m。"))
 
 		if(owed_this_tick > 0)
 			poll_tax_owed[owner] = owed_this_tick
 			poll_tax_debt_days[owner] = (poll_tax_debt_days[owner] || 0) + 1
-			to_chat(owner, span_danger("<b>POLL TAX:</b> You owe the Crown [owed_this_tick]m. [poll_tax_debt_days[owner]] day\s overdue."))
+			to_chat(owner, span_danger("<b>人头税：</b>你欠王室 [owed_this_tick]m，已逾期 [poll_tax_debt_days[owner]] 天。"))
 			if(poll_tax_debt_days[owner] >= POLL_TAX_DEBT_DAYS_TO_DEBTOR && !HAS_TRAIT(owner, TRAIT_ARREARS))
 				ADD_TRAIT(owner, TRAIT_ARREARS, TRAIT_GENERIC)
 		else

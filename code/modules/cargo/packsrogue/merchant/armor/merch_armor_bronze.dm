@@ -1,109 +1,109 @@
 /datum/supply_pack/rogue/armor_bronze
-	group = "Armor (Bronze)"
-	crate_name = "merchant guild's crate"
+	group = "护甲（青铜）" // English: Armor (Bronze)
+	crate_name = "商会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/armor_bronze/chainmail_bronze
-	name = "Haubergeon"
+	name = "青铜锁子短甲"
 	cost = 25
 	contains = list(/obj/item/clothing/suit/roguetown/armor/chainmail/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/hauberkbronze
-	name = "Hauberk"
+	name = "青铜锁子甲"
 	cost = 40
 	contains = list(/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/chaincoifbronze
-	name = "Chain Coif"
+	name = "青铜锁链护头巾"
 	cost = 25
 	contains = list(/obj/item/clothing/neck/roguetown/chaincoif/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/gorgetbronze
-	name = "Neckguard"
+	name = "青铜护颈"
 	cost = 25
 	contains = list(/obj/item/clothing/neck/roguetown/gorget/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/bevorbronze
-	name = "Gorgette"
+	name = "青铜护喉甲"
 	cost = 25
 	contains = list(/obj/item/clothing/neck/roguetown/bevor/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/lightplatebronze
-	name = "Cardiophylax"
+	name = "青铜护心甲"
 	cost = 35
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/bronze/light)
 
 /datum/supply_pack/rogue/armor_bronze/breastplatebronze
-	name = "Cuirass"
+	name = "青铜胸甲"
 	cost = 35
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/lamellar
-	name = "Bronze Lamellar"
+	name = "青铜鳞甲"
 	cost = 50
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/scale/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/halfplate
-	name = "Panoply Assembly, Halved"
+	name = "青铜全装甲组件"
 	cost = 180 // Uhhh I don't think I should be selling them for 65 LOL
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/full/bronze/alt)
 
 /datum/supply_pack/rogue/armor_bronze/fullplate
-	name = "Panoply Assembly, Full"
+	name = "青铜全装板甲"
 	cost = 220 // Uhhh I don't think I should be selling them for 80
 	contains = list(/obj/item/clothing/suit/roguetown/armor/plate/full/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/bracers
-	name = "Bracers, Plate"
+	name = "青铜护腕"
 	cost = 25
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/jackchains
-	name = "Bracers, Chainsleeves"
+	name = "青铜锁链袖套"
 	cost = 20
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/chain/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/chainglovesbronze
-	name = "Gauntlets, Chain"
+	name = "青铜锁甲护手"
 	cost = 20
 	contains = list(/obj/item/clothing/gloves/roguetown/chain/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/kilt
-	name = "Chainmaille Kilt, Bronze"
+	name = "青铜链甲裙"
 	cost = 25
 	contains = list(/obj/item/clothing/under/roguetown/chainlegs/kilt/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/skirt
-	name = "Bronze Skirt"
+	name = "青铜锁甲裙"
 	cost = 25
 	contains = list(/obj/item/clothing/under/roguetown/chainlegs/skirt/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/maskbronze
-	name = "Mask"
+	name = "青铜面具"
 	cost = 25
 	contains = list(/obj/item/clothing/mask/rogue/facemask/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/mask_wildguard
-	name = "Mask, Alt"
+	name = "青铜死亡面具"
 	cost = 25
 	contains = list(/obj/item/clothing/mask/rogue/facemask/bronze/classic)
 
 /datum/supply_pack/rogue/armor_bronze/bootsbronze
-	name = "Bronze Greaves"
+	name = "青铜胫甲"
 	cost = 25
 	contains = list(/obj/item/clothing/shoes/roguetown/boots/armor/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/skullcap_helmet
-	name = "Helmet, Barbute"
+	name = "头盔，青铜巴尔布特盔"
 	cost = 50
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/bronze)
 
 /datum/supply_pack/rogue/armor_bronze/horned
-	name = "Helmet, Murmillo-Style"
+	name = "头盔，青铜穆尔米洛盔"
 	cost = 25
 	contains = list(/obj/item/clothing/head/roguetown/helmet/bronzegladiator)
 
 /datum/supply_pack/rogue/armor_bronze/kettle
-	name = "Helmet, Illyria"
+	name = "头盔，青铜伊利里亚头盔"
 	cost = 25
 	contains = list(/obj/item/clothing/head/roguetown/helmet/bronze)

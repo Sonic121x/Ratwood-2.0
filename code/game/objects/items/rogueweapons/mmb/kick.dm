@@ -1,5 +1,5 @@
 /datum/intent/kick
-	name = "kick"
+	name = "踢击"
 	chargetime = 0
 	chargedrain = 0
 	noaa = FALSE
@@ -68,7 +68,7 @@
 		return FALSE
 	if(IsOffBalanced())
 		if(do_message)
-			to_chat(src, span_warning("I haven't regained my balance yet."))
+			to_chat(src, span_warning("我还没重新站稳。"))
 		return FALSE
 	if(QDELETED(src) || QDELETED(A))
 		return FALSE

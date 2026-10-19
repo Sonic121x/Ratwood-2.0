@@ -41,10 +41,10 @@ type Data = {
 
 type ActFn = (action: string, params?: Record<string, unknown>) => void;
 
-const STATUS_COLOR: Record<string, string> = {
-  Available: SEAL_GREEN,
-  Hired: SEAL_AMBER,
-  'Do not Disturb': SEAL_RED,
+const STATUS_DISPLAY: Record<string, { color: string; label: string }> = {
+  Available: { color: SEAL_GREEN, label: '可接待' },
+  Hired: { color: SEAL_AMBER, label: '已受雇' },
+  'Do not Disturb': { color: SEAL_RED, label: '请勿打扰' },
 };
 
 const statusSortWeight = (status: string): number => {
@@ -59,7 +59,7 @@ const AdvertRow = (props: {
   act: ActFn;
 }) => {
   const { entry, isOwn, act } = props;
-  const color = STATUS_COLOR[entry.status] || INK_SOFT;
+  const color = STATUS_DISPLAY[entry.status]?.color || INK_SOFT;
   return (
     <div
       style={{
@@ -93,13 +93,13 @@ const AdvertRow = (props: {
           </div>
         )}
       </div>
-      <span style={badgeStyle(color)}>{entry.status}</span>
+      <span style={badgeStyle(color)}>{STATUS_DISPLAY[entry.status]?.label || entry.status}</span>
       <button
         type="button"
         style={inkButtonStyle()}
         onClick={() => act('examine_headshot', { key: entry.key })}
       >
-        Examine Headshot
+        查看肖像
       </button>
       {!isOwn && entry.status !== 'Do not Disturb' && (
         <button
@@ -107,7 +107,7 @@ const AdvertRow = (props: {
           style={inkButtonStyle()}
           onClick={() => act('send_offer', { key: entry.key })}
         >
-          Send Offer
+          发出邀约
         </button>
       )}
     </div>
@@ -133,12 +133,12 @@ const OwnControls = (props: {
     >
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ fontSize: FONT_BODY, color: SEAL_AMBER }}>
-          Bathhouse registry
+          浴场名册
         </div>
         <div style={{ fontSize: FONT_BODY, color: INK }}>
-          Status:{' '}
-          <b style={{ color: STATUS_COLOR[myEntry?.status || ''] || INK }}>
-            {myEntry?.status || 'Not Pinned'}
+          状态：{' '}
+          <b style={{ color: STATUS_DISPLAY[myEntry?.status || '']?.color || INK }}>
+            {STATUS_DISPLAY[myEntry?.status || '']?.label || myEntry?.status || '尚未张贴'}
           </b>
         </div>
         {myEntry?.message && (
@@ -156,8 +156,8 @@ const OwnControls = (props: {
       <Dropdown
         width="150px"
         menuWidth="150px"
-        selected={myEntry?.status || statusOptions[0]}
-        options={statusOptions}
+        selected={myEntry?.status || statusOptions[0]} displayText={STATUS_DISPLAY[myEntry?.status || statusOptions[0]]?.label}
+        options={statusOptions.map((value) => ({ value, displayText: STATUS_DISPLAY[value]?.label || value }))}
         onSelected={(value) => act('set_status', { status: value })}
         style={{ margin: 0 }}
       />
@@ -166,7 +166,7 @@ const OwnControls = (props: {
         style={inkButtonStyle()}
         onClick={() => act('edit_advert')}
       >
-        {myEntry ? 'Edit Advert' : 'Pin an Advert'}
+        {myEntry ? '编辑告示' : '张贴告示'}
       </button>
       {myEntry && (
         <button
@@ -174,7 +174,7 @@ const OwnControls = (props: {
           style={inkButtonStyle()}
           onClick={() => act('remove_advert')}
         >
-          Take Down
+          撤下告示
         </button>
       )}
     </div>
@@ -190,13 +190,13 @@ export const Rosewall = () => {
       a.name.localeCompare(b.name),
   );
   return (
-    <Window width={620} height={600} theme="parchment">
+    <Window display_title="蔷薇墙" width={620} height={600} theme="parchment">
       <Window.Content scrollable>
         <div style={pageStyle}>
-          <div style={titleStyle}>The Rosewall</div>
+          <div style={titleStyle}>蔷薇墙</div>
           <div style={subtitleStyle}>
-            Perfumed slips pinned by the bathhouse&apos;s workers. Peruse, and
-            send an offer.
+            浴场侍者在此张贴了散发芬芳的纸笺。请随意浏览，
+            向心仪之人发出邀约。
           </div>
           <div style={rulerStyle} />
 
@@ -209,7 +209,7 @@ export const Rosewall = () => {
           )}
 
           <div style={sectionHeaderStyle}>
-            Pinned Adverts ({data.adverts.length})
+            已张贴的告示（{data.adverts.length}）
           </div>
           {data.adverts.length === 0 ? (
             <div
@@ -219,7 +219,7 @@ export const Rosewall = () => {
                 color: INK_SOFT,
               }}
             >
-              No adverts have been pinned.
+              还没有人张贴告示。
             </div>
           ) : (
             sortedAdverts.map((entry) => (

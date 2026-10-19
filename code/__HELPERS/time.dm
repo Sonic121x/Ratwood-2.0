@@ -94,19 +94,19 @@ GLOBAL_VAR_INIT(date_override_offset, 0)
 		var/text_to_show
 		switch(get_current_day_of_week())
 			if(1)
-				text_to_show = "DAWN OF THE FIRST DAE\nMOON'S DAE"
+				text_to_show = "第一日的黎明\n月曜日"
 			if(2)
-				text_to_show = "DAWN OF THE SECOND DAE\nTIW'S DAE"
+				text_to_show = "第二日的黎明\n蒂尔日"
 			if(3)
-				text_to_show = "DAWN OF THE THIRD DAE\nWEDDING'S DAE"
+				text_to_show = "第三日的黎明\n婚礼日"
 			if(4)
-				text_to_show = "DAWN OF THE FOURTH DAE\nTHULE'S DAE"
+				text_to_show = "第四日的黎明\n图勒日"
 			if(5)
-				text_to_show = "DAWN OF THE FIFTH DAE\nFREYJA'S DAE"
+				text_to_show = "第五日的黎明\n弗蕾雅日"
 			if(6)
-				text_to_show = "DAWN OF THE SIXTH DAE\nSATURN'S DAE"
+				text_to_show = "第六日的黎明\n萨图恩日"
 			if(7)
-				text_to_show = "DAWN OF THE SEVENTH DAE\nSUN'S DAE"
+				text_to_show = "第七日的黎明\n日曜日"
 		if(!text_to_show)
 			return
 		// IC calendar: stamp the date and any active feast daes onto the dawn splash. Also makes the
@@ -114,7 +114,7 @@ GLOBAL_VAR_INIT(date_override_offset, 0)
 		text_to_show += "\n[uppertext(get_ic_date_short_as_string())]"
 		var/list/active_titles = get_active_calendar_event_titles()
 		if(length(active_titles))
-			text_to_show += "\n- [uppertext(active_titles.Join(" & "))] -"
+			text_to_show += "\n- [uppertext(active_titles.Join("、"))] -"
 		if(text_to_show in mind.areas_entered)
 			return
 		mind.areas_entered += text_to_show
@@ -140,17 +140,17 @@ GLOBAL_VAR_INIT(date_override_offset, 0)
 		if(HAS_TRAIT(mind.current, TRAIT_NOSLEEP)) // new hackslop to allow anything that cannot sleep to do their daily stuff
 			if(mind.has_changed_spell)
 				mind.has_changed_spell = FALSE
-				to_chat(mind.current, span_smallnotice("I feel like I can change my spells again."))
+				to_chat(mind.current, span_smallnotice("我感觉自己又能解绑法术了。"))
 			if(mind.has_rituos)
 				mind.has_rituos = FALSE
-				to_chat(mind.current, span_smallnotice("The toil of invoking Her Lesser Work has fled my feeble form. I can continue my transfiguration..."))
+				to_chat(mind.current, span_smallnotice("施展祂的小型伟业带来的疲惫已从我孱弱的身躯中消退。我可以继续变形了……"))
 			if (mind.rituos_spell)
-				to_chat(mind.current, span_warning("My glimpse of [mind.rituos_spell.name] flees my mind as the new dae dawns..."))
+				to_chat(mind.current, span_warning("新的一天破晓时，我对[mind.rituos_spell.name]的短暂领悟从脑海中消散了……"))
 				mind.RemoveSpell(mind.rituos_spell)
 				mind.rituos_spell = null
 			if(HAS_TRAIT(mind.current, TRAIT_STUDENT))//golems can learn, too!
 				REMOVE_TRAIT(mind.current, TRAIT_STUDENT, null)
-				to_chat(mind.current, span_nicegreen("I feel that I can be educated in a skill once more."))
+				to_chat(mind.current, span_nicegreen("我觉得又能接受一次技能教导了。"))
 
 
 	else if(GLOB.tod == "day")
@@ -216,32 +216,32 @@ GLOBAL_VAR_INIT(rollovercheck_last_timeofday, 0)
 
 //Takes a value of time in deciseconds.
 //Returns a text value of that number in hours, minutes, or seconds.
-/proc/DisplayTimeText(time_value, round_seconds_to = 0.1)
+/proc/DisplayTimeText(time_value, round_seconds_to = 0.1, chinese = FALSE)
 	var/second = FLOOR(time_value * 0.1, round_seconds_to)
 	if(!second)
-		return "right now"
+		return chinese ? "不到1秒" : "right now"
 	if(second < 60)
-		return "[second] second[(second != 1)? "s":""]"
+		return chinese ? "[second]秒" : "[second] second[(second != 1)? "s":""]"
 	var/minute = FLOOR(second / 60, 1)
 	second = FLOOR(MODULUS(second, 60), round_seconds_to)
 	var/secondT
 	if(second)
-		secondT = " and [second] second[(second != 1)? "s":""]"
+		secondT = chinese ? "[second]秒" : " and [second] second[(second != 1)? "s":""]"
 	if(minute < 60)
-		return "[minute] minute[(minute != 1)? "s":""][secondT]"
+		return chinese ? "[minute]分钟[secondT]" : "[minute] minute[(minute != 1)? "s":""][secondT]"
 	var/hour = FLOOR(minute / 60, 1)
 	minute = MODULUS(minute, 60)
 	var/minuteT
 	if(minute)
-		minuteT = " and [minute] minute[(minute != 1)? "s":""]"
+		minuteT = chinese ? "[minute]分钟" : " and [minute] minute[(minute != 1)? "s":""]"
 	if(hour < 24)
-		return "[hour] hour[(hour != 1)? "s":""][minuteT][secondT]"
+		return chinese ? "[hour]小时[minuteT][secondT]" : "[hour] hour[(hour != 1)? "s":""][minuteT][secondT]"
 	var/day = FLOOR(hour / 24, 1)
 	hour = MODULUS(hour, 24)
 	var/hourT
 	if(hour)
-		hourT = " and [hour] hour[(hour != 1)? "s":""]"
-	return "[day] day[(day != 1)? "s":""][hourT][minuteT][secondT]"
+		hourT = chinese ? "[hour]小时" : " and [hour] hour[(hour != 1)? "s":""]"
+	return chinese ? "[day]天[hourT][minuteT][secondT]" : "[day] day[(day != 1)? "s":""][hourT][minuteT][secondT]"
 
 
 /proc/daysSince(realtimev)

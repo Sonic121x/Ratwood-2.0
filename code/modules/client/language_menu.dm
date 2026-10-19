@@ -157,16 +157,16 @@
 		</style>
 		<body>
 			<div class="header">
-				<h1>📜 Additional Language Selection 📜</h1>
+				<h1>📜 额外语言选择 📜</h1>
 				<div class="points-counter">
-					<span class="points-available">Available Points: [remaining_points]</span> | 
-					<span class="points-spent">Spent (Languages): [spent_points]</span> / 
-					<span>Total Points: [total_points]</span>
+					<span class="points-available">可用点数: [remaining_points]</span> |
+					<span class="points-spent">已用点数（语言）: [spent_points]</span> /
+					<span>总点数: [total_points]</span>
 				</div>
 			</div>
 			
 			<div class="info-box">
-				ℹ You get <b>one free language</b> based on your character background, plus up to 2 additional languages (1 point each). Your race already grants you certain languages by default.
+				ℹ 你可以根据角色背景<b>免费选择一种语言</b>，并额外选择最多两种语言（每种消耗1点）。你的种族已默认赋予你部分语言。
 			</div>
 			
 			<div class="language-grid">
@@ -179,8 +179,8 @@
 	
 	html += "<div class='language-slot' style='border-color: #4CAF50;'>"
 	html += "<div class='slot-header'>"
-	html += "<span class='slot-number'>Free Language</span>"
-	html += "<span class='slot-cost' style='background: #4CAF50; color: #000;'>FREE</span>"
+	html += "<span class='slot-number'>免费语言</span>"
+	html += "<span class='slot-cost' style='background: #4CAF50; color: #000;'>免费</span>"
 	html += "</div>"
 	
 	if(free_lang)
@@ -189,13 +189,13 @@
 		html += "<div class='language-desc'>[free_lang.desc]</div>"
 		html += "</div>"
 		html += "<div class='actions'>"
-		html += "<a class='btn btn-select' href='byond://?src=\ref[src];language_action=free_change'>Change Language</a>"
+		html += "<a class='btn btn-select' href='byond://?src=\ref[src];language_action=free_change'>更换语言</a>"
 		html += "</div>"
 		qdel(free_lang)
 	else
 		html += "<div class='empty-slot'>"
-		html += "No Language Selected<br><br>"
-		html += "<a class='btn btn-select' href='byond://?src=\ref[src];language_action=free_select'>Select Language</a>"
+		html += "未选择语言<br><br>"
+		html += "<a class='btn btn-select' href='byond://?src=\ref[src];language_action=free_select'>选择语言</a>"
 		html += "</div>"
 	
 	html += "</div>"
@@ -207,10 +207,10 @@
 		
 		html += "<div class='language-slot'>"
 		html += "<div class='slot-header'>"
-		html += "<span class='slot-number'>Language Slot [i]</span>"
+		html += "<span class='slot-number'>语言栏位 [i]</span>"
 		
 		if(current_lang_path && current_lang_path != "None")
-			html += "<span class='slot-cost'>1 Point</span>"
+			html += "<span class='slot-cost'>1点</span>"
 		
 		html += "</div>"
 		
@@ -224,16 +224,16 @@
 			html += "</div>"
 			
 			html += "<div class='actions'>"
-			html += "<a class='btn btn-select' href='byond://?src=\ref[src];language_action=change;slot=[i]'>Change Language</a>"
-			html += "<a class='btn btn-clear' href='byond://?src=\ref[src];language_action=clear;slot=[i]'>Clear</a>"
+			html += "<a class='btn btn-select' href='byond://?src=\ref[src];language_action=change;slot=[i]'>更换语言</a>"
+			html += "<a class='btn btn-clear' href='byond://?src=\ref[src];language_action=clear;slot=[i]'>清除</a>"
 			html += "</div>"
 			
 			qdel(lang)
 		else
 			// Empty slot
 			html += "<div class='empty-slot'>"
-			html += "No Language Selected<br><br>"
-			html += "<a class='btn btn-select' href='byond://?src=\ref[src];language_action=select;slot=[i]'>Select Language</a>"
+			html += "未选择语言<br><br>"
+			html += "<a class='btn btn-select' href='byond://?src=\ref[src];language_action=select;slot=[i]'>选择语言</a>"
 			html += "</div>"
 		
 		html += "</div>"

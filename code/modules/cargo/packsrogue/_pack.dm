@@ -1,5 +1,5 @@
 /datum/supply_pack
-	var/name = "Crate"
+	var/name = "货箱"
 	var/group = ""
 	/// Foreign trade cultural stock: units per ship manifest roll (trade_ship.dm's
 	/// roll_cultural_stock reads these off packs listed in a realm's cultural_stock_pool).
@@ -12,7 +12,7 @@
 	var/access = FALSE
 	var/access_any = FALSE
 	var/list/contains = null
-	var/crate_name = "crate"
+	var/crate_name = "货箱"
 	var/desc = ""//no desc by default
 	var/crate_type = /obj/structure/closet/crate
 	var/no_name_quantity = FALSE // If TRUE, do not display the name as "[Name] x [Amount]".

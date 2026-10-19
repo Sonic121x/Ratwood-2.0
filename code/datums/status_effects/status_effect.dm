@@ -179,7 +179,7 @@
 ////////////////
 
 /atom/movable/screen/alert/status_effect
-	name = "Curse of Mundanity"
+	name = "平庸诅咒"
 	desc = ""
 	var/datum/status_effect/attached_effect
 
@@ -206,7 +206,7 @@
 			timestring = "[mins]:[secs < 10 ? "0[secs]" : "[secs]"]"
 		else
 			timestring = "[total_secs]s"
-		inspec += "<br><span class='smallnotice'>Time remaining: [timestring]</span>"
+		inspec += "<br><span class='smallnotice'>剩余时间：[timestring]</span>"
 
 	inspec += "<br>----------------------"
 	to_chat(user, "[inspec.Join()]")

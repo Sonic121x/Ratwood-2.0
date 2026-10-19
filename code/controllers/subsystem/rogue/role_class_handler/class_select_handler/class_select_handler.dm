@@ -225,7 +225,7 @@
 	data += "<body>"
 
 	//Class href fill-in
-	data += "<div id='top_handwriting'> The fates giveth... </div>"
+	data += "<div id='top_handwriting'> 命运赐予…… </div>"
 	data += "<div id='class_select_box_div'>"
 
 	var/mob/living/carbon/human/H = linked_client.mob
@@ -241,7 +241,7 @@
 
 				for(var/i in 1 to plus_factor)
 					plus_str += "+" */
-			data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];class_selected=1;selected_class=\ref[datums];'><img class='ninetysskull' src='gragstar.gif' width=32 height=32>[datums.name]<span id='green_plussa'>[plus_str]</span><img class='ninetysskull' src='gragstar.gif' width=32 height=32></a></div>\n"
+			data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];class_selected=1;selected_class=\ref[datums];'><img class='ninetysskull' src='gragstar.gif' width=32 height=32>[istype(datums, /datum/advclass/steward) ? "宫廷总管" : datums.name]<span id='green_plussa'>[plus_str]</span><img class='ninetysskull' src='gragstar.gif' width=32 height=32></a></div>\n"
 	else if(!showing_combat_classes)
 		var/datum/job/selected_job = SSjob.GetJob(H.job)
 		if(selected_job.class_categories == TRUE)
@@ -258,18 +258,18 @@
 					if(datums.class_select_category == rolled_categories)
 						var/plus_str = ""
 						data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];class_selected=1;selected_class=\ref[datums];'>"
-						data += "<img class='ninetysskull' src='gragstar.gif' width=32 height=32>[datums.name]<span id='green_plussa'>[plus_str]</span><img class='ninetysskull' src='gragstar.gif' width=32 height=32>"
+						data += "<img class='ninetysskull' src='gragstar.gif' width=32 height=32>[istype(datums, /datum/advclass/steward) ? "宫廷总管" : datums.name]<span id='green_plussa'>[plus_str]</span><img class='ninetysskull' src='gragstar.gif' width=32 height=32>"
 						data += "</a></div>\n"
 				data += "</details>"
 
 		else
 			for(var/datum/advclass/datums in rolled_classes)
 				var/plus_str = ""
-				data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];class_selected=1;selected_class=\ref[datums];'><img class='ninetysskull' src='gragstar.gif' width=32 height=32>[datums.name]<span id='green_plussa'>[plus_str]</span><img class='ninetysskull' src='gragstar.gif' width=32 height=32></a></div>\n"
+				data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];class_selected=1;selected_class=\ref[datums];'><img class='ninetysskull' src='gragstar.gif' width=32 height=32>[istype(datums, /datum/advclass/steward) ? "宫廷总管" : datums.name]<span id='green_plussa'>[plus_str]</span><img class='ninetysskull' src='gragstar.gif' width=32 height=32></a></div>\n"
 
 	if(special_session_queue && special_session_queue.len)
 		for(var/datum/advclass/datums in special_session_queue)
-			data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];special_selected=1;selected_special=\ref[datums];'><img class='ninetysskull' src='gragstar.gif' width=32 height=32>[datums.name]<img class='ninetysskull' src='gragstar.gif' width=32 height=32></a></div>\n"
+			data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];special_selected=1;selected_special=\ref[datums];'><img class='ninetysskull' src='gragstar.gif' width=32 height=32>[istype(datums, /datum/advclass/steward) ? "宫廷总管" : (istype(datums, /datum/advclass/pick_everything) ? "自由选择职业" : datums.name)]<img class='ninetysskull' src='gragstar.gif' width=32 height=32></a></div>\n"
 
 	if(showing_combat_classes)
 		for(var/datum/advclass/datums in rolled_classes)
@@ -281,7 +281,7 @@
 
 				for(var/i in 1 to plus_factor)
 					plus_str += "+" */
-			data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];class_selected=1;selected_class=\ref[datums];'><img class='ninetysskull' src='gragstar.gif' width=32 height=32>[datums.name]<span id='green_plussa'>[plus_str]</span><img class='ninetysskull' src='gragstar.gif' width=32 height=32></a></div>\n"
+			data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];class_selected=1;selected_class=\ref[datums];'><img class='ninetysskull' src='gragstar.gif' width=32 height=32>[istype(datums, /datum/advclass/steward) ? "宫廷总管" : datums.name]<span id='green_plussa'>[plus_str]</span><img class='ninetysskull' src='gragstar.gif' width=32 height=32></a></div>\n"
 	data += "</div>"
 
 	//Buttondiv Segment
@@ -291,7 +291,7 @@
 
 	if(H.job == "Drifter")
 		data += {"
-			<a class='mo_bottom_buttons' href='?src=\ref[src];show_combat_class=1'>[showing_combat_classes ? "Show Combat Classes" : "Show Pilgrim Classes"]</a>
+			<a class='mo_bottom_buttons' href='?src=\ref[src];show_combat_class=1'>[showing_combat_classes ? "显示战斗职业" : "显示朝圣者职业"]</a>
 		</div>
 		"}
 	else
@@ -325,10 +325,10 @@
 		</head>
 		<body>
 			<div id="top_bloc">
-				<span class="title_shit">Class Name:</span> <span class="post_title_shit">[cur_picked_class]</span><br>
-				<span class="title_shit">Description:</span> <span class="post_title_shit">[cur_picked_class.tutorial]</span>"}
+				<span class="title_shit">职业名称：</span> <span class="post_title_shit">[cur_picked_class]</span><br>
+				<span class="title_shit">描述：</span> <span class="post_title_shit">[cur_picked_class.tutorial]</span>"}
 	if(cur_picked_class.classes)
-		data += {"<br><br><span class="subclassorz">Subclasses:</span>"}
+		data += {"<br><br><span class="subclassorz">分支职业：</span>"}
 		for(var/i in cur_picked_class.classes)
 			data += {"
 			<br><div class="subclass_title">[i]
@@ -338,8 +338,8 @@
 
 	data += {"</div>
 				<div id='button_div'>
-					<a class='class_desc_YES_LINK' href='?src=\ref[src];yes_to_class_select=1;special_class=0;'>This is my background</a><br>
-					<a class='bottom_buttons' href='?src=\ref[src];no_to_class_select=1'>I reject this background</a>
+					<a class='class_desc_YES_LINK' href='?src=\ref[src];yes_to_class_select=1;special_class=0;'>这就是我的背景</a><br>
+					<a class='bottom_buttons' href='?src=\ref[src];no_to_class_select=1'>我拒绝这个背景</a>
 				</div>
 			</div>
 		</body>

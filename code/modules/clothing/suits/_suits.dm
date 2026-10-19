@@ -1,6 +1,6 @@
 /obj/item/clothing/suit
 	icon = 'icons/obj/clothing/suits.dmi'
-	name = "suit"
+	name = "外衣"
 	var/fire_resist = T0C+100
 	armor = ARMOR_CLOTHING
 	drop_sound = 'sound/blank.ogg'

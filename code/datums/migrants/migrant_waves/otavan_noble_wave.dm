@@ -1,5 +1,5 @@
 /datum/migrant_wave/otavan_envoy
-	name = "Otavan Emissary"
+	name = "奥塔万使团"
 	max_spawns = 1
 	weight = 50
 	track = MIGRANT_TRACK_SPECIAL
@@ -13,4 +13,4 @@
 		/datum/migrant_role/otavan/preacher = 1,
 	)
 	min_optional_fills = 0
-	greet_text = "You are part of an Otavan diplomatic mission: a small retinue and a Psydonite preacher, ready to represent your homeland."
+	greet_text = "你是奥塔万外交使团的一员：一支由少数随员和一位普赛顿传教士组成的队伍，随时准备代表祖国出使。"

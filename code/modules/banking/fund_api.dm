@@ -105,18 +105,18 @@
 	var/source_label = indenture_faction_label(source)
 	var/target_label = indenture_faction_label(target)
 	var/grace = indenture_grace_phrase(source)
-	var/job_label = accepter?.job ? "[accepter.real_name], the [accepter.job]" : (accepter?.real_name || "an unnamed signatory")
-	var/msg = "[grace], [source_label] has extended a most generous loan of [L.principal]m at [pct]% per dae over [L.days_total] dae, accepted by [job_label] on behalf of [target_label]."
-	priority_announce(msg, "Writ of Indenture", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain", strip_html = FALSE)
+	var/job_label = accepter?.job ? "[accepter.job][accepter.real_name]" : (accepter?.real_name || "一名未具名的签署者")
+	var/msg = "[grace]，[source_label]慷慨地提供了[L.principal]m的贷款，每天利息为[pct]%，期限为[L.days_total]天，由[job_label]代表[target_label]接受。"
+	priority_announce(msg, "契约令状", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain", strip_html = FALSE)
 
 /datum/controller/subsystem/treasury/proc/indenture_grace_phrase(datum/fund/F)
 	if(istype(F, /datum/fund/church))
-		return "By grace of Astrata"
+		return "承蒙阿斯特拉塔的恩典"
 	if(istype(F, /datum/fund/merchant))
-		return "By grace of Malum"
+		return "承蒙玛勒姆的恩典"
 	if(istype(F, /datum/fund/bathhouse))
-		return "By grace of Eora"
-	return "By grace of the Crown"
+		return "承蒙伊欧拉的恩典"
+	return "承蒙王室的恩典"
 
 /datum/controller/subsystem/treasury/proc/skim_for_banditry_debt(datum/fund/to_fund, amount)
 	if(amount <= 0 || banditry_debt <= 0 || to_fund != discretionary_fund)
@@ -124,7 +124,7 @@
 	var/skim = min(amount, banditry_debt)
 	banditry_debt -= skim
 	force_set_round_statistic(STATS_BANDITRY_DEBT_OUTSTANDING, banditry_debt)
-	log_fund_entry(new /datum/treasury_entry("burn", to_fund, null, skim, "Banditry debt repayment"))
+	log_fund_entry(new /datum/treasury_entry("burn", to_fund, null, skim, "偿还匪患债务"))
 	return amount - skim
 
 /datum/controller/subsystem/treasury/proc/skim_for_treasury_debt(datum/fund/to_fund, amount)
@@ -141,11 +141,11 @@
 	record_round_statistic(STATS_TREASURY_DEBT_REPAID, skim)
 	var/reason
 	if(treasury_state == TREASURY_BANKRUPTCY)
-		reason = "Sequestration debt - Ferentian Trading Company"
+		reason = "接管债务——费伦提亚贸易公司"
 	else if(treasury_state == TREASURY_IN_ARREARS)
-		reason = "Arrears repayment - Burghers of Rotwood Vale"
+		reason = "偿还欠款——腐木谷市民"
 	else
-		reason = "FTC loan repayment"
+		reason = "偿还费伦提亚贸易公司贷款"
 	log_fund_entry(new /datum/treasury_entry("burn", to_fund, null, skim, reason))
 	if(treasury_debt <= 0)
 		treasury_debt = 0
@@ -186,8 +186,8 @@
 		log_fund_entry(new /datum/treasury_entry("micro", source, to_fund, entry["amount"], entry["reason"]))
 	to_fund.pending_micro = list()
 	if(remainder > 0)
-		to_fund.pending_micro += list(list("amount" = remainder, "source" = null, "reason" = "carryover"))
-	mint(to_fund, whole, "Fractional remit ([whole]m from [contributors] pending entries)")
+		to_fund.pending_micro += list(list("amount" = remainder, "source" = null, "reason" = "结转余款"))
+	mint(to_fund, whole, "零星汇款（[contributors]笔待结算款项合计[whole]m）")
 	return whole
 
 /datum/controller/subsystem/treasury/proc/burn(datum/fund/from_fund, amount, reason)
@@ -306,7 +306,7 @@
 	var/skim = FLOOR(concordat_tithe_debt, 1)
 	if(skim <= 0)
 		return
-	if(transfer(discretionary_fund, church_fund, skim, "Concordat tithe ([tax_category])"))
+	if(transfer(discretionary_fund, church_fund, skim, "协约什一税（[tax_category]）"))
 		concordat_tithe_debt -= skim
 
 /// Books the mammon a charter shielded from the Crown, by category, for the Chronicle.
@@ -342,11 +342,11 @@
 
 /datum/controller/subsystem/treasury/proc/indenture_faction_label(datum/fund/F)
 	if(istype(F, /datum/fund/church))
-		return "the Church"
+		return "教会"
 	if(istype(F, /datum/fund/merchant))
-		return "the Merchant Guild"
+		return "商会"
 	if(istype(F, /datum/fund/bathhouse))
-		return "the Bathhouse"
+		return "浴场"
 	if(istype(F, /datum/fund/innkeeper))
-		return "the Tavern"
-	return "the Stewardry"
+		return "酒馆"
+	return "总管府"

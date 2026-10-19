@@ -1,6 +1,6 @@
 /datum/advclass/iconoclast //Support Cleric, Heavy armor, unarmed, miracles.
-	name = "Iconoclast"
-	tutorial = "Trained by an Ecclesial sect, you uphold the Ideological purity of the Matthian Creed. Take from the wealthy, give to the worthless, empower. They will look up to you, in search of the God of Robbery's guidance. Be their light in the dark."
+	name = "破像者"
+	tutorial = "你受某个教会派系训练，誓要捍卫 马西奥斯 信条在理念上的纯粹。向富者夺取，施予无用之人，再将其扶起。他们会仰望你，寻求这位盗掠之神的指引。去做他们黑暗中的那道光。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = ACCEPTED_RACES
 	outfit = /datum/outfit/job/roguetown/bandit/iconoclast
@@ -41,7 +41,7 @@
 /datum/outfit/job/roguetown/bandit/iconoclast/pre_equip(mob/living/carbon/human/H)
 	..()
 	if (!(istype(H.patron, /datum/patron/inhumen/matthios)))	//This is the only class that forces Matthios. Needed for miracles + limited slot.
-		to_chat(H, span_warning("Matthios embraces me.. I must uphold his creed. I am his light in the darkness."))
+		to_chat(H, span_warning("马西奥斯 正拥我入怀……我必须践行他的信条。我便是他于黑暗中的光。"))
 		H.set_patron(/datum/patron/inhumen/matthios)
 	belt = /obj/item/storage/belt/rogue/leather
 	pants = /obj/item/clothing/under/roguetown/trou/leather
@@ -60,16 +60,16 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/plate
 	beltr = /obj/item/rogueweapon/katar
 	id = /obj/item/mattcoin
-	var/techniques = list("Dropkick - Pushback + Extra Damage", "Chokeslam - Stamina Damage", "Stunner - Dazed Debuff", "Headbutt - Vulnerable Debuff") // cool wrestling moves
-	var/technique_choice = input(H,"Choose your TECHNIQUE.", "TOSS THEM.") as anything in techniques
+	var/techniques = list("腾空飞踢 - 击退与额外伤害", "锁喉摔 - 体力伤害", "碎颚摔 - 眩晕减益", "头槌 - 易伤减益") // cool wrestling moves
+	var/technique_choice = input(H,"选择你的技法。", "将敌人摔出去") as anything in techniques
 	switch(technique_choice)
-		if("Dropkick - Pushback + Extra Damage")
+		if("腾空飞踢 - 击退与额外伤害")
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/dropkick)
-		if("Chokeslam - Stamina Damage")
+		if("锁喉摔 - 体力伤害")
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/chokeslam)
-		if("Stunner - Dazed Debuff")
+		if("碎颚摔 - 眩晕减益")
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/stunner)
-		if("Headbutt - Vulnerable Debuff")
+		if("头槌 - 易伤减益")
 			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/headbutt)
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_miracles(H, cleric_tier = CLERIC_T4, passive_gain = CLERIC_REGEN_MINOR, start_maxed = TRUE)	//Starts off maxed out.

@@ -1,112 +1,112 @@
 /datum/supply_pack/rogue/Pioneer
-	group = "Pioneer"
-	crate_name = "Gifts of Engineering"
+	group = "拓荒工兵" // English: Pioneer
+	crate_name = "工程的馈赠"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
 /datum/supply_pack/rogue/Pioneer/gambeson
-	name = "Gambeson"
+	name = "绗缝护甲衣"
 	cost = 5
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson)
 
 /datum/supply_pack/rogue/Pioneer/hgambeson
-	name = "Heavy Gambeson"
+	name = "加厚绗缝护甲衣"
 	cost = 15
 	contains = list(/obj/item/clothing/suit/roguetown/armor/gambeson/heavy)
 
 /datum/supply_pack/rogue/Pioneer/leather
-	name = "Leather Armor"
+	name = "皮甲"
 	cost = 10
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather)
 
 /datum/supply_pack/rogue/Pioneer/leather/studded
-	name = "Studded Leather Armor"
+	name = "铆钉皮甲"
 	cost = 20
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/studded)
 
 /datum/supply_pack/rogue/Pioneer/leather/heavy
-	name = "Hardened Leather Armor"
+	name = "硬化皮甲"
 	cost = 20
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/heavy)
 
 /datum/supply_pack/rogue/Pioneer/leather/hcoat
-	name = "Hardened Leather Coat"
+	name = "硬化皮大衣"
 	cost = 30
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/heavy/coat)
 
 /datum/supply_pack/rogue/Pioneer/gorget
-	name = "Gorget"
+	name = "护喉"
 	cost = 20
 	contains = list(/obj/item/clothing/neck/roguetown/gorget)
 
 /datum/supply_pack/rogue/Pioneer/steelgorget
-	name = "Steel Gorget"
+	name = "钢护喉"
 	cost = 30
 	contains = list(/obj/item/clothing/neck/roguetown/gorget/steel)
 
 /datum/supply_pack/rogue/Pioneer/steelcoif
-	name = "Steel Coif"
+	name = "锁链护头巾"
 	cost = 30
 	contains = list(/obj/item/clothing/neck/roguetown/chaincoif)
 
 /datum/supply_pack/rogue/Pioneer/leather/Lbracers
-	name = "Leather Bracers"
+	name = "皮臂甲"
 	cost = 5
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather)
 
 /datum/supply_pack/rogue/Pioneer/leather/hbracers
-	name = "Hardened Leather Bracers"
+	name = "硬化皮臂甲"
 	cost = 10
 	contains = list(/obj/item/clothing/wrists/roguetown/bracers/leather/heavy)
 
 /datum/supply_pack/rogue/Pioneer/leather/lgloves
-	name = "Leather Gloves"
+	name = "皮手套"
 	cost = 5
 	contains = list(/obj/item/clothing/gloves/roguetown/leather)
 
 /datum/supply_pack/rogue/Pioneer/leather/hlgloves
-	name = "Heavy Leather Gloves"
+	name = "重型皮手套"
 	cost = 10
 	contains = list(/obj/item/clothing/gloves/roguetown/angle)
 
 /datum/supply_pack/rogue/Pioneer/leather/flgloves
-	name = "Fingerless Leather Gloves"
+	name = "露指皮手套"
 	cost = 10
 	contains = list(/obj/item/clothing/gloves/roguetown/fingerless_leather)
 
 /datum/supply_pack/rogue/Pioneer/leather/pants
-	name = "Leather Trousers"
+	name = "皮裤"
 	cost = 10
 	contains = list(/obj/item/clothing/under/roguetown/trou/leather)
 
 /datum/supply_pack/rogue/Pioneer/leather/hpants
-	name = "Hardened Leather Trousers"
+	name = "硬化皮裤"
 	cost = 20
 	contains = list(/obj/item/clothing/under/roguetown/heavy_leather_pants)
 
 /datum/supply_pack/rogue/Pioneer/leather/lhelmet
-	name = "Leather Helmet"
+	name = "皮革头盔"
 	cost = 5
 	contains = list(/obj/item/clothing/head/roguetown/helmet/leather)
 
 /datum/supply_pack/rogue/Pioneer/leather/hlhelmet
-	name = "Hardened Leather Helmet"
+	name = "硬化皮革头盔"
 	cost = 10
 	contains = list(/obj/item/clothing/head/roguetown/helmet/leather/advanced)
 
 /datum/supply_pack/rogue/Pioneer/leather/khelmet
-	name = "Kettle Helmet"
+	name = "锅盔"
 	cost = 20
 	contains = list(/obj/item/clothing/head/roguetown/helmet/kettle)
 
 //Weaponry. They can't get a backup shovel.
 
 /datum/supply_pack/rogue/Pioneer/parrydag
-	name = "Parry Dagger"
+	name = "钢制格挡匕首"
 	cost = 30
 	contains = list(/obj/item/rogueweapon/huntingknife/idagger/steel/parrying)
 
 /datum/supply_pack/rogue/Pioneer/axepick
-	name = "Pulaski Axe"
+	name = "普拉斯基斧"
 	cost = 25
 	contains = list(/obj/item/rogueweapon/stoneaxe/woodcut/pick)
 
@@ -115,115 +115,115 @@
 //Tools of the trade.
 
 /datum/supply_pack/rogue/Pioneer/Mancatcher
-	name = "Mancatcher"
+	name = "捕兽夹"
 	cost = 10
 	contains = list(/obj/item/restraints/legcuffs/beartrap)
 
 /datum/supply_pack/rogue/Pioneer/hammer
-	name = "Smith hammer"
+	name = "锤"
 	cost = 20
 	contains = list(/obj/item/rogueweapon/hammer/iron)
 
 /datum/supply_pack/rogue/Pioneer/tongs
-	name = "Smith tongs"
+	name = "钳子"
 	cost = 20
 	contains = list(/obj/item/rogueweapon/tongs)
 
 /datum/supply_pack/rogue/Pioneer/chiselset
-	name = "Chisel and Hammer"
+	name = "凿具组"
 	cost = 20
 	contains = list(/obj/item/rogueweapon/chisel/assembly)
 
 /datum/supply_pack/rogue/Pioneer/handsaw
-	name = "Handsaw"
+	name = "手锯"
 	cost = 20
 	contains = list(/obj/item/rogueweapon/handsaw)
 
 /datum/supply_pack/rogue/Pioneer/linker
-	name = "Artificer's Wrench"
+	name = "工程扳手"
 	cost = 20
 	contains = list(/obj/item/contraption/linker)
 
 /datum/supply_pack/rogue/Pioneer/polishing_cream
-	name = "Polishing Cream"
+	name = "抛光膏"
 	cost = 50
 	contains = list(/obj/item/polishing_cream)
 
 /datum/supply_pack/rogue/Pioneer/armor_brush
-	name = "Armor Brush"
+	name = "细刷"
 	cost = 50
 	contains = list(/obj/item/armor_brush)
 
 /datum/supply_pack/rogue/Pioneer/Sarrows
-	name = "Steel Bodkin Arrow"
+	name = "钢锥头箭"
 	cost = 3
 	contains = list(/obj/item/ammo_casing/caseless/rogue/arrow/steel)
 
 /datum/supply_pack/rogue/Pioneer/pyroarrows // Engineering arrows... they can have them...
-	name = "Pyroclastic Arrow"
+	name = "燃火箭"
 	cost = 3
 	contains = list(/obj/item/ammo_casing/caseless/rogue/arrow/pyro)
 
 /datum/supply_pack/rogue/Pioneer/pyrobolts
-	name = "Pyroclastic bolt"
+	name = "燃火弩矢"
 	cost = 3
 	contains = list(/obj/item/ammo_casing/caseless/rogue/bolt/pyro)
 
 /datum/supply_pack/rogue/Pioneer/cogs
-	name = "Cogs"
+	name = "齿轮"
 	cost = 20
 	contains = list(/obj/item/roguegear/bronze = 2)
 
 /datum/supply_pack/rogue/Pioneer/bmbstrap
-	name = "Bombdolier"
+	name = "炸弹挎带"
 	cost = 40 // 70 is far too much, it'd be easier to just make it.
 	contains = list(/obj/item/bmbstrap)
 
 //Meh grenades.
 
 /datum/supply_pack/rogue/Pioneer/impactgrenade_smoke
-	name = "Impact grenade (smoke)"
+	name = "喷气器"
 	cost = 15
 	contains = list(/obj/item/impact_grenade/smoke)
 
 /datum/supply_pack/rogue/Pioneer/impactgrenade_healing
-	name = "Impact grenade (healing)"
+	name = "疗愈喷气器"
 	cost = 15
 	contains = list(/obj/item/impact_grenade/smoke/healing_gas)
 
 //Great grenades.
 
 /datum/supply_pack/rogue/Pioneer/impactgrenade_poison
-	name = "Impact grenade (poison)"
+	name = "毒气喷气器"
 	cost = 40
 	contains = list(/obj/item/impact_grenade/smoke/poison_gas)
 
 /datum/supply_pack/rogue/Pioneer/impactgrenade_fire
-	name = "Impact grenade (fire)"
+	name = "燃烧喷气器"
 	cost = 40
 	contains = list(/obj/item/impact_grenade/smoke/fire_gas)
 
 //Wild grenades.
 
 /datum/supply_pack/rogue/Pioneer/impactgrenade_explosion
-	name = "Impact grenade (explosion)"
+	name = "碰炸手雷"
 	cost = 50
 	contains = list(/obj/item/impact_grenade/explosion)
 
 /datum/supply_pack/rogue/Pioneer/impactgrenade_blind
-	name = "Impact grenade (blind)"
+	name = "致盲喷气器"
 	cost = 50
 	contains = list(/obj/item/impact_grenade/smoke/blind_gas)
 
 /datum/supply_pack/rogue/Pioneer/impactgrenade_mute
-	name = "Impact grenade (mute)"
+	name = "静默喷气器"
 	cost = 15
 	contains = list(/obj/item/impact_grenade/smoke/mute_gas)
 
 //WMDs.
 
 /datum/supply_pack/rogue/Pioneer/blackpowder_stick
-	name = "Blackpowder stick"
+	name = "爆粉棒"
 	cost = 100//From 35. Why was this 35? OOOUGH.
 	contains = list(/obj/item/tntstick)
 
@@ -231,109 +231,109 @@
 //A serious investment just to get started.
 //Not even bringing up the other costs.
 /datum/supply_pack/rogue/Pioneer/bombard_frame
-	name = "Bombard frame"
+	name = "轻型臼炮架"
 	cost = 200
 	contains = list(/obj/item/bombard_frame)
 
 /datum/supply_pack/rogue/Pioneer/bombard_barrel
-	name = "Bombard barrel"
+	name = "轻型臼炮管"
 	cost = 200
 	contains = list(/obj/item/bombard_barrel)
 
 /datum/supply_pack/rogue/Pioneer/bombard_palantir
-	name = "Palantir"
+	name = "真知晶球"
 	cost = 100
 	contains = list(/obj/item/rogueweapon/palantir)
 
 /datum/supply_pack/rogue/Pioneer/bombard_sponge
-	name = "Bombard sponge"
+	name = "装药杆"
 	cost = 100
 	contains = list(/obj/item/rogueweapon/woodstaff/quarterstaff/bombard_sponge)
 
 /datum/supply_pack/rogue/Pioneer/smokepowder_flask
-	name = "Smokepowder flask"
+	name = "火药瓶"
 	cost = 100
 	contains = list(/obj/item/powderflask)
 
 //WMDs, but shells for the above!!!!
 //Smoke bombard charges.
 /datum/supply_pack/rogue/Pioneer/bombard_charge_smoke
-	name = "Bombard charge (smoke)"
+	name = "烟幕臼炮装药"
 	cost = 20
 	contains = list(/obj/item/cannonball/smoke)
 
 /datum/supply_pack/rogue/Pioneer/bombard_charge_poison
-	name = "Bombard charge (smoke - poison)"
+	name = "毒烟臼炮装药"
 	cost = 100
 	contains = list(/obj/item/cannonball/smoke_poison)
 
 /datum/supply_pack/rogue/Pioneer/bombard_charge_custom
-	name = "Bombard charge (smoke - custom)"
+	name = "混装臼炮装药"
 	cost = 110
 	contains = list(/obj/item/cannonball/smoke_custom)
 
 //Dangerous bombard charges.
 /datum/supply_pack/rogue/Pioneer/bombard_charge_canister
-	name = "Bombard charge (canister)"
+	name = "榴霰臼炮装药"
 	cost = 100
 	contains = list(/obj/item/cannonball/canister)
 
 /datum/supply_pack/rogue/Pioneer/bombard_charge_explosive
-	name = "Bombard charge (explosive)"
+	name = "高爆臼炮装药"
 	cost = 250
 	contains = list(/obj/item/cannonball/explosive)
 
 /datum/supply_pack/rogue/Pioneer/bombard_charge_incendiary
-	name = "Bombard charge (incendiary)"
+	name = "燃烧臼炮装药"
 	cost = 150
 	contains = list(/obj/item/cannonball/incendiary)
 
 //Misc bombard charges.
 /datum/supply_pack/rogue/Pioneer/bombard_charge_flare
-	name = "Bombard charge (flare)"
+	name = "照明臼炮装药"
 	cost = 20
 	contains = list(/obj/item/cannonball/flare)
 
 // Ranged Weaponry
 
 /datum/supply_pack/rogue/Pioneer/bow
-	name = "Bow"
+	name = "单木弓"
 	cost = 10
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/bow)
 
 /datum/supply_pack/rogue/Pioneer/crossbow
-	name = "Crossbow"
+	name = "十字弩"
 	cost = 20
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow)
 
 /datum/supply_pack/rogue/Pioneer/recurvebow
-	name = "Recurve Bow"
+	name = "反曲弓"
 	cost = 20
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve)
 
 /datum/supply_pack/rogue/Pioneer/longbow
-	name = "Longbow"
+	name = "紫杉长弓"
 	cost = 40
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow)
 
 /datum/supply_pack/rogue/Pioneer/slurbow
-	name = "Slurbow"
+	name = "轻弩"
 	cost = 40
 	contains = list(/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow)
 
 // Standard Ammunition
 
 /datum/supply_pack/rogue/Pioneer/quiver
-	name = "Empty Quiver"
+	name = "空箭袋"
 	cost = 5
 	contains = list(/obj/item/quiver)
 
 /datum/supply_pack/rogue/Pioneer/quivers/arrows
-	name = "Quiver of Arrows"
+	name = "一袋箭矢"
 	cost = 10
 	contains = list(/obj/item/quiver/arrows)
 
 /datum/supply_pack/rogue/Pioneer/quivers/bolts
-	name = "Quiver of Bolts"
+	name = "一袋弩矢"
 	cost = 20
 	contains = list(/obj/item/quiver/bolts)

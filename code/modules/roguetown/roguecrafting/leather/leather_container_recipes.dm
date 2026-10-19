@@ -1,10 +1,10 @@
 /datum/crafting_recipe/roguetown/leather/container
 	abstract_type = /datum/crafting_recipe/roguetown/leather/container
-	category = "Container"
+	category = "容器"
 	display_category = ITEM_CAT_TAILOR_MISC
 
 /datum/crafting_recipe/roguetown/leather/container/pouch
-	name = "pouch x2"
+	name = "小袋 x2"
 	result = list(/obj/item/storage/belt/rogue/pouch,
 				/obj/item/storage/belt/rogue/pouch)
 	reqs = list(/obj/item/natural/hide/cured = 1,
@@ -13,7 +13,7 @@
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/leather/container/magepouch
-	name = "summoner's pouch"
+	name = "学者药囊"
 	reqs = list(
 		/obj/item/natural/hide/cured = 2,
 		/obj/item/natural/fibers = 1,
@@ -22,7 +22,7 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/leather/container/meatbag
-	name = "game satchel"
+	name = "猎获挎袋"
 	reqs = list(
 		/obj/item/natural/hide/cured = 2,
 		/obj/item/natural/cloth = 1,
@@ -31,14 +31,14 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/leather/container/satchel
-	name = "satchel"
+	name = "挎包"
 	result = /obj/item/storage/backpack/rogue/satchel
 	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/leather/container/satchelshort
-	name = "short satchel"
+	name = "短挂挎包"
 	result = /obj/item/storage/backpack/rogue/satchel/short
 	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/natural/fibers = 1)
@@ -46,87 +46,87 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/leather/container/backpack
-	name = "backpack"
+	name = "背包"
 	result = /obj/item/storage/backpack/rogue/backpack
 	reqs = list(/obj/item/natural/hide/cured = 3,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/leather/container/waterskin
-	name = "waterskin"
+	name = "水袋"
 	result = /obj/item/reagent_containers/glass/bottle/waterskin
 	reqs = list(/obj/item/natural/hide/cured = 1,
 				/obj/item/natural/fibers = 2)
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/leather/container/quiver
-	name = "quiver"
+	name = "箭袋"
 	result = /obj/item/quiver
 	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/natural/fibers = 2)
 
 /datum/crafting_recipe/roguetown/leather/container/javelinbag
-	name = "javelin bag"
+	name = "标枪袋"
 	result = /obj/item/quiver/javelin
 	reqs = list(/obj/item/reagent_containers/food/snacks/tallow = 1,
 				/obj/item/rope = 1)
 
 /datum/crafting_recipe/roguetown/leather/container/gwstrap
-	name = "greatweapon strap"
+	name = "巨型武器背带"
 	result = /obj/item/rogueweapon/scabbard/gwstrap
 	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/rope = 1)
 
 /datum/crafting_recipe/roguetown/leather/container/twstrap
-	name = "knife bandolier"
+	name = "飞刀挎带"
 	result = /obj/item/twstrap
 	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/rope = 1)
 
 /datum/crafting_recipe/roguetown/leather/container/hurlstrap
-	name = "hurlbat bandolier"
+	name = "投斧挎带"
 	result = /obj/item/hurlstrap
 	reqs = list(/obj/item/natural/hide/cured = 3,
 				/obj/item/rope = 1)
 
 /datum/crafting_recipe/roguetown/leather/container/bmbstrap
-	name = "bombdolier"
+	name = "炸弹挎带"
 	result = /obj/item/bmbstrap
 	reqs = list(/obj/item/natural/hide/cured = 5,
 				/obj/item/rope = 2)
 
 /datum/crafting_recipe/roguetown/leather/container/belt
-	name = "leather belt"
+	name = "皮腰带"
 	result = /obj/item/storage/belt/rogue/leather
 	reqs = list(/obj/item/natural/hide/cured = 1)
 
 /datum/crafting_recipe/roguetown/leather/unleatherbelt
-	name = "untie leather belt"
+	name = "解开皮腰带"
 	result = /obj/item/natural/hide/cured
 	reqs = list(/obj/item/storage/belt/rogue/leather = 1)
 	craftdiff = 0
-	verbage_simple = "untie"
-	verbage = "unties"
+	verbage_simple = "解开"
+	verbage = "解开"
 
 /datum/crafting_recipe/roguetown/leather/container/belt/black
-	name = "black leather belt"
+	name = "黑腰带"
 	result = /obj/item/storage/belt/rogue/leather/black
 	reqs = list(/obj/item/natural/hide/cured = 1)
 
 /datum/crafting_recipe/roguetown/leather/container/belt/knifebelt
-	name = "tossblade belt"
+	name = "飞刃腰带"
 	result = /obj/item/storage/belt/rogue/leather/knifebelt
 	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/natural/fibers = 2)
 
 /datum/crafting_recipe/roguetown/leather/container/belt/double
-	name = "paired belts"
+	name = "双腰带"
 	result = /obj/item/storage/belt/rogue/leather/double
 	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/natural/fibers = 2)
 
 /datum/crafting_recipe/roguetown/leather/container/belt/suspenders
-	name = "suspenders"
+	name = "背带"
 	result = /obj/item/storage/belt/rogue/leather/suspenders/butler
 	reqs = list(
 		/obj/item/natural/hide/cured = 1,
@@ -136,7 +136,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/leather/container/belt/suspenders_colored
-	name = "suspenders (colorable)"
+	name = "可染色背带"
 	result = /obj/item/storage/belt/rogue/leather/suspenders/butler/colored
 	reqs = list(
 		/obj/item/natural/hide/cured = 1,
@@ -146,14 +146,14 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/leather/container/belt/surgicalbag
-	name = "surgeon's bag"
+	name = "外科医生包"
 	result = list(/obj/item/storage/belt/rogue/surgery_bag/empty)
 	reqs = list(/obj/item/natural/hide/cured = 2,
 				/obj/item/natural/fibers = 1)
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/leather/container/scabbard/sword
-	name = "sword scabbard"
+	name = "剑鞘"
 	result = list(/obj/item/rogueweapon/scabbard/sword)
 	reqs = list(
 		/obj/item/natural/hide/cured = 2,
@@ -161,7 +161,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/leather/container/scabbard/dagger
-	name = "dagger sheath"
+	name = "匕首鞘"
 	result = list(/obj/item/rogueweapon/scabbard/sheath)
 	reqs = list(
 		/obj/item/natural/hide/cured = 1)

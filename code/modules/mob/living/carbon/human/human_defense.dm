@@ -60,13 +60,13 @@
 			if(has_status_effect(/datum/status_effect/debuff/exposed))
 				intdamage *= EXPOSED_INTEG_MOD
 				playsound(src, 'sound/combat/exposed_pop.ogg', 100, TRUE)
-				visible_message(span_biginfo("[src] suffers a savage hit to their armor while exposed, sending them reeling!"))
+				visible_message(span_biginfo("[src]露出破绽，护甲遭到猛烈一击，踉跄着失去了平衡！"))
 				remove_status_effect(/datum/status_effect/debuff/exposed)
 				emote("pain", forced = TRUE)
 			else if(has_status_effect(/datum/status_effect/debuff/vulnerable))
 				intdamage *= VULN_INTEG_MOD
 				playsound(src, 'sound/combat/vulnerable_pop.ogg', 100, TRUE)
-				visible_message(span_biginfo("[src] is struck while vulnerable, leaving a dent in their armor!"))
+				visible_message(span_biginfo("[src]在防备薄弱时遭到攻击，护甲上留下了一处凹痕！"))
 				remove_status_effect(/datum/status_effect/debuff/vulnerable)
 				emote("groan", forced = TRUE)
 
@@ -95,12 +95,12 @@
 			if(has_status_effect(/datum/status_effect/debuff/exposed))
 				full_dmg = TRUE
 				playsound(src, 'sound/combat/exposed_pop.ogg', 100, TRUE)
-				visible_message("<span class = 'combatsecondarybodypart'>[src] suffers a savage hit to their armor while exposed!</span>")
+				visible_message("<span class = 'combatsecondarybodypart'>[src]露出破绽，护甲遭到猛烈一击！</span>")
 				remove_status_effect(/datum/status_effect/debuff/exposed)
 				emote("pain", forced = TRUE)
 			else if(has_status_effect(/datum/status_effect/debuff/vulnerable))
 				playsound(src, 'sound/combat/vulnerable_pop.ogg', 100, TRUE)
-				visible_message(span_biginfo("[src] is struck into their armor while vulnerable!"))
+				visible_message(span_biginfo("[src]在防备薄弱时遭到攻击，护甲受到重击！"))
 				remove_status_effect(/datum/status_effect/debuff/vulnerable)
 				emote("groan", forced = TRUE)
 
@@ -165,8 +165,8 @@
 	if(!(P.original == src && P.firer == src)) //can't block or reflect when shooting yourself
 		if(P.reflectable & REFLECT_NORMAL)
 			if(check_reflect(def_zone)) // Checks if you've passed a reflection% check
-				visible_message(span_danger("The [P.name] gets reflected by [src]!"), \
-								span_danger("The [P.name] gets reflected by [src]!"))
+				visible_message(span_danger("[P.name]被[src]反弹了！"), \
+								span_danger("[P.name]被[src]反弹了！"))
 				// Find a turf near or on the original location to bounce to
 				if(!isturf(loc)) //Open canopy mech (ripley) check. if we're inside something and still got hit
 					P.force_hit = TRUE //The thing we're in passed the bullet to us. Pass it back, and tell it to take the damage.
@@ -190,7 +190,7 @@
 
 				return BULLET_ACT_FORCE_PIERCE // complete projectile permutation
 
-		if(check_shields(P, P.damage, "the [P.name]", PROJECTILE_ATTACK, P.armor_penetration))
+		if(check_shields(P, P.damage, "[P.name]", PROJECTILE_ATTACK, P.armor_penetration))
 			P.on_hit(src, 100, def_zone)
 			P.handle_drop()
 			return BULLET_ACT_HIT
@@ -206,7 +206,7 @@
 			return 1
 	return 0
 
-/mob/living/carbon/human/proc/check_shields(atom/AM, damage, attack_text = "the attack", attack_type = MELEE_ATTACK, armor_penetration = 0)
+/mob/living/carbon/human/proc/check_shields(atom/AM, damage, attack_text = "攻击", attack_type = MELEE_ATTACK, armor_penetration = 0)
 	var/block_chance_modifier = round(damage / -3)
 
 	for(var/obj/item/I as anything in held_items)
@@ -293,7 +293,7 @@
 //	else
 //		affecting = get_bodypart_complex(user.used_intent.height2limb(user.aimheight)) //this proc picks a bodypart at random as long as it's in the height list
 	if(!affecting) //missing limb
-		to_chat(user, span_warning("Unfortunately, there's nothing there."))
+		to_chat(user, span_warning("可惜，那里空无一物。"))
 		return 0
 
 	SEND_SIGNAL(I, COMSIG_ITEM_ATTACK_ZONE, src, user, affecting)
@@ -329,7 +329,7 @@
 	. = ..()
 	if(.)
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
-		if(check_shields(M, damage, "the [M.name]", MELEE_ATTACK, M.armor_penetration))
+		if(check_shields(M, damage, "[M.name]", MELEE_ATTACK, M.armor_penetration))
 			return FALSE
 		var/zones = M.zone_selected
 		if(!M.ckey)
@@ -351,8 +351,8 @@
 		else
 			SEND_SIGNAL(M, COMSIG_MOB_AFTERATTACK_SUCCESS, src)
 			affecting.bodypart_attacked_by(M.a_intent.blade_class, damage - armor, M, dam_zone, crit_message = TRUE)
-		visible_message(span_danger("\The [M] [pick(M.a_intent.attack_verb)] [src]![next_attack_msg.Join()]"), \
-					span_danger("\The [M] [pick(M.a_intent.attack_verb)] me![next_attack_msg.Join()]"), null, COMBAT_MESSAGE_RANGE)
+		visible_message(span_danger("[M][pick(M.a_intent.attack_verb)][src]！[next_attack_msg.Join()]"), \
+					span_danger("[M][pick(M.a_intent.attack_verb)]我！[next_attack_msg.Join()]"), null, COMBAT_MESSAGE_RANGE)
 		next_attack_msg.Cut()
 		if(nodmg)
 			return FALSE
@@ -462,7 +462,7 @@
 	for(var/obj/item/bodypart/L in src.bodyparts)
 		if(L.status == BODYPART_ROBOTIC)
 			if(!informed)
-				to_chat(src, span_danger("I feel a sharp pain as my robotic limbs overload."))
+				to_chat(src, span_danger("我的机械肢体过载了，一阵剧痛袭来。"))
 				informed = TRUE
 			switch(severity)
 				if(1)
@@ -495,7 +495,7 @@
 				update_inv_neck()
 				update_inv_head()
 			else
-				to_chat(src, span_notice("My [head_clothes.name] protects my head and face from the acid!"))
+				to_chat(src, span_notice("我的[head_clothes.name]保护了头部和面部，使其免受酸液侵蚀！"))
 		else
 			. = get_bodypart(BODY_ZONE_HEAD)
 			if(.)
@@ -516,7 +516,7 @@
 				update_inv_w_uniform()
 				update_inv_wear_suit()
 			else
-				to_chat(src, span_notice("My [chest_clothes.name] protects my body from the acid!"))
+				to_chat(src, span_notice("我的[chest_clothes.name]保护了躯干，使其免受酸液侵蚀！"))
 		else
 			. = get_bodypart(BODY_ZONE_CHEST)
 			if(.)
@@ -548,7 +548,7 @@
 				update_inv_w_uniform()
 				update_inv_wear_suit()
 			else
-				to_chat(src, span_notice("My [arm_clothes.name] protects my arms and hands from the acid!"))
+				to_chat(src, span_notice("我的[arm_clothes.name]保护了双臂和双手，使其免受酸液侵蚀！"))
 		else
 			. = get_bodypart(BODY_ZONE_R_ARM)
 			if(.)
@@ -574,7 +574,7 @@
 				update_inv_w_uniform()
 				update_inv_wear_suit()
 			else
-				to_chat(src, span_notice("My [leg_clothes.name] protects my legs and feet from the acid!"))
+				to_chat(src, span_notice("我的[leg_clothes.name]保护了双腿和双脚，使其免受酸液侵蚀！"))
 		else
 			. = get_bodypart(BODY_ZONE_R_LEG)
 			if(.)
@@ -619,9 +619,9 @@
 
 	if(src == M)
 		if(has_status_effect(STATUS_EFFECT_CHOKINGSTRAND))
-			to_chat(src, span_notice("I attempt to remove the durathread strand from around my neck."))
+			to_chat(src, span_notice("我试图扯下缠在脖子上的耐久线。"))
 			if(do_after(src, 35, null, src))
-				to_chat(src, span_notice("I succesfuly remove the durathread strand."))
+				to_chat(src, span_notice("我成功扯下了耐久线。"))
 				remove_status_effect(STATUS_EFFECT_CHOKINGSTRAND)
 			return
 		check_for_injuries(M)
@@ -639,56 +639,56 @@
 	var/m1
 	var/deep_examination = advanced
 	if(user == src)
-		m1 = "I am"
+		m1 = "我"
 		if(!deep_examination)
 			deep_examination = HAS_TRAIT(src, TRAIT_SELF_AWARE)
-		examination += span_notice("Let's see how I am doing.")
+		examination += span_notice("让我看看我怎么样了。")
 		if(!stat && !silent)
-			user.visible_message(span_notice("[src] examines [p_them()]self."), \
-				span_notice("I check myself for injuries."))
+			user.visible_message(span_notice("[src]检查自己的伤势。"), \
+				span_notice("我检查自己的伤势。"))
 	else if(user)
-		m1 = "[p_they(TRUE)] [p_are()]"
+		m1 = "[p_they(TRUE)]"
 		if(!deep_examination)
 			deep_examination = HAS_TRAIT(user, TRAIT_EMPATH)
-		examination += span_notice("Let's see how [src] is doing.")
+		examination += span_notice("让我看看[src]怎么样了。")
 		if(!user.stat && !silent)
-			user.visible_message(span_notice("[user] examines [src]."), \
-				span_notice("I check [src] for injuries."))
+			user.visible_message(span_notice("[user]检查[src]。"), \
+				span_notice("我检查[src]的伤势。"))
 
 	if(stat < DEAD)
-		examination += "[m1] still alive."
+		examination += "[m1]还活着。"
 		if(stat >= UNCONSCIOUS)
-			examination += "[m1] [IsSleeping() ? "asleep" : "unconscious"]."
+			examination += "[m1] [IsSleeping() ? "睡着了" : "失去意识"]。"
 	else
-		examination += span_dead("[m1] dead.")
+		examination += span_dead("[m1]死了。")
 	switch(bodytemperature)
 		if(0 to BODYTEMP_COLD_LEVEL_ONE_MAX)
-			examination += span_biginfo("<font color='#023E8A'> [m1] shivering greatly</font>")
+			examination += span_biginfo("<font color='#023E8A'> [m1]剧烈发抖</font>")
 		if(BODYTEMP_COLD_LEVEL_ONE_MAX to BODYTEMP_NORMAL_MIN)
-			examination += span_biginfo("<font color='#99e6ff'> [m1] shivering</font>")
+			examination += span_biginfo("<font color='#99e6ff'> [m1]在发抖</font>")
 		if(BODYTEMP_NORMAL_MIN to BODYTEMP_NORMAL_MAX)
-			examination += span_biginfo("<B>[m1] average temperature.</B>")
+			examination += span_biginfo("<B>[m1]体温正常。</B>")
 		if(BODYTEMP_NORMAL_MAX to BODYTEMP_HEAT_LEVEL_ONE_MAX)
-			examination += span_biginfo("<font color='#ffff00'> [m1] sweating</font>")
+			examination += span_biginfo("<font color='#ffff00'> [m1]在出汗</font>")
 		if(BODYTEMP_HEAT_LEVEL_ONE_MAX to 600)
-			examination += span_biginfo("<font color='#DC143C?'> [m1] sweating greatly</font>")
+			examination += span_biginfo("<font color='#DC143C'> [m1]大量出汗</font>")
 	switch(blood_volume)
 		if(-INFINITY to BLOOD_VOLUME_SURVIVE)
-			examination += span_artery("<B>[m1] extremely anemic.</B>")
+			examination += span_artery("<B>[m1]严重贫血。</B>")
 		if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
-			examination += span_artery("<B>[m1] very anemic.</B>")
+			examination += span_artery("<B>[m1]非常贫血。</B>")
 		if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
-			examination += span_artery("[m1] anemic.")
+			examination += span_artery("[m1]贫血。")
 		if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
-			examination += span_artery("[m1] a little anemic.")
+			examination += span_artery("[m1]有点贫血。")
 
 	if(HAS_TRAIT(src, TRAIT_PARALYSIS))
 		if(HAS_TRAIT(src, TRAIT_NO_BITE))
-			examination += span_danger("[m1] PARALYZED!")
+			examination += span_danger("[m1]瘫痪了！")
 		else
-			examination += span_danger("[m1] TETRAPLEGIC!")
+			examination += span_danger("[m1]四肢瘫痪！")
 	else if(HAS_TRAIT(src, TRAIT_PARALYSIS_R_LEG) && HAS_TRAIT(src, TRAIT_PARALYSIS_L_LEG))
-		examination += span_warning("[m1] PARAPLEGIC!")
+		examination += span_warning("[m1]截瘫！")
 
 	var/static/list/body_zones = list(
 		BODY_ZONE_HEAD,
@@ -712,13 +712,13 @@
 	for(var/body_zone in zones_to_check)
 		var/obj/item/bodypart/bodypart = get_bodypart(body_zone)
 		if(!bodypart)
-			examination += span_info("☼ [capitalize(parse_zone(body_zone))]: <span class='deadsay'><b>MISSING</b></span>")
+			examination += span_info("☼ [parse_zone(body_zone)]：<span class='deadsay'><b>缺失</b></span>")
 			continue
 		examination += bodypart.check_for_injuries(user, deep_examination)
 
 	examination += "ø ------------ ø</span>"
 	if(has_status_effect(/datum/status_effect/zombie_infection) || infected)
-		examination += span_boldwarning("[m1] slowly rotting away.")
+		examination += span_boldwarning("[m1]正在慢慢腐烂。")
 
 	if(!silent)
 		to_chat(user, examination.Join("\n"))
@@ -731,21 +731,21 @@
 	if(user == src)
 		if(!deep_examination)
 			deep_examination = HAS_TRAIT(src, TRAIT_SELF_AWARE)
-		examination += span_notice("Let's see how my [parse_zone(choice)] is doing.")
+		examination += span_notice("让我看看自己的[parse_zone(choice)]伤势如何。")
 		if(!stat && !silent)
-			visible_message(span_notice("[src] examines [p_their()] [parse_zone(choice)]."))
+			visible_message(span_notice("[src]检查自己的[parse_zone(choice)]。"))
 	else if(user)
 		if(!deep_examination)
 			deep_examination = HAS_TRAIT(user, TRAIT_EMPATH)
-		examination += span_notice("Let's see how [src]'s [parse_zone(choice)] is doing.")
+		examination += span_notice("让我看看[src]的[parse_zone(choice)]伤势如何。")
 		if(!user.stat && !silent)
-			visible_message(span_notice("[user] examines [src]'s [parse_zone(choice)]."))
+			visible_message(span_notice("[user]检查[src]的[parse_zone(choice)]。"))
 
 	var/obj/item/bodypart/examined_part = get_bodypart(choice)
 	if(examined_part)
 		examination += examined_part.check_for_injuries(user, advanced)
 	else
-		examination += span_info("☼ [capitalize(parse_zone(choice))]: <span class='deadsay'><B>MISSING</B></span>")
+		examination += span_info("☼ [capitalize(parse_zone(choice))]：<span class='deadsay'><B>缺失</B></span>")
 	examination += "ø ------------ ø</span>"
 	if(!silent)
 		to_chat(user, examination.Join("\n"))
@@ -772,11 +772,11 @@
 
 	var/m1
 	if(user == src)
-		m1 = "I am"
-		examination += span_notice("Let's see how my body temperature feels.")
+		m1 = "我"
+		examination += span_notice("让我看看我的体温感觉如何。")
 	else
-		m1 = "[p_they(TRUE)] [p_are()]"
-		examination += span_notice("Let's see how [src]'s temperature looks.")
+		m1 = "[p_they(TRUE)]"
+		examination += span_notice("让我看看[src]的体温情况。")
 
 	// Get temperature state
 	var/temp_state = get_temperature_state()
@@ -784,34 +784,34 @@
 	switch(temp_state)
 
 		if(TEMP_STATE_VERY_COLD)
-			examination += span_danger("<B>[m1] extremely cold!</B>")
-			examination += span_biginfo("- Severe shivering")
-			examination += span_biginfo("- Movement speed reduced")
-			examination += span_biginfo("- Constitution reduced")
-			examination += span_danger("- Risk of frostbite after prolonged exposure")
+			examination += span_danger("<B>[m1]极度寒冷！</B>")
+			examination += span_biginfo("- 剧烈颤抖")
+			examination += span_biginfo("- 移动速度降低")
+			examination += span_biginfo("- 体质降低")
+			examination += span_danger("- 长时间暴露有冻伤风险")
 
 		if(TEMP_STATE_COLD)
-			examination += span_danger("[m1] cold.")
-			examination += span_biginfo("- Hunger increases faster")
-			examination += span_biginfo("- Occasional shivering")
+			examination += span_danger("[m1]很冷。")
+			examination += span_biginfo("- 饥饿速度加快")
+			examination += span_biginfo("- 偶尔颤抖")
 
 		if(TEMP_STATE_NORMAL)
-			examination += span_biginfo("[m1] at a comfortable temperature.")
+			examination += span_biginfo("[m1]体温舒适。")
 
 		if(TEMP_STATE_HOT)
-			examination += span_danger("[m1] hot.")
-			examination += span_biginfo("- Thirst increases faster")
-			examination += span_biginfo("- Occasional sweating")
+			examination += span_danger("[m1]很热。")
+			examination += span_biginfo("- 口渴速度加快")
+			examination += span_biginfo("- 偶尔出汗")
 
 		if(TEMP_STATE_VERY_HOT)
-			examination += span_danger("<B>[m1] extremely hot!</B>")
-			examination += span_biginfo("- Actions take more stamina")
-			examination += span_biginfo("- Stamina recovery takes twice as long")
-			examination += span_danger("- Risk of heatstroke after prolonged exposure")
+			examination += span_danger("<B>[m1]极度炎热！</B>")
+			examination += span_biginfo("- 行动消耗更多体力")
+			examination += span_biginfo("- 体力恢复时间加倍")
+			examination += span_danger("- 长时间暴露有中暑风险")
 
 	var/turf/open/floor/F = loc
 	if(isfloorturf(F) && F.heat)
-		examination += span_biginfo("It is warm here. It refreshes and heals me.")
+		examination += span_biginfo("这里暖洋洋的，让我恢复精神，治愈伤势。")
 
 	examination += "ø ------------ ø</span>"
 

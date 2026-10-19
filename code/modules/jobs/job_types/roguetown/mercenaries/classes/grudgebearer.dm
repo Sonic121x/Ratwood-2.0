@@ -1,7 +1,7 @@
 //Dwarf-exclusive mercenary class with unique armor setups.
 /datum/advclass/mercenary/grudgebearer
-	name = "Grudgebearer Smith"
-	tutorial = "Bound by eternal grudges of eons past that have not been forgotten, the Grudgebearers are left to wander the surface, as every other clan has a grudge against you, and you against them. This putrid swampland of a Duchy has also wronged you and your people, you care little for it. Coins are a means to an end -- something you can mine and forge yourself. Trinkets -- made by true smiths, now that will carry respect among your clan. However, such artifacts might not buy you food, or a roof."
+	name = "负怨铸匠"
+	tutorial = "背负着万古未消的宿怨，负怨者被迫流落地表，因为几乎每一个氏族都与你们结怨，而你们也同样痛恨他们。这片腐臭如沼泽的大公国也曾伤害过你和你的族人，你根本不在乎它。金钱不过是达成目的的手段，矿石与钢铁你自己就能开采锻造。真正能为你在族中赢得尊重的，是出自名匠之手的器物。只是，这些杰作未必能换来食物或栖身之所。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		/datum/species/dwarf,
@@ -11,7 +11,7 @@
 	class_select_category = CLASS_CAT_RACIAL
 	category_tags = list(CTAG_MERCENARY)
 	cmode_music = 'sound/music/combat_dwarf.ogg'
-	extra_context = "This subclass is race-limited to: Dwarves."
+	extra_context = "该分支仅限矮人选择。"
 	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_TRAINED_SMITH, TRAIT_STEELHEARTED, TRAIT_SMITHING_EXPERT) // Another one off exception for a combat role
 	subclass_stats = list(
 		STATKEY_INT = 3,
@@ -56,20 +56,20 @@
 			/obj/item/natural/feather,
 			/obj/item/rogueweapon/tongs = 1,
 			)
-		var/weapons = list("Grand Mace", "Spiked Maul")
-		var/wepchoice = input("Choose your weapon", "Available weapons") as anything in weapons
+		var/weapons = list("巨型钉头锤", "带刺大槌")
+		var/wepchoice = input("选择你的武器。", "可选武器") as anything in weapons
 		switch(wepchoice)
-			if("Grand Mace")
+			if("巨型钉头锤")
 				r_hand = /obj/item/rogueweapon/mace/goden/steel
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
-			if("Spiked Maul")
+			if("带刺大槌")
 				r_hand = /obj/item/rogueweapon/mace/maul/spiked
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
 		H.merctype = 8
 
 /datum/advclass/mercenary/grudgebearer/soldier
-	name = "Grudgebearer Soldier"
-	tutorial = "Bound by eternal grudges of eons past that have not been forgotten, the Grudgebearers are left to wander the surface, as every other clan has a grudge against you, and you against them. This putrid swampland of a Duchy has also wronged you and your people, you care little for it. Coins are a means to an end -- something you can mine and forge yourself. Trinkets -- made by true smiths, now that will carry respect among your clan. However, such artifacts might not buy you food, or a roof."
+	name = "负怨战士"
+	tutorial = "背负着万古未消的宿怨，负怨者被迫流落地表，因为几乎每一个氏族都与你们结怨，而你们也同样痛恨他们。这片腐臭如沼泽的大公国也曾伤害过你和你的族人，你根本不在乎它。金钱不过是达成目的的手段，矿石与钢铁你自己就能开采锻造。真正能为你在族中赢得尊重的，是出自名匠之手的器物。只是，这些杰作未必能换来食物或栖身之所。"
 	outfit = /datum/outfit/job/roguetown/mercenary/grudgebearer_soldier
 	traits_applied = list(TRAIT_HEAVYARMOR)
 	subclass_stats = list(
@@ -111,23 +111,23 @@
 			/obj/item/natural/feather,
 			)
 		if(H.mind)
-			var/weapons = list("Axe", "Grand Mace", "Maul")
-			var/wepchoice = input(H, "Choose your weapon", "Available weapons") as anything in weapons
+			var/weapons = list("战斧", "巨型钉头锤", "矮人大槌")
+			var/wepchoice = input(H, "选择你的武器。", "可选武器") as anything in weapons
 			switch(wepchoice)
-				if("Axe")
+				if("战斧")
 					backr = /obj/item/rogueweapon/stoneaxe/battle
-				if("Grand Mace")
+				if("巨型钉头锤")
 					r_hand = /obj/item/rogueweapon/mace/goden/steel
 					backr = /obj/item/rogueweapon/scabbard/gwstrap
-				if("Maul")
+				if("矮人大槌")
 					r_hand = /obj/item/rogueweapon/mace/maul/steel
 					backr = /obj/item/rogueweapon/scabbard/gwstrap
 		H.merctype = 8
 
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/dwarven
-	name = "grudgebearer dwarven plate"
-	desc = "A sturdy set of dwarven plate armor, forged in the old ways. It cannot be worked on without intrinsic dwarven knowledge."
+	name = "负怨者矮人板甲"
+	desc = "一套依循古法锻造的坚固矮人板甲，没有矮人与生俱来的工艺知识便无法修整。"
 	icon = 'icons/roguetown/clothing/special/race_armor.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/race_armor.dmi'
 	allowed_race = list(/datum/species/dwarf, /datum/species/dwarf/mountain)
@@ -140,8 +140,8 @@
 
 // Smith: Maille-tier protection, medium armor class
 /obj/item/clothing/suit/roguetown/armor/plate/full/dwarven/smith
-	name = "grudgebearer splint apron"
-	desc = "A mixture of plate and maille, worn by dwarven smiths. It cannot be worked on without intrinsic dwarven knowledge."
+	name = "负怨者板条铁围"
+	desc = "矮人铁匠穿戴的板甲与锁甲混合护具，没有矮人与生俱来的工艺知识便无法修整。"
 	icon_state = "dsmithchest"
 	item_state = "dsmithchest"
 	armor = ARMOR_PLATE
@@ -151,8 +151,8 @@
 	smelt_bar_num = 3
 
 /obj/item/clothing/head/roguetown/helmet/heavy/dwarven
-	name = "grudgebearer dwarven helm"
-	desc = "A hardy dwarven helmet. It lets one's dwarvenly beard to poke out."
+	name = "负怨者矮人头盔"
+	desc = "一顶坚固的矮人头盔，留出了让矮人胡须伸出的空隙。"
 	body_parts_covered = (HEAD | MOUTH | NOSE | EYES | EARS | NECK)	//This specifically omits hair so you could hang your beard out of the helm
 	armor = ARMOR_PLATE
 	allowed_race = list(/datum/species/dwarf, /datum/species/dwarf/mountain)
@@ -166,14 +166,14 @@
 	max_integrity = ARMOR_INT_HELMET_HEAVY_STEEL
 
 /obj/item/clothing/head/roguetown/helmet/heavy/dwarven/smith
-	name = "grudgebearer smith helm"
-	desc = "A hardy dwarven helmet. It lets one's dwarvenly beard to poke out."
+	name = "负怨者匠师头盔"
+	desc = "一顶坚固的矮人头盔，留出了让矮人胡须伸出的空隙。"
 	icon_state = "dsmithhead"
 	item_state = "dsmithhead"
 
 /obj/item/clothing/gloves/roguetown/plate/dwarven
-	name = "grudgebearer dwarven gauntlets"
-	desc = "Forged to fit the stubbiest of fingers."
+	name = "负怨者矮人臂铠"
+	desc = "为最短粗的手指量身锻造。"
 	icon = 'icons/roguetown/clothing/special/race_armor.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/race_armor.dmi'
 	sleeved = null
@@ -184,8 +184,8 @@
 	max_integrity = ARMOR_INT_SIDE_STEEL
 
 /obj/item/clothing/shoes/roguetown/boots/armor/dwarven
-	name = "grudgebearer dwarven boots"
-	desc = "Clatters mightily."
+	name = "负怨者矮人战靴"
+	desc = "走动时铿锵作响。"
 	icon = 'icons/roguetown/clothing/special/race_armor.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/race_armor.dmi'
 	allowed_race = list(/datum/species/dwarf, /datum/species/dwarf/mountain)
