@@ -3,9 +3,9 @@ Exercise Verbs
 */
 
 /mob/living/carbon/human/verb/pushup()
-	set name = "Do Pushup"
-	set desc = "Makes you do a pushup."
-	set category = "Emotes"
+	set name = "做俯卧撑"
+	set desc = "让你做俯卧撑。"
+	set category = "表情动作"
 
 	do_pushups()
 
