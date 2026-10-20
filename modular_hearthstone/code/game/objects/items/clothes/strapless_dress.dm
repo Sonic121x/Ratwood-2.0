@@ -3,6 +3,8 @@
 	body_parts_covered = CHEST|GROIN
 	icon = 'modular_hearthstone/icons/obj/items/clothes/dress.dmi'
 	mob_overlay_icon = 'modular_hearthstone/icons/obj/items/clothes/on_mob/dress.dmi'
+	hiked_base_icon = 'modular_hearthstone/icons/obj/items/clothes/on_mob/dress.dmi'
+	hiked_overlay_icon = 'icons/roguetown/clothing/onmob/hiked/hiked_hearthstone_dress.dmi'
 	name = "抹胸连衣裙"
 	desc = "一件贴身的抹胸连衣裙，开衩很高，颇为暴露。它勾勒出每一道曲线，几乎遮不住什么。"
 	flags_inv = HIDEBOOB|HIDECROTCH

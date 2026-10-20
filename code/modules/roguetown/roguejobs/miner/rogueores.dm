@@ -74,32 +74,10 @@
 	smeltresult = /obj/item/rogueore/coal
 	sellprice = 1
 
-//Dolls/Constructs eating coal for fuel.
-/obj/item/rogueore/coal/attack(mob/living/M, mob/user)
-	testing("attack")
-	if(!user.cmode)
-
-		if(M.construct)//This is slop. Why do we use this?
-			if(M == user)
-				user.visible_message(span_notice("[user]将[src]贴在[user.p_their()]的躯架上并将其吸收。"), span_notice("我吸收了[src]，感到能量重新回流。"))
-			else
-				user.visible_message(span_notice("[user]试图将[src]按向[M]。"), span_notice("我试图将[src]按向[M]。"))
-				if(!do_mob(user, M, 30))
-					return
-				user.visible_message(span_notice("[user]将[src]按在了[M]身上。"), span_notice("我将[src]按在了[M]身上。"))
-				to_chat(M, span_notice("我吸收了[src]，感到能量重新回流。"))
-			M.energy_add(250)
-			playsound(M.loc,'sound/items/flint.ogg', rand(30,60), TRUE)
-			qdel(src)
-
-		else
-			return ..()
-	else
-		return ..()
-
 /obj/item/rogueore/coal/Initialize(mapload)
 	icon_state = "orecoal[rand(1,3)]"
-	return ..()
+	. = ..()
+	AddComponent(/datum/component/construct_refueling)
 
 /obj/item/rogueore/coal/charcoal
 	name = "木炭"
@@ -110,7 +88,7 @@
 	firefuel = 15 MINUTES
 	smeltresult = /obj/item/rogueore/coal/charcoal
 	sellprice = 1
-
+	
 /obj/item/rogueore/cinnabar
 	name = "辰砂"
 	desc = "蕴藏着水银精华的红色矿晶。"

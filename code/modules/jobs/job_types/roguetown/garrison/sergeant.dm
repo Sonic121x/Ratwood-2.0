@@ -154,7 +154,7 @@
 /obj/effect/proc_holder/spell/invoked/order/movemovemove
 	name = "快！快！快！"
 	desc = "命令你的下属迅速前进。速度 +5。"
-	overlay_state = "movemovemove"
+	overlay_state = "move"
 
 /obj/effect/proc_holder/spell/invoked/order/movemovemove/cast(list/targets, mob/living/user)
 	. = ..()
@@ -215,7 +215,7 @@
 /obj/effect/proc_holder/spell/invoked/order/takeaim
 	name = "瞄准！"
 	desc = "命令你的下属更精准地出手。感知 +5。"
-	overlay_state = "takeaim"
+	overlay_state = "target"
 
 /datum/status_effect/buff/order/takeaim
 	id = "takeaim"

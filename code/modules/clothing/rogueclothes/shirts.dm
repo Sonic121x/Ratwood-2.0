@@ -173,6 +173,8 @@
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
 	icon = 'icons/roguetown/clothing/shirts_royalty.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts_royalty.dmi'
+	hiked_base_icon = 'icons/roguetown/clothing/onmob/shirts_royalty.dmi'
+	hiked_overlay_icon = 'icons/roguetown/clothing/onmob/hiked/hiked_shirts_royalty.dmi'
 	name = "皇家礼裙"
 	desc = "一件繁复的舞会礼裙，是恩尼格玛女王与高阶贵族偏爱的时尚。"
 	body_parts_covered = CHEST|GROIN|ARMS|VITALS
@@ -232,6 +234,8 @@
 	name = "冬日礼裙"
 	icon = 'icons/roguetown/clothing/shirts_royalty.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts_royalty.dmi'
+	hiked_base_icon = 'icons/roguetown/clothing/onmob/shirts_royalty.dmi'
+	hiked_overlay_icon = 'icons/roguetown/clothing/onmob/hiked/hiked_shirts_royalty.dmi'
 	desc = "厚实舒适、在冬季深受贵族欢迎的礼裙。"
 	body_parts_covered = COVERAGE_FULL
 	icon_state = "winterdress"
@@ -280,6 +284,8 @@
 /obj/item/clothing/suit/roguetown/shirt/dress/gown
 	icon = 'icons/roguetown/clothing/shirts_gown.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts_gown.dmi'
+	hiked_base_icon = 'icons/roguetown/clothing/onmob/shirts_gown.dmi'
+	hiked_overlay_icon = 'icons/roguetown/clothing/onmob/hiked/hiked_shirts_gown.dmi'
 	name = "春日礼裙"
 	desc = "一件精巧礼裙，恰好捕捉了万物复苏时节的神韵。"
 	body_parts_covered = CHEST|GROIN|ARMS|VITALS
@@ -464,6 +470,8 @@
 	body_parts_covered = CHEST|GROIN|LEGS|VITALS
 	icon_state = "dress"
 	item_state = "dress"
+	hiked_base_icon = 'icons/roguetown/clothing/onmob/shirts.dmi'
+	hiked_overlay_icon = 'icons/roguetown/clothing/onmob/hiked/hiked_shirts.dmi'
 	allowed_sex = list(MALE, FEMALE)
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
@@ -833,6 +841,8 @@
 	desc = "一件朴素而不失装饰的礼裙，用上等丝绸与最柔软布料制成。金线嵌饰其间，是最富有者所追逐的时尚顶点。"
 	icon = 'icons/roguetown/clothing/special/steward.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/steward.dmi'
+	hiked_base_icon = 'icons/roguetown/clothing/special/onmob/steward.dmi'
+	hiked_overlay_icon = 'icons/roguetown/clothing/onmob/hiked/hiked_steward.dmi'
 	sleeved = 'icons/roguetown/clothing/special/onmob/steward.dmi'
 	icon_state = "stewarddress"
 	item_state = "stewarddress"
