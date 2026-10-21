@@ -438,7 +438,7 @@
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/weapons/iron/messer/virtue
-	name = "Dueling Messer (+1 Iron)"
+	name = "决斗猎剑（+1 铁）"
 	req_blade = /obj/item/blade/iron_sword
 	additional_items = list(/obj/item/ingot/iron)
 	created_item = /obj/item/rogueweapon/sword/short/messer/iron/virtue

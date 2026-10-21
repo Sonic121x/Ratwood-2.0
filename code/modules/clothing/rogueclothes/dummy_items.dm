@@ -199,8 +199,8 @@
 	. |= FALL_NO_MESSAGE
 
 /obj/item/hem_grip
-	name = "hem"
-	desc = "A fistful of gathered cloth."
+	name = "衣摆"
+	desc = "一把攥在手中的衣料。"
 	icon = 'icons/mob/roguehudgrabs.dmi'
 	icon_state = "grabbing"
 	item_state = "grabbing"

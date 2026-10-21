@@ -23,17 +23,17 @@
 	if(target == user)
 		if(!try_add_energy(user))
 			return
-		user.visible_message(span_notice("[user] puts [source] against [user.p_their()] frame and absorbs it."), span_notice("I absorb [source], feeling my energy return."))
+		user.visible_message(span_notice("[user]将[source]贴在自己的躯体上，吸收了它。"), span_notice("我吸收了[source]，感到能量正在恢复。"))
 	else
-		user.visible_message(span_notice("[user] attempts to press [source] to [target]."), span_notice("I attempt to press [source] to [target]."))
+		user.visible_message(span_notice("[user]试图将[source]按在[target]身上。"), span_notice("我试图将[source]按在[target]身上。"))
 		if(!do_mob(user, target, 3 SECONDS))
 			return
 			
 		if(!try_add_energy(target))
 			return
 
-		user.visible_message(span_notice("[user] presses [source] against [target]."), span_notice("I press [source] against [target]."))
-		to_chat(target, span_notice("I absorb [source], feeling my energy return."))
+		user.visible_message(span_notice("[user]将[source]按在[target]身上。"), span_notice("我将[source]按在[target]身上。"))
+		to_chat(target, span_notice("我吸收了[source]，感到能量正在恢复。"))
 
 	playsound(get_turf(target), fuel_sound, rand(30,60), TRUE)
 	qdel(source)

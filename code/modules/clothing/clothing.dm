@@ -217,7 +217,7 @@
 	if(!skip_hands)
 		var/list/free = free_hands_for_hem(user)
 		if(length(free) < 2)
-			to_chat(user, span_warning("I need both hands free to hold up \the [src]."))
+			to_chat(user, span_warning("我得腾出双手，才能提起[src]的衣摆。"))
 			return FALSE
 		var/list/grips = list()
 		for(var/i in 1 to 2)

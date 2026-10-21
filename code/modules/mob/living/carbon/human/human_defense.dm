@@ -270,7 +270,7 @@
 				var/turf/current_turf = get_turf(I)
 				I.get_deflected(src)
 				do_sparks(2, TRUE, current_turf)
-				visible_message(span_warning("[src] deflects \the [I]!"))
+				visible_message(span_warning("[src]拨开了[I]！"))
 				return
 
 	if(I && !blocked)

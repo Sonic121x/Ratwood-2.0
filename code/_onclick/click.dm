@@ -505,9 +505,9 @@
 		return
 	dualwield_processing = TRUE
 	if(stamina_add(3))
-		balloon_alert_to_viewers("<font color='#bb2b2b'>Dual Hit!!</font>")
-		to_chat(src, "<font color='#ffc400'>I strike twice!</font>")
-		to_chat(A, "<font color='#ffc400'>I am hit twice!</font>")
+		balloon_alert_to_viewers("<font color='#bb2b2b'>双重打击！！</font>")
+		to_chat(src, "<font color='#ffc400'>我同时挥出了两次攻击！</font>")
+		to_chat(A, "<font color='#ffc400'>我同时挨了两次攻击！</font>")
 		if(a_intent)
 			used_intent = a_intent
 		dualwield_twoswing = TRUE
