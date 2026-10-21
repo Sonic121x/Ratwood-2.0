@@ -185,7 +185,7 @@
 	color_disabled = FALSE
 
 /datum/sprite_accessory/accessory/outereye
-	name = "Outer Eyes"
+	name = "外侧眼饰"
 	icon_state = "outereye"
 	layer = BODY_FRONT_LAYER
 	color_disabled = FALSE

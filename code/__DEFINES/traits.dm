@@ -545,7 +545,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_COUNTERCOUNTERSPELL = span_info("我会本能地察觉何时该反制反制术，甚至无需多想便能做到。"),
 	TRAIT_UNSEEMLY = span_info("我的面容丑陋不堪，谁看见我都会心生厌恶。"),
 	TRAIT_HERETIC_SEER = span_info("即便不与他们共享信仰，我也能分辨出其他升格诸神的追随者。"),
-	TRAIT_DUALWIELDER = span_info("当我双持两把单手武器、且每把至少达到熟练工水准时，我会在两者之间交替攻击。第 4 次攻击后，我会同时挥出双武器。手持两把武器时，我的招架与闪避降低 5%。"),
+	TRAIT_DUALWIELDER = span_info("当我双持两把单手武器，且两种武器技能均至少达到熟练等级时，我会在两者之间交替攻击。第 4 次攻击后，我会同时挥出双武器。手持两把武器时，我的招架与闪避降低 5%。"),
 	TRAIT_SENTINELOFWITS = span_info("我的智力会辅助防御。每高于 10 点的 2 点 INT，都会额外带来 10% 的闪避或招架几率；药剂与外物带来的正向增益不计入其中。"),
 	TRAIT_KEENEARS = span_info("我有一对好耳朵。哪怕对方不在视野里，我也能分辨出是谁在说话；更远处的低语也逃不过我的耳朵。"),
 	TRAIT_SCREENSHAKE = span_suicide("我已经再也站不稳了……"),

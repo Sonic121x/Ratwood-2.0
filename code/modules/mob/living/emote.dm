@@ -2401,8 +2401,8 @@
 /datum/emote/living/carbon/human/hike
 	key = "hike"
 	key_third_person = "hikes"
-	message = "gathers up their hem in both hands."
-	var/message_lowered = "lets their hem fall."
+	message = "用双手提起了衣摆。"
+	var/message_lowered = "放下了衣摆。"
 	emote_type = EMOTE_VISIBLE
 	show_runechat = TRUE
 
@@ -2438,8 +2438,8 @@
 	return length(H.get_hikeable_garments())
 
 /mob/living/carbon/human/verb/emote_hike()
-	set name = "Hike Hem"
-	set category = "Emotes"
+	set name = "提起衣摆"
+	set category = "表情动作"
 
 	emote("hike", intentional = TRUE)
 /datum/emote/living/carbon/human/bjiggle
