@@ -1,4 +1,4 @@
-#define MOONLIGHT_ACTION_ICON 'modular_z121/assets/spells/moonlight_greatsword/actions_spells.dmi'
+#define MOONLIGHT_ACTION_ICON 'modular_z121/icon/custompell.dmi'
 #define MOONLIGHT_WAVE_DURATION (5 SECONDS)
 
 /atom/movable/screen/alert/status_effect/buff/moonlight_blessing
