@@ -28,8 +28,8 @@
 #define TIMESTOP_HOLD_DURATION (1 SECONDS)         // 每次补的定身/禁锢时长（需 > REFRESH_INTERVAL）
 #define TIMESTOP_NULL_COLOR "__timestop_null_color__" // 标记“原本没有 color”的哨兵值，便于复原成 null
 #define TIMESTOP_MUTE_SOURCE "timestop"            // 我们施加禁言特质所用的唯一来源标记
-#define TIMESTOP_FIELD_ICON 'modular_z121/assets/spells/timestop/160x160.dmi' // 力场覆盖图标
-#define TIMESTOP_SOUND 'modular_z121/assets/spells/timestop/timeparadox2.ogg'  // 力场起止音效
+#define TIMESTOP_FIELD_ICON 'modular_z121/icon/timestop_field.dmi' // 力场覆盖图标
+#define TIMESTOP_SOUND 'modular_z121/sound/timeparadox2.ogg'  // 力场起止音效
 
 // 时间静止区内统一染成的灰白色。独立成 proc 便于将来按需替换/调参。
 /proc/timestop_gray_color()

@@ -15,6 +15,10 @@
 #include "food/cuisine_expansion.dm"
 #include "food/cuisine_cooking.dm"
 #include "food/cuisine_catalog.dm"
+// 腔内蒸馏装置：配方、人工器官、工匠台制作及专用胸部手术。
+#include "food/internal_distiller_recipes.dm"
+#include "items/internal_distiller.dm"
+#include "crafting/internal_distiller.dm"
 #include "bootstrap/custom_bootstrap.dm"
 #include "bootstrap/preferences_vice_conflicts.dm"
 #include "changelog/entries.dm"
