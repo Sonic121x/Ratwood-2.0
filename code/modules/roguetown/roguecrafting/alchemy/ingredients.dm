@@ -68,8 +68,8 @@
 	name = "内脏"
 	icon_state = "viscera"
 	major_pot = /datum/alch_cauldron_recipe/big_health_potion
-	med_pot = /datum/alch_cauldron_recipe/health_potion
-	minor_pot = /datum/alch_cauldron_recipe/antidote
+	med_pot = /datum/alch_cauldron_recipe/deadite_rot
+	minor_pot = /datum/alch_cauldron_recipe/health_potion
 
 /obj/item/alch/waterdust
 	name = "水之精质"
@@ -164,16 +164,16 @@
 	name = "煤尘"
 	icon_state = "coaldust"
 	major_pot = /datum/alch_cauldron_recipe/antidote
-	med_pot = /datum/alch_cauldron_recipe/end_potion
+	med_pot = /datum/alch_cauldron_recipe/deadite_rot
 	minor_pot = /datum/alch_cauldron_recipe/str_potion
 
 /obj/item/alch/stonedust
 	name = "石粉"
 	desc = "用于玻璃黏土精炼的细磨矿粉。"
 	icon_state = "coaldust"
-	major_pot = null
-	med_pot = null
-	minor_pot = null
+	major_pot = /datum/alch_cauldron_recipe/antidote
+	med_pot = /datum/alch_cauldron_recipe/end_potion
+	minor_pot = /datum/alch_cauldron_recipe/stam_poison
 
 /obj/item/alch/silverdust
 	name = "银粉"
@@ -376,7 +376,7 @@
 
 	major_pot = /datum/alch_cauldron_recipe/doompoison
 	med_pot = /datum/alch_cauldron_recipe/berrypoison
-	minor_pot = /datum/alch_cauldron_recipe/stam_poison
+	minor_pot = /datum/alch_cauldron_recipe/deadite_rot
 
 /obj/item/alch/matricaria
 	name = "洋甘菊"

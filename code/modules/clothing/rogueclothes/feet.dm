@@ -456,6 +456,7 @@
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/clothing/shoes/roguetown/boots/armor/gold
+	is_gold = TRUE
 	name = "金色胫甲"
 	desc = "纯金打造的华丽铁鞋，饰有棱角分明的胫甲，骄傲地铭刻着圣徽。它的丝绸衬口出人意料地一尘不染 - 甚至连一丝绒毛都无可指摘。"
 	icon_state = "goldgreaves"
@@ -697,6 +698,7 @@
 // ----------------- BLACKSTEEL END -----------------------
 
 /obj/item/clothing/shoes/roguetown/anklets
+	is_gold = TRUE
 	name = "金质踝饰"
 	desc = "用上等黄金制成的奢华踝饰。它让双足裸露，却平添几分异域风情。"
 	gender = PLURAL

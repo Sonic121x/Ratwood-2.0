@@ -67,7 +67,7 @@
 					r_hand = /obj/item/cooking/pan
 				if("指虎")
 					H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT, TRUE)
-					r_hand = /obj/item/rogueweapon/knuckles
+					r_hand = /obj/item/clothing/gloves/roguetown/knuckles
 				if("纳瓦哈折刀")
 					H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_EXPERT, TRUE)
 					r_hand = /obj/item/rogueweapon/huntingknife/idagger/navaja

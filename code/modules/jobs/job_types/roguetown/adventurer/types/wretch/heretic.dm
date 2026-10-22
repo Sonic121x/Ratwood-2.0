@@ -589,9 +589,9 @@
 					if("阿特格维萨满")
 						beltr = /obj/item/rogueweapon/handclaw/gronn
 					if("蒙羞门徒（天生护甲）")
-						beltr = /obj/item/rogueweapon/knuckles/psydon/old //Worse than steel or bronze knuckledusters, that's the price you pay for the drip and the natural armor.
+						beltr = /obj/item/clothing/gloves/roguetown/knuckles/psydon/old //Worse than steel or bronze knuckledusters, that's the price you pay for the drip and the natural armor.
 					else
-						beltr = /obj/item/rogueweapon/knuckles
+						beltr = /obj/item/clothing/gloves/roguetown/knuckles
 			if("薙刀", "偃月刀")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
 				backr = /obj/item/rogueweapon/scabbard/gwstrap

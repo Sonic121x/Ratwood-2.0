@@ -102,6 +102,7 @@
 		lensmoved = FALSE
 
 /obj/item/clothing/mask/rogue/spectacles/golden
+	is_gold = TRUE
 	name = "金色眼镜"
 	icon_state = "goggles"
 	max_integrity = 35
@@ -191,6 +192,7 @@
 	block2add = FOV_LEFT
 
 /obj/item/clothing/mask/rogue/lordmask
+	is_gold = TRUE
 	name = "金色半面具"
 	desc = "仿佛半张脸都化作了黄金。"
 	icon_state = "lmask"
@@ -513,6 +515,7 @@
 	icon_state = "steppemask_snout"
 
 /obj/item/clothing/mask/rogue/facemask/goldmask
+	is_gold = TRUE
 	name = "黄金面具"
 	icon_state = "goldmask"
 	max_integrity = ARMOR_INT_MASK_GOLD

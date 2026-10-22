@@ -16,7 +16,7 @@
 /datum/supply_pack/rogue/blackmarket_arms/steelknuckle
 	name =	"钢指虎"
 	cost =	75
-	contains = list(/obj/item/rogueweapon/knuckles)
+	contains = list(/obj/item/clothing/gloves/roguetown/knuckles)
 
 /datum/supply_pack/rogue/blackmarket_arms/sword
 	name = "单手剑"

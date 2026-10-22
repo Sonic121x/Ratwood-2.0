@@ -4,7 +4,7 @@
 	i_type = "连发燧枪零件"
 	appro_skill = /datum/skill/craft/engineering
 	hammers_per_item = 10
-	skill_level = SKILL_LEVEL_MASTER
+	skill_level = SKILL_LEVEL_LEGENDARY
 
 /datum/artificer_recipe/z121_flintlock/receiver_iron
 	name = "铁机匣（铁锭×3）"

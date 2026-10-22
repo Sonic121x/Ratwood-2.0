@@ -86,6 +86,7 @@
 	item_d_type = "slash"
 
 /obj/item/storage/belt/rogue/leather/plaquegold
+	is_gold = TRUE
 	name = "饰牌腰带"
 	icon_state = "goldplaque"
 	sellprice = 50

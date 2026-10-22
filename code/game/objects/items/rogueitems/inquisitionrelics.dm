@@ -65,11 +65,11 @@
 	var/datum/looping_sound/psydonmusicboxsound/soundloop
 
 /obj/item/psydonmusicbox/examine(mob/user)
-	. = ..()
-	if(HAS_TRAIT(usr, TRAIT_INQUISITION))
+	if(HAS_TRAIT(user, TRAIT_INQUISITION))
 		desc = "一件出自奥塔万大教堂秘法工坊深处的圣遗物。十四个异端的灵魂被束缚在一起，它们会尖啸，并替我们抵御魔法。最好别让异端知晓它的真相，只在危急时刻将其动用。"
 	else
 		desc = "一个手摇驱动的音乐匣，侧面印着奥塔万宗教裁判所的徽记。它散发着沉重而阴郁的气息……"
+	. = ..()
 
 /obj/item/psydonmusicbox/attack_self(mob/living/user)
 	. = ..()

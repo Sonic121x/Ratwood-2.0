@@ -151,7 +151,7 @@
 /datum/supply_pack/rogue/Iconoclast/knuckles
 	name = "钢指虎"
 	cost = 20
-	contains = list(/obj/item/rogueweapon/knuckles)
+	contains = list(/obj/item/clothing/gloves/roguetown/knuckles)
 
 /datum/supply_pack/rogue/Iconoclast/mace
 	name = "铁制钉头锤"

@@ -623,6 +623,7 @@
 	id = "specialcd"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/specialcd
 	duration = 30 SECONDS
+	status_type = STATUS_EFFECT_UNIQUE
 
 /datum/status_effect/debuff/specialcd/on_creation(mob/living/new_owner, new_dur)
 	if(new_dur)
@@ -630,7 +631,7 @@
 	return ..()
 
 /atom/movable/screen/alert/status_effect/debuff/specialcd
-	name = "精准打击冷却"
+	name = "特殊招式冷却"
 	desc = "我刚用过这一招，必须等一等。"
 	icon_state = "strikecd"
 

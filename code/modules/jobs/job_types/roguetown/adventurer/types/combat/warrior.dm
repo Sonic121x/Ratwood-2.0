@@ -686,7 +686,7 @@
 			switch(weapon_choice)
 				if ("钢指虎")
 					H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_JOURNEYMAN, TRUE)
-					beltr = /obj/item/rogueweapon/knuckles
+					beltr = /obj/item/clothing/gloves/roguetown/knuckles
 				if("斧")
 					H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_JOURNEYMAN, TRUE)
 					beltr = /obj/item/rogueweapon/stoneaxe/boneaxe
@@ -743,7 +743,7 @@
 			switch(weapon_choice)
 				if ("钢指虎")
 					H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_JOURNEYMAN, TRUE)
-					beltr = /obj/item/rogueweapon/knuckles
+					beltr = /obj/item/clothing/gloves/roguetown/knuckles
 				if("斧")
 					H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_JOURNEYMAN, TRUE)
 					beltr = /obj/item/rogueweapon/stoneaxe/boneaxe

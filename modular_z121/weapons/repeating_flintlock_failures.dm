@@ -1,4 +1,4 @@
-// 按完整停火周期衰减，保留不足五秒的余数；查看、装填和换手不重置计时。
+// 按完整停火周期衰减，保留不足八秒的余数；查看、装填和换手不重置计时。
 /obj/item/gun/ballistic/z121_repeating_flintlock/proc/update_failure_decay()
 	if(failure_points <= 0)
 		return

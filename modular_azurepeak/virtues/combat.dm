@@ -98,10 +98,10 @@
 
 /datum/virtue/combat/brawler
 	name = "斗殴学徒"
-	desc = "我曾在一位老练斗士门下受训，也积累了些徒手搏斗的经验。我还藏着一把拳刃和几副指虎。"
+	desc = "我曾在一位老练斗士门下受训，也积累了些徒手搏斗的经验。我还藏着几副指虎。"
 	custom_text = "保证获得徒手与摔跤的熟练工等级。"
-	added_stashed_items = list("指虎" = /obj/item/rogueweapon/knuckles/bronzeknuckles,
-								"另一副指虎" = /obj/item/rogueweapon/knuckles/bronzeknuckles)
+	added_stashed_items = list("指虎" = /obj/item/clothing/gloves/roguetown/knuckles/bronze,
+								"另一副指虎" = /obj/item/clothing/gloves/roguetown/knuckles/bronze)
 
 /datum/virtue/combat/brawler/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_JOURNEYMAN, silent = TRUE)

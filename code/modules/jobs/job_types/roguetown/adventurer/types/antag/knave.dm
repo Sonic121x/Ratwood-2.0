@@ -52,6 +52,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/leather
 	id = /obj/item/mattcoin
 	H.adjust_blindness(-3)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/appraise/free)
 	var/weapons = list("十字弩与鎏金匕首", "反曲弓与钢短剑")
 	if(H.mind)
 		var/weapon_choice = input(H, "选择你的武器。", "执兵而起") as anything in weapons

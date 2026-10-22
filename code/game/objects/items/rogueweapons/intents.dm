@@ -226,19 +226,6 @@
 			if(SWINGDELAY_CANCEL, SWINGDELAY_CANCELSLOW)
 				inspec += SPAN_TOOLTIP("挥击期间我无法防御，受到攻击还会打断挥击。", "<font color='#a70d0d'><u>僵直</u></font>")
 
-	if(blunt_chipping)
-		var/chip_strength
-		switch(blunt_chip_strength)
-			if(BLUNT_CHIP_MINUSCULE)
-				chip_strength = "微量"
-			if(BLUNT_CHIP_WEAK)
-				chip_strength = "少量"
-			if(BLUNT_CHIP_STRONG)
-				chip_strength = "可观"
-			if(BLUNT_CHIP_ABSURD)
-				chip_strength = "大量"
-		inspec += "\n若目标没有衬垫防护，将有[chip_strength]的伤害绕过护甲。"
-
 	if(cleave)
 		inspec += "\n<b>劈砍:</b> [cleave.desc]"
 		inspec += "\n	最大额外目标数: [cleave.max_targets ? cleave.max_targets : "无限"]"
@@ -548,7 +535,7 @@
 	noaa = FALSE
 	animname = "bite"
 	hitsound = list('sound/combat/hits/punch/punch (1).ogg', 'sound/combat/hits/punch/punch (2).ogg', 'sound/combat/hits/punch/punch (3).ogg')
-	misscost = 4
+	misscost = 1
 	releasedrain = 1
 	swingdelay = 0
 	clickcd = CLICK_CD_QUICK
@@ -593,8 +580,8 @@
 	chargetime = 0
 	animname = "blank22"
 	hitsound = list('sound/combat/hits/punch/punch (1).ogg', 'sound/combat/hits/punch/punch (2).ogg', 'sound/combat/hits/punch/punch (3).ogg')
-	misscost = 5
-	releasedrain = 4	//More than punch cus pen factor.
+	misscost = 1
+	releasedrain = 1	//More than punch cus pen factor.
 	swingdelay = 0
 	penfactor = PEN_NONE
 	blade_class = BCLASS_CUT
@@ -638,7 +625,7 @@
 	noaa = TRUE
 	force_autoaim = TRUE
 	rmb_ranged = TRUE
-	releasedrain = 10
+	releasedrain = 2
 	misscost = 8
 	item_d_type = "blunt"
 

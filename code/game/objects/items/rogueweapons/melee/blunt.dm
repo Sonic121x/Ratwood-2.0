@@ -12,9 +12,6 @@
 	icon_state = "instrike"
 	item_d_type = "blunt"
 	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
-	//We want chipping, m'lord.
-	blunt_chipping = TRUE
-	blunt_chip_strength = BLUNT_CHIP_WEAK
 
 /datum/intent/mace/smash
 	name = "猛砸"
@@ -28,9 +25,6 @@
 	icon_state = "insmash"
 	item_d_type = "blunt"
 	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
-	//We want chipping, m'lord.
-	blunt_chipping = TRUE
-	blunt_chip_strength = BLUNT_CHIP_STRONG
 	desc = "一次强力蓄力打击，造成正常伤害的同时，还会根据你的力量把站立目标击退并拖慢。力量低于 10 时无效。减速与击退效果会随力量提升，最高按 14 力量计算（1 到 4 格）。对同一目标每 5 秒最多连续生效一次。倒地目标的击退距离减半。若未完全蓄力，则击退最多只有 1 格。"
 
 /datum/intent/mace/smash/spec_on_apply_effect(mob/living/H, mob/living/user, params)
@@ -829,9 +823,6 @@
 	clickcd = CLICK_CD_HEAVY//Take a guess.
 	icon_state = "instrike"
 	item_d_type = "blunt"
-	//We want chipping, m'lord.
-	blunt_chipping = TRUE
-	blunt_chip_strength = BLUNT_CHIP_STRONG
 
 /datum/intent/maul/crush
 	name = "碾压"
@@ -840,9 +831,6 @@
 	chargetime = 5
 	damfactor = 1.7
 	intent_intdamage_factor = PEN_NONE 
-	//We want chipping, m'lord.
-	blunt_chipping = TRUE
-	blunt_chip_strength = BLUNT_CHIP_ABSURD
 	icon_state = "incrush"
 	desc = "这一击能把站立目标击飞并使其减速。  对同一目 \
 	标连续生效有 5 秒冷却，倒地目标的击退距离减半 \

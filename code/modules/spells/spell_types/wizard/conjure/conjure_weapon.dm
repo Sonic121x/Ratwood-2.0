@@ -53,7 +53,7 @@
 		"钢制战锤" = /obj/item/rogueweapon/mace/warhammer/steel,
 		"钢制链枷" = /obj/item/rogueweapon/flail/sflail,
 		"鞭子" = /obj/item/rogueweapon/whip,
-		"钢制指虎" = /obj/item/rogueweapon/knuckles,
+		"钢制指虎" = /obj/item/clothing/gloves/roguetown/knuckles,
 		"猎犬爪刀" = /obj/item/rogueweapon/handclaw,
 	)
 

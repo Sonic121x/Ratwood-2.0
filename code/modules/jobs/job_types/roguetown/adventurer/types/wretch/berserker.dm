@@ -69,7 +69,7 @@
 				beltr = /obj/item/rogueweapon/katar
 			if("指虎")
 				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_MASTER, TRUE)
-				beltr = /obj/item/rogueweapon/knuckles
+				r_hand = /obj/item/clothing/gloves/roguetown/knuckles
 			if("冲拳匕首")
 				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_MASTER, TRUE)
 				r_hand = /obj/item/rogueweapon/katar/punchdagger

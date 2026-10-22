@@ -89,7 +89,7 @@
 /datum/supply_pack/rogue/bronze_weapons/knuckles
 	name = "青铜指虎"
 	cost = 30 // 1 Bronze Ingot
-	contains = list(/obj/item/rogueweapon/knuckles/bronzeknuckles)
+	contains = list(/obj/item/clothing/gloves/roguetown/knuckles/bronze)
 
 /datum/supply_pack/rogue/bronze_weapons/whip
 	name = "青铜鞭"

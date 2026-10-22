@@ -391,6 +391,7 @@
 	anvilrepair = null
 
 /obj/item/clothing/neck/roguetown/gorget/gold
+	is_gold = TRUE
 	name = "黄金护喉"
 	desc = "一系列光彩夺目的黄金甲片，用以保护颈部，传统上佩戴在短上衣或胸甲之上。扣合的两半之间的神圣徽记，承诺承载其佩戴者的火焰，无论何种打击正蓄势袭来。"
 	icon_state = "goldgorget"
@@ -697,6 +698,7 @@
 		REMOVE_TRAIT(user, TRAIT_WORN_SILVER_PSICROSS, REF(src))
 
 /obj/item/clothing/neck/roguetown/psicross/g
+	is_gold = TRUE
 	name = "金色教十字"
 	desc = "'纯洁高悬，因为乐园正在彼岸等待！'"
 	icon_state = "psycross_g"
@@ -1289,6 +1291,7 @@
 // AP port.
 
 /obj/item/clothing/neck/roguetown/psicross/inhumen/g
+	is_gold = TRUE
 	name = "金色倒置教十字"
 	desc = "'你可愿活得甘美纵情？死亡不过是一道镣铐；若你想挣脱它冰冷的钳握，你所要做的……不过是把信念托付于我。'"
 	icon_state = "zcross_g"

@@ -527,6 +527,7 @@
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_STEEL
 
 /obj/item/clothing/suit/roguetown/armor/plate/cuirass/fluted/gold
+	is_gold = TRUE
 	name = "金色胸甲"
 	icon_state = "goldcuirass"
 	desc = "一件璀璨夺目的纯金胸甲，配有垂甲以增加覆盖。它套在丝绸衬里的护甲 \

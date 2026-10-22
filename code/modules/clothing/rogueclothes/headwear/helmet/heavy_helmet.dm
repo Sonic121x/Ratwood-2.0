@@ -174,6 +174,7 @@
 	smelt_bar_num = 2
 
 /obj/item/clothing/head/roguetown/helmet/heavy/sheriff/gold
+	is_gold = TRUE
 	name = "黄金头盔"
 	desc = "一顶华美的巴尔布特盔，以纯金精工锻造而成。其护鼻上刻有神圣印记，内侧衬着 \
 	一顶丝制武装帽。  即便在绝对的黑暗中，抛光的面甲表面也闪烁着灌注的阳光。"
@@ -303,6 +304,7 @@
 	max_integrity = ARMOR_INT_HELMET_HEAVY_IRON
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/gold
+	is_gold = TRUE
 	name = "黄金骑士阿米特盔"
 	desc = "一顶华美的阿米特盔，以纯金精工锻造而成。其面甲上布满六芒形的神圣印记刻纹，内侧 \
 	衬着一顶丝制武装帽。  即便在绝对的黑暗中，抛光的面甲表面也闪烁着灌注的阳光。"
@@ -451,6 +453,7 @@
 
 
 /obj/item/clothing/head/roguetown/helmet/heavy/bucket/gold
+	is_gold = TRUE
 	name = "金色头盔"
 	icon_state = "topfhelm_gold"
 	item_state = "topfhelm_gold"

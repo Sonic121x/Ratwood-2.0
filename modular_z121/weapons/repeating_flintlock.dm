@@ -40,22 +40,22 @@
 	var/range_bonus = 0.10
 	var/penetration_bonus = 0
 	var/accuracy_bonus = 0.07
-	var/base_failure_chance = 6
-	var/jam_chance = 9
+	var/base_failure_chance = 8
+	var/jam_chance = 11
 	var/projectile_damage = 60
 	var/jammed = FALSE
 	var/powder_charges = 0
 	var/powder_capacity = 12
 	var/ammo_capacity = 12
 	var/next_shot_time = 0
-	var/shot_interval = 3 SECONDS
+	var/shot_interval = 4 SECONDS
 	var/operating = FALSE
 	var/firing = FALSE
 	var/bursting = FALSE
 	// 故障值仅保存在枪械上，显示时只输出状态描述。
 	var/failure_points = 0
 	var/failure_decay_time = 0
-	var/failure_decay_interval = 5 SECONDS
+	var/failure_decay_interval = 8 SECONDS
 	var/obj/item/ramrod/myrod
 
 /obj/item/ammo_box/magazine/internal/z121_repeating_flintlock

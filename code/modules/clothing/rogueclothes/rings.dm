@@ -37,6 +37,7 @@
 	icon_state = "ring_b"
 
 /obj/item/clothing/ring/gold
+	is_gold = TRUE
 	name = "金戒指"
 	icon_state = "ring_g"
 	sellprice = 45
@@ -155,6 +156,7 @@
 
 //gold rings
 /obj/item/clothing/ring/emerald
+	is_gold = TRUE
 	name = "金绿宝石戒指"
 	icon_state = "g_ring_emerald"
 	desc = "一枚精美的金戒指，上面镶着一颗打磨光洁的绿宝石。"
@@ -162,6 +164,7 @@
 	sellprice = 195
 
 /obj/item/clothing/ring/ruby
+	is_gold = TRUE
 	name = "金红宝石戒指"
 	icon_state = "g_ring_ruby"
 	desc = "一枚精美的金戒指，上面镶着一颗打磨光洁的红宝石。"
@@ -169,6 +172,7 @@
 	sellprice = 255
 
 /obj/item/clothing/ring/topaz
+	is_gold = TRUE
 	name = "金黄宝石戒指"
 	icon_state = "g_ring_topaz"
 	desc = "一枚精美的金戒指，上面镶着一颗打磨光洁的黄宝石。"
@@ -176,6 +180,7 @@
 	sellprice = 180
 
 /obj/item/clothing/ring/quartz
+	is_gold = TRUE
 	name = "金布洛兹戒指"
 	icon_state = "g_ring_quartz"
 	desc = "一枚精美的金戒指，上面镶着一颗打磨光洁的布洛兹。"
@@ -183,6 +188,7 @@
 	sellprice = 245
 
 /obj/item/clothing/ring/sapphire
+	is_gold = TRUE
 	name = "金紫宝石戒指"
 	icon_state = "g_ring_sapphire"
 	desc = "一枚精美的金戒指，上面镶着一颗打磨光洁的紫宝石。"
@@ -190,6 +196,7 @@
 	sellprice = 200
 
 /obj/item/clothing/ring/diamond
+	is_gold = TRUE
 	name = "金多佩尔戒指"
 	icon_state = "g_ring_diamond"
 	desc = "一枚精美的金戒指，上面镶着一颗打磨光洁的多佩尔。"
@@ -197,6 +204,7 @@
 	sellprice = 270
 
 /obj/item/clothing/ring/signet
+	is_gold = TRUE
 	name = "金印戒"
 	icon_state = "signet"
 	desc = "一枚奢华的金戒指，上面刻有普赛顿的符号。将其浸入熔化的红脂后，便可为宗教文书盖印密封，这类门道通常更为宗教裁判所所熟知，而非教会或王室。"

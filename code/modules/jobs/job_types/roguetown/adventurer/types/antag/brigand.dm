@@ -55,6 +55,7 @@
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
 	id = /obj/item/mattcoin
 	H.adjust_blindness(-3)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/appraise/free)
 	var/weapons = list("悍匪路数（斧、锤与鞭枷）","兵卒路数（长柄与刀剑）", "恶棍路数（匕首、攀爬与体能）")
 	if(H.mind)
 		var/weapon_choice = input(H, "选择你的专精路线。", "悍匪，你要走哪条路？") as anything in weapons

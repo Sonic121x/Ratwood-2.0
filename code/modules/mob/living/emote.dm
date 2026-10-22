@@ -1342,6 +1342,11 @@
 	message_muffled = "发出一声闷闷的呐喊！"
 	show_runechat = FALSE
 
+/datum/emote/living/warcry/run_emote(mob/living/user, params, type_override, intentional)
+	. = ..()
+	if(. && HAS_TRAIT(user, TRAIT_BATTLE_CRY))
+		user.apply_status_effect(/datum/status_effect/buff/battle_cry)
+
 /mob/living/carbon/human/verb/emote_warcry()
 	set name = "战吼"
 	set category = "发声"

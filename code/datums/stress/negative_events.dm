@@ -576,3 +576,24 @@
 	timer = 25 MINUTES
 	stressadd = 3
 	desc = span_red("我没能按时还清债务。")
+
+/datum/stressevent/sunlit
+	timer = 1 MINUTES
+	stressadd = 2
+	desc = span_red("太亮了！")
+
+/datum/stressevent/prejudice
+	timer = 2 MINUTES
+	stressadd = 2
+
+/datum/stressevent/prejudice/otava
+	desc = span_red("这附近的奥塔瓦人太多了！")
+
+/datum/stressevent/prejudice/grenzelhoft
+	desc = span_red("这附近的格伦泽尔人太多了！")
+
+/datum/stressevent/prejudice/kazengun
+	desc = span_red("是谁把风郡裔请到费伦提亚来的？")
+
+/datum/stressevent/prejudice/underdark
+	desc = span_red("那个地底居民就该待在地下，那才是它该待的地方。")

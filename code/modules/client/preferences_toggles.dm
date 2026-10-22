@@ -151,6 +151,7 @@
 		list("id" = "pits", "label" = "启用腋毛描述", "enabled" = !!owner.prefs.pits, "desc" = "检视裸露腋下的角色时显示腋毛描述（若有）。"),
 		list("id" = "descriptor_color", "label" = "启用彩色描述", "enabled" = !!owner.prefs.descriptor_color, "desc" = "按兴奋程度为生殖器描述着色，并按毛色为体毛描述着色。"),
 		list("id" = "cursed_collars", "label" = "启用诅咒项圈", "enabled" = !!owner.prefs.cursed_collarable, "desc" = "允许他人为你戴上诅咒项圈。"),
+		list("id" = "milkable", "label" = "启用榨乳", "enabled" = !!owner.prefs.milkable, "desc" = "允许其他玩家在你泌乳时为你挤乳。关闭后你仍可自行挤乳。仅适用于用试剂容器点击胸部，不涉及性行为中的泌乳。"),
 	)
 
 	data["categories"] = list(
@@ -270,6 +271,8 @@
 				owner.toggle_descriptor_color()
 			if("cursed_collars")
 				owner.toggle_cursed_collars()
+			if("milkable")
+				owner.toggle_milkable()
 			if("voting_popup")
 				owner.toggle_voting_popup()
 		SStgui.update_uis(src)
@@ -673,6 +676,19 @@
 	if(!istype(collar))
 		return
 	collar.dropped(human_user)
+
+/client/verb/toggle_milkable() // toggles being milked by players clicking the chest with a container to milk player breasts
+	set category = "Options"
+	set name = "Toggle Breast Milking"
+	set hidden = 1
+	if(!prefs)
+		return
+	prefs.milkable = !prefs.milkable
+	prefs.save_preferences()
+	if(prefs.milkable)
+		to_chat(src, "You can now be milked by other players.")
+		return
+	to_chat(src, "Other players can no longer milk you.")
 
 /client/verb/toggle_compliance_notifs() // The messages need to be on-by-default while this is in its early stages.
 	set category = "选项"

@@ -549,6 +549,18 @@ GLOBAL_LIST_EMPTY(round_join_times)
 #define SOCIAL_RANK_NOBLE 5
 #define SOCIAL_RANK_ROYAL 6
 
+#define ORIGIN_OTAVA "奥塔瓦"
+#define ORIGIN_ZYBANTINE "兹班图"
+#define ORIGIN_NALEDI "纳莱迪"
+#define ORIGIN_FERENTIA "费伦提亚"
+#define ORIGIN_UNDERDARK "幽暗地域"
+#define ORIGIN_HAMMERHOLD "铁锤堡"
+#define ORIGIN_GRENZELHOFT "格伦泽尔霍夫特"
+#define ORIGIN_AVAR "阿瓦尔"
+#define ORIGIN_GRONN "格隆恩"
+#define ORIGIN_ETRUSCA "伊特鲁斯卡"
+#define ORIGIN_KAZENGUN "风郡"
+
 //Armor material categories
 #define ARMOR_MAT_PLATE 1
 #define ARMOR_MAT_LEATHER 2

@@ -53,6 +53,17 @@
 	minstr = 9
 	wdefense = 4
 
+/obj/item/rogueweapon/stoneaxe/battle/getonmobprop(tag)
+	if(tag)
+		switch(tag)
+			if("gen")
+				return list("shrink" = 0.7,"sx" = -9,"sy" = -8,"nx" = 9,"ny" = -7,"wx" = -7,"wy" = -8,"ex" = 3,"ey" = -8,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 90,"sturn" = -90,"wturn" = -90,"eturn" = 90,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
+			if("wielded")
+				return list("shrink" = 0.7,"sx" = 3,"sy" = -5,"nx" = -6,"ny" = -3,"wx" = 3,"wy" = -4,"ex" = 4,"ey" = -3,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -44,"sturn" = 45,"wturn" = 47,"eturn" = 33,"nflip" = 8,"sflip" = 0,"wflip" = 0,"eflip" = 0)
+			if("onbelt")
+				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
+	return ..()
+
 /obj/item/rogueweapon/stoneaxe/battle/blacksteel
 	name = "黑钢战斧"
 	desc = "一柄华丽的黑钢战斧，既可用于对付无甲袭击者，也可用以对抗重装步兵。刃部或许嵌有更高级合金的装饰凹槽，但一旦切入锁甲与血肉，它依旧凶残无比。"
@@ -503,6 +514,7 @@
 	smeltresult = /obj/item/ingot/iron
 	associated_skill = /datum/skill/combat/axes
 	wdefense = 6
+	special = /datum/special_intent/axe_swing
 
 /obj/item/rogueweapon/greataxe/getonmobprop(tag)
 	. = ..()
@@ -578,15 +590,12 @@
 	name = "长柄斧猛击"
 	damfactor = 1 // worse than dedicated mace
 	reach = 2
-	blunt_chipping = TRUE
-	blunt_chip_strength = BLUNT_CHIP_STRONG
 
 /datum/intent/mace/smash/poleaxe
 	name = "长柄斧重砸"
 	damfactor = 1 // worse than dedicated mace
 	reach = 2
 	clickcd = CLICK_CD_HEAVY // longer because of range
-	blunt_chip_strength = BLUNT_CHIP_STRONG // eagle's beak uses BLUNT_CHIP_ABSURD instead
 
 /datum/intent/mace/strike/poleaxe
 	damfactor = 1.2
@@ -631,6 +640,7 @@
 	associated_skill = /datum/skill/combat/polearms // yes it is located in the axe folder and uses axe subtypes it is a polearm
 	is_silver = TRUE
 	smeltresult = /obj/item/ingot/silverblessed
+	special = /datum/special_intent/polearm_backstep
 
 /obj/item/rogueweapon/greataxe/psy/ComponentInitialize()
 	AddComponent(\

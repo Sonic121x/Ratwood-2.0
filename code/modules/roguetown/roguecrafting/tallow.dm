@@ -38,6 +38,9 @@
 	verbage_simple = "熬炼"
 	verbage = "熬炼"
 
+/datum/crafting_recipe/roguetown/cooking
+	skillcraft = /datum/skill/craft/cooking
+
 /datum/crafting_recipe/roguetown/cooking/mobilestove_tallow
 	name = "在便携炉上熬炼兽脂（x3）（1 份脂肪）"
 	result = list(

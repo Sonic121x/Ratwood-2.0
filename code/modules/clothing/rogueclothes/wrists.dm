@@ -41,6 +41,11 @@
 	sewrepair = FALSE
 	smeltresult = /obj/item/ingot/steel
 
+/obj/item/clothing/wrists/roguetown/bracers/get_mechanics_examine(mob/user)
+	. = ..()
+	. += span_notice("Allows unarmed parrying. Takes integrity damage when parrying.")
+	. += span_notice("Unarmed attacks are swift-balanced: faster attackers are harder to parry and dodge.")
+
 /obj/item/clothing/wrists/roguetown/bracers/ancient
 	name = "远古臂甲"
 	desc = "抛光的吉尔青铜护腕紧扣于手腕之上。唯有升格，凡躯的锁链方会断裂；唯有死亡，灵魂才有资格拥抱神性。"
@@ -70,6 +75,7 @@
 	max_integrity = ARMOR_INT_SIDE_BRONZE
 
 /obj/item/clothing/wrists/roguetown/bracers/gold
+	is_gold = TRUE
 	name = "黄金臂甲"
 	desc = "一对光彩夺目的黄金护臂，其内还以丝绸衬里加垫。每一半都刻有一枚神圣徽记，并向上倾斜，以便捕捉并反射阳光，晃进毫无防备的袭击者眼中。"
 	icon_state = "goldbracers"

@@ -192,6 +192,7 @@
 //////////////
 
 /obj/item/clothing/neck/necklace/dope
+	is_gold = TRUE
 	name = "金项链"
 	desc = ""
 	icon = 'icons/obj/clothing/neck.dmi'

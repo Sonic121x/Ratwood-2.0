@@ -146,6 +146,20 @@
 #define TRAIT_COMPLIANT "顺从" //forced to be compliant
 #define TRAIT_MARTIAL_PROWESS "武术精通" //allows mastering weapon skills
 #define TRAIT_SELF_AWARE "自知" //Absolver/Stigmata trait that allows them to self-diagnose and get full damage numbers.
+#define TRAIT_DEADITE_RESISTANCE "死疫抗性"
+#define TRAIT_COLD_RESISTANCE "寒冷抗性"
+#define TRAIT_HEAT_RESISTANCE "炎热抗性"
+#define TRAIT_STEPPE_RIDER "草原骑手"
+#define TRAIT_HEARTY_DRINKER "豪饮者"
+#define TRAIT_BATTLE_CRY "战吼"
+#define TRAIT_METICULOUS "一丝不苟"
+#define TRAIT_SLOW_METABOLISM "代谢迟缓"
+#define TRAIT_GOLD_AFFINITY "黄金亲和"
+#define TRAIT_WATCHFUL "警觉"
+#define TRAIT_LOCAL_KNOWLEDGE "本地通"
+#define TRAIT_SOFT_FOOTED "轻足"
+#define TRAIT_LIGHT_SENSITIVITY "光敏感"
+#define TRAIT_ANCESTOR_GUARDIAN "先祖守护"
 #define TRAIT_SCOMGNET_AUTHORIZED "SCOMgnet 授权" //If the inquisitor deems someone worthy of their communications.
 
 //travel zone traits
@@ -506,7 +520,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_PERFECT_TRACKER = span_info("我是追猎之道的大师。只要看到踪迹，我便能辨出其中每一个细节，任何掩盖痕迹的伎俩都骗不过我。"),//Hearthstone port.
 	TRAIT_ZIZOSIGHT = span_info("齐佐赐福于我的双眼，使我不再受夜色所困。"), //Hearthstone change.
 	TRAIT_NOCSIGHT = span_info("我的夜行天性，使我在诺克的时刻也能看清事物。"),
-	TRAIT_CIVILIZEDBARBARIAN = span_info("严苛的武艺修行把我磨成了一件活生生的兵器。拳脚所及之处，无人能逃；我的徒手攻击也更容易造成重创。"),
+	TRAIT_CIVILIZEDBARBARIAN = span_info("严苛的武艺修行把我磨成了一件活生生的兵器。拳脚所及之处，无人能逃；我的徒手攻击也更容易造成重创（徒手伤害 +5）。"),
 	TRAIT_COMICSANS = span_sans("我被诅咒般地拥有了一副古怪嗓音。"),
 	TRAIT_SQUIRE_REPAIR = span_info("我曾在师傅身旁受训，因此只要给我时间，我便能修复各种器械，还能把它们打磨得焕然如新。"),
 	TRAIT_WATERBREATHING = span_info("我在水中不会溺亡。"),
@@ -678,7 +692,21 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_CLERGYRADICAL = span_info("我追随教士中的激进道路，舍弃旧有的虔信之路，转而钻研由自己主导的神迹之学。"),
 	TRAIT_TRIBAL = span_info("我属于海岛上的部族。"),
 	TRAIT_COMPLIANT = span_info("无论我如何努力，我都无法真正反抗他人。"),
-	TRAIT_SELF_AWARE = span_info("我熟知自己的身体，天生便懂得各种疼痛意味着什么。")
+	TRAIT_SELF_AWARE = span_info("我熟知自己的身体，天生便懂得各种疼痛意味着什么。"),
+	TRAIT_DEADITE_RESISTANCE = span_info("我在腐疫横行的土地上长大。我的身体对感染更具抵抗力。"),
+	TRAIT_COLD_RESISTANCE = span_info("由于故乡的气候，我已对寒冷生出耐受力。"),
+	TRAIT_HEAT_RESISTANCE = span_info("由于故乡的气候，我已对炎热生出耐受力。"),
+	TRAIT_STEPPE_RIDER = span_info("童年时我常与马为伴，自小便被教会骑马。"),
+	TRAIT_HEARTY_DRINKER = span_info("矮人的血在我血管中流淌！我爱喝上一口烈酒！"),
+	TRAIT_BATTLE_CRY = span_info("在格隆恩，没有战吼便不算开战。一声战吼必能在战斗中得到眷顾！"),
+	TRAIT_METICULOUS = span_info("在格伦泽尔霍夫特，我被教导要精打细算地利用手头有限的资源。制作对我来说更为容易。"),
+	TRAIT_SLOW_METABOLISM = span_info("奥塔瓦的每个孩子都至少熬过一次饥荒。严寒的高山素来贫瘠。我的食量比他人更少。"),
+	TRAIT_GOLD_AFFINITY = span_info("我来自纳莱迪之地，穿戴黄金令我精神振奋。那光泽让我想起更辉煌的时代。"),
+	TRAIT_WATCHFUL = span_info("兹班图以扒手和窃贼闻名，且并非无凭。我对滑溜的手格外警惕。"),
+	TRAIT_LOCAL_KNOWLEDGE = span_info("我在费伦提亚住得够久，足以避开此地的危险。"),
+	TRAIT_SOFT_FOOTED = span_info("在遥远的风郡，走路声响大是不礼貌的。我的脚步轻柔而轻巧。"),
+	TRAIT_ANCESTOR_GUARDIAN = span_info("在阿瓦尔，我们敬奉先祖，而他们护佑我们免遭危险。时不时的，他们会在战斗中指引我的手。"),
+	TRAIT_LIGHT_SENSITIVITY = span_info("住在幽暗地域昏暗的洞窟中，使我的眼睛有所适应。虽然我在黑暗中看得清楚，但强光对我而言是克星！")
 ))
 
 // trait accessor defines

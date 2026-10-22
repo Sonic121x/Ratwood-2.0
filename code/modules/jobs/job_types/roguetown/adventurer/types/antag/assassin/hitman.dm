@@ -56,7 +56,7 @@
 	head = /obj/item/clothing/head/roguetown/helmet/kettle
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
 	backl = /obj/item/rogueweapon/mace/cudgel
-	beltl = /obj/item/rogueweapon/knuckles
+	beltl = /obj/item/clothing/gloves/roguetown/knuckles
 
 	if(!istype(H.patron, /datum/patron/inhumen/graggar))
 		var/inputty = input(H, "你要将自己的信仰改为 格拉加 吗？", "兽吼回荡", "否") as anything in list("是", "否")

@@ -528,6 +528,8 @@
 			to_chat(src, span_warning("闪光让我暂时失明了！"))
 		overlay_fullscreen("flash", type)
 		addtimer(CALLBACK(src, PROC_REF(clear_fullscreen), "flash", 25), 25)
+		if(!visual && HAS_TRAIT(src, TRAIT_LIGHT_SENSITIVITY))
+			Stun(20)
 		return TRUE
 	return FALSE
 

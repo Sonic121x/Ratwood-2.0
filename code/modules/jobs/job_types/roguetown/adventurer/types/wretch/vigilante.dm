@@ -84,7 +84,7 @@
 			if("以铁拳与利刃伸张正义！")
 				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT, TRUE) //No Civbarb.
 				l_hand = /obj/item/rogueweapon/katar
-				r_hand = /obj/item/rogueweapon/knuckles
+				r_hand = /obj/item/clothing/gloves/roguetown/knuckles
 	wretch_select_bounty(H)
 
 /datum/outfit/job/roguetown/wretch/vigilante/proc/owl_equip(mob/living/carbon/human/H)

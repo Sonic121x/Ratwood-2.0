@@ -14,7 +14,7 @@ GLOBAL_LIST_INIT(zizoconstruct_aggro, world.file2list("strings/rt/zconstructaggr
 	setparrytime = 30
 	a_intent = INTENT_HELP
 	d_intent = INTENT_PARRY //knocks your weapon away with with their big scary metal arms
-	possible_mmb_intents = list(INTENT_BITE, INTENT_JUMP, INTENT_KICK, INTENT_STEAL) //intents given incase of player controlled
+	possible_mmb_intents = list(INTENT_BITE, INTENT_JUMP, INTENT_KICK, INTENT_SPECIAL) //intents given incase of player controlled
 	possible_rmb_intents = list(/datum/rmb_intent/feint, /datum/rmb_intent/aimed, /datum/rmb_intent/strong, /datum/rmb_intent/weak)
 	resize = 1.2
 
@@ -66,7 +66,7 @@ GLOBAL_LIST_INIT(zizoconstruct_aggro, world.file2list("strings/rt/zconstructaggr
 /datum/outfit/job/roguetown/human/species/construct/metal/zizoconstruct/pre_equip(mob/living/carbon/human/H)
 	..()
 	shirt = /obj/item/clothing/suit/roguetown/armor/skin_armor/zizoconstructarmor
-	l_hand = /obj/item/rogueweapon/knuckles/bronzeknuckles/zizoconstruct
+	gloves = /obj/item/clothing/gloves/roguetown/knuckles/bronze/zizoconstruct
 
 	H.STASTR = 20
 	H.STASPD = 8
@@ -79,15 +79,16 @@ GLOBAL_LIST_INIT(zizoconstruct_aggro, world.file2list("strings/rt/zconstructaggr
 	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 
-/obj/item/rogueweapon/knuckles/bronzeknuckles/zizoconstruct //I have no unarmed and I must parry. More interesting than defprob and gives construct PC a fun item to loot and use
+/obj/item/clothing/gloves/roguetown/knuckles/bronze/zizoconstruct //Gives construct NPC a lootable knuckle item
 	name = "构装体指虎"
 	desc = "专为构装体设计的一副凶狠青铜指虎。握柄中央有根骇人的空心尖刺，使用时似乎无论如何都会刺穿自己的手。"
 	wdefense = 11
 	color = "#5f1414"
 	max_integrity = 500
 	anvilrepair = /datum/skill/craft/engineering
+	unarmed_bonus = 10
 
-/obj/item/rogueweapon/knuckles/bronzeknuckles/zizoconstruct/pickup(mob/living/user)
+/obj/item/clothing/gloves/roguetown/knuckles/bronze/zizoconstruct/pickup(mob/living/user)
 	if(!HAS_TRAIT(user, TRAIT_BLOODLOSS_IMMUNE))
 		to_chat(user, "<font color='purple'> 你试图使用这副指虎。尖刺深深扎入你的手，刺穿血肉并汲取你的生命能量！</font>")
 		user.adjustBruteLoss(15)

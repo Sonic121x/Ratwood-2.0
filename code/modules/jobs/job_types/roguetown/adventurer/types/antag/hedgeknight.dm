@@ -53,6 +53,7 @@
 					/obj/item/rogueweapon/scabbard/sheath/noble = 1
 					)
 	H.adjust_blindness(-3)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/appraise/free)
 	if(H.mind)
 		var/weapons = list("剑术大师","枪术大师","斩劈大师","钝击大师")
 		var/weapon_choice = input(H, "选择你的专精。", "老兵所授") as anything in weapons
