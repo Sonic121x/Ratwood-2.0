@@ -1692,7 +1692,7 @@
 					r_hand = /obj/item/cooking/pan
 				if("指虎")
 					H.z121_birth_skill_floor(/datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT, TRUE)
-					r_hand = /obj/item/rogueweapon/knuckles
+					r_hand = /obj/item/clothing/gloves/roguetown/knuckles/bronze
 				if("纳瓦哈折刀")
 					H.z121_birth_skill_floor(/datum/skill/combat/knives, SKILL_LEVEL_EXPERT, TRUE)
 					r_hand = /obj/item/rogueweapon/huntingknife/idagger/navaja
