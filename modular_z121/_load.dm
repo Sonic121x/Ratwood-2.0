@@ -75,7 +75,6 @@
 #include "spells/arcane/pain.dm"
 #include "spells/arcane/portal_spell.dm"
 #include "spells/arcane/restore_pristine.dm"
-#include "spells/arcane/sectumsempra.dm"
 #include "spells/arcane/sensory_sharing.dm"
 #include "spells/arcane/small_bet.dm"
 #include "spells/arcane/storage_spell.dm"
