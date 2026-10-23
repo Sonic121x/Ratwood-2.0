@@ -78,6 +78,7 @@
 #include "spells/arcane/sensory_sharing.dm"
 #include "spells/arcane/small_bet.dm"
 #include "spells/arcane/storage_spell.dm"
+#include "spells/arcane/projection_spell.dm"
 #include "spells/arcane/summon_magic_bedroll.dm"
 #include "spells/arcane/thousand_arrows.dm"
 #include "spells/arcane/timestop.dm"
