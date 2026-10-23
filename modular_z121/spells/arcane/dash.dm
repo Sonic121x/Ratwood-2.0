@@ -203,9 +203,10 @@
 		if(runner.z121_dash == src)
 			runner.z121_dash = null
 		if(!QDELETED(runner))
-			// 已被碰撞、疲劳或玩家改成其他模式时，保留该模式。
-			if(runner.m_intent == MOVE_INTENT_RUN)
-				runner.toggle_rogmove_intent(previous_intent, TRUE)
+			// 保留碰撞、疲劳、玩家切换以及后来进入的固定或骑乘状态。
+			// 上游姿态切换含可休眠分支，异步调用以保证销毁流程不休眠。
+			if(runner.m_intent == MOVE_INTENT_RUN && !runner.buckled)
+				INVOKE_ASYNC(runner, TYPE_PROC_REF(/mob/living/carbon/human, toggle_rogmove_intent), previous_intent, TRUE)
 			runner.update_movespeed()
 	runner = null
 	runner_client = null
