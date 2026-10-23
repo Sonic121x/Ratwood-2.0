@@ -678,17 +678,17 @@
 	collar.dropped(human_user)
 
 /client/verb/toggle_milkable() // toggles being milked by players clicking the chest with a container to milk player breasts
-	set category = "Options"
-	set name = "Toggle Breast Milking"
+	set category = "选项"
+	set name = "切换允许他人挤乳"
 	set hidden = 1
 	if(!prefs)
 		return
 	prefs.milkable = !prefs.milkable
 	prefs.save_preferences()
 	if(prefs.milkable)
-		to_chat(src, "You can now be milked by other players.")
+		to_chat(src, "现在其他玩家可以为你挤乳。")
 		return
-	to_chat(src, "Other players can no longer milk you.")
+	to_chat(src, "其他玩家现在无法为你挤乳。")
 
 /client/verb/toggle_compliance_notifs() // The messages need to be on-by-default while this is in its early stages.
 	set category = "选项"

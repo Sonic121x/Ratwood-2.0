@@ -43,8 +43,8 @@
 
 /obj/item/clothing/wrists/roguetown/bracers/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_notice("Allows unarmed parrying. Takes integrity damage when parrying.")
-	. += span_notice("Unarmed attacks are swift-balanced: faster attackers are harder to parry and dodge.")
+	. += span_notice("允许徒手招架。招架时会损失耐久。")
+	. += span_notice("徒手攻击采用迅捷平衡：攻击者速度越快，其攻击越难被招架或闪避。")
 
 /obj/item/clothing/wrists/roguetown/bracers/ancient
 	name = "远古臂甲"
