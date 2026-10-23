@@ -62,6 +62,12 @@
 	output_reagent = /datum/reagent/consumable/spiced_chocolate
 	input_items = list(/obj/item/reagent_containers/food/snacks/grown/rogue/chocolate_spiced)
 
+/datum/z121_distiller_recipe/poppy_milk
+	name = "罂粟奶"
+	output_reagent = /datum/reagent/consumable/poppy_milk
+	output_amount = 30
+	input_items = list(/obj/item/reagent_containers/food/snacks/grown/rogue/poppy)
+
 /datum/z121_distiller_recipe/brew
 	category = "初阶酿造"
 
