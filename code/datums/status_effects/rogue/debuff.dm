@@ -1416,8 +1416,8 @@
 	effectedstats = list(STATKEY_PER = -5)
 
 /atom/movable/screen/alert/status_effect/debuff/sun_blinded
-	name = "Sun Blinded"
-	desc = "The light smites my eyes!"
+	name = "阳光致盲"
+	desc = "强光刺痛了我的眼睛！"
 	icon_state = "debuff"
 
 /datum/status_effect/debuff/sun_blinded/on_apply()
