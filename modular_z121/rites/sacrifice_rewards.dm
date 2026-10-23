@@ -155,6 +155,10 @@
 	return cmode && has_status_effect(/datum/status_effect/buff/victory_glow)
 
 /mob/living/carbon/human/stamina_add(added as num, emote_override, force_emote = TRUE)
+	// 仅豁免移动完成后紧随的原生奔跑扣费，保留涉水和碰撞等其他消耗。
+	if(z121_dash?.in_step && z121_dash.waive_run_fatigue && added == 2 && isnull(emote_override) && force_emote)
+		z121_dash.waive_run_fatigue = FALSE
+		return TRUE
 	if(added > 0 && z121_victory_glow_active())
 		added *= 0.9
 	return ..(added, emote_override, force_emote)
