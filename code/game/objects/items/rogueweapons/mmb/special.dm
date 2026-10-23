@@ -1,5 +1,5 @@
 /datum/intent/special
-	name = "special"
+	name = "特殊招式"
 	parriable_intent = FALSE
 	dodgeable_intent = FALSE
 	chargedrain = 0
@@ -27,7 +27,7 @@
 		if(W.special.custom_skill)
 			skillreq = W.special.custom_skill
 		if(user.get_skill_level(skillreq) < SKILL_LEVEL_JOURNEYMAN)
-			to_chat(user, span_info("I'm not knowledgeable enough in the arts of this weapon to use this."))
+			to_chat(user, span_info("我对这种武器的技艺掌握不足，无法使出这招。"))
 			return
 		W.special.deploy(user, W, target)
 	

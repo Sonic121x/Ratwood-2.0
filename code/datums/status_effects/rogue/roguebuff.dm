@@ -1931,7 +1931,7 @@
 	if(!owner.get_active_held_item())
 		if(!ishuman(owner) || owner.get_skill_level(/datum/skill/combat/unarmed) < 3)
 			var/mob/living/carbon/human/H = owner
-			H.bad_guard(span_warning("I'm not skilled enough in the art of unarmed combat to maintain my guard without a weapon!"))
+			H.bad_guard(span_warning("我的徒手战斗技艺不足，无法在没有武器时维持防御！"))
 
 /datum/status_effect/buff/clash/process(wait)
 	if(duration != -1 && duration < world.time)

@@ -24,7 +24,7 @@
 		apply_status_effect(/datum/status_effect/buff/adrenaline_rush)
 		return
 	if(!IM)	//We are guarding unarmed but they have a weapon -- no clash, just consume the guard to block the hit.
-		visible_message(span_suicide("[src] ripostes [H]'s strike with [p_their()] bare hands!"))
+		visible_message(span_suicide("[src]徒手还击了[H]的攻击！"))
 		var/sharpnesspenalty = RIPOSTE_SHARPNESS_FACTOR
 		if(IU.max_blade_int)
 			IU.remove_bintegrity((IU.blade_int * sharpnesspenalty), user)
@@ -36,7 +36,7 @@
 		H.apply_status_effect(/datum/status_effect/debuff/exposed, 3 SECONDS)
 		H.apply_status_effect(/datum/status_effect/debuff/clickcd, 3 SECONDS)
 		H.Slowdown(3)
-		to_chat(src, span_notice("[capitalize(H.p_theyre())] exposed!"))
+		to_chat(src, span_notice("[H]露出了破绽！"))
 		playsound(src, 'sound/combat/clash_struck.ogg', 100)
 		remove_status_effect(/datum/status_effect/buff/clash)
 		return

@@ -16,4 +16,4 @@
 /obj/item/clothing/gloves/roguetown/get_mechanics_examine(mob/user)
 	. = ..()
 	if(unarmed_bonus > 0)
-		. += span_notice("Unarmed damage bonus: +[unarmed_bonus] (flat, applied after strength scaling).")
+		. += span_notice("徒手伤害加成：+[unarmed_bonus]（固定加值，在力量缩放后结算）。")

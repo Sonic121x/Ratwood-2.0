@@ -34,8 +34,8 @@
 	output_reagents = list(/datum/reagent/strongstampoison = 100)
 
 /datum/alch_cauldron_recipe/deadite_rot
-	name = "Concentrated rot"
-	smells_like = "rotten flesh"
+	name = "浓缩腐化药剂"
+	smells_like = "腐肉"
 	skill_required = SKILL_LEVEL_MASTER // Potential 1u kill
 	output_reagents = list(/datum/reagent/deaditerot = 30) // one vial worth
 

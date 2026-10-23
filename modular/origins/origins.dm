@@ -26,7 +26,7 @@ GLOBAL_LIST_INIT(origins, build_origins())
 	origin_traits = list(TRAIT_COLD_RESISTANCE, TRAIT_SLOW_METABOLISM)
 	hated_by = list(ORIGIN_GRENZELHOFT)
 	prejudice_stress = /datum/stressevent/prejudice/otava
-	prejudice_examine = span_red("Sanctimonious Otavan! Pah!")
+	prejudice_examine = span_red("道貌岸然的奥塔万人！呸！")
 	map_x = 183
 	map_y = 151
 
@@ -86,7 +86,7 @@ GLOBAL_LIST_INIT(origins, build_origins())
 	origin_traits = list(TRAIT_DEADITE_RESISTANCE, TRAIT_METICULOUS)
 	hated_by = list(ORIGIN_OTAVA)
 	prejudice_stress = /datum/stressevent/prejudice/grenzelhoft
-	prejudice_examine = span_red("Irksome Grenzel! Pah!")
+	prejudice_examine = span_red("烦人的格伦泽尔霍夫特人！呸！")
 	map_x = 283
 	map_y = 188
 
@@ -125,7 +125,7 @@ GLOBAL_LIST_INIT(origins, build_origins())
 	origin_traits = list(TRAIT_SOFT_FOOTED)
 	hated_by = list(ORIGIN_FERENTIA)
 	prejudice_stress = /datum/stressevent/prejudice/kazengun
-	prejudice_examine = span_red("Uninvited Kazengunite! Pah!")
+	prejudice_examine = span_red("不请自来的风郡人！呸！")
 	map_x = 120
 	map_y = 374
 

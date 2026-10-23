@@ -1308,7 +1308,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			return
 
 		if(user.has_status_effect(/datum/status_effect/buff/clash) && !target.has_status_effect(/datum/status_effect/buff/clash))
-			user.bad_guard(span_suicide("I tried to strike while focused on defense whole! It drains me!"), cheesy = TRUE)
+			user.bad_guard(span_suicide("我全神贯注于防御时还试图出拳，这太耗体力了！"), cheesy = TRUE)
 			return
 
 		if(user.mob_biotypes & MOB_UNDEAD)

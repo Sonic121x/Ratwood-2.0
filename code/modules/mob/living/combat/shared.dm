@@ -4,7 +4,7 @@
 	mob_timers["ancestor_reroll"] = GLOB.dayspassed
 	if(!prob(prob2defend))
 		return FALSE
-	visible_message(span_warning("[src]'s movements are supernaturally quick!"), span_notice("Ancestors guide my hand!"))
+	visible_message(span_warning("[src]的动作快得超乎寻常！"), span_notice("先祖正指引着我的手！"))
 	return TRUE
 
 /mob/living/carbon/human/proc/calculate_sentinel_bonus()

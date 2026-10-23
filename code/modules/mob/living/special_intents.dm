@@ -1242,8 +1242,8 @@ tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0)
 //tile_coordinates = list(list(0,0), list(1,0, 1.1 SECONDS), list(2,0, 1.2 SECONDS), list(3,0,1.3 SECONDS), list(4,0,1.4 SECONDS), list(5,0,1.5 SECONDS))
 
 /datum/special_intent/dagger_dash
-	name = "Dagger Dash"
-	desc = "Become quicker on your feet and pass through other beings for a short time. Boost scales with worn armor."
+	name = "匕首疾冲"
+	desc = "短时间内加快脚步，并可穿过其他生物。加速效果随所穿护甲而变化。"
 	cooldown = 90 SECONDS
 	stamcost = 25
 

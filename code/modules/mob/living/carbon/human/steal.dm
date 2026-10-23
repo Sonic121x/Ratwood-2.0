@@ -10,20 +10,20 @@
 	var/list/stealpos = list()
 	var/list/mobsbehind = list()
 	var/exp_to_gain = user_human.STAINT
-	to_chat(user, span_notice("I try to steal from [target_human]..."))	
+	to_chat(user, span_notice("我试图偷走[target_human]身上的东西……"))	
 	if(do_after(user, 5, target = target_human, progress = 0))
 		if(stealroll > targetperception)
 			//TODO add exp here
 			// RATWOOD MODULAR START
 			if(target_human.cmode)
-				to_chat(user, "<span class='warning'>[target_human] is alert. I can't pickpocket them like this.</span>")
+				to_chat(user, "<span class='warning'>[target_human]正保持警惕。我没法这样行窃。</span>")
 				return
 			// RATWOOD MODULAR END
 			if(user_human.get_active_held_item())
-				to_chat(user, span_warning("I can't pickpocket while my hand is full!"))
+				to_chat(user, span_warning("我手里拿着东西，没法行窃！"))
 				return
 			if(!(user.zone_selected in stealablezones))
-				to_chat(user, span_warning("What am I going to steal from there?"))
+				to_chat(user, span_warning("那里有什么可偷的？"))
 				return
 			mobsbehind |= cone(target_human, list(turn(target_human.dir, 180)), list(user))
 			if(mobsbehind.Find(user) || target_human.IsUnconscious() || target_human.eyesclosed || target_human.eye_blind || target_human.eye_blurry || !(target_human.mobility_flags & MOBILITY_STAND))
@@ -48,7 +48,7 @@
 					var/obj/item/picked = pick(stealpos)
 					target_human.dropItemToGround(picked)
 					user.put_in_active_hand(picked)
-					to_chat(user, span_green("I stole [picked]!"))
+					to_chat(user, span_green("我偷到了[picked]！"))
 					target_human.log_message("has had \the [picked] stolen by [key_name(user_human)]", LOG_ATTACK, color="white")
 					user_human.log_message("has stolen \the [picked] from [key_name(target_human)]", LOG_ATTACK, color="white")
 					if(target_human.client && target_human.stat != DEAD)
@@ -60,19 +60,19 @@
 						user.sate_addiction()
 				else
 					exp_to_gain /= 2 // these can be removed or changed on reviewer's discretion
-					to_chat(user, span_warning("I didn't find anything there. Perhaps I should look elsewhere."))
+					to_chat(user, span_warning("我在那里什么也没找到。也许该换个地方找找。"))
 			else
-				to_chat(user, "<span class='warning'>They can see me!")
+				to_chat(user, "<span class='warning'>对方能看见我！")
 		if(stealroll <= 5)
 			target_human.log_message("has had an attempted pickpocket by [key_name(user_human)]", LOG_ATTACK, color="white")
 			user_human.log_message("has attempted to pickpocket [key_name(target_human)]", LOG_ATTACK, color="white")
-			user_human.visible_message(span_danger("[user_human] failed to pickpocket [target_human]!"))
-			to_chat(target_human, span_danger("[user_human] tried pickpocketing me!"))
+			user_human.visible_message(span_danger("[user_human]试图扒窃[target_human]，却失败了！"))
+			to_chat(target_human, span_danger("[user_human]试图偷我的东西！"))
 		if(stealroll < targetperception)
 			target_human.log_message("has had an attempted pickpocket by [key_name(user_human)]", LOG_ATTACK, color="white")
 			user_human.log_message("has attempted to pickpocket [key_name(target_human)]", LOG_ATTACK, color="white")
-			to_chat(user, span_danger("I failed to pick the pocket!"))
-			to_chat(target_human, span_danger("Someone tried pickpocketing me!"))
+			to_chat(user, span_danger("我行窃失败了！"))
+			to_chat(target_human, span_danger("有人试图偷我的东西！"))
 			exp_to_gain /= 5 // these can be removed or changed on reviewer's discretion
 		// If we're pickpocketing someone else, and that person is conscious, grant XP
 		if(user != target_human && target_human.stat == CONSCIOUS)

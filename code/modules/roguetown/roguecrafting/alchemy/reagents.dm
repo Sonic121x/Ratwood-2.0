@@ -306,11 +306,11 @@ If you want to expand on poisons theres tons of fun effects TG chemistry has tha
 	return ..()
 
 /datum/reagent/deaditerot         // Gives people the deadite rot or speeds up transformation on corpses. As simple as that
-	name =  "Concentrated Rot"
+	name =  "浓缩腐化药剂"
 	description = ""
 	reagent_state = LIQUID
 	color = "#000000"
-	taste_description = "sour meat"
+	taste_description = "发酸的肉"
 	metabolization_rate = 1000000 // handled by on add, any amount is dangerous
 	harmful = TRUE
 	self_consuming = TRUE // shouldn't matter, but yes, its liver independent
