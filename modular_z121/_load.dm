@@ -62,6 +62,7 @@
 #include "spells/arcane/arcane_archery.dm"
 #include "spells/arcane/clearwater_spring.dm"
 #include "spells/arcane/cleaning.dm"
+#include "spells/arcane/dash.dm"
 #include "spells/arcane/harmless_dismemberment.dm"
 #include "spells/arcane/heal_pristine.dm"
 #include "spells/arcane/insight_all_things.dm"
