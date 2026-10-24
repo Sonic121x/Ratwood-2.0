@@ -84,16 +84,6 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/group_longstrider
 	duration = 30 MINUTES
 
-/atom/movable/screen/alert/status_effect/buff/group_magic_flight
-	name = "群体飞行术"
-	desc = "魔法托举着我的身躯，让我得以自由飞行。"
-	icon_state = "buff"
-
-/datum/status_effect/buff/group_magic_flight
-	parent_type = /datum/status_effect/buff/magic_flight
-	alert_type = /atom/movable/screen/alert/status_effect/buff/group_magic_flight
-	duration = 60 SECONDS
-
 /datum/action/cooldown/spell/z121/invoked/group_enlarge
 	name = "群体巨化术"
 	desc = "暂时将自身与身旁近处的活物放大成高大魁梧的巨型姿态。本就魁梧如巨人或身形娇小者不受影响。"

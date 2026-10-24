@@ -12,7 +12,6 @@ GLOBAL_LIST_INIT(custom_learnable_spells, list(
 	/datum/action/cooldown/spell/z121/invoked/group_stoneskin,
 	/datum/action/cooldown/spell/z121/invoked/group_giants_strength,
 	/datum/action/cooldown/spell/z121/invoked/group_leap,
-	/datum/action/cooldown/spell/z121/invoked/group_flight,
 	/datum/action/cooldown/spell/z121/invoked/harmless_dismemberment,
 	/datum/action/cooldown/spell/z121/invoked/heal_pristine,
 	/datum/action/cooldown/spell/z121/invoked/insight_all_things,

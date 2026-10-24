@@ -20,7 +20,6 @@
 //           一旦取消，所有点击(左/右/中/Shift/Ctrl/Alt)全被拦下。而【键盘移动】不经 ClickOn，故不受影响。
 //         - 说话 → TRAIT_MUTE(say.dm 检查它直接闭口)。做动作(emote) → TRAIT_EMOTEMUTE(emotes.dm 检查它)。
 //         - 动作栏施法/主动能力(不经点击) → TRAIT_SPELLCOCKBLOCK(spell.dm cast_check 检查它，直接"无法施法")。
-//         - 飞行 → 复用原版飞行术状态 /datum/status_effect/buff/magic_flight(spells/arcane/flight.dm)，
 //           与"飞行药水"同源；绑定到药剂代谢生命周期(见 ensure_flight)，使飞行只随药效存续。
 //       (注：不采用 notransform——它虽能拦下点击，却【连键盘移动一并冻结】(mob_movement.dm)，与"只能移动"相悖。)
 //     · ②穿门过窗 → movement_type 的 UNSTOPPABLE 位。原版移动核心(turf/Enter, turf.dm)会对带 UNSTOPPABLE 的
@@ -151,21 +150,6 @@
 	return COMSIG_MOB_CANCEL_CLICKON					// Cancel the click entirely.
 
 // ----------------------------------------------------------------------------
-// 中文：施加/维持飞行术并把它"钉成永久"——完全复用"飞行药水"的稳健做法：避免直接 apply_status_effect(...,-1)
-//   触发 magic_flight 的 refresh(-1) 缺陷(会把 duration 算成过去而被立即移除、等于把飞行掐断)。
-//   故：若已在飞，直接把现有实例 duration 设为 -1(永久)并抑制"剩 10 秒"警告；若尚未在飞，则以无限时长全新施加。
-// ----------------------------------------------------------------------------
-/datum/reagent/gasification_body_potion/proc/ensure_flight(mob/living/M)
-	// 中文：取当前飞行术实例(若有)。has_status_effect 返回实例或 null。
-	var/datum/status_effect/buff/magic_flight/FX = M.has_status_effect(/datum/status_effect/buff/magic_flight)	// Existing flight?
-	if(FX)													// Already flying (spell or earlier re-assert).
-		FX.duration = -1									// Pin to permanent (won't auto-expire while potion lasts).
-		FX.ending_warning_sent = TRUE						// Suppress the "10s left" warning (irrelevant here).
-		return FX											// Maintained.
-	// 中文：尚未在飞——以无限时长(-1)全新施加(走 apply 的"全新创建"分支，不触发有缺陷的 refresh)。
-	return M.apply_status_effect(/datum/status_effect/buff/magic_flight, -1)	// Fresh, permanent flight.
-
-// ----------------------------------------------------------------------------
 // 中文：雾贴图逐帧动画——由 enter_mist_form 启动的循环计时器每周期调用一次，在 steam_2 与 steam_3 之间来回切换，
 //   使那团雾"翻涌流动"而非定格成一张图(排除 steam_1)。改写 vis_contents 子物件的 icon_state 会即时重绘。
 // ----------------------------------------------------------------------------
@@ -221,9 +205,6 @@
 	ADD_TRAIT(M, TRAIT_NOFIRE, GASIFICATION_TRAIT_SOURCE)		// Nonflammable — ignite_mob fails 90% of the time.
 	ADD_TRAIT(M, TRAIT_RESISTHEAT, GASIFICATION_TRAIT_SOURCE)	// Immune to on-fire tick + hot-environment damage.
 	ADD_TRAIT(M, TRAIT_NOBREATH, GASIFICATION_TRAIT_SOURCE)		// No breathing required (mist has no lungs to fill).
-
-	// ---- ①-c "可飞行"：以无限时长挂上飞行术(随药效存续，见 ensure_flight) ----
-	ensure_flight(M)										// Grant/maintain permanent flight for the duration.
 
 	// ---- ②不被视作敌人 & ③无法被攻击/不受伤害：GODMODE(仅在原本未开时才由我们开启) ----
 	if(!(M.status_flags & GODMODE))							// Only add if not already god (don't clobber admin god).
@@ -302,9 +283,6 @@
 	REMOVE_TRAIT(M, TRAIT_NOFIRE, GASIFICATION_TRAIT_SOURCE)			// Flammable again.
 	REMOVE_TRAIT(M, TRAIT_RESISTHEAT, GASIFICATION_TRAIT_SOURCE)		// Heat can hurt again.
 	REMOVE_TRAIT(M, TRAIT_NOBREATH, GASIFICATION_TRAIT_SOURCE)		// Must breathe again.
-
-	// ---- 解除飞行术(随药效终止而落地) ----
-	M.remove_status_effect(/datum/status_effect/buff/magic_flight)	// End flight when the potion is gone.
 
 	// ---- 还原 pass_flags：仅剔除我们加过的那些位 ----
 	if(added_pass_flags)									// We added some bits.
