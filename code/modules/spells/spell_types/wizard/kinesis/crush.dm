@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/crush
 	button_icon = 'icons/mob/actions/mage_kinesis.dmi'
-	name = "重压术"
+	name = "碾压术"
 	expose_caster_on_deflect = FALSE
 	desc = "将重力压缩于一点，碾压瞄准部位。有预兆，可走出范围躲开。\
 	以极强力量穿透护甲，短暂减速被击中的目标。"
