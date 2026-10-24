@@ -157,7 +157,7 @@
 		inspec += "\n<b>有效距离:</b> [suffix] [effective_range] 步"
 	if(damfactor != 1)
 		inspec += "\n<b>伤害:</b> [damfactor]"
-	inspec += "\n<b>穿甲能力：</b> [penfactor > PEN_NONE ? colorgrade_rating(uppertext(item_d_type), penfactor) : "<font color='#808080'>无</font>"]"
+	inspec += "\n<b>Armor Penetration:</b> [penfactor > PEN_NONE ? colorgrade_rating(uppertext(item_d_type), penfactor) : "<font color='#808080'>NONE</font>"]"
 	if(masteritem)
 		inspec += " <span class='info'><a href='?src=[REF(masteritem)];explainpenfactor=1'>{?}</a></span>"
 	if(get_chargetime())
@@ -228,7 +228,7 @@
 
 	if(cleave)
 		inspec += "\n<b>劈砍:</b> [cleave.desc]"
-		inspec += "\n	最大额外目标数: [cleave.max_targets ? cleave.max_targets : "无限"]"
+		inspec += "\n	额外目标上限：[cleave.max_targets ? cleave.max_targets : "无限"]"
 		inspec += "\n	优先选择活着的目标。"
 		if(cleave.diagonal_desc)
 			inspec += "\n	[cleave.diagonal_desc]"
@@ -243,7 +243,7 @@
 	else
 		return 0
 
-/datum/intent/proc/get_chargedrain()
+/datum/intent/proc/get_chargedrain(held_for = 0)
 	if(chargedrain)
 		return chargedrain
 	else
@@ -766,3 +766,29 @@
 /*/datum/intent/effect/daze/shield
 	intent_effect = /datum/status_effect/debuff/dazed/shield
 	swingdelay = 3 */
+
+/datum/intent/hand
+	name = "手部"
+	icon_state = "inuse"
+	no_attack = TRUE
+	noaa = TRUE
+
+/datum/intent/hand/clean
+	name = "净化"
+	icon_state = "intouch"
+
+/datum/intent/hand/draw
+	name = "抽取"
+	icon_state = "indraw"
+
+/datum/intent/hand/light
+	name = "轻度"
+	icon_state = "inlight"
+
+/datum/intent/hand/sense
+	name = "感知"
+	icon_state = "insense"
+
+/datum/intent/hand/spark
+	name = "点火"
+	icon_state = "inspark"

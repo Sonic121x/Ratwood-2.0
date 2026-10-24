@@ -105,7 +105,7 @@
 	if(!iscarbon(grabbed))
 		return
 	var/mob/living/carbon/C = grabbed
-	C.update_action_buttons_icon()
+	C.update_mob_action_buttons()
 
 /obj/item/grabbing/Destroy()
 	STOP_PROCESSING(SSfastprocess, src)
@@ -139,7 +139,7 @@
 			grabbee.l_grab = null
 		if(grabbee.mouth == src)
 			grabbee.mouth = null
-			grabbee.update_action_buttons_icon()
+			grabbee.update_mob_action_buttons()
 		grabbee = null
 	for(var/datum/D in dependents)
 		D.grabdropped(src)
@@ -263,9 +263,9 @@
 						if(C.pulling == user && C.grab_state >= GRAB_AGGRESSIVE)
 							choke_damage *= 0.95	//Slight malice
 						C.adjustOxyLoss(choke_damage)
-						C.visible_message(span_danger("[user][chokehold ? "从背后锁住[C]，" : ""][pick("掐住", "勒紧")]了[C]的脖子！"), \
-								span_userdanger("[user][chokehold ? "从背后锁住我，" : ""][pick("掐住", "勒紧")]了我的脖子！"), span_hear("我听到令人牙酸的搏斗声！"), COMBAT_MESSAGE_RANGE, user)
-						to_chat(user, span_danger("我[chokehold ? "从背后锁住[C]，" : ""][pick("掐住", "勒紧")]了[C]的脖子！"))
+						C.visible_message(span_danger("[user][chokehold ? "用锁喉姿势" : ""][pick("掐住", "勒住")][C]的脖子！"), \
+								span_userdanger("[user][chokehold ? "用锁喉姿势" : ""][pick("掐住", "勒住")]我的脖子！"), span_hear("我听到了令人作呕的搏斗声！"), COMBAT_MESSAGE_RANGE, user)
+						to_chat(user, span_danger("我[chokehold ? "用锁喉姿势" : ""][pick("掐住", "勒住")][C]的脖子！"))
 					else
 						to_chat(user, span_warning("我够不到[C]的喉咙！"))
 					user.changeNext_move(CLICK_CD_GRABBING)	//Stops spam for choking.

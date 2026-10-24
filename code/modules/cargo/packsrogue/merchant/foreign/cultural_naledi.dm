@@ -1,5 +1,5 @@
 /datum/supply_pack/rogue/naledi
-	group = "文化货物" // English: Cultural Stock
+	group = "Cultural Stock"
 	crate_name = "纳莱迪货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 	not_in_public = TRUE
@@ -16,7 +16,7 @@
 		/obj/item/clothing/mask/rogue/lordmask/naledi,
 		/obj/item/clothing/neck/roguetown/psicross/naledi,
 		/obj/item/clothing/shoes/roguetown/sandals,
-		/obj/item/rogueweapon/woodstaff/naledi,
+		/obj/item/rogueweapon/woodstaff/implement/grand/naledi,
 	)
 	ship_qty_min = 1
 	ship_qty_max = 1

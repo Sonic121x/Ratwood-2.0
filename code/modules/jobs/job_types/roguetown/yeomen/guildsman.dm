@@ -2,7 +2,6 @@
 // But also includes a Mason-Architect.
 /datum/job/roguetown/guildsman
 	title = "Guildsman"
-	display_title = "行会工匠"
 	flag = GUILDSMAN
 	department_flag = YEOMEN
 	faction = "Station"
@@ -28,6 +27,7 @@
 	job_subclasses = list(
 		/datum/advclass/guildsman/artificer,
 		/datum/advclass/guildsman/blacksmith,
+		/datum/advclass/guildsman/engineer,
 	)
 	spells = list(/obj/effect/proc_holder/spell/invoked/takeapprentice)
 
@@ -104,13 +104,77 @@
 		shoes = /obj/item/clothing/shoes/roguetown/sandals
 
 /datum/advclass/guildsman/artificer
+	name = "工匠"
+	tutorial = "你是一名魔工师，常被完整地称作魔工附魔师。你受过基础锻造训练，必要时可以代行铁匠的工作。\
+	但你真正的使命是制造与附魔魔法物品，并施展工程技艺，创造机械与魔法的奇迹；这门工艺\
+	传承自某位精灵魔工师……"
+	outfit = /datum/outfit/job/roguetown/guildsman/artificer
+	subclass_mage_aspects = list("mastery" = FALSE, "major" = 1, "minor" = 2, "utilities" = 4, "locked_aspects" = list(/datum/magic_aspect/battlewardry, /datum/magic_aspect/artifice), "post_aspect_spells" = list(/obj/effect/proc_holder/spell/invoked/takeapprentice), "ward" = TRUE)
+
+	category_tags = list(CTAG_GUILDSMEN)
+	traits_applied = list(TRAIT_ARCYNE, TRAIT_ALCHEMY_EXPERT)
+	subclass_stats = list(
+		STATKEY_INT = 3,
+		STATKEY_WIL = 2,
+		STATKEY_STR = 1,
+		STATKEY_CON = 1,
+		STATKEY_PER = 1
+	)
+	subclass_skills = list(
+		/datum/skill/combat/axes = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/combat/maces = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/combat/wrestling = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/combat/unarmed = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/craft/crafting = SKILL_LEVEL_APPRENTICE, //reduced for tradeoff
+		/datum/skill/craft/carpentry = SKILL_LEVEL_APPRENTICE, //they are builders, but not as good as craftsmen
+		/datum/skill/craft/masonry = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/craft/engineering = SKILL_LEVEL_MASTER, //raising so they don't need to early week grind to get items out, in parity to a smith's armor or weapon skill
+		/datum/skill/craft/blacksmithing = SKILL_LEVEL_APPRENTICE, // Artificer makes for a crappy substitute blacksmith but have the same spread
+		/datum/skill/craft/armorsmithing = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/craft/weaponsmithing = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/craft/alchemy = SKILL_LEVEL_APPRENTICE,	//For the Alchemical mortar only, which is required for explosives. Feel free to remove if the recipe changes.
+		/datum/skill/magic/arcane = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/misc/lockpicking = SKILL_LEVEL_EXPERT,
+		/datum/skill/craft/smelting = SKILL_LEVEL_EXPERT,
+		/datum/skill/misc/reading = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/craft/ceramics = SKILL_LEVEL_JOURNEYMAN,	//Just for basic pottery/glass stuff.
+	)
+
+/datum/outfit/job/roguetown/guildsman/artificer/pre_equip(mob/living/carbon/human/H)
+	..()
+	head = /obj/item/clothing/head/roguetown/articap
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/jacket/artijacket
+	cloak = /obj/item/clothing/cloak/apron/waist/brown
+	gloves = /obj/item/clothing/gloves/roguetown/angle/grenzelgloves/blacksmith
+	id = /obj/item/scomstone/bad
+	pants = /obj/item/clothing/under/roguetown/trou/artipants
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/artificer
+	shoes = /obj/item/clothing/shoes/roguetown/boots/leather
+	belt = /obj/item/storage/belt/rogue/leather
+	beltr = /obj/item/storage/belt/rogue/pouch/coins/mid
+	beltl = /obj/item/roguekey/crafterguild
+	backl = /obj/item/storage/backpack/rogue/backpack
+	backpack_contents = list(
+						/obj/item/rogueweapon/hammer/steel = 1,
+						/obj/item/lockpickring/mundane = 1,
+						/obj/item/recipe_book/blacksmithing = 1,
+						/obj/item/recipe_book/engineering = 1,
+						/obj/item/recipe_book/ceramics = 1,
+						/obj/item/recipe_book/builder = 1,
+						/obj/item/clothing/mask/rogue/spectacles/golden = 1, //putting them in the bag because bad eye sight virtue strips these
+						/obj/item/mini_flagpole/artificer = 1,
+						/obj/item/rogueweapon/spellbook = 1,
+						)
+
+/datum/advclass/guildsman/engineer
 	name = "公会工程师"
 	tutorial = "你是一名工程师。你曾在建筑师与机关巧匠门下受训，如今你的经验已足以超越他们二者。\
 	你的使命在于机关术与建筑学——无论是锻造、建造，还是奥术机械，你都能胜任。你的资历本身就值得尊敬。"
-	outfit = /datum/outfit/job/roguetown/guildsman/artificer
+	outfit = /datum/outfit/job/roguetown/guildsman/engineer
 
 	category_tags = list(CTAG_GUILDSMEN)
-	traits_applied = list(TRAIT_ARCYNE_T1, TRAIT_MASTER_CARPENTER, TRAIT_MASTER_MASON, TRAIT_HOMESTEAD_EXPERT, TRAIT_ALCHEMY_EXPERT, TRAIT_FUSILIER, TRAIT_LEGENDARY_MINER)
+	traits_applied = list(TRAIT_MASTER_CARPENTER, TRAIT_MASTER_MASON, TRAIT_HOMESTEAD_EXPERT, TRAIT_ALCHEMY_EXPERT, TRAIT_FUSILIER, TRAIT_LEGENDARY_MINER)
 	subclass_stats = list( // alchemy expert upon request
 		STATKEY_INT = 3,
 		STATKEY_WIL = 2,
@@ -135,7 +199,6 @@
 		/datum/skill/labor/lumberjacking = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/labor/mining = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/craft/alchemy = SKILL_LEVEL_APPRENTICE, // AP gave them apprentice to allow for grinding since bombs need alchemy skill to get the ingredients
-		/datum/skill/magic/arcane = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
 		/datum/skill/misc/lockpicking = SKILL_LEVEL_EXPERT,
@@ -145,7 +208,7 @@
 		/datum/skill/craft/ceramics = SKILL_LEVEL_EXPERT, // glass making
 	)
 
-/datum/outfit/job/roguetown/guildsman/artificer/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/guildsman/engineer/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/articap
 	mask = /obj/item/clothing/mask/rogue/spectacles/golden
@@ -182,9 +245,7 @@
 						)
 	if(SSmapping.current_map.map_name == "Desert Town")
 		shoes = /obj/item/clothing/shoes/roguetown/sandals
-	// Not a real mage, no free spell point. Take Arcyne Potential if you want it.
+
 	if(H.mind)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/enchant_weapon)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/architect_plan)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/architect_conjure)

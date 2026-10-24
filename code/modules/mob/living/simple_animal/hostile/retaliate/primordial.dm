@@ -12,7 +12,7 @@
 			summoner = user.mind.current.real_name
 		else
 			summoner = user.name
-	// adds the name of the summoner to the faction, to avoid the hooded "未知" bug with Skeleton IDs
+	// adds the name of the summoner to the faction, to avoid the hooded "Unknown" bug with Skeleton IDs
 	if(user && user.mind && user.mind.current)
 		faction |= "[user.mind.current.real_name]_faction"
 	ADD_TRAIT(src, TRAIT_NOMOOD, TRAIT_GENERIC)
@@ -355,3 +355,42 @@
 	anchored = TRUE
 	duration = 8
 
+/obj/projectile/magic/aoe/fireball/spitfire
+	name = "喷火术"
+	exp_heavy = 0
+	exp_light = 0
+	exp_flash = 0
+	exp_fire = 0
+	damage = 15
+	npc_simple_damage_mult = 2 // Makes it more effective against NPCs.
+	accuracy = 40 // Base accuracy is lower for burn projectiles because they bypass armor
+	damage_type = BURN
+	nodamage = FALSE
+	flag = "magic"
+	hitsound = 'sound/blank.ogg'
+	aoe_range = 0
+
+/obj/projectile/magic/aoe/fireball/spitfire/arc
+	name = "弧射吐焰火球"
+	damage = 12 // 25% damage penalty
+	arcshot = TRUE
+
+/obj/projectile/magic/aoe/fireball/spitfire/on_hit(target)
+	. = ..()
+	if(ismob(target))
+		var/mob/living/M = target
+		if(M.anti_magic_check())
+			visible_message(span_warning("[src]触及[target]时消散了！"))
+			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
+			qdel(src)
+			return BULLET_ACT_BLOCK
+		if(M.has_status_effect(/datum/status_effect/buff/frost) || M.has_status_effect(/datum/status_effect/buff/frostbite))
+			visible_message(span_warning("[src] 在接触[target]时熄灭了！"))
+			playsound(get_turf(target), 'sound/items/firesnuff.ogg', 100)
+			M.remove_status_effect(/datum/status_effect/buff/frost)
+			M.remove_status_effect(/datum/status_effect/buff/frostbite)
+			new /obj/effect/temp_visual/snap_freeze(get_turf(M))
+			qdel(src)
+			return BULLET_ACT_BLOCK
+		M.adjust_fire_stacks(1)
+		M.ignite_mob()

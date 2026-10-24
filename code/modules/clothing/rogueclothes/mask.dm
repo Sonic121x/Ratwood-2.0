@@ -1,6 +1,6 @@
 /obj/item/clothing/mask/rogue/MiddleClick(mob/user)
 	overarmor = !overarmor
-	to_chat(user, span_info("我[overarmor ? "把[src]戴在头发下面" : "把[src]戴在头发外面"]."))
+	to_chat(user, span_info("我把[src]戴在头发[overarmor ? "下面" : "上面"]。"))
 	if(overarmor)
 		alternate_worn_layer = HOOD_LAYER //Below Hair Layer
 	else
@@ -22,7 +22,7 @@
 		return
 	var/mob/living/carbon/H = user
 	if(toggle_snout())
-		to_chat(user, span_info("我[snouting ? "在[src]里为我的吻部腾出空间" : "把[src]戴得更紧"]."))
+		to_chat(user, span_info("我[snouting ? "在[src]上为口鼻腾出空间" : "把[src]戴得更紧"]。"))
 		H.update_inv_wear_mask()
 
 /obj/item/clothing/mask/rogue/equipped(mob/user, slot)
@@ -859,7 +859,7 @@
 /obj/item/clothing/mask/rogue/xylixmask/proc/toggle_identity(mob/user)
 	hide_identity = !hide_identity
 	update_identity_flags(user)
-	to_chat(user, span_notice("我用[src][hide_identity ? "隐藏" : "显露"]自己的身份。"))
+	to_chat(user, span_notice("我用[src][hide_identity ? "隐藏" : "显露"]身份。"))
 	return TRUE
 
 /obj/item/clothing/mask/rogue/xylixmask/proc/apply_mask_style(style, mob/user)
@@ -971,3 +971,17 @@
 	icon_state = "bduelist"
 	armor = ARMOR_BRONZE
 	max_integrity = ARMOR_INT_MASK_BRONZE + 50//worse protection than iron goggles so it gets a slight buff
+
+/obj/item/clothing/mask/rogue/spectacles/fancy/dark
+	name = "精致染色眼镜"
+	desc = "异国制造的精巧薄镜片眼镜，工艺胜过大多数本地货品。这一款的镜片颜色更深。"
+	icon_state = "glassesb_dark"
+
+/obj/item/clothing/mask/rogue/spectacles/monocle
+	name = "银单片眼镜"
+	icon_state = "monocle"
+	max_integrity = 35
+
+/obj/item/clothing/mask/rogue/lordmask/naledi/lesser
+	name = "纳莱迪符文面具"
+	desc = "为恶魔而刻的符文与结界；黄金竟在违背常理的痛苦中锈蚀了。其中最醒目的是纳莱迪教十字形刻纹。轻型护甲能保护佩戴者的面部。"

@@ -70,7 +70,7 @@
 	)
 
 /obj/structure/deadbody/adventurer_leather
-	name = "冒险者的尸体"
+	name = "死去的冒险者"
 	desc = "为追逐荣耀而来。看样子他们确实找到了，还顺带见到了死神内克拉。"
 	pose_states = list("adventurer_leather", "adl10", "adl20", "adl30", "adl40")
 	loot_table = list(
@@ -209,25 +209,10 @@
 		"wizard_old", "wiza10", "wiza20", "wiza30", "wiza40",
 	)
 	loot_table = list(
-		/obj/item/book/granter/spell/blackstone/fetch                     = 15,
-		/obj/item/book/granter/spell/blackstone/fireball                  = 10,
-		/obj/item/book/granter/spell/blackstone/lightning                 = 8,
-		/obj/item/book/granter/spell/blackstone/bonechill                 = 8,
-		/obj/item/book/granter/spell/blackstone/frostbolt                 = 8,
-		/obj/item/book/granter/spell/blackstone/featherfall               = 6,
-		/obj/item/book/granter/spell/blackstone/forcewall_weak            = 6,
-		/obj/item/book/granter/spell/blackstone/invisibility              = 5,
-		/obj/item/book/granter/spell/blackstone/greaterfireball           = 3,
 		/obj/item/storage/belt/rogue/pouch/coins/mid                      = 20,
 		/obj/item/reagent_containers/glass/bottle/rogue/healthpot         = 15,
 	)
 	loot_table_lucky = list(
-		/obj/item/book/granter/spell/blackstone/greaterfireball           = 20,
-		/obj/item/book/granter/spell/blackstone/invisibility              = 15,
-		/obj/item/book/granter/spell/blackstone/lightning                 = 15,
-		/obj/item/book/granter/spell/blackstone/enlarge                   = 10,
-		/obj/item/book/granter/spell/blackstone/familiar                  = 8,
-		/obj/item/book/granter/spell/blackstone/fortitude                 = 10,
 		/obj/item/storage/belt/rogue/pouch/coins/rich                     = 15,
 		/obj/item/reagent_containers/glass/bottle/rogue/healthpot         = 10,
 	)
@@ -240,22 +225,12 @@
 		"necromancer_old", "necro10", "necro20", "necro30", "necro40",
 	)
 	loot_table = list(
-		/obj/item/book/granter/spell/blackstone/skeleton/lesser           = 15,
-		/obj/item/book/granter/spell/blackstone/sicknessray               = 12,
-		/obj/item/book/granter/spell/blackstone/bonechill                 = 10,
-		/obj/item/book/granter/spell/blackstone/fetch                     = 8,
-		/obj/item/book/granter/spell/blackstone/invisibility              = 6,
 		/obj/item/natural/bone                                            = 20,
 		/obj/item/skull                                                   = 10,
 		/obj/item/storage/belt/rogue/pouch/coins/mid                      = 15,
 		/obj/item/reagent_containers/glass/bottle/rogue/healthpot         = 10,
 	)
 	loot_table_lucky = list(
-		/obj/item/book/granter/spell/blackstone/skeleton/lesser           = 15,
-		/obj/item/book/granter/spell/blackstone/sicknessray               = 15,
-		/obj/item/book/granter/spell/blackstone/invisibility              = 15,
-		/obj/item/book/granter/spell/blackstone/bonechill                 = 10,
-		/obj/item/book/granter/spell/blackstone/familiar                  = 8,
 		/obj/item/storage/belt/rogue/pouch/coins/rich                     = 15,
 	)
 

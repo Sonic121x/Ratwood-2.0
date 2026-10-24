@@ -95,24 +95,24 @@
 	contents += "<a href='?src=[REF(src)];change=1'>你的恩惠：</a> [B.favor]<BR>"
 
 
-	var/list/unlocked_cats = list("补给品", "医疗用品", "衣物") // English: Supplies; Medicaments; Clothing
+	var/list/unlocked_cats = list("Supplies", "Medicaments", "Clothing")
 	switch(usr.advjob)
-		if("悍匪") //code/modules/jobs/job_types/roguetown/adventurer/types/antag/brigand.dm
-			unlocked_cats+="悍匪" // English: Brigand
-		if("佣兵剑客") //code/modules/jobs/job_types/roguetown/adventurer/types/antag/sellsword.dm
-			unlocked_cats+="佣兵剑客" // English: Sellsword
-		if("锯骨郎中") //code/modules/jobs/job_types/roguetown/adventurer/types/antag/sawbones.dm
-			unlocked_cats+="锯骨郎中" // English: Sawbones
-		if("落魄骑士") //code/modules/jobs/job_types/roguetown/adventurer/types/antag/hedgeknight.dm
-			unlocked_cats+="落魄骑士" // English: Knight
-		if("野法师") //code/modules/jobs/job_types/roguetown/adventurer/types/antag/roguemage.dm
-			unlocked_cats+="野法师" // English: Mage
-		if("无赖") //code/modules/jobs/job_types/roguetown/adventurer/types/antag/knave.dm
-			unlocked_cats+="无赖" // English: Knave
-		if("破像者") //code/modules/jobs/job_types/roguetown/adventurer/types/antag/Iconoclast.dm
-			unlocked_cats+="破像者" // English: Iconoclast
-		if("拓荒工兵") //code/modules/jobs/job_types/roguetown/adventurer/types/antag/pioneer.dm
-			unlocked_cats+="拓荒工兵" // English: Pioneer
+		if("Brigand")
+			unlocked_cats+="Brigand"
+		if("Sellsword")
+			unlocked_cats+="Sellsword"
+		if("Sawbones")
+			unlocked_cats+="Sawbones"
+		if("Hedge Knight")
+			unlocked_cats+="Knight"
+		if("Hedge Mage")
+			unlocked_cats+="Mage"
+		if("Knave")
+			unlocked_cats+="Knave"
+		if("Iconoclast")
+			unlocked_cats+="Iconoclast"
+		if("Pioneer")
+			unlocked_cats+="Pioneer"
 
 	if(!(current_cat in unlocked_cats))
 		current_cat = "1"

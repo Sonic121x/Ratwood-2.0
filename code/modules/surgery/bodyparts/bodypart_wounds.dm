@@ -157,7 +157,7 @@
 	return max(round(hud_bleed_rate, 0.1), 0)
 
 /// Called after a bodypart is attacked so that wounds and critical effects can be applied
-/obj/item/bodypart/proc/bodypart_attacked_by(bclass = BCLASS_BLUNT, dam, mob/living/user, zone_precise = src.body_zone, silent = FALSE, crit_message = FALSE, armor, obj/item/weapon, pen_info)
+/obj/item/bodypart/proc/bodypart_attacked_by(bclass = BCLASS_BLUNT, dam, mob/living/user, zone_precise = src.body_zone, silent = FALSE, crit_message = FALSE, armor, obj/item/weapon, pen_info, no_debuff)
 	RETURN_TYPE(/datum/wound)
 	if(!bclass || !dam || !owner || (owner.status_flags & GODMODE))
 		return null
@@ -549,7 +549,7 @@
 
 	// We want to apply knockout AFTER resistance check so you don't need two rolls to resist.
 	if(try_knockout)
-		owner.next_attack_msg += " <span class='crit'><b>重创！</b>[owner]被[from_behind ? "从背后" : ""]击昏了！</span>"
+		owner.next_attack_msg += " <span class='crit'><b>Critical hit!</b> [owner] is knocked out[from_behind ? " FROM BEHIND" : ""]!</span>"
 		owner.flash_fullscreen("whiteflash3")
 		owner.Unconscious(5 SECONDS + (from_behind * 10 SECONDS))
 		if(owner.client)

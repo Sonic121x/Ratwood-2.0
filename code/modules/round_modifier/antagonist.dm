@@ -55,7 +55,7 @@
 
 /*
 /datum/round_modifier/werewolf
-	name = "Verevolf"
+	name = "维尔沃夫"
 	desc = "Men don the skin of wolves in darkling night."
 	cost = 6
 	weight = 5
@@ -85,23 +85,25 @@
 	villain_events = list(/datum/round_event_control/antagonist/solo/assassins)
 
 /datum/round_modifier/rebel
-	name = "Rebellion"
+	name = "起义"
 	desc = "卑贱之人竟妄图自治！"
 	cost = 2
 	min_chaos = 1
 	villain_events = list(/datum/round_event_control/antagonist/solo/rebel)
 
 /datum/round_modifier/dreamwalker
-	name = "Dreamwalker"
+	name = "梦行者"
 	desc = "阿比索尔在沉眠中躁动。"
 	cost = 2
 	min_chaos = 2
 	villain_events = list(/datum/round_event_control/antagonist/solo/dreamwalker)
 
+/*
 /datum/round_modifier/lich
-	name = "Lich"
+	name = "巫妖"
 	desc = "死者步调一致地向前进军！"
 	cost = 6
 	weight = 6
 	min_chaos = 3
 	villain_events = list(/datum/round_event_control/antagonist/solo/lich)
+*/

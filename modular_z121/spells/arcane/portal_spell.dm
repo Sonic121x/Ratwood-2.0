@@ -45,17 +45,17 @@
 	// 通用法术会改用卷轴图标态；传送门图集没有该状态，直接保留门扉图标。
 	action.button_icon_state = action_icon_state
 	action.name = name
-	action.UpdateButtonIcon()
+	action.build_all_button_icons()
 
 // 按钮使用卷轴基底与传送门第一帧；仅在内存中取帧，不新增图标文件。
-/datum/action/spell_action/spell/z121_portal/ApplyIcon(atom/movable/screen/movable/action_button/current_button, force = FALSE)
-	if(!icon_icon || !button_icon_state || (!force && current_button.button_icon_state == button_icon_state))
+/datum/action/spell_action/spell/z121_portal/apply_button_icon(atom/movable/screen/movable/action_button/current_button, force = FALSE)
+	if(!button_icon || !button_icon_state || (!force && current_button.active_overlay_icon_state == button_icon_state))
 		return
 	var/static/icon/portal_frame = icon('icons/roguetown/misc/structure.dmi', "shitportal", SOUTH, 1)
 	current_button.cut_overlays(TRUE)
 	current_button.add_overlay(mutable_appearance('icons/mob/actions/roguespells.dmi', "spell0", layer = current_button.layer + 0.1))
 	current_button.add_overlay(mutable_appearance(portal_frame, layer = current_button.layer + 0.2))
-	current_button.button_icon_state = button_icon_state
+	current_button.active_overlay_icon_state = button_icon_state
 
 /obj/effect/proc_holder/spell/self/z121_portal/get_chargetime()
 	return Z121_PORTAL_CHANNEL
@@ -100,8 +100,8 @@
 /obj/effect/proc_holder/spell/self/z121_portal/finish_recharge()
 	. = ..()
 	// 恢复计数时同步清除数字，避免已经可用却仍显示冷却。
-	if(action?.button)
-		action.button.update_maptext(0)
+	if(action)
+		action.update_all_maptext(0)
 
 /obj/effect/proc_holder/spell/self/z121_portal/choose_targets(mob/user = usr)
 	if(channeling)
@@ -153,7 +153,7 @@
 	if(binding)
 		// 首次只留下锚点，立即恢复可用，不等待开门冷却。
 		finish_recharge()
-	action?.UpdateButtonIcon()
+	action?.build_all_button_icons()
 
 /obj/effect/proc_holder/spell/self/z121_portal/cast(list/targets, mob/living/user = usr)
 	if(!channeling || user != channeling_user || QDELETED(user))

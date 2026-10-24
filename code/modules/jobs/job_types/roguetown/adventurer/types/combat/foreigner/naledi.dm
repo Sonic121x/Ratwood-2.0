@@ -57,7 +57,7 @@
 			head = /obj/item/clothing/head/roguetown/roguehood/hierophant
 			cloak = /obj/item/clothing/cloak/hierophant
 			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/hierophant/civilian
-			backpack_contents += list(/obj/item/book/spellbook = 1, /obj/item/chalk = 1, /obj/item/rogueweapon/huntingknife = 1)
+			backpack_contents += list(/obj/item/rogueweapon/spellbook = 1, /obj/item/chalk = 1, /obj/item/rogueweapon/huntingknife = 1)
 			H.adjust_skillrank_up_to(/datum/skill/magic/arcane, SKILL_LEVEL_EXPERT, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/misc/reading, SKILL_LEVEL_EXPERT, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/craft/alchemy, SKILL_LEVEL_JOURNEYMAN, TRUE)
@@ -70,19 +70,21 @@
 			H.change_stat(STATKEY_SPD, -1)
 			H.change_stat(STATKEY_CON, -1)
 
-			ADD_TRAIT(H, TRAIT_ARCYNE_T3, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_ALCHEMY_EXPERT, TRAIT_GENERIC)
 
+			ADD_TRAIT(H, TRAIT_ARCYNE, TRAIT_GENERIC)
+
 			if(H.mind)
-				H.mind?.adjust_spellpoints(20)
-				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/ley_lines)
+				H.mind.setup_mage_aspects(list("mastery" = FALSE, "major" = 1, "minor" = 2, "utilities" = 4))
+				H.mind.AddSpell(new /datum/action/cooldown/spell/ley_lines)
+				H.mind.AddSpell(new /datum/action/cooldown/spell/projectile/rimecast)
 
 		if("沙漠苦修者（大主教）")//reduced spellpoints, stats, no dodge expert. Toughened up refugee.
 			H.set_patron(/datum/patron/old_god)
 			to_chat(H, span_warning("你曾受教于大主教之道，锤炼肉身与意志。百年前纳莱迪的陨落，令你的修行无论源自何处，都就此中断。你因活下来而遭人唾弃，又失去了师长，只得带着未竟的戒律在沙漠中漂泊。"))
 			r_hand = /obj/item/rogueweapon/katar
 			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/pontifex
-			backpack_contents += list(/obj/item/book/spellbook = 1, /obj/item/rogueweapon/huntingknife = 1)
+			backpack_contents += list(/obj/item/rogueweapon/spellbook = 1, /obj/item/rogueweapon/huntingknife = 1)
 
 			H.adjust_skillrank_up_to(/datum/skill/magic/arcane, SKILL_LEVEL_APPRENTICE, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT, TRUE)
@@ -101,17 +103,14 @@
 			H.change_stat(STATKEY_WIL, -1)
 			H.change_stat(STATKEY_SPD, -1)
 
-			ADD_TRAIT(H, TRAIT_ARCYNE_T1, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
 
 			if(H.mind)
-				var/weapons = list("战争之道","控制之道","暗影之道", "生存之道")
+				var/weapons = list("Path of War","Path of Shadows", "Path of Survival")
 				var/weapon_choice = input(H, "选择你的道路。", "你正行走于哪条未竟之道？") as anything in weapons
 				switch(weapon_choice)
 					if("战争之道")//Weak combat stuff only
-						H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/frostbolt) // Standard Naledi Magic spell- Ice is more effective against djinn
-					if("控制之道")//Battlefield control, minimal damage dealing
-						H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/ensnare)
+						H.mind.AddSpell(new /datum/action/cooldown/spell/projectile/rimecast)
 					if("暗影之道")//Sneaky trickster punchmage
 						H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/invisibility)
 					if("生存之道")//Trade magic for skills
@@ -121,9 +120,8 @@
 						H.adjust_skillrank_up_to(/datum/skill/misc/athletics, SKILL_LEVEL_EXPERT, TRUE)
 						H.adjust_skillrank_up_to(/datum/skill/misc/swimming, SKILL_LEVEL_JOURNEYMAN, TRUE)
 						H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)//as a bodyguard it can be REALLY important to find where the bleed is.
-
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/shadowstep)//All paths get shadowstep as a minimum
-				H.mind?.adjust_spellpoints(2)
+
 		if("遗弃占卜师（维齐尔）")	//reduced stats/skills/spellpoints from Vizier, Not given Stasis
 			H.set_patron(/datum/patron/old_god)
 			to_chat(H, span_warning("身为一名尚在受训的维齐尔医者，你的研习围绕着秘传的起源魔法——将普赛顿之力视作创世之源而加以引取。百年前纳莱迪的陨落，使你只能带着这门技艺的残篇流亡漂泊。"))
@@ -148,18 +146,18 @@
 			H.change_stat(STATKEY_CON, -2)
 			H.change_stat(STATKEY_WIL, -1)
 
-			ADD_TRAIT(H, TRAIT_ARCYNE_T3, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_MEDICINE_EXPERT, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_ALCHEMY_EXPERT, TRAIT_GENERIC)
+
+			ADD_TRAIT(H, TRAIT_ARCYNE, TRAIT_GENERIC)
 
 
 			var/datum/devotion/C = new /datum/devotion(H, H.patron)
 			C.grant_miracles(H, cleric_tier = CLERIC_T4, passive_gain = CLERIC_REGEN_MAJOR, start_maxed = TRUE)	//Starts off maxed out.
 			if(H.mind)
-				H.mind?.adjust_spellpoints(6)	//reduced from 9 the merc gets
-				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/frostbolt) // Standard Naledi Magic spell- Ice is more effective against djinn
+				H.mind.AddSpell(new /datum/action/cooldown/spell/projectile/rimecast)
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
-				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mending)
+				H.mind.AddSpell(new /datum/action/cooldown/spell/mending)
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/regression)
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/convergence)
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/divergence)
@@ -167,4 +165,5 @@
 				H.mind.RemoveSpell(/obj/effect/proc_holder/spell/self/psydonrespite)
 				H.mind.RemoveSpell(/obj/effect/proc_holder/spell/self/check_boot)
 				H.mind.RemoveSpell(/obj/effect/proc_holder/spell/invoked/psydonendure)
+				H.mind.setup_mage_aspects(list("ward" = TRUE, "mastery" = FALSE, "major" = 0, "minor" = 1, "utilities" = 6, "locked_aspects" = list(/datum/magic_aspect/lesser_augmentation)))
 

@@ -35,7 +35,7 @@
 	update_brightness(user)
 	for(var/X in actions)
 		var/datum/action/A = X
-		A.UpdateButtonIcon()
+		A.build_all_button_icons()
 	return 1
 
 /obj/item/flashlight/suicide_act(mob/living/carbon/human/user)
@@ -91,8 +91,8 @@
 
 /obj/item/flashlight/flare/ignition_effect(atom/A, mob/user)
 	if(fuel && on)
-		. = "<span class='notice'>[user]用[src]点燃了[A]，活像个真正的狠角色。\
-			</span>"
+		. = "<span class='notice'>[user] lights [A] with [src] like a real \
+			badass.</span>"
 	else
 		. = ""
 

@@ -244,6 +244,11 @@
 	name = "幽异光点"
 	icon_state = "purplesparkles"
 
+/obj/effect/temp_visual/zizorite
+	name = "亵渎魔法"
+	icon_state = "purplesparkles"
+	duration = 6
+
 /obj/effect/temp_visual/revenant/cracks
 	name = "发光裂痕"
 	icon_state = "purplecrack"

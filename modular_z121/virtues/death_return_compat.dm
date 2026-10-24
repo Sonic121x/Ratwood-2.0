@@ -131,7 +131,7 @@
 		if(ability)
 			replacement.TakeComponent(ability)
 	// 身体持有的法术也移动原实例，保留冷却；不重复生成或删除已经学会的能力。
-	for(var/obj/effect/proc_holder/spell/S as anything in mob_spell_list.Copy())
+	for(var/obj/effect/proc_holder/spell/S in mob_spell_list.Copy())
 		mob_spell_list -= S
 		if(!QDELETED(S) && !(S in replacement.mob_spell_list))
 			replacement.AddSpell(S)

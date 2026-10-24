@@ -7,7 +7,8 @@
 	cmode_music = 'sound/music/combatheraldprogress.ogg'
 	class_select_category = CLASS_CAT_CLERIC
 	category_tags = list(CTAG_WRETCH)
-	traits_applied = list(TRAIT_DODGEEXPERT, TRAIT_DECEIVING_MEEKNESS, TRAIT_OVERTHERETIC)
+	traits_applied = list(TRAIT_DODGEEXPERT, TRAIT_DECEIVING_MEEKNESS, TRAIT_OVERTHERETIC, TRAIT_ARCYNE)
+	subclass_mage_aspects = list("mastery" = FALSE, "major" = 1, "minor" = 0, "utilities" = 0, "locked_aspects" = list(/datum/magic_aspect/fulgurmancy))
 	maximum_possible_slots = 1 // only one frontman
 	subclass_skills = list(
 		/datum/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN, 
@@ -22,6 +23,7 @@
 		/datum/skill/misc/lockpicking = SKILL_LEVEL_JOURNEYMAN, //sneaky evil bard
 		/datum/skill/misc/music = SKILL_LEVEL_LEGENDARY,
 		/datum/skill/magic/holy = SKILL_LEVEL_EXPERT,
+		/datum/skill/magic/arcane = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/craft/crafting = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/craft/sewing = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/medicine = SKILL_LEVEL_JOURNEYMAN, 
@@ -73,9 +75,7 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/convert_heretic)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/command_undead)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/gravemark)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/blink/staccato)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/the_division_bell)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt/forzando)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/song/of_her_embrace)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/divineblast/unholyblast)
 		var/datum/inspiration/I = new /datum/inspiration(H)
@@ -117,43 +117,6 @@
 	miracle = TRUE
 	devotion_cost = 100
 	zizo_spell = TRUE
-
-/obj/effect/proc_holder/spell/invoked/blink/staccato
-	name = "遁入虚空"
-	associated_skill = /datum/skill/misc/music
-	sound = list('sound/magic/heraldblink.ogg')
-	invocations = list("尖啸出一个短促、尖锐的震撼和弦。")
-	invocation_type = "emote"
-
-/obj/effect/proc_holder/spell/invoked/blink/staccato/cast(list/targets, mob/living/user = usr)
-	if(!user.has_status_effect(/datum/status_effect/buff/playing_music))
-		revert_cast()
-		to_chat(user, span_warning("我必须正在演奏，才能引导我的节奏。"))
-		return FALSE
-	if(!user.is_holding_item_of_type(/obj/item/rogue/instrument))
-		revert_cast()
-		to_chat(user, span_warning("我手中必须拿着乐器，才能引导我的节奏。"))
-		return FALSE
-	return ..()
-
-/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt/forzando
-	name = "驾驭闪电"
-	associated_skill = /datum/skill/misc/music
-	projectile_type = /obj/projectile/magic/lightning/forzando
-	sound = list('sound/magic/heraldzap.ogg')
-	invocations = list("撕裂出一段电光般的叠句！")
-	invocation_type = "emote"
-
-/obj/effect/proc_holder/spell/invoked/projectile/lightningbolt/forzando/cast(list/targets, mob/living/user = usr)
-	if(!user.has_status_effect(/datum/status_effect/buff/playing_music))
-		revert_cast()
-		to_chat(user, span_warning("我必须正在演奏，才能引导我的节奏。"))
-		return
-	if(!user.is_holding_item_of_type(/obj/item/rogue/instrument))
-		revert_cast()
-		to_chat(user, span_warning("我手中必须拿着乐器，才能引导我的节奏。"))
-		return
-	return ..()
 
 /obj/projectile/magic/lightning/forzando
 	bypass_antimagic = TRUE // it's not magic, it's music, so idc about anti magic

@@ -1,7 +1,6 @@
 // Wretch, soft antagonists. Giving them a significant boon in stats due to their general presence as driving antagonists.
 /datum/job/roguetown/wretch
 	title = "Wretch"
-	display_title = "流放者"
 	flag = WRETCH
 	department_flag = WANDERERS
 	faction = "Station"
@@ -38,7 +37,7 @@
 		/datum/advclass/wretch/deserter,
 		/datum/advclass/wretch/deserter/maa,
 		/datum/advclass/wretch/berserker,
-		/datum/advclass/wretch/hedgemage,
+		/datum/advclass/wretch/roguemage,
 		/datum/advclass/wretch/necromancer,
 		/datum/advclass/wretch/heretic,
 		/datum/advclass/wretch/heretic/spy,
@@ -84,16 +83,16 @@
 			bounty_total = rand(100, 200)
 		if("伤人害命（+1 幸运）")
 			bounty_total = rand(200, 300)
-			H.change_stat(STATKEY_LCK, 1)
+			H.change_stat("fortune", 1)
 		if("骇人暴行（全属性+1）")
 			bounty_total = rand(300, 400) // Let's not make it TOO profitable
-			H.change_stat(STATKEY_STR, 1)
-			H.change_stat(STATKEY_PER, 1)
-			H.change_stat(STATKEY_INT, 1)
-			H.change_stat(STATKEY_CON, 1)
-			H.change_stat(STATKEY_WIL, 1)
-			H.change_stat(STATKEY_SPD, 1)
-			H.change_stat(STATKEY_LCK, 1)
+			H.change_stat("strength", 1)
+			H.change_stat("perception", 1)
+			H.change_stat("intelligence", 1)
+			H.change_stat("constitution", 1)
+			H.change_stat("willpower", 1)
+			H.change_stat("speed", 1)
+			H.change_stat("fortune", 1)
 			if(bounty_poster == "[SSmapping.map_adjustment.realm_name]司法厅")
 				GLOB.outlawed_players += H.real_name
 			else
@@ -101,6 +100,6 @@
 	var/my_crime = input(H, "你的罪名是什么？", "罪名") as text|null
 	if (!my_crime)
 		my_crime = "冒犯王权之罪"
-	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, bounty_total, FALSE, my_crime, bounty_poster, H) // KUKU
+	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, bounty_total, FALSE, my_crime, bounty_poster)
 	to_chat(H, span_danger("你正在扮演一名对抗性角色。既然选择以流寇身份加入，你就应当主动与其他玩家制造冲突。若未能以符合该身份分量的方式进行扮演，可能会因低质量角色扮演而受到处罚。"))
 	H.playsound_local(get_turf(H), 'sound/music/traitor.ogg', 60, FALSE, pressure_affected = FALSE)

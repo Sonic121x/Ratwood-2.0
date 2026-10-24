@@ -161,14 +161,12 @@
 	name = "沙海骑手阿尔玛"
 	tutorial = "阿尔玛是同时精于魔法与剑术的人，却又在任何一门上都谈不上登峰造极。"
 	outfit = /datum/outfit/job/roguetown/mercenary/desert_rider_almah
-	traits_applied = list(TRAIT_ARCYNE_T2, TRAIT_MAGEARMOR)
 	subclass_stats = list(
 		STATKEY_SPD = 3,
 		STATKEY_WIL = 2,
 		STATKEY_INT = 2,
 		STATKEY_PER = -1
 	)
-	subclass_spellpoints = 15
 	subclass_skills = list(
 		/datum/skill/combat/wrestling = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/combat/unarmed = SKILL_LEVEL_APPRENTICE,
@@ -190,7 +188,6 @@
 	to_chat(H, span_warning("阿尔玛是同时精于魔法与剑术的人，却又在任何一门上都谈不上登峰造极。"))
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/repulse)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/enchant_weapon)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/airblade)
 	head = /obj/item/clothing/head/roguetown/roguehood/shalal/hijab/zyb
 	neck = /obj/item/clothing/neck/roguetown/gorget/copper
@@ -206,7 +203,7 @@
 		/obj/item/roguekey/mercenary,
 		/obj/item/rogueweapon/huntingknife/idagger/steel/kukri,
 		/obj/item/rogueweapon/scabbard/sheath,
-		/obj/item/spellbook_unfinished/pre_arcyne,
+		/obj/item/rogueweapon/spellbook,
 		/obj/item/flashlight/flare/torch,
 		/obj/item/storage/belt/rogue/pouch/coins/poor
 		)

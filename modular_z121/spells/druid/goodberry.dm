@@ -22,8 +22,8 @@
 	var/mob/living/carbon/human/channeling_user
 
 // 直接叠加现有图集中的完整莓果，卷轴底图沿用模块已有图标，不另存图标文件。
-/datum/action/spell_action/spell/z121_goodberry/ApplyIcon(atom/movable/screen/movable/action_button/current_button, force = FALSE)
-	if(!icon_icon || !button_icon_state || (!force && current_button.button_icon_state == button_icon_state))
+/datum/action/spell_action/spell/z121_goodberry/apply_button_icon(atom/movable/screen/movable/action_button/current_button, force = FALSE)
+	if(!button_icon || !button_icon_state || (!force && current_button.active_overlay_icon_state == button_icon_state))
 		return
 	. = ..()
 	current_button.add_overlay(mutable_appearance('icons/roguetown/items/produce.dmi', "berries", layer = current_button.layer + 0.2))

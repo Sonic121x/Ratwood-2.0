@@ -1,20 +1,27 @@
-// Arcyne Potential now gives 3 Spellpoints instead of 6 spellpoints so it is less of a "must take" for caster.
 /datum/virtue/combat/magical_potential
 	name = "奥术潜质"
 	desc = "我在奥术之道上颇有天赋，这拓展了我的施法容量。钻研此道也令我更加聪慧。其他效果则取决于我后来选择专精的训练方向。"
-	custom_text = "拥有战斗特性的职业（中甲/重甲训练、闪避专家或暴击抗性）只会获得戏法术。其他人若尚未掌握奥术，则会获得+3法术点与T1奥术潜质。"
-	added_skills = list(list(/datum/skill/magic/arcane, 1, 6))
+	custom_text = "具有战斗特性（中甲／重甲训练、闪避专家、重创抗性、浓血、无痛或坚忍）的职业只获得魔法伎俩。其他职业获得 3 点实用法术点；若原本没有奥术训练，还会获得此特性。"
+	added_skills = list(list(/datum/skill/magic/arcane, 1, 6), list(/datum/skill/misc/reading, 1, 6))
 
 /datum/virtue/combat/magical_potential/apply_to_human(mob/living/carbon/human/recipient)
-	if (!recipient.get_skill_level(/datum/skill/magic/arcane)) // we can do this because apply_to is always called first
-		if (!recipient.mind?.has_spell(/obj/effect/proc_holder/spell/targeted/touch/prestidigitation))
-			recipient.mind?.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
-		if (!HAS_TRAIT(recipient, TRAIT_MEDIUMARMOR) && !HAS_TRAIT(recipient, TRAIT_HEAVYARMOR) && !HAS_TRAIT(recipient, TRAIT_DODGEEXPERT) && !HAS_TRAIT(recipient, TRAIT_CRITICAL_RESISTANCE))
-			ADD_TRAIT(recipient, TRAIT_ARCYNE_T1, TRAIT_GENERIC)
-			recipient.mind?.adjust_spellpoints(3)
+	if (!recipient.get_skill_level(/datum/skill/magic/arcane))
+		if (!recipient.mind?.has_spell(/datum/action/cooldown/spell/touch/prestidigitation))
+			recipient.mind?.AddSpell(new /datum/action/cooldown/spell/touch/prestidigitation)
+		if (!HAS_TRAIT(recipient, TRAIT_MEDIUMARMOR) && !HAS_TRAIT(recipient, TRAIT_HEAVYARMOR) && !HAS_TRAIT(recipient, TRAIT_DODGEEXPERT) && !HAS_TRAIT(recipient, TRAIT_CRITICAL_RESISTANCE) && !HAS_TRAIT(recipient, TRAIT_BLOOD_RESISTANCE) && !HAS_TRAIT(recipient, TRAIT_NOPAIN) && !HAS_TRAIT(recipient, TRAIT_NOPAINSTUN))
+			ADD_TRAIT(recipient, TRAIT_ARCYNE, TRAIT_GENERIC)
+			add_arcyne_potential_utilities(recipient, 3)
 	else
-		recipient.mind?.adjust_spellpoints(3) // 3 extra spellpoints since you don't get any spell point from the skill anymore
-	
+		add_arcyne_potential_utilities(recipient, 3)
+
+/datum/virtue/combat/magical_potential/proc/add_arcyne_potential_utilities(mob/living/carbon/human/recipient, amount)
+	if(!recipient.mind)
+		return
+	if(!LAZYLEN(recipient.mind.mage_aspect_config))
+		recipient.mind.setup_mage_aspects(list("mastery" = FALSE, "major" = 0, "minor" = 0, "utilities" = 0), grant_attunement = FALSE)
+	recipient.mind.mage_aspect_config["utilities"] += amount
+	recipient.mind.check_learnspell()
+
 /datum/virtue/combat/devotee
 	name = "虔信者"
 	desc = "虽然我并非教会正式成员，但我与所选主神的联系足够深厚，足以让我获得祂最微小的赐福。我还保留了一枚属于自己神祇的普赛圣十字。"
@@ -240,3 +247,4 @@
 
 	if(vanished_hide) //failsafe
 		to_chat(recipient, span_warning("我的天然护甲消失了！也许需要某种神圣干预才能解决......"))
+

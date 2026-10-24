@@ -1,6 +1,10 @@
 // 先加载共用娇小特性，供缩小与巨化的互斥检查使用。
 #include "virtues/small_size.dm"
 #include "spells/_registry.dm"
+#include "spells/legacy_compat.dm"
+#include "spells/legacy_load.dm"
+#include "spells/legacy_compat_tests.dm"
+#include "../code/modules/mob/living/carbon/human/species_display.dm"
 // 庖厨食典：成品饮食配方、肉类来源、基础食材及获得渠道。
 #include "books/cookbook_catalog.dm"
 #include "books/cookbook_sources.dm"
@@ -321,6 +325,7 @@
 // 保留种族、美德、私人财物与独立成长；不重跑出生奖励。
 #include "virtues/parallel_session.dm"
 #include "virtues/parallel_state.dm"
+#include "virtues/parallel_aspects.dm"
 #include "virtues/parallel_outfits.dm"
 #include "virtues/parallel_equipment.dm"
 #include "virtues/parallel_birth.dm"

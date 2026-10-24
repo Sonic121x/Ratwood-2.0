@@ -653,64 +653,6 @@
 		revert_cast()
 		return FALSE
 
-/obj/effect/proc_holder/spell/invoked/projectile/fetch/miracle
-	name = "神圣牵引"
-	miracle = TRUE
-	devotion_cost = 10
-	invocations = list()
-	associated_skill = /datum/skill/magic/holy
-	recharge_time = 5 SECONDS
-
-/obj/effect/proc_holder/spell/invoked/projectile/fetch/miracle/cast(list/targets, mob/living/user)
-	var/turf/T = get_turf(targets[1])
-	if(T.z < user.z)
-		to_chat(user, span_warning("你不能在低于自己所在楼层的位置使用神圣牵引！"))
-		revert_cast()
-		return FALSE
-	return ..()
-
-/obj/effect/proc_holder/spell/invoked/projectile/repel/miracle
-	name = "神圣斥退"
-	miracle = TRUE
-	devotion_cost = 14
-	invocations = list()
-	associated_skill = /datum/skill/magic/holy
-
-/obj/effect/proc_holder/spell/invoked/projectile/repel/miracle/cast(list/targets, mob/living/user)
-	var/turf/T = get_turf(targets[1])
-	if(T.z < user.z)
-		to_chat(user, span_warning("你不能在低于自己所在楼层的位置使用神圣斥退！"))
-		revert_cast()
-		return FALSE
-	return ..()
-
-/obj/effect/proc_holder/spell/invoked/slick_trick_small/miracle
-	name = "赛利克斯滑域"
-	desc = "创造一小片神圣湿滑区域，绊倒疏于防备者。"
-	overlay_icon = 'icons/mob/actions/xylixmiracles.dmi'
-	action_icon = 'icons/mob/actions/xylixmiracles.dmi'
-	overlay_state = "slipsquare1"
-	miracle = TRUE
-	devotion_cost = 30
-	chargetime = 0.5 SECONDS
-	invocations = list()
-	associated_skill = /datum/skill/magic/holy
-	recharge_time = 30 SECONDS
-
-/obj/effect/proc_holder/spell/invoked/slick_trick/miracle
-	name = "巨型赛利克斯滑域"
-	desc = "让大片区域覆满神圣滑面，将受害者掀翻在地。"
-	overlay_icon = 'icons/mob/actions/xylixmiracles.dmi'
-	action_icon = 'icons/mob/actions/xylixmiracles.dmi'
-	overlay_state = "slipsquare2"
-	miracle = TRUE
-	devotion_cost = 60
-	chargetime = 1 SECONDS
-	invocations = list()
-	associated_skill = /datum/skill/magic/holy
-	recharge_time = 90 SECONDS
-	area_of_effect_radius = 1 // 1 = 3x3
-
 #define NOTHING "nothing"
 #define XYLIX "xylix"
 #define ASTRATA "astrata"
@@ -727,7 +669,6 @@
 #define GRAGGAR "graggar"
 #define MATTHIOS "matthios"
 
-//JACKPOOOOOOOT 777
 /datum/status_effect/xylix_blessed_luck
 	id = "xylix_blessed_luck"
 	status_type = STATUS_EFFECT_UNIQUE
@@ -736,7 +677,7 @@
 
 /datum/status_effect/xylix_blessed_luck/on_apply()
 	var/random_luck = rand(2,4)
-	effectedstats = list(STATKEY_LCK = random_luck)
+	effectedstats = list("fortune" = random_luck)
 	. = ..()
 
 /datum/status_effect/xylix_blessed_luck/on_remove()
@@ -776,7 +717,7 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/astrata_favor
 
 /datum/status_effect/astrata_favor/on_apply()
-	effectedstats = list(STATKEY_CON = rand(1, 3), STATKEY_WIL = rand(1, 3))
+	effectedstats = list("constitution" = rand(1, 3), "willpower" = rand(1, 3))
 	ADD_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE, TRAIT_STATUS_EFFECT(id))
 	ADD_TRAIT(owner, TRAIT_NOPAINSTUN, TRAIT_STATUS_EFFECT(id))
 	ADD_TRAIT(owner, TRAIT_STEELHEARTED, TRAIT_STATUS_EFFECT(id))
@@ -808,7 +749,7 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/noc_favor
 
 /datum/status_effect/noc_favor/on_apply()
-	effectedstats = list(STATKEY_INT = rand(1, 3), STATKEY_SPD = rand(1, 3))
+	effectedstats = list("intelligence" = rand(1, 3), "speed" = rand(1, 3))
 	owner.alpha = 127
 	. = ..()
 
@@ -831,7 +772,7 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/zizo_unfavor
 
 /datum/status_effect/zizo_unfavor/on_apply()
-	effectedstats = list(STATKEY_STR = -rand(1, 5), STATKEY_PER = -rand(1, 5), STATKEY_INT = -rand(1, 5), STATKEY_CON = -rand(1, 5), STATKEY_WIL = -rand(1, 5), STATKEY_SPD = -rand(1, 5))
+	effectedstats = list("strength" = -rand(1, 5), "perception" = -rand(1, 5), "intelligence" = -rand(1, 5), "constitution" = -rand(1, 5), "willpower" = -rand(1, 5), "speed" = -rand(1, 5))
 	. = ..()
 
 /datum/status_effect/zizo_unfavor/on_remove()
@@ -852,7 +793,7 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/ravox_favor
 
 /datum/status_effect/ravox_favor/on_apply()
-	effectedstats = list(STATKEY_STR = rand(1, 3), STATKEY_SPD = rand(1, 3), STATKEY_WIL = rand(1, 3))
+	effectedstats = list("strength" = rand(1, 3), "speed" = rand(1, 3), "willpower" = rand(1, 3))
 	. = ..()
 
 /datum/status_effect/ravox_favor/on_remove()
@@ -873,7 +814,7 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/malum_favor
 
 /datum/status_effect/malum_favor/on_apply()
-	effectedstats = list(STATKEY_CON = 1, STATKEY_WIL = rand(1, 5))
+	effectedstats = list("constitution" = 1, "willpower" = rand(1, 5))
 	. = ..()
 
 /datum/status_effect/malum_favor/on_remove()
@@ -889,7 +830,7 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/baotha_favor
 
 /datum/status_effect/baotha_favor/on_apply()
-	effectedstats = list(STATKEY_SPD = rand(2, 3))
+	effectedstats = list("speed" = rand(2, 3))
 	if(iscarbon(owner))
 		var/mob/living/carbon/C = owner
 		C.drunkenness = max(C.drunkenness, 30)

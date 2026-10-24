@@ -27,7 +27,7 @@
 
 	H.adjust_skillrank_up_to(/datum/skill/misc/hunting, SKILL_LEVEL_NOVICE, TRUE)
 
-	var/classes = list("打手", "滑头", "大块头", "码头汉")//上游有BUG Bigman并没有对应的选择结果
+	var/classes = list("Goon", "Miscreant", "Big Man", "Muscle", "Longshoreman")
 	var/classchoice = input(H, "你是哪种恶棍？", "拿起武器") as anything in classes
 
 	switch(classchoice)
@@ -104,7 +104,7 @@
 			H.adjust_skillrank_up_to(/datum/skill/misc/stealing, SKILL_LEVEL_JOURNEYMAN, TRUE)
 
 			var/options = list("投石索", "魔法砖块", "撬锁工具环")
-			var/option_choice = input(H, "选择你的手段。", "拿起武器") as anything in options
+			var/option_choice = input(H, "选择你的家伙。", "拿起武器") as anything in options
 
 			switch(option_choice)
 				if("投石索")
@@ -113,8 +113,6 @@
 					l_hand = /obj/item/quiver/sling
 				if("魔法砖块")
 					H.adjust_skillrank_up_to(/datum/skill/magic/arcane, SKILL_LEVEL_EXPERT, TRUE)
-					H.mind?.AddSpell(new /obj/effect/proc_holder/spell/self/magicians_brick)
-					ADD_TRAIT(H, TRAIT_ARCYNE_T1, TRAIT_GENERIC)
 				if("撬锁工具环")
 					H.adjust_skillrank_up_to(/datum/skill/misc/sneaking, SKILL_LEVEL_EXPERT, TRUE)
 					H.adjust_skillrank_up_to(/datum/skill/misc/stealing, SKILL_LEVEL_EXPERT, TRUE)
@@ -173,8 +171,9 @@
 					H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/headbutt)
 		if("码头汉")
 			H.mind.cosmetic_class_title = "码头汉"
-			to_chat(H, span_warning("你年轻时回应了阿比索尔的呼唤，只不过走的是不怎么体面的路子，\
-	见谁挡路就劫谁的财。如今你的船长要从罪恶生涯里抽身上岸，你也一样。不过陆地上，照样有钱可赚。"))
+			to_chat(H, span_warning("你年轻时便响应了阿比索的召唤，却走上了歧途，\
+	掠夺沿途所有人的财宝。如今你的船长告别犯罪生涯，\
+	你也随之安定下来。不过，陆地上仍有钱可赚。"))
 			H.set_blindness(0)
 
 			ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)

@@ -1,0 +1,26 @@
+/obj/effect/proc_holder/spell/invoked/projectile/repel
+	name = "斥退术"
+	desc = "射出一道魔力飞矢，将命中的目标从施法者身边猛然推开。"
+	clothes_req = FALSE
+	range = 15
+	projectile_type = /obj/projectile/magic/repel
+	overlay_state = ""
+	sound = list('sound/magic/unmagnet.ogg')
+	active = FALSE
+	releasedrain = 20
+	chargedrain = 0
+	chargetime = 0
+	recharge_time = 15 SECONDS
+	human_req = TRUE
+	warnie = "spellwarning"
+	overlay_state = "fetch"
+	no_early_release = TRUE
+	chargedloop = /datum/looping_sound/invokegen
+	associated_skill = /datum/skill/magic/arcane
+	spell_tier = 2
+	invocations = list("退散！")
+	invocation_type = "shout"
+	glow_color = GLOW_COLOR_DISPLACEMENT
+	glow_intensity = GLOW_INTENSITY_LOW
+	cost = 2 // Same as fetch, make it discounted to account for being less useful
+	xp_gain = TRUE

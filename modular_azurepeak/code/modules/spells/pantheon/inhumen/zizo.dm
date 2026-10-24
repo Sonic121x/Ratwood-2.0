@@ -104,107 +104,6 @@
 	miracle = TRUE
 	devotion_cost = 100
 
-// T3: Rituos (needs two casts, useable once per sleep cycle. first gives 9 spell points and skeletonizes two limbs. second gives you 9 more, MOB_UNDEAD and makes you a full skeleton sans your head.)
-
-/obj/effect/proc_holder/spell/invoked/rituos
-	name = "仪式术"
-	desc = "为齐佐女士施行「小业」，于仪式之间休整。第一道仪式会令你的两肢化为骸骨，并赐予你奥术魔法。第二道会令你余下的四肢与胸膛化为骸骨，授予更进一步的奥术之力。第三道、也是最后一道仪式，会令你的头颅化为骸骨，并额外赐予一点法术点。"
-	clothes_req = FALSE
-	overlay_icon = 'icons/mob/actions/zizomiracles.dmi'
-	action_icon = 'icons/mob/actions/zizomiracles.dmi'
-	overlay_state = "rituos"
-	associated_skill = /datum/skill/magic/arcane
-	chargedloop = /datum/looping_sound/invokeholy
-	chargedrain = 0
-	chargetime = 50
-	releasedrain = 90
-	no_early_release = TRUE
-	movement_interrupt = TRUE
-	recharge_time = 2 MINUTES
-	hide_charge_effect = TRUE
-	/// List of limbs that don't get skeletonized. Chest has special handling once you are at that point
-	var/static/list/excluded_bodyparts = list(/obj/item/bodypart/head, /obj/item/bodypart/chest)
-	/// How many times Rituos has been casted
-	var/rituos_counter = 0
-
-/obj/effect/proc_holder/spell/invoked/rituos/miracle
-	miracle = TRUE
-	devotion_cost = 120
-	associated_skill = /datum/skill/magic/holy
-
-/obj/effect/proc_holder/spell/invoked/rituos/cast(list/targets, mob/living/carbon/user)
-	. = ..()
-	if(!user || !user.mind || rituos_counter >= 3)
-		return FALSE
-
-	if(user.mind.has_rituos)
-		to_chat(user, span_warning("我已没有足够的心智再度施行这道小业。必须先休息......"))
-		return FALSE
-
-	// Find a bodypart to skeletonize
-	var/list/potential_bodyparts = list()
-	for(var/obj/item/bodypart/limb as anything in user.bodyparts)
-		if(limb.type in excluded_bodyparts)
-			continue
-		if(limb.skeletonized)
-			continue
-		potential_bodyparts += limb
-
-	if(!length(potential_bodyparts) && rituos_counter == 0)
-		to_chat(user, span_warning("我已经没有可献给仪式的肢体了！"))
-		return FALSE
-
-	var/list/bodyparts_to_bonify = list()
-	if(rituos_counter == 0)
-		var/limbs_to_bonify = min(2, length(potential_bodyparts))
-		for(var/i in 1 to limbs_to_bonify)
-			bodyparts_to_bonify += pick_n_take(potential_bodyparts)
-	else if(rituos_counter == 1)
-		var/obj/item/bodypart/chest/chest = locate(/obj/item/bodypart/chest) in user.bodyparts
-		if(!chest)
-			to_chat(user, span_warning("我已经没有可献给仪式的肢体了！"))
-			return FALSE
-		bodyparts_to_bonify = potential_bodyparts
-		bodyparts_to_bonify += chest
-	else
-		var/obj/item/bodypart/head/head = locate(/obj/item/bodypart/head) in user.bodyparts
-		if(!head)
-			to_chat(user, span_warning("我已经没有可献给仪式的头颅了！"))
-			return FALSE
-		bodyparts_to_bonify += head
-
-	if(!(user.mob_biotypes & MOB_UNDEAD))
-		user.visible_message(span_warning("墓地般的苍白随着一波奥术能量覆上了[user]的肌肤......"), span_boldwarning("当我第一次完成“小业”时，一股死寂的寒意吞没了我的身体！我能感觉到心脏在胸腔中慢了下来......"))
-		user.mob_biotypes |= MOB_UNDEAD
-		to_chat(user, span_smallred("我已背弃生者。如今的我更接近死灵，而非凡人......但我仍会呼吸，也仍会流血。"))
-
-	for(var/obj/item/bodypart/part_to_bonify as anything in bodyparts_to_bonify)
-		part_to_bonify.skeletonize(FALSE)
-		user.visible_message(span_warning("微弱的符文在[user]皮肤下闪烁，随后[user.p_their()]的[part_to_bonify.name]上的血肉骤然从骨头上滑落！"), span_notice("我感到奥术力量在这脆弱的凡躯中奔涌，而仪式术正从我的[part_to_bonify.name]上索取它可怖的代价。"))
-	user.update_body()
-
-	user.mind.has_rituos = TRUE
-	rituos_counter++
-	switch(rituos_counter)
-		if(1)
-			user.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
-			ADD_TRAIT(user, TRAIT_ARCYNE_T3, "[type]")
-			user.mind?.adjust_spellpoints(9)
-		if(2)
-			user.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
-			user.grant_language(/datum/language/undead)
-			user.mind?.adjust_spellpoints(9)
-			user.visible_message(span_boldwarning("[user]的形体随可怖之力一同膨胀，几乎将所有残余凡肉尽数抛弃，裸露的骨骼上闪烁着奥术符文……"), span_notice("我做到了！我完成了她的「小业」！我已站在难以言喻的力量边缘，可似乎仍少了些什么……"))
-			ADD_TRAIT(user, TRAIT_NOHUNGER, "[type]")
-			ADD_TRAIT(user, TRAIT_NOBREATH, "[type]")
-			ADD_TRAIT(user, TRAIT_OVERTHERETIC, "[type]")
-			if(prob(66)) // We Fucked Up, Dude.
-				to_chat(user, span_small("……我都做了什么？"))
-		if(3)
-			to_chat(user, span_small("我的躯体或许已经消逝，但我仍在此处。我活着，我前行，我因她的名而繁盛。")) // holy psyst. holy psyst. there's nothing left.
-			user.mind?.adjust_spellpoints(1)
-			user.mind?.RemoveSpell(src)
-
 // T3 Lacrima (plunge your hand into someone's ribs to rip out their impure lux for your diabolical uses)
 
 /obj/effect/proc_holder/spell/targeted/touch/lacrima
@@ -573,7 +472,7 @@
 		if(have < needed) {
 			var/obj/item/I = item_type
 			var/amount_needed = needed - have
-			missing_items += "[amount_needed] 份[initial(I.name)] "
+			missing_items += "[amount_needed] [initial(I.name)][amount_needed > 1 ? "s" : ""] "
 		}
 
 	if(length(missing_items))

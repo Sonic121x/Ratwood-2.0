@@ -522,13 +522,11 @@
 						dat += "<br>[capitalize(stat)]: <b>[adv_ref.subclass_stats[stat] < 0 ? "<font color = '#cf2a2a'>" : "<font color = '#91cf68'>"]\Roman[adv_ref.subclass_stats[stat]]</font></b>"
 				dat += "<br></td></tr></table></font>"
 				if(length(adv_ref.adv_stat_ceiling))
-					dat += "<font color = '#cf2a2a'><b>该子职业具有以下属性上限：</b></font><br>"
+					dat += "["<font color = '#cf2a2a'><b>This subclass has the following stat limits: "]</b></font><br>"
 					dat += " | "
 					for(var/stat in adv_ref.adv_stat_ceiling)
 						dat += "["[capitalize(stat)]: <b>\Roman[adv_ref.adv_stat_ceiling[stat]]</b>"] | "
 					dat += "<i><br>无论你选择何种属性包或种族，出生时都无法超过这些属性上限。</i>"
-				if(adv_ref.subclass_spellpoints > 0)
-					dat += "<font color = '#a3a7e0'>初始法术点数：<b>[adv_ref.subclass_spellpoints]</b></font>"
 				if(length(adv_ref.subclass_languages))
 					dat += "<details><summary><i>已知语言</i></summary>"
 					for(var/i in 1 to length(adv_ref.subclass_languages))
@@ -590,7 +588,7 @@
 				dat += "<br>[capitalize(stat)]: <b>[job_stats[stat] < 0 ? "<font color = '#cf2a2a'>" : "<font color = '#91cf68'>"]\Roman[job_stats[stat]]</font></b>"
 			dat += "</font>"	//Ends the stats colors
 			if(length(stat_ceilings))
-				dat += "<br><font color = '#cf2a2a'><b>该职业具有以下属性上限：</b></font><br>"
+				dat += "["<br><font color = '#cf2a2a'><b>This class has the following stat limits:</b> "]<br>"
 				dat += " | "
 				for(var/stat in stat_ceilings)
 					dat += "["[capitalize(stat)]: <b>\Roman[stat_ceilings[stat]]</b>"] | "
@@ -615,7 +613,7 @@
 		var/height = 550
 		if(sclass_count >= 10)
 			height = 925
-		var/datum/browser/popup = new(usr, "classhelp", "<div style='text-align: center'>[display_title || title]</div>", nwidth = 475, nheight = height)
+		var/datum/browser/popup = new(usr, "classhelp", "<div style='text-align: center'>[title]</div>", nwidth = 475, nheight = height)
 		popup.set_content(dat.Join())
 		popup.open(FALSE)
 		if(winexists(usr, "classhelp"))
@@ -632,7 +630,7 @@
 				else
 					dat += "[subclass.total_slots_occupied] / [subclass.maximum_possible_slots]"
 				dat += "</b><br>"
-		var/datum/browser/popup = new(usr, "subclassslots", "<div style='text-align: center'>[display_title || title]</div>", nwidth = 200, nheight = 300)
+		var/datum/browser/popup = new(usr, "subclassslots", "<div style='text-align: center'>[title]</div>", nwidth = 200, nheight = 300)
 		popup.set_content(dat.Join())
 		popup.open(FALSE)
 		if(winexists(usr, "subclassslots"))

@@ -171,7 +171,7 @@
 /datum/charflaw/yandere/proc/update_selection_action()
 	if(selection_action)
 		selection_action.desc = "选择当前视野内活着的其他玩家作为唯一爱慕对象。确认后无法更改。剩余 [selection_time_text()]；超时将随机指定。"
-		selection_action.UpdateButtonIcon()
+		selection_action.build_all_button_icons()
 
 /datum/charflaw/yandere/proc/clear_selection_action()
 	QDEL_NULL(selection_action)
@@ -235,7 +235,7 @@
 
 /datum/action/yandere_designate_crush
 	name = "指定爱慕对象"
-	icon_icon = 'modular_z121/icon/custompell.dmi'
+	button_icon = 'modular_z121/icon/custompell.dmi'
 	button_icon_state = "spell0"
 	check_flags = AB_CHECK_CONSCIOUS
 	var/datum/weakref/flaw_ref

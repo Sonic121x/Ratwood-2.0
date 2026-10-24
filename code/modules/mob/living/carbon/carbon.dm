@@ -27,7 +27,7 @@
 
 /mob/living/carbon/proc/on_spell_availability_trait_changed(datum/source, trait)
 	SIGNAL_HANDLER
-	update_action_buttons_icon()
+	update_mob_action_buttons()
 
 /mob/living/carbon/Destroy()
 	//This must be done first, so the mob ghosts correctly before DNA etc is nulled
@@ -316,28 +316,28 @@
 /mob/living/carbon/show_inv(mob/user)
 	user.set_machine(src)
 	var/dat = {"
-	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><HR>
+	<HR>
 	<B><FONT size=3>[name]</FONT></B>
-	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><HR>
-	<BR><B>头部：</B> <A href='?src=[REF(src)];item=[SLOT_HEAD]'>[(head && !(head.item_flags & ABSTRACT)) ? head.name : "无"]</A>"}
+	<HR>
+	<BR><B>Head:</B> <A href='?src=[REF(src)];item=[SLOT_HEAD]'>[(head && !(head.item_flags & ABSTRACT)) ? head : "Nothing"]</A>"}
 
 	var/list/obscured = check_obscured_slots()
 
 	if(SLOT_NECK in obscured)
 		dat += "<BR><B>颈部：</B> 被遮挡"
 	else
-		dat += "<BR><B>颈部：</B> <A href='?src=[REF(src)];item=[SLOT_NECK]'>[(wear_neck && !(wear_neck.item_flags & ABSTRACT)) ? (wear_neck.name) : "无"]</A>"
+		dat += "<BR><B>Neck:</B> <A href='?src=[REF(src)];item=[SLOT_NECK]'>[(wear_neck && !(wear_neck.item_flags & ABSTRACT)) ? (wear_neck) : "Nothing"]</A>"
 
 	if(SLOT_WEAR_MASK in obscured)
 		dat += "<BR><B>面具：</B> 被遮挡"
 	else
-		dat += "<BR><B>面具：</B> <A href='?src=[REF(src)];item=[SLOT_WEAR_MASK]'>[(wear_mask && !(wear_mask.item_flags & ABSTRACT))	? wear_mask.name	: "无"]</a>"
+		dat += "<BR><B>Mask:</B> <A href='?src=[REF(src)];item=[SLOT_WEAR_MASK]'>[(wear_mask && !(wear_mask.item_flags & ABSTRACT))	? wear_mask	: "Nothing"]</a>"
 
 	for(var/i in 1 to held_items.len)
 		var/obj/item/I = get_item_for_held_index(i)
-		dat += "<BR><B>[get_held_index_name(i)]:</B> </td><td><A href='?src=[REF(src)];item=[SLOT_HANDS];hand_index=[i]'>[(I && !(I.item_flags & ABSTRACT)) ? I.name : "无"]</a>"
+		dat += "<BR><B>[get_held_index_name(i)]:</B> </td><td><A href='?src=[REF(src)];item=[SLOT_HANDS];hand_index=[i]'>[(I && !(I.item_flags & ABSTRACT)) ? I : "Nothing"]</a>"
 
-	dat += "<BR><B>背部：</B> <A href='?src=[REF(src)];item=[SLOT_BACK]'>[back ? back.name : "无"]</A>"
+	dat += "<BR><B>Back:</B> <A href='?src=[REF(src)];item=[SLOT_BACK]'>[back ? back : "Nothing"]</A>"
 
 	if(handcuffed)
 		dat += "<BR><A href='?src=[REF(src)];item=[SLOT_HANDCUFFED]'>手部束缚</A>"
@@ -350,7 +350,7 @@
 
 	dat += {"
 	<BR>
-	<BR><A href='?src=[REF(user)];mach_close=mob[REF(src)]'>关闭</A>
+	<BR><A href='?src=[REF(user)];mach_close=mob[REF(src)]'>Close</A>
 	"}
 	user << browse(dat, "window=mob[REF(src)];size=325x500")
 	onclose(user, "mob[REF(src)]")
@@ -1175,7 +1175,7 @@
 //	update_tod_hud()
 	update_spd()
 	if(stat != old_stat)
-		update_action_buttons_icon()
+		update_mob_action_buttons()
 
 //called when we get cuffed/uncuffed
 /mob/living/carbon/proc/update_handcuffed()
@@ -1185,7 +1185,7 @@
 		throw_alert("handcuffed", /atom/movable/screen/alert/restrained/handcuffed, new_master = src.handcuffed)
 	else
 		clear_alert("handcuffed")
-	update_action_buttons_icon() //some of our action buttons might be unusable when we're handcuffed.
+	update_mob_action_buttons() //some of our action buttons might be unusable when we're handcuffed.
 	update_inv_handcuffed()
 	update_hud_handcuffed()
 	update_mobility()
@@ -1332,7 +1332,7 @@
 	if(href_list[VV_HK_MODIFY_BODYPART])
 		if(!check_rights(R_SPAWN))
 			return
-		var/edit_action = list("添加" = "add", "移除" = "remove", "改造" = "augment")[input(usr, "要执行什么操作？","修改身体部位") as null|anything in list("添加","移除", "改造")]
+		var/edit_action = input(usr, "What would you like to do?","Modify Body Part") as null|anything in list("添加","remove", "augment")
 		if(!edit_action)
 			return
 		var/list/limb_list = list()
@@ -1345,7 +1345,7 @@
 			limb_list = list(BODY_ZONE_HEAD, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 			for(var/obj/item/bodypart/B as anything in bodyparts)
 				limb_list -= B.body_zone
-		var/result = input(usr, "请选择要[list("add" = "添加", "remove" = "移除", "augment" = "改造")[edit_action]]的身体部位","修改身体部位") as null|anything in sortList(limb_list)
+		var/result = input(usr, "请选择要[list("add" = "添加", "remove" = "移除", "augment" = "改造")[edit_action]]的身体部位","[capitalize(edit_action)] Body Part") as null|anything in sortList(limb_list)
 		if(result)
 			var/obj/item/bodypart/BP = get_bodypart(result)
 			switch(edit_action)

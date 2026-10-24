@@ -13,7 +13,7 @@
 /obj/item/storage/magebag/examine(mob/user)
 	. = ..()
 	if(contents.len)
-		. += span_notice("袋中有[contents.len]件东西。")
+		. += span_notice("袋中有[contents.len]件物品。")
 
 /obj/item/storage/magebag/attack_right(mob/user)
 	. = ..()
@@ -533,3 +533,6 @@
 		to_chat(awakener, span_warning("你的召唤物没有选定有效名字！请稍候，让它再试一次。")) // more verbose than what sanitize_name might pass in it's error message
 		return custom_name(awakener, iteration++)
 	return chosen_name
+
+/obj/item/storage/magebag/starter
+	populate_contents = list()

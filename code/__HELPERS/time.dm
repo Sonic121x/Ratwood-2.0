@@ -114,7 +114,7 @@ GLOBAL_VAR_INIT(date_override_offset, 0)
 		text_to_show += "\n[uppertext(get_ic_date_short_as_string())]"
 		var/list/active_titles = get_active_calendar_event_titles()
 		if(length(active_titles))
-			text_to_show += "\n- [uppertext(active_titles.Join("、"))] -"
+			text_to_show += "\n- [uppertext(active_titles.Join(" & "))] -"
 		if(text_to_show in mind.areas_entered)
 			return
 		mind.areas_entered += text_to_show
@@ -141,13 +141,6 @@ GLOBAL_VAR_INIT(date_override_offset, 0)
 			if(mind.has_changed_spell)
 				mind.has_changed_spell = FALSE
 				to_chat(mind.current, span_smallnotice("我感觉自己又能解绑法术了。"))
-			if(mind.has_rituos)
-				mind.has_rituos = FALSE
-				to_chat(mind.current, span_smallnotice("施展祂的小型伟业带来的疲惫已从我孱弱的身躯中消退。我可以继续变形了……"))
-			if (mind.rituos_spell)
-				to_chat(mind.current, span_warning("新的一天破晓时，我对[mind.rituos_spell.name]的短暂领悟从脑海中消散了……"))
-				mind.RemoveSpell(mind.rituos_spell)
-				mind.rituos_spell = null
 			if(HAS_TRAIT(mind.current, TRAIT_STUDENT))//golems can learn, too!
 				REMOVE_TRAIT(mind.current, TRAIT_STUDENT, null)
 				to_chat(mind.current, span_nicegreen("我觉得又能接受一次技能教导了。"))

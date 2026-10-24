@@ -3,7 +3,6 @@ GLOBAL_LIST_EMPTY(lord_titles)
 
 /datum/job/roguetown/lord
 	title = "Grand Duke"
-	display_title = "大公"
 	f_title = "大公夫人"
 	flag = LORD
 	department_flag = NOBLEMEN
@@ -52,6 +51,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 /datum/job/roguetown/lord/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	. = ..()
 	if(L)
+		var/realmname = SSmapping.map_adjustment.realm_name
 		var/list/chopped_name = splittext(L.real_name, " ")
 		if(length(chopped_name) > 1)
 			chopped_name -= chopped_name[1]
@@ -59,7 +59,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		else
 			GLOB.lordsurname = "of [L.real_name]"
 		SSticker.set_ruler_mob(L)
-		to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name]现为谷地的[SSticker.rulertype]。</span></span></b>")
+		to_chat(world, "<b><span class='notice'><span class='big'>[L.real_name]现为[realmname]的[SSticker.rulertype]。</span></span></b>")
 		if(istype(SSticker.regentmob, /mob/living/carbon/human))
 			var/mob/living/carbon/human/regentbuddy = SSticker.regentmob
 			to_chat(L, span_notice("我在归途中便已得知，[regentbuddy.real_name]，那位[regentbuddy.job]，曾在我离席时代理摄政。"))
@@ -169,7 +169,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	l_hand = /obj/item/rogueweapon/lordscepter
 	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/seal/crown = 1)
 	if(H.age == AGE_OLD)
-		H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+		H.adjust_skillrank_up_to(/datum/skill/combat/swords, 5, TRUE)
 
 /**
 	Merchant Lord subclass. Consider this an evolution from Sheltered Aristocrat.
@@ -229,7 +229,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	tutorial = "一位优秀的统治者背后总该有力量作支撑。而你恰恰掌握着世间最强大的那一种力量：魔法。当然，治理领地意味着你没法像王国中最伟大的巫师那样钻研得无比深透，但正是你精明而狡黠的法术，才让你稳坐于王座之上。"
 	outfit = /datum/outfit/job/roguetown/lord/wizard
 	category_tags = list(CTAG_LORD)
-	traits_applied = list(TRAIT_NOBLE, TRAIT_MAGEARMOR, TRAIT_ARCYNE_T3, TRAIT_INTELLECTUAL)
+	traits_applied = list(TRAIT_NOBLE, TRAIT_INTELLECTUAL, TRAIT_ARCYNE)
 	subclass_stats = list(
 		STATKEY_LCK = 5,
 		STATKEY_INT = 5,
@@ -237,7 +237,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		STATKEY_SPD = 2,
 		STATKEY_WIL = 1,
 	)
-	subclass_spellpoints = 27
+	subclass_mage_aspects = list("mastery" = TRUE, "major" = 1, "minor" = 3, "utilities" = 9, "ward" = TRUE)
 	subclass_skills = list(
 		/datum/skill/combat/polearms = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/combat/wrestling = SKILL_LEVEL_NOVICE,
@@ -254,7 +254,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	..()
 	backr = /obj/item/storage/backpack/rogue/satchel
 	l_hand = /obj/item/rogueweapon/lordscepter
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/roguegem/amethyst = 1, /obj/item/spellbook_unfinished/pre_arcyne = 1)
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/roguegem/amethyst = 1, /obj/item/rogueweapon/spellbook = 1)
 
 /**
 	Inbred Lord subclass. A joke class, evolution of the Inbred Wastrel.
@@ -339,17 +339,17 @@ GLOBAL_LIST_EMPTY(lord_titles)
 			continue
 		recruitment[village_idiot.name] = village_idiot
 	if(!length(recruitment))
-		to_chat(user, span_warning("范围内没有可受封之人。"))
+		to_chat(user, span_warning("范围内没有可册封之人。"))
 		return
-	var/inputty = input(user, "选择受封对象！", "[name]") as anything in recruitment
+	var/inputty = input(user, "选择册封对象！", "[name]") as anything in recruitment
 	if(inputty)
 		var/mob/living/carbon/human/recruit = recruitment[inputty]
 		if(!QDELETED(recruit) && (recruit in get_hearers_in_view(title_range, user)))
 			INVOKE_ASYNC(src, PROC_REF(village_idiotify), recruit, user, granted_title)
 		else
-			to_chat(user, span_warning("授称失败！"))
+			to_chat(user, span_warning("册封失败！"))
 	else
-		to_chat(user, span_warning("已取消授称。"))
+		to_chat(user, span_warning("已取消册封。"))
 
 /obj/effect/proc_holder/spell/self/grant_title/proc/can_title(mob/living/carbon/human/recruit)
 	//wtf

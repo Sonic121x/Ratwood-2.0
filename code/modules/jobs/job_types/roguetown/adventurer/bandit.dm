@@ -1,6 +1,5 @@
 /datum/job/roguetown/bandit //pysdon above there's like THREE bandit.dms now I'm so sorry. This one is latejoin bandits, the one in villain is the antag datum, and the one in the 'antag' folder is an old adventurer class we don't use. Good luck!
 	title = "Bandit"
-	display_title = "强盗"
 	flag = BANDIT
 	department_flag = WANDERERS
 	faction = "Station"
@@ -39,7 +38,7 @@
 		/datum/advclass/hedgeknight,
 		/datum/advclass/iconoclast,
 		/datum/advclass/knave,
-		/datum/advclass/roguemage,
+		/datum/advclass/hedgemage,
 		/datum/advclass/sawbones,
 		/datum/advclass/sellsword,
 		/datum/advclass/pioneer
@@ -96,11 +95,11 @@
 		if("山谷梦魇")
 			bounty_total = rand(500, 600)
 	if(bounty_severity == "小角色")
-		add_bounty_obscure(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, bounty_total, TRUE, my_crime, bounty_poster, H) // KUKU
+		add_bounty_obscure(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, bounty_total, TRUE, my_crime, bounty_poster)
 	else if(bounty_severity == "拦路匪")
-		add_bounty_noface(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, bounty_total, TRUE, my_crime, bounty_poster, H) // KUKU
+		add_bounty_noface(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, bounty_total, TRUE, my_crime, bounty_poster)
 	else
-		add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, bounty_total, TRUE, my_crime, bounty_poster, H) // KUKU
+		add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, bounty_total, TRUE, my_crime, bounty_poster)
 		var/skillbuff = input(H, "你的阅历为你带来恩惠", "选择一项属性") as anything in list("力量", "感知", "智力", "体质", "意志", "速度")
 		switch(skillbuff)
 			if("力量")

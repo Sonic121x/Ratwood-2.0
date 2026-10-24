@@ -72,6 +72,15 @@
 	alert_type = /atom/movable/screen/alert/status_effect/swingdelay/penalty
 	mob_effect_icon_state = "eff_swingdelay_penalty"
 
+/datum/status_effect/swingdelay/penalty/committed
+	id = "swingdelay_committed"
+
+/datum/status_effect/swingdelay/penalty/committed/on_creation(mob/living/new_owner, newdur, apply_slow = FALSE)
+	if(apply_slow)
+		var/spd_mod = 10 - new_owner.get_true_stat(STATKEY_SPD)
+		effectedstats = list(STATKEY_SPD = spd_mod)
+	. = ..()
+
 /atom/movable/screen/alert/status_effect/swingdelay/penalty
 	name = "挥击露隙！"
 	desc = "我正在挥动武器，防守变弱了！看好战场，别盯着这里！"

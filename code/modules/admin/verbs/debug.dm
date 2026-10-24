@@ -114,7 +114,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	else
 		log_message = "all z-levels"
 
-	message_admins(span_adminnotice("[key_name_admin(usr)] 使用检查区域调试指令检查了 [on_station ? "站点 Z 层级" : "所有 Z 层级"]。"))
+	message_admins(span_adminnotice("[key_name_admin(usr)] used the Test Areas debug command checking [log_message]."))
 	log_admin("[key_name(usr)] used the Test Areas debug command checking [log_message].")
 
 	for(var/area/A in world)
@@ -254,7 +254,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			selected_job_title = initial(MR.name)
 		else
 			var/datum/job/J = selected_job_path
-			selected_job_title = initial(J.display_title) || initial(J.title)
+			selected_job_title = initial(J.title)
 	var/selected_advclass_path = GLOB.loadout_selected_advclasses[REF(H)]
 	var/selected_advclass_name = "无"
 	if(selected_advclass_path)
@@ -313,7 +313,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 				var/list/job_subclasses = initial(J.job_subclasses)
 				// Include jobs with outfit OR jobs with advclass system
 				if(job_title && (job_outfit || job_subclasses))
-					job_list[initial(J.display_title) || job_title] = job_type
+					job_list[job_title] = job_type
 			
 			// Add all migrant roles
 			for(var/migrant_type in subtypesof(/datum/migrant_role))
@@ -348,7 +348,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 					var/list/job_subclasses = initial(J.job_subclasses)
 					// Include jobs with outfit OR jobs with advclass system
 					if(job_title && (job_outfit || job_subclasses))
-						searchable_jobs[initial(J.display_title) || job_title] = job_type
+						searchable_jobs[job_title] = job_type
 				
 				// Add all migrant roles
 				for(var/migrant_type in subtypesof(/datum/migrant_role))
@@ -384,7 +384,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 				// Also set the assigned role
 				if(!H.mind)
 					H.mind_initialize()
-				H.mind.assigned_role = ispath(job_type_path, /datum/job) ? initial(job_type_path:title) : "[initial(job_type_path:name)] (Migrant)"
+				H.mind.assigned_role = selected_title
 				
 				// Auto-select advclass if job has only one, or open selection if multiple
 				// Check if it's a migrant role with advclass_cat_rolls
@@ -440,7 +440,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 				// Also set the assigned role
 				if(!H.mind)
 					H.mind_initialize()
-				H.mind.assigned_role = ispath(job_type_path, /datum/job) ? initial(job_type_path:title) : "[initial(job_type_path:name)] (Migrant)"
+				H.mind.assigned_role = selected_title
 				
 				// Auto-select advclass if job has only one, or open selection if multiple
 				// Check if it's a migrant role with advclass_cat_rolls
@@ -728,7 +728,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 			return
 
 
-	return dresscode == "裸装" ? "Naked" : dresscode
+	return dresscode
 
 // Apply full job loadout including stats, skills, traits, and spells
 /client/proc/apply_full_job_loadout(mob/living/carbon/human/H, job_type_path)
@@ -816,10 +816,6 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 			if(length(advclass_datum.subclass_skills))
 				for(var/skill in advclass_datum.subclass_skills)
 					H.adjust_skillrank(skill, advclass_datum.subclass_skills[skill], TRUE)
-			
-			// Apply advclass spell points
-			if(advclass_datum.subclass_spellpoints > 0 && H.mind)
-				H.mind.adjust_spellpoints(advclass_datum.subclass_spellpoints)
 			
 			// Apply advclass traits
 			if(advclass_datum.traits_applied)
@@ -954,8 +950,6 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 		// Clear spells and spell points
 		for(var/obj/effect/proc_holder/spell/S in H.mind.spell_list)
 			H.mind.RemoveSpell(S)
-		H.mind.spell_points = 0
-		H.mind.used_spell_points = 0
 	
 	// Equip the outfit if available - equipOutfit handles pre_equip and post_equip internally
 	// Note: pre_equip hooks may grant spells as part of the equipment process
@@ -978,12 +972,6 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 		if(job_datum && job_datum.spells)
 			for(var/S in job_datum.spells)
 				H.mind.AddSpell(new S)
-	
-		// Apply spell points from advclass if available
-		if(advclass_path)
-			var/datum/advclass/advclass_datum = new advclass_path()
-			if(advclass_datum.subclass_spellpoints > 0)
-				H.mind.adjust_spellpoints(advclass_datum.subclass_spellpoints)
 	
 	if(actual_outfit)
 		to_chat(H, span_notice("已应用[is_migrant ? "移民角色的" : ""]装备和法术！"))
@@ -1200,8 +1188,6 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 		for(var/obj/effect/proc_holder/spell/S in H.mind.spell_list)
 			H.mind.RemoveSpell(S)
 		// Reset spell points
-		H.mind.spell_points = 0
-		H.mind.used_spell_points = 0
 	
 	// Remove from excommunicated and outlawed lists (clears examine text like "HERETIC! SHAME!")
 	// Check both real_name and name to be thorough
@@ -1461,7 +1447,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	set name = "显示 Initialize() 日志"
 	set desc = ""
 
-	usr << browse("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>" + replacetext(SSatoms.InitLog(), "\n", "<br>"), "window=initlog")
+	usr << browse(replacetext(SSatoms.InitLog(), "\n", "<br>"), "window=initlog")
 
 /client/proc/debug_huds(i as num)
 	set category = "调试"

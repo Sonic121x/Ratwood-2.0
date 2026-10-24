@@ -25,16 +25,16 @@
 	var/energy_cost = 0
 
 // 卷轴与箭矢来自不同图集，分别叠加，保留普通法术的激活底图与按钮着色。
-/datum/action/spell_action/spell/z121_arcane_archery/ApplyIcon(atom/movable/screen/movable/action_button/current_button, force = FALSE)
-	if(!icon_icon || !button_icon_state || (!force && current_button.button_icon_state == button_icon_state))
+/datum/action/spell_action/spell/z121_arcane_archery/apply_button_icon(atom/movable/screen/movable/action_button/current_button, force = FALSE)
+	if(!button_icon || !button_icon_state || (!force && current_button.active_overlay_icon_state == button_icon_state))
 		return
 	current_button.cut_overlays(TRUE)
 	current_button.add_overlay(mutable_appearance('icons/mob/actions/roguespells.dmi', button_icon_state, layer = current_button.layer + 0.1))
-	if(overlay_state)
-		var/mutable_appearance/arrow_icon = mutable_appearance(icon_icon, overlay_state, layer = current_button.layer + 0.2)
-		arrow_icon.alpha = overlay_alpha
+	if(button_icon_state)
+		var/mutable_appearance/arrow_icon = mutable_appearance(button_icon, button_icon_state, layer = current_button.layer + 0.2)
+		arrow_icon.alpha = 255
 		current_button.add_overlay(arrow_icon)
-	current_button.button_icon_state = button_icon_state
+	current_button.active_overlay_icon_state = button_icon_state
 
 /obj/effect/proc_holder/spell/self/z121_arcane_archery/start_recharge()
 	// 使用各箭术自身的固定冷却，不受智力、技能或地脉加速改变。

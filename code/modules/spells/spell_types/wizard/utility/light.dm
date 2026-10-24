@@ -1,41 +1,59 @@
-/obj/effect/proc_holder/spell/self/light
+/datum/action/cooldown/spell/light
+	button_icon = 'icons/mob/actions/roguespells.dmi'
 	name = "照明术"
 	desc = "召唤一颗凝聚的光球。"
-	overlay_state = "light"
-	releasedrain = 50
-	chargetime = 1
-	recharge_time = 30 SECONDS
-	warnie = "spellwarning"
-	movement_interrupt = FALSE
-	no_early_release = FALSE
-	chargedloop = null
+	button_icon_state = "light"
 	sound = 'sound/magic/whiteflame.ogg'
-	chargedloop = /datum/looping_sound/invokegen
-	associated_skill = /datum/skill/magic/arcane //can be arcane, druidic, blood, holy
-	cost = 1
-	miracle = FALSE
+	spell_color = GLOW_COLOR_LIGHT
+	glow_intensity = GLOW_INTENSITY_LOW
 
-	invocations = list("光辉，凝现。") // Summon Light 
-	invocation_type = "whisper" //can be none, whisper, emote and shout
+	click_to_activate = FALSE
+	self_cast_possible = TRUE
+
+	primary_resource_type = SPELL_COST_STAMINA
+	primary_resource_cost = SPELLCOST_CANTRIP
+
+	invocations = list("光辉，凝现。")
+	invocation_type = INVOCATION_WHISPER
+
+	charge_required = TRUE
+	charge_time = 0.5 SECONDS
+	hold_drain = 1
+	charge_slowdown = CHARGING_SLOWDOWN_NONE
+	charge_sound = 'sound/magic/charging.ogg'
+	cooldown_time = 30 SECONDS
+
+	associated_skill = /datum/skill/magic/arcane
+	spell_tier = 1
+	spell_impact_intensity = SPELL_IMPACT_NONE
+
+	point_cost = 1
+
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
 
 	var/obj/item/item
 	var/item_type = /obj/item/flashlight/flare/light
-	var/delete_old = TRUE //TRUE to delete the last summoned object if it's still there, FALSE for infinite item stream weeeee
+	var/delete_old = TRUE
 
-/obj/effect/proc_holder/spell/self/light/cast(list/targets, mob/user = usr)
-	if (delete_old && item && !QDELETED(item))
+/datum/action/cooldown/spell/light/cast(atom/cast_on)
+	. = ..()
+	var/mob/living/user = owner
+	if(!istype(user))
+		return FALSE
+
+	if(delete_old && item && !QDELETED(item))
 		QDEL_NULL(item)
 	if(user.dropItemToGround(user.get_active_held_item()))
 		user.put_in_hands(make_item(), TRUE)
 		user.visible_message(span_info("一颗光球在[user]手中凝聚！"), span_info("你凝聚出一颗纯粹的光球！"))
 	return TRUE
 
-/obj/effect/proc_holder/spell/self/light/Destroy()
+/datum/action/cooldown/spell/light/Destroy()
 	if(item)
 		qdel(item)
 	return ..()
 
-/obj/effect/proc_holder/spell/self/light/proc/make_item()
+/datum/action/cooldown/spell/light/proc/make_item()
 	item = new item_type
 	var/mutable_appearance/magic_overlay = mutable_appearance('icons/obj/projectiles.dmi', "gumball")
 	item.add_overlay(magic_overlay)
@@ -62,7 +80,7 @@
 	max_integrity = 200
 	fuel = 10 MINUTES
 
-/obj/item/flashlight/flare/light/getonmobprop(tag)
+/obj/item/flashlight/flare/light5e/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
@@ -73,14 +91,9 @@
 
 /obj/item/flashlight/flare/light/Initialize(mapload)
 	. = ..()
-	soundloop = new(src, FALSE)
+	soundloop = new(list(src), FALSE)
 	on = TRUE
 	START_PROCESSING(SSobj, src)
-
-/obj/item/flashlight/flare/light/Destroy(force)
-	STOP_PROCESSING(SSobj, src)
-	QDEL_NULL(soundloop)
-	return ..()
 
 /obj/item/flashlight/flare/light/update_brightness(mob/user = null)
 	..()

@@ -137,7 +137,7 @@
 	//   先查 mind（has_spell 接受类型路径），再查 mob_spell_list（按 istype 匹配）。
 	if(recipient.mind?.has_spell(spell_path))
 		return FALSE
-	for(var/obj/effect/proc_holder/spell/existing as anything in recipient.mob_spell_list)
+	for(var/obj/effect/proc_holder/spell/existing in recipient.mob_spell_list)
 		if(istype(existing, spell_path))
 			return FALSE
 

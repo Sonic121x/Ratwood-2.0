@@ -114,7 +114,6 @@
 	. = ..()
 	if(!owner?.mind)
 		return
-	granted_spell = new /obj/effect/proc_holder/spell/invoked/projectile/fireball/baali
 	owner.mind.AddSpell(granted_spell)
 
 /datum/coven_power/demonic/psychomachia/post_lose()
@@ -123,17 +122,6 @@
 		owner?.mind?.RemoveSpell(granted_spell)
 		granted_spell = null
 
-/obj/effect/proc_holder/spell/invoked/projectile/fireball/baali
-	name = "炼狱火球"
-	desc = "向目标发射一颗会爆炸的火球。"
-	school = "evocation"
-	recharge_time = 60 SECONDS
-	invocation_type = "whisper"
-	projectile_type = /obj/projectile/magic/aoe/fireball/rogue
-	associated_skill = /datum/skill/magic/blood
-	sound = 'sound/magic/fireball.ogg'
-
-//CONDEMNTATION
 /datum/coven_power/demonic/wall_of_fire
 	name = "火墙"
 	desc = "火焰箭？火球？不，是火墙！"

@@ -16,7 +16,7 @@
 					/obj/effect/proc_holder/spell/invoked/raise_spirits_vengeance		= CLERIC_T2,
 					/obj/effect/proc_holder/spell/invoked/silence/miracle/zizo			= CLERIC_T2, //A bone. 
 					/obj/effect/proc_holder/spell/invoked/raise_spirit_respite			= CLERIC_T3,
-					/obj/effect/proc_holder/spell/invoked/rituos/miracle				= CLERIC_T3,
+					/datum/action/cooldown/spell/zizo/rituos							= CLERIC_T3,
 					/obj/effect/proc_holder/spell/targeted/touch/lacrima				= CLERIC_T3,
 					/obj/effect/proc_holder/spell/invoked/cascade						= CLERIC_T4,
 	)
@@ -27,7 +27,7 @@
 		"齐佐是永恒的女王！",
 	)
 	storyteller = /datum/storyteller/zizo
-	sign_icon_state = "sign_Zizo"
+
 /datum/patron/inhumen/zizo/post_equip(mob/living/pious)
 	. = ..()
 	if(ishuman(pious))

@@ -138,13 +138,6 @@
 	)
 	return TRUE
 
-/obj/effect/proc_holder/spell/invoked/blink/glimmer_hare
-	invocations = list("") //"Natural" abilty, no incantation.
-	chargetime = 0
-	releasedrain = 0
-	chargedrain = 0
-	xp_gain = FALSE
-
 /obj/effect/proc_holder/spell/self/inscription_cache
 	name = "铭文藏匣"
 	recharge_time = 5 SECONDS
@@ -462,7 +455,7 @@
 			break
 
 	if (!(isturf(target_location) || isopenturf(target_location)))
-		to_chat(user, span_warning("那条路径已经消散了......"))
+		to_chat(user, span_warning("那条路径已经消散了..."))
 		// Remove the invalid entry by name
 		for (var/i = 1, i <= user.saved_trails.len, i++)
 			if (user.saved_trails[i]["name"] == selected_trail_name)

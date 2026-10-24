@@ -302,10 +302,9 @@
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/yield_prompt
 	duration = 20 SECONDS
 
-/datum/status_effect/debuff/yield_prompt/on_apply()
-	if(isliving(owner) && owner.has_flaw(/datum/charflaw/compliant))
-		var/mob/living/living_owner = owner
-		living_owner.submit(TRUE)
+/datum/status_effect/debuff/yield_prompt/on_creation(mob/living/new_owner, message_mode)
+	if(new_owner.has_flaw(/datum/charflaw/compliant) && message_mode == MODE_WHISPER)
+		new_owner.submit(TRUE)
 		return FALSE
 	return ..()
 
@@ -745,7 +744,7 @@
 
 /datum/status_effect/debuff/emberwine
 	id = "emberwine"
-	effectedstats = list(STATKEY_STR = -1, STATKEY_WIL = -2, STATKEY_SPD = -2, STATKEY_INT = -3)
+	effectedstats = list("strength" = -1, "willpower" = -2, "speed" = -2, "intelligence" = -3)
 	duration = 1 MINUTES
 	alert_type = /atom/movable/screen/alert/status_effect/emberwine
 
@@ -1398,6 +1397,18 @@
 	name = "附魔休眠"
 	desc = "我身上装备的附魔已被触发，暂时进入休眠状态！"
 	icon_state = "dazed"
+
+/datum/status_effect/debuff/slip_recovery
+	id = "slip_recovery"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/slip_recovery
+	duration = 30 SECONDS // Lower than the CD
+
+/atom/movable/screen/alert/status_effect/debuff/slip_recovery
+	name = "气喘吁吁"
+	desc = "我喘得太厉害，无法再次穿梭空间！"
+	icon_state = "debuff"
+
+/// RITUOS DEBUFFS
 
 /datum/status_effect/debuff/weapon_binded
 	id = "wep_bind_debuff"

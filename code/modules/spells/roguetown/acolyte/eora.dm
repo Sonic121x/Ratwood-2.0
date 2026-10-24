@@ -562,7 +562,7 @@
 
 	if(istype(I, /obj/item/reagent_containers) && !istype(I, /obj/item/reagent_containers/food/snacks))
 		var/obj/item/reagent_containers/container = I
-		if(water_happiness >= 25)
+		if(water_happiness >= 40)
 			to_chat(user, span_warning("这棵树现在已经无法再吸收更多水分了！"))
 			return TRUE
 
@@ -683,7 +683,7 @@
 	else if(happiness_tier == 4)
 		. += span_good("这棵树通体流转着炽亮的辉光。你感到……完美。")
 
-	if(water_happiness < 25)
+	if(water_happiness < 40)
 		. += span_info("它还需要更多水分。")
 	else
 		. += span_info("它已经喝得很饱了。")
@@ -711,7 +711,7 @@
 			var/remaining_seconds = round(((growth_threshold - growth_progress) / (growth_threshold * 0.25)) * effective_fruit_time / 10)
 			var/minutes = round(remaining_seconds / 60)
 			var/secs = remaining_seconds % 60
-			. += span_info("凭我的农务经验判断，这棵树大约还要 [minutes > 0 ? (secs > 0 ? "[minutes] 分 [secs] 秒" : "[minutes] 分") : "[secs] 秒"] 后才会开始结果。")
+			. += span_info("我的耕作经验告诉我，果实大约会在[minutes > 0 ? "[minutes]分钟" : ""][minutes > 0 && secs > 0 ? "又" : ""][secs > 0 ? "[secs]秒" : ""]后开始结出。")
 
 /obj/structure/eoran_pomegranate_tree/proc/reset_care()
 	//The benefit of rare offerings are kept through harvests.
@@ -1103,7 +1103,7 @@
 		return
 	user.visible_message(
 		span_danger("[user] 开始无私地引导绯红果粒的力量，为 [M] 恢复伤势。"),
-			span_info("我开始用自己的鲜血，将绯红果粒的力量灌入 [M] 体内。")
+		span_info("我开始用自己的鲜血将绯红果粒的力量引入[M]体内。")
 	)
 	if(!do_mob(user, M, time = 2 SECONDS, double_progress = TRUE))
 		return
@@ -1441,3 +1441,42 @@
 	name = "伊欧拉的宁静"
 	desc = "一阵令人神清气爽的安宁。你的烦恼仿佛都被冲刷殆尽。为什么不能永远如此呢？"
 	icon_state = "eora_bless"
+
+/atom/movable/screen/alert/status_effect/buff/haste
+	name = "加速术"
+	desc = "我正受到魔法加速。"
+	icon_state = "buff"
+
+#define HASTE_FILTER "haste_glow"
+
+/datum/status_effect/buff/haste
+	var/outline_colour ="#F0E68C" // Hopefully not TOO yellow
+	id = "haste"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/haste
+	effectedstats = list(STATKEY_SPD = 5)
+	duration = 1.5 MINUTES
+
+/datum/status_effect/buff/haste/other
+	duration = 3 MINUTES
+
+/datum/status_effect/buff/haste/on_creation(mob/living/new_owner, new_duration = null)
+	if(new_duration)
+		duration = new_duration
+	. = ..()
+
+/datum/status_effect/buff/haste/on_apply()
+	. = ..()
+	var/filter = owner.get_filter(HASTE_FILTER)
+	if (!filter)
+		owner.add_filter(HASTE_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 25, "size" = 1))
+	to_chat(owner, span_warning("我的四肢以不可思议的速度动了起来。"))
+
+/datum/status_effect/buff/haste/on_remove()
+	. = ..()
+	owner.remove_filter(HASTE_FILTER)
+	to_chat(owner, span_warning("我的身体又慢了下来......"))
+
+#undef HASTE_FILTER
+
+/datum/status_effect/buff/haste/nextmove_modifier()
+	return 0.85

@@ -488,7 +488,7 @@
 	returned.regenerate_icons()
 	// 绕过全局肢体缓存，防止重建身体仍显示初始化或旧伤势的外观。
 	returned.update_body_parts(TRUE)
-	returned.update_action_buttons_icon()
+	returned.update_mob_action_buttons()
 	returned.update_stress_visual(returned.get_stress_amount())
 	if(returned.devotion?.holder == returned)
 		returned.hud_used?.initialize_bloodpool()

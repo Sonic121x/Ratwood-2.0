@@ -1,5 +1,13 @@
 // 保留每日两次解绑界面，使用具体实例退款；旧职业窗口不能处理新职业账目。
-/obj/item/book/spellbook/change_spells(mob/user = usr)
+/obj/item/rogueweapon/spellbook/change_spells(mob/user = usr)
+	if(!user?.mind?.spell_points)
+		return ..()
+	if(LAZYLEN(user.mind.mage_aspect_config))
+		var/selection = tgui_alert(user, "要调整哪类法术？", "法术绑定", list("法相法术", "自定义法术", "取消"))
+		if(selection == "法相法术")
+			return ..()
+		if(selection != "自定义法术")
+			return
 	var/datum/mind/user_mind = user?.mind
 	if(!user_mind)
 		return
@@ -9,7 +17,7 @@
 	var/mob/living/carbon/human/H = ishuman(user) ? user : null
 	var/datum/z121_profession_record/R = H?.z121_profession
 	var/list/resettable_spells = list()
-	for(var/obj/effect/proc_holder/spell/S as anything in user_mind.spell_list)
+	for(var/obj/effect/proc_holder/spell/S in user_mind.spell_list)
 		if(S.refundable && S.cost > 0)
 			var/label = "[S.name]: [S.cost]"
 			while(label in resettable_spells)

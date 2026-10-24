@@ -416,7 +416,7 @@
 				occupant.void_clone_saved_skills = shell.skills
 				shell.skills.set_current(null)
 				shell.skills = null
-			for(var/obj/effect/proc_holder/spell/S as anything in occupant.spell_list)
+			for(var/obj/effect/proc_holder/spell/S in occupant.spell_list)
 				if(S.action?.owner == shell)
 					S.action.Remove(shell)
 			var/mob/dead/observer/ghost = shell.ghostize(FALSE)

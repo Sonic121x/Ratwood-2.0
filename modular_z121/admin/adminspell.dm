@@ -2,7 +2,7 @@
 	if(target.mind?.has_spell(spell_type))
 		return TRUE
 
-	for(var/obj/effect/proc_holder/spell/existing_spell as anything in target.mob_spell_list)
+	for(var/obj/effect/proc_holder/spell/existing_spell in target.mob_spell_list)
 		if(istype(existing_spell, spell_type))
 			return TRUE
 
@@ -96,7 +96,7 @@
 			target.mind.RemoveSpell(mind_spell)
 			continue
 
-		for(var/obj/effect/proc_holder/spell/mob_spell as anything in target.mob_spell_list)
+		for(var/obj/effect/proc_holder/spell/mob_spell in target.mob_spell_list)
 			if(!istype(mob_spell, spell_type))
 				continue
 			removed_names += initial(mob_spell.name)

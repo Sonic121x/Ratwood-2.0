@@ -11,7 +11,7 @@
 					/obj/effect/proc_holder/spell/self/astrata_gaze				= CLERIC_T0,
 					/obj/effect/proc_holder/spell/invoked/lesser_heal 			= CLERIC_T1,
 					/obj/effect/proc_holder/spell/invoked/blood_heal			= CLERIC_T1,
-					/obj/effect/proc_holder/spell/self/astratan_path			= CLERIC_T1,
+					/obj/effect/proc_holder/spell/self/astratan_spear			= CLERIC_T1,
 					/obj/effect/proc_holder/spell/invoked/heal					= CLERIC_T2,
 					/obj/effect/proc_holder/spell/invoked/revive				= CLERIC_T3,
 					/obj/effect/proc_holder/spell/invoked/immolation			= CLERIC_T4,
@@ -23,7 +23,7 @@
 		"我侍奉太阳的荣光！",
 	)
 	storyteller = /datum/storyteller/astrata
-	sign_icon_state = "sign_Astrata"
+
 // In daylight, church, cross, or ritual chalk.
 /datum/patron/divine/astrata/can_pray(mob/living/follower)
 	. = ..()
@@ -50,8 +50,8 @@
 	conditional_buff,
 	situational_bonus
 )
-	*message_out = span_info("一圈柔和的光辉拂过[target]！")
-	*message_self = ("我沐浴在神圣的光辉之中！")
+	*message_out = span_info("一圈柔和的光芒拂过[target]！")
+	*message_self = ("我正沐浴在圣光之中！")
 
 	if(GLOB.tod == "day")
 		*conditional_buff = TRUE

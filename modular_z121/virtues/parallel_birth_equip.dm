@@ -62,6 +62,8 @@
 			return
 		for(var/stashed_item in subclass_stashed_items)
 			H.z121_birth_stash(stashed_item, subclass_stashed_items[stashed_item])
+	if(LAZYLEN(subclass_mage_aspects))
+		H.z121_birth_aspects(subclass_mage_aspects.Copy())
 	if(subclass_spellpoints > 0)
 		H.z121_birth_points(subclass_spellpoints)
 
@@ -73,6 +75,9 @@
 	if(length(subclass_virtues))
 		for(var/virtue in subclass_virtues)
 			apply_virtue(H, new virtue)
+
+	if(istype(age_mod))
+		H.z121_birth_age_mod(age_mod)
 
 	if(applies_post_equipment)
 		if(H.dna?.species?.id == "gnoll")

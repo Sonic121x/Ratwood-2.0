@@ -1,7 +1,5 @@
 /datum/job/roguetown/prisonerr
 	title = "Prisoner (Town)"
-	display_title = "囚犯（城镇）"
-	f_title = "囚犯（城镇）"
 	flag = PRISONERR
 	department_flag = PEASANTS
 	faction = "Station"
@@ -50,6 +48,7 @@
 /datum/outfit/job/roguetown/prisoner_farmer/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	if(!H) return
 	..() // Call base prisoner outfit for collar/loincloth
+	H.mind.AddSpell(new /datum/action/cooldown/spell/touch/prestidigitation)
 	if(H.mind)
 		H.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
 		H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
@@ -70,9 +69,9 @@
 		if(H.age == AGE_OLD)
 			H.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
 			H.adjust_skillrank(/datum/skill/labor/butchering, 1, TRUE)
-		H.change_stat(STATKEY_STR, 1)
-		H.change_stat(STATKEY_CON, 1)
-		H.change_stat(STATKEY_SPD, 1)
+		H.change_stat("strength", 1)
+		H.change_stat("constitution", 1)
+		H.change_stat("speed", 1)
 		ADD_TRAIT(H, TRAIT_SEEDKNOW, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
 		ADD_TRAIT(H, TRAIT_LONGSTRIDER, TRAIT_GENERIC)
@@ -103,11 +102,11 @@
 	H.adjust_skillrank(/datum/skill/labor/fishing, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
-	H.change_stat(STATKEY_STR, 2)
-	H.change_stat(STATKEY_WIL, 1)
-	H.change_stat(STATKEY_CON, 3)
-	H.change_stat(STATKEY_SPD, -1)
-	H.change_stat(STATKEY_INT, -1)
+	H.change_stat("strength", 2)
+	H.change_stat("willpower", 1)
+	H.change_stat("constitution", 3)
+	H.change_stat("speed", -1)
+	H.change_stat("intelligence", -1)
 	H.grant_language(/datum/language/thievescant)
 
 /datum/advclass/prisoner_thug
@@ -137,11 +136,11 @@
 	H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/labor/lumberjacking, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
-	H.change_stat(STATKEY_STR, 1)
-	H.change_stat(STATKEY_WIL, 2)
-	H.change_stat(STATKEY_CON, 1)
-	H.change_stat(STATKEY_INT, 1)
-	H.change_stat(STATKEY_SPD, -1)
+	H.change_stat("strength", 1)
+	H.change_stat("willpower", 2)
+	H.change_stat("constitution", 1)
+	H.change_stat("intelligence", 1)
+	H.change_stat("speed", -1)
 
 /datum/advclass/prisoner_carpenter
 	parent_type = /datum/advclass
@@ -164,10 +163,10 @@
 	H.adjust_skillrank(/datum/skill/craft/weaponsmithing, 5, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/smelting, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-	H.change_stat(STATKEY_STR, 2)
-	H.change_stat(STATKEY_INT, 1)
-	H.change_stat(STATKEY_WIL, 2)
-	H.change_stat(STATKEY_CON, 2)
+	H.change_stat("strength", 2)
+	H.change_stat("intelligence", 1)
+	H.change_stat("willpower", 2)
+	H.change_stat("constitution", 2)
 	ADD_TRAIT(H, TRAIT_TRAINED_SMITH, TRAIT_GENERIC)
 
 /datum/advclass/prisoner_blacksmith
@@ -201,9 +200,9 @@
 	H.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/tracking, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-	H.change_stat(STATKEY_INT, 1)
-	H.change_stat(STATKEY_PER, 2)
-	H.change_stat(STATKEY_SPD, 2)
+	H.change_stat("intelligence", 1)
+	H.change_stat("perception", 2)
+	H.change_stat("speed", 2)
 	ADD_TRAIT(H, TRAIT_OUTDOORSMAN, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_WOODSMAN, TRAIT_GENERIC)
@@ -232,9 +231,9 @@
 	H.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-	H.change_stat(STATKEY_SPD, 3)
-	H.change_stat(STATKEY_WIL, 2)
-	H.change_stat(STATKEY_PER, 1)
+	H.change_stat("speed", 3)
+	H.change_stat("willpower", 2)
+	H.change_stat("perception", 1)
 	ADD_TRAIT(H, TRAIT_KEENEARS, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_GENERIC)
@@ -265,9 +264,9 @@
 	H.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/labor/butchering, 5, TRUE)
-	H.change_stat(STATKEY_STR, 1)
-	H.change_stat(STATKEY_WIL, 2)
-	H.change_stat(STATKEY_CON, 2)
+	H.change_stat("strength", 1)
+	H.change_stat("willpower", 2)
+	H.change_stat("constitution", 2)
 
 /datum/advclass/prisoner_cheesemaker
 	parent_type = /datum/advclass
@@ -292,9 +291,9 @@
 	H.adjust_skillrank(/datum/skill/craft/cooking, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/labor/farming, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
-	H.change_stat(STATKEY_INT, 2)
-	H.change_stat(STATKEY_CON, 2)
-	H.change_stat(STATKEY_WIL, 1)
+	H.change_stat("intelligence", 2)
+	H.change_stat("constitution", 2)
+	H.change_stat("willpower", 1)
 
 /datum/advclass/prisoner_seamstress
 	parent_type = /datum/advclass
@@ -313,10 +312,10 @@
 	H.adjust_skillrank(/datum/skill/labor/farming, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/tanning, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
-	H.change_stat(STATKEY_INT, 2)
-	H.change_stat(STATKEY_SPD, 2)
-	H.change_stat(STATKEY_PER, 1)
-	H.change_stat(STATKEY_STR, -1)
+	H.change_stat("intelligence", 2)
+	H.change_stat("speed", 2)
+	H.change_stat("perception", 1)
+	H.change_stat("strength", -1)
 
 /datum/advclass/prisoner_potter
 	parent_type = /datum/advclass
@@ -336,10 +335,10 @@
 	H.adjust_skillrank(/datum/skill/craft/masonry, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/ceramics, 5, TRUE)
-	H.change_stat(STATKEY_WIL, 2)
-	H.change_stat(STATKEY_CON, 1)
-	H.change_stat(STATKEY_PER, 2)
-	H.change_stat(STATKEY_SPD, -1)
+	H.change_stat("willpower", 2)
+	H.change_stat("constitution", 1)
+	H.change_stat("perception", 2)
+	H.change_stat("speed", -1)
 
 /datum/advclass/prisoner_towndoctor
 	parent_type = /datum/advclass
@@ -361,8 +360,8 @@
 	H.adjust_skillrank(/datum/skill/misc/medicine, 5, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/sewing, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
-	H.change_stat(STATKEY_INT, 3)
-	H.change_stat(STATKEY_LCK, 1)
+	H.change_stat("intelligence", 3)
+	H.change_stat("fortune", 1)
 	ADD_TRAIT(H, TRAIT_EMPATH, TRAIT_NOSTINK)
 
 /datum/advclass/prisoner_drunkard
@@ -380,10 +379,10 @@
 	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-	H.change_stat(STATKEY_INT, -2)
-	H.change_stat(STATKEY_CON, 1)
-	H.change_stat(STATKEY_STR, 1)
-	H.change_stat(STATKEY_LCK, 2)
+	H.change_stat("intelligence", -2)
+	H.change_stat("constitution", 1)
+	H.change_stat("strength", 1)
+	H.change_stat("fortune", 2)
 
 /datum/advclass/prisoner_witch
 	parent_type = /datum/advclass
@@ -394,8 +393,6 @@
 /datum/outfit/job/roguetown/prisoner_witch/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	if(!H) return
 	..() // Call base prisoner outfit for collar/loincloth
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/guidance)
 	if(H.mind)
 		H.adjust_skillrank(/datum/skill/misc/reading, 4, TRUE)
 		H.adjust_skillrank(/datum/skill/craft/alchemy, 4, TRUE)
@@ -405,18 +402,16 @@
 		H.adjust_skillrank(/datum/skill/craft/sewing, 1, TRUE)
 		H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 		H.adjust_skillrank(/datum/skill/craft/carpentry, 2, TRUE)
-		H.mind.adjust_spellpoints(6)
-		H.change_stat(STATKEY_INT, 3)
-		H.change_stat(STATKEY_SPD, 2)
-		H.change_stat(STATKEY_LCK, 1)
+		H.change_stat("intelligence", 3)
+		H.change_stat("speed", 2)
+		H.change_stat("fortune", 1)
 		if(H.age == AGE_OLD)
-			H.change_stat(STATKEY_SPD, -1)
-			H.change_stat(STATKEY_INT, 1)
-			H.change_stat(STATKEY_LCK, 1)
+			H.change_stat("speed", -1)
+			H.change_stat("intelligence", 1)
+			H.change_stat("fortune", 1)
 	ADD_TRAIT(H, TRAIT_RITUALIST, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_DEATHSIGHT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_WITCH, TRAIT_GENERIC)
-	ADD_TRAIT(H, TRAIT_ARCYNE_T1, TRAIT_GENERIC)
 	H.cmode_music = 'sound/music/combat_cult.ogg'
 	switch(H.patron?.type)
 		if(/datum/patron/inhumen/zizo)
@@ -446,10 +441,10 @@
 	H.adjust_skillrank(/datum/skill/labor/mining, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/smelting, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
-	H.change_stat(STATKEY_STR, 2)
-	H.change_stat(STATKEY_WIL, 1)
-	H.change_stat(STATKEY_CON, 2)
-	H.change_stat(STATKEY_LCK, 2)
+	H.change_stat("strength", 2)
+	H.change_stat("willpower", 1)
+	H.change_stat("constitution", 2)
+	H.change_stat("fortune", 2)
 	ADD_TRAIT(H, TRAIT_DARKVISION, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_LEGENDARY_MINER, TRAIT_GENERIC)
 
@@ -489,3 +484,4 @@
 		pants = /obj/item/clothing/under/roguetown/tights/random
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 		armor = /obj/item/clothing/suit/roguetown/shirt/tunic/random
+

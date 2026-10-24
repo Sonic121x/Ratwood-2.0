@@ -74,7 +74,7 @@
 /obj/item/rogueweapon/greatsword/moonlight_greatsword/proc/find_moonlight_spell_instance(mob/living/carbon/human/holder, spell_type)
 	if(!holder?.mind)
 		return null
-	for(var/obj/effect/proc_holder/spell/self/moonlight_weapon_spell/spell as anything in holder.mind.spell_list)
+	for(var/obj/effect/proc_holder/spell/self/moonlight_weapon_spell/spell in holder.mind.spell_list)
 		if(spell.type != spell_type)
 			continue
 		if(spell.get_source_weapon() == src)
@@ -106,7 +106,7 @@
 		remove_moonlight_spell_instance(holder, granted_wave_spell, /obj/effect/proc_holder/spell/self/moonlight_weapon_spell/moonlight_wave)
 		remove_moonlight_spell_instance(holder, granted_blessing_spell, /obj/effect/proc_holder/spell/self/moonlight_weapon_spell/moonlight_blessing)
 	// 持有者已失去 mind 或发生身体转移时，也必须撤销原按钮。
-	for(var/obj/effect/proc_holder/spell/self/moonlight_weapon_spell/spell as anything in list(granted_wave_spell, granted_blessing_spell))
+	for(var/obj/effect/proc_holder/spell/self/moonlight_weapon_spell/spell in list(granted_wave_spell, granted_blessing_spell))
 		var/mob/living/action_owner = spell?.action?.owner
 		if(action_owner)
 			action_owner.mind?.spell_list -= spell
@@ -137,7 +137,7 @@
 		if(QDELETED(granted_blessing_spell))
 			granted_blessing_spell = new /obj/effect/proc_holder/spell/self/moonlight_weapon_spell/moonlight_blessing(src)
 		current_holder.mind.AddSpell(granted_blessing_spell, current_holder)
-	granted_blessing_spell?.action?.UpdateButtonIcon()
+	granted_blessing_spell?.action?.build_all_button_icons()
 
 	if(previous_holder != current_holder)
 		to_chat(current_holder, span_notice("月色沿着剑身流淌，两道古老的月光秘术在我心中浮现。"))

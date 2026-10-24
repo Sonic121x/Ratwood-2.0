@@ -1,6 +1,6 @@
 // Special Mercenary Weapons, at exorbitant prices
 /datum/supply_pack/rogue/merc_weapons
-	group = "武器（异域）" // English: Weapons (Foreign)
+	group = "Weapons (Foreign)"
 	crate_name = "商会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
@@ -27,7 +27,7 @@
 /datum/supply_pack/rogue/merc_weapons/naledistaff
 	name = "纳莱迪战杖"
 	cost = 300
-	contains = list(/obj/item/rogueweapon/woodstaff/naledi)
+	contains = list(/obj/item/rogueweapon/woodstaff/implement/grand/naledi)
 
 /datum/supply_pack/rogue/merc_weapons/pulaxe
 	name = "普拉斯基斧"
@@ -117,4 +117,4 @@
 /datum/supply_pack/rogue/merc_weapons/grenzelstaff
 	name = "黑钢法杖"
 	cost = 150
-	contains = list(/obj/item/rogueweapon/woodstaff/emerald/blacksteelstaff)
+	contains = list(/obj/item/rogueweapon/woodstaff/implement/greater/blacksteel)

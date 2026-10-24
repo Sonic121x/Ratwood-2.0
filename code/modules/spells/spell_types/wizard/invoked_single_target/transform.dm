@@ -4,7 +4,7 @@
 	invocations = list("鲜血将滋养花朵！")
 	invocation_type = "shout"
 	overlay_state = "tamebeast"
-	human_req = FALSE
+	human_req = TRUE
 	range = -1
 	include_user = TRUE
 	recharge_time = 120 SECONDS // cause too little is cheaty, too much is pain
@@ -37,7 +37,7 @@
 	invocations = list("织网，疾爬！")
 	invocation_type = "shout"
 	overlay_state = "tamebeast"
-	human_req = FALSE
+	human_req = TRUE
 	range = -1
 	include_user = TRUE
 	recharge_time = 60 SECONDS

@@ -629,19 +629,19 @@
 	var/day = "……等等，今天到底是星期几？"
 	switch(get_current_day_of_week())
 		if(1)
-			day = "月日。"
+			day = "月之日。"
 		if(2)
-			day = "提乌日。"
+			day = "提乌之日。"
 		if(3)
-			day = "婚誓日。"
+			day = "婚誓之日。"
 		if(4)
-			day = "图勒日。"
+			day = "图勒之日。"
 		if(5)
-			day = "芙蕾雅日。"
+			day = "芙蕾雅之日。"
 		if(6)
-			day = "萨图恩日。"
+			day = "萨图恩之日。"
 		if(7)
-			day = "太阳日。"
+			day = "太阳之日。"
 	. += "噢，不妙，现在是[day]的[station_time_timestamp("hh:mm")]。"
 //		if(SSshuttle.emergency.mode == SHUTTLE_DOCKED)
 //			if(SSshuttle.emergency.timeLeft() < 30 MINUTES)
@@ -770,10 +770,11 @@
 
 /obj/structure/fluff/signage/examine(mob/user)
 	. = ..()
+	var/realmname = SSmapping.map_adjustment.realm_name
 	if(!user.is_literate())
 		. += "我完全看不懂上面写了什么。"
 	else
-		. += "上面写着“谷地”。"
+		. += "上面写着“[realmname]”。"
 
 /obj/structure/fluff/buysign
 	icon_state = "signwrote"
@@ -799,7 +800,7 @@
 /obj/structure/fluff/iconsign
 	icon_state = "sign"
 	name = "icon sign"
-	desc = "you shouldn't be seeing this."
+	desc = "你不应该看到这个。"
 	icon = 'icons/roguetown/misc/signs.dmi'
 	max_integrity = 200
 	blade_dulling = DULLING_BASHCHOP
@@ -1241,7 +1242,7 @@
 		/obj/item/candle/candlestick/silver,
 		/obj/item/rogueweapon/sword/long/judgement, // various unique weapons around from a few roles follows. Don't lose your fancy toys....
 		/obj/item/rogueweapon/sword/long/oathkeeper,
-		/obj/item/rogueweapon/woodstaff/riddle_of_steel/magos, //bit dumb for a bandit mage to toss this toy away but whatever
+		/obj/item/rogueweapon/woodstaff/implement/grand/magos, //bit dumb for a bandit mage to toss this toy away but whatever
 		/obj/item/clothing/head/roguetown/circlet,
 		/obj/item/carvedgem,  //Some of these aren't particularly worth much, but it'd be REALLY unintuitive for "valuables" to not actually be offerings
 		/obj/item/rogueweapon/huntingknife/stoneknife/kukri,

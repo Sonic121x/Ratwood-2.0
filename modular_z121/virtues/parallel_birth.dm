@@ -96,7 +96,7 @@
 	else
 		ADD_TRAIT(src, trait, source)
 
-/mob/living/carbon/human/proc/z121_birth_spell(obj/effect/proc_holder/spell/S)
+/mob/living/carbon/human/proc/z121_birth_spell(datum/S)
 	mind?.AddSpell(S)
 	z121_profession?.remember_spell(S)
 

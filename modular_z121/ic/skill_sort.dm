@@ -82,12 +82,12 @@
 	holder.actions.Insert(target_position, selected)
 	for(var/index in min(current_position, target_position) to max(current_position, target_position))
 		var/datum/action/ability = holder.actions[index]
-		if(QDELETED(ability) || QDELETED(ability.button))
+		if(QDELETED(ability) || QDELETED(ability.viewers[holder.hud_used]))
 			continue
-		var/atom/movable/screen/movable/action_button/button = ability.button
+		var/atom/movable/screen/movable/action_button/button = ability.viewers[holder.hud_used]
 		button.moved = FALSE
-		button.ordered = TRUE
 		if(button.id && holder.client.prefs)
 			holder.client.prefs.action_buttons_screen_locs["[button.name]_[button.id]"] = null
+	holder.mind?.sync_spell_list_to_actions()
 	holder.update_action_buttons(TRUE)
 	return TRUE

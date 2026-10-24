@@ -1,5 +1,5 @@
 // This code handles different species in the game.
-#include "species_display.dm"
+
 GLOBAL_LIST_EMPTY(roundstart_races)
 
 /datum/species
@@ -1399,7 +1399,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			to_chat(user, span_userdanger("I [atk_verb] myself![target.next_attack_msg.Join()]"))
 		else
 			target.visible_message(span_danger("[user] [atk_verb]ed [target]![target.next_attack_msg.Join()]"), \
-							span_userdanger("I'm [atk_verb]ed by [user]![target.next_attack_msg.Join()]"), span_hear("I hear a sickening sound of flesh hitting flesh!"), COMBAT_MESSAGE_RANGE, user)
+							span_userdanger("I'm [atk_verb]ed by [user]![target.next_attack_msg.Join()]"), span_hear("我听到了令人作呕的血肉碰撞声！"), COMBAT_MESSAGE_RANGE, user)
 			to_chat(user, span_danger("I [atk_verb] [target]![target.next_attack_msg.Join()]"))
 */
 		var/message_verb = "拳击"
@@ -1408,7 +1408,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		var/message_hit_area = ""
 		if(selzone)
 			message_hit_area = "的[span_userdanger(parse_zone(selzone, affecting))]"
-		var/attack_message = "[user][message_verb][target][message_hit_area]！"
+		var/attack_message = "[user] [message_verb] [target][message_hit_area]!"
 		var/attack_message_local = "[user][message_verb]我[message_hit_area]！"
 		target.visible_message(span_danger("[attack_message][target.next_attack_msg.Join()]"),\
 			span_danger("[attack_message_local][target.next_attack_msg.Join()]"), null, COMBAT_MESSAGE_RANGE)
@@ -1857,7 +1857,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 /datum/species/proc/spec_attacked_by(obj/item/I, mob/living/user, obj/item/bodypart/affecting, intent, mob/living/carbon/human/H, selzone)
 	// Allows you to put in item-specific reactions based on species
 	if(user != H)
-		if(H.check_shields(I, I.force, "[I.name]", MELEE_ATTACK, I.armor_penetration))
+		if(H.check_shields(I, I.force, "the [I.name]", MELEE_ATTACK, I.armor_penetration))
 			return 0
 	if(H.check_block())
 		H.visible_message(span_warning("[H]挡住了[I]！"), \
@@ -2297,13 +2297,12 @@ GLOBAL_VAR_INIT(cold_breath_overlay, mutable_appearance(
 		if(pure_stacks)
 			var/firemodifier = pure_stacks.stacks / 50
 
-			if(pure_stacks.on_fire)
-				// Classic "you're actively burning" damage
-				burn_damage = 10 + (pure_stacks.stacks * 3)
-			else
+			if(!pure_stacks.on_fire)
 				// Residual heat damage scaling with temp
 				firemodifier = min(firemodifier, 0)
 				burn_damage = round(max(log(2-firemodifier,max(H.bodytemperature-BODYTEMP_NORMAL, 1))-5,0))
+				if(HAS_TRAIT(H, TRAIT_FIRE_RESIST))
+					burn_damage *= 0.5
 
 		if(burn_damage > 0)
 			switch(burn_damage)
@@ -2384,21 +2383,49 @@ GLOBAL_VAR_INIT(cold_breath_overlay, mutable_appearance(
 // FIRE //
 //////////
 
+#define FIRE_WOUND_BURN_BASE 4
+#define FIRE_WOUND_BURN_STACK_SCALE 6
+#define FIRE_WOUND_BURN_SUITED 2
+
 /datum/species/proc/handle_fire(mob/living/carbon/human/H, no_protection = FALSE)
 	if(!Canignite_mob(H))
 		return TRUE
-	
-	// Stops maxing out temp from firestacks alone
-	if(H.bodytemperature > BODYTEMP_HEAT_LEVEL_ONE_MAX)	
-		return
+
 	var/thermal_protection = H.get_thermal_protection()
 
 	if(thermal_protection >= FIRE_IMMUNITY_MAX_TEMP_PROTECT && !no_protection)
 		return
+
+	var/fire_resist_mult = 1
+	if(HAS_TRAIT(H, TRAIT_FIRE_RESIST))
+		fire_resist_mult = 0.5
+
+	var/burn_damage
 	if(thermal_protection >= FIRE_SUIT_MAX_TEMP_PROTECT && !no_protection)
-		H.adjust_bodytemperature(1)
+		burn_damage = FIRE_WOUND_BURN_SUITED
 	else
-		H.adjust_bodytemperature(2)	//arbitrary value, but our temp scale runs from 0 to 600 behind the scenes- 455 to heat level 2. standard is 300, thats 50 seconds of being on fire to top out at lvl 2
+		burn_damage = FIRE_WOUND_BURN_BASE + round(sqrt(H.fire_stacks) * FIRE_WOUND_BURN_STACK_SCALE)
+	burn_damage = round(burn_damage * fire_resist_mult * heatmod * H.physiology.heat_mod)
+	if(burn_damage <= 0)
+		return
+
+	if(H.stat < UNCONSCIOUS && prob(min(burn_damage * 4, 100)))
+		H.emote("pain")
+
+	var/obj/item/bodypart/BP // concentrate fire on one limb at a time
+	for(var/obj/item/bodypart/candidate as anything in H.bodyparts)
+		if(QDELETED(candidate))
+			continue
+		if(!BP || candidate.burn_dam > BP.burn_dam)
+			BP = candidate
+	if(!BP)
+		return
+	BP.receive_damage(0, burn_damage)
+	BP.bodypart_attacked_by(BCLASS_BURN, burn_damage, null, BP.body_zone)
+
+#undef FIRE_WOUND_BURN_BASE
+#undef FIRE_WOUND_BURN_STACK_SCALE
+#undef FIRE_WOUND_BURN_SUITED
 
 /datum/species/proc/Canignite_mob(mob/living/carbon/human/H)
 	if(HAS_TRAIT(H, TRAIT_NOFIRE))
@@ -2606,7 +2633,7 @@ GLOBAL_VAR_INIT(cold_breath_overlay, mutable_appearance(
 
 /datum/action/innate/flight
 	name = "切换飞行"
-	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_STUN
+	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_IMMOBILE
 	button_icon_state = ""
 
 /datum/action/innate/flight/Activate()

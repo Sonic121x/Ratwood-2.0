@@ -2,14 +2,13 @@
 
 /datum/job/roguetown/crier
 	title = "Town Crier"
-	display_title = "镇报官"
 	tutorial = "你是号角的执掌者、传声线的主人，也是自封的理性之声。坐在 SCOM传讯网 工坊的案前，你决定哪些话语会轰鸣着传遍全境，哪些则会因请愿人没交够鼠粮而烂死在喉咙里。楼上的播报间里，你主持辩论、传述流言、编织故事，让余波荡遍镇上每个角落。人人都把耳朵朝向你，所以，谨言吧。"
 	flag = CRIER
 	department_flag = YEOMEN
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	spells = list(/obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
+	spells = list(/datum/action/cooldown/spell/touch/prestidigitation)
 	allowed_races = ALL_RACES_TYPES
 	allowed_ages = ALL_AGES_LIST
 	social_rank = SOCIAL_RANK_YEOMAN
@@ -20,7 +19,7 @@
 	max_pq = null
 	round_contrib_points = 3
 
-	job_traits = list(TRAIT_INTELLECTUAL, TRAIT_ARCYNE_T1, TRAIT_MAGEARMOR, TRAIT_SEEPRICES_SHITTY, TRAIT_HOMESTEAD_EXPERT)
+	job_traits = list(TRAIT_INTELLECTUAL, TRAIT_SEEPRICES_SHITTY, TRAIT_HOMESTEAD_EXPERT)
 
 	advclass_cat_rolls = list(CTAG_TOWNCRIER = 2)
 	job_subclasses = list(
@@ -86,8 +85,6 @@
 		/obj/item/recipe_book/alchemy,
 		/obj/item/barometer,
 	)
-	if (H && H.mind)
-		H.mind.adjust_spellpoints(6)
 	if(H.age == AGE_OLD)
 		H.change_stat(STATKEY_SPD, -1)
 		H.change_stat(STATKEY_INT, 1)

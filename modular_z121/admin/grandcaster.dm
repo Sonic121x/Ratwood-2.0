@@ -4,7 +4,7 @@
 	if(target.mind?.has_spell(spell_type))
 		return TRUE
 
-	for(var/obj/effect/proc_holder/spell/existing_spell as anything in target.mob_spell_list)
+	for(var/obj/effect/proc_holder/spell/existing_spell in target.mob_spell_list)
 		if(istype(existing_spell, spell_type))
 			return TRUE
 
