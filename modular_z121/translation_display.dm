@@ -1,6 +1,6 @@
 #include "ethos/compatibility.dm"
 #include "../code/modules/mob/living/carbon/human/species_display.dm"
-
+#include "jobs/translation_display.dm"
 /proc/get_hoard_category_display(category)
 	var/static/list/display_names = list(
 		"Supplies" = "补给品",
