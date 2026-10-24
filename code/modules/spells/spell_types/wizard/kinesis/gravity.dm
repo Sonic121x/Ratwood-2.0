@@ -1,6 +1,6 @@
 /datum/action/cooldown/spell/gravity
 	button_icon = 'icons/mob/actions/mage_kinesis.dmi'
-	name = "重压术"
+	name = "重力术"
 	expose_caster_on_deflect = FALSE
 	desc = "加重目标周围的空间，将其压倒在地。强壮者可抵抗，但会失衡。被击倒后，目标可在 15 秒内适应重力，面对连续命中时保持站立。"
 	button_icon_state = "gravity"
