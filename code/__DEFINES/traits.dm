@@ -497,7 +497,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_MAGEARMOR = span_info("我的魔法时不时就能替我挡下一击。"),
 	TRAIT_DECEIVING_MEEKNESS = span_info("人们看着我，总觉得我是个弱者。可他们错了。我早已学会如何把自己的恶习与真实信念藏在表象之下。"),
 	TRAIT_CRITICAL_RESISTANCE = span_info("我的体魄坚如铁铸，生命流逝得也更慢。我能扛住那些本会击垮常人的前几道重创，但若反复受创，再坚固的防线也会崩溃。"),
-	TRAIT_JOURNEYS_END = span_info ("As the lyfe ebbs from my veins, my resolve hardens to push through. Do not go quietly into that good nite."),
+	TRAIT_JOURNEYS_END = span_info ("生命从血脉中流逝之际，我奋力前行的决心愈发坚定。绝不默然步入那良夜。"),
 	TRAIT_BLOOD_RESISTANCE = span_info("我的身体紧实，血流也更缓。我的出血远少于常人。"),
 	TRAIT_CRITICAL_WEAKNESS = span_danger("那些别人还能扛住的伤势，对我而言却格外致命。"),
 	TRAIT_SHATTER_WEAKNESS = span_danger("我的身躯格外脆弱易碎。若胸膛或脊柱遭受一次重度的粉碎性打击，我会当场毙命。"),

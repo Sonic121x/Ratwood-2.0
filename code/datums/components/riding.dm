@@ -16,7 +16,7 @@
 	var/list/allowed_turf_typecache
 	var/list/forbid_turf_typecache					//allow typecache for only certain turfs, forbid to allow all but those. allow only certain turfs will take precedence.
 	var/allow_one_away_from_valid_turf = TRUE		//allow moving one tile away from a valid turf but not more.
-	var/drive_verb = "paddle"//This is currently only used for the Dinghy
+	var/drive_verb = "划动"//This is currently only used for the Dinghy
 	var/ride_check_rider_incapacitated = FALSE
 	var/ride_check_rider_restrained = FALSE
 	var/ride_check_ridden_incapacitated = FALSE

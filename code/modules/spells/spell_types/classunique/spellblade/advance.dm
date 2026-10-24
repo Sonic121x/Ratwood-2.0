@@ -155,7 +155,7 @@
 	else
 		H.visible_message(span_danger("[H]落地，将[H.p_their()]的[held_weapon.name]向前猛刺！"))
 
-	log_combat(H, null, "used Advance! ([hit_count] hits)")
+	log_combat(H, null, "使用了 [name]（命中 [hit_count] 次）")
 	return TRUE
 
 /datum/action/cooldown/spell/advance/proc/can_leap_into(turf/T)

@@ -666,22 +666,22 @@ GLOBAL_VAR_INIT(mobids, 1)
 		to_chat(usr, "<span class='boldnotice'>我必须在死亡后才能使用这个！</span>")
 		return
 
-	log_game("[key_name(usr)] used abandon mob.")
+	log_game("[key_name(usr)] 使用了放弃角色功能。")
 
 	to_chat(src, "<span class='info'>已成功返回大厅。</span>")
 
 	if(!client)
-		log_game("[key_name(usr)] AM failed due to disconnect.")
+		log_game("[key_name(usr)] 因断线未能放弃角色。")
 		return
 	client.screen.Cut()
 	client.screen += client.void
 	if(!client)
-		log_game("[key_name(usr)] AM failed due to disconnect.")
+		log_game("[key_name(usr)] 因断线未能放弃角色。")
 		return
 
 	var/mob/dead/new_player/M = new /mob/dead/new_player()
 	if(!client)
-		log_game("[key_name(usr)] AM failed due to disconnect.")
+		log_game("[key_name(usr)] 因断线未能放弃角色。")
 		qdel(M)
 		return
 
@@ -819,7 +819,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 
 	if(client)
 		if(statpanel("回合信息"))
-			stat(null, "MAP: [SSmapping.current_map?.map_name || "Loading..."]")
+			stat(null, "地图：[SSmapping.current_map?.map_name || "加载中……"]")
 			var/datum/map_config/cached = SSmap_vote.next_map_config
 			if(cached)
 				stat(null, "下张地图: [cached.map_name]")
@@ -836,7 +836,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 			stat(null, "延迟: [round(client.lastping, 1)]ms (平均延迟: [round(client.avgping, 1)]ms)")
 			stat(null, "时间膨胀: [round(SStime_track.time_dilation_current,1)]% 平均时间膨胀:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)")
 			if(!CONFIG_GET(flag/disable_memory_stats))
-				stat(null, "Memory: [SSmemory_stats.last_rss_mb ? "[SSmemory_stats.last_rss_mb] MB/3900 MB" : "sampling..."]")
+				stat(null, "内存：[SSmemory_stats.last_rss_mb ? "[SSmemory_stats.last_rss_mb] MB/3900 MB" : "采样中……"]")
 			if(check_rights(R_ADMIN,0))
 				stat(null, SSmigrants.get_status_line())
 				stat(null, "玩家个数: [GLOB.clients.len]") // If someone deletes this again I will slap your balls
@@ -844,31 +844,31 @@ GLOBAL_VAR_INIT(mobids, 1)
 	if(client && client.holder && check_rights(R_DEBUG,0))
 		if(statpanel("MC"))
 			var/turf/T = get_turf(client.eye)
-			stat("Location:", COORD(T))
-			stat("CPU:", "[world.cpu] ([world.map_cpu] map + [world.cpu - world.map_cpu] process)")
-			stat("Maptick Percent:", "[round((world.map_cpu/world.cpu) * 100)]%")
+			stat("位置：", COORD(T))
+			stat("CPU：", "[world.cpu]（地图 [world.map_cpu] + 处理 [world.cpu - world.map_cpu]）")
+			stat("地图处理占比：", "[round((world.map_cpu/world.cpu) * 100)]%")
 			if(!CONFIG_GET(flag/disable_memory_stats))
-				stat("Memory:", SSmemory_stats.last_rss_mb ? "[SSmemory_stats.last_rss_mb] MB/3900 MB" : "sampling...")
-			stat("Instances:", "[num2text(world.contents.len, 10)]")
-			stat("World Time:", "[world.time]")
+				stat("内存：", SSmemory_stats.last_rss_mb ? "[SSmemory_stats.last_rss_mb] MB/3900 MB" : "采样中……")
+			stat("实例数：", "[num2text(world.contents.len, 10)]")
+			stat("世界时间：", "[world.time]")
 			GLOB.stat_entry()
 			config.stat_entry()
 			stat(null)
 			if(Master)
 				Master.stat_entry()
 			else
-				stat("Master Controller:", "ERROR")
+				stat("主控制器：", "错误")
 			if(Failsafe)
 				Failsafe.stat_entry()
 			else
-				stat("Failsafe Controller:", "ERROR")
+				stat("故障保护控制器：", "错误")
 			if(Master)
 				stat(null)
 				for(var/datum/controller/subsystem/SS in Master.subsystems)
 					SS.stat_entry()
 		if(length(GLOB.sdql2_queries))
 			if(statpanel("SDQL2"))
-				stat("Access Global SDQL2 List", GLOB.sdql2_vv_statobj)
+				stat("访问全局 SDQL2 列表", GLOB.sdql2_vv_statobj)
 				for(var/i in GLOB.sdql2_queries)
 					var/datum/SDQL2_query/Q = i
 					Q.generate_stat()
@@ -1237,7 +1237,7 @@ GLOBAL_VAR_INIT(mobids, 1)
  * Calling this proc without an oldname will only update the mob and skip updating the pda, id and records ~Carn
  */
 /mob/proc/fully_replace_character_name(oldname,newname)
-	log_message("[src] name changed from [oldname] to [newname]", LOG_OWNERSHIP)
+	log_message("[src] 的名称从 [oldname] 改为 [newname]", LOG_OWNERSHIP)
 	if(!newname)
 		return 0
 

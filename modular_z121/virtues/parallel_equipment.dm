@@ -18,17 +18,11 @@
 	var/turf/ground = get_turf(H)
 	if(!P.valid() || !ground || !profession_compatible(H, P.profession) || !job_compatible(H, P.job))
 		return FALSE
+	if(H.mind?.z121_confirming_picker)
+		to_chat(H, span_warning("请先完成正在进行的法术调整。"))
+		return FALSE
 	var/datum/z121_profession_record/old = H.z121_profession
 	if(!old || old.mind != H.mind)
-		return FALSE
-	// 不以夹零隐藏未知消费记录；无法安全结算时保留原职业。
-	old.reconcile_purchases()
-	var/refunds = 0
-	for(var/key in old.purchases)
-		var/list/payment = old.purchases[key]
-		refunds += payment[2]
-	if(H.mind.used_spell_points < refunds || H.mind.spell_points - old.points < H.mind.used_spell_points - refunds)
-		to_chat(H, span_warning("法术点来源记录与当前账目不一致，今日暂不转换。"))
 		return FALSE
 	var/list/slots = z121_parallel_slots()
 	var/list/previous_slots = list()

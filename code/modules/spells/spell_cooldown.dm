@@ -1012,9 +1012,9 @@
 	if(owner)
 		SEND_SIGNAL(owner, COMSIG_MOB_CAST_SPELL, src, cast_on)
 		if(owner.ckey)
-			owner.log_message("cast the spell [name][cast_on != owner ? " on / at [key_name_admin(cast_on)]":""].", LOG_ATTACK)
+			owner.log_message("[cast_on != owner ? "对 [key_name_admin(cast_on)] ":""]施放了法术 [name]。", LOG_ATTACK)
 			if(cast_on != owner)
-				cast_on.log_message("affected by spell [name] by [key_name_admin(owner)].", LOG_ATTACK)
+				cast_on.log_message("受到了 [key_name_admin(owner)] 的法术 [name] 影响。", LOG_ATTACK)
 
 /**
  * Actions done after the main cast is finished.
@@ -2077,7 +2077,7 @@
 			holder = new(B)
 			B.vis_contents.Add(holder)
 		if(fellowship_snap)
-			holder.maptext = MAPTEXT("SNAP")
+			holder.maptext = MAPTEXT("同伴")
 			holder.color = "#66ff66"
 		else
 			holder.maptext = null

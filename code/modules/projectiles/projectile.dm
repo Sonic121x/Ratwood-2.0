@@ -275,14 +275,14 @@
 
 	var/reagent_note
 	if(reagents && reagents.reagent_list)
-		reagent_note = " REAGENTS:"
+		reagent_note = " 试剂："
 		for(var/datum/reagent/R in reagents.reagent_list)
 			reagent_note += "[R.name] ([num2text(R.volume)])"
 
 	if(ismob(firer))
-		log_combat(firer, L, "shot", src, reagent_note)
+		log_combat(firer, L, "射中了", src, reagent_note)
 	else
-		L.log_message("has been shot by [firer] with [src]", LOG_ATTACK, color=LOG_COLOR_RECEIPT, meta = list(LOG_META_RECEIPT = TRUE))
+		L.log_message("被 [firer] 使用 [src] 射中", LOG_ATTACK, color=LOG_COLOR_RECEIPT, meta = list(LOG_META_RECEIPT = TRUE))
 
 	return BULLET_ACT_HIT
 
@@ -453,7 +453,7 @@
 		SEND_SIGNAL(fired_from, COMSIG_PROJECTILE_BEFORE_FIRE, src, original)
 	//If no angle needs to resolve it from xo/yo!
 	if(!log_override && firer && original)
-		log_combat(firer, original, "fired at", src, "from [get_area_name(src, TRUE)]")
+		log_combat(firer, original, "开火射向了", src, "来自 [get_area_name(src, TRUE)]")
 	if(direct_target)
 		if(prehit(direct_target))
 			direct_target.bullet_act(src, def_zone)
@@ -831,13 +831,13 @@
 /// silent: if TRUE, skip chat messages (used by parry buffer for multi-projectile spells).
 /obj/projectile/proc/on_guard_deflect(mob/living/defender, silent = FALSE)
 	if(!silent)
-		var/verb_text = hitscan ? "dispels" : "deflects"
+		var/verb_text = hitscan ? "驱散" : "弹开"
 		if(isarcyne(defender))
 			defender.visible_message(span_danger("[defender]借反应结界[verb_text]了[src]！"))
 			to_chat(defender, span_notice("我的结界[verb_text]了袭来的法术！"))
 			playsound(get_turf(defender), pick('sound/combat/parry/shield/magicshield (1).ogg', 'sound/combat/parry/shield/magicshield (2).ogg', 'sound/combat/parry/shield/magicshield (3).ogg'), 100)
 		else
-			var/martial_msg = hitscan ? "[defender][verb_text]了[src]！" : "[defender]将[src][verb_text]回了施法者！"
+			var/martial_msg = hitscan ? "[defender][verb_text]了[src]！" : "[defender]将[src]弹回了施法者！"
 			defender.visible_message(span_danger("[martial_msg]"))
 			to_chat(defender, span_notice("我的防守[verb_text]了袭来的法术！"))
 			var/obj/item/held = defender.get_active_held_item()

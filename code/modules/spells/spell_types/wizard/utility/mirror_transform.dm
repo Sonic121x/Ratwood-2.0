@@ -474,7 +474,7 @@
 					should_update = TRUE
 
 		if("阴道")
-			var/list/valid_vagina_types = list("none", "human", "hairy", "spade", "furred", "gaping", "cloaca")
+			var/list/valid_vagina_types = list("无" = null, "普通" = /datum/sprite_accessory/vagina/human, "浓密阴毛" = /datum/sprite_accessory/vagina/hairy, "黑桃形" = /datum/sprite_accessory/vagina/spade, "覆毛" = /datum/sprite_accessory/vagina/furred, "张开" = /datum/sprite_accessory/vagina/gaping, "泄殖腔" = /datum/sprite_accessory/vagina/cloaca)
 			var/new_style = input(H, "选择阴道样式", "阴道调整") as null|anything in valid_vagina_types
 
 			if(new_style)
@@ -492,7 +492,7 @@
 						vagina.Insert(H, TRUE, FALSE)
 					vagina.accessory_type = valid_vagina_types[new_style]
 
-					var/new_color = color_pick_sanitized(H, "选择你的阴部颜色", "Vagina Color", vagina.color || H.dna.features["mcolor"])
+					var/new_color = color_pick_sanitized(H, "选择你的阴部颜色", "阴部颜色", vagina.color || H.dna.features["mcolor"])
 					if(new_color)
 						vagina.color = sanitize_hexcolor(new_color, 6, TRUE)
 					else
@@ -536,7 +536,7 @@
 					should_update = TRUE
 
 		if("阴茎大小")
-			var/list/penis_sizes = list("small", "average", "large")
+			var/list/penis_sizes = list("小", "中", "大")
 			var/new_size = input(H, "选择阴茎大小", "阴茎大小") as null|anything in penis_sizes
 			if(new_size)
 				var/obj/item/organ/penis/penis = H.getorganslot(ORGAN_SLOT_PENIS)
@@ -906,7 +906,7 @@
 		if("角的颜色")
 			var/obj/item/organ/horns/horns = H.getorganslot(ORGAN_SLOT_HORNS)
 			if(horns)
-				var/new_color = color_pick_sanitized(H, "选择你的耳朵主色", "耳朵第一颜色", "#FFFFFF")
+				var/new_color = color_pick_sanitized(H, "选择你的角主色", "角的第一颜色", "#FFFFFF")
 				if(new_color)
 					horns.Remove(H)
 					var/list/colors = list()
@@ -952,7 +952,7 @@
 		if("翅膀颜色")
 			var/obj/item/organ/wings/wings = H.getorganslot(ORGAN_SLOT_WINGS)
 			if(wings)
-				var/new_color = color_pick_sanitized(H, "选择你的翅膀主色", "Wing Color One", "#FFFFFF")
+				var/new_color = color_pick_sanitized(H, "选择你的翅膀主色", "翅膀第一颜色", "#FFFFFF")
 				if(new_color)
 					wings.Remove(H)
 					var/list/colors = list()

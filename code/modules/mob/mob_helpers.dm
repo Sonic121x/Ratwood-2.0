@@ -338,7 +338,7 @@
 				var/chance = rand(0, 99)
 				// 25% chance to add a filler word as the character stumbles over the word
 				if(chance < 30 && message_split.len > 2)
-					new_message += pick("uh...", "um...")
+					new_message += pick("呃……", "嗯……")
 					// 1/6 chance of giving up on the sentence entirely
 					if (chance < 5)
 						break
@@ -989,8 +989,8 @@
 /proc/offer_control(mob/M)
 	to_chat(M, "你的角色控制权已向死亡玩家开放认领。")
 	if(usr)
-		log_admin("[key_name(usr)] has offered control of ([key_name(M)]) to ghosts.")
-		message_admins("[key_name_admin(usr)] has offered control of ([ADMIN_LOOKUPFLW(M)]) to ghosts")
+		log_admin("[key_name(usr)] 向幽灵开放了 [key_name(M)] 的控制权。")
+		message_admins("[key_name_admin(usr)] 向幽灵开放了 [ADMIN_LOOKUPFLW(M)] 的控制权。")
 	var/poll_message = "你想扮演[M.real_name]吗？"
 	if(M.mind && M.mind.assigned_role)
 		poll_message = "[poll_message] 职业：[M.mind.assigned_role]。"
@@ -1005,7 +1005,7 @@
 	if(LAZYLEN(candidates))
 		var/mob/C = pick(candidates)
 		to_chat(M, "一名幽灵已接管你的角色！")
-		message_admins("[key_name_admin(C)] has taken control of ([ADMIN_LOOKUPFLW(M)])")
+		message_admins("[key_name_admin(C)] 接管了 [ADMIN_LOOKUPFLW(M)]。")
 		M.ghostize(0,drawskip=TRUE)
 		M.key = C.key
 		if(!QDELETED(C))
@@ -1013,7 +1013,7 @@
 		return TRUE
 	else
 		to_chat(M, "没有幽灵愿意接管你的角色。")
-		message_admins("No ghosts were willing to take control of [ADMIN_LOOKUPFLW(M)])")
+		message_admins("没有幽灵愿意接管 [ADMIN_LOOKUPFLW(M)]。")
 		return FALSE
 
 ///Is the mob a flying mob

@@ -320,7 +320,7 @@
 		if(user.buckled)
 			user.buckled.unbuckle_mob(user, TRUE)
 		if(do_teleport(user, destination_turf, no_effects=TRUE))
-			log_admin("[user.real_name]([key_name(user)] Shadowstepped from X:[user_turf.x] Y:[user_turf.y] Z:[user_turf.z] to X:[destination_turf.x] Y:[destination_turf.y] Z:[destination_turf.z] in area: [get_area(destination_turf)]")
+			log_admin("[user.real_name]([key_name(user)]) 使用暗影步从 X:[user_turf.x] Y:[user_turf.y] Z:[user_turf.z] 移动至 X:[destination_turf.x] Y:[destination_turf.y] Z:[destination_turf.z]，所在区域：[get_area(destination_turf)]")
 			if(user.m_intent == MOVE_INTENT_SNEAK)
 				playsound(user_turf, pick(sounds), 20, TRUE)
 				playsound(destination_turf, pick(sounds), 20, TRUE)

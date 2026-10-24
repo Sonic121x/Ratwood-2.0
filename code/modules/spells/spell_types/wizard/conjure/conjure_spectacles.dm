@@ -36,8 +36,8 @@
 	var/obj/item/clothing/mask/rogue/spectacles/conjured_spectacles = null
 
 	var/list/spectacles = list(
-		"Spectacles" = /obj/item/clothing/mask/rogue/spectacles,
-		"Nocshades" = /obj/item/clothing/mask/rogue/spectacles/inq_lesser_summoned,
+		"眼镜" = /obj/item/clothing/mask/rogue/spectacles,
+		"诺克遮光镜" = /obj/item/clothing/mask/rogue/spectacles/inq_lesser_summoned,
 		"金眼镜" = /obj/item/clothing/mask/rogue/spectacles/golden_lesser_summoned,
 		"银单片眼镜" = /obj/item/clothing/mask/rogue/spectacles/monocle,
 		"烟色缟玛瑙眼镜" = /obj/item/clothing/mask/rogue/spectacles/onyxa_lesser_summoned,

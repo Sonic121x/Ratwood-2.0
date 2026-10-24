@@ -3,69 +3,59 @@
 #define THOUSAND_ARROWS_GATHER_TIME (0.5 SECONDS)
 #define THOUSAND_ARROWS_GLOW "#8edcff"
 
-/obj/effect/proc_holder/spell/invoked/thousand_arrows
+/datum/action/cooldown/spell/z121/invoked/thousand_arrows
 	name = "万箭齐发"
 	desc = "以魔力托起周围散落的武器，使其环绕周身，再疾射向选定目标。奥术造诣越高，可同时驾驭的武器越多。奥术1至6级分别最多驾驭1至6把武器，点选目标后固定引导2秒。"
-	school = "transmutation"
 	spell_tier = 2
-	cost = 5
-	releasedrain = 30
-	chargedrain = 0
-	// 点选后在 perform 内引导，不再叠加鼠标按住蓄力。
-	chargetime = 0
-	recharge_time = 30 SECONDS
-	range = 7
-	human_req = TRUE
+	point_cost = 5
+	primary_resource_cost = 30
+	hold_drain = 0
+	// 点选后在效果入口引导两秒。
+	charge_time = 0
+	cooldown_time = 30 SECONDS
+	cast_range = 7
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z | SPELL_REQUIRES_NO_MOVE
 	gesture_required = TRUE
 	associated_skill = /datum/skill/magic/arcane
 	xp_gain = TRUE
 	miracle = FALSE
-	no_early_release = TRUE
-	movement_interrupt = TRUE
-	warnie = "spellwarning"
-	action_icon = 'modular_z121/icon/custompell.dmi'
-	overlay_state = "thousand_arrows"
+	button_icon = 'modular_z121/icon/custompell.dmi'
+	button_icon_state = "thousand_arrows"
 	invocations = list("万兵听令，破空齐发！")
 	invocation_type = "shout"
-	glow_color = GLOW_COLOR_ARCANE
+	spell_color = GLOW_COLOR_ARCANE
 	glow_intensity = GLOW_INTENSITY_MEDIUM
 	var/obj/effect/z121_arrow_volley/volley
 	var/channeling = FALSE
 	var/chant_spoken = FALSE
 
-/obj/effect/proc_holder/spell/invoked/thousand_arrows/Destroy()
+/datum/action/cooldown/spell/z121/invoked/thousand_arrows/Destroy()
 	QDEL_NULL(volley)
 	return ..()
 
-/obj/effect/proc_holder/spell/invoked/thousand_arrows/Click()
+/datum/action/cooldown/spell/z121/invoked/thousand_arrows/Trigger(trigger_flags)
 	if(channeling)
-		deactivate(usr)
+		z121_deactivate(owner)
 		return
 	return ..()
 
-/obj/effect/proc_holder/spell/invoked/thousand_arrows/on_deactivation(mob/user)
+/datum/action/cooldown/spell/z121/invoked/thousand_arrows/on_deactivation(mob/user)
 	QDEL_NULL(volley)
 	return ..()
 
-/obj/effect/proc_holder/spell/invoked/thousand_arrows/InterceptClickOn(mob/living/caller, params, atom/target)
-	// 重复点选不能重入 cast_check，或退还正在引导的这次施法。
+/datum/action/cooldown/spell/z121/invoked/thousand_arrows/InterceptClickOn(mob/living/caller, params, atom/target)
+	// 重复点选不能重入 z121_check，或退还正在引导的这次施法。
 	if(channeling)
 		return TRUE
 	return ..()
 
-/obj/effect/proc_holder/spell/invoked/thousand_arrows/process()
-	if(channeling)
-		last_process_time = world.time
-		return
-	return ..()
-
-/obj/effect/proc_holder/spell/invoked/thousand_arrows/invocation(mob/user = usr)
+/datum/action/cooldown/spell/z121/invoked/thousand_arrows/invocation(mob/user = usr)
 	if(chant_spoken)
 		return
 	. = ..()
 	chant_spoken = TRUE
 
-/obj/effect/proc_holder/spell/invoked/thousand_arrows/get_spell_statistics(mob/living/user)
+/datum/action/cooldown/spell/z121/invoked/thousand_arrows/get_spell_statistics(mob/living/user)
 	var/list/stats = ..()
 	stats -= span_info("蓄力时间：无")
 	stats += span_info("点选后引导：2秒（固定）")
@@ -73,7 +63,7 @@
 		stats += span_info("最多驾驭武器：[clamp(user.get_skill_level(associated_skill), 0, 6)]把")
 	return stats
 
-/obj/effect/proc_holder/spell/invoked/thousand_arrows/proc/valid_target(atom/target, mob/living/user)
+/datum/action/cooldown/spell/z121/invoked/thousand_arrows/proc/valid_target(atom/target, mob/living/user)
 	if(QDELETED(target) || QDELETED(user) || !isturf(user.loc))
 		return FALSE
 	if(!isturf(target) && !ismob(target) && !isobj(target))
@@ -81,11 +71,11 @@
 	var/turf/target_turf = get_turf(target)
 	if(!target_turf || target_turf == user.loc || target_turf.z != user.z)
 		return FALSE
-	if(get_dist(user, target_turf) > range)
+	if(get_dist(user, target_turf) > cast_range)
 		return FALSE
-	return target in view(range, user)
+	return target in view(cast_range, user)
 
-/obj/effect/proc_holder/spell/invoked/thousand_arrows/proc/eligible_weapon(obj/item/weapon, mob/living/user)
+/datum/action/cooldown/spell/z121/invoked/thousand_arrows/proc/eligible_weapon(obj/item/weapon, mob/living/user)
 	if(QDELETED(weapon) || !isturf(weapon.loc) || weapon.anchored || weapon.throwing)
 		return FALSE
 	if(!istype(weapon, /obj/item/rogueweapon) && !istype(weapon, /obj/item/gun))
@@ -94,7 +84,7 @@
 		return FALSE
 	return weapon in view(1, user)
 
-/obj/effect/proc_holder/spell/invoked/thousand_arrows/proc/select_weapons(mob/living/user, weapon_limit)
+/datum/action/cooldown/spell/z121/invoked/thousand_arrows/proc/select_weapons(mob/living/user, weapon_limit)
 	var/list/nearby = list()
 	var/list/at_feet = list()
 	for(var/obj/item/weapon in view(1, user))
@@ -112,21 +102,17 @@
 		selected += weapon
 	return selected
 
-/obj/effect/proc_holder/spell/invoked/thousand_arrows/proc/refund_volley(mob/living/user)
+/datum/action/cooldown/spell/z121/invoked/thousand_arrows/proc/refund_volley(mob/living/user)
 	QDEL_NULL(volley)
 	channeling = FALSE
 	chant_spoken = FALSE
 	if(!QDELETED(user))
-		revert_cast(user)
-	else
-		charge_counter = recharge_time
-		last_process_time = world.time
-		START_PROCESSING(SSfastprocess, src)
+		z121_cancel(user)
 
-/obj/effect/proc_holder/spell/invoked/thousand_arrows/proc/channel_is_intact(mob/living/user)
+/datum/action/cooldown/spell/z121/invoked/thousand_arrows/proc/channel_is_intact(mob/living/user)
 	if(QDELETED(src) || QDELETED(volley) || QDELETED(user))
 		return FALSE
-	if(!active || ranged_ability_user != user || !length(volley.weapons))
+	if(!z121_casting || owner != user || !length(volley.weapons))
 		return FALSE
 	if(user.loc != volley.origin || user.stat || HAS_TRAIT(user, TRAIT_SPELLCOCKBLOCK) || HAS_TRAIT(user, TRAIT_PARALYSIS))
 		return FALSE
@@ -136,7 +122,9 @@
 			return FALSE
 	return TRUE
 
-/obj/effect/proc_holder/spell/invoked/thousand_arrows/perform(list/targets, recharge = TRUE, mob/user = usr)
+/datum/action/cooldown/spell/z121/invoked/thousand_arrows/z121_apply(atom/cast_on)
+	var/list/targets = list(cast_on)
+	var/mob/living/user = owner
 	if(channeling || QDELETED(user) || !isliving(user))
 		return FALSE
 	var/mob/living/caster = user
@@ -189,14 +177,19 @@
 		refund_volley(caster)
 		return FALSE
 
-	// 仅在引导成功后进入通用 perform，由框架结算一次疲劳、经验及冷却。
-	. = ..(targets, recharge, caster)
+	// 引导成功后发射，由新版动作统一结算资源与冷却。
+	if(!check_cost() || !can_cast_spell(TRUE))
+		refund_volley(caster)
+		return FALSE
+	. = launch_volley(target)
 	if(!QDELETED(src))
 		QDEL_NULL(volley)
 		channeling = FALSE
 		chant_spoken = FALSE
 
-/obj/effect/proc_holder/spell/invoked/thousand_arrows/cast(list/targets, mob/living/user = usr)
+/datum/action/cooldown/spell/z121/invoked/thousand_arrows/proc/launch_volley(atom/cast_on)
+	var/list/targets = list(cast_on)
+	var/mob/living/user = owner
 	if(QDELETED(volley) || !valid_target(targets[1], user))
 		refund_volley(user)
 		return FALSE
@@ -209,10 +202,7 @@
 		to_chat(user, span_warning("没有武器成功破空而出。"))
 		refund_volley(user)
 		return FALSE
-	// 从实际齐射时刻开始冷却，读条时间不计入冷却。
-	charge_counter = 0
-	last_process_time = world.time
-	..()
+	// 冷却与资源在返回成功后由新版动作统一结算。
 	return TRUE
 
 // 真实武器只在这次引导期间存放于此，外观由独立的临时对象显示。
@@ -422,3 +412,7 @@
 #undef THOUSAND_ARROWS_CHANNEL_TIME
 #undef THOUSAND_ARROWS_GATHER_TIME
 #undef THOUSAND_ARROWS_GLOW
+
+// 引导时已经念咒，成功结算时无需重复播报。
+/datum/action/cooldown/spell/z121/invoked/thousand_arrows/before_cast(atom/cast_on)
+	return ..() | SPELL_NO_FEEDBACK

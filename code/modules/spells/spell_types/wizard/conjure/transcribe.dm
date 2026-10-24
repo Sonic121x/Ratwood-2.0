@@ -152,8 +152,8 @@
 	if(speaker == src)
 		return
 	timestamp += used_capacity
-	var/speaker_description = "Unknown"
-	var/speaker_stature = "Person"
+	var/speaker_description = "未知"
+	var/speaker_stature = "人物"
 	if(ismob(speaker))
 		var/mob/living/carbon/human/target = speaker
 		var/list/d_list = target.get_mob_descriptors()

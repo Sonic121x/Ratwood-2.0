@@ -107,7 +107,7 @@
 	if(hit_count)
 		H.visible_message(span_danger("[H]握紧[H.p_their()]的拳头，将[hit_count > 1 ? "众敌" : "一名敌人"]拉向[H.p_them()]！"))
 
-	log_combat(H, null, "used Grasp of Psydon[empowered ? " (empowered)" : ""]")
+	log_combat(H, null, "使用了 [name][empowered ? "（强化）" : ""]")
 
 /obj/effect/temp_visual/grasp_telegraph
 	icon = 'icons/effects/effects.dmi'

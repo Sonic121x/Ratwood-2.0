@@ -336,7 +336,7 @@
 			if(user?.client)
 				record_round_statistic(STATS_CRITS_MADE)
 			if(owner.client || owner.mind)
-				log_combat(user, owner, "critically wounded", null, "([applied.name] to [parse_zone(zone_precise)])", severe = TRUE)
+				log_combat(user, owner, "造成了重创", null, "（[parse_zone(zone_precise)]：[applied.name]）", severe = TRUE)
 			return applied
 	return FALSE
 
@@ -422,7 +422,7 @@
 			if(user?.client)
 				record_round_statistic(STATS_CRITS_MADE)
 			if(owner.client || owner.mind)
-				log_combat(user, owner, "critically wounded", null, "([applied.name] to [parse_zone(zone_precise)])", severe = TRUE)
+				log_combat(user, owner, "造成了重创", null, "（[parse_zone(zone_precise)]：[applied.name]）", severe = TRUE)
 			return applied
 	return FALSE
 
@@ -549,14 +549,14 @@
 
 	// We want to apply knockout AFTER resistance check so you don't need two rolls to resist.
 	if(try_knockout)
-		owner.next_attack_msg += " <span class='crit'><b>Critical hit!</b> [owner] is knocked out[from_behind ? " FROM BEHIND" : ""]!</span>"
+		owner.next_attack_msg += " <span class='crit'><b>重创！</b>[owner]被[from_behind ? "从背后" : ""]击昏了！</span>"
 		owner.flash_fullscreen("whiteflash3")
 		owner.Unconscious(5 SECONDS + (from_behind * 10 SECONDS))
 		if(owner.client)
 			winset(owner.client, "outputwindow.output", "max-lines=1")
 			winset(owner.client, "outputwindow.output", "max-lines=100")
 		if(owner.client || owner.mind)
-			log_combat(user, owner, "critically knocked out[from_behind ? " from behind" : ""]", severe = TRUE)
+			log_combat(user, owner, "[from_behind ? "从背后" : ""]重击并击昏了", severe = TRUE)
 
 
 	for(var/wound_type in shuffle(attempted_wounds))
@@ -565,7 +565,7 @@
 			if(user?.client)
 				record_round_statistic(STATS_CRITS_MADE)
 			if(owner.client || owner.mind)
-				log_combat(user, owner, "critically wounded", null, "([applied.name] to [parse_zone(zone_precise)])", severe = TRUE)
+				log_combat(user, owner, "造成了重创", null, "（[parse_zone(zone_precise)]：[applied.name]）", severe = TRUE)
 			return applied
 	return FALSE
 

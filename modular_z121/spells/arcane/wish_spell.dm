@@ -18,7 +18,7 @@
 #define WISH_MANA_COST        18           // 法术点 / 法力消耗（学习与施放该法术所需的 cost）
 #define WISH_CHANNEL_TIME     (10 SECONDS) // do_after 引导时长（蓄力 10 秒）
 #define WISH_COOLDOWN         (10800 SECONDS) // 成功施放后的冷却（3 小时）
-#define WISH_FATIGUE_DRAIN    80            // 每次施放消耗的疲劳（releasedrain）
+#define WISH_FATIGUE_DRAIN    80            // 每次施放消耗的疲劳（primary_resource_cost）
 
 #define WISH_WEALTH_AMOUNT    100           // “泼天富贵”生成的金币数量
 #define WISH_STAT_BONUS       3             // “属性飞升”为每项主属性永久增加的点数
@@ -45,59 +45,50 @@
 // ===========================================================================
 // 法术本体
 // ---------------------------------------------------------------------------
-// 选用 /spell/self 作为基类：因为施法者点击图标后只针对“自己”发起引导，
+// 选用 /datum/action/cooldown/spell/z121/self 作为基类：因为施法者点击图标后只针对“自己”发起引导，
 // 真正的“选谁复活 / 杀谁”是在引导成功后再通过弹窗决定的，而不是施法前先点地块。
 // 这样最契合“先吟唱蓄力、再许愿”的流程。
-/obj/effect/proc_holder/spell/self/wish_spell
+/datum/action/cooldown/spell/z121/self/wish_spell
 	name = "心想事成"
 	desc = "传说中近乎万能的终极法术。据说唯有真正参透魔法终极奥秘的大魔导师，方能驾驭它。\n\
 	成功许愿后需要等待3小时才能再次施放，不受智力或加速影响。这道法术无法遗忘。"
-	school = "transmutation"
 	spell_tier = 4                         // T4 法术
-	cost = WISH_MANA_COST                  // “法力 / 法术点”消耗 = 18
-	releasedrain = WISH_FATIGUE_DRAIN      // 每次施放的疲劳消耗
-	chargedrain = 0
-	chargetime = WISH_CHANNEL_TIME         // 引导时长（get_chargetime() 会返回它驱动 do_after）
-	recharge_time = WISH_COOLDOWN          // 实际冷却固定为 3 小时
+	point_cost = WISH_MANA_COST                  // “法力 / 法术点”消耗 = 18
+	primary_resource_cost = WISH_FATIGUE_DRAIN      // 每次施放的疲劳消耗
+	hold_drain = 0
+	charge_time = WISH_CHANNEL_TIME         // 引导时长（get_charge_time() 会返回它驱动 do_after）
+	cooldown_time = WISH_COOLDOWN          // 实际冷却固定为 3 小时
 	cooldown_min = WISH_COOLDOWN
 	is_cdr_exempt = TRUE
-	charge_type = "recharge"               // 使用“充能”式冷却（默认）
-	human_req = TRUE                       // 只有人类施法者能驾驭
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z | SPELL_REQUIRES_NO_MOVE
 	refundable = FALSE                     // 不可退款 避免绕过冷却
-	warnie = "spellwarning"                
-	no_early_release = TRUE                // 引导未完成不允许提前释放
-	movement_interrupt = TRUE              // 引导期间移动会被打断（终极法术需要专注）
-	charging_slowdown = 2                  // 引导时减速，体现“凝聚伟力”的代价
-	chargedloop = /datum/looping_sound/invokegen // 引导期间循环播放的施法音效
+	charge_slowdown = 2                  // 引导时减速，体现“凝聚伟力”的代价
 	associated_skill = /datum/skill/magic/arcane
-	action_icon = 'modular_z121/icon/custompell.dmi'
-	overlay_state = "wish_spell"                 // 动作按钮的图标态（若 dmi 暂无该态仅显示为空，不影响编译）
+	button_icon = 'modular_z121/icon/custompell.dmi'
+	button_icon_state = "wish_spell"                 // 动作按钮的图标态（若 dmi 暂无该态仅显示为空，不影响编译）
 	invocations = list("实现我的愿望吧!") // 咒文（按规格在“开始引导”时喊出）
 	invocation_type = "shout"
-	glow_color = GLOW_COLOR_ARCANE
+	spell_color = GLOW_COLOR_ARCANE
 	glow_intensity = GLOW_INTENSITY_VERY_HIGH
 	gesture_required = TRUE                // 需要能自由活动的手来施法
 	miracle = FALSE
 	xp_gain = TRUE
-	sound = null                           // 不在 perform 里额外播放音效，引导音由 chargedloop 负责
+	sound = null                           // 不在 z121_cast_selected 里额外播放音效，引导音由 chargedloop 负责
 
 // ---------------------------------------------------------------------------
-// choose_targets：施法入口（点击图标后由 Click -> cast_check -> choose_targets 调用）
 // 在这里完成两件“施法前”的事：1) 立即喊出咒文；2) do_after 引导 10 秒。
-// 引导成功后才调用 perform() 进入真正的 cast()。
 // ---------------------------------------------------------------------------
-/obj/effect/proc_holder/spell/self/wish_spell/choose_targets(mob/user = usr)
-	// 没有施法者就直接撤销，避免空指针。revert_cast() 会把冷却恢复为“可用”状态。
+/datum/action/cooldown/spell/z121/self/wish_spell/z121_choose_targets(mob/user = usr)
+	// 没有施法者就直接撤销，避免空指针。z121_cancel() 会把冷却恢复为“可用”状态。
 	if(!user)
-		revert_cast()
-		return
-
+		z121_cancel()
+		return FALSE
 	// 规格要求“开始引导时”就念出咒文，因此这里手动调用一次 invocation()。
-	// （稍后在 perform() 中我们会临时屏蔽 invocation，以免咒文被重复喊两遍。）
+	// （稍后在 z121_cast_selected() 中我们会临时屏蔽 invocation，以免咒文被重复喊两遍。）
 	invocation(user)
 
-	// 取得引导时长（= chargetime）。用 do_after 实现“可被打断的 10 秒蓄力”。
-	var/cast_time = get_chargetime()
+	// 取得引导时长（= charge_time）。用 do_after 实现“可被打断的 10 秒蓄力”。
+	var/cast_time = get_charge_time()
 	if(cast_time > 0)
 		user.visible_message(
 			span_warning("[user] 高举双手，磅礴的魔力开始向 [user.p_their()] 周身汇聚，仿佛要向世界本身许下一个愿望……"),
@@ -107,16 +98,16 @@
 		// progress = TRUE 显示进度条；target = user 表示这是对自身的引导动作。
 		if(!do_after(user, cast_time, target = user, progress = TRUE))
 			to_chat(user, span_warning("我对终极魔力的掌控被打断了，这个愿望落空了！"))
-			revert_cast(user) // 引导失败：退还冷却，让施法者可以重新尝试
+			z121_cancel(user) // 引导失败：退还冷却，让施法者可以重新尝试
 			return
 
-	// 引导成功。进入 perform 之前临时清空 invocations，防止 perform 成功后又喊一次咒文。
+	// 引导成功。进入 z121_cast_selected 之前临时清空 invocations，防止 z121_cast_selected 成功后又喊一次咒文。
 	var/list/original_invocations = invocations
 	var/original_invocation_type = invocation_type
 	invocations = null
 	invocation_type = "none"
-	// /spell/self 的 cast 只作用于施法者本人，targets 传 null 即可。
-	perform(null, user = user)
+	// /datum/action/cooldown/spell/z121/self 的 cast 只作用于施法者本人，targets 传 null 即可。
+	z121_cast_selected(null, user = user)
 	// 还原咒文设置，避免影响下一次施放。
 	invocations = original_invocations
 	invocation_type = original_invocation_type
@@ -124,14 +115,13 @@
 // ---------------------------------------------------------------------------
 // cast：引导成功后真正执行的逻辑。弹出 7 选 1 菜单并分发到对应效果。
 // 返回值约定：
-	//   - 返回 TRUE  -> perform() 会调用 start_recharge()，进入 3 小时冷却（愿望已实现）。
-//   - 返回 FALSE -> 各效果 proc 内部已调用 revert_cast() 退还冷却（愿望取消/失败）。
 // ---------------------------------------------------------------------------
-/obj/effect/proc_holder/spell/self/wish_spell/cast(list/targets, mob/living/user = usr)
+/datum/action/cooldown/spell/z121/self/wish_spell/z121_apply(atom/cast_on)
+	var/mob/living/user = owner
 	. = ..()
 	// 安全校验：施法者必须仍然有效且健在，才能继续许愿。
 	if(!user || QDELETED(user))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// 7 个愿望选项。用 static 列表避免每次施放都重建。
@@ -151,11 +141,11 @@
 	// 优雅处理“取消/关闭菜单”：没有选择就退还冷却，不浪费这次珍贵的施法。
 	if(isnull(choice))
 		to_chat(user, span_warning("我迟疑了，终极的魔力悄然消散——这次没有许下任何愿望。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// 把选择分发给各自的效果处理过程。每个过程自行返回 TRUE/FALSE，
-	// 并在自身失败路径里负责调用 revert_cast()。
+	// 并在自身失败路径里负责调用 z121_cancel()。
 	switch(choice)
 		if(WISH_OPT_RESURRECT)
 			return wish_resurrect(user)
@@ -173,14 +163,14 @@
 			return wish_gain_trait(user)
 
 	// 理论上不会走到这里（choice 一定是上面 7 项之一），但仍做兜底以防万一。
-	revert_cast()
+	z121_cancel()
 	return FALSE
 
 // ===========================================================================
 // 效果 1：复活生者
 // 让施法者从视野内的“尸体”中选择一个，将其满血复活。
 // ===========================================================================
-/obj/effect/proc_holder/spell/self/wish_spell/proc/wish_resurrect(mob/living/user)
+/datum/action/cooldown/spell/z121/self/wish_spell/proc/wish_resurrect(mob/living/user)
 	// 收集施法者视野范围内、状态为 DEAD 的活体生物，建立“显示名 -> 目标”映射。
 	var/list/candidates = list()
 	for(var/mob/living/L in view(WISH_TARGET_RANGE, user))
@@ -195,21 +185,21 @@
 	// 错误处理：附近没有可复活的目标。
 	if(!length(candidates))
 		to_chat(user, span_warning("我的视野之内没有任何可以复活的逝者。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// 弹窗选择目标。可取消。
 	var/chosen_label = tgui_input_list(user, "选择要复活的逝者：", "复活逝者", candidates)
 	if(isnull(chosen_label))
 		to_chat(user, span_warning("我收回了复活的念头。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	var/mob/living/target = candidates[chosen_label]
 	// 二次校验：从弹窗弹出到玩家点选之间，目标可能已被删除或已被他人复活。
 	if(QDELETED(target) || target.stat != DEAD)
 		to_chat(user, span_warning("那具躯体已经不在我能触及的彼岸了。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// 把游魂拉回躯体（force = TRUE 强制夺回控制权），再执行满血复活。
@@ -217,7 +207,7 @@
 	// revive(full_heal = TRUE)：满血复活；若因缺少大脑等原因无法复活会返回 FALSE。
 	if(!target.revive(full_heal = TRUE))
 		to_chat(user, span_warning("一股力量阻止了复活——这具躯体已无法再容纳生命。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// 表现层：复活成功的提示与小动作。
@@ -234,7 +224,7 @@
 // 效果 2：夺取性命
 // 让施法者从视野内的活体目标中选择一个，将其立即处死。
 // ===========================================================================
-/obj/effect/proc_holder/spell/self/wish_spell/proc/wish_kill(mob/living/user)
+/datum/action/cooldown/spell/z121/self/wish_spell/proc/wish_kill(mob/living/user)
 	// 只约束夺命分支，其余许愿效果不改变；弹窗期间离腹则取消这次内部攻击。
 	var/datum/z121_serpent_cast/context
 	var/obj/effect/z121_serpent_stomach/stomach = user.loc
@@ -255,21 +245,21 @@
 	// 错误处理：附近没有可击杀目标。
 	if(!length(candidates))
 		to_chat(user, span_warning("我的视野之内没有可以夺取性命的活物。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// 弹窗选择目标。可取消。
 	var/chosen_label = tgui_input_list(user, "选择要夺取性命的目标：", "夺取性命", candidates)
 	if(isnull(chosen_label))
 		to_chat(user, span_warning("我心生不忍，收回了这个杀念。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	var/mob/living/target = candidates[chosen_label]
 	// 二次校验：目标可能在选择期间已离开或死亡。
 	if(QDELETED(target) || target.stat == DEAD || (context && context.host() != target))
 		to_chat(user, span_warning("目标已经不在了。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// 反魔法检定：被反魔法保护的目标可以抵御这道致死愿望，体现“几乎万能”而非“绝对万能”。
@@ -280,7 +270,7 @@
 		)
 		to_chat(user, span_warning("[target] 身上的反魔法抵消了我的愿望。"))
 		playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
-		revert_cast() // 被抵抗也退还冷却，避免“无效一击”浪费 3 小时
+		z121_cancel() // 被抵抗也退还冷却，避免“无效一击”浪费 3 小时
 		return FALSE
 
 	// 执行处死：先灌入足以致命的伤害（保证即便有韧性/护甲也必死），再显式调用 death()。
@@ -302,12 +292,12 @@
 // 效果 3：泼天富贵
 // 在施法者脚下生成一大堆金币。
 // ===========================================================================
-/obj/effect/proc_holder/spell/self/wish_spell/proc/wish_wealth(mob/living/user)
+/datum/action/cooldown/spell/z121/self/wish_spell/proc/wish_wealth(mob/living/user)
 	var/turf/spot = get_turf(user)
 	// 错误处理：施法者不在任何地块上（理论上不会发生，但稳妥起见）。
 	if(!spot)
 		to_chat(user, span_warning("脚下空无一物，财富无处落脚。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// roguecoin 的 Initialize(mapload, coin_amount) 支持直接指定数量，
@@ -325,7 +315,7 @@
 // 效果 4：属性飞升
 // 永久提升施法者的全部主属性。change_stat() 自带 1~20 的上下限保护。
 // ===========================================================================
-/obj/effect/proc_holder/spell/self/wish_spell/proc/wish_increase_stats(mob/living/user)
+/datum/action/cooldown/spell/z121/self/wish_spell/proc/wish_increase_stats(mob/living/user)
 	// 把所有主属性键放进列表，循环逐项 +WISH_STAT_BONUS，避免重复七行近乎相同的代码。
 	var/static/list/all_stat_keys = list(
 		STATKEY_STR, STATKEY_PER, STATKEY_INT,
@@ -347,12 +337,12 @@
 // 效果 5：技艺精进
 // 把施法者“已经掌握”的每个技能各提升 WISH_SKILL_BONUS 级。
 // ===========================================================================
-/obj/effect/proc_holder/spell/self/wish_spell/proc/wish_upgrade_skills(mob/living/user)
+/datum/action/cooldown/spell/z121/self/wish_spell/proc/wish_upgrade_skills(mob/living/user)
 	// 拿到施法者的技能持有者（skill_holder）。ensure_skills() 保证其一定存在。
 	var/datum/skill_holder/holder = user.ensure_skills()
 	if(!holder)
 		to_chat(user, span_warning("我体内没有可供精进的技艺。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	var/upgraded_any = FALSE
@@ -368,7 +358,7 @@
 	// 错误处理：施法者一项技能都没有时给出反馈，但仍退还冷却以免白费。
 	if(!upgraded_any)
 		to_chat(user, span_warning("我还没有任何可供精进的技能。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	user.visible_message(
@@ -389,7 +379,7 @@
 //      所以这一步对没有该特质的其他玩家没有任何影响。
 //   2) 给施法者 ADD_TRAIT 该特质（用 WISH_TRAIT_SOURCE 标记来源，便于追踪/移除）。
 // ===========================================================================
-/obj/effect/proc_holder/spell/self/wish_spell/proc/wish_break_limits(mob/living/user)
+/datum/action/cooldown/spell/z121/self/wish_spell/proc/wish_break_limits(mob/living/user)
 	// 第 1 步：确保 uncap 特质已登记到全部技能的 trait_uncap（全局只需做一次）。
 	ensure_wish_uncap_registered()
 
@@ -409,7 +399,7 @@
 // 把自定义 uncap 特质登记进“所有技能”的 trait_uncap 表。
 // 用一个全局标志位保证整局游戏只执行一次（重复登记没有意义且浪费）。
 GLOBAL_VAR_INIT(wish_uncap_registered, FALSE)
-/obj/effect/proc_holder/spell/self/wish_spell/proc/ensure_wish_uncap_registered()
+/datum/action/cooldown/spell/z121/self/wish_spell/proc/ensure_wish_uncap_registered()
 	if(GLOB.wish_uncap_registered)
 		return // 已登记过，直接返回
 	GLOB.wish_uncap_registered = TRUE
@@ -428,7 +418,7 @@ GLOBAL_VAR_INIT(wish_uncap_registered, FALSE)
 // 效果 7：天赋恩赐
 // 让施法者从一组“正面特质”中选择其一，永久获得。
 // ===========================================================================
-/obj/effect/proc_holder/spell/self/wish_spell/proc/wish_gain_trait(mob/living/user)
+/datum/action/cooldown/spell/z121/self/wish_spell/proc/wish_gain_trait(mob/living/user)
 	// 候选正面特质：显示名 -> 特质常量。全部为主线已存在的增益型特质，
 	// 直接复用其定义即可，不在本模块外新增/修改任何特质。
 	var/static/list/beneficial_traits = list(
@@ -450,20 +440,20 @@ GLOBAL_VAR_INIT(wish_uncap_registered, FALSE)
 	// 错误处理：所有可选正面特质都已拥有。
 	if(!length(selectable))
 		to_chat(user, span_warning("我已经拥有了这道愿望所能赋予的全部天赋。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// 弹窗选择想要的特质。可取消。
 	var/chosen_label = tgui_input_list(user, "选择你想要永久获得的天赋：", "天赋恩赐", selectable)
 	if(isnull(chosen_label))
 		to_chat(user, span_warning("我一时拿不定主意，没有选择任何天赋。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	var/chosen_trait = selectable[chosen_label]
 	// 二次兜底：理论上 chosen_label 一定在表中，但仍校验以防异常输入。
 	if(isnull(chosen_trait))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// 用唯一来源永久赋予该特质。带 source 的 ADD_TRAIT 会一直存在，直到被显式移除。
@@ -476,15 +466,7 @@ GLOBAL_VAR_INIT(wish_uncap_registered, FALSE)
 	to_chat(user, span_notice("我永久获得了天赋：[chosen_label]。"))
 	return TRUE
 
-// 本法术单独计时，不调用会叠加智力与地脉加速的通用 start_recharge。
-// 成功许愿从此刻重新计满三小时；revert_cast 随后补满 charge_counter，保留失败返还。
-/obj/effect/proc_holder/spell/self/wish_spell/start_recharge()
-	recharge_time = WISH_COOLDOWN
-	charge_counter = 0
-	last_process_time = world.time
-	START_PROCESSING(SSfastprocess, src)
-
-/obj/effect/proc_holder/spell/self/wish_spell/calculate_cooldown(mob/living/user)
+/datum/action/cooldown/spell/z121/self/wish_spell/get_adjusted_cooldown()
 	return WISH_COOLDOWN
 
 // ===== 清理顶部定义的宏，避免泄漏到全局命名空间、与其它文件冲突 =====

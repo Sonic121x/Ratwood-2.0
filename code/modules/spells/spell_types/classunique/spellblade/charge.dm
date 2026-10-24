@@ -93,7 +93,7 @@
 		to_chat(H, span_warning("我的冲锋受阻了！"))
 		return FALSE
 
-	log_combat(H, null, "used Charge!")
+	log_combat(H, null, "使用了 [name]！")
 	return TRUE
 
 /datum/action/cooldown/spell/charge/proc/get_perpendicular_dirs(dir)

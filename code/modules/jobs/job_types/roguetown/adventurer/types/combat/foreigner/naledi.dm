@@ -106,7 +106,7 @@
 			ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
 
 			if(H.mind)
-				var/weapons = list("Path of War","Path of Shadows", "Path of Survival")
+				var/weapons = list("战争之道","暗影之道", "生存之道")
 				var/weapon_choice = input(H, "选择你的道路。", "你正行走于哪条未竟之道？") as anything in weapons
 				switch(weapon_choice)
 					if("战争之道")//Weak combat stuff only

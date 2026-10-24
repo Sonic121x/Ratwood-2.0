@@ -24,7 +24,7 @@
 	to_chat_immediate(summoner, "奥术低语滑入我的脑海，最终化作[user.real_name]的声音：<font color=#7246ff>[message]</font>")
 	user.visible_message("[user.name]低声念出咒语，嘴边短暂闪过一道白光。")
 	user.whisper(message)
-	log_game("[key_name(user)] sent a message to [key_name(summoner)] with contents [message]")
+	log_game("[key_name(user)] 向 [key_name(summoner)] 发送了讯息，内容为：[message]")
 	return TRUE
 
 /obj/effect/proc_holder/spell/self/stillness_of_stone

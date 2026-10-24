@@ -21,7 +21,7 @@
 /obj/effect/proc_holder/spell/proc/z121_custom_cooldown_allowed()
 	if(charge_type != "recharge" || is_cdr_exempt)
 		return FALSE
-	if(istype(src, /obj/effect/proc_holder/spell/self/wish_spell) || istype(src, /obj/effect/proc_holder/spell/invoked/resurrect) || istype(src, /obj/effect/proc_holder/spell/invoked/revive) || istype(src, /obj/effect/proc_holder/spell/invoked/evil_resurrect) || istype(src, /obj/effect/proc_holder/spell/invoked/bless_food))
+	if(istype(src, /datum/action/cooldown/spell/z121/self/wish_spell) || istype(src, /obj/effect/proc_holder/spell/invoked/resurrect) || istype(src, /obj/effect/proc_holder/spell/invoked/revive) || istype(src, /obj/effect/proc_holder/spell/invoked/evil_resurrect) || istype(src, /obj/effect/proc_holder/spell/invoked/bless_food))
 		return FALSE
 	return TRUE
 
@@ -94,3 +94,9 @@
 		if(HAS_TRAIT(user, TRAIT_LEYLINE_HASTE))
 			base *= 0.75
 	return base * multiplier
+
+/datum/action/cooldown/spell/get_adjusted_cooldown()
+	. = ..()
+	var/mob/living/caster = owner
+	if(istype(caster))
+		. *= caster.z121_spell_cooldown_multiplier

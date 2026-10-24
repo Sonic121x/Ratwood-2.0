@@ -190,7 +190,7 @@
 	return INITIALIZE_HINT_QDEL
 
 /obj/item/roguegem/randomgeode	//For carvable gems that are worth much less then standard gems. Should be more frequently found.
-	name = "random geode gem"
+	name = "随机晶洞宝石"
 	desc = "你不该看到这个。"
 /obj/item/roguegem/randomgeode/Initialize(mapload)
 	..()

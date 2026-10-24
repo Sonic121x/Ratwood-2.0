@@ -90,7 +90,7 @@
 	to_chat(user, span_notice("我感觉自己已经掌握了足够的心得，能够施放[spellname]了！"))
 	var/datum/S = new spell
 	user.mind.AddSpell(S)
-	user.log_message("learned the spell [spellname] ([S])", LOG_ATTACK, color="orange")
+	user.log_message("学会了法术 [spellname] ([S])", LOG_ATTACK, color="orange")
 	onlearned(user)
 
 /obj/item/book/granter/spell/random
@@ -195,7 +195,7 @@
 	name = "飞行术卷轴"
 	desc = "教你施展飞行术。"
 	spell = /datum/action/cooldown/spell/fly
-	spellname = "Fly"
+	spellname = "飞行术"
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "scrolldarkred"
 	oneuse = TRUE

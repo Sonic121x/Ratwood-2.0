@@ -29,7 +29,7 @@
 	GLOB.player_list |= src
 	lastKnownIP	= client.address
 	computer_id	= client.computer_id
-	log_access("Mob Login: [key_name(src)] was assigned to a [type]")
+	log_access("角色登录：[key_name(src)] 被分配至 [type]")
 	world.update_status()
 	client.screen = list()				//remove hud items just in case
 	client.images = list()
@@ -99,7 +99,7 @@
 		do_game_over()
 
 	SEND_SIGNAL(src, COMSIG_MOB_LOGIN)
-	log_message("Client [key_name(src)] has taken ownership of mob [src]([src.type])", LOG_OWNERSHIP)
+	log_message("客户端 [key_name(src)] 已接管角色 [src]([src.type])", LOG_OWNERSHIP)
 	enable_client_mobs_in_contents(client)
 	SEND_SIGNAL(src, COMSIG_MOB_CLIENT_LOGIN, client)
 	client?.preload_music()

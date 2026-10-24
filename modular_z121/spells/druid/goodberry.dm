@@ -2,27 +2,28 @@
 /datum/patron/divine/dendor/New()
 	. = ..()
 	miracles = miracles.Copy()
-	miracles[/obj/effect/proc_holder/spell/self/goodberry] = CLERIC_T1
+	miracles[/datum/action/cooldown/spell/z121/self/goodberry] = CLERIC_T1
 
-/obj/effect/proc_holder/spell/self/goodberry
+/datum/action/cooldown/spell/z121/self/goodberry
 	name = "神莓术"
 	desc = "好吃的莓果，新鲜的莓果，多汁的莓果，要不要来一个？"
 	spell_tier = 1
 	miracle = TRUE
-	devotion_cost = 50
-	chargetime = 3 SECONDS
-	recharge_time = 12 MINUTES
+	primary_resource_type = SPELL_COST_DEVOTION
+	primary_resource_cost = 50
+	charge_time = 3 SECONDS
+	cooldown_time = 12 MINUTES
 	cooldown_min = 12 MINUTES
 	is_cdr_exempt = TRUE
-	human_req = TRUE
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
 	associated_skill = /datum/skill/magic/holy
-	action_icon = 'modular_z121/icon/custompell.dmi'
-	base_action = /datum/action/spell_action/spell/z121_goodberry
+	button_icon = 'icons/mob/actions/roguespells.dmi'
+	button_icon_state = "spell0"
 	var/channeling = FALSE
 	var/mob/living/carbon/human/channeling_user
 
 // 直接叠加现有图集中的完整莓果，卷轴底图沿用模块已有图标，不另存图标文件。
-/datum/action/spell_action/spell/z121_goodberry/apply_button_icon(atom/movable/screen/movable/action_button/current_button, force = FALSE)
+/datum/action/cooldown/spell/z121/self/goodberry/apply_button_icon(atom/movable/screen/movable/action_button/current_button, force = FALSE)
 	if(!button_icon || !button_icon_state || (!force && current_button.active_overlay_icon_state == button_icon_state))
 		return
 	. = ..()
@@ -31,36 +32,20 @@
 	berry_fruit.color = GLOB.berrycolors["good"] ? GLOB.berrycolors["good"] : "#6a6699"
 	current_button.add_overlay(berry_fruit)
 
-/obj/effect/proc_holder/spell/self/goodberry/Click()
+/datum/action/cooldown/spell/z121/self/goodberry/Trigger(trigger_flags)
 	// 冷却或引导中的重复点击不能触发父类的失败返还路径。
-	if(channeling || !ishuman(usr) || !charge_check(usr))
+	if(channeling || !ishuman(owner) || !z121_ready(owner))
 		return FALSE
 	return ..()
 
-/obj/effect/proc_holder/spell/self/goodberry/can_cast(mob/user = usr)
-	if(channeling)
-		return FALSE
-	return ..()
-
-/obj/effect/proc_holder/spell/self/goodberry/charge_check(mob/user, silent = FALSE)
+/datum/action/cooldown/spell/z121/self/goodberry/z121_ready(mob/user, silent = FALSE)
 	// 完成引导时只豁免本次已经预留的冷却，仍由父类复查其他施法条件。
 	if(channeling && user == channeling_user)
 		return TRUE
 	return ..()
 
-/obj/effect/proc_holder/spell/self/goodberry/process()
-	if(channeling)
-		last_process_time = world.time
-		return
-	return ..()
-
-/obj/effect/proc_holder/spell/self/goodberry/start_recharge()
-	// 通用启动逻辑仍会应用地脉加速，因此在此独立维持完整的十二分钟冷却。
-	recharge_time = initial(recharge_time)
-	last_process_time = world.time
-	START_PROCESSING(SSfastprocess, src)
-
-/obj/effect/proc_holder/spell/self/goodberry/cast(list/targets, mob/user = usr)
+/datum/action/cooldown/spell/z121/self/goodberry/z121_apply(atom/cast_on)
+	var/mob/user = owner
 	if(channeling)
 		return FALSE
 	if(!ishuman(user) || !user.mind)
@@ -73,15 +58,14 @@
 	var/client/casting_client = caster.client
 	channeling = TRUE
 	channeling_user = caster
-	STOP_PROCESSING(SSfastprocess, src)
 
 	to_chat(caster, span_notice("我向登多尔祈求一颗新鲜的莓果……"))
 	// 抵消通用动作速度系数，实际引导保持三秒，仍保留动作中断检查。
-	var/channel_delay = chargetime / max(0.01, caster.do_after_coefficent())
+	var/channel_delay = charge_time / max(0.01, caster.do_after_coefficent())
 	var/success = do_after(caster, channel_delay, target = caster, progress = TRUE, extra_checks = CALLBACK(src, PROC_REF(can_continue_goodberry), caster, casting_mind, casting_devotion, casting_client))
 	if(QDELETED(src))
 		return FALSE
-	if(!success || !can_continue_goodberry(caster, casting_mind, casting_devotion, casting_client) || !cast_check(TRUE, caster))
+	if(!success || !can_continue_goodberry(caster, casting_mind, casting_devotion, casting_client) || !z121_check(TRUE, caster))
 		if(!QDELETED(caster))
 			to_chat(caster, span_warning("我的祈求被打断了，莓果未能成形。"))
 		cancel_goodberry_cast(caster)
@@ -99,10 +83,9 @@
 
 	channeling = FALSE
 	channeling_user = null
-	charge_counter = 0
 	return TRUE
 
-/obj/effect/proc_holder/spell/self/goodberry/proc/can_continue_goodberry(mob/living/carbon/human/caster, datum/mind/casting_mind, datum/devotion/casting_devotion, client/casting_client)
+/datum/action/cooldown/spell/z121/self/goodberry/proc/can_continue_goodberry(mob/living/carbon/human/caster, datum/mind/casting_mind, datum/devotion/casting_devotion, client/casting_client)
 	if(QDELETED(src) || QDELETED(caster) || QDELETED(casting_mind) || QDELETED(casting_devotion))
 		return FALSE
 	if(!casting_client || caster.client != casting_client || caster.stat != CONSCIOUS || !get_turf(caster))
@@ -111,12 +94,12 @@
 		return FALSE
 	if(!(src in casting_mind.spell_list) && !(src in caster.mob_spell_list))
 		return FALSE
-	return casting_devotion.check_devotion(src)
+	return can_cast_spell(TRUE) && check_cost()
 
-/obj/effect/proc_holder/spell/self/goodberry/proc/cancel_goodberry_cast(mob/user)
+/datum/action/cooldown/spell/z121/self/goodberry/proc/cancel_goodberry_cast(mob/user)
 	channeling = FALSE
 	channeling_user = null
 	if(!QDELETED(user))
-		revert_cast(user)
+		z121_cancel(user)
 	else
-		finish_recharge()
+		reset_spell_cooldown()

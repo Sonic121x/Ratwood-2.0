@@ -106,7 +106,7 @@
 			new /obj/effect/temp_visual/snap_freeze(get_turf(L))
 			to_chat(L, span_danger("冰矛正中目标——寒意渗入我的骨髓！"))
 			if(firer)
-				log_combat(firer, L, "pilum-struck", zone=def_zone)
+				log_combat(firer, L, "以投矛命中了", zone=def_zone)
 	else if(isobj(target))
 		var/obj/O = target
 		O.extinguish()

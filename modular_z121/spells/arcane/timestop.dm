@@ -315,66 +315,60 @@
 // ===========================================================================
 // 法术本体：自施法术，引导（若有）后在脚下生成时间静止力场。
 // ===========================================================================
-/obj/effect/proc_holder/spell/self/timestop
+/datum/action/cooldown/spell/z121/self/timestop
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_SAME_Z | SPELL_REQUIRES_NO_MOVE
 	name = "时间暂停"
 	desc = "引导至少5秒后，暂停周围一小片区域的时间9秒；施法者可在静止的时流中自由行动。"
-	school = "transmutation"
-	action_icon = 'modular_z121/icon/custompell.dmi'
-	overlay_state = "timestop"
-	cost = 12                           // 法术点/法力消耗（T4 高耗）
-	releasedrain = 500                  // 施放抽取的巨量疲劳——体现“征服世界”的代价
-	chargedrain = 10
-	chargetime = 5 SECONDS              // 施法加速不能缩短，行动减速仍可延长
-	recharge_time = 2 MINUTES           // 冷却 2 分钟
+	button_icon = 'modular_z121/icon/custompell.dmi'
+	button_icon_state = "timestop"
+	point_cost = 12                           // 法术点/法力消耗（T4 高耗）
+	primary_resource_cost = 500                  // 施放抽取的巨量疲劳——体现“征服世界”的代价
+	hold_drain = 10
+	charge_time = 5 SECONDS              // 施法加速不能缩短，行动减速仍可延长
+	cooldown_time = 2 MINUTES           // 冷却 2 分钟
 	cooldown_min = 2 MINUTES            // 即便被加速，冷却也不低于 2 分钟
-	warnie = "spellwarning"
-	no_early_release = TRUE
-	movement_interrupt = TRUE
-	charging_slowdown = 2
-	chargedloop = /datum/looping_sound/invokegen
+	charge_slowdown = 2
 	associated_skill = /datum/skill/magic/arcane
 	spell_tier = 4
 	gesture_required = TRUE
-	invocations = list("THE WORLD!")
+	invocations = list("时流停滞！")
 	invocation_type = "shout"
-	glow_color = GLOW_COLOR_DISPLACEMENT
+	spell_color = GLOW_COLOR_DISPLACEMENT
 	glow_intensity = GLOW_INTENSITY_VERY_HIGH
 	sound = null
 	miracle = FALSE
 	xp_gain = TRUE
 
-/obj/effect/proc_holder/spell/self/timestop/get_chargetime()
+/datum/action/cooldown/spell/z121/self/timestop/get_charge_time(mob/living/user)
 	return 5 SECONDS
 
-/obj/effect/proc_holder/spell/self/timestop/calculate_chargetime(mob/living/user)
-	return 5 SECONDS
-
-/obj/effect/proc_holder/spell/self/timestop/choose_targets(mob/user = usr)
+/datum/action/cooldown/spell/z121/self/timestop/z121_choose_targets(mob/user = usr)
 	if(QDELETED(user))
 		return
 	var/action_coefficient = user.do_after_coefficent()
 	if(action_coefficient <= 0)
 		to_chat(user, span_warning("我现在无法稳定地引导时流。"))
-		revert_cast(user)
-		return
+		z121_cancel(user)
+		return FALSE
 	// do_after 会乘以行动时间系数；抵消加速部分，确保至少引导五秒。
-	var/cast_time = get_chargetime() / min(action_coefficient, 1)
+	var/cast_time = get_charge_time() / min(action_coefficient, 1)
 	if(!do_after(user, cast_time, target = user, progress = TRUE))
 		if(!QDELETED(src) && !QDELETED(user))
 			to_chat(user, span_warning("我的时流操控被打断了！"))
-			revert_cast(user)
-		return
+			z121_cancel(user)
+		return FALSE
 	if(QDELETED(src) || QDELETED(user))
 		return
-	// 成功后由 perform 调用标准 invocation，真正喊出一次 THE WORLD!。
-	perform(null, user = user)
+	// 成功后由 z121_cast_selected 调用标准 invocation，真正喊出一次 THE WORLD!。
+	z121_cast_selected(null, user = user)
 
-/obj/effect/proc_holder/spell/self/timestop/cast(list/targets, mob/living/user = usr)
+/datum/action/cooldown/spell/z121/self/timestop/z121_apply(atom/cast_on)
+	var/mob/living/user = owner
 	. = ..()
 	// 错误处理：施法者不在任何地块上（理论极端情况）则放弃并退还冷却。
 	var/turf/origin = get_turf(user)
 	if(!origin)
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// 生成力场；其 New() 自带“无有效地块即自毁”的兜底，这里无需重复校验。

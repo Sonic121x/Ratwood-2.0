@@ -11,7 +11,7 @@
 	. = ..()
 	// 复制继承的列表，仅调整枪匠，不改动原工会工匠的特质和技能。
 	traits_applied = traits_applied.Copy()
-	traits_applied -= list(TRAIT_ARCYNE_T1, TRAIT_MASTER_CARPENTER, TRAIT_MASTER_MASON)
+	traits_applied -= list(TRAIT_ARCYNE, TRAIT_MASTER_CARPENTER, TRAIT_MASTER_MASON)
 	traits_applied |= TRAIT_Z121_GUNSMITH
 	subclass_skills = subclass_skills.Copy()
 	subclass_skills[/datum/skill/craft/masonry] = SKILL_LEVEL_JOURNEYMAN

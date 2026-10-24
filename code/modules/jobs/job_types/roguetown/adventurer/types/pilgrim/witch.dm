@@ -53,7 +53,7 @@
 		var/classes = list("古老魔法", "神血", "秘仪师")
 		classchoice = input(H, "你的力量如何显现？", "古老之道") as anything in classes
 	if(!shapeshiftchoice)
-		var/shapeshifts = list("Zad", "Cat", "Cat (Black)", "Bat", "Lesser Volf", "Cabbit", "Small Rous", "Lesser Venard")
+		var/shapeshifts = list("扎德", "猫", "猫（黑）", "蝙蝠", "小型沃尔夫", "卡比特", "小型老鼠", "小型维纳德狐")
 		shapeshiftchoice = input(H, "你的第二层皮会化作什么形态？", "古老之道") as anything in shapeshifts
 	if(!skillchoice)
 		var/skillsets = list("草药师", "采集者")

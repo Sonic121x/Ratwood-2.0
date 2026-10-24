@@ -338,7 +338,7 @@
 	)
 
 /obj/effect/spawner/lootdrop/drow_equipment_spawner
-	name = "drow equipment spawner"
+	name = "黑暗精灵装备生成器"
 	icon_state = "drowweapon/armor"
 	lootcount = 1
 	loot = list(
@@ -446,7 +446,7 @@
 	)
 
 /obj/effect/spawner/lootdrop/zizo
-	name = "Zizo物品生成器"
+	name = "齐佐物品生成器"
 	icon_state = "heresy"
 	lootcount = 1
 	loot = list(
@@ -468,7 +468,7 @@
 		/obj/item/clothing/neck/roguetown/psicross/inhumen/g = 2,
 	)
 /obj/effect/spawner/lootdrop/graggar
-	name = "Graggar物品生成器"
+	name = "格拉加尔物品生成器"
 	icon_state = "heresy"
 	lootcount = 1
 	loot = list(
@@ -484,7 +484,7 @@
 		/obj/item/clothing/neck/roguetown/psicross/inhumen/graggar/bronze = 5,
 	)
 /obj/effect/spawner/lootdrop/matt
-	name = "Matthios物品生成器"
+	name = "马西奥斯物品生成器"
 	icon_state = "heresy"
 	lootcount = 1
 	loot = list(
@@ -500,7 +500,7 @@
 		/obj/item/clothing/neck/roguetown/psicross/inhumen/matthios = 10,
 	)
 /obj/effect/spawner/lootdrop/baotha//add baothan ritual armor when we get around to that
-	name = "Baotha物品生成器"
+	name = "巴奥莎物品生成器"
 	icon_state = "heresy"
 	lootcount = 1
 	loot = list(

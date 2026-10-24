@@ -50,7 +50,7 @@
 	if(!isliving(L))
 		return
 	L.mob_timers[RUNE_WARD_IMMUNITY_KEY] = world.time + RUNE_WARD_IMMUNITY_DURATION
-	log_combat(AM, src, "triggered [name] placed by [owner_name] ([owner_ckey]) at [AREACOORD(src)]")
+	log_combat(AM, src, "触发了 [owner_name]（[owner_ckey]）放置在 [AREACOORD(src)] 的 [name]")
 	rune_effect(L)
 	trigger_visual()
 	qdel(src)

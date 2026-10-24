@@ -89,7 +89,7 @@
 		return ..()
 	if(quantity == 1)
 		if(HAS_TRAIT(user, TRAIT_BLACKLEG))
-			switch(alert(user, "你想把下一次掷硬币操纵成什么结果？","XYLIX","正面","反面","公平游戏"))
+			switch(alert(user, "你想把下一次掷硬币操纵成什么结果？","赛利克斯","正面","反面","公平游戏"))
 				if("正面")
 					rigged_outcome = 1
 				if("反面")

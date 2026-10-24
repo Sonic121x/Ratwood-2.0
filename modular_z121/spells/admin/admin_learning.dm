@@ -1,161 +1,144 @@
-// 管理员法术独立登记，不并入公共法术池，避免被普通学习或随机授法机制选中。
+// 管理员专属法术只在权限检查通过后向该管理员展示。
 GLOBAL_LIST_INIT(z121_admin_learnable_spells, list(
-	/obj/effect/proc_holder/spell/invoked/heal_pristine/greater,
-	/obj/effect/proc_holder/spell/invoked/adminkill,
-	/obj/effect/proc_holder/spell/invoked/adminheal,
-	/obj/effect/proc_holder/spell/invoked/blink/adminblink,
-	/obj/effect/proc_holder/spell/invoked/mimicry/copy,
+	/datum/action/cooldown/spell/z121/invoked/heal_pristine/greater,
+	/datum/action/cooldown/spell/z121/invoked/adminkill,
+	/datum/action/cooldown/spell/z121/invoked/adminheal,
+	/datum/action/cooldown/spell/blink/z121_admin,
+	/datum/action/cooldown/spell/z121/invoked/mimicry/copy,
 ))
 
-// 沿用上游施法入口和界面，仅在模块内适配法术数据与学习请求。
-// 同类型覆盖中的 ..() 会先执行上一份实现，学习请求必须只在本入口处理一次。
-/obj/effect/proc_holder/spell/self/learnspell/ui_data(mob/user)
-	var/list/data = list("user_points" = 0, "spells" = list())
-	if(QDELETED(user) || QDELETED(user.mind))
-		return data
+/proc/z121_custom_spell_tier(datum/mind/learner)
+	var/list/config = learner?.mage_aspect_config
+	if(config?["mastery"])
+		return 4
+	if(config?["major"] > 0)
+		return 3
+	if(config?["minor"] > 0 || config?["z121_arcane_archer"])
+		return 2
+	return config?["utilities"] > 0 ? 1 : 0
 
-	var/datum/mind/learner = user.mind
-	var/points_avail = max(0, learner.spell_points - learner.used_spell_points)
-	data["user_points"] = points_avail
-
-	var/user_spell_tier = get_user_spell_tier(user)
-	var/user_evil = get_user_evilness(user)
-	var/is_admin = check_rights_for(user.client, R_ADMIN)
-	var/list/known_spells = list()
-	for(var/obj/effect/proc_holder/spell/known in learner.spell_list)
-		known_spells[known.type] = TRUE
-
-	// 普通自定义法术已在启动时加入公共池；此处只复制列表，不修改共享法术池。
-	var/list/spell_choices = GLOB.learnable_spells.Copy()
-	if(is_admin)
-		spell_choices |= GLOB.z121_admin_learnable_spells
-	var/list/seen_spells = list()
-	var/list/spells_data = list()
-
-	for(var/spell_path in spell_choices)
-		if(!ispath(spell_path, /obj/effect/proc_holder/spell) || seen_spells[spell_path])
-			continue
-		seen_spells[spell_path] = TRUE
-		var/is_admin_spell = (spell_path in GLOB.z121_admin_learnable_spells)
-		// 专属限制优先，即使未来误将管理员法术登记到公共池，也不向普通玩家展示。
-		if(is_admin_spell && !is_admin)
-			continue
-
-		var/obj/effect/proc_holder/spell/S = spell_path
-		var/spell_tier = initial(S.spell_tier)
-		var/zizo_req = initial(S.zizo_spell)
-		var/cost = initial(S.cost)
-		var/is_known = !isnull(known_spells[spell_path])
-		var/tier_locked = !is_admin_spell && (spell_tier > user_spell_tier)
-		var/evil_locked = !is_admin_spell && (zizo_req > user_evil)
-		var/can_afford = (!is_known && !tier_locked && !evil_locked && (points_avail >= cost))
-		var/img64 = spell_icon_cache[spell_path]
-		if(!img64)
-			var/icon_file = initial(S.action_icon) || 'icons/mob/actions/roguespells.dmi'
-			var/icon_state_str = initial(S.overlay_state) || initial(S.action_icon_state)
-			var/list/valid_states = icon_states(icon_file)
-
-			var/icon/final_icon = null
-			if(icon_state_str && (icon_state_str in valid_states))
-				final_icon = icon(icon_file, icon_state_str, SOUTH, 1)
-			else
-				final_icon = icon('icons/mob/actions/roguespells.dmi', "spell", SOUTH, 1)
-
-			if(final_icon)
-				try
-					var/generated = icon2base64(final_icon)
-					img64 = generated ? generated : "blank"
-				catch
-					img64 = "blank"
-			else
-				img64 = "blank"
-
-			spell_icon_cache[spell_path] = img64
-
-		spells_data += list(list(
-			"name" = initial(S.name) || "未知法术",
-			"desc" = initial(S.desc) || "",
-			"cost" = cost,
-			"tier" = spell_tier,
-			"path" = "[spell_path]",
-			"school" = initial(S.school) || "generic",
-			"range" = initial(S.range),
-			"charge_time" = initial(S.chargetime) / 10,
-			"cooldown" = initial(S.recharge_time) / 10,
-			"fatigue" = initial(S.releasedrain),
-			"img64" = img64,
-			"is_known" = is_known,
-			"can_afford" = can_afford,
-			"tier_locked" = tier_locked,
-			"evil_locked" = evil_locked
-		))
-
-	data["spells"] = spells_data
-	return data
-
-/obj/effect/proc_holder/spell/self/learnspell/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	// 保留基础界面的交互检查与信号，不调用会提前完成购买的上一份学习实现。
-	SHOULD_CALL_PARENT(FALSE)
-	SEND_SIGNAL(src, COMSIG_UI_ACT, usr, action, params)
-	if(!ui || ui.status != UI_INTERACTIVE || ui.user != usr)
+/proc/z121_can_learn_custom(mob/user, spell_path)
+	if(spell_path in GLOB.z121_admin_learnable_spells)
+		return user?.client && check_rights_for(user.client, R_ADMIN)
+	if(!(spell_path in GLOB.custom_learnable_spells))
 		return TRUE
+	var/datum/action/cooldown/spell/S = spell_path
+	return user?.mind && initial(S.spell_tier) <= z121_custom_spell_tier(user.mind) && initial(S.zizo_spell) <= get_user_evilness(user)
 
-	var/mob/living/user = usr
-	if(!istype(user) || QDELETED(user) || QDELETED(user.mind))
+/datum/aspect_picker/build_utility_list()
+	. = ..()
+	if(owner?.client && check_rights_for(owner.client, R_ADMIN))
+		for(var/path in GLOB.z121_admin_learnable_spells)
+			. += list(build_spell_entry(path))
+	var/list/entries = .
+	for(var/list/entry as anything in entries.Copy())
+		if(!z121_can_learn_custom(owner, text2path(entry["path"])))
+			. -= list(entry)
+
+/datum/aspect_picker/ui_act(action, list/params)
+	if(!z121_valid_learner())
 		return TRUE
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
 		if(H.is_void_clone())
-			to_chat(user, span_warning("虚空分身无法学习新的法术。"))
+			to_chat(H, span_warning("虚空分身无法学习或调整法术。"))
 			return TRUE
-	if(action != "learn")
-		return TRUE
-
-	var/path_text = params["path"]
-	if(!istext(path_text))
-		return TRUE
-	var/spell_path = text2path(path_text)
-	if(!ispath(spell_path, /obj/effect/proc_holder/spell))
-		return TRUE
-
-	// 每次请求均重新检查权限，不能依赖打开界面时的权限或前端按钮状态。
-	var/is_admin_spell = (spell_path in GLOB.z121_admin_learnable_spells)
-	if(is_admin_spell)
-		if(!check_rights_for(user.client, R_ADMIN))
-			to_chat(user, span_warning("只有管理员可以学习这道法术。"))
+	// 自定义法术只能消耗实用额度，不能伪装成法相选项绕过限制。
+	if(action == "pointbuy_toggle" || action == "choice_toggle")
+		var/path = text2path(params["spell_path"])
+		if((path in GLOB.custom_learnable_spells) || (path in GLOB.z121_admin_learnable_spells))
 			return TRUE
-	else if(!(spell_path in GLOB.learnable_spells))
+	if(action == "unbind_utility" && text2path(params["spell_path"]) == /datum/action/cooldown/spell/z121/self/wish_spell)
 		return TRUE
-
-	var/datum/mind/learner = user.mind
-	for(var/obj/effect/proc_holder/spell/known in learner.spell_list)
-		if(known.type == spell_path)
-			to_chat(user, span_warning("你已经掌握了这个法术！"))
+	if(action == "utility_toggle")
+		var/path = text2path(params["spell_path"])
+		if(!(path in (GLOB.utility_spells | GLOB.z121_admin_learnable_spells)) || !z121_can_learn_custom(owner, path))
 			return TRUE
+	return ..()
 
-	var/obj/effect/proc_holder/spell/S = spell_path
-	var/cost = initial(S.cost)
-	// 管理员只对专属法术豁免等级与邪恶条件，普通法术仍遵守原有规则。
-	if(!is_admin_spell)
-		if(initial(S.spell_tier) > get_user_spell_tier(user))
-			to_chat(user, span_warning("这个法术需要更高阶的奥术力量！"))
-			return TRUE
-		if(initial(S.zizo_spell) > get_user_evilness(user))
-			to_chat(user, span_warning("你缺少施展这个法术所需的禁忌知识。"))
-			return TRUE
+/datum/aspect_picker/perform_confirm(max_majors, max_minors_resolved)
+	if(!z121_valid_learner() || z121_learner.z121_confirming_picker)
+		return
+	if(!owner?.mind)
+		return
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		if(H.is_void_clone())
+			return
+	if("/datum/action/cooldown/spell/z121/self/wish_spell" in staged_unbind_utilities)
+		return
+	for(var/aspect_text in pointbuy_selections)
+		for(var/spell_text in pointbuy_selections[aspect_text])
+			var/path = text2path(spell_text)
+			if((path in GLOB.custom_learnable_spells) || (path in GLOB.z121_admin_learnable_spells))
+				return
+	for(var/aspect_text in staged_choices)
+		var/path = text2path(staged_choices[aspect_text])
+		if((path in GLOB.custom_learnable_spells) || (path in GLOB.z121_admin_learnable_spells))
+			return
+	for(var/path_text in staged_utilities)
+		var/path = text2path(path_text)
+		if(!(path in (GLOB.utility_spells | GLOB.z121_admin_learnable_spells)) || !z121_can_learn_custom(owner, path))
+			to_chat(owner, span_warning("我的学习资格已改变，请重新选择法术。"))
+			return
+	z121_learner.z121_confirming_picker = src
+	. = ..()
+	if(z121_learner?.z121_confirming_picker == src)
+		z121_learner.z121_confirming_picker = null
 
-	var/points_avail = learner.spell_points - learner.used_spell_points
-	if(cost > points_avail)
-		to_chat(user, span_warning("你的法术点不足！"))
-		return TRUE
 
-	learner.used_spell_points += cost
-	var/obj/effect/proc_holder/spell/new_spell = new spell_path()
-	new_spell.refundable = TRUE
-	learner.AddSpell(new_spell)
-	// 记录本次职业资金消费；不改变原有学习权限与界面。
-	z121_parallel_purchase(user, new_spell, cost)
-	to_chat(user, span_notice("你已将<b>[initial(S.name)]</b>编织入自己的意识！"))
-	// 保留上游在点数耗尽时移除学习法术的定时处理。
-	addtimer(CALLBACK(learner, TYPE_PROC_REF(/datum/mind, check_learnspell)), 2 SECONDS)
+// 学习窗口绑定打开时的心智、职业记录与额度对象，切换后的旧窗口不能继续授法。
+/datum/aspect_picker
+	var/datum/mind/z121_learner
+	var/datum/z121_profession_record/z121_profession
+	var/list/z121_config
+
+/datum/aspect_picker/New(mob/living/new_owner, setup = TRUE, list/aspect_config)
+	. = ..()
+	z121_learner = new_owner?.mind
+	z121_config = z121_learner?.mage_aspect_config
+	if(ishuman(new_owner))
+		var/mob/living/carbon/human/H = new_owner
+		z121_profession = H.z121_profession
+
+/datum/aspect_picker/proc/z121_valid_learner()
+	if(!owner || owner.mind != z121_learner || z121_learner.current != owner || z121_learner.mage_aspect_config != z121_config)
+		return FALSE
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		if(H.z121_profession != z121_profession || H.is_void_clone())
+			return FALSE
 	return TRUE
+
+/datum/mind
+	var/datum/aspect_picker/z121_confirming_picker
+
+/datum/mind/AddSpell(datum/spell_or_action, mob/living/user)
+	if(istype(spell_or_action, /datum/action/cooldown/spell))
+		var/datum/action/cooldown/spell/S = spell_or_action
+		if(z121_confirming_picker && !(S in spell_list))
+			if(!z121_confirming_picker.z121_valid_learner() || !z121_can_learn_custom(current, S.type))
+				qdel(S)
+				return
+	return ..()
+
+// 专属法术不进入公共池，但管理员实际学习后仍占用实用额度。
+/datum/mind/get_utility_points_spent(list/exclude_path_strs)
+	. = ..()
+	for(var/path in GLOB.z121_admin_learnable_spells)
+		if((path in GLOB.utility_spells) || ("[path]" in exclude_path_strs))
+			continue
+		if(is_utility_learned(path))
+			. += get_spell_point_cost(path)
+
+/datum/aspect_picker/ui_data(mob/user)
+	. = ..()
+	if(!islist(.) || !owner?.mind)
+		return
+	var/list/data = .
+	for(var/path in GLOB.z121_admin_learnable_spells)
+		if(!owner.mind.has_spell(path))
+			continue
+		data["known_utilities"] |= "[path]"
+		if(!owner.mind.is_utility_learned(path))
+			data["given_utilities"] |= "[path]"

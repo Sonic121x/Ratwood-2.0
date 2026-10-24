@@ -176,19 +176,19 @@
 		var/flavor_color = "#FFFFFF"
 		switch(L.alignment)
 			if("infernal")
-				flavor = "Scorched"
+				flavor = "焦灼"
 				flavor_color = "#EF5350"
 			if("fae")
-				flavor = "Sylvan"
+				flavor = "林野"
 				flavor_color = "#81C784"
 			if("elemental")
-				flavor = "Earthen"
+				flavor = "大地"
 				flavor_color = "#D4A04A"
 			if("void")
-				flavor = "Unstable"
+				flavor = "不稳定"
 				flavor_color = "#AB47BC"
 			if("neutral")
-				flavor = "Tamed"
+				flavor = "驯服"
 				flavor_color = "#C0C0FF"
 
 		var/colored_type = "<b><span style='color:[flavor_color]'>[flavor]</span></b>"

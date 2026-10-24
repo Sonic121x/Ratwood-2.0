@@ -89,7 +89,7 @@
 	playsound(get_turf(H), 'sound/misc/portalactivate.ogg', 70, TRUE)
 	playsound(get_turf(H), 'sound/magic/antimagic.ogg', 60, TRUE)
 
-	log_combat(H, H, "activated Gate of Reckoning ([charges] charges)")
+	log_combat(H, H, "激活了 [name]（[charges] 层充能）")
 	return TRUE
 
 /datum/action/cooldown/spell/gate_of_reckoning/proc/do_phantom_thrust(mob/living/carbon/human/user, obj/item/weapon, charges_remaining)

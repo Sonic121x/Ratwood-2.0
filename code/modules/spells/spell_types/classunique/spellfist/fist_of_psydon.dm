@@ -97,5 +97,5 @@
 	else
 		H.visible_message(span_notice("[H]猛然挥拳向下，震波轰入空地！"))
 
-	log_combat(H, null, "used Fist of Psydon[empowered ? " (empowered)" : ""]")
+	log_combat(H, null, "使用了 [name][empowered ? "（强化）" : ""]")
 	return TRUE

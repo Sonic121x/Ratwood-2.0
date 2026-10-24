@@ -43,20 +43,12 @@
 /datum/z121_sacrifice_unlocks
 	var/datum/mind/mind_owner
 	var/mob/living/carbon/human/current_body
-	var/zizo_unlocked = FALSE
 	var/matthios_unlocked = FALSE
-	var/obj/effect/proc_holder/spell/invoked/raise_deadite/z121_sacrifice/zizo_spell
 
 /datum/z121_sacrifice_unlocks/New(datum/mind/new_mind)
 	mind_owner = new_mind
 	mind_owner.z121_sacrifice_unlocks = src
 	START_PROCESSING(SSfastprocess, src)
-
-/datum/z121_sacrifice_unlocks/proc/unlock_zizo()
-	zizo_unlocked = TRUE
-	zizo_spell = new
-	mind_owner.AddSpell(zizo_spell, mind_owner.current)
-	sync_rewards()
 
 /datum/z121_sacrifice_unlocks/proc/unlock_matthios()
 	matthios_unlocked = TRUE
@@ -87,54 +79,15 @@
 			ADD_TRAIT(current_body, TRAIT_SEEPRICES, "z121_matthios_sacrifice")
 		else
 			REMOVE_TRAIT(current_body, TRAIT_SEEPRICES, "z121_matthios_sacrifice")
-	if(!QDELETED(zizo_spell))
-		if(current_body?.patron?.type == /datum/patron/inhumen/zizo && current_body.mind == mind_owner)
-			if(zizo_spell.action.owner != current_body)
-				zizo_spell.action.Grant(current_body)
-		else if(zizo_spell.action.owner)
-			zizo_spell.remove_ranged_ability()
-			zizo_spell.action.Remove(zizo_spell.action.owner)
-
 /datum/z121_sacrifice_unlocks/process()
 	sync_rewards()
 
 /datum/z121_sacrifice_unlocks/Destroy()
 	STOP_PROCESSING(SSfastprocess, src)
 	detach_body()
-	if(!QDELETED(zizo_spell))
-		if(mind_owner)
-			mind_owner.spell_list -= zizo_spell
-		qdel(zizo_spell)
 	if(mind_owner?.z121_sacrifice_unlocks == src)
 		mind_owner.z121_sacrifice_unlocks = null
-	zizo_spell = null
 	mind_owner = null
-	return ..()
-
-// 停用只隐藏动作，不销毁法术，因此改信不能重置已有冷却。
-/obj/effect/proc_holder/spell/invoked/raise_deadite/z121_sacrifice
-	name = "禁忌启封·唤起尸鬼"
-	desc = "齐佐献祭解锁的死灵术。仅在信仰齐佐时可用；唤起的尸鬼不会对我友善。"
-
-/obj/effect/proc_holder/spell/invoked/raise_deadite/z121_sacrifice/proc/faith_allows(mob/user)
-	if(!ishuman(user))
-		return FALSE
-	var/mob/living/carbon/human/H = user
-	return H.patron?.type == /datum/patron/inhumen/zizo && H.mind?.z121_sacrifice_unlocks?.zizo_spell == src
-
-/obj/effect/proc_holder/spell/invoked/raise_deadite/z121_sacrifice/can_cast(mob/user = usr)
-	return faith_allows(user) && ..()
-
-/obj/effect/proc_holder/spell/invoked/raise_deadite/z121_sacrifice/cast_check(skipcharge, mob/user = usr)
-	if(!faith_allows(user))
-		to_chat(user, span_warning("失去齐佐的信仰后，这份禁忌知识便不再回应我。"))
-		return FALSE
-	return ..()
-
-/obj/effect/proc_holder/spell/invoked/raise_deadite/z121_sacrifice/cast(list/targets, mob/user)
-	if(!faith_allows(user))
-		revert_cast()
-		return FALSE
 	return ..()
 
 // 信仰变更立即撤销新增赐福，同时取消尚在进行的献祭。

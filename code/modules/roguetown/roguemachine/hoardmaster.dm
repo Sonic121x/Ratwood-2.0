@@ -53,7 +53,7 @@
 		var/datum/antagonist/bandit/B = M.mind.has_antag_datum(/datum/antagonist/bandit)
 		var/path = text2path(href_list["buy"])
 		if(!ispath(path, /datum/supply_pack))
-			message_admins("silly MOTHERFUCKER [usr.key] IS TRYING TO BUY A [path] WITH THE HOARDMASTER")
+			message_admins("[usr.key] 正试图通过藏宝主宰购买非法物品路径 [path]！")
 			return
 		var/datum/supply_pack/PA = SSmerchant.supply_packs[path]
 		var/cost = PA.cost
@@ -96,22 +96,22 @@
 
 
 	var/list/unlocked_cats = list("Supplies", "Medicaments", "Clothing")
-	switch(usr.advjob)
-		if("Brigand")
+	switch(get_hoard_category_display(usr.advjob))
+		if("悍匪")
 			unlocked_cats+="Brigand"
-		if("Sellsword")
+		if("佣兵剑客")
 			unlocked_cats+="Sellsword"
-		if("Sawbones")
+		if("锯骨郎中")
 			unlocked_cats+="Sawbones"
-		if("Hedge Knight")
+		if("落魄骑士")
 			unlocked_cats+="Knight"
-		if("Hedge Mage")
+		if("野法师")
 			unlocked_cats+="Mage"
-		if("Knave")
+		if("无赖")
 			unlocked_cats+="Knave"
-		if("Iconoclast")
+		if("破像者")
 			unlocked_cats+="Iconoclast"
-		if("Pioneer")
+		if("拓荒工兵")
 			unlocked_cats+="Pioneer"
 
 	if(!(current_cat in unlocked_cats))
@@ -120,18 +120,18 @@
 	if(current_cat == "1")
 		contents += "<center>"
 		for(var/X in unlocked_cats)
-			contents += "<a href='?src=[REF(src)];changecat=[X]'>[X]</a><BR>"
+			contents += "<a href='?src=[REF(src)];changecat=[X]'>[get_hoard_category_display(X)]</a><BR>"
 		contents += "</center>"
 	else
-		contents += "<center>[current_cat]<BR></center>"
-		contents += "<center><a href='?src=[REF(src)];changecat=1'>\[RETURN\]</a><BR><BR></center>"
+		contents += "<center>[get_hoard_category_display(current_cat)]<BR></center>"
+		contents += "<center><a href='?src=[REF(src)];changecat=1'>\[返回\]</a><BR><BR></center>"
 		var/list/pax = list()
 		for(var/pack in SSmerchant.supply_packs)
 			var/datum/supply_pack/PA = SSmerchant.supply_packs[pack]
-			if(PA.group == current_cat)
+			if(get_hoard_category_display(PA.group) == get_hoard_category_display(current_cat))
 				pax += PA
 		for(var/datum/supply_pack/PA in sortList(pax))
-			contents += "[PA.name] [PA.contains.len > 1?"x[PA.contains.len]":""] - ([PA.cost])<a href='?src=[REF(src)];buy=[PA.type]'>BUY</a><BR>"
+			contents += "[PA.name] [PA.contains.len > 1?"x[PA.contains.len]":""] - ([PA.cost])<a href='?src=[REF(src)];buy=[PA.type]'>购买</a><BR>"
 
 	var/datum/browser/popup = new(user, "HOARDMASTER", "", 370, 600)
 	popup.set_content(contents)

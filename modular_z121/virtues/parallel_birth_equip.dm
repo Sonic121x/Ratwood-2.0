@@ -64,8 +64,6 @@
 			H.z121_birth_stash(stashed_item, subclass_stashed_items[stashed_item])
 	if(LAZYLEN(subclass_mage_aspects))
 		H.z121_birth_aspects(subclass_mage_aspects.Copy())
-	if(subclass_spellpoints > 0)
-		H.z121_birth_points(subclass_spellpoints)
 
 	if(subclass_social_rank)
 		H.social_rank = subclass_social_rank

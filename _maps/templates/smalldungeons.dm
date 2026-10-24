@@ -1,7 +1,7 @@
 //!View bog_shack_small.dm for documentation
 
 /obj/effect/landmark/map_load_mark/smalldungeon
-	name = "Small Dungeon"
+	name = "小型地牢"
 	templates = list( "smalldungeon1" )
 
 /datum/map_template/smalldungeon1
@@ -10,7 +10,7 @@
 	mappath = "_maps/map_files/templates/smalldungeons/smalldungeon1.dmm"
 
 /obj/effect/spawner/lootdrop/roguetown/dungeon
-	name = "dungeon spawner"
+	name = "地牢物品生成器"
 	loot = list(
 		// Materials
 		/obj/item/natural/bundle/stick = 2,

@@ -257,7 +257,7 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 	var/mob/living/holder
 	var/list/links = list()
 	var/datum/group_mindlink_room/current_room
-	var/obj/effect/proc_holder/spell/self/group_mindlink/selection_spell
+	var/datum/action/cooldown/spell/z121/self/group_mindlink/selection_spell
 	var/list/selection = list()
 	var/feedback = "选择视野内最多五名玩家邀请加入链接，或选择已有会话。"
 	var/last_send_at = -10
@@ -564,29 +564,24 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 	speech_args[SPEECH_MESSAGE] = null
 	INVOKE_ASYNC(src, PROC_REF(send_to_room), current_room, html_decode(trim(copytext(message, 3))), TRUE)
 
-/obj/effect/proc_holder/spell/self/group_mindlink
+/datum/action/cooldown/spell/z121/self/group_mindlink
 	name = "群体心灵链接"
-	school = "divination"
 	desc = "邀请自身视野内最多五名面容与真名公开的玩家，经同意及五秒引导建立十五分钟的心灵链接。成员可以聊天、私聊、创建小房间并直接视听旁观彼此。主链接不可中途追加成员；输入 ,m 向当前会话发言，使用 IC 下的群体心灵链接重开窗口。"
 	associated_skill = /datum/skill/magic/arcane
-	cost = 5
+	point_cost = 5
 	xp_gain = TRUE
-	recharge_time = 5 MINUTES
+	cooldown_time = 5 MINUTES
 	spell_tier = 3
-	action_icon = 'modular_z121/icon/custompell.dmi'
-	overlay_state = "group_mindlink"
+	button_icon = 'modular_z121/icon/custompell.dmi'
+	button_icon_state = "group_mindlink"
 	invocations = list("群念相连。")
 	invocation_type = "whisper"
-	chargedloop = /datum/looping_sound/invokegen
-	chargedrain = 1
-	chargetime = 5 SECONDS
-	releasedrain = 30
-	no_early_release = TRUE
-	movement_interrupt = FALSE
-	charging_slowdown = 3
-	warnie = "spellwarning"
+	hold_drain = 1
+	charge_time = 5 SECONDS
+	primary_resource_cost = 30
+	charge_slowdown = 3
 	miracle = FALSE
-	human_req = TRUE
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
 	var/casting = FALSE
 	var/inviting = FALSE
 	var/charge_reserved = FALSE
@@ -594,11 +589,11 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 	var/mob/living/casting_user
 	var/list/pending_members = list()
 
-/obj/effect/proc_holder/spell/self/group_mindlink/Click()
-	choose_targets(usr)
+/datum/action/cooldown/spell/z121/self/group_mindlink/Trigger(trigger_flags)
+	z121_choose_targets(owner)
 	return TRUE
 
-/obj/effect/proc_holder/spell/self/group_mindlink/choose_targets(mob/user = usr)
+/datum/action/cooldown/spell/z121/self/group_mindlink/z121_choose_targets(mob/user = usr)
 	if(!isliving(user) || user.stat != CONSCIOUS || !user.client || casting)
 		return
 	if(!(src in user.mob_spell_list) && !(src in user.mind?.spell_list))
@@ -609,17 +604,17 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 	session.feedback = "选择视野内一至五名玩家；对方同意加入后开始五秒引导，施法者自动加入。"
 	session.ui_interact(user)
 
-/obj/effect/proc_holder/spell/self/group_mindlink/charge_check(mob/user)
+/datum/action/cooldown/spell/z121/self/group_mindlink/z121_ready(mob/user)
 	// 引导后的条件复查只豁免本次已预留的冷却，其他施法条件仍由父类检查。
 	if(casting && charge_reserved && user == casting_user)
 		return TRUE
 	return ..()
 
-/obj/effect/proc_holder/spell/self/group_mindlink/proc/cancel_invites()
+/datum/action/cooldown/spell/z121/self/group_mindlink/proc/cancel_invites()
 	if(inviting && !QDELETED(cast_request))
 		cast_request.cancel()
 
-/obj/effect/proc_holder/spell/self/group_mindlink/proc/begin_cast(datum/group_mindlink_session/session)
+/datum/action/cooldown/spell/z121/self/group_mindlink/proc/begin_cast(datum/group_mindlink_session/session)
 	if(casting || QDELETED(session) || session.selection_spell != src)
 		return
 	var/mob/living/user = session.holder
@@ -643,7 +638,7 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 		session.notice("已选对象当前无法接收邀请，可能已失效或处于邀请免打扰期间。")
 		return
 	// 先做无消耗检查，邀请阶段不预留冷却；至少一人同意后才正式引导。
-	if(!cast_check(TRUE, user))
+	if(!z121_check(TRUE, user))
 		return
 	user.client.group_mindlink_next_cast_invite = world.time + 10 SECONDS
 	if(length(chosen) < length(session.selection))
@@ -664,29 +659,29 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 	if(!QDELETED(request))
 		request.close_invitations()
 		pending_members = request.accepted_members()
-		if(length(pending_members) && cast_check(FALSE, user))
+		if(length(pending_members) && z121_check(FALSE, user))
 			charge_reserved = TRUE
 			inviting = FALSE
 			session.feedback = "已确认有效成员，正在引导心灵链接……"
 			session.refresh()
 			invocation(user)
 			user.visible_message(span_notice("[user]闭目凝神，牵引着愿意回应之人的心念……"))
-			success = do_after(user, get_chargetime(), target = user, progress = TRUE)
+			success = do_after(user, get_charge_time(), target = user, progress = TRUE)
 			if(QDELETED(src))
 				return
 			if(success && !QDELETED(request) && request.caster_valid())
-				success = cast_check(TRUE, user)
+				success = z121_check(TRUE, user)
 			else
 				success = FALSE
 			if(success)
 				// 咒文已在引导开始时念出，仍由原有流程结算成功消耗及经验。
 				var/list/saved_invocations = invocations
 				invocations = null
-				success = perform(null, user = user)
+				success = z121_cast_selected(null, user = user)
 				invocations = saved_invocations
 	if(!success && !QDELETED(user))
 		if(charge_reserved)
-			revert_cast(user)
+			z121_cancel(user)
 		if(!QDELETED(session))
 			session.notice("链接未能成形：无人有效同意、已取消或引导中断。未结算成功消耗，本次预留冷却已恢复。")
 	casting = FALSE
@@ -704,7 +699,8 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 		session.refresh()
 		session.cleanup_if_unused()
 
-/obj/effect/proc_holder/spell/self/group_mindlink/cast(list/targets, mob/living/user = usr)
+/datum/action/cooldown/spell/z121/self/group_mindlink/z121_apply(atom/cast_on)
+	var/mob/living/user = owner
 	if(!casting || inviting || user != casting_user || QDELETED(cast_request) || !cast_request.caster_valid())
 		return FALSE
 	var/list/accepted = cast_request.accepted_members()
@@ -719,7 +715,7 @@ GLOBAL_LIST_EMPTY(active_group_mindlinks)
 	new /datum/group_mindlink_custom(user, members)
 	return ..()
 
-/obj/effect/proc_holder/spell/self/group_mindlink/Destroy()
+/datum/action/cooldown/spell/z121/self/group_mindlink/Destroy()
 	if(!QDELETED(cast_request))
 		cast_request.cancel()
 		qdel(cast_request)

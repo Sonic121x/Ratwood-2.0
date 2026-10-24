@@ -49,7 +49,8 @@
 		link.transfer_linked_mind(link.original_body)
 	link.sync_current_body_spell_access()
 
-/obj/effect/proc_holder/spell/self/learnspell/cast(list/targets, mob/living/user = usr)
+/datum/action/cooldown/spell/learnspell/cast(atom/cast_on)
+	var/mob/living/user = owner
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.is_void_clone())
@@ -57,7 +58,7 @@
 			return FALSE
 	return ..()
 
-/obj/effect/proc_holder/spell/self/learnspell/ui_status(mob/user, datum/ui_state/state)
+/datum/action/cooldown/spell/learnspell/ui_status(mob/user, datum/ui_state/state)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.is_void_clone())
@@ -284,13 +285,13 @@
 	if(!M || !body)
 		return
 
-	var/obj/effect/proc_holder/spell/clone_spell = M.get_spell(/obj/effect/proc_holder/spell/self/void_clone, TRUE)
-	if(clone_spell && clone_spell.action && clone_spell.action.owner != body)
-		clone_spell.action.Grant(body)
+	var/datum/action/cooldown/spell/clone_spell = M.get_spell(/datum/action/cooldown/spell/z121/self/void_clone, TRUE)
+	if(clone_spell && clone_spell && clone_spell.owner != body)
+		clone_spell.Grant(body)
 
-	var/obj/effect/proc_holder/spell/learn_spell = M.get_spell(/obj/effect/proc_holder/spell/self/learnspell)
-	if(learn_spell && learn_spell.action && learn_spell.action.owner != body)
-		learn_spell.action.Grant(body)
+	var/datum/action/cooldown/spell/learn_spell = M.get_spell(/datum/action/cooldown/spell/learnspell)
+	if(learn_spell && learn_spell && learn_spell.owner != body)
+		learn_spell.Grant(body)
 
 /datum/void_clone_link/proc/should_force_collapse()
 	var/mob/living/carbon/human/body = get_clone_body()
@@ -332,15 +333,15 @@
 
 /datum/void_clone_link/proc/ensure_switch_spell()
 	var/datum/mind/M = get_linked_mind()
-	if(!M || M.has_spell(/obj/effect/proc_holder/spell/self/void_clone_switch, TRUE))
+	if(!M || M.has_spell(/datum/action/cooldown/spell/z121/self/void_clone_switch, TRUE))
 		return
-	M.AddSpell(new /obj/effect/proc_holder/spell/self/void_clone_switch)
+	M.AddSpell(new /datum/action/cooldown/spell/z121/self/void_clone_switch)
 
 /datum/void_clone_link/proc/remove_switch_spell()
 	var/datum/mind/M = get_linked_mind()
 	if(!M)
 		return
-	var/obj/effect/proc_holder/spell/switch_spell = M.get_spell(/obj/effect/proc_holder/spell/self/void_clone_switch, TRUE)
+	var/datum/action/cooldown/spell/switch_spell = M.get_spell(/datum/action/cooldown/spell/z121/self/void_clone_switch, TRUE)
 	if(switch_spell)
 		M.RemoveSpell(switch_spell)
 
@@ -354,27 +355,27 @@
 		return
 
 	var/mob/living/current_body = M.current
-	var/obj/effect/proc_holder/spell/clone_spell = M.get_spell(/obj/effect/proc_holder/spell/self/void_clone, TRUE)
-	if(clone_spell && clone_spell.action)
+	var/datum/action/cooldown/spell/clone_spell = M.get_spell(/datum/action/cooldown/spell/z121/self/void_clone, TRUE)
+	if(clone_spell && clone_spell)
 		if(current_body != original_body)
-			if(clone_spell.action.owner == current_body)
-				clone_spell.action.Remove(current_body)
-		else if(clone_spell.action.owner != current_body)
-			clone_spell.action.Grant(current_body)
+			if(clone_spell.owner == current_body)
+				clone_spell.Remove(current_body)
+		else if(clone_spell.owner != current_body)
+			clone_spell.Grant(current_body)
 
-	var/obj/effect/proc_holder/spell/learn_spell = M.get_spell(/obj/effect/proc_holder/spell/self/learnspell)
+	var/datum/action/cooldown/spell/learn_spell = M.get_spell(/datum/action/cooldown/spell/learnspell)
 	if(learn_spell && current_body != original_body)
 		SStgui.close_user_uis(current_body, learn_spell)
-	if(learn_spell && learn_spell.action)
+	if(learn_spell && learn_spell)
 		if(current_body != original_body)
-			if(learn_spell.action.owner == current_body)
-				learn_spell.action.Remove(current_body)
-		else if(learn_spell.action.owner != current_body)
-			learn_spell.action.Grant(current_body)
+			if(learn_spell.owner == current_body)
+				learn_spell.Remove(current_body)
+		else if(learn_spell.owner != current_body)
+			learn_spell.Grant(current_body)
 
-	var/obj/effect/proc_holder/spell/switch_spell = M.get_spell(/obj/effect/proc_holder/spell/self/void_clone_switch, TRUE)
-	if(switch_spell && switch_spell.action && switch_spell.action.owner != current_body)
-		switch_spell.action.Grant(current_body)
+	var/datum/action/cooldown/spell/switch_spell = M.get_spell(/datum/action/cooldown/spell/z121/self/void_clone_switch, TRUE)
+	if(switch_spell && switch_spell && switch_spell.owner != current_body)
+		switch_spell.Grant(current_body)
 
 /datum/void_clone_link/proc/cleanup_clone(force_return, datum/deleting_body)
 	if(cleanup_started)
@@ -416,9 +417,15 @@
 				occupant.void_clone_saved_skills = shell.skills
 				shell.skills.set_current(null)
 				shell.skills = null
-			for(var/obj/effect/proc_holder/spell/S in occupant.spell_list)
-				if(S.action?.owner == shell)
-					S.action.Remove(shell)
+			for(var/datum/S as anything in occupant.spell_list)
+				if(istype(S, /datum/action/cooldown/spell))
+					var/datum/action/cooldown/spell/A = S
+					if(A.owner == shell)
+						A.Remove(shell)
+				else if(istype(S, /obj/effect/proc_holder/spell))
+					var/obj/effect/proc_holder/spell/legacy = S
+					if(legacy.action?.owner == shell)
+						legacy.action.Remove(shell)
 			var/mob/dead/observer/ghost = shell.ghostize(FALSE)
 			if(!ghost && shell.key)
 				ghost = new /mob/dead/observer/rogue/nodraw(shell)
@@ -453,55 +460,49 @@
 			continue
 		body.transferItemToLoc(I, drop_turf, TRUE)
 
-/obj/effect/proc_holder/spell/self/void_clone
+/datum/action/cooldown/spell/z121/self/void_clone
+	var/mob/living/carbon/human/pending_clone
 	name = "分身术"
-	school = "conjuration"
 	desc = "以虚空石神奇的力量临时构建一个可以远程操控的躯体。"
 	associated_skill = /datum/skill/magic/arcane
-	cost = 6
+	point_cost = 6
 	xp_gain = TRUE
-	releasedrain = 100
-	chargedrain = 0
-	chargetime = 0
-	recharge_time = 30 MINUTES
+	primary_resource_cost = 100
+	hold_drain = 0
+	charge_time = 0
+	cooldown_time = 30 MINUTES
 	cooldown_min = 30 MINUTES
-	warnie = "spellwarning"
 	spell_tier = 3
-	action_icon = 'modular_z121/icon/custompell.dmi'
-	overlay_state = "void_clone"
+	button_icon = 'modular_z121/icon/custompell.dmi'
+	button_icon_state = "void_clone"
 	invocations = list("虚空，塑我伪身！")
 	invocation_type = "shout"
-	glow_color = "#7f5bff"
+	spell_color = "#7f5bff"
 	glow_intensity = GLOW_INTENSITY_MEDIUM
-	no_early_release = TRUE
-	movement_interrupt = TRUE
-	charging_slowdown = 2
-	chargedloop = /datum/looping_sound/invokegen
-	human_req = TRUE
+	charge_slowdown = 2
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z | SPELL_REQUIRES_NO_MOVE
 	miracle = FALSE
 	gesture_required = TRUE
 
-/obj/effect/proc_holder/spell/self/void_clone/choose_targets(mob/user = usr)
+/datum/action/cooldown/spell/z121/self/void_clone/z121_choose_targets(mob/user = usr)
 	var/mob/living/carbon/human/H = user
 	if(!istype(H))
-		revert_cast(user)
-		return
+		z121_cancel(user)
+		return FALSE
 	if(H.void_clone_link_custom || H.mind?.void_clone_link_custom)
 		to_chat(H, span_warning("我的虚空分身尚未崩解，无法再次施展分身术。"))
-		revert_cast(H)
-		return
-
+		z121_cancel(H)
+		return FALSE
 	var/obj/item/magic/voidstone/focus = H.get_active_held_item()
 	if(!istype(focus))
-		to_chat(H, span_warning("我必须在手中握着一块 voidstone，才能塑造分身。"))
-		revert_cast(H)
-		return
-
-	H.visible_message(span_warning("[H] 手中的 voidstone 漂浮至半空，开始微微扭曲。"), span_notice("我举起手中的 voidstone，让它在掌前浮起并缓缓扭曲。"))
+		to_chat(H, span_warning("我必须在手中握着一块 虚空石，才能塑造分身。"))
+		z121_cancel(H)
+		return FALSE
+	H.visible_message(span_warning("[H] 手中的 虚空石 漂浮至半空，开始微微扭曲。"), span_notice("我举起手中的 虚空石，让它在掌前浮起并缓缓扭曲。"))
 	if(!continue_clone_channel(H, focus, 15 SECONDS, "我的虚空塑形在最初的共鸣中崩散了。"))
 		return
 
-	H.visible_message(span_warning("扭曲的 voidstone 表面裂出暗色纹路，一具与 [H] 极其相似的人形轮廓开始在空中显现。"), span_notice("voidstone 的表面裂出暗色纹路，我的轮廓正被一点点描摹出来。"))
+	H.visible_message(span_warning("扭曲的 虚空石 表面裂出暗色纹路，一具与 [H] 极其相似的人形轮廓开始在空中显现。"), span_notice("虚空石 的表面裂出暗色纹路，我的轮廓正被一点点描摹出来。"))
 	if(!continue_clone_channel(H, focus, 15 SECONDS, "那具尚未成形的轮廓突然涣散了。"))
 		return
 
@@ -513,33 +514,34 @@
 	if(!continue_clone_channel(H, focus, 15 SECONDS, "最后的注魂失败了，虚空塑成的身躯当场垮塌。"))
 		return
 
-	perform(null, user = H)
+	z121_cast_selected(null, user = H)
 
-/obj/effect/proc_holder/spell/self/void_clone/cast(list/targets, mob/living/carbon/human/user = usr)
+/datum/action/cooldown/spell/z121/self/void_clone/z121_apply(atom/cast_on)
+	var/mob/living/carbon/human/user = owner
 	if(!istype(user))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 	if(user.void_clone_link_custom || user.mind?.void_clone_link_custom)
 		to_chat(user, span_warning("我的虚空分身尚未崩解，无法再次施展分身术。"))
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 
 	var/obj/item/magic/voidstone/focus = user.get_active_held_item()
 	if(!istype(focus))
-		to_chat(user, span_warning("失去了手中的 voidstone，分身塑造自然也就失败了。"))
-		revert_cast(user)
+		to_chat(user, span_warning("失去了手中的 虚空石，分身塑造自然也就失败了。"))
+		z121_cancel(user)
 		return FALSE
 
 	var/turf/spawn_turf = find_clone_spawn_turf(user)
 	if(!spawn_turf)
 		to_chat(user, span_warning("周围没有足够稳固的空间供分身成形。"))
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 
 	var/mob/living/carbon/human/clone = new /mob/living/carbon/human(spawn_turf)
 	if(!clone)
 		to_chat(user, span_warning("虚空未能回应我的塑形。"))
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 
 	var/obj/item/undies/shell_underwear = clone.underwear
@@ -560,12 +562,26 @@
 	var/datum/mind/M = user.mind
 	if(QDELETED(M) || M.current != user)
 		qdel(clone)
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 
 	user.temporarilyRemoveItemFromInventory(focus, TRUE)
 	qdel(focus)
 
+	pending_clone = clone
+	return TRUE
+
+// 扣除本体资源并开始冷却后才转移心智，避免动作换主或暂时移除导致漏扣。
+/datum/action/cooldown/spell/z121/self/void_clone/after_cast(atom/cast_on)
+	. = ..()
+	var/mob/living/carbon/human/user = owner
+	var/mob/living/carbon/human/clone = pending_clone
+	pending_clone = null
+	var/datum/mind/M = user?.mind
+	if(QDELETED(clone) || QDELETED(M) || M.current != user)
+		if(!QDELETED(clone))
+			qdel(clone)
+		return
 	M.transfer_to(clone)
 	var/datum/void_clone_link/link = new(user, clone, M)
 	addtimer(CALLBACK(link, TYPE_PROC_REF(/datum/void_clone_link, sync_current_body_spell_access)), 0.1 SECONDS)
@@ -576,29 +592,33 @@
 		to_chat(user, span_notice("我的本体留在原地，而意识已投入新塑成的虚空分身之中。"))
 	return TRUE
 
-/obj/effect/proc_holder/spell/self/void_clone/proc/continue_clone_channel(mob/living/carbon/human/user, obj/item/magic/voidstone/focus, wait_time, fail_text)
+/datum/action/cooldown/spell/z121/self/void_clone/Destroy()
+	QDEL_NULL(pending_clone)
+	return ..()
+
+/datum/action/cooldown/spell/z121/self/void_clone/proc/continue_clone_channel(mob/living/carbon/human/user, obj/item/magic/voidstone/focus, wait_time, fail_text)
 	if(!istype(user) || !istype(focus))
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 	if(user.void_clone_link_custom || user.mind?.void_clone_link_custom)
 		to_chat(user, span_warning("已有分身存在，虚空不再回应新的塑形。"))
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 	if(user.get_active_held_item() != focus)
-		to_chat(user, span_warning("我必须始终握住那块 voidstone，才能维持分身塑造。"))
-		revert_cast(user)
+		to_chat(user, span_warning("我必须始终握住那块 虚空石，才能维持分身塑造。"))
+		z121_cancel(user)
 		return FALSE
 	if(!do_after(user, wait_time, target = user, progress = TRUE))
 		to_chat(user, span_warning("[fail_text]"))
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 	if(user.get_active_held_item() != focus)
-		to_chat(user, span_warning("手中的 voidstone 脱离了掌控，分身术随之瓦解。"))
-		revert_cast(user)
+		to_chat(user, span_warning("手中的 虚空石 脱离了掌控，分身术随之瓦解。"))
+		z121_cancel(user)
 		return FALSE
 	return TRUE
 
-/obj/effect/proc_holder/spell/self/void_clone/proc/find_clone_spawn_turf(mob/living/carbon/human/user)
+/datum/action/cooldown/spell/z121/self/void_clone/proc/find_clone_spawn_turf(mob/living/carbon/human/user)
 	if(!user)
 		return null
 	var/turf/origin = get_turf(user)
@@ -612,7 +632,7 @@
 			return T
 	return null
 
-/obj/effect/proc_holder/spell/self/void_clone/proc/copy_stable_traits(mob/living/carbon/human/source, mob/living/carbon/human/clone)
+/datum/action/cooldown/spell/z121/self/void_clone/proc/copy_stable_traits(mob/living/carbon/human/source, mob/living/carbon/human/clone)
 	if(!source?.status_traits || !clone)
 		return
 	var/list/allowed_sources = list(JOB_TRAIT, ROUNDSTART_TRAIT, TRAIT_VIRTUE, ADVENTURER_TRAIT, INNATE_TRAIT)
@@ -625,7 +645,7 @@
 				ADD_TRAIT(clone, trait, VOID_CLONE_TRAIT_SOURCE)
 				break
 
-/obj/effect/proc_holder/spell/self/void_clone/proc/apply_puppet_traits(mob/living/carbon/human/clone)
+/datum/action/cooldown/spell/z121/self/void_clone/proc/apply_puppet_traits(mob/living/carbon/human/clone)
 	if(!clone)
 		return
 	var/list/puppet_traits = list(
@@ -643,7 +663,7 @@
 		clone.dna.species.species_traits += NOBLOOD
 	clone.reagents?.end_metabolization(clone, keep_liverless = TRUE)
 
-/obj/effect/proc_holder/spell/self/void_clone/proc/apply_clone_stat_penalty(mob/living/carbon/human/source, mob/living/carbon/human/clone)
+/datum/action/cooldown/spell/z121/self/void_clone/proc/apply_clone_stat_penalty(mob/living/carbon/human/source, mob/living/carbon/human/clone)
 	if(!source || !clone)
 		return
 	var/list/stat_names = list(STAT_STRENGTH, STAT_PERCEPTION, STAT_INTELLIGENCE, STAT_CONSTITUTION, STAT_WILLPOWER, STAT_SPEED, STAT_FORTUNE)
@@ -653,7 +673,7 @@
 		if(difference)
 			clone.change_stat(stat, difference)
 
-/obj/effect/proc_holder/spell/self/void_clone/proc/get_clone_base_stat(mob/living/source, stat)
+/datum/action/cooldown/spell/z121/self/void_clone/proc/get_clone_base_stat(mob/living/source, stat)
 	// Include overflow before removing modifiers, then clamp the permanent stat.
 	var/list/buffers = list(STAT_STRENGTH = "BUFSTR", STAT_PERCEPTION = "BUFPER", STAT_INTELLIGENCE = "BUFINT", STAT_CONSTITUTION = "BUFCON", STAT_WILLPOWER = "BUFEND", STAT_SPEED = "BUFSPE", STAT_FORTUNE = "BUFLUC")
 	var/value = source.get_stat(stat) + source.vars[buffers[stat]]
@@ -681,44 +701,45 @@
 /datum/status_effect/buff/victory_glow/void_clone_stat_modifier(stat)
 	return ..() + ((combat_active && combat_stats[stat]) ? combat_stats[stat] : 0)
 
-/obj/effect/proc_holder/spell/self/void_clone_switch
+/datum/action/cooldown/spell/z121/self/void_clone_switch
 	name = "切换身体"
 	desc = "在本体与虚空分身之间切换操控。"
-	overlay_state = "blink"
-	releasedrain = 0
-	chargedrain = 0
-	chargetime = 0
-	recharge_time = 1 SECONDS
+	button_icon_state = "blink"
+	primary_resource_cost = 0
+	hold_drain = 0
+	charge_time = 0
+	cooldown_time = 1 SECONDS
 	cooldown_min = 1 SECONDS
 	associated_skill = /datum/skill/magic/arcane
 	miracle = FALSE
 	gesture_required = FALSE
 	invocation_type = "none"
 
-/obj/effect/proc_holder/spell/self/void_clone_switch/cast(list/targets, mob/living/carbon/human/user = usr)
+/datum/action/cooldown/spell/z121/self/void_clone_switch/z121_apply(atom/cast_on)
+	var/mob/living/carbon/human/user = owner
 	if(!istype(user))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 	var/datum/void_clone_link/link = user.void_clone_link_custom
 	if(QDELETED(link) || link.cleanup_started)
 		to_chat(user, span_warning("我感应不到任何仍然存在的虚空分身。"))
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 	if(QDELETED(link.clone_body) || !link.clone_body || QDELETED(link.original_body) || !link.original_body)
-		revert_cast(user)
+		z121_cancel(user)
 		link.cleanup_clone(FALSE)
 		return FALSE
 
 	var/datum/mind/M = user.mind
 	if(!M || M != link.owner_mind || M.current != user || !link.has_valid_owner())
 		to_chat(user, span_warning("维系两具身体的意识已经错乱，无法切换。"))
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 
 	var/mob/living/carbon/human/target_body = (user == link.original_body) ? link.get_clone_body() : link.original_body
 	if(!link.can_enter_body(target_body) || (target_body != link.original_body && link.should_force_collapse()))
 		to_chat(user, span_warning("另一具身体已无法承载我的意识。"))
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 
 	user.visible_message(span_notice("[user] 的双眼短暂失焦，意识仿佛被一根看不见的丝线猛地拽向了别处。"))

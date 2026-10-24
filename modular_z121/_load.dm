@@ -1,10 +1,10 @@
 // 先加载共用娇小特性，供缩小与巨化的互斥检查使用。
 #include "virtues/small_size.dm"
 #include "spells/_registry.dm"
-#include "spells/legacy_compat.dm"
-#include "spells/legacy_load.dm"
-#include "spells/legacy_compat_tests.dm"
-#include "../code/modules/mob/living/carbon/human/species_display.dm"
+#include "spells/action_support.dm"
+#include "spells/patron_symbols.dm"
+#include "spells/upstream_type_bridges.dm"
+
 // 庖厨食典：成品饮食配方、肉类来源、基础食材及获得渠道。
 #include "books/cookbook_catalog.dm"
 #include "books/cookbook_sources.dm"
@@ -44,7 +44,6 @@
 #include "rites/sacrifice_rewards.dm"
 #include "rites/eora_hearth.dm"
 #include "rites/abyssor_tide.dm"
-#include "rites/zizo_forbidden.dm"
 #include "rites/matthios_golden_eye.dm"
 #include "rites/graggar_blood_feast.dm"
 #include "rites/baotha_oblivion.dm"
@@ -336,7 +335,6 @@
 #include "virtues/parallel_sleep.dm"
 #include "virtues/parallel_bard.dm"
 #include "virtues/parallel_devotion.dm"
-#include "virtues/parallel_refund.dm"
 #include "virtues/parallel_stash.dm"
 // 自定义恶习：洁癖（被动）；当身上有污渍（赤手沾血 / 身上附着可清理污物）时，
 // 持续触发心情变差（压力事件）并施加意志 -2 减益；把身体清洗干净即可解除
@@ -436,4 +434,4 @@
 #include "ethos/hooks.dm"
 #include "ethos/preferences.dm"
 #include "ethos/experience.dm"
-#include "ethos/compatibility.dm"
+#include "translation_display.dm"

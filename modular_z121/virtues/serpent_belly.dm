@@ -220,8 +220,8 @@
 /datum/component/z121_serpent_belly
 	dupe_mode = COMPONENT_DUPE_UNIQUE
 	var/obj/effect/z121_serpent_stomach/stomach
-	var/obj/effect/proc_holder/spell/self/z121_serpent_swallow/swallow_spell
-	var/obj/effect/proc_holder/spell/self/z121_serpent_release/release_spell
+	var/datum/action/cooldown/spell/z121/self/z121_serpent_swallow/swallow_spell
+	var/datum/action/cooldown/spell/z121/self/z121_serpent_release/release_spell
 	var/channeling = FALSE
 	var/interrupted = FALSE
 	var/list/damage_snapshot
@@ -1019,37 +1019,39 @@
 	controller = null
 	return ..()
 
-/obj/effect/proc_holder/spell/self/z121_serpent_swallow
+/datum/action/cooldown/spell/z121/self/z121_serpent_swallow
 	name = "吞入"
 	desc = "握牢近旁的血肉，缓缓将其纳入腹中。庞大的猎物更难下咽，疼痛与脱手足以打断吞咽。腹中仅有一份余地；双手各有所握时，先顾当前手中的猎物。"
-	human_req = TRUE
-	antimagic_allowed = TRUE
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
+	spell_requirements = NONE
 	associated_skill = null
-	recharge_time = 1 SECONDS
-	overlay_state = "bloodsteal"
+	cooldown_time = 1 SECONDS
+	button_icon_state = "bloodsteal"
 
-/obj/effect/proc_holder/spell/self/z121_serpent_swallow/cast(list/targets, mob/living/carbon/human/user = usr)
+/datum/action/cooldown/spell/z121/self/z121_serpent_swallow/z121_apply(atom/cast_on)
+	var/mob/living/carbon/human/user = owner
 	var/datum/component/z121_serpent_belly/ability = user.GetComponent(/datum/component/z121_serpent_belly)
 	if(!ability?.swallow())
 		if(!QDELETED(src) && !QDELETED(user))
-			revert_cast(user)
+			z121_cancel(user)
 		return FALSE
 	return TRUE
 
-/obj/effect/proc_holder/spell/self/z121_serpent_release
+/datum/action/cooldown/spell/z121/self/z121_serpent_release
 	name = "吐出"
 	desc = "稍稍停步，松开腹中的桎梏，任翻涌将其中的躯体与身外之物送回外间。余下的分量越沉，越难顺过这口气。"
-	human_req = TRUE
-	antimagic_allowed = TRUE
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
+	spell_requirements = NONE
 	associated_skill = null
-	recharge_time = 1 SECONDS
-	overlay_state = "fetch"
+	cooldown_time = 1 SECONDS
+	button_icon_state = "fetch"
 
-/obj/effect/proc_holder/spell/self/z121_serpent_release/cast(list/targets, mob/living/carbon/human/user = usr)
+/datum/action/cooldown/spell/z121/self/z121_serpent_release/z121_apply(atom/cast_on)
+	var/mob/living/carbon/human/user = owner
 	var/datum/component/z121_serpent_belly/ability = user.GetComponent(/datum/component/z121_serpent_belly)
 	if(!ability?.release())
 		if(!QDELETED(src) && !QDELETED(user))
-			revert_cast(user)
+			z121_cancel(user)
 		return FALSE
 	return TRUE
 

@@ -385,7 +385,7 @@
 		if(is_simple_animal)
 			var/mob/living/simple_animal/animal_patient = patient
 			animal_patient.adjustHealth(-((animal_patient.maxHealth / 20) * (medskill + 1)), TRUE)
-		log_combat(doctor, patient, "singe", "torch")
+		log_combat(doctor, patient, "灼烧了", "火把")
 		return TRUE
 	return FALSE
 //OV edit end

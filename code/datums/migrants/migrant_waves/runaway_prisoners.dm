@@ -133,7 +133,7 @@
 	var/realmname = SSmapping.map_adjustment.realm_name
 	if (!my_crime)
 		my_crime = "冒犯王冠之罪"
-	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, rand(100, 200), FALSE, my_crime, "The Justiciary of [realmname]")
+	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, rand(100, 200), FALSE, my_crime, "[realmname]司法厅")
 	if(should_wear_femme_clothes(H))
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 	else if(should_wear_masc_clothes(H))
@@ -156,7 +156,7 @@
 	var/realmname = SSmapping.map_adjustment.realm_name
 	if (!my_crime)
 		my_crime = "冒犯王冠之罪"
-	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, rand(100, 200), FALSE, my_crime, "The Justiciary of [realmname]")
+	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, rand(100, 200), FALSE, my_crime, "[realmname]司法厅")
 	if(should_wear_femme_clothes(H))
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 	else if(should_wear_masc_clothes(H))
@@ -178,7 +178,7 @@
 	var/realmname = SSmapping.map_adjustment.realm_name
 	if (!my_crime)
 		my_crime = "冒犯王冠之罪"
-	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, rand(100, 200), FALSE, my_crime, "The Justiciary of [realmname]")
+	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, rand(100, 200), FALSE, my_crime, "[realmname]司法厅")
 	if(should_wear_femme_clothes(H))
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 	else if(should_wear_masc_clothes(H))

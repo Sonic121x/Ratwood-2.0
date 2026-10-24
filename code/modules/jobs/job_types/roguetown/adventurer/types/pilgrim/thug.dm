@@ -27,7 +27,7 @@
 
 	H.adjust_skillrank_up_to(/datum/skill/misc/hunting, SKILL_LEVEL_NOVICE, TRUE)
 
-	var/classes = list("Goon", "Miscreant", "Big Man", "Muscle", "Longshoreman")
+	var/classes = list("打手", "滑头", "大块头", "壮汉", "码头汉")
 	var/classchoice = input(H, "你是哪种恶棍？", "拿起武器") as anything in classes
 
 	switch(classchoice)

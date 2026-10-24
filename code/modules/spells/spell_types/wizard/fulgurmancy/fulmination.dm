@@ -154,7 +154,7 @@
 	playsound(centerpoint, 'sound/magic/charging.ogg', 80, TRUE)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(thunderstrike_erupt), centerpoint, owner, ts_radius, ts_damage, src), ts_telegraph)
 
-/proc/thunderstrike_erupt(turf/centerpoint, mob/living/carbon/human/caster, radius = 2, damage = 50, datum/action/cooldown/spell/guard_source, spell_name = "Thunderstrike")
+/proc/thunderstrike_erupt(turf/centerpoint, mob/living/carbon/human/caster, radius = 2, damage = 50, datum/action/cooldown/spell/guard_source, spell_name = "雷击")
 	if(!centerpoint)
 		return
 	playsound(centerpoint, 'sound/magic/lightning.ogg', 100, TRUE, 8)

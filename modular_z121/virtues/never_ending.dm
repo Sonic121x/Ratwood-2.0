@@ -556,7 +556,7 @@
 	var/list/rollback_profession = list()
 	var/list/rollback_known_skills
 	var/list/rollback_skill_experience
-	var/rollback_spell_points
+	var/list/rollback_aspect_config
 
 /datum/z121_return_identity/New(mob/living/carbon/human/H, datum/mind/M)
 	original = H
@@ -576,7 +576,7 @@
 /datum/z121_return_identity/proc/apply(mob/living/carbon/human/H)
 	rollback_known_skills = skills.known_skills.Copy()
 	rollback_skill_experience = skills.skill_experience.Copy()
-	rollback_spell_points = owner_mind.spell_points
+	rollback_aspect_config = owner_mind.mage_aspect_config?.Copy()
 	if(!QDELETED(original) && original.z121_profession)
 		for(var/field in list("stats", "experience", "independent_experience", "observed_experience", "removed_experience", "traits"))
 			var/list/record = original.z121_profession.vars[field]
@@ -616,8 +616,8 @@
 	if(rollback_known_skills)
 		skills.known_skills = rollback_known_skills.Copy()
 		skills.skill_experience = rollback_skill_experience.Copy()
-	if(!isnull(rollback_spell_points))
-		owner_mind.spell_points = rollback_spell_points
+	if(!isnull(rollback_aspect_config))
+		owner_mind.mage_aspect_config = rollback_aspect_config.Copy()
 
 /datum/z121_return_identity/Destroy()
 	original = null

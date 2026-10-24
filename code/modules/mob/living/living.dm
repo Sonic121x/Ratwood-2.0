@@ -432,7 +432,7 @@
 				AM.visible_message(span_danger("[src]把[AM]从[AM.pulledby]手里拽了出来。"), span_danger("[src]把我从[AM.pulledby]手里拽了出来。"), null, null, src)
 
 				to_chat(src, span_notice("我把[AM]从[AM.pulledby]手里拽了出来！"))
-			log_combat(AM, AM.pulledby, "pulled from", src)
+			log_combat(AM, AM.pulledby, "被拖离", src)
 			AM.pulledby.stop_pulling() //an object can't be pulled by two mobs at once.
 	if(AM != src)
 		pulling = AM
@@ -467,14 +467,14 @@
 				if(prob(50)) // 35% chance to slip away from grab attempt
 					visible_message(span_warning("[target]从[src]油滑的手中溜脱了！"), \
 							span_warning("[target.name]从我手里滑走了，他们身上太滑了！"))
-					log_combat(src, target, "failed to grab due to oil", addition="oiled skin")
+					log_combat(src, target, "因油滑而未能抓住", addition="皮肤涂油")
 					return FALSE // Grab attempt fails
 
 		if(HAS_TRAIT(target, TRAIT_GRABIMMUNE) && target.stat == CONSCIOUS) // Grab immunity check
 			if(target.cmode)
 				target.visible_message(span_warning("[target]轻而易举地挣脱了[src]的抓握！"), \
 						span_warning("我轻而易举地挣脱了[src]的抓握！"))
-				log_combat(src, target, "tried grabbing", addition="passive grab")
+				log_combat(src, target, "尝试抓住", addition="普通抓握")
 				stop_pulling()
 				return
 
@@ -482,11 +482,11 @@
 		if(COOLDOWN_TIMELEFT(target, broke_free) && target.stat == CONSCIOUS)
 			target.visible_message(span_warning("[target]从[src]手中滑脱了。"), \
 					span_warning("我从[src]手中滑脱了。"))
-			log_combat(src, target, "tried grabbing", addition="passive grab")
+			log_combat(src, target, "尝试抓住", addition="普通抓握")
 			stop_pulling()
 			return
 
-		log_combat(src, target, "grabbed", addition="passive grab")
+		log_combat(src, target, "抓住了", addition="普通抓握")
 		playsound(src.loc, 'sound/combat/shove.ogg', 50, TRUE, -1)
 		if(iscarbon(target))
 			var/mob/living/carbon/C = target
@@ -709,7 +709,7 @@
 	if(!reaper)
 		return
 	if (InCritical() || health <= 0 || (blood_volume < BLOOD_VOLUME_SURVIVE))
-		log_message("Has [whispered ? "whispered his final words" : "succumbed to death"] while in [InFullCritical() ? "hard":"soft"] critical with [round(health, 0.1)] points of health!", LOG_ATTACK)
+		log_message("在生命值为 [round(health, 0.1)] 的[InFullCritical() ? "重度":"轻度"]濒死状态下[whispered ? "低声说出了遗言" : "放弃挣扎而死"]！", LOG_ATTACK)
 
 		if(istype(src.loc, /turf/open/water) && !HAS_TRAIT(src, TRAIT_NOBREATH) && lying && client)
 			record_round_statistic(STATS_PEOPLE_DROWNED)
@@ -1188,12 +1188,12 @@
 	if(isliving(pulledby))
 		var/mob/living/puller = pulledby
 		if(!restrained(ignore_grab = 1))
-			log_combat(src, pulledby, "resisted grab")
+			log_combat(src, pulledby, "反抗了抓握")
 			if(resist_grab())
 				COOLDOWN_START(src, broke_free, 1 SECONDS)
 			return
 		else if(puller.compliance) // we ARE handcuffed apart from the grab, but grabber has Compliance Mode on
-			log_combat(src, pulledby, "resisted grab (is restrained, compliance mode bypass)") // if you try baiting prisoners with this, I'll know.
+			log_combat(src, pulledby, "反抗了抓握（受到束缚，绕过顺从模式）") // if you try baiting prisoners with this, I'll know.
 			resist_grab() // resisting out of his grab (100% success) takes priority here
 			return
 
@@ -1250,14 +1250,14 @@
 	playsound(src, 'sound/misc/surrender.ogg', 100, FALSE, -1, ignore_walls=TRUE)
 	update_vision_cone()
 	addtimer(CALLBACK(src, PROC_REF(end_submit)), 600)
-	log_combat(src, src, "surrendered")
-	log_admin("([key_name(src)]) surrendered at [AREACOORD(src)].")
+	log_combat(src, src, "投降了")
+	log_admin("[key_name(src)] 在 [AREACOORD(src)] 投降了。")
 	SSblackbox.record_feedback("tally", "submit", 1, "surrenders")
 
 /mob/living/proc/end_submit()
 	surrendering = 0
 	update_mobility()
-	log_combat(src, src, "stopped surrendering")
+	log_combat(src, src, "停止投降")
 
 /mob/living/proc/toggle_compliance()
 	set name = "切换顺从状态"
@@ -1407,7 +1407,7 @@
 			gcord = L.get_inactive_held_item()
 		gcord.take_damage(100)//Two escapes to snap it.
 		gcord.wipeslate(src)
-	log_combat(L, src, "broke grab")
+	log_combat(L, src, "挣脱了抓握")
 	L.changeNext_move(agg_grab ? CLICK_CD_GRABBING : CLICK_CD_GRABBING + 1 SECONDS)
 	playsound(src.loc, 'sound/combat/grabbreak.ogg', 50, TRUE, -1)
 	L.stop_pulling()
@@ -1502,10 +1502,10 @@
 				var/list/L = where
 				if(what == who.get_item_for_held_index(L[2]))
 					if(what.doStrip(src, who))
-						log_combat(src, who, "stripped [what] off")
+						log_combat(src, who, "脱下了 [what]，对象为")
 			if(what == who.get_item_by_slot(where))
 				if(what.doStrip(src, who))
-					log_combat(src, who, "stripped [what] off")
+					log_combat(src, who, "脱下了 [what]，对象为")
 
 	if(Adjacent(who)) //update inventory window
 		who.show_inv(src)
@@ -1817,7 +1817,7 @@
 		adjust_fire_stacks(-fire_stacks / 2, fire_status.type)
 		spread_to.adjust_fire_stacks(fire_stacks, fire_status.type)
 		if(spread_to.ignite_mob())
-			log_message("bumped into [key_name(spread_to)] and set them on fire.", LOG_ATTACK, meta = list(LOG_META_TARGET = spread_to.ckey))
+			log_message("撞上 [key_name(spread_to)] 并将其引燃。", LOG_ATTACK, meta = list(LOG_META_TARGET = spread_to.ckey))
 		return
 
 	if(!their_fire_status || !their_fire_status.on_fire)
@@ -2125,7 +2125,7 @@
 	. = ..()
 	var/refid = REF(src)
 	. += {"
-		<br><font size='1'>[VV_HREF_TARGETREF_1V(refid, VV_HK_BASIC_EDIT, "[ckey || "no ckey"]", NAMEOF(src, ckey))] / [VV_HREF_TARGETREF_1V(refid, VV_HK_BASIC_EDIT, "[real_name || "no real name"]", NAMEOF(src, real_name))]</font>
+		<br><font size='1'>[VV_HREF_TARGETREF_1V(refid, VV_HK_BASIC_EDIT, "[ckey || "无账号"]", NAMEOF(src, ckey))] / [VV_HREF_TARGETREF_1V(refid, VV_HK_BASIC_EDIT, "[real_name || "无姓名"]", NAMEOF(src, real_name))]</font>
 		<br><font size='1'>
 			BRUTE:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=brute' id='brute'>[getBruteLoss()]</a>
 			FIRE:<font size='1'><a href='?_src_=vars;[HrefToken()];mobToDamage=[refid];adjustDamage=fire' id='fire'>[getFireLoss()]</a>

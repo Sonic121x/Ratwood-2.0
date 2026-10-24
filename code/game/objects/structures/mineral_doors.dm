@@ -67,7 +67,7 @@
 	var/was_broken = obj_broken
 	. = ..()
 	if(obj_broken && !was_broken)
-		log_breakin(null, "was broken open")
+		log_breakin(null, "被破坏打开")
 
 /obj/structure/mineral_door/onkick(mob/user)
 	if(isSwitchingStates)
@@ -96,11 +96,11 @@
 						user.visible_message(span_warning("[user]一脚踹开了[src]！"), \
 							span_notice("我一脚踹开了[src]。"))
 					locked = 0
-					log_breakin(user, "kicked open a locked door")
+					log_breakin(user, "踢开了一扇上锁的门")
 					force_open()
 				else
 					playsound(src, 'sound/combat/hits/onwood/woodimpact (1).ogg', 100)
-					log_breakin(user, "kicked a locked door")
+					log_breakin(user, "踢了一扇上锁的门")
 					if(HAS_TRAIT(user, TRAIT_LAMIAN_TAIL))
 						user.visible_message(span_warning("[user]用尾巴狠狠撞上了[src]！"), \
 							span_notice("我用尾巴狠狠撞上了[src]。"))
@@ -445,7 +445,7 @@
 /obj/structure/mineral_door/attacked_by(obj/item/item, mob/living/user)
 	var/turf/hit_turf = get_turf(src)
 	if(..())
-		log_breakin(user, "struck the door with \a [item.name]")
+		log_breakin(user, "用 [item.name] 击打了门")
 	if(obj_broken || obj_destroyed)
 		var/obj/effect/track/structure/new_track = SStracks.get_track(/obj/effect/track/structure, hit_turf)
 		new_track.handle_creation(user)
@@ -691,7 +691,7 @@
 			return
 
 		var/picked = FALSE
-		user.log_message("attempting to lockpick door \"[src.name]\" (currently [locked ? "locked" : "unlocked"]).", LOG_ATTACK)
+		user.log_message("尝试撬开门“[src.name]”的锁（当前[locked ? "已上锁" : "未上锁"]）。", LOG_ATTACK)
 		log_breakin(user, "开始用\a [I.name]撬锁")
 
 		while(!QDELETED(I) &&(lockprogress < locktreshold))
@@ -706,11 +706,11 @@
 				if(lockprogress >= locktreshold)
 					picked = TRUE
 					to_chat(user, "<span class='deadsay'>锁芯松开了。</span>")
-					log_breakin(user, "picked the lock and [locked ? "unlocked" : "locked"] the door")
+					log_breakin(user, "撬动了门锁并将门[locked ? "解锁" : "上锁"]")
 					if(ishuman(user))
 						var/mob/living/carbon/human/H = user
-						message_admins("[H.real_name]([key_name(user)]) successfully lockpicked [src.name] & [locked ? "unlocked" : "locked"] it. [ADMIN_JMP(src)]")
-						log_admin("[H.real_name]([key_name(user)]) successfully lockpicked [src.name].")
+						message_admins("[H.real_name]([key_name(user)]) 成功撬动了 [src.name] 的锁并将其[locked ? "解锁" : "上锁"]。[ADMIN_JMP(src)]")
+						log_admin("[H.real_name]([key_name(user)]) 成功撬动了 [src.name] 的锁。")
 						record_featured_stat(FEATURED_STATS_CRIMINALS, user)
 						record_round_statistic(STATS_LOCKS_PICKED)
 						var/obj/effect/track/structure/new_track = SStracks.get_track(/obj/effect/track/structure, get_turf(src))
@@ -726,8 +726,8 @@
 				add_sleep_experience(L, /datum/skill/misc/lockpicking, L.STAINT/4)
 				continue
 		if(!picked)
-			user.log_message("stopped/failed lockpicking door \"[src.name]\" (remains [locked ? "locked" : "unlocked"]).", LOG_ATTACK)
-			log_breakin(user, "gave up picking the lock (still [locked ? "locked" : "unlocked"])")
+			user.log_message("停止撬动或未能撬动门“[src.name]”的锁（仍为[locked ? "上锁" : "未上锁"]状态）。", LOG_ATTACK)
+			log_breakin(user, "放弃撬锁（仍为[locked ? "上锁" : "未上锁"]状态）")
 		return
 
 /obj/structure/mineral_door/proc/tryskeletonlock(mob/user)
@@ -738,11 +738,11 @@
 	if(lockbroken)
 		to_chat(user, span_warning("这把锁已经坏了。"))
 		return
-	log_breakin(user, "used a skeleton key and [locked ? "unlocked" : "locked"] the door")
+	log_breakin(user, "使用万能钥匙将门[locked ? "解锁" : "上锁"]")
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		message_admins("[H.real_name]([key_name(user)]) successfully skeletonkey'd [src.name] & [locked ? "unlocked" : "locked"] it. [ADMIN_JMP(src)]")
-		log_admin("[H.real_name]([key_name(user)]) successfully used a skeleton key on [src.name].")
+		message_admins("[H.real_name]([key_name(user)]) 成功使用万能钥匙将 [src.name] [locked ? "解锁" : "上锁"]。[ADMIN_JMP(src)]")
+		log_admin("[H.real_name]([key_name(user)]) 成功对 [src.name] 使用了万能钥匙。")
 	do_sparks(3, FALSE, src)
 	playsound(user, 'sound/items/skeleton_key.ogg', 100)
 	lock_toggle(user) //All That It Does.

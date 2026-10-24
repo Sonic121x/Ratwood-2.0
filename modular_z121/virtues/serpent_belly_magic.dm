@@ -8,7 +8,7 @@
 	var/datum/weakref/host_ref
 	var/spell_name
 
-/datum/z121_serpent_cast/New(obj/effect/z121_serpent_stomach/stomach, mob/caster, obj/effect/proc_holder/spell/spell)
+/datum/z121_serpent_cast/New(obj/effect/z121_serpent_stomach/stomach, mob/caster, datum/action/cooldown/spell/spell)
 	stomach_ref = WEAKREF(stomach)
 	caster_ref = WEAKREF(caster)
 	host_ref = WEAKREF(stomach.host)
@@ -42,54 +42,45 @@
 		result.Insert(1, center)
 	return result
 
-/obj/effect/proc_holder/spell
-	// 明确登记作用方式，不根据名称、手势要求或魔法学派猜测攻击性质。
-	var/z121_serpent_kind
+// 攻击动作重定向到宿主，原动作仍负责蓄力、资源和冷却。
+/datum/action/cooldown/spell
+	var/z121_serpent_offensive = FALSE
+	var/z121_admin_authorized = FALSE
 
-/obj/effect/proc_holder/spell/perform(list/targets, recharge = TRUE, mob/user = usr)
+/datum/action/cooldown/spell/projectile
+	z121_serpent_offensive = TRUE
+
+/datum/action/cooldown/spell/projectile/fetch
+	z121_serpent_offensive = FALSE
+
+/datum/action/cooldown/spell/Activate(atom/target)
+	var/obj/effect/z121_serpent_stomach/stomach = owner?.loc
+	if(!z121_serpent_offensive || !istype(stomach) || stomach.captive != owner)
+		return ..()
 	if(z121_serpent_cast)
 		return FALSE
-	var/obj/effect/z121_serpent_stomach/stomach = user?.loc
-	if(!istype(stomach) || stomach.captive != user || !z121_serpent_kind)
-		return ..()
-	// 依据这些法术的实际治疗分支分类；不能将治疗亡灵的骨寒变成伤害活体宿主。
-	if(z121_serpent_kind == "混合")
-		var/mob/living/caster = user
-		var/mob/living/intended = targets?[1]
-		if(!isliving(intended) || intended == user)
-			return ..()
-		if(istype(src, /obj/effect/proc_holder/spell/invoked/bonechill))
-			if(intended.mob_biotypes & MOB_UNDEAD)
-				return ..()
-		else if(!caster.patron?.undead_hater || !(intended.mob_biotypes & MOB_UNDEAD))
-			return ..()
-	var/datum/z121_serpent_cast/context = new(stomach, user, src)
-	z121_serpent_cast = context
-	var/previous_los = ignore_los
-	ignore_los = TRUE
-	log_combat(user, stomach.host, "在腹内施放[name]")
-	. = ..(list(stomach.host), recharge, user)
+	z121_serpent_cast = new(stomach, owner, src)
+	var/mob/living/host = z121_serpent_cast.host()
+	if(!host || z121_serpent_cast.blocks(host))
+		z121_serpent_cast = null
+		return FALSE
+	log_combat(owner, host, "在腹内施放[name]")
+	. = ..(host)
 	if(!QDELETED(src))
-		ignore_los = previous_los
 		z121_serpent_cast = null
 
-/obj/effect/proc_holder/spell/invoked/projectile
-	z121_serpent_kind = "弹道"
-
-/obj/effect/proc_holder/spell/invoked/projectile/fetch
-	z121_serpent_kind = null
-
-/obj/effect/proc_holder/spell/invoked/projectile/cast(list/targets, mob/living/user)
+/datum/action/cooldown/spell/projectile/cast(atom/cast_on)
 	if(!z121_serpent_cast)
 		return ..()
 	var/mob/living/host = z121_serpent_cast.host()
-	if(!host)
+	if(!host || z121_serpent_cast.blocks(host))
 		return FALSE
-	z121_serpent_base_cast(targets, user)
-	fire_projectile(user, host)
-	update_icon()
-	// 冷却、咒语、资源及疲劳统一交给 perform，不能在这里再扣一遍。
-	return TRUE
+	z121_serpent_notify_cast(host)
+	return fire_projectile(host)
+
+/datum/action/cooldown/spell/projectile/ready_projectile(obj/projectile/to_fire, atom/target, mob/user, iteration)
+	. = ..()
+	to_fire.z121_serpent_cast = z121_serpent_cast
 
 /obj/projectile
 	var/z121_serpent_resolved = FALSE
@@ -104,6 +95,7 @@
 	if(!host || !prehit(host))
 		qdel(src)
 		return
+	forceMove(get_turf(host))
 	original = host
 	def_zone = BODY_ZONE_CHEST
 	// 这里不经过穿戴防御、盾牌、武技或命中率检定；仍保留魔抗与伤害免疫。
@@ -128,144 +120,87 @@
 	if(!QDELETED(src))
 		qdel(src)
 
-// 瞄准式旧法术也有同样的地面限制，使用自身原有的弹数和配置，不借用其他法术。
-/obj/effect/proc_holder/spell/aimed/fireball
-	z121_serpent_kind = "弹道"
 
-/obj/effect/proc_holder/spell/aimed/cast(list/targets, mob/living/user)
-	if(!z121_serpent_cast)
+// 腹内点按法术按钮即可锁定宿主，使用原生施法链统一结算。
+/datum/action/cooldown/spell/Trigger(trigger_flags)
+	var/obj/effect/z121_serpent_stomach/stomach = owner?.loc
+	if(!z121_serpent_offensive || !istype(stomach) || stomach.captive != owner)
 		return ..()
-	var/mob/living/host = z121_serpent_cast.host()
-	if(!host)
+	if(!IsAvailable() || currently_charging || !can_cast_spell(TRUE))
 		return FALSE
-	current_amount--
-	for(var/i in 1 to projectiles_per_fire)
-		var/obj/projectile/projectile = new projectile_type(user.loc)
-		projectile.firer = user
-		projectile.preparePixelProjectile(host, user)
-		for(var/key in projectile_var_overrides)
-			if(projectile.vars[key])
-				projectile.vv_edit_var(key, projectile_var_overrides[key])
-		ready_projectile(projectile, host, user, i)
-		projectile.z121_serpent_cast = z121_serpent_cast
-		projectile.fire()
-	update_icon()
+	INVOKE_ASYNC(src, PROC_REF(PreActivate), stomach.host)
 	return TRUE
 
-// 普通直接伤害本来就不检定外穿护甲；这里只为腹内攻击补齐反魔和无敌的判定。
-/obj/effect/proc_holder/spell/proc/z121_serpent_blocked(list/targets, mob/user)
-	if(!z121_serpent_cast || !z121_serpent_cast.blocks(targets?[1]))
-		return FALSE
-	z121_serpent_base_cast(targets, user)
-	to_chat(user, span_warning("魔力触及周遭的血肉，却被无形的屏障消解了。"))
-	return TRUE
-
-/obj/effect/proc_holder/spell/invoked/repulse
-	z121_serpent_kind = "范围"
-/obj/effect/proc_holder/spell/invoked/blade_burst
-	z121_serpent_kind = "范围"
-/obj/effect/proc_holder/spell/invoked/snap_freeze
-	z121_serpent_kind = "范围"
-/obj/effect/proc_holder/spell/invoked/gravity
-	z121_serpent_kind = "范围"
-/obj/effect/proc_holder/spell/invoked/thunderstrike
-	z121_serpent_kind = "范围"
-/obj/effect/proc_holder/spell/invoked/wither
-	z121_serpent_kind = "范围"
-/obj/effect/proc_holder/spell/invoked/meteor_storm
-	z121_serpent_kind = "范围"
-/obj/effect/proc_holder/spell/invoked/sundering_lightning
-	z121_serpent_kind = "范围"
-/obj/effect/proc_holder/spell/invoked/aerosolize
-	z121_serpent_kind = "范围"
-
-// 这些法术对不同生物可能治疗或造成伤害，不把对自身的辅助施法改成攻击。
-/obj/effect/proc_holder/spell/invoked/bonechill
-	z121_serpent_kind = "混合"
-/obj/effect/proc_holder/spell/invoked/lesser_heal
-	z121_serpent_kind = "混合"
-/obj/effect/proc_holder/spell/invoked/heal
-	z121_serpent_kind = "混合"
-
-/obj/effect/proc_holder/spell/invoked/rebuke
-	z121_serpent_kind = "直接"
-/obj/effect/proc_holder/spell/invoked/frostbite
-	z121_serpent_kind = "直接"
-/obj/effect/proc_holder/spell/invoked/eyebite
-	z121_serpent_kind = "直接"
-/obj/effect/proc_holder/spell/targeted/inflict_handler
-	z121_serpent_kind = "直接"
-/obj/effect/proc_holder/spell/targeted/churn
-	z121_serpent_kind = "直接"
-/obj/effect/proc_holder/spell/targeted/tesla
-	z121_serpent_kind = "直接"
-
-/obj/effect/proc_holder/spell/invoked/pain
-	z121_serpent_kind = "弹道"
-
-/obj/effect/proc_holder/spell/self/moonlight_weapon_spell/moonlight_wave
-	z121_serpent_kind = "范围"
-
-/obj/effect/proc_holder/spell/invoked/rebuke/cast(list/targets, mob/living/user)
-	if(z121_serpent_blocked(targets, user))
-		return TRUE
-	return ..()
-/obj/effect/proc_holder/spell/invoked/frostbite/cast(list/targets, mob/living/user)
-	if(z121_serpent_blocked(targets, user))
-		return TRUE
-	return ..()
-/obj/effect/proc_holder/spell/invoked/eyebite/cast(list/targets, mob/living/user)
-	if(z121_serpent_blocked(targets, user))
-		return TRUE
-	return ..()
-/obj/effect/proc_holder/spell/targeted/inflict_handler/cast(list/targets, mob/user = usr)
-	if(z121_serpent_blocked(targets, user))
-		return TRUE
-	return ..()
-/obj/effect/proc_holder/spell/targeted/churn/cast(list/targets, mob/living/user = usr)
-	if(z121_serpent_blocked(targets, user))
-		return TRUE
+// 上游鼠标蓄力只接受地面施法；腹内通过同一套蓄力效果与中断检查完成引导。
+/datum/action/cooldown/spell/before_cast(atom/cast_on)
+	if(z121_serpent_cast && charge_required && click_to_activate)
+		var/mob/living/caster = owner
+		on_start_charge()
+		charge_started_at = world.time
+		charge_target_time = charge_time
+		apply_charge_intent()
+		var/completed = do_after(caster, charge_time, target = caster, needhand = FALSE, extra_checks = CALLBACK(src, PROC_REF(do_after_checks), caster, cast_on))
+		if(QDELETED(src))
+			return SPELL_CANCEL_CAST
+		on_end_charge(completed)
+		if(!completed || !z121_serpent_cast?.host() || z121_serpent_cast.blocks(cast_on))
+			return SPELL_CANCEL_CAST
 	return ..()
 
-/obj/effect/proc_holder/spell/targeted/tesla/Bolt(mob/origin, mob/target, bolt_energy, bounces, mob/user = usr)
-	if(z121_serpent_cast?.blocks(target))
-		return
-	return ..()
-
-/obj/effect/proc_holder/spell/invoked/bonechill/cast(list/targets, mob/living/user)
-	var/mob/living/target = targets?[1]
-	if(isliving(target) && !(target.mob_biotypes & MOB_UNDEAD) && z121_serpent_blocked(targets, user))
-		return TRUE
-	return ..()
-
-/obj/effect/proc_holder/spell/invoked/lesser_heal/cast(list/targets, mob/living/user)
-	var/mob/living/target = targets?[1]
-	if(isliving(target) && user.patron?.undead_hater && (target.mob_biotypes & MOB_UNDEAD) && z121_serpent_blocked(targets, user))
-		return TRUE
-	return ..()
-
-/obj/effect/proc_holder/spell/invoked/heal/cast(list/targets, mob/living/user)
-	var/mob/living/target = targets?[1]
-	if(isliving(target) && user.patron?.undead_hater && (target.mob_biotypes & MOB_UNDEAD) && z121_serpent_blocked(targets, user))
-		return TRUE
-	return ..()
-
-// 延迟雷击以独立上下文确定宿主优先级，保留其余地块的原有结算。
-/obj/effect/proc_holder/spell/invoked/thunderstrike/thunderstrike_damage(turf/effect_layer, damage_mod, datum/z121_serpent_cast/context = null)
-	if(!context)
-		return ..()
-	new /obj/effect/temp_visual/thunderstrike_actual(effect_layer)
-	playsound(effect_layer, 'sound/magic/lightning.ogg', 50)
-	for(var/mob/living/target in context.targets(effect_layer))
-		if(context.blocks(target) || target.anti_magic_check())
-			continue
-		target.electrocute_act(damage * damage_mod, src, 1, SHOCK_NOSTUN | (target == context.host() ? SHOCK_NOGLOVES : 0))
-		return
-
-// 仅对应攻击来源击中自己的宿主时略过手套和衣甲；种族、电阻与正常免疫仍由原流程处理。
-/mob/living/carbon/human/electrocute_act(shock_damage, datum/source, siemens_coeff = 1, flags = NONE)
-	if(istype(source) && source.z121_serpent_cast?.host() == src)
-		if(source.z121_serpent_cast.blocks(src))
+// 仅为蛇腹容器放宽地面限制，其余上游施法资格仍逐项检查。
+// 不临时搬动施法者，避免触发移动、吞吐与心智转移回调。
+/datum/action/cooldown/spell/can_cast_spell(feedback = TRUE)
+	if((type in GLOB.z121_admin_learnable_spells) && !z121_admin_authorized)
+		if(!owner?.client || !check_rights_for(owner.client, R_ADMIN))
 			return FALSE
-		flags = (flags & ~SHOCK_TESLA) | SHOCK_NOGLOVES
-	return ..(shock_damage, source, siemens_coeff, flags)
+	var/obj/effect/z121_serpent_stomach/stomach = owner?.loc
+	if(!z121_serpent_offensive || !istype(stomach) || stomach.captive != owner)
+		return ..()
+	if(!isliving(owner) || !stomach.host || stomach.host.stat == DEAD)
+		return FALSE
+	var/mob/living/caster = owner
+	if(!(spell_flags & SPELL_IGNORE_SPELLBLOCK) && (HAS_TRAIT(caster, TRAIT_SPELLBLOCK) || HAS_TRAIT(caster, TRAIT_SPELLCOCKBLOCK)))
+		return FALSE
+	if(HAS_TRAIT(caster, TRAIT_SPELL_VAMPIRE_BLOCK) || HAS_TRAIT(caster, TRAIT_CURSE_NOC) || caster.has_status_effect(/datum/status_effect/debuff/cast_disrupted))
+		return FALSE
+	if(caster.mind?.has_spellmiracle_block_antag() && (source_aspect || primary_resource_type == SPELL_COST_DEVOTION || secondary_resource_type == SPELL_COST_DEVOTION))
+		return FALSE
+	if(caster.mind?.has_antag_datum(/datum/antagonist/vampire))
+		var/tier = get_miracle_tier(type)
+		if(!isnull(tier) && tier > CLERIC_T1)
+			return FALSE
+	if(!(spell_requirements & SPELL_CASTABLE_WHILE_MOUNTED) && caster.client && isliving(caster.buckled))
+		return FALSE
+	if((spell_requirements & SPELL_REQUIRES_CMODE) && !caster.cmode)
+		return FALSE
+	for(var/datum/action/cooldown/spell/S in caster.actions)
+		if(S != src && S.currently_charging)
+			return FALSE
+	var/turf/ground = get_turf(caster)
+	if(!ground || ((spell_requirements & SPELL_REQUIRES_STATION) && is_centcom_level(ground.z)))
+		return FALSE
+	if((spell_requirements & SPELL_REQUIRES_MIND) && !caster.mind)
+		return FALSE
+	if((spell_requirements & SPELL_REQUIRES_NO_ANTIMAGIC) && caster.anti_magic_check() && !HAS_TRAIT(caster, TRAIT_SPELL_DISPERSION))
+		return FALSE
+	if((spell_requirements & SPELL_REQUIRES_HUMAN) && !ishuman(caster))
+		return FALSE
+	if(length(required_items) && !HAS_TRAIT(caster, TRAIT_HALLOWED))
+		var/found = FALSE
+		for(var/obj/item/I in caster.contents)
+			if(is_type_in_list(I, required_items))
+				found = TRUE
+				break
+		if(!found)
+			return FALSE
+	return check_cost(feedback) && can_invoke(feedback)
+
+// 内部定向效果跳过上游的地面选点分支，但仍发送同一套施法信号与日志。
+/datum/action/cooldown/spell/proc/z121_serpent_notify_cast(atom/cast_on)
+	SEND_SIGNAL(src, COMSIG_SPELL_CAST, cast_on)
+	record_featured_object_stat(FEATURED_STATS_SPELLS, name)
+	if(owner)
+		SEND_SIGNAL(owner, COMSIG_MOB_CAST_SPELL, src, cast_on)
+		if(owner.ckey)
+			owner.log_message("在腹内施放 [name]，目标为 [key_name_admin(cast_on)]。", LOG_ATTACK)
+			cast_on.log_message("受到 [key_name_admin(owner)] 的腹内法术 [name] 影响。", LOG_ATTACK)

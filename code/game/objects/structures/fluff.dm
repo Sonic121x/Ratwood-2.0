@@ -799,7 +799,7 @@
 
 /obj/structure/fluff/iconsign
 	icon_state = "sign"
-	name = "icon sign"
+	name = "图示标牌"
 	desc = "你不应该看到这个。"
 	icon = 'icons/roguetown/misc/signs.dmi'
 	max_integrity = 200
@@ -1572,9 +1572,9 @@
 	if(!istype(M))
 		return
 	if(user)
-		log_combat(user, M, "[targeted? "flashed(targeted)" : "flashed(AOE)"]", src)
+		log_combat(user, M, "[targeted? "用定向闪光照射了" : "用范围闪光照射了"]", src)
 	else //caused by emp/remote signal
-		M.log_message("was [targeted? "flashed(targeted)" : "flashed(AOE)"]",LOG_ATTACK)
+		M.log_message("受到[targeted? "定向闪光" : "范围闪光"]照射",LOG_ATTACK)
 	if(generic_message && M != user)
 		to_chat(M, span_danger("[src]迸发出刺目的强光！"))
 	if(M.flash_act())
@@ -1587,10 +1587,10 @@
 		return
 
 	var/list/weapon_choices = list(
-		"Sword" = CALLBACK(src, PROC_REF(summon_and_equip_sword), user),
-		"Axe" = CALLBACK(src, PROC_REF(summon_and_equip_axe), user),
-		"Mace" = CALLBACK(src, PROC_REF(summon_and_equip_mace), user),
-		"Trident" = CALLBACK(src, PROC_REF(summon_and_equip_spear), user)
+		"剑" = CALLBACK(src, PROC_REF(summon_and_equip_sword), user),
+		"斧" = CALLBACK(src, PROC_REF(summon_and_equip_axe), user),
+		"钉头锤" = CALLBACK(src, PROC_REF(summon_and_equip_mace), user),
+		"三叉戟" = CALLBACK(src, PROC_REF(summon_and_equip_spear), user)
 	)
 
 	var/result = tgui_input_list(user, "选择要召唤的殉道者武器：", "殉道者武器", weapon_choices)

@@ -30,8 +30,7 @@
 	)
 
 	if(H.mind)
-		H.z121_birth_spell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
-		H.z121_birth_spell(new /obj/effect/proc_holder/spell/invoked/enchant_weapon)
+		H.z121_birth_spell(new /datum/action/cooldown/spell/touch/prestidigitation)
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/barbersurgeon.dm
 /datum/outfit/job/roguetown/adventurer/doctor/pre_equip(mob/living/carbon/human/H)
@@ -1738,8 +1737,8 @@
 					l_hand = /obj/item/quiver/sling
 				if("魔法砖块")
 					H.z121_birth_skill_floor(/datum/skill/magic/arcane, SKILL_LEVEL_EXPERT, TRUE)
-					H.z121_birth_spell(new /obj/effect/proc_holder/spell/self/magicians_brick)
-					H.z121_birth_trait(TRAIT_ARCYNE_T1, TRAIT_GENERIC)
+					H.z121_birth_spell(new /datum/action/cooldown/spell/magicians_stone)
+					H.z121_birth_trait(TRAIT_ARCYNE, TRAIT_GENERIC)
 				if("撬锁工具环")
 					H.z121_birth_skill_floor(/datum/skill/misc/sneaking, SKILL_LEVEL_EXPERT, TRUE)
 					H.z121_birth_skill_floor(/datum/skill/misc/stealing, SKILL_LEVEL_EXPERT, TRUE)
@@ -1908,9 +1907,9 @@
 	switch (classchoice)
 		if("古老魔法")
 
-			H.z121_birth_trait(TRAIT_ARCYNE_T2, TRAIT_GENERIC)
+			H.z121_birth_trait(TRAIT_ARCYNE, TRAIT_GENERIC)
+			H.z121_birth_aspects(list("mastery" = FALSE, "major" = 1, "minor" = 1, "utilities" = 5, "ward" = TRUE))
 			H.z121_birth_skill_add(/datum/skill/magic/arcane, 1, TRUE)
-			H.z121_birth_points(9)
 			neck = null
 		if("神之血脉")
 
@@ -1947,9 +1946,9 @@
 			H.z121_birth_skill_add(/datum/skill/magic/holy, 1, TRUE)
 			H.z121_birth_grant_devotion(D, cleric_tier = CLERIC_T1, passive_gain = CLERIC_REGEN_MINOR, devotion_limit = CLERIC_REQ_1)
 			H.z121_birth_half_devotion(D)
-			H.z121_birth_trait(TRAIT_ARCYNE_T1, TRAIT_GENERIC)
+			H.z121_birth_trait(TRAIT_ARCYNE, TRAIT_GENERIC)
+			H.z121_birth_aspects(list("mastery" = FALSE, "major" = 0, "minor" = 1, "utilities" = 3))
 			H.z121_birth_skill_add(/datum/skill/magic/arcane, 1, TRUE)
-			H.z121_birth_points(6)
 			switch(H.patron?.type)
 				if(/datum/patron/divine/astrata)
 					neck = /obj/item/clothing/neck/roguetown/psicross/astrata
@@ -1997,9 +1996,9 @@
 
 		switch (classchoice)
 			if("古老魔法")
-				H.z121_birth_spell(new /obj/effect/proc_holder/spell/invoked/guidance)
-				H.z121_birth_spell(new /obj/effect/proc_holder/spell/invoked/projectile/arcynebolt)
-				H.z121_birth_spell(new /obj/effect/proc_holder/spell/invoked/fortitude)
+				H.z121_birth_spell(new /datum/action/cooldown/spell/augment_buff/guidance)
+				H.z121_birth_spell(new /datum/action/cooldown/spell/projectile/basic_offensive)
+				H.z121_birth_spell(new /datum/action/cooldown/spell/augment_buff/fortitude)
 
 	if(H.gender == FEMALE)
 		armor = /obj/item/clothing/suit/roguetown/armor/corset
@@ -2295,7 +2294,7 @@
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	beltr = /obj/item/rogueweapon/huntingknife
 	if(H.mind)
-		H.z121_birth_spell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
+		H.z121_birth_spell(new /datum/action/cooldown/spell/touch/prestidigitation)
 		H.z121_birth_spell(new /obj/effect/proc_holder/spell/invoked/teach)
 		H.z121_birth_spell(new /obj/effect/proc_holder/spell/invoked/learn)
 		H.z121_birth_spell(new /obj/effect/proc_holder/spell/invoked/refocusstudies)

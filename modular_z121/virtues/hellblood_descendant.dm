@@ -8,7 +8,7 @@
 //   授予被动特性【地狱血脉 / Hell Bloodline】，其效果为：
 //     - 对火焰伤害免疫（immune to flame damage）：既不会被点燃、也不受高温环境伤害，
 //       并且任何来源的灼烧（BURN）伤害都被拦截归零。
-//     - 习得火焰系法术（obtain flame series spells）：火球术 / 强效火球术 / 吐焰火球 / 生成营火。
+//     - 习得火焰系法术（obtain flame series spells）：火球术 / 龙焰术 / 吐焰火球 / 生成营火。
 //     - 该特性在游戏内对玩家可见（Make the added trait visible to players）：
 //         1) 任何人检视（examine）该角色时，会在检视文本里看到一行【地狱血脉】说明（检视组件）；
 //         2) 持有者点开自己的特性自检面板时，也能看到【地狱血脉】及其说明（登记进 GLOB.roguetraits）。
@@ -33,7 +33,7 @@
 //   - /mob/living/carbon/human/adjustFireLoss  灼烧伤害入口（damage_procs.dm，本文件按种族覆写以实现免疫）。
 //   - TRAIT_NOFIRE / TRAIT_RESISTHEAT      不可燃 / 抗高温特性（traits.dm；阻止点燃与高温环境伤害）。
 //   - /datum/mind/proc/AddSpell / has_spell  习得 / 查询法术（mind.dm）。
-//   - 火焰系法术类型（code/modules/spells/spell_types/wizard/...）：fireball / fireball/greater / spitfire / create_campfire。
+//   - 火焰系法术类型（code/modules/spells/spell_types/wizard/...）：fireball / fireball/barrage / spitfire / create_campfire。
 //   - /datum/component + COMSIG_PARENT_EXAMINE  检视组件，让特性"被他人检视可见"。
 //   - GLOB.roguetraits                     玩家特性自检面板的全局表（traits.dm；让特性"被本人面板可见"）。
 //   - TRAIT_VIRTUE                         美德授予特性时的统一来源标签（便于统一清理）。
@@ -72,7 +72,7 @@
 	custom_text = "【仅限提夫林（Tiefling）获取】\n\
 	消耗 18 点凯旋点数。获得【地狱血脉】特性：\n\
 	· 火焰免疫：不会被点燃，免疫一切灼烧（BURN）与高温环境伤害；\n\
-	· 火焰系法术：习得 火球术、强效火球术、吐焰火球、生成营火。"
+	· 火焰系法术：习得 火球术、龙焰术、吐焰火球、生成营火。"
 	// 消耗 18 点凯旋点数。基类 New() 会自动把"Costs 18 TRIUMPH"追加进 desc。
 	//   check_triumphs() 会在 apply_virtue 流程开头校验并扣除；若领取者非提夫林，
 	//   apply_to_human 会把这笔点数全额退还（见下）。
@@ -91,17 +91,17 @@
 //   集中成一处便于将来增删火焰系法术，避免类型清单散落各处。
 // 选用的四个法术均为引擎已有的火焰主题法术（code/modules/spells/spell_types/wizard/...）：
 //   - 火球术 fireball                       基础单体/小范围火球（projectiles_aoe/fireball.dm）
-//   - 强效火球术 fireball/greater           更强的火球（projectiles_aoe/greater_fireball.dm）
+//   - 龙焰术 fireball/barrage           完整保留火球、炮击与烈焰之柱切换（pyromancy/wyrmfire.dm）
 //   - 吐焰火球 spitfire                      喷吐火焰弹（projectiles_single/spitfire.dm）
 //   - 生成营火 create_campfire              召唤营火（utility/create_campfire.dm），凑齐"火焰系"主题
 // ----------------------------------------------------------------------------
 /datum/virtue/utility/hellblood_descendant/proc/get_flame_spells()
 	// static：列表只在首次调用时创建，后续复用同一份，避免每次施法重复分配内存。
 	var/static/list/flame_spells = list(
-		/obj/effect/proc_holder/spell/invoked/projectile/fireball,          // 火球术
-		/obj/effect/proc_holder/spell/invoked/projectile/fireball/greater,  // 强效火球术
-		/obj/effect/proc_holder/spell/invoked/projectile/spitfire,          // 吐焰火球
-		/obj/effect/proc_holder/spell/invoked/create_campfire,              // 生成营火
+		/datum/action/cooldown/spell/projectile/fireball,          // 火球术
+		/datum/action/cooldown/spell/projectile/fireball/barrage,  // 龙焰术
+		/datum/action/cooldown/spell/projectile/spitfire,          // 吐焰火球
+		/datum/action/cooldown/spell/create_campfire,              // 生成营火
 	)
 	return flame_spells
 
@@ -136,13 +136,14 @@
 	// 去重：若已通过 mind 或 mob 拥有同类法术，则不重复授予（重复挂载会出现两个施法按钮）。
 	//   先查 mind（has_spell 接受类型路径），再查 mob_spell_list（按 istype 匹配）。
 	if(recipient.mind?.has_spell(spell_path))
+		recipient.mind.z121_keep_independent_spell(recipient.mind.get_spell(spell_path))
 		return FALSE
-	for(var/obj/effect/proc_holder/spell/existing in recipient.mob_spell_list)
+	for(var/datum/action/cooldown/spell/existing in recipient.mob_spell_list)
 		if(istype(existing, spell_path))
 			return FALSE
 
 	// 实例化法术对象。new spell_path 失败（路径异常）时 new_spell 为 null，下面会拦截。
-	var/obj/effect/proc_holder/spell/new_spell = new spell_path
+	var/datum/action/cooldown/spell/new_spell = new spell_path
 	// 防御：极端情况下实例化失败，安静放弃本次授予，绝不把 null 塞进法术列表。
 	if(!new_spell)
 		return FALSE
@@ -150,6 +151,7 @@
 	// 双路径授予：有 mind 存 mind（AddSpell 内部会接好施法动作 action.Grant），否则挂在 mob 上。
 	if(recipient.mind)
 		recipient.mind.AddSpell(new_spell, recipient)
+		recipient.mind.z121_keep_independent_spell(new_spell)
 	else
 		recipient.AddSpell(new_spell)
 	return TRUE
@@ -303,4 +305,4 @@
 	//   幂等：重复调用只是覆盖同一个键，不会产生重复项，二次启动也安全。
 	GLOB.roguetraits[TRAIT_HELLBLOOD_DESCENDANT] = span_info("我的先祖乃是来自地狱的恶魔，\
 		这份血脉在我身上尤为彰显：烈焰无法灼伤我分毫（免疫一切火焰/灼烧/高温伤害，亦不会被点燃），\
-		而地狱之火听命于我的召唤（习得火球术、强效火球术、吐焰火球、生成营火）。")
+		而地狱之火听命于我的召唤（习得火球术、龙焰术、吐焰火球、生成营火）。")

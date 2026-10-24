@@ -84,7 +84,7 @@
 	do_teleport(H, dest, channel = TELEPORT_CHANNEL_MAGIC)
 	playsound(dest, 'sound/magic/lightning.ogg', 25, TRUE)
 
-	log_combat(H, cast_on, "used Levinstroke on", zone=H.zone_selected)
+	log_combat(H, cast_on, "使用了 [name]，目标为", zone=H.zone_selected)
 
 	var/locked_zone = H.zone_selected || BODY_ZONE_CHEST
 

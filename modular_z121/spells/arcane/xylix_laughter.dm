@@ -1,48 +1,45 @@
-/obj/effect/proc_holder/spell/invoked/xylix_laughter
+/datum/action/cooldown/spell/z121/invoked/xylix_laughter
 	name = "赛利克斯笑术"
 	desc = "以戏谑的奥术冲击目标心神，迫使其进行意志检定。失败者将失声狂笑并狼狈倒地。"
-	cost = 3
+	point_cost = 3
 	xp_gain = TRUE
-	releasedrain = 20
-	chargedrain = 1
-	chargetime = 1 SECONDS
-	recharge_time = 20 SECONDS
-	human_req = TRUE
-	warnie = "spellwarning"
-	school = "enchantment"
+	primary_resource_cost = 20
+	hold_drain = 1
+	charge_time = 1 SECONDS
+	cooldown_time = 20 SECONDS
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
 	spell_tier = 2
-	action_icon = 'modular_z121/icon/custompell.dmi'
-	overlay_state = "xylix_laughter"
+	button_icon = 'modular_z121/icon/custompell.dmi'
+	button_icon_state = "xylix_laughter"
 	invocations = list("欢笑，吞没其心！")
 	invocation_type = "shout"
-	glow_color = GLOW_COLOR_DISPLACEMENT
+	spell_color = GLOW_COLOR_DISPLACEMENT
 	glow_intensity = GLOW_INTENSITY_LOW
-	no_early_release = TRUE
-	movement_interrupt = FALSE
-	charging_slowdown = 1
-	chargedloop = /datum/looping_sound/invokegen
+	charge_slowdown = 1
 	associated_skill = /datum/skill/magic/arcane
-	range = 7
+	cast_range = 7
 	miracle = FALSE
 	gesture_required = TRUE
 
-/obj/effect/proc_holder/spell/invoked/xylix_laughter/cast(list/targets, mob/living/user = usr)
+/datum/action/cooldown/spell/z121/invoked/xylix_laughter/z121_apply(atom/cast_on)
+	var/list/targets = list(cast_on)
+	var/mob/living/user = owner
 	var/atom/target_atom = targets[1]
 	if(!isliving(target_atom))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	var/mob/living/target = target_atom
 	if(target == user)
 		to_chat(user, span_warning("我没法把自己逗到失控大笑。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	if(target.anti_magic_check())
 		target.visible_message(span_warning("[target] 周身的反魔法波纹震散了那股滑稽而危险的咒力！"))
 		to_chat(user, span_warning("[target] 身上的反魔法抵消了赛利克斯笑术。"))
 		playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	var/fail_chance = get_failure_chance(user, target)
@@ -60,21 +57,21 @@
 	target.emote("giggle", intentional = TRUE)
 	return TRUE
 
-/obj/effect/proc_holder/spell/invoked/xylix_laughter/proc/get_failure_chance(mob/living/user, mob/living/target)
+/datum/action/cooldown/spell/z121/invoked/xylix_laughter/proc/get_failure_chance(mob/living/user, mob/living/target)
 	var/caster_power = user.STAINT + user.get_skill_level(/datum/skill/magic/arcane) * 2
 	var/target_will = target.STAWIL
 	if(target.cmode)
 		target_will += 1
 	return CLAMP(50 + ((caster_power - target_will) * 10), 15, 85)
 
-/obj/effect/proc_holder/spell/invoked/xylix_laughter/proc/trigger_laugh_sequence(mob/living/target)
+/datum/action/cooldown/spell/z121/invoked/xylix_laughter/proc/trigger_laugh_sequence(mob/living/target)
 	if(QDELETED(target))
 		return
 	target.emote("laugh", intentional = TRUE)
 	addtimer(CALLBACK(src, PROC_REF(do_laugh), target), 1 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(do_laugh), target), 2 SECONDS)
 
-/obj/effect/proc_holder/spell/invoked/xylix_laughter/proc/do_laugh(mob/living/target)
+/datum/action/cooldown/spell/z121/invoked/xylix_laughter/proc/do_laugh(mob/living/target)
 	if(QDELETED(target))
 		return
 	target.emote("laugh", intentional = TRUE)

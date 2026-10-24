@@ -157,7 +157,7 @@
 		inspec += "\n<b>有效距离:</b> [suffix] [effective_range] 步"
 	if(damfactor != 1)
 		inspec += "\n<b>伤害:</b> [damfactor]"
-	inspec += "\n<b>Armor Penetration:</b> [penfactor > PEN_NONE ? colorgrade_rating(uppertext(item_d_type), penfactor) : "<font color='#808080'>NONE</font>"]"
+	inspec += "\n<b>穿甲能力：</b> [penfactor > PEN_NONE ? colorgrade_rating(uppertext(item_d_type), penfactor) : "<font color='#808080'>无</font>"]"
 	if(masteritem)
 		inspec += " <span class='info'><a href='?src=[REF(masteritem)];explainpenfactor=1'>{?}</a></span>"
 	if(get_chargetime())

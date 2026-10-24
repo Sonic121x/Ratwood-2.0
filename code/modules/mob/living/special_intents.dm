@@ -139,9 +139,9 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 /// Completely indulgent proc cus I just want to see default process_attack() have no custom code
 /datum/special_intent/proc/_add_log()
 	if(howner && howner.ckey)
-		howner.log_message("Used the Special [name].", LOG_ATTACK, color = "red")
+		howner.log_message("使用了特殊招式 [name]。", LOG_ATTACK, color = "red")
 	else
-		log_admin("[name] Special was deployed.")
+		log_admin("特殊招式 [name] 已发动。")
 
 /// Checks if the range & z levels are valid. Best handled by external sources just like the cost.
 /// Really only usable with use_clickloc, as otherwise the Special will be anchored to the source on the same plane anyway.

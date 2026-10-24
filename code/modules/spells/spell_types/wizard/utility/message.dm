@@ -62,14 +62,14 @@
 		var/message_color = "#7246ff"
 		var/is_projection = FALSE
 
-		if(alert(user, "传送无言的感官幻象，还是低语讯息？", "", "Projection", "传讯") == "Projection")
+		if(alert(user, "传送无言的感官幻象，还是低语讯息？", "", "投射幻象", "传讯") == "投射幻象")
 			is_projection = TRUE
 
 		var/message = sanitize(input(user, "你成功建立了联结！[is_projection ? "你想向对方心中传送什么感官幻象？" : "你想在对方心中低语什么？"]"))
 		if(!message)
 			return FALSE
 
-		if(alert(user, "Send anonymously?", "", "Yes", "No") == "No")
+		if(alert(user, "是否匿名发送？", "", "是", "否") == "否")
 			identify_difficulty = 0
 
 		HL.playsound_local(HL, 'sound/magic/message.ogg', 100)
@@ -102,7 +102,7 @@
 		else
 			user.emote("me", 1, "无声地喃喃，仿佛在说些什么……", TRUE, custom_me = TRUE)
 
-		log_game("[key_name(user)] sent a message to [key_name(HL)] with contents [message]")
+		log_game("[key_name(user)] 向 [key_name(HL)] 发送了讯息，内容为：[message]")
 		return TRUE
 
 	to_chat(user, span_warning("我试图寻求心灵连接，却找不到[input]。"))

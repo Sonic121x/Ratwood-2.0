@@ -204,7 +204,7 @@
 			if(user?.client)
 				record_round_statistic(STATS_CRITS_MADE)
 			if(client || mind)
-				log_combat(user, src, "critically wounded", null, "([applied.name] to [parse_zone(zone_precise)])", severe = TRUE)
+				log_combat(user, src, "造成了重创", null, "（[parse_zone(zone_precise)]：[applied.name]）", severe = TRUE)
 			return applied
 	return FALSE
 

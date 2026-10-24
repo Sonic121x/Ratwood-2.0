@@ -252,7 +252,7 @@
 							"<span class='danger'>我被[I]击中了！[next_attack_msg.Join()]</span>")
 			next_attack_msg.Cut()
 			if(I.thrownby)
-				log_combat(I.thrownby, src, "threw and hit", I)
+				log_combat(I.thrownby, src, "投掷并命中了", I)
 			var/volume = I.get_volume_by_throwforce_and_or_w_class()
 			if (I.throwforce > 0)
 				if (I.mob_throw_hit_sound)
@@ -372,14 +372,14 @@
 
 	var/add_log = ""
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		add_log = " (pacifist)"
+		add_log = "（和平主义者）"
 	send_grabbed_message(user)
 	if(user != src)
 		if(pulling != user) // If the person we're pulling aggro grabs us don't break the grab
 			stop_pulling()
 		if(!is_shifted)
 			user.set_pull_offsets(src, user.grab_state)
-	log_combat(user, src, "grabbed", addition="aggressive grab[add_log]")
+	log_combat(user, src, "抓住了", addition="强力抓握[add_log]")
 	return 1
 
 /mob/living/proc/update_grab_intents(mob/living/target)
@@ -471,7 +471,7 @@
 	if(M.attack_sound)
 		playsound(loc, M.a_intent.hitsound, 100, FALSE)
 
-	log_combat(M, src, "attacked")
+	log_combat(M, src, "攻击了")
 
 	return TRUE
 

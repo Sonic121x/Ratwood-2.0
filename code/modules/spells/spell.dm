@@ -666,7 +666,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 
 	before_cast(targets, user = user)
 	if(user && user.ckey)
-		user.log_message("cast the spell [name].", LOG_ATTACK, color = "red")
+		user.log_message("施放了法术 [name]。", LOG_ATTACK, color = "red")
 	if(breaks_invisibility)
 		user.break_invisibility()
 	if(cast(targets, user = user))

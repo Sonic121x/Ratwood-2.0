@@ -495,7 +495,7 @@
 
 		if("make deadite")
 			no_notify_on_false_arg = FALSE
-			effect_text_self = (arg == TRUE ? "you begin to crave brains" : "you no longer crave brains") ;effect_text_other = (arg == TRUE ? "their body rapidly decomposes" : "their body rapidly restores itself") 
+			effect_text_self = (arg == TRUE ? "我开始渴望吞食脑髓" : "我不再渴望吞食脑髓") ;effect_text_other = (arg == TRUE ? "其身体迅速腐烂" : "其身体迅速恢复原状") 
 		/*if("make vampire")
 			no_notify_on_false_arg = FALSE
 			effect_text_self = (arg == TRUE ? "you begin to crave blood" : "you no longer crave blood") ;effect_text_other = (arg == TRUE ? "they become rather pale" : "life seems to rush into them") 
@@ -814,7 +814,7 @@
 		return
 
 	// ---- Curse binding type ----
-	var/list/binding_choices = list("ckey curse", "character curse")
+	var/list/binding_choices = list("账号诅咒", "角色诅咒")
 
 	var/binding = input(
 		src,
@@ -826,7 +826,7 @@
 		return
 
 	var/key = target.ckey
-	var/is_character_bound = (binding == "character curse")
+	var/is_character_bound = (binding == "角色诅咒")
 	var/character_name = null
 	if(is_character_bound)
 		character_name = target.real_name
@@ -834,30 +834,30 @@
 	// ---- Trigger Selection ----
 	//commented out do not currently have signals
 	var/list/trigger_list = list(
-		"on spawn",
-		"on death",
-		"on beheaded",
-		"on dismembered",
-		"on sleep",
-		"on attack",
-		"on receive damage",
-		"on cast spell",
-		"on spell or miracle target",
+		"出生时" = "on spawn",
+		"死亡时" = "on death",
+		"被斩首时" = "on beheaded",
+		"肢体被切断时" = "on dismembered",
+		"睡眠时" = "on sleep",
+		"攻击时" = "on attack",
+		"受到伤害时" = "on receive damage",
+		"施放法术时" = "on cast spell",
+		"成为法术或奇迹目标时" = "on spell or miracle target",
 		//"on break wall/door/window",
-		"on cut tree",
+		"砍树时" = "on cut tree",
 		//"on craft",
-		"on kiss",
-		"on kissed",
-		"on orgasm",
+		"亲吻他人时" = "on kiss",
+		"被亲吻时" = "on kissed",
+		"高潮时" = "on orgasm",
 		//"on bite",
 		//"on jump",
 		//"on climb",
 		//"on swim",
-		"on move",
-		"on dawn",
-		"on day",
-		"on dusk",
-		"on night"
+		"移动时" = "on move",
+		"黎明时" = "on dawn",
+		"白昼时" = "on day",
+		"黄昏时" = "on dusk",
+		"夜晚时" = "on night"
 	)
 
 	var/trigger = input(
@@ -868,7 +868,7 @@
 
 	if(!trigger)
 		return
-
+	trigger = trigger_list[trigger]
 	// ---- Chance ----
 	var/chance = input(
 		src,
@@ -883,31 +883,31 @@
 
 	// ---- Effect Selection ----
 	var/list/effect_list = list(
-		"buff or debuff",
-		"remove trait",
-		"add trait",
-		"scream",
-		"cry",
-		"add reagent",
-		"add arousal",
-		"orgasm",
-		"shrink sex organs",
-		"enlarge sex organs",
-		"add nausea",
-		"clothesplosion",
-		"slip",
-		"arcyne prison",
-		"make deadite",
+		"增益或减益" = "buff or debuff",
+		"移除特质" = "remove trait",
+		"添加特质" = "add trait",
+		"尖叫" = "scream",
+		"哭泣" = "cry",
+		"添加试剂" = "add reagent",
+		"增加性欲" = "add arousal",
+		"高潮" = "orgasm",
+		"缩小性器官" = "shrink sex organs",
+		"增大性器官" = "enlarge sex organs",
+		"增加恶心感" = "add nausea",
+		"装备迸飞" = "clothesplosion",
+		"滑倒" = "slip",
+		"奥术囚笼" = "arcyne prison",
+		"变为尸鬼" = "make deadite",
 		/*"make vampire",
 		"make werewolf",*/
-		"shock",
-		"add fire stack",
-		"cbt",
+		"电击" = "shock",
+		"增加燃烧层数" = "add fire stack",
+		"下体折磨" = "cbt",
 		//"easy ambush",
 		//"difficult ambush",
-		"explode",
-		"shapeshift",
-		"gib"
+		"爆炸" = "explode",
+		"变形" = "shapeshift",
+		"炸成碎块" = "gib"
 	)
 
 	var/effect_proc = input(
@@ -918,7 +918,7 @@
 
 	if(!effect_proc)
 		return
-
+	effect_proc = effect_list[effect_proc]
 	var/list/effect_args = null
 
 	// ---- Trait selection ----
@@ -1104,11 +1104,11 @@
 	) as null|text
 
 	var/list/flavor_list = list(
-		"divine",
-		"demonic",
-		"witchcraft",
-		"fey",
-		"mutation"
+		"神圣" = "divine",
+		"恶魔" = "demonic",
+		"巫术" = "witchcraft",
+		"妖精" = "fey",
+		"变异" = "mutation"
 	)
 
 	// ---- Flavor ----
@@ -1120,7 +1120,7 @@
 
 	if(!flavor)
 		return
-
+	flavor = flavor_list[flavor]
 	// ---- Generate name ----
 	var/cname_safe_effect = replacetext(effect_proc, " ", "_")
 	var/cname_safe_trigger = replacetext(trigger, " ", "_")

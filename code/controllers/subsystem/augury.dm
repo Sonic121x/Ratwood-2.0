@@ -54,7 +54,7 @@ SUBSYSTEM_DEF(augury)
 			O.ManualFollow(biggest_doom)
 
 /datum/action/innate/augury
-	name = "Auto Follow Debris"
+	name = "自动跟随残骸"
 	button_icon = 'icons/obj/meteor.dmi'
 	button_icon_state = "flaming"
 	background_icon_state = ACTION_BUTTON_DEFAULT_BACKGROUND

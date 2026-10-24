@@ -289,14 +289,14 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 			continue
 		var/fjob = known_people[P]["FJOB"]
 		var/fgender = known_people[P]["FGENDER"]
-		var/fspecies = known_people[P]["FSPECIES"]
+		var/fspecies = get_species_display_name(known_people[P]["FSPECIES"])
 		var/fage = known_people[P]["FAGE"]
 		var/fhouse = known_people[P]["FHOUSE"]
 		var/fheresy = known_people[P]["FHERESY"]
 		if(fcolor && fjob)
 			if (fheresy)
 				contents +="<B><font color=#f1d669>[fheresy]</font></B> "
-			contents += "<B><font color=#[fcolor];text-shadow:0 0 10px #8d5958, 0 0 20px #8d5958, 0 0 30px #8d5958, 0 0 40px #8d5958, 0 0 50px #e60073, 0 0 60px #8d5958, 0 0 70px #8d5958;>[P]</font></B><BR>[fjob], [fspecies], [capitalize(fgender)], [fage][fhouse ? "<br><b>House [fhouse]</b>" : ""]"
+			contents += "<B><font color=#[fcolor];text-shadow:0 0 10px #8d5958, 0 0 20px #8d5958, 0 0 30px #8d5958, 0 0 40px #8d5958, 0 0 50px #e60073, 0 0 60px #8d5958, 0 0 70px #8d5958;>[P]</font></B><BR>[fjob], [fspecies], [capitalize(fgender)], [fage][fhouse ? "<br><b>[fhouse]家族</b>" : ""]"
 			contents += "<BR>"
 	var/datum/browser/popup = new(user, "PEOPLEIKNOW", "", 260, 400)
 	popup.set_content(contents)
@@ -430,7 +430,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 		A.on_gain(TRUE)
 	else
 		A.on_gain()
-	log_game("[key_name(src)] has gained antag datum [A.name]([A.type])")
+	log_game("[key_name(src)] 获得了反派身份 [A.name]([A.type])")
 	var/client/picked_client = src.current?.client
 	picked_client?.mob?.mind.picking = FALSE
 	return A
@@ -496,7 +496,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 		output += "<B>个人目标：</B>"
 		var/personal_count = 1
 		for(var/datum/objective/objective in personal_objectives)
-			output += "<br><B>Personal Goal #[personal_count]</B>: [objective.explanation_text][objective.completed ? " (COMPLETED)" : ""]"
+			output += "<br><B>个人目标 #[personal_count]</B>: [objective.explanation_text][objective.completed ? "（已完成）" : ""]"
 			personal_count++
 		output += "<br>"
 
@@ -677,7 +677,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 			new_objective.admin_edit(usr)
 			target_antag.objectives += new_objective
 			message_admins("[key_name_admin(usr)] 为 [current] 添加了新目标：[new_objective.explanation_text]")
-			log_admin("[key_name(usr)] added a new objective for [current]: [new_objective.explanation_text]")
+			log_admin("[key_name(usr)] 为 [current] 添加了新目标：[new_objective.explanation_text]")
 		else
 			if(old_objective.type == selected_type)
 				//Edit the old
@@ -691,7 +691,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 				target_antag.objectives -= old_objective
 				target_antag.objectives.Insert(objective_pos, new_objective)
 			message_admins("[key_name_admin(usr)] 将 [current] 的目标改为 [new_objective.explanation_text]")
-			log_admin("[key_name(usr)] edited [current]'s objective to [new_objective.explanation_text]")
+			log_admin("[key_name(usr)] 将 [current] 的目标修改为：[new_objective.explanation_text]")
 
 	else if (href_list["obj_delete"])
 		var/datum/objective/objective
@@ -705,7 +705,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 			return
 		//qdel(objective) Needs cleaning objective destroys
 		message_admins("[key_name_admin(usr)] 移除了 [current] 的目标：[objective.explanation_text]")
-		log_admin("[key_name(usr)] removed an objective for [current]: [objective.explanation_text]")
+		log_admin("[key_name(usr)] 移除了 [current] 的目标：[objective.explanation_text]")
 
 	else if(href_list["obj_completed"])
 		var/datum/objective/objective
@@ -718,7 +718,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 			to_chat(usr,"目标无效。")
 			return
 		objective.completed = !objective.completed
-		log_admin("[key_name(usr)] toggled the win state for [current]'s objective: [objective.explanation_text]")
+		log_admin("[key_name(usr)] 切换了 [current] 的目标完成状态：[objective.explanation_text]")
 	else if (href_list["common"])
 		switch(href_list["common"])
 			if("undress")
@@ -1182,7 +1182,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 							I.original_name = I.name // Store original name before renaming
 							I.name = sanitize(custom_name)
 							// Log to game log
-							log_game("[key_name(user)] retrieved loadout item with custom name: '[custom_name]' (original: '[I.original_name]')")
+							log_game("[key_name(user)] 取出了自定义名称为“[custom_name]”的配装物品（原名：“[I.original_name]”）")
 						// Apply custom description if set
 						var/custom_desc = user.client?.prefs.resolve_loadout_to_desc(path2item)
 						if (custom_desc)

@@ -61,13 +61,13 @@
 	var/t_has = p_have()
 	var/t_is = p_are()
 	var/obscure_name = FALSE
-	var/race_name = "<a href='?src=[REF(src)];species_lore=1'><u>[dna.species.name]</u></A>"
+	var/race_name = "<a href='?src=[REF(src)];species_lore=1'><u>[get_species_display_name(dna.species.name)]</u></A>"
 	var/datum/antagonist/maniac/maniac = user.mind?.has_antag_datum(/datum/antagonist/maniac)
 	var/datum/antagonist/skeleton/skeleton = user.mind?.has_antag_datum(/datum/antagonist/skeleton)
 	if(maniac && (user != src))
 		race_name = "恶心的猪猡"
 	if(skeleton && (user != src))
-		race_name = "[pick("shambling", "taut", "decrepit")]"
+		race_name = "[pick("步履蹒跚", "筋骨紧绷", "衰朽不堪")]"
 
 	var/m1 = "[t_He] [t_is]"
 	var/m2 = "[t_his]"
@@ -311,7 +311,7 @@
 			if(is_stupid)
 				. += "[capitalize(m2)]手好奇怪！看起来不对劲！"
 			else
-				. += "[m3][hand_number > 1 ? "" : " a"] <span class='bloody'>blood-stained</span> hand[hand_number > 1 ? "s" : ""]!"
+				. += "[m3][hand_number > 1 ? "双" : "一只"]<span class='bloody'>沾满鲜血的</span>手！"
 	
 	//belt
 	if(belt && !(SLOT_BELT in obscured))
@@ -554,7 +554,7 @@
 		missing_limbs += parse_zone(missing_zone)
 
 	if(length(missing_limbs))
-		var/missing_limb_message = "<B>[capitalize(m2)] [english_list(missing_limbs)] [missing_limbs.len > 1 ? "are" : "is"] gone.</B>"
+		var/missing_limb_message = "<B>[capitalize(m2)][missing_limbs.Join("、")]缺失了。</B>"
 		if(missing_head)
 			missing_limb_message = span_dead("[missing_limb_message]")
 		else
@@ -682,7 +682,7 @@
 			msg += span_warning("[m1]勉强还有意识。")
 		else
 			if(stat >= UNCONSCIOUS)
-				msg += "[m1] [IsSleeping() ? "sleeping" : "unconscious"]."
+				msg += "[m1][IsSleeping() ? "睡着了" : "失去了意识"]。"
 			else if(eyesclosed)
 				msg += "[capitalize(m2)]眼睛闭着。"
 			else if(has_status_effect(/datum/status_effect/debuff/sleepytime))
@@ -976,7 +976,7 @@
 				used_name = descriptor_name
 			else
 				// Fallback to gender-based unknown name
-				used_name = "Unknown [(gender == FEMALE) ? "Woman" : "Man"]"
+				used_name = "陌生[(gender == FEMALE) ? "女子" : "男子"]"
 		var/used_title = get_role_title()
 		// Check for cosmetic class titles (for advclass cosmetic variants)
 		if(mind && mind.cosmetic_class_title)
@@ -1433,15 +1433,15 @@
 /proc/get_blade_dulling_text(obj/item/rogueweapon/I, verbose = FALSE)
 	switch(I.blade_dulling)
 		if(DULLING_SHAFT_WOOD)
-			return "[verbose ? "Wooden" : "(W. shaft)"]"
+			return "[verbose ? "木质" : "（木质柄）"]"
 		if(DULLING_SHAFT_REINFORCED)
-			return "[verbose ? "Reinforced" : "(R. shaft)"]"
+			return "[verbose ? "加固" : "（加固柄）"]"
 		if(DULLING_SHAFT_METAL)
-			return "[verbose ? "Metal" : "(M. shaft)"]"
+			return "[verbose ? "金属" : "（金属柄）"]"
 		if(DULLING_SHAFT_GRAND)
-			return "[verbose ? "Grand" : "(G. shaft)"]"
+			return "[verbose ? "巨型" : "（巨型柄）"]"
 		if(DULLING_SHAFT_CONJURED)
-			return "[verbose ? "Conjured" : "(C. shaft)"]"
+			return "[verbose ? "召唤" : "（召唤柄）"]"
 		else
 			return null
 

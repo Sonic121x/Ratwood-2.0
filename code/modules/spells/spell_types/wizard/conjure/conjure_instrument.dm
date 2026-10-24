@@ -35,17 +35,17 @@
 	var/obj/item/rogue/instrument/conjured_instrument = null
 
 	var/list/instrument = list(
-		"Harp" = /obj/item/rogue/instrument/harp,
-		"Lute" = /obj/item/rogue/instrument/lute,
-		"Accordion" = /obj/item/rogue/instrument/accord,
-		"Guitar" = /obj/item/rogue/instrument/guitar,
-		"Hurdy-Gurdy" = /obj/item/rogue/instrument/hurdygurdy,
-		"Viola" = /obj/item/rogue/instrument/viola,
-		"声乐护符" = /obj/item/rogue/instrument/vocals,
-		"Psyaltery" = /obj/item/rogue/instrument/psyaltery,
-		"Flute" = /obj/item/rogue/instrument/flute,
-		"Drum" = /obj/item/rogue/instrument/drum,
-		"Shamisen" = /obj/item/rogue/instrument/shamisen,
+		"竖琴" = /obj/item/rogue/instrument/harp,
+		"鲁特琴" = /obj/item/rogue/instrument/lute,
+		"手风琴" = /obj/item/rogue/instrument/accord,
+		"吉他" = /obj/item/rogue/instrument/guitar,
+		"手摇琴" = /obj/item/rogue/instrument/hurdygurdy,
+		"中提琴" = /obj/item/rogue/instrument/viola,
+		"歌者护符" = /obj/item/rogue/instrument/vocals,
+		"圣咏琴" = /obj/item/rogue/instrument/psyaltery,
+		"长笛" = /obj/item/rogue/instrument/flute,
+		"鼓" = /obj/item/rogue/instrument/drum,
+		"三味线" = /obj/item/rogue/instrument/shamisen,
 	)
 
 /datum/action/cooldown/spell/conjure_instrument/cast(list/targets, mob/living/user = usr)

@@ -120,7 +120,7 @@
 		last_oxyloss = owner.getOxyLoss()
 		last_cloneloss = owner.getCloneLoss()
 		last_staminaloss = owner.getStaminaLoss()
-		owner.log_message("gained blood-drunk stun immunity", LOG_ATTACK)
+		owner.log_message("获得了嗜血狂醉状态的眩晕免疫", LOG_ATTACK)
 		owner.add_stun_absorption("blooddrunk", INFINITY, 4)
 		owner.playsound_local(get_turf(owner), 'sound/blank.ogg', 40, 1)
 
@@ -197,7 +197,7 @@
 	owner.cloneloss *= 0.1
 	owner.staminaloss *= 0.1
 	owner.updatehealth()
-	owner.log_message("lost blood-drunk stun immunity", LOG_ATTACK)
+	owner.log_message("失去了嗜血狂醉状态的眩晕免疫", LOG_ATTACK)
 	REMOVE_TRAIT(owner, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_STATUS_EFFECT(id));
 	if(islist(owner.stun_absorption) && owner.stun_absorption["blooddrunk"])
 		owner.stun_absorption -= "blooddrunk"

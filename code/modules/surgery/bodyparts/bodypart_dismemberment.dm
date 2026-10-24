@@ -94,13 +94,13 @@
 			// we're greviously wounded OR we don't give a shit about two-stage death (guillotines, npcs, etc)
 			C.visible_message(span_danger("<B>[C]被[pick("残忍地","狂暴地","血淋淋地","惨烈地")]斩首了！</B>"))
 	else
-		C.visible_message(span_danger("<B>The [src.name] is [pick("torn off", "sundered", "severed", "separated", "unsewn")]!</B>"))
+		C.visible_message(span_danger("<B>[src.name]被[pick("撕下", "劈断", "切断", "分离", "拆下")]了！</B>"))
 	//past the two stage decapitation returns, so a first stage neck sever is not logged as a limb loss;
 	//the casterless branch is player-only or NPC mobs eating a body would spam it
 	if(user)
-		log_combat(user, C, "dismembered", null, "([src.name])", severe = TRUE)
+		log_combat(user, C, "切断了肢体", null, "([src.name])", severe = TRUE)
 	else if(C.client || C.mind)
-		C.log_message("has lost their [src.name] to dismemberment", LOG_ATTACK, color = LOG_COLOR_SEVERE)
+		C.log_message("因肢解失去了 [src.name]", LOG_ATTACK, color = LOG_COLOR_SEVERE)
 
 	if(body_zone != BODY_ZONE_HEAD) // Sorry pal, no protagonist moment if it's your head flying off. Your ride ends here, mutie.
 		INVOKE_ASYNC(C, TYPE_PROC_REF(/mob/living/carbon, delimb_pain))
@@ -222,7 +222,7 @@
 			// we're greviously wounded OR we don't give a shit about two-stage death (guillotines, npcs, etc)
 			C.visible_message(span_danger("<B>[C]被[pick("残忍地","狂暴地","血淋淋地","惨烈地")]斩首了！</B>"))
 	else
-		C.visible_message(span_danger("<B>The [src.name] is [pick("torn off", "sundered", "severed", "separated", "unsewn")]!</B>"))
+		C.visible_message(span_danger("<B>[src.name]被[pick("撕下", "劈断", "切断", "分离", "拆下")]了！</B>"))
 	if(body_zone != BODY_ZONE_HEAD)
 		C.delimb_pain()
 	if(!(NOBLOOD in C.dna?.species?.species_traits))

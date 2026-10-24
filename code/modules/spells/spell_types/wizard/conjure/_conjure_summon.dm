@@ -56,7 +56,7 @@
 	var/list/conjured_mobs = list()
 	var/current_mode = 1
 	var/list/modes = list()
-	var/summon_noun = "servant"
+	var/summon_noun = "仆从"
 	var/recoil_energy_floor = 200
 	var/recoil_severity = CONJURE_RECOIL_FULL
 	var/recoil_stamina_only = FALSE

@@ -157,7 +157,7 @@
 			arc_holder = new(B)
 			B.vis_contents.Add(arc_holder)
 		if(arc_mode)
-			arc_holder.maptext = MAPTEXT("ARC")
+			arc_holder.maptext = MAPTEXT("弧射")
 			arc_holder.color = "#00ccff"
 		else
 			arc_holder.maptext = null

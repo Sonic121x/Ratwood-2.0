@@ -8,7 +8,7 @@
 	- 风：行动迅速、近战伤害最高、生命最低，能用疾风击退并减速目标。"
 	button_icon_state = "primetriangle"
 	invocations = list("原初之灵，现身！")
-	summon_noun = "primordial"
+	summon_noun = "原初元素体"
 	recoil_energy_floor = 150
 	modes = list(
 		list("name" = "烈焰", "tag" = "火", "path" = /mob/living/simple_animal/hostile/retaliate/rogue/primordial/fire, "color" = GLOW_COLOR_FIRE, "invocation" = "烈火，升腾！"),

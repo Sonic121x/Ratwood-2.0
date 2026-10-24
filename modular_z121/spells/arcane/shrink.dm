@@ -3,55 +3,53 @@
 	return istype(target) && !QDELETED(target) \
 		&& !HAS_TRAIT(target, TRAIT_BIGGUY) && !HAS_TRAIT(target, TRAIT_PETITE)
 
-/obj/effect/proc_holder/spell/invoked/shrink
+/datum/action/cooldown/spell/z121/invoked/shrink
 	name = "缩小术"
 	desc = "以魔力使一具身躯变得娇小轻盈，步履灵巧，行踪难辨，约莫维持一分钟。天生矮小的族裔不会变得更小；已然娇小或拥有巨人体魄者不受此术影响。"
-	cost = 2
-	action_icon = 'modular_z121/icon/custompell.dmi'
-	overlay_state = "shrink"
-	releasedrain = 35
-	chargedrain = 1
-	chargetime = 1 SECONDS
-	recharge_time = 2 MINUTES
-	human_req = TRUE
-	warnie = "spellwarning"
-	no_early_release = TRUE
-	movement_interrupt = FALSE
-	charging_slowdown = 3
+	point_cost = 2
+	button_icon = 'modular_z121/icon/custompell.dmi'
+	button_icon_state = "shrink"
+	primary_resource_cost = 35
+	hold_drain = 1
+	charge_time = 1 SECONDS
+	cooldown_time = 2 MINUTES
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
+	charge_slowdown = 3
 	spell_tier = 2
-	school = "evocation"
 	invocations = list("轻盈缩小吧！")
 	invocation_type = "shout"
-	chargedloop = /datum/looping_sound/wind
 	associated_skill = /datum/skill/magic/arcane
-	glow_color = GLOW_COLOR_BUFF
+	spell_color = GLOW_COLOR_BUFF
 	glow_intensity = GLOW_INTENSITY_LOW
-	range = 7
+	cast_range = 7
 
-/obj/effect/proc_holder/spell/invoked/shrink/cast(list/targets, mob/user = usr)
+/datum/action/cooldown/spell/z121/invoked/shrink/z121_apply(atom/cast_on)
+	var/list/targets = list(cast_on)
+	var/mob/user = owner
 	if(!length(targets) || !z121_can_shrink(targets[1]))
 		to_chat(user, span_warning("缩小的魔力无法改变眼前之物。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 	var/mob/living/carbon/target = targets[1]
 	if(!target.apply_status_effect(/datum/status_effect/buff/z121_shrink, 60 SECONDS))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 	return TRUE
 
-/obj/effect/proc_holder/spell/invoked/group_shrink
-	parent_type = /obj/effect/proc_holder/spell/invoked/shrink
+/datum/action/cooldown/spell/z121/invoked/group_shrink
+	parent_type = /datum/action/cooldown/spell/z121/invoked/shrink
 	name = "群体缩小术"
 	desc = "让缩小的魔力环绕自身，使身旁近处的众生变得娇小轻盈，步履灵巧，行踪难辨，约莫维持两分钟。天生矮小的族裔不会变得更小；已然娇小或拥有巨人体魄者不受此术影响。"
-	cost = 4
-	overlay_state = "shrink"
-	releasedrain = 70
-	chargetime = 2 SECONDS
-	recharge_time = 4 MINUTES
+	point_cost = 4
+	button_icon_state = "shrink"
+	primary_resource_cost = 70
+	charge_time = 2 SECONDS
+	cooldown_time = 4 MINUTES
 	spell_tier = 3
 	invocations = list("众躯轻盈缩小吧！")
 
-/obj/effect/proc_holder/spell/invoked/group_shrink/cast(list/targets, mob/user = usr)
+/datum/action/cooldown/spell/z121/invoked/group_shrink/z121_apply(atom/cast_on)
+	var/mob/user = owner
 	var/affected_any = FALSE
 	for(var/mob/living/carbon/target in range(1, user))
 		if(!z121_can_shrink(target))
@@ -60,7 +58,7 @@
 			affected_any = TRUE
 	if(!affected_any)
 		to_chat(user, span_warning("缩小的魔力流散开来，却未能改变周围的任何身躯。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 	user.visible_message(span_notice("[user]的法术化作轻盈的微光，笼罩着周围的身影！"))
 	return TRUE
@@ -111,23 +109,11 @@
 	icon_state = "buff"
 
 // 单体巨化的目标检查在模块内扩展，其余效果与原法术一致。
-/obj/effect/proc_holder/spell/invoked/enlarge
-	desc = "暂时将身躯放大成高大魁梧的巨型姿态，足以撞开门扉。对本就魁梧如巨人或身形娇小者无效。"
+/datum/action/cooldown/spell/augment_buff/enlarge
+	desc = "暂时将自身或结社同伴变为魁梧巨大的形态。对本就巨大或身形娇小者无效。"
 
-/obj/effect/proc_holder/spell/invoked/enlarge/cast(list/targets, mob/user = usr)
-	if(length(targets) && isliving(targets[1]))
-		var/mob/living/carbon/target = targets[1]
-		if(HAS_TRAIT(target, TRAIT_BIGGUY) || HAS_TRAIT(target, TRAIT_PETITE))
-			to_chat(user, span_warning("巨化的魔力无法改变对方的身形！"))
-			revert_cast()
-			return FALSE
-		ADD_TRAIT(target, TRAIT_BIGGUY, MAGIC_TRAIT)
-		ADD_TRAIT(target, TRAIT_DEATHBYSNUSNU, MAGIC_TRAIT)
-		target.transform = target.transform.Scale(1.25, 1.25)
-		target.transform = target.transform.Translate(0, (0.25 * 16))
-		target.update_transform()
-		to_chat(target, span_warning("我感觉自己比平时高大得多，简直能直接撞穿一扇门！"))
-		target.visible_message("[target]的身体膨胀变大了！")
-		addtimer(CALLBACK(src, PROC_REF(remove_buff), target), wait = 60 SECONDS)
-		return TRUE
-	return FALSE
+/datum/action/cooldown/spell/augment_buff/enlarge/cast(atom/cast_on)
+	if(isliving(cast_on) && HAS_TRAIT(cast_on, TRAIT_PETITE))
+		to_chat(owner, span_warning("巨化的魔力无法改变对方娇小的身形！"))
+		return FALSE
+	return ..()

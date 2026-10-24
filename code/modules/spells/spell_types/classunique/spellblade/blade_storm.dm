@@ -95,7 +95,7 @@
 	cached_locked_zone = H.zone_selected || BODY_ZONE_CHEST
 
 	H.visible_message(span_boldwarning("[H]标记地面——[H.p_them()]自身的影子随之凝聚！"))
-	log_combat(H, cast_on, "used Blade Storm on", zone=H.zone_selected)
+	log_combat(H, cast_on, "使用了 [name]，目标为", zone=H.zone_selected)
 
 	var/list/ring_turfs = get_hollow_ring(center)
 	new /obj/effect/temp_visual/telegraph/blade_storm/fadein(center, telegraph_delay)

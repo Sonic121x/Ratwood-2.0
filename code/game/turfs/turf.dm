@@ -499,7 +499,7 @@
 			// A baseturfs list over 100 members long is silly
 			// Because of how this is all structured it will only runtime/message once per type
 			stack_trace("A turf <[type]> created a baseturfs list over 100 members long. This is most likely an infinite loop.")
-			message_admins("A turf <[type]> created a baseturfs list over 100 members long. This is most likely an infinite loop.")
+			message_admins("地块 <[type]> 创建的 baseturfs 列表超过 100 个元素，很可能存在无限循环。")
 			break
 		new_baseturfs.Insert(1, next_target)
 		current_target = next_target

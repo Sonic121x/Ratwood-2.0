@@ -334,7 +334,7 @@ GLOBAL_LIST_EMPTY(leyline_activations)
 		return 0
 	if(user.used_intent.no_attack)
 		return 0
-	log_combat(user, src, "attacked", I)
+	log_combat(user, src, "攻击了", I)
 	var/verbu = "击打"
 	verbu = pick(user.used_intent.attack_verb)
 	if(newforce > 1)

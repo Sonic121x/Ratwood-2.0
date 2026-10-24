@@ -9,30 +9,29 @@
 
 // 这个解锁后的法术继续沿用原版 wildshape 流程，避免破坏转移心智、
 // 信仰值共享和现有的变形清理逻辑。
-/obj/effect/proc_holder/spell/self/wildshape/dragon
+/datum/action/cooldown/spell/z121/self/dragon_wildshape
 	name = "荒野形态-龙"
 	desc = "以登多尔赐下的龙魂化作巨龙之姿。再次施放可解除变形。"
-	overlay_state = "tamebeast"
-	clothes_req = FALSE
-	human_req = FALSE
-	chargedrain = 0
-	chargetime = 0
-	recharge_time = 45 SECONDS
+	button_icon_state = "tamebeast"
+	hold_drain = 0
+	charge_time = 0
+	cooldown_time = 45 SECONDS
 	cooldown_min = 50
 	invocations = list("树父啊，唤醒我体内的巨龙！")
 	invocation_type = "shout"
-	action_icon_state = "shapeshift"
 	associated_skill = /datum/skill/magic/holy
-	devotion_cost = 120
+	primary_resource_type = SPELL_COST_DEVOTION
+	primary_resource_cost = 120
 	miracle = TRUE
 
-/obj/effect/proc_holder/spell/self/wildshape/dragon/cast(list/targets, mob/living/carbon/human/user = usr)
+/datum/action/cooldown/spell/z121/self/dragon_wildshape/z121_apply(atom/cast_on)
+	var/mob/living/carbon/human/user = owner
 	if(!user)
 		return FALSE
 
 	if(user.has_status_effect(/datum/status_effect/debuff/submissive))
 		to_chat(user, span_warning("你的意志过于破碎，无法唤醒龙魂。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	if(istype(user, /mob/living/carbon/human/species/wildshape))
@@ -41,15 +40,20 @@
 
 	if(!z121_is_dragon_wildshape_eligible(user))
 		to_chat(user, span_warning("只有已经完成龙魂觉醒的登多尔德鲁伊才能使用这一形态。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
-	// 这里不能调用父类 wildshape：否则会先打开原版兽形轮盘，
-	// 并在龙形真正生效前错误地排入第二次变形。
+	return TRUE
+
+// 新版动作先结算本体的虔诚与冷却，再进入会转移心智的变形流程。
+/datum/action/cooldown/spell/z121/self/dragon_wildshape/after_cast(atom/cast_on)
+	. = ..()
+	var/mob/living/carbon/human/user = owner
+	if(QDELETED(user) || !z121_is_dragon_wildshape_eligible(user))
+		return
 	user.Stun(30)
 	user.Knockdown(30)
 	INVOKE_ASYNC(user, TYPE_PROC_REF(/mob/living/carbon/human, wildshape_transformation), /mob/living/carbon/human/species/wildshape/dendor_dragon)
-	return TRUE
 
 /mob/living/carbon/human/species/wildshape/dendor_dragon
 	name = "巨龙"
@@ -83,7 +87,7 @@
 		src.STASPD = 9
 		src.STAINT = 5
 
-		AddSpell(new /obj/effect/proc_holder/spell/self/dragontalons)
+		AddSpell(new /datum/action/cooldown/spell/z121/self/dragontalons)
 		faction += "dragons"
 		if(src.client?.prefs?.wildshape_name)
 			real_name = "巨龙 ([stored_mob.real_name])"
@@ -93,7 +97,7 @@
 /datum/species/shapedragon
 	name = "巨龙"
 	id = "shapedragon"
-	// Keep the unlocked wildshape out of ordinary random species changes.
+	// 已解锁的龙形不参与普通随机种族变化。
 	changesource_flags = MIRROR_BADMIN
 	species_traits = list(NO_UNDERWEAR, NO_ORGAN_FEATURES, NO_BODYPART_FEATURES)
 	inherent_traits = list(
@@ -231,17 +235,17 @@
 	if(inactive && inactive != active)
 		user.dropItemToGround(inactive, TRUE)
 
-/obj/effect/proc_holder/spell/self/dragontalons
+/datum/action/cooldown/spell/z121/self/dragontalons
 	name = "龙爪"
 	desc = "伸出或收回你的龙爪。"
-	overlay_state = "claws"
-	antimagic_allowed = TRUE
-	recharge_time = 20
-	ignore_cockblock = TRUE
+	button_icon_state = "claws"
+	spell_requirements = NONE
+	cooldown_time = 20
+	spell_flags = SPELL_IGNORE_SPELLBLOCK
 	var/extended = FALSE
 
-/obj/effect/proc_holder/spell/self/dragontalons/cast(mob/user = usr)
-	..()
+/datum/action/cooldown/spell/z121/self/dragontalons/z121_apply(atom/cast_on)
+	var/mob/living/user = owner
 	var/obj/item/rogueweapon/dragon_talon/left/l
 	var/obj/item/rogueweapon/dragon_talon/right/r
 	var/active = user.get_active_held_item()

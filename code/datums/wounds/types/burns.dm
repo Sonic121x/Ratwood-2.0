@@ -16,11 +16,11 @@
 	severity_type = SEVERITY_TYPE_BURN // name off the limb's actual burnt fraction, not the whp heal-pool
 	sound_effect = list('sound/combat/hits/burn (1).ogg', 'sound/combat/hits/burn (2).ogg')
 	severity_stages = list( // burn_dam as a percent of the limb's max_damage
-		"reddened" = 5,
-		"blistering" = 20,
-		"scalded" = 40,
-		"charred" = 60,
-		"cindered" = 80,
+		"发红" = 5,
+		"起泡" = 20,
+		"烫烂" = 40,
+		"焦黑" = 60,
+		"碳化" = 80,
 	)
 
 #define BURN_UPG_WHPRATE 1.2

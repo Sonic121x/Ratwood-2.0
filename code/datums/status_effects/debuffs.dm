@@ -331,7 +331,7 @@
 	ADD_TRAIT(owner, TRAIT_MUTE, TRAIT_STATUS_EFFECT(id))
 	owner.add_client_colour(/datum/client_colour/monochrome/trance)
 	owner.visible_message("[stun ? "<span class='warning'>[owner] 呆立原地，[owner.p_their()] 的目光似乎聚焦在遥远的一点上。</span>" : ""]", \
-	"<span class='warning'>[pick("You feel my thoughts slow down...", "You suddenly feel extremely dizzy...", "You feel like you're in the middle of a dream...","You feel incredibly relaxed...")]</span>")
+	"<span class='warning'>[pick("我感觉思绪逐渐迟缓……", "我突然感到一阵强烈的眩晕……", "我仿佛置身梦中……","我感到无比放松……")]</span>")
 	return TRUE
 
 /datum/status_effect/trance/on_creation(mob/living/new_owner, _duration, _stun = TRUE)
@@ -375,7 +375,7 @@
 				var/obj/item/I = owner.get_active_held_item()
 				if(I)
 					to_chat(owner, "<span class='warning'>我的手指痉挛了！</span>")
-					owner.log_message("used [I] due to a Muscle Spasm", LOG_ATTACK)
+					owner.log_message("因肌肉痉挛使用了 [I]", LOG_ATTACK)
 					I.attack_self(owner)
 			if(3)
 				var/prev_intent = owner.a_intent
@@ -391,14 +391,14 @@
 						targets += M
 				if(LAZYLEN(targets))
 					to_chat(owner, "<span class='warning'>我的手臂痉挛了！</span>")
-					owner.log_message(" attacked someone due to a Muscle Spasm", LOG_ATTACK) //the following attack will log itself
+					owner.log_message(" 因肌肉痉挛攻击了他人", LOG_ATTACK) //the following attack will log itself
 					owner.ClickOn(pick(targets))
 				owner.a_intent = prev_intent
 			if(4)
 				var/prev_intent = owner.a_intent
 				owner.a_intent = INTENT_HARM
 				to_chat(owner, "<span class='warning'>我的手臂痉挛了！</span>")
-				owner.log_message("attacked [owner.p_them()]self to a Muscle Spasm", LOG_ATTACK)
+				owner.log_message("因肌肉痉挛攻击了自己", LOG_ATTACK)
 				owner.ClickOn(owner)
 				owner.a_intent = prev_intent
 			if(5)
@@ -410,7 +410,7 @@
 					targets += T
 				if(LAZYLEN(targets) && I)
 					to_chat(owner, "<span class='warning'>我的手臂痉挛了！</span>")
-					owner.log_message("threw [I] due to a Muscle Spasm", LOG_ATTACK)
+					owner.log_message("因肌肉痉挛投掷了 [I]", LOG_ATTACK)
 					owner.throw_item(pick(targets))
 
 /datum/status_effect/go_away
@@ -450,25 +450,25 @@
 	switch(msg_stage)
 		if(0 to 300)
 			if(prob(1))
-				fake_msg = pick("<span class='warning'>[pick("Your head hurts.", "Your head pounds.")]</span>",
-				"<span class='warning'>[pick("You're having difficulty breathing.", "Your breathing becomes heavy.")]</span>",
-				"<span class='warning'>[pick("You feel dizzy.", "Your head spins.")]</span>",
-				"<span notice='warning'>[pick("You swallow excess mucus.", "You lightly cough.")]</span>",
-				"<span class='warning'>[pick("Your head hurts.", "Your mind blanks for a moment.")]</span>",
-				"<span class='warning'>[pick("Your throat hurts.", "You clear my throat.")]</span>")
+				fake_msg = pick("<span class='warning'>[pick("我的头有些疼。", "我的脑袋一阵阵抽痛。")]</span>",
+				"<span class='warning'>[pick("我呼吸有些困难。", "我的呼吸变得沉重。")]</span>",
+				"<span class='warning'>[pick("我感到头晕。", "我感到天旋地转。")]</span>",
+				"<span notice='warning'>[pick("我咽下了多余的黏液。", "我轻轻咳嗽。")]</span>",
+				"<span class='warning'>[pick("我的头有些疼。", "我的脑海一瞬间变得空白。")]</span>",
+				"<span class='warning'>[pick("我的喉咙有些疼。", "我清了清嗓子。")]</span>")
 		if(301 to 600)
 			if(prob(2))
-				fake_msg = pick("<span class='warning'>[pick("Your head hurts a lot.", "Your head pounds incessantly.")]</span>",
-				"<span class='warning'>[pick("Your windpipe feels like a straw.", "Your breathing becomes tremendously difficult.")]</span>",
-				"<span class='warning'>I feel very [pick("dizzy","woozy","faint")].</span>",
-				"<span class='warning'>[pick("You hear a ringing in my ear.", "Your ears pop.")]</span>",
+				fake_msg = pick("<span class='warning'>[pick("我的头疼得厉害。", "我的脑袋不停地抽痛。")]</span>",
+				"<span class='warning'>[pick("我的气管仿佛缩成了一根吸管。", "我的呼吸变得极其困难。")]</span>",
+				"<span class='warning'>我感到[pick("头晕目眩","昏昏沉沉","几乎要晕倒了")]。</span>",
+				"<span class='warning'>[pick("我的耳边响起嗡鸣。", "我的耳中一阵噼啪作响。")]</span>",
 				"<span class='warning'>我打了一会儿盹。</span>")
 		else
 			if(prob(3))
 				if(prob(50))// coin flip to throw a message or an emote
-					fake_msg = pick("<span class='danger'>[pick("Your head hurts!", "You feel a burning knife inside my brain!", "A wave of pain fills my head!")]</span>",
-					"<span class='danger'>[pick("Your lungs hurt!", "It hurts to breathe!")]</span>",
-					"<span class='warning'>[pick("You feel nauseated.", "You feel like you're going to throw up!")]</span>")
+					fake_msg = pick("<span class='danger'>[pick("我的头好疼！", "我的脑中仿佛插着一把烧红的刀！", "一阵剧痛充斥着我的脑袋！")]</span>",
+					"<span class='danger'>[pick("我的肺好疼！", "每次呼吸都好疼！")]</span>",
+					"<span class='warning'>[pick("我感到恶心。", "我感觉自己快吐了！")]</span>")
 				else
 					fake_emote = pick("cough", "sniff", "sneeze")
 

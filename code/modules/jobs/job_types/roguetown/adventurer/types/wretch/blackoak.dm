@@ -44,7 +44,7 @@
 		/datum/skill/misc/hunting = SKILL_LEVEL_NOVICE,
 	)
 	subclass_stashed_items = list(
-		"Sewing Kit" =	/obj/item/repair_kit,
+		"缝纫套件" =	/obj/item/repair_kit,
 		"藏匿的资金" = /obj/item/roguecoin/silver/pile/wretchpile,
 	)
 	extra_context = "该子职业的种族限制为：半精灵、精灵、黑暗精灵。"
@@ -127,19 +127,19 @@
 		H.mind.AddSpell(new /datum/action/cooldown/spell/mending)
 
 	var/helmets = list(
-		"Woad Elven Barbute"		= /obj/item/clothing/head/roguetown/helmet/heavy/elven_helm/light,
-		"Elven Barbute"				= /obj/item/clothing/head/roguetown/helmet/elvenbarbute/blackoak,
-		"Winged Elven Barbute"		= /obj/item/clothing/head/roguetown/helmet/elvenbarbute/winged/blackoak,
+		"林纹精灵巴尔布特盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/elven_helm/light,
+		"精灵巴尔布特盔"				= /obj/item/clothing/head/roguetown/helmet/elvenbarbute/blackoak,
+		"翼饰精灵巴尔布特盔"		= /obj/item/clothing/head/roguetown/helmet/elvenbarbute/winged/blackoak,
 	)
 	var/helmchoice = input(H, "选择你的头盔。", "绿叶胜过钢铁。") as anything in helmets
 	head = helmets[helmchoice]
 
 	switch(subclass_selected)
 		if("blade")
-			var/weapons = list("Elvish Longsword", "精灵军刀", "精灵曲刃剑", "精灵短刃")
+			var/weapons = list("精灵长剑", "精灵军刀", "精灵曲刃剑", "精灵短刃")
 			var/weapon_choice = input(H, "选择你的武器。", "为了橡木与群峰。") as anything in weapons
 			switch(weapon_choice)
-				if("Elvish Longsword")
+				if("精灵长剑")
 					r_hand = /obj/item/rogueweapon/sword/long/elf
 					beltr = /obj/item/rogueweapon/scabbard/sword
 					backr = /obj/item/rogueweapon/shield/wood

@@ -34,7 +34,7 @@
 /obj/effect/proc_holder/spell/invoked/knock/proc/open_door(obj/structure/mineral_door/door, mob/user)
 	if(istype(door))
 		if(door.locked)
-			door.log_breakin(user, "cast knock and unlocked the door")
+			door.log_breakin(user, "施放开锁术解锁了门")
 		door.force_open()
 		door.locked = FALSE
 
@@ -45,5 +45,5 @@
 /obj/effect/proc_holder/spell/invoked/knock/proc/open_window(obj/structure/roguewindow/openclose/W, mob/user)
 	if(istype(W))
 		if(!W.climbable && !W.brokenstate)
-			W.log_breakin(user, "cast knock and opened the window")
+			W.log_breakin(user, "施放开锁术打开了窗户")
 		W.force_open()

@@ -24,16 +24,16 @@
 	. = ..()
 	var/choice = chosen_bundle
 	if(!chosen_bundle)
-		choice = alert(user, "你一直在研习哪类法术？", "选择道路", "Utility", "Offense", "Support")
+		choice = alert(user, "你一直在研习哪类法术？", "选择道路", "实用", "攻击", "辅助")
 		chosen_bundle = choice
 	switch(choice)
-		if("Utility")
+		if("实用")
 			add_spells(user, utility_bundle)
 			user.mind?.RemoveSpell(src.type)
-		if("Offense")
+		if("攻击")
 			add_spells(user, offensive_bundle)
 			user.mind?.RemoveSpell(src.type)
-		if("Support")
+		if("辅助")
 			add_spells(user, buff_bundle)
 			user.mind?.RemoveSpell(src.type)
 		else
