@@ -1,6 +1,5 @@
 GLOBAL_LIST_INIT(custom_learnable_spells, list(
 	/datum/action/cooldown/spell/z121/invoked/anti_spoil, // 自定义 T1：防腐净化（复原腐坏食物为新鲜）
-	/datum/action/cooldown/spell/z121/invoked/flight,
 	/datum/action/cooldown/spell/z121/invoked/group_darkvision,
 	/datum/action/cooldown/spell/z121/invoked/group_enlarge,
 	/datum/action/cooldown/spell/z121/invoked/shrink,

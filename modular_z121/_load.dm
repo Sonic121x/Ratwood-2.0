@@ -55,7 +55,6 @@
 #include "rites/pestra_plague_disaster.dm"
 #include "rites/victory_glow.dm"
 #include "spells/arcane/anti_spoil.dm"
-#include "spells/arcane/flight.dm"
 #include "spells/arcane/group_buffs.dm"
 #include "spells/arcane/shrink.dm"
 #include "spells/arcane/group_mindlink.dm"
@@ -375,13 +374,6 @@
 // (never a construct/ooze/undead); the swap goes through set_species so the engine clears the previous
 // race's traits and abilities as part of the change.
 #include "virtues/distortion_variant.dm"
-// 自定义美德：醉剑仙（消耗 6 凯旋点）；授予【醉剑仙】特性：
-// 免疫醉酒带来的一切减益（智力下降/口齿不清/神志不清/眩晕/毒性/昏睡等）；一旦饮酒上头，
-// 剑术技能立即被强化到【传奇】等级，直到酒意散尽——即"唯有醉后方能施展的东方剑法"。
-// Custom virtue: Wine Sword Immortal (costs 6 TRIUMPH); grants the "Wine Sword Immortal" trait:
-// immune to every drunkenness debuff (INT loss / slurring / confusion / dizziness / toxin / sleep);
-// once drunk, the Sword-fighting skill is instantly boosted to Legendary until the alcohol wears off.
-#include "virtues/wine_sword_immortal.dm"
 // 按账号赠礼：唯一的登录派发器（统一持有 human/Login() 覆写，逐一调用各账号赠礼 proc）
 #include "account_perks/account_perks.dm"
 // 按账号赠礼：账号 Sonic121 进入游戏即自动获得自定义特性【温暖力场】（向周围玩家持续散发情绪增益）
