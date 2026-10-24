@@ -48,8 +48,6 @@ GLOBAL_LIST_INIT(z121_admin_learnable_spells, list(
 		var/path = text2path(params["spell_path"])
 		if((path in GLOB.custom_learnable_spells) || (path in GLOB.z121_admin_learnable_spells))
 			return TRUE
-	if(action == "unbind_utility" && text2path(params["spell_path"]) == /datum/action/cooldown/spell/z121/self/wish_spell)
-		return TRUE
 	if(action == "utility_toggle")
 		var/path = text2path(params["spell_path"])
 		if(!(path in (GLOB.utility_spells | GLOB.z121_admin_learnable_spells)) || !z121_can_learn_custom(owner, path))
@@ -65,8 +63,6 @@ GLOBAL_LIST_INIT(z121_admin_learnable_spells, list(
 		var/mob/living/carbon/human/H = owner
 		if(H.is_void_clone())
 			return
-	if("/datum/action/cooldown/spell/z121/self/wish_spell" in staged_unbind_utilities)
-		return
 	for(var/aspect_text in pointbuy_selections)
 		for(var/spell_text in pointbuy_selections[aspect_text])
 			var/path = text2path(spell_text)
