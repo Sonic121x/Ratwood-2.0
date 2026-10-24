@@ -1754,7 +1754,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 				defense += "[SPAN_TOOLTIP("护甲等级越高，伤害减免越强。减免后的伤害仍会伤及生命，护甲承受被挡住的部分。", "<u><b>减免：</b></u>")] [colorgrade_rating("灼烧", def_armor.fire, elaborate = TRUE, max_tier = 5)]"
 				defense += " | [colorgrade_rating("酸蚀", def_armor.acid, elaborate = TRUE, max_tier = 5)]"
 				defense += "<br>"
-				defense += "[SPAN_TOOLTIP("Blocks attacks below this tier (Armor takes all damage). Same tier penetrates 20% (80% goes to armor). Exceeding tier penetrates fully.", "<u><b>BLOCK:</b></u>")] "
+				defense += "[SPAN_TOOLTIP("格挡该等级以下的攻击（护甲承受全部伤害）。同级攻击穿透 20%（其中 80% 由护甲承受）。超过该等级则完全穿透。", "<u><b>格挡：</b></u>")] "
 				defense += "[colorgrade_rating("劈砍", def_armor.slash, elaborate = TRUE)] | "
 				defense += "[colorgrade_rating("刺击", def_armor.stab, elaborate = TRUE)] | "
 				defense += "[colorgrade_rating("穿刺", def_armor.piercing, elaborate = TRUE)]"
