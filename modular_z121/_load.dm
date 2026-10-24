@@ -132,7 +132,6 @@
 #include "alchemy/refining_potions/vigor_potion.dm"			// 精力药剂 (limitless energy / endless ejaculation, ERP-gated)
 #include "alchemy/refining_potions/abstinence_potion.dm"		// 禁欲药水 (forced chastity: blocked climax, herb-based)
 #include "alchemy/refining_potions/enlargement_potion.dm"		// 丰盈药水 (temporarily enlarges sexual organs)
-#include "alchemy/refining_potions/flying.dm"				// 飞行药水：10 单位约持续 20 秒。
 #include "alchemy/refining_potions/anticorruption.dm"		// 防腐药水 (splash: food never rots / corpse preserved)
 #include "alchemy/refining_potions/hardened_potion.dm"		// 硬化药剂 (take 20% less brute damage for the duration)
 // 抗火药水：气味"火焰"(5级) + 水70/魔力药水30；炼金4级(专家)；产出30单位。

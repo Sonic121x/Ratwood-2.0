@@ -113,16 +113,6 @@ SUBSYSTEM_DEF(custom_bootstrap)
 	// same rationale as the registrations above.
 	register_distortion_variant_trait()
 
-	// 登记自定义美德"醉剑仙"的【醉剑仙】特性到玩家可见的特性表（GLOB.roguetraits）。
-	// 为什么放在这里：与上面同理——此刻核心表 roguetraits 已由 GLOBAL_LIST_INIT 完成初始化，
-	//   向其追加键值对后，玩家点开特性自检面板即可看到【醉剑仙】及其说明，满足"该特性应能被
-	//   玩家在游戏内看到"的需求。登记逻辑定义在 modular_z121/virtues/wine_sword_immortal.dm 内
-	//   （那里才有对应的 TRAIT_WINE_SWORD_IMMORTAL 宏），这里只按 proc 名做一次调用，遵守宏的
-	//   #include 可见性规则。
-	// Register the Wine Sword Immortal virtue's trait into the player-visible GLOB.roguetraits,
-	// same rationale as the registrations above.
-	register_wine_sword_immortal_trait()
-
 	// 登记自定义特性【温暖力场】到玩家可见的特性表（GLOB.roguetraits），同上理由：此刻核心表已初始化，
 	//   追加后 Sonic121 点开特性自检面板即可看到【温暖力场】及其说明。登记逻辑定义在
 	//   modular_z121/account_perks/warm_power_field.dm 内（那里才有 TRAIT_WARM_POWER_FIELD 宏），
