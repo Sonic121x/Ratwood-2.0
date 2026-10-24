@@ -8,7 +8,7 @@
 // 为什么这样设计：天气在本游戏里是“全服级”的环境效果（由 SSParticleWeather 子系统
 //           统一驱动），并不绑定到某个具体生物身上，因此本法术更像 wish_spell 那样
 //           “对自己起手引导、引导成功后再用弹窗决定具体效果”，而不是先点选某个目标。
-//           选用 /spell/self 作为基类正契合这一流程。
+//           选用 /datum/action/cooldown/spell/z121/self 作为基类正契合这一流程。
 //
 // 约束（强制）：本法术的所有代码都只存在于 modular_z121 内，对天气的改变完全通过
 //           “调用”主线子系统 SSParticleWeather 已经公开的接口完成：
@@ -33,7 +33,7 @@
 #define WEATHER_MANA_COST     5             // 法力 / 法术点消耗（cost）——T3 适中
 #define WEATHER_CHANNEL_TIME  (6 SECONDS)   // do_after 引导时长（蓄力 6 秒）
 #define WEATHER_COOLDOWN      (24 MINUTES)  // 成功施放后的基础冷却，可受现有冷却修正影响
-#define WEATHER_FATIGUE_DRAIN 40            // 每次施放消耗的疲劳 / 耐力（releasedrain）
+#define WEATHER_FATIGUE_DRAIN 40            // 每次施放消耗的疲劳 / 耐力（primary_resource_cost）
 
 // “晴天 / 放晴”这一项的菜单显示文本 + 其在天气总表里对应的“哨兵值”。
 // 放晴与其它天气不同：它没有对应的 /datum/particle_weather 类型，本质是“结束当前天气”，
@@ -44,35 +44,29 @@
 // ===========================================================================
 // 法术本体
 // ---------------------------------------------------------------------------
-// 选用 /spell/self 作为基类：施法者点击图标后只对“自己”发起引导，
+// 选用 /datum/action/cooldown/spell/z121/self 作为基类：施法者点击图标后只对“自己”发起引导，
 // 真正“选晴 / 选雨 / 选雪”是在引导成功后由弹窗决定的，无需施法前先点地块。
 // 这与 wish_spell 的交互流程一致，最契合“先吟唱蓄力、再决定天气”的体验。
 // ===========================================================================
-/obj/effect/proc_holder/spell/self/weather_control
+/datum/action/cooldown/spell/z121/self/weather_control
 	name = "掌控天时"
 	desc = "一道沟通天穹的强力法术。施法者凝聚魔力向苍穹立下意志，便能随心驱使天时——放晴、落雨、飞雪、降雹、扬沙、起雾、掀风、燃起热浪或唤来雷暴，无所不能。"
-	school = "transmutation"               // 归类为变形 / 转化系
 	spell_tier = 3                         // T3 法术（按任务要求）
-	cost = WEATHER_MANA_COST               // “法力 / 法术点”消耗 = 5
-	releasedrain = WEATHER_FATIGUE_DRAIN   // 每次施放抽取的疲劳 / 耐力
-	chargedrain = 0                        // 引导期间不额外持续抽取资源
-	chargetime = WEATHER_CHANNEL_TIME      // 引导时长（get_chargetime() 返回它来驱动 do_after）
-	recharge_time = WEATHER_COOLDOWN       // 基础冷却为 24 分钟
+	point_cost = WEATHER_MANA_COST               // “法力 / 法术点”消耗 = 5
+	primary_resource_cost = WEATHER_FATIGUE_DRAIN   // 每次施放抽取的疲劳 / 耐力
+	hold_drain = 0                        // 引导期间不额外持续抽取资源
+	charge_time = WEATHER_CHANNEL_TIME      // 引导时长（get_charge_time() 返回它来驱动 do_after）
+	cooldown_time = WEATHER_COOLDOWN       // 基础冷却为 24 分钟
 	cooldown_min = WEATHER_COOLDOWN        // 沿用现有冷却配置，不限制智力、地脉或管理员倍率修正
 	is_cdr_exempt = FALSE                  // 参与通用冷却修正
-	charge_type = "recharge"               // 使用“充能”式冷却（默认）
-	human_req = TRUE                       // 只有人类施法者能施放
-	warnie = "spellwarning"                // 施法警告图标态
-	no_early_release = TRUE                // 引导未完成不允许提前释放
-	movement_interrupt = TRUE              // 引导期间移动会打断（沟通天穹需要专注）
-	charging_slowdown = 1                  // 引导时略微减速，体现凝聚伟力的代价
-	chargedloop = /datum/looping_sound/invokegen // 引导期间循环播放的施法音效
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z | SPELL_REQUIRES_NO_MOVE
+	charge_slowdown = 1                  // 引导时略微减速，体现凝聚伟力的代价
 	associated_skill = /datum/skill/magic/arcane // 关联技能：奥术（用于经验获取等）
-	action_icon = 'modular_z121/icon/custompell.dmi' // 动作按钮所用的自定义图标集
-	overlay_state = "weather"              // 动作按钮的图标态（若 dmi 暂无该态仅显示为空，不影响编译）
+	button_icon = 'modular_z121/icon/custompell.dmi' // 动作按钮所用的自定义图标集
+	button_icon_state = "weather"              // 动作按钮的图标态（若 dmi 暂无该态仅显示为空，不影响编译）
 	invocations = list("听我号令，苍穹变色!") // 咒文（按规格在“开始引导”时喊出）
 	invocation_type = "shout"
-	glow_color = GLOW_COLOR_ARCANE
+	spell_color = GLOW_COLOR_ARCANE
 	glow_intensity = GLOW_INTENSITY_HIGH
 	gesture_required = TRUE                // 需要能自由活动的手来施法
 	miracle = FALSE
@@ -80,23 +74,20 @@
 	sound = null                           // 引导音由 chargedloop 负责；命中音效在 cast 内单独播放
 
 // ---------------------------------------------------------------------------
-// choose_targets：施法入口（点击图标后由 Click -> cast_check -> choose_targets 调用）。
 // 在这里完成两件“施法前”的事：1) 立即喊出咒文；2) do_after 引导 6 秒。
-// 引导成功后才调用 perform() 进入真正的 cast()。整套写法沿用 wish_spell，
 // 以保证“可被打断、失败退还冷却、咒文只喊一次”的一致体验。
 // ---------------------------------------------------------------------------
-/obj/effect/proc_holder/spell/self/weather_control/choose_targets(mob/user = usr)
-	// 没有施法者就直接撤销，避免后续空指针。revert_cast() 会把冷却恢复为“可用”。
+/datum/action/cooldown/spell/z121/self/weather_control/z121_choose_targets(mob/user = usr)
+	// 没有施法者就直接撤销，避免后续空指针。z121_cancel() 会把冷却恢复为“可用”。
 	if(!user)
-		revert_cast()
-		return
-
+		z121_cancel()
+		return FALSE
 	// 规格要求“开始引导时”就念出咒文，因此这里手动调用一次 invocation()。
-	// （稍后进入 perform() 前会临时屏蔽 invocation，以免咒文被重复喊两遍。）
+	// （稍后进入 z121_cast_selected() 前会临时屏蔽 invocation，以免咒文被重复喊两遍。）
 	invocation(user)
 
-	// 取得引导时长（= chargetime）。用 do_after 实现“可被打断的 6 秒蓄力”。
-	var/cast_time = get_chargetime()
+	// 取得引导时长（= charge_time）。用 do_after 实现“可被打断的 6 秒蓄力”。
+	var/cast_time = get_charge_time()
 	if(cast_time > 0)
 		user.visible_message(
 			span_warning("[user] 仰首望天，双手缓缓抬起，磅礴的魔力顺着 [user.p_their()] 指尖直冲云霄……"),
@@ -106,16 +97,16 @@
 		// progress = TRUE 显示进度条；target = user 表示这是对自身的引导动作。
 		if(!do_after(user, cast_time, target = user, progress = TRUE))
 			to_chat(user, span_warning("我与天穹的联系被打断了，呼风唤雨的意志就此消散！"))
-			revert_cast(user) // 引导失败：退还冷却，让施法者可以重新尝试
+			z121_cancel(user) // 引导失败：退还冷却，让施法者可以重新尝试
 			return
 
-	// 引导成功。进入 perform 之前临时清空 invocations，防止 perform 成功后又喊一遍咒文。
+	// 引导成功。进入 z121_cast_selected 之前临时清空 invocations，防止 z121_cast_selected 成功后又喊一遍咒文。
 	var/list/original_invocations = invocations
 	var/original_invocation_type = invocation_type
 	invocations = null
 	invocation_type = "none"
-	// /spell/self 的 cast 只作用于施法者本人，targets 传 null 即可。
-	perform(null, user = user)
+	// /datum/action/cooldown/spell/z121/self 的 cast 只作用于施法者本人，targets 传 null 即可。
+	z121_cast_selected(null, user = user)
 	// 还原咒文设置，避免影响下一次施放。
 	invocations = original_invocations
 	invocation_type = original_invocation_type
@@ -123,21 +114,20 @@
 // ---------------------------------------------------------------------------
 // cast：引导成功后真正执行的逻辑。弹出 3 选 1 菜单并分发到对应天气效果。
 // 返回值约定：
-//   - 返回 TRUE  -> perform() 会调用 start_recharge()，进入基础 24 分钟的可修正冷却（天气已改变）。
-//   - 返回 FALSE -> 各效果分支内部已调用 revert_cast() 退还冷却（取消 / 失败）。
 // ---------------------------------------------------------------------------
-/obj/effect/proc_holder/spell/self/weather_control/cast(list/targets, mob/living/user = usr)
+/datum/action/cooldown/spell/z121/self/weather_control/z121_apply(atom/cast_on)
+	var/mob/living/user = owner
 	. = ..()
 	// 安全校验：施法者必须仍然有效且健在，才能继续操控天气。
 	if(!user || QDELETED(user))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// 防御性校验：天气子系统必须存在且已就绪，否则一切天气调用都无从谈起。
 	// 之所以显式判空，是因为在极早期 / 异常环境下 SSParticleWeather 可能尚未初始化。
 	if(!SSParticleWeather)
 		to_chat(user, span_warning("天地间的气候之力此刻无法感应——什么也没有发生。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// ---- 天气总表（数据驱动菜单）----------------------------------------
@@ -175,7 +165,7 @@
 	// 优雅处理“取消 / 关闭菜单”：没有选择就退还冷却，不浪费这次施法。
 	if(isnull(choice))
 		to_chat(user, span_warning("我一时拿不定主意，收回了改变天时的意志。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// 用选中的显示文本回查天气总表，得到对应的天气类型（或放晴哨兵）。
@@ -189,7 +179,7 @@
 	// 则视为失败并退还冷却，绝不把非法值传进子系统。
 	if(!ispath(chosen, /datum/particle_weather))
 		to_chat(user, span_warning("我一时无法辨明想要的天象，法术悄然消散。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// 其余所有天气都走统一的“强制切换天气”封装。
@@ -201,7 +191,7 @@
 // 通过调用主线 runningWeather.end()（其内部会调用 SSParticleWeather.stopWeather()
 // 清理粒子、声音并释放子系统引用）实现，这是主线收尾天气的标准接口。
 // ===========================================================================
-/obj/effect/proc_holder/spell/self/weather_control/proc/weather_make_sunny(mob/living/user)
+/datum/action/cooldown/spell/z121/self/weather_control/proc/weather_make_sunny(mob/living/user)
 	// 取当前正在运行的天气实例（可能为 null，表示本来就是晴天）。
 	var/datum/particle_weather/running = SSParticleWeather.runningWeather
 	// 取“已排队、尚未开始”的天气实例（可能为 null）。它由 run_weather 非强制路径排入，
@@ -211,7 +201,7 @@
 	// 错误处理 / 友好反馈：当前与排队中都没有天气时，说明天已经是晴的，无需消耗这次施法。
 	if(!running && !queued)
 		to_chat(user, span_notice("此刻本就是晴空万里，无需再做改变。"))
-		revert_cast() // 没有产生任何改变，退还冷却，避免空放
+		z121_cancel() // 没有产生任何改变，退还冷却，避免空放
 		return FALSE
 
 	// 结束当前正在运行的天气（若有）。end() 会停粒子、停声音并清空子系统引用。
@@ -248,12 +238,12 @@
 // 注意：weather_type 形参声明为 /datum/particle_weather 类型（尽管它承载的是“类型路径”而非实例）。
 // 这样声明是为了让编译器知道该变量具备 name 等成员，使下方 initial(weather_type.name) 能通过编译；
 // initial() 会按该变量当前所持的类型路径读取其编译期初始 name，正是我们想要的天气显示名。
-/obj/effect/proc_holder/spell/self/weather_control/proc/force_weather(mob/living/user, datum/particle_weather/weather_type)
+/datum/action/cooldown/spell/z121/self/weather_control/proc/force_weather(mob/living/user, datum/particle_weather/weather_type)
 	// 防御性校验：传入的类型必须是合法的天气类型路径，否则拒绝执行并退还冷却。
 	// 这能挡住因表项笔误 / 主线类型被移除等导致的非法调用，避免子系统 CRASH。
 	if(!ispath(weather_type, /datum/particle_weather))
 		to_chat(user, span_warning("我试图召唤的那种天象并不存在于天地法则之中。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// 读取该天气类型的显示名（用 initial 从类型定义直接取，无需实例化），
@@ -271,7 +261,7 @@
 	var/datum/particle_weather/now_running = SSParticleWeather.runningWeather
 	if(!now_running || !istype(now_running, weather_type))
 		to_chat(user, span_warning("魔力涌向天穹，天象却没有如我所愿地改变——这次召唤失败了。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// 表现层反馈：成功召来天气。文案根据天气名自动拼装，适配总表里的任意一项。

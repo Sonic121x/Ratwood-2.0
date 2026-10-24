@@ -1,31 +1,26 @@
 // 冲刺术借用原生奔跑入口，只改变步进间隔并免除奔跑步进疲劳。
-/obj/effect/proc_holder/spell/invoked/dash
+/datum/action/cooldown/spell/z121/invoked/dash
 	name = "冲刺术"
 	desc = "一个有趣的小法术，发明它的法师只是为了在跑步比赛中赢下冠军"
-	school = "transmutation"
-	cost = 2
+	point_cost = 2
 	spell_tier = 2
-	releasedrain = 15
-	chargedrain = 0
-	chargetime = 1
-	recharge_time = 10 SECONDS
-	human_req = TRUE
-	warnie = "spellwarning"
-	no_early_release = TRUE
-	movement_interrupt = FALSE
+	primary_resource_cost = 15
+	hold_drain = 0
+	charge_time = 1
+	cooldown_time = 10 SECONDS
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
 	gesture_required = TRUE
-	charging_slowdown = 2
-	chargedloop = /datum/looping_sound/invokegen
+	charge_slowdown = 2
 	associated_skill = /datum/skill/magic/arcane
 	xp_gain = TRUE
-	action_icon = 'modular_z121/icon/custompell.dmi'
-	overlay_state = "dash"
+	button_icon = 'modular_z121/icon/custompell.dmi'
+	button_icon_state = "dash"
 	invocations = list("疾风助我！")
 	invocation_type = "shout"
-	glow_color = GLOW_COLOR_ARCANE
+	spell_color = GLOW_COLOR_ARCANE
 	glow_intensity = GLOW_INTENSITY_LOW
 
-/obj/effect/proc_holder/spell/invoked/dash/invocation(mob/user = usr)
+/datum/action/cooldown/spell/z121/invoked/dash/invocation(mob/user = usr)
 	if(QDELETED(user))
 		return
 	var/datum/language/chant_language = user.get_default_language()
@@ -37,17 +32,19 @@
 	// 仍经正常发言流程处理禁言、口部限制、语言效果与聊天显示，且只吟唱一次。
 	user.say(pick(invocations), language = /datum/language/common, forced = "spell")
 
-/obj/effect/proc_holder/spell/invoked/dash/cast(list/targets, mob/user = usr)
+/datum/action/cooldown/spell/z121/invoked/dash/z121_apply(atom/cast_on)
+	var/list/targets = list(cast_on)
+	var/mob/user = owner
 	var/turf/target = length(targets) ? get_turf(targets[1]) : null
 	var/turf/start = get_turf(user)
 	if(!ishuman(user) || !target || !start || target == start || target.z != start.z)
 		to_chat(user, span_warning("我需要指定同一层上另一个位置的方向。"))
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 	var/mob/living/carbon/human/runner = user
 	if(runner.z121_dash || !runner.z121_can_dash())
 		to_chat(user, span_warning("我现在无法发起冲刺。"))
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 	var/old_intent = runner.m_intent
 	var/dash_dir = get_dir(start, target)
@@ -57,7 +54,7 @@
 	runner.toggle_rogmove_intent(MOVE_INTENT_RUN, TRUE)
 	if(runner.m_intent != MOVE_INTENT_RUN)
 		to_chat(user, span_warning("我现在无法奔跑。"))
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 	new /datum/z121_dash_session(runner, dash_dir, old_intent)
 	runner.visible_message(span_notice("[runner]脚下疾风涌起，向前冲刺！"), span_notice("疾风托起我的脚步！"))

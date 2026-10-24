@@ -10,30 +10,24 @@
 	invisibility = INVISIBILITY_ABSTRACT
 	mouse_opacity = 0
 
-/obj/effect/proc_holder/spell/self/storage_spell
+/datum/action/cooldown/spell/z121/self/storage_spell
 	name = "储物术"
 	desc = "将当前手中的一件物品存入魔法空间，再次施法取出。最多保存一件，不限体积；不能存入背包等物品容器，但可以存入药瓶、水袋等液体容器。取出时若双手已满，物品会落在脚下。"
-	school = "conjuration"
 	spell_tier = 1
-	cost = STORAGE_MANA_COST
-	releasedrain = STORAGE_RESOURCE_COST
-	chargedrain = 0
-	chargetime = STORAGE_CHANNEL_TIME
-	recharge_time = STORAGE_COOLDOWN
+	point_cost = STORAGE_MANA_COST
+	primary_resource_cost = STORAGE_RESOURCE_COST
+	hold_drain = 0
+	charge_time = STORAGE_CHANNEL_TIME
+	cooldown_time = STORAGE_COOLDOWN
 	cooldown_min = STORAGE_COOLDOWN
-	charge_type = "recharge"
-	human_req = TRUE
-	warnie = "spellwarning"
-	no_early_release = TRUE
-	movement_interrupt = FALSE
-	charging_slowdown = 0
-	chargedloop = /datum/looping_sound/invokegen
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
+	charge_slowdown = 0
 	associated_skill = /datum/skill/magic/arcane
-	action_icon = 'modular_z121/icon/custompell.dmi'
-	overlay_state = "storage"
+	button_icon = 'modular_z121/icon/custompell.dmi'
+	button_icon_state = "storage"
 	invocations = list("为我开辟一方储物之境！")
 	invocation_type = "shout"
-	glow_color = GLOW_COLOR_ARCANE
+	spell_color = GLOW_COLOR_ARCANE
 	glow_intensity = GLOW_INTENSITY_LOW
 	gesture_required = TRUE
 	miracle = FALSE
@@ -50,8 +44,8 @@
 	var/obj/item/pending_item
 	var/mob/pending_user
 
-/obj/effect/proc_holder/spell/self/storage_spell/Destroy()
-	var/turf/destination = get_turf(action?.owner)
+/datum/action/cooldown/spell/z121/self/storage_spell/Destroy()
+	var/turf/destination = get_turf(owner)
 	if(!destination)
 		destination = get_turf(last_caster?.resolve())
 	if(!destination)
@@ -68,17 +62,17 @@
 	last_storage_turf = null
 	return ..()
 
-/obj/effect/proc_holder/spell/self/storage_spell/Click()
+/datum/action/cooldown/spell/z121/self/storage_spell/Trigger(trigger_flags)
 	if(storage_busy)
 		return FALSE
 	return ..()
 
-/obj/effect/proc_holder/spell/self/storage_spell/proc/current_stored_item()
+/datum/action/cooldown/spell/z121/self/storage_spell/proc/current_stored_item()
 	if(QDELETED(stored_item) || QDELETED(storage_space) || stored_item.loc != storage_space)
 		stored_item = null
 	return stored_item
 
-/obj/effect/proc_holder/spell/self/storage_spell/proc/storage_rejection(obj/item/item, mob/user)
+/datum/action/cooldown/spell/z121/self/storage_spell/proc/storage_rejection(obj/item/item, mob/user)
 	if(QDELETED(item))
 		return "当前手中没有可以存入的物品。"
 	if(item.loc != user || user.get_active_held_item() != item)
@@ -91,19 +85,18 @@
 		return "这件物品无法脱手。"
 	return null
 
-/obj/effect/proc_holder/spell/self/storage_spell/proc/clear_storage_cast()
+/datum/action/cooldown/spell/z121/self/storage_spell/proc/clear_storage_cast()
 	pending_item = null
 	pending_user = null
 	retrieving_item = FALSE
 	storage_busy = FALSE
 
-/obj/effect/proc_holder/spell/self/storage_spell/choose_targets(mob/user = usr)
+/datum/action/cooldown/spell/z121/self/storage_spell/z121_choose_targets(mob/user = usr)
 	if(storage_busy)
 		return
 	if(QDELETED(user))
-		revert_cast(user)
-		return
-
+		z121_cancel(user)
+		return FALSE
 	var/obj/item/item = current_stored_item()
 	var/retrieving = !!item
 	if(!retrieving)
@@ -111,9 +104,8 @@
 		var/reason = storage_rejection(item, user)
 		if(reason)
 			to_chat(user, span_warning(reason))
-			revert_cast(user)
-			return
-
+			z121_cancel(user)
+			return FALSE
 	storage_busy = TRUE
 	retrieving_item = retrieving
 	pending_item = item
@@ -124,7 +116,7 @@
 		last_storage_turf = caster_turf
 
 	invocation(user)
-	var/cast_time = get_chargetime()
+	var/cast_time = get_charge_time()
 	if(cast_time > 0)
 		user.visible_message(
 			span_warning("[user] 屈指轻引，周身魔力如细线般缠绕、编织……"),
@@ -135,31 +127,32 @@
 			return
 		if(!completed)
 			to_chat(user, span_warning("魔力的丝线散开了，物品未能存取。"))
-			revert_cast(user)
+			z121_cancel(user)
 			clear_storage_cast()
 			return
 
-	// 咒文已在引导开始时念出；继续使用 perform 结算消耗、冷却和奥术联动。
+	// 咒文已在引导开始时念出；继续使用 z121_cast_selected 结算消耗、冷却和奥术联动。
 	var/list/original_invocations = invocations
 	var/original_invocation_type = invocation_type
 	invocations = null
 	invocation_type = "none"
-	if(!perform(null, user = user) && !QDELETED(src))
-		revert_cast(user)
+	if(!z121_cast_selected(null, user = user) && !QDELETED(src))
+		z121_cancel(user)
 	if(QDELETED(src))
 		return
 	invocations = original_invocations
 	invocation_type = original_invocation_type
 	clear_storage_cast()
 
-/obj/effect/proc_holder/spell/self/storage_spell/cast(list/targets, mob/living/user = usr)
+/datum/action/cooldown/spell/z121/self/storage_spell/z121_apply(atom/cast_on)
+	var/mob/living/user = owner
 	if(QDELETED(user) || !storage_busy || pending_user != user || user.incapacitated())
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 	var/turf/caster_turf = get_turf(user)
 	if(!caster_turf)
 		to_chat(user, span_warning("这里无法稳定地开启储物之境。"))
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 	last_caster = WEAKREF(user)
 	last_storage_turf = caster_turf
@@ -169,7 +162,7 @@
 	if(retrieving_item)
 		if(QDELETED(item) || current_item != item)
 			to_chat(user, span_warning("原先存放的物品已经不在储物之境中。"))
-			revert_cast(user)
+			z121_cancel(user)
 			return FALSE
 		stored_item = null
 		if(user.put_in_hands(item))
@@ -179,18 +172,18 @@
 	else
 		if(current_item || (!QDELETED(storage_space) && length(storage_space.contents)))
 			to_chat(user, span_warning("储物之境已经有物品，无法再存入第二件。"))
-			revert_cast(user)
+			z121_cancel(user)
 			return FALSE
 		var/reason = storage_rejection(item, user)
 		if(reason)
 			to_chat(user, span_warning(reason))
-			revert_cast(user)
+			z121_cancel(user)
 			return FALSE
 		if(QDELETED(storage_space))
 			storage_space = new(null)
 		if(!user.transferItemToLoc(item, storage_space) || QDELETED(item) || item.loc != storage_space)
 			to_chat(user, span_warning("这件物品未能存入储物之境。"))
-			revert_cast(user)
+			z121_cancel(user)
 			return FALSE
 		stored_item = item
 		to_chat(user, span_green("我将[item]存入了储物之境，再次施法即可取出。"))

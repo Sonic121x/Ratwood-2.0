@@ -122,37 +122,34 @@
 	SIGNAL_HANDLER
 	return TURF_MOVESPEED_BLOCKED
 
-/obj/effect/proc_holder/spell/invoked/flight
+/datum/action/cooldown/spell/z121/invoked/flight
 	name = "飞行术"
 	desc = "在原地专注引导，以纯粹魔力让目标自由飞行，持续 30 秒。引导期间移动会打断施法。"
-	cost = 4
-	releasedrain = 10
-	chargetime = 6 SECONDS
-	recharge_time = 2 MINUTES
-	human_req = TRUE
-	warnie = "spellwarning"
-	school = "transmutation"
-	action_icon = 'modular_z121/icon/custompell.dmi'
-	overlay_state = "flight"
+	point_cost = 4
+	primary_resource_cost = 10
+	charge_time = 6 SECONDS
+	cooldown_time = 2 MINUTES
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z | SPELL_REQUIRES_NO_MOVE
+	button_icon = 'modular_z121/icon/custompell.dmi'
+	button_icon_state = "flight"
 	spell_tier = 3
 	invocations = list("凌空而起！")
 	invocation_type = "shout"
-	glow_color = GLOW_COLOR_BUFF
+	spell_color = GLOW_COLOR_BUFF
 	glow_intensity = GLOW_INTENSITY_MEDIUM
-	no_early_release = TRUE
-	movement_interrupt = TRUE
-	charging_slowdown = 2
-	chargedloop = /datum/looping_sound/invokegen
+	charge_slowdown = 2
 	associated_skill = /datum/skill/magic/arcane
 	gesture_required = TRUE
-	range = 7
+	cast_range = 7
 	miracle = FALSE
 	xp_gain = TRUE
 
-/obj/effect/proc_holder/spell/invoked/flight/cast(list/targets, mob/living/user = usr)
+/datum/action/cooldown/spell/z121/invoked/flight/z121_apply(atom/cast_on)
+	var/list/targets = list(cast_on)
+	var/mob/living/user = owner
 	var/atom/target_atom = targets[1]
 	if(!isliving(target_atom))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	var/mob/living/spelltarget = target_atom

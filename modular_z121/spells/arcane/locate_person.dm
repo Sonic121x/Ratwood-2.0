@@ -7,64 +7,53 @@
 	// 同一施法者只显示一个定位箭头，等待中的请求不占用此位置。
 	var/datum/z121_locate_session/z121_locate_tracker
 
-/obj/effect/proc_holder/spell/self/z121_locate_base
+/datum/action/cooldown/spell/z121/self/z121_locate_base
 	name = "寻人术"
 	desc = "相识之人的魔力，总会在记忆中留下些许余韵。静心呼唤，若对方愿意回应，一缕微光便会为我引路；纵使生息已逝，只要灵魂尚未远去，余韵便仍有迹可循。"
-	cost = 2
+	point_cost = 2
 	xp_gain = TRUE
-	releasedrain = 10
-	chargedrain = 1
-	chargetime = 0
-	recharge_time = 1 MINUTES
+	primary_resource_cost = 10
+	hold_drain = 1
+	charge_time = 0
+	cooldown_time = 1 MINUTES
 	cooldown_min = 1 MINUTES
-	human_req = TRUE
-	warnie = "spellwarning"
-	school = "divination"
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
 	spell_tier = 2
-	action_icon = 'modular_z121/icon/custompell.dmi'
-	overlay_state = "locate_person"
+	button_icon = 'modular_z121/icon/custompell.dmi'
+	button_icon_state = "locate_person"
 	invocations = list("循迹寻人。")
 	invocation_type = "whisper"
-	glow_color = GLOW_COLOR_ARCANE
+	spell_color = GLOW_COLOR_ARCANE
 	glow_intensity = GLOW_INTENSITY_LOW
-	no_early_release = TRUE
-	movement_interrupt = FALSE
-	charging_slowdown = 1
-	chargedloop = /datum/looping_sound/invokegen
+	charge_slowdown = 1
 	associated_skill = /datum/skill/magic/arcane
 	miracle = FALSE
 	gesture_required = TRUE
 	var/selecting_or_channeling = FALSE
 	var/list/locate_sessions = list()
 
-/obj/effect/proc_holder/spell/self/locate_person
-	parent_type = /obj/effect/proc_holder/spell/self/z121_locate_base
+/datum/action/cooldown/spell/z121/self/locate_person
+	parent_type = /datum/action/cooldown/spell/z121/self/z121_locate_base
 
-/obj/effect/proc_holder/spell/self/yandere_locate_person
-	parent_type = /obj/effect/proc_holder/spell/self/z121_locate_base
+/datum/action/cooldown/spell/z121/self/yandere_locate_person
+	parent_type = /datum/action/cooldown/spell/z121/self/z121_locate_base
 	name = "病娇寻人术"
 	desc = "我记得那个人的气息，比自己的呼吸还要熟悉。只需片刻凝神，心底的牵念便会指向 ta 所在之处。ta 不必回应我……沉默也好，长眠也罢，我总会循着那道踪迹寻去。"
 
-/obj/effect/proc_holder/spell/self/z121_locate_base/Destroy()
+/datum/action/cooldown/spell/z121/self/z121_locate_base/Destroy()
 	for(var/datum/z121_locate_session/session as anything in locate_sessions.Copy())
 		qdel(session)
 	locate_sessions = null
 	return ..()
 
-/obj/effect/proc_holder/spell/self/z121_locate_base/Click()
+/datum/action/cooldown/spell/z121/self/z121_locate_base/Trigger(trigger_flags)
 	// 避免重复点击走父类的失败返还路径，提前解除选人、引导或冷却锁定。
-	if(selecting_or_channeling || !charge_check(usr))
+	if(selecting_or_channeling || !z121_ready(owner))
 		return FALSE
 	return ..()
 
-/obj/effect/proc_holder/spell/self/z121_locate_base/process()
-	// 父类在施法检查时已启动冷却处理，选人与引导期间不得累计。
-	if(selecting_or_channeling)
-		last_process_time = world.time
-		return
-	return ..()
-
-/obj/effect/proc_holder/spell/self/z121_locate_base/cast(list/targets, mob/living/user = usr)
+/datum/action/cooldown/spell/z121/self/z121_locate_base/z121_apply(atom/cast_on)
+	var/mob/living/user = owner
 	if(selecting_or_channeling)
 		return FALSE
 	if(!ishuman(user) || !user.mind)
@@ -72,7 +61,6 @@
 		return FALSE
 
 	selecting_or_channeling = TRUE
-	STOP_PROCESSING(SSfastprocess, src)
 	var/datum/mind/casting_mind = user.mind
 	var/mob/living/carbon/human/found_person = select_locate_target(user)
 	if(QDELETED(src))
@@ -98,7 +86,6 @@
 		return FALSE
 	selecting_or_channeling = FALSE
 	// 返回成功代表已完成引导；父类立即开始正常冷却，后续请求结果不再返还。
-	charge_counter = 0
 	if(!can_channel(user, casting_mind) || QDELETED(found_person) || !target_allowed(user, found_person))
 		if(!QDELETED(user))
 			to_chat(user, span_warning("魔力踪迹已经散去，我没能锁定对方。"))
@@ -106,26 +93,26 @@
 	new /datum/z121_locate_session(src, user, found_person)
 	return TRUE
 
-/obj/effect/proc_holder/spell/self/z121_locate_base/proc/can_channel(mob/living/carbon/human/user, datum/mind/casting_mind)
+/datum/action/cooldown/spell/z121/self/z121_locate_base/proc/can_channel(mob/living/carbon/human/user, datum/mind/casting_mind)
 	return !QDELETED(src) && !QDELETED(user) && !QDELETED(casting_mind) && user.client && user.stat == CONSCIOUS && user.mind == casting_mind && (src in casting_mind.spell_list)
 
-/obj/effect/proc_holder/spell/self/z121_locate_base/proc/cancel_locate_cast(mob/living/user)
+/datum/action/cooldown/spell/z121/self/z121_locate_base/proc/cancel_locate_cast(mob/living/user)
 	selecting_or_channeling = FALSE
 	if(!QDELETED(user))
-		revert_cast(user)
+		z121_cancel(user)
 	else
-		finish_recharge()
+		reset_spell_cooldown()
 
-/obj/effect/proc_holder/spell/self/z121_locate_base/proc/select_locate_target(mob/living/carbon/human/user)
+/datum/action/cooldown/spell/z121/self/z121_locate_base/proc/select_locate_target(mob/living/carbon/human/user)
 	return null
 
-/obj/effect/proc_holder/spell/self/z121_locate_base/proc/target_allowed(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/action/cooldown/spell/z121/self/z121_locate_base/proc/target_allowed(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	return FALSE
 
-/obj/effect/proc_holder/spell/self/z121_locate_base/proc/needs_consent()
+/datum/action/cooldown/spell/z121/self/z121_locate_base/proc/needs_consent()
 	return TRUE
 
-/obj/effect/proc_holder/spell/self/locate_person/select_locate_target(mob/living/carbon/human/user)
+/datum/action/cooldown/spell/z121/self/locate_person/select_locate_target(mob/living/carbon/human/user)
 	var/list/known_targets = list()
 	for(var/person_name in user.mind.known_people)
 		var/mob/living/carbon/human/person = find_known_human(person_name)
@@ -138,10 +125,10 @@
 	// 选定后锁定具体身体，等待或引导结束时不再按同名重新找人。
 	return known_targets[chosen_name]
 
-/obj/effect/proc_holder/spell/self/locate_person/target_allowed(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/action/cooldown/spell/z121/self/locate_person/target_allowed(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	return target != user && (target.real_name in user.mind.known_people)
 
-/obj/effect/proc_holder/spell/self/yandere_locate_person/select_locate_target(mob/living/carbon/human/user)
+/datum/action/cooldown/spell/z121/self/yandere_locate_person/select_locate_target(mob/living/carbon/human/user)
 	var/datum/charflaw/yandere/flaw = user.get_flaw(/datum/charflaw/yandere)
 	var/mob/living/carbon/human/crush = flaw?.locate_crush_ref?.resolve()
 	if(!flaw?.designated || QDELETED(crush))
@@ -149,20 +136,20 @@
 		return null
 	return crush
 
-/obj/effect/proc_holder/spell/self/yandere_locate_person/target_allowed(mob/living/carbon/human/user, mob/living/carbon/human/target)
+/datum/action/cooldown/spell/z121/self/yandere_locate_person/target_allowed(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	var/datum/charflaw/yandere/flaw = user.get_flaw(/datum/charflaw/yandere)
 	return flaw?.designated && flaw.locate_crush_ref?.resolve() == target
 
-/obj/effect/proc_holder/spell/self/yandere_locate_person/needs_consent()
+/datum/action/cooldown/spell/z121/self/yandere_locate_person/needs_consent()
 	return FALSE
 
-/obj/effect/proc_holder/spell/self/z121_locate_base/proc/find_known_human(person_name)
+/datum/action/cooldown/spell/z121/self/z121_locate_base/proc/find_known_human(person_name)
 	for(var/mob/living/carbon/human/person in GLOB.human_list)
 		if(!QDELETED(person) && person.real_name == person_name)
 			return person
 	return null
 
-/obj/effect/proc_holder/spell/self/z121_locate_base/proc/build_location_report(mob/living/carbon/human/user, mob/living/carbon/human/found_person)
+/datum/action/cooldown/spell/z121/self/z121_locate_base/proc/build_location_report(mob/living/carbon/human/user, mob/living/carbon/human/found_person)
 	var/turf/user_turf = get_turf(user)
 	var/turf/target_turf = get_turf(found_person)
 	if(!user_turf || !target_turf)
@@ -195,7 +182,7 @@
 
 	return " [report_parts.Join("；")]。"
 
-/obj/effect/proc_holder/spell/self/z121_locate_base/proc/get_direction_text(direction)
+/datum/action/cooldown/spell/z121/self/z121_locate_base/proc/get_direction_text(direction)
 	switch(direction)
 		if(NORTH)
 			return "北方"
@@ -215,7 +202,7 @@
 			return "西南方"
 	return "难以辨明的方向"
 
-/obj/effect/proc_holder/spell/self/z121_locate_base/proc/get_direction_arrow(direction)
+/datum/action/cooldown/spell/z121/self/z121_locate_base/proc/get_direction_arrow(direction)
 	switch(direction)
 		if(NORTH)
 			return "↑"
@@ -235,7 +222,7 @@
 			return "↙"
 	return "?"
 
-/obj/effect/proc_holder/spell/self/z121_locate_base/proc/get_target_condition_text(mob/living/carbon/human/found_person)
+/datum/action/cooldown/spell/z121/self/z121_locate_base/proc/get_target_condition_text(mob/living/carbon/human/found_person)
 	if(found_person.stat == DEAD)
 		return "已死亡"
 	// 本项目只有 SOFT_CRIT / UNCONSCIOUS / DEAD 三档 stat，濒死用 InFullCritical() 区分。
@@ -249,7 +236,7 @@
 		return "神志清醒"
 	return "状态难明"
 
-/obj/effect/proc_holder/spell/self/z121_locate_base/proc/get_target_area_text(mob/living/carbon/human/found_person)
+/datum/action/cooldown/spell/z121/self/z121_locate_base/proc/get_target_area_text(mob/living/carbon/human/found_person)
 	var/area/target_area = get_area(found_person)
 	if(!target_area)
 		return "未知区域"
@@ -266,7 +253,7 @@
 		return "未知区域"
 	return formatted_area_name
 
-/obj/effect/proc_holder/spell/self/z121_locate_base/proc/has_latin_letters(text_to_check)
+/datum/action/cooldown/spell/z121/self/z121_locate_base/proc/has_latin_letters(text_to_check)
 	var/upper_text = uppertext("[text_to_check]")
 	for(var/i in 1 to length(upper_text))
 		var/current_char = copytext(upper_text, i, i + 1)
@@ -298,7 +285,7 @@
 	var/request_expires
 	var/tracking_expires
 
-/datum/z121_locate_session/New(obj/effect/proc_holder/spell/self/z121_locate_base/spell, mob/living/carbon/human/caster, mob/living/carbon/human/target)
+/datum/z121_locate_session/New(datum/action/cooldown/spell/z121/self/z121_locate_base/spell, mob/living/carbon/human/caster, mob/living/carbon/human/target)
 	spell_ref = WEAKREF(spell)
 	caster_ref = WEAKREF(caster)
 	target_ref = WEAKREF(target)
@@ -313,7 +300,7 @@
 
 /datum/z121_locate_session/Destroy()
 	STOP_PROCESSING(SSfastprocess, src)
-	var/obj/effect/proc_holder/spell/self/z121_locate_base/spell = spell_ref?.resolve()
+	var/datum/action/cooldown/spell/z121/self/z121_locate_base/spell = spell_ref?.resolve()
 	spell?.locate_sessions -= src
 	var/mob/living/carbon/human/caster = caster_ref?.resolve()
 	if(caster?.z121_locate_tracker == src)
@@ -341,7 +328,7 @@
 	qdel(src)
 
 /datum/z121_locate_session/process()
-	var/obj/effect/proc_holder/spell/self/z121_locate_base/spell = spell_ref?.resolve()
+	var/datum/action/cooldown/spell/z121/self/z121_locate_base/spell = spell_ref?.resolve()
 	var/mob/living/carbon/human/caster = caster_ref?.resolve()
 	var/mob/living/carbon/human/target = target_ref?.resolve()
 	if(!spell || !caster || !target || !viewer || caster.client != viewer || caster.stat == DEAD)
@@ -394,7 +381,7 @@
 	if(consent_prompt.closed || consent_prompt.choice == "拒绝")
 		fail("对方没有同意这次定位。")
 
-/datum/z121_locate_session/proc/begin_tracking(obj/effect/proc_holder/spell/self/z121_locate_base/spell, mob/living/carbon/human/caster, mob/living/carbon/human/target)
+/datum/z121_locate_session/proc/begin_tracking(datum/action/cooldown/spell/z121/self/z121_locate_base/spell, mob/living/carbon/human/caster, mob/living/carbon/human/target)
 	QDEL_NULL(consent_prompt)
 	if(caster.z121_locate_tracker && caster.z121_locate_tracker != src)
 		qdel(caster.z121_locate_tracker)
@@ -415,7 +402,7 @@
 	playsound(get_turf(caster), 'sound/magic/whiteflame.ogg', 70, TRUE, soundping = TRUE)
 	to_chat(caster, span_notice("我循着 [target.real_name] 的魔力踪迹得出了感应：[spell.build_location_report(caster, target)] 头顶的指引将持续[Z121_LOCATE_DURATION / 10]秒。"))
 
-/datum/z121_locate_session/proc/update_arrow(obj/effect/proc_holder/spell/self/z121_locate_base/spell, mob/living/carbon/human/caster, mob/living/carbon/human/target)
+/datum/z121_locate_session/proc/update_arrow(datum/action/cooldown/spell/z121/self/z121_locate_base/spell, mob/living/carbon/human/caster, mob/living/carbon/human/target)
 	var/turf/caster_turf = get_turf(caster)
 	var/turf/target_turf = get_turf(target)
 	var/symbol = "◎"

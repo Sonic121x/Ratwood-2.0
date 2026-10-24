@@ -3,50 +3,42 @@
 	var/z121_heartpiercing_day = -1
 	var/datum/weakref/z121_bound_bow_ref
 
-/obj/effect/proc_holder/spell/self/z121_arcane_archery
+/datum/action/cooldown/spell/z121/self/z121_arcane_archery
 	name = "魔弓术"
-	school = "transmutation"
-	human_req = TRUE
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
 	gesture_required = TRUE
 	miracle = FALSE
-	cost = 0
-	chargetime = 0
-	chargedrain = 0
-	releasedrain = 0
-	recharge_time = 1 SECONDS
+	point_cost = 0
+	charge_time = 0
+	hold_drain = 0
+	primary_resource_cost = 0
+	cooldown_time = 1 SECONDS
 	cooldown_min = 1 SECONDS
 	is_cdr_exempt = TRUE
 	associated_skill = /datum/skill/magic/arcane
-	base_action = /datum/action/spell_action/spell/z121_arcane_archery
-	action_icon = 'icons/roguetown/weapons/ammo.dmi'
-	overlay_state = "arrow"
+	button_icon = 'icons/roguetown/weapons/ammo.dmi'
+	button_icon_state = "arrow"
 	invocation_type = "whisper"
 	sound = list('sound/magic/whiteflame.ogg')
 	var/energy_cost = 0
 
 // 卷轴与箭矢来自不同图集，分别叠加，保留普通法术的激活底图与按钮着色。
-/datum/action/spell_action/spell/z121_arcane_archery/ApplyIcon(atom/movable/screen/movable/action_button/current_button, force = FALSE)
-	if(!icon_icon || !button_icon_state || (!force && current_button.button_icon_state == button_icon_state))
+/datum/action/cooldown/spell/z121/self/z121_arcane_archery/apply_button_icon(atom/movable/screen/movable/action_button/current_button, force = FALSE)
+	if(!button_icon || !button_icon_state || (!force && current_button.active_overlay_icon_state == button_icon_state))
 		return
 	current_button.cut_overlays(TRUE)
-	current_button.add_overlay(mutable_appearance('icons/mob/actions/roguespells.dmi', button_icon_state, layer = current_button.layer + 0.1))
-	if(overlay_state)
-		var/mutable_appearance/arrow_icon = mutable_appearance(icon_icon, overlay_state, layer = current_button.layer + 0.2)
-		arrow_icon.alpha = overlay_alpha
+	current_button.add_overlay(mutable_appearance('icons/mob/actions/roguespells.dmi', "spell0", layer = current_button.layer + 0.1))
+	if(button_icon_state)
+		var/mutable_appearance/arrow_icon = mutable_appearance(button_icon, button_icon_state, layer = current_button.layer + 0.2)
+		arrow_icon.alpha = 255
 		current_button.add_overlay(arrow_icon)
-	current_button.button_icon_state = button_icon_state
+	current_button.active_overlay_icon_state = button_icon_state
 
-/obj/effect/proc_holder/spell/self/z121_arcane_archery/start_recharge()
-	// 使用各箭术自身的固定冷却，不受智力、技能或地脉加速改变。
-	recharge_time = initial(recharge_time)
-	last_process_time = world.time
-	START_PROCESSING(SSfastprocess, src)
-
-/obj/effect/proc_holder/spell/self/z121_arcane_archery/get_spell_statistics(mob/living/user)
+/datum/action/cooldown/spell/z121/self/z121_arcane_archery/get_spell_statistics(mob/living/user)
 	. = ..()
 	. += span_info("法力消耗：[energy_cost]（能量）")
 
-/obj/effect/proc_holder/spell/self/z121_arcane_archery/proc/get_ready_bow(mob/living/user)
+/datum/action/cooldown/spell/z121/self/z121_arcane_archery/proc/get_ready_bow(mob/living/user)
 	if(QDELETED(user) || !user.mind)
 		return null
 	var/obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/z121_magic/bow = user.get_active_held_item()
@@ -58,73 +50,75 @@
 		return null
 	return bow
 
-/obj/effect/proc_holder/spell/self/z121_arcane_archery/heartpiercing
+/datum/action/cooldown/spell/z121/self/z121_arcane_archery/heartpiercing
 	name = "穿心箭"
 	desc = "把胸中尚存的余火尽数牵上弓弦，凝成一线近乎寂静的寒芒。它仍须由你的手送入血肉，而它留下的空隙，往往连热血也填不满。弦上的光一旦成形，纵然散去，也只能等下一个黎明再念此咒。"
 	energy_cost = 300
-	overlay_state = "steelarrow"
+	button_icon_state = "steelarrow"
 	invocations = list("倾尽此身，穿心一矢！")
 
-/obj/effect/proc_holder/spell/self/z121_arcane_archery/heartpiercing/get_spell_statistics(mob/living/user)
+/datum/action/cooldown/spell/z121/self/z121_arcane_archery/heartpiercing/get_spell_statistics(mob/living/user)
 	. = ..()
 	. += span_info("实际消耗：全部当前法力；成功凝箭即消耗当日次数。")
 	if(user?.mind)
 		. += span_info("今日剩余次数：[user.mind.z121_heartpiercing_day < GLOB.dayspassed ? 1 : 0]")
 
-/obj/effect/proc_holder/spell/self/z121_arcane_archery/heartpiercing/cast(list/targets, mob/living/user = usr)
+/datum/action/cooldown/spell/z121/self/z121_arcane_archery/heartpiercing/z121_apply(atom/cast_on)
+	var/mob/living/user = owner
 	var/obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/z121_magic/bow = get_ready_bow(user)
 	if(!bow)
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 	if(user.mind.z121_heartpiercing_day >= GLOB.dayspassed)
 		to_chat(user, span_warning("我今日已经凝聚过穿心箭，必须等待下一个黎明。"))
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 	if(istype(bow.chambered, /obj/item/ammo_casing/caseless/rogue/arrow/magic/heartpiercing))
 		to_chat(user, span_warning("弓上已经凝聚着一支穿心箭。"))
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 	if(!bow.nock_magic_arrow(user, user.energy))
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 	user.mind.z121_heartpiercing_day = GLOB.dayspassed
 	to_chat(user, span_notice("胸中的余火已尽，弦上却多了一线沉静的寒芒。我稳住发空的手，尚未松弦。"))
 	return ..()
 
-/obj/effect/proc_holder/spell/self/z121_arcane_archery/binding
+/datum/action/cooldown/spell/z121/self/z121_arcane_archery/binding
 	name = "武器绑定"
 	desc = "指尖记得那道旧弦的触感，弓臂也记得掌心的温度。轻声唤它，散落在远处的回音便会循着这份记忆归来；除非那张弓已彻底沉默。"
-	recharge_time = 1 MINUTES
+	cooldown_time = 1 MINUTES
 	cooldown_min = 1 MINUTES
-	action_icon = 'icons/mob/actions/roguespells.dmi'
-	overlay_state = "fetch"
+	button_icon = 'icons/mob/actions/roguespells.dmi'
+	button_icon_state = "fetch"
 	invocations = list("循我余音，归来弦上。")
 
-/obj/effect/proc_holder/spell/self/z121_arcane_archery/binding/get_spell_statistics(mob/living/user)
+/datum/action/cooldown/spell/z121/self/z121_arcane_archery/binding/get_spell_statistics(mob/living/user)
 	. = ..()
 	var/obj/item/bow = user?.mind?.z121_bound_bow_ref?.resolve()
 	. += span_info("当前绑定：[bow ? bow.name : "无"]；冷却60秒。原弓毁坏后，主手持魔弓可重新绑定。")
 
-/obj/effect/proc_holder/spell/self/z121_arcane_archery/binding/cast(list/targets, mob/living/user = usr)
+/datum/action/cooldown/spell/z121/self/z121_arcane_archery/binding/z121_apply(atom/cast_on)
+	var/mob/living/user = owner
 	if(!user?.mind)
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 	var/obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/z121_magic/bow = user.mind.z121_bound_bow_ref?.resolve()
 	if(!bow)
 		bow = user.get_active_held_item()
 		if(!istype(bow) || !bow.bind_to_archer(user.mind))
 			to_chat(user, span_warning("我需要主手握住一张尚未回应他人的魔弓。"))
-			revert_cast(user)
+			z121_cancel(user)
 			return FALSE
 		to_chat(user, span_notice("指尖的余音留在弓弦深处，从此便有了归处。"))
 		return ..()
 	if(bow in user.held_items)
 		to_chat(user, span_notice("熟悉的弓弦已在我的掌中。"))
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 	if(!bow.recall_to_archer(user))
 		to_chat(user, span_warning("我听见了弓弦的回音，却无法将它带回。"))
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 	return ..()
 

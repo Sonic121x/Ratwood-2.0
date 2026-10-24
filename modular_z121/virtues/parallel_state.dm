@@ -21,9 +21,6 @@
 	var/list/items = list()
 	var/list/stash = list()
 	var/list/added_verbs = list()
-	var/list/purchases = list()
-	var/points = 0
-	var/spent = 0
 	var/unknown = FALSE
 	var/suspended = FALSE
 	var/capturing_birth = FALSE
@@ -90,8 +87,8 @@
 	languages |= language
 	H.grant_language(language, source = REF(src))
 
-/datum/z121_profession_record/proc/remember_spell(obj/effect/proc_holder/spell/S)
-	if(!QDELETED(S))
+/datum/z121_profession_record/proc/remember_spell(datum/S)
+	if(!QDELETED(S) && !(S.type in mind?.z121_independent_spells))
 		spells |= WEAKREF(S)
 
 /datum/z121_profession_record/proc/remember_bard_spell(mob/living/carbon/human/H, obj/effect/proc_holder/spell/S, rhythm)
@@ -109,72 +106,33 @@
 	// 已有同类能力由其他来源持有，职业不取得其删除权。
 	if(H.mind.has_spell(spell_type, TRUE))
 		return
-	var/obj/effect/proc_holder/spell/S = new spell_type
+	var/datum/S = new spell_type
 	H.mind.AddSpell(S)
 	remember_spell(S)
 
-/datum/z121_profession_record/proc/add_points(mob/living/carbon/human/H, amount)
-	var/list/before = H.mind.spell_list.Copy()
-	H.mind.adjust_spellpoints(amount)
-	points += amount
-	for(var/obj/effect/proc_holder/spell/S as anything in H.mind.spell_list - before)
-		remember_spell(S)
-
-/datum/z121_profession_record/proc/register_purchase(obj/effect/proc_holder/spell/S, cost)
-	if(suspended || cost <= 0)
-		return
-	reconcile_purchases()
-	var/profession_cost = min(cost, max(0, points - spent))
-	if(!profession_cost)
-		return
-	var/datum/weakref/key = WEAKREF(S)
-	purchases[key] = list(profession_cost, cost)
-	spent += profession_cost
-	RegisterSignal(S, COMSIG_QDELETING, PROC_REF(on_purchased_spell_deleted))
-	log_game("平行存在法术消费登记：法术=[S.type]，职业出资=[profession_cost]，总消费=[cost]")
-
-/datum/z121_profession_record/proc/on_purchased_spell_deleted(datum/source)
-	SIGNAL_HANDLER
-	// 删除与主动退款共用一次结算；职业挂起时总账已经退款，不能再扣。
-	// 删除信号发出时对象已标记删除，不能重新调用拒绝该状态的弱引用工厂。
-	var/datum/weakref/key = source.weak_reference
-	var/list/payment = purchases[key]
-	if(payment)
-		if(!suspended && mind && mind.used_spell_points >= payment[2])
-			mind.used_spell_points -= payment[2]
-		spent -= payment[1]
-		purchases -= key
-
-/datum/z121_profession_record/proc/reconcile_purchases()
-	for(var/datum/weakref/key as anything in purchases.Copy())
-		var/obj/effect/proc_holder/spell/S = key.resolve()
-		if(!S || !(S in mind.spell_list))
-			var/list/payment = purchases[key]
-			if(!suspended && mind.used_spell_points >= payment[2])
-				mind.used_spell_points -= payment[2]
-			if(S)
-				UnregisterSignal(S, COMSIG_QDELETING)
-			spent -= payment[1]
-			purchases -= key
-
 /datum/z121_profession_record/proc/collect_system_spells(mob/living/carbon/human/H)
 	if(owned_devotion && H.devotion == owned_devotion)
-		for(var/obj/effect/proc_holder/spell/S as anything in owned_devotion.granted_spells)
+		for(var/datum/S in owned_devotion.granted_spells)
 			remember_spell(S)
 
-/datum/z121_profession_record/proc/detach_spell(mob/living/carbon/human/H, obj/effect/proc_holder/spell/S)
-	if(QDELETED(S) || !(S in H.mind.spell_list))
+/datum/z121_profession_record/proc/detach_spell(mob/living/carbon/human/H, datum/S)
+	if(QDELETED(S) || !(S in H.mind.spell_list) || (S.type in H.mind.z121_independent_spells))
 		return
 	H.mind.spell_list -= S
-	S.deactivate(H)
-	S.action?.Remove(H)
+	if(istype(S, /datum/action/cooldown/spell))
+		var/datum/action/cooldown/spell/action = S
+		action.Remove(H)
+	else
+		var/obj/effect/proc_holder/spell/legacy = S
+		legacy.deactivate(H)
+		legacy.action?.Remove(H)
 	detached_spells |= WEAKREF(S)
 
 /datum/z121_profession_record/proc/suspend(mob/living/carbon/human/H)
 	if(suspended)
 		return
-	reconcile_purchases()
 	collect_system_spells(H)
+	suspend_aspects(H)
 	suspended = TRUE
 	if(court_voice && court_voice_species == H.dna?.species && court_voice_species.soundpack_m == court_voice)
 		court_voice_species.soundpack_m = previous_court_voice
@@ -204,22 +162,10 @@
 			removed_stash[key] = stash[key]
 			H.mind.special_items -= key
 	H.verbs -= added_verbs
-	for(var/datum/weakref/key as anything in purchases)
-		var/obj/effect/proc_holder/spell/S = key.resolve()
-		var/list/payment = purchases[key]
-		detach_spell(H, S)
-		H.mind.used_spell_points -= payment[2]
-	H.mind.spell_points -= points
 	for(var/datum/weakref/key as anything in spells)
-		var/obj/effect/proc_holder/spell/S = key.resolve()
+		var/datum/S = key.resolve()
 		if(S && shared_devotion && shared_devotion == H.devotion)
 			if((S.type in shared_devotion.patron.miracles) && shared_devotion.patron.miracles[S.type] <= shared_devotion.level - devotion_delta["level"])
-				continue
-		// 点数共享派生能力只在没有其他资金来源时移除。
-		if(S && (istype(S, /obj/effect/proc_holder/spell/self/learnspell) || istype(S, /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)))
-			if(keep_prestidigitation && istype(S, /obj/effect/proc_holder/spell/targeted/touch/prestidigitation))
-				continue
-			if(H.mind.spell_points > 0 || H.mind.used_spell_points > 0)
 				continue
 		detach_spell(H, S)
 	if(owned_devotion && H.devotion == owned_devotion)
@@ -245,6 +191,7 @@
 	if(!suspended)
 		return
 	suspended = FALSE
+	resume_aspects(H)
 	if(court_voice_removed && court_voice_species == H.dna?.species && court_voice_species.soundpack_m == previous_court_voice)
 		court_voice_species.soundpack_m = court_voice
 	court_voice_removed = FALSE
@@ -261,12 +208,8 @@
 		H.mind.special_items[key] = removed_stash[key]
 	removed_stash.Cut()
 	H.verbs |= added_verbs
-	H.mind.spell_points += points
-	for(var/datum/weakref/key as anything in purchases)
-		var/list/payment = purchases[key]
-		H.mind.used_spell_points += payment[2]
 	for(var/datum/weakref/key as anything in detached_spells)
-		var/obj/effect/proc_holder/spell/S = key.resolve()
+		var/datum/S = key.resolve()
 		if(S && !(S in H.mind.spell_list))
 			H.mind.AddSpell(S)
 	if(owned_devotion)
@@ -292,9 +235,10 @@
 
 /datum/z121_profession_record/proc/dispose_suspended(mob/living/carbon/human/H)
 	for(var/datum/weakref/key as anything in detached_spells)
-		var/obj/effect/proc_holder/spell/S = key.resolve()
+		var/datum/S = key.resolve()
 		if(S && !(S in H.mind.spell_list))
 			qdel(S)
+	dispose_aspects()
 	// 旧数据的析构会清空宿主引用，先断开旧宿主，不能误清新职业的数据。
 	if(owned_devotion)
 		owned_devotion.holder = null
@@ -323,8 +267,8 @@
 	var/list/skill_ops = list()
 	var/list/traits = list()
 	var/list/spell_types = list()
+	var/list/outfit_aspect_config
 	var/list/stash = list()
-	var/points = 0
 	var/social_rank
 	var/music
 	var/cosmetic_title
@@ -378,9 +322,6 @@
 /datum/z121_profession_plan/proc/add_spell(spell_type)
 	spell_types |= spell_type
 
-/datum/z121_profession_plan/proc/add_points(amount)
-	points += amount
-
 /datum/z121_profession_plan/proc/set_devotion(tier, regen, limit)
 	devotion_tier = tier
 	devotion_regen = regen
@@ -414,8 +355,12 @@
 		R.add_spell(host, path)
 	for(var/path in job.spells)
 		R.add_spell(host, path)
-	if(points + profession.subclass_spellpoints > 0)
-		R.add_points(host, points + profession.subclass_spellpoints)
+	if(LAZYLEN(profession.subclass_mage_aspects))
+		R.setup_aspects(host, profession.subclass_mage_aspects.Copy())
+	if(outfit_aspect_config)
+		R.setup_aspects(host, outfit_aspect_config.Copy())
+	if(istype(profession.age_mod))
+		host.z121_birth_age_mod(profession.age_mod, R)
 	for(var/key in profession.subclass_stashed_items)
 		// 不覆盖同名的私人装载物。
 		if(!host.mind.special_items[key])
@@ -463,7 +408,7 @@
 				R.add_spell(host, /obj/effect/proc_holder/spell/self/crescendo)
 			host.verbs |= list(/mob/living/carbon/human/proc/setaudience, /mob/living/carbon/human/proc/clearaudience, /mob/living/carbon/human/proc/checkaudience, /mob/living/carbon/human/proc/picksongs, /mob/living/carbon/human/proc/resetsongs)
 	R.added_verbs |= host.verbs - before_verbs
-	for(var/obj/effect/proc_holder/spell/S as anything in host.mind.spell_list - before_spells)
+	for(var/datum/S as anything in host.mind.spell_list - before_spells)
 		R.remember_spell(S)
 
 /datum/z121_profession_record/proc/take_devotion_source(mob/living/carbon/human/H)
@@ -479,15 +424,10 @@
 		return tier > base_tier
 	return FALSE
 
-/datum/z121_profession_record/proc/remember_miracle(datum/devotion/D, obj/effect/proc_holder/spell/S, tier)
+/datum/z121_profession_record/proc/remember_miracle(datum/devotion/D, datum/S, tier)
 	if(owns_miracle_tier(D, tier))
 		remember_spell(S)
 // 学习入口仅调用此记录接口，不改变界面或权限验证。
-/proc/z121_parallel_purchase(mob/living/user, obj/effect/proc_holder/spell/S, cost)
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		H.z121_profession?.register_purchase(S, cost)
-
 /proc/z121_parallel_level_xp(level)
 	switch(level)
 		if(SKILL_LEVEL_NOVICE)

@@ -1,48 +1,46 @@
 // modular_z121 自定义奥术法术：恢复如初
 // 仅在 modular_z121 内实现，不改动主线法术逻辑。
 
-/obj/effect/proc_holder/spell/invoked/restore_pristine
+/datum/action/cooldown/spell/z121/invoked/restore_pristine
 	name = "恢复如初"
 	desc = "逐步修复物品或建筑的耐久与刃口，奥术造诣越高，单次恢复越多，达到传奇时才能发挥完整修复效果。无法逆转永久磨损造成的上限损失。"
-	cost = 4
+	point_cost = 4
 	xp_gain = TRUE
-	releasedrain = 10
-	chargedrain = 0
-	chargetime = 0
-	recharge_time = 20 SECONDS
-	human_req = TRUE
-	warnie = "spellwarning"
-	school = "transmutation"
+	primary_resource_cost = 10
+	hold_drain = 0
+	charge_time = 0
+	cooldown_time = 20 SECONDS
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
 	spell_tier = 2
-	action_icon = 'modular_z121/icon/custompell.dmi'
-	overlay_state = "restore_pristine"
+	button_icon = 'modular_z121/icon/custompell.dmi'
+	button_icon_state = "restore_pristine"
 	invocations = list("恢复如初！")
 	invocation_type = "shout"
-	glow_color = GLOW_COLOR_ARCANE
+	spell_color = GLOW_COLOR_ARCANE
 	glow_intensity = GLOW_INTENSITY_LOW
-	no_early_release = TRUE
-	movement_interrupt = FALSE
 	associated_skill = /datum/skill/magic/arcane
-	range = 7
+	cast_range = 7
 	miracle = FALSE
 	gesture_required = TRUE
 
-/obj/effect/proc_holder/spell/invoked/restore_pristine/cast(list/targets, mob/living/user = usr)
+/datum/action/cooldown/spell/z121/invoked/restore_pristine/z121_apply(atom/cast_on)
+	var/list/targets = list(cast_on)
+	var/mob/living/user = owner
 	var/atom/target_atom = targets[1]
 	if(!isobj(target_atom) || isliving(target_atom))
 		to_chat(user, span_warning("恢复如初只能对物品或建筑施放。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	var/obj/target_obj = target_atom
 	var/arcane_level = max(user.get_skill_level(/datum/skill/magic/arcane), 0)
 	if(arcane_level <= 0)
 		to_chat(user, span_warning("我对这道回溯魔法的理解还远远不够。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 	if(!can_restore_target(target_obj))
 		to_chat(user, span_warning("[target_obj] 眼下没有任何可供回溯的损伤。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	var/restored_any = FALSE
@@ -54,7 +52,7 @@
 
 	if(!restored_any)
 		to_chat(user, span_warning("[target_obj] 上没有可被恢复如初扭转的损伤。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	playsound(get_turf(target_obj), 'sound/magic/whiteflame.ogg', 80, TRUE)
@@ -62,7 +60,7 @@
 	to_chat(user, span_notice("我将 [target_obj] 受到的损伤逆转回更完好的状态。"))
 	return TRUE
 
-/obj/effect/proc_holder/spell/invoked/restore_pristine/proc/can_restore_target(obj/target_obj)
+/datum/action/cooldown/spell/z121/invoked/restore_pristine/proc/can_restore_target(obj/target_obj)
 	if(target_obj.max_integrity && target_obj.obj_integrity < target_obj.max_integrity)
 		return TRUE
 	if(isitem(target_obj))
@@ -71,12 +69,12 @@
 			return TRUE
 	return FALSE
 
-/obj/effect/proc_holder/spell/invoked/restore_pristine/proc/get_restore_ratio(arcane_level)
+/datum/action/cooldown/spell/z121/invoked/restore_pristine/proc/get_restore_ratio(arcane_level)
 	if(arcane_level >= SKILL_LEVEL_LEGENDARY)
 		return 0.25
 	return clamp(arcane_level, 0, 5) * 0.025
 
-/obj/effect/proc_holder/spell/invoked/restore_pristine/proc/restore_integrity(obj/target_obj, restore_ratio, mob/living/user)
+/datum/action/cooldown/spell/z121/invoked/restore_pristine/proc/restore_integrity(obj/target_obj, restore_ratio, mob/living/user)
 	if(!target_obj.max_integrity)
 		return FALSE
 
@@ -129,7 +127,7 @@
 
 	return TRUE
 
-/obj/effect/proc_holder/spell/invoked/restore_pristine/proc/restore_blade(obj/item/target_item, restore_ratio, mob/living/user)
+/datum/action/cooldown/spell/z121/invoked/restore_pristine/proc/restore_blade(obj/item/target_item, restore_ratio, mob/living/user)
 	if(!target_item.max_blade_int || isnull(restore_ratio) || restore_ratio <= 0)
 		return FALSE
 	var/old_blade_int = target_item.blade_int

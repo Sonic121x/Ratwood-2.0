@@ -6,8 +6,8 @@
 //           的控制权，转而由“施法者”接管并操纵该身体；持续时间结束后，双方各自
 //           回到自己原本的身体。
 //
-// 选取/蓄力方式：完全沿用 flight.dm 的做法——以 /spell/invoked 为基类，靠点击
-//           选取目标（targets[1]），蓄力由基类 InterceptClickOn 依据 chargetime
+// 选取/蓄力方式：完全沿用 flight.dm 的做法——以 /datum/action/cooldown/spell/z121/invoked 为基类，靠点击
+//           选取目标（targets[1]），蓄力由基类 新版鼠标蓄力流程 依据 charge_time
 //           校验完成；点选阶段施法者可随时取消（移开/点空），不会强制施放。
 //
 // 约束：所有代码都只存在于 modular_z121 内，仅“调用”主线已有机制
@@ -23,9 +23,9 @@
 
 // ===== 可调参数（文件末尾统一 #undef，避免污染全局命名空间）=====
 #define LEGILIMENCY_MANA_COST     6             // 法力 / 法术点消耗（cost）
-#define LEGILIMENCY_CHANNEL_TIME  (2 SECONDS)   // 蓄力时长（由 invoked 基类的点击拦截按 chargetime 校验）
+#define LEGILIMENCY_CHANNEL_TIME  (2 SECONDS)   // 蓄力时长（由 invoked 基类的点击拦截按 charge_time 校验）
 #define LEGILIMENCY_COOLDOWN      (1 MINUTES)   // 成功施放后的冷却（1 分钟）
-#define LEGILIMENCY_RESOURCE_COST 15            // “额外资源消耗”：每次施放抽取的疲劳/耐力（releasedrain），强力控制法术故偏高
+#define LEGILIMENCY_RESOURCE_COST 15            // “额外资源消耗”：每次施放抽取的疲劳/耐力（primary_resource_cost），强力控制法术故偏高
 #define LEGILIMENCY_TARGET_RANGE  7             // 点击选取目标的最大距离（range）
 
 // 施法者“接管中”用的临时特性标记：占据期间挂在施法者“原身”上，
@@ -36,35 +36,30 @@
 // ===========================================================================
 // 法术本体
 // ---------------------------------------------------------------------------
-// 选用 /spell/invoked 作为基类（与 flight.dm 一致）：点击图标后进入“点选目标”模式，
+// 选用 /datum/action/cooldown/spell/z121/invoked 作为基类（与 flight.dm 一致）：点击图标后进入“点选目标”模式，
 // 蓄力满后点击某个生物即对其生效。本法术只对“他人”有意义（不能摄取自己），
 // 故在 cast() 中显式拒绝把自己当作目标。
 // ===========================================================================
-/obj/effect/proc_holder/spell/invoked/legilimency
+/datum/action/cooldown/spell/z121/invoked/legilimency
 	name = "摄神取念"
 	desc = "一道侵入心神的高阶法术。以纯粹的意志撬开目标的心防，若对方的意志不足以抵抗，其身体便会暂时落入我的掌控；持续时间随我的奥术造诣而延长。"
-	school = "enchantment"
 	spell_tier = 4                              // T4 法术
-	cost = LEGILIMENCY_MANA_COST                // “法力 / 法术点”消耗 = 6
-	releasedrain = LEGILIMENCY_RESOURCE_COST    // “额外资源消耗”= 15（施法时抽取的疲劳/耐力）
-	chargetime = LEGILIMENCY_CHANNEL_TIME       // 蓄力 2 秒（基类点击拦截会校验是否蓄满）
-	recharge_time = LEGILIMENCY_COOLDOWN        // 冷却 = 1 分钟（由 charge_check 强制执行）
+	point_cost = LEGILIMENCY_MANA_COST                // “法力 / 法术点”消耗 = 6
+	primary_resource_cost = LEGILIMENCY_RESOURCE_COST    // “额外资源消耗”= 15（施法时抽取的疲劳/耐力）
+	charge_time = LEGILIMENCY_CHANNEL_TIME       // 蓄力 2 秒（基类点击拦截会校验是否蓄满）
+	cooldown_time = LEGILIMENCY_COOLDOWN        // 冷却 = 1 分钟（由 z121_ready 强制执行）
 	cooldown_min = LEGILIMENCY_COOLDOWN         // 即便被“加速”，冷却也不会低于 1 分钟
-	human_req = TRUE                            // 只有人类施法者能施放
-	warnie = "spellwarning"
-	action_icon = 'modular_z121/icon/custompell.dmi'
-	overlay_state = "Legilimency"               // 动作按钮图标态（对应 custompell.dmi 中的 Legilimency 贴图）
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
+	button_icon = 'modular_z121/icon/custompell.dmi'
+	button_icon_state = "Legilimency"               // 动作按钮图标态（对应 custompell.dmi 中的 Legilimency 贴图）
 	invocations = list("现出你的心神来!")        // 咒文（成功施放时由框架喊出）
 	invocation_type = "shout"
-	glow_color = GLOW_COLOR_ARCANE
+	spell_color = GLOW_COLOR_ARCANE
 	glow_intensity = GLOW_INTENSITY_MEDIUM
-	no_early_release = TRUE                      // 未蓄满不允许提前释放
-	movement_interrupt = FALSE                  // 与 flight.dm 一致：蓄力期间可移动
-	charging_slowdown = 1                        // 蓄力时略微减速
-	chargedloop = /datum/looping_sound/invokegen // 蓄力期间循环施法音效
+	charge_slowdown = 1                        // 蓄力时略微减速
 	associated_skill = /datum/skill/magic/arcane // 时长缩放所依据的技能：奥术
 	gesture_required = TRUE                      // 需要能自由活动的手
-	range = LEGILIMENCY_TARGET_RANGE            // 点选目标的最大距离
+	cast_range = LEGILIMENCY_TARGET_RANGE            // 点选目标的最大距离
 	miracle = FALSE
 	xp_gain = TRUE
 	sound = null                                // 蓄力音由 chargedloop 负责；命中音效在 cast 内单独播放
@@ -75,7 +70,7 @@
 // 用 clamp(1,6) 处理越界：0 级（未入门）按 1 级算，>6 级按 6 级（160s）封顶，
 // 满足“超出范围时就近钳制”的要求。把它独立成一个 proc，便于单独调参与复用。
 // ---------------------------------------------------------------------------
-/obj/effect/proc_holder/spell/invoked/legilimency/proc/get_duration_for_skill(skill_level)
+/datum/action/cooldown/spell/z121/invoked/legilimency/proc/get_duration_for_skill(skill_level)
 	switch(clamp(skill_level, 1, 6))
 		if(1)
 			return 5 SECONDS
@@ -100,7 +95,7 @@
 //       加入随机扰动是为了让势均力敌时双方都有机会，而非纯数值碾压。
 // 独立成 proc，便于日后单独调整数值平衡。
 // ---------------------------------------------------------------------------
-/obj/effect/proc_holder/spell/invoked/legilimency/proc/win_willpower_contest(mob/living/user, mob/living/target)
+/datum/action/cooldown/spell/z121/invoked/legilimency/proc/win_willpower_contest(mob/living/user, mob/living/target)
 	// 施法者的奥术造诣会直接转化为精神侵蚀力，故计入压制方。
 	var/caster_skill = user.get_skill_level(associated_skill)
 	// 双方各自取“意志”属性作为对抗基础；get_stat 是主线统一的属性读取接口。
@@ -110,21 +105,21 @@
 	return caster_power > target_power
 
 // ---------------------------------------------------------------------------
-// cast：点击命中目标后由基类 InterceptClickOn -> perform 调用。
+// cast：点击命中目标后由基类 新版鼠标蓄力流程 -> perform 调用。
 // targets[1] 即施法者点中的目标。
 // 返回值约定：
-//   - TRUE  -> perform() 调用 start_recharge()，进入 1 分钟冷却（法术已生效/已耗出）。
-//   - FALSE -> 调用 revert_cast() 退还冷却（目标无效 / 点到自己 / 被反魔法挡下 等）。
 // 注意：当“目标抵抗成功”时，法术其实已经施放出去了（魔力已消耗），因此返回 TRUE 让
 //       其正常进入冷却，仅仅是没有夺取到控制权——这与“对抗检定”的设定一致。
 // ---------------------------------------------------------------------------
-/obj/effect/proc_holder/spell/invoked/legilimency/cast(list/targets, mob/living/user = usr)
+/datum/action/cooldown/spell/z121/invoked/legilimency/z121_apply(atom/cast_on)
+	var/list/targets = list(cast_on)
+	var/mob/living/user = owner
 	// --- 取目标并做基础合法性校验 ---
 	var/atom/target_atom = targets[1]
 	// 点击式选取：targets[1] 必须是活物，否则视为无效目标并退还冷却。
 	if(!isliving(target_atom))
 		to_chat(user, span_warning("摄神取念只能施加在活物的心神之上。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	var/mob/living/target = target_atom
@@ -132,18 +127,18 @@
 	// 不能对自己施放：摄取自己的心念没有意义，且会让灵魂转移逻辑自指出错。
 	if(target == user)
 		to_chat(user, span_warning("我无法摄取自己的心念。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// 目标必须还活着：对一具尸体没有“心神”可夺，直接判无效。
 	if(target.stat == DEAD)
 		to_chat(user, span_warning("[target] 已无心神可夺——死者的身体不会再听我号令。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// 施法者必须有客户端（是个真正的玩家）：只有真人施法者才能把“控制权”转移到他人身体上。
 	if(!user.client)
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// 防重入：禁止“在仍占据他人身体时再次施放摄神取念”，否则会形成“傀儡操纵傀儡”的链式占据，
@@ -156,7 +151,7 @@
 	//           身体的正是施法者本人，必须禁止其再次施放。这是真正能堵住链式占据的关键判断。
 	if(user.legilimency_session || user.mind?.legilimency_session || HAS_TRAIT(user, TRAIT_LEGILIMENCY_CASTER) || user.has_status_effect(/datum/status_effect/legilimency_control))
 		to_chat(user, span_warning("我的心神仍寄居在他人体内，无法再发动一次摄神取念。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// 反魔法检定：被反魔法保护的目标无法被精神侵入。
@@ -167,13 +162,13 @@
 		)
 		to_chat(user, span_warning("[target] 身上的反魔法抵消了『摄神取念』。"))
 		playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// 两具身体及双方心智均不能参与另一场接管，包括已经离魂的施法者原身。
 	if(target.legilimency_session || target.mind?.legilimency_session || HAS_TRAIT(target, TRAIT_LEGILIMENCY_CASTER) || target.has_status_effect(/datum/status_effect/legilimency_control))
 		to_chat(user, span_warning("[target] 的心神已被另一股意志所占据，我无从插足。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// --- 意志对抗检定 ---
@@ -206,10 +201,10 @@
 
 	// 防御性校验：确认接管状态确实挂上了，否则视为失败并退还冷却。
 	// （on_apply 内部若发现任何前置条件不满足会返回 FALSE，从而让状态效果自删；此时灵魂尚未转移，
-	//   user 仍在自己体内，故下面对 user 的提示与 revert_cast 都能正常生效。）
+	//   user 仍在自己体内，故下面对 user 的提示与 z121_cancel 都能正常生效。）
 	if(!target.has_status_effect(/datum/status_effect/legilimency_control))
 		to_chat(user, span_warning("精神的桥梁未能架起——什么也没发生。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	return TRUE

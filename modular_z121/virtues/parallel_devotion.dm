@@ -14,9 +14,15 @@
 					if(holder.mind.has_spell(spell_type))
 						continue
 
-					var/obj/effect/proc_holder/spell/newspell = new spell_type
-					if(istype(patron, /datum/patron/divine/xylix) && newspell.miracle)
-						newspell.mute_allowed = TRUE
+					var/datum/newspell = new spell_type
+					if(istype(patron, /datum/patron/divine/xylix))
+						if(istype(newspell, /datum/action/cooldown/spell))
+							var/datum/action/cooldown/spell/action = newspell
+							action.ignore_can_speak = TRUE
+						else if(istype(newspell, /obj/effect/proc_holder/spell))
+							var/obj/effect/proc_holder/spell/legacy = newspell
+							if(legacy.miracle)
+								legacy.mute_allowed = TRUE
 					if(!silent)
 						to_chat(holder, span_boldnotice("我解锁了一个新法术：[newspell]"))
 					holder.mind.AddSpell(newspell, holder)

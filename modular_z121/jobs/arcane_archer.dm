@@ -14,7 +14,7 @@
 	traits_applied = list(
 		TRAIT_MAGEARMOR,
 		TRAIT_DODGEEXPERT,
-		TRAIT_ARCYNE_T2,
+		TRAIT_ARCYNE,
 	)
 	subclass_stats = list(
 		STATKEY_PER = 3,
@@ -36,13 +36,13 @@
 		/datum/skill/labor/butchering = SKILL_LEVEL_NOVICE,
 	)
 	// 保留学徒奥术的学习点，穿心箭与归弦秘术由职业直接授予。
-	subclass_spellpoints = 10
+	subclass_mage_aspects = list("mastery" = FALSE, "major" = 0, "minor" = 0, "utilities" = 10, "z121_arcane_archer" = TRUE)
 	extra_context = "略通家传奥术，也熟悉林间的步伐。黑角弓的低吟随心意而变，时而如余烬，时而似薄霜；偶尔，弓臂深处也会传来与你脉搏相应的轻颤。纵使相隔遥远，那道弦音仍认得归途。"
 
 /datum/outfit/job/roguetown/adventurer/z121_arcane_archer/pre_equip(mob/living/carbon/human/H)
 	..()
 	to_chat(H, span_warning("离家时，你带走了那张黑角弓，也带走了几句没有写在书上的咒文。如今书房与靶场都已远去，唯有指尖的薄茧还记得弓弦该停在何处。"))
-	for(var/spell_type in list(/obj/effect/proc_holder/spell/self/z121_arcane_archery/heartpiercing, /obj/effect/proc_holder/spell/self/z121_arcane_archery/binding))
+	for(var/spell_type in list(/datum/action/cooldown/spell/z121/self/z121_arcane_archery/heartpiercing, /datum/action/cooldown/spell/z121/self/z121_arcane_archery/binding))
 		if(H.mind && !H.mind.has_spell(spell_type, TRUE))
 			H.mind.AddSpell(new spell_type, H)
 

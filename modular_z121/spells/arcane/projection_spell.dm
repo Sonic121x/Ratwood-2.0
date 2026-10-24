@@ -3,31 +3,25 @@
 #define PROJECTION_ACTIVE_LIMIT 4
 #define PROJECTION_LIFETIME (5 MINUTES)
 
-/obj/effect/proc_holder/spell/self/projection_spell
+/datum/action/cooldown/spell/z121/self/projection_spell
 	name = "投影魔术"
 	desc = "以心描摹兵刃的结构，将亲手解析过的武器铭刻于记忆，再循着记忆中的纹路，以魔力重铸其形。自剑脊至锋刃，自外形至骨架，唯有真正理解之物，方能于掌中再现。\n\n铁与钢、青铜与白银，乃至深沉的黑钢，皆可成为心中剑冢的一部分。然而，刀剑、长枪、弓弩与坚盾，皆可循其形理重现；唯有火器的机巧、神器背负的奇迹，以及兵刃中寄宿的异能，无法被这道术式解明。\n\n投影虽为赝作，锋刃依然足以迎敌。只是借魔力而生之物终非实物，待那一缕维系形体的魔力散尽，掌中的兵刃也将如碎光般消逝。"
-	school = "conjuration"
 	spell_tier = 3
-	cost = 5
-	releasedrain = 40
-	chargedrain = 0
+	point_cost = 5
+	primary_resource_cost = 40
+	hold_drain = 0
 	// 引导由菜单选择后的 do_after 完成，不能再叠加鼠标蓄力。
-	chargetime = 0
-	recharge_time = 15 SECONDS
-	human_req = TRUE
+	charge_time = 0
+	cooldown_time = 15 SECONDS
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z | SPELL_REQUIRES_NO_MOVE
 	gesture_required = TRUE
-	antimagic_allowed = FALSE
 	associated_skill = /datum/skill/magic/arcane
 	xp_gain = TRUE
-	warnie = "spellwarning"
-	no_early_release = TRUE
-	movement_interrupt = TRUE
-	action_icon = 'modular_z121/icon/custompell.dmi'
-	action_icon_state = "projection_spell"
-	overlay_state = "projection_spell"
-	invocations = list("Trace on——循记忆铸其骨，以魔力现其锋！")
+	button_icon = 'modular_z121/icon/custompell.dmi'
+	button_icon_state = "projection_spell"
+	invocations = list("投影展开——循记忆铸其骨，以魔力现其锋！")
 	invocation_type = "shout"
-	glow_color = GLOW_COLOR_ARCANE
+	spell_color = GLOW_COLOR_ARCANE
 	glow_intensity = GLOW_INTENSITY_LOW
 	sound = 'sound/magic/whiteflame.ogg'
 	var/list/memorized_templates = list()
@@ -70,26 +64,26 @@
 		/obj/item/rogueweapon/sword/long/kriegmesser/zizo,
 	)
 
-/obj/effect/proc_holder/spell/self/projection_spell/Destroy()
+/datum/action/cooldown/spell/z121/self/projection_spell/Destroy()
 	clear_analysis()
 	dispel_projections()
 	memorized_templates.Cut()
 	return ..()
 
-/obj/effect/proc_holder/spell/self/projection_spell/on_lose(mob/living/user)
+/datum/action/cooldown/spell/z121/self/projection_spell/Remove(mob/living/user)
 	dispel_projections()
 	return ..()
 
 // 按钮必须在投影冷却期间继续允许打开管理菜单。
-/obj/effect/proc_holder/spell/self/projection_spell/charge_check(mob/user)
+/datum/action/cooldown/spell/z121/self/projection_spell/z121_ready(mob/user)
 	return !projecting || ..()
 
-/obj/effect/proc_holder/spell/self/projection_spell/Click()
-	var/mob/living/user = usr
+/datum/action/cooldown/spell/z121/self/projection_spell/Trigger(trigger_flags)
+	var/mob/living/user = owner
 	if(projection_busy || !valid_projection_user(user))
 		return FALSE
 	projection_busy = TRUE
-	choose_targets(user)
+	z121_choose_targets(user)
 	if(!QDELETED(src))
 		projection_busy = FALSE
 		projecting = FALSE
@@ -97,11 +91,11 @@
 		pending_template = null
 	return TRUE
 
-/obj/effect/proc_holder/spell/self/projection_spell/proc/valid_projection_user(mob/living/user)
-	return !QDELETED(src) && !QDELETED(user) && action?.owner == user && !user.incapacitated() && can_cast(user) && get_turf(user)
+/datum/action/cooldown/spell/z121/self/projection_spell/proc/valid_projection_user(mob/living/user)
+	return !QDELETED(src) && !QDELETED(user) && owner == user && !user.incapacitated() && can_cast_spell(TRUE) && get_turf(user)
 
 // 弓弩在主线也继承 /gun，必须先单独识别，不能笼统禁止 /gun。
-/obj/effect/proc_holder/spell/self/projection_spell/proc/is_projection_template(template)
+/datum/action/cooldown/spell/z121/self/projection_spell/proc/is_projection_template(template)
 	if(!ispath(template, /obj/item))
 		return FALSE
 	var/is_bow_weapon = ispath(template, /obj/item/gun/ballistic/revolver/grenadelauncher/bow) || ispath(template, /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow) || ispath(template, /obj/item/gun/ballistic/revolver/grenadelauncher/sling)
@@ -121,7 +115,7 @@
 			return FALSE
 	return TRUE
 
-/obj/effect/proc_holder/spell/self/projection_spell/proc/can_analyze(obj/item/weapon)
+/datum/action/cooldown/spell/z121/self/projection_spell/proc/can_analyze(obj/item/weapon)
 	if(!istype(weapon) || QDELETED(weapon) || !is_projection_template(weapon.type) || (weapon.item_flags & (ABSTRACT | DROPDEL)))
 		return FALSE
 	if(weapon.GetComponent(/datum/component/conjured_item) || weapon.GetComponent(/datum/component/cursed_item))
@@ -132,13 +126,13 @@
 	var/datum/component/silverbless/blessing = weapon.GetComponent(/datum/component/silverbless)
 	return !blessing?.is_blessed
 
-/obj/effect/proc_holder/spell/self/projection_spell/proc/remember_template(template)
+/datum/action/cooldown/spell/z121/self/projection_spell/proc/remember_template(template)
 	if(!is_projection_template(template) || (template in memorized_templates) || length(memorized_templates) >= PROJECTION_MEMORY_LIMIT)
 		return FALSE
 	memorized_templates += template
 	return TRUE
 
-/obj/effect/proc_holder/spell/self/projection_spell/proc/template_choices()
+/datum/action/cooldown/spell/z121/self/projection_spell/proc/template_choices()
 	var/list/choices = list()
 	for(var/template in memorized_templates)
 		var/obj/item/weapon_type = template
@@ -146,12 +140,12 @@
 		choices["[initial(weapon_type.name)] · [length(choices) + 1]"] = template
 	return choices
 
-/obj/effect/proc_holder/spell/self/projection_spell/get_spell_statistics(mob/living/user)
+/datum/action/cooldown/spell/z121/self/projection_spell/get_spell_statistics(mob/living/user)
 	. = ..()
 	. += span_info("结构解析：3秒；投影引导：2秒。")
 	. += span_info("记忆容量：12种；同时投影：4把；投影寿命：5分钟。")
 
-/obj/effect/proc_holder/spell/self/projection_spell/choose_targets(mob/user = usr)
+/datum/action/cooldown/spell/z121/self/projection_spell/z121_choose_targets(mob/user = usr)
 	var/operation = input(user, "选择投影魔术的操作", name) as null|anything in list("解析手持武器", "投影记忆", "遗忘模板", "解除全部投影")
 	if(!operation || !valid_projection_user(user))
 		return
@@ -173,14 +167,14 @@
 			dispel_projections()
 			to_chat(user, span_notice("我解除了所有尚存的投影。"))
 
-/obj/effect/proc_holder/spell/self/projection_spell/proc/analysis_continues(mob/living/user, obj/item/weapon)
+/datum/action/cooldown/spell/z121/self/projection_spell/proc/analysis_continues(mob/living/user, obj/item/weapon)
 	return !analysis_interrupted && valid_projection_user(user) && user.get_active_held_item() == weapon && can_analyze(weapon)
 
-/obj/effect/proc_holder/spell/self/projection_spell/proc/interrupt_analysis(datum/source)
+/datum/action/cooldown/spell/z121/self/projection_spell/proc/interrupt_analysis(datum/source)
 	SIGNAL_HANDLER
 	analysis_interrupted = TRUE
 
-/obj/effect/proc_holder/spell/self/projection_spell/proc/clear_analysis()
+/datum/action/cooldown/spell/z121/self/projection_spell/proc/clear_analysis()
 	if(analyzing_user)
 		UnregisterSignal(analyzing_user, list(COMSIG_CARBON_SWAPHANDS, COMSIG_MOVABLE_MOVED, COMSIG_QDELETING))
 	if(analyzing_weapon)
@@ -188,7 +182,7 @@
 	analyzing_user = null
 	analyzing_weapon = null
 
-/obj/effect/proc_holder/spell/self/projection_spell/proc/analyze_weapon(mob/living/user)
+/datum/action/cooldown/spell/z121/self/projection_spell/proc/analyze_weapon(mob/living/user)
 	var/obj/item/weapon = user.get_active_held_item()
 	if(!can_analyze(weapon))
 		to_chat(user, span_warning("这件物品并非可解析的兵器，或蕴含着无法重现的力量。"))
@@ -199,7 +193,7 @@
 	if(length(memorized_templates) >= PROJECTION_MEMORY_LIMIT)
 		to_chat(user, span_warning("记忆已满，我需要先遗忘一个模板。"))
 		return
-	if(!cast_check(TRUE, user))
+	if(!z121_check(TRUE, user))
 		return
 	analysis_interrupted = FALSE
 	analyzing_user = user
@@ -211,13 +205,13 @@
 	if(QDELETED(src))
 		return
 	clear_analysis()
-	if(!completed || !analysis_continues(user, weapon) || !cast_check(TRUE, user))
+	if(!completed || !analysis_continues(user, weapon) || !z121_check(TRUE, user))
 		to_chat(user, span_warning("解析中断，兵刃的结构未能铭刻于心。"))
 		return
 	if(remember_template(weapon.type))
 		to_chat(user, span_notice("我记住了[weapon]的结构（[length(memorized_templates)]/[PROJECTION_MEMORY_LIMIT]）。"))
 
-/obj/effect/proc_holder/spell/self/projection_spell/proc/project_memory(mob/living/user)
+/datum/action/cooldown/spell/z121/self/projection_spell/proc/project_memory(mob/living/user)
 	var/list/choices = template_choices()
 	if(!length(choices))
 		to_chat(user, span_warning("我需要先解析一件武器。"))
@@ -230,7 +224,7 @@
 		return
 	projecting = TRUE
 	pending_template = choices[choice]
-	if(!cast_check(TRUE, user))
+	if(!z121_check(TRUE, user))
 		return
 	invocation(user)
 	var/completed = do_after(user, 2 SECONDS, target = user, extra_checks = CALLBACK(src, PROC_REF(valid_projection_user), user))
@@ -240,19 +234,20 @@
 		to_chat(user, span_warning("魔力的纹路散开，投影未能成形。"))
 		return
 	// 只在完成引导后预留并结算冷却，菜单取消不触碰已有冷却。
-	if(!cast_check(FALSE, user))
+	if(!z121_check(FALSE, user))
 		return
-	if(!perform(null, user = user) && !QDELETED(src))
-		revert_cast(user)
+	if(!z121_cast_selected(null, user = user) && !QDELETED(src))
+		z121_cancel(user)
 
-/obj/effect/proc_holder/spell/self/projection_spell/invocation(mob/user = usr)
+/datum/action/cooldown/spell/z121/self/projection_spell/invocation(mob/user = usr)
 	if(chant_spoken)
 		return
 	. = ..()
 	chant_spoken = TRUE
 
-/obj/effect/proc_holder/spell/self/projection_spell/cast(list/targets, mob/living/user = usr)
-	if(!projection_busy || !projecting || QDELETED(user) || user.incapacitated() || action?.owner != user)
+/datum/action/cooldown/spell/z121/self/projection_spell/z121_apply(atom/cast_on)
+	var/mob/living/user = owner
+	if(!projection_busy || !projecting || QDELETED(user) || user.incapacitated() || owner != user)
 		return FALSE
 	var/obj/item/weapon = create_projection(pending_template, user.drop_location())
 	if(!weapon)
@@ -262,7 +257,7 @@
 	..()
 	return TRUE
 
-/obj/effect/proc_holder/spell/self/projection_spell/proc/create_projection(template, turf/destination)
+/datum/action/cooldown/spell/z121/self/projection_spell/proc/create_projection(template, turf/destination)
 	if(!destination || !is_projection_template(template) || !(template in memorized_templates) || length(projected_weapons) >= PROJECTION_ACTIVE_LIMIT)
 		return null
 	var/obj/item/weapon = new template(destination)
@@ -287,12 +282,12 @@
 	RegisterSignal(weapon, COMSIG_QDELETING, PROC_REF(on_projection_deleted))
 	return weapon
 
-/obj/effect/proc_holder/spell/self/projection_spell/proc/on_projection_deleted(obj/item/weapon)
+/datum/action/cooldown/spell/z121/self/projection_spell/proc/on_projection_deleted(obj/item/weapon)
 	SIGNAL_HANDLER
 	projected_weapons -= weapon
 	UnregisterSignal(weapon, COMSIG_QDELETING)
 
-/obj/effect/proc_holder/spell/self/projection_spell/proc/dispel_projections()
+/datum/action/cooldown/spell/z121/self/projection_spell/proc/dispel_projections()
 	for(var/obj/item/weapon as anything in projected_weapons.Copy())
 		qdel(weapon)
 	projected_weapons.Cut()

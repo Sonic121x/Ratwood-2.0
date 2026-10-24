@@ -28,7 +28,7 @@
 //   - /datum/charflaw                       恶习基类，提供 on_mob_creation/flaw_on_life/on_removal 钩子。
 //   - flaw_on_life()                         每个生命 tick 由 human/life.dm 对每个已装备非 ephemeral 恶习调用。
 //   - /datum/mind/AddSpell() / RemoveSpell() 动态授予 / 收回法术（code/datums/mind.dm）。
-//   - /obj/effect/proc_holder/spell/self/yandere_locate_person  本项目自定义的【病娇寻人术】
+//   - /datum/action/cooldown/spell/z121/self/yandere_locate_person  本项目自定义的【病娇寻人术】
 //                                            （modular_z121/spells/arcane/locate_person.dm）。
 //   - /datum/mind/i_know_person()            把某人加入"我"的 known_people 熟人名单（code/datums/mind.dm）。
 //   - /datum/stressevent + add_stress/remove_stress/has_stress_event  心情/情绪系统（code/datums/stress 与
@@ -171,7 +171,7 @@
 /datum/charflaw/yandere/proc/update_selection_action()
 	if(selection_action)
 		selection_action.desc = "选择当前视野内活着的其他玩家作为唯一爱慕对象。确认后无法更改。剩余 [selection_time_text()]；超时将随机指定。"
-		selection_action.UpdateButtonIcon()
+		selection_action.build_all_button_icons()
 
 /datum/charflaw/yandere/proc/clear_selection_action()
 	QDEL_NULL(selection_action)
@@ -235,7 +235,7 @@
 
 /datum/action/yandere_designate_crush
 	name = "指定爱慕对象"
-	icon_icon = 'modular_z121/icon/custompell.dmi'
+	button_icon = 'modular_z121/icon/custompell.dmi'
 	button_icon_state = "spell0"
 	check_flags = AB_CHECK_CONSCIOUS
 	var/datum/weakref/flaw_ref
@@ -390,9 +390,9 @@
 // 授予独立的病娇寻人术，普通寻人术不参与重复检查。
 // ----------------------------------------------------------------------------
 /datum/charflaw/yandere/proc/grant_locate_spell(mob/living/carbon/human/H)
-	if(!H.mind || H.mind.has_spell(/obj/effect/proc_holder/spell/self/yandere_locate_person))
+	if(!H.mind || H.mind.has_spell(/datum/action/cooldown/spell/z121/self/yandere_locate_person))
 		return
-	var/obj/effect/proc_holder/spell/self/yandere_locate_person/spell = new(null)
+	var/datum/action/cooldown/spell/z121/self/yandere_locate_person/spell = new(null)
 	H.mind.AddSpell(spell)
 	granted_spell = WEAKREF(spell)
 	to_chat(H, span_green("一种本能在我心底苏醒——我学会了【病娇寻人术】，无需同意便能循着唯一爱慕之人的气息找到 ta。"))
@@ -568,7 +568,7 @@
 	H.remove_stress(/datum/stressevent/yandere_longing)
 
 	// 只删除本怪癖授予的实例；法术的销毁逻辑同时关闭请求并清理私人箭头。
-	var/obj/effect/proc_holder/spell/self/yandere_locate_person/spell = granted_spell?.resolve()
+	var/datum/action/cooldown/spell/z121/self/yandere_locate_person/spell = granted_spell?.resolve()
 	if(spell)
 		qdel(spell)
 	granted_spell = null

@@ -22,7 +22,7 @@
 		R.job_slot_owned = TRUE
 	if(spells && H.mind)
 		for(var/S in spells)
-			var/obj/effect/proc_holder/spell/granted = new S
+			var/datum/granted = new S
 			H.mind.AddSpell(granted)
 			R?.remember_spell(granted)
 
@@ -111,7 +111,7 @@
 	if(islist(advclass_cat_rolls))
 		hugboxify_for_class_selection(H)
 
-	log_admin("[department] >> [H.key]/([H.real_name]) has joined as [H.mind.assigned_role].")
+	log_admin("[department] >> [H.key]/([H.real_name]) 以 [H.mind.assigned_role] 的身份加入。")
 
 /datum/controller/subsystem/role_class_handler/finish_class_handler(mob/living/carbon/human/H, datum/advclass/picked_class, datum/class_select_handler/related_handler, plus_factor, special_session_queue)
 	if(!picked_class || !related_handler || !H)
