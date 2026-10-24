@@ -23,7 +23,6 @@ GLOBAL_LIST_INIT(custom_learnable_spells, list(
 	/datum/action/cooldown/spell/z121/invoked/dash,
 	/datum/action/cooldown/spell/z121/self/locate_person,
 	/datum/action/cooldown/spell/z121/invoked/magic_satiety,
-	/datum/action/cooldown/spell/z121/invoked/mansion_curse,
 	/datum/action/cooldown/spell/z121/invoked/projectile/mini_magic_missile,
 	/datum/action/cooldown/spell/z121/invoked/pain,
 	/datum/action/cooldown/spell/z121/self/z121_portal,
@@ -34,10 +33,8 @@ GLOBAL_LIST_INIT(custom_learnable_spells, list(
 	/datum/action/cooldown/spell/z121/self/projection_spell,
 	/datum/action/cooldown/spell/z121/targeted/conjure_item/summon_magic_bedroll,
 	/datum/action/cooldown/spell/z121/invoked/thousand_arrows,
-	/datum/action/cooldown/spell/z121/self/timestop,
 	/datum/action/cooldown/spell/z121/self/void_clone,
 	/datum/action/cooldown/spell/z121/self/weather_control, // 自定义 T3：掌控天时（晴/雨/雪）
-	/datum/action/cooldown/spell/z121/self/wish_spell,
 	/datum/action/cooldown/spell/z121/invoked/xylix_laughter,
 	/datum/action/cooldown/spell/z121/invoked/xray_vision,
 	/datum/action/cooldown/spell/z121/invoked/yixinghuanying,

@@ -1,7 +1,7 @@
 // Rogue Mage, a pure mage adventurer sidegrade to Necromancer without the Necromancer free spells and forced patron.
 /datum/advclass/wretch/roguemage
-	name = "野法师"
-	tutorial = "他们否认你的天才，驱逐你，斥责你不择手段。他们不理解你必须付出的牺牲。但这已不再重要：除宫廷魔导师本人外，你的力量胜过那些蠢货中的任何一个。让他们见识真正的魔法。我为什么戴着眼罩？"
+	name = "流亡法师"
+	tutorial = "他们否认你的天才，驱逐你，斥责你不择手段。他们不理解你必须付出的牺牲。但这已不再重要：除宫廷法师本人外，你的力量胜过那些蠢货中的任何一个。让他们见识真正的魔法。我为什么戴着眼罩？"
 	allowed_sexes = list(MALE, FEMALE)
 
 	outfit = /datum/outfit/job/roguetown/wretch/roguemage
