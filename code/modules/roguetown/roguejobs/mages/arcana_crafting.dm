@@ -343,7 +343,6 @@
 
 /datum/crafting_recipe/roguetown/arcana/findfamiliar
 	name = "寻觅魔宠卷轴"
-	result = /obj/item/book/granter/spell/blackstone/familiar
 	reqs = list(/obj/item/magic/manacrystal = 1,
 				/obj/item/paper/scroll = 1)
 	craftdiff = 1

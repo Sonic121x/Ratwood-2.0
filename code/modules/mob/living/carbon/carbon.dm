@@ -27,7 +27,7 @@
 
 /mob/living/carbon/proc/on_spell_availability_trait_changed(datum/source, trait)
 	SIGNAL_HANDLER
-	update_action_buttons_icon()
+	update_mob_action_buttons()
 
 /mob/living/carbon/Destroy()
 	//This must be done first, so the mob ghosts correctly before DNA etc is nulled
@@ -260,7 +260,7 @@
 							if(start_T.z != end_T.z && throwable_mob.mobility_flags & MOBILITY_STAND)
 								return
 						if(start_T && end_T)
-							log_combat(src, throwable_mob, "thrown", addition="grab from tile in [AREACOORD(start_T)] towards tile at [AREACOORD(end_T)]")
+							log_combat(src, throwable_mob, "投掷了", addition="从 [AREACOORD(start_T)] 的地块抓起，扔向 [AREACOORD(end_T)] 的地块")
 				else
 					thrown_thing = pulling
 					dropItemToGround(I, silent = TRUE)
@@ -285,7 +285,7 @@
 			var/obj/item/roguecoin/coin = thrown_thing
 			var/coin_text = coin.quantity > 1 ? "[coin.quantity] [coin.name]" : coin.name
 			message_admins("[ADMIN_LOOKUPFLW(src)] 向 [target]（[AREACOORD(target)]）投掷了 [coin_text]")
-			log_admin("[key_name(src)] has thrown [coin_text] at [target] ([AREACOORD(target)])")
+			log_admin("[key_name(src)] 向 [target]（[AREACOORD(target)]）投掷了 [coin_text]")
 
 		if(!thrown_speed)
 			thrown_speed = thrown_thing.throw_speed
@@ -294,7 +294,7 @@
 		do_attack_animation(target, no_effect = TRUE)
 		visible_message("<span class='danger'>[src]掷出了[thrown_thing]。</span>", \
 						"<span class='danger'>我掷出了[thrown_thing]。</span>")
-		log_message("has thrown [thrown_thing]", LOG_ATTACK)
+		log_message("投掷了 [thrown_thing]", LOG_ATTACK)
 		thrown_thing.safe_throw_at(target, thrown_range, thrown_speed, src, null, null, null, move_force)
 		changeNext_move(CLICK_CD_MELEE)
 		if(!used_sound)
@@ -316,28 +316,28 @@
 /mob/living/carbon/show_inv(mob/user)
 	user.set_machine(src)
 	var/dat = {"
-	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><HR>
+	<HR>
 	<B><FONT size=3>[name]</FONT></B>
-	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><HR>
-	<BR><B>头部：</B> <A href='?src=[REF(src)];item=[SLOT_HEAD]'>[(head && !(head.item_flags & ABSTRACT)) ? head.name : "无"]</A>"}
+	<HR>
+	<BR><B>头部：</B> <A href='?src=[REF(src)];item=[SLOT_HEAD]'>[(head && !(head.item_flags & ABSTRACT)) ? head : "无"]</A>"}
 
 	var/list/obscured = check_obscured_slots()
 
 	if(SLOT_NECK in obscured)
 		dat += "<BR><B>颈部：</B> 被遮挡"
 	else
-		dat += "<BR><B>颈部：</B> <A href='?src=[REF(src)];item=[SLOT_NECK]'>[(wear_neck && !(wear_neck.item_flags & ABSTRACT)) ? (wear_neck.name) : "无"]</A>"
+		dat += "<BR><B>颈部：</B> <A href='?src=[REF(src)];item=[SLOT_NECK]'>[(wear_neck && !(wear_neck.item_flags & ABSTRACT)) ? (wear_neck) : "无"]</A>"
 
 	if(SLOT_WEAR_MASK in obscured)
 		dat += "<BR><B>面具：</B> 被遮挡"
 	else
-		dat += "<BR><B>面具：</B> <A href='?src=[REF(src)];item=[SLOT_WEAR_MASK]'>[(wear_mask && !(wear_mask.item_flags & ABSTRACT))	? wear_mask.name	: "无"]</a>"
+		dat += "<BR><B>面具：</B> <A href='?src=[REF(src)];item=[SLOT_WEAR_MASK]'>[(wear_mask && !(wear_mask.item_flags & ABSTRACT))	? wear_mask	: "无"]</a>"
 
 	for(var/i in 1 to held_items.len)
 		var/obj/item/I = get_item_for_held_index(i)
-		dat += "<BR><B>[get_held_index_name(i)]:</B> </td><td><A href='?src=[REF(src)];item=[SLOT_HANDS];hand_index=[i]'>[(I && !(I.item_flags & ABSTRACT)) ? I.name : "无"]</a>"
+		dat += "<BR><B>[get_held_index_name(i)]:</B> </td><td><A href='?src=[REF(src)];item=[SLOT_HANDS];hand_index=[i]'>[(I && !(I.item_flags & ABSTRACT)) ? I : "无"]</a>"
 
-	dat += "<BR><B>背部：</B> <A href='?src=[REF(src)];item=[SLOT_BACK]'>[back ? back.name : "无"]</A>"
+	dat += "<BR><B>背部：</B> <A href='?src=[REF(src)];item=[SLOT_BACK]'>[back ? back : "无"]</A>"
 
 	if(handcuffed)
 		dat += "<BR><A href='?src=[REF(src)];item=[SLOT_HANDCUFFED]'>手部束缚</A>"
@@ -473,10 +473,10 @@
 		doing = FALSE
 		visible_message("<span class='warning'>[src]停止挣脱[I]。</span>", \
 						"<span class='warning'>我停止挣脱[I]。</span>")
-		log_message("stopped struggling out of [I]", LOG_ATTACK, color = "orange")
+		log_message("停止挣脱 [I]", LOG_ATTACK, color = "orange")
 		return
 	I.item_flags |= BEING_REMOVED
-	log_message("began struggling out of [I]", LOG_ATTACK, color = "orange")
+	log_message("开始挣脱 [I]", LOG_ATTACK, color = "orange")
 	//with free hands you untie your own legs at the speed someone else could untie them for you.
 	//min() so this can never be slower than struggling out, nets slip faster than they strip
 	var/untying = (I == legcuffed && !handcuffed && has_active_hand())
@@ -1175,7 +1175,7 @@
 //	update_tod_hud()
 	update_spd()
 	if(stat != old_stat)
-		update_action_buttons_icon()
+		update_mob_action_buttons()
 
 //called when we get cuffed/uncuffed
 /mob/living/carbon/proc/update_handcuffed()
@@ -1185,7 +1185,7 @@
 		throw_alert("handcuffed", /atom/movable/screen/alert/restrained/handcuffed, new_master = src.handcuffed)
 	else
 		clear_alert("handcuffed")
-	update_action_buttons_icon() //some of our action buttons might be unusable when we're handcuffed.
+	update_mob_action_buttons() //some of our action buttons might be unusable when we're handcuffed.
 	update_inv_handcuffed()
 	update_hud_handcuffed()
 	update_mobility()
@@ -1207,10 +1207,10 @@
 			add_movespeed_modifier(MOVESPEED_ID_CUFFED_LEG_SLOWDOWN, update=TRUE, priority=100, multiplicative_slowdown=legcuffed.legcuff_slowdown, movetypes=GROUND)
 		//must hold: the alert shows exactly when the slot is occupied, this branch and the else are its halves
 		throw_alert("legcuffed", /atom/movable/screen/alert/restrained/legcuffed, new_master = legcuffed)
-		log_combat(user || src, src, "legcuffed", legcuffed)
+		log_combat(user || src, src, "戴上了腿铐", legcuffed)
 	else
 		clear_alert("legcuffed")
-		log_combat(user || src, src, "removed legcuffs from", old_cuffs)
+		log_combat(user || src, src, "移除了腿铐", old_cuffs)
 	//must hold: the overlay matches the slot
 	update_inv_legcuffed()
 
@@ -1332,35 +1332,35 @@
 	if(href_list[VV_HK_MODIFY_BODYPART])
 		if(!check_rights(R_SPAWN))
 			return
-		var/edit_action = list("添加" = "add", "移除" = "remove", "改造" = "augment")[input(usr, "要执行什么操作？","修改身体部位") as null|anything in list("添加","移除", "改造")]
+		var/edit_action = input(usr, "你想进行什么操作？","修改身体部位") as null|anything in list("添加","移除", "改造")
 		if(!edit_action)
 			return
 		var/list/limb_list = list()
-		if(edit_action == "remove" || edit_action == "augment")
+		if(edit_action == "移除" || edit_action == "改造")
 			for(var/obj/item/bodypart/B as anything in bodyparts)
-				limb_list += B.body_zone
-			if(edit_action == "remove")
-				limb_list -= BODY_ZONE_CHEST
+				limb_list[parse_zone(B.body_zone)] = B.body_zone
+			if(edit_action == "移除")
+				limb_list -= parse_zone(BODY_ZONE_CHEST)
 		else
-			limb_list = list(BODY_ZONE_HEAD, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
+			limb_list = list("头部" = BODY_ZONE_HEAD, "左臂" = BODY_ZONE_L_ARM, "右臂" = BODY_ZONE_R_ARM, "左腿" = BODY_ZONE_L_LEG, "右腿" = BODY_ZONE_R_LEG)
 			for(var/obj/item/bodypart/B as anything in bodyparts)
-				limb_list -= B.body_zone
-		var/result = input(usr, "请选择要[list("add" = "添加", "remove" = "移除", "augment" = "改造")[edit_action]]的身体部位","修改身体部位") as null|anything in sortList(limb_list)
+				limb_list -= parse_zone(B.body_zone)
+		var/result = input(usr, "请选择要[edit_action]的身体部位","[edit_action]身体部位") as null|anything in sortList(limb_list)
 		if(result)
-			var/obj/item/bodypart/BP = get_bodypart(result)
+			var/obj/item/bodypart/BP = get_bodypart(limb_list[result])
 			switch(edit_action)
-				if("remove")
+				if("移除")
 					if(BP)
 						BP.drop_limb()
 					else
 						to_chat(usr, "<span class='boldwarning'>[src] 没有该身体部位。</span>")
-				if("add")
+				if("添加")
 					if(BP)
 						to_chat(usr, "<span class='boldwarning'>[src] 已有该身体部位。</span>")
 					else
-						if(!regenerate_limb(result))
+						if(!regenerate_limb(limb_list[result]))
 							to_chat(usr, "<span class='boldwarning'>[src] 无法拥有该身体部位。</span>")
-				if("augment")
+				if("改造")
 					if(ishuman(src))
 						if(BP)
 							BP.change_bodypart_status(BODYPART_ROBOTIC, TRUE, TRUE)
@@ -1391,7 +1391,7 @@
 			var/chosenart = artnames[result]
 			var/datum/martial_art/MA = new chosenart
 			MA.teach(src)
-			log_admin("[key_name(usr)] has taught [MA] to [key_name(src)].")
+			log_admin("[key_name(usr)] 向 [key_name(src)] 传授了 [MA]。")
 			message_admins("<span class='notice'>[key_name_admin(usr)] 向 [key_name_admin(src)] 传授了 [MA]。</span>")
 	if(href_list[VV_HK_GIVE_TRAUMA])
 		if(!check_rights(NONE))
@@ -1407,13 +1407,13 @@
 			return
 		var/datum/brain_trauma/BT = gain_trauma(result)
 		if(BT)
-			log_admin("[key_name(usr)] has traumatized [key_name(src)] with [BT.name]")
+			log_admin("[key_name(usr)] 向 [key_name(src)] 施加了脑部创伤 [BT.name]")
 			message_admins("<span class='notice'>[key_name_admin(usr)] 向 [key_name_admin(src)] 施加了 [BT.name]。</span>")
 	if(href_list[VV_HK_CURE_TRAUMA])
 		if(!check_rights(NONE))
 			return
 		cure_all_traumas(TRAUMA_RESILIENCE_ABSOLUTE)
-		log_admin("[key_name(usr)] has cured all traumas from [key_name(src)].")
+		log_admin("[key_name(usr)] 治愈了 [key_name(src)] 的全部脑部创伤。")
 		message_admins("<span class='notice'>[key_name_admin(usr)] 治愈了 [key_name_admin(src)] 的全部脑部创伤。</span>")
 	if(href_list[VV_HK_HALLUCINATION])
 		if(!check_rights(NONE))

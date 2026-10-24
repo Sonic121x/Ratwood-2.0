@@ -761,7 +761,7 @@ GLOBAL_LIST_EMPTY(reach_dummy_pool)
 		for(var/AC in atomrefs)
 			var/AD = "[AC] ([atomcounts[AC]])"
 			atomy[AD] = atomrefs[AC]
-	var/atom/AB = input(user, "我要拿什么？","[src.name ? "[src.name]上的物品：" : "地上的物品："]",null) as null|anything in atomy
+	var/atom/AB = input(user, "我要拿取什么？","[src.name ? "[src.name]上的物品：" : "地上的物品："]",null) as null|anything in atomy
 	if(!AB)
 		return
 	if(QDELETED(atomy[AB]))
@@ -1156,3 +1156,7 @@ GLOBAL_LIST_EMPTY(reach_dummy_pool)
 	if(foes.len > 1)
 		sortTim(foes, cmp = /proc/cmp_numeric_dsc, associative = TRUE)
 	return foes[1]
+
+/mob/living/proc/changeNext_inCombat(num, override = FALSE)
+	in_combat_until = world.time + num
+	hud_used?.defdelay?.mark_dirty()

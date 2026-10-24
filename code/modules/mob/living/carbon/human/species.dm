@@ -1,5 +1,5 @@
 // This code handles different species in the game.
-#include "species_display.dm"
+
 GLOBAL_LIST_EMPTY(roundstart_races)
 
 /datum/species
@@ -1219,7 +1219,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(!(target.mobility_flags & MOBILITY_STAND))
 		target.help_shake_act(user)
 		if(target != user)
-			log_combat(user, target, "shaken")
+			log_combat(user, target, "摇晃了")
 		return 1
 /*	else
 		var/we_breathe = !HAS_TRAIT(user, TRAIT_NOBREATH)
@@ -1381,7 +1381,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			SEND_SIGNAL(target, COMSIG_ATOM_ATTACK_HAND, user)
 			if(affecting.body_zone == BODY_ZONE_HEAD)
 				SEND_SIGNAL(user, COMSIG_HEAD_PUNCHED, target)
-		log_combat(user, target, "punched", null, "(AIMED: [uppertext(parse_zone(user.zone_selected))])")
+		log_combat(user, target, "拳击了", null, "（瞄准：[uppertext(parse_zone(user.zone_selected))]）")
 		if(ishuman(user))
 			user.resolve_combataware(target, "[bodyzone2readablezone(selzone)]...", "[bodyzone2readablezone(user.zone_selected)]...")
 
@@ -1399,7 +1399,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			to_chat(user, span_userdanger("I [atk_verb] myself![target.next_attack_msg.Join()]"))
 		else
 			target.visible_message(span_danger("[user] [atk_verb]ed [target]![target.next_attack_msg.Join()]"), \
-							span_userdanger("I'm [atk_verb]ed by [user]![target.next_attack_msg.Join()]"), span_hear("I hear a sickening sound of flesh hitting flesh!"), COMBAT_MESSAGE_RANGE, user)
+							span_userdanger("I'm [atk_verb]ed by [user]![target.next_attack_msg.Join()]"), span_hear("我听到了令人作呕的血肉碰撞声！"), COMBAT_MESSAGE_RANGE, user)
 			to_chat(user, span_danger("I [atk_verb] [target]![target.next_attack_msg.Join()]"))
 */
 		var/message_verb = "拳击"
@@ -1408,7 +1408,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		var/message_hit_area = ""
 		if(selzone)
 			message_hit_area = "的[span_userdanger(parse_zone(selzone, affecting))]"
-		var/attack_message = "[user][message_verb][target][message_hit_area]！"
+		var/attack_message = "[user] [message_verb] [target][message_hit_area]!"
 		var/attack_message_local = "[user][message_verb]我[message_hit_area]！"
 		target.visible_message(span_danger("[attack_message][target.next_attack_msg.Join()]"),\
 			span_danger("[attack_message_local][target.next_attack_msg.Join()]"), null, COMBAT_MESSAGE_RANGE)
@@ -1515,7 +1515,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					user
 				)
 				to_chat(user, span_danger("我把[target.name]推倒在地！"))
-				log_combat(user, target, "shoved", null, "knocking them down")
+				log_combat(user, target, "推搡了", null, "将其推倒")
 
 			else if(target_table)
 				target.Knockdown(SHOVE_KNOCKDOWN_TABLE)
@@ -1529,7 +1529,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				)
 				to_chat(user, span_danger("我把[target.name]推到了[target_table]上！"))
 				target.throw_at(target_table, 1, 1, null, FALSE) //1 speed throws with no spin are basically just forcemoves with a hard collision check
-				log_combat(user, target, "shoved", null, "onto [target_table] (table)")
+				log_combat(user, target, "推搡了", null, "将其推到 [target_table]（桌子）上")
 
 			else if(target_collateral_mob)
 				target.Knockdown(SHOVE_KNOCKDOWN_HUMAN)
@@ -1543,7 +1543,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					user
 				)
 				to_chat(user, span_danger("我推得[target.name]撞上了[target_collateral_mob.name]！"))
-				log_combat(user, target, "shoved", null, "into [target_collateral_mob.name]")
+				log_combat(user, target, "推搡了", null, "使其撞向 [target_collateral_mob.name]")
 
 		else
 			target.visible_message(
@@ -1612,7 +1612,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					target.stop_pulling(TRUE)
 					playsound(target.loc, 'sound/combat/grabbreak.ogg', 50, TRUE, -1)
 
-			log_combat(user, target, "shoved", null, append_message)
+			log_combat(user, target, "推搡了", null, append_message)
 
 //shameless copypaste
 /datum/species/proc/kicked(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -1661,7 +1661,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 						span_danger("[user]把我压在身下碾压！[target.next_attack_msg.Join()]"), span_hear("我听到令人作呕的踢击声！"), COMBAT_MESSAGE_RANGE, user)
 						to_chat(user, span_danger("我把[target]压在身下碾压！[target.next_attack_msg.Join()]"))
 			target.next_attack_msg.Cut()
-			log_combat(user, target, "kicked", null, "(AIMED: [uppertext(parse_zone(user.zone_selected))])")
+			log_combat(user, target, "踢击了", null, "（瞄准：[uppertext(parse_zone(user.zone_selected))]）")
 
 			if(ishuman(user))
 				user.resolve_combataware(target, "[bodyzone2readablezone(selzone)]...", "[bodyzone2readablezone(user.zone_selected)]...")
@@ -1716,7 +1716,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				target.visible_message(span_danger("[user.name]一脚踢退了[target.name]！"),
 				span_danger("我被[user.name]一脚踢退了！"), span_hear("我听到激烈的扭打声，随后是一声重响！"), COMBAT_MESSAGE_RANGE, user)
 				to_chat(user, span_danger("我一脚踢退了[target.name]！"))
-				log_combat(user, target, "kicked", "knocking them back")
+				log_combat(user, target, "踢击了", "将其击退")
 
 			else
 				if((stander && target.stamina >= target.max_stamina) || target.IsOffBalanced()) //if you are kicked while fatigued, you are knocked down no matter what
@@ -1730,7 +1730,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 						target.visible_message(span_danger("[user.name]把[target.name]拽倒在地！"),
 						span_danger("[user.name]的尾巴把我拽倒了！"), span_hear("我听到激烈的扭打声，随后是一声重响！"), COMBAT_MESSAGE_RANGE, user)
 						to_chat(user, span_danger("我把[target.name]拽倒在地！"))
-					log_combat(user, target, "kicked", "knocking them down")
+					log_combat(user, target, "踢击了", "将其击倒")
 
 		if(shove_blocked && !target.is_shove_knockdown_blocked() && !target.buckled)
 			var/directional_blocked = FALSE
@@ -1756,7 +1756,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					target.visible_message(span_danger("[user.name]用尾巴扫倒了[target.name]！"),
 									span_danger("我被[user.name]的尾巴扫倒了！"), span_hear("我听到激烈的扭打声，随后是一声重响！"), COMBAT_MESSAGE_RANGE, user)
 					to_chat(user, span_danger("我用尾巴扫倒了[target.name]！"))
-				log_combat(user, target, "kicked", "knocking them down")
+				log_combat(user, target, "踢击了", "将其击倒")
 			else if(target_table)
 				target.Knockdown(SHOVE_KNOCKDOWN_TABLE)
 				target.drop_all_held_items()
@@ -1770,7 +1770,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 									span_danger("[user.name]用尾巴把我推到了[target_table]上！"), span_hear("我听到激烈的扭打声，随后是一声重响！"), COMBAT_MESSAGE_RANGE, user)
 					to_chat(user, span_danger("我用尾巴把[target.name]推到了[target_table]上！"))
 					target.throw_at(target_table, 1, 1, null, FALSE) //1 speed throws with no spin are basically just forcemoves with a hard collision check
-				log_combat(user, target, "kicked", "onto [target_table] (table)")
+				log_combat(user, target, "踢击了", "将其踢到 [target_table]（桌子）上")
 			else if(target_collateral_mob)
 				target.Knockdown(SHOVE_KNOCKDOWN_HUMAN)
 				target.drop_all_held_items()
@@ -1783,7 +1783,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					target.visible_message(span_danger("[user.name]的尾巴把[target.name]扫向了[target_collateral_mob.name]！"),
 						span_danger("[user.name]的尾巴把我扫向了[target_collateral_mob.name]！"), span_hear("我听到激烈的扭打声，随后是一声重响！"), COMBAT_MESSAGE_RANGE, user)
 					to_chat(user, span_danger("我用尾巴把[target.name]扫向了[target_collateral_mob.name]！"))
-				log_combat(user, target, "kicked", "into [target_collateral_mob.name]")
+				log_combat(user, target, "踢击了", "使其撞向 [target_collateral_mob.name]")
 		else
 			if(!HAS_TRAIT(user, TRAIT_LAMIAN_TAIL))
 				target.visible_message(span_danger("[user.name]踢中了[target.name]！"),
@@ -1793,7 +1793,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				target.visible_message(span_danger("[user.name]用尾巴猛击了[target.name]！"),
 								span_danger("我被[user.name]的尾巴猛击了！"), span_hear("我听到激烈的扭打声！"), COMBAT_MESSAGE_RANGE, user)
 				to_chat(user, span_danger("我用尾巴猛击了[target.name]！"))
-			log_combat(user, target, "kicked", null, "(AIMED: [uppertext(parse_zone(user.zone_selected))])")
+			log_combat(user, target, "踢击了", null, "（瞄准：[uppertext(parse_zone(user.zone_selected))]）")
 
 
 		var/selzone = user.zone_selected
@@ -1828,7 +1828,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(M.mind)
 		attacker_style = M.mind.martial_art
 	if((M != H) && M.used_intent.type != INTENT_HELP && H.check_shields(M, 0, M.name, attack_type = UNARMED_ATTACK))
-		log_combat(M, H, "attempted to touch")
+		log_combat(M, H, "尝试触碰")
 		H.visible_message(span_warning("[M]试图碰触[H]！"), \
 						span_danger("[M]试图碰触你！"), span_hear("我听到一阵破空声！"), COMBAT_MESSAGE_RANGE, M)
 		to_chat(M, span_warning("我试图碰触[H]！"))
@@ -1857,7 +1857,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 /datum/species/proc/spec_attacked_by(obj/item/I, mob/living/user, obj/item/bodypart/affecting, intent, mob/living/carbon/human/H, selzone)
 	// Allows you to put in item-specific reactions based on species
 	if(user != H)
-		if(H.check_shields(I, I.force, "[I.name]", MELEE_ATTACK, I.armor_penetration))
+		if(H.check_shields(I, I.force, "the [I.name]", MELEE_ATTACK, I.armor_penetration))
 			return 0
 	if(H.check_block())
 		H.visible_message(span_warning("[H]挡住了[I]！"), \
@@ -2297,13 +2297,12 @@ GLOBAL_VAR_INIT(cold_breath_overlay, mutable_appearance(
 		if(pure_stacks)
 			var/firemodifier = pure_stacks.stacks / 50
 
-			if(pure_stacks.on_fire)
-				// Classic "you're actively burning" damage
-				burn_damage = 10 + (pure_stacks.stacks * 3)
-			else
+			if(!pure_stacks.on_fire)
 				// Residual heat damage scaling with temp
 				firemodifier = min(firemodifier, 0)
 				burn_damage = round(max(log(2-firemodifier,max(H.bodytemperature-BODYTEMP_NORMAL, 1))-5,0))
+				if(HAS_TRAIT(H, TRAIT_FIRE_RESIST))
+					burn_damage *= 0.5
 
 		if(burn_damage > 0)
 			switch(burn_damage)
@@ -2384,21 +2383,49 @@ GLOBAL_VAR_INIT(cold_breath_overlay, mutable_appearance(
 // FIRE //
 //////////
 
+#define FIRE_WOUND_BURN_BASE 4
+#define FIRE_WOUND_BURN_STACK_SCALE 6
+#define FIRE_WOUND_BURN_SUITED 2
+
 /datum/species/proc/handle_fire(mob/living/carbon/human/H, no_protection = FALSE)
 	if(!Canignite_mob(H))
 		return TRUE
-	
-	// Stops maxing out temp from firestacks alone
-	if(H.bodytemperature > BODYTEMP_HEAT_LEVEL_ONE_MAX)	
-		return
+
 	var/thermal_protection = H.get_thermal_protection()
 
 	if(thermal_protection >= FIRE_IMMUNITY_MAX_TEMP_PROTECT && !no_protection)
 		return
+
+	var/fire_resist_mult = 1
+	if(HAS_TRAIT(H, TRAIT_FIRE_RESIST))
+		fire_resist_mult = 0.5
+
+	var/burn_damage
 	if(thermal_protection >= FIRE_SUIT_MAX_TEMP_PROTECT && !no_protection)
-		H.adjust_bodytemperature(1)
+		burn_damage = FIRE_WOUND_BURN_SUITED
 	else
-		H.adjust_bodytemperature(2)	//arbitrary value, but our temp scale runs from 0 to 600 behind the scenes- 455 to heat level 2. standard is 300, thats 50 seconds of being on fire to top out at lvl 2
+		burn_damage = FIRE_WOUND_BURN_BASE + round(sqrt(H.fire_stacks) * FIRE_WOUND_BURN_STACK_SCALE)
+	burn_damage = round(burn_damage * fire_resist_mult * heatmod * H.physiology.heat_mod)
+	if(burn_damage <= 0)
+		return
+
+	if(H.stat < UNCONSCIOUS && prob(min(burn_damage * 4, 100)))
+		H.emote("pain")
+
+	var/obj/item/bodypart/BP // concentrate fire on one limb at a time
+	for(var/obj/item/bodypart/candidate as anything in H.bodyparts)
+		if(QDELETED(candidate))
+			continue
+		if(!BP || candidate.burn_dam > BP.burn_dam)
+			BP = candidate
+	if(!BP)
+		return
+	BP.receive_damage(0, burn_damage)
+	BP.bodypart_attacked_by(BCLASS_BURN, burn_damage, null, BP.body_zone)
+
+#undef FIRE_WOUND_BURN_BASE
+#undef FIRE_WOUND_BURN_STACK_SCALE
+#undef FIRE_WOUND_BURN_SUITED
 
 /datum/species/proc/Canignite_mob(mob/living/carbon/human/H)
 	if(HAS_TRAIT(H, TRAIT_NOFIRE))
@@ -2606,7 +2633,7 @@ GLOBAL_VAR_INIT(cold_breath_overlay, mutable_appearance(
 
 /datum/action/innate/flight
 	name = "切换飞行"
-	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_STUN
+	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_IMMOBILE
 	button_icon_state = ""
 
 /datum/action/innate/flight/Activate()

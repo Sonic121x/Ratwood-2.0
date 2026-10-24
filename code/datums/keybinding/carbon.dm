@@ -85,6 +85,37 @@
 	C.rog_intent_change(4)
 	return TRUE
 
+/datum/keybinding/carbon/toggle_arc_mode
+	hotkey_keys = list("ShiftG")
+	name = "toggle_arc_mode"
+	full_name = "切换法术替代模式"
+	description = "切换当前激活法术的替代模式，例如投射物的弧线模式、循环切换符文类型等。"
+	category = CATEGORY_CARBON
+
+/datum/keybinding/carbon/toggle_arc_mode/down(client/user)
+	if(!ishuman(user.mob))
+		return FALSE
+	var/mob/living/carbon/human/H = user.mob
+
+	// Check new V2 spell system first
+	var/datum/action/cooldown/spell/projectile/v2_spell = H.click_intercept
+	if(istype(v2_spell))
+		v2_spell.toggle_arc_mode(H)
+		return TRUE
+
+	// Check for generic alt mode (ward cycling, etc.)
+	var/datum/action/cooldown/spell/v2_generic = H.click_intercept
+	if(istype(v2_generic) && v2_generic.toggle_alt_mode(H))
+		return TRUE
+
+	// Fall back to old proc_holder system
+	var/obj/effect/proc_holder/spell/invoked/projectile/spell = H.ranged_ability
+	if(!istype(spell))
+		to_chat(H, span_warning("当前没有具有替代模式的激活法术。"))
+		return TRUE
+	spell.toggle_arc_mode(H)
+	return TRUE
+
 //****** Quad Intents ******
 /*
 /datum/keybinding/carbon/give_intent
@@ -327,93 +358,3 @@
 	var/mob/living/carbon/C = user.mob
 	C.cycle_rmb_intent()
 	return TRUE
-
-// ** Action Buttons **
-// I stopped at 6 because it is probably the maximum number you can comfortably reach on keyboard
-/datum/keybinding/carbon/actions
-	var/action_taken = 1
-/datum/keybinding/carbon/actions/down(client/user)
-	if(!iscarbon(user.mob))
-		return FALSE
-	var/mob/living/carbon/C = user.mob
-	var/list/datum/action/actions = C.actions
-	if(actions.len < action_taken) // Dodge a runtime
-		return FALSE
-	var/datum/action/action = actions[action_taken]
-	if(!action)
-		return FALSE
-	action.Trigger()
-
-/datum/keybinding/carbon/actions/action_1
-	hotkey_keys = list("Alt1")
-	name = "action_1"
-	full_name = "动作 1"
-	description = "触发第一个动作。"
-	category = CATEGORY_CARBON
-	action_taken = 1
-
-/datum/keybinding/carbon/actions/action_2
-	hotkey_keys = list("Alt2")
-	name = "action_2"
-	full_name = "动作 2"
-	description = "触发第二个动作。"
-	category = CATEGORY_CARBON
-	action_taken = 2
-
-/datum/keybinding/carbon/actions/action_3
-	hotkey_keys = list("Alt3")
-	name = "action_3"
-	full_name = "动作 3"
-	description = "触发第三个动作。"
-	category = CATEGORY_CARBON
-	action_taken = 3
-
-/datum/keybinding/carbon/actions/action_4
-	hotkey_keys = list("Alt4")
-	name = "action_4"
-	full_name = "动作 4"
-	description = "触发第四个动作。"
-	category = CATEGORY_CARBON
-	action_taken = 4
-
-/datum/keybinding/carbon/actions/action_5
-	hotkey_keys = list("Alt5")
-	name = "action_5"
-	full_name = "动作 5"
-	description = "触发第五个动作。"
-	category = CATEGORY_CARBON
-	action_taken = 5
-
-/datum/keybinding/carbon/actions/action_6
-	hotkey_keys = list("Alt6")
-	name = "action_6"
-	full_name = "动作 6"
-	description = "触发第六个动作。"
-	category = CATEGORY_CARBON
-	action_taken = 6
-
-/datum/keybinding/carbon/actions/action_7
-	hotkey_keys = list("Alt7")
-	name = "action_7"
-	full_name = "动作 7"
-	description = "触发第七个动作。"
-	category = CATEGORY_CARBON
-	action_taken = 7
-
-	
-/datum/keybinding/carbon/actions/action_8
-	hotkey_keys = list("Alt8")
-	name = "action_8"
-	full_name = "动作 8"
-	description = "触发第八个动作。"
-	category = CATEGORY_CARBON
-	action_taken = 8
-
-	
-/datum/keybinding/carbon/actions/action_9
-	hotkey_keys = list("Alt9")
-	name = "action_9"
-	full_name = "动作 9"
-	description = "触发第九个动作。"
-	category = CATEGORY_CARBON
-	action_taken = 9

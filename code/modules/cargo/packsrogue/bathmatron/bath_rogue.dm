@@ -2,7 +2,7 @@
 // Took lockpicks out so it don't get spammed. Get the expensive hairpins instead.
 
 /datum/supply_pack/rogue/bath_rogue
-	group = "盗贼用品" // English: Roguery
+	group = "Roguery"
 	crate_name = "商人公会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
@@ -37,7 +37,6 @@
 /datum/supply_pack/rogue/bath_rogue/mirrortransform
 	name = "镜像变形卷轴"
 	cost = 50
-	contains = list(/obj/item/book/granter/spell/blackstone/mirror_transform)
 
 /datum/supply_pack/rogue/bath_rogue/waterarrows
 	name = "水箭"

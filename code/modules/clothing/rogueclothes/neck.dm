@@ -55,7 +55,7 @@
 /obj/item/clothing/neck/roguetown/MiddleClick(mob/user, params)
 	. = ..()
 	overarmor = !overarmor
-	to_chat(user, span_info("我[overarmor ? "把[src]穿在护甲外面" : "把[src]穿在护甲下面"]."))
+	to_chat(user, span_info("我把[src]戴在护甲[overarmor ? "外面" : "里面"]。"))
 	if(overarmor)
 		alternate_worn_layer = NECK_LAYER
 	else
@@ -78,7 +78,7 @@
 		return
 	if(!toggle_snout())
 		return
-	to_chat(user, span_info("我[snouting ? "给[src]留出吻部空间" : "把[src]系得更紧"]."))
+	to_chat(user, span_info("我[snouting ? "在[src]上为口鼻腾出空间" : "把[src]戴得更紧"]。"))
 	user.update_inv_neck()
 	user.update_inv_cloak()
 	user.update_inv_armor()
@@ -1340,5 +1340,3 @@
 	desc = "白银为护，永恒为印；以十神之名，我命你滚回地狱！"
 	icon_state = "undivided_s"
 	sellprice = 50
-
-

@@ -18,31 +18,26 @@
 		return FALSE
 	return ..()
 
-/obj/effect/proc_holder/spell/invoked/pain
+/datum/action/cooldown/spell/z121/invoked/pain
 	name = "钻心剜骨"
 	desc = "三大不可饶恕中的钻心咒，会让目标感受到可怕的疼痛。"
-	cost = 3
+	point_cost = 3
 	xp_gain = TRUE
-	releasedrain = 30
-	chargedrain = 1
-	chargetime = 0
-	recharge_time = 10 SECONDS
-	human_req = TRUE
-	warnie = "spellwarning"
-	school = "enchantment"
+	primary_resource_cost = 30
+	hold_drain = 1
+	charge_time = 0
+	cooldown_time = 10 SECONDS
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
 	spell_tier = 2
-	action_icon = 'modular_z121/icon/custompell.dmi'
-	overlay_state = "pain"
+	button_icon = 'modular_z121/icon/custompell.dmi'
+	button_icon_state = "pain"
 	invocations = list("钻心剜骨！")
 	invocation_type = "shout"
-	glow_color = GLOW_COLOR_ARCANE
+	spell_color = GLOW_COLOR_ARCANE
 	glow_intensity = GLOW_INTENSITY_LOW
-	no_early_release = TRUE
-	movement_interrupt = FALSE
-	charging_slowdown = 2
-	chargedloop = /datum/looping_sound/invokegen
+	charge_slowdown = 2
 	associated_skill = /datum/skill/magic/arcane
-	range = 7
+	cast_range = 7
 	miracle = FALSE
 	gesture_required = TRUE
 	var/projectile_type = /obj/projectile/energy/pain_spell_bolt
@@ -61,7 +56,7 @@
 	hitsound = 'sound/combat/hits/blunt/shovel_hit2.ogg'
 	var/pain_amount = 5
 	var/target_zone
-	var/obj/effect/proc_holder/spell/invoked/pain/casting_spell
+	var/datum/action/cooldown/spell/z121/invoked/pain/casting_spell
 
 /obj/projectile/energy/pain_spell_bolt/on_hit(atom/target, blocked = FALSE)
 	if(!isliving(target))
@@ -96,25 +91,27 @@
 	playsound(get_turf(living_target), 'sound/combat/hits/blunt/shovel_hit2.ogg', 100)
 	return BULLET_ACT_HIT
 
-/obj/effect/proc_holder/spell/invoked/pain/cast(list/targets, mob/living/user = usr)
+/datum/action/cooldown/spell/z121/invoked/pain/z121_apply(atom/cast_on)
+	var/list/targets = list(cast_on)
+	var/mob/living/user = owner
 	if(user?.curplaying)
 		user.curplaying.on_mouse_up()
 
 	var/atom/target_atom = targets[1]
 	if(!isliving(target_atom))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	var/mob/living/target = target_atom
 	if(!fire_pain_projectile(user, target))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	user.visible_message(span_warning("[user] 指尖一抬，一枚血红色的奥术飞矢便尖啸着射向 [target]！"))
 	to_chat(user, span_notice("我将钻心剜骨化作一枚猩红咒矢，直射向 [target]。"))
 	return TRUE
 
-/obj/effect/proc_holder/spell/invoked/pain/proc/fire_pain_projectile(mob/living/user, atom/target)
+/datum/action/cooldown/spell/z121/invoked/pain/proc/fire_pain_projectile(mob/living/user, atom/target)
 	var/obj/projectile/energy/pain_spell_bolt/projectile = new projectile_type(user.loc)
 	// 投射物统一按胸口结算，避免弹道随机偏斜后出现“显示命中 A 处、疼痛却落在 B 处”的错位。
 	projectile.def_zone = BODY_ZONE_CHEST
@@ -132,7 +129,7 @@
 	projectile.fire()
 	return TRUE
 
-/obj/effect/proc_holder/spell/invoked/pain/proc/apply_pain_effect(mob/living/target, mob/living/user, pain_amount = null, preferred_zone = null)
+/datum/action/cooldown/spell/z121/invoked/pain/proc/apply_pain_effect(mob/living/target, mob/living/user, pain_amount = null, preferred_zone = null)
 	if(isnull(pain_amount))
 		pain_amount = get_pain_amount(user)
 
@@ -180,7 +177,7 @@
 	target.apply_damage(pain_amount, STAMINA)
 	return TRUE
 
-/obj/effect/proc_holder/spell/invoked/pain/proc/get_pain_amount(mob/living/user)
+/datum/action/cooldown/spell/z121/invoked/pain/proc/get_pain_amount(mob/living/user)
 	var/arcane_level = max(user?.get_skill_level(/datum/skill/magic/arcane), 0)
 	if(arcane_level <= 1)
 		return 5
@@ -195,35 +192,35 @@
 			return 80
 	return 100
 
-/obj/effect/proc_holder/spell/invoked/pain/proc/clear_existing_pain_wounds(mob/living/carbon/target)
+/datum/action/cooldown/spell/z121/invoked/pain/proc/clear_existing_pain_wounds(mob/living/carbon/target)
 	for(var/obj/item/bodypart/bodypart as anything in target.bodyparts)
 		bodypart.remove_wound(/datum/wound/magical/pain_spell)
 
-/obj/effect/proc_holder/spell/invoked/pain/proc/queue_bodypart_pain_expire(obj/item/bodypart/affected, datum/wound/magical/pain_spell/agony)
+/datum/action/cooldown/spell/z121/invoked/pain/proc/queue_bodypart_pain_expire(obj/item/bodypart/affected, datum/wound/magical/pain_spell/agony)
 	if(QDELETED(affected) || QDELETED(agony))
 		return
 	reset_pain_expire_timer(agony)
 	agony.pain_expire_timer_id = addtimer(CALLBACK(src, PROC_REF(expire_bodypart_pain_wound), affected, agony), (10 SECONDS), TIMER_STOPPABLE)
 
-/obj/effect/proc_holder/spell/invoked/pain/proc/queue_simple_pain_expire(mob/living/target, datum/wound/magical/pain_spell/agony)
+/datum/action/cooldown/spell/z121/invoked/pain/proc/queue_simple_pain_expire(mob/living/target, datum/wound/magical/pain_spell/agony)
 	if(QDELETED(target) || QDELETED(agony))
 		return
 	reset_pain_expire_timer(agony)
 	agony.pain_expire_timer_id = addtimer(CALLBACK(src, PROC_REF(expire_simple_pain_wound), target, agony), (10 SECONDS), TIMER_STOPPABLE)
 
-/obj/effect/proc_holder/spell/invoked/pain/proc/reset_pain_expire_timer(datum/wound/magical/pain_spell/agony)
+/datum/action/cooldown/spell/z121/invoked/pain/proc/reset_pain_expire_timer(datum/wound/magical/pain_spell/agony)
 	var/existing_timer = agony.pain_expire_timer_id
 	if(existing_timer)
 		deltimer(existing_timer)
 	agony.pain_expire_timer_id = null
 
-/obj/effect/proc_holder/spell/invoked/pain/proc/expire_bodypart_pain_wound(obj/item/bodypart/affected, datum/wound/magical/pain_spell/agony)
+/datum/action/cooldown/spell/z121/invoked/pain/proc/expire_bodypart_pain_wound(obj/item/bodypart/affected, datum/wound/magical/pain_spell/agony)
 	agony.pain_expire_timer_id = null
 	if(QDELETED(affected) || QDELETED(agony))
 		return
 	affected.remove_wound(agony)
 
-/obj/effect/proc_holder/spell/invoked/pain/proc/expire_simple_pain_wound(mob/living/target, datum/wound/magical/pain_spell/agony)
+/datum/action/cooldown/spell/z121/invoked/pain/proc/expire_simple_pain_wound(mob/living/target, datum/wound/magical/pain_spell/agony)
 	agony.pain_expire_timer_id = null
 	if(QDELETED(target) || QDELETED(agony))
 		return

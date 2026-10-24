@@ -38,7 +38,7 @@
 	if(avoid_highlighting) message["avoidHighlighting"] = avoid_highlighting
 
 	// send it immediately
-	SSchat.send_immediate(target, message)
+	SSchat?.send_immediate(target, message)
 
 /**
  * Sends the message to the recipient (target).

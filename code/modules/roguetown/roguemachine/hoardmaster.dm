@@ -53,7 +53,7 @@
 		var/datum/antagonist/bandit/B = M.mind.has_antag_datum(/datum/antagonist/bandit)
 		var/path = text2path(href_list["buy"])
 		if(!ispath(path, /datum/supply_pack))
-			message_admins("silly MOTHERFUCKER [usr.key] IS TRYING TO BUY A [path] WITH THE HOARDMASTER")
+			message_admins("[usr.key] 正试图通过藏宝主宰购买非法物品路径 [path]！")
 			return
 		var/datum/supply_pack/PA = SSmerchant.supply_packs[path]
 		var/cost = PA.cost
@@ -95,24 +95,24 @@
 	contents += "<a href='?src=[REF(src)];change=1'>你的恩惠：</a> [B.favor]<BR>"
 
 
-	var/list/unlocked_cats = list("补给品", "医疗用品", "衣物") // English: Supplies; Medicaments; Clothing
-	switch(usr.advjob)
-		if("悍匪") //code/modules/jobs/job_types/roguetown/adventurer/types/antag/brigand.dm
-			unlocked_cats+="悍匪" // English: Brigand
-		if("佣兵剑客") //code/modules/jobs/job_types/roguetown/adventurer/types/antag/sellsword.dm
-			unlocked_cats+="佣兵剑客" // English: Sellsword
-		if("锯骨郎中") //code/modules/jobs/job_types/roguetown/adventurer/types/antag/sawbones.dm
-			unlocked_cats+="锯骨郎中" // English: Sawbones
-		if("落魄骑士") //code/modules/jobs/job_types/roguetown/adventurer/types/antag/hedgeknight.dm
-			unlocked_cats+="落魄骑士" // English: Knight
-		if("野法师") //code/modules/jobs/job_types/roguetown/adventurer/types/antag/roguemage.dm
-			unlocked_cats+="野法师" // English: Mage
-		if("无赖") //code/modules/jobs/job_types/roguetown/adventurer/types/antag/knave.dm
-			unlocked_cats+="无赖" // English: Knave
-		if("破像者") //code/modules/jobs/job_types/roguetown/adventurer/types/antag/Iconoclast.dm
-			unlocked_cats+="破像者" // English: Iconoclast
-		if("拓荒工兵") //code/modules/jobs/job_types/roguetown/adventurer/types/antag/pioneer.dm
-			unlocked_cats+="拓荒工兵" // English: Pioneer
+	var/list/unlocked_cats = list("Supplies", "Medicaments", "Clothing")
+	switch(get_hoard_category_display(usr.advjob))
+		if("悍匪")
+			unlocked_cats+="Brigand"
+		if("佣兵剑客")
+			unlocked_cats+="Sellsword"
+		if("锯骨郎中")
+			unlocked_cats+="Sawbones"
+		if("落魄骑士")
+			unlocked_cats+="Knight"
+		if("野法师")
+			unlocked_cats+="Mage"
+		if("无赖")
+			unlocked_cats+="Knave"
+		if("破像者")
+			unlocked_cats+="Iconoclast"
+		if("拓荒工兵")
+			unlocked_cats+="Pioneer"
 
 	if(!(current_cat in unlocked_cats))
 		current_cat = "1"
@@ -120,18 +120,18 @@
 	if(current_cat == "1")
 		contents += "<center>"
 		for(var/X in unlocked_cats)
-			contents += "<a href='?src=[REF(src)];changecat=[X]'>[X]</a><BR>"
+			contents += "<a href='?src=[REF(src)];changecat=[X]'>[get_hoard_category_display(X)]</a><BR>"
 		contents += "</center>"
 	else
-		contents += "<center>[current_cat]<BR></center>"
-		contents += "<center><a href='?src=[REF(src)];changecat=1'>\[RETURN\]</a><BR><BR></center>"
+		contents += "<center>[get_hoard_category_display(current_cat)]<BR></center>"
+		contents += "<center><a href='?src=[REF(src)];changecat=1'>\[返回\]</a><BR><BR></center>"
 		var/list/pax = list()
 		for(var/pack in SSmerchant.supply_packs)
 			var/datum/supply_pack/PA = SSmerchant.supply_packs[pack]
-			if(PA.group == current_cat)
+			if(get_hoard_category_display(PA.group) == get_hoard_category_display(current_cat))
 				pax += PA
 		for(var/datum/supply_pack/PA in sortList(pax))
-			contents += "[PA.name] [PA.contains.len > 1?"x[PA.contains.len]":""] - ([PA.cost])<a href='?src=[REF(src)];buy=[PA.type]'>BUY</a><BR>"
+			contents += "[PA.name] [PA.contains.len > 1?"x[PA.contains.len]":""] - ([PA.cost])<a href='?src=[REF(src)];buy=[PA.type]'>购买</a><BR>"
 
 	var/datum/browser/popup = new(user, "HOARDMASTER", "", 370, 600)
 	popup.set_content(contents)

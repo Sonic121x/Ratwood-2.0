@@ -9,7 +9,8 @@
 	action_icon_state = "summons"
 	invocations = list("应召而来，兵刃。")
 	invocation_type = "whisper"
-	spell_tier = 2 
+	spell_tier = 2
+	spell_impact_intensity = SPELL_IMPACT_NONE
 	cost = 1 // 1 Cost, I don't think this is amazing enough utility. Maybe.
 	var/obj/marked_item
 
@@ -26,7 +27,7 @@
 					continue
 				if(HAS_TRAIT(item, TRAIT_NODROP))
 					message += "虽然这显得有些多余，"
-				marked_item = 		item
+				marked_item =		item
 				message += "你为[item]灌注了召唤印记。</span>"
 				name = "召唤[item]"
 				break
@@ -40,12 +41,12 @@
 		else if(marked_item && (marked_item in hand_items)) //unlinking item to the spell
 			message = span_notice("我解除了[marked_item]上的印记，好将它用于别处。")
 			name = "即时召唤"
-			marked_item = 		null
+			marked_item =		null
 
 		else if(marked_item && QDELETED(marked_item)) //the item was destroyed at some point
 			message = span_warning("我感到那把灌注过印记的武器已经毁坏了！")
 			name = "召唤武器"
-			marked_item = 		null
+			marked_item =		null
 
 		else	//Getting previously marked item
 			var/obj/item/rogueweapon/item_to_retrieve = marked_item
@@ -67,6 +68,9 @@
 								part.remove_embedded_object(item_to_retrieve)
 								to_chat(C, span_warning("嵌在你[part.name]里的[item_to_retrieve]神秘地消失了。真是走运！"))
 								break
+					else if(isliving(M))
+						var/mob/living/simple_holder = M
+						simple_holder.simple_remove_embedded_object(item_to_retrieve)
 					if(!isturf(item_to_retrieve.loc))
 						item_to_retrieve = item_to_retrieve.loc
 

@@ -44,7 +44,6 @@
 		H.z121_birth_stat(STATKEY_SPD, -1)
 		H.z121_birth_stat(STATKEY_INT, 1)
 		H.z121_birth_stat(STATKEY_PER, 1)
-		H.z121_birth_points(6)
 		if(ishumannorthern(H))
 			belt = /obj/item/storage/belt/rogue/leather/plaquegold
 			cloak = null
@@ -96,17 +95,9 @@
 	else
 		ADD_TRAIT(src, trait, source)
 
-/mob/living/carbon/human/proc/z121_birth_spell(obj/effect/proc_holder/spell/S)
+/mob/living/carbon/human/proc/z121_birth_spell(datum/S)
 	mind?.AddSpell(S)
 	z121_profession?.remember_spell(S)
-
-/mob/living/carbon/human/proc/z121_birth_points(amount)
-	if(!mind)
-		return
-	if(z121_profession)
-		z121_profession.add_points(src, amount)
-	else
-		mind.adjust_spellpoints(amount)
 
 /mob/living/carbon/human/proc/z121_birth_language(language)
 	if(z121_profession)
@@ -216,7 +207,7 @@
 		if(HAS_TRAIT_FROM(H, TRAIT_DEATHSIGHT, REF(R)))
 			ADD_TRAIT(H, TRAIT_DEATHSIGHT, "devotion")
 		for(var/datum/weakref/key as anything in R.spells.Copy())
-			var/obj/effect/proc_holder/spell/S = key.resolve()
+			var/datum/S = key.resolve()
 			if(S && (S.type in H.patron.miracles) && H.patron.miracles[S.type] <= CLERIC_T0)
 				R.spells -= key
 		for(var/trait in H.patron.traits_tier)

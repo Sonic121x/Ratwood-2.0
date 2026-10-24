@@ -67,7 +67,7 @@
 	var/was_broken = obj_broken
 	. = ..()
 	if(obj_broken && !was_broken)
-		log_breakin(null, "was broken open")
+		log_breakin(null, "被破坏打开")
 
 /obj/structure/mineral_door/onkick(mob/user)
 	if(isSwitchingStates)
@@ -96,11 +96,11 @@
 						user.visible_message(span_warning("[user]一脚踹开了[src]！"), \
 							span_notice("我一脚踹开了[src]。"))
 					locked = 0
-					log_breakin(user, "kicked open a locked door")
+					log_breakin(user, "踢开了一扇上锁的门")
 					force_open()
 				else
 					playsound(src, 'sound/combat/hits/onwood/woodimpact (1).ogg', 100)
-					log_breakin(user, "kicked a locked door")
+					log_breakin(user, "踢了一扇上锁的门")
 					if(HAS_TRAIT(user, TRAIT_LAMIAN_TAIL))
 						user.visible_message(span_warning("[user]用尾巴狠狠撞上了[src]！"), \
 							span_notice("我用尾巴狠狠撞上了[src]。"))
@@ -380,7 +380,7 @@
 		if((repair_state == 0) && (obj_integrity < max_integrity))
 			. += span_notice("它可以用[initial(cast_repair_cost_first.name)]修补。")
 			if(brokenstate)
-				. += span_notice("之后还需要[initial(cast_repair_cost_second.name)]才能彻底修好。")
+				. += span_notice("还需要[initial(cast_repair_cost_second.name)]才能彻底修好。")
 		if(repair_state == 1)
 			. += span_notice("还需要[initial(cast_repair_cost_second.name)]才能彻底修好。")
 
@@ -433,7 +433,7 @@
 					name = doorname + "（门）"
 					desc = "门上被人刻了名字。"
 				else
-					name = "门"
+					name = "木门"
 					desc = "一扇普通的门。"
 				playsound(user, 'sound/misc/wood_saw.ogg', 100, TRUE)
 			return
@@ -445,7 +445,7 @@
 /obj/structure/mineral_door/attacked_by(obj/item/item, mob/living/user)
 	var/turf/hit_turf = get_turf(src)
 	if(..())
-		log_breakin(user, "struck the door with \a [item.name]")
+		log_breakin(user, "用 [item.name] 击打了门")
 	if(obj_broken || obj_destroyed)
 		var/obj/effect/track/structure/new_track = SStracks.get_track(/obj/effect/track/structure, hit_turf)
 		new_track.handle_creation(user)
@@ -691,7 +691,7 @@
 			return
 
 		var/picked = FALSE
-		user.log_message("尝试撬锁门\"[src.name]\"（当前[locked ? "已上锁" : "未上锁"]）。", LOG_ATTACK)
+		user.log_message("尝试撬开门“[src.name]”的锁（当前[locked ? "已上锁" : "未上锁"]）。", LOG_ATTACK)
 		log_breakin(user, "开始用\a [I.name]撬锁")
 
 		while(!QDELETED(I) &&(lockprogress < locktreshold))
@@ -706,11 +706,11 @@
 				if(lockprogress >= locktreshold)
 					picked = TRUE
 					to_chat(user, "<span class='deadsay'>锁芯松开了。</span>")
-					log_breakin(user, "撬开了锁，并[locked ? "解锁" : "锁上"]了门")
+					log_breakin(user, "撬动了门锁并将门[locked ? "解锁" : "上锁"]")
 					if(ishuman(user))
 						var/mob/living/carbon/human/H = user
-						message_admins("[H.real_name]([key_name(user)])成功撬开了[src.name]并将其[locked ? "解锁" : "锁上"]。[ADMIN_JMP(src)]")
-						log_admin("[H.real_name]([key_name(user)]) successfully lockpicked [src.name].")
+						message_admins("[H.real_name]([key_name(user)]) 成功撬动了 [src.name] 的锁并将其[locked ? "解锁" : "上锁"]。[ADMIN_JMP(src)]")
+						log_admin("[H.real_name]([key_name(user)]) 成功撬动了 [src.name] 的锁。")
 						record_featured_stat(FEATURED_STATS_CRIMINALS, user)
 						record_round_statistic(STATS_LOCKS_PICKED)
 						var/obj/effect/track/structure/new_track = SStracks.get_track(/obj/effect/track/structure, get_turf(src))
@@ -726,8 +726,8 @@
 				add_sleep_experience(L, /datum/skill/misc/lockpicking, L.STAINT/4)
 				continue
 		if(!picked)
-			user.log_message("停止/未能撬开门\"[src.name]\"（仍为[locked ? "已上锁" : "未上锁"]）。", LOG_ATTACK)
-			log_breakin(user, "放弃了撬锁（仍为[locked ? "已上锁" : "未上锁"]）")
+			user.log_message("停止撬动或未能撬动门“[src.name]”的锁（仍为[locked ? "上锁" : "未上锁"]状态）。", LOG_ATTACK)
+			log_breakin(user, "放弃撬锁（仍为[locked ? "上锁" : "未上锁"]状态）")
 		return
 
 /obj/structure/mineral_door/proc/tryskeletonlock(mob/user)
@@ -738,11 +738,11 @@
 	if(lockbroken)
 		to_chat(user, span_warning("这把锁已经坏了。"))
 		return
-	log_breakin(user, "used a skeleton key and [locked ? "unlocked" : "locked"] the door")
+	log_breakin(user, "使用万能钥匙将门[locked ? "解锁" : "上锁"]")
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		message_admins("[H.real_name]([key_name(user)])成功用骷髅钥匙操作了[src.name]并将其[locked ? "解锁" : "锁上"]。[ADMIN_JMP(src)]")
-		log_admin("[H.real_name]([key_name(user)]) successfully used a skeleton key on [src.name].")
+		message_admins("[H.real_name]([key_name(user)]) 成功使用万能钥匙将 [src.name] [locked ? "解锁" : "上锁"]。[ADMIN_JMP(src)]")
+		log_admin("[H.real_name]([key_name(user)]) 成功对 [src.name] 使用了万能钥匙。")
 	do_sparks(3, FALSE, src)
 	playsound(user, 'sound/items/skeleton_key.ogg', 100)
 	lock_toggle(user) //All That It Does.
@@ -798,9 +798,9 @@
 	if(I.tool_behaviour != TOOL_MINING)
 		return
 	. = TRUE
-	to_chat(user, span_notice("?????[src]??"))
+	to_chat(user, span_notice("I start digging [src]..."))
 	if(I.use_tool(src, user, 40, volume=50))
-		to_chat(user, span_notice("?????"))
+		to_chat(user, span_notice("I finish digging."))
 		deconstruct(TRUE)*/
 
 /obj/structure/mineral_door/welder_act(mob/living/user, obj/item/I) //override if the door is supposed to be flammable.
@@ -1156,7 +1156,7 @@
 	lockdifficulty = 3
 
 /obj/structure/mineral_door/bars
-	name = "铁栅门"
+	name = "旧铁栅门"
 	desc = ""
 	icon_state = "bars"
 	openSound = 'sound/foley/doors/ironopen.ogg'
@@ -1292,5 +1292,6 @@
 	keylock = TRUE
 	grant_resident_key = TRUE
 	resident_key_type = /obj/item/roguekey/townie// should be every wretch class - ideally we can get resident_role to accept lists but until then this'll do
-	resident_advclass = list(/datum/advclass/witch, /datum/advclass/wretch/licker, /datum/advclass/wretch/deserter, /datum/advclass/wretch/deserter/maa, /datum/advclass/wretch/berserker, /datum/advclass/wretch/hedgemage, /datum/advclass/wretch/necromancer, /datum/advclass/wretch/heretic, /datum/advclass/wretch/heretic/spy, /datum/advclass/wretch/outlaw, /datum/advclass/wretch/poacher, /datum/advclass/wretch/plaguebearer, /datum/advclass/wretch/pyromaniac, /datum/advclass/wretch/vigilante, /datum/advclass/wretch/blackoakwyrm, /datum/advclass/wretch/antipope, /datum/advclass/wretch/ancientchampion)
+	resident_advclass = list(/datum/advclass/witch, /datum/advclass/wretch/licker, /datum/advclass/wretch/deserter, /datum/advclass/wretch/deserter/maa, /datum/advclass/wretch/berserker, /datum/advclass/wretch/roguemage, /datum/advclass/wretch/necromancer, /datum/advclass/wretch/heretic, /datum/advclass/wretch/heretic/spy, /datum/advclass/wretch/outlaw, /datum/advclass/wretch/poacher, /datum/advclass/wretch/plaguebearer, /datum/advclass/wretch/pyromaniac, /datum/advclass/wretch/vigilante, /datum/advclass/wretch/blackoakwyrm, /datum/advclass/wretch/antipope, /datum/advclass/wretch/ancientchampion)
 	lockid = null //Will be randomized
+

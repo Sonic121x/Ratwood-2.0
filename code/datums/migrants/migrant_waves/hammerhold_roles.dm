@@ -124,11 +124,9 @@
 
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/convert_heretic)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/create_campfire)
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/darkvision)
 
 
+	H.mind.AddSpell(new /datum/action/cooldown/spell/touch/prestidigitation)
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_miracles(H, cleric_tier = CLERIC_T3, passive_gain = CLERIC_REGEN_MAJOR, devotion_limit = CLERIC_REQ_3)	//T3. We are NOT giving you Abyssal Infusion.
 
@@ -297,11 +295,11 @@
 		to_chat(H, span_info("我可以在发言前加上 ,h 来说铁锤堡语。"))
 
 	if(H.mind)
-		var/classes = list("被俘工人" = "Captured Worker", "被俘匠人" = "Captured Artisan", "被俘贵族" = "Captured Noble", "被俘吟游诗人" = "Captured Bard")
+		var/classes = list("被俘劳工", "被俘工匠", "被俘贵族", "被俘吟游诗人")
 		var/classchoice = input(H, "选择你的出身", "可选出身") as anything in classes
 
-		switch(classes[classchoice])
-			if("Captured Worker")
+		switch(classchoice)
+			if("被俘劳工")
 				shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/blue
 				pants = /obj/item/clothing/under/roguetown/trou
 				backl = /obj/item/storage/backpack/rogue/satchel
@@ -319,7 +317,7 @@
 				H.adjust_skillrank(/datum/skill/craft/masonry, 2, TRUE)
 				H.adjust_skillrank(/datum/skill/craft/crafting, 3, TRUE)
 
-			if("Captured Artisan")
+			if("被俘工匠")
 				beltr = /obj/item/rogueweapon/hammer/iron
 				beltl = /obj/item/rogueweapon/tongs
 				gloves = /obj/item/clothing/gloves/roguetown/angle/grenzelgloves/blacksmith
@@ -348,7 +346,7 @@
 				H.adjust_skillrank(/datum/skill/craft/engineering, 3, TRUE)
 				H.adjust_skillrank(/datum/skill/craft/ceramics, 2, TRUE)
 
-			if("Captured Noble")
+			if("被俘贵族")
 				id = /obj/item/clothing/ring/silver
 				if(should_wear_masc_clothes(H))
 					cloak = /obj/item/clothing/cloak/half/red
@@ -364,7 +362,7 @@
 
 				ADD_TRAIT(H, TRAIT_GOODLOVER, TRAIT_GENERIC)
 
-			if("Captured Bard")
+			if("被俘吟游诗人")
 				cloak = /obj/item/clothing/cloak/half
 				shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/blue
 				pants = /obj/item/clothing/under/roguetown/tights/random

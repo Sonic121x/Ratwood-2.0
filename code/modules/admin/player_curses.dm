@@ -495,7 +495,7 @@
 
 		if("make deadite")
 			no_notify_on_false_arg = FALSE
-			effect_text_self = (arg == TRUE ? "我开始渴望脑髓" : "我不再渴望脑髓") ;effect_text_other = (arg == TRUE ? "其身体迅速腐烂" : "其身体迅速恢复原状")
+			effect_text_self = (arg == TRUE ? "我开始渴望吞食脑髓" : "我不再渴望吞食脑髓") ;effect_text_other = (arg == TRUE ? "其身体迅速腐烂" : "其身体迅速恢复原状") 
 		/*if("make vampire")
 			no_notify_on_false_arg = FALSE
 			effect_text_self = (arg == TRUE ? "you begin to crave blood" : "you no longer crave blood") ;effect_text_other = (arg == TRUE ? "they become rather pale" : "life seems to rush into them") 
@@ -517,8 +517,8 @@
 			effect_text_self = "我的身体炸成了碎块";effect_text_other = "其被撕成了碎片"
 
 	// final messages
-	var/self_message   = "[flavor_text_self][trigger_text_self]。[effect_text_self]。"
-	var/others_message = "[flavor_text_other][trigger_text_other]。[effect_text_other]！"
+	var/self_message   = "[flavor_text_self] [trigger_text_self]. [effect_text_self]."
+	var/others_message = "[flavor_text_other] [trigger_text_other]. [effect_text_other]!"
 
 	if(arg == FALSE && no_notify_on_false_arg == TRUE)
 		return
@@ -814,19 +814,19 @@
 		return
 
 	// ---- Curse binding type ----
-	var/list/binding_choices = list("账号诅咒" = "ckey curse", "角色诅咒" = "character curse")
+	var/list/binding_choices = list("账号诅咒", "角色诅咒")
 
 	var/binding = input(
 		src,
 		"将此诅咒绑定到玩家账号，还是仅绑定到当前角色？",
 		"诅咒绑定类型"
 	) as null|anything in binding_choices
-	binding = binding_choices[binding]
+
 	if(!binding)
 		return
 
 	var/key = target.ckey
-	var/is_character_bound = (binding == "character curse")
+	var/is_character_bound = (binding == "角色诅咒")
 	var/character_name = null
 	if(is_character_bound)
 		character_name = target.real_name
@@ -834,19 +834,19 @@
 	// ---- Trigger Selection ----
 	//commented out do not currently have signals
 	var/list/trigger_list = list(
-		"生成时" = "on spawn",
+		"出生时" = "on spawn",
 		"死亡时" = "on death",
 		"被斩首时" = "on beheaded",
-		"被断肢时" = "on dismembered",
-		"入睡时" = "on sleep",
+		"肢体被切断时" = "on dismembered",
+		"睡眠时" = "on sleep",
 		"攻击时" = "on attack",
 		"受到伤害时" = "on receive damage",
-		"施法时" = "on cast spell",
-		"成为法术或神迹目标时" = "on spell or miracle target",
+		"施放法术时" = "on cast spell",
+		"成为法术或奇迹目标时" = "on spell or miracle target",
 		//"on break wall/door/window",
-		"伐树时" = "on cut tree",
+		"砍树时" = "on cut tree",
 		//"on craft",
-		"亲吻时" = "on kiss",
+		"亲吻他人时" = "on kiss",
 		"被亲吻时" = "on kissed",
 		"高潮时" = "on orgasm",
 		//"on bite",
@@ -865,10 +865,10 @@
 		"选择此诅咒的触发事件：",
 		"选择触发条件"
 	) as null|anything in trigger_list
-	trigger = trigger_list[trigger]
+
 	if(!trigger)
 		return
-
+	trigger = trigger_list[trigger]
 	// ---- Chance ----
 	var/chance = input(
 		src,
@@ -883,26 +883,26 @@
 
 	// ---- Effect Selection ----
 	var/list/effect_list = list(
-		"施加增益或减益" = "buff or debuff",
+		"增益或减益" = "buff or debuff",
 		"移除特质" = "remove trait",
 		"添加特质" = "add trait",
 		"尖叫" = "scream",
 		"哭泣" = "cry",
 		"添加试剂" = "add reagent",
-		"增加性兴奋" = "add arousal",
+		"增加性欲" = "add arousal",
 		"高潮" = "orgasm",
 		"缩小性器官" = "shrink sex organs",
 		"增大性器官" = "enlarge sex organs",
-		"增加恶心程度" = "add nausea",
-		"装备爆散" = "clothesplosion",
+		"增加恶心感" = "add nausea",
+		"装备迸飞" = "clothesplosion",
 		"滑倒" = "slip",
-		"奥术牢笼" = "arcyne prison",
-		"转变为尸鬼" = "make deadite",
+		"奥术囚笼" = "arcyne prison",
+		"变为尸鬼" = "make deadite",
 		/*"make vampire",
 		"make werewolf",*/
 		"电击" = "shock",
 		"增加燃烧层数" = "add fire stack",
-		"下体酷刑" = "cbt",
+		"下体折磨" = "cbt",
 		//"easy ambush",
 		//"difficult ambush",
 		"爆炸" = "explode",
@@ -915,10 +915,10 @@
 		"选择此诅咒施加的效果：",
 		"选择效果"
 	) as null|anything in effect_list
-	effect_proc = effect_list[effect_proc]
+
 	if(!effect_proc)
 		return
-
+	effect_proc = effect_list[effect_proc]
 	var/list/effect_args = null
 
 	// ---- Trait selection ----
@@ -1117,10 +1117,10 @@
 		"选择诅咒风格（决定玩家收到的提示）：",
 		"诅咒风格"
 	) as null|anything in flavor_list
-	flavor = flavor_list[flavor]
+
 	if(!flavor)
 		return
-
+	flavor = flavor_list[flavor]
 	// ---- Generate name ----
 	var/cname_safe_effect = replacetext(effect_proc, " ", "_")
 	var/cname_safe_trigger = replacetext(trigger, " ", "_")
@@ -1159,3 +1159,15 @@
 	if(!T)
 		return
 	new /obj/structure/forcefield_weak/arcyne_prison(T)
+
+/obj/effect/temp_visual/trap_wall
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "trap"
+	light_outer_range = 2
+	duration = 1 SECONDS
+	layer = MASSIVE_OBJ_LAYER
+
+/obj/structure/forcefield_weak/arcyne_prison
+	desc = "一道由纯粹奥术之力构成的墙，看起来并不难打破。"
+	name = "奥术囚笼"
+	max_integrity = 50 // Ultra 

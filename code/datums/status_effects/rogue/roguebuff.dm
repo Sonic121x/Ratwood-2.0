@@ -1,5 +1,11 @@
 /datum/status_effect/buff
 	status_type = STATUS_EFFECT_REFRESH
+	/// Buffs sharing this group are mutually exclusive; only the highest exclusive_priority stays.
+	var/exclusive_group = null
+	/// Higher wins within a group; on a tie the incumbent is kept.
+	var/exclusive_priority = 0
+	/// TRUE if refused on-apply by a stronger group member
+	var/rejected_by_exclusion = FALSE
 
 
 /datum/status_effect/buff/drunk
@@ -1838,6 +1844,9 @@
 	mob_effect_icon = 'icons/mob/mob_effects.dmi'
 	mob_effect_icon_state = "eff_riposte"
 	mob_effect_layer = MOB_EFFECT_LAYER_GUARD
+	/// Set TRUE when guard successfully deflects a spell. Halves the guard cooldown as reward.
+	var/deflected_spell = FALSE
+	var/dur
 
 //We have a lot of signals as the ability is meant to be interrupted by or interact with a lot of mechanics.
 /datum/status_effect/buff/clash/on_creation(mob/living/new_owner, ...)
@@ -2369,7 +2378,7 @@
 /datum/status_effect/buff/magicknowledge
 	id = "intelligence"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/knowledge
-	effectedstats = list(STATKEY_INT = 2)
+	effectedstats = list("intelligence" = 2)
 	duration = 10 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/knowledge
@@ -2380,7 +2389,7 @@
 /datum/status_effect/buff/magicstrength
 	id = "strength"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/strength
-	effectedstats = list(STATKEY_STR = 3)
+	effectedstats = list("strength" = 3)
 	duration = 20 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/strength
@@ -2391,7 +2400,7 @@
 /datum/status_effect/buff/magicstrength/lesser
 	id = "lesser strength"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/strength/lesser
-	effectedstats = list(STATKEY_STR = 1)
+	effectedstats = list("strength" = 1)
 	duration = 20 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/strength/lesser
@@ -2403,7 +2412,7 @@
 /datum/status_effect/buff/magicspeed
 	id = "speed"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/speed
-	effectedstats = list(STATKEY_SPD = 3)
+	effectedstats = list("speed" = 3)
 	duration = 20 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/speed
@@ -2414,7 +2423,7 @@
 /datum/status_effect/buff/magicspeed/lesser
 	id = "lesser speed"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/speed/lesser
-	effectedstats = list(STATKEY_SPD = 1)
+	effectedstats = list("speed" = 1)
 	duration = 20 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/speed/lesser
@@ -2425,7 +2434,7 @@
 /datum/status_effect/buff/magicwillpower
 	id = "willpower"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/willpower
-	effectedstats = list(STATKEY_WIL = 3)
+	effectedstats = list("willpower" = 3)
 	duration = 20 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/willpower
@@ -2436,7 +2445,7 @@
 /datum/status_effect/buff/magicwillpower/lesser
 	id = "lesser willpower"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/willpower/lesser
-	effectedstats = list(STATKEY_WIL = 1)
+	effectedstats = list("willpower" = 1)
 	duration = 20 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/willpower/lesser
@@ -2448,7 +2457,7 @@
 /datum/status_effect/buff/magicconstitution
 	id = "constitution"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/constitution
-	effectedstats = list(STATKEY_CON = 3)
+	effectedstats = list("constitution" = 3)
 	duration = 20 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/constitution
@@ -2459,7 +2468,7 @@
 /datum/status_effect/buff/magicconstitution/lesser
 	id = "lesser constitution"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/constitution/lesser
-	effectedstats = list(STATKEY_CON = 1)
+	effectedstats = list("constitution" = 1)
 	duration = 20 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/constitution/lesser
@@ -2470,7 +2479,7 @@
 /datum/status_effect/buff/magicperception
 	id = "perception"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/perception
-	effectedstats = list(STATKEY_PER = 3)
+	effectedstats = list("perception" = 3)
 	duration = 20 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/perception
@@ -2481,7 +2490,7 @@
 /datum/status_effect/buff/magicperception/lesser
 	id = "lesser perception"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/perception/lesser
-	effectedstats = list(STATKEY_PER = 1)
+	effectedstats = list("perception" = 1)
 	duration = 20 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/perception/lesser
@@ -2492,7 +2501,7 @@
 /datum/status_effect/buff/nocblessing
 	id = "nocblessing"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/nocblessing
-	effectedstats = list(STATKEY_INT = 1)
+	effectedstats = list("intelligence" = 1)
 	duration = 30 MINUTES
 
 /atom/movable/screen/alert/status_effect/buff/nocblessing
@@ -2502,7 +2511,7 @@
 /datum/status_effect/buff/goodloving
 	id = "Good Loving"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/goodloving
-	effectedstats = list(STATKEY_LCK = 2)
+	effectedstats = list("fortune" = 2)
 	duration = 60 MINUTES //Note, you can only benefit from this buff ONCE
 
 /atom/movable/screen/alert/status_effect/buff/goodloving
@@ -2621,6 +2630,134 @@
 /atom/movable/screen/alert/status_effect/buff/oath_ring
 	name = "誓印加身"
 	desc = "只要这份提醒仍在身边，誓言就会推动我前进。"
+
+/datum/status_effect/buff/phase
+	id = "phase"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/phase
+	effectedstats = list(STATKEY_SPD = 4)
+	status_type = STATUS_EFFECT_UNIQUE
+	duration = 5 SECONDS
+	var/original_alpha = 255
+
+/datum/status_effect/buff/phase/on_creation(mob/living/new_owner, duration_mult = 1)
+	if(ishuman(new_owner))
+		var/mob/living/carbon/human/H = new_owner
+		switch(H.highest_ac_worn())
+			if(ARMOR_CLASS_NONE)
+				duration = 5 SECONDS
+				effectedstats[STATKEY_SPD] = 4
+			if(ARMOR_CLASS_LIGHT)
+				duration = 4 SECONDS
+				effectedstats[STATKEY_SPD] = 3
+			if(ARMOR_CLASS_MEDIUM)
+				duration = 3 SECONDS
+				effectedstats[STATKEY_SPD] = 2
+			if(ARMOR_CLASS_HEAVY)
+				duration = 2 SECONDS
+				effectedstats[STATKEY_SPD] = 1
+	duration *= duration_mult
+	. = ..()
+
+/datum/status_effect/buff/phase/on_apply()
+	owner.pass_flags |= PASSMOB
+	ADD_TRAIT(owner, TRAIT_GRABIMMUNE, TRAIT_STATUS_EFFECT(id))
+	original_alpha = owner.alpha
+	animate(owner, alpha = 180, time = 2)
+	. = ..()
+
+/datum/status_effect/buff/phase/on_remove()
+	owner.pass_flags &= ~PASSMOB
+	REMOVE_TRAIT(owner, TRAIT_GRABIMMUNE, TRAIT_STATUS_EFFECT(id))
+	animate(owner, alpha = original_alpha, time = 2)
+	. = ..()
+
+/atom/movable/screen/alert/status_effect/buff/phase
+	name = "相位穿梭"
+	desc = "我正穿行于不同界域之间！"
+	icon_state = "daggerdash"
+
+/datum/status_effect/buff/adrenaline_rush/ranged
+	effectedstats = list(STATKEY_SPD = 2)
+
+// When a spell is blocked and a weapon isn't logically involved. It will deflect, blocks the spell, but will not remotely disarm them, since that make no sense. I.e. Dragons Breath.
+/datum/status_effect/buff/clash/limbguard/proc/block_spell(mob/living/target, mob/living/attacker, spell_name = "法术")
+	if(!is_active || target != owner)
+		return FALSE
+	do_sparks(2, TRUE, get_turf(owner))
+	playsound(owner, 'sound/combat/limbguard_struck.ogg', 100, TRUE)
+	owner.visible_message(span_warning("[owner]以防护抵挡[spell_name]，护住了[owner.p_their()]的[parse_zone(protected_zone)]！"), \
+		span_notice("我的防守挡住了[spell_name]！"))
+	return TRUE
+
+//Unlike a weapon strike, there's nothing to disarm here -- we just wrench the guarded limb free and rough them up for it.
+/datum/status_effect/buff/clash/limbguard/process_bite(mob/living/parent, mob/user)
+	if(!is_active || !ishuman(user))
+		return
+	var/mob/living/carbon/human/HM = user
+	if(check_zone(HM.zone_selected) != protected_zone)
+		return
+	apply_debuffs(HM)
+	counter_bite(HM)
+	playsound(owner, 'sound/combat/limbguard_struck.ogg', 100, TRUE)
+	if(HM.mind)
+		owner.stamina_add(-(owner.max_stamina / 3))
+		owner.energy_add((owner.max_energy / 5))
+	remove_self()
+	return COMPONENT_HAND_NO_ATTACK
+
+/datum/status_effect/buff/clash/limbguard/proc/counter_bite(mob/living/carbon/human/target)
+	owner.visible_message("<span class='crit'><b>暴击！</b>[owner]灵巧地反制[target]的撕咬，以雷霆般的猛击粉碎了[target.p_their()]的下颌！</span>")
+	owner.flash_fullscreen("whiteflash")
+	target.flash_fullscreen("whiteflash")
+	var/obj/item/bodypart/dumb_biter_skull = target.get_bodypart(BODY_ZONE_HEAD)
+	dumb_biter_skull.add_wound(/datum/wound/fracture/mouth)
+	var/datum/effect_system/spark_spread/S = new()
+	var/turf/front = get_step(owner, owner.dir)
+	S.set_up(1, 1, front)
+	S.start()
+
+//We tried to cheese it. Generally reserved for egregious things, like attacking / casting while its active.
+/datum/status_effect/buff/clash/proc/guard_disrupted_cheesy()
+	if(ishuman(owner))
+		var/mob/living/carbon/human/H = owner
+		H.bad_guard("我的专注受到了<b>严重</b>干扰！")
+
+/datum/status_effect/buff/clash/proc/process_bite(mob/living/carbon/human/parent, mob/living/user)
+	if(!ishuman(user))
+		return
+	var/obj/item/I = parent.get_active_held_item()
+	parent.process_clash(user, I, null, is_bite = TRUE)
+	return COMPONENT_HAND_NO_ATTACK
+
+/datum/status_effect/buff/emberward
+	id = "emberward"
+	duration = 1 SECONDS
+	alert_type = null
+
+/// Brief buffer after a successful deflection (guard vs spells, projectiles, or weapon specials).
+/// While active, subsequent deflectable attacks are also deflected without requiring guard.
+/datum/status_effect/buff/parry_buffer
+	id = "parry_buffer"
+	duration = 1 SECONDS
+	alert_type = /atom/movable/screen/alert/status_effect/buff/parry_buffer
+
+/datum/status_effect/buff/parry_buffer/on_apply()
+	. = ..()
+	RegisterSignal(owner, COMSIG_ATOM_BULLET_ACT, PROC_REF(buffer_struck_by_projectile), TRUE)
+
+/datum/status_effect/buff/parry_buffer/on_remove()
+	UnregisterSignal(owner, COMSIG_ATOM_BULLET_ACT)
+	. = ..()
+
+/datum/status_effect/buff/parry_buffer/proc/buffer_struck_by_projectile(datum/source, obj/projectile/P)
+	if(P.guard_deflectable)
+		if(P.on_guard_deflect(owner, silent = TRUE))
+			return COMPONENT_ATOM_BLOCK_BULLET
+
+/atom/movable/screen/alert/status_effect/buff/parry_buffer
+	name = "招架"
+	desc = span_notice("我的防守留下了短暂的偏转时机。")
+	icon_state = "clash"
 
 /atom/movable/screen/alert/status_effect/buff/hearty_drinker
 	name = "豪饮者"

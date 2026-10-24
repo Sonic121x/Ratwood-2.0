@@ -1,0 +1,93 @@
+/datum/action/cooldown/spell/mass_crush
+	button_icon = 'icons/mob/actions/mage_kinesis.dmi'
+	name = "群体重压"
+	expose_caster_on_deflect = FALSE
+	desc = "将重力压缩于广阔区域，碾压其中所有人。\
+	法术预兆明显，但对未能逃离者极具毁灭性。\
+	以极强力量穿透护甲，短暂减速被击中的目标。"
+	button_icon_state = "crush"
+	sound = 'sound/magic/repulse.ogg'
+	spell_color = GLOW_COLOR_KINESIS
+	glow_intensity = GLOW_INTENSITY_VERY_HIGH
+	attunement_school = ASPECT_NAME_KINESIS
+
+	click_to_activate = TRUE
+	cast_range = SPELL_RANGE_GROUND
+
+	primary_resource_type = SPELL_COST_STAMINA
+	primary_resource_cost = SPELLCOST_ULTIMATE
+
+	invocations = list("万物，碾碎！")
+	invocation_type = INVOCATION_SHOUT
+
+	charge_required = TRUE
+	weapon_cast_penalized = TRUE
+	charge_time = CHARGETIME_HEAVY
+	charge_swingdelay_type = SWINGDELAY_CANCEL
+	hold_drain = 1
+	charge_slowdown = CHARGING_SLOWDOWN_HEAVY
+	charge_sound = 'sound/magic/charging.ogg'
+	cooldown_time = 60 SECONDS
+
+	associated_skill = /datum/skill/magic/arcane
+	spell_impact_intensity = SPELL_IMPACT_HIGH
+
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
+
+	var/telegraph_delay = TELEGRAPH_HIGH_IMPACT
+	var/crush_damage = 60
+	displayed_damage = 60
+	var/crush_intdamage_factor = 2
+	var/aoe_range = 2 // 5x5
+
+/datum/action/cooldown/spell/mass_crush/cast(atom/cast_on)
+	. = ..()
+	var/mob/living/carbon/human/H = owner
+	if(!istype(H))
+		return FALSE
+
+	var/turf/centerpoint = get_turf(cast_on)
+	if(!centerpoint)
+		return FALSE
+
+	var/turf/source_turf = get_turf(H)
+	if(centerpoint.z > H.z)
+		source_turf = get_step_multiz(source_turf, UP)
+	if(centerpoint.z < H.z)
+		source_turf = get_step_multiz(source_turf, DOWN)
+	if(!(centerpoint in get_hear(cast_range, source_turf)))
+		to_chat(H, span_warning("我无法向看不见的地方施法！"))
+		return FALSE
+
+	for(var/turf/T in range(aoe_range, centerpoint))
+		new /obj/effect/temp_visual/gravity_trap(T)
+
+	playsound(centerpoint, 'sound/magic/gravity.ogg', 80, TRUE, soundping = FALSE)
+	addtimer(CALLBACK(src, PROC_REF(mass_crush_strike), centerpoint, H), telegraph_delay)
+	return TRUE
+
+/datum/action/cooldown/spell/mass_crush/proc/mass_crush_strike(turf/centerpoint, mob/living/carbon/human/caster)
+	if(QDELETED(src) || QDELETED(owner))
+		return
+	for(var/turf/T in range(aoe_range, centerpoint))
+		new /obj/effect/temp_visual/kinetic_blast(T)
+		for(var/mob/living/L in T.contents)
+			if(L.anti_magic_check())
+				L.visible_message(span_warning("重力在[L]周围消散！"))
+				playsound(get_turf(L), 'sound/magic/magic_nulled.ogg', 100)
+				continue
+			if(spell_guard_check(L, TRUE))
+				L.visible_message(span_warning("[L]在碾压力下稳立不倒！"))
+				continue
+
+			var/target_zone = pick(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM)
+			if(arcyne_strike(caster, L, null, crush_damage, target_zone, BCLASS_BLUNT, \
+				spell_name = "群体重压", damage_type = BRUTE, \
+				skip_animation = TRUE, \
+				intdamage_factor = crush_intdamage_factor) == ARCYNE_STRIKE_WARDED)
+				continue
+			L.Slowdown(1)
+			to_chat(L, span_userdanger("重力在我周围压缩！"))
+			new /obj/effect/temp_visual/spell_impact(get_turf(L), spell_color, spell_impact_intensity)
+
+	playsound(centerpoint, 'sound/magic/repulse.ogg', 100, TRUE, soundping = FALSE)

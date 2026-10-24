@@ -1,29 +1,29 @@
 /* ALMAH & SPELLBLADE ARCHETYPE EXCLUSIVE
- * Do not make this learnable by wizards in general. It is part of spellblade's identity.
- * Design is that this is an Arcyne Bolt sidegrade that don't works well as a DPS spell
- * And is meant to be weaved in between attacks in melee to keep pressure
- * It can access all damage types and can crit, like Arcyne Bolt.  
+	Do not make this learnable by wizards in general. It is part of spellblade's identity.
+	Design is that this is an Arcyne Bolt sidegrade that don't works well as a DPS spell
+	And is meant to be weaved in between attacks in melee to keep pressure
+	It can access all damage types and can crit, like Arcyne Bolt.
 */
 
 /obj/effect/proc_holder/spell/invoked/projectile/airblade
 	name = "风刃"
-	desc = "挥动武器斩开空气，在空中凝成一道可远程斩敌的奥术风刃。\n\
-	伤害类型取决于你当前的攻击意图。默认为劈砍；若为钝击/猛砸则改为钝击，若为刺击/镐刺则改为穿刺。\n\
-	对头脑简单的生物伤害提高 50%。"
+	desc = "用武器斩开空气，形成能远程攻击敌人的奥术利刃。为目标叠加一层<b>奥术印记</b>。\n\
+	伤害类型随当前意图变化：默认切割，钝击／砸击时为钝伤，突刺／刺缝时为刺伤。"
 	clothes_req = FALSE
 	range = 6
 	projectile_type = /obj/projectile/energy/airblade
 	overlay_state = "air_blade"
 	sound = list('sound/combat/wooshes/bladed/wooshsmall (1).ogg')
 	active = FALSE
-	releasedrain = 20 // Same stamina cost as Arcyne bolt
+	releasedrain = SPELLCOST_MINOR_PROJECTILE
 	chargedrain = 0
 	chargetime = 0
-	recharge_time = 8 SECONDS // 2x the recharge of Arcyne Bolt so not spammable
+	recharge_time = 8 SECONDS //2x longer recharge than Arcyne Bolt so not spammable
 	warnie = "spellwarning"
 	no_early_release = TRUE
 	movement_interrupt = FALSE
 	spell_tier = 2
+	spell_impact_intensity = SPELL_IMPACT_LOW
 	invocations = list("风刃，出鞘！")
 	invocation_type = "shout"
 	glow_color = GLOW_COLOR_ARCANE
@@ -32,6 +32,7 @@
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	cost = 3 // Just in case
+	human_req = TRUE
 
 /obj/effect/proc_holder/spell/invoked/projectile/airblade/cast(list/targets, mob/user = user)
 	var/mob/living/carbon/human/H = user
@@ -58,23 +59,27 @@
 
 
 /obj/projectile/energy/airblade
-	name = "风刃（斩）"
+	name = "风刃（切割）"
 	icon_state = "air_blade_cut"
+	guard_deflectable = TRUE
+	expose_caster_on_deflect = TRUE
 	damage = 40
+	flag = "slash"
 	woundclass = BCLASS_CUT
 	nodamage = FALSE
-	npc_simple_damage_mult = 1.5 // Makes it more effective against NPCs.
 	hitsound = 'sound/combat/hits/bladed/smallslash (1).ogg'
 	speed = 1
 
 /obj/projectile/energy/airblade/blunt
-	name = "风刃（钝）"
+	name = "风刃（钝击）"
 	icon_state = "air_blade_blunt"
+	flag = "blunt"
 	woundclass = BCLASS_BLUNT
+	intdamfactor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
 	hitsound = 'sound/combat/hits/blunt/shovel_hit2.ogg' // Different sound for blunt
 
 /obj/projectile/energy/airblade/stab
-	name = "风刃（刺）"
+	name = "风刃（突刺）"
 	icon_state = "air_blade_stab"
 	woundclass = BCLASS_STAB
 	hitsound = 'sound/combat/hits/bladed/genstab (3).ogg' // Different sound for stab

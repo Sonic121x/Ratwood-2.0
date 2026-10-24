@@ -577,6 +577,11 @@
 	stressadd = 3
 	desc = span_red("我没能按时还清债务。")
 
+/datum/stressevent/archivist_shushed
+	timer = 1 MINUTES
+	stressadd = 4
+	desc = span_red("档案管理员让我闭嘴！")
+
 /datum/stressevent/sunlit
 	timer = 1 MINUTES
 	stressadd = 2
@@ -597,3 +602,5 @@
 
 /datum/stressevent/prejudice/underdark
 	desc = span_red("那个地底居民就该待在地下，那才是它该待的地方。")
+
+// this generally only happens if you're below 10 FOR, this is a little nudge to work on your luck stat

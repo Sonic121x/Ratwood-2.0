@@ -1,6 +1,6 @@
 
 /datum/supply_pack/rogue/Mage
-	group = "野法师" // English: Mage
+	group = "Mage"
 	crate_name = "知识的馈赠"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
@@ -170,7 +170,7 @@
 /datum/supply_pack/rogue/Mage/unfinbook
 	name = "装订卷轴纸"
 	cost = 10
-	contains = list(/obj/item/spellbook_unfinished)
+	contains = list(/obj/item/rogueweapon/spellbook)
 
 /datum/supply_pack/rogue/Mage/nomag
 	name = "反魔之戒"

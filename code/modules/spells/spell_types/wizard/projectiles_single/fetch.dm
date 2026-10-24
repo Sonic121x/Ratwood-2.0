@@ -1,35 +1,56 @@
-/obj/effect/proc_holder/spell/invoked/projectile/fetch
+/datum/action/cooldown/spell/projectile/fetch
 	name = "牵引术"
-	desc = "射出一道魔力飞矢，将命中的目标拉向施法者。"
-	clothes_req = FALSE
-	range = 15
+	desc = "射出魔法箭，将独立放置的物品拉向施法者。对活物无效。"
+	button_icon = 'icons/mob/actions/roguespells.dmi'
+	button_icon_state = "fetch"
+	sound = 'sound/magic/magnet.ogg'
+	spell_color = GLOW_COLOR_ARCANE
+	glow_intensity = GLOW_INTENSITY_LOW
+
+	click_to_activate = TRUE
+	cast_range = 15
+
+	primary_resource_type = SPELL_COST_STAMINA
+	primary_resource_cost = SPELLCOST_MINOR_PROJECTILE
+
+	invocations = list("收回小物")
+	invocation_type = INVOCATION_WHISPER
+
+	charge_required = FALSE
+	cooldown_time = 8 SECONDS
+
 	projectile_type = /obj/projectile/magic/fetch
-	sound = list('sound/magic/magnet.ogg')
-	active = FALSE
-	human_req = TRUE
-	releasedrain = 20
-	chargedrain = 0
-	chargetime = 0
-	recharge_time = 15 SECONDS
-	warnie = "spellwarning"
-	overlay_state = "fetch"
-	no_early_release = TRUE
-	charging_slowdown = 1
-	spell_tier = 2
-	invocations = list("牵引归来。")
-	invocation_type = "whisper"
-	hide_charge_effect = TRUE // essential for rogue mage
-	chargedloop = /datum/looping_sound/invokegen
+
 	associated_skill = /datum/skill/magic/arcane
-	cost = 2 // Combat spell, but of slighlty less obvious use
-	xp_gain = TRUE
+	spell_tier = 1
+	spell_impact_intensity = SPELL_IMPACT_LOW
+	point_cost = 1
+
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN
+	allow_cross_z = FALSE
+
+/obj/projectile/magic/fetch
+	name = "牵引魔箭"
+	icon_state = "cursehand0"
+	flag = "blunt"
+	range = 15
+	cannot_cross_z = TRUE
 
 /obj/projectile/magic/fetch/on_hit(target)
 	. = ..()
-	if(ismob(target))
-		var/mob/M = target
-		if(M.anti_magic_check())
-			visible_message(span_warning("[target] 弹开了这道牵引术！"))
-			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
-			qdel(src)
-			return BULLET_ACT_BLOCK
+	var/atom/throw_target = get_step(firer, get_dir(firer, target))
+	if(isliving(target))
+		var/mob/living/L = target
+		L.visible_message(span_warning("[src]触及[target]时消失！"))
+		return BULLET_ACT_BLOCK
+	else
+		if(isitem(target))
+			var/obj/item/I = target
+			if(I.anchored || I.move_resist >= MOVE_FORCE_STRONG)
+				return
+			var/mob/living/carbon/human/carbon_firer
+			if (ishuman(firer))
+				carbon_firer = firer
+				if (carbon_firer?.can_catch_item())
+					throw_target = get_turf(firer)
+			I.throw_at(throw_target, 200, 3)

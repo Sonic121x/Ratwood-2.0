@@ -9,7 +9,6 @@
 	mob_traits = list(TRAIT_COMMIE, TRAIT_MATTHIOS_EYES, TRAIT_SEEPRICES_SHITTY)
 	miracles = list(/obj/effect/proc_holder/spell/targeted/touch/orison					= CLERIC_ORI,
 					/obj/effect/proc_holder/spell/invoked/appraise						= CLERIC_ORI,
-					/obj/effect/proc_holder/spell/targeted/touch/lesserknock/miracle	= CLERIC_T0,
 					/obj/effect/proc_holder/spell/invoked/transact						= CLERIC_T0,
 					/obj/effect/proc_holder/spell/invoked/lesser_heal 					= CLERIC_T1,
 					/obj/effect/proc_holder/spell/invoked/blood_heal					= CLERIC_T1,
@@ -24,7 +23,7 @@
 		"马西奥斯是我的主！",
 	)
 	storyteller = /datum/storyteller/matthios
-	sign_icon_state = "sign_Matthios"
+
 // When near coin of at least 100 mammon, zchurch, bad-cross, or ritual talk
 /datum/patron/inhumen/matthios/can_pray(mob/living/follower)
 	. = ..()

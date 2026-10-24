@@ -608,7 +608,7 @@
 
 /obj/item/clothing/head/roguetown/scarf/MiddleClick(mob/user)
 	overarmor = !overarmor
-	to_chat(user, span_info("我把\the [src][overarmor ? "戴在头发里面" : "戴在头发外面"]。"))
+	to_chat(user, span_info("我把[src]戴在头发[overarmor ? "下面" : "上面"]。"))
 	if(overarmor)
 		alternate_worn_layer = HOOD_LAYER //Below Hair Layer
 	else
@@ -632,5 +632,3 @@
 	color = "#262927"
 	detail_color = "#FFFFFF"
 	altdetail_color = "#9c2525"
-
-

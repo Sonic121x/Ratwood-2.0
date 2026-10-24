@@ -63,8 +63,8 @@
 /datum/component/z121_highwayman/process()
 	enforce_armor()
 	for(var/datum/action/z121_highwayman/A as anything in techniques)
-		A.UpdateButtonIcon()
-	management?.UpdateButtonIcon()
+		A.build_all_button_icons()
+	management?.build_all_button_icons()
 
 /datum/component/z121_highwayman/proc/on_equipment_changed()
 	SIGNAL_HANDLER
@@ -133,7 +133,7 @@
 	for(var/datum/action/z121_highwayman/A as anything in techniques)
 		if(!A.finisher)
 			A.ready_at = 0
-			A.UpdateButtonIcon()
+			A.build_all_button_icons()
 
 /datum/component/z121_highwayman/proc/valid_melee_weapon(obj/item/I)
 	if(!I || !(istype(I, /obj/item/rogueweapon) || istype(I, /obj/item/gun)))
@@ -246,9 +246,9 @@
 	return TRUE
 
 /datum/action/z121_highwayman
-	icon_icon = 'modular_z121/icon/custompell.dmi'
+	button_icon = 'modular_z121/icon/custompell.dmi'
 	button_icon_state = "spell"
-	check_flags = AB_CHECK_RESTRAINED|AB_CHECK_STUN|AB_CHECK_CONSCIOUS
+	check_flags = AB_CHECK_HANDS_BLOCKED|AB_CHECK_IMMOBILE|AB_CHECK_CONSCIOUS
 	var/skill_id
 	var/finisher = FALSE
 	var/cooldown = 9 SECONDS
@@ -266,7 +266,7 @@
 		desc += " 准备时最多免费装填一次；未命中会保留招式，但再次射击需要正常装填。"
 	..()
 
-/datum/action/z121_highwayman/UpdateButtonIcon(status_only = FALSE, force = FALSE)
+/datum/action/z121_highwayman/update_button_status(atom/movable/screen/movable/action_button/button, force = FALSE)
 	. = ..()
 	if(button)
 		button.maptext = world.time < ready_at ? MAPTEXT("[ceil((ready_at - world.time) / 10)]") : ""
@@ -359,11 +359,11 @@
 /datum/action/z121_highwayman_manage
 	name = "收势"
 	desc = "查看架势；取消主手武器的待触发技能，不退还冷却或架势。尚未选齐技能时继续选择。"
-	icon_icon = 'modular_z121/icon/custompell.dmi'
+	button_icon = 'modular_z121/icon/custompell.dmi'
 	button_icon_state = "spell0"
 	check_flags = AB_CHECK_CONSCIOUS
 
-/datum/action/z121_highwayman_manage/UpdateButtonIcon(status_only = FALSE, force = FALSE)
+/datum/action/z121_highwayman_manage/update_button_status(atom/movable/screen/movable/action_button/button, force = FALSE)
 	. = ..()
 	var/mob/living/carbon/human/H = owner
 	if(button && istype(H))

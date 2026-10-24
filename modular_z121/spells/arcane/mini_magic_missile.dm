@@ -1,28 +1,24 @@
-/obj/effect/proc_holder/spell/invoked/projectile/mini_magic_missile
+/datum/action/cooldown/spell/z121/invoked/projectile/mini_magic_missile
 	name = "小魔弹术"
 	desc = "发射一颗小型魔弹，击中目标后造成轻度钝击伤害。"
-	overlay_state = "force_dart"
-	range = 5
+	button_icon_state = "force_dart"
+	cast_range = 5
 	projectile_type = /obj/projectile/energy/mini_magic_missile
 	sound = list('sound/magic/vlightning.ogg')
-	releasedrain = 5
-	chargedrain = 0
-	chargetime = 0
-	recharge_time = 0.4 SECONDS
-	human_req = TRUE
-	warnie = "spellwarning"
-	no_early_release = TRUE
-	movement_interrupt = FALSE
+	primary_resource_cost = 5
+	hold_drain = 0
+	charge_time = 0
+	charge_required = FALSE
+	cooldown_time = 0.4 SECONDS
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
 	spell_tier = 2
 	invocations = list("微芒，成弹！")
 	invocation_type = "whisper"
-	glow_color = GLOW_COLOR_ARCANE
+	spell_color = GLOW_COLOR_ARCANE
 	glow_intensity = GLOW_INTENSITY_LOW
-	charging_slowdown = 0
-	chargedloop = null
+	charge_slowdown = 0
 	associated_skill = /datum/skill/magic/arcane
-	cost = 1
-	miracle = FALSE
+	point_cost = 1
 
 /obj/projectile/energy/mini_magic_missile
 	name = "小魔弹"

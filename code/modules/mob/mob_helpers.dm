@@ -338,7 +338,7 @@
 				var/chance = rand(0, 99)
 				// 25% chance to add a filler word as the character stumbles over the word
 				if(chance < 30 && message_split.len > 2)
-					new_message += pick("uh...", "um...")
+					new_message += pick("呃……", "嗯……")
 					// 1/6 chance of giving up on the sentence entirely
 					if (chance < 5)
 						break
@@ -619,6 +619,10 @@
 	if(input != QINTENT_SPELL)
 		if(ranged_ability)
 			ranged_ability.deactivate()
+		// Also clear new-style cooldown spells set on click_intercept
+		var/datum/action/cooldown/active_cooldown = click_intercept
+		if(istype(active_cooldown))
+			active_cooldown.unset_click_ability(src, refund_cooldown = TRUE)
 	switch(input)
 		if(QINTENT_KICK)
 			if(mmb_intent?.type == INTENT_KICK)
@@ -626,6 +630,7 @@
 				input = null
 				mmb_intent = null
 			else
+				qdel(mmb_intent)
 				mmb_intent = new INTENT_KICK(src)
 		if(QINTENT_SPECIAL)
 			if(mmb_intent?.type == INTENT_SPECIAL)
@@ -633,6 +638,7 @@
 				input = null
 				mmb_intent = null
 			else
+				qdel(mmb_intent)
 				mmb_intent = new INTENT_SPECIAL(src)
 		if(QINTENT_BITE)
 			if(mmb_intent?.type == INTENT_BITE)
@@ -640,6 +646,7 @@
 				input = null
 				mmb_intent = null
 			else
+				qdel(mmb_intent)
 				mmb_intent = new INTENT_BITE(src)
 		if(QINTENT_JUMP)
 			if(mmb_intent?.type == INTENT_JUMP)
@@ -647,6 +654,7 @@
 				input = null
 				mmb_intent = null
 			else
+				qdel(mmb_intent)
 				mmb_intent = new INTENT_JUMP(src)
 		if(QINTENT_GIVE)
 			if(mmb_intent?.type == INTENT_GIVE)
@@ -654,6 +662,7 @@
 				input = null
 				mmb_intent = null
 			else
+				qdel(mmb_intent)
 				mmb_intent = new INTENT_GIVE(src)
 		if(QINTENT_SPELL)
 			if(mmb_intent)
@@ -952,8 +961,8 @@
 		if((brute_heal > 0 && affecting.brute_dam > 0) || (burn_heal > 0 && affecting.burn_dam > 0))
 			if(affecting.heal_damage(brute_heal, burn_heal, 0, BODYPART_ROBOTIC))
 				H.update_damage_overlays()
-			user.visible_message(span_notice("[user]修好了[H]的[affecting.name]上的一些[dam ? "凹痕" : "烧坏的线路"]。"), \
-			span_notice("我修好了[H == user ? "自己" : "[H]"]的[affecting.name]上的一些[dam ? "凹痕" : "烧坏的线路"]。"))
+			user.visible_message(span_notice("[user]修复了[H]的[affecting.name]上的部分[dam ? "凹痕" : "烧坏的线路"]。"), \
+			span_notice("我修复了[H == user ? "自己" : "[H]"]的[affecting.name]上的部分[dam ? "凹痕" : "烧坏的线路"]。"))
 			return 1 //successful heal
 		else
 			to_chat(user, span_warning("[affecting]已经完好无损了！"))
@@ -980,8 +989,8 @@
 /proc/offer_control(mob/M)
 	to_chat(M, "你的角色控制权已向死亡玩家开放认领。")
 	if(usr)
-		log_admin("[key_name(usr)] has offered control of ([key_name(M)]) to ghosts.")
-		message_admins("[key_name_admin(usr)] has offered control of ([ADMIN_LOOKUPFLW(M)]) to ghosts")
+		log_admin("[key_name(usr)] 向幽灵开放了 [key_name(M)] 的控制权。")
+		message_admins("[key_name_admin(usr)] 向幽灵开放了 [ADMIN_LOOKUPFLW(M)] 的控制权。")
 	var/poll_message = "你想扮演[M.real_name]吗？"
 	if(M.mind && M.mind.assigned_role)
 		poll_message = "[poll_message] 职业：[M.mind.assigned_role]。"
@@ -996,7 +1005,7 @@
 	if(LAZYLEN(candidates))
 		var/mob/C = pick(candidates)
 		to_chat(M, "一名幽灵已接管你的角色！")
-		message_admins("[key_name_admin(C)] has taken control of ([ADMIN_LOOKUPFLW(M)])")
+		message_admins("[key_name_admin(C)] 接管了 [ADMIN_LOOKUPFLW(M)]。")
 		M.ghostize(0,drawskip=TRUE)
 		M.key = C.key
 		if(!QDELETED(C))
@@ -1004,7 +1013,7 @@
 		return TRUE
 	else
 		to_chat(M, "没有幽灵愿意接管你的角色。")
-		message_admins("No ghosts were willing to take control of [ADMIN_LOOKUPFLW(M)])")
+		message_admins("没有幽灵愿意接管 [ADMIN_LOOKUPFLW(M)]。")
 		return FALSE
 
 ///Is the mob a flying mob

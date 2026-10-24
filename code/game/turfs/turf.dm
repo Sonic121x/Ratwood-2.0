@@ -63,6 +63,8 @@
 	var/platform_atom_count = 0
 
 	vis_flags = VIS_INHERIT_PLANE|VIS_INHERIT_ID
+	/// Cached sum of ai_path_weight from objs on this turf
+	var/ai_path_weight = 0
 
 /turf/vv_edit_var(var_name, new_value)
 	var/static/list/banned_edits = list("x", "y", "z")
@@ -497,7 +499,7 @@
 			// A baseturfs list over 100 members long is silly
 			// Because of how this is all structured it will only runtime/message once per type
 			stack_trace("A turf <[type]> created a baseturfs list over 100 members long. This is most likely an infinite loop.")
-			message_admins("A turf <[type]> created a baseturfs list over 100 members long. This is most likely an infinite loop.")
+			message_admins("地块 <[type]> 创建的 baseturfs 列表超过 100 个元素，很可能存在无限循环。")
 			break
 		new_baseturfs.Insert(1, next_target)
 		current_target = next_target
@@ -703,3 +705,4 @@
 //Should return new turf
 /turf/proc/Melt()
 	return ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
+

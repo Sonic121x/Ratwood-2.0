@@ -5,8 +5,8 @@
 //           恢复量随“施法者”的奥术技能等级缩放；同时给目标施加一个固定时长的
 //           心情负面（压力）事件，提示：“我难道只能以魔法果腹吗？”。
 //
-// 选取/蓄力方式：完全沿用 flight.dm 的做法——以 /spell/invoked 为基类，靠点击
-//           选取目标（targets[1]），蓄力由基类 InterceptClickOn 依据 chargetime
+// 选取/蓄力方式：完全沿用 flight.dm 的做法——以 /datum/action/cooldown/spell/z121/invoked 为基类，靠点击
+//           选取目标（targets[1]），蓄力由基类 新版鼠标蓄力流程 依据 charge_time
 //           校验完成；不使用弹窗，也不使用 do_after。
 //
 // 约束：所有代码都只存在于 modular_z121 内，仅“调用”主线已有系统
@@ -20,8 +20,8 @@
 
 // ===== 可调参数（文件末尾统一 #undef，避免污染全局命名空间）=====
 #define SATIETY_MANA_COST       4             // 法力 / 法术点消耗（cost）
-#define SATIETY_RESOURCE_COST   20            // 每次施放抽取的疲劳/耐力（releasedrain）
-#define SATIETY_CHANNEL_TIME    (3 SECONDS)   // 蓄力时长（由 invoked 基类的点击拦截按 chargetime 校验）
+#define SATIETY_RESOURCE_COST   20            // 每次施放抽取的疲劳/耐力（primary_resource_cost）
+#define SATIETY_CHANNEL_TIME    (3 SECONDS)   // 蓄力时长（由 invoked 基类的点击拦截按 charge_time 校验）
 #define SATIETY_COOLDOWN        (30 SECONDS)  // 成功施放后的冷却（30 秒）
 #define SATIETY_TARGET_RANGE    7             // 点击选取目标的最大距离（range）
 
@@ -37,35 +37,30 @@
 // ===========================================================================
 // 法术本体
 // ---------------------------------------------------------------------------
-// 选用 /spell/invoked 作为基类（与 flight.dm 一致）：点击图标后进入“点选目标”模式，
+// 选用 /datum/action/cooldown/spell/z121/invoked 作为基类（与 flight.dm 一致）：点击图标后进入“点选目标”模式，
 // 蓄力满后点击某个生物即对其生效；点自己即作用于自身，点他人即作用于他人。
 // 这样既能“对自己或他人施放”，又不需要弹窗或 do_after。
 // ===========================================================================
-/obj/effect/proc_holder/spell/invoked/magic_satiety
+/datum/action/cooldown/spell/z121/invoked/magic_satiety
 	name = "魔力果腹"
 	desc = "一道以魔力充饥的法术。除非身边再无任何食物，否则不建议使用——它会带来精神的负担。"
-	school = "transmutation"
 	spell_tier = 2                          // T2 法术
-	cost = SATIETY_MANA_COST                // 法力 / 法术点消耗 = 4
-	releasedrain = SATIETY_RESOURCE_COST    // 额外资源消耗（疲劳/耐力）= 20
-	chargetime = SATIETY_CHANNEL_TIME       // 蓄力 3 秒（基类点击拦截会校验是否蓄满）
-	recharge_time = SATIETY_COOLDOWN        // 冷却 = 30 秒（由 charge_check 强制执行）
+	point_cost = SATIETY_MANA_COST                // 法力 / 法术点消耗 = 4
+	primary_resource_cost = SATIETY_RESOURCE_COST    // 额外资源消耗（疲劳/耐力）= 20
+	charge_time = SATIETY_CHANNEL_TIME       // 蓄力 3 秒（基类点击拦截会校验是否蓄满）
+	cooldown_time = SATIETY_COOLDOWN        // 冷却 = 30 秒（由 z121_ready 强制执行）
 	cooldown_min = SATIETY_COOLDOWN         // 即便被“加速”，冷却也不会低于 30 秒
-	human_req = TRUE                        // 只有人类施法者能施放
-	warnie = "spellwarning"
-	action_icon = 'modular_z121/icon/custompell.dmi'
-	overlay_state = "magic_satiety"         // 动作按钮图标态（若 dmi 暂无该态仅显示为空，不影响编译）
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
+	button_icon = 'modular_z121/icon/custompell.dmi'
+	button_icon_state = "magic_satiety"         // 动作按钮图标态（若 dmi 暂无该态仅显示为空，不影响编译）
 	invocations = list("以魔力果腹！")       // 咒文（成功施放时由框架喊出）
 	invocation_type = "shout"
-	glow_color = GLOW_COLOR_ARCANE
+	spell_color = GLOW_COLOR_ARCANE
 	glow_intensity = GLOW_INTENSITY_LOW
-	no_early_release = TRUE                  // 未蓄满不允许提前释放
-	movement_interrupt = FALSE              // 与 flight.dm 一致：蓄力期间可移动
-	charging_slowdown = 1                   // 蓄力时略微减速
-	chargedloop = /datum/looping_sound/invokegen // 蓄力期间循环施法音效
+	charge_slowdown = 1                   // 蓄力时略微减速
 	associated_skill = /datum/skill/magic/arcane // 恢复量缩放所依据的技能：奥术
 	gesture_required = TRUE                  // 需要能自由活动的手
-	range = SATIETY_TARGET_RANGE            // 点选目标的最大距离
+	cast_range = SATIETY_TARGET_RANGE            // 点选目标的最大距离
 	miracle = FALSE
 	xp_gain = TRUE
 	sound = null                            // 蓄力音由 chargedloop 负责；命中音效在 cast 内单独播放
@@ -75,24 +70,24 @@
 // 用 clamp(0,6) 把技能等级限制在合理区间，避免出现负数或异常放大。
 // 独立成 proc 便于单独调参与复用，也让 cast() 主流程更清爽。
 // ---------------------------------------------------------------------------
-/obj/effect/proc_holder/spell/invoked/magic_satiety/proc/get_restore_amount(skill_level)
+/datum/action/cooldown/spell/z121/invoked/magic_satiety/proc/get_restore_amount(skill_level)
 	// clamp 处理越界：未入门(0) 取下限，>6 取上限，满足“就近钳制”。
 	var/effective_level = clamp(skill_level, 0, 6)
 	return SATIETY_RESTORE_BASE + (effective_level * SATIETY_RESTORE_PER_LVL)
 
 // ---------------------------------------------------------------------------
-// cast：点击命中目标后由基类 InterceptClickOn -> perform 调用。
+// cast：点击命中目标后由基类 新版鼠标蓄力流程 -> perform 调用。
 // targets[1] 即施法者点中的目标（点自己或点他人）。
 // 返回值约定：
-//   - TRUE  -> perform() 调用 start_recharge()，进入 30 秒冷却（施法成功）。
-//   - FALSE -> 调用 revert_cast() 退还冷却（目标无效 / 被反魔法挡下 / 吃不下）。
 // ---------------------------------------------------------------------------
-/obj/effect/proc_holder/spell/invoked/magic_satiety/cast(list/targets, mob/living/user = usr)
+/datum/action/cooldown/spell/z121/invoked/magic_satiety/z121_apply(atom/cast_on)
+	var/list/targets = list(cast_on)
+	var/mob/living/user = owner
 	// 点击式选取：targets[1] 必须是活物，否则视为无效目标。
 	var/atom/target_atom = targets[1]
 	if(!isliving(target_atom))
 		to_chat(user, span_warning("魔力果腹只能施加在活物身上。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	var/mob/living/target = target_atom
@@ -105,14 +100,14 @@
 		)
 		to_chat(user, span_warning("[target] 身上的反魔法抵消了『魔力果腹』。"))
 		playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// 无饥饿特质（TRAIT_NOHUNGER）的目标本就不会饿，喂魔力没有意义：
 	// 给出提示并退还冷却，避免白白浪费一次施法与承受副作用。
 	if(HAS_TRAIT(target, TRAIT_NOHUNGER))
 		to_chat(user, span_warning("[target] 根本不会感到饥饿，这道法术对 [target.p_them()] 毫无意义。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// 关键：恢复量取决于“施法者”的奥术技能等级（不是目标的）。
@@ -128,7 +123,7 @@
 	// 不施加心情副作用、退还冷却，给出合理反馈。
 	if(target.nutrition <= old_nutrition)
 		to_chat(user, span_warning("[target] 已经饱了，再多的魔力之食也吃不下了。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// 施加固定时长的心情负面（压力）事件——这正是描述中“精神上的副作用”。

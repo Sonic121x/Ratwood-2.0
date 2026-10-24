@@ -78,14 +78,6 @@
 	user.visible_message("<span class='warning'>[src]泛起幽暗的光芒，随后碎裂！</span>")
 	qdel(src)
 
-/obj/item/rune/spell/fire_rune
-	spell = /obj/effect/proc_holder/spell/invoked/projectile/fireball
-	spellname = "火球术"
-	// icon_state = "fire_rune"
-	name = "火焰符文"
-	desc = "散发着温热的力量。"
-	remarks = list("要理解这些古老之物……", "光把它们点着可不行……", "还得把侧风算进去……真的？", "我好像刚把手烧到了……")
-
 /obj/item/rune/spell/water_rune
 	spell = /obj/effect/proc_holder/spell/targeted/ethereal_jaunt
 	spellname = "以太漫游"
@@ -93,22 +85,6 @@
 	name = "水之符文"
 	desc = "有些潮湿。"
 	remarks = list("想要理解这些古老之物……", "法力流淌于一切活物之中……", "这个法术会让我疲惫……", "法术应如流水般流转……")
-
-/obj/item/rune/spell/air_rune
-	spell = /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt
-	spellname = "闪电术"
-	// icon_state = "air_rune"
-	name = "风之符文"
-	desc = "摸起来很凉。"
-	remarks = list("想要理解这些古老之物……", "若施放得当，这也许能……", "我好像刚把手电麻了……")
-
-/obj/item/rune/spell/earth_rune
-	spell = /obj/effect/proc_holder/spell/invoked/projectile/fetch
-	spellname = "牵引术"
-	// icon_state = "earth_rune"
-	name = "土之符文"
-	desc = "比看起来更沉。"
-	remarks = list("想要理解这些古老之物……", "我只能拉，不能推……", "我的脑子像泥浆一样沉重……")
 
 /obj/item/rune/spell/blank_rune
 	spell = null

@@ -58,8 +58,8 @@
 	var/t_He = p_they(TRUE)
 	var/t_his = p_their()
 	var/t_him = p_them()
-	var/t_has = "有"
-	var/t_is = ""
+	var/t_has = p_have()
+	var/t_is = p_are()
 	var/obscure_name = FALSE
 	var/race_name = "<a href='?src=[REF(src)];species_lore=1'><u>[get_species_display_name(dna.species.name)]</u></A>"
 	var/datum/antagonist/maniac/maniac = user.mind?.has_antag_datum(/datum/antagonist/maniac)
@@ -67,11 +67,11 @@
 	if(maniac && (user != src))
 		race_name = "恶心的猪猡"
 	if(skeleton && (user != src))
-		race_name = "[pick("蹒跚的", "紧绷的", "腐朽的")]"
+		race_name = "[pick("步履蹒跚", "筋骨紧绷", "衰朽不堪")]"
 
-	var/m1 = "[t_He][t_is]"
+	var/m1 = "[t_He] [t_is]"
 	var/m2 = "[t_his]"
-	var/m3 = "[t_He][t_has]"
+	var/m3 = "[t_He] [t_has]"
 	if(user == src)
 		m1 = "我"
 		m2 = "我的"
@@ -311,7 +311,7 @@
 			if(is_stupid)
 				. += "[capitalize(m2)]手好奇怪！看起来不对劲！"
 			else
-				. += "[capitalize(m2)][hand_number > 1 ? "双手" : "手"]<span class='bloody'>血迹斑斑</span>！"
+				. += "[m3][hand_number > 1 ? "双" : "一只"]<span class='bloody'>沾满鲜血的</span>手！"
 	
 	//belt
 	if(belt && !(SLOT_BELT in obscured))
@@ -373,7 +373,7 @@
 			var/obj/item/clothing/CM = mouth
 			str = "[m3] [CM.generate_tooltip(CM.get_examine_string(user))]含在[m2]嘴里。"
 		else
-			str = "[m1]嘴里含着[get_examine_item_name_with_hover(user, mouth)]。 "
+			"[m3] [get_examine_item_name_with_hover(user, mouth)] in [m2] mouth. "
 		str += mouth.integrity_check(is_smart)
 		if(is_stupid)
 			str = "[m1]嘴里含着什么东西！"
@@ -418,6 +418,14 @@
 		str += wear_wrists.integrity_check(is_smart)
 		if (is_stupid)
 			str = "[m1]手腕上戴着什么东西！"
+		. += str
+
+	if(istype(skin_armor, /obj/item/clothing/suit/roguetown/armor/manual/arcyne_ward))
+		var/obj/item/clothing/suit/roguetown/armor/manual/arcyne_ward/ward = skin_armor
+		var/str = "[m3]<font color='[ward.ward_color]'>[ward.generate_tooltip(ward.get_examine_string(user))]在[user == src ? "我" : p_them()]周围闪烁。</font>"
+		str += ward.integrity_check(is_smart)
+		if (is_stupid)
+			str = "[m3]有个奇怪的发光玩意！"
 		. += str
 
 	//handcuffed?
@@ -517,14 +525,14 @@
 				bleeding_limbs += parse_zone(bleeder.body_zone)
 			if(length(bleeding_limbs))
 				if(bleed_rate >= 5)
-					msg += span_bloody("<B>[capitalize(m2)][english_list(bleeding_limbs, "", "和", "、")][bleeding_limbs.len > 1 ? "都" : ""][bleed_wording]！</B>")
+					msg += span_bloody("<B>[capitalize(m2)]的[english_list(bleeding_limbs)][bleed_wording]！</B>")
 				else
-					msg += span_bloody("[capitalize(m2)][english_list(bleeding_limbs, "", "和", "、")][bleeding_limbs.len > 1 ? "都" : ""][bleed_wording]！")
+					msg += span_bloody("[capitalize(m2)]的[english_list(bleeding_limbs)][bleed_wording]！")
 			else
 				if(bleed_rate >= 5)
-					msg += span_bloody("<B>[m1][bleed_wording]！</B>")
+					msg += span_bloody("<B>[m1] [bleed_wording]</B>!")
 				else
-					msg += span_bloody("[m1][bleed_wording]！")
+					msg += span_bloody("[m1] [bleed_wording]!")
 		else
 			if(isliving(user))
 				var/mob/living/M = user
@@ -546,7 +554,7 @@
 		missing_limbs += parse_zone(missing_zone)
 
 	if(length(missing_limbs))
-		var/missing_limb_message = "<B>[capitalize(m2)][english_list(missing_limbs, "", "和", "、")][missing_limbs.len > 1 ? "都" : ""]没了。</B>"
+		var/missing_limb_message = "<B>[capitalize(m2)][missing_limbs.Join("、")]缺失了。</B>"
 		if(missing_head)
 			missing_limb_message = span_dead("[missing_limb_message]")
 		else
@@ -602,6 +610,17 @@
 		for(var/i in stun_absorption)
 			if(stun_absorption[i]["end_time"] > world.time && stun_absorption[i]["examine_message"])
 				msg += "[m1][stun_absorption[i]["examine_message"]]"
+
+	if(src.skin_armor && istype(src.skin_armor, /obj/item/clothing/suit/roguetown/armor/manual/arcyne_ward/bestowed))
+		var/obj/item/clothing/suit/roguetown/armor/manual/arcyne_ward/bestowed/W = src.skin_armor
+		var/time_remaining = max(0, W.expires_at - world.time)
+		var/total_seconds = round(time_remaining / 10)
+		var/minutes = floor(total_seconds / 60)
+		var/seconds = total_seconds % 60
+		if(minutes > 0)
+			msg += "<font color='#ffbd09'>一道临时结界环绕着对方，还能维持 [minutes] 分钟[minutes == 1 ? "" : ""] [seconds] 秒[seconds == 1 ? "" : ""]。</font>"
+		else
+			msg += "<font color='#ffbd09'>一道临时结界环绕着对方，还能维持 [seconds] 秒[seconds == 1 ? "" : ""]。</font>"
 
 	if(!appears_dead)
 		if(!skipface)
@@ -663,7 +682,7 @@
 			msg += span_warning("[m1]勉强还有意识。")
 		else
 			if(stat >= UNCONSCIOUS)
-				msg += "[m1][IsSleeping() ? "在睡觉" : "失去了意识"]。"
+				msg += "[m1][IsSleeping() ? "睡着了" : "失去了意识"]。"
 			else if(eyesclosed)
 				msg += "[capitalize(m2)]眼睛闭着。"
 			else if(has_status_effect(/datum/status_effect/debuff/sleepytime))
@@ -957,7 +976,7 @@
 				used_name = descriptor_name
 			else
 				// Fallback to gender-based unknown name
-				used_name = "未知[(gender == FEMALE) ? "女人" : "男人"]"
+				used_name = "陌生[(gender == FEMALE) ? "女子" : "男子"]"
 		var/used_title = get_role_title()
 		// Check for cosmetic class titles (for advclass cosmetic variants)
 		if(mind && mind.cosmetic_class_title)
@@ -1414,15 +1433,15 @@
 /proc/get_blade_dulling_text(obj/item/rogueweapon/I, verbose = FALSE)
 	switch(I.blade_dulling)
 		if(DULLING_SHAFT_WOOD)
-			return "[verbose ? "木制的" : "(木柄)"]"
+			return "[verbose ? "木质" : "（木质柄）"]"
 		if(DULLING_SHAFT_REINFORCED)
-			return "[verbose ? "加固的" : "(加固柄)"]"
+			return "[verbose ? "加固" : "（加固柄）"]"
 		if(DULLING_SHAFT_METAL)
-			return "[verbose ? "金属的" : "(金属柄)"]"
+			return "[verbose ? "金属" : "（金属柄）"]"
 		if(DULLING_SHAFT_GRAND)
-			return "[verbose ? "宏大的" : "(宏大柄)"]"
+			return "[verbose ? "巨型" : "（巨型柄）"]"
 		if(DULLING_SHAFT_CONJURED)
-			return "[verbose ? "召唤的" : "(召唤柄)"]"
+			return "[verbose ? "召唤" : "（召唤柄）"]"
 		else
 			return null
 

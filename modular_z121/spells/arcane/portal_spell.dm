@@ -3,25 +3,22 @@
 #define Z121_PORTAL_LIFETIME (1 MINUTES)
 #define Z121_PORTAL_TRAVEL_CHANNEL (6 SECONDS)
 
-/obj/effect/proc_holder/spell/self/z121_portal
+/datum/action/cooldown/spell/z121/self/z121_portal
 	name = "传送门"
 	desc = "在熟悉之地留下一缕魔力的回响，纵使远行千里，也能循着那道余韵，将相隔的两端折叠为一步之遥。只是世间的缝隙，从不肯长久敞开。"
-	school = "transmutation"
 	spell_tier = 4
-	cost = 8
+	point_cost = 8
 	xp_gain = TRUE
-	chargetime = Z121_PORTAL_CHANNEL
-	recharge_time = 12 MINUTES
+	charge_time = Z121_PORTAL_CHANNEL
+	cooldown_time = 12 MINUTES
 	cooldown_min = 12 MINUTES
 	is_cdr_exempt = FALSE
-	releasedrain = 0
-	chargedrain = 0
-	human_req = TRUE
+	primary_resource_cost = 0
+	hold_drain = 0
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
 	gesture_required = TRUE
 	associated_skill = /datum/skill/magic/arcane
-	action_icon = 'icons/roguetown/misc/structure.dmi'
-	action_icon_state = "shitportal"
-	base_action = /datum/action/spell_action/spell/z121_portal
+	button_icon = 'icons/roguetown/misc/structure.dmi'
 	invocations = list("循回响，折远途，启门扉。")
 	invocation_type = "whisper"
 	var/anchor_x
@@ -32,78 +29,45 @@
 	var/mob/living/carbon/human/channeling_user
 	var/list/active_portals = list()
 
-/obj/effect/proc_holder/spell/self/z121_portal/Destroy()
+/datum/action/cooldown/spell/z121/self/z121_portal/Destroy()
 	channeling = FALSE
 	binding_cast = FALSE
 	channeling_user = null
 	close_portals()
 	return ..()
 
-/obj/effect/proc_holder/spell/self/z121_portal/update_icon()
-	if(!action)
-		return
-	// 通用法术会改用卷轴图标态；传送门图集没有该状态，直接保留门扉图标。
-	action.button_icon_state = action_icon_state
-	action.name = name
-	action.UpdateButtonIcon()
+/datum/action/cooldown/spell/z121/self/z121_portal/z121_update_icon()
+		// 通用法术会改用卷轴图标态；传送门图集没有该状态，直接保留门扉图标。
+	button_icon_state = "shitportal"
+	name = name
+	build_all_button_icons()
 
 // 按钮使用卷轴基底与传送门第一帧；仅在内存中取帧，不新增图标文件。
-/datum/action/spell_action/spell/z121_portal/ApplyIcon(atom/movable/screen/movable/action_button/current_button, force = FALSE)
-	if(!icon_icon || !button_icon_state || (!force && current_button.button_icon_state == button_icon_state))
+/datum/action/cooldown/spell/z121/self/z121_portal/apply_button_icon(atom/movable/screen/movable/action_button/current_button, force = FALSE)
+	if(!button_icon || !button_icon_state || (!force && current_button.active_overlay_icon_state == button_icon_state))
 		return
 	var/static/icon/portal_frame = icon('icons/roguetown/misc/structure.dmi', "shitportal", SOUTH, 1)
 	current_button.cut_overlays(TRUE)
 	current_button.add_overlay(mutable_appearance('icons/mob/actions/roguespells.dmi', "spell0", layer = current_button.layer + 0.1))
 	current_button.add_overlay(mutable_appearance(portal_frame, layer = current_button.layer + 0.2))
-	current_button.button_icon_state = button_icon_state
+	current_button.active_overlay_icon_state = button_icon_state
 
-/obj/effect/proc_holder/spell/self/z121_portal/get_chargetime()
+/datum/action/cooldown/spell/z121/self/z121_portal/get_charge_time(mob/living/user)
 	return Z121_PORTAL_CHANNEL
 
-/obj/effect/proc_holder/spell/self/z121_portal/calculate_chargetime(mob/living/user)
-	return Z121_PORTAL_CHANNEL
-
-/obj/effect/proc_holder/spell/self/z121_portal/Click()
+/datum/action/cooldown/spell/z121/self/z121_portal/Trigger(trigger_flags)
 	// 冷却或引导中的重复点击不得进入父类的失败返还路径。
-	if(channeling || !ishuman(usr) || !charge_check(usr))
+	if(channeling || !ishuman(owner) || !z121_ready(owner))
 		return FALSE
 	return ..()
 
-/obj/effect/proc_holder/spell/self/z121_portal/can_cast(mob/user = usr)
-	if(channeling)
-		return FALSE
-	return ..()
-
-/obj/effect/proc_holder/spell/self/z121_portal/charge_check(mob/user, silent = FALSE)
+/datum/action/cooldown/spell/z121/self/z121_portal/z121_ready(mob/user, silent = FALSE)
 	// 结束引导时允许复查本次已经预留冷却的施法，其余条件仍需通过。
 	if(channeling && user == channeling_user)
 		return TRUE
 	return ..()
 
-/obj/effect/proc_holder/spell/self/z121_portal/process()
-	if(channeling)
-		last_process_time = world.time
-		return
-	return ..()
-
-/obj/effect/proc_holder/spell/self/z121_portal/start_recharge()
-	if(binding_cast)
-		// 绑定不启动通用冷却，也不留下管理员倍率的待结算状态。
-		z121_cooldown_pending = FALSE
-		z121_cooldown_running = FALSE
-		last_process_time = world.time
-		STOP_PROCESSING(SSfastprocess, src)
-		finish_recharge()
-		return
-	return ..()
-
-/obj/effect/proc_holder/spell/self/z121_portal/finish_recharge()
-	. = ..()
-	// 恢复计数时同步清除数字，避免已经可用却仍显示冷却。
-	if(action?.button)
-		action.button.update_maptext(0)
-
-/obj/effect/proc_holder/spell/self/z121_portal/choose_targets(mob/user = usr)
+/datum/action/cooldown/spell/z121/self/z121_portal/z121_choose_targets(mob/user = usr)
 	if(channeling)
 		return
 	if(!ishuman(user) || !user.mind || !user.client || !isturf(user.loc))
@@ -125,7 +89,6 @@
 	binding_cast = binding
 	channeling = TRUE
 	channeling_user = caster
-	STOP_PROCESSING(SSfastprocess, src)
 	caster.visible_message(
 		span_notice("[caster] 轻拂身前的空气，指尖的魔力缓缓织成一道幽微的弧线。"),
 		span_notice(channel_message)
@@ -134,14 +97,14 @@
 	var/completed = do_after(caster, Z121_PORTAL_CHANNEL / action_coefficient, target = caster, progress = TRUE, extra_checks = CALLBACK(src, PROC_REF(can_channel_portal), caster, casting_mind, casting_client))
 	if(QDELETED(src))
 		return
-	if(!completed || !can_channel_portal(caster, casting_mind, casting_client) || !cast_check(TRUE, caster))
+	if(!completed || !can_channel_portal(caster, casting_mind, casting_client) || !z121_check(TRUE, caster))
 		if(!QDELETED(caster))
 			to_chat(caster, span_warning("魔力的弧线散开了，我未能完成这次编织。"))
 		cancel_portal_cast(caster)
 		return
 
 	// 仅在引导完成后进入通用结算，开门冷却从成功时刻开始。
-	var/success = perform(null, user = caster)
+	var/success = z121_cast_selected(null, user = caster)
 	if(QDELETED(src))
 		return
 	if(!success)
@@ -152,10 +115,11 @@
 	binding_cast = FALSE
 	if(binding)
 		// 首次只留下锚点，立即恢复可用，不等待开门冷却。
-		finish_recharge()
-	action?.UpdateButtonIcon()
+		reset_spell_cooldown()
+	build_all_button_icons()
 
-/obj/effect/proc_holder/spell/self/z121_portal/cast(list/targets, mob/living/user = usr)
+/datum/action/cooldown/spell/z121/self/z121_portal/z121_apply(atom/cast_on)
+	var/mob/living/user = owner
 	if(!channeling || user != channeling_user || QDELETED(user))
 		return FALSE
 	var/turf/source = get_turf(user)
@@ -184,12 +148,10 @@
 		playsound(source, 'sound/misc/portalopen.ogg', 60, TRUE)
 		playsound(destination, 'sound/misc/portalopen.ogg', 60, TRUE)
 		to_chat(user, span_notice("相隔的回响在门扉中交汇，短暂的通路已然敞开。"))
-	charge_counter = 0
-	last_process_time = world.time
 	..()
 	return TRUE
 
-/obj/effect/proc_holder/spell/self/z121_portal/proc/can_channel_portal(mob/living/carbon/human/caster, datum/mind/casting_mind, client/casting_client)
+/datum/action/cooldown/spell/z121/self/z121_portal/proc/can_channel_portal(mob/living/carbon/human/caster, datum/mind/casting_mind, client/casting_client)
 	if(QDELETED(src) || QDELETED(caster) || QDELETED(casting_mind))
 		return FALSE
 	if(!channeling || channeling_user != caster || !casting_client || caster.client != casting_client)
@@ -198,7 +160,7 @@
 		return FALSE
 	return (src in casting_mind.spell_list) || (src in caster.mob_spell_list)
 
-/obj/effect/proc_holder/spell/self/z121_portal/proc/portal_turf_is_clear(turf/location)
+/datum/action/cooldown/spell/z121/self/z121_portal/proc/portal_turf_is_clear(turf/location)
 	if(!isopenturf(location) || location.density || location.is_transition_turf())
 		return FALSE
 	var/area/portal_area = get_area(location)
@@ -210,23 +172,23 @@
 			return FALSE
 	return TRUE
 
-/obj/effect/proc_holder/spell/self/z121_portal/proc/cancel_portal_cast(mob/user)
+/datum/action/cooldown/spell/z121/self/z121_portal/proc/cancel_portal_cast(mob/user)
 	channeling = FALSE
 	binding_cast = FALSE
 	channeling_user = null
 	if(!QDELETED(user))
-		revert_cast(user)
+		z121_cancel(user)
 	else
-		finish_recharge()
+		reset_spell_cooldown()
 
-/obj/effect/proc_holder/spell/self/z121_portal/proc/close_portals()
+/datum/action/cooldown/spell/z121/self/z121_portal/proc/close_portals()
 	var/list/old_portals = active_portals
 	active_portals = list()
 	for(var/obj/effect/portal/portal as anything in old_portals)
 		if(!QDELETED(portal))
 			qdel(portal)
 
-/obj/effect/proc_holder/spell/self/z121_portal/proc/on_portal_destroy(obj/effect/portal/portal, atom/old_location)
+/datum/action/cooldown/spell/z121/self/z121_portal/proc/on_portal_destroy(obj/effect/portal/portal, atom/old_location)
 	active_portals -= portal
 
 /obj/effect/portal/z121_arcane
@@ -286,7 +248,7 @@
 		return FALSE
 	if(!isturf(traveler.loc) || !Adjacent(traveler) || linked != exit_portal || exit_portal.linked != src)
 		return FALSE
-	var/obj/effect/proc_holder/spell/self/z121_portal/portal_spell = creator
+	var/datum/action/cooldown/spell/z121/self/z121_portal/portal_spell = creator
 	return !QDELETED(portal_spell) && portal_spell.portal_turf_is_clear(get_turf(exit_portal))
 
 #undef Z121_PORTAL_CHANNEL

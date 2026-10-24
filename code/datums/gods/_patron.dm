@@ -40,8 +40,10 @@ GLOBAL_LIST_EMPTY(prayers)
 
 	/// List of traits associated with rank. Trait = Cleric_Tier
 	var/list/traits_tier = list()
-	var/sign_icon_state
+
 	var/datum/storyteller/storyteller
+	/// Common titles of the god - used for prayers
+	var/list/titles = list()
 
 /datum/patron/proc/on_gain(mob/living/pious)
 	for(var/trait in mob_traits)

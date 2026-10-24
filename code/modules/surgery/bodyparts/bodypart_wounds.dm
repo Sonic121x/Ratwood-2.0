@@ -157,7 +157,7 @@
 	return max(round(hud_bleed_rate, 0.1), 0)
 
 /// Called after a bodypart is attacked so that wounds and critical effects can be applied
-/obj/item/bodypart/proc/bodypart_attacked_by(bclass = BCLASS_BLUNT, dam, mob/living/user, zone_precise = src.body_zone, silent = FALSE, crit_message = FALSE, armor, obj/item/weapon, pen_info)
+/obj/item/bodypart/proc/bodypart_attacked_by(bclass = BCLASS_BLUNT, dam, mob/living/user, zone_precise = src.body_zone, silent = FALSE, crit_message = FALSE, armor, obj/item/weapon, pen_info, no_debuff)
 	RETURN_TYPE(/datum/wound)
 	if(!bclass || !dam || !owner || (owner.status_flags & GODMODE))
 		return null
@@ -336,7 +336,7 @@
 			if(user?.client)
 				record_round_statistic(STATS_CRITS_MADE)
 			if(owner.client || owner.mind)
-				log_combat(user, owner, "critically wounded", null, "([applied.name] to [parse_zone(zone_precise)])", severe = TRUE)
+				log_combat(user, owner, "造成了重创", null, "（[parse_zone(zone_precise)]：[applied.name]）", severe = TRUE)
 			return applied
 	return FALSE
 
@@ -422,7 +422,7 @@
 			if(user?.client)
 				record_round_statistic(STATS_CRITS_MADE)
 			if(owner.client || owner.mind)
-				log_combat(user, owner, "critically wounded", null, "([applied.name] to [parse_zone(zone_precise)])", severe = TRUE)
+				log_combat(user, owner, "造成了重创", null, "（[parse_zone(zone_precise)]：[applied.name]）", severe = TRUE)
 			return applied
 	return FALSE
 
@@ -556,7 +556,7 @@
 			winset(owner.client, "outputwindow.output", "max-lines=1")
 			winset(owner.client, "outputwindow.output", "max-lines=100")
 		if(owner.client || owner.mind)
-			log_combat(user, owner, "critically knocked out[from_behind ? " from behind" : ""]", severe = TRUE)
+			log_combat(user, owner, "[from_behind ? "从背后" : ""]重击并击昏了", severe = TRUE)
 
 
 	for(var/wound_type in shuffle(attempted_wounds))
@@ -565,7 +565,7 @@
 			if(user?.client)
 				record_round_statistic(STATS_CRITS_MADE)
 			if(owner.client || owner.mind)
-				log_combat(user, owner, "critically wounded", null, "([applied.name] to [parse_zone(zone_precise)])", severe = TRUE)
+				log_combat(user, owner, "造成了重创", null, "（[parse_zone(zone_precise)]：[applied.name]）", severe = TRUE)
 			return applied
 	return FALSE
 

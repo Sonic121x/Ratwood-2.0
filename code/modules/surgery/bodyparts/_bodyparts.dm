@@ -482,7 +482,7 @@
 		owner.queue_icon_update(PENDING_UPDATE_BODY)
 		owner.update_mobility()
 		if(held_index)
-			owner.update_action_buttons_icon()
+			owner.update_mob_action_buttons()
 	return TRUE //if there was a change.
 
 //Updates an organ's brute/burn states for use by update_damage_overlays()
@@ -771,7 +771,7 @@
 	return ..()
 
 /obj/item/bodypart/chest
-	name = "胸部"
+	name = BODY_ZONE_CHEST
 	desc = ""
 	icon_state = "default_human_chest"
 	max_damage = 300

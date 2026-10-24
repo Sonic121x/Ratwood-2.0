@@ -1,6 +1,5 @@
 /datum/job/roguetown/wapprentice
 	title = "Magicians Associate"
-	display_title = "法师侍从"
 	flag = MAGEASSOCIATE
 	department_flag = COURTIERS
 	faction = "Station"
@@ -8,8 +7,8 @@
 	spawn_positions = 4
 
 	allowed_races = ACCEPTED_RACES
-	spells = list(/obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
-	advclass_cat_rolls = list(CTAG_WASSOCIATE = 20)
+	spells = list()
+	advclass_cat_rolls = list(CTAG_WAPPRENTICE = 20)
 
 	tutorial = "你的导师曾在你身上看见过潜力，尽管以如今这般严苛艰难的学业来看，你也不确定他们是否仍这么想。魔法之路危险难驯，而你距离能自称这一行的熟手，恐怕还差上数十年。听令，服侍，总有一天你会赢得属于自己的帽子。"
 
@@ -24,10 +23,9 @@
 	cmode_music = 'sound/music/cmode/nobility/combat_courtmage.ogg'
 	advjob_examine = TRUE // So that Court Magicians can know if they're teachin' a Apprentice or if someone's a bit more advanced of a player. Just makes the title show up as the advjob's name.
 	social_rank = SOCIAL_RANK_YEOMAN
-	job_traits = list(TRAIT_MAGEARMOR, TRAIT_ARCYNE_T2)
+	job_traits = list(TRAIT_ALCHEMY_EXPERT, TRAIT_MAGEDEXTERITY)
 	job_subclasses = list(
 		/datum/advclass/wapprentice/associate,
-		/datum/advclass/wapprentice/alchemist,
 		/datum/advclass/wapprentice/apprentice
 	)
 
@@ -38,34 +36,38 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/storage/keyring/mageapprentice
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backr = /obj/item/rogueweapon/woodstaff
 	shoes = /obj/item/clothing/shoes/roguetown/gladiator // FANCY SANDALS
 
 /datum/advclass/wapprentice/associate
-	name = "法师侍从"
-	tutorial = "你曾只是个学徒，但经过学习与实践，你已经掌握了奥术的基础。如今你继续在导师手下做事、磨练本领，只为有朝一日也能被视作真正的大师。"
+	name = "魔法师助手"
+	tutorial = "无人能真正精通奥术的全部领域，但掌握基础\
+	并非遥不可及。得到同侪与导师认可后，你成为了一名助手，领取\
+	津贴，为王室施展力量——至少不与之为敌。王室或许\
+	希望你将雷电掷向他们的仇敌；毕竟奥术除了战争\
+	与毁灭，还能有什么用？然而许多法师明白，智慧与奇思才是精通\
+	此道的魔导师真正的追求。选择权在你手中。"
 	outfit = /datum/outfit/job/roguetown/wapprentice/associate
 
-	category_tags = list(CTAG_WASSOCIATE)
-	traits_applied = list(TRAIT_ARCYNE_T3, TRAIT_MAGEDEXTERITY)
+	category_tags = list(CTAG_WAPPRENTICE)
+	traits_applied = list(TRAIT_ARCYNE)
 	subclass_stats = list(
 		STATKEY_INT = 3,
-		STATKEY_CON = 1,
-		STATKEY_WIL = 1,
+		STATKEY_PER = 2,
 		STATKEY_SPD = 1
 	)
-	virtue_restrictions = list(/datum/virtue/combat/tough_hide)
-	subclass_spellpoints = 21
+	age_mod = /datum/class_age_mod/apprentice_associate
+	subclass_mage_aspects = list("mastery" = FALSE, "major" = 1, "minor" = 2, "utilities" = 6, "ward" = TRUE)
 	subclass_skills = list(
-		/datum/skill/combat/polearms = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/polearms = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/combat/staves = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/arcyne = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/climbing = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/combat/wrestling = SKILL_LEVEL_NOVICE,
-		/datum/skill/combat/knives = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/combat/unarmed = SKILL_LEVEL_NOVICE,
 		/datum/skill/misc/swimming = SKILL_LEVEL_NOVICE,
-		/datum/skill/misc/athletics = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/misc/athletics = SKILL_LEVEL_NOVICE,
 		/datum/skill/craft/crafting = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/medicine = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/riding = SKILL_LEVEL_NOVICE,
+		/datum/skill/misc/medicine = SKILL_LEVEL_NOVICE,
 		/datum/skill/misc/reading = SKILL_LEVEL_MASTER,
 		/datum/skill/craft/alchemy = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/magic/arcane = SKILL_LEVEL_JOURNEYMAN,
@@ -73,104 +75,37 @@
 	)
 
 /datum/outfit/job/roguetown/wapprentice/associate/pre_equip(mob/living/carbon/human/H)
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+	pants = /obj/item/clothing/under/roguetown/tights/random
+	belt = /obj/item/storage/belt/rogue/leather
+	beltl = /obj/item/storage/magebag/associate
+	backl = /obj/item/storage/backpack/rogue/satchel
+	shoes = /obj/item/clothing/shoes/roguetown/gladiator
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/mage
 	head = /obj/item/clothing/head/roguetown/roguehood/mage
-	beltl = /obj/item/storage/magebag/associate
 	backpack_contents = list(
-		/obj/item/roguegem/amethyst = 1,
-		/obj/item/spellbook_unfinished/pre_arcyne = 1,
-		/obj/item/recipe_book/alchemy = 1,
-		/obj/item/recipe_book/magic = 1,
+		/obj/item/rogueweapon/spellbook = 1,
 		/obj/item/chalk = 1,
 		)
-	if(H.age == AGE_OLD)
-		H.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
-		H.change_stat(STATKEY_SPD, -1)
-		H.change_stat(STATKEY_INT, 1)
-		H.mind?.adjust_spellpoints(6)
-	switch(H.patron?.type)
-		if(/datum/patron/inhumen/zizo)
-			H.cmode_music = 'sound/music/combat_heretic.ogg'
-
-/datum/advclass/wapprentice/alchemist
-	name = "炼金侍从"
-	tutorial = "在求学过程中，你渐渐不再专注于奥术本身，而是转向了自己真正热爱的炼金术。借由嬗变之艺，你已明白元素与奥术一样，都能被操弄、被扭转，最终服从于你的意志。"
-	outfit = /datum/outfit/job/roguetown/wapprentice/alchemist
-
-	category_tags = list(CTAG_WASSOCIATE)
-	traits_applied = list(TRAIT_SEEDKNOW, TRAIT_ALCHEMY_EXPERT)
-	subclass_stats = list(
-		STATKEY_INT = 4,
-		STATKEY_PER = 2,
-		STATKEY_WIL = 1
-	)
-	subclass_spellpoints = 18
-	subclass_skills = list(
-		/datum/skill/combat/polearms = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/reading = SKILL_LEVEL_MASTER,
-		/datum/skill/craft/alchemy = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/misc/medicine = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/wrestling = SKILL_LEVEL_NOVICE,
-		/datum/skill/combat/knives = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/swimming = SKILL_LEVEL_NOVICE,
-		/datum/skill/misc/climbing = SKILL_LEVEL_NOVICE,
-		/datum/skill/magic/arcane = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/labor/farming = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/craft/sewing = SKILL_LEVEL_NOVICE,
-		/datum/skill/craft/cooking = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/labor/butchering = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/labor/mining = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/labor/fishing = SKILL_LEVEL_NOVICE,
-		/datum/skill/misc/athletics = SKILL_LEVEL_APPRENTICE,
-	)
-
-/datum/outfit/job/roguetown/wapprentice/alchemist/pre_equip(mob/living/carbon/human/H)
-	armor = /obj/item/clothing/suit/roguetown/shirt/robe/magegreen
-	head = /obj/item/clothing/head/roguetown/roguehood/mage
-	beltl = /obj/item/storage/magebag/alchemist
-	backpack_contents = list(
-		/obj/item/roguegem/amethyst = 1,
-		/obj/item/seeds/swampweed = 1,
-		/obj/item/seeds/pipeweed = 1,
-		/obj/item/recipe_book/alchemy = 1,
-		/obj/item/recipe_book/magic = 1,
-		/obj/item/chalk = 1,
-		/obj/item/spellbook_unfinished/pre_arcyne = 1,
-		/obj/item/rogueweapon/sickle
-		)
-	if(H.age == AGE_OLD)
-		H.adjust_skillrank(/datum/skill/craft/alchemy, 1, TRUE)
-		H.change_stat(STATKEY_PER, -1)
-		H.change_stat(STATKEY_INT, 1)
-		H.mind?.adjust_spellpoints(3)//split studies, less magic
 	switch(H.patron?.type)
 		if(/datum/patron/inhumen/zizo)
 			H.cmode_music = 'sound/music/combat_heretic.ogg'
 	if(H.mind)
-		var/weapons = list("实用炼金","魔导医学")
-		var/weapon_choice = input(H, "选择你的工具。", "选择你的专攻。") as anything in weapons
-		switch(weapon_choice)
-			if("实用炼金")
-				H.adjust_skillrank_up_to(/datum/skill/craft/alchemy, 4, TRUE)
-				l_hand = /obj/item/clothing/neck/roguetown/skullamulet/alchemist
-			if("魔导医学")
-				l_hand = /obj/item/storage/belt/rogue/surgery_bag
-				H.adjust_skillrank_up_to(/datum/skill/misc/medicine, 4, TRUE)
-
+		backr = choose_implement(H, "lesser")
 
 /datum/advclass/wapprentice/apprentice
 	name = "法师学徒"
 	tutorial = "你的导师曾在你身上看见过潜力，尽管以如今这般严苛艰难的学业来看，你也不确定他们是否仍这么想。魔法之路危险难驯，而你距离能自称这一行的熟手，恐怕还差上数十年。听令，服侍，总有一天你会赢得属于自己的帽子。"
 	outfit = /datum/outfit/job/roguetown/wapprentice/apprentice
 
-	category_tags = list(CTAG_WASSOCIATE)
+	category_tags = list(CTAG_WAPPRENTICE)
 	traits_applied = list(TRAIT_HOMESTEAD_EXPERT)//emphasizing the "serve" part of their description
 	subclass_stats = list(
 		STATKEY_INT = 4,
 		STATKEY_WIL = 2,
 		STATKEY_SPD = 1,
 	)
-	subclass_spellpoints = 18
+	subclass_mage_aspects = list("mastery" = FALSE, "major" = 1, "minor" = 1, "utilities" = 6, "ward" = TRUE)
 	subclass_skills = list(
 		/datum/skill/misc/reading = SKILL_LEVEL_EXPERT,
 		/datum/skill/magic/arcane = SKILL_LEVEL_APPRENTICE,
@@ -192,36 +127,29 @@
 		/obj/item/roguegem/amethyst = 1,
 		/obj/item/recipe_book/alchemy = 1,
 		/obj/item/recipe_book/magic = 1,
-		/obj/item/spellbook_unfinished/pre_arcyne = 1,
+		/obj/item/rogueweapon/spellbook = 1,
 		/obj/item/chalk = 1,
 		)
 	switch(H.patron?.type)
 		if(/datum/patron/inhumen/zizo)
 			H.cmode_music = 'sound/music/combat_heretic.ogg'
 
-/obj/effect/proc_holder/spell/invoked/aerosolize/wave/amulet
-
-/obj/item/clothing/neck/roguetown/skullamulet/alchemist
-	name = "硫磺护符"
-	desc = "这枚黄色骷髅是费伦提亚各地炼金术士的标志。<br>它散发着腐臭。"
-	var/active_item
-
-/obj/item/clothing/neck/roguetown/skullamulet/alchemist/equipped(mob/living/user, slot)
-	. = ..()
-	if(active_item || !ishuman(user))
-		return
-	else if(slot == SLOT_NECK)
-		var/mob/living/carbon/human/H = user
-		active_item = TRUE
-		to_chat(user, span_green("'……世间万物皆如流水，只需一只手便能泛起涟漪……'"))
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/aerosolize/wave/amulet)
-	return
-
-/obj/item/clothing/neck/roguetown/skullamulet/alchemist/dropped(mob/living/user)
-	..()
-	if(active_item && ishuman(user))
-		var/mob/living/carbon/human/H = user
-		to_chat(user, span_green("'……空气再度清新而宁静。'"))
-		H.mind.RemoveSpell(/obj/effect/proc_holder/spell/invoked/aerosolize/wave/amulet)
-		active_item = FALSE
-	return
+/datum/outfit/job/roguetown/wapprentice/associate/post_equip(mob/living/carbon/human/H, visualsOnly)
+	. = ..() 			// small bonus picks to get you into your field of study - also a good character-building tool. Not impactful enough to
+	var/list/choices = list( // be their own subclasses, by design; your choice will not lock you into anything it just gives you a headstart
+		"奥术精通",
+		"炼金技艺",
+		// "Artificed Luxury" disabled until mgl3pt2 brings artificing to mage proper - also needs a better name
+		)
+	var/list/choice_descs = list(
+		"奥术精通" = "获得额外召唤次数，让你能更快开展各种实验。",
+		"炼金技艺" = "炼金技能额外提高一级，让你在此道上略占先机。不改变技能上限。",
+		// "Artificed Luxury" = "Grants a bonus to engineering, giving you a head start in the study of artificery. Does not affect skill caps." disabled until mgl3pt2 brings artificing to mage proper
+		)
+	var/choice = tgui_input_list(H, "你的研究至今沿着哪条道路前进？", "选择你的专长", choices, "奥术精通", descriptions = choice_descs)
+	switch(choice)
+		if("奥术精通")
+			ADD_TRAIT(H, TRAIT_LEYLINE_EXPERTISE, JOB_TRAIT)
+		if("炼金技艺")
+			spawn(3 SECONDS) H.adjust_skillrank(/datum/skill/craft/alchemy, 1, TRUE) // otherwise this applies before advclass skills and does nothing
+		// if("Artificed Luxury") todo in part 2

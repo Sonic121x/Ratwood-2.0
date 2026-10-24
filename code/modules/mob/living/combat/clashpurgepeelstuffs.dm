@@ -1,4 +1,4 @@
-/mob/living/carbon/human/proc/process_clash(mob/user, obj/item/IM, obj/item/IU)
+/mob/living/carbon/human/proc/process_clash(mob/user, obj/item/IM, obj/item/IU, is_bite = FALSE)
 	if(!ishuman(user))
 		return
 	if(user == src)
@@ -10,7 +10,7 @@
 		return
 	if(!IU)	//The opponent is trying to rawdog us with their bare hands while we have Guard up. We get a riposte window.
 		if(!IM)
-			visible_message(span_suicide("[src]以赤手空拳反击了[H]的攻击！"))
+			visible_message(span_suicide("[src]徒手还击了[H]的攻击！"))
 		else
 			visible_message(span_suicide("[src]用[IM]反击了[H]！"))
 		H.apply_status_effect(/datum/status_effect/debuff/exposed, 3 SECONDS)
@@ -18,7 +18,7 @@
 		if(H.mind)
 			H.dodgetime = clamp(H.dodgetime + 5, 0, CLICK_CD_HEAVY)
 		H.Slowdown(3)
-		to_chat(src, span_notice("[capitalize(H.p_theyre())]露出了破绽！"))
+		to_chat(src, span_notice("[H]露出了破绽！"))
 		playsound(src, 'sound/combat/clash_struck.ogg', 100)
 		remove_status_effect(/datum/status_effect/buff/clash)
 		apply_status_effect(/datum/status_effect/buff/adrenaline_rush)
@@ -196,6 +196,11 @@
 		return FALSE
 	if(has_status_effect(/datum/status_effect/debuff/exposed))
 		balloon_alert(src, "<font color = '#ffffff'>露出破绽时不能防守！</font>")
+		return FALSE
+	// Can't guard while channeling a spell
+	var/datum/action/cooldown/spell/active_spell = click_intercept
+	if(istype(active_spell) && (active_spell.currently_charging || active_spell.charged))
+		to_chat(src, span_warning("引导法术时我无法防守！"))
 		return FALSE
 
 	if(is_swinging(disrupt_only = TRUE))

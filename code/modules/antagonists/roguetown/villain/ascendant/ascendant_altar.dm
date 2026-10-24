@@ -91,8 +91,6 @@ GLOBAL_LIST_INIT(capstone_pool, list(
 		if(3)
 			ADD_TRAIT(user, TRAIT_NOPAIN, TRAIT_GENERIC)
 			ADD_TRAIT(user, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
-			user.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fireball)
-			user.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt)
 			to_chat(user, span_userdanger("我有许多敌人 - 而他们一无所有。宝剑十，正位。"))
 		if(4)
 			ADD_TRAIT(user, TRAIT_STABLEHEART, TRAIT_GENERIC)

@@ -7,7 +7,7 @@
 //   切换到对方视角时，是“真·借眼视物”——明暗远近、夜视、可见隐形、方向性视野盲区
 //   乃至失明的临时绕过，都与对方完全一致，而非仅仅把镜头挪到对方身上。
 //
-// 选取 / 引导方式：沿用 wish_spell.dm 的 /spell/self 引导式做法——点击图标后只对
+// 选取 / 引导方式：沿用 wish_spell.dm 的 /datum/action/cooldown/spell/z121/self 引导式做法——点击图标后只对
 //   “自己”发起 3 秒 do_after 引导，引导成功后再弹窗选目标、再询问目标是否同意。
 //   这样最契合“先吟唱、再选人、对方需同意”的流程，且天然支持中途取消。
 //
@@ -18,7 +18,7 @@
 // 注册方式（均在 modular_z121 内）：
 //   1) modular_z121/_load.dm            -> #include 本文件
 //   2) modular_z121/spells/_registry.dm -> 加入 custom_learnable_spells 列表
-//   （沿用既有类型路径 /obj/effect/proc_holder/spell/self/sensory_sharing，
+//   （沿用既有类型路径 /datum/action/cooldown/spell/z121/self/sensory_sharing，
 //     故仅改“显示名”为“视觉共享”，无需改动上述两处注册。）
 // ---------------------------------------------------------------------------
 
@@ -27,7 +27,7 @@
 // 不必在长长的过程代码里到处翻找魔法数字。
 #define SENSORY_MANA_COST     3              // “法力 / 法术点”消耗（cost）= 3
 #define SENSORY_CHANNEL_TIME  (3 SECONDS)    // 引导 / 蓄力时长（do_after）= 3 秒
-#define SENSORY_RESOURCE_COST 5              // “额外资源消耗”：每次施放抽取的疲劳/耐力（releasedrain）= 5
+#define SENSORY_RESOURCE_COST 5              // “额外资源消耗”：每次施放抽取的疲劳/耐力（primary_resource_cost）= 5
 #define SENSORY_DURATION      (3 MINUTES)    // 视觉共享效果持续时间 = 3 分钟
 #define SENSORY_COOLDOWN      (3 MINUTES)    // 成功施放后的冷却 = 3 分钟
 #define SENSORY_TARGET_RANGE  7              // 选取目标的最大距离 = 7 格
@@ -157,14 +157,14 @@
 	if(!istype(member) || !member.mind)
 		return
 	// 已有同名法术则不重复授予，避免动作栏出现两个相同按钮。
-	if(member.mind.has_spell(/obj/effect/proc_holder/spell/self/sensory_sharing_view, TRUE))
+	if(member.mind.has_spell(/datum/action/cooldown/spell/z121/self/sensory_sharing_view, TRUE))
 		return
-	member.mind.AddSpell(new /obj/effect/proc_holder/spell/self/sensory_sharing_view)
+	member.mind.AddSpell(new /datum/action/cooldown/spell/z121/self/sensory_sharing_view)
 
 /datum/sensory_share_link/proc/remove_view_spell(mob/living/member)
 	if(!member || !member.mind)
 		return
-	var/obj/effect/proc_holder/spell/view_spell = member.mind.get_spell(/obj/effect/proc_holder/spell/self/sensory_sharing_view, TRUE)
+	var/datum/action/cooldown/spell/view_spell = member.mind.get_spell(/datum/action/cooldown/spell/z121/self/sensory_sharing_view, TRUE)
 	if(view_spell)
 		member.mind.RemoveSpell(view_spell)
 
@@ -184,56 +184,47 @@
 // ===========================================================================
 // 法术本体：视觉共享
 // ---------------------------------------------------------------------------
-// 基类选 /spell/self：点击图标后只对“自己”发起 3 秒引导，引导成功后再弹窗选人、
+// 基类选 /datum/action/cooldown/spell/z121/self：点击图标后只对“自己”发起 3 秒引导，引导成功后再弹窗选人、
 // 再询问对方是否同意。符合“先吟唱蓄力 -> 选目标 -> 对方需弹窗同意”的流程。
 // ===========================================================================
-/obj/effect/proc_holder/spell/self/sensory_sharing
+/datum/action/cooldown/spell/z121/self/sensory_sharing
 	name = "视觉共享"
 	desc = "一道奇妙的法术，借魔力将两人的视觉彼此相连——可随时切换，透过对方的双眼观察世界。"
-	school = "divination"
 	spell_tier = 2                          // T2 法术
-	cost = SENSORY_MANA_COST                // “法力 / 法术点”消耗 = 3
-	releasedrain = SENSORY_RESOURCE_COST    // “额外资源消耗”= 5（施法抽取的疲劳/耐力）
-	chargedrain = 1                         // 引导期间的持续抽取
-	chargetime = SENSORY_CHANNEL_TIME       // 引导 3 秒（get_chargetime() 返回它驱动 do_after）
-	recharge_time = SENSORY_COOLDOWN        // 冷却 = 3 分钟（由 charge_check 强制执行）
+	point_cost = SENSORY_MANA_COST                // “法力 / 法术点”消耗 = 3
+	primary_resource_cost = SENSORY_RESOURCE_COST    // “额外资源消耗”= 5（施法抽取的疲劳/耐力）
+	hold_drain = 1                         // 引导期间的持续抽取
+	charge_time = SENSORY_CHANNEL_TIME       // 引导 3 秒（get_charge_time() 返回它驱动 do_after）
+	cooldown_time = SENSORY_COOLDOWN        // 冷却 = 3 分钟（由 z121_ready 强制执行）
 	cooldown_min = SENSORY_COOLDOWN         // 即便被“加速”，冷却也不会低于 3 分钟
-	charge_type = "recharge"                // 使用“充能”式冷却（默认）
-	human_req = TRUE                        // 只有人类施法者能施放
-	warnie = "spellwarning"
-	no_early_release = TRUE                 // 引导未完成不允许提前释放
-	movement_interrupt = FALSE              // 引导期间允许移动（短引导不必强制定身）
-	charging_slowdown = 1                   // 引导时略微减速
-	chargedloop = /datum/looping_sound/invokegen // 引导期间循环施法音效
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
+	charge_slowdown = 1                   // 引导时略微减速
 	associated_skill = /datum/skill/magic/arcane
-	action_icon = 'modular_z121/icon/custompell.dmi'
-	overlay_state = "sensory_sharing"       // 动作按钮图标态（dmi 暂无该态时仅显示为空，不影响编译）
+	button_icon = 'modular_z121/icon/custompell.dmi'
+	button_icon_state = "sensory_sharing"       // 动作按钮图标态（dmi 暂无该态时仅显示为空，不影响编译）
 	invocations = list("以我之眼，见你所见！") // 咒文（“释放需要相应台词”，开始引导时喊出）
 	invocation_type = "shout"
-	glow_color = GLOW_COLOR_ARCANE
+	spell_color = GLOW_COLOR_ARCANE
 	glow_intensity = GLOW_INTENSITY_LOW
 	gesture_required = TRUE                 // 需要能自由活动的手来施法
 	miracle = FALSE
 	xp_gain = TRUE
-	sound = null                            // 引导音由 chargedloop 负责，不在 perform 里额外播放
+	sound = null                            // 引导音由 chargedloop 负责，不在 z121_cast_selected 里额外播放
 
 // ---------------------------------------------------------------------------
-// choose_targets：施法入口（点击图标后由 Click -> cast_check -> choose_targets 调用）。
 // 完成两件“施法前”的事：1) 立即喊出咒文（满足“释放需要台词”）；2) do_after 引导 3 秒。
-// 引导成功后才调用 perform() 进入真正的 cast()。
 // ---------------------------------------------------------------------------
-/obj/effect/proc_holder/spell/self/sensory_sharing/choose_targets(mob/user = usr)
-	// 没有施法者就直接撤销，避免空指针。revert_cast() 会把冷却恢复为“可用”。
+/datum/action/cooldown/spell/z121/self/sensory_sharing/z121_choose_targets(mob/user = usr)
+	// 没有施法者就直接撤销，避免空指针。z121_cancel() 会把冷却恢复为“可用”。
 	if(!user)
-		revert_cast()
-		return
-
+		z121_cancel()
+		return FALSE
 	// “释放时”念出咒文，因此这里手动调用一次 invocation()。
-	// （稍后在 perform() 前临时屏蔽 invocation，避免咒文被重复喊两遍。）
+	// （稍后在 z121_cast_selected() 前临时屏蔽 invocation，避免咒文被重复喊两遍。）
 	invocation(user)
 
-	// 取得引导时长（= chargetime），用 do_after 实现“可被打断的 3 秒蓄力”。
-	var/cast_time = get_chargetime()
+	// 取得引导时长（= charge_time），用 do_after 实现“可被打断的 3 秒蓄力”。
+	var/cast_time = get_charge_time()
 	if(cast_time > 0)
 		user.visible_message(
 			span_warning("[user] 闭目凝神，指尖萦绕起一缕将视觉彼此牵连的魔力……"),
@@ -242,16 +233,16 @@
 		// do_after：引导期间若移动被打断/死亡会返回 FALSE。progress 显示进度条，target=user 表自身引导。
 		if(!do_after(user, cast_time, target = user, progress = TRUE))
 			to_chat(user, span_warning("我对视觉魔力的牵引被打断了，链接未能成形。"))
-			revert_cast(user) // 引导失败：退还冷却，可重新尝试
+			z121_cancel(user) // 引导失败：退还冷却，可重新尝试
 			return
 
-	// 引导成功。进入 perform 之前临时清空 invocations，防止 perform 成功后又喊一次咒文。
+	// 引导成功。进入 z121_cast_selected 之前临时清空 invocations，防止 z121_cast_selected 成功后又喊一次咒文。
 	var/list/original_invocations = invocations
 	var/original_invocation_type = invocation_type
 	invocations = null
 	invocation_type = "none"
-	// /spell/self 的 cast 只面向施法者本人发起，targets 传 null 即可。
-	perform(null, user = user)
+	// /datum/action/cooldown/spell/z121/self 的 cast 只面向施法者本人发起，targets 传 null 即可。
+	z121_cast_selected(null, user = user)
 	// 还原咒文设置，避免影响下一次施放。
 	invocations = original_invocations
 	invocation_type = original_invocation_type
@@ -262,20 +253,19 @@
 //   2) 询问目标是否接受（目标侧弹窗，可拒绝/超时）
 //   3) 建立 /datum/sensory_share_link 并安排 3 分钟后到期
 // 返回值约定：
-//   - TRUE  -> perform() 调用 start_recharge()，进入 3 分钟冷却（链接已建立）
-//   - FALSE -> 调用 revert_cast() 退还冷却（无目标 / 取消 / 被拒 / 失败）
 // ---------------------------------------------------------------------------
-/obj/effect/proc_holder/spell/self/sensory_sharing/cast(list/targets, mob/living/user = usr)
+/datum/action/cooldown/spell/z121/self/sensory_sharing/z121_apply(atom/cast_on)
+	var/mob/living/user = owner
 	. = ..()
 	// 安全校验：施法者必须仍然有效且健在。
 	if(!user || QDELETED(user))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// 同一时刻只允许参与一条视觉链接，避免多链接互相干扰。
 	if(user.sensory_share_link_custom)
 		to_chat(user, span_warning("我已身处一段视觉链接之中，无法再开启新的链接。"))
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 
 	// —— 步骤 1：收集 7 格视野内、存活、且非自身的活体作为候选目标 ——
@@ -296,27 +286,27 @@
 	// 错误处理：附近没有任何可链接的对象。
 	if(!length(candidates))
 		to_chat(user, span_warning("我的视野之内没有可以建立视觉链接的对象。"))
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 
 	// 弹窗让施法者选择目标；可取消（返回 null）。
 	var/chosen_label = tgui_input_list(user, "选择要与之共享视觉的对象：", "视觉共享", candidates)
 	if(isnull(chosen_label))
 		to_chat(user, span_warning("我收回了建立链接的念头。"))
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 
 	var/mob/living/target = candidates[chosen_label]
 	// 二次校验：从弹窗到点选之间，目标可能已离开视野/死亡/被他人链接。
 	if(!validate_target(user, target))
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 
 	// 反魔法检定：被反魔法保护的目标无法被接入链接（即便是善意的）。
 	if(target.anti_magic_check())
 		to_chat(user, span_warning("[target] 身上的反魔法挡下了视觉链接的魔力。"))
 		playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 
 	// —— 步骤 2：询问目标是否接受 ——
@@ -327,17 +317,17 @@
 	if(response != "接受")
 		to_chat(user, span_warning("[target] 拒绝了（或未能及时回应）这次视觉链接。"))
 		to_chat(target, span_notice("我婉拒了这次视觉链接。"))
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 
 	// —— 步骤 3：在询问期间双方可能已移动/失效，建立前再做一次完整校验 ——
 	if(!validate_target(user, target))
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 	// 施法者自身在等待期间也可能已失效或已被卷入别的链接。
 	if(QDELETED(user) || user.stat == DEAD || user.sensory_share_link_custom)
 		to_chat(user, span_warning("链接建立的时机已经错过了。"))
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 
 	// 建立链接 datum（构造函数内部完成视角法术授予、反向引用挂载与轮询启动）。
@@ -345,7 +335,7 @@
 	// 极端兜底：若构造函数因校验失败而自毁，则视为施法失败并退款。
 	if(QDELETED(link) || !link.active)
 		to_chat(user, span_warning("视觉链接在最后一刻没能稳定成形。"))
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 
 	// 安排 3 分钟后自动到期。把 timer id 记到 link 上，便于一方提前失效时清掉它。
@@ -365,7 +355,7 @@
 
 // validate_target：建立链接前对“目标是否仍可被链接”的统一校验，避免逻辑分散重复。
 // 校验项：存在、非自身、存活、仍在 7 格视野内、且尚未被卷入其他链接。
-/obj/effect/proc_holder/spell/self/sensory_sharing/proc/validate_target(mob/living/user, mob/living/target)
+/datum/action/cooldown/spell/z121/self/sensory_sharing/proc/validate_target(mob/living/user, mob/living/target)
 	if(QDELETED(target) || !istype(target))
 		to_chat(user, span_warning("链接的对象已经不在了。"))
 		return FALSE
@@ -528,44 +518,44 @@
 // 实现复用主线 reset_perspective：传入对方 mob 即把 client.eye 设为对方，
 // 传入 null 即恢复到自身视角；不转移控制权，仅改变“看到的画面”。
 // ===========================================================================
-/obj/effect/proc_holder/spell/self/sensory_sharing_view
+/datum/action/cooldown/spell/z121/self/sensory_sharing_view
 	name = "视角切换"
 	desc = "在自己与视觉链接对象的视角之间切换观察。"
-	overlay_state = "blink"                 // 复用已存在的图标态，确保按钮一定有图标
-	action_icon = 'modular_z121/icon/custompell.dmi'
-	releasedrain = 0                        // 切换视角不消耗资源
-	chargedrain = 0
-	chargetime = 0                          // 即时生效，无需引导
-	recharge_time = 1 SECONDS               // 1 秒小冷却，纯防误触连点
+	button_icon_state = "blink"                 // 复用已存在的图标态，确保按钮一定有图标
+	button_icon = 'modular_z121/icon/custompell.dmi'
+	primary_resource_cost = 0                        // 切换视角不消耗资源
+	hold_drain = 0
+	charge_time = 0                          // 即时生效，无需引导
+	cooldown_time = 1 SECONDS               // 1 秒小冷却，纯防误触连点
 	cooldown_min = 1 SECONDS
 	associated_skill = /datum/skill/magic/arcane
 	miracle = FALSE
 	gesture_required = FALSE                // 仅切换视角，不需要空手
-	human_req = FALSE                       // 链接双方未必都是人类，故不限制
 	invocation_type = "none"               // 切换视角是“心念”行为，不喊咒文
 
-/obj/effect/proc_holder/spell/self/sensory_sharing_view/cast(list/targets, mob/living/user = usr)
+/datum/action/cooldown/spell/z121/self/sensory_sharing_view/z121_apply(atom/cast_on)
+	var/mob/living/user = owner
 	if(user?.group_mindlink_view)
 		to_chat(user, span_notice("请先返回自身视角，再切换其他视觉链接。"))
 		return FALSE
 	if(!istype(user))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 	// 反查自己所属的链接；没有链接说明共享已结束，此时本法术理应已被收回。
 	var/datum/sensory_share_link/link = user.sensory_share_link_custom
 	if(!link || !link.active)
 		to_chat(user, span_warning("视觉链接已经消散，我无法再借由它窥见他人的视角。"))
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 	// 找到链接的另一方作为“可切换到的视角源”。
 	var/mob/living/partner = link.get_partner(user)
 	if(!partner || QDELETED(partner))
 		to_chat(user, span_warning("链接彼端空无一人，无从切换视角。"))
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 	// 需要客户端才能改变视角（NPC 无客户端，调用无意义）。
 	if(!user.client)
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 
 	// 切换逻辑：若此刻已在“看对方” -> 拉回自身视角；否则 -> 切到对方视角。
@@ -588,7 +578,7 @@
 		// 与群体链接交叉使用时禁止转播；原法术自身的双向切换规则保持不变。
 		if(partner.group_mindlink_view || user.group_mindlink_has_watchers(FALSE))
 			to_chat(user, span_notice("群体心灵链接正在借用相关视角，请先结束观看再切换。"))
-			revert_cast(user)
+			z121_cancel(user)
 			return FALSE
 		user.reset_perspective(partner) // 把 client.eye 设为对方，借其双眼观察
 		// 切到对方后立即重算视觉：此时 client.eye==partner，update_sight() 会调用

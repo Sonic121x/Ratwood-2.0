@@ -8,7 +8,7 @@
 
 /mob/living/carbon/human
 	var/obj/item/bodypart/head/harmless_live_head_source
-	var/obj/effect/proc_holder/spell/self/harmless_dismemberment_select/harmless_dismemberment_selector_spell
+	var/datum/action/cooldown/spell/z121/self/harmless_dismemberment_select/harmless_dismemberment_selector_spell
 	var/mob/living/carbon/human/harmless_dismemberment_locked_target
 
 /mob/living/carbon/human/proc/get_harmless_live_head_source()
@@ -509,7 +509,7 @@
 	var/mob/living/carbon/human/controller
 	var/mob/living/controller_body
 	var/datum/mind/controller_mind
-	var/obj/effect/proc_holder/spell/self/harmless_dismemberment_select/selector_spell
+	var/datum/action/cooldown/spell/z121/self/harmless_dismemberment_select/selector_spell
 
 /datum/status_effect/buff/harmless_dismemberment/on_creation(mob/living/new_owner, new_duration = null, mob/living/new_controller = null)
 	if(new_duration)
@@ -542,7 +542,7 @@
 	var/mob/living/carbon/carbon_owner = owner
 	var/kill_headless_owner = !QDELETED(carbon_owner) && head_separated && !isdullahan(carbon_owner) && !carbon_owner.get_bodypart(BODY_ZONE_HEAD) && carbon_owner.stat != DEAD
 	if(kill_headless_owner)
-		log_combat(controller, carbon_owner, "lost harmless dismemberment head support on", addition = "effect ended with its head still missing", log_seen = FALSE)
+		log_combat(controller, carbon_owner, "失去了对目标的无害肢解头部维持效果", addition = "效果结束时头部仍然缺失", log_seen = FALSE)
 	cleanup_resources()
 	. = ..()
 	if(QDELETED(carbon_owner))
@@ -611,7 +611,7 @@
 		ensure_selector_spell()
 		return
 	controller?.clear_harmless_dismemberment_locked_target(owner)
-	log_combat(new_controller, owner, "took control of harmless dismemberment on", addition = "previous controller: [key_name(controller)]", log_seen = FALSE)
+	log_combat(new_controller, owner, "接管了目标的无害肢解效果", addition = "此前控制者：[key_name(controller)]", log_seen = FALSE)
 	invalidate_selection()
 	clear_selector_spell()
 	controller = new_controller
@@ -631,7 +631,7 @@
 	SIGNAL_HANDLER
 	if(controller_body != old_controller)
 		return
-	log_combat(old_controller, owner, "transferred harmless dismemberment control for", addition = "new body: [key_name(new_controller)]", log_seen = FALSE)
+	log_combat(old_controller, owner, "转移了目标的无害肢解控制权", addition = "新身体：[key_name(new_controller)]", log_seen = FALSE)
 	invalidate_selection()
 	var/mob/living/old_controller_body = controller_body
 	controller?.clear_harmless_dismemberment_locked_target(owner)
@@ -667,7 +667,7 @@
 	if(QDELETED(selector_spell))
 		selector_spell = null
 	if(!selector_spell)
-		selector_spell = new /obj/effect/proc_holder/spell/self/harmless_dismemberment_select
+		selector_spell = new /datum/action/cooldown/spell/z121/self/harmless_dismemberment_select
 		controller_mind.AddSpell(selector_spell, controller)
 	controller.harmless_dismemberment_selector_spell = selector_spell
 	selector_spell.linked_target = owner
@@ -733,7 +733,7 @@
 			forget_detached_bodypart(limb)
 			continue
 		if(limb.owner || carbon_owner.get_bodypart(limb.body_zone))
-			log_combat(controller, owner, "ended harmless dismemberment tracking for", limb, "part reattached or replaced", log_seen = FALSE)
+			log_combat(controller, owner, "结束了无害肢解追踪", limb, "部位已接回或替换", log_seen = FALSE)
 			forget_detached_bodypart(limb)
 
 /datum/status_effect/buff/harmless_dismemberment/proc/refresh_monitored_bodyparts()
@@ -794,7 +794,7 @@
 	carbon_owner.update_inv_gloves()
 	carbon_owner.update_inv_shoes()
 	carbon_owner.update_inv_head()
-	log_combat(controller, carbon_owner, "separated a bodypart with harmless dismemberment from", bodypart, log_seen = FALSE, zone = bodypart.body_zone)
+	log_combat(controller, carbon_owner, "使用无害肢解分离了身体部位", bodypart, log_seen = FALSE, zone = bodypart.body_zone)
 	if(QDELETED(bodypart))
 		return TRUE
 	detached_bodyparts |= bodypart
@@ -854,7 +854,7 @@
 		forget_detached_bodypart(limb)
 		// 接回后立即恢复肢解保护，避免等到下一次轮询前再次被砍断。
 		refresh_monitored_bodyparts()
-		log_combat(controller, human_owner, "reattached a bodypart with harmless dismemberment to", limb, log_seen = FALSE, zone = limb.body_zone)
+		log_combat(controller, human_owner, "使用无害肢解接回了身体部位", limb, log_seen = FALSE, zone = limb.body_zone)
 
 		human_owner.visible_message(
 			span_notice("[limb] 被无形的牵引轻轻拽回了 [human_owner] 的断口，像一块终于寻回原位的骨肉。"),
@@ -881,7 +881,7 @@
 
 // cast_check() 还会检查或消耗充能，不能直接用于弹窗结束后的复核。
 // 这两个法术没有装备或虔诚要求，此处只复核其当前施法条件。
-/obj/effect/proc_holder/spell/self/proc/can_continue_harmless_cast(mob/living/carbon/human/user, datum/mind/casting_mind, client/casting_client)
+/datum/action/cooldown/spell/z121/self/proc/can_continue_harmless_cast(mob/living/carbon/human/user, datum/mind/casting_mind, client/casting_client)
 	if(QDELETED(src) || QDELETED(user) || !ishuman(user) || QDELETED(casting_mind))
 		return FALSE
 	if(!casting_client || user.client != casting_client || user.mind != casting_mind || casting_mind.current != user)
@@ -890,48 +890,47 @@
 		return FALSE
 	if(user.stat != CONSCIOUS || user.incapacitated(ignore_restraints = !gesture_required) || HAS_TRAIT(user, TRAIT_PARALYSIS))
 		return FALSE
-	if((!ignore_cockblock && HAS_TRAIT(user, TRAIT_SPELLCOCKBLOCK)) || HAS_TRAIT(user, TRAIT_CURSE_NOC))
+	if((!(spell_flags & SPELL_IGNORE_SPELLBLOCK) && HAS_TRAIT(user, TRAIT_SPELLCOCKBLOCK)) || HAS_TRAIT(user, TRAIT_CURSE_NOC))
 		return FALSE
 	var/turf/caster_turf = get_turf(user)
-	if(!caster_turf || (is_centcom_level(caster_turf.z) && !centcom_cancast))
+	if(!caster_turf)
 		return FALSE
-	if(!phase_allowed && istype(user.loc, /obj/effect/dummy))
+	if(TRUE && istype(user.loc, /obj/effect/dummy))
 		return FALSE
-	if(!antimagic_allowed && user.anti_magic_check(TRUE, FALSE, FALSE, 0, TRUE) && !HAS_TRAIT(user, TRAIT_SPELL_DISPERSION))
+	if((spell_requirements & SPELL_REQUIRES_NO_ANTIMAGIC) && user.anti_magic_check(TRUE, FALSE, FALSE, 0, TRUE) && !HAS_TRAIT(user, TRAIT_SPELL_DISPERSION))
 		return FALSE
 	if(gesture_required && (user.handcuffed || !user.has_active_hand()))
 		return FALSE
 	if(invocation_type == "whisper" || invocation_type == "shout")
-		if((!user.can_speak_vocal() && !(mute_allowed && HAS_TRAIT(user, TRAIT_PERMAMUTE) && !user.check_mouth_grabbed())) || !user.getorganslot(ORGAN_SLOT_TONGUE))
+		if(!user.can_speak_vocal() || !user.getorganslot(ORGAN_SLOT_TONGUE))
 			return FALSE
 		var/datum/language/default_language = user.get_default_language()
 		if(default_language && (initial(default_language.flags) & SIGNLANG))
 			return FALSE
 	return TRUE
 
-/obj/effect/proc_holder/spell/self/proc/revert_harmless_cast(mob/living/user)
+/datum/action/cooldown/spell/z121/self/proc/revert_harmless_cast(mob/living/user)
 	if(!QDELETED(src) && !QDELETED(user))
-		revert_cast(user)
+		z121_cancel(user)
 	return FALSE
 
-/obj/effect/proc_holder/spell/self/harmless_dismemberment_select
+/datum/action/cooldown/spell/z121/self/harmless_dismemberment_select
 	name = "指定脱落"
 	desc = "在无害肢解持续期间，无论相隔多远，都可仅对锁定目标再次指定要无伤脱落的部位。"
-	action_icon_state = "abduct"
-	overlay_state = "blink"
-	releasedrain = 0
-	chargedrain = 0
-	chargetime = 0
-	recharge_time = 1 SECONDS
+	button_icon_state = "blink"
+	primary_resource_cost = 0
+	hold_drain = 0
+	charge_time = 0
+	cooldown_time = 1 SECONDS
 	cooldown_min = 1 SECONDS
-	range = 0
+	cast_range = 0
 	associated_skill = /datum/skill/magic/arcane
 	miracle = FALSE
 	gesture_required = FALSE
 	var/mob/living/carbon/human/linked_target
 	var/datum/status_effect/buff/harmless_dismemberment/linked_effect
 
-/obj/effect/proc_holder/spell/self/harmless_dismemberment_select/Destroy()
+/datum/action/cooldown/spell/z121/self/harmless_dismemberment_select/Destroy()
 	if(linked_effect?.selector_spell == src)
 		linked_effect.selector_spell = null
 	if(linked_effect?.controller?.harmless_dismemberment_selector_spell == src)
@@ -940,15 +939,16 @@
 	linked_effect = null
 	return ..()
 
-/obj/effect/proc_holder/spell/self/harmless_dismemberment_select/proc/remove_from_holder(mob/living/user)
+/datum/action/cooldown/spell/z121/self/harmless_dismemberment_select/proc/remove_from_holder(mob/living/user)
 	remove_from_specific_holder(user?.mind)
 
-/obj/effect/proc_holder/spell/self/harmless_dismemberment_select/proc/remove_from_specific_holder(datum/mind/M)
+/datum/action/cooldown/spell/z121/self/harmless_dismemberment_select/proc/remove_from_specific_holder(datum/mind/M)
 	if(M?.spell_list && (src in M.spell_list))
 		M.spell_list -= src
 	qdel(src)
 
-/obj/effect/proc_holder/spell/self/harmless_dismemberment_select/cast(list/targets, mob/living/user = usr)
+/datum/action/cooldown/spell/z121/self/harmless_dismemberment_select/z121_apply(atom/cast_on)
+	var/mob/living/user = owner
 	if(QDELETED(user) || !ishuman(user))
 		return revert_harmless_cast(user)
 	if(QDELETED(linked_target) || QDELETED(linked_effect) || linked_effect.owner != linked_target)
@@ -961,10 +961,10 @@
 		return FALSE
 	if(linked_target != user && (!linked_target.client || linked_target.stat != CONSCIOUS))
 		to_chat(user, span_warning("只有仍然清醒、能够回应这道法术的人，才能继续接受无害肢解的指定脱落。"))
-		revert_cast(user)
+		z121_cancel(user)
 		return FALSE
 
-	var/obj/effect/proc_holder/spell/invoked/harmless_dismemberment/main_spell = user.mind?.get_spell(/obj/effect/proc_holder/spell/invoked/harmless_dismemberment, TRUE)
+	var/datum/action/cooldown/spell/z121/invoked/harmless_dismemberment/main_spell = user.mind?.get_spell(/datum/action/cooldown/spell/z121/invoked/harmless_dismemberment, TRUE)
 	if(!main_spell)
 		to_chat(user, span_warning("我一时无法重新牵动这道法术。"))
 		remove_from_holder(user)
@@ -977,7 +977,7 @@
 		return revert_harmless_cast(user)
 	return TRUE
 
-/obj/effect/proc_holder/spell/invoked/harmless_dismemberment/proc/get_detachable_bodypart_choices(mob/living/carbon/human/target)
+/datum/action/cooldown/spell/z121/invoked/harmless_dismemberment/proc/get_detachable_bodypart_choices(mob/living/carbon/human/target)
 	var/list/detachable = list()
 	if(!istype(target))
 		return detachable
@@ -996,7 +996,7 @@
 		detachable += "尾巴"
 	return detachable
 
-/obj/effect/proc_holder/spell/invoked/harmless_dismemberment/proc/get_choice_bodypart(mob/living/carbon/human/target, choice)
+/datum/action/cooldown/spell/z121/invoked/harmless_dismemberment/proc/get_choice_bodypart(mob/living/carbon/human/target, choice)
 	if(!istype(target) || !choice)
 		return null
 
@@ -1016,7 +1016,7 @@
 
 	return null
 
-/obj/effect/proc_holder/spell/invoked/harmless_dismemberment/proc/prompt_initial_separation(mob/living/user, mob/living/carbon/human/target, obj/effect/proc_holder/spell/self/selection_spell = src)
+/datum/action/cooldown/spell/z121/invoked/harmless_dismemberment/proc/prompt_initial_separation(mob/living/user, mob/living/carbon/human/target, datum/action/cooldown/spell/z121/self/selection_spell = src)
 	if(QDELETED(user) || QDELETED(target) || !istype(user) || !istype(target) || QDELETED(selection_spell))
 		return
 	var/datum/mind/casting_mind = user.mind
@@ -1080,48 +1080,42 @@
 	to_chat(user, span_notice("我指定了 [target] 的[chosen_name] 脱落。"))
 	return TRUE
 
-/obj/effect/proc_holder/spell/invoked/harmless_dismemberment
-	parent_type = /obj/effect/proc_holder/spell/self
+/datum/action/cooldown/spell/z121/invoked/harmless_dismemberment
+	parent_type = /datum/action/cooldown/spell/z121/self
 	name = "无害肢解"
 	desc = "用 10 秒的诡异引导挑选 3 格内一名自愿者，让其在两分钟里化作一具可被平整拆开的活体圣匣。肢体与头颅会在无痛、无血、无死的温柔里分离，并在靠近断口时自行归位；待时限耗尽，仍未归位之物便不再回来。"
-	action_icon_state = "bloodcrawl"
-	cost = 4
+	point_cost = 4
 	xp_gain = TRUE
-	releasedrain = 40
-	chargedrain = 1
-	chargetime = 0
-	recharge_time = 5 MINUTES
+	primary_resource_cost = 40
+	hold_drain = 1
+	charge_time = 0
+	cooldown_time = 5 MINUTES
 	cooldown_min = 5 MINUTES
-	human_req = TRUE
-	warnie = "spellwarning"
-	school = "transmutation"
-	action_icon = 'modular_z121/icon/custompell.dmi'
-	overlay_state = "harmless_dismemberment"
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z | SPELL_REQUIRES_NO_MOVE
+	button_icon = 'modular_z121/icon/custompell.dmi'
+	button_icon_state = "harmless_dismemberment"
 	spell_tier = 3
 	invocations = list("肉可离，命暂留，归处莫迟。")
 	invocation_type = "whisper"
-	glow_color = GLOW_COLOR_BUFF
+	spell_color = GLOW_COLOR_BUFF
 	glow_intensity = GLOW_INTENSITY_MEDIUM
-	no_early_release = TRUE
-	movement_interrupt = TRUE
-	charging_slowdown = 4
-	chargedloop = /datum/looping_sound/invokegen
+	charge_slowdown = 4
 	associated_skill = /datum/skill/magic/arcane
-	range = 3
+	cast_range = 3
 	miracle = FALSE
 	gesture_required = TRUE
 	var/harmless_cast_pending = FALSE
 
-/obj/effect/proc_holder/spell/invoked/harmless_dismemberment/proc/get_selectable_spell_targets(mob/living/carbon/human/user)
+/datum/action/cooldown/spell/z121/invoked/harmless_dismemberment/proc/get_selectable_spell_targets(mob/living/carbon/human/user)
 	var/list/possible_targets = list()
 	if(!istype(user))
 		return possible_targets
 	var/mob/living/carbon/human/locked_target = user.get_harmless_dismemberment_locked_target()
 	if(locked_target)
-		if(locked_target.client && locked_target.stat == CONSCIOUS && (locked_target in range(range, user)))
+		if(locked_target.client && locked_target.stat == CONSCIOUS && (locked_target in range(cast_range, user)))
 			possible_targets += locked_target
 		return possible_targets
-	for(var/mob/living/carbon/human/possible_target in range(range, user))
+	for(var/mob/living/carbon/human/possible_target in range(cast_range, user))
 		if(QDELETED(possible_target))
 			continue
 		if(possible_target != user && (!possible_target.client || possible_target.stat != CONSCIOUS))
@@ -1129,7 +1123,7 @@
 		possible_targets += possible_target
 	return possible_targets
 
-/obj/effect/proc_holder/spell/invoked/harmless_dismemberment/proc/choose_spell_target(mob/living/carbon/human/user)
+/datum/action/cooldown/spell/z121/invoked/harmless_dismemberment/proc/choose_spell_target(mob/living/carbon/human/user)
 	if(!istype(user))
 		return null
 	var/list/possible_targets = get_selectable_spell_targets(user)
@@ -1137,7 +1131,8 @@
 		return null
 	return input(user, "选择 3 格范围内要施加“无害肢解”的清醒对象。", "无害肢解") as null|mob in sortNames(possible_targets)
 
-/obj/effect/proc_holder/spell/invoked/harmless_dismemberment/cast(list/targets, mob/living/user = usr)
+/datum/action/cooldown/spell/z121/invoked/harmless_dismemberment/z121_apply(atom/cast_on)
+	var/mob/living/user = owner
 	if(harmless_cast_pending)
 		return FALSE
 	harmless_cast_pending = TRUE
@@ -1148,7 +1143,7 @@
 	if(QDELETED(user))
 		return FALSE
 
-/obj/effect/proc_holder/spell/invoked/harmless_dismemberment/proc/perform_harmless_cast(mob/living/user)
+/datum/action/cooldown/spell/z121/invoked/harmless_dismemberment/proc/perform_harmless_cast(mob/living/user)
 	if(!ishuman(user))
 		return revert_harmless_cast(user)
 
@@ -1164,7 +1159,7 @@
 			to_chat(human_user, span_warning("无害肢解仍缝在 [locked_target] 身上；若想再次续上或改投这道法术，对方必须清醒且位于我 3 格范围内。"))
 		else
 			to_chat(human_user, span_warning("我周围 3 格内没有清醒且能够回应这道法术的对象。"))
-		revert_cast(human_user)
+		z121_cancel(human_user)
 		return FALSE
 
 	human_user.visible_message(
@@ -1184,29 +1179,29 @@
 		return revert_harmless_cast(human_user)
 	if(!ishuman(spelltarget))
 		to_chat(human_user, span_notice("我让那道缝在空气里的温柔恶意暂时停了下来。"))
-		revert_cast(human_user)
+		z121_cancel(human_user)
 		return FALSE
 	if(!(spelltarget in get_selectable_spell_targets(human_user)))
 		to_chat(human_user, span_warning("[spelltarget] 已经不在我能触及的断离范围内了。"))
-		revert_cast(human_user)
+		z121_cancel(human_user)
 		return FALSE
 
 	if(spelltarget.anti_magic_check())
 		spelltarget.visible_message(span_warning("[spelltarget] 周身泛起一阵反魔法涟漪，将那道缝在血肉间的怪异温柔尽数震散！"))
 		to_chat(human_user, span_warning("[spelltarget] 身上的反魔法抵消了无害肢解。"))
 		playsound(get_turf(spelltarget), 'sound/magic/magic_nulled.ogg', 100)
-		revert_cast(human_user)
+		z121_cancel(human_user)
 		return FALSE
 
 	if(spelltarget != human_user)
 		if(spelltarget.stat != CONSCIOUS || !spelltarget.client)
 			to_chat(human_user, span_warning("只有清醒且能够亲自同意的人，才能接受这道法术。"))
-			revert_cast(human_user)
+			z121_cancel(human_user)
 			return FALSE
 
 		var/datum/mind/consenting_mind = spelltarget.mind
 		var/client/consenting_client = spelltarget.client
-		log_combat(human_user, spelltarget, "requested consent for harmless dismemberment from", log_seen = FALSE)
+		log_combat(human_user, spelltarget, "请求对方同意无害肢解", log_seen = FALSE)
 		var/consent = alert(spelltarget, "[human_user] 想对你施放“无害肢解”。接下来的两分钟里，你的肢体与头颅会在不流血、不呼痛、不立刻死去的情况下被平整分离，并在靠近断口时自行归位。若时限结束仍未归位，分离便会成为永久。要接受吗？", "无害肢解", "同意", "拒绝")
 		if(QDELETED(spelltarget) || !can_continue_harmless_cast(human_user, casting_mind, casting_client))
 			return revert_harmless_cast(human_user)
@@ -1214,15 +1209,15 @@
 			return revert_harmless_cast(human_user)
 		if(spelltarget.stat != CONSCIOUS || !spelltarget.client)
 			to_chat(human_user, span_warning("只有清醒且能够亲自同意的人，才能接受这道法术。"))
-			revert_cast(human_user)
+			z121_cancel(human_user)
 			return FALSE
 		if(consent != "同意")
-			log_combat(spelltarget, human_user, "declined harmless dismemberment from", log_seen = FALSE)
+			log_combat(spelltarget, human_user, "拒绝了对方的无害肢解请求", log_seen = FALSE)
 			to_chat(human_user, span_warning("[spelltarget] 拒绝接受无害肢解。"))
 			to_chat(spelltarget, span_notice("我拒绝了 [human_user] 的无害肢解。"))
-			revert_cast(human_user)
+			z121_cancel(human_user)
 			return FALSE
-		log_combat(spelltarget, human_user, "consented to harmless dismemberment from", log_seen = FALSE)
+		log_combat(spelltarget, human_user, "同意了对方的无害肢解请求", log_seen = FALSE)
 		if(spelltarget.anti_magic_check())
 			to_chat(human_user, span_warning("[spelltarget] 的反魔法阻止了这次施法。"))
 			return revert_harmless_cast(human_user)
@@ -1233,7 +1228,7 @@
 	if(QDELETED(effect))
 		return revert_harmless_cast(human_user)
 	effect.set_controller(human_user)
-	log_combat(human_user, spelltarget, already_enchanted ? "refreshed harmless dismemberment on" : "applied harmless dismemberment to", log_seen = FALSE)
+	log_combat(human_user, spelltarget, already_enchanted ? "刷新了无害肢解效果" : "施加了无害肢解效果", log_seen = FALSE)
 	playsound(get_turf(spelltarget), 'sound/magic/haste.ogg', 70, TRUE, soundping = TRUE)
 
 	if(spelltarget == human_user)

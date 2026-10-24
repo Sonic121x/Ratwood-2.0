@@ -52,7 +52,7 @@
 	H.virginity = TRUE
 	H.cmode_music = 'sound/music/combat_zybantine.ogg'
 	var/background = list("贵族（+阅读）", "平民（+2 幸运）")
-	var/background_choice = input(H, "选择你的出身。", "出身抉择") as anything in background
+	var/background_choice = input(H, "选择你的出身。", "披挂迎战") as anything in background
 	switch(background_choice)
 		if("贵族（+阅读）")
 			ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
@@ -156,7 +156,7 @@
 	name = "奥术奴隶"
 	tutorial = "你是不幸的奴隶，自故乡被掳走，带往 兹班图 接受奴工与顺从训练，久到你几乎只能模糊记得从前的自己……如今你正被从沙漠押往更残酷的土地，等待被售卖。"
 	outfit = /datum/outfit/job/roguetown/slaver/slave/arcyne
-	traits_applied = list(TRAIT_GOODLOVER, TRAIT_ARCYNE_T3, TRAIT_OUTLANDER)
+	traits_applied = list(TRAIT_GOODLOVER, TRAIT_OUTLANDER)
 	category_tags = list(CTAG_SLAVER_SLAVE)
 
 	subclass_skills = list(
@@ -184,18 +184,16 @@
 	shoes = /obj/item/clothing/shoes/roguetown/anklets
 	mask = /obj/item/clothing/mask/rogue/exoticsilkmask
 	backl = /obj/item/storage/backpack/rogue/satchel/short
-	backr = /obj/item/rogueweapon/woodstaff/emerald
+	backr = /obj/item/rogueweapon/woodstaff/implement/greater
 	gloves = /obj/item/clothing/gloves/roguetown/nomagic
 	backpack_contents = list(
 		/obj/item/soap/bath = 1,
 		/obj/item/recipe_book/alchemy = 1,
 		/obj/item/roguegem/amethyst = 1, 
-		/obj/item/spellbook_unfinished/pre_arcyne = 1,
+		/obj/item/rogueweapon/spellbook = 1,
 	)
 	H.virginity = TRUE
 	H.cmode_music = 'sound/music/combat_zybantine.ogg'
-	if(H.mind)
-		H?.mind.adjust_spellpoints(24)
 	var/background = list("贵族（+阅读）", "平民（+2 幸运）")
 	var/background_choice = input(H, "选择你的出身。", "披挂迎战") as anything in background
 	switch(background_choice)
@@ -249,8 +247,6 @@
 	)
 	H.virginity = TRUE
 	H.cmode_music = 'sound/music/combat_zybantine.ogg'
-	if(H.mind)
-		H?.mind.adjust_spellpoints(24)
 	var/background = list("贵族（+阅读）", "平民（+2 幸运）")
 	var/background_choice = input(H, "选择你的出身。", "披挂迎战") as anything in background
 	switch(background_choice)

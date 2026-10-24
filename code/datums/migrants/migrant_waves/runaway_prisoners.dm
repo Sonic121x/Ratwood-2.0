@@ -12,7 +12,7 @@
 		/datum/migrant_role/runaway_prisoner = 4,
 	)
 	min_optional_fills = 0
-	greet_text = "你已在牢房中蹉跎多年。虽然你成功逃脱，却早已一无所有，身体衰弱，心神迟钝。但有一件事你无比清楚：你绝不会再回去。"
+	greet_text = "你在牢房中蹉跎了多年。虽然终于逃出，却已一无所有——身体萎缩，心智迟钝。但有一点你无比清楚：你绝不会回去。" 
 
 /datum/migrant_role/runaway_prisoner
 	name = "越狱囚犯"
@@ -89,9 +89,8 @@
 	name = "逃亡囚犯（法师）"
 	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/job/roguetown/adventurer/runaway_prisoner/mage
-	traits_applied = list(TRAIT_CRITICAL_RESISTANCE, TRAIT_ARCYNE_T3, TRAIT_ALCHEMY_EXPERT)
+	traits_applied = list(TRAIT_CRITICAL_RESISTANCE, TRAIT_ALCHEMY_EXPERT)
 	category_tags = list(CTAG_RUNAWAY_PRISONER)
-	subclass_spellpoints = 18
 	subclass_stats = list(
 		STATKEY_LCK = 3,
 		STATKEY_CON = -1,
@@ -131,9 +130,10 @@
 	var/descriptor_body = build_coalesce_description_nofluff(d_list, H, list(MOB_DESCRIPTOR_SLOT_BODY), "%DESC1%")
 	var/descriptor_voice = build_coalesce_description_nofluff(d_list, H, list(MOB_DESCRIPTOR_SLOT_VOICE), "%DESC1%")
 	var/my_crime = input(H, "你的罪名是什么？", "罪名") as text|null
+	var/realmname = SSmapping.map_adjustment.realm_name
 	if (!my_crime)
 		my_crime = "冒犯王冠之罪"
-	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, rand(100, 200), FALSE, my_crime, "谷地司法庭", H) // KUKU
+	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, rand(100, 200), FALSE, my_crime, "[realmname]司法厅")
 	if(should_wear_femme_clothes(H))
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 	else if(should_wear_masc_clothes(H))
@@ -141,6 +141,7 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 		armor = /obj/item/clothing/suit/roguetown/shirt/tunic/random
 	neck = /obj/item/clothing/neck/roguetown/gorget/cursed_collar
+	H.mind?.AddSpell(new /datum/action/cooldown/spell/touch/prestidigitation)
 
 
 /datum/outfit/job/roguetown/adventurer/runaway_prisoner/commoner/pre_equip(mob/living/carbon/human/H, visualsOnly)
@@ -152,9 +153,10 @@
 	var/descriptor_body = build_coalesce_description_nofluff(d_list, H, list(MOB_DESCRIPTOR_SLOT_BODY), "%DESC1%")
 	var/descriptor_voice = build_coalesce_description_nofluff(d_list, H, list(MOB_DESCRIPTOR_SLOT_VOICE), "%DESC1%")
 	var/my_crime = input(H, "你的罪名是什么？", "罪名") as text|null
+	var/realmname = SSmapping.map_adjustment.realm_name
 	if (!my_crime)
 		my_crime = "冒犯王冠之罪"
-	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, rand(100, 200), FALSE, my_crime, "谷地司法庭", H) // KUKU
+	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, rand(100, 200), FALSE, my_crime, "[realmname]司法厅")
 	if(should_wear_femme_clothes(H))
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 	else if(should_wear_masc_clothes(H))
@@ -173,9 +175,10 @@
 	var/descriptor_body = build_coalesce_description_nofluff(d_list, H, list(MOB_DESCRIPTOR_SLOT_BODY), "%DESC1%")
 	var/descriptor_voice = build_coalesce_description_nofluff(d_list, H, list(MOB_DESCRIPTOR_SLOT_VOICE), "%DESC1%")
 	var/my_crime = input(H, "你的罪名是什么？", "罪名") as text|null
+	var/realmname = SSmapping.map_adjustment.realm_name
 	if (!my_crime)
 		my_crime = "冒犯王冠之罪"
-	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, rand(100, 200), FALSE, my_crime, "谷地司法庭", H) // KUKU
+	add_bounty(H.real_name, race, gender, descriptor_height, descriptor_body, descriptor_voice, rand(100, 200), FALSE, my_crime, "[realmname]司法厅")
 	if(should_wear_femme_clothes(H))
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/gen/random
 	else if(should_wear_masc_clothes(H))
@@ -183,4 +186,3 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 		armor = /obj/item/clothing/suit/roguetown/shirt/tunic/random
 	neck = /obj/item/clothing/neck/roguetown/gorget/cursed_collar
-	H.mind?.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)

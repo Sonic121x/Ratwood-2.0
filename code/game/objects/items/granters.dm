@@ -78,11 +78,9 @@
 /obj/item/book/granter/spell/already_known(mob/user)
 	if(!spell)
 		return TRUE
-	for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
-		if(knownspell.type == spell)
-			if(user.mind)
-				to_chat(user,span_warning("这本我已经读过了！"))
-			return TRUE
+	if(user.mind.has_spell(spell, specific = TRUE))
+		to_chat(user, span_warning("这本我已经读过了！"))
+		return TRUE
 	return FALSE
 
 /obj/item/book/granter/spell/on_reading_start(mob/user)
@@ -90,9 +88,9 @@
 
 /obj/item/book/granter/spell/on_reading_finished(mob/user)
 	to_chat(user, span_notice("我感觉自己已经掌握了足够的心得，能够施放[spellname]了！"))
-	var/obj/effect/proc_holder/spell/S = new spell
+	var/datum/S = new spell
 	user.mind.AddSpell(S)
-	user.log_message("learned the spell [spellname] ([S])", LOG_ATTACK, color="orange")
+	user.log_message("学会了法术 [spellname] ([S])", LOG_ATTACK, color="orange")
 	onlearned(user)
 
 /obj/item/book/granter/spell/random
@@ -193,216 +191,22 @@
 	)
 
 //! --BLACKSTONE SCROLLS-- !/
-/obj/item/book/granter/spell/blackstone/
-	desc = "一卷蕴藏潜能的卷轴，唯有能解读其秘密之人方知其价值。"
+/obj/item/book/granter/spell/fly
+	name = "飞行术卷轴"
+	desc = "教你施展飞行术。"
+	spell = /datum/action/cooldown/spell/fly
+	spellname = "飞行术"
 	icon = 'icons/roguetown/items/misc.dmi'
+	icon_state = "scrolldarkred"
 	oneuse = TRUE
 	drop_sound = 'sound/foley/dropsound/paper_drop.ogg'
-	pickup_sound =  'sound/blank.ogg'
+	pickup_sound = 'sound/blank.ogg'
+	remarks = list("凌空而起……", "心念轻盈……", "升入苍穹……")
 
-/obj/item/book/granter/spell/blackstone/onlearned(mob/living/carbon/user)
+/obj/item/book/granter/spell/fly/onlearned(mob/living/carbon/user)
 	..()
-	if(oneuse == TRUE)
+	if(oneuse)
 		name = "被抽空的卷轴"
 		desc = "这张卷轴曾写满魔法经文，如今其中知识已被他人抽走，表面空空如也。它已经毫无用处。"
 		icon_state = "scroll"
 		user.visible_message(span_warning("[src]上的魔法墨迹被硬生生抽离了！"))
-
-/obj/item/book/granter/spell/blackstone/fireball
-	name = "火球术卷轴"
-	spell = /obj/effect/proc_holder/spell/invoked/projectile/fireball
-	spellname = "火球术"
-	icon_state ="scrollred"
-	remarks = list("火与油..", "将火焰暂时收束..", "投出烈焰..", "令火焰凝聚成形..")
-
-/obj/item/book/granter/spell/blackstone/greaterfireball
-	name = "高等火球术卷轴"
-	spell = /obj/effect/proc_holder/spell/invoked/projectile/fireball/greater
-	spellname = "高等火球术"
-	icon_state ="scrollred"
-	remarks = list("火与油..", "将火焰暂时收束..", "投出烈焰..", "令火焰凝聚成形..")
-
-/obj/item/book/granter/spell/blackstone/lightning
-	name = "闪电术卷轴"
-	spell = /obj/effect/proc_holder/spell/invoked/projectile/lightningbolt
-	spellname = "闪电术"
-	icon_state ="scrollyellow"
-	remarks = list("指尖凝聚雷电精华..", "闪电自云端落下..", "雷光迸出指尖..", "电荷在体内积聚..")
-
-/obj/item/book/granter/spell/blackstone/fetch
-	name = "摄物术卷轴"
-	spell = /obj/effect/proc_holder/spell/invoked/projectile/fetch
-	spellname = "摄物术"
-	icon_state ="scrollpurple"
-	remarks = list("召回归返..", "回到手中..", "归返之手..")
-
-/obj/item/book/granter/spell/blackstone/invisibility
-	name = "隐形术卷轴"
-	spell = /obj/effect/proc_holder/spell/invoked/invisibility
-	spellname = "隐形术"
-	icon_state ="scrollpurple"
-	remarks = list("虚无之幕..", "遮蔽真相..", "抹去真实的痕迹..")
-
-/obj/item/book/granter/spell/blackstone/skeleton//BEWARE this is the super powerful LICH player skeleton spawner
-	name = "唤骷卷轴"
-	spell = /obj/effect/proc_holder/spell/invoked/raise_undead
-	spellname = "唤骷"
-	icon_state ="scrolldarkred"
-	remarks = list("受诅咒者归来..", "向内克拉解开灭亡之文..", "骸骨聚拢..")
-
-/obj/item/book/granter/spell/blackstone/sicknessray
-	name = "病蚀射线卷轴"
-	spell = /obj/effect/proc_holder/spell/invoked/projectile/sickness
-	spellname = "病蚀射线"
-	icon_state ="scrollgreen"
-	remarks = list("我的锈蚀之敌..", "瘟疫遍布大地..", "腐败之光束..")
-
-/obj/item/book/granter/spell/blackstone/bonechill
-	name = "蚀骨寒意卷轴"
-	spell = /obj/effect/proc_holder/spell/invoked/bonechill
-	spellname = "蚀骨寒意"
-	icon_state ="scrolldarkred"
-	remarks = list("米迪奥拉努姆之风..", "治愈受诅咒者..", "亡者的冰冷骸骨..")
-
-/obj/item/book/granter/spell/blackstone/acidsplash
-	name = "酸液飞溅卷轴"
-	spell = /obj/effect/proc_holder/spell/invoked/projectile/acidsplash
-	spellname = "酸液飞溅"
-	icon_state ="scrolldarkred"
-	remarks = list("岩石遭到腐蚀..", "有毒的泡沫..", "泛黄的液滴..")
-
-/obj/item/book/granter/spell/blackstone/spitfire
-	name = "吐焰术卷轴"
-	spell = /obj/effect/proc_holder/spell/invoked/projectile/spitfire
-	spellname = "吐焰术"
-	icon_state ="scrollred"
-	remarks = list("火与油..", "将火焰暂时收束..", "投出烈焰..", "令火焰凝聚成形..")
-
-/obj/item/book/granter/spell/blackstone/lesserknock
-	name = "次级开锁术卷轴"
-	spell = /obj/effect/proc_holder/spell/targeted/touch/lesserknock
-	spellname = "次级开锁术"
-	icon_state ="scrollred"
-	remarks = list("古老钥匙开启门扉..", "永不遗失..", "颤抖之手..")
-
-/obj/item/book/granter/spell/blackstone/repel
-	name = "斥退术卷轴"
-	spell = /obj/effect/proc_holder/spell/invoked/projectile/repel
-	spellname = "斥退术"
-	icon_state ="scrolldarkred"
-	remarks = list("逆向之风..", "大地低鸣..", "古老的岩石..")
-
-/obj/item/book/granter/spell/blackstone/guidance
-	name = "指引术卷轴"
-	spell = /obj/effect/proc_holder/spell/invoked/guidance
-	spellname = "指引术"
-	icon_state ="scrolldarkred"
-	remarks = list("黑暗中的光明..", "坚定的步伐不惧阴影..", "灵魂知晓道路..")
-
-/obj/item/book/granter/spell/blackstone/frostbolt
-	name = "寒霜箭卷轴"
-	spell = /obj/effect/proc_holder/spell/invoked/projectile/frostbolt
-	spellname = "寒霜箭"
-	icon_state ="scrolldarkred"
-	remarks = list("寒冰蜿蜒而行..", "寂静中的结晶..", "无热之冰..")
-
-/obj/item/book/granter/spell/blackstone/fortitude
-	name = "坚韧术卷轴"
-	spell = /obj/effect/proc_holder/spell/invoked/fortitude
-	spellname = "坚韧术"
-	icon_state ="scrolldarkred"
-	remarks = list("逆境中的意志..", "重担的分量..", "生命再生..")
-
-/obj/item/book/granter/spell/blackstone/message
-	name = "传讯术卷轴"
-	spell = /obj/effect/proc_holder/spell/self/message
-	spellname = "传讯术"
-	icon_state ="scrolldarkred"
-	remarks = list("言语飞扬..", "心智之间的纽带..", "介于言语与沉默之间..")
-
-/obj/item/book/granter/spell/blackstone/ensnare
-	name = "缠缚术卷轴"
-	spell = /obj/effect/proc_holder/spell/invoked/ensnare
-	spellname = "缠缚术"
-	icon_state ="scrolldarkred"
-	remarks = list("踏入之人..", "黑暗中的根系..", "隐秘的联系..")
-
-/obj/item/book/granter/spell/blackstone/forcewall_weak
-	name = "力墙术卷轴"
-	spell = /obj/effect/proc_holder/spell/invoked/forcewall
-	spellname = "力墙术"
-	icon_state ="scrolldarkred"
-	remarks = list("墙壁不只阻挡敌人..", "无形之手将石块相接..", "坚不可摧的城墙..")
-
-/obj/item/book/granter/spell/blackstone/featherfall
-	name = "羽落术卷轴"
-	spell = /obj/effect/proc_holder/spell/invoked/featherfall
-	spellname = "羽落术"
-	icon_state ="scrolldarkred"
-	remarks = list("无声落下..", "羽翼的轻盈..", "羽毛中沉默的痛楚..")
-
-/obj/item/book/granter/spell/blackstone/enlarge
-	name = "巨化术卷轴"
-	spell = /obj/effect/proc_holder/spell/invoked/enlarge
-	spellname = "巨化术"
-	icon_state ="scrolldarkred"
-	remarks = list("巨物行动..", "山岳震颤..", "体量扩张..")
-
-/obj/item/book/granter/spell/blackstone/leap
-	name = "腾跃术卷轴"
-	spell = /obj/effect/proc_holder/spell/invoked/leap
-	spellname = "腾跃术"
-	icon_state ="scrolldarkred"
-	remarks = list("显露高处..", "双足在空中飞行..", "轻盈中的勇气..")
-
-/obj/item/book/granter/spell/blackstone/familiar //Find Familiar Scroll
-	name = "寻得魔宠卷轴"
-	spell = /obj/effect/proc_holder/spell/self/findfamiliar
-	spellname = "寻得魔宠"
-	icon_state ="scrolldarkred"
-	oneuse = FALSE
-
-/obj/item/book/granter/spell/blackstone/mirror_transform
-	name = "镜像变形卷轴"
-	spell = /obj/effect/proc_holder/spell/invoked/mirror_transform
-	spellname = "镜像变形"
-	icon_state ="scrolldarkred"
-	remarks = list("采纳新的形貌..", "让我焕然一新..", "我将变得美丽..")
-
-//scroll for giving the reader 3 spell points, this should be dungeon loot
-/obj/item/book/granter/spell_points
-	name = "奥术洞见"
-	icon_state = "scrollpurple"
-	icon = 'icons/roguetown/items/misc.dmi'
-	oneuse = TRUE
-	var/spellpoints = 3
-	drop_sound = 'sound/foley/dropsound/paper_drop.ogg'
-	pickup_sound =  'sound/blank.ogg'
-
-/obj/item/book/granter/spell_points/on_reading_finished(mob/user)
-	var/arcaneskill = user.get_skill_level(/datum/skill/magic/arcane)
-	if(arcaneskill >= SKILL_LEVEL_NOVICE) //Required arcane skill of NOVICE or higher to use the granter
-		to_chat(user, span_notice("我吸收了卷轴中的感悟，感觉自己对施法更娴熟了！"))
-		user.mind.adjust_spellpoints(spellpoints)
-		onlearned(user)
-	else
-		to_chat(user, span_notice("我完全弄不明白这上面写了什么。"))
-
-/obj/item/book/granter/spell_points/onlearned(mob/living/carbon/user)
-	..()
-	if(oneuse == TRUE)
-		name = "被抽空的卷轴"
-		desc = "这张卷轴曾写满魔法经文，如今其中知识已被他人抽走，表面空空如也。它已经毫无用处。"
-		icon_state = "scroll"
-		user.visible_message(span_warning("[src]上的魔法墨迹被硬生生抽离了！"))
-
-/obj/item/book/granter/spell_points/voiddragon
-	name = "虚空奥术洞见"
-	spellpoints = 6
-
-/obj/item/book/granter/spell/blackstone/skeleton/lesser
-	name = "次级唤骷卷轴"
-	spell = /obj/effect/proc_holder/spell/invoked/raise_undead_formation
-	spellname = "次级唤骷"
-	icon_state ="scrolldarkred"
-	remarks = list("受诅咒者归来..", "向内克拉解开灭亡之文..", "骸骨聚拢..")

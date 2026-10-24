@@ -24,7 +24,7 @@
 	to_chat_immediate(summoner, "奥术低语滑入我的脑海，最终化作[user.real_name]的声音：<font color=#7246ff>[message]</font>")
 	user.visible_message("[user.name]低声念出咒语，嘴边短暂闪过一道白光。")
 	user.whisper(message)
-	log_game("[key_name(user)] sent a message to [key_name(summoner)] with contents [message]")
+	log_game("[key_name(user)] 向 [key_name(summoner)] 发送了讯息，内容为：[message]")
 	return TRUE
 
 /obj/effect/proc_holder/spell/self/stillness_of_stone
@@ -137,13 +137,6 @@
 		span_notice("墓冢之息正将你引向[direction_text]。")
 	)
 	return TRUE
-
-/obj/effect/proc_holder/spell/invoked/blink/glimmer_hare
-	invocations = list("") //"Natural" abilty, no incantation.
-	chargetime = 0
-	releasedrain = 0
-	chargedrain = 0
-	xp_gain = FALSE
 
 /obj/effect/proc_holder/spell/self/inscription_cache
 	name = "铭文藏匣"
@@ -462,7 +455,7 @@
 			break
 
 	if (!(isturf(target_location) || isopenturf(target_location)))
-		to_chat(user, span_warning("那条路径已经消散了......"))
+		to_chat(user, span_warning("那条路径已经消散了..."))
 		// Remove the invalid entry by name
 		for (var/i = 1, i <= user.saved_trails.len, i++)
 			if (user.saved_trails[i]["name"] == selected_trail_name)

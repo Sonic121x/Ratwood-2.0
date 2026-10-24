@@ -105,7 +105,7 @@
 	if(!iscarbon(grabbed))
 		return
 	var/mob/living/carbon/C = grabbed
-	C.update_action_buttons_icon()
+	C.update_mob_action_buttons()
 
 /obj/item/grabbing/Destroy()
 	STOP_PROCESSING(SSfastprocess, src)
@@ -139,7 +139,7 @@
 			grabbee.l_grab = null
 		if(grabbee.mouth == src)
 			grabbee.mouth = null
-			grabbee.update_action_buttons_icon()
+			grabbee.update_mob_action_buttons()
 		grabbee = null
 	for(var/datum/D in dependents)
 		D.grabdropped(src)
@@ -263,9 +263,9 @@
 						if(C.pulling == user && C.grab_state >= GRAB_AGGRESSIVE)
 							choke_damage *= 0.95	//Slight malice
 						C.adjustOxyLoss(choke_damage)
-						C.visible_message(span_danger("[user][chokehold ? "从背后锁住[C]，" : ""][pick("掐住", "勒紧")]了[C]的脖子！"), \
-								span_userdanger("[user][chokehold ? "从背后锁住我，" : ""][pick("掐住", "勒紧")]了我的脖子！"), span_hear("我听到令人牙酸的搏斗声！"), COMBAT_MESSAGE_RANGE, user)
-						to_chat(user, span_danger("我[chokehold ? "从背后锁住[C]，" : ""][pick("掐住", "勒紧")]了[C]的脖子！"))
+						C.visible_message(span_danger("[user][chokehold ? "用锁喉姿势" : ""][pick("掐住", "勒住")][C]的脖子！"), \
+								span_userdanger("[user][chokehold ? "用锁喉姿势" : ""][pick("掐住", "勒住")]我的脖子！"), span_hear("我听到了令人作呕的搏斗声！"), COMBAT_MESSAGE_RANGE, user)
+						to_chat(user, span_danger("我[chokehold ? "用锁喉姿势" : ""][pick("掐住", "勒住")][C]的脖子！"))
 					else
 						to_chat(user, span_warning("我够不到[C]的喉咙！"))
 					user.changeNext_move(CLICK_CD_GRABBING)	//Stops spam for choking.
@@ -309,7 +309,7 @@
 									H.visible_message(span_danger("[user]揪住[H]的后颈皮，使其浑身瘫软！"), \
 											span_userdanger("我的后颈皮被揪住，浑身瘫软下来！"), span_hear("我听到激烈的拉扯声！"), COMBAT_MESSAGE_RANGE, user)
 									to_chat(user, span_warning("我揪住[H]的后颈皮，使其浑身瘫软！"))
-									log_combat(user, H, "scruffed")
+									log_combat(user, H, "揪住了后颈，目标为")
 								else
 									to_chat(user, span_warning("我得站在[H]身后才能揪住其后颈皮！"))
 							else
@@ -478,7 +478,7 @@
 					span_userdanger("[user]扭动了我的[parse_zone(sublimb_grabbed)]![C.next_attack_msg.Join()]"), span_hear("我听见一阵令人牙酸的扭打声!"), COMBAT_MESSAGE_RANGE, user)
 	to_chat(user, span_warning("我扭动了[C]的[parse_zone(sublimb_grabbed)].[C.next_attack_msg.Join()]"))
 	C.next_attack_msg.Cut()
-	log_combat(user, C, "limbtwisted [sublimb_grabbed] ")
+	log_combat(user, C, "扭伤了 [parse_zone(sublimb_grabbed)]，目标为")
 	if(limb_grabbed.status == BODYPART_ROBOTIC && armor_block == 0) //Twisting off prosthetics.
 		C.visible_message(span_danger("[C]的义体[parse_zone(sublimb_grabbed)]被拧下来了！[C.next_attack_msg.Join()]"), \
 					span_userdanger("我的义体[parse_zone(sublimb_grabbed)]被拧下来了！[C.next_attack_msg.Join()]"), span_hear("我听到令人牙酸的搏斗声！"), COMBAT_MESSAGE_RANGE, user)
@@ -566,7 +566,7 @@
 					"<span class='userdanger'>[H]用头撞击了我的[parse_zone(sublimb_grabbed)]！[C.next_attack_msg.Join()]</span>", "<span class='hear'>我听到令人牙酸的搏斗声！</span>", COMBAT_MESSAGE_RANGE, H)
 	to_chat(H, "<span class='warning'>我用头撞击了[C]的[parse_zone(sublimb_grabbed)]。[C.next_attack_msg.Join()]</span>")
 	C.next_attack_msg.Cut()
-	log_combat(H, C, "headbutted ")
+	log_combat(H, C, "用头撞击了")
 
 /obj/item/grabbing/proc/twistitemlimb(mob/living/user) //implies limb_grabbed and sublimb are things
 	var/mob/living/M = grabbed
@@ -576,13 +576,13 @@
 	M.apply_damage(damage, BRUTE, limb_grabbed)
 	M.visible_message(span_danger("[user]转动了嵌在[M]伤口中的[I]！"), \
 					span_userdanger("[user]转动了嵌在我伤口中的[I]！"), span_hear("我听到令人牙酸的搏斗声！"), COMBAT_MESSAGE_RANGE)
-	log_combat(user, M, "itemtwisted [sublimb_grabbed] ")
+	log_combat(user, M, "扭动了嵌入物 [sublimb_grabbed]，目标为")
 
 /obj/item/grabbing/proc/removeembeddeditem(mob/living/user) //implies limb_grabbed and sublimb are things
 	var/mob/living/M = grabbed
 	var/obj/item/bodypart/L = limb_grabbed
 	playsound(M.loc, "genblunt", 100, FALSE, -1)
-	log_combat(user, M, "itemremovedgrab [sublimb_grabbed] ")
+	log_combat(user, M, "拔出了嵌入物 [sublimb_grabbed]，目标为")
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
 		var/obj/item/I = locate(sublimb_grabbed) in L.embedded_objects
@@ -691,7 +691,7 @@
 					span_userdanger("[user]将我的[limb_grabbed]猛砸向[A]！[C.next_attack_msg.Join()]"), span_hear("我听到令人牙酸的搏斗声！"), COMBAT_MESSAGE_RANGE, user)
 	to_chat(user, span_warning("我将[C]的[limb_grabbed]猛砸向[A]。[C.next_attack_msg.Join()]"))
 	C.next_attack_msg.Cut()
-	log_combat(user, C, "limbsmashed [limb_grabbed] ")
+	log_combat(user, C, "猛砸了 [limb_grabbed]，目标为")
 	if(ishuman(user) && user.mind)
 		var/text = "[bodyzone2readablezone(user.zone_selected)]..."
 		user.filtered_balloon_alert(TRAIT_COMBAT_AWARE, text, show_self = FALSE)

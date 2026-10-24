@@ -287,12 +287,12 @@ GLOBAL_LIST_EMPTY(tennite_schisms)
 
 	if(uses_remaining <= 0)
 		if(action)
-			action.UpdateButtonIcon()
+			action.build_all_button_icons()
 		to_chat(user, span_boldnotice("你在分裂中的阵营现已最终确定。"))
 	return TRUE
 
 /datum/round_event_control/schism_within_ten
-	name = "Schism within the Ten"
+	name = "十神分裂"
 	track = EVENT_TRACK_INTERVENTION
 	typepath = /datum/round_event/schism_within_ten
 	weight = 0.25

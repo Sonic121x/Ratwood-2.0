@@ -7,7 +7,7 @@
 // 挂上新仪式，而【无需】改动那个共享的法阵文件。
 //
 // 该仪式要求法阵格子上至少有一件符文遗物（/obj/item/magic/artifact）。成功时，
-// 它会【消耗】当场所有的符文遗物，并从全局可习得法术池（GLOB.learnable_spells）中
+// 它会【消耗】当场所有的符文遗物，并从全局可习得法术池（GLOB.utility_spells）中
 // 教给主持者一道随机的【非奇迹】法术。所提取法术的等级上限为 3 级；献祭的遗物越多，
 // 概率就越向更高（更高级）的层级倾斜。
 //
@@ -18,7 +18,7 @@
 //   - 仪式基础框架：modular_z121\rites\sacrifice_circles.dm
 //   - 符文遗物物品：/obj/item/magic/artifact
 //       （code\game\objects\items\rogueitems\magic\magic_resources.dm）
-//   - 法术池 GLOB.learnable_spells（位于 code\modules\spells\spell_types\wizard\spell_list.dm）；
+//   - 法术池 GLOB.utility_spells（位于 code\modules\spells\spell_types\wizard\spell_list.dm）；
 //       注意 modular_z121\bootstrap\custom_bootstrap.dm 会将 GLOB.custom_learnable_spells
 //       并入其中，因此自定义法术同样有资格被抽到。
 //   - 法术变量 spell_tier / miracle / zizo_spell（code\modules\spells\spell.dm）
@@ -123,16 +123,17 @@
 	pool_by_tier = build_spell_pool(user)
 	var/consumed = count_runed_artifacts(altar)
 	var/chosen_path = extract_spell(pool_by_tier, consumed)
-	if(consumed <= 0 || !ispath(chosen_path, /obj/effect/proc_holder/spell) || user.mind.has_spell(chosen_path))
+	if(consumed <= 0 || !ispath(chosen_path, /datum/action/cooldown/spell) || user.mind.has_spell(chosen_path))
 		to_chat(user, span_warning("符文中已无新的奥秘可供汲取，献祭就此中止。"))
 		return FALSE
-	var/obj/effect/proc_holder/spell/new_spell = new chosen_path
+	var/datum/action/cooldown/spell/new_spell = new chosen_path
 	if(QDELETED(new_spell))
 		return FALSE
 	if(!rite_session_valid(user) || user.mind.has_spell(chosen_path) || consume_runed_artifacts(altar, consumed) != consumed)
 		qdel(new_spell)
 		return FALSE
 	user.mind.AddSpell(new_spell, user)
+	user.mind.z121_keep_independent_spell(new_spell)
 
 	// --- 仪式成功的视觉与气氛表现。----------------------------
 	icon_state = "noc_active" // 魔法生效期间点亮符文。
@@ -196,16 +197,22 @@
 // ----------------------------------------------------------------------------
 /obj/structure/ritualcircle/sacrifice/noc/proc/build_spell_pool(mob/living/user)
 	var/list/pool_by_tier = list()
-	// GLOB.learnable_spells 是一份法术【类型路径】列表（法师法术池，外加并入的
+	// GLOB.utility_spells 是一份法术【类型路径】列表（法师法术池，外加并入的
 	// 自定义法术）。我们以与 learnspell.dm 相同的方式读取每个路径的编译期默认值：
 	// 把路径赋给有类型的变量，再用 initial() 读取默认值。
-	for(var/spell_path in GLOB.learnable_spells)
+	var/list/candidates = GLOB.utility_spells.Copy()
+	for(var/aspect_path in GLOB.magic_aspect_singletons)
+		var/datum/magic_aspect/A = GLOB.magic_aspect_singletons[aspect_path]
+		candidates |= A.fixed_spells
+		candidates |= A.choice_spells
+		candidates |= A.pointbuy_spells
+	for(var/spell_path in candidates)
 		// 跳过任何并非法术路径的条目（针对法术池中可能存在的畸形条目作防御）。
-		if(!ispath(spell_path, /obj/effect/proc_holder/spell))
+		if(!ispath(spell_path, /datum/action/cooldown/spell))
 			continue
-		var/obj/effect/proc_holder/spell/template = spell_path
+		var/datum/action/cooldown/spell/template = spell_path
 		// 按要求仅取【非奇迹】法术（奇迹是神职的恩赐，并非奥术）。
-		if(initial(template.miracle))
+		if(initial(template.primary_resource_type) == SPELL_COST_DEVOTION || initial(template.secondary_resource_type) == SPELL_COST_DEVOTION || (spell_path in GLOB.z121_admin_learnable_spells))
 			continue
 		// 排除邪恶/异端专属的“zizo”法术：那些法术在 learnspell 中以“是否为异端”作门槛，
 		// 不应从一项通用仪式中外泄出去。
@@ -218,7 +225,14 @@
 		// 不提供主持者已经掌握的法术——那会是一次无效操作。
 		if(user.mind.has_spell(spell_path))
 			continue
-		// 将符合条件的法术按其（文本）层级键归入对应桶中。
+		var/conflict = FALSE
+		for(var/datum/action/cooldown/spell/known in user.mind.spell_list)
+			if(initial(template.exclusive_group) && known.exclusive_group == initial(template.exclusive_group))
+				conflict = TRUE
+				break
+		if(conflict || initial(template.abstract_type) == spell_path)
+			continue
+		// 将符合条件的法术按其文本层级键归入对应桶中。
 		var/tkey = "[tier]"
 		if(!pool_by_tier[tkey])
 			pool_by_tier[tkey] = list()

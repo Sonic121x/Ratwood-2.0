@@ -86,7 +86,7 @@
 		to_chat(H, span_smallred("只有信仰登多尔的德鲁伊，才能完成龙魂觉醒。"))
 		return FALSE
 
-	if(H.mind?.has_spell(/obj/effect/proc_holder/spell/self/wildshape/dragon, TRUE))
+	if(H.mind?.has_spell(/datum/action/cooldown/spell/z121/self/dragon_wildshape, TRUE))
 		to_chat(H, span_notice("龙魂早已在我体内苏醒，无需再次献祭。"))
 		return FALSE
 
@@ -114,7 +114,7 @@
 		to_chat(H, span_smallred("失去了手中的虚空石，龙魂觉醒的献祭就此中断。"))
 		return FALSE
 
-	if(H.mind?.has_spell(/obj/effect/proc_holder/spell/self/wildshape/dragon, TRUE))
+	if(H.mind?.has_spell(/datum/action/cooldown/spell/z121/self/dragon_wildshape, TRUE))
 		to_chat(H, span_notice("龙魂早已在我体内苏醒，无需再次献祭。"))
 		return FALSE
 
@@ -122,7 +122,7 @@
 	loc.visible_message(span_warning("[H] 在法阵前发出低沉的咆哮，古老的龙魂随之翻涌！"))
 	playsound(loc, 'sound/vo/mobs/wwolf/howl (2).ogg', 100, FALSE, -1)
 	qdel(offering)
-	H.mind?.AddSpell(new /obj/effect/proc_holder/spell/self/wildshape/dragon, H)
+	H.mind?.AddSpell(new /datum/action/cooldown/spell/z121/self/dragon_wildshape, H)
 	H.apply_status_effect(/datum/status_effect/debuff/ritesexpended)
 	H.flash_fullscreen("redflash3")
 	H.emote("agony")

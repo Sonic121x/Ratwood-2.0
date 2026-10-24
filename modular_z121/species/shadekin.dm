@@ -245,14 +245,14 @@
 	// Grant the signature "Shadow Step": use mob.AddSpell so it binds to the BODY (not the mind), since it is
 	// an innate racial power that must be granted reliably even before a mind exists. De-dupe first to avoid
 	// stacking duplicate action buttons on repeated gains.
-	for(var/obj/effect/proc_holder/spell/existing in C.mob_spell_list)
+	for(var/datum/existing in C.mob_spell_list)
 		// 若已存在同类能力则直接返回，跳过重复授予。
 		// If the ability already exists, bail out to skip a duplicate grant.
-		if(istype(existing, /obj/effect/proc_holder/spell/invoked/shadow_step))
+		if(istype(existing, /datum/action/cooldown/spell/z121/invoked/shadow_step))
 			return
 	// 实例化并授予能力（参数 null 表示该能力不绑定特定母对象/咒语书）。
 	// Instantiate and grant the ability (null = not tied to a specific parent object/spellbook).
-	C.AddSpell(new /obj/effect/proc_holder/spell/invoked/shadow_step(null))
+	C.AddSpell(new /datum/action/cooldown/spell/z121/invoked/shadow_step(null))
 
 // 为什么覆盖 on_species_loss：失去本种族时必须解绑信号并回收授予的能力，否则会残留无效按钮/信号。
 // Why override on_species_loss: on losing this race we must unhook the signal and reclaim the granted
@@ -270,7 +270,7 @@
 	UnregisterSignal(C, COMSIG_MOB_SAY)
 	// 回收【暗影穿行】：mob.RemoveSpell 接受类型路径，按 istype 匹配并 qdel 对应能力实例。
 	// Reclaim "Shadow Step": mob.RemoveSpell accepts a type path, matches via istype and qdels the instance.
-	C.RemoveSpell(/obj/effect/proc_holder/spell/invoked/shadow_step)
+	C.RemoveSpell(/datum/action/cooldown/spell/z121/invoked/shadow_step)
 
 // 为什么覆盖 check_roundstart_eligible：返回 TRUE 使本种族在角色创建界面可直接选择，
 // 无需依赖服务器配置白名单（与 anthromorph/lupian 等自定义种族做法一致）。

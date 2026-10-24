@@ -249,7 +249,7 @@ GLOBAL_VAR_INIT(mobids, 1)
  * * deaf_message (optional) is what deaf people will see.
  * * hearing_distance (optional) is the range, how many tiles away the message can be heard.
  */
-/atom/proc/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, runechat_message = null, log_seen = NONE, log_seen_msg = null, list/ignored_mobs)
+/atom/proc/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, runechat_message = null, log_seen = NONE, log_seen_msg = null, list/ignored_mobs, custom_spans = list("emote"))
 	var/list/hearers = hearers(hearing_distance, src) // get_hearers_in_view is slower because we don't care about SCOMs and etc here
 	if(!islist(ignored_mobs))
 		ignored_mobs = list(ignored_mobs)
@@ -259,7 +259,7 @@ GLOBAL_VAR_INIT(mobids, 1)
 	for(var/mob/M in hearers)
 		M.show_message(message, MSG_AUDIBLE, deaf_message, MSG_VISUAL)
 		if(runechat_message && M.can_see_runechat(src) && M.can_hear())
-			M.create_chat_message(src, raw_message = runechat_message, spans = list("emote"))
+			M.create_chat_message(src, raw_message = runechat_message, spans = custom_spans)
 	if(log_seen)
 		log_seen(src, null, hearers, (log_seen_msg ? log_seen_msg : message), log_seen)
 
@@ -333,8 +333,8 @@ GLOBAL_VAR_INIT(mobids, 1)
  * * deaf_message (optional) is what deaf people will see.
  * * hearing_distance (optional) is the range, how many tiles away the message can be heard.
  */
-/mob/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, runechat_message = null, log_seen = NONE, log_seen_msg = null, list/ignored_mobs)
-	. = ..(message, deaf_message, hearing_distance, self_message, runechat_message, log_seen, log_seen_msg, ignored_mobs)
+/mob/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, runechat_message = null, log_seen = NONE, log_seen_msg = null, list/ignored_mobs, custom_spans = list("emote"))
+	. = ..(message, deaf_message, hearing_distance, self_message, runechat_message, log_seen, log_seen_msg, ignored_mobs, custom_spans)
 	if(self_message)
 		show_message(self_message, MSG_AUDIBLE, deaf_message, MSG_VISUAL)
 
@@ -515,17 +515,17 @@ GLOBAL_VAR_INIT(mobids, 1)
 		return
 
 	if(isliving(src) && src.m_intent != MOVE_INTENT_SNEAK && src.stat != DEAD)
-		var/target = "[A.name]"
+		var/target = "\the [A]"
 		var/message = "[src]注视着"
 		if(!isturf(A))
 			if(A == src)
 				message = "[src]打量着"
 				target = "自己"
 			if(A.loc == src)
-				target = "[src.p_their()][A.name]"
+				target = "[src.p_their()] [A.name]"
 			if(A.loc.loc == src)
 				message = "[src]查看着"
-				target = "[src.p_their()][A.loc.name]"
+				target = "[src.p_their()] [A.loc.name]"
 			if(isliving(A))
 				var/mob/living/T = A
 				var/hitzone = T.simple_limb_hit(zone_selected)
@@ -556,10 +556,10 @@ GLOBAL_VAR_INIT(mobids, 1)
 					if(T == src)
 						var/parsed_zone = parse_zone_fancy(zone_selected, cmode, cmode, Adjacent(T), behind, T.resting, grabbing, fixedeye, uncovered, penised, pussied, strcheck, TRUE)
 						if(parsed_zone)
-							target = "[src.p_their()][parsed_zone]"
+							target = "[src.p_their()] [parsed_zone]"
 					else
 						target = "[T.name]的[parse_zone_fancy(zone_selected, cmode, T.cmode, Adjacent(T), behind, T.resting, grabbing, fixedeye, uncovered, penised, pussied, strcheck)]"
-			visible_message(span_emote("[message][target]。"))
+			visible_message(span_emote("[message] [target]."))
 
 	var/list/result = A.examine(src)
 	if(result)
@@ -666,22 +666,22 @@ GLOBAL_VAR_INIT(mobids, 1)
 		to_chat(usr, "<span class='boldnotice'>我必须在死亡后才能使用这个！</span>")
 		return
 
-	log_game("[key_name(usr)] used abandon mob.")
+	log_game("[key_name(usr)] 使用了放弃角色功能。")
 
 	to_chat(src, "<span class='info'>已成功返回大厅。</span>")
 
 	if(!client)
-		log_game("[key_name(usr)] AM failed due to disconnect.")
+		log_game("[key_name(usr)] 因断线未能放弃角色。")
 		return
 	client.screen.Cut()
 	client.screen += client.void
 	if(!client)
-		log_game("[key_name(usr)] AM failed due to disconnect.")
+		log_game("[key_name(usr)] 因断线未能放弃角色。")
 		return
 
 	var/mob/dead/new_player/M = new /mob/dead/new_player()
 	if(!client)
-		log_game("[key_name(usr)] AM failed due to disconnect.")
+		log_game("[key_name(usr)] 因断线未能放弃角色。")
 		qdel(M)
 		return
 
@@ -817,22 +817,9 @@ GLOBAL_VAR_INIT(mobids, 1)
 		if(7)
 			days = "太阳之日"
 
-	// 汉化当时
-	var/tod_zh
-	if (GLOB.tod == "dawn")
-		tod_zh = "黎明"
-	else if (GLOB.tod == "day")
-		tod_zh = "白昼"
-	else if (GLOB.tod == "dusk")
-		tod_zh = "黄昏"
-	else if (GLOB.tod == "night")
-		tod_zh = "夜晚"
-	else
-		tod_zh = null
-
 	if(client)
 		if(statpanel("回合信息"))
-			stat(null, "地图: [SSmapping.current_map?.map_name || "加载中..."]")
+			stat(null, "地图：[SSmapping.current_map?.map_name || "加载中……"]")
 			var/datum/map_config/cached = SSmap_vote.next_map_config
 			if(cached)
 				stat(null, "下张地图: [cached.map_name]")
@@ -844,12 +831,12 @@ GLOBAL_VAR_INIT(mobids, 1)
 			if(client?.holder)
 				stat(null, "回合真实时间:[worldtime2text()] [world.time]")
 			stat(null, "叙事者: [SSgamemode.storyteller_name]")
-			stat(null, "日期与时间: [days] ᛉ [uppertext(tod_zh)] ᛉ [station_time_timestamp("hh:mm")]")
+			stat(null, "日期与时间: [days] ᛉ [uppertext(GLOB.tod)] ᛉ [station_time_timestamp("hh:mm")]")
 			stat(null, "IC 时间: [station_time_timestamp()] [station_time()]")
 			stat(null, "延迟: [round(client.lastping, 1)]ms (平均延迟: [round(client.avgping, 1)]ms)")
 			stat(null, "时间膨胀: [round(SStime_track.time_dilation_current,1)]% 平均时间膨胀:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)")
 			if(!CONFIG_GET(flag/disable_memory_stats))
-				stat(null, "内存: [SSmemory_stats.last_rss_mb ? "[SSmemory_stats.last_rss_mb] MB/3900 MB" : "取样中..."]")
+				stat(null, "内存：[SSmemory_stats.last_rss_mb ? "[SSmemory_stats.last_rss_mb] MB/3900 MB" : "采样中……"]")
 			if(check_rights(R_ADMIN,0))
 				stat(null, SSmigrants.get_status_line())
 				stat(null, "玩家个数: [GLOB.clients.len]") // If someone deletes this again I will slap your balls
@@ -857,31 +844,31 @@ GLOBAL_VAR_INIT(mobids, 1)
 	if(client && client.holder && check_rights(R_DEBUG,0))
 		if(statpanel("MC"))
 			var/turf/T = get_turf(client.eye)
-			stat("Location:", COORD(T))
-			stat("CPU:", "[world.cpu] ([world.map_cpu] map + [world.cpu - world.map_cpu] process)")
-			stat("Maptick Percent:", "[round((world.map_cpu/world.cpu) * 100)]%")
+			stat("位置：", COORD(T))
+			stat("CPU：", "[world.cpu]（地图 [world.map_cpu] + 处理 [world.cpu - world.map_cpu]）")
+			stat("地图处理占比：", "[round((world.map_cpu/world.cpu) * 100)]%")
 			if(!CONFIG_GET(flag/disable_memory_stats))
-				stat("Memory:", SSmemory_stats.last_rss_mb ? "[SSmemory_stats.last_rss_mb] MB/3900 MB" : "sampling...")
-			stat("Instances:", "[num2text(world.contents.len, 10)]")
-			stat("World Time:", "[world.time]")
+				stat("内存：", SSmemory_stats.last_rss_mb ? "[SSmemory_stats.last_rss_mb] MB/3900 MB" : "采样中……")
+			stat("实例数：", "[num2text(world.contents.len, 10)]")
+			stat("世界时间：", "[world.time]")
 			GLOB.stat_entry()
 			config.stat_entry()
 			stat(null)
 			if(Master)
 				Master.stat_entry()
 			else
-				stat("Master Controller:", "ERROR")
+				stat("主控制器：", "错误")
 			if(Failsafe)
 				Failsafe.stat_entry()
 			else
-				stat("Failsafe Controller:", "ERROR")
+				stat("故障保护控制器：", "错误")
 			if(Master)
 				stat(null)
 				for(var/datum/controller/subsystem/SS in Master.subsystems)
 					SS.stat_entry()
 		if(length(GLOB.sdql2_queries))
 			if(statpanel("SDQL2"))
-				stat("Access Global SDQL2 List", GLOB.sdql2_vv_statobj)
+				stat("访问全局 SDQL2 列表", GLOB.sdql2_vv_statobj)
 				for(var/i in GLOB.sdql2_queries)
 					var/datum/SDQL2_query/Q = i
 					Q.generate_stat()
@@ -1250,7 +1237,7 @@ GLOBAL_VAR_INIT(mobids, 1)
  * Calling this proc without an oldname will only update the mob and skip updating the pda, id and records ~Carn
  */
 /mob/proc/fully_replace_character_name(oldname,newname)
-	log_message("[src] name changed from [oldname] to [newname]", LOG_OWNERSHIP)
+	log_message("[src] 的名称从 [oldname] 改为 [newname]", LOG_OWNERSHIP)
 	if(!newname)
 		return 0
 

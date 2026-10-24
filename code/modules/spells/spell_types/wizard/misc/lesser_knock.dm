@@ -1,34 +1,42 @@
-/obj/effect/proc_holder/spell/targeted/touch/lesserknock
+/datum/action/cooldown/spell/lesser_knock
+	button_icon = 'icons/mob/actions/roguespells.dmi'
 	name = "次级开锁术"
 	desc = "一道简单法术，将奥术聚为开锁工具。若将其用在门之外的东西上，法术就会消散。"
-	clothes_req = FALSE
-	drawmessage = "我准备施展一道微弱的奥术咒法。"
-	dropmessage = "我释放了这股微弱的奥术焦点。"
-	school = "transmutation"
-	overlay_state = "rune4"
-	chargedrain = 0
-	chargetime = 0
-	releasedrain = 5 // this influences -every- cost involved in the spell's functionality, if you want to edit specific features, do so in handle_cost
-	chargedloop = /datum/looping_sound/invokegen
-	associated_skill = /datum/skill/magic/arcane
-	hand_path = /obj/item/melee/touch_attack/lesserknock
-	spell_tier = 1
-	invocations = list("微启其锁。")
-	invocation_type = "whisper" // It is a fake stealth spell (lockpicking is very loud)
-	hide_charge_effect = TRUE
-	cost = 2 // Utility and needs lockpicking skills
+	button_icon_state = "knock"
+	sound = 'sound/magic/whiteflame.ogg'
+	spell_color = GLOW_COLOR_ARCANE
+	glow_intensity = GLOW_INTENSITY_LOW
 
-/obj/effect/proc_holder/spell/targeted/touch/lesserknock/miracle
-	name = "马西奥斯开锁祷言"
-	desc = "向自由之神献上的一段简短祷词，会凝成一件开锁工具。若将其用在门之外的东西上，法术就会消散。" //Slightly more appropriate
-	overlay_icon = 'icons/mob/actions/matthiosmiracles.dmi'
-	action_icon = 'icons/mob/actions/matthiosmiracles.dmi'
-	overlay_state = "lockpick"
-	miracle = TRUE
-	devotion_cost = 30
-	invocations = list("由一化众")
-	invocation_type = "whisper" // It is a fake stealth spell (lockpicking is very loud)
-	associated_skill = /datum/skill/magic/holy
+	click_to_activate = FALSE
+	self_cast_possible = TRUE
+
+	primary_resource_type = SPELL_COST_STAMINA
+	primary_resource_cost = SPELLCOST_CANTRIP
+
+	invocations = list("微启其锁。")
+	invocation_type = INVOCATION_WHISPER
+
+	charge_required = FALSE
+	cooldown_time = 5 SECONDS
+
+	associated_skill = /datum/skill/magic/arcane
+	spell_tier = 1
+	spell_impact_intensity = SPELL_IMPACT_NONE
+
+	point_cost = 2
+
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
+
+/datum/action/cooldown/spell/lesser_knock/cast(atom/cast_on)
+	. = ..()
+	var/mob/living/user = owner
+	if(!istype(user))
+		return FALSE
+
+	var/obj/item/melee/touch_attack/lesserknock/lockpick = new(user.drop_location())
+	user.put_in_hands(lockpick)
+	to_chat(user, span_notice("我准备施展一个小小的奥术咒法。"))
+	return TRUE
 
 /obj/item/melee/touch_attack/lesserknock
 	name = "幽光撬锁针"

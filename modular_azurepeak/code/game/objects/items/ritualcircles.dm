@@ -32,7 +32,7 @@
 	if(!..())
 		return
 	if((user.patron?.type) != /datum/patron/divine/astrata)
-		to_chat(user,span_smallred("我不懂施行此仪的正确礼法......"))
+		to_chat(user,span_smallred("我不知该为此行使何种正确仪礼……"))
 		return
 	if(!HAS_TRAIT(user, TRAIT_RITUALIST))
 		to_chat(user,span_smallred("我不懂施行此仪的正确礼法......")) // You need ritualist to use them
@@ -81,13 +81,13 @@
 	if(!..())
 		return
 	if((user.patron?.type) != /datum/patron/divine/noc)
-		to_chat(user,span_smallred("我不懂施行此仪的正确礼法......"))
+		to_chat(user,span_smallred("我不知该为此行使何种正确仪礼……"))
 		return
 	if(!HAS_TRAIT(user, TRAIT_RITUALIST))
-		to_chat(user,span_smallred("我不懂施行此仪的正确礼法......"))
+		to_chat(user,span_smallred("我不知该为此行使何种正确仪礼……"))
 		return
 	if(user.has_status_effect(/datum/status_effect/debuff/ritesexpended))
-		to_chat(user,span_smallred("我今天已经完成了足够多的仪式......若想再次沟通神意，我必须先休息。"))
+		to_chat(user,span_smallred("今日我已行使了足够多的仪礼……必须先歇息，方可再度沟通神意。"))
 		return
 	var/riteselection = input(user, "月之仪礼", src) as null|anything in lunarrites
 	switch(riteselection) // put ur rite selection here
@@ -199,13 +199,13 @@
 	if(!..())
 		return
 	if((user.patron?.type) != /datum/patron/divine/pestra)
-		to_chat(user,span_smallred("我不懂施行此仪的正确礼法......"))
+		to_chat(user,span_smallred("我不知该为此行使何种正确仪礼……"))
 		return
 	if(!HAS_TRAIT(user, TRAIT_RITUALIST))
-		to_chat(user,span_smallred("我不懂施行此仪的正确礼法......"))
+		to_chat(user,span_smallred("我不知该为此行使何种正确仪礼……"))
 		return
 	if(user.has_status_effect(/datum/status_effect/debuff/ritesexpended))
-		to_chat(user,span_smallred("我今天已经完成了足够多的仪式......若想再次沟通神意，我必须先休息。"))
+		to_chat(user,span_smallred("今日我已行使了足够多的仪礼……必须先歇息，方可再度沟通神意。"))
 		return
 	var/riteselection = input(user, "疫病仪礼", src) as null|anything in plaguerites
 	switch(riteselection) // put ur rite selection here
@@ -231,7 +231,7 @@
 	var/ritualtargets = view(0, loc)
 	for(var/mob/living/carbon/human/target in ritualtargets)
 		to_chat(target,span_userdanger("你感到它们正爬进你的伤口与毛孔。它们工作时那可怖的嗡鸣在你耳边回荡不休！"))
-		target.flash_fullscreen("redflash3")
+		target.fullscreen_redflash("redflash3")
 		target.emote("agony")
 		target.Stun(200)
 		target.Knockdown(200)
@@ -319,7 +319,7 @@
 			to_chat(target, span_warning("仪式的力量并不认可我......"))
 			continue
 		to_chat(target, span_userdanger("你喜欢伤害别人吗？"))
-		target.flash_fullscreen("redflash3")
+		target.fullscreen_redflash("redflash3")
 		target.emote("agony")
 		target.Unconscious(200)
 		target.Knockdown(200)
@@ -340,7 +340,7 @@
 			to_chat(target, span_warning("仪式的力量并不认可我......"))
 			continue
 		to_chat(target, span_userdanger("疯狂与自然的蛛网正向我低语。蛛网不朽，巢群长存！"))
-		target.flash_fullscreen("redflash3")
+		target.fullscreen_redflash("redflash3")
 		target.emote("agony")
 		target.Unconscious(100)
 		target.Knockdown(200)
@@ -472,13 +472,13 @@
 	switch(riteselection)
 		if("水晶尖塔之仪式")
 			if(do_after(user, 50))
-				user.say("深海之父，聆听我的呼唤！")
+				user.say("深渊之父，聆听我的呼唤！")
 				if(do_after(user, 50))
 					user.say("自深渊而来，撕裂大地！")
 					if(do_after(user, 50))
 						icon_state = "abyssoralt_active"
 						user.say("让你的风暴驱散那些懦夫！")
-						to_chat(user, span_cultsmall("一块水晶碎片在符文中央凝结成形，嗡嗡震鸣着阿比索尔的力量。"))
+						to_chat(user, span_cultsmall("一枚结晶碎片在符文中央成形，低鸣着阿比索尔的力量。"))
 						new /obj/item/abyssal_marker(loc)
 						user.apply_status_effect(/datum/status_effect/debuff/ritesexpended)
 						addtimer(VARSET_CALLBACK(src, icon_state, "abyssoralt_chalky"), 240)
@@ -1204,7 +1204,7 @@
 			if(!folksonrune.len)
 				to_chat(user, span_warning("符文上没有可供施行此仪礼的伊欧拉信徒。"))
 				return
-			var/target = input(user, "选择宿主") as null|anything in folksonrune
+			var/target = input(user, "选择一名承受者") as null|anything in folksonrune
 			if(!target)
 				return
 			user.say("母亲，我立于你面前，祈求你倾听，并在此立誓！！")
@@ -1263,7 +1263,7 @@
 			for(var/mob/living/carbon/human/persononrune in onrune)
 				if(HAS_TRAIT(persononrune, TRAIT_CABAL))
 					folksonrune += persononrune
-			var/target = input(user, "选择承受仪式者") as null|anything in folksonrune
+			var/target = input(user, "选择一名承受者") as null|anything in folksonrune
 			if(!target)
 				return
 			if(!do_after(user, 5 SECONDS))
@@ -1318,9 +1318,9 @@
 					continue
 				valids_on_rune += peep
 			if(!valids_on_rune.len)
-				to_chat(user, "符文上没有可用目标！")
+				to_chat(user, "符文上没有有效目标！")
 				return
-			var/mob/living/carbon/human/target = input(user, "选择承受仪式者") as null|anything in valids_on_rune
+			var/mob/living/carbon/human/target = input(user, "选择一名承受者") as null|anything in valids_on_rune
 			if(!target || QDELETED(target) || target.loc != loc)
 				return
 			if(!do_after(user, 5 SECONDS))
@@ -1340,7 +1340,7 @@
 
 /obj/structure/ritualcircle/zizo/proc/zizoarmaments(mob/living/carbon/human/target)
 	if(!HAS_TRAIT(target, TRAIT_CABAL))
-		target.visible_message(span_cult("此仪拒绝并非秘社之人。"))
+		loc.visible_message(span_cult("仪式拒绝非秘社成员"))
 		return
 	target.Stun(60)
 	target.Knockdown(60)
@@ -1361,7 +1361,6 @@
 	for(var/I in items)
 		H.dropItemToGround(I, TRUE)
 	H.drop_all_held_items()
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mending/lesser)
 
 	var/helmets = list("阿凡泰因巴尔布特盔 - 带面罩", "阿凡泰因蛙嘴盔 - 强化护颈", "阿凡泰因护鼻盔", "阿凡泰因狼面护鼻盔 - 带面罩")
 	var/helmet_choice = input(H, "选择你的头盔。", "来自那位女士的庇护") as anything in helmets
@@ -1417,8 +1416,11 @@
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
 		if("阿凡泰因单手剑")
 			r_hand = /obj/item/rogueweapon/sword/arming/zizo
-			l_hand = /obj/item/rogueweapon/shield/tower/metal/zizo	
-			
+			l_hand = /obj/item/rogueweapon/shield/tower/metal/zizo
+
+	H.mind.RemoveSpell(/datum/action/cooldown/spell/mending)
+	H.mind.AddSpell(new /datum/action/cooldown/spell/mending/lesser)
+
 /obj/structure/ritualcircle/zizo/proc/zizoconversion(mob/living/carbon/human/target)
 	if(!target || QDELETED(target) || target.loc != loc)
 		to_chat(usr, "所选目标不在符文上！[target.p_they(TRUE)]必须正站在符文中心，才能接受齐佐的赐福。")
@@ -1526,7 +1528,7 @@
 					continue
 				valids_on_rune += peep
 			if(!valids_on_rune.len)
-				to_chat(user, "符文上没有可用目标！")
+				to_chat(user, "符文上没有有效目标！")
 				return
 			var/mob/living/carbon/human/target = input(user, "选择一名承受者") as null|anything in valids_on_rune
 			if(!target || QDELETED(target) || target.loc != loc)
@@ -1635,7 +1637,9 @@
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/matthios
 	neck = /obj/item/clothing/neck/roguetown/chaincoif/chainmantle
 	backr = /obj/item/rogueweapon/flail/peasantwarflail/matthios
-	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/mending/lesser)
+
+	H.mind.RemoveSpell(/datum/action/cooldown/spell/mending)
+	H.mind.AddSpell(new /datum/action/cooldown/spell/mending/lesser)
 
 /obj/structure/ritualcircle/matthios/proc/matthiosconversion(mob/living/carbon/human/target)
 	if(!target || QDELETED(target) || target.loc != loc)

@@ -56,6 +56,8 @@
 	var/icon_state_preview
 
 	vis_flags = VIS_INHERIT_PLANE
+	/// Extra AI pathfinding cost for this object. Higher values make NPCs avoid this tile.
+	var/ai_path_weight = 0
 
 /obj/vv_edit_var(vname, vval)
 	switch(vname)
@@ -224,7 +226,7 @@
 					if(!i)
 						to_chat(usr, "不存在这个类型的对象。")
 						return
-					log_admin("[key_name(usr)] deleted all objects of type [O_type] ([i] objects deleted) ")
+					log_admin("[key_name(usr)] 删除了类型 [O_type] 的全部对象（共 [i] 个） ")
 					message_admins("<span class='notice'>[key_name(usr)] 删除了类型为 [O_type] 的全部物体（共删除 [i] 个）</span>")
 				if("类型与子类型")
 					var/i = 0
@@ -236,7 +238,7 @@
 					if(!i)
 						to_chat(usr, "不存在这个类型的对象。")
 						return
-					log_admin("[key_name(usr)] deleted all objects of type or subtype of [O_type] ([i] objects deleted) ")
+					log_admin("[key_name(usr)] 删除了类型 [O_type] 及其子类型的全部对象（共 [i] 个） ")
 					message_admins("<span class='notice'>[key_name(usr)] 删除了类型为 [O_type] 及其子类型的全部物体（共删除 [i] 个）</span>")
 
 /obj/examine(mob/user)

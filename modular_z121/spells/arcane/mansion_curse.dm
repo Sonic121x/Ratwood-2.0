@@ -52,7 +52,7 @@
 #define MANSION_SPELL_COST       6                 // 法术点/法力消耗
 #define MANSION_SPELL_DRAIN      100               // 施放抽取的疲劳（“消耗大”）
 #define MANSION_SPELL_COOLDOWN   (5 MINUTES)       // 冷却 5 分钟
-#define MANSION_CHARGE_TIME      (5 SECONDS)       // 蓄力时长（由 invoked 基类的点击拦截按 chargetime 校验）
+#define MANSION_CHARGE_TIME      (5 SECONDS)       // 蓄力时长（由 invoked 基类的点击拦截按 charge_time 校验）
 #define MANSION_PLACE_RANGE      7                 // 可选定“放门地块”的最大距离（range）
 
 // 全局注册表：施法者 ckey => 其持久宅邸空间。一人一处，长存于本局。
@@ -516,75 +516,72 @@ GLOBAL_LIST_EMPTY(mansion_magic_spaces)
 // ===========================================================================
 // 法术本体：点选式施法术，蓄力 5 秒后在玩家“选定的地块”上生成（或重新接上）入口门。
 // ---------------------------------------------------------------------------
-// 选用 /spell/invoked（与 flight.dm 一致）：激活后进入“点选目标”模式，蓄力满后点击一处
-// 地块即在该处放门——蓄力由基类 InterceptClickOn 依 chargetime 校验，不用 do_after；
+// 选用 /datum/action/cooldown/spell/z121/invoked（与 flight.dm 一致）：激活后进入“点选目标”模式，蓄力满后点击一处
+// 地块即在该处放门——蓄力由基类 新版鼠标蓄力流程 依 charge_time 校验，不用 do_after；
 // 取消方式也很自然：蓄力未满即点击会失败溃散，或再次点击法术按钮取消选取。
 // ===========================================================================
-/obj/effect/proc_holder/spell/invoked/mansion_curse
+/datum/action/cooldown/spell/z121/invoked/mansion_curse
 	name = "魔邓肯豪宅术"
 	desc = "蓄力片刻后，在选定之地开启一扇宅邸魔法门，通往会被保留的独立石室。入口可被攻击摧毁，届时空间及其中所有生物和物品都会湮灭；正常关门和重新施法换门仍保留空间。"
-	school = "conjuration"
 	spell_tier = 3                          // T3 法术
-	cost = MANSION_SPELL_COST               // 法力/法术点消耗 = 6
-	releasedrain = MANSION_SPELL_DRAIN      // 施放抽取的疲劳（“消耗大”）
-	chargedrain = 0
-	chargetime = MANSION_CHARGE_TIME        // 蓄力 5 秒（基类点击拦截会校验是否蓄满）
-	recharge_time = MANSION_SPELL_COOLDOWN  // 冷却 5 分钟（由 charge_check 强制执行）
+	point_cost = MANSION_SPELL_COST               // 法力/法术点消耗 = 6
+	primary_resource_cost = MANSION_SPELL_DRAIN      // 施放抽取的疲劳（“消耗大”）
+	hold_drain = 0
+	charge_time = MANSION_CHARGE_TIME        // 蓄力 5 秒（基类点击拦截会校验是否蓄满）
+	cooldown_time = MANSION_SPELL_COOLDOWN  // 冷却 5 分钟（由 z121_ready 强制执行）
 	cooldown_min = MANSION_SPELL_COOLDOWN   // 即便被“加速”，冷却也不低于 5 分钟
-	human_req = TRUE                        // 只有人类施法者能施放
-	warnie = "spellwarning"
-	action_icon = 'modular_z121/icon/custompell.dmi'
-	overlay_state = "mansion_curse"         // 动作按钮图标态（若 dmi 暂无该态仅显示为空，不影响编译）
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
+	button_icon = 'modular_z121/icon/custompell.dmi'
+	button_icon_state = "mansion_curse"         // 动作按钮图标态（若 dmi 暂无该态仅显示为空，不影响编译）
 	invocations = list("为我开辟空间吧！")    // 咒文（成功施放时由框架喊出）
 	invocation_type = "shout"
-	glow_color = GLOW_COLOR_ARCANE
+	spell_color = GLOW_COLOR_ARCANE
 	glow_intensity = GLOW_INTENSITY_MEDIUM
-	no_early_release = TRUE                  // 未蓄满不允许提前释放
-	movement_interrupt = FALSE              // 与 flight.dm 一致：蓄力期间可移动
-	charging_slowdown = 2                    // 蓄力时减速，体现“凝聚伟力”的代价
-	chargedloop = /datum/looping_sound/invokegen // 蓄力期间循环施法音效
+	charge_slowdown = 2                    // 蓄力时减速，体现“凝聚伟力”的代价
 	associated_skill = /datum/skill/magic/arcane
 	gesture_required = TRUE
-	range = MANSION_PLACE_RANGE             // 可选定放门地块的最大距离
+	cast_range = MANSION_PLACE_RANGE             // 可选定放门地块的最大距离
 	miracle = FALSE
 	xp_gain = TRUE
 
-// cast：蓄力满后由基类 InterceptClickOn -> perform 调用；targets[1] 即玩家点选的目标。
+// cast：蓄力满后由基类 新版鼠标蓄力流程 -> perform 调用；targets[1] 即玩家点选的目标。
 // 在选定地块生成入口门——已有持久宅邸则“复用”（把门挪到新选点），没有才新建。
-/obj/effect/proc_holder/spell/invoked/mansion_curse/cast(list/targets, mob/living/user = usr)
+/datum/action/cooldown/spell/z121/invoked/mansion_curse/z121_apply(atom/cast_on)
+	var/list/targets = list(cast_on)
+	var/mob/living/user = owner
 	// 解析玩家点选的放门地块（点到物体/生物时取其所在地块）。
 	var/atom/target_atom = targets[1]
 	var/turf/place_turf = get_turf(target_atom)
 	// 错误处理：选点无效（无地块）。
 	if(!place_turf)
 		to_chat(user, span_warning("那里无处可供门扉立足。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// 错误处理：不能把门开在墙里/实心封闭地块上。
 	if(isclosedturf(place_turf) || place_turf.density)
 		to_chat(user, span_warning("这道门无法在如此封闭之处成形。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// 错误处理：该地块已有入口门，避免在同一格叠门。
 	if(locate(/obj/structure/mansion_magic_door) in place_turf)
 		to_chat(user, span_warning("那里已经矗立着一扇宅邸魔法门了。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// 错误处理：持久空间按 ckey 归属，没有 ckey 无法绑定/复用，拒绝施放。
 	var/owner_key = user.ckey
 	if(!owner_key)
 		to_chat(user, span_warning("一股莫名的阻滞让这道咒法无法与我相连。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// 查注册表：该施法者是否已拥有一处持久宅邸。
 	var/datum/mansion_space/space = GLOB.mansion_magic_spaces[owner_key]
 	if(space?.collapsing)
 		to_chat(user, span_warning("旧宅邸仍在坍缩，我暂时无法重新开辟空间。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 
 	// 分支 A：已有且仍有效 => 复用同一空间，在选定地块新建一扇入口门接上去。
@@ -617,7 +614,7 @@ GLOBAL_LIST_EMPTY(mansion_magic_spaces)
 	if(!space.build_space())
 		qdel(space)
 		to_chat(user, span_warning("奥术空间无法成形——也许此界的缝隙已被撑满了。"))
-		revert_cast()
+		z121_cancel()
 		return FALSE
 	// 登记入注册表，使其长存、可被日后再次施放复用。
 	GLOB.mansion_magic_spaces[owner_key] = space

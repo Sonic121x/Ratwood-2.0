@@ -7,11 +7,11 @@
 	if(GLOB.Debug2)
 		GLOB.Debug2 = 0
 		message_admins("[key_name(src)] 关闭了调试。")
-		log_admin("[key_name(src)] toggled debugging off.")
+		log_admin("[key_name(src)] 关闭了调试。")
 	else
 		GLOB.Debug2 = 1
 		message_admins("[key_name(src)] 开启了调试。")
-		log_admin("[key_name(src)] toggled debugging on.")
+		log_admin("[key_name(src)] 开启了调试。")
 
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Toggle Debug Two") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -41,7 +41,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		alert("目标不能是大厅玩家（new_player）。")
 		return
 
-	log_admin("[key_name(src)] has animalized [M.key].")
+	log_admin("[key_name(src)] 将 [M.key] 变为了动物。")
 	INVOKE_ASYNC(M, TYPE_PROC_REF(/mob, Animalize))
 
 //TODO: merge the vievars version into this or something maybe mayhaps
@@ -64,7 +64,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 				counter++
 				qdel(O)
 			CHECK_TICK
-		log_admin("[key_name(src)] has deleted all ([counter]) instances of [hsbitem].")
+		log_admin("[key_name(src)] 删除了 [hsbitem] 的全部实例（共 [counter] 个）。")
 		message_admins("[key_name_admin(src)] 删除了 [hsbitem] 的全部实例（共 [counter] 个）。")
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Delete All") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -80,7 +80,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			var/mob/dead/observer/ghost = new/mob/dead/observer(M,1)
 			ghost.ckey = M.ckey
 	message_admins(span_adminnotice("[key_name_admin(usr)] 直接接管了 [M]。"))
-	log_admin("[key_name(usr)] assumed direct control of [M].")
+	log_admin("[key_name(usr)] 直接接管了 [M]。")
 	var/mob/adminmob = src.mob
 	M.ckey = src.ckey
 	if( isobserver(adminmob) )
@@ -110,12 +110,12 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	var/log_message
 	if(on_station)
 		dat += "<b>仅检查站点 Z 层级上的区域。</b><br><br>"
-		log_message = "station z-levels"
+		log_message = "站点 Z 层级"
 	else
-		log_message = "all z-levels"
+		log_message = "全部 Z 层级"
 
-	message_admins(span_adminnotice("[key_name_admin(usr)] 使用检查区域调试指令检查了 [on_station ? "站点 Z 层级" : "所有 Z 层级"]。"))
-	log_admin("[key_name(usr)] used the Test Areas debug command checking [log_message].")
+	message_admins(span_adminnotice("[key_name_admin(usr)] 使用检查区域调试命令检查了[log_message]。"))
+	log_admin("[key_name(usr)] 使用检查区域调试命令检查了[log_message]。")
 
 	for(var/area/A in world)
 		if(on_station)
@@ -254,7 +254,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 			selected_job_title = initial(MR.name)
 		else
 			var/datum/job/J = selected_job_path
-			selected_job_title = initial(J.display_title) || initial(J.title)
+			selected_job_title = initial(J.title)
 	var/selected_advclass_path = GLOB.loadout_selected_advclasses[REF(H)]
 	var/selected_advclass_name = "无"
 	if(selected_advclass_path)
@@ -313,7 +313,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 				var/list/job_subclasses = initial(J.job_subclasses)
 				// Include jobs with outfit OR jobs with advclass system
 				if(job_title && (job_outfit || job_subclasses))
-					job_list[initial(J.display_title) || job_title] = job_type
+					job_list[job_title] = job_type
 			
 			// Add all migrant roles
 			for(var/migrant_type in subtypesof(/datum/migrant_role))
@@ -348,7 +348,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 					var/list/job_subclasses = initial(J.job_subclasses)
 					// Include jobs with outfit OR jobs with advclass system
 					if(job_title && (job_outfit || job_subclasses))
-						searchable_jobs[initial(J.display_title) || job_title] = job_type
+						searchable_jobs[job_title] = job_type
 				
 				// Add all migrant roles
 				for(var/migrant_type in subtypesof(/datum/migrant_role))
@@ -384,7 +384,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 				// Also set the assigned role
 				if(!H.mind)
 					H.mind_initialize()
-				H.mind.assigned_role = ispath(job_type_path, /datum/job) ? initial(job_type_path:title) : "[initial(job_type_path:name)] (Migrant)"
+				H.mind.assigned_role = selected_title
 				
 				// Auto-select advclass if job has only one, or open selection if multiple
 				// Check if it's a migrant role with advclass_cat_rolls
@@ -440,7 +440,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 				// Also set the assigned role
 				if(!H.mind)
 					H.mind_initialize()
-				H.mind.assigned_role = ispath(job_type_path, /datum/job) ? initial(job_type_path:title) : "[initial(job_type_path:name)] (Migrant)"
+				H.mind.assigned_role = selected_title
 				
 				// Auto-select advclass if job has only one, or open selection if multiple
 				// Check if it's a migrant role with advclass_cat_rolls
@@ -728,7 +728,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 			return
 
 
-	return dresscode == "裸装" ? "Naked" : dresscode
+	return dresscode
 
 // Apply full job loadout including stats, skills, traits, and spells
 /client/proc/apply_full_job_loadout(mob/living/carbon/human/H, job_type_path)
@@ -817,10 +817,6 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 				for(var/skill in advclass_datum.subclass_skills)
 					H.adjust_skillrank(skill, advclass_datum.subclass_skills[skill], TRUE)
 			
-			// Apply advclass spell points
-			if(advclass_datum.subclass_spellpoints > 0 && H.mind)
-				H.mind.adjust_spellpoints(advclass_datum.subclass_spellpoints)
-			
 			// Apply advclass traits
 			if(advclass_datum.traits_applied)
 				for(var/trait in advclass_datum.traits_applied)
@@ -895,7 +891,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	
 	to_chat(H, span_notice("已应用完整职业配置！属性、技能和特质已设置完成。"))
 	message_admins("[key_name_admin(usr)] 为 [ADMIN_LOOKUPFLW(H)] 应用了完整职业配置 [actual_outfit]。")
-	log_admin("[key_name(usr)] applied full job loadout [actual_outfit] to [key_name(H)].")
+	log_admin("[key_name(usr)] 为 [key_name(H)] 应用了完整职业配置 [actual_outfit]。")
 
 // Individual application functions
 /client/proc/apply_job_equipment_and_spells(mob/living/carbon/human/H, job_type_path, delete_existing = FALSE)
@@ -954,8 +950,6 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 		// Clear spells and spell points
 		for(var/obj/effect/proc_holder/spell/S in H.mind.spell_list)
 			H.mind.RemoveSpell(S)
-		H.mind.spell_points = 0
-		H.mind.used_spell_points = 0
 	
 	// Equip the outfit if available - equipOutfit handles pre_equip and post_equip internally
 	// Note: pre_equip hooks may grant spells as part of the equipment process
@@ -979,16 +973,10 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 			for(var/S in job_datum.spells)
 				H.mind.AddSpell(new S)
 	
-		// Apply spell points from advclass if available
-		if(advclass_path)
-			var/datum/advclass/advclass_datum = new advclass_path()
-			if(advclass_datum.subclass_spellpoints > 0)
-				H.mind.adjust_spellpoints(advclass_datum.subclass_spellpoints)
-	
 	if(actual_outfit)
 		to_chat(H, span_notice("已应用[is_migrant ? "移民角色的" : ""]装备和法术！"))
 		message_admins("[key_name_admin(usr)] 为 [ADMIN_LOOKUPFLW(H)] 应用了 [actual_outfit] 的装备和法术。")
-		log_admin("[key_name(usr)] applied equipment and spells from [actual_outfit] to [key_name(H)].")
+		log_admin("[key_name(usr)] 为 [key_name(H)] 应用了 [actual_outfit] 的装备和法术。")
 	else
 		to_chat(usr, span_warning("此[is_migrant ? "移民角色" : "职业"]没有可用的装备套装。"))
 
@@ -1028,7 +1016,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	
 	to_chat(H, span_notice("已应用职业[advclass_path ? "及进阶职业" : ""]的属性！"))
 	message_admins("[key_name_admin(usr)] 为 [ADMIN_LOOKUPFLW(H)] 应用了 [outfit_path] 的属性。")
-	log_admin("[key_name(usr)] applied stats from [outfit_path] to [key_name(H)].")
+	log_admin("[key_name(usr)] 为 [key_name(H)] 应用了 [outfit_path] 的属性。")
 
 /client/proc/apply_job_skills(mob/living/carbon/human/H, job_type_path, delete_existing = FALSE)
 	if(!ishuman(H))
@@ -1063,7 +1051,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	
 	to_chat(H, span_notice("已应用[advclass_path ? "进阶职业的" : ""]技能！"))
 	message_admins("[key_name_admin(usr)] 为 [ADMIN_LOOKUPFLW(H)] 应用了 [outfit_path] 的技能。")
-	log_admin("[key_name(usr)] applied skills from [outfit_path] to [key_name(H)].")
+	log_admin("[key_name(usr)] 为 [key_name(H)] 应用了 [outfit_path] 的技能。")
 
 /client/proc/apply_job_traits(mob/living/carbon/human/H, job_type_path, delete_existing = FALSE)
 	if(!ishuman(H))
@@ -1107,7 +1095,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	
 	to_chat(H, span_notice("已应用职业[advclass_path ? "及进阶职业" : ""]的特质！"))
 	message_admins("[key_name_admin(usr)] 为 [ADMIN_LOOKUPFLW(H)] 应用了 [outfit_path] 的特质。")
-	log_admin("[key_name(usr)] applied traits from [outfit_path] to [key_name(H)].")
+	log_admin("[key_name(usr)] 为 [key_name(H)] 应用了 [outfit_path] 的特质。")
 
 /client/proc/apply_job_examine_title(mob/living/carbon/human/H, job_type_path)
 	if(!ishuman(H))
@@ -1132,7 +1120,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 		H.advjob = null
 		to_chat(H, span_notice("查看称号已设为：[title]"))
 		message_admins("[key_name_admin(usr)] 将 [ADMIN_LOOKUPFLW(H)] 的查看称号设为 [title]。")
-		log_admin("[key_name(usr)] set examine title for [key_name(H)] to [title].")
+		log_admin("[key_name(usr)] 将 [key_name(H)] 的查看称号设为 [title]。")
 		qdel(migrant_datum)
 	else
 		// Get the job datum directly from the path
@@ -1158,7 +1146,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 			H.advjob = advclass_datum.name
 			to_chat(H, span_notice("查看称号已设为：[advclass_datum.examine_name || advclass_datum.name]"))
 			message_admins("[key_name_admin(usr)] 将 [ADMIN_LOOKUPFLW(H)] 的查看称号设为 [advclass_datum.examine_name || advclass_datum.name]。")
-			log_admin("[key_name(usr)] set examine title for [key_name(H)] to [advclass_datum.examine_name || advclass_datum.name].")
+			log_admin("[key_name(usr)] 将 [key_name(H)] 的查看称号设为 [advclass_datum.examine_name || advclass_datum.name]。")
 		else
 			// For jobs with advjob_examine = TRUE, set H.advjob to the appropriate title
 			if(job_datum.advjob_examine)
@@ -1167,7 +1155,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 			var/display_title = job_datum.display_title || title
 			to_chat(H, span_notice("查看称号已设为：[display_title]"))
 			message_admins("[key_name_admin(usr)] 将 [ADMIN_LOOKUPFLW(H)] 的查看称号设为 [display_title]。")
-			log_admin("[key_name(usr)] set examine title for [key_name(H)] to [display_title].")
+			log_admin("[key_name(usr)] 将 [key_name(H)] 的查看称号设为 [display_title]。")
 
 /client/proc/clean_slate_mob(mob/living/carbon/human/H)
 	if(!ishuman(H))
@@ -1200,8 +1188,6 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 		for(var/obj/effect/proc_holder/spell/S in H.mind.spell_list)
 			H.mind.RemoveSpell(S)
 		// Reset spell points
-		H.mind.spell_points = 0
-		H.mind.used_spell_points = 0
 	
 	// Remove from excommunicated and outlawed lists (clears examine text like "HERETIC! SHAME!")
 	// Check both real_name and name to be thorough
@@ -1222,7 +1208,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	
 	to_chat(H, span_warning("你已被完全重置为空白状态！"))
 	message_admins("[key_name_admin(usr)] 将 [ADMIN_LOOKUPFLW(H)] 完全重置为空白状态。")
-	log_admin("[key_name(usr)] reset [key_name(H)] to a clean slate.")
+	log_admin("[key_name(usr)] 将 [key_name(H)] 完全重置为空白状态。")
 
 // Copy loadout from one mob to another
 /client/proc/copy_loadout_from_mob(mob/living/carbon/human/target)
@@ -1283,7 +1269,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	target.regenerate_icons()
 	to_chat(usr, span_notice("已将 [source.name] 的配置复制给 [target.name]！"))
 	message_admins("[key_name_admin(usr)] 将 [ADMIN_LOOKUPFLW(source)] 的配置复制给了 [ADMIN_LOOKUPFLW(target)]（[copy_choice]）。")
-	log_admin("[key_name(usr)] copied loadout from [key_name(source)] to [key_name(target)] ([copy_choice]).")
+	log_admin("[key_name(usr)] 将 [key_name(source)] 的配置复制给了 [key_name(target)]（[copy_choice]）。")
 
 /client/proc/copy_equipment(mob/living/carbon/human/source, mob/living/carbon/human/target)
 	// Copy all worn/held items by creating duplicates
@@ -1461,7 +1447,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 	set name = "显示 Initialize() 日志"
 	set desc = ""
 
-	usr << browse("<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>" + replacetext(SSatoms.InitLog(), "\n", "<br>"), "window=initlog")
+	usr << browse(replacetext(SSatoms.InitLog(), "\n", "<br>"), "window=initlog")
 
 /client/proc/debug_huds(i as num)
 	set category = "调试"
@@ -1516,7 +1502,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 
 	message_admins(span_adminnotice("[key_name_admin(src)] 已[SSachievements.hub_enabled ? "解除" : "启用"]奖章大厅锁定。"))
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Toggle Medal Disable") // If...
-	log_admin("[key_name(src)] [SSachievements.hub_enabled ? "disabled" : "enabled"] the medal hub lockout.")
+	log_admin("[key_name(src)] 已[SSachievements.hub_enabled ? "解除" : "启用"]奖章大厅锁定。")
 
 /client/proc/view_runtimes()
 	set category = "调试"
@@ -1539,7 +1525,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 
 	message_admins(span_adminnotice("[key_name_admin(src)] 提前触发了随机事件。"))
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Pump Random Event")
-	log_admin("[key_name(src)] pumped a random event.")
+	log_admin("[key_name(src)] 提前触发了随机事件。")
 
 /client/proc/start_line_profiling()
 	set category = "性能分析"
@@ -1550,7 +1536,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 
 	message_admins(span_adminnotice("[key_name_admin(src)] 开始了逐行性能分析。"))
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Start Line Profiling")
-	log_admin("[key_name(src)] started line by line profiling.")
+	log_admin("[key_name(src)] 开始了逐行性能分析。")
 
 /client/proc/stop_line_profiling()
 	set category = "性能分析"
@@ -1561,7 +1547,7 @@ GLOBAL_LIST_EMPTY(loadout_selected_advclasses)
 
 	message_admins(span_adminnotice("[key_name_admin(src)] 停止了逐行性能分析。"))
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Stop Line Profiling")
-	log_admin("[key_name(src)] stopped line by line profiling.")
+	log_admin("[key_name(src)] 停止了逐行性能分析。")
 
 /client/proc/show_line_profiling()
 	set category = "性能分析"

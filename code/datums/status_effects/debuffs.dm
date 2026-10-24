@@ -331,7 +331,7 @@
 	ADD_TRAIT(owner, TRAIT_MUTE, TRAIT_STATUS_EFFECT(id))
 	owner.add_client_colour(/datum/client_colour/monochrome/trance)
 	owner.visible_message("[stun ? "<span class='warning'>[owner] 呆立原地，[owner.p_their()] 的目光似乎聚焦在遥远的一点上。</span>" : ""]", \
-	"<span class='warning'>[pick("我感觉自己的思绪慢了下来……", "我突然感到一阵强烈的眩晕……", "我感觉自己仿佛置身梦境之中……","我感到无比放松……")]</span>")
+	"<span class='warning'>[pick("我感觉思绪逐渐迟缓……", "我突然感到一阵强烈的眩晕……", "我仿佛置身梦中……","我感到无比放松……")]</span>")
 	return TRUE
 
 /datum/status_effect/trance/on_creation(mob/living/new_owner, _duration, _stun = TRUE)
@@ -375,7 +375,7 @@
 				var/obj/item/I = owner.get_active_held_item()
 				if(I)
 					to_chat(owner, "<span class='warning'>我的手指痉挛了！</span>")
-					owner.log_message("used [I] due to a Muscle Spasm", LOG_ATTACK)
+					owner.log_message("因肌肉痉挛使用了 [I]", LOG_ATTACK)
 					I.attack_self(owner)
 			if(3)
 				var/prev_intent = owner.a_intent
@@ -391,14 +391,14 @@
 						targets += M
 				if(LAZYLEN(targets))
 					to_chat(owner, "<span class='warning'>我的手臂痉挛了！</span>")
-					owner.log_message(" attacked someone due to a Muscle Spasm", LOG_ATTACK) //the following attack will log itself
+					owner.log_message(" 因肌肉痉挛攻击了他人", LOG_ATTACK) //the following attack will log itself
 					owner.ClickOn(pick(targets))
 				owner.a_intent = prev_intent
 			if(4)
 				var/prev_intent = owner.a_intent
 				owner.a_intent = INTENT_HARM
 				to_chat(owner, "<span class='warning'>我的手臂痉挛了！</span>")
-				owner.log_message("attacked [owner.p_them()]self to a Muscle Spasm", LOG_ATTACK)
+				owner.log_message("因肌肉痉挛攻击了自己", LOG_ATTACK)
 				owner.ClickOn(owner)
 				owner.a_intent = prev_intent
 			if(5)
@@ -410,7 +410,7 @@
 					targets += T
 				if(LAZYLEN(targets) && I)
 					to_chat(owner, "<span class='warning'>我的手臂痉挛了！</span>")
-					owner.log_message("threw [I] due to a Muscle Spasm", LOG_ATTACK)
+					owner.log_message("因肌肉痉挛投掷了 [I]", LOG_ATTACK)
 					owner.throw_item(pick(targets))
 
 /datum/status_effect/go_away
@@ -450,25 +450,25 @@
 	switch(msg_stage)
 		if(0 to 300)
 			if(prob(1))
-				fake_msg = pick("<span class='warning'>[pick("我头疼。", "我头痛欲裂。")]</span>",
-				"<span class='warning'>[pick("我呼吸困难。", "我的呼吸变得沉重。")]</span>",
-				"<span class='warning'>[pick("我感到头晕。", "我一阵天旋地转。")]</span>",
-				"<span notice='warning'>[pick("我咽下多余的痰液。", "我轻咳了一声。")]</span>",
-				"<span class='warning'>[pick("我头疼。", "我脑中突然空白了一瞬。")]</span>",
-				"<span class='warning'>[pick("我喉咙疼。", "我清了清嗓子。")]</span>")
+				fake_msg = pick("<span class='warning'>[pick("我的头有些疼。", "我的脑袋一阵阵抽痛。")]</span>",
+				"<span class='warning'>[pick("我呼吸有些困难。", "我的呼吸变得沉重。")]</span>",
+				"<span class='warning'>[pick("我感到头晕。", "我感到天旋地转。")]</span>",
+				"<span notice='warning'>[pick("我咽下了多余的黏液。", "我轻轻咳嗽。")]</span>",
+				"<span class='warning'>[pick("我的头有些疼。", "我的脑海一瞬间变得空白。")]</span>",
+				"<span class='warning'>[pick("我的喉咙有些疼。", "我清了清嗓子。")]</span>")
 		if(301 to 600)
 			if(prob(2))
-				fake_msg = pick("<span class='warning'>[pick("我头疼得厉害。", "我的头持续阵阵作痛。")]</span>",
-				"<span class='warning'>[pick("我的气管像吸管一样狭窄。", "我呼吸变得极其困难。")]</span>",
-				"<span class='warning'>我感到非常[pick("头晕","昏沉","虚弱")]。</span>",
-				"<span class='warning'>[pick("我耳中嗡嗡作响。", "我的耳朵一阵鼓胀作响。")]</span>",
+				fake_msg = pick("<span class='warning'>[pick("我的头疼得厉害。", "我的脑袋不停地抽痛。")]</span>",
+				"<span class='warning'>[pick("我的气管仿佛缩成了一根吸管。", "我的呼吸变得极其困难。")]</span>",
+				"<span class='warning'>我感到[pick("头晕目眩","昏昏沉沉","几乎要晕倒了")]。</span>",
+				"<span class='warning'>[pick("我的耳边响起嗡鸣。", "我的耳中一阵噼啪作响。")]</span>",
 				"<span class='warning'>我打了一会儿盹。</span>")
 		else
 			if(prob(3))
 				if(prob(50))// coin flip to throw a message or an emote
-					fake_msg = pick("<span class='danger'>[pick("我头疼！", "我感觉脑中像有一把燃烧的刀在搅动！", "一阵剧痛灌满我的脑海！")]</span>",
-					"<span class='danger'>[pick("我的肺在作痛！", "连呼吸都疼！")]</span>",
-					"<span class='warning'>[pick("我感到恶心。", "我觉得自己要吐了！")]</span>")
+					fake_msg = pick("<span class='danger'>[pick("我的头好疼！", "我的脑中仿佛插着一把烧红的刀！", "一阵剧痛充斥着我的脑袋！")]</span>",
+					"<span class='danger'>[pick("我的肺好疼！", "每次呼吸都好疼！")]</span>",
+					"<span class='warning'>[pick("我感到恶心。", "我感觉自己快吐了！")]</span>")
 				else
 					fake_emote = pick("cough", "sniff", "sneeze")
 
@@ -508,7 +508,7 @@
 
 /atom/movable/screen/alert/status_effect/debuff/baitedcd
 	name = "诱饵冷却"
-	desc = "我已经用过了。必须等待。"
+	desc = "我刚用过这一招，必须等一等。"
 	icon_state = "baitcd"
 
 /datum/status_effect/debuff/baitcd
@@ -519,7 +519,7 @@
 //---- Clash
 /atom/movable/screen/alert/status_effect/debuff/clashcd
 	name = "格挡冷却"
-	desc = "我已经用过了。必须等待。"
+	desc = "我刚用过这一招，必须等一等。"
 	icon_state = "guardcd"
 
 /datum/status_effect/debuff/clashcd
@@ -529,7 +529,7 @@
 
 /atom/movable/screen/alert/status_effect/debuff/clashcd
 	name = "还击 / 格挡冷却"
-	desc = "我已经用过了。必须等待。"
+	desc = "我刚用过这一招，必须等一等。"
 	icon_state = "guardcd"
 
 //---- Exposed
@@ -600,7 +600,7 @@
 
 /atom/movable/screen/alert/status_effect/debuff/precisestrikecd
 	name = "精准打击冷却"
-	desc = "我已经用过了。必须等待。"
+	desc = "我刚用过这一招，必须等一等。"
 	icon_state = "strikecd"
 
 /datum/status_effect/debuff/bindcd
@@ -694,7 +694,7 @@
 	duration = 7 MINUTES // This effect is really nasty but is deliberately one of the worst mishap effects, so it has a fairly long duration.
 	status_type = STATUS_EFFECT_REFRESH
 	// Won't necessarily force intelligence to 1, if we're really smart and have buffs
-	effectedstats = list(STATKEY_INT = -20, STATKEY_SPD = -5)
+	effectedstats = list("intelligence" = -20, "speed" = -5)
 	alert_type = /atom/movable/screen/alert/status_effect/mishap_feeblemind
 	var/datum/language_holder/owner_language_holder
 	var/datum/language_holder/old_languages
@@ -728,7 +728,7 @@
 	id = "dimwitted"
 	duration = 10 MINUTES
 	status_type = STATUS_EFFECT_REFRESH
-	effectedstats = list(STATKEY_INT = -6, STATKEY_SPD = -3) // 50% worse than the Nimrod special at the time of implementation (for 10 minutes)
+	effectedstats = list("intelligence" = -6, "speed" = -3) // 50% worse than the Nimrod special at the time of implementation (for 10 minutes)
 	alert_type = /atom/movable/screen/alert/status_effect/mishap_dimwitted
 
 /datum/status_effect/debuff/mishap_dimwitted/on_apply()
@@ -749,7 +749,7 @@
 	id = "arcane_high"
 	duration = 5 MINUTES
 	status_type = STATUS_EFFECT_REFRESH
-	effectedstats = list(STATKEY_INT = -4, STATKEY_PER = -4)
+	effectedstats = list("intelligence" = -4, "perception" = -4)
 	alert_type = /atom/movable/screen/alert/status_effect/mishap_arcane_high
 
 /datum/status_effect/debuff/mishap_arcane_high/on_apply()
@@ -874,7 +874,7 @@
 	id = "arcane_blindness"
 	duration = 2 MINUTES // Another nasty effect - victim will need to be led around until it expires.
 	status_type = STATUS_EFFECT_REFRESH
-	effectedstats = list(STATKEY_PER = -100) // Blind, can't see
+	effectedstats = list("perception" = -100) // Blind, can't see
 	alert_type = /atom/movable/screen/alert/status_effect/mishap_blindness
 	var/const/blindness_amount = 20 // 20 should be plenty to keep the victim blind between tick()s
 
@@ -980,3 +980,41 @@
 	name = "击退冷却"
 	desc = "我刚被攻击击退过，暂时不会再次被击退"
 	icon_state = "debuff" // Placeholder
+
+/datum/status_effect/debuff/cast_disrupted
+	id = "cast_disrupted"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/cast_disrupted
+	duration = EXPOSED_CAST_LOCKOUT
+	status_type = STATUS_EFFECT_UNIQUE
+
+/datum/status_effect/debuff/cast_disrupted/on_creation(mob/living/new_owner, new_dur)
+	if(new_dur)
+		duration = new_dur
+	return ..()
+
+/datum/status_effect/debuff/feinted
+	id = "feinted"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/feinted
+	mob_effect_icon = 'icons/mob/mob_effects.dmi'
+	mob_effect_icon_state = "eff_feinted"
+	mob_effect_offset_y = 10
+	mob_effect_layer = MOB_EFFECT_LAYER_FEINTED
+	duration = 30 SECONDS
+
+/datum/status_effect/debuff/feinted/on_creation(mob/living/new_owner, new_dur)
+	if(new_dur)
+		duration = new_dur
+	return ..()
+
+//Unused
+
+/atom/movable/screen/alert/status_effect/debuff/cast_disrupted
+	name = "施法受扰"
+	desc = "我的专注被打断了。在恢复前，我无法凝聚魔力。"
+	icon = 'icons/mob/screen_alert_combat.dmi'
+	icon_state = "castdisrupted"
+
+/atom/movable/screen/alert/status_effect/debuff/feinted
+	name = "遭受佯攻"
+	desc = "我被佯攻骗过了。短时间内不会再上当。"
+	icon_state = "feinted"

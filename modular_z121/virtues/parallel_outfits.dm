@@ -29,8 +29,7 @@
 	)
 
 	if(H.mind)
-		P.add_spell(/obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
-		P.add_spell(/obj/effect/proc_holder/spell/invoked/enchant_weapon)
+		P.add_spell(/datum/action/cooldown/spell/touch/prestidigitation)
 
 // 来源：code/modules/jobs/job_types/roguetown/adventurer/types/pilgrim/barbersurgeon.dm
 /datum/outfit/job/roguetown/adventurer/doctor/z121_prepare(mob/living/carbon/human/H, datum/z121_profession_plan/P)
@@ -1634,8 +1633,8 @@
 					l_hand = /obj/item/quiver/sling
 				if("魔法砖块")
 					P.skill_floor(/datum/skill/magic/arcane, SKILL_LEVEL_EXPERT, TRUE)
-					P.add_spell(/obj/effect/proc_holder/spell/self/magicians_brick)
-					P.add_trait(TRAIT_ARCYNE_T1)
+					P.add_spell(/datum/action/cooldown/spell/magicians_stone)
+					P.add_trait(TRAIT_ARCYNE)
 				if("撬锁工具环")
 					P.skill_floor(/datum/skill/misc/sneaking, SKILL_LEVEL_EXPERT, TRUE)
 					P.skill_floor(/datum/skill/misc/stealing, SKILL_LEVEL_EXPERT, TRUE)
@@ -1804,9 +1803,9 @@
 	switch (classchoice)
 		if("古老魔法")
 
-			P.add_trait(TRAIT_ARCYNE_T2)
+			P.add_trait(TRAIT_ARCYNE)
+			P.outfit_aspect_config = list("mastery" = FALSE, "major" = 1, "minor" = 1, "utilities" = 5, "ward" = TRUE)
 			P.skill_add(/datum/skill/magic/arcane, 1, TRUE)
-			P.add_points(9)
 			neck = null
 		if("神之血脉")
 
@@ -1843,9 +1842,9 @@
 			P.skill_add(/datum/skill/magic/holy, 1, TRUE)
 			P.set_devotion(CLERIC_T1, CLERIC_REGEN_MINOR, CLERIC_REQ_1)
 			P.devotion_multiplier = 0.5
-			P.add_trait(TRAIT_ARCYNE_T1)
+			P.add_trait(TRAIT_ARCYNE)
+			P.outfit_aspect_config = list("mastery" = FALSE, "major" = 0, "minor" = 1, "utilities" = 3)
 			P.skill_add(/datum/skill/magic/arcane, 1, TRUE)
-			P.add_points(6)
 			switch(H.patron?.type)
 				if(/datum/patron/divine/astrata)
 					neck = /obj/item/clothing/neck/roguetown/psicross/astrata
@@ -1893,9 +1892,9 @@
 
 		switch (classchoice)
 			if("古老魔法")
-				P.add_spell(/obj/effect/proc_holder/spell/invoked/guidance)
-				P.add_spell(/obj/effect/proc_holder/spell/invoked/projectile/arcynebolt)
-				P.add_spell(/obj/effect/proc_holder/spell/invoked/fortitude)
+				P.add_spell(/datum/action/cooldown/spell/augment_buff/guidance)
+				P.add_spell(/datum/action/cooldown/spell/projectile/basic_offensive)
+				P.add_spell(/datum/action/cooldown/spell/augment_buff/fortitude)
 
 	if(H.gender == FEMALE)
 		armor = /obj/item/clothing/suit/roguetown/armor/corset
@@ -2170,7 +2169,7 @@
 	beltl = /obj/item/flashlight/flare/torch/lantern
 	beltr = /obj/item/rogueweapon/huntingknife
 	if(H.mind)
-		P.add_spell(/obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
+		P.add_spell(/datum/action/cooldown/spell/touch/prestidigitation)
 		P.add_spell(/obj/effect/proc_holder/spell/invoked/teach)
 		P.add_spell(/obj/effect/proc_holder/spell/invoked/learn)
 		P.add_spell(/obj/effect/proc_holder/spell/invoked/refocusstudies)

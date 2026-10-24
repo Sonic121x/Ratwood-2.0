@@ -35,7 +35,7 @@
 	update_brightness(user)
 	for(var/X in actions)
 		var/datum/action/A = X
-		A.UpdateButtonIcon()
+		A.build_all_button_icons()
 	return 1
 
 /obj/item/flashlight/suicide_act(mob/living/carbon/human/user)
@@ -91,8 +91,8 @@
 
 /obj/item/flashlight/flare/ignition_effect(atom/A, mob/user)
 	if(fuel && on)
-		. = "<span class='notice'>[user]用[src]点燃了[A]，活像个真正的狠角色。\
-			</span>"
+		. = "<span class='notice'>[user] lights [A] with [src] like a real \
+			badass.</span>"
 	else
 		. = ""
 
@@ -385,7 +385,7 @@
 		if(is_simple_animal)
 			var/mob/living/simple_animal/animal_patient = patient
 			animal_patient.adjustHealth(-((animal_patient.maxHealth / 20) * (medskill + 1)), TRUE)
-		log_combat(doctor, patient, "singe", "torch")
+		log_combat(doctor, patient, "灼烧了", "火把")
 		return TRUE
 	return FALSE
 //OV edit end

@@ -5,7 +5,7 @@
 	cost = 3
 	xp_gain = TRUE
 	school = "transmutation"
-	releasedrain = 60
+	releasedrain = SPELLCOST_ULTIMATE
 	chargedrain = 0
 	chargetime = 5 SECONDS
 	recharge_time = 10 SECONDS
@@ -14,10 +14,12 @@
 	movement_interrupt = TRUE
 	charging_slowdown = 2
 	spell_tier = 4 // CM / Antag / Lich exclusive
+	spell_impact_intensity = SPELL_IMPACT_NONE
 	invocations = list("开锁显形！")
 	invocation_type = "shout"
 	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
+	human_req = TRUE
 
 /obj/effect/proc_holder/spell/invoked/knock/cast(list/targets, mob/user = usr)
 	playsound(get_turf(user), 'sound/misc/chestopen.ogg', 100, TRUE, -1)
@@ -32,7 +34,7 @@
 /obj/effect/proc_holder/spell/invoked/knock/proc/open_door(obj/structure/mineral_door/door, mob/user)
 	if(istype(door))
 		if(door.locked)
-			door.log_breakin(user, "cast knock and unlocked the door")
+			door.log_breakin(user, "施放开锁术解锁了门")
 		door.force_open()
 		door.locked = FALSE
 
@@ -43,5 +45,5 @@
 /obj/effect/proc_holder/spell/invoked/knock/proc/open_window(obj/structure/roguewindow/openclose/W, mob/user)
 	if(istype(W))
 		if(!W.climbable && !W.brokenstate)
-			W.log_breakin(user, "cast knock and opened the window")
+			W.log_breakin(user, "施放开锁术打开了窗户")
 		W.force_open()

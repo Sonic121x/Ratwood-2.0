@@ -338,7 +338,7 @@
 	)
 
 /obj/effect/spawner/lootdrop/drow_equipment_spawner
-	name = "drow equipment spawner"
+	name = "黑暗精灵装备生成器"
 	icon_state = "drowweapon/armor"
 	lootcount = 1
 	loot = list(
@@ -433,23 +433,20 @@
 		/obj/item/magic/infernal/core = 10,
 		/obj/item/magic/infernal/flame = 10,
 		/obj/item/magic/infernal/fang = 10,
-		/obj/item/rogueweapon/woodstaff/ruby = 10,
+		/obj/item/rogueweapon/woodstaff/implement/greater/ruby = 10,
 		/obj/item/rogueweapon/whip/spiderwhip = 10,
 		/obj/item/carvedgem/onyxa/spider = 10,
 		/obj/item/rogueweapon/shield/tower/spidershield = 10,
-		/obj/item/spellbook_unfinished/pre_arcyne = 10,
+		/obj/item/rogueweapon/spellbook = 10,
 		/obj/effect/spawner/lootdrop/potion_poisons = 10,
 		/obj/effect/spawner/lootdrop/decrepit_equipment_spawner = 10,
 		/obj/effect/spawner/lootdrop/ancient_equipment_spawner = 10,
-		/obj/item/book/granter/spell/blackstone/bonechill = 10,
-		/obj/item/book/granter/spell/blackstone/skeleton = 1,//super powerful lich-style player skeleton spawner
-		/obj/item/book/granter/spell/blackstone/skeleton/lesser = 15,
 		/obj/item/reagent_containers/glass/bottle/rogue/emberwine = 10,
 		/obj/item/reagent_containers/glass/bottle/alchemical/spidervenom_paralytic = 5,
 	)
 
 /obj/effect/spawner/lootdrop/zizo
-	name = "Zizo物品生成器"
+	name = "齐佐物品生成器"
 	icon_state = "heresy"
 	lootcount = 1
 	loot = list(
@@ -464,17 +461,14 @@
 		/obj/item/flashlight/flare/torch/lantern/pumpkin/zizo = 1,
 		/obj/item/carvedgem/onyxa/snake = 5,
 		/obj/item/clothing/mask/rogue/facemask/carved/onyxamask = 1,
-		/obj/item/spellbook_unfinished/pre_arcyne = 10,
+		/obj/item/rogueweapon/spellbook = 10,
 		/obj/effect/spawner/lootdrop/potion_poisons = 10,
-		/obj/item/book/granter/spell/blackstone/bonechill = 10,
-		/obj/item/book/granter/spell/blackstone/skeleton = 1,//super powerful lich-style player skeleton spawner
-		/obj/item/book/granter/spell/blackstone/skeleton/lesser = 15,
 		/obj/item/clothing/neck/roguetown/psicross/inhumen = 5,
 		/obj/item/clothing/neck/roguetown/psicross/inhumen/ancient = 5,
 		/obj/item/clothing/neck/roguetown/psicross/inhumen/g = 2,
 	)
 /obj/effect/spawner/lootdrop/graggar
-	name = "Graggar物品生成器"
+	name = "格拉加尔物品生成器"
 	icon_state = "heresy"
 	lootcount = 1
 	loot = list(
@@ -490,7 +484,7 @@
 		/obj/item/clothing/neck/roguetown/psicross/inhumen/graggar/bronze = 5,
 	)
 /obj/effect/spawner/lootdrop/matt
-	name = "Matthios物品生成器"
+	name = "马西奥斯物品生成器"
 	icon_state = "heresy"
 	lootcount = 1
 	loot = list(
@@ -506,7 +500,7 @@
 		/obj/item/clothing/neck/roguetown/psicross/inhumen/matthios = 10,
 	)
 /obj/effect/spawner/lootdrop/baotha//add baothan ritual armor when we get around to that
-	name = "Baotha物品生成器"
+	name = "巴奥莎物品生成器"
 	icon_state = "heresy"
 	lootcount = 1
 	loot = list(
@@ -516,7 +510,7 @@
 		/obj/item/reagent_containers/powder/herozium = 10,
 		/obj/item/reagent_containers/powder/starsugar = 10,
 		/obj/item/roguestatue/gold/loot = 10,
-		/obj/item/rogueweapon/woodstaff/ruby = 10,
+		/obj/item/rogueweapon/woodstaff/implement/greater/ruby = 10,
 		/obj/item/carvedgem/onyxa/spider = 10,
 		/obj/item/rogueweapon/shield/tower/spidershield = 10,
 		/obj/effect/spawner/lootdrop/potion_poisons = 5,
@@ -545,7 +539,7 @@
 		/obj/item/reagent_containers/powder/herozium = 5,
 		/obj/item/reagent_containers/powder/starsugar = 5,
 		/obj/item/roguestatue/gold/loot = 5,
-		/obj/item/rogueweapon/woodstaff/ruby = 5,
+		/obj/item/rogueweapon/woodstaff/implement/greater/ruby = 5,
 		/obj/effect/spawner/lootdrop/potion_poisons = 10,
 		/obj/item/reagent_containers/glass/bottle/rogue/emberwine = 5,
 		/obj/item/reagent_containers/glass/bottle/alchemical/spidervenom_paralytic = 1,

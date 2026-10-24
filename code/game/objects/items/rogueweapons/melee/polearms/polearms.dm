@@ -1280,25 +1280,6 @@
 	unequip_delay_self = 2 SECONDS
 	inv_storage_delay = 1 SECONDS
 
-/obj/item/rogueweapon/woodstaff/naledi
-	name = "纳莱迪战杖"
-	desc = "这根法杖上承载着普赛顿智慧的新月徽记，以及战学者所用的黑金纹章。"
-	icon_state = "naledistaff"
-	possible_item_intents = list(SPEAR_BASH, /datum/intent/special/magicarc)
-	gripped_intents = list(/datum/intent/spear/bash/ranged, /datum/intent/special/magicarc, /datum/intent/mace/smash/wood/ranged)
-	force = 18
-	force_wielded = 22
-	max_integrity = 250
-
-/obj/item/rogueweapon/woodstaff/naledi/getonmobprop(tag)
-	. = ..()
-	if(tag)
-		switch(tag)
-			if("gen")
-				return list("shrink" = 0.8,"sx" = -9,"sy" = 5,"nx" = 9,"ny" = 5,"wx" = -4,"wy" = 4,"ex" = 4,"ey" = 4,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = -38,"sturn" = 37,"wturn" = 32,"eturn" = -23,"nflip" = 0,"sflip" = 8,"wflip" = 8,"eflip" = 0)
-			if("wielded")
-				return list("shrink" = 0.8,"sx" = 8,"sy" = 0,"nx" = -1,"ny" = 0,"wx" = -5,"wy" = -1,"ex" = 3,"ey" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 7,"sturn" = -7,"wturn" = 16,"eturn" = -22,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
-
 // Decorative Naledi staff for loadout - regular staff with Naledi appearance
 /obj/item/rogueweapon/woodstaff/decorative
 	name = "装饰纳莱迪法杖"
@@ -1311,7 +1292,7 @@
 	max_integrity = 150
 
 //Only a 'woodenstaff' for the purpose of CDR on spells.
-/obj/item/rogueweapon/woodstaff/sojourner
+/obj/item/rogueweapon/woodstaff/implement/greater/sojourner
 	name = "行旅者法杖"
 	desc = "这是一柄旧普赛顿长矛残留下来的部分。它的矛尖已经磨钝，倒刺和三叉形矛首也全被拆去。 如 \
 	今它承担着更高贵的使命，成了行旅者施法用的法杖。不过若力气够大，仍能把钝尖狠狠干出去。"
@@ -1327,7 +1308,7 @@
 	smeltresult = /obj/item/ingot/silverblessed
 	is_silver = TRUE
 
-/obj/item/rogueweapon/woodstaff/sojourner/ComponentInitialize()
+/obj/item/rogueweapon/woodstaff/implement/greater/sojourner/ComponentInitialize()
 	AddComponent(\
 		/datum/component/silverbless,\
 		pre_blessed = BLESSING_NONE,\
@@ -1629,6 +1610,76 @@
 	max_blade_int = 200 // Elven design makes it sharper than Kazengunese stuff
 	sellprice = 60
 
+/datum/intent/spear/bash/staff
+	name = "杖击"
+	damfactor = 1
+	reach = 1
+
+//
+/obj/item/rogueweapon/spear/spellblade
+	name = "多利短矛"
+	icon = 'icons/roguetown/weapons/polearms64.dmi'
+	icon_state = "short_spear"
+	desc = "一支缩短至六英尺、重心均衡的长矛。费伦提亚魔剑士尤为青睐它，\
+		因为传统长矛不适合他们华丽而独行的战斗风格。\
+		单手握持可迅速突刺，双手握持则能灵活运转。<BR><BR> \
+		『从今往后，我们不再自称矛兵，而称方阵武士；我们的矛也不叫短矛，而叫多利。\
+		如此一来，我们必将备受尊重。』——费伦提亚魔剑士团某位无名大宗师，AP 900 年。"
+	force = 20
+	force_wielded = 25
+	possible_item_intents = list(/datum/intent/spear/thrust/azurean/oneh)
+	gripped_intents = list(/datum/intent/spear/thrust/azurean, /datum/intent/spear/thrust/azurean/pick, SPEAR_BASH)
+	wlength = WLENGTH_LONG
+	w_class = WEIGHT_CLASS_BULKY
+	minstr = 7
+	max_blade_int = 180
+	anvilrepair = /datum/skill/craft/weaponsmithing
+	smeltresult = /obj/item/ingot/iron
+	associated_skill = /datum/skill/combat/polearms
+	wdefense = 4
+	thrown_bclass = BCLASS_STAB
+	throwforce = 22
+	resistance_flags = FLAMMABLE
+	armor_penetration = PEN_NONE
+
+// ---- Ferentian Shortspear intents ----
+/datum/intent/spear/thrust/azurean
+	name = "突刺"
+	desc = "迅捷灵活的双手突刺。保有攻击距离，但缺乏穿甲威力。"
+	reach = 2
+	clickcd = CLICK_CD_QUICK // Long range, quick poke, NO AP
+	penfactor = PEN_NONE
+	damfactor = 1
+	effective_range = null
+	effective_range_type = EFF_RANGE_NONE
+
+/datum/intent/spear/thrust/azurean/oneh
+	name = "单手突刺"
+	desc = "迅速的单手戳刺。速度快、距离远，但无法穿透护甲。"
+	reach = 2
+	clickcd = CLICK_CD_QUICK // capture that nimble feel
+	penfactor = PEN_NONE
+	damfactor = 1
+	effective_range = null
+	effective_range_type = EFF_RANGE_NONE
+
+/datum/intent/spear/thrust/azurean/pick
+	name = "刺缝"
+	icon_state = "inpick"
+	desc = "双手握持并靠近矛刃时，短矛十分灵活。握住矛柄末端，将其刺入对手护甲的薄弱处——难以施展，但成功后威力惊人。"
+	blade_class = BCLASS_PICK
+	attack_verb = list("impales", "刺入")
+	hitsound = list('sound/combat/hits/pick/genpick (1).ogg', 'sound/combat/hits/pick/genpick (2).ogg')
+	reach = 1
+	clickcd = 18
+	swingdelay = 14
+	penfactor = PEN_HEAVY
+	damfactor = 0.8
+	item_d_type = "stab"
+	effective_range = null
+	effective_range_type = EFF_RANGE_NONE
+
+//
 /obj/item/rogueweapon/spear/partizan/baotha
 	name = "蜜惑剑矛"
 	desc = "将余人拒于一臂之外，免得回忆的苦痛成为你的重负。"

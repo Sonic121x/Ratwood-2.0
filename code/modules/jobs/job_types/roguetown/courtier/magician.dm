@@ -1,6 +1,5 @@
 /datum/job/roguetown/magician
 	title = "Court Magician"
-	display_title = "宫廷法师"
 	flag = WIZARD
 	department_flag = COURTIERS
 	selection_color = JCOLOR_COURTIER
@@ -10,7 +9,7 @@
 
 	allowed_races = RACES_NO_CONSTRUCT		//Nobility, no construct
 	allowed_sexes = list(MALE, FEMALE)
-	spells = list(/obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
+	spells = list()
 	display_order = JDO_MAGICIAN
 	tutorial = "你的信条在于征服奥术之艺，并永远追逐知识带来的悸动。\
 		你这条命都欠着领主，因为正是他的金钱让你得以在这黑暗时代继续钻研学问。\
@@ -27,20 +26,23 @@
 	// Can't get very far as a magician if you can't chant spells now can you?
 	vice_restrictions = list(/datum/charflaw/mute)
 
-	job_traits = list(TRAIT_MAGEARMOR, TRAIT_ARCYNE_T4, TRAIT_SEEPRICES, TRAIT_INTELLECTUAL, TRAIT_ALCHEMY_EXPERT, TRAIT_NOBLE, TRAIT_MAGEDEXTERITY)
+	job_traits = list(TRAIT_SEEPRICES, TRAIT_INTELLECTUAL, TRAIT_ALCHEMY_EXPERT, TRAIT_NOBLE, TRAIT_MAGEDEXTERITY, TRAIT_ARCYNE)
 	job_subclasses = list(
 		/datum/advclass/courtmage
 	)
 
 /datum/advclass/courtmage
 	name = "宫廷法师"
-	tutorial = "你的信条在于征服奥术之艺，并永远追逐知识带来的悸动。\
-		你这条命都欠着领主，因为正是他的金钱让你得以在这黑暗时代继续钻研学问。\
-		作为回报，你一次又一次证明了自己既是其统治下的裁断者，也是值得信赖的顾问。"
+	tutorial = "你的信条是征服奥术，不断追逐求知的喜悦。\
+		你欠领主一条命，正是他的资助让你在这黑暗时代得以继续学业。\
+		作为回报，你一次次证明自己是他统治之下的执法者与可信顾问。你在\
+		费伦提亚大学任职，与首席医师共同执掌权威：对方钻研\
+		凡俗肉身，而所有奥术事务皆由你主导。"
 	outfit = /datum/outfit/job/roguetown/magician/basic
 
-	subclass_spellpoints = 36
+	subclass_mage_aspects = list("mastery" = TRUE, "major" = 2, "minor" = 3, "utilities" = 9, "ward" = TRUE)
 	category_tags = list(CTAG_COURTMAGE)
+	traits_applied = list(TRAIT_BADTRAINER, TRAIT_ARCYNE)
 	subclass_stats = list(
 		STATKEY_INT = 5,// Automatic advanced magic for most spells. (I.E summon weapon being upgraded to steel from iron/etc)
 		STATKEY_PER = 3,
@@ -48,8 +50,10 @@
 		STATKEY_STR = -1,
 		STATKEY_CON = -1,
 	)
-	virtue_restrictions = list(/datum/virtue/combat/tough_hide)
+	age_mod = /datum/class_age_mod/court_magician
 	subclass_skills = list(
+		/datum/skill/combat/staves = SKILL_LEVEL_EXPERT,
+		/datum/skill/combat/arcyne = SKILL_LEVEL_MASTER,
 		/datum/skill/combat/polearms = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/swords = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/combat/knives = SKILL_LEVEL_APPRENTICE,
@@ -60,12 +64,12 @@
 		/datum/skill/misc/athletics = SKILL_LEVEL_APPRENTICE, // more stam for holding spells
 		/datum/skill/craft/crafting = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/medicine = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/misc/riding = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/reading = SKILL_LEVEL_LEGENDARY,
-		/datum/skill/craft/alchemy = SKILL_LEVEL_EXPERT,
+		/datum/skill/craft/alchemy = SKILL_LEVEL_MASTER,
 		/datum/skill/magic/arcane = SKILL_LEVEL_MASTER,
 		/datum/skill/craft/cooking = SKILL_LEVEL_NOVICE,
 	)
+	tempo_capable = FALSE
 
 /datum/outfit/job/roguetown/magician
 	job_bitflag = BITFLAG_ROYALTY
@@ -78,7 +82,6 @@
 		H.change_stat(STATKEY_SPD, -1)
 		H.change_stat(STATKEY_INT, 1)
 		H.change_stat(STATKEY_PER, 1)
-		H.mind?.adjust_spellpoints(6)
 		if(ishumannorthern(H))
 			belt = /obj/item/storage/belt/rogue/leather/plaquegold
 			cloak = null
@@ -111,25 +114,13 @@
 	belt = /obj/item/storage/belt/rogue/leather/plaquesilver
 	beltr = /obj/item/storage/keyring/mage
 	beltl = /obj/item/storage/magebag/associate
-	id = /obj/item/scomstone/garrison
-	r_hand = /obj/item/rogueweapon/woodstaff/riddle_of_steel/magos
+	id = /obj/item/clothing/ring/gold
+	r_hand = /obj/item/rogueweapon/woodstaff/implement/grand/magos
 	backl = /obj/item/storage/backpack/rogue/satchel
-	if(SSmapping.current_map.map_name == "Desert Town" || (H.age == AGE_OLD && ishumannorthern(H)))
-		cloak = null
-		head = H.age == AGE_OLD && ishumannorthern(H) ? /obj/item/clothing/head/roguetown/wizhat : /obj/item/clothing/head/roguetown/jafar
-		armor = H.age == AGE_OLD && ishumannorthern(H) ? /obj/item/clothing/suit/roguetown/shirt/robe/wizard : /obj/item/clothing/suit/roguetown/shirt/jafar
-		belt = H.age == AGE_OLD && ishumannorthern(H) ? /obj/item/storage/belt/rogue/leather/plaquegold : /obj/item/storage/belt/rogue/leather/jafar
-		pants = SSmapping.current_map.map_name == "Desert Town" ? /obj/item/clothing/under/roguetown/sirwal : pants
-		shoes = SSmapping.current_map.map_name == "Desert Town" ? /obj/item/clothing/shoes/roguetown/shalal : shoes
-		r_hand = SSmapping.current_map.map_name == "Desert Town" ? /obj/item/rogueweapon/woodstaff/riddle_of_steel/serpent : r_hand
-	if(SSmapping.current_map.map_name == "Rockhill")
-		armor = H.age == AGE_OLD && ishumannorthern(H) ? /obj/item/clothing/suit/roguetown/shirt/robe/wizard : /obj/item/clothing/suit/roguetown/armor/leather/newkeep/magos
-		cloak = null
 	backpack_contents = list(
 		/obj/item/reagent_containers/glass/bottle/rogue/poison,
 		/obj/item/reagent_containers/glass/bottle/rogue/healthpot,
-		/obj/item/recipe_book/alchemy,
-		/obj/item/recipe_book/magic,
-		/obj/item/book/spellbook,
-		/obj/item/rogueweapon/huntingknife/idagger/silver/arcyne
+		/obj/item/rogueweapon/spellbook/grand,
+		/obj/item/rogueweapon/huntingknife/idagger/silver/arcyne,
+		/obj/item/chalk
 	)

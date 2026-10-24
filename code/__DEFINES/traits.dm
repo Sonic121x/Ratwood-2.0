@@ -40,6 +40,7 @@
 #define TRAIT_CRIT_THRESHOLD "NPC Respect Crit Threshold"
 #define TRAIT_JOURNEYS_END "旅程终点"
 #define TRAIT_BLOOD_RESISTANCE "血稠" //50% less bleeding
+#define TRAIT_IRONMAN "Construct" // basically rotman but not really, used for diff flavor of some things
 #define TRAIT_CRITICAL_WEAKNESS "重创弱性"
 #define TRAIT_SHATTER_WEAKNESS "脆裂之躯"
 #define TRAIT_DNR "生存之祸"
@@ -48,6 +49,7 @@
 #define TRAIT_SKILLBLESSED "技艺受祝"
 #define TRAIT_LONGSWORDSMAN "长剑大师"
 #define TRAIT_SABRIST "军刀名家"
+#define TRAIT_HONORBOUND "Honorbound Tattoos"
 #define TRAIT_INFINITE_STAMINA "不知疲倦" //for ai
 #define TRAIT_NUDIST "裸体主义者" //you can't wear most clothes
 #define TRAIT_CYCLOPS_LEFT "独眼（左）" //poked left eye
@@ -96,6 +98,12 @@
 #define TRAIT_DEATHBARGAIN "死亡契约" // Used by UNDERMAIDEN'S BARGAIN
 #define TRAIT_RITUALIST "仪式师"  // Allows use of ritual chalk
 #define TRAIT_INQUISITION "奥塔万信徒"
+#define TRAIT_CLERGY "Clergy of the Azurian Church"
+//Edge case Factionals
+#define TRAIT_UNCONVERTIBLE "Unconvertible" //patron-change related, unconvertable.
+#define TRAIT_RECENT_CONVERT "Recent Convert"
+//Deadites - Handles self healing + Examines + Combat/Mobility Shutdowns
+#define TRAIT_DEADITE "Deadite"
 #define TRAIT_WEAPONLESS "戒武誓约"//used by disciples to lock pure unarmed combat while allowing tool use.
 #define TRAIT_GOODTRAINER "良师"
 #define TRAIT_BADTRAINER "拙师"
@@ -180,6 +188,8 @@
 #define TRAIT_CIVILIZEDBARBARIAN "拳斗专家"
 #define TRAIT_COMICSANS "惹人生厌的脸"
 #define TRAIT_WATERBREATHING "水下呼吸"
+//Undivided
+#define TRAIT_UNDIVIDED "The Ten Undivided"
 
 // PATRON GOD TRAITS
 #define TRAIT_ROT_EATER "佩斯特拉的赐福" //can eat rotten food
@@ -229,6 +239,8 @@
 #define TRAIT_HORDE "受膏者" //Graggarites also recognize each other
 #define TRAIT_DEPRAVED "堕落者" //Baothans also recognize each other
 #define TRAIT_MATTHIOS_EYES	"马西奥斯之眼" //Examine to see the most expensive item someone has (Replaces shitty-appraisal)
+//The Archdevil, Vheslyn, The Leviathan, The Earth Mover
+#define TRAIT_UNFORGIVABLE "Unforgivable" //Handles Vheslynite gibbing, miracle backfires, confession/conversion killing, etc.
 
 //ASCENDANT GOD CURSES
 
@@ -300,10 +312,18 @@
 #define TRAIT_NOBREATH	"无息"
 #define TRAIT_TOXIMMUNE	"毒素免疫"
 #define TRAIT_GRABIMMUNE "势不可挡"
+//Magic Related
+#define TRAIT_ARCYNE "Arcyne Training" //enables full-mage interactions
+#define TRAIT_LEYLINE_ATTUNEMENT "Leyline Attunement" //enables echanting
+#define TRAIT_LEYLINE_EXPERTISE "Leyline Expertise" // gives more leyline charges
 #define TRAIT_ROTMAN "腐人"
 #define TRAIT_ZOMBIE_IMMUNE "尸鬼疫免疫" //immune to deadite infection
+//Dusting/Respawn related
+#define TRAIT_DUSTABLE "Dustable"
+#define TRAIT_DUST_DELETE_GEAR "Dust Delete Gear"
 #define TRAIT_NOHUNGER	"无饥"
 #define TRAIT_DARKVISION "暗视"
+#define TRAIT_NITEVISION "Nitevision"
 #define TRAIT_NOCSHADES "诺克之影"
 #define TRAIT_SANDSTORMED "沙暴缠身"
 #define TRAIT_LIGHT_STEP	"轻步"
@@ -311,10 +331,6 @@
 #define TRAIT_SLEUTH	"追缉者"
 #define TRAIT_HARDSHELL "硬壳"
 #define TRAIT_WOODWALKER "林行者"
-#define TRAIT_ARCYNE_T1 "奥术训练（新手）"
-#define TRAIT_ARCYNE_T2 "奥术训练（学徒）"
-#define TRAIT_ARCYNE_T3 "奥术训练（专家）"
-#define TRAIT_ARCYNE_T4 "奥术训练（大师）"
 #define TRAIT_BITERHELM "噬盔者" // just use this to get helmets which are bitey.
 #define TRAIT_THROWINGARM "投掷臂"
 #define TRAIT_STRENGTH_UNCAPPED "力量无拘"	//ignores the STR softcap.
@@ -322,14 +338,18 @@
 #define TRAIT_UNCAPPED_SPEED "速度无拘"
 #define TRAIT_EORAN_CALM "伊欧拉之宁"
 #define TRAIT_EORAN_SERENE "伊欧拉之静"
+#define TRAIT_WARLOCK "Warlock" // Cancels out weapon w/ casting penalities, exclusive to rituos
+#define TRAIT_NOWW "Werevolf Immunity"
 #define TRAIT_EORAN_PITY "伊欧拉之诺" //prevents using the eora seed pity mechanic
 #define TRAIT_NECRAS_VOW "内克拉之誓"
 #define TRAIT_PESTRAS_BLESSING "佩斯特拉的赐福"
 #define TRAIT_ADRENALINE_RUSH "肾上腺激涌"
+#define TRAIT_HALLOWED "Hallowed" //No need of psicross req for miracles.
 #define TRAIT_DYES "染艺师"
 #define TRAIT_GOODWRITER "妙笔文豪"
 #define TRAIT_NODEF "鲁莽"
 #define TRAIT_LEYLINE_HASTE "地脉澄明"
+#define TRAIT_SWIFTCAST "Spell Acceleration"
 #define TRAIT_COMBAT_AWARE	"战场警觉"
 #define TRAIT_SILVER_WEAK "惧银"
 /// Held while wearing a silver psycross in a valid slot. Wards off a vampire trying to drink from you.
@@ -349,7 +369,7 @@
 #define CONTRACT_SPAWN_TRAIT "contract-spawn"
 
 // ARMOR / CLOTHING GIVEN TRAITS (GIVEN BY WEARING CLOTHES/ARMOR PIECES)
-#define TRAIT_MONK_ROBE "圣袍"
+#define TRAIT_MONK_ROBE	"Holy Vestatures"
 #define TRAIT_BLACKOAK "血脉视野"
 #define TRAIT_VENOMOUS "毒腺"
 #define TRAIT_OVERTHERETIC "显露异端"//Applied on someone who has rites buffs. Armour, rituos, etc.
@@ -357,6 +377,7 @@
 #define TRAIT_CONVICTION "坚定信念" //Can hear Tennite prayers. Praying heals and provides nutrition.
 #define TRAIT_STANDARD_BEARER "执旗官"//Can use the keep's standard to provide buffs and rally the retinue.
 #define TRAIT_WHITE_STAG "白鹿庇佑"
+#define TRAIT_EDIT_DESCRIPTORS "Edit Descriptors"
 
 // Economic Roles Traits
 // Most of these should NOT be given to any true combat roles (I.E. anything with Dexpert or Miracle / Good Magic) with very few exceptions
@@ -476,7 +497,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_MAGEARMOR = span_info("我的魔法时不时就能替我挡下一击。"),
 	TRAIT_DECEIVING_MEEKNESS = span_info("人们看着我，总觉得我是个弱者。可他们错了。我早已学会如何把自己的恶习与真实信念藏在表象之下。"),
 	TRAIT_CRITICAL_RESISTANCE = span_info("我的体魄坚如铁铸，生命流逝得也更慢。我能扛住那些本会击垮常人的前几道重创，但若反复受创，再坚固的防线也会崩溃。"),
-	TRAIT_JOURNEYS_END = span_info("当生命从我的血脉中流逝，我的意志反而更加坚定。不要温顺地走进那良夜。"),
+	TRAIT_JOURNEYS_END = span_info ("生命从血脉中流逝之际，我奋力前行的决心愈发坚定。绝不默然步入那良夜。"),
 	TRAIT_BLOOD_RESISTANCE = span_info("我的身体紧实，血流也更缓。我的出血远少于常人。"),
 	TRAIT_CRITICAL_WEAKNESS = span_danger("那些别人还能扛住的伤势，对我而言却格外致命。"),
 	TRAIT_SHATTER_WEAKNESS = span_danger("我的身躯格外脆弱易碎。若胸膛或脊柱遭受一次重度的粉碎性打击，我会当场毙命。"),
@@ -593,10 +614,6 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_HARDSHELL = span_info("这身厚重甲壳让我难以有效招架，但我仍能及时闪开。"),
 	TRAIT_MATTHIOS_EYES = span_notice("我能隐约察觉出一个人身上最值钱的东西是什么。"),
 	TRAIT_WOODWALKER = span_notice("我爬树更快，攀爬经验获取也翻倍。在林地中，我能安全踩过荆棘与树枝。搜索灌木时，我能找到双倍东西，也能稳稳站在树梢的叶丛上。"),
-	TRAIT_ARCYNE_T1 = span_notice("我受过奥术艺术的基础训练，因此能使用少量适合战斗外场合的法术。"),
-	TRAIT_ARCYNE_T2 = span_notice("我受过进阶奥术训练，因此能学习基础战斗法术。"),
-	TRAIT_ARCYNE_T3 = span_notice("我是成熟的法师，能施展波及大片范围的毁灭性法术。"),
-	TRAIT_ARCYNE_T4 = span_notice("我是奥术艺术的大师，得以使用世上最强大的法术之一。"),
 	TRAIT_INFINITE_ENERGY = span_notice ("我无需休息，也永远不会感到疲乏。"),
 	TRAIT_PERMAMUTE = span_notice("我是个哑巴，无法说话。"),
 	TRAIT_STRENGTH_UNCAPPED = span_warning("我的力量已不受束缚！"),
@@ -637,6 +654,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_MASTERFUL_HUNTER = span_greentext("善猎者，须知土地。我在此地更有望成为一位大师级的猎手，因为我熟知各处水洼、觅食之地，以及哪些灌木丛被兽群侧腹压弯。"),
 	TRAIT_EXPERT_HUNTER = span_greentext("我是名熟练的本地猎手；我的狩猎技能可精进至专家层次。"),
 	TRAIT_DEATHLESS = span_info("我无法以寻常手段真正死去。"),
+	TRAIT_NOWW = span_info("登多尔的疯狂无法侵入我的心智。"),
 	TRAIT_SILVER_WEAK = span_warning("银器是我生命中最大的威胁。银制武器会令我燃烧，压制我的再生，若再受过祝圣，甚至能直接摧毁我的躯壳。"),
 	TRAIT_DYES = span_notice("我精通颜料与色泽，在染缸前总能调出自己想要的准确颜色。"),
 	TRAIT_BLACKOAK = span_warning("黑橡树能一眼认出<b>任何</b>外来者与异乡人，无论他们在谷地住了多久。我一眼就能认出入侵者。"),
@@ -812,6 +830,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_IGNOREDAMAGESLOWDOWN "忽略受伤减速"
 #define TRAIT_RIGIDMOVEMENT		"忽略自然伤势减速"
 #define TRAIT_DEATHCOMA			"死亡昏迷" //Causes death-like unconsciousness
+#define TRAIT_RELAYING_ATTACKER "relaying_attacker"
 #define TRAIT_FAKEDEATH			"假死" //Makes the owner appear as dead to most forms of medical examination
 #define TRAIT_STUNIMMUNE		"stun_immunity"
 #define TRAIT_STUNRESISTANCE    "stun_resistance"
@@ -829,6 +848,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_PIERCEIMMUNE		"穿刺免疫"
 #define TRAIT_CALTROPIMMUNE		"蒺藜免疫"
 #define TRAIT_NODISMEMBER		"肢解免疫"
+#define TRAIT_FIRE_RESIST		"fire_resistance" // 50% fire damage/heating reduction + 2x stack decay - use this for player-accessible fire resistance
 #define TRAIT_NOFIRE			"nonflammable"
 #define TRAIT_NOGUNS			"no_guns"
 #define TRAIT_NOMETABOLISM		"no_metabolism"
@@ -892,6 +912,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_SILENT_FOOTSTEPS "silent_footsteps"
 #define TRAIT_SANDSTORM_GOGGLES "sandstorm_eyeprotection"
 #define TRAIT_NO_VOICEPACK_OVERRIDE "DisablePrefVoicepacks" //Used for roles that should only be using their voicepacks added. MAKE sure you have a Fem+Masq one.
+#define TRAIT_NOZIZORECRUIT "Non Recruitable NPC" //Non-user facing trait that prevents recruiting NPCs w/ gravemark, prevents exploits + edge cases
+#define TRAIT_NPC_EXAMINE "NPC Examination" //Mindless NPC examination check, goes through armor.
 
 //bodypart traits
 #define TRAIT_PARALYSIS	"paralysis" //Used for limb-based paralysis and full body paralysis
@@ -978,3 +1000,4 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_MOVEMENT_BLOCKED "movement_blocked"
 /// Mobs that have this trait cannot be extinguished
 #define TRAIT_NO_EXTINGUISH "no_extinguish"
+#define TRAIT_EMPOWERED_UNARMED "Empowered Unarmed" // Temporary trait — next unarmed attack bypasses defense

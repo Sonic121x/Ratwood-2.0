@@ -1,6 +1,6 @@
 // 一次邀请批次锁定施法者及每个目标的身体、思维和客户端，回应不能跨批次复用。
 /datum/group_mindlink_cast_request
-	var/obj/effect/proc_holder/spell/self/group_mindlink/spell
+	var/datum/action/cooldown/spell/z121/self/group_mindlink/spell
 	var/datum/group_mindlink_session/session
 	var/mob/living/caster
 	var/datum/mind/caster_mind
@@ -11,7 +11,7 @@
 	var/cancelled = FALSE
 	var/list/invitations = list()
 
-/datum/group_mindlink_cast_request/New(obj/effect/proc_holder/spell/self/group_mindlink/source_spell, datum/group_mindlink_session/source_session, list/targets)
+/datum/group_mindlink_cast_request/New(datum/action/cooldown/spell/z121/self/group_mindlink/source_spell, datum/group_mindlink_session/source_session, list/targets)
 	. = ..()
 	spell = source_spell
 	session = source_session

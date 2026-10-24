@@ -298,7 +298,7 @@
 	var/cast_time = 40 - (holy_skill * 4)
 
 	if (!thing.Adjacent(user))
-		to_chat(user, span_info(to_chat(user, span_info("我需要靠近[thing]才能按住[user.p_their()]的手！"))))
+		to_chat(user, span_info("我必须靠近[thing]才能施以抚慰！"))
 		return
 
 	if (!isliving(thing))
@@ -413,3 +413,6 @@
 		return water_moisten
 	else
 		to_chat(user, span_info("我得找个能盛水的容器。"))
+
+/proc/get_god_name(datum/patron/to_check)
+	return to_check.name

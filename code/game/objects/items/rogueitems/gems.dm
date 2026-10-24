@@ -57,29 +57,11 @@
 	sellprice = SELLPRICE_GEMERALD
 	desc = "闪烁着翠绿的光辉。"
 
-/obj/item/roguegem/green/Initialize(mapload)
-	. = ..()
-	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/gemstaff/emerald_staff,)
-
-	AddElement(
-		/datum/element/slapcrafting,\
-		slapcraft_recipes = slapcraft_recipe_list,\
-	)
-
 /obj/item/roguegem/blue
 	name = "石英"
 	icon_state = "quartz_cut"
 	sellprice = SELLPRICE_BLORTZ
 	desc = "淡蓝如冻结的泪滴。"
-
-/obj/item/roguegem/blue/Initialize(mapload)
-	. = ..()
-	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/gemstaff/quartz_staff,)
-
-	AddElement(
-		/datum/element/slapcrafting,\
-		slapcraft_recipes = slapcraft_recipe_list,\
-	)
 
 /obj/item/roguegem/houndgem
 	name = "猎犬石"
@@ -93,44 +75,17 @@
 	sellprice = SELLPRICE_TOPER
 	desc = "它的琥珀色调让你想起落日。"
 
-/obj/item/roguegem/yellow/Initialize(mapload)
-	. = ..()
-	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/gemstaff/toper_staff,)
-
-	AddElement(
-		/datum/element/slapcrafting,\
-		slapcraft_recipes = slapcraft_recipe_list,\
-	)
-
 /obj/item/roguegem/violet
 	name = "蓝晶"
 	icon_state = "sapphire_cut"
 	sellprice = SELLPRICE_SAFFIRA
 	desc = "这颗宝石深受许多法师喜爱。"
 
-/obj/item/roguegem/violet/Initialize(mapload)
-	. = ..()
-	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/gemstaff/sapphire_staff,)
-
-	AddElement(
-		/datum/element/slapcrafting,\
-		slapcraft_recipes = slapcraft_recipe_list,\
-	)
-
 /obj/item/roguegem/ruby
 	name = "隆兹石"
 	icon_state = "ruby_cut"
 	sellprice = 100
 	desc = "它的切面闪耀得异常明亮……"
-
-/obj/item/roguegem/ruby/Initialize(mapload)
-	. = ..()
-	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/gemstaff/ruby_staff,)
-
-	AddElement(
-		/datum/element/slapcrafting,\
-		slapcraft_recipes = slapcraft_recipe_list,\
-	)
 
 /obj/item/roguegem/diamond
 	name = "多佩尔石"
@@ -195,15 +150,6 @@
 	color = "#7B8C5E"
 	sellprice = 15
 
-/obj/item/roguegem/diamond/Initialize(mapload)
-	. = ..()
-	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/gemstaff/diamond_staff,)
-
-	AddElement(
-		/datum/element/slapcrafting,\
-		slapcraft_recipes = slapcraft_recipe_list,\
-	)
-
 // Do NOT add these to the stockpile treasures list, they have other uses.
 /obj/item/roguegem/blood_diamond
 	name = "血钻"
@@ -226,15 +172,6 @@
 	icon_state = "amethyst"
 	desc = "一块深薰衣草色的晶体，其中奔涌着魔法能量，但它的人造本质也意味着它并不值钱。"
 
-/obj/item/roguegem/amethyst/Initialize(mapload)
-	. = ..()
-	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/gemstaff/amethyst_staff,)
-
-	AddElement(
-		/datum/element/slapcrafting,\
-		slapcraft_recipes = slapcraft_recipe_list,\
-	)
-
 /obj/item/roguegem/amethyst/naledi
 	name = "纳莱迪阿米索兹石"
 	desc = "一块深薰衣草色的晶体，噼啪作响地涌动着魔法能量。对门徒而言，它也许只是一次异乡朝圣带回的纪念物；但对旅者来说，它却是将武技与奥术相融的地脉媒介。</br>拥有奥术潜质者可将这颗宝石嵌入尚未完成的法术书中，以此回忆起更多法术。"
@@ -253,8 +190,8 @@
 	return INITIALIZE_HINT_QDEL
 
 /obj/item/roguegem/randomgeode	//For carvable gems that are worth much less then standard gems. Should be more frequently found.
-	name = "random geode gem"
-	desc = "You shouldn't be seeing this."
+	name = "随机晶洞宝石"
+	desc = "你不该看到这个。"
 /obj/item/roguegem/randomgeode/Initialize(mapload)
 	..()
 	var/newgem = list(/obj/item/roguegem/onyxa = 5, /obj/item/roguegem/jade = 3, /obj/item/roguegem/coral = 3, /obj/item/roguegem/turq = 3, /obj/item/roguegem/amber = 3, /obj/item/roguegem/opal = 3)
@@ -281,13 +218,6 @@
 /obj/item/riddleofsteel/Initialize(mapload)
 	. = ..()
 	set_light(2, 2, 1, l_color = "#ff0d0d")
-
-	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/gemstaff/quartz_staff,)
-
-	AddElement(
-		/datum/element/slapcrafting,\
-		slapcraft_recipes = slapcraft_recipe_list,\
-	)
 
 //Kobolds eating RIDDLES. PSYDON WEPT.
 /obj/item/riddleofsteel/attack(mob/living/M, mob/user)
