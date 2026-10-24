@@ -85,100 +85,20 @@
 	cast_range = 20
 	charge_required = FALSE
 
-// 仅为管理员闪现提供中文提示，保持上游闪现的判定与效果，不调用父级以免重复施法。
+// 保留途经区域的禁传检查，其他判定、施法通知和传送效果复用父级。
 /datum/action/cooldown/spell/blink/z121_admin/cast(atom/cast_on)
-	var/list/targets = list(cast_on)
-	var/mob/user = owner
-	var/turf/T = get_turf(targets[1])
-	var/turf/start = get_turf(user)
-
-	if(!T)
-		to_chat(user, span_warning("目标位置无效！"))
-		reset_spell_cooldown()
-		return FALSE
-
-	if(T.teleport_restricted == TRUE)
-		to_chat(user, span_warning("我无法传送到这里！"))
-		return FALSE
-
-	if(T.z != start.z)
-		to_chat(user, span_warning("我只能在同一位面内传送！"))
-		reset_spell_cooldown()
-		return FALSE
-
-	if(istransparentturf(T))
-		to_chat(user, span_warning("我不能传送到悬空的位置！"))
-		reset_spell_cooldown()
-		return FALSE
-
-	if(T.density)
-		to_chat(user, span_warning("我不能传送进墙里！"))
-		reset_spell_cooldown()
-		return FALSE
-
-	// 保留距离限制。
-	var/distance = get_dist(start, T)
-	if(distance > max_range)
-		to_chat(user, span_warning("那个位置太远了！我最多只能闪现[max_range]格。"))
-		reset_spell_cooldown()
-		return FALSE
-
-	user.visible_message(span_warning("<b>[user] 的身体泛起奥术微光，准备闪现！</b>"),
-		span_notice("<b>我凝聚奥术之力，准备跨越空间！</b>"))
-
-	// 检查沿途的墙壁和区域限制，目标地块不包含在这份路径中。
-	var/list/turf_list = getline(start, T)
-	if(length(turf_list) > 0)
-		turf_list.len--
-
-	for(var/turf/turf in turf_list)
-		var/area/turf_area = get_area(turf)
-		if(turf_area?.noteleport)
-			to_chat(user, span_warning("这片区域不允许我传送！"))
-			return FALSE
-		if(turf.density)
-			to_chat(user, span_warning("我不能闪现穿过墙壁！"))
-			reset_spell_cooldown()
-			return FALSE
-
-	// 保留沿途及目标处的门、窗、栏杆和闸门检查。
-	for(var/turf/traversal_turf in turf_list)
-		for(var/obj/structure/mineral_door/door in (traversal_turf.contents + T.contents))
-			if(door.density)
-				to_chat(user, span_warning("我不能闪现穿过门！"))
-				reset_spell_cooldown()
+	var/turf/start = get_turf(owner)
+	var/turf/destination = get_turf(cast_on)
+	if(start && destination)
+		var/list/turf_list = getline(start, destination)
+		if(length(turf_list))
+			turf_list.len--
+		for(var/turf/traversal_turf in turf_list)
+			var/area/traversal_area = get_area(traversal_turf)
+			if(traversal_area?.noteleport)
+				to_chat(owner, span_warning("这片区域不允许我传送！"))
 				return FALSE
-
-		for(var/obj/structure/roguewindow/window in (traversal_turf.contents + T.contents))
-			if(window.density && !window.climbable)
-				to_chat(user, span_warning("我不能闪现穿过窗户！"))
-				reset_spell_cooldown()
-				return FALSE
-
-		for(var/obj/structure/bars/bars in (traversal_turf.contents + T.contents))
-			if(bars.density)
-				to_chat(user, span_warning("我不能闪现穿过栏杆！"))
-				reset_spell_cooldown()
-				return FALSE
-
-		for(var/obj/structure/gate/gate in (traversal_turf.contents + T.contents))
-			if(gate.density)
-				to_chat(user, span_warning("我不能闪现穿过闸门！"))
-				reset_spell_cooldown()
-				return FALSE
-
-	var/obj/spot_one = new phase(start, user.dir)
-	var/obj/spot_two = new phase(T, user.dir)
-	spot_one.Beam(spot_two, "purple_lightning", time = 1.5 SECONDS)
-	playsound(T, 'sound/magic/blink.ogg', 25, TRUE)
-
-	// 闪现前解除座椅或刑具的固定，避免传送后仍被远程束缚。
-	if(user.buckled)
-		user.buckled.unbuckle_mob(user, TRUE)
-	do_teleport(user, T, channel = TELEPORT_CHANNEL_MAGIC)
-
-	user.visible_message(span_danger("<b>[user] 在一阵神秘的紫色闪光中消失了！</b>"), span_notice("<b>我在一瞬间跨越了空间！</b>"))
-	return TRUE
+	return ..()
 
 /datum/action/cooldown/spell/z121/invoked/mimicry/copy
 	name = "物品复制"

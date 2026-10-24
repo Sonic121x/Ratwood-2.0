@@ -39,7 +39,7 @@
 		return
 	return ..()
 
-/datum/action/cooldown/spell/z121/invoked/thousand_arrows/on_deactivation(mob/user)
+/datum/action/cooldown/spell/z121/invoked/thousand_arrows/on_deactivation(mob/user, refund_cooldown = TRUE)
 	QDEL_NULL(volley)
 	return ..()
 

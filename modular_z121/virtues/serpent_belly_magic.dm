@@ -53,7 +53,7 @@
 /datum/action/cooldown/spell/projectile/fetch
 	z121_serpent_offensive = FALSE
 
-/datum/action/cooldown/spell/Activate(atom/target)
+/datum/action/cooldown/spell/PreActivate(atom/target)
 	var/obj/effect/z121_serpent_stomach/stomach = owner?.loc
 	if(!z121_serpent_offensive || !istype(stomach) || stomach.captive != owner)
 		return ..()

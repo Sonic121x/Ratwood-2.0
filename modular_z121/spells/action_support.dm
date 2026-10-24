@@ -26,7 +26,7 @@
 /datum/action/cooldown/spell/z121/targeted/conjure_item/proc/make_item()
 	return new item_type
 
-/datum/action/cooldown/spell/z121/Activate(atom/target)
+/datum/action/cooldown/spell/z121/PreActivate(atom/target)
 	if(z121_casting)
 		return FALSE
 	z121_casting = TRUE
@@ -67,7 +67,7 @@
 /datum/action/cooldown/spell/z121/proc/z121_cast_selected(list/targets, recharge = TRUE, mob/user)
 	if(!z121_check(TRUE, user))
 		return FALSE
-	return Activate(length(targets) ? targets[1] : owner)
+	return PreActivate(length(targets) ? targets[1] : owner)
 
 /datum/action/cooldown/spell/z121/proc/z121_deactivate(mob/user)
 	unset_click_ability(user)
