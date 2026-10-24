@@ -221,6 +221,7 @@
 	icon_state = "insmash"
 	chargetime = 1
 	penfactor = PEN_NONE
+	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
 
 /datum/intent/simple/gnoll_cut
 	name = "劈砍利爪"
@@ -241,6 +242,7 @@
 
 /datum/intent/mace/strike/gnoll
 	name = "裂甲重击"
+	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
 	miss_text = "挥空了！"
 	miss_sound = "bluntwooshlarge"
 	attack_verb = list("猛击", "重创", "撕裂")

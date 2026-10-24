@@ -808,6 +808,7 @@
 	penfactor = PEN_NONE
 	clickcd = CLICK_CD_HEAVY
 	item_d_type = "blunt"
+	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
 	intent_effect = /datum/status_effect/debuff/hobbled
 	target_parts = list(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)//Intentionally leaving out feet. If you know, you know.
 
@@ -830,7 +831,7 @@
 	attack_verb = list("碾压")
 	chargetime = 5
 	damfactor = 1.7
-	intent_intdamage_factor = PEN_NONE 
+	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
 	icon_state = "incrush"
 	desc = "这一击能把站立目标击飞并使其减速。  对同一目 \
 	标连续生效有 5 秒冷却，倒地目标的击退距离减半 \
