@@ -84,16 +84,6 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/group_longstrider
 	duration = 30 MINUTES
 
-/atom/movable/screen/alert/status_effect/buff/group_magic_flight
-	name = "群体飞行术"
-	desc = "魔法托举着我的身躯，让我得以自由飞行。"
-	icon_state = "buff"
-
-/datum/status_effect/buff/group_magic_flight
-	parent_type = /datum/status_effect/buff/magic_flight
-	alert_type = /atom/movable/screen/alert/status_effect/buff/group_magic_flight
-	duration = 60 SECONDS
-
 /datum/action/cooldown/spell/z121/invoked/group_enlarge
 	name = "群体巨化术"
 	desc = "暂时将自身与身旁近处的活物放大成高大魁梧的巨型姿态。本就魁梧如巨人或身形娇小者不受影响。"
@@ -353,38 +343,6 @@
 	REMOVE_TRAIT(target, TRAIT_ZJUMP, MAGIC_TRAIT)
 	to_chat(target, span_warning("我的双腿忽然变得沉重无力。"))
 	target.Immobilize(5)
-
-/datum/action/cooldown/spell/z121/invoked/group_flight
-	name = "群体飞行术"
-	desc = "在原地专注引导，以纯粹魔力托举施法者与周围 1 格内活物，使其自由飞行，持续 60 秒。引导期间移动会打断施法。"
-	point_cost = 8
-	primary_resource_cost = 20
-	charge_time = 12 SECONDS
-	cooldown_time = 4 MINUTES
-	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z | SPELL_REQUIRES_NO_MOVE
-	button_icon = 'modular_z121/icon/custompell.dmi'
-	button_icon_state = "flight"
-	spell_tier = 4
-	invocations = list("众人皆可凌空而起！")
-	invocation_type = "shout"
-	spell_color = GLOW_COLOR_BUFF
-	glow_intensity = GLOW_INTENSITY_MEDIUM
-	charge_slowdown = 2
-	associated_skill = /datum/skill/magic/arcane
-	gesture_required = TRUE
-	cast_range = 7
-	miracle = FALSE
-	xp_gain = TRUE
-
-/datum/action/cooldown/spell/z121/invoked/group_flight/z121_apply(atom/cast_on)
-	var/mob/living/user = owner
-	var/flight_duration = z121_get_group_magic_flight_duration(user)
-	playsound(get_turf(user), 'sound/magic/haste.ogg', 80, TRUE, soundping = TRUE)
-	user.visible_message(span_notice("[user] 释放出的魔力如无形气流般扩散，将周围众人一并托离地面。"))
-	for(var/mob/living/L in range(1, user))
-		L.apply_status_effect(/datum/status_effect/buff/group_magic_flight, flight_duration)
-		to_chat(L, span_notice("无形魔力在我脚下汇聚，将我托入飞行。"))
-	return TRUE
 
 // 群体协调与原生协调使用同一组状态；任一方向替换都会清除另两种。
 // 鹰眼原有的感知增益互斥组保持不变。

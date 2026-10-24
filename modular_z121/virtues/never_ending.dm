@@ -421,8 +421,6 @@
 		qdel(prepared_skills)
 		returned.skills = null
 		return_origin?.z121_return_release_language_disorders()
-		var/datum/status_effect/buff/magic_flight/flight = returned.has_status_effect(/datum/status_effect/buff/magic_flight)
-		flight?.z121_return_rebase_flight()
 		M.transfer_to(returned, force_key_move = TRUE)
 		bind_body(returned)
 		if(!QDELETED(identity.skills))

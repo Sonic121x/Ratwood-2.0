@@ -25,10 +25,6 @@
 /obj/item/reagent_containers/glass/bottle/rogue/invisibility
 	list_reagents = list(/datum/reagent/invisibility_potion = 50)
 
-// 飞行药水瓶
-/obj/item/reagent_containers/glass/bottle/rogue/flying
-	list_reagents = list(/datum/reagent/flying_potion = 50)
-
 // 万能修复溶剂瓶
 /obj/item/reagent_containers/glass/bottle/rogue/universal_repair
 	list_reagents = list(/datum/reagent/universal_repair_solvent = 50)

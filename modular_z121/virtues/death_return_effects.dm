@@ -122,15 +122,6 @@
 	if(istype(src, /datum/status_effect/buff/all_seeing_insight))
 		var/datum/status_effect/buff/all_seeing_insight/E = src
 		E.grant_full_vision()
-	if(istype(src, /datum/status_effect/buff/magic_flight))
-		var/datum/status_effect/buff/magic_flight/E = src
-		E.flier = owner
-		E.z121_return_rebase_flight()
-		owner.setMovetype(owner.movement_type | FLYING)
-		owner.flying = TRUE
-		RegisterSignal(owner, COMSIG_MOVABLE_MOVED, TYPE_PROC_REF(/datum/status_effect/buff/magic_flight, check_movement))
-		RegisterSignal(owner, COMSIG_LIVING_UPDATE_TURF_MOVESPEED, TYPE_PROC_REF(/datum/status_effect/buff/magic_flight, on_turf_movespeed_update))
-		E.update_shadow()
 	if(istype(src, /datum/status_effect/buff/accel))
 		var/datum/status_effect/buff/accel/E = src
 		if(E.afterimage_active)
@@ -177,17 +168,6 @@
 	for(var/datum/status_effect/E as anything in status_effects?.Copy())
 		if(istype(E, /datum/status_effect/debuff/mishap_feeblemind) || istype(E, /datum/status_effect/debuff/mishap_langloss))
 			qdel(E)
-
-// 只把仍存在的基础飞行当作撤销依据，不能保留旧存档中已经结束的飞行来源。
-/datum/status_effect/buff/magic_flight/proc/z121_return_rebase_flight()
-	var/mob/living/carbon/human/H = owner
-	var/other_flight = !!(initial(owner.movement_type) & FLYING)
-	if(istype(H))
-		other_flight = other_flight || H.has_status_effect(/datum/status_effect/debuff/harpy_flight) || istype(H.dna.species, /datum/species/shapebat) || istype(H.dna.species, /datum/species/shapecrow) || H.dna.species.override_float
-	was_flying = !!other_flight
-	was_marked_flying = !!other_flight
-	if(was_flying)
-		QDEL_NULL(shadow)
 
 /datum/status_effect/proc/z121_return_bind_mind()
 	var/mob/living/carbon/human/H = owner
