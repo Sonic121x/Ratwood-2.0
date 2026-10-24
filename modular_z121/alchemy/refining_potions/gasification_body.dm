@@ -20,7 +20,6 @@
 //           一旦取消，所有点击(左/右/中/Shift/Ctrl/Alt)全被拦下。而【键盘移动】不经 ClickOn，故不受影响。
 //         - 说话 → TRAIT_MUTE(say.dm 检查它直接闭口)。做动作(emote) → TRAIT_EMOTEMUTE(emotes.dm 检查它)。
 //         - 动作栏施法/主动能力(不经点击) → TRAIT_SPELLCOCKBLOCK(spell.dm cast_check 检查它，直接"无法施法")。
-//           与"飞行药水"同源；绑定到药剂代谢生命周期(见 ensure_flight)，使飞行只随药效存续。
 //       (注：不采用 notransform——它虽能拦下点击，却【连键盘移动一并冻结】(mob_movement.dm)，与"只能移动"相悖。)
 //     · ②穿门过窗 → movement_type 的 UNSTOPPABLE 位。原版移动核心(turf/Enter, turf.dm)会对带 UNSTOPPABLE 的
 //       移动者放行一切致密障碍(门/窗/栅栏乃至墙)。本 fork 的门(mineral_door)与窗(roguewindow)对"步行的活体"
@@ -325,7 +324,7 @@
 	// 中文：错误处理——目标无效则不施加效果(避免对无效对象操作报错)。
 	if(!M || QDELETED(M) || !isliving(M))					// No valid living drinker.
 		return
-	enter_mist_form(M)										// Apply: no-action lock + flight + phasing + immunity + fade.
+	enter_mist_form(M)										// Apply: no-action lock + phasing + immunity + fade.
 	last_tornado_tick = world.time							// Start the tornado-damage clock now.
 	// 中文：成功反馈——纯文字提示，不影响机制。
 	M.visible_message(span_warning("[M]的身形骤然消融，化作一团流动的雾气！"), span_notice("我的身体化作了雾气——只能随风飘移或飞行，再不能出手、开口或取物；但可穿门过窗，寻常伤害也奈何我不得。"))	// Transform feedback.
@@ -346,8 +345,6 @@
 	//   使"以雾之身穿过其他人/物"始终生效(CanPass 见 mover.pass_flags & PASSMOB 即放行)。
 	if(added_pass_flags && ((M.pass_flags & added_pass_flags) != added_pass_flags))	// Any of our pass bits stripped?
 		M.pass_flags |= added_pass_flags					// Re-assert them (keeps pass-through-mobs working).
-	if(mist_form_active)									// While still misty...
-		ensure_flight(M)									// ...keep flight asserted (may be stripped by resting/knockdown).
 		// 中文：★补稳外观(修正"移动就现形")★——每拍把隐身保活计时器顶到未来，使移动时的 update_sneak_invis() 持续短路、
 		//   维持隐形；若仍被某动作/系统显出人形，则再淡隐并重申隐形态。与隐身药水的逐拍维持完全同源。
 		M.mob_timers[MT_INVISIBILITY] = world.time + GASIFICATION_INVIS_KEEPALIVE	// Refresh keep-alive every tick.
