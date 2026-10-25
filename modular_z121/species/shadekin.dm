@@ -240,19 +240,12 @@
 	// 注册说话信号，使本种族可走 RT 的口音替换管线（与提夫林/卢皮安等一致）。
 	// Register the say signal so this race flows through RT's accent pipeline (like tiefling/lupian).
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
-	// 授予签名能力【暗影穿行】：用 mob.AddSpell 直接绑定到身体而非 mind，因为这是种族先天能力，
-	// 即便角色尚无 mind（创建早期）也应可靠获得；先去重，避免重复授予叠加多个按钮。
-	// Grant the signature "Shadow Step": use mob.AddSpell so it binds to the BODY (not the mind), since it is
-	// an innate racial power that must be granted reliably even before a mind exists. De-dupe first to avoid
-	// stacking duplicate action buttons on repeated gains.
-	for(var/datum/existing in C.mob_spell_list)
-		// 若已存在同类能力则直接返回，跳过重复授予。
-		// If the ability already exists, bail out to skip a duplicate grant.
-		if(istype(existing, /datum/action/cooldown/spell/z121/invoked/shadow_step))
-			return
-	// 实例化并授予能力（参数 null 表示该能力不绑定特定母对象/咒语书）。
-	// Instantiate and grant the ability (null = not tied to a specific parent object/spellbook).
-	C.AddSpell(new /datum/action/cooldown/spell/z121/invoked/shadow_step(null))
+	// 新版影步本身就是动作；直接授予身体，无需 mind，并从动作列表去重。
+	// Shadow Step is an action: grant it to the body without a mind and deduplicate in actions.
+	for(var/datum/action/cooldown/spell/z121/invoked/shadow_step/existing in C.actions)
+		return
+	var/datum/action/cooldown/spell/z121/invoked/shadow_step/ability = new
+	ability.Grant(C)
 
 // 为什么覆盖 on_species_loss：失去本种族时必须解绑信号并回收授予的能力，否则会残留无效按钮/信号。
 // Why override on_species_loss: on losing this race we must unhook the signal and reclaim the granted
@@ -268,9 +261,10 @@
 	// 注销说话信号，停止口音处理。
 	// Unregister the say signal to stop accent handling.
 	UnregisterSignal(C, COMSIG_MOB_SAY)
-	// 回收【暗影穿行】：mob.RemoveSpell 接受类型路径，按 istype 匹配并 qdel 对应能力实例。
-	// Reclaim "Shadow Step": mob.RemoveSpell accepts a type path, matches via istype and qdels the instance.
-	C.RemoveSpell(/datum/action/cooldown/spell/z121/invoked/shadow_step)
+	// 删除动作会清理按钮、持有者和施法状态；遍历副本以免删除时改变原列表。
+	// Deleting the action cleans up its button, owner and casting state; iterate a copy during removal.
+	for(var/datum/action/cooldown/spell/z121/invoked/shadow_step/ability in C.actions.Copy())
+		qdel(ability)
 
 // 为什么覆盖 check_roundstart_eligible：返回 TRUE 使本种族在角色创建界面可直接选择，
 // 无需依赖服务器配置白名单（与 anthromorph/lupian 等自定义种族做法一致）。

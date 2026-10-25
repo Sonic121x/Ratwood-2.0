@@ -195,6 +195,8 @@
 #define TRAIT_ROT_EATER "佩斯特拉的赐福" //can eat rotten food
 #define TRAIT_ORGAN_EATER "格拉加尔的赐福" //can eat organs
 #define TRAIT_KNEESTINGER_IMMUNITY "登多尔的赐福"
+/// Gained when you become soulbound to a tree
+#define TRAIT_DENDOR_SOULBOUND "登多尔缚魂"
 #define TRAIT_SOUL_EXAMINE "内克拉的赐福" //can check bodies to see if they have departed
 #define TRAIT_CRACKHEAD "巴奥莎的赐福" //will never overdose
 #define TRAIT_CHOSEN "阿斯特拉塔之选"
@@ -530,6 +532,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_ROT_EATER = span_necrosis("我能吃下腐烂食物。"),
 	TRAIT_ORGAN_EATER = span_bloody("我能吃器官，也能生啖血肉。"),
 	TRAIT_KNEESTINGER_IMMUNITY = "我不惧刺膝草与藤蔓带来的麻痹冲击。",
+	TRAIT_DENDOR_SOULBOUND = "我已将灵魂缚于一棵树。我必须确保它永不被摧毁！",
 	TRAIT_SOUL_EXAMINE = span_deadsay("我知道一个人的灵魂是否已经离去。"),
 	TRAIT_CRACKHEAD = span_love("我想怎么嗑药都行！"),
 	TRAIT_COMMIE = span_bloody("我能认出其他自由之民，他们也同样认得出我。我还能说盗贼黑话，撬锁的本事也比常人更胜一筹。"),
