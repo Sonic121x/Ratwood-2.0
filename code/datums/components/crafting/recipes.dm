@@ -85,14 +85,14 @@
 	for(var/atom/requirement as anything in reqs)
 		//We just need the name, so cheat-typecast to /atom for speed (even tho Reagents are /datum they DO have a "name" var)
 		//Also these are typepaths so sadly we can't just do "[a]"
-		req_text += " [reqs[requirement]] [initial(requirement.name)],"
+		req_text += " [reqs[requirement]] [get_stat_display_name(initial(requirement.name))],"
 	if(req_text)
 		req_text = copytext(req_text, 1, length(req_text))
 	data["req_text"] = req_text
 
 	var/catalyst_text = ""
 	for(var/atom/catalyst as anything in chem_catalysts) //cheat-typecast
-		catalyst_text += " [chem_catalysts[catalyst]] [initial(catalyst.name)],"
+		catalyst_text += " [chem_catalysts[catalyst]] [get_stat_display_name(initial(catalyst.name))],"
 	if(catalyst_text)
 		catalyst_text = copytext(catalyst_text, 1, length(catalyst_text))
 	data["catalyst_text"] = catalyst_text
@@ -258,7 +258,7 @@
 		var/count = reqs[path]
 		if(ispath(path, /datum/reagent))
 			var/datum/reagent/R = path
-			html += "- [FLOOR(count, 1)] [UNIT_FORM_STRING(FLOOR(count, 1))] [initial(R.name)]<br>"
+			html += "- [FLOOR(count, 1)] [UNIT_FORM_STRING(FLOOR(count, 1))] [get_stat_display_name(initial(R.name))]<br>"
 		else if(ispath(path, /obj)) // Prevent a runtime from happening w/ datum atm until it is
 			var/atom/atom = path
 			if(subtype_reqs)

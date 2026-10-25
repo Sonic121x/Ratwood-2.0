@@ -213,31 +213,31 @@
 	body += "<h3>属性</h3><ul>"
 	if(isliving(M)) // Ensure M is a living mob
 		var/mob/living/living = M // Explicitly cast M to /mob/living
-		body += "<li>力量：<a href='?_src_=holder;[HrefToken()];set_stat=[REF(M)];stat=strength'>[living.STASTR]</a> "
+		body += "<li>[get_stat_display_name(STATKEY_STR)]：<a href='?_src_=holder;[HrefToken()];set_stat=[REF(M)];stat=strength'>[living.STASTR]</a> "
 		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=strength'>+</a> "
 		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=strength'>-</a></li>"
 
-		body += "<li>感知：<a href='?_src_=holder;[HrefToken()];set_stat=[REF(M)];stat=perception'>[living.STAPER]</a> "
+		body += "<li>[get_stat_display_name(STATKEY_PER)]：<a href='?_src_=holder;[HrefToken()];set_stat=[REF(M)];stat=perception'>[living.STAPER]</a> "
 		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=perception'>+</a> "
 		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=perception'>-</a></li>"
 
-		body += "<li>意志：<a href='?_src_=holder;[HrefToken()];set_stat=[REF(M)];stat=willpower'>[living.STAWIL]</a> "
+		body += "<li>[get_stat_display_name(STATKEY_WIL)]：<a href='?_src_=holder;[HrefToken()];set_stat=[REF(M)];stat=willpower'>[living.STAWIL]</a> "
 		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=willpower'>+</a> "
 		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=willpower'>-</a></li>"
 
-		body += "<li>体质：<a href='?_src_=holder;[HrefToken()];set_stat=[REF(M)];stat=constitution'>[living.STACON]</a> "
+		body += "<li>[get_stat_display_name(STATKEY_CON)]：<a href='?_src_=holder;[HrefToken()];set_stat=[REF(M)];stat=constitution'>[living.STACON]</a> "
 		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=constitution'>+</a> "
 		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=constitution'>-</a></li>"
 
-		body += "<li>智力：<a href='?_src_=holder;[HrefToken()];set_stat=[REF(M)];stat=intelligence'>[living.STAINT]</a> "
+		body += "<li>[get_stat_display_name(STATKEY_INT)]：<a href='?_src_=holder;[HrefToken()];set_stat=[REF(M)];stat=intelligence'>[living.STAINT]</a> "
 		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=intelligence'>+</a> "
 		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=intelligence'>-</a></li>"
 
-		body += "<li>速度：<a href='?_src_=holder;[HrefToken()];set_stat=[REF(M)];stat=speed'>[living.STASPD]</a> "
+		body += "<li>[get_stat_display_name(STATKEY_SPD)]：<a href='?_src_=holder;[HrefToken()];set_stat=[REF(M)];stat=speed'>[living.STASPD]</a> "
 		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=speed'>+</a> "
 		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=speed'>-</a></li>"
 
-		body += "<li>幸运：<a href='?_src_=holder;[HrefToken()];set_stat=[REF(M)];stat=fortune'>[living.STALUC]</a> "
+		body += "<li>[get_stat_display_name(STATKEY_LCK)]：<a href='?_src_=holder;[HrefToken()];set_stat=[REF(M)];stat=fortune'>[living.STALUC]</a> "
 		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];add_stat=[REF(M)];stat=fortune'>+</a> "
 		body += "<a class='skill-btn' href='?_src_=holder;[HrefToken()];lower_stat=[REF(M)];stat=fortune'>-</a></li>"
 		body += "</ul>"

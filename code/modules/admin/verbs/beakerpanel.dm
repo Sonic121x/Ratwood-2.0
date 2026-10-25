@@ -2,7 +2,7 @@
 	. = list()
 	for(var/t in subtypesof(/datum/reagent))
 		var/datum/reagent/R = t
-		. += list(list("id" = t, "text" = initial(R.name)))
+		. += list(list("id" = t, "text" = get_stat_display_name(initial(R.name))))
 
 	. = json_encode(.)
 

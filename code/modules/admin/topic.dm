@@ -1103,7 +1103,7 @@
 	else if(href_list["add_stat"])
 		var/mob/living/M = locate(href_list["add_stat"])
 		var/statkey = href_list["stat"]
-		message_admins(span_danger("管理员 [key_name_admin(usr)] 提高了 [key_name_admin(M)] 的 [statkey] 属性"))
+		message_admins(span_danger("管理员 [key_name_admin(usr)] 提高了 [key_name_admin(M)] 的 [get_stat_display_name(statkey)] 属性"))
 		M.change_stat(statkey, 1)
 		log_admin("[usr] increased [M]'s [statkey].")
 		show_player_panel_next(M, "stats")
@@ -1111,7 +1111,7 @@
 	else if(href_list["lower_stat"])
 		var/mob/living/M = locate(href_list["lower_stat"])
 		var/statkey = href_list["stat"]
-		message_admins(span_danger("管理员 [key_name_admin(usr)] 降低了 [key_name_admin(M)] 的 [statkey] 属性"))
+		message_admins(span_danger("管理员 [key_name_admin(usr)] 降低了 [key_name_admin(M)] 的 [get_stat_display_name(statkey)] 属性"))
 		M.change_stat(statkey, -1)
 		log_admin("[usr] decreased [M]'s [statkey].")
 		show_player_panel_next(M, "stats")
@@ -1120,12 +1120,12 @@
 		var/mob/living/M = locate(href_list["set_stat"])
 		var/statkey = href_list["stat"]
 		var/current_value = M.get_stat(statkey)
-		var/new_value = input(usr, "设置 [statkey] 属性值：", "设置属性", current_value) as num|null
+		var/new_value = input(usr, "设置 [get_stat_display_name(statkey)] 属性值：", "设置属性", current_value) as num|null
 		if(new_value != null && M)
 			var/difference = new_value - current_value
 			if(difference != 0)
 				M.change_stat(statkey, difference)
-				message_admins(span_danger("管理员 [key_name_admin(usr)] 将 [key_name_admin(M)] 的 [statkey] 设为 [new_value]（原为 [current_value]）"))
+				message_admins(span_danger("管理员 [key_name_admin(usr)] 将 [key_name_admin(M)] 的 [get_stat_display_name(statkey)] 设为 [new_value]（原为 [current_value]）"))
 				log_admin("[usr] set [M]'s [statkey] to [new_value] (was [current_value]).")
 			show_player_panel_next(M, "stats")
 

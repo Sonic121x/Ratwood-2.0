@@ -611,20 +611,20 @@
 /datum/action/cooldown/spell/proc/get_stat_label()
 	switch(associated_stat)
 		if(STATKEY_STR)
-			return "力量"
+			return get_stat_display_name(STATKEY_STR)
 		if(STATKEY_PER)
-			return "感知"
+			return get_stat_display_name(STATKEY_PER)
 		if(STATKEY_INT)
-			return "智力"
+			return get_stat_display_name(STATKEY_INT)
 		if(STATKEY_CON)
-			return "体质"
+			return get_stat_display_name(STATKEY_CON)
 		if(STATKEY_WIL)
-			return "意志"
+			return get_stat_display_name(STATKEY_WIL)
 		if(STATKEY_SPD)
-			return "速度"
+			return get_stat_display_name(STATKEY_SPD)
 		if(STATKEY_LCK)
-			return "幸运"
-	return "智力"
+			return get_stat_display_name(STATKEY_LCK)
+	return get_stat_display_name(STATKEY_INT)
 
 /// Adjust the cooldown time based on associated_stat and armor.
 /datum/action/cooldown/spell/proc/get_adjusted_cooldown()

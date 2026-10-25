@@ -70,7 +70,7 @@
 /proc/wretch_select_bounty(mob/living/carbon/human/H)
 	var/bounty_poster = input(H, "是谁悬赏通缉了你？", "悬赏发布者") as anything in list("[SSmapping.map_adjustment.realm_name]司法庭", "格伦泽尔霍夫特 神圣教廷", "奥塔瓦 正教会")
 	// Felinid said we should gate it at 100 or so on at the lowest, so that wretch cannot ezmode it.
-	var/bounty_severity = input(H, "你的罪行有多严重？", "悬赏金额") as anything in list("轻罪", "伤人害命（+1 幸运）", "骇人暴行（全属性+1）")
+	var/bounty_severity = input_wretch_bounty_severity(H)
 	var/race = H.dna.species
 	var/gender = H.gender
 	var/list/d_list = H.get_mob_descriptors()
@@ -79,12 +79,12 @@
 	var/descriptor_voice = build_coalesce_description_nofluff(d_list, H, list(MOB_DESCRIPTOR_SLOT_VOICE), "%DESC1%")
 	var/bounty_total = rand(100, 400) // Just in case
 	switch(bounty_severity)
-		if("轻罪")
+		if("Misdeed")
 			bounty_total = rand(100, 200)
-		if("伤人害命（+1 幸运）")
+		if("Harm towards lyfe (+1 FOR)")
 			bounty_total = rand(200, 300)
 			H.change_stat("fortune", 1)
-		if("骇人暴行（全属性+1）")
+		if("Horrific atrocities (+1 ALL STATS)")
 			bounty_total = rand(300, 400) // Let's not make it TOO profitable
 			H.change_stat("strength", 1)
 			H.change_stat("perception", 1)
@@ -93,7 +93,7 @@
 			H.change_stat("willpower", 1)
 			H.change_stat("speed", 1)
 			H.change_stat("fortune", 1)
-			if(bounty_poster == "[SSmapping.map_adjustment.realm_name]司法厅")
+			if(bounty_poster == "[SSmapping.map_adjustment.realm_name]司法庭")
 				GLOB.outlawed_players += H.real_name
 			else
 				GLOB.excommunicated_players += H.real_name

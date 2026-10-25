@@ -42,7 +42,7 @@ GLOBAL_LIST_INIT(statpacks, init_statpacks())
 			if (value >= 1)
 				modifier = "+"
 
-			var/statlabel = uppertext(copytext(stat, 1, 4))
+			var/statlabel = get_stat_display_name(stat)
 			var/blockstring = "[modifier][value] [statlabel]"
 			concat += blockstring
 		else
@@ -55,7 +55,7 @@ GLOBAL_LIST_INIT(statpacks, init_statpacks())
 
 				chunk_string += "[modifier][sub_range]"
 
-			var/statlabel = uppertext(copytext(stat, 1, 4))
+			var/statlabel = get_stat_display_name(stat)
 			concat += "[chunk_string.Join(" 至 ")] [statlabel]"
 
 	result = "([concat.Join(", ")])"

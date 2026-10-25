@@ -170,7 +170,7 @@ GLOBAL_LIST_INIT(t4enchantmentrunerituallist,generate_t4enchantment_rituallist()
 			var/count = required_atoms[path]
 			if(ispath(path, /datum/reagent))
 				var/datum/reagent/R = path
-				html += "- [FLOOR(count, 1)] [UNIT_FORM_STRING(FLOOR(count, 1))] of [initial(R.name)]<br>"
+				html += "- [FLOOR(count, 1)] [UNIT_FORM_STRING(FLOOR(count, 1))] of [get_stat_display_name(initial(R.name))]<br>"
 			else
 				html += "- [count] 个[initial(path.name)]<br>"
 

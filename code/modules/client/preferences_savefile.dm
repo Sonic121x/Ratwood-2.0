@@ -544,7 +544,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		pref_species = new default_species
 	if(pref_species.custom_selection)
 		S["race_bonus"] >> race_bonus
-
+		race_bonus = migrate_legacy_stat_key(race_bonus)
 /datum/preferences/proc/_load_flaw(S)
 	var/charflaw_type
 	S["charflaw"]			>> charflaw_type

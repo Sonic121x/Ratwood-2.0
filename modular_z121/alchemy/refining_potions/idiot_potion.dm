@@ -36,10 +36,10 @@
 //   ★机制落点(为什么这样实现)★：
 //     所有效果统一由一个自定义【减益状态 /datum/status_effect/debuff/idiot_potion】承载，随药剂的代谢
 //     生命周期"同生共死"——代谢开始时施加、每代谢拍刷新其计时(令其贯穿整个消化过程)、代谢结束时解除。
-//     · 智力 -8：借用状态基类的 effectedstats 机制。★关键★：本汉化分支里 change_stat() 用 STATKEY_INT
-//       ("智力")作为键做 switch 分发；原版 mishap_feeblemind 误用英文字面量 "intelligence" 作为键，在本
-//       分支里【匹配不到、静默失效】。故这里必须用 STATKEY_INT，才能真正把智力降下来(且基类会自动 clamp
-//       到 [1,20]、并在移除时精确还原)。
+//     · 智力 -8：借用状态基类的 effectedstats 机制，以 STATKEY_INT ("intelligence") 为内部键。
+//       属性名称由 translation_display.dm 翻译，状态基类负责上下限与移除时的还原。
+
+
 //     · 胡言乱语：见"修正二"——追加 aphasia 并切换默认发声语言；结束时精确还原(仅撤下我们追加的那份)。
 //     · 醉步/失控(非酒)：见"修正一"——抬高 confused 并间歇施加 Dizzy/Jitter；结束时精确扣回我们叠加的混乱。
 //
@@ -85,8 +85,8 @@
 	//   本状态也会在 1 分钟后自行到期解除，绝不会永久卡住玩家。
 	duration = 1 MINUTES								// Safety-net duration; refreshed every 2s while digesting.
 	status_type = STATUS_EFFECT_REFRESH					// Re-applying only refreshes the timer (never re-runs on_apply).
-	// 中文：★智力 -8★——★必须用 STATKEY_INT("智力")作为键★，否则 change_stat 的 switch 匹配不到而静默失效
-	//   (原版 mishap_feeblemind 用英文 "intelligence" 在本汉化分支就是失效的)。基类 on_apply/on_remove 会
+	// 属性逻辑使用上游英文键，中文名称只用于显示。
+	//   STATKEY_INT 与上游 "intelligence" 一致。基类 on_apply/on_remove 会
 	//   自动施加/还原，并把结果 clamp 在 [1,20](即最多降到 1，不会到 0 或负)。
 	effectedstats = list(STATKEY_INT = -IDIOT_POTION_INT_PENALTY)	// -8 Intelligence (auto-clamped, auto-restored by base).
 	alert_type = /atom/movable/screen/alert/status_effect/idiot_potion	// The on-screen indicator above.
