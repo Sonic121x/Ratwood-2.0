@@ -64,7 +64,7 @@
 		var/list/base_parts = list()						// Readable "name x amount" pieces.
 		for(var/base_reagent in formula.required_base)		// Each base component.
 			var/datum/reagent/R = base_reagent				// Typed for initial(name).
-			base_parts += "[initial(R.name)] [formula.required_base[base_reagent]] 单位"
+			base_parts += "[get_stat_display_name(initial(R.name))] [formula.required_base[base_reagent]] 单位"
 		html += "<p><strong>液体底料：</strong>[jointext(base_parts, " ＋ ")]</p>"
 
 	// --- 产物(逐项列出试剂名与产量) ---
@@ -72,7 +72,7 @@
 		var/list/out_parts = list()							// Readable output pieces.
 		for(var/out_reagent in formula.output_reagents)		// Each product.
 			var/datum/reagent/R = out_reagent				// Typed for initial(name).
-			out_parts += "[initial(R.name)] [formula.output_reagents[out_reagent]] 单位"
+			out_parts += "[get_stat_display_name(initial(R.name))] [formula.output_reagents[out_reagent]] 单位"
 		html += "<p><strong>产物：</strong>[jointext(out_parts, " ＋ ")]</p>"
 
 	// --- 固体产物(若配方产出实体道具，如防腐皂，逐一列出物品名) ---

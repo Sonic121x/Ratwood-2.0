@@ -575,7 +575,7 @@ GLOBAL_LIST_EMPTY(philo_creatable_item_types)
 		if(!reagents.has_reagent(reagent_path, PHILO_SYNTH_POTION_AMOUNT))
 			var/datum/reagent/reagent_sample = reagent_path    // 仅用类型读取名称
 			brewing = 0
-			visible_message(span_warning("合成贤者之石还缺少至少 [PHILO_SYNTH_POTION_AMOUNT] 单位的[initial(reagent_sample.name)]。"))
+			visible_message(span_warning("合成贤者之石还缺少至少 [PHILO_SYNTH_POTION_AMOUNT] 单位的[get_stat_display_name(initial(reagent_sample.name))]。"))
 			return TRUE
 
 	// —— 校验全部通过：消耗材料并炼成贤者之石 ——
