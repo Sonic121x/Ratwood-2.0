@@ -191,7 +191,7 @@
 
 	for(var/S in attached_effect?.effectedstats)
 		if(attached_effect.effectedstats[S] > 0)
-			inspec += "<br><span class='purple'>[S]</span> \Roman [attached_effect.effectedstats[S]]"
+			inspec += "<br><span class='purple'>[get_stat_display_name(S)]</span> \Roman [attached_effect.effectedstats[S]]"
 		if(attached_effect.effectedstats[S] < 0)
 			var/newnum = attached_effect.effectedstats[S] * -1
 			inspec += "<br><span class='danger'>[S]</span> \Roman [newnum]"

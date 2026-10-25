@@ -167,7 +167,7 @@ with edits to work for roguecode */
 		var/datum/reagent/reagent_ingredient = valid_type
 		if(istype(reagent_ingredient))
 			var/amount = initial(cur_recipe.reqs[reagent_ingredient])
-			string_ingredient_list += "[amount] 单位[initial(reagent_ingredient.name)]\n"
+			string_ingredient_list += "[amount] 单位[get_stat_display_name(initial(reagent_ingredient.name))]\n"
 
 		var/atom/ingredient = valid_type
 		var/amount = initial(cur_recipe.reqs[ingredient])

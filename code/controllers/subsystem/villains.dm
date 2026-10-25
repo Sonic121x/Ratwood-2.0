@@ -122,7 +122,7 @@
 	var/contents = "剩余点数：[budget - statspent()]<BR>"
 	contents += "--------------<BR>"
 	for(var/key in stat_keys)
-		contents += "<b>[capitalize(key)]</b>（[statweight(key)]x）：[stats[key]] "
+		contents += "<b>[get_stat_display_name(key)]</b>（[statweight(key)]x）：[stats[key]] "
 		contents += "<a href='?src=[REF(src)];raise=[key]'>\[+\]</a> "
 		contents += "<a href='?src=[REF(src)];lower=[key]'>\[-\]</a><BR>"
 	contents += "--------------<BR>"
@@ -167,3 +167,4 @@
 		user.antag_setup = null
 		user << browse(null, "window=antagsetup")
 		qdel(src)
+

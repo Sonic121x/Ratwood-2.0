@@ -35,7 +35,7 @@
 			var/count = output_reagents[path]
 			if(ispath(path, /datum/reagent))
 				var/datum/reagent/R = path
-				html += "[FLOOR(count, 1)] [UNIT_FORM_STRING(FLOOR(count, 1))] 的 [initial(R.name)]<br>"
+				html += "[FLOOR(count, 1)] [UNIT_FORM_STRING(FLOOR(count, 1))] 的 [get_stat_display_name(initial(R.name))]<br>"
 		html += "</div>"
 
 	if(output_items.len)

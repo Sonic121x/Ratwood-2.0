@@ -202,7 +202,7 @@
 	return ..()
 
 /datum/reagent/buff/perception
-	name = "感知"
+	name = STATKEY_PER
 	color = "#e9e98c"
 	taste_description = "猫尿"
 	metabolization_rate = REAGENTS_METABOLISM * 0.05
@@ -240,7 +240,7 @@
 	return ..()
 
 /datum/reagent/buff/speed
-	name = "速度"
+	name = STATKEY_SPD
 	color = "#cea63a"
 	taste_description = "生蛋黄"
 

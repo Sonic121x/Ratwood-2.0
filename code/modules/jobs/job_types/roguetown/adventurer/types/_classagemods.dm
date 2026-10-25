@@ -33,7 +33,7 @@
 	str += "<font color ='#7a4d0a'>若角色处于<font color ='#b3d6df'>[target_age]</font>阶段，将获得以下额外加成：</font>"
 	if(length(stat_mods))
 		for(var/stat in stat_mods)
-			str += "<br>[capitalize(stat)]: <b>[stat_mods[stat] < 0 ? "<font color = '#cf2a2a'>" : "<font color = '#91cf68'>"]\Roman[stat_mods[stat]]</font></b>"
+			str += "<br>[get_stat_display_name(stat)]: <b>[stat_mods[stat] < 0 ? "<font color = '#cf2a2a'>" : "<font color = '#91cf68'>"]\Roman[stat_mods[stat]]</font></b>"
 		str += "<font color ='#7a4d0a'><br>-----</font>"
 	if(length(skill_mods))
 		for(var/S in skill_mods)

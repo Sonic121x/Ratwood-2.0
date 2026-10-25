@@ -20,10 +20,10 @@
 //   ★机制落点(为什么这样实现)★：
 //     效果由一个自定义【减益状态 /datum/status_effect/debuff/weakness_potion】承载，随药剂的代谢生命周期
 //     "同生共死"——代谢开始时施加、每代谢拍刷新其计时(令其贯穿整个消化过程)、代谢结束时解除。
-//     · 力量 -8：借用状态基类的 effectedstats 机制。★关键★：本汉化分支里 change_stat() 用 STATKEY_STR
-//       ("力量")作为键做 switch 分发；若误用英文字面量 "strength" 作为键，会【匹配不到、静默失效】
-//       (与愚人药水踩过的 INT 之坑同源)。故这里必须用 STATKEY_STR，才能真正把力量降下来(且基类会自动 clamp
-//       到 [1,20]、并在移除时经 BUFSTR 缓冲精确还原——见 code/modules/mob/living/stats.dm 的 change_stat)。
+//     · 力量 -8：借用状态基类的 effectedstats 机制，以 STATKEY_STR ("strength") 为内部键。
+//       属性名称由 translation_display.dm 翻译，状态基类负责上下限与移除时的还原。
+
+
 //     · 纯表演性质的小反馈(发软、踉跄的 emote / 上手与解除的提示文本)，仅作观感、不影响机制。
 //
 //   框架与精炼锅见 refining_framework.dm。本药【非酒基】(底料为板油这类油脂、无任何乙醇)，故成品为普通
@@ -59,7 +59,7 @@
 	//   本状态也会在 1 分钟后自行到期解除，绝不会永久卡住玩家。
 	duration = 1 MINUTES								// Safety-net duration; refreshed every 2s while digesting.
 	status_type = STATUS_EFFECT_REFRESH					// Re-applying only refreshes the timer (never re-runs on_apply).
-	// 中文：★力量 -8★——★必须用 STATKEY_STR("力量")作为键★，否则 change_stat 的 switch 匹配不到而静默失效
+	// 属性逻辑使用上游英文键，中文名称只用于显示。
 	//   (与愚人药水的 INT 之坑同源)。基类 on_apply/on_remove 会自动施加/还原，并把结果经 BUFSTR 缓冲
 	//   clamp 在 [1,20](即最多降到 1，不会到 0 或负)，移除时精确还原。
 	effectedstats = list(STATKEY_STR = -WEAKNESS_POTION_STR_PENALTY)	// -8 Strength (auto-clamped, auto-restored by base).

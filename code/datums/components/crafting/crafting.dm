@@ -737,13 +737,13 @@
 		//We just need the name, so cheat-typecast to /atom for speed (even tho Reagents are /datum they DO have a "name" var)
 		//Also these are typepaths so sadly we can't just do "[a]"
 		var/atom/A = a
-		req_text += " [R.reqs[A]] [initial(A.name)],"
+		req_text += " [R.reqs[A]] [get_stat_display_name(initial(A.name))],"
 	req_text = replacetext(req_text,",","",-1)
 	data["req_text"] = req_text
 
 	for(var/a in R.chem_catalysts)
 		var/atom/A = a //cheat-typecast
-		catalyst_text += " [R.chem_catalysts[A]] [initial(A.name)],"
+		catalyst_text += " [R.chem_catalysts[A]] [get_stat_display_name(initial(A.name))],"
 	catalyst_text = replacetext(catalyst_text,",","",-1)
 	data["catalyst_text"] = catalyst_text
 
@@ -841,3 +841,4 @@
 
 /client
 	var/legacycraft = FALSE
+

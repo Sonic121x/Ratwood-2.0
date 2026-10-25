@@ -181,7 +181,7 @@
 
 /proc/get_species_customization_display_name(internal_name)
 	var/static/list/display_names = list(
-		"+1 STR" = "+1 力量", "+1 FOR" = "+1 幸运", "+1 INT" = "+1 智力", "+1 CON" = "+1 体质", "+1 WIL" = "+1 意志", "+1 PER" = "+1 感知", "+1 SPD" = "+1 速度",
+		"+1 STR" = "+1 [get_stat_display_name(STATKEY_STR)]", "+1 FOR" = "+1 [get_stat_display_name(STATKEY_LCK)]", "+1 INT" = "+1 [get_stat_display_name(STATKEY_INT)]", "+1 CON" = "+1 [get_stat_display_name(STATKEY_CON)]", "+1 WIL" = "+1 [get_stat_display_name(STATKEY_WIL)]", "+1 PER" = "+1 [get_stat_display_name(STATKEY_PER)]", "+1 SPD" = "+1 [get_stat_display_name(STATKEY_SPD)]",
 		"a tangled lineage" = "错综复杂的血统", "bastardized" = "混杂血统", "disputed" = "存疑血统",
 		"Abyss" = "深渊", "Abyssal" = "深渊之裔", "Ashen" = "灰烬", "Beach" = "沙滩", "Bone" = "骨白", "Ghost" = "幽魂",
 		"Ochre" = "赭色", "Meadow" = "草甸", "Olive" = "橄榄色", "Green" = "绿色", "Moss" = "苔绿", "Taiga" = "针叶林",
