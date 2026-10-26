@@ -965,82 +965,66 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 /datum/loadout_item/chastity_belt
 	name = "贞操带"
 	path = /obj/item/chastity
-	triumph_cost = 1
 
 /datum/loadout_item/chastity_cage
 	name = "贞操笼"
 	path = /obj/item/chastity/chastity_cage
-	triumph_cost = 1
 
 /datum/loadout_item/chastity_cage_anal
 	name = "带后庭护板的贞操笼"
 	path = /obj/item/chastity/chastity_cage/anal
-	triumph_cost = 1
 
 /datum/loadout_item/chastity_cage_spiked
 	name = "带刺贞操笼"
 	path = /obj/item/chastity/chastity_cage/spiked
-	triumph_cost = 1
 
 /datum/loadout_item/chastity_cage_spiked_anal
 	name = "带后庭护板的带刺贞操笼"
 	path = /obj/item/chastity/chastity_cage/spiked_anal
-	triumph_cost = 1
 
 /datum/loadout_item/chastity_cage_flat
 	name = "平板贞操笼"
 	path = /obj/item/chastity/chastity_cage/flat
-	triumph_cost = 1
 
 /datum/loadout_item/chastity_cage_flat_anal
 	name = "带后庭护板的平板贞操笼"
 	path = /obj/item/chastity/chastity_cage/flat/anal
-	triumph_cost = 1
 
 /datum/loadout_item/chastity_cage_flat_spiked
 	name = "带刺平板贞操笼"
 	path = /obj/item/chastity/chastity_cage/flat/spiked
-	triumph_cost = 1
 
 /datum/loadout_item/chastity_cage_flat_spiked_anal
 	name = "带后庭护板的带刺平板贞操笼"
 	path = /obj/item/chastity/chastity_cage/flat/spiked_anal
-	triumph_cost = 1
 
 /datum/loadout_item/chastity_insertable
 	name = "可插入式贞操具"
 	path = /obj/item/chastity/chastity_belt
-	triumph_cost = 1
 
 /datum/loadout_item/chastity_insertable_anal
 	name = "带后庭护板的可插入式贞操具"
 	path = /obj/item/chastity/chastity_belt/anal
-	triumph_cost = 1
 
 /datum/loadout_item/chastity_insertable_spiked
 	name = "带刺可插入式贞操具"
 	path = /obj/item/chastity/chastity_belt/spiked
-	triumph_cost = 1
 
 /datum/loadout_item/chastity_insertable_spiked_anal
 	name = "带后庭护板的带刺可插入式贞操具"
 	path = /obj/item/chastity/chastity_belt/spiked_anal
-	triumph_cost = 1
 
 /datum/loadout_item/chastity_combination
 	name = "组合式贞操装置"
 	path = /obj/item/chastity/intersex
-	triumph_cost = 1
 
 /datum/loadout_item/chastity_combination_spiked
 	name = "带刺组合式贞操装置"
 	path = /obj/item/chastity/intersex/spiked
-	triumph_cost = 1
 
 /datum/loadout_item/chastity_cursed
 	name = "诅咒贞操装置"
 	path = /obj/item/chastity/cursed
-	triumph_cost = 4
 
 /datum/loadout_item/wooddildo
 	name = "木制假阳具"

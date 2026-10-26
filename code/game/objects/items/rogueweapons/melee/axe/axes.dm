@@ -314,7 +314,7 @@
 	desc = "一把长柄木斧，握柄经过雕刻，选用优质木材打造。非常适合林业从业者。"
 	max_integrity = 300		//100 higher than normal; basically it's main difference.
 	possible_item_intents = list(/datum/intent/axe/cut,/datum/intent/axe/chop, /datum/intent/axe/bash)
-	gripped_intents = list(/datum/intent/axe/cut/long, /datum/intent/axe/chop/long, /datum/intent/axe/bash)
+	gripped_intents = list(/datum/intent/axe/cut/long, /datum/intent/axe/chop/long/woodcutter, /datum/intent/axe/bash)
 	wlength = WLENGTH_LONG
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK		//Needs to go on back.

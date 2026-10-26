@@ -784,6 +784,8 @@
 //tattoo code
 /obj/item/clothing/suit/roguetown/shirt/undershirt/easttats
 	name = "布霍伊布杰奥格纹身"
+	anvilrepair = null
+	sewrepair = null
 	desc = "鲁玛氏族沿用的一种神秘纹身，仿效了信义王朝武僧的古老做法。它既是识别同族成员的标记，也是同伴情谊与隐秘兄弟会的象征。纹样呈云形，由神秘墨汁绘成，墨色会像池水波纹般流动，并在你的皮肤受击处瞬间硬化。它的蠕动会让你不寒而栗。"
 	resistance_flags = FIRE_PROOF
 	icon_state = "easttats"
@@ -808,6 +810,10 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 
+/obj/item/clothing/suit/roguetown/shirt/undershirt/easttats/examine(mob/user)
+	. = ..()
+	. += span_info("These tattoos slowly mend themselves after a minute without taking damage.")
+
 /obj/item/clothing/suit/roguetown/shirt/undershirt/easttats/dropped(mob/living/carbon/human/user)
 	. = ..()
 	if(QDELETED(src))
@@ -824,6 +830,8 @@
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/easttats/process()
 	if(obj_integrity >= max_integrity)
+		if(obj_broken)
+			obj_fix()
 		STOP_PROCESSING(SSobj, src)
 		src.visible_message(span_notice("[src]流动得更平缓了，它们已经休息完毕并恢复了力量。"), vision_distance = 1)
 		return

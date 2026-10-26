@@ -695,14 +695,16 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		return
 	smoketime = max(smoketime -1, 0)
 	if(smoketime <= 0)
+		lit = FALSE
+		packeditem = FALSE
+		name = "empty [initial(name)]"
+		set_light_on(FALSE)
+		update_icon_state()
 		if(ismob(loc))
 			var/mob/living/M = loc
 			to_chat(M, span_notice("[name]熄灭了。"))
-			lit = 0
-			update_icon_state()
 			M.update_inv_mouth()
-			packeditem = 0
-			name = "空的[initial(name)]"
+			M.update_inv_hands()
 			record_featured_stat(FEATURED_STATS_SMOKERS, M)
 		STOP_PROCESSING(SSobj, src)
 		return
@@ -759,7 +761,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		update_icon_state()
 		STOP_PROCESSING(SSobj, src)
 		return
-	if(!lit && smoketime > 0)
+	if(!lit && (packeditem || smoketime > 0))
 		smoketime = 0
 		to_chat(user, span_notice("我把[src]倒在了[location]上。"))
 		new /obj/item/ash(location)
