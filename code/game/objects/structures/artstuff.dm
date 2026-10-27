@@ -64,9 +64,9 @@
 	if(archived)
 		return
 	if(title)
-		. += span_info("它可以在印刷厂存档。")
+		. += span_info("它可以通过印刷机归档。")
 	else
-		. += span_info("它可以用羽毛笔签署，然后在印刷厂存档。")
+		. += span_info("它可以用羽毛笔署名，然后通过印刷机归档。")
 
 /obj/item/canvas/attack_hand(mob/user)
 	. = ..()
@@ -177,7 +177,7 @@
 	icon = icon(file(image_path))
 	name = painting_data["painting_title"]
 	if(painting_data["author"])
-		desc = "Painted by: [painting_data["author"]][painting_data["ic_date"] ? ", [painting_data["ic_date"]]" : ""]."
+		desc = "绘制者：[painting_data["author"]][painting_data["ic_date"] ? "，绘于[painting_data["ic_date"]]" : ""]。"
 	var/icon/new_icon = getFlatIcon(src)
 	new_icon.Scale(canvas_size_x * canvas_divider_x, canvas_size_y * canvas_divider_y)
 	used_canvas.draw.Blend(new_icon, ICON_OVERLAY)

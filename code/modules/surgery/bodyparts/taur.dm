@@ -391,7 +391,7 @@ GLOBAL_LIST_INIT(taur_types, subtypesof(/obj/item/bodypart/taur))
 	has_taur_color = TRUE
 
 /obj/item/bodypart/taur/spider/weaver
-	name = "Weaver Spider Body"
+	name = "织网蛛躯体"
 	icon = 'icons/mob/weaver_spider.dmi'
 	taur_icon_state = "weaver_s"
 	taur_markings_state = "weaver_markings"

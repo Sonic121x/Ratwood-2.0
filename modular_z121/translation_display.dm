@@ -70,3 +70,31 @@
 		return stat_key
 	var/static/list/legacy_keys = get_stat_display_options(MOBSTATS)
 	return legacy_keys[stat_key] || stat_key
+
+/proc/get_announcement_title_display(title)
+	var/static/list/display_titles = list(
+		"Nature's Union!" = "自然结合！"
+	)
+	return display_titles[title] || title
+
+/proc/get_player_archive_display(value)
+	var/static/list/display_names = list(
+		"book" = "书籍",
+		"books" = "书籍",
+		"painting" = "画作",
+		"paintings" = "画作",
+		"Fiction" = "小说",
+		"Non-fiction" = "纪实",
+		"Religion" = "宗教",
+		"Adult" = "成人",
+		"Reference" = "参考",
+		"Misc" = "其他"
+	)
+	return display_names[value] || value
+
+/proc/input_player_book_category(mob/user)
+	var/list/options = list()
+	for(var/category in GLOB.player_book_categories)
+		options[get_player_archive_display(category)] = category
+	var/choice = input(user, "选择这本书归入的分类", "书籍分类") as anything in options
+	return options[choice]

@@ -5,7 +5,7 @@
 	var/announcement
 
 	if (title && length(title) > 0)
-		announcement += "<h1 class='alert'>[title]</h1>"
+		announcement += "<h1 class='alert'>[get_announcement_title_display(title)]</h1>"
 	// strip_html defaults TRUE (legacy behavior). Charter broadcasts that carry long,
 	// intentionally-formatted bodies pass FALSE so they aren't truncated at MAX_MESSAGE_LEN.
 	if(strip_html)

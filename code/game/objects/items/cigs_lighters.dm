@@ -697,7 +697,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(smoketime <= 0)
 		lit = FALSE
 		packeditem = FALSE
-		name = "empty [initial(name)]"
+		name = "空的[initial(name)]"
 		set_light_on(FALSE)
 		update_icon_state()
 		if(ismob(loc))

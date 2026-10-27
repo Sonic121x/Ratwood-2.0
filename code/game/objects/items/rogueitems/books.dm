@@ -553,13 +553,13 @@ GLOBAL_LIST_INIT(player_book_categories, list(
 		if(!in_round_player_mob?.client)
 			update_book_data()
 			return
-	new_title = capitalize(stripped_input(in_round_player_mob, "你想给这本书起什么标题？（最多 42 个字符）", "标题", "", MAX_NAME_LEN))
+		new_title = capitalize(stripped_input(in_round_player_mob, "你想给这本书起什么标题？（最多 42 个字符）", "标题", "", MAX_NAME_LEN))
 		if(!player_archive_filename(new_title))
-			to_chat(in_round_player_mob, span_warning("请选择一个非空、最多 42 个字符且不以字母下划线开头的标题。"))
+			to_chat(in_round_player_mob, span_warning("请选择一个非空、最多 42 个字符且不以下划线开头的标题。"))
 	while(!player_archive_filename(new_title))
 	player_book_title = new_title
 	player_book_author = player_archive_author_name(in_round_player_mob)
-	var/picked_category = input(in_round_player_mob, "选择这本书归入的分类", "书籍分类") as anything in GLOB.player_book_categories
+	var/picked_category = input_player_book_category(in_round_player_mob)
 	if(picked_category)
 		player_book_category = picked_category
 	player_book_icon = GLOB.player_book_icons[input(in_round_player_mob, "选择书籍样式", "书籍样式") as anything in GLOB.player_book_icons] || player_book_icon
