@@ -28,6 +28,7 @@
 			Copy.info += "</font>"
 			Copy.name = "副本 - [C.name]"
 			Copy.fields = C.fields
+			Copy.writer_ckeys = C.writer_ckeys?.Copy()
 			Copy.updateinfolinks()
 		to_chat(user, span_notice("我撕下了这张复写副本！"))
 		C.copied = TRUE

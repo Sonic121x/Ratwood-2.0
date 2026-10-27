@@ -1,5 +1,7 @@
 /obj/item/book/rogue
 	var/open = FALSE
+	/// Library section random bookcases shelve this book under, matching GLOB.player_book_categories. Null keeps it off category shelves.
+	var/category
 	icon = 'icons/roguetown/items/books.dmi'
 	icon_state = "basic_book_0"
 	slot_flags = ITEM_SLOT_HIP
@@ -303,6 +305,7 @@
 	icon_state ="lawtome_0"
 	base_icon_state = "lawtome"
 	bookfile = "law_2.json"
+	category = "Reference"
 
 /obj/item/book/rogue/cooking
 	name = "适合领主的风味"
@@ -310,6 +313,7 @@
 	icon_state ="book_0"
 	base_icon_state = "book"
 	bookfile = "cooking.json"
+	category = "Reference"
 
 		//no more theif stole the books
 /obj/item/book/rogue/knowledge1
@@ -318,6 +322,7 @@
 	icon_state ="book5_0"
 	base_icon_state = "book5"
 	bookfile = "knowledge.json"
+	category = "Reference"
 
 
 /obj/item/book/rogue/secret/xylix
@@ -327,7 +332,7 @@
 	base_icon_state = "xylix"
 	bookfile = "xylix.json"
 
-/obj/item/book/rogue/xylix/attack_self(mob/user)
+/obj/item/book/rogue/secret/xylix/attack_self(mob/user)
 	if(!open)
 		attack_right(user)
 		return
@@ -349,6 +354,7 @@
 	icon_state ="book_0"
 	base_icon_state = "book"
 	bookfile = "tales1.json"
+	category = "Fiction"
 
 /obj/item/book/rogue/festus
 	name = "费斯图斯之书"
@@ -356,6 +362,7 @@
 	icon_state ="book2_0"
 	base_icon_state = "book2"
 	bookfile = "tales2.json"
+	category = "Fiction"
 
 
 /obj/item/book/rogue/tales3
@@ -364,6 +371,7 @@
 	icon_state ="book3_0"
 	base_icon_state = "book3"
 	bookfile = "tales3.json"
+	category = "Fiction"
 
 /obj/item/book/rogue/bookofpriests
 	name = "萨弗里亚圣书"
@@ -371,6 +379,7 @@
 	icon_state ="knowledge_0"
 	base_icon_state = "knowledge"
 	bookfile = "holyguide.json"
+	category = "Religion"
 
 /obj/item/book/rogue/robber
 	name = "盗匪读本"
@@ -378,6 +387,7 @@
 	icon_state ="basic_book_0"
 	base_icon_state = "basic_book"
 	bookfile = "tales4.json"
+	category = "Non-fiction"
 
 /obj/item/book/rogue/cardgame
 	name = "《灰石折磨》基础规则"
@@ -385,6 +395,7 @@
 	icon_state ="basic_book_0"
 	base_icon_state = "basic_book"
 	bookfile = "tales5.json"
+	category = "Reference"
 
 /obj/item/book/rogue/blackmountain
 	name = "《扎布雷卡尔雷克：黑山传奇》第一部"
@@ -392,6 +403,7 @@
 	icon_state ="book6_0"
 	base_icon_state = "book6"
 	bookfile = "tales6.json"
+	category = "Fiction"
 
 /obj/item/book/rogue/beardling
 	name = "石与岩 - 胡须崽的识字书与故事集"
@@ -399,6 +411,7 @@
 	icon_state ="book8_0"
 	base_icon_state = "book8"
 	bookfile = "tales7.json"
+	category = "Fiction"
 
 /obj/item/book/rogue/abyssor
 	name = "海上居民的故事"
@@ -406,6 +419,7 @@
 	icon_state ="book2_0"
 	base_icon_state = "book2"
 	bookfile = "tales8.json"
+	category = "Fiction"
 
 /obj/item/book/rogue/necra
 	name = "献给内克拉的葬仪"
@@ -413,6 +427,7 @@
 	icon_state ="book6_0"
 	base_icon_state = "book6"
 	bookfile = "tales9.json"
+	category = "Religion"
 
 /obj/item/book/rogue/noc
 	name = "寻梦者"
@@ -420,6 +435,7 @@
 	icon_state ="book6_0"
 	base_icon_state = "book6"
 	bookfile = "tales10.json"
+	category = "Religion"
 
 /obj/item/book/rogue/fishing
 	name = "《方丹高等渔业指南》"
@@ -427,6 +443,7 @@
 	icon_state ="book2_0"
 	base_icon_state = "book2"
 	bookfile = "tales11.json"
+	category = "Non-fiction"
 
 /obj/item/book/rogue/sword
 	name = "六种愚行：持剑求生之道"
@@ -434,6 +451,7 @@
 	icon_state ="book5_0"
 	base_icon_state = "book5"
 	bookfile = "tales12.json"
+	category = "Non-fiction"
 
 /obj/item/book/rogue/arcyne
 	name = "潜伏魔法：奥术之力从何而来？"
@@ -441,6 +459,7 @@
 	icon_state ="book4_0"
 	base_icon_state = "book4"
 	bookfile = "tales13.json"
+	category = "Non-fiction"
 
 /obj/item/book/rogue/nitebeast
 	name = "夜兽传说"
@@ -448,6 +467,7 @@
 	icon_state ="book8_0"
 	base_icon_state = "book8"
 	bookfile = "tales14.json"
+	category = "Fiction"
 
 /obj/item/book/rogue/naledi1
 	name = "战学者之路 第一卷"
@@ -455,6 +475,7 @@
 	icon_state = "knowledge_0"
 	base_icon_state = "knowledge"
 	bookfile = "naledi1.json"
+	category = "Non-fiction"
 
 /obj/item/book/rogue/naledi2
 	name = "战学者之路 第三卷"
@@ -462,6 +483,7 @@
 	icon_state = "book8_0"
 	base_icon_state = "book8"
 	bookfile = "naledi2.json"
+	category = "Non-fiction"
 
 /obj/item/book/rogue/naledi3
 	name = "战学者之路 第七卷"
@@ -469,6 +491,7 @@
 	icon_state = "book7_0"
 	base_icon_state = "book7"
 	bookfile = "naledi3.json"
+	category = "Non-fiction"
 
 /obj/item/book/rogue/naledi4
 	name = "战学者之路 第二十卷"
@@ -476,17 +499,11 @@
 	icon_state = "book6_0"
 	base_icon_state = "book6"
 	bookfile = "naledi4.json"
+	category = "Non-fiction"
 
-
-/obj/item/book/rogue/playerbook
-	var/player_book_text
-	var/player_book_title
-	var/player_book_author
-	var/player_book_icon
-	var/player_book_author_ckey
-	var/is_in_round_player_generated
-	var/list/book_icons = list(
-	"病绿色铜纹压印" = "book8",
+/// Cover styles players can choose for their books, mapped to icon states.
+GLOBAL_LIST_INIT(player_book_icons, list(
+	"病绿配青铜压印" = "book8",
 	"红色托珀石压印" = "book7",
 	"紫色黑曜石压印" = "book6",
 	"棕色黑曜石压印" = "book5",
@@ -494,56 +511,96 @@
 	"蓝色无压印" = "book3",
 	"红色无压印" = "book2",
 	"黑色无压印" = "book",
-	"绿色无压印" = "basic_book")
+	"绿色无压印" = "basic_book",
+))
+
+/// Categories players can file their books under, matching the library bookcase sections.
+GLOBAL_LIST_INIT(player_book_categories, list(
+	"Fiction",
+	"Non-fiction",
+	"Religion",
+	"Adult",
+	"Reference",
+	PLAYER_BOOK_DEFAULT_CATEGORY,
+))
+
+/obj/item/book/rogue/playerbook
+	var/player_book_text = "潮气或漏水已使这本书上精心写就的书法变得无法辨读"
+	var/player_book_title = "未知标题"
+	var/player_book_author = "未知作者"
+	var/player_book_icon = "basic_book"
+	var/player_book_author_ckey = "unknown"
+	var/player_book_date
+	var/player_book_category = PLAYER_BOOK_DEFAULT_CATEGORY
+	var/is_in_round_player_generated
+	/// Ckeys of everyone who wrote on the pages bound into this book.
+	var/list/writer_ckeys
+	var/written = FALSE
 	name = "无名书册"
 	desc = "由一位无名作者写就。"
 	icon_state = "basic_book_0"
 	base_icon_state = "basic_book"
 	override_find_book = TRUE
 
-/obj/item/book/rogue/playerbook/Initialize(mapload, in_round_player_generated, mob/living/in_round_player_mob, text)
+/obj/item/book/rogue/playerbook/proc/get_player_input(mob/living/in_round_player_mob, text)
+	player_book_author_ckey = in_round_player_mob?.ckey
+	player_book_text = text
+	var/new_title
+	do
+		if(QDELETED(src))
+			return
+		// input() returns immediately without a client, so stop rather than loop forever. The book stays readable but unarchivable.
+		if(!in_round_player_mob?.client)
+			update_book_data()
+			return
+	new_title = capitalize(stripped_input(in_round_player_mob, "你想给这本书起什么标题？（最多 42 个字符）", "标题", "", MAX_NAME_LEN))
+		if(!player_archive_filename(new_title))
+			to_chat(in_round_player_mob, span_warning("请选择一个非空、最多 42 个字符且不以字母下划线开头的标题。"))
+	while(!player_archive_filename(new_title))
+	player_book_title = new_title
+	player_book_author = player_archive_author_name(in_round_player_mob)
+	var/picked_category = input(in_round_player_mob, "选择这本书归入的分类", "书籍分类") as anything in GLOB.player_book_categories
+	if(picked_category)
+		player_book_category = picked_category
+	player_book_icon = GLOB.player_book_icons[input(in_round_player_mob, "选择书籍样式", "书籍样式") as anything in GLOB.player_book_icons] || player_book_icon
+	player_book_date = get_ic_date_short_as_string()
+	message_admins("[player_archive_display_text(player_book_author_ckey)]([player_book_author]) 生成了玩家书籍：[player_archive_display_text(player_book_title)]")
+	update_book_data()
+	written = TRUE
+
+/// Returns the ckeys of everyone who worked on this book, all of whom must be allowed to add books to the archive for it to be archived.
+/obj/item/book/rogue/playerbook/proc/get_contributor_ckeys()
+	. = list(player_book_author_ckey)
+	if(writer_ckeys)
+		. |= writer_ckeys
+
+/obj/item/book/rogue/playerbook/proc/update_book_data()
+	name = "[player_book_title]"
+	desc = "作者：[player_book_author][player_book_date ? "，写于 [player_book_date]" : ""]"
+	icon_state = "[player_book_icon]_0"
+	base_icon_state = "[player_book_icon]"
+	pages = list("<b3><h3>标题：[player_archive_display_text(player_book_title)]<br>作者：[player_archive_display_text(player_book_author)][player_book_date ? "<br>写于：[player_archive_display_text(player_book_date)]" : ""]</b><h3>[player_book_text]")
+
+/obj/item/book/rogue/playerbook/Initialize(mapload, in_round_player_generated, mob/living/in_round_player_mob, text, archive_file_name)
 	. = ..()
 	is_in_round_player_generated = in_round_player_generated
 	if(is_in_round_player_generated)
-		player_book_text = text
-		INVOKE_ASYNC(src, PROC_REF(prompt_for_contents), in_round_player_mob)
+		INVOKE_ASYNC(src, PROC_REF(get_player_input), in_round_player_mob, text)
 	else
-		pick_random_book()
-
-//Just rewrite this entirely. STRIP_HTML_SIMPLE might be insufficient, but that's just the tip of the iceberg.area
-//This needs to check if an input is valid via reject_bad_text, and if not prompt the user again.
-/obj/item/book/rogue/playerbook/proc/prompt_for_contents(mob/living/in_round_player_mob)
-	while(!player_book_author_ckey) // doesn't have to be this, but better than defining a bool.
-		player_book_title = capitalize(STRIP_HTML_SIMPLE(input(in_round_player_mob, "你想给这本书起什么标题？（最多 42 个字符）", "标题", "未知"), MAX_NAME_LEN))
-		player_book_author = STRIP_HTML_SIMPLE(input(in_round_player_mob, "作者署名要写什么？（最多 42 个字符）", "作者", ""), MAX_NAME_LEN)
-		player_book_icon = book_icons[input(in_round_player_mob, "选择一种书籍样式", "书籍样式") as anything in book_icons]
-		player_book_author_ckey = in_round_player_mob.ckey
-		//This gives the icon_state name, not the descriptive name, i. e. "book8", instead of "Sickly green with embossed Bronze"
-		if(alert("确认？:\n标题：[player_book_title]\n作者：[player_book_author]\n封面：[player_book_icon]", "", "是", "否") == "否")
-			player_book_author_ckey = null
-		message_admins("[player_book_author_ckey]([in_round_player_mob.real_name]) has generated the player book: [player_book_title]")
-
-	name = "[player_book_title]"
-	desc = "作者：[player_book_author]"
-	icon_state = "[player_book_icon]_0"
-	base_icon_state = "[player_book_icon]"
-	pages = list("<b3><h3>标题：[player_book_title]<br>作者：[player_book_author]</b><h3>[player_book_text]")
-
-/obj/item/book/rogue/playerbook/proc/pick_random_book()
-	var/list/player_book_titles = SSlibrarian.pull_player_book_titles()
-	var/list/chosen_book = SSlibrarian.file2playerbook(pick(player_book_titles))
-
-	player_book_title = chosen_book["book_title"]
-	player_book_author = chosen_book["author"]
-	player_book_author_ckey = chosen_book["author_ckey"]
-	player_book_icon = chosen_book["icon"]
-	player_book_text = chosen_book["text"]
-
-	name = "[player_book_title]"
-	desc = "作者：[player_book_author]"
-	icon_state = "[player_book_icon]_0"
-	base_icon_state = "[player_book_icon]"
-	pages = list("<b3><h3>标题：[player_book_title]<br>作者：[player_book_author]</b><h3>[player_book_text]")
+		if(!archive_file_name && length(SSlibrarian.archive.entries))
+			archive_file_name = pick(SSlibrarian.archive.entries)
+		var/list/player_book_content = SSlibrarian.archive.get_entry(archive_file_name)
+		// With no valid archive entry, keep the default water-damaged book.
+		if(player_book_content["book_title"] && player_book_content["text"])
+			player_book_title = player_book_content["book_title"]
+			player_book_author = player_book_content["author"] || player_book_author
+			player_book_author_ckey = player_book_content["author_ckey"] || player_book_author_ckey
+			player_book_icon = player_book_content["icon"] || player_book_icon
+			player_book_category = player_book_content["category"] || player_book_category
+			player_book_text = player_book_content["text"]
+			player_book_date = player_book_content["ic_date"]
+			written = TRUE
+		update_book_data()
 
 
 /obj/item/manuscript
@@ -559,17 +616,23 @@
 	var/number_of_pages = 2
 	var/compiled_pages = null
 	var/list/page_texts = list()
+	/// Ckeys of everyone who wrote on the pages, passed on to the bound book and to pages taken back off.
+	var/list/writer_ckeys
 	var/qdel_source = FALSE
 
 /obj/item/manuscript/examine()
 	. = ..()
-	. += span_info("它现在有[number_of_pages]页。可用纸张继续添页，再用制书工具包完成装订。")
+	. += span_info("它现在有[number_of_pages]页。使用纸张可添加更多页。用制书工具包完成这本书，然后选择标题、分类与封面，再将其归档。")
 
 /obj/item/manuscript/attackby(obj/item/I, mob/living/user)
 	// why is a book crafting kit using the craft system, but crafting a book isn't? Well the crafting system for *some reason* is made in such a way as to make reworking it to allow you to put reqs vars in the crafted item near *impossible.*
 	if(istype(I, /obj/item/book_crafting_kit))
+		if(!compiled_pages)
+			to_chat(user, span_warning("装订前请先写完手稿。"))
+			return
 		qdel(I)
 		var/obj/item/book/rogue/playerbook/PB = new /obj/item/book/rogue/playerbook(get_turf(loc), TRUE, user, compiled_pages)
+		PB.writer_ckeys = writer_ckeys?.Copy()
 		if(user.Adjacent(PB))
 			PB.add_fingerprint(user)
 			user.put_in_hands(PB)
@@ -590,6 +653,8 @@
 	desc = "一份[number_of_pages]页的手稿，期望有朝一日能成为一本书。"
 	page_texts += P.info
 	compiled_pages += "<p>[P.info]</p>"
+	if(P.writer_ckeys)
+		LAZYOR(writer_ckeys, P.writer_ckeys)
 	qdel(P)
 
 	update_icon()
@@ -674,12 +739,15 @@
 		L.put_in_inactive_hand(src)
 		P.icon_state = "paperwrite"
 		P.info = page_texts[length(page_texts)]
+		// Which page each writer wrote is not kept, so every page taken off counts all of them.
+		P.writer_ckeys = writer_ckeys?.Copy()
 		page_texts -= page_texts[length(page_texts)]
 		--number_of_pages
 		if(number_of_pages == 1)
 			var/obj/item/paper/P_two = new /obj/item/paper(get_turf(src.loc))
 			P_two.icon_state = "paperwrite"
 			P_two.info = page_texts[length(page_texts)]
+			P_two.writer_ckeys = writer_ckeys?.Copy()
 			qdel_source = TRUE
 			. = ..()
 			src.loc = get_turf(src.loc)
