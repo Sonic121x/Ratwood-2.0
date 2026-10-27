@@ -15,7 +15,7 @@ SUBSYSTEM_DEF(paintings)
 /// Adds a signed canvas to the archive, using an image of it rendered for the upload. Returns TRUE on success.
 /datum/controller/subsystem/paintings/proc/playerpainting2file(obj/item/canvas/canvas, icon/painting, mob/user)
 	if(!painting)
-		player_archive_feedback(user, "There is no painting to archive!")
+		player_archive_feedback(user, "没有可归档的画作！")
 		return FALSE
 	var/painting_title = canvas.title
 	var/author_ckey = canvas.author_ckey

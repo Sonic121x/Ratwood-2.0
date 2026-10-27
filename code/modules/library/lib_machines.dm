@@ -253,7 +253,7 @@
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		var/datum/player_archive/archive = get_player_archive(archive_browsers[REF(user)])
-		ui = new(user, src, "PrintingPressArchive", "[capitalize(archive?.entry_noun)] 档案")
+		ui = new(user, src, "PrintingPressArchive", "[get_player_archive_display(archive?.entry_noun)]档案")
 		ui.open()
 
 /obj/machinery/printingpress/ui_close(mob/user)

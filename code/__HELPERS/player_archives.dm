@@ -30,7 +30,7 @@
 
 /// Archived books and paintings are always signed with the creator's true name.
 /proc/player_archive_author_name(mob/user)
-	return player_archive_display_text(user?.real_name)
+	return player_archive_display_text(user?.real_name, "未知作者")
 
 /proc/write_player_archive_file(path, list/contents)
 	fdel(path)
@@ -155,15 +155,15 @@
 /// Checks whether user may add an entry with the given title, which everyone in contributor_ckeys worked on. Returns its filename, or null after telling the user why not.
 /datum/player_archive/proc/check_upload(mob/user, title, list/contributor_ckeys)
 	if(is_banned(user?.ckey))
-		player_archive_feedback(user, "你已被禁止向档案添加[kind]。")
+		player_archive_feedback(user, "你已被禁止向档案添加[get_player_archive_display(kind)]。")
 		return
 	for(var/contributor in contributor_ckeys)
 		if(is_banned(contributor))
-			player_archive_feedback(user, "参与制作这份[entry_noun]的某人已被禁止向档案添加[kind]。")
+			player_archive_feedback(user, "这份[get_player_archive_display(entry_noun)]的参与创作者中，有人已被禁止向档案添加[get_player_archive_display(kind)]。")
 			return
 	var/file_name = player_archive_filename(title)
 	if(!file_name)
-		player_archive_feedback(user, "该标题无法归档。请使用更短、且不以字母下划线开头的标题。")
+		player_archive_feedback(user, "该标题无法归档。请使用更短且不以下划线开头的标题。")
 		return
 	return file_name
 
@@ -177,10 +177,10 @@
 /// Saves an entry a player has uploaded, telling them and the admins how it went. Returns TRUE on success.
 /datum/player_archive/proc/add_entry(file_name, list/contents, mob/user)
 	if(!save_entry(file_name, contents))
-		player_archive_feedback(user, "档案无法保存这份[entry_noun]。")
+		player_archive_feedback(user, "档案无法保存这份[get_player_archive_display(entry_noun)]。")
 		return FALSE
 	message_admins("[capitalize(entry_noun)] [get_display_title(file_name)] has been saved to the player [entry_noun] archive by [player_archive_display_text(contents["author_ckey"])]([player_archive_display_text(contents["author"])])")
-	player_archive_feedback(user, "你有一种感觉，这份[entry_noun]将在档案中留存很久、很久……", TRUE)
+	player_archive_feedback(user, "你有一种感觉，这份[get_player_archive_display(entry_noun)]将在档案中留存很久、很久……", TRUE)
 	return TRUE
 
 /datum/player_archive/proc/delete_entry(file_name)
@@ -205,7 +205,7 @@
 	return list(
 		"filename" = file_name,
 		"title" = html_decode(contents[title_key]),
-		"author" = html_decode(contents["author"] || "Unknown"),
+		"author" = html_decode(contents["author"] || "未知作者"),
 		"date" = contents["ic_date"],
 	)
 

@@ -812,7 +812,7 @@
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/easttats/examine(mob/user)
 	. = ..()
-	. += span_info("These tattoos slowly mend themselves after a minute without taking damage.")
+	. += span_info("这些纹身在连续一分钟未受损后，会开始缓慢自行修复。")
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/easttats/dropped(mob/living/carbon/human/user)
 	. = ..()

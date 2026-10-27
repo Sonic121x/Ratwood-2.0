@@ -12,7 +12,7 @@ import {
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
-
+import { getArchiveDisplay, getArchiveHeading, getArchiveOptions } from './common/playerArchiveDisplay';
 type ArchiveEntry = {
   filename: string;
   title: string;
@@ -36,7 +36,7 @@ export const PrintingPressArchive = (props) => {
   const [categoryFilter, setCategoryFilter] = useState(ALL_CATEGORIES);
 
   const isBookArchive = archive_type !== 'painting';
-  const noun = isBookArchive ? 'book' : 'painting';
+  const noun = getArchiveDisplay(isBookArchive ? 'book' : 'painting');
 
   const categories = [
     ALL_CATEGORIES,
@@ -63,30 +63,30 @@ export const PrintingPressArchive = (props) => {
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item>
-            <Section title="Search">
+            <Section title={getArchiveDisplay('Search')}>
               <LabeledList>
-                <LabeledList.Item label="Title">
+                <LabeledList.Item label="标题">
                   <Input
                     fluid
                     value={titleSearch}
-                    placeholder={`Search ${noun} titles...`}
+                    placeholder={`搜索${noun}标题……`}
                     onChange={setTitleSearch}
                   />
                 </LabeledList.Item>
-                <LabeledList.Item label="Author">
+                <LabeledList.Item label="作者">
                   <Input
                     fluid
                     value={authorSearch}
-                    placeholder="Search authors..."
+                    placeholder="搜索作者……"
                     onChange={setAuthorSearch}
                   />
                 </LabeledList.Item>
                 {isBookArchive && (
-                  <LabeledList.Item label="Category">
+                  <LabeledList.Item label="分类">
                     <Dropdown
                       width="100%"
-                      selected={categoryFilter}
-                      options={categories}
+                      selected={categoryFilter} displayText={getArchiveDisplay(categoryFilter)}
+                      options={getArchiveOptions(categories)}
                       onSelected={setCategoryFilter}
                     />
                   </LabeledList.Item>
@@ -96,21 +96,21 @@ export const PrintingPressArchive = (props) => {
           </Stack.Item>
           <Stack.Item grow>
             <Section
-              title={`Archived ${noun}s (${shownEntries.length})`}
+              title={getArchiveHeading(noun, shownEntries.length)}
               fill
               scrollable
             >
               {shownEntries.length === 0 ? (
-                <NoticeBox>No {noun}s found.</NoticeBox>
+                <NoticeBox>未找到符合条件的{noun}。</NoticeBox>
               ) : (
                 <Table>
                   <Table.Row header>
-                    <Table.Cell>Title</Table.Cell>
-                    <Table.Cell>Author</Table.Cell>
+                    <Table.Cell>标题</Table.Cell>
+                    <Table.Cell>作者</Table.Cell>
                     {isBookArchive && (
-                      <Table.Cell collapsing>Category</Table.Cell>
+                      <Table.Cell collapsing>分类</Table.Cell>
                     )}
-                    <Table.Cell collapsing>Written</Table.Cell>
+                    <Table.Cell collapsing>创作日期</Table.Cell>
                     <Table.Cell collapsing />
                   </Table.Row>
                   {shownEntries.map((entry) => (
@@ -118,7 +118,7 @@ export const PrintingPressArchive = (props) => {
                       <Table.Cell>{entry.title}</Table.Cell>
                       <Table.Cell>{entry.author}</Table.Cell>
                       {isBookArchive && (
-                        <Table.Cell collapsing>{entry.category}</Table.Cell>
+                        <Table.Cell collapsing>{getArchiveDisplay(entry.category)}</Table.Cell>
                       )}
                       <Table.Cell collapsing>{entry.date}</Table.Cell>
                       <Table.Cell collapsing>
@@ -128,7 +128,7 @@ export const PrintingPressArchive = (props) => {
                             act('print', { filename: entry.filename })
                           }
                         >
-                          Print
+                          印刷
                         </Button>
                       </Table.Cell>
                     </Table.Row>
