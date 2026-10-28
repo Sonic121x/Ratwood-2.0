@@ -287,18 +287,19 @@
 	craftdiff = 4
 	verbage_simple = "调配"
 
-/datum/crafting_recipe/roguetown/alchemy/frankenbrew_small
+/datum/crafting_recipe/roguetown/alchemy/frankenbrew_impure
 	name = "再生灵药 (不纯灵辉)"
 	category = "台面"
 	result = list(
-		/obj/item/reagent_containers/glass/bottle/frankenbrew/third
+		/obj/item/reagent_containers/glass/bottle/frankenbrew,
+		/obj/item/reagent_containers/glass/bottle/frankenbrew
 	)
 	reqs = list(
-		/obj/item/reagent_containers/glass/bottle = 1,
+		/obj/item/reagent_containers/glass/bottle = 2,
 		/obj/item/reagent_containers/food/snacks/grown/manabloom = 1,
 		/obj/item/reagent_containers/lux_impure = 1,
 		/obj/item/alch/calendula = 1,
-		/datum/reagent/water = 49
+		/datum/reagent/water = 98
 	)
 	craftdiff = 4
 	verbage_simple = "调配"

@@ -995,10 +995,23 @@
 
 /datum/sex_controller/proc/perform_sex_action(mob/living/carbon/human/action_target, arousal_amt, pain_amt, giving, obj/item/organ/penis/involved_penis = null)
 	if(HAS_TRAIT(user, TRAIT_GOODLOVER))
-		arousal_amt *=1.5
+		arousal_amt *= 1.5
 		if(prob(10))
-			var/lovermessage = pick("感觉太舒服了！","我简直像在天堂！","这舒服得简直不像真的！","以十神之名！","我停不下来，太美妙了！")
-			to_chat(action_target, span_love(lovermessage))
+			var/list/lover_list = list("感觉太舒服了！","我简直像在天堂！","这舒服得简直不像真的！","我停不下来，太美妙了！")
+			switch(action_target.patron?.type)
+				if(/datum/patron/old_god)
+					lover_list += "以普赛顿之名！"
+				if(/datum/patron/inhumen/zizo)
+					lover_list += "以齐佐之名！"
+				if(/datum/patron/inhumen/graggar)
+					lover_list += "以格拉加尔之名！"
+				if(/datum/patron/inhumen/matthios)
+					lover_list += "以马西奥斯之名！"
+				if(/datum/patron/inhumen/baotha)
+					lover_list += "以巴奥莎之名！"
+				else
+					lover_list += "以十神之名！"
+			to_chat(action_target, span_love(pick(lover_list)))
 	if(HAS_TRAIT(user, TRAIT_DEATHBYSNUSNU) || (user.STASTR > 12))
 		if(istype(user.rmb_intent, /datum/rmb_intent/strong))
 			pain_amt *= 2

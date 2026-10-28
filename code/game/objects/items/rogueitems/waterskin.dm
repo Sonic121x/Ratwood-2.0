@@ -17,6 +17,9 @@
 	sewrepair = TRUE
 	desc_uncorked = "一个皮制水袋。袋口的盖子已打开。"
 
+/obj/item/reagent_containers/glass/bottle/waterskin/glass_shot()
+	return FALSE
+
 /obj/item/reagent_containers/glass/bottle/waterskin/milk // Filled subtype used by the cheesemaker
 	list_reagents = list(/datum/reagent/consumable/milk = 64)
 

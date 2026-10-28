@@ -152,6 +152,7 @@
 		list("id" = "descriptor_color", "label" = "启用彩色描述", "enabled" = !!owner.prefs.descriptor_color, "desc" = "按兴奋程度为生殖器描述着色，并按毛色为体毛描述着色。"),
 		list("id" = "cursed_collars", "label" = "启用诅咒项圈", "enabled" = !!owner.prefs.cursed_collarable, "desc" = "允许他人为你戴上诅咒项圈。"),
 		list("id" = "milkable", "label" = "启用榨乳", "enabled" = !!owner.prefs.milkable, "desc" = "允许其他玩家在你泌乳时为你挤乳。关闭后你仍可自行挤乳。仅适用于用试剂容器点击胸部，不涉及性行为中的泌乳。"),
+		list("id" = "manticore_tail_messages", "label" = "蝎尾感觉消息", "enabled" = !!owner.prefs.manticore_tail_messages, "desc" = "在移动或亲密行为时，显示来自你蝎尾的风味提示消息。"),
 	)
 
 	data["categories"] = list(
@@ -273,6 +274,8 @@
 				owner.toggle_cursed_collars()
 			if("milkable")
 				owner.toggle_milkable()
+			if("manticore_tail_messages")
+				owner.toggle_manticore_tail_messages_pref()
 			if("voting_popup")
 				owner.toggle_voting_popup()
 		SStgui.update_uis(src)
@@ -689,6 +692,16 @@
 		to_chat(src, "现在其他玩家可以为你挤乳。")
 		return
 	to_chat(src, "其他玩家现在无法为你挤乳。")
+
+/client/verb/toggle_manticore_tail_messages_pref()
+	set category = "Options"
+	set name = "Toggle Manticore Tail Sensations"
+	set hidden = 1
+	if(!prefs)
+		return
+	prefs.manticore_tail_messages = !prefs.manticore_tail_messages
+	prefs.save_preferences()
+	to_chat(src, "You will [prefs.manticore_tail_messages ? "now" : "no longer"] notice your manticore tail's sensations.")
 
 /client/verb/toggle_compliance_notifs() // The messages need to be on-by-default while this is in its early stages.
 	set category = "选项"

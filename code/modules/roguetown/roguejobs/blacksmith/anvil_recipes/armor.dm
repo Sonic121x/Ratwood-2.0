@@ -647,7 +647,8 @@
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
 
 /datum/anvil_recipe/armor/studdedbikini
-	name = "铆钉皮胸衣，另需1件皮甲"
+	name = "铆钉皮胸衣，另需1件皮胸衣"
+	req_bar = /obj/item/ingot/iron
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/leather)
 	created_item = /obj/item/clothing/suit/roguetown/armor/leather/studded/bikini
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
