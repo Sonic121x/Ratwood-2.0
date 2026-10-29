@@ -9,7 +9,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	name = "物品"
 	var/original_name = null // Stores the original name if item was renamed
 	icon = 'icons/obj/items_and_weapons.dmi'
-	///icon state name for inhanf overlays
+	///icon state name for inhand overlays
 	var/item_state = null
 	///Icon file for left hand inhand overlays
 	var/lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
@@ -513,10 +513,13 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		to_chat(usr, output)
 
 	if(href_list["explainbalance"])
-		var/output = span_info("沉重武器更容易被闪避，并且每相差 1 点力量，都会让成功招架的防守者额外承受 2 点体力伤害。 \n\
-		迅捷平衡的武器会按双方速度差，每点使敌人的招架几率降低 10 个百分点，最多降低 30 个百分点。 \n\
-		但如果防守者感知更高，这项惩罚会按每点差值减少 10 个百分点，直到归零。\n\
-		如果防守者智力更高，这项惩罚还会按每点差值减少 3 个百分点，直到归零。")
+		var/output = span_info("沉重武器更容易被闪避，并且每相差 1 点力量，都会让成功招架的防守者额外承受 [STAM_DRAIN_PER_STR_DIFF_HEAVY_BAL] 点体力伤害。 \n\
+		迅捷平衡武器会按双方速度差降低敌人的招架几率。 \n\
+		瞄准手、脚、腹部或面部等较难命中的部位时，防御削减上限为 [SWIFTCAP_PRECISE]%。 \n\
+		瞄准手臂、头部或腿部等较大肢体时，防御削减上限为 [SWIFTCAP_LIMBS]%。 \n\
+		瞄准胸部时，招架削减上限仅为 [SWIFTCAP_CHEST]%。 \n\
+		若攻击者的外衣、内衣或裤子栏位穿着中甲或重甲装备，迅捷平衡将不会生效。 \n\
+		防守者的 INT 与 PER 差值（若更高）在某些情况下可减轻招架惩罚。")
 		if(!usr.client.prefs.no_examine_blocks)
 			output = examine_block(output)
 		to_chat(usr, output)

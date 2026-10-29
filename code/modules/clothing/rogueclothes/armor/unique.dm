@@ -2,7 +2,7 @@
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "咒歌者长袍"
 	desc = "法剑士所穿的加固长袍，内有皮革衬垫。"
-	body_parts_covered = COVERAGE_FULL
+	body_parts_covered = COVERAGE_ALL_BUT_HANDFEET
 	armor = ARMOR_LEATHER
 	armor_class = ARMOR_CLASS_LIGHT
 	icon_state = "spellcasterrobe"
@@ -25,7 +25,7 @@
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
 	break_sound = 'sound/foley/cloth_rip.ogg'
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
-	body_parts_covered = COVERAGE_FULL
+	body_parts_covered = COVERAGE_ALL_BUT_HANDFEET
 	armor = ARMOR_LEATHER
 	blocksound = SOFTHIT
 	blade_dulling = DULLING_BASHCHOP
@@ -86,7 +86,7 @@
 	desc = "由最古老的精灵德鲁伊以歌与工具共同编织。它仍在吱呀作响，仿佛为逝去时代而悲泣。看起来只有精灵才能穿得上。"
 	allowed_race = list(/datum/species/elf/wood, /datum/species/human/halfelf, /datum/species/elf/dark, /datum/species/elf)
 	armor = ARMOR_BLACKOAK
-	body_parts_covered = COVERAGE_FULL
+	body_parts_covered = COVERAGE_ALL_BUT_HANDFEET
 	icon = 'icons/roguetown/clothing/special/race_armor.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/race_armor.dmi'
 	icon_state = "welfchest"
@@ -125,7 +125,7 @@
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "库尔切"
 	desc = "由铁片与皮革拼接而成，用来保护要害。"
-	body_parts_covered = COVERAGE_ALL_BUT_LEGS
+	body_parts_covered = COVERAGE_ALL_BUT_HANDLEGS
 	icon_state = "kurche"
 	armor = ARMOR_PLATE	//Essentially really good stab/slash prot, some prot against projectiles too
 	blocksound = CHAINHIT

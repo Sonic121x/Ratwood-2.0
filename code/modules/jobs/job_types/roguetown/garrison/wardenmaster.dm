@@ -130,7 +130,7 @@
 				l_hand = /obj/item/rogueweapon/stoneaxe/oath
 			if("钢标枪袋与塔盾")
 				beltr = /obj/item/quiver/javelin/steel
-				backl = /obj/item/rogueweapon/shield/tower/
+				backl = /obj/item/rogueweapon/shield/tower
 			if("黑角长弓")
 				beltr = /obj/item/quiver/arrows
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow/warden

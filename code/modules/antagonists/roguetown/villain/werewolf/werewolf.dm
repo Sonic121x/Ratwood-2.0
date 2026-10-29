@@ -150,7 +150,7 @@
 	attack_verb = list("抓挠", "撕扯", "开膛破肚")
 	animname = "chop"
 	hitsound = "genslash"
-	penfactor = 50
+	penfactor = PEN_MEDIUM
 	miss_text = "扑了个空！"
 	miss_sound = "bluntwooshlarge"
 	item_d_type = "slash"
@@ -160,7 +160,6 @@
 	desc = "以狼人肌力发动的强力猛击，造成正常伤害，并能依照你的力量击退、减速站立目标。力量低于 10 时无效。减速与击退会随你的力量提高，最高按 15 点计算（1 到 5 格）。同一目标每 5 秒内不能连续使用。倒地目标的击退距离减半。"
 	icon_state = "insmash"
 	chargetime = 1
-	penfactor = 60
 
 /obj/item/rogueweapon/werewolf_claw
 	name = "维尔沃夫利爪"

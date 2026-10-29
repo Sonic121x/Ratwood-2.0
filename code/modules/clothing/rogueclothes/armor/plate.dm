@@ -184,7 +184,7 @@
 	unequip_delay_self = 6 SECONDS
 
 	max_integrity = ARMOR_INT_CHEST_PLATE_STEEL
-	body_parts_covered = COVERAGE_FULL // Less durability than proper plate, more expensive to manufacture, and accurate to the sprite.
+	body_parts_covered = COVERAGE_ALL_BUT_HANDFEET // Less durability than proper plate, more expensive to manufacture, and accurate to the sprite.
 
 /obj/item/clothing/suit/roguetown/armor/plate/fluted/graggar
 	name = "凶暴半身板甲"
@@ -203,7 +203,7 @@
 	desc = "精美的钢制胸甲，配有垂甲与肩甲以增加覆盖。普赛顿的低阶教士常用染布装饰这些护甲，好让伤者在战场的疯狂中仍能寻得救赎。 </br>'..疯狂的鼓动，让你以为自己的苦难于阿多奈的祭羔而言毫无意义..' </br>... </br>若再添一些受祝银并请铁匠协助，我就能把这件半身板甲改造成一套全身板甲。"
 	icon_state = "ornatehalfplate"
 	smeltresult = /obj/item/ingot/silverblessed
-	body_parts_covered = COVERAGE_FULL // Less durability than proper plate, more expensive to manufacture, and accurate to the sprite.
+	body_parts_covered = COVERAGE_ALL_BUT_HANDFEET // Less durability than proper plate, more expensive to manufacture, and accurate to the sprite.
 
 	max_integrity = ARMOR_INT_CHEST_PLATE_PSYDON
 	is_silver = TRUE
@@ -217,7 +217,7 @@
 	name = "板甲"
 	desc = "全套钢制板甲。没有优秀侍从帮忙的话，穿脱都很慢。"
 	icon_state = "plate"
-	body_parts_covered = COVERAGE_FULL
+	body_parts_covered = COVERAGE_ALL_BUT_HANDFEET
 	equip_delay_self = 12 SECONDS
 	unequip_delay_self = 12 SECONDS
 	equip_delay_other = 3 SECONDS
@@ -240,7 +240,7 @@
 	boobed_detail = FALSE
 	color = null
 	detail_color = CLOTHING_WHITE
-	body_parts_covered = COVERAGE_ALL_BUT_LEGS
+	body_parts_covered = COVERAGE_ALL_BUT_HANDLEGS
 	max_integrity = ARMOR_INT_CHEST_PLATE_STEEL - 50 //slightly worse
 	var/picked = FALSE
 
@@ -358,7 +358,7 @@
 	desc = "胸甲、肩甲、肘甲、腿甲……你是不是忘了点什么？"
 	icon_state = "platekini"
 	allowed_sex = list(MALE, FEMALE)
-	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+	body_parts_covered = COVERAGE_TORSO|LEGS|ARMS
 	equip_delay_self = 8 SECONDS
 	unequip_delay_self = 8 SECONDS
 	equip_delay_other = 3 SECONDS
@@ -369,7 +369,7 @@
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "甲衣外套"
 	desc = "一件贵气十足的甲衣外套。"
-	body_parts_covered = COVERAGE_FULL
+	body_parts_covered = COVERAGE_ALL_BUT_HANDFEET
 	icon_state = "heartfelt"
 	item_state = "heartfelt"
 	armor = ARMOR_PLATE
@@ -454,8 +454,8 @@
 // MEDIUM
 /obj/item/clothing/suit/roguetown/armor/plate/bikini
 	name = "半身板甲胸衣"
-	desc = "高胸甲与髋甲兼具灵活与强大防护，唯独腹部仍有空缺。"
-	body_parts_covered = CHEST|GROIN
+	desc = "高胸甲与髋甲兼具灵活与强大防护。"
+	body_parts_covered = COVERAGE_TORSO
 	icon_state = "halfplatekini"
 	item_state = "halfplatekini"
 	armor = ARMOR_PLATE // Identical to steel cuirass, but covering the groin instead of the vitals.
@@ -591,7 +591,7 @@
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "鳞甲"
 	desc = "精巧交织的金属鳞片，构成灵活的防护！"
-	body_parts_covered = COVERAGE_ALL_BUT_ARMS
+	body_parts_covered = COVERAGE_ALL_BUT_ARMFEET
 	allowed_sex = list(MALE, FEMALE)
 	icon_state = "lamellar"
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_STEEL
@@ -622,7 +622,7 @@
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "奥塔万宗审庭长风衣"
 	desc = "厚重长风衣，皮革之下暗藏层层锁甲，由神圣奥塔万宗审庭的精锐穿用。 </br>这件长风衣还能嵌入一件普赛顿胸甲，在不牺牲风度的前提下抵御更致命的打击。"
-	body_parts_covered = COVERAGE_FULL
+	body_parts_covered = COVERAGE_ALL_BUT_HANDFEET
 	allowed_sex = list(MALE, FEMALE)
 	allowed_sex = list(MALE, FEMALE)
 	icon_state = "inqcoat"

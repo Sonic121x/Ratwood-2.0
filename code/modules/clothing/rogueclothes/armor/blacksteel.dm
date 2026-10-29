@@ -3,7 +3,7 @@
 /obj/item/clothing/suit/roguetown/armor/plate/modern/blacksteel_full_plate
 	name = "黑钢板甲"
 	desc = "以坚固黑钢锻造的全身板甲。采用现代设计，在穿刺与钝击防护上仍凌驾于同类重甲之上。"
-	body_parts_covered = COVERAGE_FULL
+	body_parts_covered = COVERAGE_ALL_BUT_HANDFEET
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 	icon_state = "bplate"
@@ -25,7 +25,7 @@
 /obj/item/clothing/suit/roguetown/armor/plate/blacksteel_full_plate
 	name = "远古黑钢板甲"
 	desc = "以坚固黑钢锻造的全身板甲，内里衬有分层绗缝护甲衣，在穿刺与钝击防护上无与伦比。"
-	body_parts_covered = COVERAGE_FULL
+	body_parts_covered = COVERAGE_ALL_BUT_HANDFEET
 	icon = 'icons/roguetown/clothing/special/blkknight.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
 	sleeved = 'icons/roguetown/clothing/special/onmob/blkknight.dmi'
@@ -52,6 +52,7 @@
 	item_state = "grenzelcuirass"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
 	allowed_race = CLOTHED_RACES_TYPES
+	armor = ARMOR_PLATE_BSTEEL
 	blocking_behavior = null
 	max_integrity = ARMOR_INT_CHEST_PLATE_BLACKSTEEL
 	smeltresult = /obj/item/ingot/blacksteel
@@ -64,7 +65,7 @@
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "黑钢半身板甲"
 	desc = "一套异常坚固的黑钢护甲，配有肩甲，可保护胸部、手臂与腹股沟。"
-	body_parts_covered = COVERAGE_ALL_BUT_LEGS
+	body_parts_covered = COVERAGE_ALL_BUT_HANDLEGS
 	icon = 'icons/roguetown/clothing/armor.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
 	icon_state = "bhalfplate"

@@ -15,7 +15,7 @@
 
 	if(!check_rights(R_FUN))
 		return
-	
+
 	var/list/voice_options = list(
 		"普通男声" = FUTURE_VOICE_MALE_GENERIC,
 		"女声" = FUTURE_VOICE_FEMALE
@@ -33,17 +33,17 @@
 	var/selected_voice = input(usr, "选择声音类型。", "广播声音") as null|anything in voice_options
 	if(!selected_voice)
 		return
-	
+
 	var/radios_found = 0
 
 	for(var/obj/item/timesoldier/radio/R in world)
 		R.start_broadcast(voice_options[selected_voice], language_options[selected_language])
 		radios_found++
-	
+
 	if(!radios_found)
 		to_chat(usr, span_warning("世界中没有野战收发器！正在取消……"))
 		return
-	
+
 	log_admin("[key_name(usr)] begun a Future Broadcast using the [selected_voice] voice in [selected_language].")
 	message_admins(span_adminnotice("[key_name_admin(usr)] 开始了未来广播，使用[selected_voice]，语言为[selected_language]。"))
 
@@ -59,27 +59,27 @@
 	var/message = input(usr, "要广播什么内容？", "广播消息") as text|null
 	if(!message)
 		return
-	
+
 	var/radios_found = 0
 	var/radios_active = 0
 
 	for(var/obj/item/timesoldier/radio/R in world)
 		radios_found++
 
-		if(!R.broadcasting)	
+		if(!R.broadcasting)
 			continue
-		
+
 		R.receive_broadcast(message)
 		radios_active++
-	
+
 	if(!radios_found)
 		to_chat(usr, span_warning("世界中没有野战收发器！正在取消……"))
 		return
-	
+
 	if(!radios_active)
 		to_chat(usr, span_warning("野战收发器目前没有广播。请先开启广播！"))
 		return
-	
+
 	log_admin("[key_name(usr)] sent a Future Broadcast: \"[message]\"")
 	message_admins(span_adminnotice("[key_name_admin(usr)] 发送了未来广播：\"[message]\""))
 
@@ -91,7 +91,7 @@
 
 	if(!check_rights(R_FUN))
 		return
-	
+
 	var/radios_found = 0
 	var/radios_active = 0
 	for(var/obj/item/timesoldier/radio/R in world)

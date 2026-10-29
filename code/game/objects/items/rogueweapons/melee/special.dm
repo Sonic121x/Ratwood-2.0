@@ -539,6 +539,7 @@
 	desc = "这把猎剑被恰如其分地称作“农夫的弯刀”，其刃身经过重新回火，专为猎杀最危险的猎物而生。那布满锯齿的刃缘正适合撕开血肉与锁甲。"
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/strike)
 	icon_state = "maciejowski"
+	sheathe_icon = "maciejowski"
 	gripped_intents = list(/datum/intent/rend, /datum/intent/sword/chop/militia, /datum/intent/sword/strike)
 	force = 18
 	force_wielded = 25

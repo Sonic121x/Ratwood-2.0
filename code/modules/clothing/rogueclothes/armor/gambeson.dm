@@ -5,7 +5,7 @@
 	name = "绗缝护甲衣"
 	desc = "用于穿在盔甲里面的大号护衣。"
 	icon_state = "gambeson"
-	body_parts_covered = COVERAGE_FULL
+	body_parts_covered = COVERAGE_ALL_BUT_HANDFEET
 	armor = ARMOR_PADDED
 	blocksound = SOFTUNDERHIT
 	blade_dulling = DULLING_BASHCHOP
@@ -33,7 +33,7 @@
 /obj/item/clothing/suit/roguetown/armor/gambeson/lord
 	name = "武装短衣"
 	icon_state = "dgamb"
-	body_parts_covered = COVERAGE_ALL_BUT_LEGS
+	body_parts_covered = COVERAGE_ALL_BUT_HANDLEGS
 	allowed_sex = list(MALE, FEMALE)
 	cold_protection = CHEST | GROIN | ARM_RIGHT | ARM_LEFT
 	min_cold_protection_temperature = BODYTEMP_COLD_LEVEL_ONE_MAX
@@ -181,7 +181,7 @@
 	icon = 'icons/roguetown/clothing/armor.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
-	body_parts_covered = COVERAGE_ALL_BUT_LEGS
+	body_parts_covered = COVERAGE_ALL_BUT_HANDLEGS
 	icon_state = "fencingshirt"
 	color = "#FFFFFF"
 	detail_color = "#414143"
@@ -264,7 +264,7 @@
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
 	name = "格伦泽尔霍夫特长摆衬衣"
 	desc = "为额外舒适与防护而制的加垫衬衣，并饰以鲜艳色彩。"
-	body_parts_covered = COVERAGE_ALL_BUT_LEGS
+	body_parts_covered = COVERAGE_ALL_BUT_HANDLEGS
 	icon_state = "grenzelshirt"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/stonekeep_merc.dmi'
 	boobed = FALSE // Temporary fix, set to FALSE because for some reason boobed and details don't want to work together, removing the ability to dye it or it's details for the onmob
@@ -348,7 +348,7 @@
 	color = null
 	armor = ARMOR_PADDED
 	shiftable = FALSE
-	body_parts_covered = COVERAGE_ALL_BUT_LEGS
+	body_parts_covered = COVERAGE_ALL_BUT_HANDLEGS
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/shadowrobe
 	name = "潜猎者长袍"
@@ -357,3 +357,16 @@
 	icon_state = "shadowrobe"
 	armor = ARMOR_PADDED
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MEDIUM + 30 //280
+
+/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/bikini
+	name = "padded corslet"
+	desc = "A thin padded corslet,worn by those who prefer versatility and agility in combat at the cost of less coverage."
+	icon_state = "paddedkini"
+	item_state = "paddedkini"
+	armor = ARMOR_PADDED
+	nodismemsleeves = TRUE
+	body_parts_covered = COVERAGE_TORSO
+	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
+	color = "#b49679"
+	cold_protection = CHEST | GROIN
+	min_cold_protection_temperature = BODYTEMP_COLD_LEVEL_ONE_MAX

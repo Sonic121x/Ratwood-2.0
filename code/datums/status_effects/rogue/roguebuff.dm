@@ -2785,7 +2785,7 @@
 /atom/movable/screen/alert/status_effect/buff/dagger_dash
 	name = "匕首疾冲"
 	desc = "我正从缝隙中滑过！"
-	icon_state = "daggerboost"
+	icon_state = "daggerdash"
 
 /atom/movable/screen/alert/status_effect/buff/dagger_boost
 	name = "匕首加速"
@@ -2849,5 +2849,6 @@
 	. = ..()
 
 /datum/status_effect/buff/dagger_boost/process()
+	. = ..()
 	if(!istype(owner.get_active_held_item(), held_dagger))
 		owner.remove_status_effect(/datum/status_effect/buff/dagger_boost)

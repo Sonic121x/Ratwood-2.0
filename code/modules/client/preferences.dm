@@ -1932,9 +1932,9 @@ GLOBAL_LIST_EMPTY(chosen_names)
 							if (AGE_ADULT)
 								to_chat(user, "您处于“壮年”时期，无论这意味着什么，您的存活时间既不会带来加成也不会带来惩罚。")
 							if (AGE_MIDDLEAGED)
-								to_chat(user, "肌肉酸痛，关节开始迟缓，永生的魔爪开始落在您的肩上。（-1 速度，+1 意志）")
+								to_chat(user, "肌肉酸痛，关节开始迟缓，永世的魔爪开始落在您的肩上。（-1 速度，+1 意志，+1 幸运）")
 							if (AGE_OLD)
-								to_chat(user, "在像普赛多尼亚这样致命的地方，老年人堪称奇迹……或者是惯常特权阶层的受益者。（-1 力量，-2 速度，-1 感知，-2 体质，+2 智力，+1 坚韧）")
+								to_chat(user, "在像普赛多尼亚这样致命的地方，老年人堪称奇迹……或者是惯常特权阶层的受益者。（-1 力量，-2 速度，-1 感知，-2 体质，+3 智力，+1 幸运）")
 						// LETHALSTONE EDIT END
 						ResetJobs()
 						family = FAMILY_NONE

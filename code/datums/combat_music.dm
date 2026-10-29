@@ -386,14 +386,6 @@ GLOBAL_LIST_EMPTY(cmode_tracks_by_name)
 	credits = "Thomas Bangalter - Stress"
 	musicpath = list('sound/music/combat_maniac2.ogg')
 
-/* Unused
-/datum/combat_music/maniac_old
-	name = "Maniac (Old)"
-	desc = ""
-	shortname = "疯子（旧版）"
-	musicpath = list('sound/music/combat_maniac.ogg')
-*/
-
 /datum/combat_music/martyr
 	name = "殉道者"
 	desc = ""

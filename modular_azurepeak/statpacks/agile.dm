@@ -2,7 +2,7 @@
 /datum/statpack/agile/swift
 	name = "迅捷"
 	desc = "发梢掠风，祸患在后，你常常靠速度让自己转危为安。"
-	stat_array = list(STAT_SPEED = 2, STAT_WILLPOWER = 1, STAT_STRENGTH = -1, STAT_CONSTITUTION = -1)
+	stat_array = list(STAT_SPEED = 2, STAT_WILLPOWER = 1, STAT_INTELLIGENCE = -1, STAT_CONSTITUTION = -2)
 
 /datum/statpack/agile/hardy
 	name = "坚韧"

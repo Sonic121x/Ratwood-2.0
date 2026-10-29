@@ -3,7 +3,7 @@
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
 	name = "锁子短甲"
 	desc = "钢制锁子甲衫。箭矢和小匕首会直接穿过它的缝隙。"
-	body_parts_covered = COVERAGE_ALL_BUT_LEGS
+	body_parts_covered = COVERAGE_ALL_BUT_HANDLEGS
 	icon_state = "haubergeon"
 	armor = ARMOR_MAILLE
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_STEEL
@@ -63,7 +63,7 @@
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
 	name = "锁子甲"
 	desc = "更长的钢制锁子甲，连腿部也能保护，不过依然挡不住箭矢。"
-	body_parts_covered = COVERAGE_FULL
+	body_parts_covered = COVERAGE_ALL_BUT_HANDFEET
 	icon_state = "hauberk"
 	item_state = "hauberk"
 	armor = ARMOR_MAILLE
@@ -138,5 +138,15 @@
 	item_state = "chainkini"
 	allowed_sex = list(MALE, FEMALE)
 	allowed_race = CLOTHED_RACES_TYPES
-	body_parts_covered = CHEST|GROIN
+	body_parts_covered = COVERAGE_TORSO
 	armor_class = ARMOR_CLASS_LIGHT //placed in the medium category to keep it with its parent obj
+
+/obj/item/clothing/suit/roguetown/armor/chainmail/bikini/bronze
+	name = "bronze chainmail corslet"
+	desc = "A mail corslet made of bonze rings."
+	icon_state = "bchainkini"
+	item_state = "bchainkini"
+	armor = ARMOR_BRONZE
+	max_integrity = ARMOR_INT_CHEST_MEDIUM_BRONZE
+	smeltresult = /obj/item/ingot/bronze
+

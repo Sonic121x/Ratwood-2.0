@@ -93,7 +93,7 @@
 /obj/item/clothing/suit/roguetown/armor/leather/studded/warden
 	name = "林地守卫甲"
 	desc = "套在锁子甲外、带有大肩甲的硬化皮革挽具，是林地守卫的标志。"
-	body_parts_covered = COVERAGE_ALL_BUT_LEGS
+	body_parts_covered = COVERAGE_ALL_BUT_HANDLEGS
 	icon = 'icons/roguetown/clothing/special/warden.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/warden.dmi'
 	icon_state = "forestleather"
@@ -191,7 +191,7 @@
 	desc = "坚固的雨披外套罩在紧束的煮制皮胸甲之上。圣阿斯特拉坦的年轻人常会缝些纪念小物在大衣内袋里，提醒忏悔官们他们的事业是正直的，不可忘却真正重要之物。"
 	icon_state = "confessorcoat"
 	item_state = "confessorcoat"
-	body_parts_covered = COVERAGE_FULL
+	body_parts_covered = COVERAGE_ALL_BUT_HANDFEET
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
 	armor = ARMOR_LEATHER
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
@@ -224,7 +224,7 @@
 	desc = "厚重的皮夹克，可覆盖双臂并保护要害。"
 	icon_state = "leatherjacketo"
 	item_state = "leatherjacketo"
-	body_parts_covered = COVERAGE_ALL_BUT_LEGS
+	body_parts_covered = COVERAGE_ALL_BUT_HANDLEGS
 	armor = ARMOR_LEATHER
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
 	cold_protection = CHEST | ARM_LEFT | ARM_RIGHT
@@ -234,7 +234,7 @@
 	desc = "一件传统卓尔护甲，以幽暗地域野兽的皮革制成，内层衬有蛛化卓尔的几丁质甲片。既耐用又灵活，是散兵的理想装备。"
 	icon_state = "shadowvest"
 	item_state = "shadowvest"
-	body_parts_covered = COVERAGE_FULL
+	body_parts_covered = COVERAGE_ALL_BUT_HANDFEET
 	armor = ARMOR_LEATHER
 	allowed_race = NON_DWARVEN_RACE_TYPES
 
@@ -274,7 +274,7 @@
 /obj/item/clothing/suit/roguetown/armor/leather/bikini
 	name = "皮胸衣"
 	desc = "柔韧牛皮甲。轻便，总比没有强。剪裁后专门保护心口与髋部。"
-	body_parts_covered = CHEST|GROIN
+	body_parts_covered = COVERAGE_TORSO
 	icon_state = "leatherkini"
 	item_state = "leatherkini"
 	allowed_sex = list(FEMALE, MALE)
@@ -284,7 +284,7 @@
 /obj/item/clothing/suit/roguetown/armor/leather/studded/bikini
 	name = "铆钉皮胸衣"
 	desc = "铆钉皮革是所有兽皮与皮革中最耐用的一种，同时也同样轻便。剪裁后专门保护心口与髋部。"
-	body_parts_covered = CHEST|GROIN
+	body_parts_covered = COVERAGE_TORSO
 	icon_state = "studleatherkini"
 	item_state = "studleatherkini"
 	allowed_sex = list(MALE, FEMALE)
@@ -293,7 +293,7 @@
 /obj/item/clothing/suit/roguetown/armor/leather/hide/bikini
 	name = "兽皮胸衣"
 	desc = "由野兽皮制成的轻甲，比普通皮甲耐用得多。剪裁后专门保护心口与髋部。"
-	body_parts_covered = CHEST|GROIN
+	body_parts_covered = COVERAGE_TORSO
 	icon_state = "hidearmorkini"
 	item_state = "hidearmorkini"
 	allowed_sex = list(MALE, FEMALE)
@@ -359,7 +359,7 @@
 
 	slot_flags = ITEM_SLOT_ARMOR
 	armor = ARMOR_LEATHER
-	body_parts_covered = COVERAGE_ALL_BUT_LEGS
+	body_parts_covered = COVERAGE_ALL_BUT_HANDLEGS
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
 
 	detail_tag = "_detail"
@@ -407,7 +407,7 @@
 	icon_state = "hand"
 	item_state = "hand"
 	armor = ARMOR_LEATHER
-	body_parts_covered = COVERAGE_ALL_BUT_LEGS
+	body_parts_covered = COVERAGE_ALL_BUT_HANDLEGS
 
 /obj/item/clothing/suit/roguetown/armor/leather/newkeep/heir
 	name = "继承人制服"
@@ -428,7 +428,7 @@
 	desc = ""
 	icon_state = "councillor"
 	item_state = "councillor"
-	body_parts_covered = COVERAGE_ALL_BUT_LEGS
+	body_parts_covered = COVERAGE_ALL_BUT_HANDLEGS
 
 /obj/item/clothing/suit/roguetown/armor/leather/newkeep/magos
 	name = "魔导师长袍"
@@ -436,14 +436,14 @@
 	icon_state = "magos"
 	item_state = "magos"
 	slot_flags = ITEM_SLOT_ARMOR
-	body_parts_covered = COVERAGE_ALL_BUT_LEGS
+	body_parts_covered = COVERAGE_ALL_BUT_HANDLEGS
 
 /obj/item/clothing/suit/roguetown/armor/leather/newkeep/steward
 	name = "管家背心"
 	desc = "利落而现代的装束，以真金刺绣。"
 	icon_state = "steward"
 	item_state = "steward"
-	body_parts_covered = COVERAGE_ALL_BUT_LEGS
+	body_parts_covered = COVERAGE_ALL_BUT_HANDLEGS
 	armor = ARMOR_PADDED_BAD
 
 /obj/item/clothing/head/roguetown/duchess_hood

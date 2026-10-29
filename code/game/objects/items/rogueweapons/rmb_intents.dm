@@ -225,7 +225,7 @@
 		to_chat(user, span_notice("我打乱了[L.p_their()]的架势！"))
 		perc = 100
 
-	perc = CLAMP(perc, 0, 90)
+	perc = CLAMP(perc, 10, 90)
 
 	if(L.has_status_effect(/datum/status_effect/buff/clash))
 		L.remove_status_effect(/datum/status_effect/buff/clash)

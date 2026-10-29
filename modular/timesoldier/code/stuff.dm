@@ -1,10 +1,3 @@
-#define FUTURE_VOICE_MALE_GENERIC "Male Generic" // regular guy.
-#define FUTURE_VOICE_FEMALE "Female" // girlboss.
-
-#define FUTURE_LANGUAGE_IMPERIAL "Imperial"
-#define FUTURE_LANGUAGE_NEW_IMPERIAL "New Imperial"
-
-
 /obj/item/reagent_containers/food/snacks/rogue/timesoldier/ferenchow
 	name = "费伦提亚军粮罐头"
 	desc = "<span class='yellow'><i>在王田大批量生产，管饱，而且出乎意料地好吃。里面装的是人人喜爱、受伊欧拉祝福的炖肉。</i></span>"

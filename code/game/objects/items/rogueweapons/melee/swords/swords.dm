@@ -944,7 +944,7 @@
 	name = "白银长剑"
 	desc = "一柄以纯银铸刃的长剑。它的重量压的不只是你的手，还有你的灵魂；那是一道无言誓约，要你挺身对抗潜伏于长夜中的恐怖。 </br>“挥剑要精准，也要有其意义，诸神的征募者。长夜漫漫，无数恶徒都在图谋文明的覆灭，而阿斯特拉塔的目光却望向别处。只要你仍持此剑，责任就仍在召唤你。”"
 	icon_state = "silverlongsword"
-	sheathe_icon = "psysword"
+	sheathe_icon = "silverlongsword"
 	force = 20
 	force_wielded = 25
 	minstr = 9
@@ -1102,7 +1102,7 @@
 		/datum/intent/sword/chop/short,
 		)
 	icon_state = "eastshortsword"
-	sheathe_icon = "mulyeog"
+	sheathe_icon = "kodachi"
 
 /obj/item/rogueweapon/sword/short/falchion
 	name = "法刀"
@@ -1234,9 +1234,10 @@
 	desc = "一把据称源自格伦泽的“Großesmesser”，意为“大刀”。这是一种供民用与军用的基 \
 	础单刃剑，尤其擅长挥砍与劈斩，并以钢打造。 它能完全胜任猎剑的用途，而这一把还更加耐用。"
 	icon_state = "smesser"
+	sheathe_icon = "smesser"
 	force = 24	//Hunting sword + 4
 	max_blade_int = 250	//Sword + 50
-	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/axe/chop, /datum/intent/sword/strike)
+	possible_item_intents = list(/datum/intent/sword/cut/sabre, /datum/intent/axe/chop, /datum/intent/sword/cut/rend/messer, /datum/intent/sword/strike)
 	minstr = 6	// Hunting sword +2
 	wdefense = 4	//Hunting sword +2
 
@@ -1251,12 +1252,13 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = 100
-	sheathe_icon = "isword"
+	sheathe_icon = "imesser"
 
 /obj/item/rogueweapon/sword/short/messer/iron/virtue
 	name = "决斗猎剑"
 	desc = "一把为决斗用途改制的基础铁制猎剑，加装了护手，并采用更纤细的握柄，以兼顾舒适与速度。"
 	icon_state = "dmesser"
+	sheathe_icon = "dmesser"
 	swingsound = BLADEWOOSH_SMALL
 	wdefense = 3
 	wbalance = WBALANCE_SWIFT
@@ -1266,6 +1268,7 @@
 	desc = "一把铜制猎剑。杀伤力逊于它的铁制同类。"
 	force = 20 // Worse force. This weapon has steel integ instead of iron integ. Don't ask me why, it was that way before too.
 	icon_state = "cmesser"
+	sheathe_icon = "cmesser"
 	minstr = 4
 	wdefense = 2
 	smeltresult = /obj/item/ingot/copper
@@ -1357,6 +1360,7 @@
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = 100
 	icon_state = "isaber"
+	sheathe_icon = "isaber"
 
 /obj/item/rogueweapon/sword/sabre/steppesman
 	name = "阿夫尼克的沙什卡"
@@ -1422,6 +1426,7 @@
 	name = "精灵军刀"
 	desc = "这把制作精良的军刀采用了精灵风格设计。"
 	icon_state = "esaber"
+	sheathe_icon = "esaber"
 	item_state = "esaber"
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
@@ -1653,7 +1658,7 @@
 	name = "白银刺剑"
 	desc = "一把篮形护手刺剑，装配着纯银细刃。它因岩丘的猎巫人而留名于世，虽说落在未经训练之人手里会显得笨重，却意外地擅长格挡与还击。"
 	icon_state = "silverrapier"
-	sheathe_icon = "psyrapier"
+	sheathe_icon = "silverrapier"
 	max_integrity = 225
 	max_blade_int = 225
 	force = 20
@@ -1678,7 +1683,7 @@
 	name = "普赛顿刺剑"
 	desc = "一把篮形护手刺剑，装配着纯银细刃。如此华美的兵器不仅能穿透异教徒锁甲的缝隙，也象征着奥塔万外交使节的权威。"
 	icon_state = "silverrapier"
-	sheathe_icon = "rapier"
+	sheathe_icon = "silverrapier"
 	max_integrity = 225
 	max_blade_int = 225
 	force = 20
@@ -1926,7 +1931,7 @@
 	desc = "为贵族而精心设计，却诞生于卑劣的目的：以祭牲之血满足远古神话中的力量。这柄纳莱迪  长 \
 	剑，更常被称作“兰道刀”，如今则用以平息复仇怨灵的恨意——并非通过流血，而是通过斩断。"
 	icon_state = "ram_dao"
-	sheathe_icon = "scabbard_decsword3"
+	sheathe_icon = "decsword3"
 	force = 25
 	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/axe/bash/battle)
 	gripped_intents = null
@@ -2518,6 +2523,7 @@
 	这把武器  似乎创造性地把普赛多尼亚最古老兵器的致命斩击之能，与一种心理威慑结 \
 	合了起来——你清楚  它的持有者多半连车夫本人都能买通，却仍选择亲手杀掉你。"
 	icon_state = "goldswordking"
+	sheathe_icon = "goldswordking"
 	max_integrity = 75
 	max_blade_int = 75
 	sellprice = 300

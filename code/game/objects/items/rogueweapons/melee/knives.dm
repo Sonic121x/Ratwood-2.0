@@ -833,6 +833,7 @@
 	desc = "这把美丽匕首采用精巧的精灵风设计，也更加锋利。"
 	force = 22
 	icon_state = "elfdagger"
+	sheathe_icon = "elfdagger"
 	item_state = "elfdag"
 	last_used = 0
 	is_silver = FALSE

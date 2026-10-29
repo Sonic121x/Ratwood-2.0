@@ -7,7 +7,7 @@
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "衬垫连衣裙"
 	desc = "这件连衣裙内衬了皮革来增强防护。弩箭和箭矢还是会轻易穿透。"
-	body_parts_covered = COVERAGE_FULL
+	body_parts_covered = COVERAGE_ALL_BUT_HANDFEET
 	icon_state = "armordress"
 	armor = ARMOR_LEATHER
 	blocksound = SOFTHIT
@@ -31,7 +31,7 @@
 	icon = 'icons/roguetown/clothing/shirts_royalty.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts_royalty.dmi'
 	desc = "厚实、衬垫充足且舒适的连衣裙，深受冬季贵族欢迎。"
-	body_parts_covered = COVERAGE_FULL
+	body_parts_covered = COVERAGE_ALL_BUT_HANDFEET
 	icon_state = "winterdress"
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_shirts_royalty.dmi'
 	boobed = TRUE
