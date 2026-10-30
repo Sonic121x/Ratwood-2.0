@@ -27,6 +27,7 @@
 	name = "净水水袋"
 	desc = "青铜管沿着这只水袋的袋口盘旋延展，构成复杂而令人目眩的图样。"
 	icon_state = "water-purifier"
+	volume = 150 //doubling the amount due to the cost
 	desc_uncorked = "青铜管沿着这只水袋的袋口盘旋延展，构成复杂而令人目眩的图样。袋口的盖子已打开。"
 	var/filtered_reagents = list(/datum/reagent/water/gross, /datum/reagent/water/bathwater,/datum/reagent/water/salty) // List of liquids it turns into drinkable water
 

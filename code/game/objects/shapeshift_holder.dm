@@ -80,11 +80,12 @@
 		returning.notransform = FALSE
 
 		// leave a track to indicate something has shifted out here
-		var/obj/effect/track/the_evidence = new(returning.loc)
-		the_evidence.handle_creation(returning)
-		the_evidence.track_type = "逐渐化作人形足迹的兽类脚印"
-		the_evidence.ambiguous_track_type = "可疑的脚印"
-		the_evidence.base_diff = 6
+		if(!death)
+			var/obj/effect/track/the_evidence = new(returning.loc)
+			the_evidence.handle_creation(returning)
+			the_evidence.track_type = "逐渐化作人形足迹的兽类脚印"
+			the_evidence.ambiguous_track_type = "可疑的脚印"
+			the_evidence.base_diff = 6
 		if (knockout)
 			returning.Unconscious(knockout, TRUE, TRUE)
 			returning.visible_message(span_boldwarning("[returning]在一阵令人作呕的血肉扭动中变回了人形，随即昏倒在地！"), span_userdanger("我急忙挣脱先前形体那正在衰败的生命力，可这份负担还是太沉重了——"))

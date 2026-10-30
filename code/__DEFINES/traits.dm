@@ -409,6 +409,7 @@
 // Intended for very powerful, very specific or gimmicky weapon skills.
 // Firearms, as an example, is one of them. We do not let someone get above JMAN without it.
 #define TRAIT_FUSILIER "火枪手"//Firearm above JMAN, since mass training is possible. On top of removing dangerous interactions.
+#define TRAIT_ENGINEER "工程师知识"// this should never be given to anyone besides the guild engineer.
 
 //item and enchantment traits should go under here as new ones get added
 #define TRAIT_ENGINEERING_GOGGLES "工程护目镜"
@@ -553,6 +554,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_ABYSSOR_SWIM = span_info("游泳时，我比同伴们更不容易疲惫。"),
 	TRAIT_LONGSTRIDER = span_info("无论地形多么险恶，我的每一步都能稳稳踏准落点。"),
 	TRAIT_TRAINED_SMITH = span_info("我已受过长久训练，再多加磨炼，终能锻出传奇之器。"),
+	TRAIT_ENGINEER = span_info("我受过训练，能够制造专门化的武器与机械。"),
 	TRAIT_KAZENGUNITE_SMITH = span_info("我研究过古老的风郡锻造传统，从玉钢的反复折叠，到小札片的塑形，再到刃纹的淬火。如今我已能在铁砧前打造他们的兵甲。"),
 	TRAIT_CAUTIOUS_FISHER = span_info("我熟知垂钓中的种种危险，也知道该如何避开深处不必要的注意。"),
 	TRAIT_DEATHSIGHT = span_info("我能感知到附近何时有人引来了冥下侍女的注视。"),
@@ -823,6 +825,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NOTIGHTGRABMESSAGE "notightgrabmessage" // Hides grab tightening messages.
 #define TRAIT_NOSSDINDICATOR "nossdindicator" // Hides the SSD indicator. Used with scrying.
 #define TRAIT_NOSTRUGGLE "nostruggle" // Instant grabs on someone else.
+#define TRAIT_OOZE_SUFFERING "ooze_suffering" // Held by a suffering ooze; dying now is permanent.
 #define TRAIT_GARROTED "garroted" // Garrote-wired. Used for a snowflaked grab with item relevant tracking.
 #define TRAIT_INDEXED "indexed" // Used in Indexer-mailing to prevent false-flags.
 #define TRAIT_ACCUSED "accused" // Used in Indexer-mailing to prevent false-flags.

@@ -1293,17 +1293,19 @@
 
 //Only a 'woodenstaff' for the purpose of CDR on spells.
 /obj/item/rogueweapon/woodstaff/implement/greater/sojourner
+	base_implement_name = "行旅者法杖"
 	name = "行旅者法杖"
-	desc = "这是一柄旧普赛顿长矛残留下来的部分。它的矛尖已经磨钝，倒刺和三叉形矛首也全被拆去。 如 \
-	今它承担着更高贵的使命，成了行旅者施法用的法杖。不过若力气够大，仍能把钝尖狠狠干出去。"
-	icon_state = "psystaff"//Temp
+	desc = "这是一柄旧普赛顿长矛残留下来的部分。它的矛尖已经磨钝，倒刺和三叉形矛首也全被拆去。 \
+	如今它承担着更高贵的使命，成了行旅者施法用的法杖。不过若力气够大，仍能把钝尖狠狠干出去。"
+	icon = 'icons/roguetown/weapons/64.dmi'
+	icon_state = "psystaff"
 	possible_item_intents = list(SPEAR_BASH, /datum/intent/special/magicarc)
 	gripped_intents = list(/datum/intent/spear/thrust/blunted, /datum/intent/special/magicarc, /datum/intent/mace/smash/wood/ranged)
 	force = 18
 	force_wielded = 20//Worse than just using a knife, really, despite the range.
 	thrown_bclass = BCLASS_STAB
 	throwforce = 20
-	max_integrity = 150
+	max_integrity = 200
 	max_blade_int = 180
 	smeltresult = /obj/item/ingot/silverblessed
 	is_silver = TRUE

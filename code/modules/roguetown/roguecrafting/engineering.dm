@@ -154,7 +154,7 @@
 	reqs = list(/obj/item/ingot/steel = 2, /obj/item/natural/fibers = 1, /obj/item/natural/wood/plank = 2)
 	structurecraft = /obj/machinery/artificer_table
 	skillcraft = /datum/skill/craft/engineering
-	craftdiff = 5
+	craftdiff = 4
 	display_category = ITEM_CAT_ENG_COMBAT
 
 /datum/crafting_recipe/roguetown/engineering/twentybolts
@@ -210,6 +210,11 @@
 						/obj/item/ammo_casing/caseless/rogue/bolt/bronze,
 						/obj/item/ammo_casing/caseless/rogue/bolt/bronze
 					)
+	structurecraft = /obj/machinery/artificer_table
+	skillcraft = /datum/skill/craft/engineering
+	craftdiff = 3
+	display_category = ITEM_CAT_ENG_COMBAT
+
 /datum/crafting_recipe/roguetown/engineering/heavyboltsten
 	name = "重型弩矢 ×10"
 	reqs = list(/obj/item/natural/wood/plank = 4, /obj/item/ingot/iron = 2)
@@ -224,7 +229,11 @@
 					/obj/projectile/bullet/reusable/heavy_bolt,
 					/obj/projectile/bullet/reusable/heavy_bolt
 				)
-	
+	structurecraft = /obj/machinery/artificer_table
+	skillcraft = /datum/skill/craft/engineering
+	craftdiff = 3
+	display_category = ITEM_CAT_ENG_COMBAT
+
 //pyro arrow crafting, from stonekeep
 /datum/crafting_recipe/roguetown/engineering/pyrobolt
 	name = "燃火弩矢"
@@ -665,58 +674,6 @@
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 4 
 	display_category = ITEM_CAT_ENG_COMBAT
-//------------------ Mortar Shells --------------
-// high explosive shells for the bombard
-
-/datum/crafting_recipe/roguetown/engineering/highexplosiveimpact
-	name = "高爆臼炮装药"
-	category = "Explosives"
-	result = /obj/item/cannonball/explosive
-	reqs = list(/obj/item/tntstick = 2, /obj/item/alch/coaldust = 1, /obj/item/paper = 4)
-	structurecraft = /obj/machinery/artificer_table
-	skillcraft = /datum/skill/craft/engineering
-	craftdiff = 5
-	display_category = ITEM_CAT_ENG_COMBAT
-
-/datum/crafting_recipe/roguetown/engineering/canistershotimpact
-	name = "榴霰臼炮装药"
-	category = "Explosives"
-	result = /obj/item/cannonball/canister
-	reqs = list(/obj/item/ammo_casing/caseless/bullet/grapeshot = 3, /obj/item/alch/coaldust = 1, /obj/item/paper = 4)
-	structurecraft = /obj/machinery/artificer_table
-	skillcraft = /datum/skill/craft/engineering
-	craftdiff = 5
-	display_category = ITEM_CAT_ENG_COMBAT
-
-/datum/crafting_recipe/roguetown/engineering/smokeimpact
-	name = "烟幕臼炮装药"
-	category = "Explosives"
-	result = /obj/item/cannonball/smoke
-	reqs = list(/obj/item/bomb/smoke = 3, /obj/item/alch/coaldust = 1, /obj/item/paper = 4)
-	structurecraft = /obj/machinery/artificer_table
-	skillcraft = /datum/skill/craft/engineering
-	craftdiff = 5
-	display_category = ITEM_CAT_ENG_COMBAT
-
-/datum/crafting_recipe/roguetown/engineering/flareimpact
-	name = "照明臼炮装药"
-	category = "Explosives"
-	result = /obj/item/cannonball/flare
-	reqs = list(/obj/item/rogueore/cinnabar = 2, /obj/item/alch/coaldust = 1, /obj/item/paper = 4)
-	structurecraft = /obj/machinery/artificer_table
-	skillcraft = /datum/skill/craft/engineering
-	craftdiff = 5
-	display_category = ITEM_CAT_ENG_COMBAT
-
-/datum/crafting_recipe/roguetown/engineering/incendiaryimpact
-	name = "燃烧臼炮装药"
-	category = "Explosives"
-	result = /obj/item/cannonball/incendiary
-	reqs = list(/obj/item/alch/firedust = 2, /obj/item/alch/coaldust = 1, /obj/item/paper = 4)
-	structurecraft = /obj/machinery/artificer_table
-	skillcraft = /datum/skill/craft/engineering
-	craftdiff = 5
-	display_category = ITEM_CAT_ENG_COMBAT
 
 /datum/crafting_recipe/roguetown/engineering/ramrod
 	name = "装药杆"
@@ -726,14 +683,4 @@
 	structurecraft = /obj/machinery/artificer_table
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 2
-	display_category = ITEM_CAT_ENG_COMBAT
-
-/datum/crafting_recipe/roguetown/engineering/palantir
-	name = "臼炮瞄准真知晶球"
-	category = "Explosives"
-	result = /obj/item/rogueweapon/palantir
-	reqs = list(/obj/item/roguegear/bronze = 2, /obj/item/ingot/bronze = 1, /obj/item/paper = 2, /obj/item/rogueore/cinnabar = 1)
-	structurecraft = /obj/machinery/artificer_table
-	skillcraft = /datum/skill/craft/engineering
-	craftdiff = 6 // self explanatory why
 	display_category = ITEM_CAT_ENG_COMBAT

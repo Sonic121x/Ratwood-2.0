@@ -2,63 +2,92 @@
 	name = "随机机械零件"
 	desc = "一枚齿牙打磨精细、用于严密咬合的齿轮。"
 	icon_state = "gear"
+	w_class = WEIGHT_CLASS_SMALL
 	var/on_icon
 	var/off_icon
 	icon = 'icons/roguetown/items/misc.dmi'
-	w_class = WEIGHT_CLASS_SMALL
 	smeltresult = /obj/item/ingot/bronze
 	slot_flags = ITEM_SLOT_HIP
+		//this is what we normally power things with
 	var/obj/item/accepted_power_source = /obj/item/roguegear/bronze
+	//this is what we use to double power items with, this isn't for all devices
+	var/obj/item/prime_power_source = /obj/item/roguegear/wood/reliable
 	/// This is the amount of charges we get per power source
 	var/charge_per_source = 5
+	var/charge_per_prime = 10
+	//allows you to store several charges
+	var/max_stored_charge = 20
 	var/current_charge = 0
+	var/charge_per_use = 1
 	var/misfire_chance
 	var/sneaky_misfire_chance
 	/// Are we misfiring? Important for chain reactions.
 	var/misfiring = FALSE
 	obj_flags_ignore = TRUE
 	/// If this contraption should accept cogs that alter its behaviour
-	var/cog_accept = TRUE
 
 /obj/item/contraption/getonmobprop(tag)
 	. = ..()
 	if(tag)
 		switch(tag)
 			if("gen")
-				return list("shrink" = 0.5,
-"sx" = -6,
-"sy" = -2,
-"nx" = 9,
-"ny" = -1,
-"wx" = -6,
-"wy" = -1,
-"ex" = -2,
-"ey" = -3,
-"northabove" = 0,
-"southabove" = 1,
-"eastabove" = 1,
-"westabove" = 0,
-"nturn" = 21,
-"sturn" = -18,
-"wturn" = -18,
-"eturn" = 21,
-"nflip" = 0,
-"sflip" = 8,
-"wflip" = 8,
-"eflip" = 0)
+				return list(
+						"shrink" = 0.5,
+						"sx" = -6,
+						"sy" = -2,
+						"nx" = 9,
+						"ny" = -1,
+						"wx" = -6,
+						"wy" = -1,
+						"ex" = -2,
+						"ey" = -3,
+						"northabove" = 0,
+						"southabove" = 1,
+						"eastabove" = 1,
+						"westabove" = 0,
+						"nturn" = 21,
+						"sturn" = -18,
+						"wturn" = -18,
+						"eturn" = 21,
+						"nflip" = 0,
+						"sflip" = 8,
+						"wflip" = 8,
+						"eflip" = 0
+					)
 			if("onbelt")
-				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
+				return list(
+						"shrink" = 0.3,
+						"sx" = -2,
+						"sy" = -5,
+						"nx" = 4,
+						"ny" = -5,
+						"wx" = 0,
+						"wy" = -5,
+						"ex" = 2,
+						"ey" = -5,
+						"nturn" = 0,
+						"sturn" = 0,
+						"wturn" = 0,
+						"eturn" = 0,
+						"nflip" = 0,
+						"sflip" = 0,
+						"wflip" = 0,
+						"eflip" = 0,
+						"northabove" = 0,
+						"southabove" = 1,
+						"eastabove" = 1,
+						"westabove" = 0
+					)
 
 /obj/item/contraption/examine(mob/user)
 	. = ..()
-	if(!istype(user, /mob/living))
-		return
-	var/mob/living/player = user
-	var/skill = player.get_skill_level(/datum/skill/craft/engineering)
+	var/skill = isobserver(user) ? SKILL_LEVEL_LEGENDARY : user.get_skill_level(/datum/skill/craft/engineering)
+	var/power_sources = "[initial(accepted_power_source.name)][prime_power_source ? " or [initial(prime_power_source.name)]" : ""]"
 	if(current_charge)
-		. += span_warning("这件装置还剩 [current_charge] 次充能。")
-	if(!current_charge)
-		. += span_warning("这件装置需要一个新的[initial(accepted_power_source.name)]才能运作。")
+		. += span_warning("这件装置还剩 [current_charge] / [max_stored_charge] 次充能。")
+		. += span_warning("它依靠[power_sources]运作。")
+	else
+		. += span_warning("这件装置需要一个新的[power_sources]才能运作。")
 	if(misfire_chance && skill < 6)
 		if(skill > 2)
 			. += span_warning("你估算这件装置的故障概率大约介于 [max(0, (misfire_chance - skill) - rand(4))]% 到 [max(2, (misfire_chance - skill) + rand(3))]% 之间。")
@@ -67,8 +96,8 @@
 	if(skill >= 6 && sneaky_misfire_chance)
 		. += span_warning("这件装置若落在缺乏经验的人手里，有可能发生灾难性故障。")
 
-/obj/item/contraption/proc/battery_collapse(obj/O, mob/living/user)
-	to_chat(user, span_info("[accepted_power_source.name]耗尽后化为了乌有。"))
+/obj/item/contraption/proc/battery_collapse(atom/A, mob/living/user)
+	to_chat(user, span_info("[initial(accepted_power_source.name)]耗尽后化为了乌有。"))
 	playsound(src, pick('sound/combat/hits/onmetal/grille (1).ogg', 'sound/combat/hits/onmetal/grille (2).ogg', 'sound/combat/hits/onmetal/grille (3).ogg'), 100, FALSE)
 	shake_camera(user, 1, 1)
 	var/datum/effect_system/spark_spread/S = new()
@@ -77,56 +106,49 @@
 	S.start()
 	return
 
-/obj/item/contraption/proc/misfire(obj/O, mob/living/user)
+/obj/item/contraption/proc/misfire(atom/A, mob/living/user)
 	user.mind.add_sleep_experience(/datum/skill/craft/engineering, (user.STAINT * 5))
 	to_chat(user, span_info("糟了。"))
 	playsound(src, 'sound/misc/bell.ogg', 100)
-	addtimer(CALLBACK(src, PROC_REF(misfire_result), O, user), rand(5, 30))
+	addtimer(CALLBACK(src, PROC_REF(misfire_result), A, user), rand(5, 30))
 
-/obj/item/contraption/proc/misfire_result(obj/O, mob/living/user)
+/obj/item/contraption/proc/misfire_result(atom/A, mob/living/user)
 	misfiring = TRUE
 	explosion(src, light_impact_range = 3, flame_range = 1, smoke = TRUE, soundin = pick('sound/misc/explode/bottlebomb (1).ogg','sound/misc/explode/bottlebomb (2).ogg'))
 	qdel(src)
 
-/obj/item/contraption/proc/charge_deduction(obj/O, mob/living/user, deduction)
+/obj/item/contraption/proc/charge_deduction(atom/A, mob/living/user, deduction)
 	current_charge -= deduction
 	if(!current_charge)
-		addtimer(CALLBACK(src, PROC_REF(battery_collapse), O, user), 5)
+		addtimer(CALLBACK(src, PROC_REF(battery_collapse), A, user), 5)
 
 /obj/item/contraption/attackby(obj/item/I, mob/user, params)
-	var/datum/effect_system/spark_spread/S = new()
-	var/turf/front = get_turf(src)
-	if(istype(I, /obj/item/roguegear/wood) && cog_accept)
-		var/obj/item/roguegear/wood/cog = I
-		if(cog.misfire_modification || cog.misfire_modification == 0)
-			misfire_chance = cog.misfire_modification
-		if(cog.name_prefix)
-			name = "[cog.name_prefix] [initial(name)]"
-		else if(!cog.name_prefix)
-			name = initial(name)
-		qdel(cog)
-		playsound(src, pick('sound/combat/hits/onwood/fence_hit1.ogg', 'sound/combat/hits/onwood/fence_hit2.ogg', 'sound/combat/hits/onwood/fence_hit3.ogg'), 100, FALSE)
-		shake_camera(user, 1, 1)
-		S.set_up(1, 1, front)
-		S.start()
-		to_chat(user, "<span class='warning'>已插入[cog.name]！</span>")
 	if(istype(I, accepted_power_source))
-		user.changeNext_move(CLICK_CD_FAST)
-		S.set_up(1, 1, front)
-		S.start()
-		if(current_charge)
-			to_chat(user, span_info("我试着插入[I.name]，但里面已经有一个[initial(accepted_power_source.name)]了！"))
-			playsound(src, 'sound/combat/hits/blunt/woodblunt (2).ogg', 100, TRUE)
-			shake_camera(user, 1, 1)
-		else
-			to_chat(user, span_info("我插入了[I.name]，[name]随即开始滴答作响。"))
-			current_charge = charge_per_source
-			playsound(src, 'sound/combat/hits/blunt/woodblunt (2).ogg', 100, TRUE)
-			qdel(I)
-			addtimer(CALLBACK(src, PROC_REF(play_clock_sound)), 5)
+		insert_power_source(I, user, charge_per_source)
+	if(istype(I, prime_power_source))
+		insert_power_source(I, user, charge_per_prime)
 	if(istype(I, /obj/item/rogueweapon/hammer))
 		hammer_action(I, user)
 	..()
+
+/obj/item/contraption/proc/insert_power_source(obj/item/I, mob/user, amount)
+	user.changeNext_move(CLICK_CD_FAST)
+	var/datum/effect_system/spark_spread/S = new()
+	S.set_up(1, 1, get_turf(src))
+	S.start()
+	playsound(src, 'sound/combat/hits/blunt/woodblunt (2).ogg', 100, TRUE)
+	var/room = max_stored_charge - current_charge
+	if(room < charge_per_source)
+		to_chat(user, span_info("我试着装入[I.name]，可里面已经有一个[initial(accepted_power_source.name)]了！"))
+		shake_camera(user, 1, 1)
+		return
+	var/message = "我装入[I.name]，[name]随即开始滴答作响。"
+	if(amount > charge_per_source)
+		message += (room < amount) ? "我觉得还没完全用尽，就已经达到容量上限了。" : "它得到了大幅提升。"
+	to_chat(user, span_info(message))
+	current_charge = min(current_charge + amount, max_stored_charge)
+	qdel(I)
+	addtimer(CALLBACK(src, PROC_REF(play_clock_sound)), 5)
 
 /obj/item/contraption/proc/hammer_action(obj/item/I, mob/user)
 	user.changeNext_move(CLICK_CD_FAST)
@@ -164,7 +186,7 @@
 //Shamelessly stolen multitool code
 /obj/item/contraption/linker
 	name = "工程扳手"
-	desc = "这件奇特的装置能通过某种未知的校准方法连接机械，让它们在远距离间彼此联动。"
+	desc = "这件奇特的装置能通过某种未知的校准方法连接机械，让它们在远距离间彼此联动。它以齿轮为食。"
 	icon = 'icons/obj/wrenches.dmi'
 	icon_state = "brasswrench"
 	w_class = WEIGHT_CLASS_SMALL
@@ -172,13 +194,15 @@
 	var/datum/buffer // simple machine buffer for device linkage
 	smeltresult = /obj/item/ingot/bronze
 	charge_per_source = 20
+	max_stored_charge = 80
 	grid_width = 64
 	grid_height = 32
 
 /obj/item/contraption/linker/master
 	name = "公会大师扳手"
 	desc = "能够完成比标准扳手更高级的链接操作。别让学徒碰它。"
-	charge_per_source = 200
+	charge_per_source = 20
+	max_stored_charge = 100
 
 /obj/item/contraption/linker/hammer_action(obj/item/I, mob/user)
 	return
@@ -222,16 +246,18 @@
 	UnregisterSignal(buffer, COMSIG_QDELETING)
 	buffer = null
 
-
-
 /obj/item/contraption/wood_metalizer
 	name = "木转金属器"
 	desc = "一项天才或疯子的造物。这件受诅咒的装置不知为何能把木头变成金属。"
 	icon_state = "metalizer"
 	on_icon = "metalizer_flick"
 	off_icon = "metalizer_off"
-	w_class = WEIGHT_CLASS_BULKY
+	w_class = WEIGHT_CLASS_NORMAL
 	charge_per_source = 10
+	charge_per_prime = 20
+	max_stored_charge = 100
+	grid_height = 64
+	grid_width = 64
 
 /obj
 	/// This is the result when the wood metalizer artifact is used on this item
@@ -299,8 +325,10 @@
 	off_icon = "smelter_off"
 	w_class = WEIGHT_CLASS_BULKY
 	accepted_power_source = /obj/item/rogueore/coal
+	prime_power_source = null
 	misfire_chance = 0
-	charge_per_source = 12
+	charge_per_source = 10
+	max_stored_charge = 20
 
 /obj/item/contraption/smelter/misfire_result()
 	misfiring = TRUE
@@ -390,15 +418,20 @@
 	qdel(src)
 
 /obj/item/contraption/shears
+	possible_item_intents = list(/datum/intent/use,/datum/intent/snip)
+	max_integrity = 150
 	name = "截肢剪"
 	desc = "一把依靠动力运作的剪具，用于将肢体与患者干净利落地分离。要让刀刃对准，务必让患者保持不动。"
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "shears"
 	on_icon = "shears"
 	off_icon = "shears"
-	w_class = WEIGHT_CLASS_BULKY
+	w_class = WEIGHT_CLASS_SMALL
 	smeltresult = /obj/item/ingot/bronze
-	charge_per_source = 8
+	charge_per_source = 5
+	max_stored_charge = 20
+	grid_height = 32
+	grid_width = 64
 
 /obj/item/contraption/shears/hammer_action(obj/item/I, mob/user)
 	return
@@ -437,12 +470,25 @@
 	if(patient.stat != DEAD && (patient.jitteriness || patient.mobility_flags & MOBILITY_STAND)) //jittering will make it harder to secure the shears, even if you can't otherwise move
 		amputation_speed_mod *= 1.5 //15*0.5*1.5=11.25
 
-	var/skill_modifier = 1.5 - (user.get_skill_level(/datum/skill/craft/engineering) / 6)
+	var/skill_modifier = 1
+	if(user.get_skill_level(/datum/skill/craft/engineering)>(user.get_skill_level(/datum/skill/misc/medicine))) //use the higher skill
+		skill_modifier = 1.5 - (user.get_skill_level(/datum/skill/craft/engineering) / 6)
+	else //default to using medicine with no engineering skill
+		skill_modifier = 1.5 - (user.get_skill_level(/datum/skill/misc/medicine) / 6)
 	if(do_after(user, 15 SECONDS * amputation_speed_mod * skill_modifier, target = patient))
 		playsound(get_turf(patient), 'sound/misc/guillotine.ogg', 20, TRUE)
 		limb_snip_candidate.drop_limb(TRUE)
 		user.visible_message(span_danger("[src]猛然闭合，切断了[patient]的[limb_snip_candidate.name]。"), span_notice("你用[src]切掉了[patient]的[limb_snip_candidate.name]。"))
 		charge_deduction(amputee, user, 1)
+
+/obj/item/contraption/shears/attack_obj(obj/O, mob/living/user)
+	if(user.used_intent.type == /datum/intent/snip && isitem(O))
+		var/obj/item/item = O
+		var/sewing = user.get_skill_level(/datum/skill/craft/sewing)
+		var/time_skill = max(sewing, user.get_skill_level(/datum/skill/craft/engineering))
+		if(item.try_salvage(user, time_skill, clamp(sewing + 1, 1, 6)))
+			return
+	return ..()
 
 /obj/item/contraption/lock_imprinter
 	name = "锁印器"
@@ -450,12 +496,15 @@
 	icon_state = "imprinter"
 	on_icon = "imprinter_flick"
 	off_icon = "imprinter_off"
-	w_class = WEIGHT_CLASS_BULKY
+	w_class = WEIGHT_CLASS_NORMAL
 	accepted_power_source = /obj/item/customlock
+	prime_power_source = null
 	misfire_chance = 0
 	sneaky_misfire_chance = 0
-	charge_per_source = 4
-	cog_accept = FALSE
+	charge_per_source = 10
+	max_stored_charge = 20
+	grid_height = 32
+	grid_width = 64
 	var/list/allowed_locks = list(/obj/structure/mineral_door, /obj/structure/closet, /obj/structure/roguemachine/steward, /obj/structure/roguemachine/vendor, /obj/structure/roguemachine/goldface)
 	var/stored_lock_id = "artificer"
 	var/stored_lock_hash = 354

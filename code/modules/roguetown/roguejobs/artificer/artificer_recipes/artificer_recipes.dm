@@ -244,9 +244,9 @@
 	skill_level = 3
 
 /datum/artificer_recipe/contraptions/mess_kit
-	name = "行军炊具 (+2 铁锭)" // 3 Iron, cuz you get a pot, a pan and other things for free.
+	name = "行军炊具 (+1 铁锭)" // reduced to two iron because it really isn't worth three
 	required_item = /obj/item/ingot/iron
-	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/iron)
+	additional_items = list(/obj/item/ingot/iron)
 	created_item = /obj/item/storage/gadget/messkit
 	hammers_per_item = 5
 	skill_level = 2
@@ -322,7 +322,7 @@
 	name = "伏特护手 (+1 锡锭)(+2 青铜齿轮)(+1 辰砂)"
 	required_item = /obj/item/ingot/bronze
 	additional_items = list(/obj/item/roguegear/bronze, /obj/item/roguegear/bronze,/obj/item/ingot/tin, /obj/item/rogueore/cinnabar)
-	created_item = /obj/item/clothing/gloves/roguetown/contraption/voltic
+	created_item = /obj/item/clothing/gloves/roguetown/chain/contraption/voltic
 	hammers_per_item = 12
 	skill_level = 4
 
@@ -341,61 +341,13 @@
 	hammers_per_item = 14
 	skill_level = 5
 
-/datum/artificer_recipe/contraptions/bombardframe
-	name = "轻型臼炮架 (+1 钢锭, +2 青铜齿轮, +3 木板)"
-	required_item = /obj/item/ingot/steel
-	additional_items = list(/obj/item/natural/wood/plank, /obj/item/natural/wood/plank, /obj/item/natural/wood/plank, /obj/item/roguegear/bronze, /obj/item/roguegear/bronze, /obj/item/ingot/steel)
-	created_item = /obj/item/bombard_frame
-	hammers_per_item = 8
-	skill_level = 3
-
-/datum/artificer_recipe/contraptions/roughironbarrel
-	name = "粗糙铁炮管（+3 铁锭）"
-	required_item = /obj/item/ingot/iron
-	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/iron, /obj/item/ingot/iron)
-	created_item = /obj/item/bombard_roughbarrel
-	hammers_per_item = 8
-	skill_level = 5
-
-/datum/artificer_recipe/contraptions/partiallyrefinedbarrel
-	name = "初步精炼的铁炮管（3 铁锭 + 粗糙铁炮管）"
-	required_item = /obj/item/ingot/iron
-	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/iron, /obj/item/ingot/iron, /obj/item/bombard_roughbarrel)
-	created_item = /obj/item/bombard_partiallyrefinedbarrel
-	hammers_per_item = 10
-	skill_level = 5
-
-/datum/artificer_recipe/contraptions/sandedbarrel
-	name = "打磨过的铁炮管（+3 沙子，+2 石粉，+1 初步精炼的铁炮管）"
-	required_item = /obj/item/ingot/iron
-	additional_items = list(/obj/item/natural/dirtclod/sand, /obj/item/natural/dirtclod/sand, /obj/item/natural/dirtclod/sand, /obj/item/alch/stonedust, /obj/item/alch/stonedust, /obj/item/bombard_partiallyrefinedbarrel)
-	created_item = /obj/item/bombard_sandedbarrel
-	hammers_per_item = 8
-	skill_level = 5
-
-/datum/artificer_recipe/contraptions/repairedsandedbarrel
-	name = "修复打磨过的炮管（+3 铁锭，+1 打磨过的铁炮管）"
-	required_item = /obj/item/ingot/iron
-	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/iron, /obj/item/ingot/iron, /obj/item/bombard_sandedbarrel)
-	created_item = /obj/item/bombard_sandedrepairedbarrel
-	hammers_per_item = 10
-	skill_level = 5
-
-/datum/artificer_recipe/contraptions/bombardbarrel
-	name = "射石炮炮管（+5 铁锭，+1 修复过的打磨炮管）"
-	required_item = /obj/item/ingot/iron
-	additional_items = list(/obj/item/ingot/iron, /obj/item/ingot/iron, /obj/item/ingot/iron, /obj/item/bombard_sandedrepairedbarrel)
-	created_item = /obj/item/bombard_barrel
-	hammers_per_item = 8
-	skill_level = 5
-
 /datum/artificer_recipe/contraptions/dwarven_music_box
 	name = "矮人音乐盒 (+2 青铜锭) (+2 青铜齿轮) (+1 阿米索兹)"
 	required_item = /obj/item/ingot/bronze
 	additional_items = list(/obj/item/roguegear/bronze, /obj/item/roguegear/bronze, /obj/item/ingot/bronze, /obj/item/ingot/bronze, /obj/item/roguegem/amethyst)
 	created_item = /obj/item/dmusicbox
 	hammers_per_item = 6
-	skill_level = 6
+	skill_level = 5
 
 // --------- WEAPON -----------
 
