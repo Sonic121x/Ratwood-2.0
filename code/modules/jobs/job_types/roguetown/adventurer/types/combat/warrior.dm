@@ -464,6 +464,7 @@
 		/datum/skill/craft/alchemy = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/hunting = SKILL_LEVEL_APPRENTICE,
 		)
+	vice_restrictions = list(/datum/charflaw/silverweakness) //oversight lmao
 	extra_context = "该子职业可在开局时选择一把银制武器，并从三种修习路线中择一：每条路线都会提供不同等级的护甲训练、独特特质，以及对若干属性的小幅 1 点加成。年老角色在该子职业上会更为娴熟。"
 
 /datum/outfit/job/roguetown/adventurer/mhunter/pre_equip(mob/living/carbon/human/H, visualsOnly)
