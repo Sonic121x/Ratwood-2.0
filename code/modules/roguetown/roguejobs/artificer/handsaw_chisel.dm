@@ -24,8 +24,8 @@
 	is_tool = TRUE
 
 /obj/item/rogueweapon/handsaw/bronze
-	name = "bronze handsaw"
-	desc = "The serrated half of a bronzen pair, keen to saw away at its problems."
+	name = "青铜手锯"
+	desc = "青铜工具搭档中带锯齿的那一件，随时准备锯开面前的难题。"
 	icon_state = "bronzehandsaw"
 	max_blade_int = 400
 	smeltresult = /obj/item/ingot/bronze
@@ -67,8 +67,8 @@
 	var/chisel_prefix = ""
 
 /obj/item/rogueweapon/chisel/bronze
-	name = "bronze chisel"
-	desc = "The blunted half of a bronzen pair, for issues requiring a steady trepanning. Add something to strike it with before doing stonework, like a mallet or a stone."
+	name = "青铜凿子"
+	desc = "青铜工具搭档中带钝端的那一件，适合需要稳手凿孔的活计。加工石料前，先配上木槌或石头等敲击工具。"
 	icon_state = "bronzechisel"
 	max_blade_int = 400
 	smeltresult = /obj/item/ingot/bronze

@@ -254,29 +254,29 @@
 	craftdiff = 0
 
 /datum/anvil_recipe/tools/bronze/hammer
-	name = "Hammer, Bronze (+1 Stick)"
+	name = "青铜锤，另需1根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/hammer/bronze
 	i_type = "Tools"
 
 /datum/anvil_recipe/tools/bronze/handsaw
-	name = "Handsaw, Bronze (+1 Stick)"
+	name = "青铜手锯，另需1根木棍"
 	req_bar = /obj/item/ingot/bronze
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/handsaw/bronze
 
 /datum/anvil_recipe/tools/bronze/chisel
-	name = "Chisel, Bronze"
+	name = "青铜凿子"
 	created_item = /obj/item/rogueweapon/chisel/bronze
 
 /datum/anvil_recipe/tools/bronze/shovel
-	name = "Shovel, Bronze (+2 Sticks)"
+	name = "青铜锹，另需2根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick, /obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/shovel/bronze
 	i_type = "Tools"
 
 /datum/anvil_recipe/tools/bronze/spade
-	name = "Spade, Bronze (+1 Sticks)"
+	name = "青铜铲，另需1根木棍"
 	additional_items = list(/obj/item/grown/log/tree/stick)
 	created_item = /obj/item/rogueweapon/shovel/bronze/spade
 	i_type = "Tools"

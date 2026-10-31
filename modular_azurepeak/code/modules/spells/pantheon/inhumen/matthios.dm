@@ -420,7 +420,7 @@
 			inspec += "<br><span class='purple'>[get_stat_display_name(S)]</span> \Roman [attached_effect.effectedstats[S]]"
 		else if(attached_effect.effectedstats[S] < 0)
 			var/newnum = attached_effect.effectedstats[S] * -1
-			inspec += "<br><span class='danger'>[S]</span> \Roman [newnum]"
+			inspec += "<br><span class='danger'>[get_stat_display_name(S)]</span> \Roman [newnum]"
 
 	inspec += "<br>----------------------"
 	to_chat(user, "[inspec.Join()]")

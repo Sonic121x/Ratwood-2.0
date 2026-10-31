@@ -82,7 +82,7 @@
 /obj/item/contraption/examine(mob/user)
 	. = ..()
 	var/skill = isobserver(user) ? SKILL_LEVEL_LEGENDARY : user.get_skill_level(/datum/skill/craft/engineering)
-	var/power_sources = "[initial(accepted_power_source.name)][prime_power_source ? " or [initial(prime_power_source.name)]" : ""]"
+	var/power_sources = "[initial(accepted_power_source.name)][prime_power_source ? "或[initial(prime_power_source.name)]" : ""]"
 	if(current_charge)
 		. += span_warning("这件装置还剩 [current_charge] / [max_stored_charge] 次充能。")
 		. += span_warning("它依靠[power_sources]运作。")

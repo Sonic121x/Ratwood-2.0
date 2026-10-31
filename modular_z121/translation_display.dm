@@ -54,6 +54,20 @@
 	var/choice = input(user, message, title) as anything in options
 	return options[choice]
 
+/proc/get_direction_display(direction)
+	var/static/list/display_names = list(
+		"north" = "北方",
+		"south" = "南方",
+		"east" = "东方",
+		"west" = "西方",
+		"northeast" = "东北方",
+		"southeast" = "东南方",
+		"northwest" = "西北方",
+		"southwest" = "西南方"
+	)
+	var/direction_name = dir2text(direction)
+	return display_names[direction_name] || direction_name
+
 /// Bounty labels may be translated without changing the upstream switch values.
 /proc/input_wretch_bounty_severity(mob/user)
 	var/list/options = list(

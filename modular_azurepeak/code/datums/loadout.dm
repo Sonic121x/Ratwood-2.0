@@ -1323,15 +1323,15 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/clothing/cloak/kazengun
 
 /datum/loadout_item/shoulderpad_metal
-	name = "Plate spaulders"
+	name = "板甲护肩"
 	path = /obj/item/clothing/cloak/volfmantle/shoulderpad
 
 /datum/loadout_item/shoulderpad_leatherheavy
-	name = "Leather spaulders"
+	name = "皮革护肩"
 	path = /obj/item/clothing/cloak/volfmantle/shoulderpad/leather
 
 /datum/loadout_item/shoulderpad_leatherlight
-	name = "Light leather spaulders"
+	name = "轻型皮革护肩"
 	path = /obj/item/clothing/cloak/volfmantle/shoulderpad/lightleather
 
 // SHOES
@@ -1859,7 +1859,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	triumph_cost = 3
 
 /datum/loadout_item/padded_kini
-	name = "Padded corslet"
+	name = "软垫胸衣"
 	path = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/bikini
 	triumph_cost = 3
 

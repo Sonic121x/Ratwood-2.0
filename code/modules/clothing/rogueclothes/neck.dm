@@ -698,8 +698,8 @@
 		REMOVE_TRAIT(user, TRAIT_WORN_SILVER_PSICROSS, REF(src))
 
 /obj/item/clothing/neck/roguetown/psicross/silver/sojourner
-	name = "gilded silver psycross"
-	desc = "A silver psycross beneath a fine layer of gold, honoring Naledian tradition without forsaking the Inquisition's silver. 'Purity afloat, for paradise awaits!'"
+	name = "镀金银质普赛圣十字"
+	desc = "一枚覆着薄薄镀金层的银质普赛圣十字，既尊重纳莱迪传统，也不舍弃宗教裁判所推崇的白银。'让纯洁扬帆，天国正在前方！'"
 	icon_state = "psycross_g"
 	item_state = "psycross_g"
 	is_gold = TRUE

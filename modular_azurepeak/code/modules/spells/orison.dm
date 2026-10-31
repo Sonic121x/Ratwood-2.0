@@ -297,7 +297,7 @@
 /datum/reagent/medicine/pestra
 	abstract_type = /datum/reagent/medicine/pestra
 	color = "#008145"
-	taste_description = "terrible bitterness"
+	taste_description = "难以忍受的苦涩"
 	taste_mult = 3
 	/// Brute and burn healed per tick, other damage heals more
 	var/heal = 1
@@ -306,8 +306,8 @@
 	var/blood_heal = 10
 	/// Fraction of STAWIL * 10 dealt as pain to the unaccustomed
 	var/pain_mult = 2.5
-	var/heal_message = "Your wounds stitch together, as if under the hands of a competent surgeon."
-	var/pain_message = "Your flesh moves on its own volition causing pain!"
+	var/heal_message = "你的伤口自行缝合起来，仿佛正由一位熟练的外科医师处理。"
+	var/pain_message = "你的血肉自行蠕动，带来阵阵疼痛！"
 
 /datum/reagent/medicine/pestra/on_mob_life(mob/living/carbon/M)
 	if(volume >= 60)
@@ -335,22 +335,22 @@
 	return ..()
 
 /datum/reagent/medicine/pestra/lesser
-	name = "Pestra's Medicine"
-	description = "A bitter green draught that knits flesh, painfully for those unused to it."
+	name = "佩斯特拉的药剂"
+	description = "一剂能使血肉愈合的苦涩绿色药液；不习惯它的人会感到疼痛。"
 
 /datum/reagent/medicine/pestra/greater
-	name = "Pestra's Sacred Medicine"
-	description = "A dark, bitter draught that knits even grievous wounds, at great pain to the unaccustomed."
+	name = "佩斯特拉的圣药"
+	description = "一剂深色苦涩药液，连重伤也能愈合；不习惯它的人会承受剧痛。"
 	color = "#002e18"
-	taste_description = "terrible bitterness and a hint of suffering"
+	taste_description = "难以忍受的苦涩，夹杂一丝苦痛"
 	taste_mult = 5
 	heal = 2
 	other_heal = 5
 	wound_heal = 3
 	blood_heal = 20
 	pain_mult = 5
-	heal_message = "Your wounds stitch together, as if under the hands of a master surgeon."
-	pain_message = "Your flesh shifts and writhes causing immense suffering!"
+	heal_message = "你的伤口自行缝合起来，仿佛正由一位外科大师处理。"
+	pain_message = "你的血肉移位扭动，带来极大的痛苦！"
 
 
 /obj/item/melee/touch_attack/orison/proc/lay_hands(atom/thing, mob/living/carbon/human/user)

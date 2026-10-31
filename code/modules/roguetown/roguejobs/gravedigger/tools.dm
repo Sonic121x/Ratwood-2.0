@@ -381,8 +381,8 @@
 
 /obj/item/rogueweapon/shovel/bronze
 	force = 23
-	name = "bronze shovel"
-	desc = "Dig the mound, so that water may flow into a thirsting crop. Puncture the earth, so that its depths may be catered to your whim. Leaven the soil, so that the buried may know peace from this world's evils."
+	name = "青铜锹"
+	desc = "掘开土垄，让流水滋润干渴的庄稼。凿开大地，让深处的宝藏任你取用。翻松泥土，让长眠者远离世间罪恶，得享安宁。"
 	icon_state = "bronzeshovel"
 	wlength = WLENGTH_SHORT
 	slot_flags = ITEM_SLOT_HIP
@@ -393,8 +393,8 @@
 
 /obj/item/rogueweapon/shovel/bronze/spade
 	force = 17
-	name = "bronze spade"
-	desc = "Dig the mound, so that water may flow into a thirsting crop. Puncture the earth, so that its depths may be catered to your whim. Leaven the soil, so that the buried may know peace from this world's evils."
+	name = "青铜铲"
+	desc = "掘开土垄，让流水滋润干渴的庄稼。凿开大地，让深处的宝藏任你取用。翻松泥土，让长眠者远离世间罪恶，得享安宁。"
 	icon_state = "bronzespade"
 	wlength = WLENGTH_SHORT
 	slot_flags = ITEM_SLOT_HIP

@@ -194,7 +194,7 @@
 			inspec += "<br><span class='purple'>[get_stat_display_name(S)]</span> \Roman [attached_effect.effectedstats[S]]"
 		if(attached_effect.effectedstats[S] < 0)
 			var/newnum = attached_effect.effectedstats[S] * -1
-			inspec += "<br><span class='danger'>[S]</span> \Roman [newnum]"
+			inspec += "<br><span class='danger'>[get_stat_display_name(S)]</span> \Roman [newnum]"
 
 	if(attached_effect && attached_effect.duration != -1 && attached_effect.duration > world.time)
 		var/remaining = attached_effect.duration - world.time

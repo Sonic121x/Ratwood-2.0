@@ -330,7 +330,7 @@
 	component_type = /datum/component/storage/concrete/roguetown/backpack/arti
 
 /obj/item/storage/backpack/rogue/artibackpack/engineer
-	name = "engineer's backpack"
+	name = "工程师背包"
 
 /obj/item/storage/backpack/rogue/backpack/bagpack
 	name = "行囊"

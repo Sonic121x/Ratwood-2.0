@@ -2040,14 +2040,14 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		bag.emptyStorage()
 	user.mind?.add_sleep_experience(/datum/skill/craft/sewing, user.STAINT)
 	if(prob(50 - fail_skill * 10))
-		to_chat(user, span_info("I ruined some of the materials due to my lack of skill..."))
+		to_chat(user, span_info("我手艺不精，弄坏了部分材料……"))
 		playsound(T, 'sound/foley/cloth_rip.ogg', 50, TRUE)
 		qdel(src)
 		return TRUE
 	for(var/i in 1 to salvage_amount - torn_sleeve_number)
 		var/obj/item/salvaged = new salvage_result(T)
 		salvaged.color = color
-	user.visible_message(span_notice("[user] salvages [src] into usable materials."))
+	user.visible_message(span_notice("[user]将[src]拆解成了可用的材料。"))
 	playsound(T, 'sound/items/flint.ogg', 100, TRUE)
 	qdel(src)
 	return TRUE

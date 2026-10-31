@@ -11,7 +11,7 @@ import { Section } from '../components/Localized';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
-
+import { AUTOSMITHER_CATEGORY_LABELS } from './common/displayNames';
 type Requirement = {
   key: string;
   name: string;
@@ -359,7 +359,7 @@ const CurrentQueueSection = ({
                 {entry.index}. {entry.name}
               </Box>
               <Box color="label">
-                {({ Weapons: '武器', Engineering: '工程', Tools: '工具', Ammo: '弹药', Valuables: '贵重物品' } as Record<string, string>)[entry.category] ?? entry.category}
+                {AUTOSMITHER_CATEGORY_LABELS[entry.category] ?? entry.category}
                 {entry.created_num > 1 ? ` x${entry.created_num}` : ''}
               </Box>
             </Stack.Item>
@@ -689,7 +689,7 @@ const RecipePickerSection = ({
                 <Stack.Item grow>
                   <Box bold>{recipe.name}</Box>
                   <Box color="label">
-                    {({ Weapons: '武器', Engineering: '工程', Tools: '工具', Ammo: '弹药', Valuables: '贵重物品' } as Record<string, string>)[recipe.category] ?? recipe.category}
+                    {AUTOSMITHER_CATEGORY_LABELS[recipe.category] ?? recipe.category}
                     {recipe.created_num > 1 ? ` x${recipe.created_num}` : ''}
                   </Box>
                 </Stack.Item>

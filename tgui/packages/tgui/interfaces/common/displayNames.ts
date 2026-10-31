@@ -17,6 +17,15 @@ export const NAVIGATOR_CATEGORY_LABELS: Record<string, string> = {
   Miscellaneous: '杂货',
 };
 
+export const AUTOSMITHER_CATEGORY_LABELS: Record<string, string> = {
+  Weapons: '武器',
+  Engineering: '工造器具',
+  Tools: '工具',
+  Ammo: '弹药',
+  Valuables: '贵重物品',
+  'Unknown Category': '未知分类',
+};
+
 export const DANGER_LEVEL_LABELS: Record<string, string> = {
   Safe: '安全',
   Low: '低危',
