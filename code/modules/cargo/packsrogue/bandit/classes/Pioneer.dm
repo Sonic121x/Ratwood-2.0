@@ -111,7 +111,7 @@
 	contains = list(/obj/item/rogueweapon/stoneaxe/woodcut/pick)
 
 /datum/supply_pack/rogue/Pioneer/dolabra
-	name = "Eleonora"
+	name = "埃莉奥诺拉"
 	cost = 150
 	contains = list(/obj/item/rogueweapon/stoneaxe/woodcut/steel/woodcutter/dolabra/pioneer)
 

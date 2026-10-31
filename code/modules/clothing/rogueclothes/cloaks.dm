@@ -1440,8 +1440,8 @@
 	dropshrink = null
 
 /obj/item/clothing/cloak/volfmantle/shoulderpad
-	name = "plate spaulders"
-	desc = "An heavy metallic spaulder designed to strike awe and demand submission on the hearts of others."
+	name = "板甲护肩"
+	desc = "一件沉重的金属护肩，意在震慑他人，使其心生臣服。"
 	icon_state = "metalshoulderpad"
 	item_state = "metalshoulderpad"
 	slot_flags = ITEM_SLOT_CLOAK
@@ -1449,8 +1449,8 @@
 	cold_protection = ARM_RIGHT
 
 /obj/item/clothing/cloak/volfmantle/shoulderpad/leather
-	name = "leather spaulders"
-	desc = "A pair of leather shoulder protections to look bigger and dominant."
+	name = "皮革护肩"
+	desc = "一副皮革护肩，能让佩戴者显得更加魁梧而威严。"
 	icon_state = "leathershoulderpad"
 	item_state = "leathershoulderpad"
 	slot_flags = ITEM_SLOT_CLOAK
@@ -1458,8 +1458,8 @@
 	cold_protection = ARM_LEFT | ARM_RIGHT
 
 /obj/item/clothing/cloak/volfmantle/shoulderpad/lightleather
-	name = "light leather spaulders"
-	desc = "An small pair of leather pads for shoulder protection."
+	name = "轻型皮革护肩"
+	desc = "一副用于保护肩膀的小巧皮垫。"
 	icon_state = "lightleathershoulderpad"
 	item_state = "lightleathershoulderpad"
 	slot_flags = ITEM_SLOT_CLOAK

@@ -47,8 +47,8 @@
 	dropshrink = 0.9
 
 /obj/item/clothing/under/roguetown/splintlegs/kneelpad
-	name = "steel poleyns"
-	desc = "Two smalls plate kneel pads designed for good flexibility."
+	name = "钢制护膝"
+	desc = "一副小巧的板甲护膝，兼顾防护与活动自如。"
 	icon_state = "platekneelpad"
 	item_state = "platekneelpad"
 	body_parts_covered = LEGS

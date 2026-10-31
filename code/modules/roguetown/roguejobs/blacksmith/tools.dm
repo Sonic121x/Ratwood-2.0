@@ -270,8 +270,8 @@
 	max_integrity = 10
 
 /obj/item/rogueweapon/hammer/bronze
-	name = "bronze hammer"
-	desc = "'I've been gripping this thing since before I could even walk - I didn't choose this, this is who I am. I just strike it. I don't think.' </br>'I spent my youth desperate to forge a better sword, become a more skilled smith, before I knew it..' </br>'I was old.' </br>'I don't even know what the hell I strike the iron for. But there is still one thing I like about it..' </br>'..the sparks. I like seeing sparks.. ..breathtaking, life, bursting before my eyes for just a moment..'"
+	name = "青铜锤"
+	desc = "'还没学会走路，我就握着这东西了——这不是我选的路，我生来就是这样的人。我只是敲打，从不思索。' </br>'年轻时，我拼命想锻出更好的剑，成为手艺更高明的铁匠，不知不觉间……' </br>'我老了。' </br>'我甚至不知道自己究竟为什么打铁。但还是有一样东西让我喜欢……' </br>'……火花。我喜欢看那些火花……那令人屏息的生命，在我眼前迸放，只此一瞬……'"
 	icon_state = "hammer_bronze"
 	smeltresult = /obj/item/ingot/bronze
 	force = 24

@@ -1,7 +1,7 @@
 /mob/living/carbon/human/proc/attempt_steal(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	// Check from the thief so hiding inside an object does not count as reach.
 	if(!user.Adjacent(target))
-		to_chat(user, span_warning("They're out of reach."))
+		to_chat(user, span_warning("他们离得太远，够不着。"))
 		return
 	var/mob/living/carbon/human/user_human = user
 	var/mob/living/carbon/human/target_human = target
@@ -17,7 +17,7 @@
 	to_chat(user, span_notice("我试图偷走[target_human]身上的东西……"))	
 	if(do_after(user, 5, target = target_human, progress = 0))
 		if(!user.Adjacent(target_human))
-			to_chat(user, span_warning("They're out of reach."))
+			to_chat(user, span_warning("他们离得太远，够不着。"))
 			return
 		if(stealroll > targetperception)
 			//TODO add exp here

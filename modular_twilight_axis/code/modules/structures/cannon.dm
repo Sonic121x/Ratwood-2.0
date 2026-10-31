@@ -7,25 +7,25 @@
 	hides_from_books = TRUE
 
 /datum/anvil_recipe/cannon/cannon
-	name = "Cannon"
+	name = "火炮"
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small,)
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/structure/cannon
 
 /datum/anvil_recipe/cannon/cannonball
-	name = "Cannon Ball"
+	name = "炮弹"
 	additional_items = list(/obj/item/ingot/steel)
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/cannon_shell/cannonball
 
 /datum/anvil_recipe/cannon/grapeshot
-	name = "Grapeshot Shell"
+	name = "葡萄弹"
 	additional_items = list(/obj/item/ingot/steel)
 	req_bar = /obj/item/ingot/steel
 	created_item = /obj/item/cannon_shell/grapeshot
 
 /datum/crafting_recipe/roguetown/survival/fiberfuse
-	name = "fiber fuse"
+	name = "纤维引信"
 
 	result = /obj/item/cannon_fuse/fiber
 	reqs = list(
@@ -35,7 +35,7 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/survival/parchmentfuse
-	name = "parchment fuse"
+	name = "羊皮纸引信"
 	result = /obj/item/cannon_fuse/parchment
 	reqs = list(
 		/obj/item/paper = 2,
@@ -44,8 +44,8 @@
 	craftdiff = 1
 
 /obj/item/cannon_fuse
-	name = "fuse"
-	desc = "A fuse for a cannon."
+	name = "引信"
+	desc = "火炮使用的引信。"
 	icon = 'modular_twilight_axis/icons/cannon/cannon_fuse.dmi'
 	icon_state = "fiber_fuse"
 	w_class = WEIGHT_CLASS_SMALL
@@ -54,39 +54,39 @@
 	var/icon_state_lit = "fiber_fuse_lit"
 
 /obj/item/cannon_fuse/fiber
-	name = "fiber fuse"
-	desc = "A standard braided wick coated with grease. It burns relatively slowly, giving the crew time to move to a safe distance."
+	name = "纤维引信"
+	desc = "涂有油脂的普通编织引信。燃烧较慢，能让炮手有时间退到安全距离。"
 	icon_state = "fiber_fuse"
 	icon_state_lit = "fiber_fuse_lit"
 	burn_time = 3 SECONDS
 
 /obj/item/cannon_fuse/parchment
-	name = "parchment fuse"
-	desc = "A paper wick soaked in grease. It burns almost instantly, ensuring a quick shot."
+	name = "羊皮纸引信"
+	desc = "浸过油脂的纸引信，几乎瞬间就会烧完，能迅速引燃火炮。"
 	icon_state = "parchment_fuse"
 	icon_state_lit = "parchment_fuse_lit"
 	burn_time = 1 SECONDS
 
 
 /obj/item/cannon_shell
-	name = "cannon ball"
-	desc = "A cannon ball."
+	name = "炮弹"
+	desc = "一枚炮弹。"
 	icon = 'modular_twilight_axis/icons/cannon/cannon.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/cannon_shell/cannonball
-	name = "cannonball"
-	desc = "A heavy steel cannonball."
+	name = "炮弹"
+	desc = "一枚沉重的钢制炮弹。"
 	icon_state = "cannonball"
 
 /obj/item/cannon_shell/grapeshot
-	name = "grapeshot"
-	desc = "A projectile filled with dozens of small bullets."
+	name = "葡萄弹"
+	desc = "一枚装有数十颗小弹丸的炮弹。"
 	icon_state = "grapeshot"
 
 /obj/projectile/bullet/cannon_debris
-	name = "flying debris"
-	desc = "Pieces of earth and stone."
+	name = "飞散碎屑"
+	desc = "飞散的土石碎块。"
 	icon = 'icons/effects/debris.dmi'
 	icon_state = "shards"
 	color = "#5c544d"
@@ -104,8 +104,8 @@
 	return BULLET_ACT_HIT
 
 /obj/projectile/bullet/cannonball_straight
-	name = "cannonball"
-	desc = "Lead core"
+	name = "炮弹"
+	desc = "铅制弹芯"
 	icon = 'modular_twilight_axis/icons/cannon/cannonball.dmi'
 	icon_state = "ball"
 	damage = 200
@@ -167,7 +167,7 @@
 		return BULLET_ACT_FORCE_PIERCE
 
 	else
-		turf.visible_message(span_danger("The cannonball explodes with a loud bang!"))
+		turf.visible_message(span_danger("炮弹轰然炸开！"))
 
 		for(var/mob/living/mob in range(4, turf))
 			if(!mob.mind || istype(mob, /mob/living/simple_animal))
@@ -222,7 +222,7 @@
 		return BULLET_ACT_HIT
 
 /obj/projectile/bullet/grapeshot_pellet
-	name = "shrapnel"
+	name = "弹片"
 	icon = 'modular_twilight_axis/icons/cannon/ammo.dmi'
 	icon_state = "musketball"
 	damage = 110
@@ -241,8 +241,8 @@
 	return ..()
 
 /obj/structure/cannon
-	name = "Cannon"
-	desc = "A heavy gun on a wheeled carriage. It fires high-explosive shells."
+	name = "火炮"
+	desc = "架在轮式炮架上的重型火炮，可发射高爆炮弹。"
 	icon = 'modular_twilight_axis/icons/cannon/cannon.dmi'
 	icon_state = "cannon"
 	density = TRUE
@@ -290,24 +290,24 @@
 /obj/structure/cannon/examine(mob/user)
 	. = ..()
 	if((world.time - last_fired) < cooldown)
-		. += span_warning("The cannon barrel is still hot from a recent shot!")
+		. += span_warning("火炮刚刚开过火，炮管仍然滚烫！")
 	else
-		. += span_info("The barrel is cold; the gun is ready to be reloaded.")
+		. += span_info("炮管已经冷却，可以重新装填。")
 
 	if(fuse_burning)
-		. += span_bold("THE FUSE IS BURNING AND SPARKLING! A SHOT IS ABOUT TO BE FIRED!")
+		. += span_bold("引信正冒着火花燃烧！火炮马上就要发射了！")
 		return
 
 	if(!powder_loaded)
-		. += span_info("The barrel is empty. You need to load it with gunpowder.")
+		. += span_info("炮管是空的，需要装入火药。")
 	else if(!bullet_loaded)
-		. += span_info("The gunpowder charge has been loaded, but the projectile is missing.")
+		. += span_info("火药已经装好，但还没有装入炮弹。")
 	else if(!rammed)
-		. += span_warning("The gunpowder and projectile are inside the barrel, but the charge hasn't been packed down with a ramrod yet!")
+		. += span_warning("火药和炮弹已经装入炮管，但还没有用装药杆捣实！")
 	else if(!inserted_fuse)
-		. += span_notice("The cannon is ready and sealed. Insert the fuse into the ignition hole..")
+		. += span_notice("火炮已装填妥当，请将引信插入火门。")
 	else
-		. += span_bold("There is a fuse inside the cartridge. Light it to fire the shell!")
+		. += span_bold("引信已就位，点燃即可发射炮弹！")
 
 /obj/structure/cannon/fire_act()
 	if(inserted_fuse && !fuse_burning)
@@ -322,62 +322,62 @@
 	if(.)
 		return
 	if(fuse_burning)
-		to_chat(user, span_warning("The fuse is lit! Don't touch the cannon!"))
+		to_chat(user, span_warning("引信已经点燃！别碰火炮！"))
 		return
 
 	dir = turn(dir, -90)
-	user.visible_message(span_notice("[user] unfolds [src.name]."), span_notice("You aim the cannon at [dir2text(dir)]."))
+	user.visible_message(span_notice("[user]转动了[src.name]。"), span_notice("你将炮口转向[get_direction_display(dir)]。"))
 	playsound(src, 'modular_twilight_axis//sound/cannon/anglecorrection.ogg', 100, TRUE)
 
 /obj/structure/cannon/attackby(obj/item/used_item, mob/user, params)
 	if(istype(used_item, /obj/item/powderflask))
 		var/obj/item/powderflask/powder = used_item
 		if(powder_loaded)
-			to_chat(user, span_warning("The gun is already loaded with gunpowder!"))
+			to_chat(user, span_warning("火炮已经装好火药了！"))
 			return
-		user.visible_message(span_notice("[user] begins to pour gunpowder into the [src.name]..."))
+		user.visible_message(span_notice("[user]开始往[src.name]里倒入火药……"))
 		playsound(src, 'modular_twilight_axis//sound/cannon/powder.ogg', 100, TRUE)
 		if(do_after(user, 3 SECONDS, src))
 			if(QDELETED(powder) || QDELETED(src))
 				return
 			powder_loaded = TRUE
-			to_chat(user, span_notice("You poured gunpowder into the barrel."))
+			to_chat(user, span_notice("你往炮管里倒入了火药。"))
 		return
 
 	if(istype(used_item, /obj/item/cannon_shell))
 		if(!powder_loaded)
-			to_chat(user, span_warning("First, you have to pour in the gunpowder!"))
+			to_chat(user, span_warning("你得先倒入火药！"))
 			return
 		if(bullet_loaded)
-			to_chat(user, span_warning("There's already a shell in the barrel!"))
+			to_chat(user, span_warning("炮管里已经有一枚炮弹了！"))
 			return
 
 		if(user.transferItemToLoc(used_item, src))
 			bullet_loaded = used_item
-			user.visible_message(span_notice("[user] loads a shell into the [src.name]."))
+			user.visible_message(span_notice("[user]往[src.name]里装入了一枚炮弹。"))
 			playsound(src, 'modular_twilight_axis//sound/cannon/loading.ogg', 100, TRUE)
 		return
 
 	if(istype(used_item, /obj/item/rogueweapon/woodstaff/quarterstaff/bombard_sponge))
 		if(!powder_loaded || !bullet_loaded)
-			to_chat(user, span_warning("You don't need to tamp anything down! Load the gunpowder and the projectile first."))
+			to_chat(user, span_warning("现在没有需要捣实的东西！先装入火药和炮弹。"))
 			return
 		if(rammed)
-			to_chat(user, span_warning("The charge in the cannon has already been compacted!!"))
+			to_chat(user, span_warning("炮内装药已经捣实了！"))
 			return
-		user.visible_message(span_notice("[user] begins to compress the charge in the [src.name] with a ramrod..."))
+		user.visible_message(span_notice("[user]开始用装药杆捣实[src.name]内的装药……"))
 		playsound(src, 'modular_twilight_axis//sound/cannon/ramrod.ogg', 100, TRUE)
 		if(do_after(user, 6 SECONDS, src))
 			rammed = TRUE
-			user.visible_message(span_notice("[user] packs the charge down with a ramrod. Now the cannon is ready to fire."))
+			user.visible_message(span_notice("[user]用装药杆捣实了装药。火炮现在已做好发射准备。"))
 		return
 
 	if(istype(used_item, /obj/item/cannon_fuse) || istype(used_item, /obj/item/natural/fibers) || istype(used_item, /obj/item/natural/bundle/fibers))
 		if(inserted_fuse)
-			to_chat(user, span_warning("There's already a fuse in the cannon's firing port!"))
+			to_chat(user, span_warning("火炮的火门里已经有引信了！"))
 			return
 		if(!rammed)
-			to_chat(user, span_warning("Before inserting the fuse, tamp down the gunpowder and the projectile with a ramrod!"))
+			to_chat(user, span_warning("插入引信前，先用装药杆捣实火药和炮弹！"))
 			return
 
 		if(istype(used_item, /obj/item/natural/fibers) || istype(used_item, /obj/item/natural/bundle/fibers))
@@ -393,7 +393,7 @@
 			if(user.transferItemToLoc(used_item, src))
 				inserted_fuse = used_item
 
-		user.visible_message(span_notice("[user] inserts the wick into the [src.name]."))
+		user.visible_message(span_notice("[user]将引信插入了[src.name]。"))
 		playsound(src, 'sound/foley/bandage.ogg', 100, FALSE)
 		update_icon()
 		return
@@ -417,9 +417,9 @@
 	update_icon()
 
 	if(user)
-		user.visible_message(span_danger("[user] lighting the fuse on [src.name]! It's about to go off!"))
+		user.visible_message(span_danger("[user]点燃了[src.name]上的引信！火炮马上就要发射了！"))
 	else
-		visible_message(span_danger("The wick at [src.name] starts to spark menacingly! It's about to fire!"))
+		visible_message(span_danger("[src.name]上的引信开始迸出危险的火花！火炮马上就要发射了！"))
 
 	playsound(src, 'modular_twilight_axis/sound/cannon/fuse.ogg', 100, FALSE)
 
@@ -492,6 +492,6 @@
 	last_fired = world.time
 
 	if(barrel_integrity <= 0)
-		src.visible_message(span_danger("[src] It breaks apart due to severe barrel wear!"))
+		src.visible_message(span_danger("[src]因炮管严重磨损而炸裂了！"))
 		explosion(get_turf(src), 1, 2, 4, 0, TRUE, FALSE, 2)
 		qdel(src)

@@ -359,8 +359,8 @@
 	max_integrity = ARMOR_INT_CHEST_LIGHT_MEDIUM + 30 //280
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/bikini
-	name = "padded corslet"
-	desc = "A thin padded corslet,worn by those who prefer versatility and agility in combat at the cost of less coverage."
+	name = "软垫胸衣"
+	desc = "一件轻薄的软垫胸衣，适合愿意牺牲防护范围，以换取战斗灵活性与敏捷的人。"
 	icon_state = "paddedkini"
 	item_state = "paddedkini"
 	armor = ARMOR_PADDED

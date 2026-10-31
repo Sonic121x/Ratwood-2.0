@@ -500,13 +500,13 @@ GLOBAL_LIST_EMPTY(redstone_objs)
 			playsound(src, 'sound/misc/chestclose.ogg', 25)
 			update_icon()
 			return TRUE
-		to_chat(user, span_warning("The launcher can't fire anything out of that bag."))
+		to_chat(user, span_warning("发射器无法发射那个袋子里的任何东西。"))
 		return TRUE
 
 	// Quivers: allow all ammo types including javelins; block only slings
 	if(!ammo && istype(I, /obj/item/quiver))
 		if(istype(I, /obj/item/quiver/sling))
-			to_chat(user, span_warning("The launcher can't fire sling bullets."))
+			to_chat(user, span_warning("发射器无法发射投石索弹丸。"))
 			return TRUE
 		if(!user.transferItemToLoc(I, src))
 			return

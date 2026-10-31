@@ -142,8 +142,8 @@
 	armor_class = ARMOR_CLASS_LIGHT //placed in the medium category to keep it with its parent obj
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/bikini/bronze
-	name = "bronze chainmail corslet"
-	desc = "A mail corslet made of bonze rings."
+	name = "青铜锁子甲胸衣"
+	desc = "一件由青铜环编成的锁子甲胸衣。"
 	icon_state = "bchainkini"
 	item_state = "bchainkini"
 	armor = ARMOR_BRONZE

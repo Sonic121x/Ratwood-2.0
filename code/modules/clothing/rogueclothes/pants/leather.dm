@@ -71,8 +71,8 @@
 	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/under/roguetown/trou/leathertights/kneelpads
-	name = "leather poleyns"
-	desc = "A pair of rustic leather poleyns, made to provide basic protection to the kneels."
+	name = "皮革护膝"
+	desc = "一副朴素的皮革护膝，为膝盖提供基本保护。"
 	icon_state = "leatherkneelpad"
 	item_state = "leatherkneelpad"
 	body_parts_covered = LEGS

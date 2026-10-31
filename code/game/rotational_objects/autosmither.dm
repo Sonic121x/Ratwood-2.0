@@ -128,7 +128,7 @@
 	for(var/datum/anvil_recipe/recipe as anything in regular_recipes)
 		var/list/requirements = recipe_req_data(recipe)
 		UNTYPED_LIST_ADD(recipes, list(
-			"name" = recipe.name || "Unknown Recipe",
+			"name" = recipe.name || "未知配方",
 			"category" = recipe.i_type || recipe.category || "Unknown Category",
 			"ref" = REF(recipe),
 			"icon" = spritesheet.icon_class_name(sanitize_css_class_name("recipe_[REF(recipe)]")),
