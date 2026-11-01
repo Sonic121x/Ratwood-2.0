@@ -164,7 +164,6 @@
 		return FALSE
 	to_chat(owner, span_love("我感到腹中涌起一股暖意，我一定是怀孕了！"))
 	pregnant = TRUE
-	//TODO add a way to trigger lactating when pregnancy happens
 	return TRUE
 
 /obj/item/organ/breasts
@@ -177,6 +176,8 @@
 	accessory_type = /datum/sprite_accessory/breasts/pair
 	var/breast_size = DEFAULT_BREASTS_SIZE
 	var/lactating = FALSE
+	/// Waiting to start lactating once the owner becomes pregnant
+	var/lactates_on_impregnation = FALSE
 	var/milk_stored = 0
 	var/milk_max = 75
 	var/branded_writing = ""

@@ -100,8 +100,8 @@
 				beltl = /obj/item/rogueweapon/mace/steel/ancient
 
 /datum/advclass/tribalchieftain/warrior
-	name = "英勇战士"
-	tutorial = "你是部族中最受酋长信任的勇士之一，披挂最好的战甲，手握最沉重的古兵，准备替巨龙与部族撕开前路。"
+	name = "英勇酋长"
+	tutorial = "呜嘎查嘎，最——强——查嘎！"
 	// outfit = /datum/outfit/job/roguetown/tribalchieftain/warrior
 	category_tags = list(CTAG_TRIBALCHIEFTAIN)
 	traits_applied = list(TRAIT_DNR, TRAIT_HEAVYARMOR, TRAIT_TRIBAL, TRAIT_DARKVISION)
