@@ -781,66 +781,6 @@
 	flags_inv = HIDECROTCH|HIDEBOOB
 	allowed_race = NON_DWARVEN_RACE_TYPES
 
-//tattoo code
-/obj/item/clothing/suit/roguetown/shirt/undershirt/easttats
-	name = "布霍伊布杰奥格纹身"
-	anvilrepair = null
-	sewrepair = null
-	desc = "鲁玛氏族沿用的一种神秘纹身，仿效了信义王朝武僧的古老做法。它既是识别同族成员的标记，也是同伴情谊与隐秘兄弟会的象征。纹样呈云形，由神秘墨汁绘成，墨色会像池水波纹般流动，并在你的皮肤受击处瞬间硬化。它的蠕动会让你不寒而栗。"
-	resistance_flags = FIRE_PROOF
-	icon_state = "easttats"
-	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
-	armor = ARMOR_PLATE
-	body_parts_covered = COVERAGE_FULL
-	body_parts_inherent = COVERAGE_FULL
-	icon = 'icons/roguetown/clothing/shirts.dmi'
-	mob_overlay_icon = 'icons/roguetown/clothing/onmob/shirts.dmi'
-	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_shirts.dmi'
-	r_sleeve_status = SLEEVE_NORMAL
-	l_sleeve_status = SLEEVE_NORMAL
-	allowed_race = NON_DWARVEN_RACE_TYPES
-	max_integrity = 250 //Bad armor protection and very basic crit protection, but hard to break completely
-	flags_inv = null //free the breast
-	surgery_cover = FALSE // cauterize and surgery through it.
-	var/repair_amount = 20 //The amount of integrity the tattoos will repair themselves
-	var/repair_time = 60 SECONDS //The amount of time between each repair
-	var/last_repair //last time the tattoos got repaired
-
-/obj/item/clothing/suit/roguetown/shirt/undershirt/easttats/Initialize(mapload)
-	. = ..()
-	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT)
-
-/obj/item/clothing/suit/roguetown/shirt/undershirt/easttats/examine(mob/user)
-	. = ..()
-	. += span_info("这些纹身在连续一分钟未受损后，会开始缓慢自行修复。")
-
-/obj/item/clothing/suit/roguetown/shirt/undershirt/easttats/dropped(mob/living/carbon/human/user)
-	. = ..()
-	if(QDELETED(src))
-		return
-	qdel(src)
-
-
-/obj/item/clothing/suit/roguetown/shirt/undershirt/easttats/take_damage(damage_amount, damage_type, damage_flag, sound_effect, attack_dir, armor_penetration)
-	. = ..()
-	if(obj_integrity < max_integrity)
-		last_repair = world.time
-		START_PROCESSING(SSobj, src)
-		return
-
-/obj/item/clothing/suit/roguetown/shirt/undershirt/easttats/process()
-	if(obj_integrity >= max_integrity)
-		if(obj_broken)
-			obj_fix()
-		STOP_PROCESSING(SSobj, src)
-		src.visible_message(span_notice("[src]流动得更平缓了，它们已经休息完毕并恢复了力量。"), vision_distance = 1)
-		return
-	else if(world.time > src.last_repair + src.repair_time)
-		src.last_repair = world.time
-		src.visible_message(span_notice("[src]开始旋动翻涌，修复着自身的完整度……"), vision_distance = 1)
-		obj_integrity = min(obj_integrity + src.repair_amount, src.max_integrity)
-	..()
-
 //Some vanderlin ports, steward clothes and Hand coats//
 
 /obj/item/clothing/suit/roguetown/shirt/dress/steward

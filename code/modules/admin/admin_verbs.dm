@@ -668,7 +668,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 
 /client/proc/drop_bomb()
 	set category = "-GameMaster-"
-	set name = "爆炸..."
+	set name = "爆炸"
 	set desc = ""
 
 	var/list/choices = list("小型爆炸 (1, 2, 3, 3)", "中型爆炸 (2, 3, 4, 4)", "大型爆炸 (3, 5, 7, 5)", "爆炸上限", "自定义爆炸")
@@ -710,7 +710,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 
 /client/proc/drop_dynex_bomb()
 	set category = "-GameMaster-"
-	set name = "爆炸 - 动态爆炸..."
+	set name = "爆炸 - 动态爆炸"
 	set desc = ""
 
 	var/ex_power = input("爆炸威力：") as null|num

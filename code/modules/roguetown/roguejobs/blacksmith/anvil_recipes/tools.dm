@@ -121,8 +121,8 @@
 	display_category = ITEM_CAT_TOOLS_FIELD
 
 /datum/anvil_recipe/tools/decrepit/tongs
-	name = "衰朽钳子"
-	created_item = /obj/item/rogueweapon/tongs/ancient/decrepit
+	name = "钳子, 古代"
+	created_item = /obj/item/rogueweapon/tongs/ancient
 	i_type = "工具"
 	display_category = ITEM_CAT_TOOLS_WORKSHOP
 

@@ -177,8 +177,8 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	triumph_cost = 3
 
 /datum/loadout_item/ancient_tongs
-	name = "古代铁钳"
-	path = /obj/item/rogueweapon/tongs/ancient/decrepit
+	name = "古代钳子"
+	path = /obj/item/rogueweapon/tongs/ancient
 	triumph_cost = 3
 
 /datum/loadout_item/ancient_pick

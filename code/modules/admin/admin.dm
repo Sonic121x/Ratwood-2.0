@@ -1125,7 +1125,7 @@
 /datum/admins/proc/spawn_atom(object as text)
 	set category = "-GameMaster-"
 	set desc = ""
-	set name = "生成..."
+	set name = "生成"
 
 	if(!check_rights(R_SPAWN) || !object)
 		return

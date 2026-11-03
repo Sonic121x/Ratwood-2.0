@@ -63,7 +63,10 @@
 				to_chat(user, span_warning("[src]正在熔炼。等它完成，或者用水把它浇灭后再把里面的东西取出来。"))
 				return
 			if(!length(contained_items))
-				to_chat(user, span_warn("里面没什么可取出的。"))
+				if(user.m_intent == MOVE_INTENT_SNEAK)
+					add_item(attacking_item, user)
+					return
+				to_chat(user, span_warn("里面没什么可取出的。用 潜行 来熔炼钳子。"))
 				return
 			var/obj/item/item_to_remove = contained_items[contained_items.len]
 			contained_items -= item_to_remove

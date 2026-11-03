@@ -464,7 +464,7 @@
 	outfit = /datum/outfit/job/roguetown/wretch/hereticmonk
 	class_select_category = CLASS_CAT_CLERIC
 	category_tags = list(CTAG_WRETCH)
-	traits_applied = list(TRAIT_RITUALIST, TRAIT_CRITICAL_RESISTANCE)
+	traits_applied = list(TRAIT_RITUALIST, TRAIT_BLOOD_RESISTANCE)
 	maximum_possible_slots = 1
 	//+9 weighted stat total. Atgervi Shaman's stats 1:1.
 	subclass_stats = list(
@@ -530,7 +530,6 @@
 				to_chat(H, span_warning("你舍弃财富与头衔，永不停歇地游历四方，将真理带给世间最蒙昧的角落。"))
 				head = /obj/item/clothing/head/roguetown/headband/monk //Can somebody explain why Adventurer-Monk gets this?
 				neck = /obj/item/clothing/neck/roguetown/leather
-				gloves = /obj/item/clothing/gloves/roguetown/bandages/pugilist
 				armor = /obj/item/clothing/suit/roguetown/shirt/robe/monk
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
 				pants =  /obj/item/clothing/under/roguetown/heavy_leather_pants
@@ -539,7 +538,6 @@
 			if("东方守护者") //Kazengunite fashion. The worst set mechanically, but it's drip or drown in here.
 				to_chat(H, span_warning("神明曾托付你照料并守护一座神龛。你失职了，但未曾失去信仰。于是你踏上旅途，以另一种方式寻求取悦诸神。"))
 				head = /obj/item/clothing/head/roguetown/mentorhat
-				gloves = /obj/item/clothing/gloves/roguetown/eastgloves1
 				armor = /obj/item/clothing/suit/roguetown/armor/basiceast/mentorsuit
 				shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/eastshirt2
 				pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/eastpants1
@@ -548,7 +546,6 @@
 			if("阿特格维萨满") //Pick this and Unarmed. Now you are a true Atgervi Shaman.
 				to_chat(H, span_warning("你那帮更善于投机的同族为了一枚钱币便屈膝跪拜、背弃兽神，而你却从未偏离自己的道路。既然能用毫无节制的蛮力夺取想要之物，又何须卑躬屈膝？"))
 				head = /obj/item/clothing/head/roguetown/helmet/leather/shaman_hood
-				gloves = /obj/item/clothing/gloves/roguetown/angle/gronnfur
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/atgervi
 				shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 				pants = /obj/item/clothing/under/roguetown/trou/leather/atgervi
@@ -573,16 +570,17 @@
 				to_chat(H, span_warning("你曾侍奉凡人与他们的典籍。而从今往后，你只侍奉祂，唯独侍奉祂。"))
 				head = /obj/item/clothing/head/roguetown/roguehood/psydon
 				mask = /obj/item/clothing/head/roguetown/helmet/blacksteel/psythorns
-				gloves = /obj/item/clothing/gloves/roguetown/bandages/weighted
-				armor = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/disciple
+				armor = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/chest/disciple
+				shirt = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/body/disciple
 				pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/otavan
 				wrists = /obj/item/clothing/wrists/roguetown/bracers/psythorns
 				shoes = /obj/item/clothing/shoes/roguetown/boots/psydonboots
 				cloak = /obj/item/clothing/cloak/psydontabard/alt
-		var/monkweapons = list("徒手", style_choice == "东方守护者" ? "薙刀" : "偃月刀", "钢制四分杖", style_choice == "东方守护者" ? "环刀" : (style_choice == "蒙羞门徒（天生护甲）" ? "耐战长剑" : "钢猎剑"), "信仰")
-		var/monkweapon_choice = input(H, "选择你的武器。", "披甲执兵") as anything in monkweapons
+		var/monkweapons = list("拳套武器", "纯粹徒手，禁用武器", "长柄刀", "长杖", "剑", "信仰")
+		var/monkweapon_choice = input(H, "选择你的武器。", "执兵而起") as anything in monkweapons
 		switch(monkweapon_choice)
-			if("徒手")
+			if("拳套武器")
+				ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
 				ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
 				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 4, TRUE)
 				switch(style_choice)
@@ -592,7 +590,25 @@
 						beltr = /obj/item/clothing/gloves/roguetown/knuckles/psydon/old //Worse than steel or bronze knuckledusters, that's the price you pay for the drip and the natural armor.
 					else
 						beltr = /obj/item/clothing/gloves/roguetown/knuckles
-			if("薙刀", "偃月刀")
+			if("纯粹徒手，禁用武器")
+				ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
+				ADD_TRAIT(H, TRAIT_WEAPONLESS, TRAIT_GENERIC)
+				ADD_TRAIT(H, TRAIT_STRONGBITE, TRAIT_GENERIC)
+				ADD_TRAIT(H, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_GENERIC)
+				ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
+				H.change_stat(STATKEY_INT, 1)//true unarmed gets no stat malus
+				H.change_stat(STATKEY_PER, 1)
+				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 5, TRUE)
+				switch(style_choice)
+					if("阿特格维萨满")
+						gloves = /obj/item/clothing/gloves/roguetown/plate/atgervi/heretic
+					if("蒙羞门徒（天生护甲）")
+						H.change_stat(STATKEY_WIL, 2)//puts it 1:1 with abboteer
+						H.change_stat(STATKEY_CON, 1)
+						gloves = /obj/item/clothing/gloves/roguetown/bandages/abboteer
+					else
+						gloves = /obj/item/clothing/gloves/roguetown/bandages/pugilist
+			if("薙刀")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
 				switch(style_choice)

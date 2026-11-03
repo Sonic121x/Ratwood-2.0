@@ -33,8 +33,8 @@
 	..()
 	to_chat(H, span_warning("帷幕拉开，盾阵集结，千重暗影的目光落在你身上。咆哮的角斗士、狂热的持盾者、盛装的武伶；准备迎接下一场较量吧。"))
 	if(H.mind)
-		var/bronzeweapon = list("斯帕塔长剑与徒手技能 +1","青铜三叉戟与徒手技能 +1","青铜巨斧与徒手技能 +1","军团斧镐与徒手技能 +1","青铜翼矛与霍普隆巨盾","阿波菲斯与霍普隆巨盾","短剑与霍普隆盾","科皮斯与霍普隆盾","马凯拉短剑与霍普隆盾","寇派什弯刀与霍普隆盾","青铜战斧与霍普隆盾","青铜战棍与霍普隆盾","青铜连枷与霍普隆盾","青铜矛与霍普隆盾","阿尔贝洛斯与短剑","赤手空拳 - 熟练拳师，力量/意志 +I，智力 -1")
-		var/bronzeweapon_choice = input(H, "选择你的武器。", "为观众献上好戏") as anything in bronzeweapon
+		var/bronzeweapon = list("斯帕塔长剑与徒手技能 +1","青铜三叉戟与徒手技能 +1","青铜巨斧与徒手技能 +1","军团斧镐与徒手技能 +1","青铜翼矛与霍普隆巨盾","阿波菲斯与霍普隆巨盾","短剑与霍普隆盾","科皮斯与霍普隆盾","马凯拉短剑与霍普隆盾","寇派什弯刀与霍普隆盾","青铜战斧与霍普隆盾","青铜战棍与霍普隆盾","青铜连枷与霍普隆盾","青铜矛与霍普隆盾","阿尔贝洛斯与短剑","赤手空拳 - 熟练拳师，力量/意志 +1，智力 -1","拳套 - 纯粹徒手，禁用武器，力量/意志 +1")
+		var/bronzeweapon_choice = input(H, "选择你的武器。", "为观众献上好戏。") as anything in bronzeweapon
 		switch(bronzeweapon_choice)
 			if("斯帕塔长剑与徒手技能 +1")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
@@ -126,41 +126,50 @@
 				H.change_stat(STATKEY_STR, 1)
 				H.change_stat(STATKEY_WIL, 1)
 				H.change_stat(STATKEY_INT, -1)
-
-		var/bronzesidearm = list("青铜标枪袋", "投石索与青铜弹丸", "弓与青铜箭矢", "另一把短剑与双持技艺", "另一把马凯拉短剑与双持技艺", "另一把寇派什弯刀与双持技艺", "另一把青铜战斧与双持技艺")
-		var/bronzesidearm_choice = input(H, "选择你的附加装备。", "准备你的开场演出") as anything in bronzesidearm
-		switch(bronzesidearm_choice)
-			if("青铜标枪袋")
+			if("拳套 - 纯粹徒手，禁用武器，力量/意志 +1")
+				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT, TRUE)
+				H.adjust_skillrank_up_to(/datum/skill/combat/wrestling, SKILL_LEVEL_EXPERT, TRUE)
+				gloves = /obj/item/clothing/gloves/roguetown/bandages/weighted/caestus
 				beltl = /obj/item/quiver/javelin/bronze
-			if("投石索与青铜弹丸")
-				H.adjust_skillrank_up_to(/datum/skill/combat/slings, SKILL_LEVEL_JOURNEYMAN, TRUE)
-				l_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/sling
-				beltl = /obj/item/quiver/sling/bronze
-			if("弓与青铜箭矢")
-				H.adjust_skillrank_up_to(/datum/skill/combat/bows, SKILL_LEVEL_JOURNEYMAN, TRUE)
-				l_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/classic
-				beltl = /obj/item/quiver/bronzearrows
-			if("另一把短剑与双持技艺")
-				ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
-				l_hand = /obj/item/rogueweapon/sword/short/gladius
-				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_APPRENTICE, TRUE)
-				beltl = /obj/item/rogueweapon/scabbard/sword
-			if("另一把马凯拉短剑与双持技艺")//these names may confuse people, but its soulful to display their actual titles rather than "messer"
-				ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
-				l_hand = /obj/item/rogueweapon/sword/short/messer/bronze
-				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_APPRENTICE, TRUE)
-				beltl = /obj/item/rogueweapon/scabbard/sword
-			if("另一把寇派什弯刀与双持技艺")
-				ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
-				l_hand = /obj/item/rogueweapon/sword/sabre/bronzekhopesh
-				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_APPRENTICE, TRUE)
-				beltl = /obj/item/rogueweapon/scabbard/sword
-			if("另一把青铜战斧与双持技艺")
-				ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
-				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_APPRENTICE, TRUE)
-				l_hand = /obj/item/rogueweapon/stoneaxe/woodcut/bronzebattleaxe//i hate this objs naming path, just terrible
+				ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
+				ADD_TRAIT(H, TRAIT_WEAPONLESS, TRAIT_GENERIC)
+				H.change_stat(STATKEY_STR, 1)
+				H.change_stat(STATKEY_WIL, 1)
+		if(bronzeweapon_choice != "拳套 - 纯粹徒手，禁用武器，力量/意志 +1")//if we are pure unarmed only, skip the sidearm menu and just give them javelins
+			var/bronzesidearm = list("青铜标枪袋", "投石索与青铜弹丸", "弓与青铜箭矢", "另一把短剑与双持技艺", "另一把马凯拉短剑与双持技艺", "另一把寇派什弯刀与双持技艺", "另一把青铜战斧与双持技艺")
+			var/bronzesidearm_choice = input(H, "选择你的附加装备。", "准备你的开场演出。") as anything in bronzesidearm
+			switch(bronzesidearm_choice)
+				if("青铜标枪袋")
+					beltl = /obj/item/quiver/javelin/bronze
+				if("投石索与青铜弹丸")
+					H.adjust_skillrank_up_to(/datum/skill/combat/slings, SKILL_LEVEL_JOURNEYMAN, TRUE)
+					l_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/sling
+					beltl = /obj/item/quiver/sling/bronze
+				if("弓与青铜箭矢")
+					H.adjust_skillrank_up_to(/datum/skill/combat/bows, SKILL_LEVEL_JOURNEYMAN, TRUE)
+					l_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/classic
+					beltl = /obj/item/quiver/bronzearrows
+				if("另一把短剑与双持技艺")
+					ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
+					l_hand = /obj/item/rogueweapon/sword/short/gladius
+					H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_APPRENTICE, TRUE)
+					beltl = /obj/item/rogueweapon/scabbard/sword
+				if("另一把马凯拉短剑与双持技艺")//these names may confuse people, but its soulful to display their actual titles rather than "messer"
+					ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
+					l_hand = /obj/item/rogueweapon/sword/short/messer/bronze
+					H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_APPRENTICE, TRUE)
+					beltl = /obj/item/rogueweapon/scabbard/sword
+				if("另一把寇派什弯刀与双持技艺")
+					ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
+					l_hand = /obj/item/rogueweapon/sword/sabre/bronzekhopesh
+					H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_APPRENTICE, TRUE)
+					beltl = /obj/item/rogueweapon/scabbard/sword
+				if("另一把青铜战斧与双持技艺")
+					ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
+					H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_APPRENTICE, TRUE)
+					l_hand = /obj/item/rogueweapon/stoneaxe/woodcut/bronzebattleaxe//i hate this objs naming path, just terrible
 		var/bronzediscipline = list("武伶 - 闪避专家，体质/力量 -I，速度 +III","角斗士 - 皮肤护甲与疼痛耐受","持盾者 - 精良护甲与中甲训练","壁垒 - 全身护甲与重甲训练")
-		var/bronzediscipline_choice = input(H, "选择你的专精。", "拥抱荣耀与死亡") as anything in bronzediscipline
+		var/bronzediscipline_choice = input(H, "选择你的专精。", "拥抱荣耀与死亡。") as anything in bronzediscipline
 		switch(bronzediscipline_choice)
 			if("武伶 - 闪避专家，体质/力量 -I，速度 +III")
 				ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
@@ -184,6 +193,11 @@
 				pants = /obj/item/clothing/under/roguetown/loincloth/brown
 				belt = /obj/item/storage/belt/rogue/leather/battleskirt/breechcloth/red
 				//shirt = /obj/item/clothing/suit/roguetown/shirt/tribalrag/gladiator //no empty hands to put this in, and cannot seem to 'pre-load' the cosmetic slot of a skin armor. Can hang in limbo untill someone figures out how to grant it.
+				if(bronzeweapon_choice == "拳套 - 纯粹徒手，禁用武器，力量/意志 +1")
+					ADD_TRAIT(H, TRAIT_RAGE, TRAIT_GENERIC)
+					ADD_TRAIT(H, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_GENERIC)
+					ADD_TRAIT(H, TRAIT_STRONGBITE, TRAIT_GENERIC)
+					H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/rage)
 			if("持盾者 - 精良护甲与中甲训练")
 				ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 				head = /obj/item/clothing/head/roguetown/helmet/heavy/bronze

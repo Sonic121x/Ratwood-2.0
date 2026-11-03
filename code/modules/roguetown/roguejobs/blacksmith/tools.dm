@@ -386,12 +386,12 @@
 /obj/item/rogueweapon/tongs/update_icon()
 	. = ..()
 	if(!hingot)
-		icon_state = "tongs"
+		icon_state = "[initial(icon_state)]"
 	else
 		if(hott)
-			icon_state = "tongsi1"
+			icon_state = "[initial(icon_state)]i1"
 		else
-			icon_state = "tongsi0"
+			icon_state = "[initial(icon_state)]i0"
 
 /obj/item/rogueweapon/tongs/proc/make_unhot(input)
 	if(hott == input)
@@ -444,34 +444,10 @@
 /obj/item/rogueweapon/tongs/ancient
 	name = "古代钳子"
 	desc = "吉尔青铜 锻成的钳口夹起熔融合金，将其送到铁砧与锤下。很快，它就会锻出新的传奇；一个不再被这教条千年所玷污的传奇。"
+	force = 5
+	max_integrity = 15
 	icon_state = "atongs"
 	smeltresult = /obj/item/ingot/aaslag
-
-/obj/item/rogueweapon/tongs/ancient/update_icon()
-	. = ..()
-	if(!hingot)
-		icon_state = "atongs"
-	else
-		if(hott)
-			icon_state = "atongsi1"
-		else
-			icon_state = "atongsi0"
-
-/obj/item/rogueweapon/tongs/ancient/decrepit
-	name = "衰朽钳子"
-	desc = "这些锈蚀残破的钳口，究竟夹过多少块曾经纯净的合金锭？又有多少性命，间接葬送在由它所夹持锻成的武器之下？也许，是时候让这个数字再增添一笔了。"
-	force = 5
-	max_integrity = 10
-
-/obj/item/rogueweapon/tongs/ancient/decrepit/update_icon()
-	. = ..()
-	if(!hingot)
-		icon_state = "atongs"
-	else
-		if(hott)
-			icon_state = "atongsi1"
-		else
-			icon_state = "atongsi0"
 
 /obj/item/rogueweapon/tongs/blacksteel
 	name = "黑钢钳子"

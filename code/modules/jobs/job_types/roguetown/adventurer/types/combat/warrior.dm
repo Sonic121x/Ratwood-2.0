@@ -209,7 +209,7 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/barbarian
 	allowed_races = ALL_BUT_BLOODLESS
 	cmode_music = 'sound/music/cmode/antag/combat_darkstar.ogg'
-	traits_applied = list(TRAIT_STEELHEARTED, TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN)
+	traits_applied = list(TRAIT_STEELHEARTED, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_BLOOD_RESISTANCE, TRAIT_NOPAINSTUN, TRAIT_RAGE)
 	category_tags = list(CTAG_ADVENTURER, CTAG_COURTAGENT)
 	subclass_stats = list(
 		STATKEY_STR = 3,
@@ -235,92 +235,117 @@
 		/datum/skill/craft/crafting = SKILL_LEVEL_NOVICE,
 		/datum/skill/craft/sewing = SKILL_LEVEL_NOVICE,
 	)
-	extra_context = "该子职业有两种修习路线可选：其一提供专家级拳斗能力与“专家拳师”特质；其二则给予独特装备，并以 1 点速度换取 1 点感知。"
-
+	extra_context = "该子职业有三种修习路线可选：其一提供专家级拳斗能力、“专家拳师”特质以及天生护甲；\
+						其二提供一条鞭子，并以 1 点速度换取 2 点感知；其三则授予你一把巨剑与更强的天生护甲。"
+	virtue_restrictions = list(
+		/datum/virtue/combat/tough_hide,
+	)
 /datum/outfit/job/roguetown/adventurer/barbarian/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	..()
 	to_chat(H, span_warning("你是一名残暴的战士，舍弃甲胄，只信奉最原始的力量。碾碎你的敌人，看着他们在你面前溃逃，听他们的女人放声哀嚎！哦，对了，你还可以专精徒手格斗与摔跤。"))
 	H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 	H.set_blindness(0)
-	if(H.mind)
-		var/weapons = list("青铜拳刃","青铜单手剑","青铜斧","青铜钉头锤","青铜矛","修习 - 青铜鞭","修习 - 青铜软剑","修习 - 徒手")
-		var/weapon_choice = input(H, "选择你的武器。", "执兵而起。") as anything in weapons
-		switch(weapon_choice)
-			if("青铜拳刃")
-				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT, TRUE)
-				head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
-				r_hand = /obj/item/rogueweapon/katar/bronze
-				gloves = /obj/item/clothing/gloves/roguetown/bandages
-			if("青铜斧")
-				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_JOURNEYMAN, TRUE)
-				head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
-				r_hand = /obj/item/rogueweapon/stoneaxe/woodcut/bronze
-				gloves = /obj/item/clothing/gloves/roguetown/bandages
-			if("青铜单手剑")
-				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
-				head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
-				beltr = /obj/item/rogueweapon/scabbard/sword
-				r_hand = /obj/item/rogueweapon/sword/bronze
-				gloves = /obj/item/clothing/gloves/roguetown/bandages
-			if("青铜钉头锤")
-				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_JOURNEYMAN, TRUE)
-				head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
-				r_hand = /obj/item/rogueweapon/mace/bronze
-				gloves = /obj/item/clothing/gloves/roguetown/bandages
-			if("青铜矛")
-				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_JOURNEYMAN, TRUE)
-				H.adjust_skillrank(/datum/skill/misc/hunting, SKILL_LEVEL_NOVICE, TRUE)
-				ADD_TRAIT(H, TRAIT_EXPERT_HUNTER, TRAIT_GENERIC)
-				head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
-				r_hand = /obj/item/rogueweapon/spear/bronze
-				gloves = /obj/item/clothing/gloves/roguetown/bandages
-			if("修习 - 青铜鞭")
-				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_JOURNEYMAN, TRUE)
-				head = /obj/item/clothing/head/roguetown/headband/monk/barbarian
-				armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
-				r_hand = /obj/item/rogueweapon/whip/bronze
-				gloves = /obj/item/clothing/gloves/roguetown/bandages
-				H.change_stat(STATKEY_SPD, -1) //Little more protection, little less speed.
-				H.change_stat(STATKEY_PER, 1) //Allows for more critical usage of the Whip's strengths.
-			if("修习 - 青铜软剑")
-				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_JOURNEYMAN, TRUE)
-				head = /obj/item/clothing/head/roguetown/headband/monk/barbarian
-				armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
-				r_hand = /obj/item/rogueweapon/whip/urumi/bronze
-				gloves = /obj/item/clothing/gloves/roguetown/bandages
-				H.change_stat(STATKEY_SPD, -1) //Little more protection, little less speed.
-				H.change_stat(STATKEY_PER, 1) //Allows for more critical usage of the Whip's strengths.
-			if ("修习 - 徒手")
-				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT, TRUE)
-				ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
-				head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
-				gloves = /obj/item/clothing/gloves/roguetown/bandages/weighted
-
-		var/techniques = list("腾空飞踢 - 击退与额外伤害", "锁喉摔 - 体力伤害", "碎颚摔 - 眩晕减益", "头槌 - 易伤减益") // cool wrestling moves for non-magic guys.
-		var/technique_choice = input(H,"选择你的技法。", "将敌人摔出去") as anything in techniques
-		switch(technique_choice)
-			if("腾空飞踢 - 击退与额外伤害")
-				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/dropkick)
-			if("锁喉摔 - 体力伤害")
-				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/chokeslam)
-			if("碎颚摔 - 眩晕减益")
-				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/stunner)
-			if("头槌 - 易伤减益")
-				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/headbutt)
-
-		belt = /obj/item/storage/belt/rogue/leather/battleskirt/barbarian
-		pants = /obj/item/clothing/under/roguetown/chainlegs/skirt/bronze
-		shoes = /obj/item/clothing/shoes/roguetown/boots/furlinedboots
-		wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/rage)
+	if(!H.mind)
+		return
+	var/weapons = list("青铜拳刃","青铜剑","青铜斧","青铜锤","青铜战棍","青铜矛","青铜连枷","戒律 - 猎鞭者（+2 感知 / -1 速度）","戒律 - 软剑","戒律 - 徒手","戒律 - 健美者")
+	var/weapon_choice = input(H, "选择你的武器。", "执兵而起。") as anything in weapons
+	switch(weapon_choice)
+		if("青铜拳刃")
+			H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT, TRUE)
+			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
+			r_hand = /obj/item/rogueweapon/katar/bronze
+			gloves = /obj/item/clothing/gloves/roguetown/bandages
+		if("青铜斧")
+			H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_JOURNEYMAN, TRUE)
+			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
+			r_hand = /obj/item/rogueweapon/stoneaxe/woodcut/bronze
+			gloves = /obj/item/clothing/gloves/roguetown/bandages
+		if("青铜剑")
+			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
+			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
+			beltr = /obj/item/rogueweapon/scabbard/sword
+			r_hand = /obj/item/rogueweapon/sword/bronze
+			gloves = /obj/item/clothing/gloves/roguetown/bandages
+		if("青铜锤")
+			H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_JOURNEYMAN, TRUE)
+			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
+			r_hand = /obj/item/rogueweapon/mace/bronze
+			gloves = /obj/item/clothing/gloves/roguetown/bandages
+		if("青铜战棍")
+			H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_JOURNEYMAN, TRUE)
+			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
+			r_hand = /obj/item/rogueweapon/mace/warhammer/bronze
+			gloves = /obj/item/clothing/gloves/roguetown/bandages
+		if("青铜矛")
+			// Boar huntah
+			H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_JOURNEYMAN, TRUE)
+			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
+			r_hand = /obj/item/rogueweapon/spear/bronze/winged/strapless
+			gloves = /obj/item/clothing/gloves/roguetown/bandages
+		if("青铜连枷")
+			H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_JOURNEYMAN, TRUE)
+			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
+			r_hand = /obj/item/rogueweapon/flail/bronze
+			gloves = /obj/item/clothing/gloves/roguetown/bandages
+		if("戒律 - 猎鞭者（+2 感知 / -1 速度）")
+			H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_JOURNEYMAN, TRUE)
+			head = /obj/item/clothing/head/roguetown/headband/monk/barbarian
+			armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
+			r_hand = /obj/item/rogueweapon/whip/bronze
+			gloves = /obj/item/clothing/gloves/roguetown/bandages
+			H.change_stat(STATKEY_SPD, -1) //Little more protection, little less speed.
+			H.change_stat(STATKEY_PER, 2) //Allows for more critical usage of the Whip's strengths.
+		if("戒律 - 软剑")
+			H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_JOURNEYMAN, TRUE)
+			head = /obj/item/clothing/head/roguetown/headband/monk/barbarian
+			armor = /obj/item/clothing/suit/roguetown/armor/leather/hide
+			r_hand = /obj/item/rogueweapon/whip/urumi/bronze
+			gloves = /obj/item/clothing/gloves/roguetown/bandages
+			H.change_stat(STATKEY_SPD, -1) //Little more protection, little less speed.
+			H.change_stat(STATKEY_PER, 1) //Allows for more critical usage of the Whip's strengths.
+		if ("戒律 - 徒手")
+			H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT, TRUE)
+			ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)//gives them old crit resistance when stacked with blood resists 0.5x bleed
+			ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_WEAPONLESS, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_STRONGBITE, TRAIT_GENERIC)
+			H.change_stat(STATKEY_INT, 2)//no malus for pure unarmed
+			H.change_stat(STATKEY_WIL, 1)
+			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
+			gloves = /obj/item/clothing/gloves/roguetown/bandages/weighted
+			armor = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/chest/barbarian
+			shirt = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/body/barbarian
+		if ("戒律 - 健美者")
+			ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
+			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
+			armor = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/chest/bodybuilder
+			shirt = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/body/bodybuilder
+			r_hand = /obj/item/rogueweapon/sword/long/exe//gently nudging them to try for the berserker sword
+	var/techniques = list("腾空飞踢 - 击退与额外伤害", "锁喉摔 - 体力伤害", "碎颚摔 - 眩晕减益", "头槌 - 易伤减益") // cool wrestling moves for non-magic guys.
+	var/technique_choice = input(H,"选择你的技法。", "把他们摔出去。") as anything in techniques
+	switch(technique_choice)
+		if("腾空飞踢 - 击退与额外伤害")
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/dropkick)
+		if("锁喉摔 - 体力伤害")
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/chokeslam)
+		if("碎颚摔 - 眩晕减益")
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/stunner)
+		if("头槌 - 易伤减益")
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/headbutt)
+	belt = /obj/item/storage/belt/rogue/leather/battleskirt/barbarian
+	shoes = /obj/item/clothing/shoes/roguetown/boots/furlinedboots
+	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
 	if(should_wear_masc_clothes(H))
 		H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
-		backl = /obj/item/storage/backpack/rogue/satchel
+		pants = /obj/item/clothing/under/roguetown/chainlegs/skirt/bronze
 	if(should_wear_femme_clothes(H))
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/bikini
-		backl = /obj/item/storage/backpack/rogue/satchel
-		pants = /obj/item/clothing/under/roguetown/splintlegs/kneelpad
+		if(weapon_choice != "Discipline - Unarmed" && weapon_choice != "Discipline - Bodybuilder")//tits out
+			armor = /obj/item/clothing/suit/roguetown/armor/leather/bikini
+			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/bikini/bronze
 		cloak = /obj/item/clothing/cloak/volfmantle/shoulderpad/lightleather
-		shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/bikini/bronze
+		pants = /obj/item/clothing/under/roguetown/splintlegs/kneelpad
+	backl = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(
 		/obj/item/flashlight/flare/torch = 1,
 		/obj/item/storage/belt/rogue/pouch/coins/poor = 1,
@@ -908,11 +933,10 @@
 			switch(weapon_choice)
 				if("剑与塔盾")
 					H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
-					r_hand = /obj/item/rogueweapon/sword/short
+					r_hand = /obj/item/rogueweapon/sword/long/exe
 					backr = /obj/item/rogueweapon/shield/tower
-					beltr = /obj/item/rogueweapon/scabbard/sword
 				if("钉锤与塔盾")
-					H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT, TRUE)
+					H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_JOURNEYMAN, TRUE)
 					beltr = /obj/item/rogueweapon/mace
 					backr = /obj/item/rogueweapon/shield/tower
 				if ("两面塔盾！！！")

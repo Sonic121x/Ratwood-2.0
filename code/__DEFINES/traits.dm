@@ -40,6 +40,7 @@
 #define TRAIT_CRIT_THRESHOLD "NPC Respect Crit Threshold"
 #define TRAIT_JOURNEYS_END "旅程终点"
 #define TRAIT_BLOOD_RESISTANCE "血稠" //50% less bleeding
+#define TRAIT_RAGE "狂怒"
 #define TRAIT_IRONMAN "Construct" // basically rotman but not really, used for diff flavor of some things
 #define TRAIT_CRITICAL_WEAKNESS "重创弱性"
 #define TRAIT_SHATTER_WEAKNESS "脆裂之躯"
@@ -502,6 +503,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_CRITICAL_RESISTANCE = span_info("我的体魄坚如铁铸，生命流逝得也更慢。我能扛住那些本会击垮常人的前几道重创，但若反复受创，再坚固的防线也会崩溃。"),
 	TRAIT_JOURNEYS_END = span_info ("生命从血脉中流逝之际，我奋力前行的决心愈发坚定。绝不默然步入那良夜。"),
 	TRAIT_BLOOD_RESISTANCE = span_info("我的身体紧实，血流也更缓。我的出血远少于常人。"),
+	TRAIT_RAGE = span_info ("伤痛与创伤点燃了我的战斗狂怒！"),
 	TRAIT_CRITICAL_WEAKNESS = span_danger("那些别人还能扛住的伤势，对我而言却格外致命。"),
 	TRAIT_SHATTER_WEAKNESS = span_danger("我的身躯格外脆弱易碎。若胸膛或脊柱遭受一次重度的粉碎性打击，我会当场毙命。"),
 	TRAIT_DNR = span_danger("我的灵火已然衰微。我无可指望，这条命便是我仅剩的一切。"),

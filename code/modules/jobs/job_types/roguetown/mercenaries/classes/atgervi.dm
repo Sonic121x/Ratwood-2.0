@@ -90,7 +90,7 @@
 	subclass_languages = list(/datum/language/gronnic)
 	cmode_music = 'sound/music/combat_shaman2.ogg'
 	allowed_races = ALL_BUT_BLOODLESS
-	traits_applied = list(TRAIT_STRONGBITE, TRAIT_CIVILIZEDBARBARIAN, TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN)
+	traits_applied = list(TRAIT_STRONGBITE, TRAIT_CIVILIZEDBARBARIAN, TRAIT_BLOOD_RESISTANCE, TRAIT_NOPAINSTUN)
 	subclass_stats = list(
 		STATKEY_STR = 3,
 		STATKEY_CON = 2,
@@ -123,7 +123,6 @@
 	H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 
 	head = /obj/item/clothing/head/roguetown/helmet/leather/shaman_hood
-	gloves = /obj/item/clothing/gloves/roguetown/plate/atgervi
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/atgervi
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	pants = /obj/item/clothing/under/roguetown/trou/leather/atgervi
@@ -133,8 +132,23 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	neck = /obj/item/storage/belt/rogue/pouch/coins/poor
 	beltl = /obj/item/flashlight/flare/torch
-	H.put_in_hands(new /obj/item/rogueweapon/handclaw/gronn, FALSE)
 	
+	var/unarmed = list("利爪", "纯粹徒手")
+	var/unarmed_choice = input(H,"选择你的仪式武器。", "敬奉先祖。") as anything in unarmed
+	switch(unarmed_choice)
+		if("利爪")//dual claws
+			ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
+			gloves = /obj/item/clothing/gloves/roguetown/angle/gronnfur
+			r_hand = /obj/item/rogueweapon/handclaw/gronn
+			l_hand = /obj/item/rogueweapon/handclaw/gronn
+		if("纯粹徒手")//very good but unlike other pure unarmed subclasses, they dont get rage nor master unarmed since they're miraclists
+			H.change_stat(STATKEY_INT, 1)//no malus for pure unarmed
+			H.change_stat(STATKEY_PER, 1)
+			ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_WEAPONLESS, TRAIT_GENERIC)
+			gloves = /obj/item/clothing/gloves/roguetown/plate/atgervi
+
 	var/techniques = list("腾空飞踢 - 击退与额外伤害", "锁喉摔 - 体力伤害", "碎颚摔 - 眩晕减益", "头槌 - 易伤减益") // cool wrestling moves
 	var/technique_choice = input(H,"选择你的技法。", "将敌人摔出去") as anything in techniques
 	switch(technique_choice)
@@ -206,6 +220,14 @@
 	icon_state = "atgervi_shaman_gloves"
 	item_state = "atergvi_shaman_gloves"
 	unarmed_bonus = 1.25
+
+// intentional duplicate for heretic monk so they can have the cool gloves but also punch good
+/obj/item/clothing/gloves/roguetown/plate/atgervi/heretic
+	name = "beast claws"
+	desc = "A menacing pair of plated claws, A closely protected tradition of the Shamans. Decorated with symbols of the gods they praise and the Gods they reject."
+	icon_state = "atgervi_shaman_gloves"
+	item_state = "atergvi_shaman_gloves"
+	unarmed_bonus = 1.3//on par with pugulist wraps
 
 /obj/item/clothing/head/roguetown/helmet/bascinet/atgervi
 	name = "鸮形盔"

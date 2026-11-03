@@ -1,6 +1,6 @@
 /client/proc/cmd_admin_set_ic_date()
-	set category = "管理.特殊"
-	set name = "设置角色日期"
+	set category = "-GameMaster-"
+	set name = "设置IC日期"
 
 	if(!check_rights(R_ADMIN))
 		return
