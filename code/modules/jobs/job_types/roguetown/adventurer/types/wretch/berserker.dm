@@ -58,7 +58,7 @@
 		)
 	H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 	if(H.mind)
-H.set_blindness(0)
+	H.set_blindness(0)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/rage)
 		var/list/armor_choices = list("轻甲", "不摧之肤")
 		var/armor_choice = input(H,"选择你的防御。", "我扛得住！！") as anything in armor_choices

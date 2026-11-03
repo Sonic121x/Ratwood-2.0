@@ -245,7 +245,7 @@
 	to_chat(H, span_warning("你是一名残暴的战士，舍弃甲胄，只信奉最原始的力量。碾碎你的敌人，看着他们在你面前溃逃，听他们的女人放声哀嚎！哦，对了，你还可以专精徒手格斗与摔跤。"))
 	H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 	H.set_blindness(0)
-H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/rage)
+	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/rage)
 	if(!H.mind)
 		return
 	var/weapons = list("青铜拳刃","青铜剑","青铜斧","青铜锤","青铜战棍","青铜矛","青铜连枷","戒律 - 猎鞭者（+2 感知 / -1 速度）","戒律 - 软剑","戒律 - 徒手","戒律 - 健美者")
