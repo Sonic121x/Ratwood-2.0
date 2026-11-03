@@ -232,39 +232,39 @@
 	icon_state = "tiebhornsalt"
 
 /datum/sprite_accessory/horns/messenger
-	name = "Winged Messenger"
+	name = "翼之信使"
 	icon_state = "messenger"
 	color_keys = 2
-	color_key_names = list("Wings", "Tips")
+	color_key_names = list("翼部", "翼尖")
 	default_colors = list("#EAEAEA", "#EAEAEA")
 	relevant_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/horns/rmessenger
-	name = "One-Winged Messenger (Right)"
+	name = "独翼信使（右）"
 	icon_state = "rmessenger"
 	color_keys = 2
-	color_key_names = list("Wings", "Tips")
+	color_key_names = list("翼部", "翼尖")
 	default_colors = list("#EAEAEA", "#EAEAEA")
 	relevant_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER, BODY_BEHIND_LAYER)
 
 /datum/sprite_accessory/horns/lmessenger
-	name = "One-Winged Messenger (Left)"
+	name = "独翼信使（左）"
 	icon_state = "lmessenger"
 	color_keys = 2
-	color_key_names = list("Wings", "Tips")
+	color_key_names = list("翼部", "翼尖")
 	default_colors = list("#EAEAEA", "#EAEAEA")
 	relevant_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER, BODY_BEHIND_LAYER)
 
 /datum/sprite_accessory/horns/chiroptera
-	name = "Chiroptera Wings"
+	name = "蝠翼"
 	icon_state = "chiroptera"
-	color_key_name = "Wings"
+	color_key_name = "翼部"
 	relevant_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/horns/nightstalker
-	name = "Nightstalker Wings"
+	name = "夜行者之翼"
 	icon_state = "nightstalker"
 	color_keys = 2
-	color_key_names = list("Wings", "Tips")
+	color_key_names = list("翼部", "翼尖")
 	default_colors = list("#555555", "#B41919")
 	relevant_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)

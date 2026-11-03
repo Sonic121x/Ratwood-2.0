@@ -281,12 +281,12 @@
 
 	if(thief.zone_selected == "r_hand" || thief.zone_selected == "l_hand")
 		var/ring_chance = clamp(8 + (thiefskill * 7), 3, 90)
-		to_chat(thief, span_info("[target]：有 [ring_chance]% 的几率挣脱。"))
+		to_chat(thief, span_info("[target]：有 [ring_chance]% 的几率顺利取下。"))
 		var/success = prob(ring_chance)
 		if(success)
 			victim.dropItemToGround(target)
 		else
-			to_chat(thief, span_warning("我没法在不被[target]察觉的情况下把它弄松。"))
+			to_chat(thief, span_warning("我没法在不被对方察觉的情况下把[target]弄松。"))
 		thief.pickpocket_feedback(victim, margin, target)
 		if(success)
 			thief.finalize_pickpocket_steal(victim, target, exp_to_gain)
