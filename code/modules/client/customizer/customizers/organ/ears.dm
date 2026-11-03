@@ -389,7 +389,7 @@
 	)
 
 /datum/customizer_choice/organ/ears/wings
-	name = "Aasimar Ears"
+	name = "亚斯玛尔耳朵"
 	organ_type = /obj/item/organ/ears
 	sprite_accessories = list(
 		/datum/sprite_accessory/ears/elf,

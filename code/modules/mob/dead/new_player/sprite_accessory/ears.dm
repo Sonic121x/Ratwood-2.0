@@ -272,18 +272,18 @@
 	color_key_names = list("耳朵", "内耳")
 
 /datum/sprite_accessory/ears/wispy
-	name = "Wispy Headwings"
+	name = "轻羽头翼"
 	icon_state = "wispy"
 	color_keys = 2
-	color_key_names = list("Wings", "Tips")
+	color_key_names = list("翼部", "翼尖")
 	default_colors = list("#EAEAEA", "#EAEAEA")
 	relevant_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/ears/small
-	name = "Small Headwings"
+	name = "小型头翼"
 	icon_state = "small"
 	color_keys = 2
-	color_key_names = list("Wings", "Tips")
+	color_key_names = list("翼部", "翼尖")
 	default_colors = list("#EAEAEA", "#EAEAEA")
 	relevant_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 

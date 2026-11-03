@@ -215,13 +215,13 @@
 		)
 
 /datum/customizer/organ/horns/wings
-	name = "Headwing"
+	name = "头翼"
 	customizer_choices = list(/datum/customizer_choice/organ/horns/wings)
 	allows_disabling = TRUE
 	default_disabled =  TRUE
 
 /datum/customizer_choice/organ/horns/wings
-	name = "Headwing"
+	name = "头翼"
 	organ_type = /obj/item/organ/horns
 	sprite_accessories = list(
 		/datum/sprite_accessory/horns/messenger,
