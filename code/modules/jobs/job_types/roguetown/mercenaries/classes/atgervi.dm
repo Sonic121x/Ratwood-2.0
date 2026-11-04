@@ -223,8 +223,8 @@
 
 // intentional duplicate for heretic monk so they can have the cool gloves but also punch good
 /obj/item/clothing/gloves/roguetown/plate/atgervi/heretic
-	name = "beast claws"
-	desc = "A menacing pair of plated claws, A closely protected tradition of the Shamans. Decorated with symbols of the gods they praise and the Gods they reject."
+	name = "兽爪"
+	desc = "一副威慑十足的覆甲利爪，承载着萨满秘而不宣的传统，饰有他们赞颂与拒斥的诸神符号。"
 	icon_state = "atgervi_shaman_gloves"
 	item_state = "atergvi_shaman_gloves"
 	unarmed_bonus = 1.3//on par with pugulist wraps

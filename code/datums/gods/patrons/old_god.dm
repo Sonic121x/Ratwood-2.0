@@ -251,8 +251,8 @@
 
 
 /obj/effect/proc_holder/spell/invoked/psydefy
-	name = "DEFY"
-	desc = "I can give a dying person or myself enough strength to ENDURE just a bit longer, to have a chance to leave their mark on the world before their flame goes out. (ONLY USABLE ON PEOPLE IN CRIT / Using it while in crit will self cast)"
+	name = "抗命"
+	desc = "我能赐予濒死之人或自己继续坚持片刻的力量，让生命之火熄灭前仍有机会在世间留下印记。（仅可对濒危者使用；自身濒危时会对自己施放）"
 	overlay_icon = 'icons/mob/actions/psydonmiracles.dmi'
 	action_icon = 'icons/mob/actions/psydonmiracles.dmi'
 	overlay_state = "DEFY"
@@ -275,7 +275,7 @@
 
 /obj/effect/proc_holder/spell/invoked/psydefy/cast(list/targets, mob/living/user)
 	if(user.stat == DEAD)
-		to_chat(user, span_warning("You're dead, it's to late for displays of willpower."))
+		to_chat(user, span_warning("你已经死了，现在才展现意志为时已晚。"))
 		revert_cast()
 		return FALSE
 	var/mob/living/carbon/human/target = null
@@ -284,7 +284,7 @@
 	if(!target && ishuman(targets[1]))
 		target = targets[1]
 	else if(!target)
-		to_chat(user, span_warning("[name] only works on humanoids about to die that have enough will to ENDVRE!"))
+		to_chat(user, span_warning("[name]只对濒死且有足够意志坚持下去的人形生灵有效！"))
 		revert_cast()
 		return FALSE
 
@@ -292,35 +292,35 @@
 	var/damtotal = target.getBruteLoss() + target.getFireLoss() + target.getToxLoss()
 
 	if(!target.stat) // this is first as all the others give you information about target
-		to_chat(user, span_warning("They are not in dire enought state for this miracle."))
+		to_chat(user, span_warning("对方尚未危急到需要这一奇迹的地步。"))
 		revert_cast()
 		return FALSE
 	if(target.stat == UNCONSCIOUS && !(damtotal >= 100 || wAmount > 0 || target.get_blood_volume() < BLOOD_VOLUME_OKAY) && target.IsSleeping()) // very long way of saying NO to sleep casting
-		to_chat(user, span_warning("They are sleeping peacefully, there is no reason for them to stir so roughly."))
+		to_chat(user, span_warning("对方正安然入睡，没有理由如此粗暴地唤醒他们。"))
 		revert_cast()
 		return FALSE
 	if(target.stat == DEAD) // are dead
-		to_chat(user, span_warning("They're already dead!"))
+		to_chat(user, span_warning("对方已经死了！"))
 		revert_cast()
 		return FALSE
 	if(target.mob_biotypes & MOB_UNDEAD) // still dead
-		to_chat(user, span_warning("The unlyving cannot ENDVRE!"))
+		to_chat(user, span_warning("无生者无法凭意志坚持！"))
 		revert_cast()
 		return FALSE
 	if(HAS_TRAIT(target, TRAIT_PARALYSIS))
-		to_chat(user, span_warning("They're paralyzed, no amount of willpower will get them to move."))
+		to_chat(user, span_warning("对方已经瘫痪，再强的意志也无法让他们行动。"))
 		revert_cast()
 		return FALSE
 	if(istype(target.patron, /datum/patron/divine/necra)) // worship death
-		to_chat(user, span_warning("They worship death, they do not have enough will to ENDVRE through their end."))
+		to_chat(user, span_warning("对方崇拜死亡，没有足够的意志抗拒终结。"))
 		revert_cast()
 		return FALSE
 	if(istype(target.patron, /datum/patron/inhumen/zizo)) // thinks they will get raised as undead
-		to_chat(user, span_warning("They dont fear death, they dont see it as an end."))
+		to_chat(user, span_warning("对方不畏惧死亡，也不认为死亡就是终点。"))
 		revert_cast()
 		return FALSE
 	if(HAS_TRAIT(target, TRAIT_NOBREATH)) // no avoiding oxy consequencess
-		to_chat(user, span_warning("They dont see themselves as dying and lack a will to resist it."))
+		to_chat(user, span_warning("对方不认为自己濒临死亡，也就没有抗拒死亡的意志。"))
 		revert_cast()
 		return FALSE
 
@@ -339,8 +339,8 @@
 	
 
 /atom/movable/screen/alert/status_effect/death_defiance
-	name = "Death Defience"
-	desc = "I WILL NOT GO INTO THE NIGHT QUIETLY!"
+	name = "抗拒死亡"
+	desc = "我绝不会默默步入长夜！"
 	icon_state = "buff"
 
 /datum/status_effect/death_defiance // TLDR = you dont die from tox, oxy, you cant be crit state, get crit resistance/reset it stacks, and get some will and con. You are not immortal, but your close to that
@@ -381,7 +381,7 @@
 	owner.update_stat()
 	owner.energy_add(700)
 	owner.stamina_add(-100) // rise back with full strength
-	owner.visible_message(span_boldwarning("[owner] rises back on their feet, defying death with every movement."), span_boldwarning("I feel a surge of energy as I DEFY death."))
+	owner.visible_message(span_boldwarning("[owner]重新站了起来，每一个动作都在抗拒死亡。"), span_boldwarning("我抗拒死亡，感到力量涌遍全身。"))
 	owner.emote("scream", TRUE)
 	owner.set_resting(FALSE, FALSE)
 	owner.add_filter("death_defience", 2, list("type" = "outline", "color" = "#2e0000", "alpha" = 25,  "size" = 2))
@@ -411,7 +411,7 @@
 	if(!HAS_TRAIT(owner, TRAIT_DNR)) // last mercy to the ones without a second chance
 		owner.adjustOxyLoss(130, TRUE)
 	owner.update_stat()
-	owner.visible_message(span_boldwarning("The strange energy filling the [owner] runs out, and their bathered body falls."), span_boldwarning("I feel my newfound energy and will to resist leave me."))
+	owner.visible_message(span_boldwarning("充盈[owner]体内的奇异力量耗尽了，那伤痕累累的身躯随之倒下。"), span_boldwarning("我感到刚刚获得的力量与抗争意志正在离我而去。"))
 	owner.remove_filter("death_defience")
 
 

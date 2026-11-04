@@ -558,12 +558,12 @@
 	display_category = ITEM_CAT_ARMOR_MASKS
 
 /datum/anvil_recipe/armor/iron/maskmaille
-	name = "Maille Mask, Iron"
+	name = "铁锁甲面罩"
 	created_item = /obj/item/clothing/mask/rogue/facemask/maille
 	display_category = ITEM_CAT_ARMOR_MASKS
 
 /datum/anvil_recipe/armor/iron/maskmaillefluted
-	name = "Fluted Maille Mask, Iron"
+	name = "铁制棱纹锁甲面罩"
 	created_item = /obj/item/clothing/mask/rogue/facemask/maille/fluted
 	display_category = ITEM_CAT_ARMOR_MASKS
 
@@ -877,7 +877,7 @@
 	display_category = ITEM_CAT_ARMOR_NECK
 
 /datum/anvil_recipe/armor/steel/saventail
-	name = "Aventail, Steel (+1 Steel)"
+	name = "锁甲护颈帘（另需1钢锭）"
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/neck/roguetown/gorget/aventail
 	display_category = ITEM_CAT_ARMOR_NECK
@@ -899,18 +899,18 @@
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/steel/helmetbarbute
-	name = "Barbute, Steel"
+	name = "钢制巴尔布特盔"
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/barbute
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/steel/helmetbarbutevisor
-	name = "Barbute, Visored, Steel (+1 Steel)"
+	name = "钢制面甲巴尔布特盔（另需1钢锭）"
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/barbute/visor
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/steel/helmetbarbutedunk
-	name = "Barbute, Great, Steel (+1 Steel, +1 Cured Leather)"
+	name = "钢制重型巴尔布特盔（另需1钢锭、1熟皮革）"
 	additional_items = list(/obj/item/ingot/steel, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/barbute/great
 	display_category = ITEM_CAT_ARMOR_HELMETS
@@ -963,13 +963,13 @@
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/steel/aventailbascinet
-	name = "Bascinet, Aventailed, Steel (+1 Steel)"
+	name = "钢制护颈帘盆盔（另需1钢锭）"
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/bascinet/aventail
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/steel/heavyaventailbascinet
-	name = "Visored Bascinet, Aventailed, Steel (+2 Steel, +1 Cured Leather)"
+	name = "钢制护颈帘犬面盔（另需2钢锭、1熟皮革）"
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/natural/hide/cured)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/aventail
 	display_category = ITEM_CAT_ARMOR_HELMETS
@@ -1030,19 +1030,19 @@
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/steel/helmetowl
-	name = "Strigidae Armet, Steel (+1 Steel)"
+	name = "钢制鸱鸮闭盔（另需1钢锭）"
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/owl
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/steel/helmetknightarmetgreatplume
-	name = "Knight's Greatplumed Armet, Steel (+1 Steel)"
+	name = "钢制巨羽饰闭盔（另需1钢锭）"
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/knight/greatplume
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/steel/frogmouthgreatplume
-	name = "Froggemund Helmet With Greatplume, Steel (+2 Steel)"
+	name = "钢制巨羽饰蛙嘴盔（另需2钢锭）"
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth/greatplume
 	display_category = ITEM_CAT_ARMOR_HELMETS
@@ -1074,12 +1074,12 @@
 	display_category = ITEM_CAT_ARMOR_MASKS
 
 /datum/anvil_recipe/armor/steel/maillemask
-	name = "Maille Mask, Steel"
+	name = "钢锁甲面罩"
 	created_item = /obj/item/clothing/mask/rogue/facemask/steel/maille
 	display_category = ITEM_CAT_ARMOR_MASKS
 
 /datum/anvil_recipe/armor/steel/maillemaskfluted
-	name = "Fluted Maille Mask, Steel"
+	name = "钢制棱纹锁甲面罩"
 	created_item = /obj/item/clothing/mask/rogue/facemask/steel/maille/fluted
 	display_category = ITEM_CAT_ARMOR_MASKS
 
@@ -1358,61 +1358,61 @@
 	display_category = ITEM_CAT_ARMOR_MASKS
 
 /datum/anvil_recipe/armor/decorated/gilded_sallet
-	name = "Sallet, Decorated (+1 Steel Sallet, +1 Silk)"
+	name = "镀金面甲萨莱特盔（另需1钢制萨莱特盔、1丝绸）"
 	additional_items = list(/obj/item/clothing/head/roguetown/helmet/sallet, /obj/item/natural/silk)
 	created_item = /obj/item/clothing/head/roguetown/helmet/sallet/visored/gilded
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/decorated/gilded_knighthelm
-	name = "Knight's Helmet, Decorated (+1 Steel Knight's Helmet, +1 Silk)"
+	name = "镀金骑士头盔（另需1钢制骑士头盔、1丝绸）"
 	additional_items = list(/obj/item/clothing/head/roguetown/helmet/heavy/knight, /obj/item/natural/silk)
 	created_item = /obj/item/clothing/head/roguetown/helmet/heavy/knight/gilded
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/anvil_recipe/armor/decorated/gilded_chestplate
-	name = "Fencer Cuirass, Decorated (+1 Steel Cuirass, +1 Steel, +2 Silk)"
+	name = "华饰击剑胸甲（另需1钢制胸甲、1钢锭、2丝绸）"
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/plate/half, /obj/item/ingot/steel, /obj/item/natural/silk, /obj/item/natural/silk)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/half/fencer/decorated
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
 
 /datum/anvil_recipe/armor/decorated/gilded_cuirass
-	name = "Fluted Cuirass, Decorated (+1 Steel Cuirass, +1 Steel)"
+	name = "华饰棱纹胸甲（另需1钢制胸甲、1钢锭）"
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/plate/half, /obj/item/ingot/steel)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/half/fluted/decorated
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
 
 /datum/anvil_recipe/armor/decorated/gilded_halfplate
-	name = "Fluted Halfplate, Decorated (+1 Steel Halfplate, +1 Steel)"
+	name = "华饰棱纹半身板甲（另需1钢制半身板甲、1钢锭）"
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/plate, /obj/item/ingot/steel)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/fluted/decorated
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
 
 /datum/anvil_recipe/armor/decorated/gilded_fullplate
-	name = "Fluted Plate Armor, Decorated (+1 Steel Plate Armor, +1 Steel)"
+	name = "华饰棱纹板甲（另需1钢制板甲、1钢锭）"
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/plate/full, /obj/item/ingot/steel)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full/fluted/decorated
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
 
 /datum/anvil_recipe/armor/decorated/gilded_chestplatefluted
-	name = "Fencer Cuirass, Decorated (+1 Fencer's Cuirass)"
+	name = "华饰击剑胸甲（另需1击剑胸甲）"
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/plate/half/fencer)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/half/fencer/decorated
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
 
 /datum/anvil_recipe/armor/decorated/gilded_cuirassfluted
-	name = "Fluted Cuirass, Decorated (+1 Fluted Cuirass)"
+	name = "华饰棱纹胸甲（另需1棱纹胸甲）"
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/plate/half/fluted)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/half/fluted/decorated
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
 
 /datum/anvil_recipe/armor/decorated/gilded_halfplatefluted
-	name = "Fluted Halfplate, Decorated (+1 Fluted Halfplate)"
+	name = "华饰棱纹半身板甲（另需1棱纹半身板甲）"
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/plate/fluted)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/fluted/decorated
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
 
 /datum/anvil_recipe/armor/decorated/gilded_fullplatefluted
-	name = "Fluted Plate Armor, Decorated (+1 Fluted Plate Armor)"
+	name = "华饰棱纹板甲（另需1棱纹板甲）"
 	additional_items = list(/obj/item/clothing/suit/roguetown/armor/plate/full/fluted)
 	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full/fluted/decorated
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES

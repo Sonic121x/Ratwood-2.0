@@ -975,8 +975,8 @@
 // PADDED MASKS, pretty much like the sack mask except is looking PRETTIER + has a state that's rolled down to show your identity.
 
 /obj/item/clothing/mask/rogue/facemask/padded
-	name = "padded mask"
-	desc = "A padded cloth mask with a visor, it will prevent bad smells more than damage."
+	name = "软垫面罩"
+	desc = "带有面部遮挡的软垫布面罩，挡臭味比挡伤害更有效。"
 	icon_state = "gambesonmask"
 	blocksound = SOFTHIT
 	break_sound = 'sound/foley/cloth_rip.ogg'
@@ -993,8 +993,8 @@
 	AddComponent(/datum/component/adjustable_clothing, NECK, null, null, 'sound/foley/equip/rummaging-03.ogg', null, (UPD_HEAD|UPD_MASK))	//Standard mask
 
 /obj/item/clothing/mask/rogue/facemask/leather
-	name = "padded leather mask"
-	desc = "A padded leather mask with a visor, it will prevent bad smells and some damage."
+	name = "软垫皮面罩"
+	desc = "带有面部遮挡的软垫皮面罩，能阻挡臭味和部分伤害。"
 	icon_state = "leathermask"
 	blocksound = SOFTHIT
 	break_sound = 'sound/foley/cloth_rip.ogg'
@@ -1013,8 +1013,8 @@
 //chainmaille masks = pretty much like a normal mask except is made to protect against cutting damage instead of blunt damage.
 
 /obj/item/clothing/mask/rogue/facemask/maille
-	name = "iron chainmaille mask"
-	desc = "A padded chainmaille mask that will protect against some damage and can be rolled down to show your identity."
+	name = "铁锁甲面罩"
+	desc = "带衬垫的锁甲面罩，能抵挡部分伤害，也可以向下卷起以露出面容。"
 	icon_state = "imaillemask"
 	blocksound = CHAINHIT
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
@@ -1029,8 +1029,8 @@
 	AddComponent(/datum/component/adjustable_clothing, NECK, null, null, 'sound/foley/equip/chain_equip.ogg', null, (UPD_HEAD|UPD_MASK))	//Standard mask
 
 /obj/item/clothing/mask/rogue/facemask/steel/maille
-	name = "steel chainmaille mask"
-	desc = "A padded chainmaille mask that will protect against some damage and can be rolled down to show your identity."
+	name = "钢锁甲面罩"
+	desc = "带衬垫的锁甲面罩，能抵挡部分伤害，也可以向下卷起以露出面容。"
 	icon_state = "smaillemask"
 	blocksound = CHAINHIT
 	drop_sound = 'sound/foley/dropsound/chain_drop.ogg'
@@ -1045,16 +1045,16 @@
 	AddComponent(/datum/component/adjustable_clothing, NECK, null, null, 'sound/foley/equip/chain_equip.ogg', null, (UPD_HEAD|UPD_MASK))	//Standard mask
 
 /obj/item/clothing/mask/rogue/facemask/steel/maille/fluted
-	name = "steel fluted chainmaille mask"
-	desc = "A padded chainmaille mask that will protect against some damage and can be rolled down to show your identity. The fluted design is meant to deflect blows and increase durability."
+	name = "钢制棱纹锁甲面罩"
+	desc = "带衬垫的锁甲面罩，能抵挡部分伤害，也可以向下卷起以露出面容。棱纹设计有助于偏转打击并提升耐用性。"
 	icon_state = "sflutedmask"
 
 /obj/item/clothing/mask/rogue/facemask/steel/maille/fluted/ComponentInitialize()
 	AddComponent(/datum/component/adjustable_clothing, NECK, null, null, 'sound/foley/equip/chain_equip.ogg', null, (UPD_HEAD|UPD_MASK))	//Standard mask
 
 /obj/item/clothing/mask/rogue/facemask/maille/fluted
-	name = "iron fluted chainmaille mask"
-	desc = "A padded chainmaille mask that will protect against some damage and can be rolled down to show your identity. The fluted design is meant to deflect blows and increase durability."
+	name = "铁制棱纹锁甲面罩"
+	desc = "带衬垫的锁甲面罩，能抵挡部分伤害，也可以向下卷起以露出面容。棱纹设计有助于偏转打击并提升耐用性。"
 	icon_state = "iflutedmask"
 
 /obj/item/clothing/mask/rogue/facemask/maille/fluted/ComponentInitialize()

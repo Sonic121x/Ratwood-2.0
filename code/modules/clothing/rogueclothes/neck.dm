@@ -376,9 +376,9 @@
 	icon_state = "sgorget"
 
 /obj/item/clothing/neck/roguetown/gorget/aventail
-	name = "aventail"
-	desc = "A thick garment of steel maille and padding, traditionally attached to bascinets. It's burdensome on the shoulders of those who aren't properly \
-	trained to wear knightly garments."
+	name = "锁甲护颈帘"
+	desc = "由厚实钢锁甲与衬垫制成的护具，传统上连接在盆盔下缘。对于未经正规训练、\
+	不习惯穿戴骑士甲胄的人而言，它会给肩膀带来沉重负担。"
 	icon_state = "aventailbase"
 	body_parts_covered = NECK|MOUTH
 	slot_flags = ITEM_SLOT_NECK

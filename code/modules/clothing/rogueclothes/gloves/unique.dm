@@ -73,8 +73,8 @@
 	unarmed_bonus = 7 //Non-craftable. Restricted to Monks who've specialized in unarmed combat, and nothing else.
 
 /obj/item/clothing/gloves/roguetown/bandages/abboteer
-	name = "abboteer's wraps"
-	desc = "NODD 6:20... We must love everyone, regardless if they love us or not; guide them to brevity with a opened palm, nary-a-clenched fist."
+	name = "修院武僧缠手"
+	desc = "《诺德》6:20……无论他人是否爱我们，我们都应爱每一个人；以张开的手掌引导他们言简意赅，而非紧握的拳头。"
 	unarmed_bonus = 7
 	unarmed_weapon_effects = TRUE
 	is_silver = TRUE
@@ -91,8 +91,8 @@
 	)
 
 /obj/item/clothing/gloves/roguetown/bandages/weighted/caestus
-	name = "caestus"
-	desc = "An antique fighting glove fashioned from hard leather straps wrapped tightly around the hand. This pair was customized with gruesome-looking bronze spikes along the knuckles. Modifications like this are common among thespian performers; after all, a bloodless fight makes for lacking spectacle."
+	name = "古式拳套"
+	desc = "用硬皮带紧缠双手制成的古式格斗拳套。这一副特意在指关节处加装了骇人的青铜尖刺。这类改造在色斯庇亚表演者之间颇为常见；毕竟，不流血的搏斗总少了些看头。"
 	icon_state = "caestus"
 	item_state = "caestus"
 	unarmed_bonus = 7
@@ -101,8 +101,8 @@
 	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/gloves/roguetown/bandages/weighted/iconoclast
-	name = "rontz-set caestus"
-	desc = "We don't cotton to nobles around these parts, OH YEAH TASTE THE PAIN!"
+	name = "隆兹石镶嵌拳套"
+	desc = "我们这里可不待见贵族，没错，尝尝痛苦的滋味吧！"
 	icon_state = "icono_caestus"
 	item_state = "caestus"
 	unarmed_bonus = 7

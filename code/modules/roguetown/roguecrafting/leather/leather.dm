@@ -248,7 +248,7 @@
 	display_category = ITEM_CAT_CLOTH_MASK
 
 /datum/crafting_recipe/roguetown/leather/leathermask
-	name = "leather mask"
+	name = "软垫皮面罩"
 	display_category = ITEM_CAT_ARMOR_MASKS
 	result = /obj/item/clothing/mask/rogue/facemask/leather
 	reqs = list(/obj/item/natural/hide/cured = 2)

@@ -57,9 +57,9 @@
 		add_overlay(pic)
 
 /obj/item/clothing/head/roguetown/helmet/heavy/barbute
-	name = "barbute"
-	desc = "A steel helmet that provides excellent coverage, while uniquely keeping its wearer's field-of-view almost entirely unrestricted. The cruciformic visor is \
-	an inherited design, borne from the earliest daes of Psydonia. Mounted on the back is a unique couplet, fit for adopting feathered greatplumes."
+	name = "巴尔布特盔"
+	desc = "一顶防护范围出色的钢盔，独特设计几乎完全不限制佩戴者视野。十字形面部开口\
+	传承自普赛多尼亚最早的年代。后部装有独特的固定座，可安装巨羽饰。"
 	icon_state = "barbute"
 	item_state = "barbute"
 	max_integrity = ARMOR_INT_HELMET_HEAVY_STEEL
@@ -72,8 +72,8 @@
 /obj/item/clothing/head/roguetown/helmet/heavy/barbute/attackby(obj/item/W, mob/living/user, params)
 	..()
 	if(istype(W, /obj/item/natural/cloth) && !detail_tag)
-		var/choice = input(user, "Choose a color.", "Orle") as anything in GLOB.colorlist
-		user.visible_message(span_warning("[user] adds [W] to [src]."))
+		var/choice = input(user, "选择一种颜色。", "盔饰环") as anything in GLOB.colorlist
+		user.visible_message(span_warning("[user]将[W]装到了[src]上。"))
 		user.transferItemToLoc(W, src, FALSE, FALSE)
 		detail_color = GLOB.colorlist[choice]
 		detail_tag = "_detail"
@@ -82,10 +82,10 @@
 			var/mob/living/carbon/H = user
 			H.update_inv_head()
 	if(istype(W, /obj/item/natural/feather) && !altdetail_tag)
-		var/choicealt = input(user, "Choose a color.", "Greatplume") as anything in GLOB.colorlist
+		var/choicealt = input(user, "选择一种颜色。", "巨羽饰") as anything in GLOB.colorlist
 		altdetail_color = GLOB.colorlist[choicealt]
 		altdetail_tag = "_detailalt"
-		user.visible_message(span_warning("[user] adds [W] to [src]."))
+		user.visible_message(span_warning("[user]将[W]装到了[src]上。"))
 		user.transferItemToLoc(W, src, FALSE, FALSE)
 		update_icon()
 		if(loc == user && ishuman(user))
@@ -108,9 +108,9 @@
 		add_overlay(pic2)
 
 /obj/item/clothing/head/roguetown/helmet/heavy/barbute/visor
-	name = "visored barbute"
-	desc = "A steel greathelm that provides excellent coverage, and whose cruciformic guise is further reinforced by a heavy visor. Valiant paladin, wretched bulwark, thoughtless worm; it \
-	won't be long until they're almost here. Will you cry all your tears, or will you face your fears? </br>Mounted on the back is a unique couplet, fit for adopting feathered greatplumes."
+	name = "面甲巴尔布特盔"
+	desc = "一顶防护范围出色的钢制大盔，十字形面部结构又由厚重面甲加固。英勇圣骑士、卑劣壁垒、无思蠕虫；\
+	他们很快就要到了。你会流尽泪水，还是直面恐惧？</br>后部装有独特的固定座，可安装巨羽饰。"
 	icon_state = "barbute_visor"
 	item_state = "barbute_visor"
 	max_integrity = ARMOR_INT_HELMET_HEAVY_STEEL - ARMOR_INT_HELMET_HEAVY_ADJUSTABLE_PENALTY
@@ -124,10 +124,10 @@
 	AddComponent(/datum/component/adjustable_clothing, (HEAD|EARS|HAIR), (HIDEEARS|HIDEHAIR), null, 'sound/items/visor.ogg', null, UPD_HEAD)
 
 /obj/item/clothing/head/roguetown/helmet/heavy/barbute/great
-	name = "great barbute"
-	desc = "A steel greathelm of inordinate thickness, whose design seems to've been inspired by both a tournament's froggemund and a kingdom's sugarloaf. It is far from elegant, but it will \
-	thwart killing blows again-and-again without compromise. Never forget that a champion of Psydonia needn't nobility nor wealth to become eternal; they need only the courage to be free. \
-	</br>'In their legends, there were no gods - only heroes.'"
+	name = "重型巴尔布特盔"
+	desc = "一顶格外厚重的钢制大盔，似乎同时借鉴了竞技场蛙嘴盔与王国糖锥盔的设计。它远称不上优雅，却能\
+	一次又一次坚决挡下致命打击。莫忘普赛多尼亚的勇士无需高贵出身或财富便可名垂不朽；他们只需追求自由的勇气。\
+	</br>'他们的传说中没有神，只有英雄。'"
 	max_integrity = ARMOR_INT_HELMET_HEAVY_STEEL
 	icon_state = "barbutedunk"
 	item_state = "barbutedunk"
@@ -327,8 +327,8 @@
 		add_overlay(pic)
 
 /obj/item/clothing/head/roguetown/helmet/heavy/knight/gilded
-	name = "gilded knight's helmet"
-	desc = "A noble knight's helm made of steel and completed with a gilded trim."
+	name = "镀金骑士头盔"
+	desc = "一顶贵族骑士的钢制头盔，饰有镀金边缘。"
 	icon_state = "gildedknight"
 	item_state = "gildedknight"
 
@@ -336,7 +336,7 @@
 	..()
 	if(!(istype(W, /obj/item/natural/feather) && !detail_tag))
 		return
-	user.visible_message(span_warning("[user] adds [W] to [src]."))
+	user.visible_message(span_warning("[user]将[W]装到了[src]上。"))
 	user.transferItemToLoc(W, src, FALSE, FALSE)
 	detail_tag = "_detail"
 	update_icon()
@@ -656,8 +656,8 @@
 			var/mob/living/carbon/H = user
 			H.update_inv_head()
 	if(istype(W, /obj/item/clothing/head/roguetown/veiled) && !altdetail_tag)
-		var/choicealt = input(user, "Choose a color.", "Veil") as anything in GLOB.colorlist
-		user.visible_message(span_warning("[user] adds [W] to [src]."))
+		var/choicealt = input(user, "选择一种颜色。", "面纱") as anything in GLOB.colorlist
+		user.visible_message(span_warning("[user]将[W]装到了[src]上。"))
 		user.transferItemToLoc(W, src, FALSE, FALSE)
 		altdetail_color = GLOB.colorlist[choicealt]
 		altdetail_tag = "_detailalt"
@@ -1225,10 +1225,10 @@
 
 
 /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth/greatplume
-	name = "froggemund helmet with greatplume"
-	desc = "A tall and imposing frogmouth-style helm popular in the highest plateaus of the Azure Peak. It covers not only the \
-	entire head and face, but the neck as well. Mounted on the back is a larger couplet, capable of mounting a feathered greatplume; a \
-	blessing for the flamboyant-hearted."
+	name = "巨羽饰蛙嘴盔"
+	desc = "一顶在蔚蓝峰最高台地颇受欢迎的高耸威严蛙嘴式头盔。它不仅遮护\
+	整个头部与面部，也保护脖颈。后部装有较大的固定座，可安装巨羽饰；\
+	对于喜爱张扬装束的人而言，这无疑是一份恩赐。"
 	icon_state = "frogmouthgreatplume"
 	item_state = "frogmouthgreatplume"
 	smelt_bar_num = 2
@@ -1240,8 +1240,8 @@
 /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth/greatplume/attackby(obj/item/W, mob/living/user, params)
 	..()
 	if(istype(W, /obj/item/natural/cloth) && !detail_tag)
-		var/choice = input(user, "Choose a color.", "Orle") as anything in GLOB.colorlist
-		user.visible_message(span_warning("[user] adds [W] to [src]."))
+		var/choice = input(user, "选择一种颜色。", "盔饰环") as anything in GLOB.colorlist
+		user.visible_message(span_warning("[user]将[W]装到了[src]上。"))
 		user.transferItemToLoc(W, src, FALSE, FALSE)
 		detail_color = GLOB.colorlist[choice]
 		detail_tag = "_detail"
@@ -1250,10 +1250,10 @@
 			var/mob/living/carbon/H = user
 			H.update_inv_head()
 	if(istype(W, /obj/item/natural/feather) && !altdetail_tag)
-		var/choicealt = input(user, "Choose a color.", "Greatplume") as anything in GLOB.colorlist
+		var/choicealt = input(user, "选择一种颜色。", "巨羽饰") as anything in GLOB.colorlist
 		altdetail_color = GLOB.colorlist[choicealt]
 		altdetail_tag = "_detailalt"
-		user.visible_message(span_warning("[user] adds [W] to [src]."))
+		user.visible_message(span_warning("[user]将[W]装到了[src]上。"))
 		user.transferItemToLoc(W, src, FALSE, FALSE)
 		update_icon()
 		if(loc == user && ishuman(user))
@@ -1353,9 +1353,9 @@
 	AddComponent(/datum/component/adjustable_clothing, (HEAD|EARS|HAIR), (HIDEEARS|HIDEHAIR), null, 'sound/items/visor.ogg', null, UPD_HEAD)	//Standard helmet
 
 /obj/item/clothing/head/roguetown/helmet/heavy/aventail
-	name = "hounskull with aventail"
-	desc = "A steel hounskull bascinet with a thick maille aventail secured to the inside. Just as a froggemund befits a knight in the tournaments, an \
-	aventailed bascinet befits a knight on the battlefield; unmatched in coverage, durability, and weight."
+	name = "护颈帘犬面盔"
+	desc = "一顶钢制犬面盆盔，内侧固定着厚实的锁甲护颈帘。正如蛙嘴盔适合竞技场上的骑士，\
+	护颈帘盆盔则适合战场上的骑士；防护范围、耐用性与重量都无与伦比。"
 	icon_state = "visaventail"
 	item_state = "visaventail"
 	adjustable = CAN_CADJUST
@@ -1375,18 +1375,18 @@
 /obj/item/clothing/head/roguetown/helmet/heavy/aventail/attackby(obj/item/W, mob/living/user, params)
 	..()
 	if(istype(W, /obj/item/natural/feather) && !detail_tag)
-		var/choice = input(user, "Choose a color.", "Plume") as anything in GLOB.colorlist + GLOB.pridelist
+		var/choice = input(user, "选择一种颜色。", "羽饰") as anything in GLOB.colorlist + GLOB.pridelist
 		detail_color = GLOB.colorlist[choice]
 		detail_tag = "_detail"
-		user.visible_message(span_warning("[user] adds [W] to [src]."))
+		user.visible_message(span_warning("[user]将[W]装到了[src]上。"))
 		user.transferItemToLoc(W, src, FALSE, FALSE)
 		update_icon()
 		if(loc == user && ishuman(user))
 			var/mob/living/carbon/H = user
 			H.update_inv_head()
 	if(istype(W, /obj/item/natural/cloth) && !altdetail_tag)
-		var/choicealt = input(user, "Choose a color.", "Orle") as anything in GLOB.colorlist + GLOB.pridelist
-		user.visible_message(span_warning("[user] adds [W] to [src]."))
+		var/choicealt = input(user, "选择一种颜色。", "盔饰环") as anything in GLOB.colorlist + GLOB.pridelist
+		user.visible_message(span_warning("[user]将[W]装到了[src]上。"))
 		user.transferItemToLoc(W, src, FALSE, FALSE)
 		altdetail_color = GLOB.colorlist[choicealt]
 		altdetail_tag = "_detailalt"

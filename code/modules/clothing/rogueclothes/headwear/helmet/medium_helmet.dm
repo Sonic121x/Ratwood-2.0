@@ -216,8 +216,8 @@
 	AddComponent(/datum/component/armour_filtering/negative, TRAIT_MAGEDEXTERITY)
 
 /obj/item/clothing/head/roguetown/helmet/sallet/visored/gilded
-	name = "gilded visored sallet"
-	desc = "A steel helmet with gilded trim which protects the ears, nose, and eyes."
+	name = "镀金面甲萨莱特盔"
+	desc = "饰有镀金边缘的钢盔，可保护耳朵、鼻子和双眼。"
 	icon_state = "gildedsallet_visor"
 	item_state = "gildedsallet_visor"
 
@@ -555,9 +555,9 @@
 	AddComponent(/datum/component/armour_filtering/negative, TRAIT_MAGEDEXTERITY)
 
 /obj/item/clothing/head/roguetown/helmet/bascinet/aventail
-	name = "bascinet with aventail"
-	desc = "A steel bascinet helmet, further protected with a thick maille aventail. Burdensome on the shoulders of those not trained to carry \
-	maille, yet excellent in both coverage and durability."
+	name = "护颈帘盆盔"
+	desc = "附有厚实锁甲护颈帘的钢制盆盔。对于未经锁甲负重训练的人，它会加重肩部负担，\
+	但防护范围与耐用性均十分出色。"
 	icon_state = "aventail"
 	item_state = "aventail"
 	body_parts_covered = HEAD|HAIR|EARS|MOUTH|NECK

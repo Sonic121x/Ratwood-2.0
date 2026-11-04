@@ -157,17 +157,17 @@
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/bucket)
 
 /datum/supply_pack/rogue/armor_steel/helmet_barbute
-	name = "Helmet, Barbute"
+	name = "巴尔布特盔"
 	cost = 50 // 1 Steel
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/barbute)
 
 /datum/supply_pack/rogue/armor_steel/helmet_barbute_visor
-	name = "Helmet, Barbute with Visor"
+	name = "面甲巴尔布特盔"
 	cost = 90 // 2 Steel
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/barbute/visor)
 
 /datum/supply_pack/rogue/armor_steel/helmet_barbute_great
-	name = "Helmet, Barbute, Great"
+	name = "重型巴尔布特盔"
 	cost = 90 // 2 Steel
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/barbute/great)
 
@@ -207,7 +207,7 @@
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/knight/armet)
 
 /datum/supply_pack/rogue/armor_steel/helmet_knight_armetgreatplume
-	name = "Helmet, Armet, Greatplumed"
+	name = "巨羽饰闭盔"
 	cost = 95
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/knight/greatplume)
 
@@ -227,32 +227,32 @@
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/beakhelm)
 
 /datum/supply_pack/rogue/armor_steel/elvenbarbute
-	name = "Helmet, Elven, Barbute"
+	name = "精灵巴尔布特盔"
 	cost = 90 // 2 Steel
 	contains = list(/obj/item/clothing/head/roguetown/helmet/elvenbarbute)
 
 /datum/supply_pack/rogue/armor_steel/elvenbarbutewinged
-	name = "Helmet, Elven, Barbute, Winged"
+	name = "翼饰精灵巴尔布特盔"
 	cost = 90 // 2 Steel
 	contains = list(/obj/item/clothing/head/roguetown/helmet/elvenbarbute/winged)
 
 /datum/supply_pack/rogue/armor_steel/helmet_aventailbascinet
-	name = "Helmet, Bascinet, Aventailed"
+	name = "护颈帘盆盔"
 	cost = 90 
 	contains = list(/obj/item/clothing/head/roguetown/helmet/bascinet/aventail)
 
 /datum/supply_pack/rogue/armor_steel/helmet_heavyaventailbascinet
-	name = "Helmet, Visored Bascinet, Aventailed"
+	name = "护颈帘犬面盔"
 	cost = 140
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/aventail)
 
 /datum/supply_pack/rogue/armor_steel/helmet_frogmouth
-	name = "Helmet, Froggemund"
+	name = "蛙嘴盔"
 	cost = 140
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/frogmouth)
 
 /datum/supply_pack/rogue/armor_steel/helmet_frogmouth
-	name = "Helmet, Plumed Froggemund"
+	name = "巨羽饰蛙嘴盔"
 	cost = 145//you will pay extra for drip
 	contains = list(/obj/item/clothing/head/roguetown/helmet/heavy/frogmouth/greatplume)
 
@@ -267,7 +267,7 @@
 	contains = list(/obj/item/clothing/neck/roguetown/gorget/steel)
 
 /datum/supply_pack/rogue/armor_steel/aventail_steel
-	name = "Aventail"
+	name = "锁甲护颈帘"
 	cost = 90 // 2 Steel
 	contains = list(/obj/item/clothing/neck/roguetown/gorget/aventail)
 

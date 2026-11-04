@@ -415,7 +415,7 @@
 /obj/effect/decal/cleanable/blood/footprints/become_dry()
 	if(QDELETED(src))
 		return
-	name = "dry [initial(name)]"
+	name = "干涸的[initial(name)]"
 	dried = TRUE
 	bloodiness = 0
 	color = null

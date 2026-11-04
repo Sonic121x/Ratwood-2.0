@@ -84,7 +84,7 @@
 	produce_time = 2 MINUTES
 
 /datum/plant_def/bakersroot
-	name = "baker's root"
+	name = "面包根"
 	icon = 'icons/roguetown/items/bakers_root.dmi'
 	icon_state = "br_ripe"
 	produce_type = /obj/item/reagent_containers/food/snacks/grown/bakersroot

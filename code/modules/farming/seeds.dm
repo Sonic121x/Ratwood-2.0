@@ -176,7 +176,7 @@
 	plant_def_type = /datum/plant_def/oat
 
 /obj/item/seeds/bakersroot
-	seed_identity = "baker's root seeds"
+	seed_identity = "面包根种子"
 	plant_def_type = /datum/plant_def/bakersroot
 
 /obj/item/seeds/rice

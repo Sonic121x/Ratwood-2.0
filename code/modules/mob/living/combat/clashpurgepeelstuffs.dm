@@ -198,7 +198,7 @@
 		balloon_alert(src, "<font color = '#ffffff'>露出破绽时不能防守！</font>")
 		return FALSE
 	if(has_status_effect(/datum/status_effect/debuff/vulnerable))
-		balloon_alert(src, "<font color = '#ffffff'>Can't guard while vulnerable!</font>")
+		balloon_alert(src, "<font color = '#ffffff'>易伤时无法格挡！</font>")
 		return FALSE
 	// Can't guard while channeling a spell
 	var/datum/action/cooldown/spell/active_spell = click_intercept

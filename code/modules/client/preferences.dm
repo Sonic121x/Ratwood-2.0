@@ -818,7 +818,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				var/list/blood_pair = GLOB.drakian_blood_colors[blood_color_choice]
 				if(!blood_pair)
 					blood_pair = GLOB.drakian_blood_colors["red"]
-				dat += "<b>祖血:</b> <span style='border: 1px solid #161616; background-color: [blood_pair["color"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=blood_color;task=input'>[blood_pair["name"]]</a><BR>"
+					dat += "<b>祖血:</b> <span style='border: 1px solid #161616; background-color: [blood_pair["color"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=blood_color;task=input'>[get_ancestral_blood_display(blood_pair["name"])]</a><BR>"
 
 			dat += "<br><b>语音颜色: </b><a href='?_src_=prefs;preference=voice;task=input'>更改</a>"
 			dat += "<br><b>昵称颜色: </b> <a href='?_src_=prefs;preference=highlight_color;task=input'>更改</a>"
@@ -2685,8 +2685,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 						var/list/blood_hues = list()
 						for(var/hue in GLOB.drakian_blood_colors)
 							var/list/pair = GLOB.drakian_blood_colors[hue]
-							blood_hues[pair["name"]] = hue
-						var/chosen_name = tgui_input_list(user, "Choose your ancestral blood:", "Ancestral Blood", blood_hues)
+							blood_hues[get_ancestral_blood_display(pair["name"])] = hue
+						var/chosen_name = tgui_input_list(user, "选择你的祖血：", "祖血", blood_hues)
 						if(chosen_name && blood_hues[chosen_name])
 							blood_color_choice = blood_hues[chosen_name]
 

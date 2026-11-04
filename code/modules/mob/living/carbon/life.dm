@@ -107,7 +107,7 @@
 					if(prob(probby) && HAS_TRAIT(src, TRAIT_NOPAINSTUN) && (has_status_effect(/datum/status_effect/fire_handler/fire_stacks/sunder) || has_status_effect(/datum/status_effect/fire_handler/fire_stacks/sunder/blessed)))
 						Immobilize(10)
 						emote("painscream")
-						to_chat(src, span_userdanger("THE SACRED FLAMES, I FEEL PAIN AGAIN!"))
+						to_chat(src, span_userdanger("这神圣的火焰，让我再次感到了痛苦！"))
 						stuttering += 5
 						cultslurring += 10 //To indicate this isn't a natural kind of agony
 						addtimer(CALLBACK(src, PROC_REF(Stun), 110), 10)

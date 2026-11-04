@@ -756,31 +756,31 @@
 	max_integrity = ARMOR_INT_CHEST_PLATE_STEELLIGHT
 
 /obj/item/clothing/suit/roguetown/armor/plate/half/fencer/decorated
-	name = "decorated fencer's cuirass"
+	name = "华饰击剑胸甲"
 	icon_state = "gildedchestplate"
 	smeltresult = /obj/item/ingot/gold
-	desc = "An ornate steel chestplate, decorated with golden fluting. For when you need to bring a little bit of regal style to that upcoming duel with your lyfe's greatest adversary."
+	desc = "饰有金色棱纹的华丽钢制胸甲。与毕生最强的宿敌决斗在即，不妨添上几分王者气派。"
 	smelt_bar_num = 1
 
 /obj/item/clothing/suit/roguetown/armor/plate/half/fluted/decorated
-	name = "decorated fluted cuirass"
+	name = "华饰棱纹胸甲"
 	icon_state = "gildedcuirass"
 	smeltresult = /obj/item/ingot/gold
-	desc = "An ornate steel cuirass, decorated with golden fluting. For when you need to ensure that you look dapper, during your mustering for the latest crusade into some gods-forsaken land."
+	desc = "饰有金色棱纹的华丽钢制胸甲。集结出征、远赴某片被诸神遗弃的土地时，也要确保自己仪表堂堂。"
 	smelt_bar_num = 1
 
 /obj/item/clothing/suit/roguetown/armor/plate/fluted/decorated
-	name = "decorated fluted half-plate"
+	name = "华饰棱纹半身板甲"
 	icon_state = "gildedhalfplate"
 	smeltresult = /obj/item/ingot/gold
-	desc = "An ornate set of steel armor, decorated with golden fluting. For when you need to remind those of lesser stations about whose authority reigns supreme, in lieu of a King's command."
+	desc = "饰有金色棱纹的华丽钢甲。无需国王下令，便足以提醒地位卑微者，究竟是谁掌握至高权威。"
 	smelt_bar_num = 1
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/fluted/decorated
-	name = "decorated fluted plate armor"
+	name = "华饰棱纹板甲"
 	icon_state = "gildedplate"
 	smeltresult = /obj/item/ingot/gold
-	desc = "An ornate set of steel plate armor, decorated with golden fluting. For when you need to do something with all of that precious, precious wealth gathering dust in a fief's ducal treasury."
+	desc = "饰有金色棱纹的华丽钢制板甲。公爵领宝库里那些珍贵得不得了的财富积灰已久，总该派上点用场。"
 	smelt_bar_num = 1
 
 //----------------- INFAREDBARON SPRITEWORK/ARMOR.DM ---------------------

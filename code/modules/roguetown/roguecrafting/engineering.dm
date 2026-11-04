@@ -686,7 +686,7 @@
 	display_category = ITEM_CAT_ENG_COMBAT
 
 /datum/crafting_recipe/roguetown/engineering/highexplosiveimpact
-	name = "high explosive impact, bombard charge"
+	name = "高爆臼炮装药"
 	category = "Explosives"
 	result = /obj/item/cannonball/explosive
 	reqs = list(/obj/item/tntstick = 2, /obj/item/alch/coaldust = 1, /obj/item/paper = 4)
@@ -696,7 +696,7 @@
 	display_category = ITEM_CAT_ENG_COMBAT
 
 /datum/crafting_recipe/roguetown/engineering/canistershotimpact
-	name = "canister shot, bombard charge"
+	name = "榴霰臼炮装药"
 	category = "Explosives"
 	result = /obj/item/cannonball/canister
 	reqs = list(/obj/item/ammo_casing/caseless/bullet/grapeshot = 3, /obj/item/alch/coaldust = 2, /obj/item/paper = 4)
@@ -706,7 +706,7 @@
 	display_category = ITEM_CAT_ENG_COMBAT
 
 /datum/crafting_recipe/roguetown/engineering/smokeimpact
-	name = "smoke shell, bombard charge"
+	name = "烟幕臼炮装药"
 	category = "Explosives"
 	result = /obj/item/cannonball/smoke
 	reqs = list(/obj/item/bomb/smoke = 3, /obj/item/alch/coaldust = 2, /obj/item/paper = 4)
@@ -716,7 +716,7 @@
 	display_category = ITEM_CAT_ENG_COMBAT
 
 /datum/crafting_recipe/roguetown/engineering/flareimpact
-	name = "flare shell, bombard charge"
+	name = "照明臼炮装药"
 	category = "Explosives"
 	result = /obj/item/cannonball/flare
 	reqs = list(/obj/item/rogueore/cinnabar = 2, /obj/item/alch/coaldust = 1, /obj/item/paper = 4)
@@ -726,7 +726,7 @@
 	display_category = ITEM_CAT_ENG_COMBAT
 
 /datum/crafting_recipe/roguetown/engineering/incendiaryimpact
-	name = "incendiary shell, bombard charge"
+	name = "燃烧臼炮装药"
 	category = "Explosives"
 	result = /obj/item/cannonball/incendiary
 	reqs = list(/obj/item/alch/coaldust = 4, /obj/item/paper = 4)

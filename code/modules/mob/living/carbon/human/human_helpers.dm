@@ -40,19 +40,19 @@
 		return name_override
 	if(face_name)
 		if(id_name && (id_name != face_name))
-			return "Unknown [(gender == FEMALE) ? "Woman" : "Man"]"
+			return "未知[(gender == FEMALE) ? "女子" : "男子"]"
 		return face_name
 	if(id_name)
 		return id_name
 	if(HAS_TRAIT(src, TRAIT_ANONYMOUS))
-		return "Unknown"
+		return "未知"
 	var/list/d_list = get_mob_descriptors()
 	var/trait_desc = "[capitalize(build_coalesce_description_nofluff(d_list, src, list(MOB_DESCRIPTOR_SLOT_TRAIT), "%DESC1%"))]"
 	var/stature_desc = "[capitalize(build_coalesce_description_nofluff(d_list, src, list(MOB_DESCRIPTOR_SLOT_STATURE), "%DESC1%"))]"
 	var/descriptor_name = "[trait_desc] [stature_desc]"
 	if(descriptor_name != " ")
 		return descriptor_name
-	return "Unknown"
+	return "未知"
 
 /mob/living/carbon/human/proc/has_active_ownership_mark()
 	for(var/obj/item/bodypart/bodypart as anything in bodyparts)

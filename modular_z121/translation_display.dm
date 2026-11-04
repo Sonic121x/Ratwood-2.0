@@ -112,3 +112,15 @@
 		options[get_player_archive_display(category)] = category
 	var/choice = input(user, "选择这本书归入的分类", "书籍分类") as anything in options
 	return options[choice]
+
+/proc/get_ancestral_blood_display(value)
+	var/static/list/names = list("Rontz" = "隆兹石", "Saffira" = "蓝晶", "Gemerald" = "翠晶", "Toper" = "托珀石", "Amythortz" = "阿米索兹石")
+	return names[value] || value
+
+/proc/input_weapon_vow_display(mob/user, list/values)
+	var/static/list/names = list("I still use weapons" = "我仍使用武器", "I forgo weapons" = "我放弃使用武器")
+	var/list/options = list()
+	for(var/value in values)
+		options[names[value] || value] = value
+	var/choice = input(user, "你是否已经放弃使用武器？", "你的决心有多坚定？") as anything in options
+	return options[choice]

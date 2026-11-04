@@ -15,12 +15,12 @@
 	return ragedmgbuff
 
 /obj/effect/proc_holder/spell/self/rage
-	name = "RAGE"
-	desc = "GETTING HURT MAKES YOU ANGRY, MAKE THEM HURT BACK- MORE HURT IS MORE ANGRY!"
+	name = "狂怒"
+	desc = "伤痛点燃怒火，让他们也尝尝苦头——伤得越重，怒火越盛！"
 	antimagic_allowed = TRUE
 	clothes_req = FALSE
 	recharge_time = 1 MINUTES
-	invocations = list("enters a state of furious rage!")
+	invocations = list("陷入了暴怒！")
 	overlay_state = "bcry"
 	invocation_type = "emote"
 
@@ -39,13 +39,13 @@
 	return TRUE
 
 /atom/movable/screen/alert/status_effect/buff/rage
-	name = "RAGE"
-	desc = "YOU'RE MAKING ME ANGRY!"
+	name = "狂怒"
+	desc = "你们惹怒我了！"
 	icon_state = "buff"
 
 /datum/status_effect/buff/rage
 	id = "rage"
-	examine_text = "<font color='red'>SUBJECTPRONOUN is frothing at the mouth!</font>"
+	examine_text = "<font color='red'>SUBJECTPRONOUN正口吐白沫！</font>"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/rage
 	effectedstats = list(STATKEY_STR = 2) //higher base, less boring stat scaling
 	duration = 45 SECONDS
@@ -59,17 +59,17 @@
 		if(!filter)
 			owner.add_filter(RAGE_FILTER, 2, list("type" = "outline", "color" = outline_colour, "alpha" = 120, "size" = 1))
 		owner.emote("rage", forced = TRUE)
-		to_chat(owner, span_notice("PAIN FUELS MY RAGE, MY BODY IS READY TO FIGHT!"))
+		to_chat(owner, span_notice("痛苦助长我的怒火，我的身体已准备好战斗！"))
 		playsound(owner, 'sound/combat/hits/burn (2).ogg', 100, TRUE)
 
 /datum/status_effect/buff/rage/on_remove()
 	. = ..()
 	owner.remove_filter(RAGE_FILTER)
-	to_chat(owner, span_warning("Rage subsides."))
+	to_chat(owner, span_warning("怒火平息了。"))
 
 /atom/movable/screen/alert/status_effect/buff/rage_stamina
-	name = "RAAADRENALINE"
-	desc = "THE ANGER DRAINS MY FATIGUE!"
+	name = "怒火激涌"
+	desc = "愤怒驱散了我的疲惫！"
 	icon_state = "buff"
 
 /datum/status_effect/buff/rage_stamina
@@ -89,8 +89,8 @@
 	duration = 45 SECONDS
 
 /atom/movable/screen/alert/status_effect/buff/berserk_rush
-	name = "THERE'S NO STOPPING ME!"
-	desc = "DON'T STOP ME NOW, I AM HAVING SUCH A GOOD TIME!"
+	name = "势不可挡！"
+	desc = "别想阻止我，我正打得痛快！"
 	icon_state = "buff"
 
 /datum/status_effect/buff/berserk_rush/on_apply()

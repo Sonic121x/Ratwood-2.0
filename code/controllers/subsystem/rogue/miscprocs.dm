@@ -341,20 +341,20 @@
 	to_chat(src, "现在我会看到[HAS_TRAIT(src, TRAIT_COMBAT_AWARE) ? "更多" : "更少"]战斗信息。")
 
 /mob/living/carbon/human/proc/toggle_descriptors()
-	set name = "Toggle Anonymity"
+	set name = "切换身份隐匿"
 	set category = "Virtue"
 
 	if(HAS_TRAIT_FROM(src, TRAIT_ANONYMOUS, GUARDED_TRAIT))
 		REMOVE_TRAIT(src, TRAIT_ANONYMOUS, GUARDED_TRAIT)
 	else if(!HAS_TRAIT(src, TRAIT_GUARD_RAISED))
-		to_chat(src, span_warning("I must raise my guard first."))
+		to_chat(src, span_warning("我必须先对他人保持戒备。"))
 		return
 	else
 		ADD_TRAIT(src, TRAIT_ANONYMOUS, GUARDED_TRAIT)
-	to_chat(src, "My identifying features are [HAS_TRAIT(src, TRAIT_ANONYMOUS) ? "" : "no longer "]obscured.")
+	to_chat(src, "我的身份特征[HAS_TRAIT(src, TRAIT_ANONYMOUS) ? "已被隐藏" : "不再隐藏"]。")
 
 /mob/living/carbon/human/proc/toggle_guarded()
-	set name = "Toggle Guarded"
+	set name = "切换戒备"
 	set category = "Virtue"
 
 	if(HAS_TRAIT_FROM(src, TRAIT_GUARD_RAISED, GUARDED_TRAIT))
@@ -362,7 +362,7 @@
 		REMOVE_TRAIT(src, TRAIT_ANONYMOUS, GUARDED_TRAIT)
 	else
 		ADD_TRAIT(src, TRAIT_GUARD_RAISED, GUARDED_TRAIT)
-	to_chat(src, "I have [HAS_TRAIT(src, TRAIT_GUARD_RAISED) ? "raised" : "lowered"] my guard around others.")
+	to_chat(src, "我对他人[HAS_TRAIT(src, TRAIT_GUARD_RAISED) ? "提高了" : "放下了"]戒备。")
 
 /mob/living/carbon/human/proc/on_guarded_gained(datum/source)
 	SIGNAL_HANDLER

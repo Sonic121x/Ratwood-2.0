@@ -70,7 +70,7 @@
 				)
 
 /datum/supply_pack/rogue/seeds/bakersroot
-	name = "Baker's Root"
+	name = "面包根"
 	cost = 25
 	contains = list(
 					/obj/item/seeds/bakersroot,

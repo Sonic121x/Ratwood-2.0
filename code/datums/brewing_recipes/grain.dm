@@ -20,9 +20,9 @@
 	needed_items = list(/obj/item/reagent_containers/food/snacks/grown/oat = 6)
 
 /datum/brewing_recipe/beer/bakersroot
-	name = "Baker's Root Beer"
-	bottle_name = "baker's root beer"
-	bottle_desc = "A bottle of locally-brewed baker's root beer. Has a thick, earthy flavor."
+	name = "面包根啤酒"
+	bottle_name = "面包根啤酒"
+	bottle_desc = "一瓶本地酿造的面包根啤酒，口感浓厚，带有泥土风味。"
 	needed_items = list(/obj/item/reagent_containers/food/snacks/grown/bakersroot/clean = 6)
 
 /datum/brewing_recipe/beer/rice

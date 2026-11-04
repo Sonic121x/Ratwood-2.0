@@ -152,9 +152,9 @@
 
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/heavy
-	name = "plate-and-maille"
-	desc = "A maille-aketon of steel, comfortably fitted beneath a matching cuirass. Best paired with a padded arming jacket \
-	and a lovely goblet of wine, sourced straight from the Duke's private reserves."
+	name = "板锁复合甲"
+	desc = "钢制锁甲衬衣舒适地穿在配套胸甲之下。最好再搭配一件软垫武装衣，\
+	以及一杯直接取自公爵私藏的美酒。"
 	slot_flags = ITEM_SLOT_ARMOR
 	icon_state = "cuirasshauberk"
 	item_state = "cuirasshauberk"
@@ -162,19 +162,19 @@
 	max_integrity = ARMOR_INT_CHEST_PLATE_STEELLIGHT // To note, this is about 450 INT, or +150 over regular hauberk and -50 under regular plate.
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/heavy/ancient/decrepit
-	name = "decrepit plate-and-maille"
-	desc = "Frayed bronze rings and rotting leather, woven together to form a sleeved maille-atekon; one that's been uncomfortably \
-	tucked beneath a matching cuirass. Such are the last remains of those who've dared to march against the undying legions, be it \
-	yils or centuries prior."
+	name = "破败板锁复合甲"
+	desc = "磨损的青铜环与腐烂皮革编成带袖锁甲衬衣，别扭地\
+	塞在配套胸甲之下。这便是那些胆敢进军对抗不死军团的人留下的最后遗物，无论那场远征\
+	发生于数年前还是数百年前。"
 	icon_state = "ancientcuirasshauberk"
 	item_state = "ancientcuirasshauberk"
 	max_integrity = ARMOR_INT_CHEST_PLATE_DECREPITLIGHT // 200 INT.
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/heavy/ancient
-	name = "ancient plate-and-maille"
-	desc = "Polished gilbranze rings and silk, woven together to form a sleeved maille-atekon; one that's been uncomfortably tucked \
-	beneath a matching cuirass. It eminates an unfamiliar sensation, rarely seen amongst rot-and-undeath - elegance. In the worlds to \
-	come, do you suppose Her death knights would bear such a mantle?"
+	name = "远古板锁复合甲"
+	desc = "抛光的吉尔青铜环与丝绸编成带袖锁甲衬衣，别扭地塞在\
+	配套胸甲之下。它散发着腐朽与亡灵之间罕见的陌生气息——优雅。在未来的世界里，\
+	祂的死亡骑士是否也会披上这样的甲胄？"
 	icon_state = "ancientcuirasshauberk"
 	item_state = "ancientcuirasshauberk"
 	max_integrity = ARMOR_INT_CHEST_PLATE_STEELLIGHT
@@ -183,17 +183,17 @@
 	slot_flags = ITEM_SLOT_ARMOR
 	armor_class = ARMOR_CLASS_HEAVY
 	armor = ARMOR_PLATE
-	name = "fluted plate-and-maille"
-	desc = "A beautiful steel cuirass, decorated with fluting and worn atop thick chainmaille. While it falters against \
-	arrows and bolts, these interlinked layers are superb at warding off the blows of swords and axes."
+	name = "棱纹板锁复合甲"
+	desc = "一件饰有棱纹的精美钢制胸甲，穿在厚实锁子甲之上。虽然抵挡\
+	箭矢和弩矢时略显不足，层层相扣的甲胄却能极好地抵御刀剑与斧头的劈击。"
 	icon_state = "ornatehauberk"
 	item_state = "ornatehauberk"
 	max_integrity = ARMOR_INT_CHEST_PLATE_STEELLIGHT
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/heavy/decorated
-	name = "decorated plate-and-maille"
-	desc = "A maille-aketon of steel, comfortably fitted beneath a decorated cuirass. Best paired with a gilded dress shirt \
-	and a tankard of Valmora Blue, chilled atop the rocks of a conquered fief."
+	name = "华饰板锁复合甲"
+	desc = "钢制锁甲衬衣舒适地穿在华饰胸甲之下。最好再搭配一件金饰礼服衬衫，\
+	以及一大杯在征服领地的岩石上冰镇的瓦尔莫拉蓝。"
 	slot_flags = ITEM_SLOT_ARMOR
 	icon_state = "gildedhauberk"
 	item_state = "gildedhauberk"
@@ -204,7 +204,7 @@
 ///////// CRAFTING DATUMS FOR MAILLED CUIRASS /////////
 
 /datum/crafting_recipe/roguetown/blacksmith/mailledhauberk
-	name = "layer a steel cuirass atop hauberk"
+	name = "在锁子甲上叠加钢制胸甲"
 	result = list(/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/heavy)
 	reqs = list(/obj/item/clothing/suit/roguetown/armor/plate/half = 1,
 				/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk = 1)
@@ -212,7 +212,7 @@
 	req_table = TRUE //..of resetting the durability of both items, when crafted and uncrafted. This check helps to reduce a lot of potential cheese, but should be tweaked later.
 
 /datum/crafting_recipe/roguetown/survival/ancientmailledhauberk
-	name = "layer an ancient cuirass atop hauberk"
+	name = "在锁子甲上叠加远古胸甲"
 	result = list(/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/heavy/ancient)
 	reqs = list(/obj/item/clothing/suit/roguetown/armor/plate/half/ancient = 1,
 				/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/ancient = 1)
@@ -220,7 +220,7 @@
 	req_table = TRUE //If someone wants to add that in post, hwoever, I don't mind. You can easily do so by copy-pasting the format, here.
 
 /datum/crafting_recipe/roguetown/survival/flutedmailledhauberk
-	name = "layer a fluted cuirass atop hauberk"
+	name = "在锁子甲上叠加棱纹胸甲"
 	result = list(/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/fluted)
 	reqs = list(/obj/item/clothing/suit/roguetown/armor/plate/half/fluted = 1,
 				/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk = 1)
@@ -228,7 +228,7 @@
 	req_table = TRUE //If someone wants to add that in post, hwoever, I don't mind. You can easily do so by copy-pasting the format, here.
 
 /datum/crafting_recipe/roguetown/survival/ornatemailledhauberk
-	name = "layer a psydonic cuirass atop hauberk"
+	name = "在锁子甲上叠加普赛顿胸甲"
 	result = list(/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/ornate)
 	reqs = list(/obj/item/clothing/suit/roguetown/armor/plate/half/fluted/ornate = 1,
 				/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk = 1)
@@ -236,7 +236,7 @@
 	req_table = TRUE //If someone wants to add that in post, hwoever, I don't mind. You can easily do so by copy-pasting the format, here.
 
 /datum/crafting_recipe/roguetown/survival/decoratedmailledhauberk
-	name = "layer a decorated cuirass atop hauberk"
+	name = "在锁子甲上叠加华饰胸甲"
 	result = list(/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/heavy/decorated)
 	reqs = list(/obj/item/clothing/suit/roguetown/armor/plate/half/fluted/decorated = 1,
 				/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk = 1)

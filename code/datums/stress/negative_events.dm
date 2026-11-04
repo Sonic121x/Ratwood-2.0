@@ -283,7 +283,7 @@
 
 /datum/stressevent/sundercritted
 	stressadd = 5 //Its literally killing you, sire.
-	desc = span_boldred("I CAN FEEL MY SOUL TEARING APART FROM BLESSED FLAMES, I NEED TO GET AWAY!")
+	desc = span_boldred("我能感到圣焰正在撕裂我的灵魂，必须逃离这里！")
 
 /datum/stressevent/jesterphobia
 	timer = 4 MINUTES

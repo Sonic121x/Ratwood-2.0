@@ -120,19 +120,19 @@
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/body/disciple/equipped(mob/living/user, slot)
 	. = ..()
 	ADD_TRAIT(user, TRAIT_MONK_ROBE, TRAIT_GENERIC)
-	to_chat(user, span_notice("HIS CHILDREN PERSIST; AND AS LONG AS THEY DO, SO MUST I!"))
+	to_chat(user, span_notice("祂的孩子们仍在坚持；只要他们还在，我也必须坚持！"))
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/body/disciple/dropped(mob/living/user)//we cant drop it, but whatever.
 	..()
 	REMOVE_TRAIT(user, TRAIT_MONK_ROBE, TRAIT_GENERIC)
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/chest/disciple
-	name = "enduring chest"
-	desc = "It's far more than just an oath. \
-	YET THREE; KNOWN BY ALL, YET FORGOTTEN TO TYME.' </br>'A CORPSE. \
-	I AM LIVING ON A FUCKING CORPSE. HE IS THE WORLD, AND THE WORLD IS ROTTING AWAY. \
-	HEAVEN CLOSED ITS GATES TO US, LONG AGO.' </br>'YET, HIS CHILDREN PERSIST; AND AS LONG AS THEY DO, SO MUST I. \
-	HAPPINESS MUST BE FOUGHT FOR.'"
+	name = "坚忍胸膛"
+	desc = "它远不只是一句誓言。\
+	又为三；为众所知，却被时光遗忘。' </br>'一具尸体。\
+	我他妈正活在一具尸体上。祂便是世界，而世界正在腐烂。\
+	天堂早已对我们关闭了大门。' </br>'然而，祂的孩子们仍在坚持；只要他们还在，我也必须坚持。\
+	幸福必须靠战斗去争取。'"
 	blocksound = SOFTHIT
 	body_parts_covered = COVERAGE_VEST
 	body_parts_inherent = COVERAGE_VEST
@@ -169,8 +169,8 @@
 	repair_time = 15 SECONDS
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/body/monk
-	name = "trained skin"
-	desc = "They say I've taken the first step on a path older than memory."
+	name = "淬炼之肤"
+	desc = "他们说，我已踏上一条比记忆更古老的道路，迈出了第一步。"
 	body_parts_covered = COVERAGE_FULL //everything but head and it's subzones (neck, skull, ears, eyes, nose, mouth)
 	body_parts_inherent = COVERAGE_FULL
 	armor = ARMOR_PADDED
@@ -178,8 +178,8 @@
 	repair_time = 15 SECONDS
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/chest/monk
-	name = "trained chest"
-	desc = "I don't fully understand what those names mean yet, but I repeat them as I was taught."
+	name = "淬炼胸膛"
+	desc = "我尚未完全理解那些名讳的含义，却仍依照教导反复诵念。"
 	body_parts_covered = COVERAGE_VEST
 	body_parts_inherent = COVERAGE_VEST
 	blocksound = SOFTHIT
@@ -188,8 +188,8 @@
 	repair_time = 15 SECONDS//less armor and integ so faster regen
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/body/berzerker
-	name = "unstoppable skin"
-	desc = "I've endured enough. The onslaught has lost its meaning."
+	name = "不屈之肤"
+	desc = "我承受得已足够多，狂风暴雨般的攻势早已失去意义。"
 	armor = ARMOR_BRONZE//scary, but longer regen
 	body_parts_covered = COVERAGE_FULL //everything but head and it's subzones (neck, skull, ears, eyes, nose, mouth)
 	body_parts_inherent = COVERAGE_FULL
@@ -197,8 +197,8 @@
 	repair_time = 40 SECONDS
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/chest/berzerker
-	name = "unstoppable chest"
-	desc = "The callouses could stop arrows! But only so many."
+	name = "不屈胸膛"
+	desc = "这厚茧甚至能挡箭！但也只能挡住有限的几支。"
 	armor = ARMOR_MAILLE//covers stabs
 	body_parts_covered = COVERAGE_VEST
 	body_parts_inherent = COVERAGE_VEST
@@ -206,8 +206,8 @@
 	repair_time = 40 SECONDS
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/body/iconclast
-	name = "gilded skin"
-	desc = "The Many-Faced smiles on me. Wreath me in gold melted from crowns, let my skin shine radiant and glittering."
+	name = "镀金之肤"
+	desc = "多面之神向我微笑。以熔化王冠的黄金包裹我，让我的肌肤灿烂生辉。"
 	armor = ARMOR_BRONZE
 	blocksound = PLATEHIT
 	body_parts_covered = COVERAGE_FULL //everything but head and it's subzones (neck, skull, ears, eyes, nose, mouth)
@@ -216,8 +216,8 @@
 	repair_time = 40 SECONDS
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/chest/iconoclast
-	name = "gilded chest"
-	desc = "The Many-Faced smiles on me. Shield my heart O' Matthios, cover my ribs with drake scales."
+	name = "镀金胸膛"
+	desc = "多面之神向我微笑。马西奥斯啊，请护佑我的心脏，以龙鳞覆盖我的肋骨。"
 	armor = ARMOR_BRIGANDINE//neither bronze nor brig cover stab damage well, meaning nat armor icono has a chink in the armor
 	body_parts_covered = COVERAGE_VEST
 	body_parts_inherent = COVERAGE_VEST
@@ -225,8 +225,8 @@
 	repair_time = 40 SECONDS
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/body/barbarian
-	name = "hardened skin"
-	desc = "Toughened from abuse. My mettle remains. Resting will restore it's strength."
+	name = "硬化之肤"
+	desc = "历经磨难而坚韧，勇气犹存。休息便能恢复其强度。"
 	body_parts_covered = COVERAGE_FULL
 	body_parts_inherent = COVERAGE_FULL
 	armor = ARMOR_PADDED
@@ -234,8 +234,8 @@
 	repair_time = 15 SECONDS
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/chest/barbarian
-	name = "hardened chest"
-	desc = "Toughened from abuse. My mettle remains. Resting will restore it's strength."
+	name = "硬化胸膛"
+	desc = "历经磨难而坚韧，勇气犹存。休息便能恢复其强度。"
 	body_parts_covered = COVERAGE_VEST
 	body_parts_inherent = COVERAGE_VEST
 	blocksound = SOFTHIT
@@ -244,8 +244,8 @@
 	repair_time = 15 SECONDS
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/body/bodybuilder//dedicated gachi-muchi armor
-	name = "strongman's pride"
-	desc = "Toughened from rigorous routine and mettle. A physique that could hold up the sky."
+	name = "力士之傲"
+	desc = "严苛的日常锻炼与胆魄铸就的坚韧体魄，仿佛足以撑起苍穹。"
 	body_parts_covered = COVERAGE_FULL
 	body_parts_inherent = COVERAGE_FULL
 	armor = ARMOR_LEATHER
@@ -253,8 +253,8 @@
 	repair_time = 30 SECONDS
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/chest/bodybuilder
-	name = "strongman's pecs"
-	desc = "Akin to marble hewn by the old Etruscan masters. The skin is pulled taut revealing intricate vascularity beneath."
+	name = "力士胸肌"
+	desc = "宛如古代伊特鲁斯卡大师雕琢的大理石。紧绷的皮肤下，复杂的血管纹路清晰可见。"
 	body_parts_covered = COVERAGE_VEST
 	body_parts_inherent = COVERAGE_VEST
 	blocksound = PLATEHIT//I HAVE BALLS OF STEEL
@@ -263,8 +263,8 @@
 	repair_time = 30 SECONDS//better armor, longer repair
 
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/body/ruma
-	name = "bouhoi bujeog tattoos"
-	desc = "A mystic style of tattoos adopted by the Ruma Clan, emulating a practice performed by warrior monks of the Xinyi Dynasty. They are your way of identifying fellow clan members, an sign of companionship and secretive brotherhood. These are styled into the shape of clouds, created by a mystical ink which shifts and moves in ripples like a pond to harden where your skin is struck. It's movement causes you to shudder."
+	name = "护身符纹身"
+	desc = "鲁玛氏族仿照信义王朝武僧习俗采用的神秘纹身，既是辨认同族的标志，也象征着情谊与隐秘的兄弟纽带。神秘墨水绘成云纹，如池塘涟漪般流转，在皮肤受到击打之处凝固变硬。它的流动令你不禁战栗。"
 	resistance_flags = FIRE_PROOF
 	icon_state = "easttats"
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR

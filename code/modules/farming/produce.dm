@@ -126,11 +126,11 @@
 
 /obj/item/reagent_containers/food/snacks/grown/bakersroot
 	seed = /obj/item/seeds/bakersroot
-	name = "baker's root"
-	desc = "A starchy root caked in dirt. It should be washed before eating."
+	name = "面包根"
+	desc = "沾满泥土、富含淀粉的块根，食用前应先洗净。"
 	icon = 'icons/roguetown/items/bakers_root.dmi'
 	icon_state = "br_raw"
-	tastes = list("earthy starch" = 1)
+	tastes = list("带泥土气息的淀粉" = 1)
 	bitesize = 1
 	foodtype = VEGETABLES
 	list_reagents = list(/datum/reagent/toxin/bad_food = 6)
@@ -146,35 +146,35 @@
 	var/obj/item/reagent_containers/container = I
 	update_cooktime(user)
 	if(isturf(loc) && !found_table)
-		to_chat(user, span_notice("Need a table..."))
+		to_chat(user, span_notice("需要一张桌子……"))
 		return ..()
 	if(water_added)
 		if(scrubbed_times < 2)
-			to_chat(user, span_notice("It needs to be scrubbed before scraping."))
+			to_chat(user, span_notice("刮皮前需要先搓洗干净。"))
 			return TRUE
 		if(scraped_clean)
 			return ..()
 		if(!I.get_sharpness())
-			to_chat(user, span_notice("I need something sharp to scrape the skin off."))
+			to_chat(user, span_notice("我需要锋利的东西来刮掉外皮。"))
 			return TRUE
-		to_chat(user, span_notice("Scraping the tough skin off..."))
+		to_chat(user, span_notice("正在刮去坚韧的外皮……"))
 		playsound(get_turf(user), 'sound/items/wood_sharpen.ogg', 50, TRUE, -1)
 		if(do_after(user, short_cooktime * 2, target = src))
 			add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-			name = "scraped baker's root"
+			name = "刮皮面包根"
 			scraped_clean = TRUE
 		return TRUE
 	if(!istype(container))
 		return ..()
 	if(!container.reagents.has_reagent(/datum/reagent/water, 20))
-		to_chat(user, span_notice("Needs more water to wash it."))
+		to_chat(user, span_notice("需要更多水才能清洗。"))
 		return TRUE
-	to_chat(user, span_notice("Adding water, now it needs to be scrubbed clean..."))
+	to_chat(user, span_notice("正在加水，接下来需要搓洗干净……"))
 	playsound(get_turf(user), 'modular/Neu_Food/sound/splishy.ogg', 100, TRUE, -1)
 	if(!do_after(user, short_cooktime * 2, target = src))
 		return TRUE
 	add_sleep_experience(user, /datum/skill/craft/cooking, user.STAINT)
-	name = "wet baker's root"
+	name = "湿面包根"
 	container.reagents.remove_reagent(/datum/reagent/water, 20)
 	water_added = TRUE
 	return TRUE
@@ -190,19 +190,19 @@
 	if(scrubbed_times < 2)
 		scrubbed_times++
 		if(scrubbed_times < 2)
-			to_chat(user, span_notice("It still needs more scrubbing."))
+			to_chat(user, span_notice("还需要继续搓洗。"))
 		else
-			to_chat(user, span_notice("The skin needs to be scraped off with something sharp."))
+			to_chat(user, span_notice("需要用锋利的东西刮掉外皮。"))
 		return TRUE
 	if(!scraped_clean)
-		to_chat(user, span_notice("The skin needs to be scraped off with something sharp."))
+		to_chat(user, span_notice("需要用锋利的东西刮掉外皮。"))
 		return TRUE
 	new /obj/item/reagent_containers/food/snacks/grown/bakersroot/clean(loc)
 	qdel(src)
 	return TRUE
 
 /obj/item/reagent_containers/food/snacks/grown/bakersroot/clean
-	desc = "A clean, starchy root. It can be eaten or milled into flour."
+	desc = "洗净的淀粉块根，可以食用或磨成面粉。"
 	icon_state = "br_clean"
 	foodtype = GRAIN | VEGETABLES
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2)

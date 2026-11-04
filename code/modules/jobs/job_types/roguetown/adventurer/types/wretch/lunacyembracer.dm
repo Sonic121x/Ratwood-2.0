@@ -71,7 +71,7 @@
 	H.set_blindness(0)
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/rage)
 	var/unarmed = list("I still use weapons", "I forgo weapons")
-	var/unarmed_choice = input(H,"Have you given up weapons?", "HOW DEDICATED ARE YOU?") as anything in unarmed
+	var/unarmed_choice = input_weapon_vow_display(H, unarmed)
 	switch(unarmed_choice)
 		if("I still use weapons")
 			ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)

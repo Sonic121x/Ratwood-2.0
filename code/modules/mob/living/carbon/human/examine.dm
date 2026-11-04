@@ -825,7 +825,7 @@
 			var/collapse_details = !(user.client?.prefs?.full_examine)
 			var/app_str
 			if(collapse_details)
-				app_str = "<details><summary>[span_info("Details")]</summary>"
+				app_str = "<details><summary>[span_info("详情")]</summary>"
 
 			var/list/info_lines = list()
 			for(var/line in lines)

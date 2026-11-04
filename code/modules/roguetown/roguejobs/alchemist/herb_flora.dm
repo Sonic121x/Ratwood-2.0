@@ -192,7 +192,7 @@
 	herbtype = /obj/item/reagent_containers/food/snacks/grown/manabloom
 
 /obj/structure/flora/roguegrass/herb/bakersroot
-	name = "baker's root"
+	name = "面包根"
 	icon = 'icons/roguetown/items/bakers_root.dmi'
 	icon_state = "br_ripe"
 	herbtype = /obj/item/reagent_containers/food/snacks/grown/bakersroot

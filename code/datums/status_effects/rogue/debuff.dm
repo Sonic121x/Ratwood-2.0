@@ -227,8 +227,8 @@
 	duration = 10 SECONDS	//Punishing and tied to the duration of your sundering stacks.
 
 /atom/movable/screen/alert/status_effect/debuff/sunder_stacks
-	name = "Sundered!"
-	desc = "Something has been taken from me, and it will take time to recover."
+	name = "遭受裂解！"
+	desc = "我失去了自身的一部分，需要时间才能恢复。"
 	icon_state = "luxstrain"
 
 /datum/status_effect/debuff/devitalised
