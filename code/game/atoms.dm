@@ -381,9 +381,11 @@
  * COMSIG_ATOM_GET_EXAMINE_NAME signal
  */
 /atom/proc/get_examine_name(mob/user)
-	if(isnull(art))   	//本地化编辑不加英文冠词
+	var/art = article
+
+	if(isnull(art))
 		if(gender == PLURAL)
-			art = "一些"
+			art = "一些"   //本地化编辑不加英文冠词
 		else
 			var/first_char = LOWER_TEXT(copytext(name, 1, 2))
 			if(first_char in list("a","e","i","o","u"))
@@ -392,6 +394,9 @@
 				art = "a"
 			else
 				art = null   // 中文/数字/符号开头：不要冠词
+
+	var/name_text = art ? "[art] [name]" : "[name]"
+	var/list/override = list(art ? "[art]" : "", art ? " " : "", "[name]")
 	if(SEND_SIGNAL(src, COMSIG_ATOM_GET_EXAMINE_NAME, user, override) & COMPONENT_EXNAME_CHANGED)
 		name_text = override.Join("")
 
