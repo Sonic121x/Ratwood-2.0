@@ -385,15 +385,15 @@
 
 	if(isnull(art))
 		if(gender == PLURAL)
-			art = "一些"   //本地化编辑不加英文冠词
+			art = "一些"   //本地化调整
 		else
 			var/first_char = LOWER_TEXT(copytext(name, 1, 2))
-			if(first_char in list("a","e","i","o","u"))
+			if(first_char in list("a", "e", "i", "o", "u"))
 				art = "an"
-			else if(first_char ~= "[a-z]")
+			else if(first_char >= "a" && first_char <= "z")
 				art = "a"
 			else
-				art = null   // 中文/数字/符号开头：不要冠词
+				art = null   //本地化调整
 
 	var/name_text = art ? "[art] [name]" : "[name]"
 	var/list/override = list(art ? "[art]" : "", art ? " " : "", "[name]")
