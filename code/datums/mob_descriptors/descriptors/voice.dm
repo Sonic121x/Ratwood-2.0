@@ -8,7 +8,14 @@
 	var/voice_string
 
 /datum/mob_descriptor/voice/proc/get_speaking_name(voice_gender, mob/living/described = null)
-	return "[voice_string ? voice_string : name] [voice_gender]"
+	var/who = voice_string ? voice_string : name	//汉化编辑修改原	return "[voice_string ? voice_string : name] [voice_gender]"
+	switch(voice_gender)
+		if("Woman")
+			return "[who]，一位女性"
+		if("Man")
+			return "[who]，一位男性"
+		else
+			return "[who]"
 
 /datum/mob_descriptor/voice/ordinary
 	name = "普通"

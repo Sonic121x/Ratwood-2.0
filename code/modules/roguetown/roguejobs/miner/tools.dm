@@ -79,10 +79,10 @@
 	special = /datum/special_intent/greatsword_swing
 	
 /obj/item/rogueweapon/pick/woodcutter/dolabra/pioneer
-	name = "gilded eleonora"
+	name = "镀金军团斧镐"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	icon_state = "pdolabra"
-	desc = "A long handled dolabra axe-pick with a carved grip made of hardened maple wood. This one has an axe-blade of frayed blacksteel, having lost its varnish long ago with a long pick-head behind the blade, this dolabra is decorated with golden reinforced bracers along the shaft and a heavy gold mace head at the top."
+	desc = "一柄长柄军团斧镐，握柄由硬化枫木雕成。磨损的黑钢斧刃早已失去漆光，刃后伸出一根长镐尖。柄身饰有金色加固箍，顶端装着沉重的金制锤头。"
 	force = 30
 	force_wielded = 34
 	max_integrity = 1000
@@ -94,10 +94,10 @@
 	smeltresult = /obj/item/ingot/gold
 
 /obj/item/rogueweapon/pick/woodcutter/dolabra/blacksteel
-	name = "blacksteel dolabra"
+	name = "黑钢军团斧镐"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	icon_state = "edolabra"
-	desc = "A long-handled dolabra axe-pick with a carved grip made of hardened maple wood. Fitted with an axe-blade of polished blacksteel and a long pick-head behind the blade."
+	desc = "一把长柄的鹤嘴斧镐，握柄以硬化枫木雕制而成，前端装有抛光黑钢斧刃，刃后接一长鹤嘴镐头。"
 	force = 30
 	force_wielded = 34
 	max_integrity = 1000 // more than a blacksteel pickaxe
@@ -108,10 +108,10 @@
 	smeltresult = /obj/item/ingot/blacksteel
 
 /obj/item/rogueweapon/pick/woodcutter/dolabra/albranze
-	name = "albranze dolabra"
+	name = "铝青铜军团斧镐
 	icon = 'icons/roguetown/weapons/64.dmi'
 	icon_state = "bdolabra" // albranze is a bronze aluminium mix, aluminium was traditionally more expensive than even silver and gold combined
-	desc = "a long handled dolabra axe-pick with a long shaft of treated oak. Fitted with an axe-head made of polished albranze with a fitted pick-head behind the blade."
+	desc = "一把长柄鹤嘴斧镐，柄身以处理过的橡木制成，配抛光白铜斧头，刃后接一镐头。"
 	wdefense = 6
 	wdefense_wbonus = 2
 	smeltresult = /obj/item/ingot/bronze
