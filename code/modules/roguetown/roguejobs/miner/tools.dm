@@ -108,7 +108,7 @@
 	smeltresult = /obj/item/ingot/blacksteel
 
 /obj/item/rogueweapon/pick/woodcutter/dolabra/albranze
-	name = "铝青铜军团斧镐
+	name = "铝青铜军团斧镐"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	icon_state = "bdolabra" // albranze is a bronze aluminium mix, aluminium was traditionally more expensive than even silver and gold combined
 	desc = "一把长柄鹤嘴斧镐，柄身以处理过的橡木制成，配抛光白铜斧头，刃后接一镐头。"
