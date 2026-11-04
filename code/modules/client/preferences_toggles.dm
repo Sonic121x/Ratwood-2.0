@@ -1390,3 +1390,14 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	prefs.admin_chat_toggles ^= CHAT_ADMINSPAWN
 	prefs.save_preferences()
 	to_chat(src, "你[prefs.admin_chat_toggles & CHAT_ADMINSPAWN ? "会" : "不再"]看到生成日志。")
+
+/client/verb/full_examine()
+	set category = "选项"
+	set name = "切换完整检视"
+	if(prefs)
+		prefs.full_examine = !prefs.full_examine
+		prefs.save_preferences()
+		if(prefs.full_examine)
+			to_chat(src, "检视信息将完整显示。")
+		else
+			to_chat(src, "部分检视信息将收在折叠栏中。")

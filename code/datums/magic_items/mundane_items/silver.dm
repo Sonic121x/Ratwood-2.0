@@ -10,8 +10,8 @@
 	if(ishuman(target))
 		var/mob/living/H = target
 		if(HAS_TRAIT(H, TRAIT_SILVER_WEAK) && !H.has_status_effect(STATUS_EFFECT_ANTIMAGIC))
-			H.visible_message("<font color='white'>这不洁的一击暂时削弱了诅咒！</font>")
-			to_chat(H, span_userdanger("银器排斥着我的存在！我的血髓正在灼烧，我的力量也在衰退！"))
+			H.visible_message(span_silver("这不洁的一击暂时削弱了诅咒！"))
+			to_chat(H, span_silver("银器排斥着我的存在！我的血髓正在灼烧，我的力量也在衰退！"))
 			H.adjust_fire_stacks(2, /datum/status_effect/fire_handler/fire_stacks/sunder)
 
 /datum/magic_item/mundane/silver/on_equip(obj/item/i, mob/living/user)
@@ -21,7 +21,7 @@
 		if(V_lord.generation >= GENERATION_METHUSELAH)
 			return
 
-		to_chat(user, span_userdanger("我无法拿起这银器，它是我的克星！"))
+		to_chat(user, span_silver("我无法拿起这银器，它是我的克星！"))
 		user.Knockdown(10)
 		user.Paralyze(10)
 		user.adjustFireLoss(25)
@@ -34,14 +34,14 @@
 		var/datum/antagonist/werewolf/W = H.mind.has_antag_datum(/datum/antagonist/werewolf/)
 		if(ishuman(H))
 			if(V_lord.generation < GENERATION_METHUSELAH)
-				to_chat(H, span_userdanger("我无法拿起这银器，它是我的克星！"))
+				to_chat(H, span_silver("我无法拿起这银器，它是我的克星！"))
 				H.Knockdown(10)
 				H.Paralyze(10)
 				H.adjustFireLoss(25)
 				H.adjust_fire_stacks(3, /datum/status_effect/fire_handler/fire_stacks/sunder)
 				H.ignite_mob()
 			if(W && W.transformed == TRUE)
-				to_chat(H, span_userdanger("我无法拿起这银器，它是我的克星！"))
+				to_chat(H, span_silver("我无法拿起这银器，它是我的克星！"))
 				H.Knockdown(10)
 				H.Paralyze(10)
 				H.adjustFireLoss(25)

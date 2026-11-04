@@ -162,9 +162,10 @@
 
 /datum/virtue/combat/guarded
 	name = "深藏不露"
-	desc = "长久以来，我始终将真正的才能与恶癖隐藏起来。有时，伪装成弱者反而能救自己一命。"
-	custom_text = "会模糊各种效果对你的信息读取，包括主神能力与被动、评估以及其他美德。"
+	desc = "长久以来，我始终将真正的才能与恶习隐藏起来。有时，看似弱小反而能救自己一命。"
+	custom_text = "会向各类效果混淆关于你的信息，包括主神能力与被动、战斗信息、评估以及其他美德。"
 	added_traits = list(TRAIT_DECEIVING_MEEKNESS)
+
 
 /*/datum/virtue/combat/impervious
 	name = "坚不可摧"

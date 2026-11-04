@@ -80,48 +80,6 @@ Firstly, the coordinates device. Eventually, I'll add free aim. But for now...
 	force = 5
 	possible_item_intents = list(INTENT_GENERIC)
 
-//craftable bombard
-
-/obj/item/bombard_roughbarrel
-	name = "\proper 粗糙铁炮管"
-	desc = "一根尚未经过妥善处理的粗糙铁炮管。 <br>\
-	<small> 你觉得可以把它带到工匠台进一步精炼。</small>"
-	icon = 'icons/roguetown/weapons/stationary/bombard.dmi'
-	icon_state = "kit_barrel"
-	w_class = WEIGHT_CLASS_BULKY
-	force = 5
-	possible_item_intents = list(INTENT_GENERIC)
-
-/obj/item/bombard_partiallyrefinedbarrel
-	name = "\proper 初步精炼的炮管"
-	desc = "一根经过初步处理的铁制炮管，内壁却依旧粗糙，仍需打磨，<br>\
-	<small>你觉得可以把它带到工匠台进一步精炼。</small>"
-	icon = 'icons/roguetown/weapons/stationary/bombard.dmi'
-	icon_state = "kit_barrel"
-	w_class = WEIGHT_CLASS_BULKY
-	force = 5
-	possible_item_intents = list(INTENT_GENERIC)
-
-/obj/item/bombard_sandedbarrel
-	name = "\proper 打磨过的臼炮炮管"
-	desc = "一根经过打磨处理的铁炮管，但内部仍有缺口需要修补，<br>\
-	<small> 你觉得可以把它带到工匠台进一步精炼。</small>"
-	icon = 'icons/roguetown/weapons/stationary/bombard.dmi'
-	icon_state = "kit_barrel"
-	w_class = WEIGHT_CLASS_BULKY
-	force = 5
-	possible_item_intents = list(INTENT_GENERIC)
-
-/obj/item/bombard_sandedrepairedbarrel
-	name = "\proper 修补过的打磨炮管"
-	desc = "一根经过打磨处理的铁炮管，其内部空腔光滑平整，<br>\
-	<small> 你觉得可以把它带到工匠台进一步精炼。</small>"
-	icon = 'icons/roguetown/weapons/stationary/bombard.dmi'
-	icon_state = "kit_barrel"
-	w_class = WEIGHT_CLASS_BULKY
-	force = 5
-	possible_item_intents = list(INTENT_GENERIC)
-
 //And the recipe in which we hold it hostage. It shouldn't be survival, but, whatever.
 /datum/crafting_recipe/roguetown/survival/bombard
 	name = "便携臼炮组件"

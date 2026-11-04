@@ -85,8 +85,7 @@
 		C.visible_message(span_userdanger("[C]的[to_remove.name]被触须撕下了！"))
 		to_remove.dismember(damage = 999)
 
-		var/obj/effect/temp_visual/dir_setting/bloodsplatter/splatter = new(get_turf(C), pick(GLOB.cardinals))
-		splatter.color = "#880000"
+		new /obj/effect/temp_visual/dir_setting/bloodsplatter(get_turf(C), pick(GLOB.cardinals), C.get_blood_color())
 		limb_removed = TRUE
 
 /datum/status_effect/territorial_rage/proc/remove_head(mob/living/carbon/C)
@@ -95,8 +94,7 @@
 		C.visible_message(span_userdanger("[C]的头被触须猛烈地撕下了！"))
 		head.dismember(damage = 999, vorpal = TRUE)
 		C.adjustBruteLoss(200)
-		var/obj/effect/temp_visual/dir_setting/bloodsplatter/splatter = new(get_turf(C), pick(GLOB.cardinals))
-		splatter.color = "#880000"
+		var/obj/effect/temp_visual/dir_setting/bloodsplatter/splatter = new(get_turf(C), pick(GLOB.cardinals), C.get_blood_color())
 		splatter.transform *= 2
 
 #undef TERRITORIAL_FILTER

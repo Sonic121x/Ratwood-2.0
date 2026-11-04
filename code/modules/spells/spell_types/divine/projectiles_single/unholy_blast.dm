@@ -43,8 +43,8 @@
 		if(istype(H.patron, /datum/patron/old_god))
 			damage += 20
 		if(HAS_TRAIT(H, TRAIT_SILVER_WEAK) && !H.has_status_effect(STATUS_EFFECT_ANTIMAGIC))
-			H.visible_message("<font color='white'>这道亵渎打击暂时削弱了诅咒！</font>")
-			to_chat(H, span_userdanger("白银正在斥退我的存在！我的血性在灼烧，力量也在衰退！"))
+			H.visible_message("<font color='white'>这记不洁之击暂时削弱了诅咒！</font>")
+			to_chat(H, span_silver("白银正在斥退我的存在！我的精血在阴燃，力量也在衰退！"))
 			H.adjust_fire_stacks(2, /datum/status_effect/fire_handler/fire_stacks/sunder)
 		var/mob/living/carbon/human/caster
 		if (ishuman(firer))

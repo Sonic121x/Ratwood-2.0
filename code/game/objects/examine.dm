@@ -102,7 +102,7 @@
 	for(var/datum/examine_effect/E in examine_effects)
 		E.trigger(user)
 
-/obj/item/proc/integrity_check(elaborate = FALSE)
+/obj/item/proc/integrity_check(elaborate = FALSE, guarded = FALSE)
 	if(!max_integrity)
 		return
 	if(obj_integrity == max_integrity)
@@ -113,6 +113,10 @@
 
 	if(obj_broken)
 		return span_warning("它完全损坏了。")
+
+	if(guarded)
+		return ""
+
 	switch(int_percent)
 		if(1 to 15)
 			result = span_warning("它快要散架了。")
@@ -124,9 +128,12 @@
 			result = span_warning("它有一点损坏。")
 	return result
 
-/obj/item/clothing/integrity_check(elaborate = FALSE)
+/obj/item/clothing/integrity_check(elaborate = FALSE, guarded = FALSE)
 	if(obj_broken)
 		return span_warning("它完全损坏了。")
+
+	if(guarded)
+		return ""
 
 	var/eff_maxint = max_integrity - (max_integrity * integrity_failure)
 	var/eff_currint = max(obj_integrity - (max_integrity * integrity_failure), 0)

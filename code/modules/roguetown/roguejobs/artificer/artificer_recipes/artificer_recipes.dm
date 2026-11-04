@@ -326,6 +326,14 @@
 	hammers_per_item = 12
 	skill_level = 4
 
+/datum/artificer_recipe/contraptions/steamshield
+	name = "蒸汽盾 (+1 木板)(+1 青铜齿轮)(+1 青铜锭)"
+	required_item = /obj/item/ingot/bronze
+	additional_items = list(/obj/item/roguegear/bronze, /obj/item/natural/wood/plank, /obj/item/ingot/bronze)
+	created_item = /obj/item/rogueweapon/shield/steam
+	hammers_per_item = 12
+	skill_level = 4
+
 /datum/artificer_recipe/contraptions/coolingbackpack
 	name = "冷却背包 (+1 青铜齿轮, +背包)" // why are these recipes capitalized differently than every other crafting recipe my ocddddddddddd
 	required_item = /obj/item/ingot/bronze
@@ -399,13 +407,6 @@
 
 /obj/item/rogueweapon/shield/heater/crafted
 	sellprice = 6
-
-/datum/artificer_recipe/wood/weapons/steamshield
-	name = "蒸汽盾 (+1 木板)(+2 青铜齿轮)(+2 青铜锭)"
-	additional_items = list(/obj/item/roguegear/bronze, /obj/item/roguegear/bronze,/obj/item/natural/wood/plank, /obj/item/ingot/bronze,/obj/item/ingot/bronze)
-	created_item = /obj/item/rogueweapon/shield/steam
-	hammers_per_item = 12
-	skill_level = 3
 
 /// CROSSBOW
 

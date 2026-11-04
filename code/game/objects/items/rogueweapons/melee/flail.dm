@@ -241,7 +241,7 @@
 	name = "“圣誓”"
 	desc = "祂的悲恸、祂的痛苦、祂的希望，以及祂对人类的爱，尽皆悬于这条臂链末端那颗装饰华美的银钢枷头之上。 <br><br>它是献给普赛顿所珍视一切的爱之宣言，也是对宿敌的一记沉重警告：只要祂仍存世，他们便永无胜机。"
 	icon_state = "psymorningstar"
-	possible_item_intents = list(/datum/intent/flail/strike, /datum/intent/mace/smash/flailrange)
+	possible_item_intents = list(/datum/intent/flail/strikerange, /datum/intent/mace/smash/flailrange, /datum/intent/flail/sweep)//castlevania type shit
 
 /obj/item/rogueweapon/flail/sflail/psyflail/relic/ComponentInitialize()
 	AddComponent(\

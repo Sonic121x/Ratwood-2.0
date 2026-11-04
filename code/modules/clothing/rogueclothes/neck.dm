@@ -375,6 +375,19 @@
 	max_integrity = ARMOR_INT_SIDE_STEEL + 100
 	icon_state = "sgorget"
 
+/obj/item/clothing/neck/roguetown/gorget/aventail
+	name = "aventail"
+	desc = "A thick garment of steel maille and padding, traditionally attached to bascinets. It's burdensome on the shoulders of those who aren't properly \
+	trained to wear knightly garments."
+	icon_state = "aventailbase"
+	body_parts_covered = NECK|MOUTH
+	slot_flags = ITEM_SLOT_NECK
+	max_integrity = ARMOR_INT_SIDE_STEEL + 50 //In essence, a chainmail gorget.
+	armor_class = ARMOR_CLASS_MEDIUM
+	armor = ARMOR_MAILLE
+	blocksound = CHAINHIT
+	smeltresult = /obj/item/ingot/steel
+
 /obj/item/clothing/neck/roguetown/gorget/steel/ancient
 	name = "远古护喉"
 	desc = "打磨光亮的吉尔布兰泽护片层层相叠，以守护颈部。脊柱是灵与肉之间的神圣脉络，绝不可断裂，否则她的赐福也将随之失落。"

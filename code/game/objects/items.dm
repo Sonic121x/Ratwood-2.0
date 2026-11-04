@@ -1071,7 +1071,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(V_lord && V_lord.generation >= GENERATION_METHUSELAH)
 			return
 
-		to_chat(M, span_userdanger("我碰不了白银，它是我的克星！"))
+		to_chat(M, span_silver("我碰不了白银，它是我的克星！"))
 		M.Knockdown(10)
 		M.Paralyze(10)
 		M.adjustFireLoss(25)

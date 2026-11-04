@@ -101,7 +101,7 @@
 		if(H.dna?.species?.type == /datum/species/gnoll)
 			. += span_cultsmall("格拉加尔标记了他们！")
 
-	if(user != src && HAS_TRAIT(user, TRAIT_MATTHIOS_EYES) && (!HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS)))
+	if(user != src && HAS_TRAIT(user, TRAIT_MATTHIOS_EYES) && (!HAS_TRAIT(src, TRAIT_GUARD_RAISED)))
 		var/atom/item = get_most_expensive()
 		if(item)
 			. += span_notice("你觉得[m2]最值钱的财产是[item]。")
@@ -148,6 +148,7 @@
 	var/is_stupid = FALSE
 	var/is_smart = FALSE
 	var/is_normal = FALSE
+	var/guarded = FALSE
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 
@@ -157,6 +158,10 @@
 			is_stupid = TRUE
 		if(((H?.STAINT - 10) + (H?.STAPER - 10) + H.get_skill_level(/datum/skill/misc/reading)) >= 5)
 			is_normal = TRUE
+
+		if(user != src)
+			if(HAS_TRAIT(src, TRAIT_GUARD_RAISED))
+				guarded = TRUE
 
 	if(user != src)
 		var/datum/mind/Umind = user.mind
@@ -199,7 +204,7 @@
 
 	if(wear_shirt && !(SLOT_SHIRT in obscured))
 		var/str = "[m3] [wear_shirt.generate_tooltip(wear_shirt.get_examine_string(user))]. "
-		str += "[wear_shirt.integrity_check(is_smart)]"
+		str += "[wear_shirt.integrity_check(is_smart, guarded)]"
 		if(is_stupid)
 			str = "[m3]某种衬衫！"
 		. += str
@@ -213,7 +218,7 @@
 			if(U.attached_accessory)
 				accessory_msg += "，配着[icon2html(U.attached_accessory, user)][U.attached_accessory]"
 		var/str = "[m3] [wear_pants.generate_tooltip(wear_pants.get_examine_string(user))][accessory_msg]. "
-		str += wear_pants.integrity_check(is_smart)
+		str += wear_pants.integrity_check(is_smart, guarded)
 		if(is_stupid)
 			str = "[m3]一条什么裤子！"
 		. += str
@@ -222,7 +227,7 @@
 	//head
 	if(head && !(SLOT_HEAD in obscured))
 		var/str = "[m3] [head.generate_tooltip(head.get_examine_string(user))]戴在[m2]头上。"
-		var/head_condition = head.integrity_check(is_smart)
+		var/head_condition = head.integrity_check(is_smart, guarded)
 		str += head_condition
 		if(is_stupid)
 			if(istype(head,/obj/item/clothing/head/roguetown/helmet))
@@ -236,7 +241,7 @@
 	//suit/armor
 	if(wear_armor && !(SLOT_ARMOR in obscured))
 		var/str = "[m3] [wear_armor.generate_tooltip(wear_armor.get_examine_string(user))]. "
-		var/armor_condition = wear_armor.integrity_check()
+		var/armor_condition = wear_armor.integrity_check(is_smart, guarded)
 		if(is_smart || is_normal)
 			str += armor_condition
 		else if (is_stupid)
@@ -271,8 +276,8 @@
 			var/obj/item/clothing/CL = cloak
 			str = "[m3] [CL.generate_tooltip(CL.get_examine_string(user))]披在[m2]肩上。"
 		else
-			str = "[m1]肩上披着[get_examine_item_name_with_hover(user, cloak)]。 "
-		str += cloak.integrity_check(is_smart)
+			str = "[m1]肩上披着[get_examine_item_name_with_hover(user, cloak)]。"
+		str += cloak.integrity_check(is_smart, guarded)
 		if (is_stupid)					//So they can tell the named RG tabards. If they can read them, anyway.
 			if(!istype(cloak, /obj/item/clothing/cloak/stabard) && user.get_skill_level(/datum/skill/misc/reading) == 0)
 				str = "[m1]肩膀上挂着某种布料！"
@@ -281,27 +286,27 @@
 	//right back
 	if(backr && !(SLOT_BACK_R in obscured))
 		var/str = "[m1]背上背着[get_examine_item_name_with_hover(user, backr)]。"
-		str += backr.integrity_check(is_smart)
+		str += backr.integrity_check(is_smart, guarded)
 		. += str
 
 	//left back
 	if(backl && !(SLOT_BACK_L in obscured))
 		var/str = "[m1]背上背着[get_examine_item_name_with_hover(user, backl)]。"
-		str += backl.integrity_check(is_smart)
+		str += backl.integrity_check(is_smart, guarded)
 		. += str
 
 	//Hands
 	for(var/obj/item/I in held_items)
 		if(!(I.item_flags & ABSTRACT))
 			var/str = "[m1]用[m2][get_held_index_name(get_held_index_of_item(I))]拿着[get_examine_item_name_with_hover(user, I)]。"
-			str += I.integrity_check(is_smart)
+			str += I.integrity_check(is_smart, guarded)
 			. += str
 
 	var/datum/component/forensics/FR = GetComponent(/datum/component/forensics)
 	//gloves
 	if(gloves && !(SLOT_GLOVES in obscured))
 		var/str = "[m3] [gloves.generate_tooltip(gloves.get_examine_string(user))]戴在[m2]手上。"
-		str += gloves.integrity_check(is_smart)
+		str += gloves.integrity_check(is_smart, guarded)
 		if(is_stupid)
 			str = "[m3]某种手套！"
 		. += str
@@ -315,8 +320,8 @@
 	
 	//belt
 	if(belt && !(SLOT_BELT in obscured))
-		var/str = "[m1]腰上系着[get_examine_item_name_with_hover(user, belt)]。 "
-		str += belt.integrity_check(is_smart)
+		var/str = "[m1]腰上系着[get_examine_item_name_with_hover(user, belt)]。"
+		str += belt.integrity_check(is_smart, guarded)
 		. += str
 		if(istype(belt, /obj/item/storage/belt/rogue)) // check if belt has dildo attached
 			var/obj/item/storage/belt/rogue/belt_with_dildo = belt
@@ -325,14 +330,14 @@
 
 	//right belt
 	if(beltr && !(SLOT_BELT_R in obscured))
-		var/str = "[m1]腰带上挂着[get_examine_item_name_with_hover(user, beltr)]。 "
-		str += beltr.integrity_check(is_smart)
+		var/str = "[m1]腰带上挂着[get_examine_item_name_with_hover(user, beltr)]。"
+		str += beltr.integrity_check(is_smart, guarded)
 		. += str
 
 	//left belt
 	if(beltl && !(SLOT_BELT_L in obscured))
-		var/str = "[m1]腰带上挂着[get_examine_item_name_with_hover(user, beltl)]。 "
-		str += beltl.integrity_check(is_smart)
+		var/str = "[m1]腰带上挂着[get_examine_item_name_with_hover(user, beltl)]。"
+		str += beltl.integrity_check(is_smart, guarded)
 		. += str
 
 	// chastity cages go HERE, where they SHOULD'VE FUCKING GONE.
@@ -353,7 +358,7 @@
 	//shoes
 	if(shoes && !(SLOT_SHOES in obscured))
 		var/str = "[m3] [shoes.generate_tooltip(shoes.get_examine_string(user))]穿在[m2]脚上。"
-		str += shoes.integrity_check(is_smart)
+		str += shoes.integrity_check(is_smart, guarded)
 		if(is_stupid)
 			str = "[m1]脚上穿着某种鞋子！"
 		. += str
@@ -361,7 +366,7 @@
 	//mask
 	if(wear_mask && !(SLOT_WEAR_MASK in obscured))
 		var/str = "[m3] [wear_mask.generate_tooltip(wear_mask.get_examine_string(user))]戴在[m2]脸上。"
-		str += wear_mask.integrity_check(is_smart)
+		str += wear_mask.integrity_check(is_smart, guarded)
 		if(is_stupid)
 			str = "[m1]脸上戴着什么东西！"
 		. += str
@@ -374,15 +379,15 @@
 			str = "[m3] [CM.generate_tooltip(CM.get_examine_string(user))]含在[m2]嘴里。"
 		else
 			"[m3] [get_examine_item_name_with_hover(user, mouth)] in [m2] mouth. "
-		str += mouth.integrity_check(is_smart)
+		str += mouth.integrity_check(is_smart, guarded)
 		if(is_stupid)
 			str = "[m1]嘴里含着什么东西！"
 		. += str
 
 	//neck
 	if(wear_neck && !(SLOT_NECK in obscured))
-		var/str = "[m1]脖子上戴着[get_examine_item_name_with_hover(user, wear_neck)]。 "
-		str += wear_neck.integrity_check(is_smart)
+		var/str = "[m1]脖子上戴着[get_examine_item_name_with_hover(user, wear_neck)]。"
+		str += wear_neck.integrity_check(is_smart, guarded)
 		if (is_stupid)
 			str = "[m1]脖子上戴着什么东西！"
 		. += str
@@ -415,7 +420,7 @@
 	//wrists
 	if(wear_wrists && !(SLOT_WRISTS in obscured))
 		var/str = "[m3] [wear_wrists.generate_tooltip(wear_wrists.get_examine_string(user))]戴在[m2]手腕上。"
-		str += wear_wrists.integrity_check(is_smart)
+		str += wear_wrists.integrity_check(is_smart, guarded)
 		if (is_stupid)
 			str = "[m1]手腕上戴着什么东西！"
 		. += str
@@ -737,7 +742,7 @@
 	if((user != src) && isliving(user))
 		var/mob/living/L = user
 		var/final_str = STASTR
-		if(HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS))
+		if(HAS_TRAIT(src, TRAIT_GUARD_RAISED))
 			final_str = L.STASTR - rand(1,2)
 		var/strength_diff = final_str - L.STASTR
 		switch(strength_diff)
@@ -755,7 +760,7 @@
 	if((HAS_TRAIT(user,TRAIT_INTELLECTUAL)))
 		var/mob/living/L = user
 		var/final_int = STAINT
-		if(HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS))
+		if(HAS_TRAIT(src, TRAIT_GUARD_RAISED))
 			final_int = L.STAINT
 		var/int_diff = final_int - L.STAINT
 		switch(int_diff)
@@ -775,7 +780,7 @@
 		if(heart?.inscryption && (heart.inscryption_key in maniac.key_nums))
 			. += span_danger("[t_He]知道[heart.inscryption_key]，我对此确信无疑！")
 
-	if(!HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS) && user != src)
+	if(!HAS_TRAIT(src, TRAIT_GUARD_RAISED) && user != src)
 		if(isliving(user))
 			var/mob/living/L = user
 			if(L.STAINT > 9 && L.STAPER > 9)
@@ -809,14 +814,27 @@
 				. += "<span class='info' style='color: #313131ff'>[m1]涂着黑色口红。</span>"
 
 
-	var/list/lines
-	if((get_face_name() != real_name) && !observer_privilege)
-		lines = build_cool_description_unknown(get_mob_descriptors_unknown(obscure_name, user), src, user)
-	else
-		lines = build_cool_description(get_mob_descriptors(obscure_name, user), src, user)
+	if(!HAS_TRAIT(src, TRAIT_ANONYMOUS) || user == src || observer_privilege)
+		var/list/lines
+		if((get_face_name() != real_name) && !observer_privilege)
+			lines = build_cool_description_unknown(get_mob_descriptors_unknown(obscure_name, user), src, user)
+		else
+			lines = build_cool_description(get_mob_descriptors(obscure_name, user), src, user)
 
-	for(var/line in lines)
-		. += span_info(line)
+		if(length(lines))
+			var/collapse_details = !(user.client?.prefs?.full_examine)
+			var/app_str
+			if(collapse_details)
+				app_str = "<details><summary>[span_info("Details")]</summary>"
+
+			var/list/info_lines = list()
+			for(var/line in lines)
+				info_lines += span_info(line)
+			app_str += info_lines.Join("<br>")
+			if(collapse_details)
+				app_str += "</details>"
+
+			. += app_str
 
 	// for underwears that don't cover from the rear, genital descriptions are still shown
 	if(get_location_accessible(src, BODY_ZONE_PRECISE_GROIN) && src.underwear)
@@ -923,13 +941,20 @@
 			if(!(mobility_flags & MOBILITY_STAND) && user != src && (user.zone_selected == BODY_ZONE_CHEST))
 				. += "<a href='?src=[REF(src)];check_hb=1'>听心跳</a>"
 
-	if((!obscure_name || client?.prefs.masked_examine) && (flavortext || headshot_link || ooc_notes || nsfwflavortext || erpprefs))
-		. += "<a href='?src=[REF(src)];task=view_headshot;'>更仔细地检查</a>"
-
+	var/showassess = FALSE
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(get_dist(src, H) <= ((2 + clamp(floor(((H.STAPER - 10))),-1, 4)) + HAS_TRAIT(user, TRAIT_INTELLECTUAL)))
-			. += "<a href='?src=[REF(src)];task=assess;'>评估</a>"
+			showassess = TRUE
+
+	var/list/examine_links = list()
+	if((!obscure_name || client?.prefs.masked_examine) && (flavortext || headshot_link || ooc_notes || nsfwflavortext || erpprefs))
+		examine_links += "<a href='?src=[REF(src)];task=view_headshot;'>更仔细地检查</a>"
+	if(showassess)
+		examine_links += "<a href='?src=[REF(src)];task=assess;'>评估</a>"
+	if(length(examine_links))
+		. += examine_links.Join(" | ")
+
 
 	/// Rumours & Gossip
 	if(length(rumour) || length(noble_gossip))
@@ -1170,7 +1195,7 @@
 		if(name in GLOB.outlawed_players)
 			. += span_userdanger("法外之徒！")
 
-		if(HAS_TRAIT(user, TRAIT_JUSTICARSIGHT) && !HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS))
+		if(HAS_TRAIT(user, TRAIT_JUSTICARSIGHT) && !HAS_TRAIT(src, TRAIT_GUARD_RAISED))
 			for(var/datum/bounty/b in GLOB.head_bounties) //I hate this.
 				if(b.target == real_name)
 					. += span_syndradio("[m1]被[b.employer]以[b.amount]玛门悬赏，罪名是[b.reason]。")
@@ -1192,7 +1217,7 @@
 			if(J?.department_flag & GARRISON || J?.department_flag & NOBLEMEN)
 				. += span_greentext("<b>[m1]是宫中的密探！</b>")
 
-		if(user != src && !HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS) && ishuman(user))
+		if(user != src && !HAS_TRAIT(src, TRAIT_GUARD_RAISED) && ishuman(user))
 			if(has_flaw(/datum/charflaw/addiction/lovefiend) && user.has_flaw(/datum/charflaw/addiction/lovefiend))
 				. += span_aiprivradio("[m1]和我一样为情所困。")
 
@@ -1311,7 +1336,7 @@
 		if(HAS_TRAIT(src, TRAIT_DNR) && src != user && !HAS_TRAIT(user, TRAIT_DEATHSIGHT)) // A lot of conditional to avoid a redundant message, but we also want unknown DNRs to be covered.
 			. += span_danger("他们的身体已无丝毫生机。任何药物也无法使其复生。")
 
-	if (HAS_TRAIT(src, TRAIT_CRITICAL_WEAKNESS) && (!HAS_TRAIT(src, TRAIT_VAMP_DREAMS)) && (!HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS)))
+	if (HAS_TRAIT(src, TRAIT_CRITICAL_WEAKNESS) && (!HAS_TRAIT(src, TRAIT_VAMP_DREAMS)) && (!HAS_TRAIT(src, TRAIT_GUARD_RAISED)))
 		if(isliving(user))
 			var/mob/living/L = user
 			if(L.STAINT > 9 && L.STAPER > 9)
@@ -1335,7 +1360,7 @@
 	var/heretic_text = null
 	var/seer
 
-	if(HAS_TRAIT(src,TRAIT_DECEIVING_MEEKNESS))
+	if(HAS_TRAIT(src,TRAIT_GUARD_RAISED))
 		return null
 
 	if(HAS_TRAIT(examiner, TRAIT_HERETIC_SEER))
@@ -1379,7 +1404,7 @@
 /mob/living/proc/get_heretic_symbol(mob/examiner)
 	var/heretic_text
 	var/seer = FALSE
-	if(HAS_TRAIT(src, TRAIT_DECEIVING_MEEKNESS))
+	if(HAS_TRAIT(src, TRAIT_GUARD_RAISED))
 		return
 	if(HAS_TRAIT(examiner, TRAIT_HERETIC_SEER))
 		seer = TRUE
@@ -1464,4 +1489,3 @@
 			gang_text = span_userdanger ("布洛兹狼帮渣滓！敌人！")
 
 	return gang_text
-

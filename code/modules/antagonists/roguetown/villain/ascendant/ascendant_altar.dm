@@ -79,7 +79,7 @@ GLOBAL_LIST_INIT(capstone_pool, list(
 	//check what ascendpoint they are on and add that trait
 	switch(ascendpoints)
 		if(1)
-			ADD_TRAIT(user, TRAIT_DECEIVING_MEEKNESS, TRAIT_GENERIC)
+			ADD_TRAIT(user, TRAIT_DECEIVING_MEEKNESS, TRAIT_VIRTUE)
 			ADD_TRAIT(user, TRAIT_EMPATH, TRAIT_GENERIC)
 			ADD_TRAIT(user, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 			to_chat(user, span_userdanger("我在启程之初谦卑地低下头。大阿卡纳：节制，正位。"))

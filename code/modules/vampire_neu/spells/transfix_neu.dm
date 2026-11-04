@@ -72,9 +72,9 @@
 			for(var/obj/item/clothing/neck/roguetown/psicross/silver/I in target.contents) //Subpath fix.
 				var/extra = "！"
 				if(knowledgable)
-					extra = "，我感知到施法者是[user]！"
-				to_chat(target, "<font color='white'>银制普赛圣十字闪耀着光芒，保护我免受邪秽魔法侵袭[extra]</font>")
-				to_chat(user, span_userdanger("[target]持有我的克星！我因此无法俘获对方的心智！"))
+					extra = ",我感知到施法者是[user]!"
+				to_chat(target, span_silver("银十字闪耀，保护我免受邪秽魔法侵袭[extra]"))
+				to_chat(user, span_silver("[target]持有我的“克星”!它使我无法俘获他们的心智!"))
 				break
 
 		if(bloodroll >= willroll)

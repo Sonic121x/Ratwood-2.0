@@ -633,11 +633,11 @@
 		var/datum/component/silverbless/blesscomp = GetComponent(/datum/component/silverbless)
 		if(blesscomp?.is_blessed)
 			if(!victim.has_status_effect(/datum/status_effect/fire_handler/fire_stacks/sunder))
-				to_chat(victim, span_danger("白银排斥着我的存在！我的命髓在闷烧，力量正在衰退！"))
+				to_chat(victim, span_silver("白银排斥着我的存在！我的命髓在闷烧，力量正在衰退！"))
 			victim.adjust_fire_stacks(thrown ? 1 : 3, /datum/status_effect/fire_handler/fire_stacks/sunder/blessed)
 		else
 			if(!victim.has_status_effect(/datum/status_effect/fire_handler/fire_stacks/sunder/blessed))
-				to_chat(victim, span_danger("祝圣白银排斥着我的存在！这烈火正鞭笞我的灵魂！"))
+				to_chat(victim, span_silver("祝圣白银排斥着我的存在！这烈火正鞭笞我的灵魂！"))
 			victim.adjust_fire_stacks(thrown ? 1 : 3, /datum/status_effect/fire_handler/fire_stacks/sunder)
 		victim.ignite_mob()
 

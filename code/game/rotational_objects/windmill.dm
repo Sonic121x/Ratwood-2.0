@@ -17,6 +17,7 @@
 	stress_generator = TRUE
 	rotation_structure = TRUE
 	initialize_dirs = CONN_DIR_FORWARD | CONN_DIR_FLIP
+	static_debris = list(/obj/item/natural/wood/plank = 4, /obj/item/natural/cloth = 2, /obj/item/grown/log/tree/stick = 2)
 	/// RPM produced on the top z-level before per-level falloff. Rolled once on Initialize so a network's speed stays stable.
 	var/base_rpm = 0
 	/// Direction of rotation output (EAST spins clockwise, WEST counter-clockwise).
@@ -28,9 +29,8 @@
 
 /obj/structure/windmill/examine(mob/user)
 	. = ..()
-	. += span_info("请放置在能直接看到天空的地方，屋顶或上方楼层会挡住风。")
-	. += span_info("它在最高层转得最快；每比最高层低一层，风力减弱，输出就会减半。")
-	. += span_info("手持工程扳手并用鼠标中键点击，可以将它拆解。")
+	. += span_info("放在能直接看到天空的地方——屋顶或上方楼层会挡住风，使它接不到风。")
+	. += span_info("它在最高层转得最快；每比最高层低一层，风就更弱，输出也随之减半。")
 
 /obj/structure/windmill/find_rotation_network()
 	. = ..()

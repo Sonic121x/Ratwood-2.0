@@ -143,7 +143,7 @@
 /obj/item/clothing/suit/roguetown/armor/regenerating/skin/weak
 	name = "坚韧皮肤"
 	desc = "我的皮肤向来够硬，足以挡下大多数划伤与瘀伤，只要给它时间就会愈合。"
-	armor = ARMOR_PADDED_BAD
+	armor = ARMOR_REGENERATING_WEAK
 	max_integrity = 300
 	body_parts_covered = FULL_BODY
 	body_parts_inherent = FULL_BODY

@@ -123,7 +123,7 @@
 	if(!disguised || (H.get_vampire_generation() >= GENERATION_METHUSELAH))
 		return FALSE
 
-	H.visible_message("<font color='white'>[H]身上的诅咒显现了！</font>", ignored_mobs = list(H))
+	H.visible_message(span_silver("[H]身上的诅咒显现了！"), ignored_mobs = list(H))
 	remove_disguise(H)
 	to_chat(H, span_danger("我的伪装被强行撕碎了！"))
 	return TRUE

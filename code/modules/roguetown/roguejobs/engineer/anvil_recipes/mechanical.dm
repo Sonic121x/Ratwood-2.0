@@ -46,11 +46,11 @@
 	hides_from_books = TRUE
 	req_bar = /obj/item/ingot/bronze
 
-/datum/anvil_recipe/engineeredsmithing/dolabra //exists solely to replace a stolen dolabra
+/datum/anvil_recipe/engineeredsmithing/dolabra
 	name = "黑钢军团斧镐"
 	req_bar = /obj/item/ingot/blacksteel
 	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/rogueweapon/woodstaff/quarterstaff)
-	created_item = /obj/item/rogueweapon/stoneaxe/woodcut/steel/woodcutter/dolabra/blacksteel
+	created_item = /obj/item/rogueweapon/pick/woodcutter/dolabra/blacksteel
 	createditem_num = 1
 	craftdiff = 4
 
@@ -58,6 +58,6 @@
 	name = "铝青铜军团斧镐"
 	req_bar = /obj/item/ingot/bronze
 	additional_items = list(/obj/item/ingot/bronze, /obj/item/rogueweapon/woodstaff/quarterstaff)
-	created_item = /obj/item/rogueweapon/stoneaxe/woodcut/steel/woodcutter/dolabra/albranze
+	created_item = /obj/item/rogueweapon/pick/woodcutter/dolabra/albranze
 	createditem_num = 1
 	craftdiff = 3

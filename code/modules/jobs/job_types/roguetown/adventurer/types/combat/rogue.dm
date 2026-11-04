@@ -212,7 +212,10 @@
 	tutorial = "你是纵横海上的大胆浪客！海上浪客以灵巧剑技与腾挪身法见长，出手下作却潇洒非常，总能漂亮地把敌人玩弄于股掌之间。"
 	outfit = /datum/outfit/job/roguetown/adventurer/swashbuckler
 	cmode_music = 'sound/music/cmode/adventurer/combat_outlander3.ogg'
-	traits_applied = list(TRAIT_DODGEEXPERT, TRAIT_NUTCRACKER, TRAIT_DECEIVING_MEEKNESS)
+	traits_applied = list(TRAIT_DODGEEXPERT, TRAIT_NUTCRACKER)
+	subclass_virtues = list(
+		/datum/virtue/combat/guarded
+		)
 	subclass_stats = list(
 		STATKEY_SPD = 2,
 		STATKEY_STR = 1,

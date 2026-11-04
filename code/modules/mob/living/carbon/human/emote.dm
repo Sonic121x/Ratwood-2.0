@@ -135,10 +135,10 @@
 		return
 	var/mob/living/carbon/human/H = user
 	if(!H.dna.species.is_wagging_tail(H))
-		H.visible_message(span_biginfo("<span style='color:#[H.voice_color];text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>[H]</b></span><span style='color: #c9c1ba;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'>摇着尾巴。</span>"), runechat_message = "摇着尾巴")
+		H.visible_message(span_biginfo("<span style='color:#[H.get_voice_color()];text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>[H]</b></span><span style='color: #c9c1ba;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'>摇着[H.p_their()]尾巴。</span>"), runechat_message = "摇着[H.p_their()]尾巴")
 		H.dna.species.start_wagging_tail(H)
 	else
-		H.visible_message(span_biginfo("<span style='color:#[H.voice_color];text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>[H]</b></span></span><span style='color: #c9c1ba;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'>不再摇尾巴。</span>"), runechat_message = "不再摇尾巴")
+		H.visible_message(span_biginfo("<span style='color:#[H.get_voice_color()];text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>[H]</b></span></span><span style='color: #c9c1ba;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'>不再摇[H.p_their()]尾巴。</span>"), runechat_message = "不再摇[H.p_their()]尾巴")
 		H.dna.species.stop_wagging_tail(H)
 
 /datum/emote/living/carbon/human/wag/can_run_emote(mob/user, status_check = TRUE , intentional)
@@ -251,11 +251,11 @@
 	var/mob/living/carbon/human/H = user
 	if(H.has_status_effect(/datum/status_effect/debuff/harpy_flight))
 		H.visible_message(
-			span_biginfo("<span style='color:#[H.voice_color];text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>[H]</b></span></span><span style='color: #c9c1ba;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'>展开双翼，准备起飞！</span>"),
+			span_biginfo("<span style='color:#[H.get_voice_color()];text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>[H]</b></span></span><span style='color: #c9c1ba;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'>展开[H.p_their()]双翼，准备起飞！</span>"),
 			runechat_message = "展开双翼！"
 		)
 	else
 		H.visible_message(
-			span_biginfo("<span style='color:#[H.voice_color];text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>[H]</b></span></span><span style='color: #c9c1ba;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'>落回地面，不再拍打翅膀！</span>"),
+			span_biginfo("<span style='color:#[H.get_voice_color()];text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>[H]</b></span></span><span style='color: #c9c1ba;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'>落回地面，不再拍打[H.p_their()]翅膀！</span>"),
 			runechat_message = "不再拍打翅膀！"
 		)

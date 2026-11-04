@@ -35,7 +35,12 @@
 #define TRAIT_HEAVYARMOR "板甲训练"
 #define TRAIT_DODGEEXPERT "闪避专家"
 #define TRAIT_MAGEARMOR "魔法障壁"
+/// 深藏不露：可举起或放下架势。授予此项，切勿直接授予 TRAIT_GUARD_RAISED
 #define TRAIT_DECEIVING_MEEKNESS "伪弱藏锋"
+/// 当前已举起架势。仅由“深藏不露”的切换添加，参见 TRAIT_DECEIVING_MEEKNESS
+#define TRAIT_GUARD_RAISED "架势已举起"
+/// 被“深藏不露”的匿名开关隐藏的身份特征
+#define TRAIT_ANONYMOUS "匿名"
 #define TRAIT_CRITICAL_RESISTANCE "重创抗性"
 #define TRAIT_CRIT_THRESHOLD "NPC Respect Crit Threshold"
 #define TRAIT_JOURNEYS_END "旅程终点"

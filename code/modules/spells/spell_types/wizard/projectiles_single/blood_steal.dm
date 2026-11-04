@@ -61,6 +61,6 @@
 			H.visible_message(span_danger("[target] 的鲜血被硬生生从体内抽了出来！！"), \
 					span_userdanger("我的鲜血正从体内猛然喷涌而出！"), \
 					span_hear("..."), COMBAT_MESSAGE_RANGE, target)
-			new /obj/effect/decal/cleanable/blood/puddle(H.loc)
+			new /obj/effect/decal/cleanable/blood/puddle(H.loc, H.get_blood_color())
 			sender.adjust_bloodpool(400)
 	qdel(src)

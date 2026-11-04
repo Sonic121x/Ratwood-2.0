@@ -29,10 +29,10 @@
 	if(ishuman(victim))
 		var/mob/living/carbon/human/human_victim = victim
 		if(VDrinker && HAS_TRAIT(human_victim, TRAIT_WORN_SILVER_PSICROSS))
-			to_chat(src, span_userdanger("是银！嘶嘶嘶！！！"))
+			to_chat(src, span_silver("是银！嘶嘶嘶！！！"))
 			return
 		if(VDrinker && HAS_TRAIT(human_victim, TRAIT_SILVER_BLESSED))
-			to_chat(src, span_userdanger("血里有银！嘶嘶嘶！！！"))
+			to_chat(src, span_silver("血里有银！嘶嘶嘶！！！"))
 			return
 		human_victim.add_bite_animation()
 
