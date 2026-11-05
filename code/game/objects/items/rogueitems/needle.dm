@@ -136,7 +136,7 @@
 				to_chat(user, span_warning("我没法用针修那个。"))
 				return
 
-			if(HAS_TRAIT(user, TRAIT_SQUIRE_REPAIR) || HAS_TRAIT(user, TRAIT_SELF_SUSTENANCE))
+			if(HAS_TRAIT(user, TRAIT_SQUIRE_REPAIR) || HAS_TRAIT(user, TRAIT_SELF_SUSTENANCE) || HAS_TRAIT(user, TRAIT_DWARF_REPAIR))
 				unskilled = FALSE
 
 			// if we're stupid and the object isn't broken and it's had a field repair, we can't fix it any further for the moment
