@@ -4,7 +4,6 @@
 /datum/species/moth
 	name = "Fluvian"
 	id = "moth"
-	blood_color = BLOOD_COLOR_BLUE
 	desc = "<b>弗卢维安</b><br> \
 	弗卢维安人是多种多样的蛾形生灵，生活在格里莫里亚各地稀疏的游牧群落中。\
 	除了痴迷于自身对秘传、且看似非人类仪式礼法怀有某种禀赋这一观念外，\
