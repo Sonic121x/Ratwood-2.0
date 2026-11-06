@@ -36,4 +36,5 @@
 		"merar.ttf" = 'interface/fonts/languages/merar.ttf',
 		"abyssal.ttf" = 'interface/fonts/languages/abyssal.ttf',
 		"ShanHaiWanHuaGeTeW-2.ttf" = 'interface/fonts/ShanHaiWanHuaGeTeW-2.ttf',//山海万花哥特 W (提醒我早点换掉
+		"ZiXinFangAnHeiGeTeTi-2.ttf" = 'interface/fonts/ZiXinFangAnHeiGeTeTi-2.ttf',//字心坊暗黑哥特体
 	)
