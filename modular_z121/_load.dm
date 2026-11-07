@@ -21,6 +21,7 @@
 #include "food/cuisine_catalog.dm"
 // 腔内蒸馏装置：配方、人工器官、工匠台制作及专用胸部手术。
 #include "food/internal_distiller_recipes.dm"
+#include "food/saigamilk_brewing.dm"
 #include "items/internal_distiller.dm"
 #include "crafting/internal_distiller.dm"
 #include "bootstrap/custom_bootstrap.dm"
@@ -55,6 +56,7 @@
 #include "rites/pestra_plague_disaster.dm"
 #include "rites/victory_glow.dm"
 #include "spells/arcane/anti_spoil.dm"
+#include "spells/arcane/aphrodisiac_spell.dm"
 #include "spells/arcane/group_buffs.dm"
 #include "spells/arcane/shrink.dm"
 #include "spells/arcane/group_mindlink.dm"
