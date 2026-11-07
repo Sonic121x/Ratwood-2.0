@@ -11,16 +11,16 @@
 		return
 
 	var/list/investigates = list(INVESTIGATE_RESEARCH, INVESTIGATE_EXONET, INVESTIGATE_PORTAL, INVESTIGATE_SINGULO, INVESTIGATE_WIRES, INVESTIGATE_TELESCI, INVESTIGATE_RECORDS, INVESTIGATE_CARGO, INVESTIGATE_SUPERMATTER, INVESTIGATE_ATMOS, INVESTIGATE_EXPERIMENTOR, INVESTIGATE_BOTANY, INVESTIGATE_HALLUCINATIONS, INVESTIGATE_RADIATION, INVESTIGATE_NANITES, INVESTIGATE_PRESENTS)
-
+	var/list/subject_labels = list(INVESTIGATE_RESEARCH = "研究", INVESTIGATE_EXONET = "外部网络", INVESTIGATE_PORTAL = "传送门", INVESTIGATE_SINGULO = "奇点", INVESTIGATE_WIRES = "线路", INVESTIGATE_TELESCI = "远程传送", INVESTIGATE_RECORDS = "档案", INVESTIGATE_CARGO = "货运", INVESTIGATE_SUPERMATTER = "超物质", INVESTIGATE_ATMOS = "大气", INVESTIGATE_EXPERIMENTOR = "实验仪", INVESTIGATE_BOTANY = "植物学", INVESTIGATE_HALLUCINATIONS = "幻觉", INVESTIGATE_RADIATION = "辐射", INVESTIGATE_NANITES = "纳米机器人", INVESTIGATE_PRESENTS = "礼物")
 	var/list/logs_present = list("备注、备忘录、观察名单")
 	var/list/logs_missing = list("---")
 
 	for(var/subject in investigates)
 		var/temp_file = file("[GLOB.log_directory]/[subject].html")
 		if(fexists(temp_file))
-			logs_present += subject_labels[subject]
+			logs_present += subject
 		else
-			logs_missing += "[subject_labels[subject]] （空）"
+			logs_missing += "[subject] (空)"
 
 	var/list/combined = sortList(logs_present) + sortList(logs_missing)
 

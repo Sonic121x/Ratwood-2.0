@@ -56,7 +56,7 @@
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/appraise/free)
 	var/subtype = list("游荡者", "偷猎者")
 	if(H.mind)
-		var/subtype_choice = input(H, "选择你的武器。", "执兵而起") as anything in weapons
+		var/subtype_choice = input(H, "选择你的武器。", "执兵而起") as anything in subtype
 		H.set_blindness(0)
 		switch(subtype_choice)
 			if("游荡者") //Rogue
