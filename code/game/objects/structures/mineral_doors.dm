@@ -63,12 +63,6 @@
 	//a door name a skilled artisan can make
 	var/doorname = null
 
-/obj/structure/mineral_door/take_damage(damage_amount, damage_type = BRUTE, damage_flag = "", sound_effect = TRUE, attack_dir, armor_penetration = 0)
-	var/was_broken = obj_broken
-	. = ..()
-	if(obj_broken && !was_broken)
-		log_breakin(null, "被破坏打开")
-
 /obj/structure/mineral_door/onkick(mob/user)
 	if(isSwitchingStates)
 		return
@@ -79,7 +73,8 @@
 				span_notice("我用尾巴把[src]猛地甩上了。"))
 		else
 			user.visible_message(span_warning("[user]一脚踹上了[src]！"), \
-				span_notice("我一脚把[src]踹上了。"))
+				span_notice("我一脚把[src]踹上了！"))
+		add_forensic_action(user, "kicked shut")
 		force_closed()
 	else
 		if(locked)
@@ -93,20 +88,20 @@
 						user.visible_message(span_warning("[user]用[user.p_their()]尾巴猛地甩开了[src]！"), \
 							span_notice("我用尾巴猛地把[src]甩开了。"))
 					else
-						user.visible_message(span_warning("[user]一脚踹开了[src]！"), \
-							span_notice("我一脚踹开了[src]。"))
+						user.visible_message(span_warning("[user]一脚踹开了[src]!"), \
+							span_notice("我一脚踹开了[src]!"))
+					add_forensic_action(user, "kicked open, breaking the lock")
 					locked = 0
-					log_breakin(user, "踢开了一扇上锁的门")
 					force_open()
 				else
 					playsound(src, 'sound/combat/hits/onwood/woodimpact (1).ogg', 100)
-					log_breakin(user, "踢了一扇上锁的门")
 					if(HAS_TRAIT(user, TRAIT_LAMIAN_TAIL))
 						user.visible_message(span_warning("[user]用尾巴狠狠撞上了[src]！"), \
 							span_notice("我用尾巴狠狠撞上了[src]。"))
 					else
 						user.visible_message(span_warning("[user]猛踹了[src]一脚！"), \
-							span_notice("我猛踹了[src]一脚。"))
+							span_notice("我猛踹了[src]一脚！"))
+					add_forensic_action(user, "kicked while locked")
 			//try to kick open, destroy lock
 		else
 			playsound(src, 'sound/combat/hits/onwood/woodimpact (1).ogg', 100)
@@ -115,7 +110,8 @@
 					span_notice("我用尾巴猛地把[src]甩开了。"))
 			else
 				user.visible_message(span_warning("[user]一脚踹开了[src]！"), \
-					span_notice("我一脚踹开了[src]。"))
+					span_notice("我一脚踹开了[src]！"))
+			add_forensic_action(user, "kicked open")
 			force_open()
 
 /obj/structure/mineral_door/proc/force_open()
@@ -245,10 +241,11 @@
 			user.break_invisibility()
 			if(locked)
 				user.visible_message(span_warning("[user]猛撞上了[src]！"))
-				log_breakin(user, "猛撞了一扇上锁的门")
-				take_damage(200, "brute", "blunt", 1)
+				add_forensic_action(user, "bashed into while locked")
+				take_damage_from(user, 200, "brute", "blunt", 1)
 			else
 				playsound(src, 'sound/combat/hits/onwood/woodimpact (1).ogg', 100)
+				add_forensic_action(user, "smashed through")
 				force_open()
 				user.visible_message(span_warning("[user]猛地撞穿了[src]！"))
 			return
@@ -318,7 +315,11 @@
 			return FALSE
 	else if(!user.client) // simplemobs aren't allowed to pathfind through doors, currently
 		return FALSE
+	var/was_open = door_opened
 	SwitchState(user.m_intent == MOVE_INTENT_SNEAK) // silent when sneaking
+	// Close() refuses while anyone stands in the doorway, so only log what actually happened
+	if(door_opened != was_open)
+		add_forensic_action(user, door_opened ? "opened" : "closed", routine = TRUE)
 	return TRUE
 
 /obj/structure/mineral_door/proc/SwitchState(silent = FALSE)
@@ -442,10 +443,11 @@
 		else
 			return ..()
 
-/obj/structure/mineral_door/attacked_by(obj/item/item, mob/living/user)
+/obj/structure/mineral_door/attacked_by(obj/item/I, mob/living/user)
 	var/turf/hit_turf = get_turf(src)
+	// Not returned, as door hits have always ended the attack chain here
 	if(..())
-		log_breakin(user, "用 [item.name] 击打了门")
+		add_forensic_action(user, "hit with [format_text(I.name)]")
 	if(obj_broken || obj_destroyed)
 		var/obj/effect/track/structure/new_track = SStracks.get_track(/obj/effect/track/structure, hit_turf)
 		new_track.handle_creation(user)
@@ -623,6 +625,7 @@
 				lock_toggle(user)
 				if(autobump && !locked)
 					src.Open()
+					add_forensic_action(user, "opened", routine = TRUE)
 					addtimer(CALLBACK(src, PROC_REF(Close), FALSE, TRUE), 25)
 					src.last_bumper = user
 				return
@@ -638,6 +641,7 @@
 			lock_toggle(user)
 			if(autobump)
 				src.Open()
+				add_forensic_action(user, "opened", routine = TRUE)
 				addtimer(CALLBACK(src, PROC_REF(Close), FALSE, TRUE), 25)
 				src.last_bumper = user
 			return
@@ -692,7 +696,6 @@
 
 		var/picked = FALSE
 		user.log_message("尝试撬开门“[src.name]”的锁（当前[locked ? "已上锁" : "未上锁"]）。", LOG_ATTACK)
-		log_breakin(user, "开始用\a [I.name]撬锁")
 
 		while(!QDELETED(I) &&(lockprogress < locktreshold))
 			if(!do_after(user, picktime, target = src))
@@ -706,7 +709,6 @@
 				if(lockprogress >= locktreshold)
 					picked = TRUE
 					to_chat(user, "<span class='deadsay'>锁芯松开了。</span>")
-					log_breakin(user, "撬动了门锁并将门[locked ? "解锁" : "上锁"]")
 					if(ishuman(user))
 						var/mob/living/carbon/human/H = user
 						message_admins("[H.real_name]([key_name(user)]) 成功撬动了 [src.name] 的锁并将其[locked ? "解锁" : "上锁"]。[ADMIN_JMP(src)]")
@@ -715,6 +717,7 @@
 						record_round_statistic(STATS_LOCKS_PICKED)
 						var/obj/effect/track/structure/new_track = SStracks.get_track(/obj/effect/track/structure, get_turf(src))
 						new_track.handle_creation(user)
+					add_forensic_action(user, "lockpicked")
 					lock_toggle(user)
 					break
 				else
@@ -726,8 +729,8 @@
 				add_sleep_experience(L, /datum/skill/misc/lockpicking, L.STAINT/4)
 				continue
 		if(!picked)
+			add_forensic_action(user, "tried to lockpick")
 			user.log_message("停止撬动或未能撬动门“[src.name]”的锁（仍为[locked ? "上锁" : "未上锁"]状态）。", LOG_ATTACK)
-			log_breakin(user, "放弃撬锁（仍为[locked ? "上锁" : "未上锁"]状态）")
 		return
 
 /obj/structure/mineral_door/proc/tryskeletonlock(mob/user)
@@ -738,13 +741,13 @@
 	if(lockbroken)
 		to_chat(user, span_warning("这把锁已经坏了。"))
 		return
-	log_breakin(user, "使用万能钥匙将门[locked ? "解锁" : "上锁"]")
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		message_admins("[H.real_name]([key_name(user)]) 成功使用万能钥匙将 [src.name] [locked ? "解锁" : "上锁"]。[ADMIN_JMP(src)]")
 		log_admin("[H.real_name]([key_name(user)]) 成功对 [src.name] 使用了万能钥匙。")
 	do_sparks(3, FALSE, src)
 	playsound(user, 'sound/items/skeleton_key.ogg', 100)
+	add_forensic_action(user, "used a skeleton key")
 	lock_toggle(user) //All That It Does.
 	user.changeNext_move(CLICK_CD_INTENTCAP)
 	return
@@ -752,6 +755,8 @@
 /obj/structure/mineral_door/proc/lock_toggle(mob/user)
 	if(isSwitchingStates || door_opened)
 		return
+	// Routine, so a keyholder coming and going cannot push lockpicks and breaks out. Picks log their own evidence entry
+	add_forensic_action(user, locked ? "unlocked" : "locked", routine = TRUE)
 	if(locked)
 		user?.visible_message(span_warning("[user]打开了[src]的锁。"), \
 			span_notice("我打开了[src]的锁。"))
@@ -780,6 +785,7 @@
 		density = FALSE
 		opacity = FALSE
 		brokenstate = TRUE
+		on_forced_break(damage_flag)
 	..()
 
 /obj/structure/mineral_door/OnCrafted(dirin, user)

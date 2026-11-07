@@ -104,6 +104,19 @@
 	. = ..()
 	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "护甲")
 
+/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/graggar
+	name = "vicious hauberk"
+	desc = "The blessing of a Martyr is nothing, when put before the Sinistar's rage."
+	icon_state = "graggarhauberk"
+	item_state = "graggarhauberk"
+	armor = ARMOR_PLATE_BSTEEL
+	armor_class = ARMOR_CLASS_MEDIUM
+	max_integrity = ARMOR_INT_CHEST_MEDIUM_STEEL + 50
+
+/obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/graggar/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "ARMOR")
+
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/ancient
 	name = "远古锁子甲"
 	desc = "抛光的吉尔青铜环与丝绸交织成带袖锁甲衣。让无生者自腐朽中归来，将他们抬升至昔日不可企及的高度；那便是齐佐显现于世的意志。"

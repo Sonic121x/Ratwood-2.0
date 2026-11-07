@@ -1,20 +1,21 @@
-/datum/advclass/wretch/deserter
+/datum/advclass/wretch/deserter_knight
 	name = "失节骑士"
 	tutorial = "你曾是受人尊崇与敬畏的骑士，如今却成了背弃君主的叛徒。你过着亡命之徒的日子，被世人唾弃，也被整个社会轻蔑地看待。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = ACCEPTED_RACES
 	outfit = /datum/outfit/job/roguetown/wretch/deserter
 	category_tags = list(CTAG_WRETCH)
-	traits_applied = list(TRAIT_HEAVYARMOR, TRAIT_EQUESTRIAN, TRAIT_DISGRACED_NOBLE)
+	traits_applied = list(TRAIT_HEAVYARMOR, TRAIT_EQUESTRIAN, TRAIT_DISGRACED_NOBLE, TRAIT_BOGWALKER)
 	maximum_possible_slots = 2 //Ideal role for fraggers. Better to limit it.
 
-	cmode_music = 'sound/music/cmode/antag/combat_thewall.ogg' // same as new hedgeknight music
+	cmode_music = 'sound/music/cmode/antag/combat_disgraced.ogg' // New music since I had some unused oggs around anyway.
 	class_select_category = CLASS_CAT_WARRIOR
-	// Deserter are the knight-equivalence. They get a balanced, straightforward 2 2 3 statspread to endure and overcome.
+	// Deserter are the knight-equivalence. They get a balanced, straightforward 11 weighted balance to endure and overcome.
 	subclass_stats = list(
 		STATKEY_WIL = 3,
-		STATKEY_CON = 2,
-		STATKEY_STR = 2
+		STATKEY_CON = 3,
+		STATKEY_STR = 2,
+		STATKEY_PER = 2,
 	)
 	subclass_skills = list(
 		/datum/skill/combat/polearms = SKILL_LEVEL_EXPERT,
@@ -30,7 +31,10 @@
 		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
 		/datum/skill/misc/climbing = SKILL_LEVEL_EXPERT,
 		/datum/skill/misc/riding = SKILL_LEVEL_EXPERT,
+		/datum/skill/misc/medicine = SKILL_LEVEL_APPRENTICE, //no miracles to deal w/ stabs through plate armor
 		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/labor/butchering = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/misc/hunting = SKILL_LEVEL_APPRENTICE,
 	)
 	subclass_stashed_items = list(
 		"护甲片" =  /obj/item/repair_kit/metal,
@@ -55,13 +59,19 @@
 
 		var/weapons = list(
 			"穿甲刺剑",
+			"阔剑",
 			"钢钉头锤加鸢盾",
 			"铁连枷加鸢盾",
 			"长剑加鸢盾",
 			"卢塞恩锤",
-			"战斧",
+			"战斧加鸢盾",
 			"骑枪加鸢盾",
-			"沙姆希尔弯刀",		//WHO MISPELLED IT BRO
+			"沙姆希尔弯刀",
+			"双刃长刀",
+			"恰西克弯刀加鸢盾",
+			"钢制焰形剑",
+			"巨锤",
+			"长柄战锤"
 		)
 		var/weapon_choice = input(H, "选择你的武器。", "披甲执兵") as anything in weapons
 		H.set_blindness(0)
@@ -70,8 +80,12 @@
 				r_hand = /obj/item/rogueweapon/estoc
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
+			if("阔剑")
+				beltr = /obj/item/rogueweapon/scabbard/sword
+				r_hand = /obj/item/rogueweapon/sword/long/broadsword
+				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
 			if("长剑加鸢盾")
-				beltr = /obj/item/rogueweapon/scabbard/sword/noble
+				beltr = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/long
 				backr = /obj/item/rogueweapon/shield/tower/metal
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
@@ -87,8 +101,9 @@
 				r_hand = /obj/item/rogueweapon/eaglebeak/lucerne
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_MASTER, TRUE)
-			if("战斧")
-				backr = /obj/item/rogueweapon/stoneaxe/battle
+			if("战斧加鸢盾")
+				r_hand = /obj/item/rogueweapon/stoneaxe/battle
+				backr = /obj/item/rogueweapon/shield/tower/metal
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_MASTER, TRUE)
 			if("骑枪加鸢盾")
 				r_hand = /obj/item/rogueweapon/spear/lance
@@ -96,30 +111,56 @@
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_MASTER, TRUE)
 			if("沙姆希尔弯刀")
 				r_hand = /obj/item/rogueweapon/sword/sabre/shamshir
+				beltr = /obj/item/rogueweapon/scabbard/sword
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
+			if("双刃长刀")
+				r_hand = /obj/item/rogueweapon/sword/long/kriegmesser/ssangsudo
+				beltr = /obj/item/rogueweapon/scabbard/sword/kazengun/noparry
+				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
+			if("恰西克弯刀加鸢盾")
+				r_hand = /obj/item/rogueweapon/sword/sabre/steppesman
+				beltr = /obj/item/rogueweapon/scabbard/sword
+				backr = /obj/item/rogueweapon/shield/iron/steppesman
+				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
+			if("钢制焰形剑")
+				r_hand = /obj/item/rogueweapon/greatsword/grenz/flamberge
+				backr = /obj/item/rogueweapon/scabbard/gwstrap
+				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
+			if("巨锤")
+				r_hand = /obj/item/rogueweapon/mace/goden/steel
+				backr = /obj/item/rogueweapon/scabbard/gwstrap
+				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_MASTER, TRUE)
+			if("长柄战锤")
+				r_hand = /obj/item/rogueweapon/eaglebeak
+				backr = /obj/item/rogueweapon/scabbard/gwstrap
+				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_MASTER, TRUE)
+
 		var/helmets = list(
-			"猪面盆盔" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface,
-			"萨伏依盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/guard,
+			"猪面盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface,
+			"护卫盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/guard,
 			"栅条盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/sheriff,
 			"桶盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/bucket,
-			"骑士盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight,
-			"带面罩萨雷特盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored,
-			"带吻部面罩萨雷特盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted,
-			"阿梅特盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet,
-			"带吻部阿梅特盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/snouted,
-			"骑士大羽饰阿梅特盔" = /obj/item/clothing/head/roguetown/helmet/heavy/knight/greatplume,
-			"犬首盆盔" 		= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull,
+			"骑士阿梅特盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight,
+			"带面罩萨雷特盔"			= /obj/item/clothing/head/roguetown/helmet/sallet/visored,
+			"带吻部面罩萨雷特盔"			= /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted,
+			"阿梅特盔"				= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet,
+			"带吻部阿梅特盔"				= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/snouted,
+			"犬首盆盔"		= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull,
+			"伊特鲁里亚盆盔"		= /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan,
+			"开缝锅盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle,
+			"库拉赫盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/zyb,
+			"兜盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/kabuto, //No mask, fuck you
+			"希沙克盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/shishak,
+			"狼颅盆盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/volfplate,
 			"圆面盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface,
 			"带吻部圆面盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/snouted,
-			"伊特鲁里亚盆盔" = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan,
-			"开缝锅盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle,
 			"蛙口盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth,
 			"带大羽饰蛙口盔" = /obj/item/clothing/head/roguetown/helmet/heavy/frogmouth/greatplume,
 			"带面罩巴布特盔" = /obj/item/clothing/head/roguetown/helmet/heavy/barbute/visor,
 			"大巴布特盔" = /obj/item/clothing/head/roguetown/helmet/heavy/barbute/great,
-			"库拉赫盔"	= /obj/item/clothing/head/roguetown/helmet/sallet/zyb,
 			"奥塔瓦盔" = /obj/item/clothing/head/roguetown/helmet/otavan,
 			"具装骑兵盔" = /obj/item/clothing/head/roguetown/helmet/heavy/cataphract,
+			"喙盔" = /obj/item/clothing/head/roguetown/helmet/heavy/beakhelm,
 			"无"
 		)
 		var/helmchoice = input(H, "选择你的头盔。", "披挂头盔") as anything in helmets
@@ -127,23 +168,28 @@
 			head = helmets[helmchoice]
 
 		var/armors = list(
+			"全身板甲"			= /obj/item/clothing/suit/roguetown/armor/plate/full,
+			"沟槽全身板甲"		= /obj/item/clothing/suit/roguetown/armor/plate/full/fluted,
+			"沟槽胸甲"	= /obj/item/clothing/suit/roguetown/armor/plate/cuirass/fluted,
+			"钢制胸甲"		= /obj/item/clothing/suit/roguetown/armor/plate/cuirass,
 			"板甲衣"		= /obj/item/clothing/suit/roguetown/armor/brigandine,
-			"板片外衣"	= /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates,
-			"钢胸甲"		= /obj/item/clothing/suit/roguetown/armor/plate/half,
-			"沟槽胸甲"	= /obj/item/clothing/suit/roguetown/armor/plate/half/fluted,
-			"鳞甲"		= /obj/item/clothing/suit/roguetown/armor/plate/scale,
-			"铁甲骑士甲"	= /obj/item/clothing/suit/roguetown/armor/plate/cataphract,
+			"板片外衣"		= /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates,
+			"半身板甲"		= /obj/item/clothing/suit/roguetown/armor/plate,
+			"草原札甲鳞铠"		= /obj/item/clothing/suit/roguetown/armor/plate/scale/steppe,
+			"哈拉特板甲衣"		= /obj/item/clothing/suit/roguetown/armor/brigandine/haraate,
+			"具装骑兵甲"	= /obj/item/clothing/suit/roguetown/armor/plate/cataphract,
 		)
 		var/armorchoice = input(H, "选择你的护甲。", "披挂甲胄") as anything in armors
 		armor = armors[armorchoice]
 		wretch_select_bounty(H)
 	gloves = /obj/item/clothing/gloves/roguetown/plate
-	pants = /obj/item/clothing/under/roguetown/chainlegs
+	pants = /obj/item/clothing/under/roguetown/platelegs
 	neck = /obj/item/clothing/neck/roguetown/bevor
-	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
+	cloak = /obj/item/clothing/cloak/tabard/black
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
 	shoes = /obj/item/clothing/shoes/roguetown/boots/armor
-	belt = /obj/item/storage/belt/rogue/leather/steel
+	belt = /obj/item/storage/belt/rogue/leather/steel/tasset //less meta
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 	backl = /obj/item/storage/backpack/rogue/satchel //gwstraps landing on backr asyncs with backpack_contents
 	backpack_contents = list(
@@ -153,33 +199,48 @@
 		/obj/item/rogueweapon/scabbard/sheath = 1,
 		/obj/item/reagent_containers/glass/bottle/alchemical/healthpot = 1,	//Small health vial
 		)
-
+	if(H.age == AGE_OLD) // To discourage old strugglers
+		H.change_stat(STATKEY_PER, 2)
+		H.change_stat(STATKEY_CON, 2)
+		H.change_stat(STATKEY_SPD, -2) //We're crippling you little buddy
+		H.change_stat(STATKEY_LCK, -1) 
 	if (H.mind)
 		H.AddSpell(new /obj/effect/proc_holder/spell/self/choose_riding_virtue_mount)
 
 /datum/advclass/wretch/deserter/maa
-	name = "战士"
-	tutorial = "无论你为哪一方挥舞武器，到头来你战斗的方式都与你的祖先，以及他们的祖先别无二致：披挂金属，与鲜血和死亡紧紧纠缠。"
-	outfit = /datum/outfit/job/roguetown/wretch/desertermaa
-	cmode_music = 'sound/music/combat_vigilante.ogg' //Unused by any other class, so may as very well...
+	name = "逃兵"
+	tutorial = "你曾有岗位，曾有职责。或许是不满，或许是士气消沉，又或许只是自认高过这一切——你决定一走了之。如今，这份过往如影随形，无论你去往何处。"
+	allowed_sexes = list(MALE, FEMALE)
+
+	outfit = /datum/outfit/job/roguetown/wretch/deserter_maa
+
 	class_select_category = CLASS_CAT_WARRIOR
+	category_tags = list(CTAG_WRETCH)
+	//frankly, this is probably not going to happen consistantly with a massive tide of bogmen. If it does uhh, honestly. hilarious.
+	//Worst case nuke this to 5 slots, or 4. If it becomes a problem.
+
+	subclass_stashed_items = list(
+		"Armor Plates" =	/obj/item/repair_kit/metal,
+	)
+
+	cmode_music = 'sound/music/cmode/antag/combat_cutpurse.ogg' // same as regular bandits
 	// Slightly more rounded. These can be nudged as needed.
-	traits_applied = list(TRAIT_MEDIUMARMOR)
+	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_BOGWALKER)
 	subclass_stats = list(
 		STATKEY_STR = 2,
 		STATKEY_WIL = 2,
 		STATKEY_INT = 1,
-		STATKEY_CON = 1,
-		STATKEY_PER = 1,
+		STATKEY_CON = 2,
+		STATKEY_PER = 2,
 	)
 	subclass_skills = list(
 		/datum/skill/combat/polearms = SKILL_LEVEL_EXPERT,
 		/datum/skill/combat/swords = SKILL_LEVEL_EXPERT,
 		/datum/skill/combat/maces = SKILL_LEVEL_EXPERT,
 		/datum/skill/combat/axes = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/crossbows = SKILL_LEVEL_EXPERT,
 		/datum/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/whipsflails = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/combat/crossbows = SKILL_LEVEL_JOURNEYMAN, //Unique only case here, pick crossbow if you want to exceed in crossbows. Otherwise you're decently okay at it.
 		/datum/skill/combat/shields = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/wrestling = SKILL_LEVEL_EXPERT,
 		/datum/skill/combat/unarmed = SKILL_LEVEL_JOURNEYMAN,
@@ -187,208 +248,106 @@
 		/datum/skill/misc/swimming = SKILL_LEVEL_JOURNEYMAN, // Worse at swimming than the above class.
 		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
 		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
-		/datum/skill/misc/riding = SKILL_LEVEL_JOURNEYMAN, // That saiga was stolen. Probably.
 		/datum/skill/misc/tracking = SKILL_LEVEL_NOVICE,
+		/datum/skill/misc/medicine = SKILL_LEVEL_APPRENTICE, //No miracles to deal w/ stabs through plate/maile armor
+		/datum/skill/craft/carpentry = SKILL_LEVEL_APPRENTICE, //So you can repair your heater shield + build in the bogs
+		/datum/skill/craft/masonry = SKILL_LEVEL_APPRENTICE, //So you can build additional walls and misc decorations
+		/datum/skill/labor/lumberjacking = SKILL_LEVEL_APPRENTICE, //Ditto
 	)
-/datum/outfit/job/roguetown/wretch/desertermaa/pre_equip(mob/living/carbon/human/H)
+
+/datum/outfit/job/roguetown/wretch/deserter_maa/pre_equip(mob/living/carbon/human/H)
 	..()
 	if(H.mind)
-		var/weapons = list("战锤与铁盾","军刀与木盾","钢斧与铁盾","钩镰枪","巨斧","戟斧","十字弩","软剑与铁盾")
-		var/weapon_choice = input(H, "选择你的武器。", "披甲执兵") as anything in weapons
+		var/weapons = list("战锤加盾","军刀加盾","斧加盾","钩镰","巨斧","长戟","弩")
+		var/weapon_choice = input(H, "选择你的武器。", "拿起武器") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("战锤与铁盾")
-				beltr = /obj/item/rogueweapon/mace/warhammer
-				backl = /obj/item/rogueweapon/shield/iron
-			if("军刀与木盾")
+			if("战锤加盾")
+				beltr = /obj/item/rogueweapon/mace/warhammer/steel
+				backl = /obj/item/rogueweapon/shield/heater
+			if("军刀加盾")
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/sabre
-				backl = /obj/item/rogueweapon/shield/wood
-			if("钢斧与铁盾")
+				backl = /obj/item/rogueweapon/shield/heater
+			if("斧加盾")
 				beltr = /obj/item/rogueweapon/stoneaxe/woodcut/steel
-				backl = /obj/item/rogueweapon/shield/iron
-			if("钩镰枪")
+				backl = /obj/item/rogueweapon/shield/heater
+			if("钩镰")
 				r_hand = /obj/item/rogueweapon/spear/billhook
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
-			if("戟斧")
+			if("长戟")
 				r_hand = /obj/item/rogueweapon/halberd
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
-			if("十字弩")
-				beltr = /obj/item/quiver/bolts
-				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 			if("巨斧")
 				r_hand = /obj/item/rogueweapon/greataxe
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
-			if("软剑与铁盾")
-				r_hand = /obj/item/rogueweapon/whip/urumi
-				backl = /obj/item/rogueweapon/shield/iron
-	H.verbs |= list(/mob/living/carbon/human/mind/proc/setorderswretch)
+			if("弩")
+				H.adjust_skillrank_up_to(/datum/skill/combat/crossbows, SKILL_LEVEL_EXPERT, TRUE)
+				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
+				beltr = /obj/item/quiver/heavybluntbolts
+
+	H.verbs += /mob/proc/haltyell //Ex-Garrisoner
+	H.verbs += /mob/living/carbon/human/mind/proc/setorders //Kill if problematic
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/retreat)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/bolster)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/brotherhood)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/order/charge)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/convertrole/brotherhood)
+
+		/*
+		meant to be less knightly-helmets and more in-line with banditry, brigand loadouts and such so, so no armlets
+
+		we limit this so you have to look moderately evil or suspiciously wearing old-style helmets
+		*/
 		var/helmets = list(
-		"简易头盔" 		 = /obj/item/clothing/head/roguetown/helmet,
-		"锅盔" 		 = /obj/item/clothing/head/roguetown/helmet/kettle,
-		"盆盔" 		 = /obj/item/clothing/head/roguetown/helmet/bascinet,
-		"萨雷特盔" 		 = /obj/item/clothing/head/roguetown/helmet/sallet,
-		"翼饰帽" 		 = /obj/item/clothing/head/roguetown/helmet/winged,
-		"骷髅帽"				 = /obj/item/clothing/head/roguetown/helmet/skullcap,
-		"欧内尔头盔" 	 = /obj/item/clothing/head/roguetown/helmet/bascinet/atgervi/gronn/ownel,
-		"钢希沙克盔" 		 = /obj/item/clothing/head/roguetown/helmet/sallet/shishak,
-		"游牧头盔" 			 = /obj/item/clothing/head/roguetown/helmet/nomadhelmet,
-		"格伦泽尔霍夫特羽饰帽"  = /obj/item/clothing/head/roguetown/grenzelhofthat,
-		"耶尼切里头盔"  = /obj/item/clothing/head/roguetown/helmet/janissaryhelm,
-		"无"
+			"猪面盆盔"		= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface,
+			"犬首盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull,
+			"克氏面甲盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan,
+			"狼颅盆盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/volfplate,
+			"带面罩萨雷特盔"		= /obj/item/clothing/head/roguetown/helmet/sallet/visored,
+			"带吻部面罩萨雷特盔"		= /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted,
+			"带面罩锅盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle,
 		)
-		var/helmchoice = input(H, "选择你的头盔。", "披挂头盔") as anything in helmets
-		if(helmchoice != "无")
-			head = helmets[helmchoice]
+		var/helmchoice = input(H, "选择你的头盔。", "选择头盔") as anything in helmets
+		head = helmets[helmchoice]
 
-		var/masks = list(
-		"钢面具" 			= /obj/item/clothing/mask/rogue/facemask/steel,
-		"钢猎犬面具" 		= /obj/item/clothing/mask/rogue/facemask/steel/hound,
-		"荒野守卫" 			= /obj/item/clothing/mask/rogue/wildguard,
-		"草原人战面具" 	= /obj/item/clothing/mask/rogue/facemask/steel/steppesman,
-		"草原人兽面具"	= /obj/item/clothing/mask/rogue/facemask/steel/steppesman/anthro,
-		"无"
+		var/armors = list(
+			"胸甲"			= /obj/item/clothing/suit/roguetown/armor/plate/cuirass,
+			"板甲衣"		= /obj/item/clothing/suit/roguetown/armor/brigandine,
+			"沟槽胸甲"		= /obj/item/clothing/suit/roguetown/armor/plate/half/fluted,
+			"鳞甲"			= /obj/item/clothing/suit/roguetown/armor/plate/scale,
 		)
-		var/maskchoice = input(H, "选择你的面具。", "面具！面具！面具！") as anything in masks // Run from it. MASK. MASK. MASK.
-		if(maskchoice != "无")
-			mask = masks[maskchoice]
+		var/armorchoice = input(H, "选择你的护甲。", "披甲执兵") as anything in armors
+		armor = armors[armorchoice]
 
-		var/armor_options = list("板甲衣套装", "锁子甲套装", "沟槽胸甲套装", "铁锤堡套装", "草原套装", "格隆恩套装", "格伦泽尔霍夫特套装", "奥塔瓦套装")
-		var/armor_choice = input(H, "选择你的护甲。", "时髦赴死") as anything in armor_options
-		switch(armor_choice)
-			if("板甲衣套装")
-				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
-				armor = /obj/item/clothing/suit/roguetown/armor/brigandine
-				pants = /obj/item/clothing/under/roguetown/splintlegs
-				neck = /obj/item/clothing/neck/roguetown/gorget/steel
-				wrists = /obj/item/clothing/wrists/roguetown/splintarms
-				gloves = /obj/item/clothing/gloves/roguetown/plate/iron
-				shoes = /obj/item/clothing/shoes/roguetown/boots/armor/iron
-			if("锁子甲套装")
-				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
-				armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
-				pants = /obj/item/clothing/under/roguetown/chainlegs
-				neck = /obj/item/clothing/neck/roguetown/chaincoif
-				wrists = /obj/item/clothing/wrists/roguetown/bracers
-				gloves = /obj/item/clothing/gloves/roguetown/chain
-				shoes = /obj/item/clothing/shoes/roguetown/boots/armor/iron
-			if("沟槽胸甲套装")
-				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
-				armor = /obj/item/clothing/suit/roguetown/armor/plate/half/fluted
-				pants = /obj/item/clothing/under/roguetown/chainlegs
-				neck = /obj/item/clothing/neck/roguetown/gorget/steel
-				wrists = /obj/item/clothing/wrists/roguetown/bracers
-				gloves = /obj/item/clothing/gloves/roguetown/chain
-				shoes = /obj/item/clothing/shoes/roguetown/boots/armor/iron
-			if("铁锤堡套装") //It is actually called Gronn in-game, but it's from AP's lore where Gronns are Totally-Not-Vikings, whereas on RW Gronns are Mongols and Hammerholdians are Vikings.
-				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
-				armor = /obj/item/clothing/suit/roguetown/armor/brigandine/gronn
-				pants = /obj/item/clothing/under/roguetown/splintlegs/iron/gronn
-				neck = /obj/item/clothing/neck/roguetown/chaincoif
-				wrists = /obj/item/clothing/wrists/roguetown/bracers
-				gloves = /obj/item/clothing/gloves/roguetown/chain/gronn
-				shoes = /obj/item/clothing/shoes/roguetown/boots/armor/iron
-			if("草原套装")
-				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/chargah //Better gambeson but your dedicated leg protection is worse.
-				armor = /obj/item/clothing/suit/roguetown/armor/plate/scale/steppe
-				pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
-				neck = /obj/item/clothing/neck/roguetown/chaincoif
-				wrists = /obj/item/clothing/wrists/roguetown/bracers
-				gloves = /obj/item/clothing/gloves/roguetown/chain
-				shoes = /obj/item/clothing/shoes/roguetown/boots/nobleboot/steppesman
-			if("格隆恩套装")
-				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/chargah //Better gambeson but your dedicated leg protection is worse.
-				armor = /obj/item/clothing/suit/roguetown/armor/plate/scale/steppe
-				pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/nomadpants
-				neck = /obj/item/clothing/neck/roguetown/gorget/steel
-				wrists = /obj/item/clothing/wrists/roguetown/bracers
-				gloves = /obj/item/clothing/gloves/roguetown/angle
-				shoes = /obj/item/clothing/shoes/roguetown/boots/armor/iron
-			if("格伦泽尔霍夫特套装")
-				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/grenzelhoft //Better gambeson but your dedicated leg protection is worse.
-				armor = /obj/item/clothing/suit/roguetown/armor/plate/blacksteel_half_plate //Better chest protection but worse limb protection, a fair trade-off.
-				pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/grenzelpants
-				neck = /obj/item/clothing/neck/roguetown/gorget
-				wrists = /obj/item/clothing/wrists/roguetown/bracers
-				shoes = /obj/item/clothing/shoes/roguetown/boots/grenzelhoft
-				gloves = /obj/item/clothing/gloves/roguetown/angle/grenzelgloves
-			if("奥塔瓦套装")
-				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/otavan //Better gambeson but your dedicated leg protection is worse.
-				armor = /obj/item/clothing/suit/roguetown/armor/plate/half/fluted //Actual Otavan plate's AC is heavy.
-				pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/otavan
-				neck = /obj/item/clothing/neck/roguetown/fencerguard
-				wrists = /obj/item/clothing/wrists/roguetown/bracers
-				shoes = /obj/item/clothing/shoes/roguetown/boots/otavan
-				gloves = /obj/item/clothing/gloves/roguetown/otavan
-			if("Janissary Set")
-				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/zyb
-				armor = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/janissary
-				pants = /obj/item/clothing/under/roguetown/chainlegs/kilt
-				neck = /obj/item/clothing/neck/roguetown/chaincoif/chainmantle
-				wrists = /obj/item/clothing/wrists/roguetown/bracers
-				shoes = /obj/item/clothing/shoes/roguetown/shalal/reinforced
-				gloves = /obj/item/clothing/gloves/roguetown/chain
-	belt = /obj/item/storage/belt/rogue/leather
-	beltl = /obj/item/rogueweapon/mace/cudgel
-	backr = /obj/item/storage/backpack/rogue/satchel
-	if(H.mind)
-		var/archetype = list("重装步兵", "轻装步兵", "沼卫/骑兵", "军医", "老兵")
-		var/archetype_choice = input (H, "选择你的主要训练方向。", "你如何杀人？") as anything in archetype
-		switch(archetype_choice)
-			if("重装步兵") //Classic Deserter. Master Athletics, Expert Swimming and Expert Shields. Otherwise nothing special.
-				H.adjust_skillrank_up_to(/datum/skill/misc/athletics, SKILL_LEVEL_MASTER, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/misc/swimming, SKILL_LEVEL_EXPERT, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_EXPERT, TRUE)
-				cloak = /obj/item/clothing/cloak/stabard/surcoat
-				to_chat(H, span_warning("你受训于密集盾阵之中作战。这让你体格强健，但也没机会学会其他本事。"))
-			if("轻装步兵") //Throwing weapons guy. Starts with steel javelins; +1 SPD and -1 STR; Journeyman in Sneaking.
-				H.change_stat(STATKEY_SPD, 1)
-				H.change_stat(STATKEY_STR, -1)
-				H.adjust_skillrank_up_to(/datum/skill/misc/sneaking, SKILL_LEVEL_JOURNEYMAN, TRUE)
-				cloak = /obj/item/clothing/cloak/poachercloak //Maybe you are a former Warden-Forester?
-				beltl = /obj/item/quiver/javelin/steel
-				l_hand = /obj/item/clothing/head/roguetown/roguehood/poacher
-				to_chat(H, span_warning("你受训于松散阵形中作战，以投掷武器和迅疾突袭从远处骚扰敌人。"))
-			if("沼卫/骑兵") //TRAIT_EQUESTRIAN, Expert Riding, Leech & Kneestinger Immunity. BOGGUARD LIVES!
-				ADD_TRAIT(H, TRAIT_EQUESTRIAN, TRAIT_GENERIC)
-				H.adjust_skillrank_up_to(/datum/skill/misc/riding, SKILL_LEVEL_EXPERT, TRUE)
-				if (istype (H.patron, /datum/patron/divine/dendor)) //Dendorites get Expert Swimming instead of redundant immunities.
-					H.adjust_skillrank_up_to(/datum/skill/misc/swimming, SKILL_LEVEL_EXPERT, TRUE)
-				else
-					ADD_TRAIT(H, TRAIT_LEECHIMMUNE, TRAIT_GENERIC)
-					ADD_TRAIT(H, TRAIT_KNEESTINGER_IMMUNITY, TRAIT_GENERIC)
+		var/cloaks = list("沼泽绿","黑色","棕色长风衣")
+		var/cloak_choice = input(H, "选择你的斗篷。", "为了沼泽") as anything in cloaks
+		switch(cloak_choice)
+			if("沼泽绿")
 				cloak = /obj/item/clothing/cloak/stabard/bog
-				to_chat(H, span_warning("你受训于骑术与险地穿行。当地沼泽对你来说与第二故乡无异。"))
-			if("军医") //Expert Medicine and a surgery bag. No TRAIT_MEDICINE_EXPERT, so you can't progress past Expert without somebody taking you on as their medicine apprentice.
-				H.adjust_skillrank_up_to(/datum/skill/misc/medicine, SKILL_LEVEL_EXPERT, TRUE)
-				cloak = /obj/item/clothing/suit/roguetown/shirt/robe/feld
-				beltl = /obj/item/storage/belt/rogue/surgery_bag
-				to_chat(H, span_warning("你受训于身披沉重甲胄时施展法术的艰难技艺。训练确实见效了，但也几乎没有时间与精力去锻炼体能。"))
-			if("老兵") //Master in primary weapon skills and Expert in all other weapon skills except Unarmed, but worse stats -- weighted stat total of +5.
-				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_MASTER, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_MASTER, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_MASTER, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/combat/crossbows, SKILL_LEVEL_MASTER, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_EXPERT, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_EXPERT, TRUE)
-				H.change_stat(STATKEY_INT, 1)
-				H.change_stat(STATKEY_STR, -1)
-				H.change_stat(STATKEY_WIL, -1)
-				H.change_stat(STATKEY_CON, -1)
-				H.change_stat(STATKEY_PER, -1)
-				cloak = /obj/item/clothing/cloak/stabard/surcoat
-				to_chat(H, span_warning("你已征战太久，肉体与精神都濒临崩溃，可你的肌肉仍记得每一次挥砍与突刺。最后再战一场……"))
-	wretch_select_bounty(H)
+				mask = /obj/item/clothing/head/roguetown/roguehood/bogman
+			if("黑色")
+				cloak = /obj/item/clothing/cloak/stabard/dungeon
+				mask = /obj/item/clothing/head/roguetown/roguehood/bogman/black
+			if("棕色长风衣")
+				cloak = /obj/item/clothing/suit/roguetown/armor/longcoat/brown
+				mask = /obj/item/clothing/head/roguetown/roguehood/bogman/brown
 
-	backpack_contents = list(/obj/item/natural/cloth = 1, /obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rope/chain = 1, /obj/item/storage/belt/rogue/pouch/coins/poor = 1, /obj/item/flashlight/flare/torch/lantern/prelit = 1, /obj/item/rogueweapon/scabbard/sheath = 1)
+		wretch_select_bounty(H)
+
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk
+	pants = /obj/item/clothing/under/roguetown/chainlegs
+	neck = /obj/item/clothing/neck/roguetown/bevor
+	wrists = /obj/item/clothing/wrists/roguetown/bracers
+	gloves = /obj/item/clothing/gloves/roguetown/chain
+	shoes = /obj/item/clothing/shoes/roguetown/boots/armor/iron
+	beltl = /obj/item/rogueweapon/mace/cudgel
+	belt = /obj/item/storage/belt/rogue/leather
+	backr = /obj/item/storage/backpack/rogue/satchel
+
+	backpack_contents = list(/obj/item/natural/cloth = 1, /obj/item/rogueweapon/huntingknife/combat/messer = 1, /obj/item/rope/chain = 1, /obj/item/storage/belt/rogue/pouch/coins/poor = 1, /obj/item/flashlight/flare/torch/lantern/prelit = 1, /obj/item/rogueweapon/scabbard/sheath = 1)
+
 
 /obj/effect/proc_holder/spell/invoked/order
 	name = ""

@@ -333,6 +333,18 @@
 	. = ..()
 	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "护甲")
 
+/obj/item/clothing/neck/roguetown/gorget/steel/graggar
+	name = "vicious gorget"
+	desc = "Curled plate, cradling the neck. Once, they were chains - now, they've allowed you to break free."
+	icon_state = "graggargorget"
+	item_state = "graggargorget"
+	max_integrity = ARMOR_INT_SIDE_ANTAG
+	armor = ARMOR_PLATE_BSTEEL	
+
+/obj/item/clothing/neck/roguetown/gorget/steel/graggar/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "ARMOR")
+
 /obj/item/clothing/neck/roguetown/bevor/iron
 	name = "铁护颚"
 	desc = "一组用于保护颈部的铁板。"

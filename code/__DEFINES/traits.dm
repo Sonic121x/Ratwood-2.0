@@ -118,6 +118,7 @@
 #define TRAIT_SEA_DRINKER "深海之民"
 /// Won't be frozen when swimming in water
 #define TRAIT_WATERLOVING "亲水"
+#define TRAIT_BOGWALKER "沼行者"
 #define TRAIT_STUDENT		"学生"
 #define TRAIT_INTELLECTUAL "学识者"
 #define TRAIT_GRAVEROBBER "老练盗墓贼"
@@ -723,6 +724,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_TRIBAL = span_info("我属于海岛上的部族。"),
 	TRAIT_COMPLIANT = span_info("无论我如何努力，我都无法真正反抗他人。"),
 	TRAIT_SELF_AWARE = span_info("我熟知自己的身体，天生便懂得各种疼痛意味着什么。"),
+	TRAIT_BOGWALKER = span_info("沼泽的祝福庇佑着我。刺膝草与水蛭不会伤害我，而且在沼泽中除非全速奔跑，否则不会触发埋伏。"),
 	TRAIT_DEADITE_RESISTANCE = span_info("我在腐疫横行的土地上长大。我的身体对感染更具抵抗力。"),
 	TRAIT_COLD_RESISTANCE = span_info("由于故乡的气候，我已对寒冷生出耐受力。"),
 	TRAIT_HEAT_RESISTANCE = span_info("由于故乡的气候，我已对炎热生出耐受力。"),

@@ -680,6 +680,7 @@
 	name = "凶暴巨斧"
 	desc = "这把巨斧的刃口因原初动力而颤鸣，暴力啊，甜美的暴力！"
 	icon_state = "graggargaxe"
+	unenchantable = TRUE
 	force = 20
 	force_wielded = 40
 	max_blade_int = 400
@@ -689,6 +690,20 @@
 /obj/item/rogueweapon/greataxe/steel/doublehead/graggar/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "斧", "撕裂")
+
+/obj/item/rogueweapon/stoneaxe/woodcut/steel/graggar
+	name = "vicious tomahawk"
+	icon_state = "graggartomahawk"
+	desc = "A handaxe of greater stature, intricately decorated with the Sinistar's heraldry. Worshippers wield it to strengthen their soul's connection \
+	to the force of violence; a blessing, before they pursue the most dangerous game of all."
+	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/axe/bash)
+	force = 30
+	wdefense = 5
+	unenchantable = TRUE
+
+/obj/item/rogueweapon/stoneaxe/woodcut/steel/graggar/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "AXE", "RENDERED ASUNDER")
 
 ////////////////////////////////////////
 // Unique loot axes; mostly from mobs //

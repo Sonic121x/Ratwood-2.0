@@ -198,6 +198,45 @@
 	. = ..()
 	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "护甲", "撕裂")
 
+/obj/item/clothing/suit/roguetown/armor/plate/fluted/graggar/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "ARMOR", "RENDERED ASUNDER")
+
+/obj/item/clothing/suit/roguetown/armor/plate/fluted/graggar/equipped(mob/living/user, slot)
+	. = ..()
+	if(slot != SLOT_ARMOR)
+		return
+
+	user.apply_status_effect(/datum/status_effect/buff/motive)
+
+/obj/item/clothing/suit/roguetown/armor/plate/full/graggar
+	name = "vicious full-plate"
+	desc = "Shorn together plate, curated from hand-crafted bones and ligaments - combined under an unholy spirit of violence. It \
+	drools with the distilled essence of worldlux; the afterbirth of ascensionism."
+	icon_state = "graggarplate_heavy"
+	max_integrity = ARMOR_INT_CHEST_PLATE_ANTAG
+	armor = ARMOR_PLATE_BSTEEL
+
+/obj/item/clothing/suit/roguetown/armor/plate/full/graggar/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "ARMOR", "RENDERED ASUNDER")
+
+/obj/item/clothing/suit/roguetown/armor/plate/full/graggar/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "ARMOR", "RENDERED ASUNDER")
+
+/obj/item/clothing/suit/roguetown/armor/plate/full/graggar/equipped(mob/living/user, slot)
+	. = ..()
+	if(slot != SLOT_ARMOR)
+		return
+
+	user.apply_status_effect(/datum/status_effect/buff/motive)
+
+/obj/item/clothing/suit/roguetown/armor/plate/full/graggar/dropped(mob/living/carbon/human/user)
+	. = ..()
+	if(istype(user) && user.wear_armor == src)
+		user.remove_status_effect(/datum/status_effect/buff/motive)
+
 /obj/item/clothing/suit/roguetown/armor/plate/fluted/ornate
 	name = "普赛顿半身板甲"
 	desc = "精美的钢制胸甲，配有垂甲与肩甲以增加覆盖。普赛顿的低阶教士常用染布装饰这些护甲，好让伤者在战场的疯狂中仍能寻得救赎。 </br>'..疯狂的鼓动，让你以为自己的苦难于阿多奈的祭羔而言毫无意义..' </br>... </br>若再添一些受祝银并请铁匠协助，我就能把这件半身板甲改造成一套全身板甲。"

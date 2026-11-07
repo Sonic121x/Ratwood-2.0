@@ -280,6 +280,19 @@
 	. = ..()
 	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "盾")
 
+/obj/item/rogueweapon/shield/iron/graggar
+	name = "vicious targe"
+	desc = "A decorated targe, splattered and sanctified with the trophies of Psydonia's most dangerous hunters. No matter the icy rains, \
+	no matter the scorching heat – no matter the wrath of their enemies, Graggar never faltered in His arms. When Ravox broke their oath and \
+	rescinded their claim to Godhood, grief could not describe what He had felt."
+	icon_state = "graggarshield"
+	unenchantable = TRUE
+	max_integrity = 300
+
+/obj/item/rogueweapon/shield/iron/graggar/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "SHIELD", "RENDERED ASUNDER")
+
 /obj/item/rogueweapon/shield/tower/metal/ancient/decrepit
 	name = "破旧盾"
 	desc = "一面由磨损青铜打造的沉重塔盾。其上缠着干枯海藻，散发咸腥海味，让人不禁以为它是从某艘沉没已久的战船残骸里打捞出来的……连同它昔日的主人一起。"

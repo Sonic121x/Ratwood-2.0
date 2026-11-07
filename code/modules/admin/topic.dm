@@ -885,22 +885,54 @@
 			NP.ckey = M.ckey
 			qdel(M)
 
+	else if(href_list["pref_refresh"])
+		if(!check_rights(R_ADMIN))
+			return
+		var/mob/living/carbon/human/H = locate(href_list["pref_refresh"])
+		if(!istype(H))
+			to_chat(usr, span_warning("This can only be used on instances of type /mob/living/carbon/human."))
+			return
+		H.admin_pref_refresh(usr)
+
 	else if(href_list["ssd_sendbacktolobby"])
 		if(!check_rights(R_ADMIN))
 			return
 
-		var/mob/living/carbon/human/H = locate(href_list["ssd_sendbacktolobby"])
-		if(!istype(H))
-			to_chat(usr, span_warning("此操作仅适用于 /mob/living/carbon/human 类型的实例。"))
+		var/mob/living/L = locate(href_list["ssd_sendbacktolobby"])
+		// The ckey guards against the ref having been reused by another mob since the alert went out.
+		if(!istype(L) || L.ckey != href_list["ssd_ckey"] || !L.get_real_body())
+			to_chat(usr, span_warning("该角色已不存在。"))
 			return
-		if(H.client || !H.last_logout_time)
-			to_chat(usr, span_warning("[H] 已不再处于深度沉睡状态。"))
+		if(!L.is_disconnected_player())
+			to_chat(usr, span_warning("[L]已不再处于深度沉睡状态。"))
 			return
-		if(alert(usr, "让沉睡中的 [key_name(H)] 远行并删除其角色？", "提示", "是", "否") != "是")
+		if(alert(usr, "让沉睡中的[key_name(L)]远行并删除其角色？", "提示", "是", "否") != "是")
 			return
-		log_admin("[key_name(usr)] has fartraveled slumbering [key_name(H)] after [DisplayTimeText(world.time - H.last_logout_time, 1)] in a deep slumber.")
-		message_admins(span_adminnotice("[key_name_admin(usr)] 让深度沉睡了 [DisplayTimeText(world.time - H.last_logout_time, 1)] 的 [key_name_admin(H)] 远行。"))
-		H.admin_send_back_to_lobby(usr, TRUE)
+		if(QDELETED(L) || !L.is_disconnected_player())
+			to_chat(usr, span_warning("[L]已不再处于深度沉睡状态。"))
+			return
+		log_admin("[key_name(usr)] has fartraveled slumbering [key_name(L)] after [DisplayTimeText(world.time - L.last_logout_time, 1)] in a deep slumber.")
+		message_admins(span_adminnotice("[key_name_admin(usr)] 让深度沉睡了 [DisplayTimeText(world.time - L.last_logout_time, 1)] 的 [key_name_admin(L)] 远行。"))
+		L.admin_fartravel(usr)
+
+	else if(href_list["fartravel"])
+		if(!check_rights(R_ADMIN))
+			return
+
+		var/mob/living/L = locate(href_list["fartravel"])
+		if(!istype(L) || !L.get_real_body())
+			to_chat(usr, span_warning("该角色已不存在。"))
+			return
+		var/mob/living/carbon/human/body = L.get_real_body()
+		if(alert(usr, "让[key_name(L)]以[body.real_name]的身份远行？其职位将被释放，角色连同随身一切都会被删除。", "远行", "是", "否") != "是")
+			return
+		if(QDELETED(L) || L.get_real_body() != body)
+			to_chat(usr, span_warning("该角色已不存在。"))
+			return
+		var/departing = "[key_name(L)] as [body.real_name] ([body.job || "no job"])"
+		log_admin("[key_name(usr)] has fartraveled [departing].")
+		message_admins(span_adminnotice("[key_name_admin(usr)] has fartraveled [departing]."))
+		L.admin_fartravel(usr)
 
 	else if(href_list["revive"])
 		if(!check_rights(R_ADMIN))

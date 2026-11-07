@@ -322,7 +322,18 @@ export const AdminTicketPanel = (props) => {
                             </Button>
                             <Button
                               compact
-                              tooltip="玩家质量分（PQ）- 打开此玩家的质量分面板。"
+                              tooltip="偏好刷新 - 将这名玩家保存的偏好重新应用到其角色上，并保留其当前姓名。"
+                              onClick={() =>
+                                act('ticket_pref_refresh', {
+                                  ticket_id: selected_ticket.ticket_id,
+                                })
+                              }
+                            >
+                              Pref Refresh
+                            </Button>
+                            <Button
+                              compact
+                              tooltip="PQ（玩家质量分）- 打开此玩家的质量分面板。"
                               onClick={() =>
                                 act('ticket_pq', {
                                   ticket_id: selected_ticket.ticket_id,

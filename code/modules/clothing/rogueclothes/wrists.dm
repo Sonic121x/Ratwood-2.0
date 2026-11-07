@@ -303,6 +303,32 @@
 	. = ..()
 	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "护甲")
 
+/obj/item/clothing/wrists/roguetown/bracers/graggar
+	name = "vicious bracers"
+	desc = "Oh, to plunge hands into cold water; to play a melody upon an ivory-keyed piano; to watch steam rise from boiling, twisting entrails.."
+	icon_state = "graggarbracers"
+	item_state = "graggarbracers"
+	max_integrity = ARMOR_INT_SIDE_ANTAG - 100
+	armor = ARMOR_PLATE_BSTEEL
+
+/obj/item/clothing/wrists/roguetown/bracers/graggar/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "ARMOR")
+
+/obj/item/clothing/wrists/roguetown/bracers/graggar/heavy
+	name = "vicious wristguards"
+	desc = "Swaying chains, padded with a mixture of twine, leather and entrails. Steel and bone on the outside. It won't survive the onslaught - but it's \
+	not meant to. </br>Everything He did, He did for Ravox. To see them squander such power in favor of mortality's chains - it broke Him. Yils of resentment, \
+	of jealousy and frustration; released all at once. Through flowing tears, He disemboweled the divine filament and shattered His chains once and for all.. \
+	for if He would not be loved, then He would settle for hatred instead."
+	icon_state = "graggarplatebracer_heavy"
+	max_integrity = ARMOR_INT_SIDE_ANTAG
+	armor = ARMOR_PLATE_BSTEEL
+
+/obj/item/clothing/wrists/roguetown/bracers/graggar/heavy/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "ARMOR")
+
 /obj/item/clothing/wrists/roguetown/splintarms/iron
 	name = "拼铁臂甲"
 	desc = "一对皮护袖，背衬铁条、肘甲与肩片，既能保护双臂，又保持相当轻便。"

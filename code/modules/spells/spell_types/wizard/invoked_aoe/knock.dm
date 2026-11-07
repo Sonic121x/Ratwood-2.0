@@ -27,23 +27,25 @@
 		for(var/obj/structure/mineral_door/door in T.contents)
 			INVOKE_ASYNC(src, PROC_REF(open_door), door, user)
 		for(var/obj/structure/closet/C in T.contents)
-			INVOKE_ASYNC(src, PROC_REF(open_closet), C)
+			INVOKE_ASYNC(src, PROC_REF(open_closet), C, user)
 		for(var/obj/structure/roguewindow/openclose/W in T.contents)
 			INVOKE_ASYNC(src, PROC_REF(open_window), W, user)
 
 /obj/effect/proc_holder/spell/invoked/knock/proc/open_door(obj/structure/mineral_door/door, mob/user)
 	if(istype(door))
 		if(door.locked)
-			door.log_breakin(user, "施放开锁术解锁了门")
+			door.add_forensic_action(user, "施放敲击术，将其解锁")
 		door.force_open()
 		door.locked = FALSE
 
-/obj/effect/proc_holder/spell/invoked/knock/proc/open_closet(obj/structure/closet/C)
+/obj/effect/proc_holder/spell/invoked/knock/proc/open_closet(obj/structure/closet/C, mob/user)
+	if(C.locked)
+		C.add_forensic_action(user, "施放敲击术，将其解锁")
 	C.locked = FALSE
 	C.open()
 
 /obj/effect/proc_holder/spell/invoked/knock/proc/open_window(obj/structure/roguewindow/openclose/W, mob/user)
 	if(istype(W))
 		if(!W.climbable && !W.brokenstate)
-			W.log_breakin(user, "施放开锁术打开了窗户")
+			W.add_forensic_action(user, "施放敲击术，将其解锁")
 		W.force_open()

@@ -151,6 +151,10 @@
 /datum/reagent/water/gross/sewage
 	taste_description = "令人反胃的硫磺和腐烂粪臭"
 
+// Dirty water is everyday filth rather than a poison someone slipped in.
+/datum/reagent/water/gross/is_poison()
+	return FALSE
+
 /datum/reagent/water/gross/reaction_mob(mob/living/L, method=TOUCH, reac_volume)
 	if(method == INGEST) // Make sure you DRANK the toxic water before giving damage
 		..()
