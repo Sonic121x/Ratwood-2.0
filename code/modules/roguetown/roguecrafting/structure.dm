@@ -664,6 +664,22 @@
 	verbage_simple = "建造"
 	verbage = "建造"
 
+/datum/crafting_recipe/roguetown/structure/wooden_spit
+	name = "wooden spit"
+	result = /obj/machinery/light/rogue/hearth/wooden_spit
+	reqs = list(/obj/item/grown/log/tree/stick = 2)
+	structurecraft = /obj/machinery/light/rogue/campfire
+	ignoredensity = TRUE
+	verbage_simple = "set up"
+	verbage = "sets up"
+	craftdiff = 0
+
+/datum/crafting_recipe/roguetown/structure/wooden_spit/TurfCheck(mob/user, turf/T)
+	for(var/obj/machinery/light/rogue/campfire/fire in T)
+		if(fire.can_support_spit)
+			return TRUE
+	return FALSE
+
 /datum/crafting_recipe/roguetown/structure/cookpit
 	name = "炉灶(地面)"
 	result = /obj/machinery/light/rogue/hearth

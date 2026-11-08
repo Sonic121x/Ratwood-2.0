@@ -159,6 +159,11 @@
 /obj/item/toy/cards/deck/examine()
 	. = ..()
 	. += span_smallnotice("把牌组拿在手里即可洗牌。空手点击牌组即可抽一张牌。")
+	if(!istype(src, /obj/item/toy/cards/deck/tarot))
+		if(card_table_mode)
+			. += span_smallnotice("它已被布置成牌桌。点击即可开始，等所有人都离开后右键即可收起。")
+		else
+			. += span_smallnotice("右键即可将它布置成牌桌，用来玩二十一点或扑克。")
 
 /obj/item/toy/cards/deck/Initialize(mapload)
 	. = ..()
@@ -177,6 +182,9 @@
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 //ATTACK HAND NOT CALLING PARENT
 /obj/item/toy/cards/deck/attack_hand(mob/user)
+	if(card_table_mode)
+		ui_interact(user)
+		return TRUE
 	draw_card(user)
 
 /obj/item/toy/cards/deck/proc/draw_card(mob/user)
@@ -211,6 +219,9 @@
 		icon_state = "deck_[deckstyle]_empty"
 
 /obj/item/toy/cards/deck/attack_self(mob/user)
+	if(card_table_mode)
+		ui_interact(user)
+		return
 	if(cooldown < world.time - 25)
 		cards = shuffle(cards)
 		playsound(src, 'sound/items/cardshuffle.ogg', 100, TRUE)
@@ -246,6 +257,9 @@
 		return ..()
 
 /obj/item/toy/cards/deck/MouseDrop(atom/over_object)
+	if(card_table_mode)
+		to_chat(usr, "<span class='warning'>The card table is in use.</span>")
+		return
 	. = ..()
 	var/mob/living/M = usr
 	if(!istype(M) || !(M.mobility_flags & MOBILITY_PICKUP))

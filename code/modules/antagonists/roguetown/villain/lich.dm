@@ -3,6 +3,8 @@
 	roundend_category = "巫妖"
 	antagpanel_category = "巫妖"
 	job_rank = ROLE_LICH
+	antag_hud_type = ANTAG_HUD_UNDEAD
+	antag_hud_name = "lich_hud"
 	confess_lines = list(
 		"我将永生不灭！",
 		"七个命匣都护着我！",
@@ -55,7 +57,12 @@
 	equip_lich()
 	greet()
 	save_stats()
+	add_antag_hud(antag_hud_type, antag_hud_name, owner.current)
 
+	return ..()
+
+/datum/antagonist/lich/on_removal()
+	remove_own_antag_hud()
 	return ..()
 
 /datum/antagonist/lich/greet()

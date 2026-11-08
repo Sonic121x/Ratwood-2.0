@@ -393,8 +393,10 @@
 	metalizer_result = null
 
 /obj/structure/bed/rogue/bedroll/attack_hand(mob/user, params)
-	..()
-	user.visible_message(span_notice("[user]开始卷起[src]。"))
+	. = ..()
+	if(.)
+		return
+	user.visible_message(span_notice("[user]开始卷起[src]."))
 	if(do_after(user, 2 SECONDS, TRUE, src))
 		var/obj/item/bedroll/new_bedroll = new /obj/item/bedroll(get_turf(src))
 		new_bedroll.color = src.color

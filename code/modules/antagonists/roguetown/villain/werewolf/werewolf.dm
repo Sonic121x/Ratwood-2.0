@@ -3,6 +3,8 @@
 	roundend_category = "Werewolves"
 	antagpanel_category = "Werewolf"
 	job_rank = ROLE_WEREWOLF
+	antag_hud_type = ANTAG_HUD_WEREWOLF
+	antag_hud_name = "werewolf_hud"
 	confess_lines = list(
 		"我体内的野兽正在咆哮！",
 		"当心那头野兽！",
@@ -39,9 +41,11 @@
 		forge_werewolf_objectives()
 
 	wolfname = "[pick(GLOB.wolf_prefixes)] [pick(GLOB.wolf_suffixes)]"
+	add_antag_hud(antag_hud_type, antag_hud_name, owner.current)
 	return ..()
 
 /datum/antagonist/werewolf/on_removal()
+	remove_own_antag_hud()
 	if(!silent && owner.current)
 		to_chat(owner.current,span_danger("我不再是[special_role]了！"))
 	owner.special_role = null

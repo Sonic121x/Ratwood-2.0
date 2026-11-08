@@ -12,14 +12,15 @@
 	grid_height = 64
 	var/overarmor
 
+/obj/item/clothing/wrists/roguetown/get_mechanics_examine(mob/user)
+	. = ..()
+	. += span_info("Middle-clicking adjusts its layer, so it can be worn either above-or-below any armor and gloves.")
+
 /obj/item/clothing/wrists/roguetown/MiddleClick(mob/user, params)
 	. = ..()
 	overarmor = !overarmor
-	to_chat(user, span_info("我[overarmor ? "把[src]戴在护甲外面" : "把[src]戴在护甲下面"]。"))
-	if(overarmor)
-		alternate_worn_layer = WRISTS_LAYER
-	else
-		alternate_worn_layer = UNDER_ARMOR_LAYER
+	to_chat(user, span_info("我将[src]穿在[overarmor ? "护甲外" : "护甲下"]。"))
+	alternate_worn_layer = overarmor ? OVER_ARMOR_LAYER : initial(alternate_worn_layer)
 	user.update_inv_wrists()
 	user.update_inv_gloves()
 	user.update_inv_armor()

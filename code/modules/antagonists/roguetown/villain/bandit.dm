@@ -3,8 +3,8 @@
 	roundend_category = "强盗"
 	antagpanel_category = "强盗"
 	job_rank = ROLE_BANDIT
-	antag_hud_type = ANTAG_HUD_TRAITOR
-	antag_hud_name = "bandit"
+	antag_hud_type = ANTAG_HUD_BANDIT
+	antag_hud_name = "bandit_hud"
 	confess_lines = list(
 		"自由！！！",
 		"我绝不会困死在你们的高墙里！",
@@ -25,6 +25,11 @@
 	. = ..()
 	equip_bandit()
 	finalize_bandit()
+	add_antag_hud(antag_hud_type, antag_hud_name, owner.current)
+
+/datum/antagonist/bandit/on_removal()
+	remove_own_antag_hud()
+	return ..()
 
 /datum/antagonist/bandit/proc/finalize_bandit()
 	owner.current.playsound_local(get_turf(owner.current), 'sound/music/traitor2.ogg', 60, FALSE, pressure_affected = FALSE)

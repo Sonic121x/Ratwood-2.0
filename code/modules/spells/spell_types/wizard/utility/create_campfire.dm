@@ -53,6 +53,7 @@
 
 /obj/machinery/light/rogue/campfire/create_campfire
 	name = "魔法营火"
+	can_support_spit = FALSE
 	icon_state = "densefire1"
 	base_state = "densefire"
 	density = FALSE

@@ -425,8 +425,8 @@
 /obj/item/rogueweapon/stoneaxe/battle/steppesman
 	name = "阿夫尼克瓦拉什卡斧"
 	desc = "一把阿夫尼风格的钢斧，将致命武器与手杖结合为一体，因此末端也制成尖刺。它的平头便于握持，既能劈砍也能猛砸。要是你足够用力，大概也能拿它捅人。"
-	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/mace/smash)
-	gripped_intents = list(/datum/intent/axe/cut ,/datum/intent/axe/chop, /datum/intent/stab)
+	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/mace/smash, /datum/intent/pick)
+	gripped_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/stab, /datum/intent/pick)
 	force_wielded = 28	//No damage changes for wielded/unwielded
 	icon = 'icons/roguetown/weapons/axes32.dmi'
 	icon_state = "valaskapick"
@@ -686,6 +686,7 @@
 	max_blade_int = 400
 	icon = 'icons/roguetown/weapons/64.dmi'
 	gripped_intents = list(/datum/intent/axe/cut/long, /datum/intent/axe/chop/long, /datum/intent/axe/chop/heavy, /datum/intent/axe/sweep)
+	special = /datum/special_intent/graggar_break_the_ranks
 
 /obj/item/rogueweapon/greataxe/steel/doublehead/graggar/Initialize(mapload)
 	. = ..()
@@ -698,6 +699,8 @@
 	to the force of violence; a blessing, before they pursue the most dangerous game of all."
 	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/axe/bash)
 	force = 30
+	force_wielded = 35
+	throwforce = 30 // Hey it's a throwing axe
 	wdefense = 5
 	unenchantable = TRUE
 

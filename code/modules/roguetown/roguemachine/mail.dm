@@ -1,3 +1,5 @@
+#define KINGSFIELD_MAILTAG "Kingsfield"
+
 /obj/structure/roguemachine/mail
 	name = "赫尔墨斯"
 	desc = "自从这种液压气动邮递系统问世后，扎德告示台的传信方式就严重过时了。投币槽会启动机关，分发羊皮纸（一枚泽尼）和羽毛（一枚兹利夸）。"
@@ -40,6 +42,25 @@
 	set_light(0)
 	SSroguemachine.hermailers -= src
 	return ..()
+
+/// Turns what someone typed at a HERMES into "#number" for a box, or a name that can match a real_name.
+/// Don't sanitize() names here: it encodes ' as &#39;, which never matches a real_name and reads as box #39.
+/proc/parse_hermes_address(address)
+	var/hash_pos = findtext(address, "#")
+	if(hash_pos)
+		return "#[text2num(copytext(address, hash_pos + 1))]"
+	var/recipient = reject_bad_name(address, max_length = MAX_CHARTER_LEN)
+	if(recipient && LOWER_TEXT(recipient) == LOWER_TEXT(KINGSFIELD_MAILTAG))
+		for(var/obj/structure/roguemachine/mail/X in SSroguemachine.hermailers)
+			if(X.mailtag == KINGSFIELD_MAILTAG)
+				return "#[X.ournum]"
+	return recipient
+
+/proc/find_hermes_box(address)
+	var/box2find = text2num(copytext(address, findtext(address, "#") + 1))
+	for(var/obj/structure/roguemachine/mail/X in SSroguemachine.hermailers)
+		if(X.ournum == box2find)
+			return X
 
 /obj/structure/roguemachine/mail/attack_hand(mob/user)
 	if(ishuman(user) && GLOB.carebox.try_retrieve_carebox(user, src))
@@ -134,9 +155,24 @@
 	if(inqcoins)
 		to_chat(user, span_warning("机器没有反应。"))
 		return
-	var/send2place = sanitize(input(user, "寄往何处？（人名或 #编号）", "罗格镇", null))
+	var/raw_address = input(user, "寄往何处？（人名或 #编号）", "罗格镇", null)
+	var/send2place = parse_hermes_address(raw_address)
 	if(!send2place)
+		if(raw_address)
+			to_chat(user, span_warning("机器看不懂这个地址。"))
 		return
+	if(findtext(send2place, "#"))
+		if(!find_hermes_box(send2place))
+			to_chat(user, span_warning("发送失败。编号有误？"))
+			return
+	else
+		var/recipient_found = FALSE
+		for(var/mob/living/carbon/human/H in GLOB.human_list)
+			if(H.real_name == send2place)
+				recipient_found = TRUE
+				break
+		if(!recipient_found && (alert(user, "找不到收件人[send2place]。仍然寄出这封信吗？", "", "是", "否") == "否"))
+			return
 	var/sentfrom = sanitize(input(user, "这封信是谁寄出的？", "罗格镇", null))
 	if(!sentfrom)
 		sentfrom = "匿名"
@@ -170,8 +206,10 @@
 				P.mailer = sentfrom
 				P.mailedto = send2place
 				P.update_icon()
-				GLOB.fax_panel.register_player_letter(sentfrom, send2place, t)
+				GLOB.fax_panel.register_player_letter(sentfrom, send2place, t, sender_ckey, recipient_ckey)
 				P.forceMove(X.loc)
+				if(X.mailtag == KINGSFIELD_MAILTAG)
+					GLOB.fax_panel.notify_kingsfield_mail(P, user)
 				X.say("有新邮件！")
 				playsound(X, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 				break
@@ -182,10 +220,9 @@
 			update_icon()
 			return
 		else
+			qdel(P)
 			to_chat(user, span_warning("发送失败。编号不对？"))
 	else
-		if(!send2place)
-			return
 		if(SSroguemachine.hermailermaster)
 			var/obj/item/roguemachine/mastermail/X = SSroguemachine.hermailermaster
 			if(!recipient_ckey)
@@ -546,7 +583,12 @@
 			to_chat(user, span_warning("机器没有反应。"))
 			return
 		if(alert(user, "寄送邮件？",,"是","否") == "是")
-			var/send2place = sanitize(input(user, "寄往何处？（人名或 #编号）", "罗格镇", null))
+			var/raw_address = input(user, "寄往何处？（人名或 #编号）", "罗格镇", null)
+			var/send2place = parse_hermes_address(raw_address)
+			if(!send2place)
+				if(raw_address)
+					to_chat(user, span_warning("机器无法理解这个地址。"))
+				return
 			var/sentfrom = sanitize(input(user, "这是谁寄来的？（留空则匿名寄出）", "罗格镇", null))
 			if(!sentfrom)
 				sentfrom = "匿名"
@@ -579,6 +621,8 @@
 								letter_text = letter_package.note.info
 						GLOB.fax_panel.register_player_letter(sentfrom, send2place, letter_text, sender_ckey, recipient_ckey)
 						P.forceMove(X.loc)
+						if(X.mailtag == KINGSFIELD_MAILTAG)
+							GLOB.fax_panel.notify_kingsfield_mail(P, user)
 						X.say("有新邮件！")
 						playsound(X, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 						break
@@ -589,8 +633,6 @@
 				else
 					to_chat(user, span_warning("无法寄出。编号不对？"))
 			else
-				if(!send2place)
-					return
 				var/mob/living/carbon/human/mailrecipient = null
 				for(var/mob/living/carbon/human/H in GLOB.human_list)
 					if(H.real_name == send2place)

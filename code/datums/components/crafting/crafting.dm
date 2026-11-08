@@ -332,11 +332,13 @@
 				to_chat(user, span_warning("有东西挡住了。"))
 				return
 		for(var/obj/machinery/M in T)
+			if(R.structurecraft && istype(M, R.structurecraft))
+				continue
 			if(M.density)
 				to_chat(user, span_warning("有东西挡住了。"))
 				return
 	if(R.req_table)
-		if(!(locate(/obj/structure/table) in T))
+		if(!(has_table_surface(T)))
 			to_chat(user, span_warning("我得在桌上制作这个。"))
 			return
 	if(R.structurecraft)
@@ -841,4 +843,3 @@
 
 /client
 	var/legacycraft = FALSE
-
