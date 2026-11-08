@@ -18,9 +18,9 @@
 	for(var/subject in investigates)
 		var/temp_file = file("[GLOB.log_directory]/[subject].html")
 		if(fexists(temp_file))
-			logs_present += subject
+			logs_present += subject_labels[subject]
 		else
-			logs_missing += "[subject] (空)"
+			logs_missing += "[subject_labels[subject]] （空）"
 
 	var/list/combined = sortList(logs_present) + sortList(logs_missing)
 
