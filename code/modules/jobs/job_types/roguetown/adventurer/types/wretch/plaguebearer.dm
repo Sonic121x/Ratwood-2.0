@@ -86,7 +86,7 @@
 		wretch_select_bounty(H)
 
 /obj/item/clothing/mask/rogue/physician/plaguebearer
-	desc = "What better laboratory than the blood-soaked battlefield? This one seems to be uniquely armored."
+	desc = "还有什么比浸透鲜血的战场更好的实验室？这一件似乎有独特的护甲加固。"
 	armor = ARMOR_PLATE
 	// Less than an actual steel mask.
 	max_integrity = 160

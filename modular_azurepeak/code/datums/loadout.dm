@@ -82,35 +82,35 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/storage/pill_bottle/dice/dice_poker
 
 /datum/loadout_item/chess
-	name = "Foldable Chessboard"
+	name = "折叠棋盘"
 	path = /obj/item/chessboard_folded
 
 /datum/loadout_item/arlette_azuria
-	name = "Arlette Starter Deck (Rockhill)"
+	name = "阿莱特起始套牌（岩丘）"
 	path = /obj/item/ccg_deck/starter/azuria
 
 /datum/loadout_item/arlette_enigma
-	name = "Arlette Starter Deck (Enigma)"
+	name = "阿莱特起始套牌（恩尼格玛）"
 	path = /obj/item/ccg_deck/starter/enigma
 
 /datum/loadout_item/arlette_naledi
-	name = "Arlette Starter Deck (Naledi)"
+	name = "阿莱特起始套牌（纳莱迪）"
 	path = /obj/item/ccg_deck/starter/naledi
 
 /datum/loadout_item/arlette_grenzelhoft
-	name = "Arlette Starter Deck (Grenzelhoft)"
+	name = "阿莱特起始套牌（格伦泽尔霍夫特）"
 	path = /obj/item/ccg_deck/starter/grenzelhoft
 
 /datum/loadout_item/arlette_raneshi
-	name = "Arlette Starter Deck (Raneshi)"
+	name = "阿莱特起始套牌（拉涅申）"
 	path = /obj/item/ccg_deck/starter/raneshi
 
 /datum/loadout_item/arlette_gronn
-	name = "Arlette Starter Deck (Gronn)"
+	name = "阿莱特起始套牌（格隆恩）"
 	path = /obj/item/ccg_deck/starter/gronn
 
 /datum/loadout_item/arlette_kazengun
-	name = "Arlette Starter Deck (Kazengun)"
+	name = "阿莱特起始套牌（风郡）"
 	path = /obj/item/ccg_deck/starter/kazengun
 
 /datum/loadout_item/tarot_deck
@@ -197,12 +197,12 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	triumph_cost = 2
 
 /datum/loadout_item/bedroll
-	name = "Bedroll"
+	name = "铺盖卷"
 	path = /obj/item/bedroll
 	triumph_cost = 3
 
 /datum/loadout_item/tent_kit
-	name = "Small Tent Kit"
+	name = "小型帐篷套件"
 	path = /obj/item/tent_kit
 	triumph_cost = 5
 
@@ -2552,746 +2552,746 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/caparison/fogbeast/azure
 
 /datum/loadout_item/cloak_absolutionistrobe_black
-	name = "Blessed robe"
+	name = "受祝长袍"
 	path = /obj/item/clothing/cloak/absolutionistrobe/black
 
 /datum/loadout_item/cloak_apron_waist_maid
-	name = "Maid apron"
+	name = "女仆围裙"
 	path = /obj/item/clothing/cloak/apron/waist/maid
 
 /datum/loadout_item/cloak_bandolier
-	name = "Bandolier"
+	name = "斜挎带"
 	path = /obj/item/clothing/cloak/bandolier
 
 /datum/loadout_item/cloak_bandolier_inq
-	name = "Inquisitorial bandolier"
+	name = "审判庭斜挎带"
 	path = /obj/item/clothing/cloak/bandolier/inq
 
 /datum/loadout_item/cloak_bishop
-	name = "Bishop cape"
+	name = "主教披肩"
 	path = /obj/item/clothing/cloak/bishop
 
 /datum/loadout_item/cloak_cape_inquisitorgold
-	name = "Golden order cloak"
+	name = "黄金教团披风"
 	path = /obj/item/clothing/cloak/cape/inquisitorgold
 
 /datum/loadout_item/cloak_cape_inquisitorsilver
-	name = "Silver order cloak"
+	name = "白银教团披风"
 	path = /obj/item/clothing/cloak/cape/inquisitorsilver
 
 /datum/loadout_item/cloak_etrcape
-	name = "Wanderer's cape"
+	name = "旅人披肩"
 	path = /obj/item/clothing/cloak/etrcape
 
 /datum/loadout_item/cloak_half_duelcape
-	name = "Duelist cape (duelcape)"
+	name = "决斗家披肩（华艳款）"
 	path = /obj/item/clothing/cloak/half/duelcape
 
 /datum/loadout_item/cloak_half_shadowcloak_spymaster
-	name = "Hand's cloak"
+	name = "执政之手的披风"
 	path = /obj/item/clothing/cloak/half/shadowcloak/spymaster
 
 /datum/loadout_item/cloak_poncho_fancycoat
-	name = "Fancy coat (fancycoat)"
+	name = "华丽外套（宽松款）"
 	path = /obj/item/clothing/cloak/poncho/fancycoat
 
 /datum/loadout_item/cloak_poncho_fancycoat_trimmed
-	name = "Trimmed fancy coat"
+	name = "裁短华丽外套"
 	path = /obj/item/clothing/cloak/poncho/fancycoat/trimmed
 
 /datum/loadout_item/cloak_rangercloak
-	name = "Ranger cloak"
+	name = "游侠披风"
 	path = /obj/item/clothing/cloak/rangercloak
 
 /datum/loadout_item/cloak_rosa
-	name = "Regal cloak"
+	name = "华贵披风"
 	path = /obj/item/clothing/cloak/rosa
 
 /datum/loadout_item/cloak_rosa_two
-	name = "Courtly cloak"
+	name = "宫廷披风"
 	path = /obj/item/clothing/cloak/rosa/two
 
 /datum/loadout_item/cloak_sash
-	name = "Sash"
+	name = "披巾"
 	path = /obj/item/clothing/cloak/sash
 
 /datum/loadout_item/cloak_sash_dupatta
-	name = "Dupatta"
+	name = "沙漠长披巾"
 	path = /obj/item/clothing/cloak/sash/dupatta
 
 /datum/loadout_item/cloak_scaledcloak
-	name = "Scaled cloak"
+	name = "鳞饰披风"
 	path = /obj/item/clothing/cloak/scaledcloak
 
 /datum/loadout_item/cloak_scout
-	name = "Scout cloak"
+	name = "斥候披风"
 	path = /obj/item/clothing/cloak/scout
 
 /datum/loadout_item/cloak_sheriff
-	name = "Sheriff's cloak"
+	name = "治安官披风"
 	path = /obj/item/clothing/cloak/sheriff
 
 /datum/loadout_item/cloak_sleevedtabard
-	name = "Sleeved tabard"
+	name = "有袖罩袍"
 	path = /obj/item/clothing/cloak/sleevedtabard
 
 /datum/loadout_item/cloak_tabard_psydontabard_black
-	name = "Blessed tabard"
+	name = "受祝罩袍"
 	path = /obj/item/clothing/cloak/tabard/psydontabard/black
 
 /datum/loadout_item/cloak_tabard_psydontabard_white
-	name = "Traditional tabard"
+	name = "传统罩袍"
 	path = /obj/item/clothing/cloak/tabard/psydontabard/white
 
 /datum/loadout_item/cloak_tabard_psydontabard_white_alt
-	name = "Opened traditional tabard"
+	name = "敞开的传统罩袍"
 	path = /obj/item/clothing/cloak/tabard/psydontabard/white/alt
 
 /datum/loadout_item/cloak_tabard_stabard_crusader
-	name = "Surcoat of the golden order"
+	name = "黄金教团战袍"
 	path = /obj/item/clothing/cloak/tabard/stabard/crusader
 
 /datum/loadout_item/cloak_tabard_stabard_crusader_astrata
-	name = "Surcoat of the golden order (astrata)"
+	name = "黄金教团战袍（阿斯特拉塔）"
 	path = /obj/item/clothing/cloak/tabard/stabard/crusader/astrata
 
 /datum/loadout_item/cloak_tabard_stabard_crusader_bsteel
-	name = "Surcoat of the blacksteel order"
+	name = "黑钢教团战袍"
 	path = /obj/item/clothing/cloak/tabard/stabard/crusader/bsteel
 
 /datum/loadout_item/cloak_tabard_stabard_crusader_heavy
-	name = "Overvestments"
+	name = "厚重外法衣"
 	path = /obj/item/clothing/cloak/tabard/stabard/crusader/heavy
 
 /datum/loadout_item/cloak_tabard_stabard_crusader_t
-	name = "Surcoat of the silver order"
+	name = "白银教团战袍"
 	path = /obj/item/clothing/cloak/tabard/stabard/crusader/t
 
 /datum/loadout_item/cloak_tabard_stabard_crusader_t_astrata
-	name = "Surcoat of the silver order (astrata)"
+	name = "白银教团战袍（阿斯特拉塔）"
 	path = /obj/item/clothing/cloak/tabard/stabard/crusader/t/astrata
 
 /datum/loadout_item/cloak_tabard_stabard_crusader_t_see
-	name = "Surcoat of the silver order (see)"
+	name = "白银教团战袍（教廷）"
 	path = /obj/item/clothing/cloak/tabard/stabard/crusader/t/see
 
 /datum/loadout_item/cloak_tabard_stabard_crusader_see
-	name = "Surcoat of the golden order (see)"
+	name = "黄金教团战袍（教廷）"
 	path = /obj/item/clothing/cloak/tabard/stabard/crusader/see
 
 /datum/loadout_item/cloak_tabard_stabard_surcoat_short
-	name = "Short jupon"
+	name = "短款贴身战袍"
 	path = /obj/item/clothing/cloak/tabard/stabard/surcoat/short
 
 /datum/loadout_item/cloak_tabard_toga
-	name = "Toga (toga)"
+	name = "托加长袍（经典款）"
 	path = /obj/item/clothing/cloak/tabard/toga
 
 /datum/loadout_item/cloak_tabard_toga_alt
-	name = "Bared toga"
+	name = "敞胸托加长袍"
 	path = /obj/item/clothing/cloak/tabard/toga/alt
 
 /datum/loadout_item/cloak_tabard_toga_dress
-	name = "Toga (dress)"
+	name = "托加长袍（裙式）"
 	path = /obj/item/clothing/cloak/tabard/toga/dress
 
 /datum/loadout_item/cloak_tabard_toga_dress_alt
-	name = "Bared toga (alt)"
+	name = "敞胸托加长袍（另一款）"
 	path = /obj/item/clothing/cloak/tabard/toga/dress/alt
 
 /datum/loadout_item/cloak_templar_astratancleric
-	name = "Astratan cloak"
+	name = "阿斯特拉塔披风"
 	path = /obj/item/clothing/cloak/templar/astratancleric
 
 /datum/loadout_item/cloak_templar_astratancleric_grey
-	name = "Frayed cloak"
+	name = "磨边披风"
 	path = /obj/item/clothing/cloak/templar/astratancleric/grey
 
 /datum/loadout_item/cloak_templar_eoran_alt
-	name = "Eoran tabard (alt)"
+	name = "伊欧拉罩袍（另一款）"
 	path = /obj/item/clothing/cloak/templar/eoran/alt
 
 /datum/loadout_item/cloak_templar_necrancleric
-	name = "Necran cloak"
+	name = "奈克拉披风"
 	path = /obj/item/clothing/cloak/templar/necrancleric
 
 /datum/loadout_item/cloak_templar_ravoxcleric
-	name = "Justice cloak"
+	name = "正义披风"
 	path = /obj/item/clothing/cloak/templar/ravoxcleric
 
 /datum/loadout_item/cloak_templar_see_alt
-	name = "See templar tabard"
+	name = "教廷圣殿骑士罩袍"
 	path = /obj/item/clothing/cloak/templar/see_alt
 
 /datum/loadout_item/cloak_templar_seecleric
-	name = "See devotee tabard"
+	name = "教廷虔信者罩袍"
 	path = /obj/item/clothing/cloak/templar/seecleric
 
 /datum/loadout_item/cloak_desert
-	name = "Desert cloak"
+	name = "沙漠披风"
 	path = /obj/item/clothing/cloak/desert
 
 /datum/loadout_item/cloak_elven
-	name = "Elven cloak"
+	name = "精灵披风"
 	path = /obj/item/clothing/cloak/elven
 
 /datum/loadout_item/cloak_elven_short
-	name = "Elven shortcloak"
+	name = "精灵短披风"
 	path = /obj/item/clothing/cloak/elven/short
 
 /datum/loadout_item/cloak_scarf
-	name = "Scarf (elven)"
+	name = "围巾（精灵式）"
 	path = /obj/item/clothing/cloak/scarf
 
 /datum/loadout_item/gloves_roguetown_fingerless_shadowgloves_spymaster
-	name = "Hand's gloves"
+	name = "执政之手的手套"
 	path = /obj/item/clothing/gloves/roguetown/fingerless/shadowgloves/spymaster
 
 /datum/loadout_item/gloves_roguetown_rosa
-	name = "Ivory gloves"
+	name = "象牙白手套"
 	path = /obj/item/clothing/gloves/roguetown/rosa
 
 /datum/loadout_item/gloves_roguetown_rosa_eight
-	name = "Courtly gloves"
+	name = "宫廷手套"
 	path = /obj/item/clothing/gloves/roguetown/rosa/eight
 
 /datum/loadout_item/gloves_roguetown_rosa_five
-	name = "Sable gloves"
+	name = "墨黑手套"
 	path = /obj/item/clothing/gloves/roguetown/rosa/five
 
 /datum/loadout_item/gloves_roguetown_rosa_four
-	name = "Obsidian gloves"
+	name = "曜黑手套"
 	path = /obj/item/clothing/gloves/roguetown/rosa/four
 
 /datum/loadout_item/gloves_roguetown_rosa_nine
-	name = "Royal gloves"
+	name = "王室手套"
 	path = /obj/item/clothing/gloves/roguetown/rosa/nine
 
 /datum/loadout_item/gloves_roguetown_rosa_seven
-	name = "Regal gloves"
+	name = "华贵手套"
 	path = /obj/item/clothing/gloves/roguetown/rosa/seven
 
 /datum/loadout_item/gloves_roguetown_rosa_six
-	name = "Maroon gloves"
+	name = "栗红手套"
 	path = /obj/item/clothing/gloves/roguetown/rosa/six
 
 /datum/loadout_item/gloves_roguetown_rosa_ten
-	name = "Stately gloves"
+	name = "庄重手套"
 	path = /obj/item/clothing/gloves/roguetown/rosa/ten
 
 /datum/loadout_item/gloves_roguetown_rosa_three
-	name = "Silvered gloves"
+	name = "银饰手套"
 	path = /obj/item/clothing/gloves/roguetown/rosa/three
 
 /datum/loadout_item/head_roguetown_antlers
-	name = "Old antlers"
+	name = "旧鹿角"
 	path = /obj/item/clothing/head/roguetown/antlers
 
 /datum/loadout_item/head_roguetown_circlet_carvedgem_porcelain
-	name = "Porcelain circlet"
+	name = "瓷冠"
 	path = /obj/item/clothing/head/roguetown/circlet/carvedgem/porcelain
 
 /datum/loadout_item/head_roguetown_courtphysician
-	name = "Sanguine hat"
+	name = "绯红宽檐帽"
 	path = /obj/item/clothing/head/roguetown/courtphysician
 
 /datum/loadout_item/head_roguetown_courtphysician_female
-	name = "Sanguine cap"
+	name = "绯红便帽"
 	path = /obj/item/clothing/head/roguetown/courtphysician/female
 
 /datum/loadout_item/head_roguetown_deserthood
-	name = "Desert hood"
+	name = "沙漠兜帽"
 	path = /obj/item/clothing/head/roguetown/deserthood
 
 /datum/loadout_item/head_roguetown_doublehennin
-	name = "Dual hennin"
+	name = "双角尖顶帽"
 	path = /obj/item/clothing/head/roguetown/doublehennin
 
 /datum/loadout_item/head_roguetown_duelhat_etrhat
-	name = "Wanderer's hat"
+	name = "旅人帽"
 	path = /obj/item/clothing/head/roguetown/duelhat/etrhat
 
 /datum/loadout_item/head_roguetown_duelhat_etrusca
-	name = "Etruscan duelist hat"
+	name = "伊特鲁斯卡决斗帽"
 	path = /obj/item/clothing/head/roguetown/duelhat/etrusca
 
 /datum/loadout_item/head_roguetown_durag
-	name = "Durag"
+	name = "护发头巾"
 	path = /obj/item/clothing/head/roguetown/durag
 
 /datum/loadout_item/head_roguetown_eaststrawhat
-	name = "Worn rice hat"
+	name = "旧斗笠"
 	path = /obj/item/clothing/head/roguetown/eaststrawhat
 
 /datum/loadout_item/head_roguetown_explorerhat
-	name = "Explorer's hat (explorerhat)"
+	name = "探险者帽（宽檐款）"
 	path = /obj/item/clothing/head/roguetown/explorerhat
 
 /datum/loadout_item/head_roguetown_flamboyant
-	name = "Flamboyant hat"
+	name = "华艳羽帽"
 	path = /obj/item/clothing/head/roguetown/flamboyant
 
 /datum/loadout_item/head_roguetown_flotsam
-	name = "Flotsam bonnet"
+	name = "浮叶软帽"
 	path = /obj/item/clothing/head/roguetown/flotsam
 
 /datum/loadout_item/head_roguetown_gasa
-	name = "Gasa"
+	name = "笠帽"
 	path = /obj/item/clothing/head/roguetown/gasa
 
 /datum/loadout_item/head_roguetown_headband_fur
-	name = "Fur headband"
+	name = "毛皮头带"
 	path = /obj/item/clothing/head/roguetown/headband/fur
 
 /datum/loadout_item/head_roguetown_hscarf
-	name = "Head scarf"
+	name = "头巾"
 	path = /obj/item/clothing/head/roguetown/hscarf
 
 /datum/loadout_item/head_roguetown_longveil
-	name = "Long veil"
+	name = "长头纱"
 	path = /obj/item/clothing/head/roguetown/longveil
 
 /datum/loadout_item/head_roguetown_maidhead
-	name = "Maid headdress"
+	name = "女仆头饰"
 	path = /obj/item/clothing/head/roguetown/maidhead
 
 /datum/loadout_item/head_roguetown_menacing_executioner
-	name = "Executioners hood"
+	name = "刽子手兜帽"
 	path = /obj/item/clothing/head/roguetown/menacing/executioner
 
 /datum/loadout_item/head_roguetown_nightcap
-	name = "Nitecap"
+	name = "睡帽"
 	path = /obj/item/clothing/head/roguetown/nightcap
 
 /datum/loadout_item/head_roguetown_nun_hood
-	name = "Nun hood"
+	name = "修女兜帽"
 	path = /obj/item/clothing/head/roguetown/nun_hood
 
 /datum/loadout_item/head_roguetown_onhelm_tw_d_basic
-	name = "Helm's chaperon"
+	name = "盔饰布巾"
 	path = /obj/item/clothing/head/roguetown/onhelm/tw_d_basic
 
 /datum/loadout_item/head_roguetown_onhelm_tw_d_horns
-	name = "Horns helmkleinod"
+	name = "铁角盔饰"
 	path = /obj/item/clothing/head/roguetown/onhelm/tw_d_horns
 
 /datum/loadout_item/head_roguetown_roguehood_bishop
-	name = "Bishop hood"
+	name = "主教兜帽"
 	path = /obj/item/clothing/head/roguetown/roguehood/bishop
 
 /datum/loadout_item/head_roguetown_roguehood_burgerhood
-	name = "Noble hood"
+	name = "贵族兜帽"
 	path = /obj/item/clothing/head/roguetown/roguehood/burgerhood
 
 /datum/loadout_item/head_roguetown_roguehood_eorahood
-	name = "Opera hood"
+	name = "戏剧兜帽"
 	path = /obj/item/clothing/head/roguetown/roguehood/eorahood
 
 /datum/loadout_item/head_roguetown_roguehood_ravox
-	name = "Ravox hood"
+	name = "拉沃克斯兜帽"
 	path = /obj/item/clothing/head/roguetown/roguehood/ravox
 
 /datum/loadout_item/head_roguetown_roguehood_see
-	name = "See hood"
+	name = "教廷兜帽"
 	path = /obj/item/clothing/head/roguetown/roguehood/see
 
 /datum/loadout_item/head_roguetown_roningasa
-	name = "Roningasa"
+	name = "浪人笠"
 	path = /obj/item/clothing/head/roguetown/roningasa
 
 /datum/loadout_item/head_roguetown_sandogasa
-	name = "Sandogasa"
+	name = "三度笠"
 	path = /obj/item/clothing/head/roguetown/sandogasa
 
 /datum/loadout_item/head_roguetown_stewardtophat
-	name = "Top hat"
+	name = "高顶礼帽"
 	path = /obj/item/clothing/head/roguetown/stewardtophat
 
 /datum/loadout_item/head_roguetown_tiyon
-	name = "Tiyon"
+	name = "华饰布冠"
 	path = /obj/item/clothing/head/roguetown/tiyon
 
 /datum/loadout_item/head_roguetown_torioigasa
-	name = "Torioigasa"
+	name = "鸟追笠"
 	path = /obj/item/clothing/head/roguetown/torioigasa
 
 /datum/loadout_item/head_roguetown_elven_hat
-	name = "Elven burka"
+	name = "精灵护耳帽"
 	path = /obj/item/clothing/head/roguetown/elven_hat
 
 /datum/loadout_item/head_roguetown_hammerhold_hat
-	name = "Kokoshnik"
+	name = "扇形冠帽"
 	path = /obj/item/clothing/head/roguetown/hammerhold_hat
 
 /datum/loadout_item/head_roguetown_hammerhold_hat_peasant
-	name = "Hammerhold hat"
+	name = "铁锤堡帽"
 	path = /obj/item/clothing/head/roguetown/hammerhold_hat/peasant
 
 /datum/loadout_item/head_roguetown_veiledhat
-	name = "Veiled hat"
+	name = "垂纱帽"
 	path = /obj/item/clothing/head/roguetown/veiledhat
 
 /datum/loadout_item/mask_rogue_blindfold_psydon
-	name = "Blessed blindfold"
+	name = "受祝眼罩"
 	path = /obj/item/clothing/mask/rogue/blindfold/psydon
 
 /datum/loadout_item/mask_rogue_eyepatch_fake
-	name = "Eyepatch"
+	name = "眼罩"
 	path = /obj/item/clothing/mask/rogue/eyepatch/fake
 
 /datum/loadout_item/mask_rogue_eyepatch_left_fake
-	name = "Eyepatch (fake)"
+	name = "眼罩（假）"
 	path = /obj/item/clothing/mask/rogue/eyepatch/left/fake
 
 /datum/loadout_item/mask_rogue_facemask_xylixmask
-	name = "Xylixian mask"
+	name = "赛利克斯面具"
 	path = /obj/item/clothing/mask/rogue/facemask/xylixmask
 
 /datum/loadout_item/mask_rogue_faceveil
-	name = "Simple veil"
+	name = "简朴面纱"
 	path = /obj/item/clothing/mask/rogue/faceveil
 
 /datum/loadout_item/mask_rogue_physician_feld
-	name = "Feldsher's mask"
+	name = "外科医师面具"
 	path = /obj/item/clothing/mask/rogue/physician/feld
 
 /datum/loadout_item/mask_rogue_physician_phys
-	name = "Physicker's mask"
+	name = "医师面具"
 	path = /obj/item/clothing/mask/rogue/physician/phys
 
 /datum/loadout_item/mask_rogue_shepherd_shadowmask_spymaster
-	name = "Hand's halfmask"
+	name = "执政之手的半面罩"
 	path = /obj/item/clothing/mask/rogue/shepherd/shadowmask/spymaster
 
 /datum/loadout_item/mask_rogue_spectacles_sglasses
-	name = "Smokey onyxa spectacles"
+	name = "烟色缟玛瑙眼镜"
 	path = /obj/item/clothing/mask/rogue/spectacles/sglasses
 
 /datum/loadout_item/mask_rogue_spectacles_thin
-	name = "Thin-lensed spectacles"
+	name = "薄镜片眼镜"
 	path = /obj/item/clothing/mask/rogue/spectacles/thin
 
 /datum/loadout_item/mask_rogue_xylixmask_ceramic
-	name = "Ceramic mask"
+	name = "陶瓷面具"
 	path = /obj/item/clothing/mask/rogue/xylixmask/ceramic
 
 /datum/loadout_item/mask_rogue_xylixmask_weathered
-	name = "Weathered mask"
+	name = "风化面具"
 	path = /obj/item/clothing/mask/rogue/xylixmask/weathered
 
 /datum/loadout_item/neck_roguetown_collar_fur
-	name = "Fur collar"
+	name = "毛皮领"
 	path = /obj/item/clothing/neck/roguetown/collar/fur
 
 /datum/loadout_item/neck_roguetown_cravat
-	name = "Cravat"
+	name = "领巾"
 	path = /obj/item/clothing/neck/roguetown/cravat
 
 /datum/loadout_item/neck_roguetown_ruffle
-	name = "Ruffled collar"
+	name = "褶边领"
 	path = /obj/item/clothing/neck/roguetown/ruffle
 
 /datum/loadout_item/shoes_roguetown_boots_hammerhold_boots
-	name = "Hammerhold boots"
+	name = "铁锤堡靴"
 	path = /obj/item/clothing/shoes/roguetown/boots/hammerhold_boots
 
 /datum/loadout_item/shoes_roguetown_courtphysician
-	name = "Sanguine shoes"
+	name = "绯红皮鞋"
 	path = /obj/item/clothing/shoes/roguetown/courtphysician
 
 /datum/loadout_item/shoes_roguetown_courtphysician_female
-	name = "Sanguine heels"
+	name = "绯红高跟鞋"
 	path = /obj/item/clothing/shoes/roguetown/courtphysician/female
 
 /datum/loadout_item/shoes_roguetown_hammerhold_shoes
-	name = "Hammerhold shoes"
+	name = "铁锤堡鞋"
 	path = /obj/item/clothing/shoes/roguetown/hammerhold_shoes
 
 /datum/loadout_item/shoes_roguetown_rosa
-	name = "Ivory shoes"
+	name = "象牙白鞋"
 	path = /obj/item/clothing/shoes/roguetown/rosa
 
 /datum/loadout_item/shoes_roguetown_rosa_eight
-	name = "Courtly shoes"
+	name = "宫廷鞋"
 	path = /obj/item/clothing/shoes/roguetown/rosa/eight
 
 /datum/loadout_item/shoes_roguetown_rosa_five
-	name = "Sable shoes"
+	name = "墨黑鞋"
 	path = /obj/item/clothing/shoes/roguetown/rosa/five
 
 /datum/loadout_item/shoes_roguetown_rosa_four
-	name = "Obsidian shoes"
+	name = "曜黑鞋"
 	path = /obj/item/clothing/shoes/roguetown/rosa/four
 
 /datum/loadout_item/shoes_roguetown_rosa_nine
-	name = "Royal shoes"
+	name = "王室鞋"
 	path = /obj/item/clothing/shoes/roguetown/rosa/nine
 
 /datum/loadout_item/shoes_roguetown_rosa_seven
-	name = "Regal shoes"
+	name = "华贵鞋"
 	path = /obj/item/clothing/shoes/roguetown/rosa/seven
 
 /datum/loadout_item/shoes_roguetown_rosa_ten
-	name = "Stately shoes"
+	name = "庄重鞋"
 	path = /obj/item/clothing/shoes/roguetown/rosa/ten
 
 /datum/loadout_item/shoes_roguetown_rosa_three
-	name = "Silvered shoes"
+	name = "银饰鞋"
 	path = /obj/item/clothing/shoes/roguetown/rosa/three
 
 /datum/loadout_item/suit_roguetown_shirt_courtphysician
-	name = "Sanguine vest"
+	name = "绯红马甲"
 	path = /obj/item/clothing/suit/roguetown/shirt/courtphysician
 
 /datum/loadout_item/suit_roguetown_shirt_courtphysician_female
-	name = "Sanguine blouse"
+	name = "绯红女衫"
 	path = /obj/item/clothing/suit/roguetown/shirt/courtphysician/female
 
 /datum/loadout_item/suit_roguetown_shirt_desertbra
-	name = "Desert bra"
+	name = "沙漠胸衣"
 	path = /obj/item/clothing/suit/roguetown/shirt/desertbra
 
 /datum/loadout_item/suit_roguetown_shirt_dress_blue
-	name = "Light blue dress (blue)"
+	name = "浅蓝连衣裙"
 	path = /obj/item/clothing/suit/roguetown/shirt/dress/blue
 
 /datum/loadout_item/suit_roguetown_shirt_dress_etrdress
-	name = "Low-cut dress"
+	name = "低领连衣裙"
 	path = /obj/item/clothing/suit/roguetown/shirt/dress/etrdress
 
 /datum/loadout_item/suit_roguetown_shirt_dress_etrdress2
-	name = "Embroidered dress"
+	name = "刺绣连衣裙"
 	path = /obj/item/clothing/suit/roguetown/shirt/dress/etrdress2
 
 /datum/loadout_item/suit_roguetown_shirt_dress_etrdress3
-	name = "Strapless gown"
+	name = "抹胸礼服"
 	path = /obj/item/clothing/suit/roguetown/shirt/dress/etrdress3
 
 /datum/loadout_item/suit_roguetown_shirt_dress_green
-	name = "Light green dress (green)"
+	name = "浅绿连衣裙"
 	path = /obj/item/clothing/suit/roguetown/shirt/dress/green
 
 /datum/loadout_item/suit_roguetown_shirt_dress_maidfancy
-	name = "Valorian maid dress"
+	name = "瓦洛里亚女仆裙"
 	path = /obj/item/clothing/suit/roguetown/shirt/dress/maidfancy
 
 /datum/loadout_item/suit_roguetown_shirt_dress_nightgown
-	name = "Nightgown (nightgown)"
+	name = "睡裙"
 	path = /obj/item/clothing/suit/roguetown/shirt/dress/nightgown
 
 /datum/loadout_item/suit_roguetown_shirt_dress_saree
-	name = "Saree"
+	name = "纱丽"
 	path = /obj/item/clothing/suit/roguetown/shirt/dress/saree
 
 /datum/loadout_item/suit_roguetown_shirt_dress_silkdress_bishop
-	name = "Bishop's cassock"
+	name = "主教长袍"
 	path = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/bishop
 
 /datum/loadout_item/suit_roguetown_shirt_dress_tavern
-	name = "Tavern dress"
+	name = "酒馆连衣裙"
 	path = /obj/item/clothing/suit/roguetown/shirt/dress/tavern
 
 /datum/loadout_item/suit_roguetown_shirt_explorer
-	name = "Explorer's vest (explorer)"
+	name = "探险者马甲"
 	path = /obj/item/clothing/suit/roguetown/shirt/explorer
 
 /datum/loadout_item/suit_roguetown_shirt_fancyjacket
-	name = "Fancy jacket"
+	name = "华美夹克"
 	path = /obj/item/clothing/suit/roguetown/shirt/fancyjacket
 
 /datum/loadout_item/suit_roguetown_shirt_fancyjacket_triumph_padded
-	name = "Dark jacket"
+	name = "暗色夹克"
 	path = /obj/item/clothing/suit/roguetown/shirt/fancyjacket/triumph_padded
 
 /datum/loadout_item/suit_roguetown_shirt_haori
-	name = "Haori"
+	name = "羽织"
 	path = /obj/item/clothing/suit/roguetown/shirt/haori
 
 /datum/loadout_item/suit_roguetown_shirt_kamishimo
-	name = "Kamishimo"
+	name = "肩衣"
 	path = /obj/item/clothing/suit/roguetown/shirt/kamishimo
 
 /datum/loadout_item/suit_roguetown_shirt_kazengun_jacket
-	name = "Kazengun jacket"
+	name = "风郡夹克"
 	path = /obj/item/clothing/suit/roguetown/shirt/kazengun_jacket
 
 /datum/loadout_item/suit_roguetown_shirt_kimono
-	name = "Kimono"
+	name = "和服"
 	path = /obj/item/clothing/suit/roguetown/shirt/kimono
 
 /datum/loadout_item/suit_roguetown_shirt_kimono2
-	name = "Long sleeved kimono"
+	name = "长袖和服"
 	path = /obj/item/clothing/suit/roguetown/shirt/kimono2
 
 /datum/loadout_item/suit_roguetown_shirt_robe_abyssor_leader
-	name = "Sylveric robe"
+	name = "西尔维里克长袍"
 	path = /obj/item/clothing/suit/roguetown/shirt/robe/abyssor_leader
 
 /datum/loadout_item/suit_roguetown_shirt_robe_abyssor_painter
-	name = "Rainfall robe"
+	name = "雨幕长袍"
 	path = /obj/item/clothing/suit/roguetown/shirt/robe/abyssor_painter
 
 /datum/loadout_item/suit_roguetown_shirt_robe_abyssor_painter_sea
-	name = "Sea robe"
+	name = "海潮长袍"
 	path = /obj/item/clothing/suit/roguetown/shirt/robe/abyssor_painter_sea
 
 /datum/loadout_item/suit_roguetown_shirt_robe_bared
-	name = "Bared robe"
+	name = "敞胸长袍"
 	path = /obj/item/clothing/suit/roguetown/shirt/robe/bared
 
 /datum/loadout_item/suit_roguetown_shirt_robe_eora_resprite
-	name = "Eoran robe (resprite)"
+	name = "伊欧拉长袍（新款）"
 	path = /obj/item/clothing/suit/roguetown/shirt/robe/eora/resprite
 
 /datum/loadout_item/suit_roguetown_shirt_robe_eora_resprite_pink
-	name = "Eoran robe (pink)"
+	name = "伊欧拉长袍（粉色）"
 	path = /obj/item/clothing/suit/roguetown/shirt/robe/eora/resprite/pink
 
 /datum/loadout_item/suit_roguetown_shirt_robe_hag
-	name = "Hedge robe"
+	name = "隐士长袍"
 	path = /obj/item/clothing/suit/roguetown/shirt/robe/hag
 
 /datum/loadout_item/suit_roguetown_shirt_robe_leopard
-	name = "Leopard robe (leopard)"
+	name = "豹纹长袍"
 	path = /obj/item/clothing/suit/roguetown/shirt/robe/leopard
 
 /datum/loadout_item/suit_roguetown_shirt_robe_leopard_alt
-	name = "Open leopard robe"
+	name = "敞开的豹纹长袍"
 	path = /obj/item/clothing/suit/roguetown/shirt/robe/leopard/alt
 
 /datum/loadout_item/suit_roguetown_shirt_robe_nun_dress
-	name = "Nun dress"
+	name = "修女裙"
 	path = /obj/item/clothing/suit/roguetown/shirt/robe/nun_dress
 
 /datum/loadout_item/suit_roguetown_shirt_robe_ravox
-	name = "Ravox robe"
+	name = "拉沃克斯长袍"
 	path = /obj/item/clothing/suit/roguetown/shirt/robe/ravox
 
 /datum/loadout_item/suit_roguetown_shirt_robe_see
-	name = "See robe"
+	name = "教廷长袍"
 	path = /obj/item/clothing/suit/roguetown/shirt/robe/see
 
 /datum/loadout_item/suit_roguetown_shirt_robe_seecleric
-	name = "See clerical robe"
+	name = "教廷司祭长袍"
 	path = /obj/item/clothing/suit/roguetown/shirt/robe/seecleric
 
 /datum/loadout_item/suit_roguetown_shirt_silkbra
-	name = "Giltsilk bra"
+	name = "金饰丝绸胸衣"
 	path = /obj/item/clothing/suit/roguetown/shirt/silkbra
 
 /datum/loadout_item/suit_roguetown_shirt_tunic_rosa
-	name = "Ivory dress"
+	name = "象牙白礼裙"
 	path = /obj/item/clothing/suit/roguetown/shirt/tunic/rosa
 
 /datum/loadout_item/suit_roguetown_shirt_tunic_rosa_five
-	name = "Sable dress"
+	name = "墨黑礼裙"
 	path = /obj/item/clothing/suit/roguetown/shirt/tunic/rosa/five
 
 /datum/loadout_item/suit_roguetown_shirt_tunic_rosa_four
-	name = "Obsidian dress"
+	name = "曜黑礼裙"
 	path = /obj/item/clothing/suit/roguetown/shirt/tunic/rosa/four
 
 /datum/loadout_item/suit_roguetown_shirt_tunic_rosa_six
-	name = "Maroon dress"
+	name = "栗红礼裙"
 	path = /obj/item/clothing/suit/roguetown/shirt/tunic/rosa/six
 
 /datum/loadout_item/suit_roguetown_shirt_tunic_rosa_three
-	name = "Velvet dress"
+	name = "天鹅绒礼裙"
 	path = /obj/item/clothing/suit/roguetown/shirt/tunic/rosa/three
 
 /datum/loadout_item/suit_roguetown_shirt_tunic_rosacoat
-	name = "Regal coat"
+	name = "华贵外套"
 	path = /obj/item/clothing/suit/roguetown/shirt/tunic/rosacoat
 
 /datum/loadout_item/suit_roguetown_shirt_tunic_rosacoat_four
-	name = "Stately coat"
+	name = "庄重外套"
 	path = /obj/item/clothing/suit/roguetown/shirt/tunic/rosacoat/four
 
 /datum/loadout_item/suit_roguetown_shirt_tunic_rosacoat_two
-	name = "Courtly coat"
+	name = "宫廷外套"
 	path = /obj/item/clothing/suit/roguetown/shirt/tunic/rosacoat/two
 
 /datum/loadout_item/suit_roguetown_shirt_elven
-	name = "Elven suit"
+	name = "精灵套装"
 	path = /obj/item/clothing/suit/roguetown/shirt/elven
 
 /datum/loadout_item/suit_roguetown_shirt_elven_coat
-	name = "Elven coat"
+	name = "精灵外套"
 	path = /obj/item/clothing/suit/roguetown/shirt/elven/coat
 
 /datum/loadout_item/suit_roguetown_shirt_elven_coat_alt
-	name = "Elven furcoat"
+	name = "精灵皮草外套"
 	path = /obj/item/clothing/suit/roguetown/shirt/elven/coat/alt
 
 /datum/loadout_item/suit_roguetown_shirt_hammerhold
-	name = "Hammerhold shirt"
+	name = "铁锤堡衬衫"
 	path = /obj/item/clothing/suit/roguetown/shirt/hammerhold
 
 /datum/loadout_item/suit_roguetown_shirt_hammerhold_coat
-	name = "Noble coat"
+	name = "贵族外套"
 	path = /obj/item/clothing/suit/roguetown/shirt/hammerhold/coat
 
 /datum/loadout_item/suit_roguetown_shirt_undershirt_etrdoublet
-	name = "Doublet"
+	name = "紧身上衣"
 	path = /obj/item/clothing/suit/roguetown/shirt/undershirt/etrdoublet
 
 /datum/loadout_item/suit_roguetown_shirt_yoroihitatare
-	name = "Yoroihitatare"
+	name = "铠直垂"
 	path = /obj/item/clothing/suit/roguetown/shirt/yoroihitatare
 
 /datum/loadout_item/under_roguetown_loincloth_deprived
-	name = "Large loincloth"
+	name = "大兜裆"
 	path = /obj/item/clothing/under/roguetown/loincloth/deprived
 
 /datum/loadout_item/under_roguetown_skirt_courtphysician
-	name = "Sanguine skirt"
+	name = "绯红裙"
 	path = /obj/item/clothing/under/roguetown/skirt/courtphysician
 
 /datum/loadout_item/under_roguetown_skirt_desert
-	name = "Desert skirt"
+	name = "沙漠裙"
 	path = /obj/item/clothing/under/roguetown/skirt/desert
 
 /datum/loadout_item/under_roguetown_skirt_formal
-	name = "Knee-high skirt (formal)"
+	name = "及膝裙（正装）"
 	path = /obj/item/clothing/under/roguetown/skirt/formal
 
 /datum/loadout_item/under_roguetown_skirt_short
-	name = "Short skirt"
+	name = "短裙"
 	path = /obj/item/clothing/under/roguetown/skirt/short
 
 /datum/loadout_item/under_roguetown_tights_dhoti
-	name = "Dhoti"
+	name = "裹布裤"
 	path = /obj/item/clothing/under/roguetown/tights/dhoti
 
 /datum/loadout_item/under_roguetown_tights_hose
-	name = "Cloth hosen"
+	name = "布制长袜裤"
 	path = /obj/item/clothing/under/roguetown/tights/hose
 
 /datum/loadout_item/backpack_rogue_backpack_trader
-	name = "Trader's pack"
+	name = "行商背包"
 	path = /obj/item/storage/backpack/rogue/backpack/trader
 	triumph_cost = 6
 
 /datum/loadout_item/belt_rogue_leather_battleskirt_loincloth
-	name = "Cloth loincloth"
+	name = "布兜裆"
 	path = /obj/item/storage/belt/rogue/leather/battleskirt/loincloth
 
 /datum/loadout_item/belt_rogue_leather_belthooks
-	name = "Belt hooks"
+	name = "腰带挂钩"
 	path = /obj/item/storage/belt/rogue/leather/belthooks
 
 /datum/loadout_item/belt_rogue_leather_beltshawl
-	name = "Belt shawl"
+	name = "腰披巾"
 	path = /obj/item/storage/belt/rogue/leather/beltshawl
 
 /datum/loadout_item/belt_rogue_leather_hammerhold_sash
-	name = "Hammerhold sash"
+	name = "铁锤堡腰带"
 	path = /obj/item/storage/belt/rogue/leather/hammerhold_sash
 
 /datum/loadout_item/belt_rogue_leather_iron
-	name = "Iron belt"
+	name = "铁片腰带"
 	path = /obj/item/storage/belt/rogue/leather/iron
 
 /datum/loadout_item/belt_rogue_leather_sash_maid
-	name = "Cloth sash (maid)"
+	name = "布腰带（女仆式）"
 	path = /obj/item/storage/belt/rogue/leather/sash/maid

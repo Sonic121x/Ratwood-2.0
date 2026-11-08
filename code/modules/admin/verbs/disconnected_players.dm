@@ -2,8 +2,8 @@ GLOBAL_DATUM_INIT(disconnected_players_panel, /datum/disconnected_players_panel,
 
 /client/proc/disconnected_players_panel()
 	set category = "-Admin-"
-	set name = "Disconnected Players"
-	set desc = "List players in a deep slumber and fartravel them."
+	set name = "离线玩家"
+	set desc = "列出深度沉睡的玩家，并让其远行。"
 
 	if(!check_rights(R_ADMIN))
 		return
@@ -18,7 +18,7 @@ GLOBAL_DATUM_INIT(disconnected_players_panel, /datum/disconnected_players_panel,
 /datum/disconnected_players_panel/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "DisconnectedPlayers", "Disconnected Players")
+		ui = new(user, src, "DisconnectedPlayers", "离线玩家")
 		ui.set_autoupdate(FALSE)
 		ui.open()
 
@@ -37,7 +37,7 @@ GLOBAL_DATUM_INIT(disconnected_players_panel, /datum/disconnected_players_panel,
 			"ref" = REF(L),
 			"ckey" = L.ckey,
 			// Wildshape forms already name themselves "form (real name)".
-			"name" = (body == L || findtext(L.real_name, body.real_name)) ? L.real_name : "[body.real_name] (as [L.real_name])",
+			"name" = (body == L || findtext(L.real_name, body.real_name)) ? L.real_name : "[body.real_name]（当前形态：[L.real_name]）",
 			"role" = L.get_disconnected_admin_alert_job_name(),
 			// Null without a job. A total of -1 means the job has unlimited slots.
 			"slots_open" = job ? job.total_positions - job.current_positions : null,
@@ -59,7 +59,7 @@ GLOBAL_DATUM_INIT(disconnected_players_panel, /datum/disconnected_players_panel,
 		if("player_panel")
 			var/mob/living/L = locate(params["ref"])
 			if(!istype(L) || QDELETED(L))
-				to_chat(user, span_warning("That character no longer exists."))
+				to_chat(user, span_warning("该角色已不存在。"))
 				return TRUE
 			user.client.holder.show_player_panel(L)
 			return FALSE
@@ -67,7 +67,7 @@ GLOBAL_DATUM_INIT(disconnected_players_panel, /datum/disconnected_players_panel,
 		if("follow")
 			var/mob/living/L = locate(params["ref"])
 			if(!istype(L) || QDELETED(L))
-				to_chat(user, span_warning("That character no longer exists."))
+				to_chat(user, span_warning("该角色已不存在。"))
 				return TRUE
 			// Mirror the behaviour of the adminplayerobservefollow href
 			var/client/C = user.client
@@ -103,15 +103,15 @@ GLOBAL_DATUM_INIT(disconnected_players_panel, /datum/disconnected_players_panel,
 /datum/disconnected_players_panel/proc/fartravel(mob/user, list/targets)
 	var/list/slumbering = resolve_targets(targets)
 	if(!length(slumbering))
-		to_chat(user, span_warning("None of the selected players are still in a deep slumber."))
+		to_chat(user, span_warning("所选玩家均已不再处于深度沉睡状态。"))
 		return
 
 	var/list/names = list()
 	for(var/mob/living/L as anything in slumbering)
 		var/mob/living/carbon/human/body = L.get_real_body()
 		names += "[L.ckey] ([body.real_name])"
-	var/prompt = length(slumbering) == 1 ? "Fartravel slumbering [names[1]] and delete their character?" : "Fartravel these [length(slumbering)] slumbering players and delete their characters? [jointext(names, ", ")]"
-	if(tgui_alert(user, prompt, "Fartravel", list("Yes", "No")) != "Yes")
+	var/prompt = length(slumbering) == 1 ? "让沉睡中的[names[1]]远行并删除其角色？" : "让这[length(slumbering)]名沉睡玩家远行并删除其角色？[jointext(names, ", ")]"
+	if(tgui_alert(user, prompt, "远行", list("是", "否")) != "是")
 		return
 
 	// They may have reconnected or been removed while the confirmation was open.
@@ -124,6 +124,6 @@ GLOBAL_DATUM_INIT(disconnected_players_panel, /datum/disconnected_players_panel,
 		fartraveled += "[L.ckey] ([time_away])"
 		L.admin_fartravel(user)
 	if(!length(fartraveled))
-		to_chat(user, span_warning("None of the selected players are still in a deep slumber."))
+		to_chat(user, span_warning("所选玩家均已不再处于深度沉睡状态。"))
 		return
-	message_admins(span_adminnotice("[key_name_admin(user)] fartraveled [length(fartraveled)] slumbering player\s: [jointext(fartraveled, ", ")]"))
+	message_admins(span_adminnotice("[key_name_admin(user)]让[length(fartraveled)]名沉睡玩家远行：[jointext(fartraveled, ", ")]"))

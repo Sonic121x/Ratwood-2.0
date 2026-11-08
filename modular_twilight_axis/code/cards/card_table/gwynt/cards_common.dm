@@ -2,8 +2,8 @@
 
 /datum/ccg_card/base_swordsman
 	id = "base_swordsman"
-	name = "Swordsman"
-	desc = "Reliable infantry."
+	name = "剑士"
+	desc = "可靠的步兵。"
 	row = CCG_ROW_INFANTRY
 	power = 4
 	limited = TRUE
@@ -13,8 +13,8 @@
 
 /datum/ccg_card/base_spearman
 	id = "base_spearman"
-	name = "Spearman"
-	desc = "Doubles with other Spearmen."
+	name = "矛兵"
+	desc = "与其他矛兵同列时战力翻倍。"
 	row = CCG_ROW_INFANTRY
 	power = 2
 	effect = CCG_EFFECT_BOND
@@ -23,8 +23,8 @@
 
 /datum/ccg_card/base_archer
 	id = "base_archer"
-	name = "Archer"
-	desc = "Reliable ranged card."
+	name = "弓手"
+	desc = "可靠的远程卡牌。"
 	row = CCG_ROW_ARCHERS
 	power = 2
 	effect = CCG_EFFECT_AGILE
@@ -35,8 +35,8 @@
 
 /datum/ccg_card/base_crossbow
 	id = "base_crossbow"
-	name = "Crossbowman"
-	desc = "Ranged morale support."
+	name = "弩手"
+	desc = "为远程部队提供士气支援。"
 	row = CCG_ROW_ARCHERS
 	power = 3
 	effect = CCG_EFFECT_MORALE
@@ -45,8 +45,8 @@
 
 /datum/ccg_card/base_catapult
 	id = "base_catapult"
-	name = "Catapult"
-	desc = "Doubles with other Catapults."
+	name = "投石车"
+	desc = "与其他投石车同列时战力翻倍。"
 	row = CCG_ROW_SIEGE
 	power = 3
 	effect = CCG_EFFECT_BOND
@@ -57,8 +57,8 @@
 
 /datum/ccg_card/base_ballista
 	id = "base_ballista"
-	name = "Ballista"
-	desc = "Siege engine."
+	name = "弩炮"
+	desc = "攻城器械。"
 	row = CCG_ROW_SIEGE
 	power = 3
 	effect = CCG_EFFECT_SCORCH_INFANTRY
@@ -69,8 +69,8 @@
 
 /datum/ccg_card/base_frost
 	id = "base_frost"
-	name = "Biting Frost"
-	desc = "Sets infantry strength to 1."
+	name = "刺骨冰霜"
+	desc = "将步兵战力降为1。"
 	row = CCG_ROW_WEATHER
 	power = 0
 	effect = CCG_EFFECT_FROST
@@ -78,8 +78,8 @@
 
 /datum/ccg_card/base_fog
 	id = "base_fog"
-	name = "Impenetrable Fog"
-	desc = "Sets archers strength to 1."
+	name = "蔽日浓雾"
+	desc = "将弓手战力降为1。"
 	row = CCG_ROW_WEATHER
 	power = 0
 	effect = CCG_EFFECT_FOG
@@ -87,8 +87,8 @@
 
 /datum/ccg_card/base_rain
 	id = "base_rain"
-	name = "Torrential Rain"
-	desc = "Sets siege strength to 1."
+	name = "倾盆大雨"
+	desc = "将攻城单位战力降为1。"
 	row = CCG_ROW_WEATHER
 	power = 0
 	effect = CCG_EFFECT_RAIN
@@ -96,8 +96,8 @@
 
 /datum/ccg_card/base_clear
 	id = "base_clear"
-	name = "Clear Weather"
-	desc = "Removes all weather."
+	name = "晴空"
+	desc = "清除所有天气效果。"
 	row = CCG_ROW_WEATHER
 	power = 0
 	effect = CCG_EFFECT_CLEAR_WEATHER
@@ -105,8 +105,8 @@
 
 /datum/ccg_card/base_shieldman
 	id = "base_shieldman"
-	name = "Shieldman"
-	desc = "Steady frontline infantry."
+	name = "盾兵"
+	desc = "稳健的前线步兵。"
 	row = CCG_ROW_INFANTRY
 	power = 5
 	limited = TRUE
@@ -116,8 +116,8 @@
 
 /datum/ccg_card/base_banner_bearer
 	id = "base_banner_bearer"
-	name = "Banner Bearer"
-	desc = "Morale boost for infantry."
+	name = "旗手"
+	desc = "提升步兵士气。"
 	row = CCG_ROW_INFANTRY
 	power = 2
 	effect = CCG_EFFECT_MORALE
@@ -126,8 +126,8 @@
 
 /datum/ccg_card/base_guard
 	id = "base_guard"
-	name = "Guard"
-	desc = "Armored infantry."
+	name = "卫士"
+	desc = "披甲步兵。"
 	row = CCG_ROW_INFANTRY
 	power = 4
 	effect = CCG_EFFECT_MUSTER
@@ -136,8 +136,8 @@
 
 /datum/ccg_card/base_longbowman
 	id = "base_longbowman"
-	name = "Longbowman"
-	desc = "Doubles with other Longbowmen."
+	name = "长弓手"
+	desc = "与其他长弓手同列时战力翻倍。"
 	row = CCG_ROW_ARCHERS
 	power = 2
 	effect = CCG_EFFECT_BOND
@@ -148,8 +148,8 @@
 
 /datum/ccg_card/base_blacksmith
 	id = "base_blacksmith"
-	name = "Blacksmith"
-	desc = "Morale support for siege."
+	name = "铁匠"
+	desc = "为攻城部队提供士气支援。"
 	row = CCG_ROW_SIEGE
 	power = 2
 	effect = CCG_EFFECT_MORALE
@@ -160,8 +160,8 @@
 
 /datum/ccg_card/base_supply_cart
 	id = "base_supply_cart"
-	name = "Supply Cart"
-	desc = "Siege support."
+	name = "补给车"
+	desc = "攻城支援。"
 	row = CCG_ROW_SIEGE
 	power = 8
 	limited = TRUE
@@ -171,16 +171,16 @@
 
 /datum/ccg_card/base_scout
 	id = "base_scout"
-	name = "Scout"
-	desc = "Light ranged unit."
+	name = "斥候"
+	desc = "轻型远程单位。"
 	row = CCG_ROW_ARCHERS
 	power = 4
 	art = "ccg_cards/scout.png"
 
 /datum/ccg_card/base_militia
 	id = "base_militia"
-	name = "Militia"
-	desc = "Morale boost for infantry."
+	name = "民兵"
+	desc = "提升步兵士气。"
 	row = CCG_ROW_INFANTRY
 	power = 2
 	effect = CCG_EFFECT_MORALE
@@ -188,16 +188,16 @@
 
 /datum/ccg_card/base_mangonel
 	id = "base_mangonel"
-	name = "Mangonel"
-	desc = "Basic siege engine."
+	name = "牵引投石机"
+	desc = "基础攻城器械。"
 	row = CCG_ROW_SIEGE
 	power = 6
 	art = "ccg_cards/mangonel.png"
 
 /datum/ccg_card/base_field_medic
 	id = "base_field_medic"
-	name = "Field Medic"
-	desc = "Keeps the line together."
+	name = "战地医师"
+	desc = "维系战线。"
 	row = CCG_ROW_INFANTRY
 	power = 3
 	effect = CCG_EFFECT_MEDIC
@@ -205,8 +205,8 @@
 
 /datum/ccg_card/base_decoy
 	id = "base_decoy"
-	name = "Decoy"
-	desc = "Returns your strongest unit to hand."
+	name = "诱饵"
+	desc = "将己方最强单位收回手牌。"
 	row = CCG_ROW_SPECIAL
 	power = 0
 	effect = CCG_EFFECT_DECOY
@@ -214,8 +214,8 @@
 
 /datum/ccg_card/base_horn_infantry
 	id = "base_horn_infantry"
-	name = "Infantry Horn"
-	desc = "Doubles all units in your infantry row."
+	name = "步兵号角"
+	desc = "使己方步兵列所有单位战力翻倍。"
 	row = CCG_ROW_SPECIAL
 	power = 0
 	effect = CCG_EFFECT_HORN
@@ -224,8 +224,8 @@
 
 /datum/ccg_card/base_horn_archers
 	id = "base_horn_archers"
-	name = "Archers Horn"
-	desc = "Doubles all units in your archers row."
+	name = "弓手号角"
+	desc = "使己方弓手列所有单位战力翻倍。"
 	row = CCG_ROW_SPECIAL
 	power = 0
 	effect = CCG_EFFECT_HORN
@@ -234,8 +234,8 @@
 
 /datum/ccg_card/base_horn_siege
 	id = "base_horn_siege"
-	name = "Siege Horn"
-	desc = "Doubles all units in your siege row."
+	name = "攻城号角"
+	desc = "使己方攻城列所有单位战力翻倍。"
 	row = CCG_ROW_SPECIAL
 	power = 0
 	effect = CCG_EFFECT_HORN
@@ -244,8 +244,8 @@
 
 /datum/ccg_card/base_scorch
 	id = "base_scorch"
-	name = "Scorch"
-	desc = "Destroys the strongest unit or units on the battlefield."
+	name = "焦土"
+	desc = "摧毁战场上战力最高的所有单位。"
 	row = CCG_ROW_SPECIAL
 	power = 0
 	effect = CCG_EFFECT_SCORCH_GLOBAL
@@ -253,8 +253,8 @@
 
 /datum/ccg_card/base_mardroeme
 	id = "base_mardroeme"
-	name = "Mardroeme"
-	desc = "Turns Berserkers in your infantry row into bears."
+	name = "狂战蘑菇"
+	desc = "将己方步兵列的狂战士变为熊。"
 	row = CCG_ROW_WEATHER
 	power = 0
 	effect = CCG_EFFECT_MARDROEME
@@ -263,8 +263,8 @@
 
 /datum/ccg_card/rare_neutral_hedge_knight
 	id = "rare_neutral_hedge_knight"
-	name = "Hedge Knight"
-	desc = "Neutral adventurer. A wandering blade for any deck."
+	name = "流浪骑士"
+	desc = "中立冒险者。可加入任何牌组的流浪剑客。"
 	row = CCG_ROW_INFANTRY
 	power = 5
 	rarity = CCG_RARITY_RARE
@@ -273,8 +273,8 @@
 
 /datum/ccg_card/rare_neutral_witch
 	id = "rare_neutral_witch"
-	name = "Witch"
-	desc = "Neutral adventurer. Strange rites clear unnatural weather."
+	name = "女巫"
+	desc = "中立冒险者。以奇异仪式驱散异常天气。"
 	row = CCG_ROW_ARCHERS
 	power = 3
 	rarity = CCG_RARITY_RARE
@@ -283,8 +283,8 @@
 
 /datum/ccg_card/rare_neutral_treasure_hunter
 	id = "rare_neutral_treasure_hunter"
-	name = "Treasure Hunter"
-	desc = "Neutral adventurer. A spy who pays for risk with cards."
+	name = "寻宝客"
+	desc = "中立冒险者。以冒险换取手牌的间谍。"
 	row = CCG_ROW_ARCHERS
 	power = 1
 	rarity = CCG_RARITY_RARE
@@ -293,8 +293,8 @@
 
 /datum/ccg_card/rare_neutral_barber_surgeon
 	id = "rare_neutral_barber_surgeon"
-	name = "Barber Surgeon"
-	desc = "Neutral adventurer. Brings one fallen unit back to the fight."
+	name = "理发外科医师"
+	desc = "中立冒险者。使一个阵亡单位重返战场。"
 	row = CCG_ROW_INFANTRY
 	power = 4
 	rarity = CCG_RARITY_RARE
@@ -303,8 +303,8 @@
 
 /datum/ccg_card/rare_neutral_battlemaster
 	id = "rare_neutral_battlemaster"
-	name = "Battlemaster"
-	desc = "Neutral adventurer. A seasoned weapon specialist who steadies the infantry line."
+	name = "战阵大师"
+	desc = "中立冒险者。经验丰富的武器专家，能稳固步兵战线。"
 	row = CCG_ROW_INFANTRY
 	power = 5
 	rarity = CCG_RARITY_RARE
@@ -313,8 +313,8 @@
 
 /datum/ccg_card/rare_neutral_duelist
 	id = "rare_neutral_duelist"
-	name = "Duelist"
-	desc = "Neutral adventurer. A nimble swordsman who can answer either front."
+	name = "决斗家"
+	desc = "中立冒险者。身手敏捷的剑士，可应对两处战线。"
 	row = CCG_ROW_INFANTRY
 	power = 4
 	rarity = CCG_RARITY_RARE
@@ -323,8 +323,8 @@
 
 /datum/ccg_card/rare_neutral_barbarian
 	id = "rare_neutral_barbarian"
-	name = "Barbarian"
-	desc = "Neutral adventurer. A brutal fighter who can be driven into a berserk charge."
+	name = "蛮战士"
+	desc = "中立冒险者。凶猛的战士，能受激发起狂暴冲锋。"
 	row = CCG_ROW_INFANTRY
 	power = 6
 	rarity = CCG_RARITY_RARE
@@ -333,8 +333,8 @@
 
 /datum/ccg_card/rare_neutral_ironclad
 	id = "rare_neutral_ironclad"
-	name = "Ironclad"
-	desc = "Neutral adventurer. Heavy armor and discipline form a hard front."
+	name = "铁甲战士"
+	desc = "中立冒险者。以重甲和纪律筑成坚固战线。"
 	row = CCG_ROW_INFANTRY
 	power = 6
 	rarity = CCG_RARITY_RARE
@@ -343,8 +343,8 @@
 
 /datum/ccg_card/rare_neutral_exorcist
 	id = "rare_neutral_exorcist"
-	name = "Exorcist"
-	desc = "Neutral adventurer. A monster hunter whose silver work cuts down the strongest threat."
+	name = "驱魔人"
+	desc = "中立冒险者。以银制武器斩除最强威胁的猎魔人。"
 	row = CCG_ROW_INFANTRY
 	power = 5
 	rarity = CCG_RARITY_RARE
@@ -353,8 +353,8 @@
 
 /datum/ccg_card/rare_neutral_deprived
 	id = "rare_neutral_deprived"
-	name = "Deprived"
-	desc = "Neutral adventurer. A stripped survivor who calls more desperate bodies to the field."
+	name = "一无所有者"
+	desc = "中立冒险者。一无所有的幸存者，召来更多绝望者加入战场。"
 	row = CCG_ROW_INFANTRY
 	power = 2
 	rarity = CCG_RARITY_RARE
@@ -363,8 +363,8 @@
 
 /datum/ccg_card/rare_neutral_sentinel
 	id = "rare_neutral_sentinel"
-	name = "Sentinel"
-	desc = "Neutral adventurer. A ranger bodyguard watching the dangerous paths."
+	name = "守望者"
+	desc = "中立冒险者。看守险路的游侠护卫。"
 	row = CCG_ROW_ARCHERS
 	power = 4
 	rarity = CCG_RARITY_RARE
@@ -373,8 +373,8 @@
 
 /datum/ccg_card/rare_neutral_wayfarer
 	id = "rare_neutral_wayfarer"
-	name = "Wayfarer"
-	desc = "Neutral adventurer. A tracker and man-hunter played forward as a spy."
+	name = "远行客"
+	desc = "中立冒险者。擅长追踪和追捕的猎手，作为间谍部署于敌方。"
 	row = CCG_ROW_ARCHERS
 	power = 2
 	rarity = CCG_RARITY_RARE
@@ -383,8 +383,8 @@
 
 /datum/ccg_card/rare_neutral_bombadier
 	id = "rare_neutral_bombadier"
-	name = "Bombadier"
-	desc = "Neutral adventurer. Bombs and alchemy break the strongest packed rank."
+	name = "掷弹手"
+	desc = "中立冒险者。以炸弹与炼金术击破最强的密集阵列。"
 	row = CCG_ROW_SIEGE
 	power = 4
 	rarity = CCG_RARITY_RARE
@@ -393,8 +393,8 @@
 
 /datum/ccg_card/rare_neutral_biome_wanderer
 	id = "rare_neutral_biome_wanderer"
-	name = "Biome Wanderer"
-	desc = "Neutral adventurer. A wildlands expert who clears hostile weather."
+	name = "地貌行者"
+	desc = "中立冒险者。驱散恶劣天气的荒野专家。"
 	row = CCG_ROW_ARCHERS
 	power = 3
 	rarity = CCG_RARITY_RARE
@@ -403,8 +403,8 @@
 
 /datum/ccg_card/rare_neutral_aristocrat
 	id = "rare_neutral_aristocrat"
-	name = "Aristocrat"
-	desc = "Neutral adventurer. Coin, rumor, and courtly contacts buy two cards."
+	name = "贵族"
+	desc = "中立冒险者。金钱、传闻和宫廷人脉换来两张牌。"
 	row = CCG_ROW_INFANTRY
 	power = 2
 	rarity = CCG_RARITY_RARE
@@ -413,8 +413,8 @@
 
 /datum/ccg_card/rare_neutral_knight_errant
 	id = "rare_neutral_knight_errant"
-	name = "Knight Errant"
-	desc = "Neutral adventurer. A traveling knight whose banner lifts the line."
+	name = "游方骑士"
+	desc = "中立冒险者。四处游历的骑士，其旗帜鼓舞整条战线。"
 	row = CCG_ROW_INFANTRY
 	power = 6
 	rarity = CCG_RARITY_RARE
@@ -423,8 +423,8 @@
 
 /datum/ccg_card/rare_neutral_squire_errant
 	id = "rare_neutral_squire_errant"
-	name = "Squire Errant"
-	desc = "Neutral adventurer. A young retainer who bonds with another squire."
+	name = "游方侍从"
+	desc = "中立冒险者。能与另一名侍从建立连结的年轻扈从。"
 	row = CCG_ROW_INFANTRY
 	power = 3
 	rarity = CCG_RARITY_RARE
@@ -433,8 +433,8 @@
 
 /datum/ccg_card/rare_neutral_monk
 	id = "rare_neutral_monk"
-	name = "Monk"
-	desc = "Neutral adventurer. A wandering acolyte trained in miracles and bare-handed discipline."
+	name = "武僧"
+	desc = "中立冒险者。研习奇迹与徒手武艺的云游侍僧。"
 	row = CCG_ROW_INFANTRY
 	power = 3
 	rarity = CCG_RARITY_RARE
@@ -443,8 +443,8 @@
 
 /datum/ccg_card/rare_neutral_paladin
 	id = "rare_neutral_paladin"
-	name = "Paladin"
-	desc = "Neutral adventurer. A holy knight who anchors the infantry row."
+	name = "圣骑士"
+	desc = "中立冒险者。稳住步兵列的神圣骑士。"
 	row = CCG_ROW_INFANTRY
 	power = 6
 	rarity = CCG_RARITY_RARE
@@ -453,8 +453,8 @@
 
 /datum/ccg_card/rare_neutral_cantor
 	id = "rare_neutral_cantor"
-	name = "Cantor"
-	desc = "Neutral adventurer. A sacred singer who doubles the archers row."
+	name = "颂唱者"
+	desc = "中立冒险者。使弓手列战力翻倍的圣歌歌者。"
 	row = CCG_ROW_ARCHERS
 	power = 2
 	rarity = CCG_RARITY_RARE
@@ -464,8 +464,8 @@
 
 /datum/ccg_card/rare_neutral_missionary
 	id = "rare_neutral_missionary"
-	name = "Missionary"
-	desc = "Neutral adventurer. A wandering preacher who clears foul weather."
+	name = "传教士"
+	desc = "中立冒险者。驱散恶劣天气的巡游传道者。"
 	row = CCG_ROW_ARCHERS
 	power = 2
 	rarity = CCG_RARITY_RARE
@@ -474,8 +474,8 @@
 
 /datum/ccg_card/rare_neutral_nightblade
 	id = "rare_neutral_nightblade"
-	name = "Nightblade"
-	desc = "Neutral adventurer. A devout knife in the dark, placed forward as a spy."
+	name = "夜刃"
+	desc = "中立冒险者。黑暗中的虔诚利刃，作为间谍部署于敌方。"
 	row = CCG_ROW_INFANTRY
 	power = 2
 	rarity = CCG_RARITY_RARE
@@ -484,8 +484,8 @@
 
 /datum/ccg_card/rare_neutral_aavnic_hussar
 	id = "rare_neutral_aavnic_hussar"
-	name = "Aavnic Hussar"
-	desc = "Neutral mercenary. A disgraced winged rider still chasing honor."
+	name = "阿夫尼克翼骑兵"
+	desc = "中立佣兵。蒙受耻辱却仍追求荣誉的翼骑兵。"
 	row = CCG_ROW_INFANTRY
 	power = 6
 	rarity = CCG_RARITY_RARE
@@ -494,8 +494,8 @@
 
 /datum/ccg_card/rare_neutral_twilight_gunslinger
 	id = "rare_neutral_twilight_gunslinger"
-	name = "Twilight Gunslinger"
-	desc = "Neutral mercenary. A strange duelist with thunder in the hand."
+	name = "暮光枪手"
+	desc = "中立佣兵。手握雷霆的奇异决斗者。"
 	row = CCG_ROW_ARCHERS
 	power = 4
 	rarity = CCG_RARITY_RARE
@@ -504,8 +504,8 @@
 
 /datum/ccg_card/rare_neutral_vaquero
 	id = "rare_neutral_vaquero"
-	name = "Vaquero"
-	desc = "Neutral mercenary rider from the far ranges."
+	name = "牧侠"
+	desc = "来自遥远牧场的中立佣兵骑手。"
 	row = CCG_ROW_ARCHERS
 	power = 3
 	rarity = CCG_RARITY_RARE
@@ -514,8 +514,8 @@
 
 /datum/ccg_card/rare_neutral_thief
 	id = "rare_neutral_thief"
-	name = "Thief"
-	desc = "Neutral adventurer. A scoundrel played as a spy for two cards."
+	name = "盗贼"
+	desc = "中立冒险者。作为间谍出牌并抽两张牌的恶棍。"
 	row = CCG_ROW_INFANTRY
 	power = 1
 	rarity = CCG_RARITY_RARE
@@ -524,8 +524,8 @@
 
 /datum/ccg_card/rare_neutral_bard
 	id = "rare_neutral_bard"
-	name = "Bard"
-	desc = "Neutral adventurer. Songs and lies lift the whole line."
+	name = "吟游诗人"
+	desc = "中立冒险者。以歌声与谎言鼓舞整条战线。"
 	row = CCG_ROW_ARCHERS
 	power = 3
 	rarity = CCG_RARITY_RARE
@@ -534,8 +534,8 @@
 
 /datum/ccg_card/rare_neutral_soundbreaker
 	id = "rare_neutral_soundbreaker"
-	name = "Soundbreaker"
-	desc = "Neutral adventurer. A brawling bard whose rhythm breaks morale."
+	name = "破音者"
+	desc = "中立冒险者。好斗的吟游诗人，以节奏击溃敌军士气。"
 	row = CCG_ROW_INFANTRY
 	power = 4
 	rarity = CCG_RARITY_RARE
@@ -544,8 +544,8 @@
 
 /datum/ccg_card/rare_neutral_swashbuckler
 	id = "rare_neutral_swashbuckler"
-	name = "Swashbuckler"
-	desc = "Neutral adventurer. Agile swordplay and dirty tricks."
+	name = "海上浪客"
+	desc = "中立冒险者。灵巧剑术搭配阴损伎俩。"
 	row = CCG_ROW_INFANTRY
 	power = 4
 	rarity = CCG_RARITY_RARE
@@ -554,8 +554,8 @@
 
 /datum/ccg_card/rare_neutral_mystic
 	id = "rare_neutral_mystic"
-	name = "Mystic"
-	desc = "Neutral adventurer. A faith-touched arcyne student who clears the skies."
+	name = "秘术师"
+	desc = "中立冒险者。受信仰感召的奥术学徒，能令天空放晴。"
 	row = CCG_ROW_ARCHERS
 	power = 3
 	rarity = CCG_RARITY_RARE
@@ -564,8 +564,8 @@
 
 /datum/ccg_card/rare_neutral_sage
 	id = "rare_neutral_sage"
-	name = "Sage"
-	desc = "Neutral adventurer. A shielded healer who restores one fallen unit."
+	name = "贤者"
+	desc = "中立冒险者。持盾的治疗者，能复活一个阵亡单位。"
 	row = CCG_ROW_ARCHERS
 	power = 4
 	rarity = CCG_RARITY_RARE
@@ -574,8 +574,8 @@
 
 /datum/ccg_card/rare_neutral_luminary
 	id = "rare_neutral_luminary"
-	name = "Luminary"
-	desc = "Neutral adventurer. A holy blade whose presence strengthens the line."
+	name = "明光师"
+	desc = "中立冒险者。只需现身便能增强战线的神圣剑士。"
 	row = CCG_ROW_INFANTRY
 	power = 5
 	rarity = CCG_RARITY_RARE
@@ -584,8 +584,8 @@
 
 /datum/ccg_card/rare_neutral_sorcerer
 	id = "rare_neutral_sorcerer"
-	name = "Sorcerer"
-	desc = "Neutral adventurer. Learned arcyne fire breaks the strongest battlefield piece."
+	name = "术士"
+	desc = "中立冒险者。精研奥术，以烈焰摧毁战场上最强的单位。"
 	row = CCG_ROW_ARCHERS
 	power = 5
 	rarity = CCG_RARITY_RARE
@@ -594,8 +594,8 @@
 
 /datum/ccg_card/rare_neutral_spellsinger
 	id = "rare_neutral_spellsinger"
-	name = "Spellsinger"
-	desc = "Neutral adventurer. Arcane song doubles the archers row."
+	name = "咒歌者"
+	desc = "中立冒险者。以奥术歌谣使弓手列战力翻倍。"
 	row = CCG_ROW_ARCHERS
 	power = 3
 	rarity = CCG_RARITY_RARE
@@ -605,8 +605,8 @@
 
 /datum/ccg_card/rare_neutral_spellfist
 	id = "rare_neutral_spellfist"
-	name = "Spellfist"
-	desc = "Neutral adventurer. An arcyne martial artist flexible enough for either front."
+	name = "魔拳师"
+	desc = "中立冒险者。灵活应对两处战线的奥术武者。"
 	row = CCG_ROW_INFANTRY
 	power = 5
 	rarity = CCG_RARITY_RARE
@@ -615,8 +615,8 @@
 
 /datum/ccg_card/rare_neutral_arcyne_trickster
 	id = "rare_neutral_arcyne_trickster"
-	name = "Arcyne Trickster"
-	desc = "Neutral adventurer. A spell-thief whose misdirection draws two cards."
+	name = "奥术诡术师"
+	desc = "中立冒险者。施展障眼法抽取两张牌的法术窃贼。"
 	row = CCG_ROW_ARCHERS
 	power = 2
 	rarity = CCG_RARITY_RARE
@@ -625,8 +625,8 @@
 
 /datum/ccg_card/rare_neutral_antiquarian
 	id = "rare_neutral_antiquarian"
-	name = "Antiquarian"
-	desc = "Neutral adventurer. Scholarship and contacts recover one fallen unit."
+	name = "古物学者"
+	desc = "中立冒险者。凭借学识与人脉找回一个阵亡单位。"
 	row = CCG_ROW_ARCHERS
 	power = 2
 	rarity = CCG_RARITY_RARE
@@ -635,8 +635,8 @@
 
 /datum/ccg_card/rare_neutral_forlorn_hope
 	id = "rare_neutral_forlorn_hope"
-	name = "Forlorn Hope Mercenary"
-	desc = "Neutral mercenary. A desperate vanguard card with battlefield bite."
+	name = "绝望先锋佣兵"
+	desc = "中立佣兵。凶狠搏命的先锋卡牌。"
 	row = CCG_ROW_INFANTRY
 	power = 4
 	rarity = CCG_RARITY_RARE
@@ -645,8 +645,8 @@
 
 /datum/ccg_card/rare_neutral_confessor
 	id = "rare_neutral_confessor"
-	name = "Confessor"
-	desc = "Neutral inquisitorial hunter. Subterfuge exposes a weakness in the enemy infantry."
+	name = "告解师"
+	desc = "中立审判庭猎手。以诡计揭露敌方步兵的弱点。"
 	row = CCG_ROW_ARCHERS
 	power = 4
 	rarity = CCG_RARITY_RARE
@@ -655,8 +655,8 @@
 
 /datum/ccg_card/rare_neutral_disciple
 	id = "rare_neutral_disciple"
-	name = "Disciple"
-	desc = "Neutral inquisitorial monk. A hard lesson that keeps the line steady."
+	name = "门徒"
+	desc = "中立审判庭武僧。以严厉教诲稳固战线。"
 	row = CCG_ROW_INFANTRY
 	power = 4
 	rarity = CCG_RARITY_RARE
@@ -665,8 +665,8 @@
 
 /datum/ccg_card/rare_neutral_absolver
 	id = "rare_neutral_absolver"
-	name = "Absolver"
-	desc = "Neutral inquisitorial agent. A hard rite clears foul weather from the field."
+	name = "赦罪师"
+	desc = "中立审判庭特使。以严苛仪式驱散场上的恶劣天气。"
 	row = CCG_ROW_INFANTRY
 	power = 5
 	rarity = CCG_RARITY_RARE
@@ -675,8 +675,8 @@
 
 /datum/ccg_card/rare_neutral_inquisitor
 	id = "rare_neutral_inquisitor"
-	name = "Inquisitor"
-	desc = "Neutral inquisitorial hunter. Judgment destroys the strongest enemy front."
+	name = "审判官"
+	desc = "中立审判庭猎手。以裁决摧毁敌方最强的前线单位。"
 	row = CCG_ROW_INFANTRY
 	power = 6
 	rarity = CCG_RARITY_RARE
@@ -685,8 +685,8 @@
 
 /datum/ccg_card/rare_neutral_psyaltrist
 	id = "rare_neutral_psyaltrist"
-	name = "Psyaltrist"
-	desc = "Neutral inquisitorial cantor. Practical songcraft doubles the infantry row."
+	name = "圣咏师"
+	desc = "中立审判庭颂唱者。以歌艺使步兵列战力翻倍。"
 	row = CCG_ROW_INFANTRY
 	power = 2
 	rarity = CCG_RARITY_RARE
@@ -696,8 +696,8 @@
 
 /datum/ccg_card/unique_neutral_adjudicator
 	id = "unique_neutral_adjudicator"
-	name = "Adjudicator"
-	desc = "Neutral hero. Psydonite knight entrusted with lesser invocations."
+	name = "裁决者"
+	desc = "中立英雄。获授初阶祈咒的普赛顿骑士。"
 	row = CCG_ROW_INFANTRY
 	power = 7
 	rarity = CCG_RARITY_UNIQUE
@@ -707,8 +707,8 @@
 
 /datum/ccg_card/unique_neutral_ordinator
 	id = "unique_neutral_ordinator"
-	name = "Ordinator"
-	desc = "Neutral hero. A heavy inquisitorial judge who breaks the strongest piece."
+	name = "律令官"
+	desc = "中立英雄。摧毁最强单位的重甲审判庭法官。"
 	row = CCG_ROW_INFANTRY
 	power = 8
 	rarity = CCG_RARITY_UNIQUE
@@ -718,8 +718,8 @@
 
 /datum/ccg_card/unique_neutral_hag
 	id = "unique_neutral_hag"
-	name = "Hag"
-	desc = "Neutral hero. A high-fantasy curse-worker from the wild margins."
+	name = "巫婆"
+	desc = "中立英雄。来自荒野边陲、充满奇幻色彩的诅咒施术者。"
 	row = CCG_ROW_WEATHER
 	power = 0
 	rarity = CCG_RARITY_UNIQUE
@@ -729,8 +729,8 @@
 
 /datum/ccg_card/unique_neutral_otavan_repentant
 	id = "unique_neutral_otavan_repentant"
-	name = "Otavan Repentant"
-	desc = "Neutral hero. An exiled penitent whose heresy hunts the strongest piece."
+	name = "奥塔瓦忏悔者"
+	desc = "中立英雄。被放逐的忏悔者，以异端之术猎杀最强单位。"
 	row = CCG_ROW_ARCHERS
 	power = 7
 	rarity = CCG_RARITY_UNIQUE
@@ -740,8 +740,8 @@
 
 /datum/ccg_card/rare_neutral_szorendnizine_shepherd
 	id = "rare_neutral_szorendnizine_shepherd"
-	name = "Szorendnizine Shepherd"
-	desc = "Neutral adventurer. A Free City shepherd hardened by wilderness and axe."
+	name = "瑟伦德尼日内牧羊人"
+	desc = "中立冒险者。在荒野与斧战中饱经磨炼的自由城牧羊人。"
 	row = CCG_ROW_INFANTRY
 	power = 4
 	rarity = CCG_RARITY_RARE

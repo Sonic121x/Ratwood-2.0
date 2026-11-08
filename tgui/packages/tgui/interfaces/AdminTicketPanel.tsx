@@ -329,7 +329,7 @@ export const AdminTicketPanel = (props) => {
                                 })
                               }
                             >
-                              Pref Refresh
+                              刷新偏好
                             </Button>
                             <Button
                               compact

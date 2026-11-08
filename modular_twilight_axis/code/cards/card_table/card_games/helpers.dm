@@ -1,6 +1,6 @@
 /proc/card_table_display_name(mob/user)
 	if(!user)
-		return "Unknown"
+		return "未知"
 	if(user.real_name)
 		return user.real_name
 	return user.name

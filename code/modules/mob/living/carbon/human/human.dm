@@ -1310,19 +1310,19 @@
 		return FALSE
 	// Not spawned from their preferences, such as an admin-made character, so the name is not theirs to replace
 	if(!pref_base_name)
-		to_chat(admin, span_warning("[real_name] was not spawned from a saved character, so they keep their name."))
+		to_chat(admin, span_warning("[real_name]并非从已保存角色生成，将保留当前姓名。"))
 		return FALSE
 	var/list/randomise = client.prefs.randomise
 	if(randomise[RANDOM_NAME] || (randomise[RANDOM_NAME_ANTAG] && mind?.special_role))
-		to_chat(admin, span_warning("[ckey] has random names on, so [real_name] keeps their name."))
+		to_chat(admin, span_warning("[ckey]启用了随机姓名，[real_name]将保留当前姓名。"))
 		return FALSE
 	var/new_name = get_refreshed_name(saved_name)
 	if(!new_name)
-		to_chat(admin, span_warning("[real_name] was renamed in the round, so they keep that name rather than their saved [saved_name]."))
+		to_chat(admin, span_warning("[real_name]在本回合中改过名，将保留当前姓名，不恢复为已保存的[saved_name]。"))
 		return FALSE
 	// Spawning refuses a saved name already in the round, so this does too
 	if((new_name in GLOB.chosen_names) || (saved_name in GLOB.chosen_names))
-		to_chat(admin, span_warning("Another character is already named [saved_name], so [real_name] keeps their name."))
+		to_chat(admin, span_warning("已有其他角色名为[saved_name]，[real_name]将保留当前姓名。"))
 		return FALSE
 	var/old_name = real_name
 	// Roles that add a title do not all update this, so it holds either the full name or the saved name it was built from
@@ -1337,7 +1337,7 @@
 	pref_base_name = saved_name
 	rename_character_records(old_name, new_name)
 	log_admin("[key_name(admin)]'s preferences refresh renamed [old_name] to [new_name].")
-	to_chat(admin, span_notice("[old_name] now goes by [new_name]."))
+	to_chat(admin, span_notice("[old_name]现已更名为[new_name]。"))
 	return TRUE
 
 /// Moves everything kept under a character's name over to their new one, so a rename cannot lift an outlawry,
@@ -1367,16 +1367,16 @@
 /// Admin preferences refresh from VV, the player panel and the ticket window.
 /mob/living/carbon/human/proc/admin_pref_refresh(mob/admin)
 	if(!client?.prefs)
-		to_chat(admin, span_warning("[src] has no connected player whose preferences can be reapplied."))
+		to_chat(admin, span_warning("[src]没有可重新应用偏好的在线玩家。"))
 		return FALSE
 	// copy_to would set_species the saved species onto the wildshape or werewolf form itself
 	if(is_shapeshift_shell())
-		to_chat(admin, span_warning("[src] is shapeshifted. Wait until they return to their own body."))
+		to_chat(admin, span_warning("[src]正处于变形状态，请等待其恢复本体。"))
 		return FALSE
 	// Logged before acting so the record survives a runtime partway through copy_to
 	log_admin("[key_name(admin)] refreshed the preferences of [key_name(src)].")
-	message_admins(span_adminnotice("[key_name_admin(admin)] refreshed the preferences of [key_name_admin(src)]."))
-	admin_ticket_log(src, "<font color='green'>[key_name_admin(admin)] refreshed the preferences of [key_name_admin(src)].</font>")
+	message_admins(span_adminnotice("[key_name_admin(admin)]刷新了[key_name_admin(src)]的偏好。"))
+	admin_ticket_log(src, "<font color='green'>[key_name_admin(admin)]刷新了[key_name_admin(src)]的偏好。</font>")
 	reapply_preferences(admin)
 	return TRUE
 

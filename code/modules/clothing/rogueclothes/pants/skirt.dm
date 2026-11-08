@@ -35,8 +35,8 @@
 	color = CLOTHING_BLACK
 
 /obj/item/clothing/under/roguetown/skirt/courtphysician
-	name = "sanguine skirt"
-	desc = "An elegant velvet skirt that does you no good when running to someone's aid."
+	name = "绯红裙"
+	desc = "一条优雅的天鹅绒裙，奔赴救人时却毫无帮助。"
 	icon_state = "docskirt"
 	item_state = "docskirt"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/special/courtphys.dmi'
@@ -61,8 +61,8 @@
 		add_overlay(pic)
 
 /obj/item/clothing/under/roguetown/skirt/desert
-	name = "desert skirt"
-	desc = "At least it cools me off, but what of the modesty?"
+	name = "沙漠裙"
+	desc = "至少穿着凉快，可端庄该怎么办？"
 	icon_state = "desertskirt"
 	item_state = "desertskirt"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/pants.dmi'
@@ -70,8 +70,8 @@
 	sleeved = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/helpers/sleeves_pants.dmi'
 
 /obj/item/clothing/under/roguetown/skirt/formal
-	name = "knee-high skirt"
-	desc = "A fitted skirt tailored to follow the line of the legs, narrowing toward the hem."
+	name = "及膝裙"
+	desc = "贴合腿部线条的合身裙装，裙摆逐渐收窄。"
 	icon_state = "formalskirt"
 	item_state = "formalskirt"
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/pants.dmi'
@@ -82,8 +82,8 @@
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/pants.dmi'
 
 /obj/item/clothing/under/roguetown/skirt/short
-	name = "short skirt"
-	desc = "short, flowing, and not very modest."
+	name = "短裙"
+	desc = "短小、飘逸，也不怎么端庄。"
 	item_state = "surcoatshortskirt"
 	icon_state = "surcoatshortskirt"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/pants.dmi'

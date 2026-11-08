@@ -2161,8 +2161,8 @@
 	effectedstats = list(STATKEY_STR = 1,STATKEY_CON = 1)
 
 /atom/movable/screen/alert/status_effect/buff/motive
-	name = "Motive"
-	desc = span_bloody("GRAGGAR'S ARMAMENTS CALL ME TO SLAUGHTER!! KILL!! RIP!! CONSUME!!")
+	name = "杀意"
+	desc = span_bloody("格拉加尔的武装召我屠戮！！杀戮！！撕裂！！吞噬！！")
 	icon_state = "call_to_slaughter"
 
 #define EORANAURA_FILTER "eoranaura"

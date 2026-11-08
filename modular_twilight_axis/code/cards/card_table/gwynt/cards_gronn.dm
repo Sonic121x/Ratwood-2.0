@@ -2,8 +2,8 @@
 
 /datum/ccg_card/rare_berserker
 	id = "rare_berserker"
-	name = "Berserker"
-	desc = "Turns into a bear under Mardroeme."
+	name = "狂战士"
+	desc = "受到狂战蘑菇影响时变成熊。"
 	row = CCG_ROW_INFANTRY
 	power = 4
 	rarity = CCG_RARITY_BASE
@@ -14,8 +14,8 @@
 
 /datum/ccg_card/unique_gronn_war_bear
 	id = "unique_gronn_war_bear"
-	name = "War Bear"
-	desc = "Hero. A Gronn war beast roused by berserker rites."
+	name = "战熊"
+	desc = "英雄。被狂战仪式唤醒的格隆恩战兽。"
 	row = CCG_ROW_INFANTRY
 	power = 10
 	rarity = CCG_RARITY_UNIQUE
@@ -25,8 +25,8 @@
 
 /datum/ccg_card/rare_gronn_privateer
 	id = "rare_gronn_privateer"
-	name = "Gronnic Privateer"
-	desc = "A northern raider with hard-won discipline."
+	name = "格隆恩私掠者"
+	desc = "在艰苦磨炼中养成纪律的北方劫掠者。"
 	row = CCG_ROW_INFANTRY
 	power = 5
 	rarity = CCG_RARITY_RARE
@@ -36,8 +36,8 @@
 
 /datum/ccg_card/rare_gronn_heavy
 	id = "rare_gronn_heavy"
-	name = "Fjall Jarnklaeddur"
-	desc = "Heavy Gronn infantry in iron and fur."
+	name = "菲亚尔铁甲兵"
+	desc = "披铁甲、裹毛皮的格隆恩重步兵。"
 	row = CCG_ROW_INFANTRY
 	power = 6
 	rarity = CCG_RARITY_RARE
@@ -47,8 +47,8 @@
 
 /datum/ccg_card/rare_gronn_bone_shaman
 	id = "rare_gronn_bone_shaman"
-	name = "Gronn Bone Shaman"
-	desc = "A rite-speaker who turns fury into bears under Mardroeme."
+	name = "格隆恩骨萨满"
+	desc = "主持仪式的萨满，借狂战蘑菇将怒火化为战熊。"
 	row = CCG_ROW_INFANTRY
 	power = 3
 	rarity = CCG_RARITY_RARE
@@ -59,8 +59,8 @@
 
 /datum/ccg_card/rare_gronn_atgervi
 	id = "rare_gronn_atgervi"
-	name = "Atgervi"
-	desc = "Gronn Varangian warrior-trader hardened by far campaigns."
+	name = "阿特格维"
+	desc = "兼营贸易的格隆恩瓦兰吉战士，在远征中饱经磨炼。"
 	row = CCG_ROW_INFANTRY
 	power = 5
 	rarity = CCG_RARITY_RARE
@@ -70,8 +70,8 @@
 
 /datum/ccg_card/rare_gronn_atgervi_shaman
 	id = "rare_gronn_atgervi_shaman"
-	name = "Atgervi Shaman"
-	desc = "Northern rite-speaker who wakes the berserkers."
+	name = "阿特格维萨满"
+	desc = "唤醒狂战士的北方仪式主持者。"
 	row = CCG_ROW_INFANTRY
 	power = 3
 	rarity = CCG_RARITY_RARE
@@ -82,8 +82,8 @@
 
 /datum/ccg_card/unique_gronn_trollslayer
 	id = "unique_gronn_trollslayer"
-	name = "Trollslayer"
-	desc = "Hero. A bare-skinned axe oath with no road back."
+	name = "巨魔屠夫"
+	desc = "英雄。赤身持斧立下誓言，从此再无退路。"
 	row = CCG_ROW_INFANTRY
 	power = 7
 	rarity = CCG_RARITY_UNIQUE
@@ -94,8 +94,8 @@
 
 /datum/ccg_card/unique_gronn_guds_klor
 	id = "unique_gronn_guds_klor"
-	name = "Guds Klor"
-	desc = "Hero. A northern shaman whose claws carry old rites."
+	name = "神之爪"
+	desc = "英雄。利爪承载古老仪式的北方萨满。"
 	row = CCG_ROW_INFANTRY
 	power = 8
 	rarity = CCG_RARITY_UNIQUE
@@ -106,8 +106,8 @@
 
 /datum/ccg_card/unique_gronn_norsian_griddar
 	id = "unique_gronn_norsian_griddar"
-	name = "Norsian Griddar"
-	desc = "Hero. A foreign warrior seeking a new home or a glorious death."
+	name = "诺尔西近卫"
+	desc = "英雄。寻求新家园或光荣战死的异乡战士。"
 	row = CCG_ROW_INFANTRY
 	power = 7
 	rarity = CCG_RARITY_UNIQUE

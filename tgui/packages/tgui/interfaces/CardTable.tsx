@@ -3,7 +3,7 @@ import { Button, Section, Stack } from 'tgui-core/components';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
-
+import { CARD_DISPLAY } from './common/displayNames';
 type Card = {
   index?: number;
   label: string;
@@ -118,22 +118,22 @@ type Data = {
 };
 
 const stageText = {
-  lobby: 'Lobby',
-  playing: 'Playing',
-  finished: 'Finished',
+  lobby: '等候中',
+  playing: '进行中',
+  finished: '已结束',
 };
 
 const resultText: Record<string, string> = {
-  Bust: 'bust',
-  Win: 'won',
-  Lose: 'lost',
-  Push: 'push',
-  Winner: 'won',
-  Lost: 'lost',
-  Out: 'won',
-  Fool: 'fool',
-  Left: 'left the table',
-  Dealer: 'dealer',
+  Bust: '爆牌',
+  Win: '获胜',
+  Lose: '落败',
+  Push: '平局',
+  Winner: '获胜',
+  Lost: '落败',
+  Out: '获胜',
+  Fool: '傻瓜',
+  Left: '已离席',
+  Dealer: '庄家', Fold: '弃牌',
 };
 
 const suitMap: Record<string, string> = {
@@ -402,22 +402,22 @@ const statusText = (player?: Player) => {
 
   const parts: string[] = [];
   if (player.standing) {
-    parts.push('standing');
+    parts.push('停牌');
   }
   if (player.busted) {
-    parts.push('bust');
+    parts.push('爆牌');
   }
   if (player.poker_folded) {
-    parts.push('folded');
+    parts.push('弃牌');
   }
   if (player.poker_all_in) {
-    parts.push('all in');
+    parts.push('全押');
   }
   if (player.ready) {
-    parts.push('ready');
+    parts.push('已准备');
   }
   if (player.left) {
-    parts.push('left');
+    parts.push('已离席');
   }
   if (player.result) {
     parts.push(resultText[player.result] || player.result);
@@ -572,7 +572,7 @@ const CardFace = (props: {
 const CardRow = (props: { cards: Card[]; small?: boolean }) => {
   const { cards, small } = props;
   if (!cards?.length) {
-    return <span style={{ opacity: 0.65 }}>No cards</span>;
+    return <span style={{ opacity: 0.65 }}>无牌</span>;
   }
   return (
     <div style={rowStyle}>
@@ -639,14 +639,14 @@ const Seat = (props: {
     getCardHighlight,
     onCardClick,
   } = props;
-  const label = player ? player.name : `Seat ${seatNumber}`;
+  const label = player ? player.name : `座位${seatNumber}`;
   const activeRole =
     player && !player.left && player.name === attacker
-      ? 'Their turn'
+      ? '当前行动者'
       : player && !player.left && player.name === defender
-        ? 'Defending'
+        ? '防守中'
         : player && !player.left && player.name === dealer
-          ? 'Dealer'
+          ? '庄家'
           : null;
   const hasVisibleHand = !!player?.hand?.some((card) => !card.hidden);
   const showCards = !!player?.hand?.length && (isMe || hasVisibleHand);
@@ -664,14 +664,14 @@ const Seat = (props: {
     >
       <div style={{ fontWeight: 700, marginBottom: '4px' }}>
         {label}
-        {isMe ? ' (you)' : ''}
+        {isMe ? '（你）' : ''}
       </div>
       <div style={{ minHeight: '16px', color: '#f4cf5c', fontSize: '12px' }}>
         {activeRole || statusText(player)}
       </div>
       {gameType === 'poker' && player && (
         <div style={{ minHeight: '16px', opacity: 0.82, fontSize: '12px' }}>
-          Bet: {player.poker_bet || 0} / total: {player.poker_total_bet || 0}
+          下注：{player.poker_bet || 0} / 总计：{player.poker_total_bet || 0}
         </div>
       )}
       {player ? (
@@ -719,18 +719,18 @@ const Seat = (props: {
               />
             ))
           ) : (
-            <span style={{ opacity: 0.65 }}>Cards: {player.hand_count}</span>
+            <span style={{ opacity: 0.65 }}>手牌：{player.hand_count}</span>
           )}
           {showBlackjackValues &&
             player.hand_value !== null &&
             player.hand_value !== undefined && (
               <span style={{ opacity: 0.82, width: '100%', marginTop: '4px' }}>
-                Total: {player.hand_value}
+                总点数：{player.hand_value}
               </span>
             )}
         </div>
       ) : (
-        <div style={{ opacity: 0.55, marginTop: '16px' }}>Empty</div>
+        <div style={{ opacity: 0.55, marginTop: '16px' }}>空位</div>
       )}
     </div>
   );
@@ -741,7 +741,7 @@ const RulesBlock = (props: { rules: string[] }) => {
     return null;
   }
   return (
-    <Section title="Rules">
+    <Section title={CARD_DISPLAY.Rules}>
       <div style={{ display: 'grid', gap: '6px' }}>
         {props.rules.map((rule, index) => (
           <div key={index} style={{ opacity: 0.86 }}>
@@ -763,10 +763,10 @@ const XylixBlock = (props: {
   }
 
   return (
-    <Section title="Xylix">
+    <Section title={CARD_DISPLAY.Xylix}>
       <div style={{ display: 'grid', gap: '8px' }}>
         <div style={{ opacity: 0.82 }}>
-          Tier: T{xylix.tier}. Chance of getting caught: {xylix.caught_chance}%.
+          等级：T{xylix.tier}。被发现的概率：{xylix.caught_chance}%。
         </div>
         <div style={rowStyle}>
           {xylix.cards.map((card, index) => (
@@ -776,13 +776,13 @@ const XylixBlock = (props: {
             >
               <CardFace card={card} small />
               {xylix.can_choose && (
-                <Button onClick={() => onChoose(index + 1)}>Choose</Button>
+                <Button onClick={() => onChoose(index + 1)}>选择</Button>
               )}
             </div>
           ))}
         </div>
         {!xylix.can_choose && (
-          <div style={{ opacity: 0.72 }}>You can only look.</div>
+          <div style={{ opacity: 0.72 }}>你只能查看。</div>
         )}
       </div>
     </Section>
@@ -850,7 +850,7 @@ const SolitaireBoard = (props: {
           <div style={{ textAlign: 'center' }}>
             <CardFace label={stockCount ? '??' : ''} onClick={onDraw} />
             <div style={{ marginTop: '4px', fontSize: '12px' }}>
-              Stock: {stockCount}
+              牌库：{stockCount}
             </div>
           </div>
           <div style={{ textAlign: 'center' }}>
@@ -861,7 +861,7 @@ const SolitaireBoard = (props: {
               onClick={waste ? onSelectWaste : undefined}
             />
             <div style={{ marginTop: '4px', fontSize: '12px' }}>
-              Discard: {discardCount}
+              弃牌：{discardCount}
             </div>
           </div>
         </div>
@@ -875,7 +875,7 @@ const SolitaireBoard = (props: {
 
         {isSpider ? (
           <div style={{ textAlign: 'right', minWidth: '160px' }}>
-            <div style={{ fontSize: '12px', opacity: 0.78 }}>Completed</div>
+            <div style={{ fontSize: '12px', opacity: 0.78 }}>已完成</div>
             <div style={{ fontSize: '20px', fontWeight: 800 }}>
               {completedSets}/8
             </div>
@@ -967,7 +967,7 @@ const SolitaireBoard = (props: {
             opacity: 0.78,
           }}
         >
-          Start a round to deal the solitaire.
+          开始一局以发放接龙牌。
         </div>
       )}
 
@@ -1403,7 +1403,7 @@ export const CardTable = () => {
   };
 
   return (
-    <Window width={1020} height={840} title="Card Table">
+    <Window width={1020} height={840} title="Card Table" display_title={CARD_DISPLAY['Card Table']}>
       <Window.Content scrollable>
         <style>
           {`
@@ -1546,12 +1546,12 @@ export const CardTable = () => {
                   {game_type === 'blackjack' && (
                     <div>
                       <div style={{ marginBottom: '6px', fontWeight: 700 }}>
-                        Dealer: {dealer_name || '-'}{' '}
+                        庄家：{dealer_name || '-'}{' '}
                         {isFinished && dealer_value ? `(${dealer_value})` : ''}
                       </div>
                       <div style={{ opacity: 0.76 }}>
-                        The dealer's hand is shown at their seat.{' '}
-                        {dealer_rotation_label}.
+                        庄家的手牌显示在其座位处。{' '}
+                        {dealer_rotation_label}。
                       </div>
                     </div>
                   )}
@@ -1559,9 +1559,9 @@ export const CardTable = () => {
                   {game_type === 'fool' && (
                     <div>
                       <div style={{ ...rowStyle, marginBottom: '8px' }}>
-                        <b>Trump:</b> {suitMap[trump || ''] || trump || '-'}
-                        <b>Attack:</b> {table_attack || '-'}
-                        <b>Defense:</b> {table_defense || '-'}
+                        <b>王牌：</b> {suitMap[trump || ''] || trump || '-'}
+                        <b>进攻：</b> {table_attack || '-'}
+                        <b>防守：</b> {table_defense || '-'}
                       </div>
                       <div style={{ ...rowStyle, justifyContent: 'center' }}>
                         {table_pairs.length ? (
@@ -1616,14 +1616,14 @@ export const CardTable = () => {
                             poker_variant === 'draw' ? 'none' : undefined,
                         }}
                       >
-                        Community cards
+                        公共牌
                       </div>
                       <div style={{ marginBottom: '4px', opacity: 0.82 }}>
-                        Round: {poker_betting_round || 1}
+                        轮次：{poker_betting_round || 1}
                       </div>
                       <div style={{ marginBottom: '6px', opacity: 0.82 }}>
-                        Turn: {poker_turn || '-'} | Pot: {poker_pot} | Current
-                        bet: {poker_current_bet}
+                        回合：{poker_turn || '-'} | 底池：{poker_pot} | 当前
+                        注额：{poker_current_bet}
                       </div>
                       {poker_variant !== 'draw' &&
                         (community_cards.length ? (
@@ -1634,7 +1634,7 @@ export const CardTable = () => {
 
                   {game_type === 'none' && (
                     <div style={{ textAlign: 'center', opacity: 0.82 }}>
-                      Take a seat. The first player picks the game.
+                      请入座，由首位玩家选择游戏。
                     </div>
                   )}
 
@@ -1645,7 +1645,7 @@ export const CardTable = () => {
                   )}
                   {!!finalText && (
                     <div style={{ color: '#f4cf5c', fontWeight: 700 }}>
-                      Result: {finalText}
+                      结果：{finalText}
                     </div>
                   )}
 
@@ -1655,13 +1655,13 @@ export const CardTable = () => {
                         disabled={!!myPlayer?.standing}
                         onClick={() => act('blackjack_hit')}
                       >
-                        Hit
+                        要牌
                       </Button>
                       <Button
                         disabled={!!myPlayer?.standing}
                         onClick={() => act('blackjack_stand')}
                       >
-                        Stand
+                        停牌
                       </Button>
                     </div>
                   )}
@@ -1698,19 +1698,19 @@ export const CardTable = () => {
                             : act('poker_check')
                         }
                       >
-                        Bet
+                        下注
                       </Button>
                       <Button
                         disabled={!canActInPoker}
                         onClick={() => act('poker_all_in')}
                       >
-                        All In
+                        全押
                       </Button>
                       <Button
                         disabled={!canActInPoker}
                         onClick={() => act('poker_fold')}
                       >
-                        Fold
+                        弃牌
                       </Button>
                     </div>
                   )}
@@ -1721,13 +1721,13 @@ export const CardTable = () => {
                         disabled={!table_attack}
                         onClick={() => act('fool_take')}
                       >
-                        Take
+                        收牌
                       </Button>
                       <Button
                         disabled={!table_attack || !table_defense}
                         onClick={() => act('fool_end_attack')}
                       >
-                        Done
+                        完成
                       </Button>
                     </div>
                   )}
@@ -1738,21 +1738,21 @@ export const CardTable = () => {
 
           <Stack vertical>
             <Stack.Item>
-              <Section title="Game">
+              <Section title={CARD_DISPLAY.Game}>
                 <div style={rowStyle}>
                   <Button
                     selected={game_type === 'blackjack'}
                     disabled={!isLobby || !is_host}
                     onClick={() => act('set_game', { game: 'blackjack' })}
                   >
-                    Blackjack
+                    二十一点
                   </Button>
                   <Button
                     selected={game_type === 'poker'}
                     disabled={!isLobby || !is_host}
                     onClick={() => act('set_game', { game: 'poker' })}
                   >
-                    Poker
+                    扑克
                   </Button>
                 </div>
 
@@ -1765,7 +1765,7 @@ export const CardTable = () => {
                         act('set_blackjack_variant', { variant: 'gron' })
                       }
                     >
-                      Gronnic
+                      格隆恩式
                     </Button>
                     <Button
                       selected={blackjack_variant === 'valoria'}
@@ -1774,7 +1774,7 @@ export const CardTable = () => {
                         act('set_blackjack_variant', { variant: 'valoria' })
                       }
                     >
-                      Valorian
+                      瓦洛里亚式
                     </Button>
                     <Button
                       selected={blackjack_variant === 'azure'}
@@ -1783,7 +1783,7 @@ export const CardTable = () => {
                         act('set_blackjack_variant', { variant: 'azure' })
                       }
                     >
-                      Rockhillian
+                      岩丘式
                     </Button>
                     <Button
                       selected={blackjack_variant === 'grenzel'}
@@ -1792,7 +1792,7 @@ export const CardTable = () => {
                         act('set_blackjack_variant', { variant: 'grenzel' })
                       }
                     >
-                      Grenzelhoftian
+                      格伦泽尔霍夫特式
                     </Button>
                     <Button
                       selected={blackjack_variant === 'kazengun'}
@@ -1801,7 +1801,7 @@ export const CardTable = () => {
                         act('set_blackjack_variant', { variant: 'kazengun' })
                       }
                     >
-                      Kazengunite
+                      风郡式
                     </Button>
                   </div>
                 )}
@@ -1815,7 +1815,7 @@ export const CardTable = () => {
                         act('set_poker_variant', { variant: 'draw' })
                       }
                     >
-                      Rockhillian
+                      岩丘式
                     </Button>
                     <Button
                       selected={poker_variant === 'texas'}
@@ -1824,7 +1824,7 @@ export const CardTable = () => {
                         act('set_poker_variant', { variant: 'texas' })
                       }
                     >
-                      Raneshi
+                      拉涅申式
                     </Button>
                     <Button
                       selected={poker_variant === 'omaha'}
@@ -1833,7 +1833,7 @@ export const CardTable = () => {
                         act('set_poker_variant', { variant: 'omaha' })
                       }
                     >
-                      Valorian
+                      瓦洛里亚式
                     </Button>
                     <Button
                       selected={poker_variant === 'stud'}
@@ -1842,7 +1842,7 @@ export const CardTable = () => {
                         act('set_poker_variant', { variant: 'stud' })
                       }
                     >
-                      Giza
+                      吉萨式
                     </Button>
                   </div>
                 )}
@@ -1854,68 +1854,68 @@ export const CardTable = () => {
                       disabled={!is_host}
                       onClick={() => act('set_dealer_rotation', { rotates: 1 })}
                     >
-                      Rotating dealer
+                      轮流坐庄
                     </Button>
                     <Button
                       selected={!dealer_rotates}
                       disabled={!is_host}
                       onClick={() => act('set_dealer_rotation', { rotates: 0 })}
                     >
-                      Fixed dealer
+                      固定庄家
                     </Button>
                   </div>
                 )}
 
                 <div style={{ marginTop: '8px', opacity: 0.78 }}>
                   {game_type === 'none' ? (
-                    <>Seats: {players.length}/6. The first player picks the game.</>
+                    <>座位：{players.length}/6。由首位玩家选择游戏。</>
                   ) : (
                     <>
-                      Seats: {players.length}/{max_players}. Needed:{' '}
-                      {min_players}-{max_players}.
-                      {dealer_name ? ` Dealer: ${dealer_name}.` : ''}
+                      座位：{players.length}/{max_players}。所需人数：{' '}
+                      {min_players}-{max_players}。
+                      {dealer_name ? ` 庄家：${dealer_name}。` : ''}
                     </>
                   )}
                 </div>
                 {game_type !== 'none' && !is_host && (
                   <div style={{ marginTop: '8px', opacity: 0.78 }}>
-                    Only the first player to sit down can change the settings.
+                    只有首位入座的玩家可以更改设置。
                   </div>
                 )}
               </Section>
             </Stack.Item>
 
             <Stack.Item>
-              <Section title="Seat">
+              <Section title={CARD_DISPLAY.Seat}>
                 <div style={rowStyle}>
                   <Button
                     disabled={!isLobby}
                     onClick={() => act('join_player')}
                   >
-                    Sit
+                    入座
                   </Button>
-                  <Button onClick={() => act('join_observer')}>Watch</Button>
+                  <Button onClick={() => act('join_observer')}>观战</Button>
                   <Button
                     disabled={!is_player && !is_observer}
                     onClick={() => act('leave')}
                   >
-                    Leave
+                    离开
                   </Button>
                 </div>
               </Section>
             </Stack.Item>
 
             <Stack.Item>
-              <Section title="Round">
+              <Section title={CARD_DISPLAY.Round}>
                 <div style={rowStyle}>
                   <Button disabled={!can_start} onClick={() => act('start')}>
-                    Start
+                    开始
                   </Button>
                   <Button
                     disabled={!isFinished && players.length > 0}
                     onClick={() => act('reset_lobby')}
                   >
-                    Reset
+                    重置
                   </Button>
                 </div>
               </Section>
@@ -1931,7 +1931,7 @@ export const CardTable = () => {
 
             {!!observers.length && (
               <Stack.Item>
-                <Section title={`Watching (${observers.length})`}>
+                <Section title={`${CARD_DISPLAY.Watching} (${observers.length})`}>
                   {observers.join(', ')}
                 </Section>
               </Stack.Item>
@@ -1939,9 +1939,9 @@ export const CardTable = () => {
 
             {isFinished && (
               <Stack.Item>
-                <Section title="Game over">
+                <Section title={CARD_DISPLAY['Game over']}>
                   <Button onClick={() => act('reset_lobby')}>
-                    Back to lobby
+                    返回等候区
                   </Button>
                 </Section>
               </Stack.Item>

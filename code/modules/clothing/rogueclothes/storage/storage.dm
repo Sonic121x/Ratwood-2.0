@@ -191,8 +191,8 @@
 	component_type = /datum/component/storage/concrete/roguetown/belt/cloth
 
 /obj/item/storage/belt/rogue/leather/rope/upgraded
-	name = "pouch-fitted rope belt"
-	desc = "A length of strong rope repurposed into a belt, fitted with a pouch for the same space as a leather belt."
+	name = "带袋绳腰带"
+	desc = "用结实绳索改成的腰带，配有小袋，收纳空间与皮腰带相同。"
 	component_type = /datum/component/storage/concrete/roguetown/belt
 
 /obj/item/storage/belt/rogue/leather/rope/upgraded/dark
@@ -205,8 +205,8 @@
 	component_type = /datum/component/storage/concrete/roguetown/belt/cloth
 
 /obj/item/storage/belt/rogue/leather/cloth/upgraded
-	name = "pouch-fitted cloth sash"
-	desc = "A strip of cloth tied together at the ends into a makeshift belt, fitted with a pouch for the same space as a leather belt."
+	name = "带袋布腰带"
+	desc = "两端打结的布条充作腰带，配有小袋，收纳空间与皮腰带相同。"
 	component_type = /datum/component/storage/concrete/roguetown/belt
 
 /obj/item/storage/belt/rogue/leather/cloth/lady
@@ -573,16 +573,16 @@
 	component_type = /datum/component/storage/concrete/grid/orestore/bronze
 
 /obj/item/storage/backpack/rogue/backpack/trader
-	name = "trader's pack"
-	desc = "A travelling trader's pack, hung about with chests and bundles."
+	name = "行商背包"
+	desc = "旅行商人的背包，周围挂着箱子和包裹。"
 	icon = 'modular_twilight_axis/icons/roguetown/clothing/back.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/back.dmi'
 	icon_state = "backpack_trader"
 	item_state = "backpack_trader"
 
 /obj/item/storage/belt/rogue/leather/battleskirt/loincloth
-	name = "cloth loincloth"
-	desc = "A fine leather strap with a crude cloth covering, notched above the loincloth."
+	name = "布兜裆"
+	desc = "细皮带配上粗糙的遮挡布料，皮带上方留有挂扣。"
 	icon_state = "loincloth"
 	detail_tag = "_detail"
 	detail_color = CLOTHING_WHITE
@@ -599,8 +599,8 @@
 		add_overlay(pic)
 
 /obj/item/storage/belt/rogue/leather/belthooks
-	name = "belt hooks"
-	desc = "Etruscan-designed leather-wrapped hooks with an actuating hinge. To clip things to other things."
+	name = "腰带挂钩"
+	desc = "伊特鲁斯卡设计的皮革包覆铰链挂钩，用来将东西挂在别的东西上。"
 	icon_state = "belthooks"
 	worn_sprite_sex = FEMALE
 
@@ -608,23 +608,23 @@
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/belts.dmi'
 
 /obj/item/storage/belt/rogue/leather/beltshawl
-	name = "belt shawl"
-	desc = "A fancy shawl worn around the waist."
+	name = "腰披巾"
+	desc = "围在腰间的华丽披巾。"
 	icon_state = "beltshawl"
 	item_state = "beltshawl"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/belts.dmi'
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/belts.dmi'
 
 /obj/item/storage/belt/rogue/leather/hammerhold_sash
-	name = "hammerhold sash"
+	name = "铁锤堡腰带"
 	icon = 'modular_twilight_axis/icons/roguetown/clothing/belts.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/belts.dmi'
 	icon_state = "hammerhold_sash"
 	detail_tag = "_belt"
 
 /obj/item/storage/belt/rogue/leather/iron
-	name = "iron belt"
-	desc = "A fine leather belt that's been sleeved within many segments of iron, protecting its delicate innards from prying hands-and-blades."
+	name = "铁片腰带"
+	desc = "精制皮腰带外包覆着多段铁片，保护柔软的内层免遭手指与刀刃的侵扰。"
 	icon_state = "ironplaque"
 	sewrepair = FALSE
 	anvilrepair = /datum/skill/craft/armorsmithing
@@ -632,8 +632,8 @@
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/belts.dmi'
 
 /obj/item/storage/belt/rogue/leather/sash/maid
-	name = "cloth sash"
-	desc = "A pliable sash made of wool meant to wrap tightly around the waist."
+	name = "布腰带"
+	desc = "柔软的羊毛腰带，用来紧紧缠住腰部。"
 	item_state = "maidsash"
 	icon_state = "maidsash"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/special/maids.dmi'

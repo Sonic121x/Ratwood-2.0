@@ -477,7 +477,7 @@
 	return ..()
 
 /datum/crafting_recipe/roguetown/turfs/tentwall/leather
-	name = "leather tent wall (1 stick, 1 leather)"
+	name = "皮革篷墙（1木棍、1皮革）"
 	result = /turf/closed/wall/mineral/rogue/tent/leather
 	reqs = list(/obj/item/grown/log/tree/stick = 1,
 				/obj/item/natural/hide/cured = 1)

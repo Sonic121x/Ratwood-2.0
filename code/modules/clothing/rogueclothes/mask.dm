@@ -431,8 +431,8 @@
 	item_state = "psydonmask"
 
 /obj/item/clothing/mask/rogue/facemask/steel/graggar
-	name = "vicious jawmask"
-	desc = "Shattered jaws, chipped teeth, sunken metal - fit for a skull of the same. It snarls in mimicry of the Sinistar's visage."
+	name = "凶暴颚面具"
+	desc = "碎裂的颚骨、残缺的牙齿与凹陷的金属，正配得上同样残破的头颅。它模仿凶星的面容，龇牙咆哮。"
 	icon_state = "graggarplatemask"
 	body_parts_covered = MOUTH|NOSE
 	flags_inv = HIDEFACE|HIDESNOUT
@@ -1085,8 +1085,8 @@
 	desc = "为恶魔而刻的符文与结界；黄金竟在违背常理的痛苦中锈蚀了。其中最醒目的是纳莱迪普赛圣十字形状的刻纹。轻型护甲能保护佩戴者的面部。"
 
 /obj/item/clothing/mask/rogue/blindfold/psydon
-	name = "blessed blindfold"
-	desc = "You will not conquer. You will endure. In pain, you affirm the Architect's design."
+	name = "受祝眼罩"
+	desc = "你不会征服，你将忍耐。在痛苦中，你印证造物主的设计。"
 	icon = 'modular_twilight_axis/icons/roguetown/clothing/masks.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/masks.dmi'
 	icon_state = "psyblindfold"
@@ -1094,20 +1094,20 @@
 	tint = 1
 
 /obj/item/clothing/mask/rogue/eyepatch/fake
-	desc = "An eyepatch, fitted for the right eye. It has an almost imperceptible gap so that you can see something."
+	desc = "戴在右眼上的眼罩，留有几乎看不见的缝隙，让你还能看见些东西。"
 	block2add = null
 	icon = 'modular_twilight_axis/icons/roguetown/clothing/masks.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/masks.dmi'
 
 /obj/item/clothing/mask/rogue/eyepatch/left/fake
-	desc = "An eyepatch, fitted for the left eye. It has an almost imperceptible gap so that you can see something."
+	desc = "戴在左眼上的眼罩，留有几乎看不见的缝隙，让你还能看见些东西。"
 	block2add = null
 	icon = 'modular_twilight_axis/icons/roguetown/clothing/masks.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/masks.dmi'
 
 /obj/item/clothing/mask/rogue/facemask/xylixmask
-	name = "xylixian mask"
-	desc = "A ceramic mask, forever stuck with the joyful smile its patron god favors. While it will shatter easily from blows, its smug countenance shall taunt its foes."
+	name = "赛利克斯面具"
+	desc = "陶瓷面具上永远定格着守护神喜爱的欢笑。虽不堪击打，其自鸣得意的表情却足以嘲弄敌人。"
 	max_integrity = 50
 	armor = null
 	drop_sound = 'sound/foley/brickdrop.ogg'
@@ -1145,8 +1145,8 @@
 		add_overlay(pic2)
 
 /obj/item/clothing/mask/rogue/faceveil
-	name = "simple veil"
-	desc = "A remarkably plain veil meant to conceal ones face... if you wore this, a gust of wind would be all it takes to reveal your identity."
+	name = "简朴面纱"
+	desc = "极其朴素的遮面纱……戴上它，一阵风就足以暴露你的身份。"
 	icon_state = "faceveil"
 	flags_inv = HIDEFACE|HIDESNOUT
 	adjustable = CAN_CADJUST
@@ -1160,54 +1160,54 @@
 	AddComponent(/datum/component/adjustable_clothing, NECK, null, null, 'sound/foley/equip/rummaging-03.ogg', null, (UPD_HEAD|UPD_MASK))
 
 /obj/item/clothing/mask/rogue/physician/feld
-	name = "feldsher's mask"
-	desc = "Tragedy, neutrality, and comedy; the guise of a master, tempered against the most sorrowful and sudden consequences of bad medicine."
+	name = "外科医师面具"
+	desc = "悲剧、平静与喜剧；大师的面容，历经庸医误治最悲惨、最突然的后果而淬炼。"
 	icon_state = "pestramask"
 	item_state = "pestramask"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/masks.dmi'
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/masks.dmi'
 
 /obj/item/clothing/mask/rogue/physician/phys
-	name = "physicker's mask"
-	desc = "A beaked guise, stuffed with herbs to keep one's humors unmarred during more grizzlesome labors."
+	name = "医师面具"
+	desc = "塞满草药的鸟嘴面具，在骇人的工作中保护佩戴者的体液免受污染。"
 	icon_state = "feldmask"
 	item_state = "feldmask"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/masks.dmi'
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/masks.dmi'
 
 /obj/item/clothing/mask/rogue/shepherd/shadowmask/spymaster
-	name = "hand's halfmask"
+	name = "执政之手的半面罩"
 	icon_state = "handmask"
-	desc = "A sleek, contoured halfmask of silk."
+	desc = "光滑贴面的丝绸半面罩。"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/masks.dmi'
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/masks.dmi'
 
 /obj/item/clothing/mask/rogue/spectacles/sglasses
-	name = "smokey onyxa spectacles"
-	desc = "Death has come to your little town, Sheriff. Now, you can either ignore it, or you can help me to stop it."
+	name = "烟色缟玛瑙眼镜"
+	desc = "死亡降临了你的小镇，治安官。现在，你可以选择视而不见，也可以帮我阻止它。"
 	icon_state = "sglasses"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/masks.dmi'
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/masks.dmi'
 
 /obj/item/clothing/mask/rogue/spectacles/thin
-	name = "thin-lensed spectacles"
+	name = "薄镜片眼镜"
 	icon_state = "glassesa"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/masks.dmi'
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/masks.dmi'
 
 /obj/item/clothing/mask/rogue/xylixmask/ceramic
-	name = "ceramic mask"
+	name = "陶瓷面具"
 	item_state = "ceramicmask"
 	icon_state = "ceramicmask"
-	desc = "An ivory ceramic mask, plain and vacant. What is a joke with a smile missing? Ever so drought of what used to be painted with colors and joy."
+	desc = "象牙白的陶瓷面具，朴素而空洞。没有笑容的笑话还算什么？曾经缤纷欢快的色彩，如今早已干涸。"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/masks.dmi'
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/masks.dmi'
 
 /obj/item/clothing/mask/rogue/xylixmask/weathered
-	name = "weathered mask"
+	name = "风化面具"
 	item_state = "xylix_weathered"
 	icon_state = "xylix_weathered"
-	desc = "An ancient ceramic face. It looks weathered, the sort molded by Xylixian worshippers of many yils past. Even when cast aside, it feels like the hardened clay has never left your hands. As if it always finds a way back into your palms."
+	desc = "古老的陶瓷面容，饱经风霜，似是许多年前赛利克斯信徒捏制的款式。即便将其抛弃，仍觉得坚硬的陶土从未离开双手，仿佛它总能回到你的掌心。"
 
 	max_integrity = 200
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/masks.dmi'

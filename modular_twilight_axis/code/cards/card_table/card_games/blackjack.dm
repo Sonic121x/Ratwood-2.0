@@ -99,7 +99,7 @@
 				player.standing = TRUE
 			if(mark_actions)
 				blackjack_mark_action(player, player.busted)
-		message = "[player.name] plays the dealer's hand."
+		message = "[player.name]操作庄家的手牌。"
 
 /datum/card_table_session/proc/blackjack_finish()
 	var/datum/card_table_player/table_dealer = dealer_player()
@@ -123,7 +123,7 @@
 		else
 			player.result = "Lose"
 	stage = CARD_TABLE_STAGE_FINISHED
-	message = "Blackjack is over."
+	message = "二十一点结束。"
 
 /datum/card_table_session/proc/blackjack_hit(mob/user)
 	var/datum/card_table_player/player = player_for_user(user)
@@ -136,9 +136,9 @@
 	if(hand_value(player.hand) > 21)
 		player.busted = TRUE
 		player.standing = TRUE
-		message = "[player.name] busts."
+		message = "[player.name]爆牌。"
 	else
-		message = "[player.name] takes a card."
+		message = "[player.name]要了一张牌。"
 	blackjack_mark_action(player, player.busted)
 	blackjack_process_spirit_turn(FALSE)
 	if(blackjack_all_done())
@@ -150,7 +150,7 @@
 	if(stage != CARD_TABLE_STAGE_PLAYING || game_type != CARD_TABLE_GAME_BLACKJACK || !player)
 		return FALSE
 	player.standing = TRUE
-	message = "[player.name] stands."
+	message = "[player.name]停牌。"
 	blackjack_process_spirit_turn()
 	if(blackjack_all_done())
 		blackjack_finish()
@@ -176,7 +176,7 @@
 		blackjack_mark_action(player, player.busted)
 	xylix_cheat_used += user.ckey
 	xylix_check_exposure(user)
-	to_chat(user, span_notice("Xylix nudges [card_table_card_label(card)] right where you need it."))
+	to_chat(user, span_notice("赛利克斯将[card_table_card_label(card)]推到你正需要的位置。"))
 	if(game_type == CARD_TABLE_GAME_BLACKJACK)
 		blackjack_process_spirit_turn(FALSE)
 	if(game_type == CARD_TABLE_GAME_BLACKJACK && blackjack_all_done())

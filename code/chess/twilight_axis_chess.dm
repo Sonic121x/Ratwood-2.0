@@ -46,10 +46,10 @@
 
 /proc/chess_side_name(color)
 	if(color == CHESS_WHITE)
-		return "White"
+		return "白方"
 	if(color == CHESS_BLACK)
-		return "Black"
-	return "Nobody"
+		return "黑方"
+	return "无人"
 
 /proc/chess_piece_color(piece)
 	if(!istext(piece) || length(piece) < 2)
@@ -79,7 +79,7 @@
 
 /proc/chess_display_name(mob/user)
 	if(!user)
-		return "Unknown"
+		return "未知"
 	if(user.real_name)
 		return user.real_name
 	return user.name
@@ -95,8 +95,8 @@
 	return value
 
 /obj/item/chessboard_folded
-	name = "folded chessboard"
-	desc = "A wooden checkered board folded in half. It is designed for games such as chess, checkers, and backgammon."
+	name = "折叠棋盘"
+	desc = "对折收起的木制方格棋盘，可用于国际象棋、西洋跳棋和双陆棋等游戏。"
 	w_class = WEIGHT_CLASS_NORMAL
 	grid_width = 96
 	grid_height = 64
@@ -105,7 +105,7 @@
 
 /obj/item/chessboard_folded/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Use the board in hand to lay it out.")
+	. += span_info("在手中使用棋盘即可展开。")
 
 /obj/item/chessboard_folded/attack_self(mob/user)
 	if(!user)
@@ -116,12 +116,12 @@
 	if(!target_turf)
 		return
 	new /obj/structure/chessboard(target_turf)
-	user.visible_message(span_notice("[user] unfolds the chessboard."), span_notice("You unfold the chessboard."))
+	user.visible_message(span_notice("[user]展开了棋盘。"), span_notice("你展开了棋盘。"))
 	qdel(src)
 
 /obj/structure/chessboard
-	name = "chessboard"
-	desc = "A wooden checkered board laid open. It is designed for games such as chess, checkers, and backgammon."
+	name = "棋盘"
+	desc = "展开的木制方格棋盘，可用于国际象棋、西洋跳棋和双陆棋等游戏。"
 	anchored = TRUE
 	density = FALSE
 	layer = OBJ_LAYER
@@ -137,9 +137,9 @@
 
 /obj/structure/chessboard/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Left click on the board with an empty hand to open the UI.")
-	. += span_info("Right click the board to rotate it.")
-	. += span_info("Fold the board once more by clicking on PACK BOARD in the board's UI.")
+	. += span_info("空手左键点击棋盘即可打开界面。")
+	. += span_info("右键点击棋盘即可旋转。")
+	. += span_info("点击棋盘界面中的“收起棋盘”即可再次折叠。")
 
 /obj/structure/chessboard/Initialize(mapload)
 	. = ..()
@@ -197,7 +197,7 @@
 	data["board_title"] = "Chessboard"
 	data["white_player_name"] = match.white_player_name ? match.white_player_name : "Available"
 	data["black_player_name"] = match.black_player_name ? match.black_player_name : "Available"
-	data["my_side"] = my_side ? chess_side_name(my_side) : "Observer"
+	data["my_side"] = my_side ? chess_side_name(my_side) : "旁观者"
 	data["my_side_key"] = my_side
 	data["turn"] = chess_side_name(match.turn)
 	data["turn_key"] = match.turn
@@ -248,7 +248,7 @@
 			var/color = params["color"]
 			if(match.claim_side(color, user))
 				clear_all_selections()
-				last_ui_message = "[chess_display_name(user)] takes the [chess_side_name(color)] seat."
+				last_ui_message = "[chess_display_name(user)]入座，执[chess_side_name(color)]棋。"
 				queue_ui_update()
 				return TRUE
 			return FALSE
@@ -258,7 +258,7 @@
 			var/release_color = params["color"]
 			if(match.release_side(release_color, user))
 				clear_all_selections()
-				last_ui_message = "[chess_display_name(user)] leaves the [chess_side_name(release_color)] seat."
+				last_ui_message = "[chess_display_name(user)]离开了[chess_side_name(release_color)]座位。"
 				queue_ui_update()
 				return TRUE
 			return FALSE
@@ -267,7 +267,7 @@
 			play_notify_sound()
 			if(match.pause_game(user))
 				clear_all_selections()
-				last_ui_message = "The game has been paused."
+				last_ui_message = "对局已暂停。"
 				queue_ui_update()
 				return TRUE
 			return FALSE
@@ -275,7 +275,7 @@
 		if("resume_game")
 			play_notify_sound()
 			if(match.resume_game(user))
-				last_ui_message = "The game has resumed."
+				last_ui_message = "对局已继续。"
 				queue_ui_update()
 				return TRUE
 			return FALSE
@@ -320,7 +320,7 @@
 				if(match.pending_mode)
 					last_ui_message = match.get_mode_switch_text()
 				else
-					last_ui_message = "Mode switched to [match.get_game_mode_label()]."
+					last_ui_message = "模式已切换为[match.get_game_mode_label()]。"
 				queue_ui_update()
 				return TRUE
 			return FALSE
@@ -329,7 +329,7 @@
 			play_notify_sound()
 			if(match.confirm_mode_switch(user))
 				clear_all_selections()
-				last_ui_message = "Mode switched to [match.get_game_mode_label()]."
+				last_ui_message = "模式已切换为[match.get_game_mode_label()]。"
 				queue_ui_update()
 				return TRUE
 			return FALSE
@@ -337,7 +337,7 @@
 		if("cancel_mode_switch")
 			play_notify_sound()
 			if(match.cancel_mode_switch(user))
-				last_ui_message = "The mode change request was canceled."
+				last_ui_message = "切换模式请求已取消。"
 				queue_ui_update()
 				return TRUE
 			return FALSE
@@ -345,18 +345,18 @@
 		if("pack_board")
 			play_notify_sound()
 			if(!match.can_pack_up())
-				to_chat(user, span_warning("The board can only be packed away when no game is in progress."))
+				to_chat(user, span_warning("只能在没有进行中的对局时收起棋盘。"))
 				return FALSE
-			notify_seated_players("[chess_display_name(user)] is packing up the board.", user.ckey)
-			user.visible_message(span_notice("[user] starts packing up the board."), span_notice("You start packing up the board."))
+			notify_seated_players("[chess_display_name(user)]正在收起棋盘。", user.ckey)
+			user.visible_message(span_notice("[user]开始收起棋盘。"), span_notice("你开始收起棋盘。"))
 			if(!do_after(user, CHESS_PACK_BOARD_TIME, target = src))
-				to_chat(user, span_warning("You stop packing up the board."))
+				to_chat(user, span_warning("你停止收起棋盘。"))
 				return FALSE
 			if(QDELETED(src) || !match || !match.can_pack_up())
 				return FALSE
 			playsound(src, CHESS_SOUND_PICKUP, 70, FALSE)
 			new /obj/item/chessboard_folded(get_turf(src))
-			user.visible_message(span_notice("[user] folds the board for travel."), span_notice("You fold the board for travel."))
+			user.visible_message(span_notice("[user]折好棋盘，准备带走。"), span_notice("你折好棋盘，准备带走。"))
 			qdel(src)
 			return TRUE
 
@@ -428,7 +428,7 @@
 	rotation_degrees = (rotation_degrees + 90) % 360
 	update_board_art()
 	if(user)
-		to_chat(user, span_notice("You rotate the board."))
+		to_chat(user, span_notice("你旋转了棋盘。"))
 
 /obj/structure/chessboard/proc/update_board_transform()
 	transform = turn(matrix(), rotation_degrees)
@@ -498,19 +498,19 @@
 	if(user_side)
 		if(match.should_require_player_reset_confirmation(src, user))
 			if(match.request_reset_confirmation(user))
-				notify_seated_players("[chess_display_name(user)] requests a board reset. A second player must confirm.", user.ckey)
+				notify_seated_players("[chess_display_name(user)]请求重置棋盘，需要另一位玩家确认。", user.ckey)
 				last_ui_message = match.get_reset_request_text()
 				return TRUE
 			return FALSE
 		if(match.reset_game(user))
 			clear_all_selections()
-			last_ui_message = "The board has been reset and both player seats are now open."
+			last_ui_message = "棋盘已重置，双方座位现已空出。"
 			playsound(src, CHESS_SOUND_RESET, 70, FALSE)
 			return TRUE
 		return FALSE
 
 	if(match.begin_observer_reset(user))
-		notify_seated_players("[chess_display_name(user)] requests a board reset. The game and player seats will be reset in 20 seconds unless the request is canceled.", user.ckey)
+		notify_seated_players("[chess_display_name(user)]请求重置棋盘。若不取消请求，20秒后将重置对局与玩家座位。", user.ckey)
 		last_ui_message = match.get_reset_request_text()
 		return TRUE
 	return FALSE
@@ -518,25 +518,25 @@
 /obj/structure/chessboard/proc/handle_confirm_reset_request(mob/user)
 	if(match.confirm_reset_request(user))
 		clear_all_selections()
-		last_ui_message = "The board has been reset and both player seats are now open."
+		last_ui_message = "棋盘已重置，双方座位现已空出。"
 		playsound(src, CHESS_SOUND_RESET, 70, FALSE)
 		return TRUE
 	return FALSE
 
 /obj/structure/chessboard/proc/handle_cancel_reset_request(mob/user)
 	if(match.cancel_reset_request(user))
-		last_ui_message = "The board reset request was canceled."
+		last_ui_message = "重置棋盘请求已取消。"
 		return TRUE
 	return FALSE
 
 /obj/structure/chessboard/proc/handle_flip_board(mob/user)
 	if(!match.can_flip_board())
-		to_chat(user, span_warning("The board cannot be flipped right now."))
+		to_chat(user, span_warning("现在不能掀翻棋盘。"))
 		return FALSE
-	notify_seated_players("[chess_display_name(user)] is about to flip the board.", user.ckey)
-	user.visible_message(span_warning("[user] grabs the board, preparing to flip it."), span_warning("You grab the board."))
+	notify_seated_players("[chess_display_name(user)]准备掀翻棋盘。", user.ckey)
+	user.visible_message(span_warning("[user]抓住棋盘，准备掀翻它。"), span_warning("你抓住了棋盘。"))
 	if(!do_after(user, CHESS_FLIP_BOARD_TIME, target = src))
-		to_chat(user, span_warning("You decide not to flip the board."))
+		to_chat(user, span_warning("你决定不掀翻棋盘。"))
 		return FALSE
 	if(QDELETED(src) || !match || !match.can_flip_board())
 		return FALSE
@@ -650,21 +650,21 @@
 	if(square < 1 || square > 64)
 		return FALSE
 	if(match.paused)
-		to_chat(user, span_warning("The game is paused."))
+		to_chat(user, span_warning("对局已暂停。"))
 		return FALSE
 	if(match.overturned)
-		to_chat(user, span_warning("The board has been flipped. Reset it first."))
+		to_chat(user, span_warning("棋盘已被掀翻，请先重置。"))
 		return FALSE
 	if(match.result_text)
-		to_chat(user, span_warning("The game has already ended."))
+		to_chat(user, span_warning("对局已经结束。"))
 		return FALSE
 
 	var/color = match.side_for_user(user)
 	if(!color)
-		to_chat(user, span_warning("You are not seated at this board."))
+		to_chat(user, span_warning("你尚未在此棋盘入座。"))
 		return FALSE
 	if(color != match.turn)
-		to_chat(user, span_warning("It is not your turn."))
+		to_chat(user, span_warning("还没轮到你。"))
 		return FALSE
 
 	var/selected = get_selection(user)
@@ -675,7 +675,7 @@
 			if(match.can_select_piece(square, color))
 				set_selection(user, square)
 			else
-				to_chat(user, span_warning("You can only move a different piece right now."))
+				to_chat(user, span_warning("现在你只能移动其他棋子。"))
 			return TRUE
 		return FALSE
 
@@ -687,7 +687,7 @@
 		if(match.can_select_piece(square, color))
 			set_selection(user, square)
 		else
-			to_chat(user, span_warning("You can only move a different piece right now."))
+			to_chat(user, span_warning("现在你只能移动其他棋子。"))
 		return TRUE
 
 	return FALSE
@@ -815,20 +815,20 @@
 
 /datum/chess_match/proc/get_mode_label(mode)
 	if(mode == BOARD_MODE_NONE)
-		return "Not selected"
+		return "未选择"
 	if(mode == BOARD_MODE_CHESS)
-		return "Chess"
+		return "国际象棋"
 	if(mode == BOARD_MODE_CHECKERS)
-		return "Checkers"
+		return "西洋跳棋"
 	if(mode == BOARD_MODE_NARDS)
-		return "Backgammon"
-	return "Unknown"
+		return "双陆棋"
+	return "未知"
 
 /datum/chess_match/proc/get_mode_label_with_rules(mode, use_checkers_flying_kings = checkers_flying_kings, use_nards_long_rules = nards_long_rules)
 	if(mode == BOARD_MODE_CHECKERS)
-		return use_checkers_flying_kings ? "Checkers (flying kings)" : "Checkers (short kings)"
+		return use_checkers_flying_kings ? "西洋跳棋（长距离王棋）" : "西洋跳棋（短距离王棋）"
 	if(mode == BOARD_MODE_NARDS)
-		return use_nards_long_rules ? "Backgammon (long rules)" : "Backgammon (short rules)"
+		return use_nards_long_rules ? "双陆棋（长式规则）" : "双陆棋（短式规则）"
 	return get_mode_label(mode)
 
 /datum/chess_match/proc/get_game_mode_label()
@@ -836,9 +836,9 @@
 
 /datum/chess_match/proc/get_current_rules_text()
 	if(game_mode == BOARD_MODE_CHECKERS)
-		return checkers_flying_kings ? "Kings can move any distance along a diagonal." : "Kings can move only one square at a time."
+		return checkers_flying_kings ? "王棋可沿斜线移动任意距离。" : "王棋每次只能移动一格。"
 	if(game_mode == BOARD_MODE_NARDS)
-		return nards_long_rules ? "Long backgammon rules are in use." : "Short backgammon rules are in use."
+		return nards_long_rules ? "当前使用长式双陆棋规则。" : "当前使用短式双陆棋规则。"
 	return null
 
 /datum/chess_match/proc/other_mode()
@@ -873,12 +873,12 @@
 
 /datum/chess_match/proc/get_reset_request_text()
 	if(pending_reset_requester_ckey)
-		var/requester = pending_reset_requester_name ? pending_reset_requester_name : "One of the players"
-		return "[requester] requests a board reset. The other player must confirm."
+		var/requester = pending_reset_requester_name ? pending_reset_requester_name : "一位玩家"
+		return "[requester]请求重置棋盘，需要另一位玩家确认。"
 	if(pending_observer_reset_ckey && pending_observer_reset_at > world.time)
-		var/requester2 = pending_observer_reset_name ? pending_observer_reset_name : "An observer"
+		var/requester2 = pending_observer_reset_name ? pending_observer_reset_name : "一位旁观者"
 		var/seconds_left = max(1, round((pending_observer_reset_at - world.time) / 10))
-		return "[requester2] started a board reset. The board will reset in [seconds_left] seconds. The request can be canceled."
+		return "[requester2]发起了棋盘重置。[seconds_left]秒后将重置棋盘，期间可以取消请求。"
 	return null
 
 /datum/chess_match/proc/can_confirm_reset_request(mob/user)
@@ -913,7 +913,7 @@
 		return FALSE
 	if(pending_reset_requester_ckey)
 		if(pending_reset_requester_ckey == user.ckey)
-			to_chat(user, span_warning("A board reset request has already been sent."))
+			to_chat(user, span_warning("已经发出过重置棋盘请求。"))
 		return FALSE
 	clear_reset_requests()
 	pending_reset_requester_ckey = user.ckey
@@ -931,7 +931,7 @@
 	if(!can_cancel_reset_request(user))
 		return FALSE
 	clear_reset_requests()
-	last_action_message = "The board reset request was canceled."
+	last_action_message = "重置棋盘请求已取消。"
 	return TRUE
 
 /datum/chess_match/proc/begin_observer_reset(mob/user)
@@ -940,7 +940,7 @@
 	if(side_for_user(user))
 		return FALSE
 	if(pending_reset_requester_ckey || (pending_observer_reset_ckey && pending_observer_reset_at > world.time))
-		to_chat(user, span_warning("A reset has already been requested."))
+		to_chat(user, span_warning("已经有人请求重置。"))
 		return FALSE
 	pending_observer_reset_ckey = user.ckey
 	pending_observer_reset_name = chess_display_name(user)
@@ -956,7 +956,7 @@
 		var/requester_name = pending_observer_reset_name
 		reset_game(null)
 		owner.clear_all_selections()
-		owner.last_ui_message = "Observer [requester_name] reset the board. The game has ended and both player seats are open."
+		owner.last_ui_message = "旁观者[requester_name]重置了棋盘。对局已结束，双方座位已空出。"
 		playsound(owner, CHESS_SOUND_RESET, 70, FALSE)
 		clear_reset_requests()
 		owner.queue_ui_update()
@@ -1012,7 +1012,7 @@
 
 /datum/chess_match/proc/overturn_board(mob/user)
 	if(overturned)
-		to_chat(user, span_warning("The board has already been flipped."))
+		to_chat(user, span_warning("棋盘已经被掀翻了。"))
 		return FALSE
 
 	if(game_mode == BOARD_MODE_NARDS)
@@ -1059,9 +1059,9 @@
 	clear_reset_requests()
 	last_from = 0
 	last_to = 0
-	last_action_message = "[chess_display_name(user)] flips the board. The pieces scatter across it."
+	last_action_message = "[chess_display_name(user)]掀翻了棋盘，棋子散落一片。"
 	if(owner)
-		owner.visible_message(span_warning("[user] flips the board! The pieces scatter across it."), span_warning("You flip the board! The pieces scatter across it."))
+		owner.visible_message(span_warning("[user]掀翻了棋盘！棋子散落一片。"), span_warning("你掀翻了棋盘！棋子散落一片。"))
 	return TRUE
 
 /datum/chess_match/proc/build_nards_scatter()
@@ -1122,8 +1122,8 @@
 /datum/chess_match/proc/get_mode_switch_text()
 	if(!pending_mode)
 		return null
-	var/requester = pending_mode_requester_name ? pending_mode_requester_name : "One of the players"
-	return "[requester] proposes switching to [get_mode_label_with_rules(pending_mode, pending_checkers_flying_kings, pending_nards_long_rules)]. The other player must confirm the mode change."
+	var/requester = pending_mode_requester_name ? pending_mode_requester_name : "一位玩家"
+	return "[requester]提议切换为[get_mode_label_with_rules(pending_mode, pending_checkers_flying_kings, pending_nards_long_rules)]，需要另一位玩家确认。"
 
 /datum/chess_match/proc/active_game_in_progress()
 	if(game_mode == BOARD_MODE_NONE)
@@ -1152,29 +1152,29 @@
 
 /datum/chess_match/proc/request_mode_switch(target_mode, mob/user, requested_checkers_flying_kings = checkers_flying_kings, requested_nards_long_rules = nards_long_rules)
 	if(overturned)
-		to_chat(user, span_warning("Reset the board after it has been flipped first."))
+		to_chat(user, span_warning("请先重置被掀翻的棋盘。"))
 		return FALSE
 	if(target_mode != BOARD_MODE_CHESS && target_mode != BOARD_MODE_CHECKERS && target_mode != BOARD_MODE_NARDS)
 		return FALSE
 	requested_checkers_flying_kings = !!requested_checkers_flying_kings
 	requested_nards_long_rules = !!requested_nards_long_rules
 	if(target_mode == game_mode && requested_checkers_flying_kings == checkers_flying_kings && requested_nards_long_rules == nards_long_rules)
-		to_chat(user, span_warning("This mode and these rules are already selected."))
+		to_chat(user, span_warning("当前已经使用该模式与规则。"))
 		return FALSE
 
 	if(active_game_in_progress())
 		if(!paused)
-			to_chat(user, span_warning("Pause the current game first."))
+			to_chat(user, span_warning("请先暂停当前对局。"))
 			return FALSE
 		if(!white_player_ckey || !black_player_ckey)
-			to_chat(user, span_warning("Both seats must be occupied to change modes during a game."))
+			to_chat(user, span_warning("对局中切换模式需要双方均已入座。"))
 			return FALSE
 		if(!side_for_user(user))
-			to_chat(user, span_warning("Only players seated at the board can agree to a mode change."))
+			to_chat(user, span_warning("只有已入座的玩家才能同意切换模式。"))
 			return FALSE
 		if(pending_mode == target_mode && pending_checkers_flying_kings == requested_checkers_flying_kings && pending_nards_long_rules == requested_nards_long_rules)
 			if(pending_mode_requester_ckey == user.ckey)
-				to_chat(user, span_warning("A mode change request has already been sent."))
+				to_chat(user, span_warning("已经发出过切换模式请求。"))
 				return FALSE
 			return confirm_mode_switch(user)
 
@@ -1187,21 +1187,21 @@
 		return TRUE
 
 	switch_game_mode(target_mode, requested_checkers_flying_kings, requested_nards_long_rules)
-	last_action_message = "Mode switched to [get_game_mode_label()]."
+	last_action_message = "模式已切换为[get_game_mode_label()]。"
 	return TRUE
 
 /datum/chess_match/proc/confirm_mode_switch(mob/user)
 	if(!can_confirm_mode_switch(user))
 		return FALSE
 	switch_game_mode(pending_mode, pending_checkers_flying_kings, pending_nards_long_rules)
-	last_action_message = "Mode switched to [get_game_mode_label()]."
+	last_action_message = "模式已切换为[get_game_mode_label()]。"
 	return TRUE
 
 /datum/chess_match/proc/cancel_mode_switch(mob/user)
 	if(!can_cancel_mode_switch(user))
 		return FALSE
 	clear_mode_switch_request()
-	last_action_message = "The mode change request was canceled."
+	last_action_message = "切换模式请求已取消。"
 	return TRUE
 
 /datum/chess_match/proc/switch_game_mode(new_mode, new_checkers_flying_kings = checkers_flying_kings, new_nards_long_rules = nards_long_rules)
@@ -1381,13 +1381,13 @@
 	if(color != CHESS_WHITE && color != CHESS_BLACK)
 		return FALSE
 	if(!paused && move_history.len)
-		to_chat(user, span_warning("Pause the game before switching seats."))
+		to_chat(user, span_warning("换座前请先暂停对局。"))
 		return FALSE
 	if(color == CHESS_WHITE && black_player_ckey == user.ckey)
-		to_chat(user, span_warning("You cannot occupy both seats at the board."))
+		to_chat(user, span_warning("你不能同时占据双方座位。"))
 		return FALSE
 	if(color == CHESS_BLACK && white_player_ckey == user.ckey)
-		to_chat(user, span_warning("You cannot occupy both seats at the board."))
+		to_chat(user, span_warning("你不能同时占据双方座位。"))
 		return FALSE
 
 	var/display_name = chess_display_name(user)
@@ -1407,7 +1407,7 @@
 	if(color != CHESS_WHITE && color != CHESS_BLACK)
 		return FALSE
 	if(!paused && move_history.len)
-		to_chat(user, span_warning("Pause the game before changing players."))
+		to_chat(user, span_warning("更换玩家前请先暂停对局。"))
 		return FALSE
 
 	if(color == CHESS_WHITE)
@@ -1442,16 +1442,16 @@
 	var/winning_side = opposite(resigning_side)
 
 	paused = TRUE
-	result_text = "Resignation. [chess_side_name(winning_side)] wins."
+	result_text = "一方认输，[chess_side_name(winning_side)]获胜。"
 	owner.play_win_loss_sounds(winning_side)
 	return TRUE
 
 /datum/chess_match/proc/resume_game(mob/user)
 	if(result_text)
-		to_chat(user, span_warning("The game has already ended. Reset the board first."))
+		to_chat(user, span_warning("对局已经结束，请先重置棋盘。"))
 		return FALSE
 	if(!white_player_ckey || !black_player_ckey)
-		to_chat(user, span_warning("Both seats must be occupied before resuming."))
+		to_chat(user, span_warning("双方均入座后才能继续对局。"))
 		return FALSE
 	paused = FALSE
 	game_started = TRUE
@@ -1490,41 +1490,41 @@
 
 /datum/chess_match/proc/get_status_text()
 	var/list/parts = list()
-	parts += "Mode: [get_game_mode_label()]."
+	parts += "模式：[get_game_mode_label()]。"
 	var/current_rules_text = get_current_rules_text()
 	if(current_rules_text)
 		parts += "[current_rules_text]"
 
 	if(game_mode == BOARD_MODE_NONE)
-		parts += "Choose a game using the mode switch button."
+		parts += "请使用切换模式按钮选择游戏。"
 		return jointext(parts, " ")
 
 	if(overturned)
-		parts += "The board has been flipped. Reset it to put the pieces back in place."
+		parts += "棋盘已被掀翻，请重置棋盘以归位棋子。"
 		return jointext(parts, " ")
 
 	if(result_text)
-		parts += result_text
+		parts += get_chess_result_display(result_text)
 		return jointext(parts, " ")
 
 	if(paused)
-		parts += "The game is paused."
+		parts += "对局已暂停。"
 	else
-		parts += "[chess_side_name(turn)] to move."
+		parts += "轮到[chess_side_name(turn)]行棋。"
 
 	if(game_mode == BOARD_MODE_CHESS)
 		if(!result_text && !paused && is_in_check(turn))
-			parts += "Check."
+			parts += "将军。"
 	else if(game_mode == BOARD_MODE_CHECKERS)
 		if(!result_text && !paused && forced_capture_from)
-			parts += "[chess_side_name(turn)] must continue capturing with the piece on [chess_square_name(forced_capture_from)]."
+			parts += "[chess_side_name(turn)]必须使用[chess_square_name(forced_capture_from)]的棋子继续吃子。"
 	else if(game_mode == BOARD_MODE_NARDS)
 		if(nards_available_rolls && nards_available_rolls.len)
-			parts += "Available dice: [jointext(nards_available_rolls, ", ")]."
+			parts += "可用骰点：[jointext(nards_available_rolls, "、")]。"
 		else if(nards_die_one && nards_die_two)
-			parts += "Last roll: [nards_die_one] and [nards_die_two]."
+			parts += "上次掷骰：[nards_die_one]点与[nards_die_two]点。"
 		else
-			parts += "Roll the dice to begin your turn."
+			parts += "掷骰以开始你的回合。"
 
 	return jointext(parts, " ")
 
@@ -1568,12 +1568,12 @@
 
 /datum/chess_match/proc/try_chess_move(from_idx, to_idx, mob/user, promotion_choice)
 	if(overturned)
-		to_chat(user, span_warning("The board has been flipped. Reset it first."))
+		to_chat(user, span_warning("棋盘已被掀翻，请先重置。"))
 		return FALSE
 	if(paused || result_text)
 		return FALSE
 	if(!is_chess_legal_move(from_idx, to_idx, promotion_choice))
-		to_chat(user, span_warning("That move is not legal."))
+		to_chat(user, span_warning("该走法不符合规则。"))
 		return FALSE
 
 	var/list/move_info = apply_chess_move(from_idx, to_idx, promotion_choice)
@@ -1589,7 +1589,7 @@
 		playsound(owner, CHESS_SOUND_CAPTURE, 60, FALSE)
 	else
 		playsound(owner, CHESS_SOUND_MOVE, 55, FALSE)
-	last_action_message = "Move played: [move_info["notation"]]."
+	last_action_message = "已行棋：[move_info["notation"]]。"
 	return TRUE
 
 /datum/chess_match/proc/resolve_chess_end_state(list/move_info)
@@ -1601,7 +1601,7 @@
 		if(gives_check)
 			result_text = "Checkmate. [chess_side_name(opposite(enemy))] wins."
 		else
-			result_text = "Draw by stalemate."
+			result_text = "逼和。"
 			paused = TRUE
 
 
@@ -1609,7 +1609,7 @@
 		var/key = position_key()
 		var/current_count = chess_assoc_get(repetition_counts, key, 0)
 		if(current_count >= 3)
-			result_text = "Draw by threefold repetition."
+			result_text = "三次重复局面，和棋。"
 			paused = TRUE
 
 	var/notation = move_info["notation"]
@@ -2225,12 +2225,12 @@
 
 /datum/chess_match/proc/try_checkers_move(from_idx, to_idx, mob/user)
 	if(overturned)
-		to_chat(user, span_warning("The board has been flipped. Reset it first."))
+		to_chat(user, span_warning("棋盘已被掀翻，请先重置。"))
 		return FALSE
 	if(paused || result_text)
 		return FALSE
 	if(!is_checkers_legal_move(from_idx, to_idx))
-		to_chat(user, span_warning("That move is not legal."))
+		to_chat(user, span_warning("该走法不符合规则。"))
 		return FALSE
 
 	var/list/move_info = apply_checkers_move(from_idx, to_idx)
@@ -2253,7 +2253,7 @@
 
 	if(continue_capture)
 		forced_capture_from = to_idx
-		last_action_message = "Continue capturing with the same checker from [chess_square_name(to_idx)]."
+		last_action_message = "请使用[chess_square_name(to_idx)]的同一枚棋子继续吃子。"
 		return TRUE
 
 	forced_capture_from = 0
@@ -2269,7 +2269,7 @@
 	if(result_text)
 		last_action_message = result_text
 	else
-		last_action_message = "Turn complete."
+		last_action_message = "回合结束。"
 	return TRUE
 
 /datum/chess_match/proc/apply_checkers_move(from_idx, to_idx)
@@ -2316,9 +2316,9 @@
 /datum/chess_match/proc/resolve_checkers_end_state()
 	var/enemy = turn
 	if(count_pieces(enemy) <= 0)
-		result_text = "Game over. [chess_side_name(opposite(enemy))] wins."
+		result_text = "对局结束，[chess_side_name(opposite(enemy))]获胜。"
 	else if(!has_any_checkers_legal_move(enemy))
-		result_text = "[chess_side_name(enemy)] has no legal moves. [chess_side_name(opposite(enemy))] wins."
+		result_text = "[chess_side_name(enemy)]无合法走法，[chess_side_name(opposite(enemy))]获胜。"
 
 	if(result_text)
 		paused = TRUE
@@ -2339,7 +2339,7 @@
 /datum/chess_match/proc/roll_nards_dice(mob/user)
 	if(!can_roll_nards_dice(user))
 		if(user)
-			to_chat(user, span_warning("You cannot roll the dice right now."))
+			to_chat(user, span_warning("现在不能掷骰。"))
 		return FALSE
 	nards_die_one = rand(1, 6)
 	nards_die_two = rand(1, 6)
@@ -2354,9 +2354,9 @@
 		nards_available_rolls += nards_die_two
 	nards_selected_point = 0
 	nards_selected_from_bar = FALSE
-	last_action_message = "[chess_display_name(user)] rolls the dice: [nards_die_one] and [nards_die_two]."
+	last_action_message = "[chess_display_name(user)]掷出[nards_die_one]点与[nards_die_two]点。"
 	if(!nards_has_any_legal_move(turn))
-		last_action_message += " No legal moves; the turn passes to the opponent."
+		last_action_message += " 无合法走法，回合转交对手。"
 		nards_end_turn()
 	return TRUE
 
@@ -2583,16 +2583,16 @@
 	if(point < 1 || point > 24)
 		return FALSE
 	if(!nards_long_rules && nards_bar_count(color) > 0)
-		to_chat(user, span_warning("Move a checker in from the bar first."))
+		to_chat(user, span_warning("请先让中栏上的棋子重新入场。"))
 		return FALSE
 	if(nards_long_rules && point == nards_head_point(color) && nards_head_moves_this_turn >= 1)
-		to_chat(user, span_warning("In long backgammon, you can move only one checker off the starting point per turn."))
+		to_chat(user, span_warning("长式双陆棋每回合只能从起点移出一枚棋子。"))
 		return FALSE
 	if(nards_point_color(point) != color || nards_point_count(point) <= 0)
 		return FALSE
 	nards_selected_point = point
 	nards_selected_from_bar = FALSE
-	last_action_message = "Point [point] selected."
+	last_action_message = "已选择第[point]点位。"
 	return TRUE
 
 /datum/chess_match/proc/select_nards_bar(mob/user)
@@ -2607,7 +2607,7 @@
 		return FALSE
 	nards_selected_from_bar = TRUE
 	nards_selected_point = 0
-	last_action_message = "The bar is selected."
+	last_action_message = "已选择中栏。"
 	return TRUE
 
 /datum/chess_match/proc/move_nards_checker(mob/user, to_point, to_off = FALSE)
@@ -2623,16 +2623,16 @@
 			return FALSE
 		from_point = 0
 	else if(from_point < 1 || from_point > 24)
-		to_chat(user, span_warning("Select a checker first."))
+		to_chat(user, span_warning("请先选择一枚棋子。"))
 		return FALSE
 	var/list/legal = get_nards_legal_targets(color, from_point, from_bar)
 	var/desired = to_off ? 0 : to_point
 	if(!(desired in legal))
-		to_chat(user, span_warning("That move is not legal."))
+		to_chat(user, span_warning("该走法不符合规则。"))
 		return FALSE
 	var/die = nards_find_die_for_move(color, from_point, to_point, from_bar, to_off)
 	if(die <= 0)
-		to_chat(user, span_warning("Could not determine which die to use for this move."))
+		to_chat(user, span_warning("无法确定此次行棋应使用哪枚骰子的点数。"))
 		return FALSE
 	if(from_bar)
 		nards_set_bar_count(color, nards_bar_count(color) - 1)
@@ -2651,18 +2651,18 @@
 		nards_set_point(to_point, color, nards_point_count(to_point) + 1)
 	else
 		nards_set_off_count(color, (color == CHESS_WHITE ? nards_off_white : nards_off_black) + 1)
-	var/source_name = from_bar ? "the bar" : "point [from_point]"
-	var/dest_name = to_off ? "home" : "point [to_point]"
-	last_action_message = "[chess_display_name(user)] moves a checker from [source_name] to [dest_name]."
+	var/source_name = from_bar ? "中栏" : "第[from_point]点位"
+	var/dest_name = to_off ? "收子区" : "第[to_point]点位"
+	last_action_message = "[chess_display_name(user)]将一枚棋子从[source_name]移至[dest_name]。"
 	nards_consume_die(die)
 	if(nards_off_white >= 15)
-		result_text = "Game over. White wins."
+		result_text = "对局结束，白方获胜。"
 		paused = TRUE
 		nards_clear_selection()
 		owner.play_win_loss_sounds(CHESS_WHITE)
 		return TRUE
 	if(nards_off_black >= 15)
-		result_text = "Game over. Black wins."
+		result_text = "对局结束，黑方获胜。"
 		paused = TRUE
 		nards_clear_selection()
 		owner.play_win_loss_sounds(CHESS_BLACK)

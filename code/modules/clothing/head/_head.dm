@@ -109,9 +109,9 @@
 /obj/item/clothing/head/get_mechanics_examine(mob/user)
 	. = ..()
 	if(attachment_component)
-		. += span_info("Shift + RMB will open aesthetic storage, allowing the user to layer extra decorations over \the [src].")
-		. += span_info("Alt + RMB allows the user to toggle aesthetic storage (Shift + RMB) items on or off.")
-		. += span_info("Inside aesthetic storage: RMB adjusts an item, MMB cycles its layer and Alt + RMB shows or hides it.")
+		. += span_info("Shift + 右键可打开装饰收纳栏，在[src]上叠戴额外饰品。")
+		. += span_info("Alt + 右键可切换装饰收纳栏（Shift + 右键）中物品的显示状态。")
+		. += span_info("在装饰收纳栏内：右键调整物品，中键切换叠戴层次，Alt + 右键显示或隐藏物品。")
 
 /obj/item/clothing/head/AltRightClick(mob/user)
 	. = ..()
@@ -122,11 +122,11 @@
 		return
 	var/list/options = list()
 	for(var/obj/item/clothing/C in storage_component.item_to_grid_coordinates)
-		options["[C.name] ([(C.item_flags & NOT_SHOW_IN_STORAGE) ? "Hidden" : "Shown"])"] = C
+		options["[C.name]（[(C.item_flags & NOT_SHOW_IN_STORAGE) ? "隐藏" : "显示"]）"] = C
 	if(!length(options))
 		return
 	. = TRUE
-	var/choice = input(user, "Choose clothing to layer:", "Layering") as null|anything in options
+	var/choice = input(user, "选择要叠戴的服饰：", "叠戴") as null|anything in options
 	var/obj/item/clothing/chosen = options[choice]
 	if(chosen && loc == user && chosen.get_storing_hat() == src)
 		toggle_stored_visibility(chosen, user)
@@ -134,7 +134,7 @@
 ///Shows or hides an item held in aesthetic storage, without taking it out.
 /obj/item/clothing/head/proc/toggle_stored_visibility(obj/item/clothing/C, mob/user)
 	C.item_flags ^= NOT_SHOW_IN_STORAGE
-	to_chat(user, span_info("[C] will be [(C.item_flags & NOT_SHOW_IN_STORAGE) ? "hidden" : "visible"] on \the [src]."))
+	to_chat(user, span_info("[C]在[src]上将[(C.item_flags & NOT_SHOW_IN_STORAGE) ? "隐藏" : "显示"]。"))
 	if(ismob(loc))
 		var/mob/wearer = loc
 		wearer.update_inv_head()
@@ -144,11 +144,11 @@
 	C.stored_layer_mode = (C.stored_layer_mode + 1) % 3
 	switch(C.stored_layer_mode)
 		if(STORED_LAYER_OVER_HAT)
-			to_chat(user, span_info("I wear \the [C] over \the [src]."))
+			to_chat(user, span_info("我将[C]戴在[src]外面。"))
 		if(STORED_LAYER_UNDER_HAT)
-			to_chat(user, span_info("I wear \the [C] under \the [src]."))
+			to_chat(user, span_info("我将[C]戴在[src]下面。"))
 		if(STORED_LAYER_UNDER_HAIR)
-			to_chat(user, span_info("I wear \the [C] under my hair."))
+			to_chat(user, span_info("我将[C]戴在头发下面。"))
 	if(ismob(loc))
 		var/mob/wearer = loc
 		wearer.update_inv_head()

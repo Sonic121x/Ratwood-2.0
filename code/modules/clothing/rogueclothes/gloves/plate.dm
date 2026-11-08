@@ -58,8 +58,8 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "护甲", "撕裂")
 
 /obj/item/clothing/gloves/roguetown/plate/graggar/heavy
-	name = "vicious plated gauntlets"
-	desc = "Steel plated gauntlets overlaid by an ornamental imagery of fractured bone and entrails. The violet smears; a tether to the lyfe that once was - and now, a stinging reminder of what could've been."
+	name = "凶暴板甲手套"
+	desc = "钢制板甲手套覆有碎骨与内脏的装饰图案。紫色污痕维系着逝去的生命，如今却刺痛地提醒着本可拥有的一切。"
 	icon_state = "graggarplategloves_heavy"
 	max_integrity = ARMOR_INT_SIDE_ANTAG
 	armor = ARMOR_PLATE_BSTEEL

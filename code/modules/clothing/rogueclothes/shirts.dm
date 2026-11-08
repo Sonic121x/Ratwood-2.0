@@ -828,8 +828,8 @@
 	item_state = "fancyshirt"
 
 /obj/item/clothing/suit/roguetown/shirt/courtphysician
-	name = "sanguine vest"
-	desc = "A silk vest, perhaps it will make it another dae without being bloodied."
+	name = "绯红马甲"
+	desc = "一件丝绸马甲，或许今天也能免遭鲜血浸染。"
 	boobed = FALSE
 	icon_state = "docvest"
 	item_state = "docvest"
@@ -854,8 +854,8 @@
 		add_overlay(pic)
 
 /obj/item/clothing/suit/roguetown/shirt/courtphysician/female
-	name = "sanguine blouse"
-	desc = "A silk blouse, elegant, but it does you no good in surgery."
+	name = "绯红女衫"
+	desc = "一件优雅的丝绸女衫，却对做手术毫无帮助。"
 	boobed = FALSE
 	icon_state = "docblouse"
 	item_state = "docblouse"
@@ -880,8 +880,8 @@
 		add_overlay(pic)
 
 /obj/item/clothing/suit/roguetown/shirt/desertbra
-	name = "desert bra"
-	desc = "An exquisite bra crafted from durable cloth. It leaves little to the imagination. Why is it a desert bra and not just a bra?"
+	name = "沙漠胸衣"
+	desc = "以耐用布料制成的精美胸衣，几乎遮不住什么。为什么叫沙漠胸衣，而不直接叫胸衣呢？"
 	icon_state = "desertbra"
 	item_state = "desertbra"
 	body_parts_covered = CHEST
@@ -897,8 +897,8 @@
 
 /obj/item/clothing/suit/roguetown/shirt/dress/blue
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
-	name = "light blue dress"
-	desc = "A simple light blue dress, tailored to flatter the figure."
+	name = "浅蓝连衣裙"
+	desc = "一件简洁的浅蓝连衣裙，剪裁衬托身形。"
 	icon_state = "bluedress"
 	item_state = "bluedress"
 	sleevetype = null
@@ -913,8 +913,8 @@
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/shirts.dmi'
 
 /obj/item/clothing/suit/roguetown/shirt/dress/etrdress
-	name = "low-cut dress"
-	desc = "Despite not actually being made of silk, the legendary expertise needed to sew this puts the quality on par."
+	name = "低领连衣裙"
+	desc = "虽非丝绸所制，缝制它所需的传奇技艺却使品质足以媲美丝绸服饰。"
 	body_parts_covered = CHEST|GROIN|ARMS|VITALS
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	icon_state = "etrdress1"
@@ -929,8 +929,8 @@
 	worn_sprite_sex = FEMALE
 
 /obj/item/clothing/suit/roguetown/shirt/dress/etrdress2
-	name = "embroidered dress"
-	desc = "Despite not actually being made of silk, the legendary expertise needed to sew this puts the quality on par."
+	name = "刺绣连衣裙"
+	desc = "虽非丝绸所制，缝制它所需的传奇技艺却使品质足以媲美丝绸服饰。"
 	body_parts_covered = CHEST|GROIN|ARMS|VITALS
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	icon_state = "etrdress2"
@@ -944,8 +944,8 @@
 	worn_sprite_sex = FEMALE
 
 /obj/item/clothing/suit/roguetown/shirt/dress/etrdress3
-	name = "strapless gown"
-	desc = "Despite not actually being made of silk, the legendary expertise needed to sew this puts the quality on par."
+	name = "抹胸礼服"
+	desc = "虽非丝绸所制，缝制它所需的传奇技艺却使品质足以媲美丝绸服饰。"
 	body_parts_covered = CHEST|GROIN|ARMS|VITALS
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	icon_state = "etrdress3"
@@ -972,8 +972,8 @@
 
 /obj/item/clothing/suit/roguetown/shirt/dress/green
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
-	name = "light green dress"
-	desc = "A simple light green dress, tailored to flatter the figure."
+	name = "浅绿连衣裙"
+	desc = "一件简洁的浅绿连衣裙，剪裁衬托身形。"
 	icon_state = "greendress"
 	item_state = "greendress"
 	sleevetype = null
@@ -990,8 +990,8 @@
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/shirts.dmi'
 
 /obj/item/clothing/suit/roguetown/shirt/dress/maidfancy
-	name = "valorian maid dress"
-	desc = "A dress befitting the housekeeper of a lord's staff. While not as intricate as a royal's, it is indicative of the house's status."
+	name = "瓦洛里亚女仆裙"
+	desc = "适合领主宅邸管家穿着的裙装。虽不及王室服饰繁复，却足以彰显家族地位。"
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
 	body_parts_covered = CHEST|GROIN|ARMS|VITALS
 	sleeved = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/special/onmob/sleeves_maids.dmi'
@@ -1008,8 +1008,8 @@
 
 /obj/item/clothing/suit/roguetown/shirt/dress/nightgown
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
-	name = "nightgown"
-	desc = "An elegant and enticing nightgown, made for comfort and allure."
+	name = "睡裙"
+	desc = "一件优雅诱人的睡裙，兼顾舒适与魅力。"
 	icon_state = "nightgown"
 	item_state = "nightgown"
 	sleevetype = null
@@ -1022,9 +1022,9 @@
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/shirts.dmi'
 
 /obj/item/clothing/suit/roguetown/shirt/dress/saree
-	name = "saree"
+	name = "纱丽"
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
-	desc	= "A delicate, unstitched garment that can be draped across the body. It is commonly worn amongst Ranesheni women."
+	desc	= "精致的无缝衣料，可披裹全身，常见于拉涅申女性。"
 	icon_state = "saree"
 	item_state = "saree"
 	sleeved = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/helpers/sleeves_shirts.dmi'
@@ -1035,8 +1035,8 @@
 
 /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/bishop
 	color = null
-	name = "bishop's cassock"
-	desc = "Thine authority, divine; thine faith, unfettered."
+	name = "主教长袍"
+	desc = "汝之权柄，源于神圣；汝之信仰，不受束缚。"
 	icon_state = "bishoprobe"
 	item_state = "bishoprobe"
 	allowed_race = NON_DWARVEN_RACE_TYPES
@@ -1046,8 +1046,8 @@
 
 /obj/item/clothing/suit/roguetown/shirt/dress/tavern
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
-	name = "tavern dress"
-	desc = "A simple green dress with a corset, its skirt has slits for easy movement."
+	name = "酒馆连衣裙"
+	desc = "带束身衣的简洁绿裙，裙摆开衩，便于行动。"
 	icon_state = "taverndress"
 	item_state = "taverndress"
 	sleevetype = null
@@ -1062,8 +1062,8 @@
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/shirts.dmi'
 
 /obj/item/clothing/suit/roguetown/shirt/explorer
-	name = "explorer's vest"
-	desc = "Vest belonging to those who seek knowledge!"
+	name = "探险者马甲"
+	desc = "属于求知者的马甲！"
 	icon_state = "explorervest"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/shirts.dmi'
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/shirts.dmi'
@@ -1077,8 +1077,8 @@
 	color = null
 
 /obj/item/clothing/suit/roguetown/shirt/fancyjacket
-	name = "fancy jacket"
-	desc = "My, so modern -- so elegant. Which fine hands sewed this?"
+	name = "华美夹克"
+	desc = "啊，如此新潮，如此优雅。是哪双巧手缝制了它？"
 	icon_state = "fancyjacket"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/shirts.dmi'
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/shirts.dmi'
@@ -1091,15 +1091,15 @@
 	allowed_sex = list(MALE, FEMALE)
 
 /obj/item/clothing/suit/roguetown/shirt/fancyjacket/triumph_padded
-	name = "dark jacket"
-	desc = "A soft jacket of dark leather. All of the swagger, none of the protection."
+	name = "暗色夹克"
+	desc = "柔软的暗色皮夹克，派头十足，却毫无防护。"
 	icon_state = "dark_jacket"
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
 	sleeved_detail = FALSE
 
 /obj/item/clothing/suit/roguetown/shirt/haori
-	name = "haori"
-	desc = "A traditional Kazengun outer garment in the form of a short, straight jacket with wide sleeves and side slits."
+	name = "羽织"
+	desc = "风郡传统外衣，衣身短而直，袖口宽大，两侧开衩。"
 	icon_state = "haori"
 	item_state = "haori"
 	r_sleeve_status = SLEEVE_NORMAL
@@ -1112,8 +1112,8 @@
 	sleeved = 'modular_twilight_axis/icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
 
 /obj/item/clothing/suit/roguetown/shirt/kamishimo
-	name = "kamishimo"
-	desc = "A sleeveless vest-jacket with wide shoulders, worn over a kimono."
+	name = "肩衣"
+	desc = "穿在和服外的宽肩无袖上衣。"
 	icon_state = "kamishimo"
 	item_state = "kamishimo"
 	flags_inv = HIDEBOOB
@@ -1124,8 +1124,8 @@
 	sleeved = 'modular_twilight_axis/icons/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
 
 /obj/item/clothing/suit/roguetown/shirt/kazengun_jacket
-	name = "kazengun jacket"
-	desc = "Classical Kazengun jacket."
+	name = "风郡夹克"
+	desc = "经典的风郡夹克。"
 	icon_state = "kazengun_jacket"
 	item_state = "kazengun_jacket"
 	r_sleeve_status = SLEEVE_NORMAL
@@ -1140,7 +1140,7 @@
 	worn_sprite_sex = MALE
 
 /obj/item/clothing/suit/roguetown/shirt/kimono
-	name = "kimono"
+	name = "和服"
 	desc = ""
 	icon_state = "white_kimono"
 	item_state = "white_kimono"
@@ -1161,7 +1161,7 @@
 	..()
 	if(!picked)
 		var/iconH = icon_state
-		var/choiceC = input(user, "Choose a color.", "Kimono colors") as anything in kimono_colors
+		var/choiceC = input_updated_loadout_display(user, kimono_colors, "选择和服颜色。")
 		if(choiceC == "white")
 			iconH = "white_kimono"
 		if(choiceC == "black")
@@ -1173,7 +1173,7 @@
 		base_icon_state = iconH
 		kimono_final_icon = iconH
 		update_icon()
-		if(alert("Are you pleased with your kimono?", "Kimono", "Yes", "No") != "Yes")
+		if(alert("你对这件和服满意吗？", "和服", "是", "否") != "是")
 			icon_state = "white_kimono"
 			item_state = "white_kimono"
 			base_icon_state = "white_kimono"
@@ -1200,8 +1200,8 @@
 		update_icon()
 
 /obj/item/clothing/suit/roguetown/shirt/kimono2
-	name = "long sleeved kimono"
-	desc = "Classic kimono from Kazengun islands."
+	name = "长袖和服"
+	desc = "来自风郡诸岛的经典和服。"
 	icon_state = "kimono"
 	item_state = "kimono"
 	r_sleeve_status = SLEEVE_NORMAL
@@ -1216,11 +1216,11 @@
 
 /obj/item/clothing/suit/roguetown/shirt/robe/abyssor_leader
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT|ITEM_SLOT_CLOAK
-	name = "sylveric robe"
-	desc = "A long robe formed of many layers of thin, light fabric; designed not to become over-heavy \
-	while waterlogged. \
-	This robe is commonly worn by exalted abyssorites that follow the path of the dream painter. \
-	Said to have been dyed with paints from his dream in a pattern that resembles the woes of His dream."
+	name = "西尔维里克长袍"
+	desc = "层层轻薄布料制成的长袍，即便浸水\
+	也不会过于沉重。\
+	追随绘梦之道的崇高阿比索尔信徒常穿此袍。\
+	据说它以祂梦中的颜料染成，纹样描绘着祂梦中的悲苦。"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
 	icon_state = "leaderrobe"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/special/abyssor.dmi'
@@ -1233,11 +1233,11 @@
 
 /obj/item/clothing/suit/roguetown/shirt/robe/abyssor_painter
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT|ITEM_SLOT_CLOAK
-	name = "rainfall robe"
-	desc = "A long robe formed of many layers of thin, light fabric; designed not to become over-heavy \
-	while waterlogged. \
-	This robe is commonly worn by abyssorites that follow the path of the dream painter. \
-	Said to have been dyed with paints from his dream in a pattern that resembles rainfall."
+	name = "雨幕长袍"
+	desc = "层层轻薄布料制成的长袍，即便浸水\
+	也不会过于沉重。\
+	追随绘梦之道的阿比索尔信徒常穿此袍。\
+	据说它以祂梦中的颜料染成，纹样宛若落雨。"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
 	icon_state = "rain"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/special/abyssor.dmi'
@@ -1250,11 +1250,11 @@
 
 /obj/item/clothing/suit/roguetown/shirt/robe/abyssor_painter_sea
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT|ITEM_SLOT_CLOAK
-	name = "sea robe"
-	desc = "A long robe formed of many layers of thin, light fabric; designed not to become over-heavy \
-	while waterlogged. \
-	This robe is commonly worn by abyssorites that follow the path of the dream painter. \
-	Said to have been dyed with paints from his dream in a pattern that resembles the waves of the great blue."
+	name = "海潮长袍"
+	desc = "层层轻薄布料制成的长袍，即便浸水\
+	也不会过于沉重。\
+	追随绘梦之道的阿比索尔信徒常穿此袍。\
+	据说它以祂梦中的颜料染成，纹样宛若碧海波涛。"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
 	icon_state = "sea"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/special/abyssor.dmi'
@@ -1266,8 +1266,8 @@
 	sleeved = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
 
 /obj/item/clothing/suit/roguetown/shirt/robe/bared
-	name = "bared robe"
-	desc = "A robe of basic cloth, it's chest bared open to expose what lay underneath."
+	name = "敞胸长袍"
+	desc = "普通布料制成的长袍，胸前敞开，露出内里。"
 	icon_state = "openrobe"
 	item_state = "openrobe"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/armor.dmi'
@@ -1276,8 +1276,8 @@
 	sleeved = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/helpers/sleeves_armor.dmi'
 
 /obj/item/clothing/suit/roguetown/shirt/robe/eora/resprite
-	name = "eoran robe"
-	desc = "Holy robes, intended for use by followers of Eora"
+	name = "伊欧拉长袍"
+	desc = "供伊欧拉信徒穿着的圣袍。"
 	icon_state = "robe_blue"
 	icon = 'modular_twilight_axis/icons/roguetown/clothing/shirts.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/shirts.dmi'
@@ -1286,29 +1286,29 @@
 /obj/item/clothing/suit/roguetown/shirt/robe/eora/resprite/attack_right(mob/user)
 	switch(fanatic_wear)
 		if(FALSE)
-			name = "open eoran robe"
-			desc = "Used by more radical followers of the Eoran Church"
+			name = "敞开的伊欧拉长袍"
+			desc = "较为激进的伊欧拉教会信徒穿着的长袍。"
 			body_parts_covered = null
 			icon_state = "straps_blue"
 			fanatic_wear = TRUE
 			flags_inv = HIDEBOOB
-			to_chat(usr, span_warning("Now wearing radically!"))
+			to_chat(usr, span_warning("现在穿得更加大胆了！"))
 		if(TRUE)
-			name = "eoran robe"
-			desc = "Holy robes, intended for use by followers of Eora"
+			name = "伊欧拉长袍"
+			desc = "供伊欧拉信徒穿着的圣袍。"
 			body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
 			icon_state = "robe_blue"
 			fanatic_wear = FALSE
 			flags_inv = HIDEBOOB|HIDECROTCH
-			to_chat(usr, span_warning("Now wearing normally!"))
+			to_chat(usr, span_warning("现在恢复正常穿法了！"))
 	update_icon()
 	if(ismob(loc))
 		var/mob/L = loc
 		L.update_inv_armor()
 
 /obj/item/clothing/suit/roguetown/shirt/robe/eora/resprite/pink
-	name = "eoran robe"
-	desc = "Holy robes, intended for use by followers of Eora"
+	name = "伊欧拉长袍"
+	desc = "供伊欧拉信徒穿着的圣袍。"
 	icon_state = "robe_pink"
 	icon = 'modular_twilight_axis/icons/roguetown/clothing/shirts.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/shirts.dmi'
@@ -1317,21 +1317,21 @@
 /obj/item/clothing/suit/roguetown/shirt/robe/eora/resprite/pink/attack_right(mob/user)
 	switch(fanatic_wear)
 		if(FALSE)
-			name = "open eoran robe"
-			desc = "Used by more radical followers of the Eoran Church"
+			name = "敞开的伊欧拉长袍"
+			desc = "较为激进的伊欧拉教会信徒穿着的长袍。"
 			body_parts_covered = null
 			icon_state = "straps_pink"
 			fanatic_wear = TRUE
 			flags_inv = HIDEBOOB
-			to_chat(usr, span_warning("Now wearing radically!"))
+			to_chat(usr, span_warning("现在穿得更加大胆了！"))
 		if(TRUE)
-			name = "eoran robe"
-			desc = "Holy robes, intended for use by followers of Eora"
+			name = "伊欧拉长袍"
+			desc = "供伊欧拉信徒穿着的圣袍。"
 			body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
 			icon_state = "robe_pink"
 			fanatic_wear = FALSE
 			flags_inv = HIDEBOOB|HIDECROTCH
-			to_chat(usr, span_warning("Now wearing normally!"))
+			to_chat(usr, span_warning("现在恢复正常穿法了！"))
 	update_icon()
 	if(ismob(loc))
 		var/mob/L = loc
@@ -1339,8 +1339,8 @@
 
 /obj/item/clothing/suit/roguetown/shirt/robe/hag
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT|ITEM_SLOT_CLOAK
-	name = "hedge robe"
-	desc = "A robe with an ancient design, unknown to tailors and sewers here."
+	name = "隐士长袍"
+	desc = "样式古老的长袍，此地的裁缝与缝纫师都不识得。"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS|VITALS
 	icon_state = "hag"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/armor.dmi'
@@ -1353,8 +1353,8 @@
 
 /obj/item/clothing/suit/roguetown/shirt/robe/leopard
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
-	name = "leopard robe"
-	desc = "An exquisite silky robe with a leopard pattern."
+	name = "豹纹长袍"
+	desc = "一件柔滑精美的豹纹长袍。"
 	icon_state = "lpbathrobe"
 	item_state = "lpbathrobe"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/shirts.dmi'
@@ -1364,7 +1364,7 @@
 
 /obj/item/clothing/suit/roguetown/shirt/robe/leopard/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Right-clicking this robe allows for it to be dynamically worn as a traditional robe, or as an open robe that partially exposes the chest.")
+	. += span_info("右键点击可切换为传统长袍穿法，或敞开、露出部分胸膛的穿法。")
 
 /obj/item/clothing/suit/roguetown/shirt/robe/leopard/MiddleClick(mob/user)
 	..()
@@ -1373,23 +1373,23 @@
 /obj/item/clothing/suit/roguetown/shirt/robe/leopard/attack_right(mob/user)
 	switch(open_wear)
 		if(FALSE)
-			name = "bared leopard robe"
-			desc = "An exquisite silky robe with a leopard pattern, untied to reveal what's beneath."
+			name = "敞胸豹纹长袍"
+			desc = "一件柔滑精美的豹纹长袍，解开后露出内里。"
 			body_parts_covered = GROIN
 			icon_state = "lpbathrobe_open"
 			item_state = "lpbathrobe_open"
 			open_wear = TRUE
 			flags_inv = HIDECROTCH
-			to_chat(usr, span_warning("You pull back the threaded cloth, baring your heart to Psydonia's eyes."))
+			to_chat(usr, span_warning("你拉开织布，将胸膛展露在普赛多尼亚的目光之下。"))
 		if(TRUE)
-			name = "leopard robe"
-			desc = "An exquisite silky robe with a leopard pattern."
+			name = "豹纹长袍"
+			desc = "一件柔滑精美的豹纹长袍。"
 			body_parts_covered = CHEST|GROIN
 			icon_state = "lpbathrobe"
 			item_state = "lpbathrobe"
 			flags_inv = HIDECROTCH|HIDEBOOB
 			open_wear = FALSE
-			to_chat(usr, span_warning("You cloak yourself in the threaded cloth, veiling your heart from Psydonia's eyes."))
+			to_chat(usr, span_warning("你以织布裹住自己，让胸膛避开普赛多尼亚的目光。"))
 	update_icon()
 	if(user)
 		if(ishuman(user))
@@ -1399,8 +1399,8 @@
 
 /obj/item/clothing/suit/roguetown/shirt/robe/leopard/alt
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT
-	name = "open leopard robe"
-	desc = "An exquisite silky robe with a leopard pattern, untied to reveal what's beneath."
+	name = "敞开的豹纹长袍"
+	desc = "一件柔滑精美的豹纹长袍，解开后露出内里。"
 	icon_state = "lpbathrobe_open"
 	item_state = "lpbathrobe_open"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/shirts.dmi'
@@ -1409,7 +1409,7 @@
 	open_wear = TRUE
 
 /obj/item/clothing/suit/roguetown/shirt/robe/nun_dress
-	name = "nun dress"
+	name = "修女裙"
 	desc = ""
 	icon_state = "nun_dress"
 	item_state = "nun_dress"
@@ -1425,8 +1425,8 @@
 
 /obj/item/clothing/suit/roguetown/shirt/robe/ravox
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT|ITEM_SLOT_CLOAK
-	name = "ravox robe"
-	desc = "None are above justice; none are beneath redemption."
+	name = "拉沃克斯长袍"
+	desc = "无人凌驾于正义，无人不配得救赎。"
 	body_parts_covered = CHEST|GROIN|LEGS|VITALS
 	icon_state = "ravoxrobe"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/armor.dmi'
@@ -1439,8 +1439,8 @@
 
 /obj/item/clothing/suit/roguetown/shirt/robe/see
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT|ITEM_SLOT_CLOAK
-	name = "see robe"
-	desc = "United, we stand - a Pantheon of Ten, shepherding Psydonia's flock towards providence."
+	name = "教廷长袍"
+	desc = "我们团结而立——十神共治，引领普赛多尼亚的信众走向神佑。"
 	body_parts_covered = CHEST|GROIN|LEGS|VITALS
 	icon_state = "undividedrobe"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/armor.dmi'
@@ -1453,8 +1453,8 @@
 
 /obj/item/clothing/suit/roguetown/shirt/robe/seecleric
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_SHIRT|ITEM_SLOT_CLOAK
-	name = "see clerical robe"
-	desc = "United, we walk - a Pantheon of Ten, guiding Psydonia's wanderers towards providence."
+	name = "教廷司祭长袍"
+	desc = "我们携手而行——十神共治，引领普赛多尼亚的旅人走向神佑。"
 	body_parts_covered = CHEST|GROIN|LEGS|VITALS
 	icon_state = "tenclericrobe"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/armor.dmi'
@@ -1466,8 +1466,8 @@
 	l_sleeve_status = SLEEVE_NORMAL
 
 /obj/item/clothing/suit/roguetown/shirt/silkbra
-	name = "giltsilk bra"
-	desc = "An exquisite bra crafted from the finest silk and adorned with gold rings. It leaves little to the imagination."
+	name = "金饰丝绸胸衣"
+	desc = "以最上等丝绸制成、饰有金环的精美胸衣，几乎遮不住什么。"
 	icon_state = "silkbra"
 	item_state = "silkbra"
 	body_parts_covered = CHEST
@@ -1483,8 +1483,8 @@
 	sleeved = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/helpers/sleeves_shirts.dmi'
 
 /obj/item/clothing/suit/roguetown/shirt/tunic/rosa
-	name = "ivory dress"
-	desc = "A finely crafted dress adorned with rosas. A common sight among less silver inclined Otavan nobility."
+	name = "象牙白礼裙"
+	desc = "饰有玫瑰的精致礼裙，常见于不那么偏爱银饰的奥塔瓦贵族。"
 	icon_state = "rosadress1"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/special/rosewood.dmi'
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/special/onmob/rosewood.dmi'
@@ -1492,24 +1492,24 @@
 	boobed = FALSE
 
 /obj/item/clothing/suit/roguetown/shirt/tunic/rosa/five
-	name = "sable dress"
+	name = "墨黑礼裙"
 	icon_state = "rosadress5"
 
 /obj/item/clothing/suit/roguetown/shirt/tunic/rosa/four
-	name = "obsidian dress"
+	name = "曜黑礼裙"
 	icon_state = "rosadress4"
 
 /obj/item/clothing/suit/roguetown/shirt/tunic/rosa/six
-	name = "maroon dress"
+	name = "栗红礼裙"
 	icon_state = "rosadress6"
 
 /obj/item/clothing/suit/roguetown/shirt/tunic/rosa/three
-	name = "velvet dress"
+	name = "天鹅绒礼裙"
 	icon_state = "rosadress3"
 
 /obj/item/clothing/suit/roguetown/shirt/tunic/rosacoat
-	name = "regal coat"
-	desc = "A finely crafted leather coat adorned with rosas. A favorite among the more modest of Otavan nobility, who choose not to clad themselves in silver."
+	name = "华贵外套"
+	desc = "饰有玫瑰的精致皮外套，深受不愿满身银饰、较为朴素的奥塔瓦贵族喜爱。"
 	icon_state = "rosacoat7"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/special/rosewood.dmi'
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/special/onmob/rosewood.dmi'
@@ -1518,16 +1518,16 @@
 	boobed = FALSE
 
 /obj/item/clothing/suit/roguetown/shirt/tunic/rosacoat/four
-	name = "stately coat"
+	name = "庄重外套"
 	icon_state = "rosacoat10"
 
 /obj/item/clothing/suit/roguetown/shirt/tunic/rosacoat/two
-	name = "courtly coat"
+	name = "宫廷外套"
 	icon_state = "rosacoat8"
 
 /obj/item/clothing/suit/roguetown/shirt/elven
-	name = "elven suit"
-	desc = "A common garnament for Etruscan countryside, each of these suits is woven in adherence to tradition."
+	name = "精灵套装"
+	desc = "伊特鲁斯卡乡间常见的衣装，每一套都遵循传统织成。"
 	icon = 'modular_twilight_axis/icons/roguetown/clothing/shirts.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/shirts.dmi'
 	sleeved = 'modular_twilight_axis/icons/roguetown/clothing/onmob/shirts.dmi'
@@ -1543,7 +1543,7 @@
 /obj/item/clothing/suit/roguetown/shirt/elven/attack_right(mob/user)
 	..()
 	if(!picked)
-		var/choice = input(user, "Choose a color.", "Elven colors") as anything in elven_colors
+		var/choice = input_updated_loadout_display(user, elven_colors, "选择精灵服饰颜色。")
 		picked = TRUE
 		detail_tag = "_[choice]"
 		update_icon()
@@ -1558,8 +1558,8 @@
 		add_overlay(pic)
 
 /obj/item/clothing/suit/roguetown/shirt/elven/coat
-	name = "elven coat"
-	desc = "A common garnament for Etruscan countryside, each of these durable coats is woven in adherence to tradition."
+	name = "精灵外套"
+	desc = "伊特鲁斯卡乡间常见的衣装，每件耐用的外套都遵循传统织成。"
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
 	icon_state = "coat"
 	item_state = "coat"
@@ -1570,7 +1570,7 @@
 /obj/item/clothing/suit/roguetown/shirt/elven/coat/attack_right(mob/user)
 	..()
 	if(!picked)
-		var/choice = input(user, "Choose a color.", "Elven colors") as anything in elven_colors
+		var/choice = input_updated_loadout_display(user, elven_colors, "选择精灵服饰颜色。")
 		picked = TRUE
 		detail_tag = "_[choice]"
 		update_icon()
@@ -1586,8 +1586,8 @@
 		add_overlay(pic)
 
 /obj/item/clothing/suit/roguetown/shirt/elven/coat/alt
-	name = "elven furcoat"
-	desc = "A common garnament for Etruscan countryside, each of these durable coats is woven in adherence to tradition. Luxurious fur makes it fit for colder regions as well as self-entitled nobility."
+	name = "精灵皮草外套"
+	desc = "伊特鲁斯卡乡间常见的衣装，每件耐用外套都遵循传统织成。奢华皮草既适合寒冷地区，也适合自视甚高的贵族。"
 	icon_state = "coat_alt"
 	item_state = "coat_alt"
 	elven_colors = list("blue", "red", "beige", "white")
@@ -1595,7 +1595,7 @@
 /obj/item/clothing/suit/roguetown/shirt/elven/coat/alt/attack_right(mob/user)
 	..()
 	if(!picked)
-		var/choice = input(user, "Choose a color.", "Elven colors") as anything in elven_colors
+		var/choice = input_updated_loadout_display(user, elven_colors, "选择精灵服饰颜色。")
 		picked = TRUE
 		detail_tag = "_[choice]"
 		update_icon()
@@ -1611,7 +1611,7 @@
 		add_overlay(pic)
 
 /obj/item/clothing/suit/roguetown/shirt/hammerhold
-	name = "hammerhold shirt"
+	name = "铁锤堡衬衫"
 	desc = ""
 	icon = 'modular_twilight_axis/icons/roguetown/clothing/shirts.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/shirts.dmi'
@@ -1632,7 +1632,7 @@
 	..()
 	if(!picked)
 		var/iconH = icon_state
-		var/choiceC = input(user, "Choose a color.", "Hammerhold colors") as anything in hammerhold_colors
+		var/choiceC = input_updated_loadout_display(user, hammerhold_colors, "选择铁锤堡服饰颜色。")
 		if(choiceC == "white")
 			iconH = "white_shirt"
 			hammerhold_variants += list("e", "g")
@@ -1641,14 +1641,14 @@
 			hammerhold_variants += list("e", "g")
 		if(choiceC == "red")
 			iconH = "red_shirt"
-		var/choiceV = input(user, "Choose a variant.", "Hammerhold variants") as anything in hammerhold_variants
+		var/choiceV = input(user, "选择款式。", "铁锤堡服饰款式") as anything in hammerhold_variants
 		iconH = iconH + "_[choiceV]"
 		icon_state = iconH
 		item_state = iconH
 		base_icon_state = iconH
 		hammerhold_final_icon = iconH
 		update_icon()
-		if(alert("Are you pleased with your shirt?", "Shirt", "Yes", "No") != "Yes")
+		if(alert("你对这件衬衫满意吗？", "衬衫", "是", "否") != "是")
 			icon_state = "white_shirt_a"
 			item_state = "white_shirt_a"
 			base_icon_state = "white_shirt_a"
@@ -1675,8 +1675,8 @@
 		update_icon()
 
 /obj/item/clothing/suit/roguetown/shirt/hammerhold/coat
-	name = "noble coat"
-	desc = "A noble's cloak inspired by elven culture, worn by the nobility of Hammerhold."
+	name = "贵族外套"
+	desc = "受精灵文化启发的贵族披衣，由铁锤堡贵族穿着。"
 	icon_state = "coat_a"
 	item_state = "coat_a"
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
@@ -1685,7 +1685,7 @@
 
 /obj/item/clothing/suit/roguetown/shirt/hammerhold/coat/attack_right(mob/user)
 	if(!picked)
-		var/choiceC = input(user, "Choose a color.", "Hammerhold colors") as anything in hammerhold_colors
+		var/choiceC = input_updated_loadout_display(user, hammerhold_colors, "选择铁锤堡服饰颜色。")
 		if(choiceC == "beige")
 			icon_state = "coat_a"
 			item_state = "coat_a"
@@ -1695,7 +1695,7 @@
 			item_state = "coat_b"
 			hammerhold_final_icon = "coat_b"
 		update_icon()
-		if(alert("Are you pleased with your coat?", "Coat", "Yes", "No") != "Yes")
+		if(alert("你对这件外套满意吗？", "外套", "是", "否") != "是")
 			icon_state = "coat_a"
 			item_state = "coat_a"
 			hammerhold_final_icon = "coat_a"
@@ -1708,8 +1708,8 @@
 			H.update_inv_armor()
 
 /obj/item/clothing/suit/roguetown/shirt/undershirt/etrdoublet
-	name = "doublet"
-	desc = "A comfortable doublet suitable for receptions rather than for hiking."
+	name = "紧身上衣"
+	desc = "舒适的紧身上衣，适合出席宴会，不适合徒步远行。"
 	slot_flags = ITEM_SLOT_SHIRT|ITEM_SLOT_ARMOR
 	r_sleeve_status = SLEEVE_NORMAL
 	l_sleeve_status = SLEEVE_NORMAL
@@ -1722,8 +1722,8 @@
 	allowed_race = NON_DWARVEN_RACE_TYPES
 
 /obj/item/clothing/suit/roguetown/shirt/yoroihitatare
-	name = "yoroihitatare"
-	desc = "Traditional Kazengun samurai ceremonial attire, worn under armor or for official ceremonies."
+	name = "铠直垂"
+	desc = "风郡武士的传统礼服，可穿在甲胄下或用于正式典礼。"
 	icon_state = "yoroihitatare"
 	item_state = "yoroihitatare"
 	r_sleeve_status = SLEEVE_NORMAL

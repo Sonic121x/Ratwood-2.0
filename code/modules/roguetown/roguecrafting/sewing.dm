@@ -1700,7 +1700,7 @@
 	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/sewing/cloak_absolutionistrobe_black
-	name = "blessed robe"
+	name = "受祝长袍"
 	result = /obj/item/clothing/cloak/absolutionistrobe/black
 	reqs = list(/obj/item/natural/cloth = 3, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
@@ -1709,7 +1709,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_apron_waist_maid
-	name = "maid apron"
+	name = "女仆围裙"
 	result = /obj/item/clothing/cloak/apron/waist/maid
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
@@ -1718,14 +1718,14 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_bishop
-	name = "bishop cape"
+	name = "主教披肩"
 	result = /obj/item/clothing/cloak/bishop
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/cloak_cape_inquisitorgold
-	name = "golden order cloak"
+	name = "黄金教团披风"
 	result = /obj/item/clothing/cloak/cape/inquisitorgold
 	reqs = list(/obj/item/natural/cloth = 4, /obj/item/natural/fibers = 2)
 	tools = list(/obj/item/needle)
@@ -1734,7 +1734,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_cape_inquisitorsilver
-	name = "silver order cloak"
+	name = "白银教团披风"
 	result = /obj/item/clothing/cloak/cape/inquisitorsilver
 	reqs = list(/obj/item/natural/cloth = 4, /obj/item/natural/fibers = 2)
 	tools = list(/obj/item/needle)
@@ -1743,49 +1743,49 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_etrcape
-	name = "wanderer's cape"
+	name = "旅人披肩"
 	result = /obj/item/clothing/cloak/etrcape
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/cloak_half_duelcape
-	name = "duelist cape"
+	name = "决斗家披肩"
 	result = /obj/item/clothing/cloak/half/duelcape
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/cloak_half_shadowcloak_spymaster
-	name = "hand's cloak"
+	name = "执政之手的披风"
 	result = /obj/item/clothing/cloak/half/shadowcloak/spymaster
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/cloak_poncho_fancycoat
-	name = "fancy coat"
+	name = "华丽外套"
 	result = /obj/item/clothing/cloak/poncho/fancycoat
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/cloak_poncho_fancycoat_trimmed
-	name = "trimmed fancy coat"
+	name = "裁短华丽外套"
 	result = /obj/item/clothing/cloak/poncho/fancycoat/trimmed
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/cloak_rangercloak
-	name = "ranger cloak"
+	name = "游侠披风"
 	result = /obj/item/clothing/cloak/rangercloak
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_sash
-	name = "sash"
+	name = "披巾"
 	result = /obj/item/clothing/cloak/sash
 	reqs = list(/obj/item/natural/cloth = 2)
 	tools = list(/obj/item/needle)
@@ -1794,7 +1794,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_sash_dupatta
-	name = "dupatta"
+	name = "沙漠长披巾"
 	result = /obj/item/clothing/cloak/sash/dupatta
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
@@ -1803,35 +1803,35 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_scaledcloak
-	name = "scaled cloak"
+	name = "鳞饰披风"
 	result = /obj/item/clothing/cloak/scaledcloak
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_scout
-	name = "scout cloak"
+	name = "斥候披风"
 	result = /obj/item/clothing/cloak/scout
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_sheriff
-	name = "sheriff's cloak"
+	name = "治安官披风"
 	result = /obj/item/clothing/cloak/sheriff
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_sleevedtabard
-	name = "sleeved tabard"
+	name = "有袖罩袍"
 	result = /obj/item/clothing/cloak/sleevedtabard
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_tabard_psydontabard_black
-	name = "blessed tabard"
+	name = "受祝罩袍"
 	result = /obj/item/clothing/cloak/tabard/psydontabard/black
 	reqs = list(/obj/item/natural/cloth = 3, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
@@ -1840,7 +1840,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_tabard_psydontabard_white
-	name = "traditional tabard"
+	name = "传统罩袍"
 	result = /obj/item/clothing/cloak/tabard/psydontabard/white
 	reqs = list(/obj/item/natural/cloth = 3, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
@@ -1849,14 +1849,14 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_tabard_psydontabard_white_alt
-	name = "opened traditional tabard"
+	name = "敞开的传统罩袍"
 	result = /obj/item/clothing/cloak/tabard/psydontabard/white/alt
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_tabard_stabard_crusader
-	name = "surcoat of the golden order"
+	name = "黄金教团战袍"
 	result = /obj/item/clothing/cloak/tabard/stabard/crusader
 	reqs = list(/obj/item/natural/cloth = 3, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
@@ -1865,7 +1865,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_tabard_stabard_crusader_astrata
-	name = "surcoat of the golden order (astrata)"
+	name = "黄金教团战袍（阿斯特拉塔）"
 	result = /obj/item/clothing/cloak/tabard/stabard/crusader/astrata
 	reqs = list(/obj/item/natural/cloth = 3, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
@@ -1874,14 +1874,14 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_tabard_stabard_crusader_bsteel
-	name = "surcoat of the blacksteel order"
+	name = "黑钢教团战袍"
 	result = /obj/item/clothing/cloak/tabard/stabard/crusader/bsteel
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_tabard_stabard_crusader_heavy
-	name = "overvestments"
+	name = "厚重外法衣"
 	result = /obj/item/clothing/cloak/tabard/stabard/crusader/heavy
 	reqs = list(/obj/item/natural/cloth = 3, /obj/item/natural/fibers = 2)
 	tools = list(/obj/item/needle)
@@ -1890,7 +1890,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_tabard_stabard_crusader_t
-	name = "surcoat of the silver order"
+	name = "白银教团战袍"
 	result = /obj/item/clothing/cloak/tabard/stabard/crusader/t
 	reqs = list(/obj/item/natural/cloth = 3, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
@@ -1899,7 +1899,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_tabard_stabard_crusader_t_astrata
-	name = "surcoat of the silver order (astrata)"
+	name = "白银教团战袍（阿斯特拉塔）"
 	result = /obj/item/clothing/cloak/tabard/stabard/crusader/t/astrata
 	reqs = list(/obj/item/natural/cloth = 3, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
@@ -1908,7 +1908,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_tabard_stabard_crusader_t_see
-	name = "surcoat of the silver order (see)"
+	name = "白银教团战袍（教廷）"
 	result = /obj/item/clothing/cloak/tabard/stabard/crusader/t/see
 	reqs = list(/obj/item/natural/cloth = 3, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
@@ -1917,7 +1917,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_tabard_stabard_crusader_see
-	name = "surcoat of the golden order (see)"
+	name = "黄金教团战袍（教廷）"
 	result = /obj/item/clothing/cloak/tabard/stabard/crusader/see
 	reqs = list(/obj/item/natural/cloth = 3, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
@@ -1926,7 +1926,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_tabard_stabard_surcoat_short
-	name = "short jupon"
+	name = "短款贴身战袍"
 	result = /obj/item/clothing/cloak/tabard/stabard/surcoat/short
 	reqs = list(/obj/item/natural/cloth = 3, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
@@ -1935,7 +1935,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_tabard_toga
-	name = "toga"
+	name = "托加长袍"
 	result = /obj/item/clothing/cloak/tabard/toga
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
@@ -1944,14 +1944,14 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_tabard_toga_alt
-	name = "bared toga"
+	name = "敞胸托加长袍"
 	result = /obj/item/clothing/cloak/tabard/toga/alt
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_tabard_toga_dress
-	name = "toga (dress)"
+	name = "托加长袍（裙式）"
 	result = /obj/item/clothing/cloak/tabard/toga/dress
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
@@ -1960,14 +1960,14 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_tabard_toga_dress_alt
-	name = "bared toga (alt)"
+	name = "敞胸托加长袍（另一款）"
 	result = /obj/item/clothing/cloak/tabard/toga/dress/alt
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_templar_astratancleric
-	name = "astratan cloak"
+	name = "阿斯特拉塔披风"
 	result = /obj/item/clothing/cloak/templar/astratancleric
 	reqs = list(/obj/item/natural/cloth = 3, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
@@ -1976,21 +1976,21 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_templar_astratancleric_grey
-	name = "frayed cloak"
+	name = "磨边披风"
 	result = /obj/item/clothing/cloak/templar/astratancleric/grey
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_templar_eoran_alt
-	name = "eoran tabard"
+	name = "伊欧拉罩袍"
 	result = /obj/item/clothing/cloak/templar/eoran/alt
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_templar_necrancleric
-	name = "necran cloak"
+	name = "奈克拉披风"
 	result = /obj/item/clothing/cloak/templar/necrancleric
 	reqs = list(/obj/item/natural/cloth = 3, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
@@ -1999,7 +1999,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_templar_ravoxcleric
-	name = "justice cloak"
+	name = "正义披风"
 	result = /obj/item/clothing/cloak/templar/ravoxcleric
 	reqs = list(/obj/item/natural/cloth = 3, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
@@ -2008,14 +2008,14 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_templar_see_alt
-	name = "see templar tabard"
+	name = "教廷圣殿骑士罩袍"
 	result = /obj/item/clothing/cloak/templar/see_alt
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_templar_seecleric
-	name = "see devotee tabard"
+	name = "教廷虔信者罩袍"
 	result = /obj/item/clothing/cloak/templar/seecleric
 	reqs = list(/obj/item/natural/cloth = 3, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
@@ -2024,42 +2024,42 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_desert
-	name = "desert cloak"
+	name = "沙漠披风"
 	result = /obj/item/clothing/cloak/desert
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/cloak_elven
-	name = "elven cloak"
+	name = "精灵披风"
 	result = /obj/item/clothing/cloak/elven
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/cloak_elven_short
-	name = "elven shortcloak"
+	name = "精灵短披风"
 	result = /obj/item/clothing/cloak/elven/short
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/cloak_scarf
-	name = "scarf"
+	name = "围巾"
 	result = /obj/item/clothing/cloak/scarf
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_antlers
-	name = "old antlers"
+	name = "旧鹿角"
 	result = /obj/item/clothing/head/roguetown/antlers
 	reqs = list(/obj/item/natural/bone = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 1
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_courtphysician
-	name = "sanguine hat"
+	name = "绯红宽檐帽"
 	result = /obj/item/clothing/head/roguetown/courtphysician
 	reqs = list( /obj/item/natural/silk = 2 )
 	tools = list(/obj/item/needle)
@@ -2068,7 +2068,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_courtphysician_female
-	name = "sanguine cap"
+	name = "绯红便帽"
 	result = /obj/item/clothing/head/roguetown/courtphysician/female
 	reqs = list( /obj/item/natural/silk = 2 )
 	tools = list(/obj/item/needle)
@@ -2077,14 +2077,14 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_deserthood
-	name = "desert hood"
+	name = "沙漠兜帽"
 	result = /obj/item/clothing/head/roguetown/deserthood
 	reqs = list(/obj/item/natural/cloth = 1, /obj/item/natural/fibers = 1)
 	craftdiff = 1
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_doublehennin
-	name = "dual hennin"
+	name = "双角尖顶帽"
 	result = /obj/item/clothing/head/roguetown/doublehennin
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
@@ -2093,21 +2093,21 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_duelhat_etrhat
-	name = "wanderer's hat"
+	name = "旅人帽"
 	result = /obj/item/clothing/head/roguetown/duelhat/etrhat
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_duelhat_etrusca
-	name = "etruscan duelist hat"
+	name = "伊特鲁斯卡决斗帽"
 	result = /obj/item/clothing/head/roguetown/duelhat/etrusca
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_durag
-	name = "durag"
+	name = "护发头巾"
 	result = /obj/item/clothing/head/roguetown/durag
 	reqs = list(/obj/item/natural/cloth = 1)
 	tools = list(/obj/item/needle)
@@ -2116,28 +2116,28 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_eaststrawhat
-	name = "worn rice hat"
+	name = "旧斗笠"
 	result = /obj/item/clothing/head/roguetown/eaststrawhat
 	reqs = list(/obj/item/natural/fibers = 3)
 	craftdiff = 1
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_explorerhat
-	name = "explorer's hat"
+	name = "探险者帽"
 	result = /obj/item/clothing/head/roguetown/explorerhat
 	reqs = list(/obj/item/natural/cloth = 1, /obj/item/natural/fibers = 1)
 	craftdiff = 1
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_flamboyant
-	name = "flamboyant hat"
+	name = "华艳羽帽"
 	result = /obj/item/clothing/head/roguetown/flamboyant
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_flotsam
-	name = "flotsam bonnet"
+	name = "浮叶软帽"
 	result = /obj/item/clothing/head/roguetown/flotsam
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
@@ -2146,14 +2146,14 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_gasa
-	name = "gasa"
+	name = "笠帽"
 	result = /obj/item/clothing/head/roguetown/gasa
 	reqs = list(/obj/item/natural/fibers = 3)
 	craftdiff = 1
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_hscarf
-	name = "head scarf"
+	name = "头巾"
 	result = /obj/item/clothing/head/roguetown/hscarf
 	reqs = list(/obj/item/natural/silk = 4)
 	tools = list(/obj/item/needle)
@@ -2162,7 +2162,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_longveil
-	name = "long veil"
+	name = "长头纱"
 	result = /obj/item/clothing/head/roguetown/longveil
 	reqs = list(/obj/item/natural/cloth = 1)
 	tools = list(/obj/item/needle)
@@ -2171,7 +2171,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_maidhead
-	name = "maid headdress"
+	name = "女仆头饰"
 	result = /obj/item/clothing/head/roguetown/maidhead
 	reqs = list(/obj/item/natural/cloth = 1, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
@@ -2180,14 +2180,14 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_menacing_executioner
-	name = "executioners hood"
+	name = "刽子手兜帽"
 	result = /obj/item/clothing/head/roguetown/menacing/executioner
 	reqs = list(/obj/item/natural/cloth = 1, /obj/item/natural/fibers = 1)
 	craftdiff = 1
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_nightcap
-	name = "nitecap"
+	name = "睡帽"
 	result = /obj/item/clothing/head/roguetown/nightcap
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
@@ -2196,28 +2196,28 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_nun_hood
-	name = "nun hood"
+	name = "修女兜帽"
 	result = /obj/item/clothing/head/roguetown/nun_hood
 	reqs = list(/obj/item/natural/cloth = 1, /obj/item/natural/fibers = 1)
 	craftdiff = 1
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_onhelm_tw_d_horns
-	name = "horns helmkleinod"
+	name = "铁角盔饰"
 	result = /obj/item/clothing/head/roguetown/onhelm/tw_d_horns
 	reqs = list(/obj/item/natural/cloth = 1, /obj/item/natural/fibers = 1)
 	craftdiff = 1
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_roguehood_bishop
-	name = "bishop hood"
+	name = "主教兜帽"
 	result = /obj/item/clothing/head/roguetown/roguehood/bishop
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_roguehood_burgerhood
-	name = "noble hood"
+	name = "贵族兜帽"
 	result = /obj/item/clothing/head/roguetown/roguehood/burgerhood
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/silk = 2)
 	tools = list(/obj/item/needle)
@@ -2226,28 +2226,28 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_roningasa
-	name = "roningasa"
+	name = "浪人笠"
 	result = /obj/item/clothing/head/roguetown/roningasa
 	reqs = list(/obj/item/natural/fibers = 3)
 	craftdiff = 1
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_sandogasa
-	name = "sandogasa"
+	name = "三度笠"
 	result = /obj/item/clothing/head/roguetown/sandogasa
 	reqs = list(/obj/item/natural/fibers = 3)
 	craftdiff = 1
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_stewardtophat
-	name = "top hat"
+	name = "高顶礼帽"
 	result = /obj/item/clothing/head/roguetown/stewardtophat
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_tiyon
-	name = "tiyon"
+	name = "华饰布冠"
 	result = /obj/item/clothing/head/roguetown/tiyon
 	reqs = list(/obj/item/natural/cloth = 2)
 	tools = list(/obj/item/needle)
@@ -2256,35 +2256,35 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_torioigasa
-	name = "torioigasa"
+	name = "鸟追笠"
 	result = /obj/item/clothing/head/roguetown/torioigasa
 	reqs = list(/obj/item/natural/fibers = 3)
 	craftdiff = 1
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_elven_hat
-	name = "elven burka"
+	name = "精灵护耳帽"
 	result = /obj/item/clothing/head/roguetown/elven_hat
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_hammerhold_hat
-	name = "kokoshnik"
+	name = "扇形冠帽"
 	result = /obj/item/clothing/head/roguetown/hammerhold_hat
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_hammerhold_hat_peasant
-	name = "hammerhold hat"
+	name = "铁锤堡帽"
 	result = /obj/item/clothing/head/roguetown/hammerhold_hat/peasant
 	reqs = list(/obj/item/natural/cloth = 1, /obj/item/natural/fibers = 1)
 	craftdiff = 1
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/head_roguetown_veiledhat
-	name = "veiled hat"
+	name = "垂纱帽"
 	result = /obj/item/clothing/head/roguetown/veiledhat
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
@@ -2293,28 +2293,28 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/mask_rogue_blindfold_psydon
-	name = "blessed blindfold"
+	name = "受祝眼罩"
 	result = /obj/item/clothing/mask/rogue/blindfold/psydon
 	reqs = list(/obj/item/natural/cloth = 1, /obj/item/natural/fibers = 1)
 	craftdiff = 1
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/mask_rogue_eyepatch_fake
-	name = "eyepatch"
+	name = "眼罩"
 	result = /obj/item/clothing/mask/rogue/eyepatch/fake
 	reqs = list(/obj/item/natural/cloth = 1, /obj/item/natural/fibers = 1)
 	craftdiff = 1
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/mask_rogue_eyepatch_left_fake
-	name = "eyepatch (fake)"
+	name = "眼罩（假）"
 	result = /obj/item/clothing/mask/rogue/eyepatch/left/fake
 	reqs = list(/obj/item/natural/cloth = 1, /obj/item/natural/fibers = 1)
 	craftdiff = 1
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/mask_rogue_faceveil
-	name = "simple veil"
+	name = "简朴面纱"
 	result = /obj/item/clothing/mask/rogue/faceveil
 	reqs = list(/obj/item/natural/cloth = 1)
 	tools = list(/obj/item/needle)
@@ -2323,7 +2323,7 @@
 	display_category = ITEM_CAT_CLOTH_MASK
 
 /datum/crafting_recipe/roguetown/sewing/mask_rogue_physician_feld
-	name = "feldsher's mask"
+	name = "外科医师面具"
 	result = /obj/item/clothing/mask/rogue/physician/feld
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/bouquet/calendula = 1, /obj/item/natural/bone = 1)
 	tools = list(/obj/item/needle)
@@ -2332,7 +2332,7 @@
 	display_category = ITEM_CAT_CLOTH_MASK
 
 /datum/crafting_recipe/roguetown/sewing/mask_rogue_physician_phys
-	name = "physicker's mask"
+	name = "医师面具"
 	result = /obj/item/clothing/mask/rogue/physician/phys
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/bouquet/calendula = 1, /obj/item/natural/bone = 1)
 	tools = list(/obj/item/needle)
@@ -2341,21 +2341,21 @@
 	display_category = ITEM_CAT_CLOTH_MASK
 
 /datum/crafting_recipe/roguetown/sewing/mask_rogue_shepherd_shadowmask_spymaster
-	name = "hand's halfmask"
+	name = "执政之手的半面罩"
 	result = /obj/item/clothing/mask/rogue/shepherd/shadowmask/spymaster
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/neck_roguetown_collar_fur
-	name = "fur collar"
+	name = "毛皮领"
 	result = /obj/item/clothing/neck/roguetown/collar/fur
 	reqs = list(/obj/item/natural/fur = 1, /obj/item/natural/fibers = 1)
 	craftdiff = 1
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/neck_roguetown_cravat
-	name = "cravat"
+	name = "领巾"
 	result = /obj/item/clothing/neck/roguetown/cravat
 	reqs = list(/obj/item/natural/cloth = 2)
 	tools = list(/obj/item/needle)
@@ -2364,7 +2364,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/neck_roguetown_ruffle
-	name = "ruffled collar"
+	name = "褶边领"
 	result = /obj/item/clothing/neck/roguetown/ruffle
 	reqs = list(/obj/item/natural/cloth = 2)
 	tools = list(/obj/item/needle)
@@ -2373,7 +2373,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_courtphysician
-	name = "sanguine vest"
+	name = "绯红马甲"
 	result = /obj/item/clothing/suit/roguetown/shirt/courtphysician
 	reqs = list( /obj/item/natural/silk = 3 )
 	tools = list(/obj/item/needle)
@@ -2382,7 +2382,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_courtphysician_female
-	name = "sanguine blouse"
+	name = "绯红女衫"
 	result = /obj/item/clothing/suit/roguetown/shirt/courtphysician/female
 	reqs = list( /obj/item/natural/silk = 3 )
 	tools = list(/obj/item/needle)
@@ -2391,7 +2391,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_desertbra
-	name = "desert bra"
+	name = "沙漠胸衣"
 	result = /obj/item/clothing/suit/roguetown/shirt/desertbra
 	reqs = list(/obj/item/natural/fibers = 5)
 	tools = list(/obj/item/needle)
@@ -2400,7 +2400,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_dress_blue
-	name = "light blue dress"
+	name = "浅蓝连衣裙"
 	result = /obj/item/clothing/suit/roguetown/shirt/dress/blue
 	reqs = list(/obj/item/natural/cloth = 3, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
@@ -2409,28 +2409,28 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_dress_etrdress
-	name = "low-cut dress"
+	name = "低领连衣裙"
 	result = /obj/item/clothing/suit/roguetown/shirt/dress/etrdress
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_dress_etrdress2
-	name = "embroidered dress"
+	name = "刺绣连衣裙"
 	result = /obj/item/clothing/suit/roguetown/shirt/dress/etrdress2
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_dress_etrdress3
-	name = "strapless gown"
+	name = "抹胸礼服"
 	result = /obj/item/clothing/suit/roguetown/shirt/dress/etrdress3
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_dress_green
-	name = "light green dress"
+	name = "浅绿连衣裙"
 	result = /obj/item/clothing/suit/roguetown/shirt/dress/green
 	reqs = list(/obj/item/natural/cloth = 3, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
@@ -2439,7 +2439,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_dress_maidfancy
-	name = "valorian maid dress"
+	name = "瓦洛里亚女仆裙"
 	result = /obj/item/clothing/suit/roguetown/shirt/dress/maidfancy
 	reqs = list( /obj/item/natural/cloth = 3, /obj/item/natural/fibers = 2 )
 	tools = list(/obj/item/needle)
@@ -2448,7 +2448,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_dress_nightgown
-	name = "nightgown"
+	name = "睡裙"
 	result = /obj/item/clothing/suit/roguetown/shirt/dress/nightgown
 	reqs = list(/obj/item/natural/cloth = 3, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
@@ -2457,7 +2457,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_dress_saree
-	name = "saree"
+	name = "纱丽"
 	result = /obj/item/clothing/suit/roguetown/shirt/dress/saree
 	reqs = list(/obj/item/natural/cloth = 3, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
@@ -2466,14 +2466,14 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_dress_silkdress_bishop
-	name = "bishop's cassock"
+	name = "主教长袍"
 	result = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/bishop
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_dress_tavern
-	name = "tavern dress"
+	name = "酒馆连衣裙"
 	result = /obj/item/clothing/suit/roguetown/shirt/dress/tavern
 	reqs = list(/obj/item/natural/cloth = 3, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
@@ -2482,112 +2482,112 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_explorer
-	name = "explorer's vest"
+	name = "探险者马甲"
 	result = /obj/item/clothing/suit/roguetown/shirt/explorer
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_fancyjacket
-	name = "fancy jacket"
+	name = "华美夹克"
 	result = /obj/item/clothing/suit/roguetown/shirt/fancyjacket
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_fancyjacket_triumph_padded
-	name = "dark jacket"
+	name = "暗色夹克"
 	result = /obj/item/clothing/suit/roguetown/shirt/fancyjacket/triumph_padded
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_haori
-	name = "haori"
+	name = "羽织"
 	result = /obj/item/clothing/suit/roguetown/shirt/haori
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_kamishimo
-	name = "kamishimo"
+	name = "肩衣"
 	result = /obj/item/clothing/suit/roguetown/shirt/kamishimo
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_kazengun_jacket
-	name = "kazengun jacket"
+	name = "风郡夹克"
 	result = /obj/item/clothing/suit/roguetown/shirt/kazengun_jacket
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_kimono
-	name = "kimono"
+	name = "和服"
 	result = /obj/item/clothing/suit/roguetown/shirt/kimono
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_kimono2
-	name = "long sleeved kimono"
+	name = "长袖和服"
 	result = /obj/item/clothing/suit/roguetown/shirt/kimono2
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_robe_abyssor_leader
-	name = "sylveric robe"
+	name = "西尔维里克长袍"
 	result = /obj/item/clothing/suit/roguetown/shirt/robe/abyssor_leader
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_robe_abyssor_painter
-	name = "rainfall robe"
+	name = "雨幕长袍"
 	result = /obj/item/clothing/suit/roguetown/shirt/robe/abyssor_painter
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_robe_abyssor_painter_sea
-	name = "sea robe"
+	name = "海潮长袍"
 	result = /obj/item/clothing/suit/roguetown/shirt/robe/abyssor_painter_sea
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_robe_bared
-	name = "bared robe"
+	name = "敞胸长袍"
 	result = /obj/item/clothing/suit/roguetown/shirt/robe/bared
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_robe_eora_resprite
-	name = "eoran robe"
+	name = "伊欧拉长袍"
 	result = /obj/item/clothing/suit/roguetown/shirt/robe/eora/resprite
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_robe_eora_resprite_pink
-	name = "eoran robe (pink)"
+	name = "伊欧拉长袍（粉色）"
 	result = /obj/item/clothing/suit/roguetown/shirt/robe/eora/resprite/pink
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_robe_hag
-	name = "hedge robe"
+	name = "隐士长袍"
 	result = /obj/item/clothing/suit/roguetown/shirt/robe/hag
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_robe_leopard
-	name = "leopard robe"
+	name = "豹纹长袍"
 	result = /obj/item/clothing/suit/roguetown/shirt/robe/leopard
 	reqs = list(/obj/item/natural/cloth = 3, /obj/item/natural/fibers = 2)
 	tools = list(/obj/item/needle)
@@ -2596,21 +2596,21 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_robe_leopard_alt
-	name = "open leopard robe"
+	name = "敞开的豹纹长袍"
 	result = /obj/item/clothing/suit/roguetown/shirt/robe/leopard/alt
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_robe_nun_dress
-	name = "nun dress"
+	name = "修女裙"
 	result = /obj/item/clothing/suit/roguetown/shirt/robe/nun_dress
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_silkbra
-	name = "giltsilk bra"
+	name = "金饰丝绸胸衣"
 	result = /obj/item/clothing/suit/roguetown/shirt/silkbra
 	reqs = list(/obj/item/natural/silk = 5)
 	tools = list(/obj/item/needle)
@@ -2619,63 +2619,63 @@
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_elven
-	name = "elven suit"
+	name = "精灵套装"
 	result = /obj/item/clothing/suit/roguetown/shirt/elven
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_elven_coat
-	name = "elven coat"
+	name = "精灵外套"
 	result = /obj/item/clothing/suit/roguetown/shirt/elven/coat
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_elven_coat_alt
-	name = "elven furcoat"
+	name = "精灵皮草外套"
 	result = /obj/item/clothing/suit/roguetown/shirt/elven/coat/alt
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_hammerhold
-	name = "hammerhold shirt"
+	name = "铁锤堡衬衫"
 	result = /obj/item/clothing/suit/roguetown/shirt/hammerhold
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_hammerhold_coat
-	name = "noble coat"
+	name = "贵族外套"
 	result = /obj/item/clothing/suit/roguetown/shirt/hammerhold/coat
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1)
 	craftdiff = 3
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_undershirt_etrdoublet
-	name = "doublet"
+	name = "紧身上衣"
 	result = /obj/item/clothing/suit/roguetown/shirt/undershirt/etrdoublet
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/suit_roguetown_shirt_yoroihitatare
-	name = "yoroihitatare"
+	name = "铠直垂"
 	result = /obj/item/clothing/suit/roguetown/shirt/yoroihitatare
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/under_roguetown_loincloth_deprived
-	name = "large loincloth"
+	name = "大兜裆"
 	result = /obj/item/clothing/under/roguetown/loincloth/deprived
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/under_roguetown_skirt_courtphysician
-	name = "sanguine skirt"
+	name = "绯红裙"
 	result = /obj/item/clothing/under/roguetown/skirt/courtphysician
 	reqs = list( /obj/item/natural/silk = 3 )
 	tools = list(/obj/item/needle)
@@ -2684,7 +2684,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/under_roguetown_skirt_desert
-	name = "desert skirt"
+	name = "沙漠裙"
 	result = /obj/item/clothing/under/roguetown/skirt/desert
 	reqs = list(/obj/item/natural/cloth = 1, /obj/item/natural/fibers = 2)
 	tools = list(/obj/item/needle)
@@ -2693,7 +2693,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/under_roguetown_skirt_formal
-	name = "knee-high skirt"
+	name = "及膝裙"
 	result = /obj/item/clothing/under/roguetown/skirt/formal
 	reqs = list(/obj/item/natural/cloth = 1, /obj/item/natural/fibers = 2)
 	tools = list(/obj/item/needle)
@@ -2702,7 +2702,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/under_roguetown_skirt_short
-	name = "short skirt"
+	name = "短裙"
 	result = /obj/item/clothing/under/roguetown/skirt/short
 	reqs = list(/obj/item/natural/cloth = 1, /obj/item/natural/fibers = 2)
 	tools = list(/obj/item/needle)
@@ -2711,7 +2711,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/under_roguetown_tights_dhoti
-	name = "dhoti"
+	name = "裹布裤"
 	result = /obj/item/clothing/under/roguetown/tights/dhoti
 	reqs = list(/obj/item/natural/cloth = 3, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)
@@ -2720,7 +2720,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/under_roguetown_tights_hose
-	name = "cloth hosen"
+	name = "布制长袜裤"
 	result = /obj/item/clothing/under/roguetown/tights/hose
 	reqs = list(/obj/item/natural/cloth = 3, /obj/item/natural/fibers = 2)
 	tools = list(/obj/item/needle)
@@ -2729,7 +2729,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/sewing/belt_rogue_leather_battleskirt_loincloth
-	name = "cloth loincloth"
+	name = "布兜裆"
 	result = /obj/item/storage/belt/rogue/leather/battleskirt/loincloth
 	reqs = list( /obj/item/natural/cloth = 3, /obj/item/natural/hide/cured = 1 )
 	tools = list(/obj/item/needle)
@@ -2738,7 +2738,7 @@
 	display_category = ITEM_CAT_ARMOR_BELTS
 
 /datum/crafting_recipe/roguetown/sewing/belt_rogue_leather_beltshawl
-	name = "belt shawl"
+	name = "腰披巾"
 	result = /obj/item/storage/belt/rogue/leather/beltshawl
 	reqs = list( /obj/item/natural/cloth = 3 )
 	tools = list(/obj/item/needle)
@@ -2747,7 +2747,7 @@
 	display_category = ITEM_CAT_ARMOR_BELTS
 
 /datum/crafting_recipe/roguetown/sewing/belt_rogue_leather_sash_maid
-	name = "cloth sash"
+	name = "布腰带"
 	result = /obj/item/storage/belt/rogue/leather/sash/maid
 	reqs = list(/obj/item/natural/cloth = 1, /obj/item/natural/fibers = 1)
 	tools = list(/obj/item/needle)

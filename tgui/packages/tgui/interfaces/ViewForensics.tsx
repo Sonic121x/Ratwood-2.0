@@ -12,7 +12,7 @@ import { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
-
+import { ADMIN_PANEL_LABELS } from './common/displayNames';
 type ForensicAction = {
   time: string;
   // Null, as is name, for something no player did
@@ -70,24 +70,24 @@ const PlayerButtons = (props: { ckey: string }) => {
     <Box nowrap>
       <Button
         icon="eye"
-        tooltip="Follow this player as a ghost"
+        tooltip="以幽灵身份跟随该玩家"
         onClick={() => act('follow', { ckey })}
       >
-        FLW
+        跟随
       </Button>
       <Button
         icon="user"
-        tooltip="Open the player panel"
+        tooltip="打开玩家面板"
         onClick={() => act('pp', { ckey })}
       >
-        PP
+        玩家面板
       </Button>
       <Button
         icon="envelope"
-        tooltip="Send a direct message"
+        tooltip="发送私信"
         onClick={() => act('pm', { ckey })}
       >
-        PM
+        私信
       </Button>
     </Box>
   );
@@ -99,16 +99,16 @@ const ActionsSection = (props: {
 }) => {
   const { title, actions } = props;
   return (
-    <Section title={`${title} (${actions.length})`}>
+    <Section title={`${ADMIN_PANEL_LABELS[title] || title} (${actions.length})`}>
       {actions.length === 0 ? (
-        <NoticeBox>None recorded.</NoticeBox>
+        <NoticeBox>暂无记录。</NoticeBox>
       ) : (
         <Box style={{ maxHeight: SCROLL_HEIGHT, overflowY: 'auto' }}>
           <Table>
             <Table.Row header>
-              <Table.Cell collapsing>Time</Table.Cell>
-              <Table.Cell>Ckey</Table.Cell>
-              <Table.Cell>Action</Table.Cell>
+              <Table.Cell collapsing>时间</Table.Cell>
+              <Table.Cell>账号</Table.Cell>
+              <Table.Cell>操作</Table.Cell>
               <Table.Cell collapsing />
             </Table.Row>
             {actions.map((entry, i) => (
@@ -120,7 +120,7 @@ const ActionsSection = (props: {
                   <Box nowrap italic={!entry.ckey}>
                     {entry.ckey
                       ? `${entry.ckey} (${entry.name})`
-                      : 'No player'}
+                      : '非玩家操作'}
                   </Box>
                 </Table.Cell>
                 <Table.Cell>
@@ -147,15 +147,15 @@ const TouchesSection = (props: {
 }) => {
   const { touches, lastToucher } = props;
   return (
-    <Section title={`Touched by hand (${touches.length})`}>
+    <Section title={`${ADMIN_PANEL_LABELS['Touched by hand']} (${touches.length})`}>
       {touches.length === 0 ? (
-        <NoticeBox>None recorded.</NoticeBox>
+        <NoticeBox>暂无记录。</NoticeBox>
       ) : (
         <Box style={{ maxHeight: SCROLL_HEIGHT, overflowY: 'auto' }}>
           <Table>
             <Table.Row header>
-              <Table.Cell collapsing>Ckey</Table.Cell>
-              <Table.Cell>Touch</Table.Cell>
+              <Table.Cell collapsing>账号</Table.Cell>
+              <Table.Cell>接触记录</Table.Cell>
               <Table.Cell collapsing />
             </Table.Row>
             {touches.map((touch) => (
@@ -164,8 +164,8 @@ const TouchesSection = (props: {
                   <Box nowrap>{touch.ckey}</Box>
                 </Table.Cell>
                 <Table.Cell>
-                  <Box nowrap>First: {touch.first}</Box>
-                  {touch.last && <Box nowrap>Last: {touch.last}</Box>}
+                  <Box nowrap>首次：{touch.first}</Box>
+                  {touch.last && <Box nowrap>最后：{touch.last}</Box>}
                 </Table.Cell>
                 <Table.Cell collapsing>
                   <PlayerButtons ckey={touch.ckey} />
@@ -177,7 +177,7 @@ const TouchesSection = (props: {
       )}
       {lastToucher && (
         <Box color="label" mt={1}>
-          Last touched by {lastToucher}.
+          最后接触者：{lastToucher}。
         </Box>
       )}
     </Section>
@@ -187,20 +187,20 @@ const TouchesSection = (props: {
 const ContentsSection = (props: { contents: Contents }) => {
   const { reagents, total_volume, maximum_volume, rim, items } = props.contents;
   return (
-    <Section title={`Contents (${total_volume}/${maximum_volume}u)`}>
+    <Section title={`${ADMIN_PANEL_LABELS.Contents} (${total_volume}/${maximum_volume}u)`}>
       {rim && (
         <NoticeBox danger>
-          Spiked on the rim. The next sip draws {rim} first. See Suspicious
-          actions for what was sprinkled.
+          容器边缘被下了药，下一口会优先摄入{rim}。请查看可疑操作，
+          确认被撒入的物质。
         </NoticeBox>
       )}
       {reagents.length === 0 ? (
-        <NoticeBox>Empty.</NoticeBox>
+        <NoticeBox>空。</NoticeBox>
       ) : (
         <Table>
           <Table.Row header>
-            <Table.Cell>Reagent</Table.Cell>
-            <Table.Cell collapsing>Amount</Table.Cell>
+            <Table.Cell>试剂</Table.Cell>
+            <Table.Cell collapsing>含量</Table.Cell>
             <Table.Cell collapsing />
           </Table.Row>
           {reagents.map((reagent, i) => (
@@ -212,7 +212,7 @@ const ContentsSection = (props: { contents: Contents }) => {
               <Table.Cell collapsing>
                 {!!reagent.poison && (
                   <Box nowrap bold color="bad">
-                    Poison
+                    毒物
                   </Box>
                 )}
               </Table.Cell>
@@ -222,7 +222,7 @@ const ContentsSection = (props: { contents: Contents }) => {
       )}
       {items.length > 0 && (
         <Box color="label" mt={1}>
-          Items inside: {items.join(', ')}
+          内含物品：{items.join('、')}
         </Box>
       )}
     </Section>
@@ -234,42 +234,42 @@ export const ViewForensics = () => {
   const { target_name, report } = data;
 
   return (
-    <Window width={780} height={700} title={`Forensics: ${target_name}`}>
+    <Window width={780} height={700} title={`Forensics: ${target_name}`} display_title={`${ADMIN_PANEL_LABELS.Forensics}：${target_name}`}>
       <Window.Content scrollable>
         <Section>
           <Stack align="center">
             <Stack.Item>
               <Button icon="file" onClick={() => act('generate')}>
-                {report ? 'Regenerate Logs' : 'Generate Logs'}
+                {report ? '重新生成记录' : '生成记录'}
               </Button>
             </Stack.Item>
             <Stack.Item grow>
               {report && (
                 <Box color="label">
-                  <Box>Generated at {report.generated_at}</Box>
+                  <Box>生成时间：{report.generated_at}</Box>
                   <Box>{report.type}</Box>
                   <Box>{report.location}</Box>
                 </Box>
               )}
             </Stack.Item>
             <Stack.Item>
-              <Tooltip content="All times shown are round time, counted from the start of the round.">
+              <Tooltip content="所有时间均为从本回合开始计算的回合时间。">
                 <Box color="label" nowrap>
                   <Icon name="clock" mr={0.5} />
-                  Round time
+                  回合时间
                 </Box>
               </Tooltip>
             </Stack.Item>
             <Stack.Item>
               <Button icon="location-arrow" onClick={() => act('jump')}>
-                Jump
+                跳转
               </Button>
             </Stack.Item>
           </Stack>
         </Section>
         {!report ? (
           <NoticeBox>
-            Press Generate Logs to read this object&apos;s forensics.
+            点击“生成记录”以读取此物体的取证信息。
           </NoticeBox>
         ) : (
           <>
@@ -294,8 +294,8 @@ export const ViewForensics = () => {
         )}
         {report && (
           <Box color="label">
-            Each list keeps its latest 30 entries. Repeats in a row share one
-            line.
+            每个列表保留最近30条记录。连续重复的操作合并显示在
+            同一行。
           </Box>
         )}
       </Window.Content>

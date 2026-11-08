@@ -2,8 +2,8 @@
 
 /datum/ccg_card/rare_captain
 	id = "rare_captain"
-	name = "Field Captain"
-	desc = "Morale boost for the row."
+	name = "野战队长"
+	desc = "提升本列士气。"
 	row = CCG_ROW_INFANTRY
 	power = 5
 	rarity = CCG_RARITY_RARE
@@ -13,8 +13,8 @@
 
 /datum/ccg_card/unique_spy
 	id = "unique_spy"
-	name = "Court Spy"
-	desc = "Played on the enemy side; draws two cards."
+	name = "宫廷间谍"
+	desc = "部署到敌方场上，并抽两张牌。"
 	row = CCG_ROW_INFANTRY
 	power = 1
 	rarity = CCG_RARITY_UNIQUE
@@ -24,8 +24,8 @@
 
 /datum/ccg_card/rare_azuria_knight
 	id = "rare_azuria_knight"
-	name = "Ducal Knight"
-	desc = "High-fantasy Gwent-style Rockhillian heavy cavalry. Bonds with other Ducal Knights."
+	name = "公爵骑士"
+	desc = "具有奇幻昆特牌风格的岩丘重骑兵。与其他公爵骑士建立连结。"
 	row = CCG_ROW_INFANTRY
 	power = 6
 	rarity = CCG_RARITY_RARE
@@ -35,8 +35,8 @@
 
 /datum/ccg_card/rare_azuria_squire
 	id = "rare_azuria_squire"
-	name = "Squire at Arms"
-	desc = "A young retinue fighter holding the line for the court."
+	name = "武装侍从"
+	desc = "为宫廷守住战线的年轻扈从。"
 	row = CCG_ROW_INFANTRY
 	power = 4
 	rarity = CCG_RARITY_BASE
@@ -46,8 +46,8 @@
 
 /datum/ccg_card/rare_azuria_court_magician
 	id = "rare_azuria_court_magician"
-	name = "Court Magician"
-	desc = "Rockhillian arcyne support that clears the skies for the host."
+	name = "宫廷法师"
+	desc = "以奥术支援大军、驱散阴霾的岩丘法师。"
 	row = CCG_ROW_ARCHERS
 	power = 3
 	rarity = CCG_RARITY_RARE
@@ -57,8 +57,8 @@
 
 /datum/ccg_card/rare_azuria_azurcaephan
 	id = "rare_azuria_azurcaephan"
-	name = "Rockhillian Caephan"
-	desc = "Rockhillian spellblade tradition, channeling arcyne momentum through the melee."
+	name = "岩丘魔剑士"
+	desc = "传承岩丘魔剑技艺，在近战中引导奥术之力。"
 	row = CCG_ROW_INFANTRY
 	power = 6
 	rarity = CCG_RARITY_RARE
@@ -68,8 +68,8 @@
 
 /datum/ccg_card/rare_azuria_grovewalker
 	id = "rare_azuria_grovewalker"
-	name = "Rockhillian Grovewalker"
-	desc = "Black Oak guardian-errant moving with autumn grace through the wilds."
+	name = "岩丘林间行者"
+	desc = "黑橡的游历守护者，带着秋日的优雅穿行于荒野。"
 	row = CCG_ROW_ARCHERS
 	power = 4
 	rarity = CCG_RARITY_RARE
@@ -79,8 +79,8 @@
 
 /datum/ccg_card/unique_azuria_grand_duke
 	id = "unique_azuria_grand_duke"
-	name = "Grand Duke"
-	desc = "Hero. The ducal banner gathers the infantry line."
+	name = "大公"
+	desc = "英雄。公爵的旗帜凝聚起步兵战线。"
 	row = CCG_ROW_INFANTRY
 	power = 8
 	rarity = CCG_RARITY_UNIQUE
@@ -91,8 +91,8 @@
 
 /datum/ccg_card/unique_azuria_imperial_spellblade
 	id = "unique_azuria_imperial_spellblade"
-	name = "Imperial Spellblade"
-	desc = "Hero. A high-fantasy bladecaster from the Rockhill tradition."
+	name = "帝国魔剑士"
+	desc = "英雄。传承岩丘技艺、充满奇幻色彩的施法剑士。"
 	row = CCG_ROW_INFANTRY
 	power = 7
 	rarity = CCG_RARITY_UNIQUE

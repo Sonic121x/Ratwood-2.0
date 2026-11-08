@@ -171,7 +171,7 @@
 	sellprice = 20
 
 /datum/crafting_recipe/roguetown/weaving/cloak_rosa
-	name = "regal cloak"
+	name = "华贵披风"
 	result = /obj/item/clothing/cloak/rosa
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1, /obj/item/alch/rosa = 1 )
 	structurecraft = /obj/machinery/loom
@@ -180,7 +180,7 @@
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/weaving/cloak_rosa_two
-	name = "courtly cloak"
+	name = "宫廷披风"
 	result = /obj/item/clothing/cloak/rosa/two
 	reqs = list(/obj/item/natural/silk = 2, /obj/item/natural/cloth = 1, /obj/item/alch/rosa = 1 )
 	structurecraft = /obj/machinery/loom
@@ -189,7 +189,7 @@
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/weaving/head_roguetown_roguehood_eorahood
-	name = "opera hood"
+	name = "戏剧兜帽"
 	result = /obj/item/clothing/head/roguetown/roguehood/eorahood
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/silk = 1)
 	structurecraft = /obj/machinery/loom
@@ -198,7 +198,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/weaving/head_roguetown_roguehood_ravox
-	name = "ravox hood"
+	name = "拉沃克斯兜帽"
 	result = /obj/item/clothing/head/roguetown/roguehood/ravox
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/silk = 1)
 	structurecraft = /obj/machinery/loom
@@ -207,7 +207,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/weaving/head_roguetown_roguehood_see
-	name = "see hood"
+	name = "教廷兜帽"
 	result = /obj/item/clothing/head/roguetown/roguehood/see
 	reqs = list(/obj/item/natural/cloth = 2, /obj/item/natural/silk = 1)
 	structurecraft = /obj/machinery/loom
@@ -216,7 +216,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/weaving/suit_roguetown_shirt_robe_ravox
-	name = "ravox robe"
+	name = "拉沃克斯长袍"
 	result = /obj/item/clothing/suit/roguetown/shirt/robe/ravox
 	reqs = list(/obj/item/natural/cloth = 3, /obj/item/natural/silk = 1)
 	structurecraft = /obj/machinery/loom
@@ -225,7 +225,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/weaving/suit_roguetown_shirt_robe_see
-	name = "see robe"
+	name = "教廷长袍"
 	result = /obj/item/clothing/suit/roguetown/shirt/robe/see
 	reqs = list(/obj/item/natural/cloth = 3, /obj/item/natural/silk = 1)
 	structurecraft = /obj/machinery/loom
@@ -234,7 +234,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/weaving/suit_roguetown_shirt_robe_seecleric
-	name = "see clerical robe"
+	name = "教廷司祭长袍"
 	result = /obj/item/clothing/suit/roguetown/shirt/robe/seecleric
 	reqs = list(/obj/item/natural/cloth = 3, /obj/item/natural/silk = 1)
 	structurecraft = /obj/machinery/loom
@@ -243,7 +243,7 @@
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/weaving/suit_roguetown_shirt_tunic_rosa
-	name = "ivory dress"
+	name = "象牙白礼裙"
 	result = /obj/item/clothing/suit/roguetown/shirt/tunic/rosa
 	reqs = list(/obj/item/natural/silk = 3, /obj/item/natural/cloth = 2, /obj/item/alch/rosa = 1)
 	structurecraft = /obj/machinery/loom
@@ -252,7 +252,7 @@
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/weaving/suit_roguetown_shirt_tunic_rosa_five
-	name = "sable dress"
+	name = "墨黑礼裙"
 	result = /obj/item/clothing/suit/roguetown/shirt/tunic/rosa/five
 	reqs = list(/obj/item/natural/silk = 3, /obj/item/natural/cloth = 2, /obj/item/alch/rosa = 1)
 	structurecraft = /obj/machinery/loom
@@ -261,7 +261,7 @@
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/weaving/suit_roguetown_shirt_tunic_rosa_four
-	name = "obsidian dress"
+	name = "曜黑礼裙"
 	result = /obj/item/clothing/suit/roguetown/shirt/tunic/rosa/four
 	reqs = list(/obj/item/natural/silk = 3, /obj/item/natural/cloth = 2, /obj/item/alch/rosa = 1)
 	structurecraft = /obj/machinery/loom
@@ -270,7 +270,7 @@
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/weaving/suit_roguetown_shirt_tunic_rosa_six
-	name = "maroon dress"
+	name = "栗红礼裙"
 	result = /obj/item/clothing/suit/roguetown/shirt/tunic/rosa/six
 	reqs = list(/obj/item/natural/silk = 3, /obj/item/natural/cloth = 2, /obj/item/alch/rosa = 1)
 	structurecraft = /obj/machinery/loom
@@ -279,7 +279,7 @@
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/weaving/suit_roguetown_shirt_tunic_rosa_three
-	name = "velvet dress"
+	name = "天鹅绒礼裙"
 	result = /obj/item/clothing/suit/roguetown/shirt/tunic/rosa/three
 	reqs = list(/obj/item/natural/silk = 3, /obj/item/natural/cloth = 2, /obj/item/alch/rosa = 1)
 	structurecraft = /obj/machinery/loom

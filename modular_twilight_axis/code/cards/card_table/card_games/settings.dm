@@ -7,13 +7,13 @@
 	if(new_game != CARD_TABLE_GAME_BLACKJACK && new_game != CARD_TABLE_GAME_POKER)
 		return FALSE
 	if(players.len > max_players_for_game(new_game))
-		to_chat(user, span_warning("There are too many players at the table for this game."))
+		to_chat(user, span_warning("牌桌上的玩家人数超过了这个游戏的上限。"))
 		return FALSE
 	game_type = new_game
 	if(!dealer_index && players.len)
 		dealer_index = 1
 	dealer_rounds = 0
-	message = "[card_table_display_name(user)] picks a game: [game_label()]."
+	message = "[card_table_display_name(user)]选择游戏：[game_label()]。"
 	return TRUE
 
 /datum/card_table_session/proc/set_poker_variant(new_variant, mob/user)
@@ -25,7 +25,7 @@
 	if(new_variant != CARD_TABLE_POKER_DRAW && new_variant != CARD_TABLE_POKER_TEXAS && new_variant != CARD_TABLE_POKER_OMAHA && new_variant != CARD_TABLE_POKER_STUD)
 		return FALSE
 	poker_variant = new_variant
-	message = "[card_table_display_name(user)] picks a variant: [poker_variant_label()]."
+	message = "[card_table_display_name(user)]选择规则：[poker_variant_label()]。"
 	return TRUE
 
 /datum/card_table_session/proc/set_blackjack_variant(new_variant, mob/user)
@@ -37,7 +37,7 @@
 	if(new_variant != CARD_TABLE_BLACKJACK_GRON && new_variant != CARD_TABLE_BLACKJACK_VALORIA && new_variant != CARD_TABLE_BLACKJACK_AZURE && new_variant != CARD_TABLE_BLACKJACK_GRENZELHOFT && new_variant != CARD_TABLE_BLACKJACK_KAZENGUN)
 		return FALSE
 	blackjack_variant = new_variant
-	message = "[card_table_display_name(user)] picks a variant: [blackjack_variant_label()]."
+	message = "[card_table_display_name(user)]选择规则：[blackjack_variant_label()]。"
 	return TRUE
 
 /datum/card_table_session/proc/set_dealer_rotation(rotates, mob/user)
@@ -51,7 +51,7 @@
 		dealer_index = 1
 	else if(!dealer_index && players.len)
 		dealer_index = 1
-	message = "[card_table_display_name(user)] picks a mode: [dealer_rotation_label()]."
+	message = "[card_table_display_name(user)]选择模式：[dealer_rotation_label()]。"
 	return TRUE
 
 /datum/card_table_session/proc/dealer_player() as /datum/card_table_player
@@ -66,7 +66,7 @@
 	if(player_for_user(user))
 		return FALSE
 	if(players.len >= max_players())
-		to_chat(user, span_warning("There are no free player seats."))
+		to_chat(user, span_warning("没有空余玩家座位。"))
 		return FALSE
 	observers -= user.ckey
 	var/datum/card_table_player/player = new()
@@ -75,7 +75,7 @@
 	players += player
 	if(!dealer_index && (game_type == CARD_TABLE_GAME_BLACKJACK || game_type == CARD_TABLE_GAME_POKER))
 		dealer_index = players.len
-	message = "[player.name] takes a player seat."
+	message = "[player.name]入座参赛。"
 	return TRUE
 
 /datum/card_table_session/proc/join_observer(mob/user)
@@ -84,7 +84,7 @@
 	release_user(user, TRUE)
 	if(!(user.ckey in observers))
 		observers += user.ckey
-	message = "[card_table_display_name(user)] watches the table."
+	message = "[card_table_display_name(user)]开始观战。"
 	return TRUE
 
 /// Removes a ckey from the table. Returns TRUE if anything changed.
@@ -111,10 +111,10 @@
 /datum/card_table_session/proc/after_player_left()
 	if(stage != CARD_TABLE_STAGE_LOBBY && has_spirit_opponent() && active_real_players_count() < 1)
 		stage = CARD_TABLE_STAGE_FINISHED
-		message = "The game ends: no living players remain at the table."
+		message = "游戏结束：牌桌上已无活着的玩家。"
 	if(stage != CARD_TABLE_STAGE_LOBBY && active_players_count() < min_players())
 		stage = CARD_TABLE_STAGE_FINISHED
-		message = "The game ends: not enough active players."
+		message = "游戏结束：有效玩家人数不足。"
 	clamp_turns()
 
 /datum/card_table_session/proc/release_user(mob/user, silent = FALSE)
@@ -123,7 +123,7 @@
 	var/changed = remove_ckey(user.ckey)
 	if(changed)
 		if(!silent)
-			message = "[card_table_display_name(user)] leaves the table."
+			message = "[card_table_display_name(user)]离开牌桌。"
 		after_player_left()
 	return changed
 
@@ -137,7 +137,7 @@
 	var/changed = remove_ckey(ckey)
 	if(changed)
 		var/reason_text = reason ? " ([reason])" : ""
-		message = "[name] leaves the table[reason_text]."
+		message = "[name]离开牌桌[reason_text]。"
 		after_player_left()
 	return changed
 
@@ -150,7 +150,7 @@
 		var/mob/M = card_table_find_mob_by_ckey(player.ckey)
 		var/dist = M ? get_dist(M, owner) : null
 		if(!M || isnull(dist) || dist > CARD_TABLE_LEAVE_RANGE)
-			release_ckey(player.ckey, "too far")
+			release_ckey(player.ckey, "距离过远")
 
 /datum/card_table_session/proc/clamp_turns()
 	if(!players.len || dealer_index > players.len)

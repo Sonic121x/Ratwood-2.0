@@ -5,7 +5,7 @@
 	if(!requester || player_index(requester) != 1)
 		return FALSE
 	if(players.len < min_players())
-		to_chat(user, span_warning("Not enough players."))
+		to_chat(user, span_warning("玩家人数不足。"))
 		return FALSE
 	if(players.len)
 		if(!dealer_rotates)
@@ -43,7 +43,7 @@
 				deal_to(bj_player, 2)
 			for(var/datum/card_table_player/bj_reveal_player in players)
 				xylix_try_reveal_for_turn_holder(bj_reveal_player)
-			message = "Blackjack has begun. Variant: [blackjack_variant_label()]. [dealer_rotation_label()]."
+			message = "二十一点开始。规则：[blackjack_variant_label()]。[dealer_rotation_label()]。"
 		if(CARD_TABLE_GAME_POKER)
 			for(var/datum/card_table_player/poker_player in players)
 				switch(poker_variant)
@@ -59,6 +59,6 @@
 			poker_reset_betting_round()
 			for(var/datum/card_table_player/poker_reveal_player in players)
 				xylix_try_reveal_for_turn_holder(poker_reveal_player)
-			message = "Poker has begun. Variant: [poker_variant_label()]. [dealer_rotation_label()]."
+			message = "扑克开始。规则：[poker_variant_label()]。[dealer_rotation_label()]。"
 	SStgui.update_uis(owner)
 	return TRUE

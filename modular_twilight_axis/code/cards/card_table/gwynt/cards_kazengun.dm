@@ -2,8 +2,8 @@
 
 /datum/ccg_card/rare_kazengun_heishi_yohei
 	id = "rare_kazengun_heishi_yohei"
-	name = "Heishi-Yohei"
-	desc = "Kazengun mercenary. A steady armored fighter hardened by contract wars."
+	name = "兵士佣兵"
+	desc = "风郡佣兵。在受雇征战中饱经磨炼的沉稳甲士。"
 	row = CCG_ROW_INFANTRY
 	power = 5
 	rarity = CCG_RARITY_RARE
@@ -13,8 +13,8 @@
 
 /datum/ccg_card/rare_kazengun_ronin
 	id = "rare_kazengun_ronin"
-	name = "Wandering Ronin"
-	desc = "Kazengun swordsman. Agile enough to answer either front."
+	name = "流浪浪人"
+	desc = "风郡剑士。身手灵活，能应对两处战线。"
 	row = CCG_ROW_INFANTRY
 	power = 4
 	rarity = CCG_RARITY_BASE
@@ -25,8 +25,8 @@
 
 /datum/ccg_card/rare_kazengun_eastern_warrior
 	id = "rare_kazengun_eastern_warrior"
-	name = "Eastern Warrior"
-	desc = "Kazengun warrior from across the eastern sea."
+	name = "东方武者"
+	desc = "来自东海彼岸的风郡武者。"
 	row = CCG_ROW_INFANTRY
 	power = 5
 	rarity = CCG_RARITY_RARE
@@ -36,8 +36,8 @@
 
 /datum/ccg_card/rare_kazengun_eastern_assassin
 	id = "rare_kazengun_eastern_assassin"
-	name = "Eastern Assassin"
-	desc = "Yoruku-trained irregular killer, placed forward as a spy."
+	name = "东方刺客"
+	desc = "受过风郡密探训练的非正规杀手，作为间谍部署到敌方。"
 	row = CCG_ROW_INFANTRY
 	power = 2
 	rarity = CCG_RARITY_RARE
@@ -47,8 +47,8 @@
 
 /datum/ccg_card/rare_kazengun_shinobi
 	id = "rare_kazengun_shinobi"
-	name = "Shinobi Scout"
-	desc = "Kazengun infiltrator. Played on the enemy side to draw two cards."
+	name = "忍者斥候"
+	desc = "风郡潜入者。部署到敌方场上并抽两张牌。"
 	row = CCG_ROW_ARCHERS
 	power = 1
 	rarity = CCG_RARITY_RARE
@@ -58,8 +58,8 @@
 
 /datum/ccg_card/rare_kazengun_yumi_ashigaru
 	id = "rare_kazengun_yumi_ashigaru"
-	name = "Yumi Ashigaru"
-	desc = "Kazengun bow levy. Bonds with other Yumi Ashigaru."
+	name = "弓足轻"
+	desc = "风郡征召弓兵。与其他弓足轻建立连结。"
 	row = CCG_ROW_ARCHERS
 	power = 3
 	rarity = CCG_RARITY_RARE
@@ -69,8 +69,8 @@
 
 /datum/ccg_card/rare_kazengun_hangyaku_kounen
 	id = "rare_kazengun_hangyaku_kounen"
-	name = "Hangyaku-Kounen"
-	desc = "A rebel Kazengun blade in exile."
+	name = "叛逆公卿"
+	desc = "流亡的风郡叛军剑士。"
 	row = CCG_ROW_INFANTRY
 	power = 5
 	rarity = CCG_RARITY_RARE
@@ -80,8 +80,8 @@
 
 /datum/ccg_card/rare_kazengun_hangyaku_chonin
 	id = "rare_kazengun_hangyaku_chonin"
-	name = "Hangyaku-Chonin"
-	desc = "Merchant-rebel with coin, contacts, and hidden knives."
+	name = "叛逆町人"
+	desc = "掌握金钱、人脉与暗刃的商人叛军。"
 	row = CCG_ROW_ARCHERS
 	power = 2
 	rarity = CCG_RARITY_RARE
@@ -91,8 +91,8 @@
 
 /datum/ccg_card/rare_kazengun_ruma_gunin
 	id = "rare_kazengun_ruma_gunin"
-	name = "Ruma Clan Gun-in"
-	desc = "Kazengun clan soldier drilled for brutal contracts."
+	name = "鲁玛氏族军人"
+	desc = "为残酷的雇佣任务受训的风郡氏族士兵。"
 	row = CCG_ROW_INFANTRY
 	power = 4
 	rarity = CCG_RARITY_RARE
@@ -102,8 +102,8 @@
 
 /datum/ccg_card/rare_kazengun_ruma_sasu
 	id = "rare_kazengun_ruma_sasu"
-	name = "Ruma Clan Sasu"
-	desc = "Silent clan agent who strikes before the line closes."
+	name = "鲁玛氏族射手"
+	desc = "在两军接阵前出手的沉默氏族密探。"
 	row = CCG_ROW_ARCHERS
 	power = 3
 	rarity = CCG_RARITY_RARE
@@ -113,8 +113,8 @@
 
 /datum/ccg_card/unique_kazengun_kagekiri_yohei
 	id = "unique_kazengun_kagekiri_yohei"
-	name = "Kagekiri-Yohei"
-	desc = "Kazengun hero. A shadowed contract blade from the PR mercenary line."
+	name = "影切佣兵"
+	desc = "风郡英雄。本次佣兵系列更新中的暗影雇佣剑士。"
 	row = CCG_ROW_INFANTRY
 	power = 7
 	rarity = CCG_RARITY_UNIQUE
@@ -125,8 +125,8 @@
 
 /datum/ccg_card/unique_kazengun_blade_saint
 	id = "unique_kazengun_blade_saint"
-	name = "Blade Saint"
-	desc = "Kazengun hero. A master of the cut that breaks the strongest line."
+	name = "剑圣"
+	desc = "风郡英雄。一刀便能斩破最强战线的大师。"
 	row = CCG_ROW_INFANTRY
 	power = 8
 	rarity = CCG_RARITY_UNIQUE

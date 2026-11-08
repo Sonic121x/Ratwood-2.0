@@ -10,7 +10,7 @@ import {
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
-
+import { ADMIN_PANEL_LABELS } from './common/displayNames';
 type DisconnectedPlayer = {
   ref: string;
   ckey: string;
@@ -71,25 +71,25 @@ export const DisconnectedPlayers = () => {
   };
 
   return (
-    <Window width={820} height={520} title="Disconnected Players">
+    <Window width={820} height={520} title="Disconnected Players" display_title={ADMIN_PANEL_LABELS['Disconnected Players']}>
       <Window.Content>
         <Stack fill vertical>
           <Stack.Item>
             <Button icon="sync" onClick={() => act('refresh')}>
-              Refresh
+              刷新
             </Button>
           </Stack.Item>
           <Stack.Item grow>
-            <Section fill scrollable title={`Disconnected (${players.length})`}>
+            <Section fill scrollable title={`${ADMIN_PANEL_LABELS.Disconnected} (${players.length})`}>
               {players.length === 0 ? (
-                <NoticeBox>No disconnected players.</NoticeBox>
+                <NoticeBox>没有离线玩家。</NoticeBox>
               ) : (
                 <Table>
                   <Table.Row header>
                     <Table.Cell collapsing>
                       <Button.Checkbox
                         checked={allSelected}
-                        tooltip="Select all"
+                        tooltip="全选"
                         onClick={() =>
                           setSelected(
                             allSelected ? [] : players.map((p) => p.ref),
@@ -97,11 +97,11 @@ export const DisconnectedPlayers = () => {
                         }
                       />
                     </Table.Cell>
-                    <Table.Cell>Ckey</Table.Cell>
-                    <Table.Cell>Character</Table.Cell>
-                    <Table.Cell>Role</Table.Cell>
-                    <Table.Cell collapsing>Open Slots</Table.Cell>
-                    <Table.Cell>Disconnected For</Table.Cell>
+                    <Table.Cell>账号</Table.Cell>
+                    <Table.Cell>角色</Table.Cell>
+                    <Table.Cell>职业</Table.Cell>
+                    <Table.Cell collapsing>空缺名额</Table.Cell>
+                    <Table.Cell>离线时长</Table.Cell>
                     <Table.Cell collapsing />
                   </Table.Row>
                   {players.map((player) => (
@@ -123,26 +123,26 @@ export const DisconnectedPlayers = () => {
                         <Box nowrap>
                           <Button
                             icon="eye"
-                            tooltip="Follow this character as a ghost"
+                            tooltip="以幽灵身份跟随该角色"
                             onClick={() => act('follow', { ref: player.ref })}
                           >
-                            FLW
+                            跟随
                           </Button>
                           <Button
                             icon="user"
-                            tooltip="Open the player panel"
+                            tooltip="打开玩家面板"
                             onClick={() =>
                               act('player_panel', { ref: player.ref })
                             }
                           >
-                            PP
+                            玩家面板
                           </Button>
                           <Button
                             color="bad"
                             icon="door-open"
                             onClick={() => fartravel([player.ref])}
                           >
-                            Fartravel
+                            远行
                           </Button>
                         </Box>
                       </Table.Cell>
@@ -159,7 +159,7 @@ export const DisconnectedPlayers = () => {
               disabled={selectedRefs.length === 0}
               onClick={() => fartravel(selectedRefs)}
             >
-              Fartravel Highlighted ({selectedRefs.length})
+              让所选玩家远行（{selectedRefs.length}）
             </Button>
           </Stack.Item>
         </Stack>

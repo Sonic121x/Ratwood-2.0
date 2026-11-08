@@ -2059,8 +2059,8 @@
 
 /obj/item/clothing/cloak/absolutionistrobe/black
 	nodismemsleeves = TRUE
-	name = "blessed robe"
-	desc = "Weep for what was lost. Pray for those who may yet be saved. Endure, in His name."
+	name = "受祝长袍"
+	desc = "为逝去之物哭泣，为尚可获救之人祈祷。以祂之名，忍耐下去。"
 	icon_state = "blackabsolutionistrobe"
 	item_state = "blackabsolutionistrobe"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/cloaks.dmi'
@@ -2068,8 +2068,8 @@
 	sleeved = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/cloaks.dmi'
 
 /obj/item/clothing/cloak/apron/waist/maid
-	name = "maid apron"
-	desc = "A fancy, somewhat short apron usually worn by servants."
+	name = "女仆围裙"
+	desc = "华丽而略短的围裙，通常由仆人穿戴。"
 	body_parts_covered = null
 	icon_state = "maidapron"
 	item_state = "maidapron"
@@ -2078,8 +2078,8 @@
 	sleeved = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/special/onmob/maids.dmi'
 
 /obj/item/clothing/cloak/bandolier
-	name = "bandolier"
-	desc = "A sash that's pelted with pouches, perfect for carrying plenty of pint-sized pieces. </br>'Hail to the King, baby.'"
+	name = "斜挎带"
+	desc = "布满小袋的挎带，很适合携带大量小物件。</br>‘向国王致敬吧，宝贝。’"
 	color = null
 	icon_state = "bandolier"
 	item_state = "bandolier"
@@ -2093,15 +2093,15 @@
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/cloaks.dmi'
 
 /obj/item/clothing/cloak/bandolier/inq
-	name = "inquisitorial bandolier"
-	desc = "A masterworked leather bandolier, lined with silvered fittings and sturdy loops for the tools of inquiry. Every strap serves a purpose; every buckle stands ready for the next hunt."
+	name = "审判庭斜挎带"
+	desc = "大师精制的皮革挎带，饰有镀银配件和牢固挂环，用于携带审讯工具。每条带子各司其职，每枚扣子都为下一场狩猎严阵以待。"
 	icon = 'modular_twilight_axis/icons/roguetown/clothing/cloaks.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/cloaks.dmi'
 	icon_state = "inqbandolier"
 	item_state = "inqbandolier"
 
 /obj/item/clothing/cloak/bishop
-	name = "bishop cape"
+	name = "主教披肩"
 	desc = ""
 	icon = 'modular_twilight_axis/icons/roguetown/clothing/cloaks.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/cloaks.dmi'
@@ -2116,9 +2116,9 @@
 
 /obj/item/clothing/cloak/cape/inquisitorgold
 	nodismemsleeves = TRUE
-	name = "golden order cloak"
-	desc = "A time honored cloak inlaid with golden threading, the stitchwork tethers it to the Golden Orders; a catch-all term for the various faith-militances that \
-	ward Psydonia from heathens, cultists, and the ever-looming threat of another calamity."
+	name = "黄金教团披风"
+	desc = "镶金线的传统披风，针绣表明其属于黄金教团；这一统称涵盖众多宗教武装，\
+	他们守护普赛多尼亚，抵御异教徒、邪教徒与始终迫近的下一场灾难。"
 	icon_state = "inquisitor_cloak"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/cloaks.dmi'
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/cloaks.dmi'
@@ -2128,9 +2128,9 @@
 
 /obj/item/clothing/cloak/cape/inquisitorsilver
 	nodismemsleeves = TRUE
-	name = "silver order cloak"
-	desc = "A time honored cloak inlaid with silver threading, the stitchwork tethers it to the Silver Orders; a catch-all term for the various faith-militances that \
-	ward Psydonia from monsters, creechers, and the ever-looming threat of the Archdevil's return."
+	name = "白银教团披风"
+	desc = "镶银线的传统披风，针绣表明其属于白银教团；这一统称涵盖众多宗教武装，\
+	他们守护普赛多尼亚，抵御怪物、异兽与大魔鬼重返人间的阴影。"
 	icon_state = "sinquisitor_cloak"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/cloaks.dmi'
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/cloaks.dmi'
@@ -2139,8 +2139,8 @@
 	color = null
 
 /obj/item/clothing/cloak/etrcape
-	name = "wanderer's cape"
-	desc = "A stylish raincoat that protects you from the rain and makes you look great"
+	name = "旅人披肩"
+	desc = "时髦的雨披，既能遮雨，又让你仪表不凡。"
 	icon = 'modular_twilight_axis/icons/roguetown/clothing/cloaks.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/cloaks.dmi'
 	sleeved = 'modular_twilight_axis/icons/roguetown/clothing/onmob/cloaks.dmi'
@@ -2153,8 +2153,8 @@
 
 /obj/item/clothing/cloak/half/duelcape
 	boobed = TRUE
-	name = "duelist cape"
-	desc = "A flamboyant red duelists cape that is sure to catch the eye."
+	name = "决斗家披肩"
+	desc = "华艳的红色决斗家披肩，必定引人注目。"
 	icon_state = "duelistcape"
 	item_state = "duelistcape"
 	color = CLOTHING_SCARLET
@@ -2192,8 +2192,8 @@
 	inhand_mod = TRUE
 	nodismemsleeves = TRUE
 	sleevetype = "shirt"
-	name = "stalker cloak"
-	desc = "A heavy leather cloak held together by a gilded pin, depicting the Grand Duke's house. The sign of a faithful servant."
+	name = "潜猎者披风"
+	desc = "厚重的皮革披风，以镀金别针扣合，针上饰有大公家族纹章。这是忠仆的标志。"
 	icon_state = "shadowcloak"
 	color = null
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/cloaks.dmi'
@@ -2201,8 +2201,8 @@
 	sleeved = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/cloaks.dmi'
 
 /obj/item/clothing/cloak/half/shadowcloak/spymaster
-	name = "hand's cloak"
-	desc = "Crafted not for warmth, but to complete an imposing silhouette. It is tailored to shroud both the hilt of a hidden blade and the true intentions of its wearer from prying eyes."
+	name = "执政之手的披风"
+	desc = "并非为保暖而制，而是为了塑造威严的身影。其剪裁既能藏住暗刃的剑柄，也能遮掩主人真实的意图。"
 	icon_state = "handcloak"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/cloaks.dmi'
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/cloaks.dmi'
@@ -2210,8 +2210,8 @@
 
 /obj/item/clothing/cloak/poncho/fancycoat
 	sleevetype = "poncho"
-	name = "fancy coat"
-	desc = "A loose garment that is usually draped across ones upper body. No one's quite sure of its cultural origin but it does look fancy."
+	name = "华丽外套"
+	desc = "通常披在上身的宽松衣物。没人说得清它源自哪种文化，但确实很好看。"
 	icon_state = "fancycoat"
 	item_state = "fancycoat"
 	alternate_worn_layer = TABARD_LAYER
@@ -2227,8 +2227,8 @@
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/cloaks.dmi'
 
 /obj/item/clothing/cloak/poncho/fancycoat/trimmed
-	name = "trimmed fancy coat"
-	desc = "A loose garment that is usually draped across ones upper body. No one's quite sure of its cultural origin but it does look fancy. This one has been trimmed to show ones legs. How scandalous."
+	name = "裁短华丽外套"
+	desc = "通常披在上身的宽松衣物。没人说得清它源自哪种文化，但确实很好看。这件被裁短以露出双腿，真是有伤风化。"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/shirts.dmi'
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/shirts.dmi'
 	sleeved = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/helpers/sleeves_shirts.dmi'
@@ -2236,8 +2236,8 @@
 	item_state = "noblecoattrimmed"
 
 /obj/item/clothing/cloak/rangercloak
-	name = "ranger cloak"
-	desc = "A traditionally elven cloak said to help blend in with the woods."
+	name = "游侠披风"
+	desc = "传统精灵披风，据说能帮助穿戴者融入林地。"
 	icon_state = "ranger"
 	item_state = "ranger"
 	alternate_worn_layer = CLOAK_BEHIND_LAYER
@@ -2251,8 +2251,8 @@
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/cloaks.dmi'
 
 /obj/item/clothing/cloak/rosa
-	name = "regal cloak"
-	desc = "A finely crafted cloak of silk adorned with rosas."
+	name = "华贵披风"
+	desc = "饰有玫瑰的精制丝绸披风。"
 	icon_state = "rosacloak7"
 	alternate_worn_layer = CLOAK_BEHIND_LAYER
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/special/rosewood.dmi'
@@ -2261,12 +2261,12 @@
 	salvage_result = /obj/item/natural/silk
 
 /obj/item/clothing/cloak/rosa/two
-	name = "courtly cloak"
+	name = "宫廷披风"
 	icon_state = "rosacloak8"
 
 /obj/item/clothing/cloak/sash
-	name = "sash"
-	desc = "A large sash that can be draped across one's torso."
+	name = "披巾"
+	desc = "可披在躯干上的大幅布巾。"
 	icon_state = "sash"
 	item_state = "sash"
 	boobed = FALSE
@@ -2279,8 +2279,8 @@
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/cloaks.dmi'
 
 /obj/item/clothing/cloak/sash/dupatta
-	name = "dupatta"
-	desc = "A regional variant of the humble sash, loosely fit to fight against the Ranesheni heat."
+	name = "沙漠长披巾"
+	desc = "普通披巾的地方款式，宽松穿戴以抵御拉涅申的炎热。"
 	icon_state = "dupatta"
 	item_state = "dupatta"
 	detail_tag = "_detail"
@@ -2312,8 +2312,8 @@
 		add_overlay(pic2)
 
 /obj/item/clothing/cloak/scaledcloak
-	name = "scaled cloak"
-	desc = "A light cloak covered in shimmering metal scales. Beautiful even if too light to protect it's wearer from more than other travel cloaks."
+	name = "鳞饰披风"
+	desc = "覆盖闪亮金属鳞片的轻披风。虽然轻薄得无法比普通旅行披风提供更多防护，却十分美丽。"
 	icon_state = "scalecloak"
 	item_state = "scalecloak"
 	alternate_worn_layer = CLOAK_BEHIND_LAYER
@@ -2329,8 +2329,8 @@
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/cloaks.dmi'
 
 /obj/item/clothing/cloak/scout
-	name = "scout cloak"
-	desc = "A weathered cape cut short at the flank."
+	name = "斥候披风"
+	desc = "两侧裁短、饱经风霜的披风。"
 	icon_state = "scout_cloak"
 	item_state = "scout_cloak"
 	alternate_worn_layer = CLOAK_BEHIND_LAYER
@@ -2343,8 +2343,8 @@
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/cloaks.dmi'
 
 /obj/item/clothing/cloak/sheriff
-	name = "sheriff's cloak"
-	desc = "A cloak-cape embroidered with the silver heraldry of the watch."
+	name = "治安官披风"
+	desc = "绣着卫队银色纹章的披风。"
 	icon = 'modular_twilight_axis/icons/roguetown/clothing/special/citywatch_armor.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/special/onmob/citywatch_armor.dmi'
 	sleeved = 'modular_twilight_axis/icons/roguetown/clothing/special/onmob/citywatch_armor.dmi'
@@ -2352,8 +2352,8 @@
 	alternate_worn_layer = CLOAK_BEHIND_LAYER
 
 /obj/item/clothing/cloak/sleevedtabard
-	name = "sleeved tabard"
-	desc = "A tabard with a light sleeve and pauldron sewn on, it lacks the explicit detailing of other tabards in exchange."
+	name = "有袖罩袍"
+	desc = "缝有轻便袖子与肩片的罩袍，代价是少了其他罩袍细致鲜明的装饰。"
 	color = null
 	boobed = TRUE
 	icon_state = "halfsurcoat"
@@ -2364,8 +2364,8 @@
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/cloaks.dmi'
 
 /obj/item/clothing/cloak/tabard/psydontabard
-	name = "psydonian tabard"
-	desc = "A tabard worn by the adherents of the Holy Psydonic Inquisition. Delicate stitchwork professes the psycross with pride."
+	name = "普赛顿罩袍"
+	desc = "神圣普赛顿审判庭信众的罩袍，精致针绣自豪地宣示着普赛圣十字。"
 	color = null
 	icon_state = "psydontabard"
 	item_state = "psydontabard"
@@ -2377,7 +2377,7 @@
 
 /obj/item/clothing/cloak/tabard/psydontabard/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Right-clicking this cloak allows for it to be dynamically worn as a traditional tabard, or as a sleeveless robe that partially exposes the chest.")
+	. += span_info("右键点击可切换为传统罩袍穿法，或露出部分胸膛的无袖长袍穿法。")
 
 /obj/item/clothing/cloak/tabard/psydontabard/MiddleClick(mob/user)
 	..()
@@ -2386,23 +2386,23 @@
 /obj/item/clothing/cloak/tabard/psydontabard/attack_right(mob/user)
 	switch(open_wear)
 		if(FALSE)
-			name = "opened psydonian tabard"
-			desc = "A tabard worn by the adherents of the Holy Psydonic Inquisition, peeled back to reveal its enduring innards."
+			name = "敞开的普赛顿罩袍"
+			desc = "神圣普赛顿审判庭信众的罩袍，向两侧敞开，露出坚忍的内在。"
 			body_parts_covered = GROIN
 			icon_state = "psydontabardalt"
 			item_state = "psydontabardalt"
 			open_wear = TRUE
 			flags_inv = HIDECROTCH
-			to_chat(usr, span_warning("ENDURING, like the MARTYRS who'll guide the faithful-and-pious to PARADISE."))
+			to_chat(usr, span_warning("忍耐，如引领虔诚信众前往乐土的殉道者。"))
 		if(TRUE)
-			name = "psydonian tabard"
-			desc = "A tabard worn by the adherents of the Holy Psydonic Inquisition. Delicate stitchwork professes the psycross with pride."
+			name = "普赛顿罩袍"
+			desc = "神圣普赛顿审判庭信众的罩袍，精致针绣自豪地宣示着普赛圣十字。"
 			body_parts_covered = CHEST|GROIN
 			icon_state = "psydontabard"
 			item_state = "psydontabard"
 			flags_inv = HIDECROTCH|HIDEBOOB
 			open_wear = FALSE
-			to_chat(usr, span_warning("VEILED, like the CORPSES who've been shepherded by your steel to the AFTERLYFE."))
+			to_chat(usr, span_warning("遮蔽，如那些被你的钢刃引往来世的尸骸。"))
 	update_icon()
 	if(user)
 		if(ishuman(user))
@@ -2411,8 +2411,8 @@
 			H.update_inv_armor()
 
 /obj/item/clothing/cloak/tabard/psydontabard/black
-	name = "blessed tabard"
-	desc = "A tabard worn by the worshippers of Psydon. A funeral shroud for the paradise that could've been, and a solemn vow to continue the struggle towards salvation."
+	name = "受祝罩袍"
+	desc = "普赛顿信徒的罩袍。它是那本可存在的乐土的裹尸布，也是继续为救赎而奋斗的庄严誓言。"
 	icon_state = "blackpsydontabard"
 	item_state = "blackpsydontabard"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/cloaks.dmi'
@@ -2424,23 +2424,23 @@
 /obj/item/clothing/cloak/tabard/psydontabard/black/attack_right(mob/user)
 	switch(open_wear)
 		if(FALSE)
-			name = "opened blessed tabard"
-			desc = "A tabard worn by the worshippers of Psydon, peeled back to reveal its mourning innards."
+			name = "敞开的受祝罩袍"
+			desc = "普赛顿信徒的罩袍，向两侧敞开，露出哀悼的内在。"
 			body_parts_covered = GROIN
 			icon_state = "blackpsydontabardalt"
 			item_state = "blackpsydontabardalt"
 			open_wear = TRUE
 			flags_inv = HIDECROTCH
-			to_chat(usr, span_warning("You pull back the threaded burlap, baring your heart to Psydonia's eyes."))
+			to_chat(usr, span_warning("你拉开粗麻布，向普赛多尼亚的目光袒露胸膛。"))
 		if(TRUE)
-			name = "blessed tabard"
-			desc = "A tabard worn by the worshippers of Psydon. A funeral shroud for the paradise that could've been, and a solemn vow to continue the struggle towards salvation."
+			name = "受祝罩袍"
+			desc = "普赛顿信徒的罩袍。它是那本可存在的乐土的裹尸布，也是继续为救赎而奋斗的庄严誓言。"
 			body_parts_covered = CHEST|GROIN
 			icon_state = "blackpsydontabard"
 			item_state = "blackpsydontabard"
 			flags_inv = HIDECROTCH|HIDEBOOB
 			open_wear = FALSE
-			to_chat(usr, span_warning("You cloak yourself in the threaded burlap, veiling your heart from Psydonia's eyes."))
+			to_chat(usr, span_warning("你裹上粗麻布，在普赛多尼亚的目光前遮住胸膛。"))
 	update_icon()
 	if(user)
 		if(ishuman(user))
@@ -2449,8 +2449,8 @@
 			H.update_inv_armor()
 
 /obj/item/clothing/cloak/tabard/psydontabard/white
-	name = "traditional tabard"
-	desc = "A traditional tabard worn by the worshippers of Psydon, fashioned into a sleeveless garment that harks back to the ancient yils of the Holy Inquisition."
+	name = "传统罩袍"
+	desc = "普赛顿信徒穿戴的传统无袖罩袍，其式样可追溯至神圣审判庭的古老岁月。"
 	icon_state = "whitepsydontabard"
 	item_state = "whitepsydontabard"
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/cloaks.dmi'
@@ -2460,7 +2460,7 @@
 
 /obj/item/clothing/cloak/tabard/psydontabard/white/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Right-clicking this cloak allows for it to be dynamically worn as a traditional tabard, or as a sleeveless robe that partially exposes the chest.")
+	. += span_info("右键点击可切换为传统罩袍穿法，或露出部分胸膛的无袖长袍穿法。")
 
 /obj/item/clothing/cloak/tabard/psydontabard/white/MiddleClick(mob/user)
 	..()
@@ -2469,23 +2469,23 @@
 /obj/item/clothing/cloak/tabard/psydontabard/white/attack_right(mob/user)
 	switch(open_wear)
 		if(FALSE)
-			name = "opened traditional tabard"
-			desc = "A traditional tabard worn by the worshippers of Psydon, fashioned into a bared sleeveless garment that harks back to the ancient yils of the Holy Inquisition."
+			name = "敞开的传统罩袍"
+			desc = "普赛顿信徒穿戴的传统敞胸无袖罩袍，其式样可追溯至神圣审判庭的古老岁月。"
 			body_parts_covered = GROIN
 			icon_state = "whitepsydontabardalt"
 			item_state = "whitepsydontabardalt"
 			open_wear = TRUE
 			flags_inv = HIDECROTCH
-			to_chat(usr, span_warning("You pull back the threaded cloth, baring your heart to Psydonia's eyes."))
+			to_chat(usr, span_warning("你拉开布料，向普赛多尼亚的目光袒露胸膛。"))
 		if(TRUE)
-			name = "traditional tabard"
-			desc = "A traditional tabard worn by the worshippers of Psydon, fashioned into a sleeveless garment that harks back to the ancient yils of the Holy Inquisition."
+			name = "传统罩袍"
+			desc = "普赛顿信徒穿戴的传统无袖罩袍，其式样可追溯至神圣审判庭的古老岁月。"
 			body_parts_covered = CHEST|GROIN
 			icon_state = "whitepsydontabard"
 			item_state = "whitepsydontabard"
 			flags_inv = HIDECROTCH|HIDEBOOB
 			open_wear = FALSE
-			to_chat(usr, span_warning("You cloak yourself in the threaded cloth, veiling your heart from Psydonia's eyes."))
+			to_chat(usr, span_warning("你裹上布料，在普赛多尼亚的目光前遮住胸膛。"))
 	update_icon()
 	if(user)
 		if(ishuman(user))
@@ -2494,8 +2494,8 @@
 			H.update_inv_armor()
 
 /obj/item/clothing/cloak/tabard/psydontabard/white/alt
-	name = "opened traditional tabard"
-	desc = "A traditional tabard worn by the worshippers of Psydon, fashioned into a bared sleeveless garment that harks back to the ancient yils of the Holy Inquisition."
+	name = "敞开的传统罩袍"
+	desc = "普赛顿信徒穿戴的传统敞胸无袖罩袍，其式样可追溯至神圣审判庭的古老岁月。"
 	body_parts_covered = GROIN
 	icon_state = "whitepsydontabardalt"
 	item_state = "whitepsydontabardalt"
@@ -2504,18 +2504,18 @@
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/cloaks.dmi'
 
 /obj/item/clothing/cloak/tabard/stabard
-	name = "surcoat"
-	desc = "An outer garment commonly worn by soldiers."
+	name = "战袍"
+	desc = "士兵常穿的外衣。"
 	icon_state = "stabard"
 	boobed = TRUE
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/detailed/tabards.dmi'
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/cloaks.dmi'
 
 /obj/item/clothing/cloak/tabard/stabard/crusader
-	name = "surcoat of the golden order"
-	desc = "A regal surcoat, inlaid with golden threading. The stitchwork tethers it to the Golden Orders; a catch-all term for the various faith-militances that \
-	ward Psydonia from heathens, cultists, and the ever-looming threat of another calamity. This variant bears the psicruciformic sigil of the Psydonic and Necran \
-	orders."
+	name = "黄金教团战袍"
+	desc = "镶金线的华贵战袍，针绣表明其属于黄金教团；这一统称涵盖众多宗教武装，\
+	他们守护普赛多尼亚，抵御异教徒、邪教徒与始终迫近的下一场灾难。这一款带有普赛顿和奈克拉教团的\
+	普赛圣十字徽记。"
 	icon_state = "crusader_surcoat"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/special/crusader.dmi'
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/special/onmob/crusader.dmi'
@@ -2523,55 +2523,55 @@
 	custom_design = TRUE
 
 /obj/item/clothing/cloak/tabard/stabard/crusader/astrata
-	name = "surcoat of the golden order"
-	desc = "A regal surcoat, inlaid with golden threading. The stitchwork tethers it to the Golden Orders; a catch-all term for the various faith-militances that \
-	ward Psydonia from heathens, cultists, and the ever-looming threat of another calamity. This variant bears the duocruciformic sigil of the Astratan and Ravoxian \
-	orders."
+	name = "黄金教团战袍"
+	desc = "镶金线的华贵战袍，针绣表明其属于黄金教团；这一统称涵盖众多宗教武装，\
+	他们守护普赛多尼亚，抵御异教徒、邪教徒与始终迫近的下一场灾难。这一款带有阿斯特拉塔和拉沃克斯教团的\
+	双十字徽记。"
 	icon_state = "acrusader_surcoat"
 
 /obj/item/clothing/cloak/tabard/stabard/crusader/bsteel
-	name = "surcoat of the blacksteel order"
-	desc = "A venerated surcoat, inlaid with blacksteel threading. The stitchwork tethers it to the Blacksteel Order; an ancient faith-militance whose roots trace \
-	all the way back to Psydonia's first crusaders. Uniquely welcoming to both Psydonic and Tennite patroneers, and irreversibly valorant against the dreaded \
-	Avantyne Legion. </br>'Happiness must be fought for, lest all hope perish from the face of this world.'"
+	name = "黑钢教团战袍"
+	desc = "镶黑钢丝的尊贵战袍，针绣表明其属于黑钢教团；这支古老宗教武装的渊源\
+	可追溯至普赛多尼亚最早的十字军。他们罕见地兼容普赛顿与十神信徒，坚定无畏地对抗可怕的\
+	阿凡泰因军团。</br>‘幸福必须靠斗争争取，否则这世间将再无希望。’"
 	icon_state = "crusader_surcoatb3"
 
 /obj/item/clothing/cloak/tabard/stabard/crusader/heavy
-	name = "overvestments"
-	desc = "A heavy surcoat that offers complete modesty and protection against the weather, but leaves the thinner-framed with sorer shoulders. Commonly seen upon \
-	the bods of paladin-errants, priests, and pilgrims across Psydonia's more intemperate climates."
+	name = "厚重外法衣"
+	desc = "厚重的战袍，遮体严实又能遮风挡雨，却会压得瘦弱者肩膀酸痛。在普赛多尼亚气候严酷的地区，\
+	常见于游方圣骑士、祭司与朝圣者身上。"
 	icon_state = "priest_surcoat"
 
 /obj/item/clothing/cloak/tabard/stabard/crusader/t
-	name = "surcoat of the silver order"
-	desc = "A noble surcoat, inlaid with silver threading. The stitchwork tethers it to the Silver Orders; a catch-all term for the various faith-militances that \
-	ward Psydonia from monsters, deadites, and the ever-looming threat of another calamity. This variant bears the psicruciformic sigil of the Psydonic and Necran \
-	orders."
+	name = "白银教团战袍"
+	desc = "镶银线的高贵战袍，针绣表明其属于白银教团；这一统称涵盖众多宗教武装，\
+	他们守护普赛多尼亚，抵御怪物、亡者与始终迫近的下一场灾难。这一款带有普赛顿和奈克拉教团的\
+	普赛圣十字徽记。"
 	icon_state = "crusader_surcoatt2"
 
 /obj/item/clothing/cloak/tabard/stabard/crusader/t/astrata
-	name = "surcoat of the silver order"
-	desc = "A noble surcoat, inlaid with silver threading. The stitchwork tethers it to the Silver Orders; a catch-all term for the various faith-militances that \
-	ward Psydonia from monsters, deadites, and the ever-looming threat of another calamity. This variant bears the duocruciformic sigil of the Astratan and Ravoxian \
-	orders."
+	name = "白银教团战袍"
+	desc = "镶银线的高贵战袍，针绣表明其属于白银教团；这一统称涵盖众多宗教武装，\
+	他们守护普赛多尼亚，抵御怪物、亡者与始终迫近的下一场灾难。这一款带有阿斯特拉塔和拉沃克斯教团的\
+	双十字徽记。"
 	icon_state = "acrusader_surcoatt2"
 
 /obj/item/clothing/cloak/tabard/stabard/crusader/t/see
-	name = "surcoat of the silver order"
-	desc = "A noble surcoat, inlaid with silver threading. The stitchwork tethers it to the Silver Orders; a catch-all term for the various faith-militances that \
-	ward Psydonia from monsters, deadites, and the ever-looming threat of another calamity. This variant bears the unicruciform sigil of the See and Erranteer \
-	orders."
+	name = "白银教团战袍"
+	desc = "镶银线的高贵战袍，针绣表明其属于白银教团；这一统称涵盖众多宗教武装，\
+	他们守护普赛多尼亚，抵御怪物、亡者与始终迫近的下一场灾难。这一款带有教廷与游方教团的\
+	单十字徽记。"
 	icon_state = "ucrusader_surcoatt2"
 
 /obj/item/clothing/cloak/tabard/stabard/crusader/see
-	name = "surcoat of the golden order"
-	desc = "A regal surcoat, inlaid with golden threading. The stitchwork tethers it to the Golden Orders; a catch-all term for the various faith-militances that \
-	ward Psydonia from heathens, cultists, and the ever-looming threat of another calamity. This variant bears the unicruciform sigil of the See and Erranteer \
-	orders."
+	name = "黄金教团战袍"
+	desc = "镶金线的华贵战袍，针绣表明其属于黄金教团；这一统称涵盖众多宗教武装，\
+	他们守护普赛多尼亚，抵御异教徒、邪教徒与始终迫近的下一场灾难。这一款带有教廷与游方教团的\
+	单十字徽记。"
 	icon_state = "ucrusader_surcoat"
 
 /obj/item/clothing/cloak/tabard/stabard/surcoat
-	name = "jupon"
+	name = "贴身战袍"
 	icon_state = "surcoat"
 	sleeved = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/detailed/tabards.dmi'
 	sleevetype = "shirt"
@@ -2579,14 +2579,14 @@
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/cloaks.dmi'
 
 /obj/item/clothing/cloak/tabard/stabard/surcoat/short
-	name = "short jupon"
+	name = "短款贴身战袍"
 	icon_state = "surcoat_short"
 	body_parts_covered = CHEST
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/cloaks.dmi'
 
 /obj/item/clothing/cloak/tabard/toga
-	name = "toga"
-	desc = "The ancestral predecessor to Psydonia's many tabards, worn by the townsfolk, heroes, and villains of antiquity."
+	name = "托加长袍"
+	desc = "普赛多尼亚众多罩袍的古老前身，古代的平民、英雄与恶徒皆曾穿戴。"
 	icon_state = "toga"
 	item_state = "toga"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/cloaks.dmi'
@@ -2600,7 +2600,7 @@
 
 /obj/item/clothing/cloak/tabard/toga/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Right-clicking this cloak allows for it to be dynamically worn traditionally, or with a side pulled down that partially exposes the chest.")
+	. += span_info("右键点击可切换为传统穿法，或拉下一侧、露出部分胸膛的穿法。")
 
 /obj/item/clothing/cloak/tabard/toga/MiddleClick(mob/user)
 	..()
@@ -2609,23 +2609,23 @@
 /obj/item/clothing/cloak/tabard/toga/attack_right(mob/user)
 	switch(open_wear)
 		if(FALSE)
-			name = "bared toga"
-			desc = "The ancestral predecessor to Psydonia's many tabards, worn by the townsfolk, heroes, and villains of antiquity, bared open to reveal what's beneath."
+			name = "敞胸托加长袍"
+			desc = "普赛多尼亚众多罩袍的古老前身，古代的平民、英雄与恶徒皆曾穿戴，如今敞开以露出内里。"
 			body_parts_covered = GROIN
 			icon_state = "togaalt"
 			item_state = "togaalt"
 			open_wear = TRUE
 			flags_inv = HIDECROTCH
-			to_chat(usr, span_warning("You pull back a sleeve, baring what lies beneath to Psydonia's eyes."))
+			to_chat(usr, span_warning("你拉开衣袖，将衣下肌肤袒露在普赛多尼亚的目光中。"))
 		if(TRUE)
-			name = "toga"
-			desc = "The ancestral predecessor to Psydonia's many tabards, worn by the townsfolk, heroes, and villains of antiquity."
+			name = "托加长袍"
+			desc = "普赛多尼亚众多罩袍的古老前身，古代的平民、英雄与恶徒皆曾穿戴。"
 			body_parts_covered = CHEST|GROIN
 			icon_state = "toga"
 			item_state = "toga"
 			flags_inv = HIDECROTCH|HIDEBOOB
 			open_wear = FALSE
-			to_chat(usr, span_warning("You pull up your sleeve, veiling what lies beneath from Psydonia's eyes."))
+			to_chat(usr, span_warning("你拉上衣袖，遮住普赛多尼亚目光下的肌肤。"))
 	update_icon()
 	if(user)
 		if(ishuman(user))
@@ -2634,8 +2634,8 @@
 			H.update_inv_armor()
 
 /obj/item/clothing/cloak/tabard/toga/alt
-	name = "bared toga"
-	desc = "The ancestral predecessor to Psydonia's many tabards, worn by the townsfolk, heroes, and villains of antiquity, bared open to reveal what's beneath."
+	name = "敞胸托加长袍"
+	desc = "普赛多尼亚众多罩袍的古老前身，古代的平民、英雄与恶徒皆曾穿戴，如今敞开以露出内里。"
 	icon_state = "togaalt"
 	item_state = "togaalt"
 	flags_inv = HIDECROTCH
@@ -2643,8 +2643,8 @@
 	open_wear = TRUE
 
 /obj/item/clothing/cloak/tabard/toga/dress
-	name = "toga"
-	desc = "The ancestral predecessor to Psydonia's many tabards, worn by the townsfolk, heroes, and villains of antiquity."
+	name = "托加长袍"
+	desc = "普赛多尼亚众多罩袍的古老前身，古代的平民、英雄与恶徒皆曾穿戴。"
 	icon_state = "togadress"
 	item_state = "togadress"
 	boobed = TRUE
@@ -2653,23 +2653,23 @@
 /obj/item/clothing/cloak/tabard/toga/dress/attack_right(mob/user)
 	switch(open_wear)
 		if(FALSE)
-			name = "bared toga"
-			desc = "The ancestral predecessor to Psydonia's many tabards, worn by the townsfolk, heroes, and villains of antiquity, bared open to reveal what's beneath."
+			name = "敞胸托加长袍"
+			desc = "普赛多尼亚众多罩袍的古老前身，古代的平民、英雄与恶徒皆曾穿戴，如今敞开以露出内里。"
 			body_parts_covered = GROIN
 			icon_state = "togadressalt"
 			item_state = "togadressalt"
 			open_wear = TRUE
 			flags_inv = HIDECROTCH
-			to_chat(usr, span_warning("You pull back a strap, baring what lies beneath to Psydonia's eyes."))
+			to_chat(usr, span_warning("你拉开肩带，将衣下肌肤袒露在普赛多尼亚的目光中。"))
 		if(TRUE)
-			name = "toga"
-			desc = "The ancestral predecessor to Psydonia's many tabards, worn by the townsfolk, heroes, and villains of antiquity."
+			name = "托加长袍"
+			desc = "普赛多尼亚众多罩袍的古老前身，古代的平民、英雄与恶徒皆曾穿戴。"
 			body_parts_covered = CHEST|GROIN
 			icon_state = "togadress"
 			item_state = "togadress"
 			flags_inv = HIDECROTCH|HIDEBOOB
 			open_wear = FALSE
-			to_chat(usr, span_warning("You pull up your strap, veiling what lies beneath from Psydonia's eyes."))
+			to_chat(usr, span_warning("你拉上肩带，遮住普赛多尼亚目光下的肌肤。"))
 	update_icon()
 	if(user)
 		if(ishuman(user))
@@ -2678,8 +2678,8 @@
 			H.update_inv_armor()
 
 /obj/item/clothing/cloak/tabard/toga/dress/alt
-	name = "bared toga"
-	desc = "The ancestral predecessor to Psydonia's many tabards, worn by the townsfolk, heroes, and villains of antiquity, bared open to reveal what's beneath."
+	name = "敞胸托加长袍"
+	desc = "普赛多尼亚众多罩袍的古老前身，古代的平民、英雄与恶徒皆曾穿戴，如今敞开以露出内里。"
 	icon_state = "togadressalt"
 	item_state = "togadressalt"
 	flags_inv = HIDECROTCH
@@ -2692,8 +2692,8 @@
 	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
 	sleeved = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/cloaks.dmi'
 	sleevetype = "shirt"
-	name = "astratan cloak"
-	desc = "A golden-colored cloak with frayed edges, bearing the radiant hues of Astrata. It marks the wearer as a beacon of light amidst the chaos of battle."
+	name = "阿斯特拉塔披风"
+	desc = "边缘磨损的金色披风，闪耀着阿斯特拉塔的辉光。它让穿戴者成为混乱战场上的光明灯塔。"
 	icon_state = "astrataclerictabard"
 	sleevetype = "shirt"
 	boobed = FALSE
@@ -2701,8 +2701,8 @@
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/cloaks.dmi'
 
 /obj/item/clothing/cloak/templar/astratancleric/grey
-	name = "frayed cloak"
-	desc = "A flowing cloak with frayed edges, cut in the style of Astratan clergy. Its plain cloth takes dye readily."
+	name = "磨边披风"
+	desc = "边缘磨损的飘逸披风，采用阿斯特拉塔教士的式样。朴素的布料很容易染色。"
 	icon_state = "greyastrataclerictabard"
 	resistance_flags = FLAMMABLE
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/cloaks.dmi'
@@ -2719,7 +2719,7 @@
 /obj/item/clothing/cloak/templar/eoran/alt/attack_right(mob/user)
 	..()
 	if(!picked)
-		var/choiceC = input(user, "Choose a color.", "Eora colors") as anything in eora_colors
+		var/choiceC = input_updated_loadout_display(user, eora_colors, "选择颜色。")
 		if(choiceC == "Blue Tabard")
 			icon_state = "tabard_blue"
 			item_state = "tabard_blue"
@@ -2732,7 +2732,7 @@
 		if(loc == user && ishuman(user))
 			var/mob/living/carbon/H = user
 			H.update_inv_cloak()
-		if(alert("Are you pleased with your tabard?", "Tabard", "Yes", "No") != "Yes")
+		if(alert("满意这件罩袍吗？", "罩袍", "是", "否") != "是")
 			icon_state = "tabard_blue"
 			item_state = "tabard_blue"
 			eora_final_icon = "tabard_blue"
@@ -2769,15 +2769,15 @@
 	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
 	sleeved = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/cloaks.dmi'
 	sleevetype = "shirt"
-	name = "necran cloak"
-	desc = "A dark, battle-worn cloak secured with a silver buckle. Marked with the somber symbols of Necra, its frayed hem bears testament to endless skirmishes with death."
+	name = "奈克拉披风"
+	desc = "以银扣扣合、历经战火的暗色披风，饰有奈克拉肃穆的符号。磨损的衣摆见证了与死亡无休止的交锋。"
 	icon_state = "necraclerictabard"
 	boobed = FALSE
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/cloaks.dmi'
 
 /obj/item/clothing/cloak/templar/ravoxcleric
-	name = "justice cloak"
-	desc = "A tattered red tabard dyed in the bold colors of Ravox. Its striking crimson fabric stands out on the front lines, signaling unyielding judgment."
+	name = "正义披风"
+	desc = "染着拉沃克斯鲜明色彩的破旧红罩袍，醒目的深红布料在前线昭示着不屈的裁决。"
 	icon_state = "justiceclerictabard"
 	boobed = FALSE
 	body_parts_covered = CHEST|GROIN
@@ -2792,8 +2792,8 @@
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/cloaks.dmi'
 	alternate_worn_layer = TABARD_LAYER
 	boobed = TRUE
-	name = "see templar tabard"
-	desc = "The refuge of the TEN upon my back. A united House, standing eternal against the encroaching darkness."
+	name = "教廷圣殿骑士罩袍"
+	desc = "十神的庇护披在我背上。同心一体的神殿，永远抵挡侵袭的黑暗。"
 	icon_state = "seetabardalt"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/cloaks.dmi'
 
@@ -2801,14 +2801,14 @@
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/cloaks.dmi'
 	alternate_worn_layer = TABARD_LAYER
 	boobed = TRUE
-	name = "see devotee tabard"
-	desc = "The refuge of the TEN upon my back. A united Pantheon, to carry the light amongst the ever-present darkness that looms ahead."
+	name = "教廷虔信者罩袍"
+	desc = "十神的庇护披在我背上。团结的诸神，将光明带入前方永远笼罩的黑暗。"
 	icon_state = "tenclerictabard"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/cloaks.dmi'
 
 /obj/item/clothing/cloak/desert
-	name = "desert cloak"
-	desc = "This one will help against the dusty weather."
+	name = "沙漠披风"
+	desc = "能帮助抵挡风沙。"
 	color = CLOTHING_PURPLE
 	icon = 'modular_twilight_axis/icons/roguetown/clothing/cloaks.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/cloaks.dmi'
@@ -2837,8 +2837,8 @@
 		add_overlay(pic)
 
 /obj/item/clothing/cloak/elven
-	name = "elven cloak"
-	desc = "It is said that this design might predate the War in Heaven and the consequient fall of the ancient Elven Empire."
+	name = "精灵披风"
+	desc = "据说这种式样可能早于天堂之战，以及随后发生的古精灵帝国覆灭。"
 	icon = 'modular_twilight_axis/icons/roguetown/clothing/cloaks.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/cloaks.dmi'
 	icon_state = "cape"
@@ -2855,7 +2855,7 @@
 /obj/item/clothing/cloak/elven/attack_right(mob/user)
 	..()
 	if(!picked)
-		var/choice = input(user, "Choose a style.", "Elven styles") as anything in elven_colors
+		var/choice = input_updated_loadout_display(user, elven_colors, "选择款式。")
 		picked = TRUE
 		switch(choice)
 			if("Blue Cloak")
@@ -2887,14 +2887,14 @@
 		add_overlay(pic)
 
 /obj/item/clothing/cloak/elven/short
-	name = "elven shortcloak"
+	name = "精灵短披风"
 	icon_state = "cape_short"
 	item_state = "cape_short"
 	elven_colors = list("Blue Short Cloak", "Red Short Cloak", "Blue Short Furcloak", "Red Short Furcloak")
 
 /obj/item/clothing/cloak/scarf
-	name = "scarf"
-	desc = "A long piece of cloth, meant to be worn around one's neck, Keeps you warm even under colder winds."
+	name = "围巾"
+	desc = "围在颈部的长布条，即使寒风吹拂也能保暖。"
 	icon = 'modular_twilight_axis/icons/roguetown/clothing/cloaks.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/cloaks.dmi'
 	icon_state = "scarf"
@@ -2906,7 +2906,7 @@
 /obj/item/clothing/cloak/scarf/attack_right(mob/user)
 	..()
 	if(!picked)
-		var/choice = input(user, "Choose a color.", "Elven colors") as anything in elven_colors
+		var/choice = input_updated_loadout_display(user, elven_colors, "选择颜色。")
 		picked = TRUE
 		detail_tag = "_[choice]"
 		update_icon()
@@ -2922,8 +2922,8 @@
 		add_overlay(pic)
 
 /obj/item/clothing/head/hooded/desert_hood
-	name = "desert cloak hood"
-	desc = "This one will shelter me from the sand."
+	name = "沙漠披风兜帽"
+	desc = "能为我遮挡沙尘。"
 	icon_state = "desert_hood"
 	item_state = "desert_hood"
 	icon = 'modular_twilight_axis/icons/roguetown/clothing/head.dmi'

@@ -25,7 +25,7 @@ GLOBAL_LIST_INIT(disconnected_admin_alert_role_times, list(
 	// Checked last: it walks the ghost list, and examine is not a hot path
 	if(!mind.get_ghost())
 		return
-	return span_warning("[p_they(TRUE)] seem[p_s()] temporarily elsewhere...")
+	return span_warning("[p_they(TRUE)]的意识似乎暂时去了别处……")
 
 /// Returns TRUE if this mob's player has disconnected from the game while still in it.
 /// Bodies left behind while the player plays elsewhere (wildshape, werewolf and spell shapeshifts, ghosting)
@@ -93,8 +93,8 @@ GLOBAL_LIST_INIT(disconnected_admin_alert_role_times, list(
 	if(!get_real_body())
 		return
 	disconnected_admin_alert_sent = TRUE
-	var/fartravel_link = "(<a href='?_src_=holder;[HrefToken(TRUE)];ssd_sendbacktolobby=[REF(src)];ssd_ckey=[ckey]'>Fartravel</a>)"
-	message_admins(span_adminnotice("[ADMIN_LOOKUPFLW(src)] ([get_disconnected_admin_alert_job_name()]) has been in a deep slumber for [DisplayTimeText(world.time - last_logout_time, 1)]. [fartravel_link]"))
+	var/fartravel_link = "(<a href='?_src_=holder;[HrefToken(TRUE)];ssd_sendbacktolobby=[REF(src)];ssd_ckey=[ckey]'>远行</a>)"
+	message_admins(span_adminnotice("[ADMIN_LOOKUPFLW(src)]（[get_disconnected_admin_alert_job_name()]）已深度沉睡[DisplayTimeText(world.time - last_logout_time, 1)]。[fartravel_link]"))
 
 /mob/living/proc/get_disconnected_admin_alert_time()
 	var/role_name = get_disconnected_admin_alert_role_name()

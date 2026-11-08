@@ -86,23 +86,23 @@
 	sleeved = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/helpers/sleeves_pants.dmi'
 
 /obj/item/clothing/under/roguetown/tights/dhoti
-	name = "dhoti"
+	name = "裹布裤"
 	icon_state = "dhoti"
 	item_state = "dhoti"
 	detail_tag = "_detail"
 	detail_color = CLOTHING_WHITE
-	desc = "A pair of baggy pants of Ranesheni origin, with a long banner-like cloth draped between the two pant legs."
+	desc = "源自拉涅申的宽松裤装，两条裤腿之间垂着一幅旗帜般的长布。"
 	salvage_result = /obj/item/natural/cloth
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/pants.dmi'
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/pants.dmi'
 	sleeved = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/helpers/sleeves_pants.dmi'
 
 /obj/item/clothing/under/roguetown/tights/hose
-	name = "cloth hosen"
+	name = "布制长袜裤"
 	icon_state = "hose"
 	item_state = "hose"
-	desc = "A pair of cloth leggings, traditionally worn in conjunction with one's shortclothes. These can be combined with maille hosen for \
-	the perfect blend of function-and-fashion; just pray no one has the mind to aim below the belt."
+	desc = "一双布制裹腿，传统上与内衣搭配穿着。可与锁甲长袜裤组合，\
+	兼顾实用与时尚；只求没人打算往腰带以下招呼。"
 	body_parts_covered = LEGS|FEET
 	detail_tag = "_detail"
 	altdetail_tag = "_detailalt"

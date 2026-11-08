@@ -774,8 +774,8 @@
 	. = ..()
 
 /obj/machinery/light/rogue/hearth/wooden_spit
-	name = "wooden spit"
-	desc = "A wooden spit set over a campfire. It can hold the same cookware as a hearth."
+	name = "木制烤架"
+	desc = "架在营火上的木制烤架，可以放置与炉灶相同的炊具。"
 	icon = 'icons/roguetown/misc/campfire_spit.dmi'
 	icon_state = "spit_1"
 	density = FALSE

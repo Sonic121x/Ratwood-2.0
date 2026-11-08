@@ -890,7 +890,7 @@
 			return
 		var/mob/living/carbon/human/H = locate(href_list["pref_refresh"])
 		if(!istype(H))
-			to_chat(usr, span_warning("This can only be used on instances of type /mob/living/carbon/human."))
+			to_chat(usr, span_warning("此操作仅适用于 /mob/living/carbon/human 类型的实例。"))
 			return
 		H.admin_pref_refresh(usr)
 
@@ -931,7 +931,7 @@
 			return
 		var/departing = "[key_name(L)] as [body.real_name] ([body.job || "no job"])"
 		log_admin("[key_name(usr)] has fartraveled [departing].")
-		message_admins(span_adminnotice("[key_name_admin(usr)] has fartraveled [departing]."))
+		message_admins(span_adminnotice("[key_name_admin(usr)]已让[departing]远行。"))
 		L.admin_fartravel(usr)
 
 	else if(href_list["revive"])

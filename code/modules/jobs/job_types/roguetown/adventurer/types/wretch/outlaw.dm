@@ -9,7 +9,7 @@
 	category_tags = list(CTAG_WRETCH)
 	subclass_languages = list(/datum/language/thievescant)
 	traits_applied = list(TRAIT_DODGEEXPERT, TRAIT_MEDIUMARMOR, TRAIT_GRAVEROBBER, TRAIT_BOGWALKER) //Doubt you have much to say about robbing graves
-	extra_context = "Fleet-Footed grants Light Steps and +1 to Sneaking, Marksmanship grants +1 PERCEPTION and +1 to Crossbows, Athleticism grants +1 CONSTITUTION and +1 to Athletics, Night-Burglar grants Night Vision and +1 to Lockpicking, Master-Tracker grants Perfect Tracker + Sleuth and +1 to Tracking, Dualist grants Dual-Wielder and Guarded (Decieving Meekness)."
+	extra_context = "疾步赋予轻盈步伐及潜行+1；射术赋予感知+1及弩术+1；体能赋予体质+1及运动+1；夜盗赋予夜视及开锁+1；追踪大师赋予完美追踪、侦探能力及追踪+1；双持赋予双持能力及戒备（伪装柔弱）。"
 	subclass_stats = list(
 		STATKEY_SPD = 3,
 		STATKEY_WIL = 2,

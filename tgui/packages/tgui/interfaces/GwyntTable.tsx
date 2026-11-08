@@ -4,7 +4,7 @@ import { Button, Section } from 'tgui-core/components';
 import { resolveAsset } from '../assets';
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
-
+import { CARD_DISPLAY } from './common/displayNames';
 type Side = 'one' | 'two';
 type CardRow = 'infantry' | 'archers' | 'siege';
 type CardType = CardRow | 'weather' | 'special';
@@ -87,15 +87,15 @@ type Data = {
 };
 
 const rowLabels: Record<CardRow, string> = {
-  infantry: 'Infantry',
-  archers: 'Archers',
-  siege: 'Siege',
+  infantry: '步兵',
+  archers: '弓手',
+  siege: '攻城',
 };
 
 const cardTypeLabels: Record<CardType, string> = {
   ...rowLabels,
-  weather: 'Weather',
-  special: 'Special',
+  weather: '天气',
+  special: '特殊',
 };
 
 const rarityColor: Record<CardRarity, string> = {
@@ -441,8 +441,8 @@ const GwyntVisualEffects = () => (
 );
 
 const sideLabels: Record<Side, string> = {
-  one: 'Player One',
-  two: 'Player Two',
+  one: '玩家一',
+  two: '玩家二',
 };
 
 const sideAccent: Record<Side, string> = {
@@ -451,20 +451,20 @@ const sideAccent: Record<Side, string> = {
 };
 
 const effectBadges: Record<string, string> = {
-  morale: 'MOR',
-  scorch: 'SC',
-  scorch_infantry: 'SC',
-  scorch_global: 'SC',
-  spy: 'SPY',
-  medic: 'MED',
-  bond: 'BND',
-  agile: 'AGI',
-  muster: 'MUS',
-  horn: 'HORN',
-  decoy: 'DEC',
-  berserk: 'BER',
-  mardroeme: 'MAR',
-  avenger: 'AVG',
+  morale: '士气',
+  scorch: '焦土',
+  scorch_infantry: '焦土',
+  scorch_global: '焦土',
+  spy: '间谍',
+  medic: '医师',
+  bond: '连结',
+  agile: '敏捷',
+  muster: '集结',
+  horn: '号角',
+  decoy: '诱饵',
+  berserk: '狂战',
+  mardroeme: '蘑菇',
+  avenger: '复仇',
 };
 
 const rowIconAssets: Record<CardType, string> = {
@@ -497,26 +497,26 @@ const effectIconAssets: Record<string, string> = {
 };
 
 const effectDescriptions: Record<string, string> = {
-  morale: 'Morale Boost: +1 strength to all other units in this row.',
-  scorch: "Scorch: destroys the opponent's strongest card.",
+  morale: '士气提升：本列所有其他单位战力+1。',
+  scorch: "焦土：摧毁对手最强的卡牌。",
   scorch_infantry:
-    "Scorch: destroys the enemy's strongest infantry if their infantry totals 10+ strength.",
-  scorch_global: 'Scorch: destroys the strongest card or cards on the board.',
-  spy: "Spy: placed on the opponent's side of the board and draws you two cards.",
-  medic: 'Medic: returns your strongest discarded card to the board.',
-  bond: 'Tight Bond: identical cards with this ability strengthen each other.',
-  agile: 'Agile: test marker for a flexible card.',
-  muster: 'Muster: plays all matching cards from your hand and deck.',
-  horn: "Commander's Horn: doubles the strength of the chosen row for the round.",
-  decoy: 'Decoy: returns your strongest card on the board to your hand.',
-  berserk: 'Berserker: turns into a bear under Mardroeme.',
-  mardroeme: 'Mardroeme: turns berserkers in the row into bears.',
+    "焦土：敌方步兵总战力达到10时，摧毁其中最强的步兵。",
+  scorch_global: '焦土：摧毁场上战力最高的所有卡牌。',
+  spy: "间谍：部署到对手场上，并为你抽取两张牌。",
+  medic: '医师：将弃牌堆中最强的卡牌放回场上。',
+  bond: '紧密连结：具有此能力的同名卡牌会互相增强。',
+  agile: '敏捷：灵活部署卡牌的试行标记。',
+  muster: '集结：打出手牌与牌库中所有匹配的卡牌。',
+  horn: "指挥号角：在本小局中使所选列的战力翻倍。",
+  decoy: '诱饵：将己方场上最强卡牌收回手牌。',
+  berserk: '狂战士：受到狂战蘑菇影响时变成熊。',
+  mardroeme: '狂战蘑菇：将本列狂战士变成熊。',
   avenger:
-    'Avenger: when destroyed, summons a strong card in its place.',
-  clear_weather: 'Clear Weather: removes all weather effects.',
-  frost: 'Frost: reduces all infantry to 1 strength.',
-  fog: 'Fog: reduces all archers to 1 strength.',
-  rain: 'Rain: reduces all siege to 1 strength.',
+    '复仇者：被摧毁时召唤一张强力卡牌替代自身。',
+  clear_weather: '晴空：清除所有天气效果。',
+  frost: '冰霜：将所有步兵的战力降为1。',
+  fog: '浓雾：将所有弓手的战力降为1。',
+  rain: '大雨：将所有攻城单位的战力降为1。',
 };
 
 const CardIconBadge = ({
@@ -575,20 +575,20 @@ const CardIconBadge = ({
 
 const cardTooltip = (card: Card) => {
   if (card.known === false) {
-    return ['Unknown'];
+    return ['未知'];
   }
   const lines = [
     card.name,
-    `Type: ${cardTypeLabels[card.row]}`,
-    `Power: ${card.power}`,
+    `类型：${cardTypeLabels[card.row]}`,
+    `战力：${card.power}`,
   ];
   if (effectDescriptions[card.effect]) {
-    lines.push(`Effect: ${effectDescriptions[card.effect]}`);
+    lines.push(`效果：${effectDescriptions[card.effect]}`);
   } else if (card.desc) {
     lines.push(card.desc);
   }
   if (card.hero) {
-    lines.push('Hero: immune to weather and special effects.');
+    lines.push('英雄：免疫天气与特殊效果。');
   }
   return lines;
 };
@@ -738,7 +738,7 @@ const CardView = ({
             zIndex: 2,
           }}
         >
-          HERO
+          英雄
         </div>
       )}
       {hovered && (
@@ -1024,9 +1024,9 @@ const PlayerBoard = ({ side, data }: { side: Side; data: Data }) => {
       >
         <div style={{ color: '#f8fafc', fontWeight: 800 }}>
           {data.players?.[side] || sideLabels[side]}
-          {data.passed?.[side] ? ' | Passed' : ''}
+          {data.passed?.[side] ? ' | 已放弃本小局' : ''}
         </div>
-        <div style={{ color: '#cbd5e1' }}>Wins {data.wins?.[side] ?? 0}</div>
+        <div style={{ color: '#cbd5e1' }}>胜局 {data.wins?.[side] ?? 0}</div>
         <div
           style={{
             minWidth: '46px',
@@ -1080,7 +1080,7 @@ const BoardEffectsPanel = ({
         marginBottom: '5px',
       }}
     >
-      Weather
+      天气
     </div>
     <div
       style={{
@@ -1101,7 +1101,7 @@ const BoardEffectsPanel = ({
         <CardView key={`${card.id}-${index}`} card={card} compact />
       ))}
       {!weatherCards.length && (
-        <div style={{ color: '#64748b', fontSize: '11px' }}>Clear</div>
+        <div style={{ color: '#64748b', fontSize: '11px' }}>晴朗</div>
       )}
     </div>
     <div
@@ -1113,7 +1113,7 @@ const BoardEffectsPanel = ({
         marginBottom: '5px',
       }}
     >
-      Row Effects
+      列效果
     </div>
     <div
       style={{
@@ -1289,7 +1289,7 @@ const DeckPile = ({
         textTransform: 'uppercase',
       }}
     >
-      {title}
+      {CARD_DISPLAY[title] || title}
     </div>
     <div style={{ color: '#f8fafc', fontSize: '22px', fontWeight: 900 }}>
       {count}
@@ -1343,7 +1343,7 @@ const MatchInfoPanel = ({
               textTransform: 'uppercase',
             }}
           >
-            Round
+            小局
           </div>
           <div style={{ color: '#f8fafc', fontSize: '22px', fontWeight: 900 }}>
             {data.round || 1}
@@ -1364,7 +1364,7 @@ const MatchInfoPanel = ({
               textTransform: 'uppercase',
             }}
           >
-            Enemy Hand
+            对手手牌
           </div>
           <div style={{ color: '#f8fafc', fontSize: '22px', fontWeight: 900 }}>
             {data.opponentHandCount ?? 0}
@@ -1390,7 +1390,7 @@ const MatchInfoPanel = ({
             textTransform: 'uppercase',
           }}
         >
-          Stage
+          阶段
         </div>
         {phase}
       </div>
@@ -1402,7 +1402,7 @@ const MatchInfoPanel = ({
           marginBottom: '8px',
         }}
       >
-        {data.result || data.message || 'Waiting for the next move.'}
+        {data.result || data.message || '等待下一步行动。'}
       </div>
       <div
         style={{
@@ -1432,12 +1432,12 @@ const MatchInfoPanel = ({
           fontWeight: 800,
         }}
       >
-        <span>Hand: {data.hand?.length ?? 0}</span>
-        <span>Weather: {weather}</span>
+        <span>手牌：{data.hand?.length ?? 0}</span>
+        <span>天气：{weather}</span>
         <span style={{ color: accent }}>
-          Turn: {data.turn === data.mySide ? 'You' : 'Enemy'}
+          回合：{data.turn === data.mySide ? '你' : '对手'}
         </span>
-        <span>{data.passed?.[mySide] ? 'Passed' : 'Active'}</span>
+        <span>{data.passed?.[mySide] ? '已放弃本小局' : '仍在出牌'}</span>
       </div>
     </div>
   );
@@ -1485,7 +1485,7 @@ const LeaderPanel = ({
       )}
       <div style={{ color: '#f8fafc', fontSize: '14px', fontWeight: 900 }}>
         {data.leader.name}
-        {data.leader.used ? ' | Used' : ''}
+        {data.leader.used ? ' | 已使用' : ''}
       </div>
       <div
         style={{
@@ -1504,7 +1504,7 @@ const LeaderPanel = ({
         disabled={!canUseLeader}
         onClick={onUse}
       >
-        Activate Leader
+        使用领袖能力
       </Button>
     </div>
   );
@@ -1516,11 +1516,11 @@ export const GwyntTable = () => {
 
   if (data.waiting) {
     return (
-      <Window title="Card Battle" width={420} height={180}>
+      <Window title="Card Battle" display_title={CARD_DISPLAY['Card Battle']} width={420} height={180}>
         <Window.Content>
-          <Section title="Invitation">
-            {data.offeredName || 'Someone'} is waiting for an opponent. Strike
-            this deck with your own deck to begin.
+          <Section title={CARD_DISPLAY.Invitation}>
+            {data.offeredName || '某人'}正在等待对手。用自己的牌组
+            点击这副牌组即可开始。
           </Section>
         </Window.Content>
       </Window>
@@ -1536,16 +1536,16 @@ export const GwyntTable = () => {
     !data.result &&
     !data.inMulligan;
   const canUseLeader = !!data.leader && !data.leader.used && !!myTurn;
-  const weather = data.weather?.length ? data.weather.join(', ') : 'Clear';
-  let phase = 'Waiting';
+  const weather = data.weather?.length ? data.weather.map((row) => rowLabels[row as CardRow] || row).join('、') : '晴朗';
+  let phase = '等待中';
   if (isSpectator) {
-    phase = 'Watching';
+    phase = '观战中';
   } else if (data.result) {
-    phase = 'Game Over';
+    phase = '游戏结束';
   } else if (data.inMulligan) {
-    phase = `Mulligan | ${data.mulligansLeft ?? 0} redraws left`;
+    phase = `换牌 | 剩余${data.mulligansLeft ?? 0}次`;
   } else if (data.turn) {
-    phase = `${data.players?.[data.turn] || sideLabels[data.turn]} turn`;
+    phase = `${data.players?.[data.turn] || sideLabels[data.turn]}的回合`;
   }
   const rowChoices: CardRow[] = ['infantry', 'archers', 'siege'];
   const requiresRowChoice = (card: Card) =>
@@ -1598,7 +1598,7 @@ export const GwyntTable = () => {
   };
 
   return (
-    <Window title="Card Battle" width={1280} height={840}>
+    <Window title="Card Battle" display_title={CARD_DISPLAY['Card Battle']} width={1280} height={840}>
       <Window.Content scrollable>
         <GwyntVisualEffects />
         <div
@@ -1617,7 +1617,7 @@ export const GwyntTable = () => {
                   canUseLeader={canUseLeader}
                   onUse={() => act('leader')}
                 />
-                <Section title={`Hand | ${hand.length} cards`}>
+                <Section title={`${CARD_DISPLAY.Hand} | ${hand.length}${CARD_DISPLAY.cards}`}>
                   <div
                     style={{
                       display: 'grid',
@@ -1647,7 +1647,7 @@ export const GwyntTable = () => {
           </div>
 
           <div>
-            <Section title="Match">
+            <Section title={CARD_DISPLAY.Match}>
               <BoardEffectsPanel data={data} weatherCards={weatherCards} />
               <Button
                 fluid
@@ -1655,10 +1655,10 @@ export const GwyntTable = () => {
                 onClick={() => act('toggle_soundtrack')}
                 mb="8px"
               >
-                Soundtrack:{' '}
+                配乐：{' '}
                 {data.soundtrackEnabled
-                  ? data.soundtrackTitle || 'On'
-                  : 'Off'}
+                  ? data.soundtrackTitle || '开启'
+                  : '关闭'}
               </Button>
               <MatchInfoPanel data={data} phase={phase} weather={weather} />
               {isSpectator && (
@@ -1669,7 +1669,7 @@ export const GwyntTable = () => {
                     fontSize: '12px',
                   }}
                 >
-                  Spectators: {data.spectatorCount || 0}
+                  观战者：{data.spectatorCount || 0}
                 </div>
               )}
               {selectedCard && (
@@ -1688,7 +1688,7 @@ export const GwyntTable = () => {
                       marginBottom: '5px',
                     }}
                   >
-                    Target for {selectedCard.name}
+                    为{selectedCard.name}选择目标
                   </div>
                   {requiresRowChoice(selectedCard) && (
                     <div
@@ -1733,7 +1733,7 @@ export const GwyntTable = () => {
                       ))}
                     </div>
                   )}
-                  <Button onClick={() => setSelectedCard(null)}>Cancel</Button>
+                  <Button onClick={() => setSelectedCard(null)}>取消</Button>
                 </div>
               )}
               {!!data.inMulligan && (
@@ -1741,21 +1741,21 @@ export const GwyntTable = () => {
                   disabled={isSpectator || !!data.mulliganReady}
                   onClick={() => act('ready_mulligan')}
                 >
-                  Ready
+                  准备
                 </Button>
               )}
               <Button disabled={isSpectator || !myTurn} onClick={() => act('pass')}>
-                Pass
+                放弃本小局
               </Button>
               <Button
                 disabled={isSpectator}
                 onClick={() => act('collect')}
               >
-                End Session
+                结束对局
               </Button>
               {isSpectator ? (
                 <Button color="bad" onClick={() => act('leave_spectator')}>
-                  Leave
+                  离开
                 </Button>
               ) : null}
             </Section>

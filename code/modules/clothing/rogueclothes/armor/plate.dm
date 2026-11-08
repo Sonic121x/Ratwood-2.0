@@ -210,9 +210,9 @@
 	user.apply_status_effect(/datum/status_effect/buff/motive)
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/graggar
-	name = "vicious full-plate"
-	desc = "Shorn together plate, curated from hand-crafted bones and ligaments - combined under an unholy spirit of violence. It \
-	drools with the distilled essence of worldlux; the afterbirth of ascensionism."
+	name = "凶暴全身板甲"
+	desc = "手工雕琢的骨骼与韧带拼成甲片，在邪恶的暴力意志下结为一体。\
+	浓缩的世光精华从中淌出，那是飞升之道留下的胞衣。"
 	icon_state = "graggarplate_heavy"
 	max_integrity = ARMOR_INT_CHEST_PLATE_ANTAG
 	armor = ARMOR_PLATE_BSTEEL

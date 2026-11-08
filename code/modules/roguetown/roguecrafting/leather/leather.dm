@@ -256,7 +256,7 @@
 	craftdiff = 1
 
 /datum/crafting_recipe/roguetown/leather/cloak_bandolier
-	name = "bandolier"
+	name = "斜挎带"
 	result = /obj/item/clothing/cloak/bandolier
 	reqs = list(/obj/item/natural/hide/cured = 2, /obj/item/rope = 1)
 	tools = list(/obj/item/needle)
@@ -265,21 +265,21 @@
 	display_category = ITEM_CAT_TAILOR_MISC
 
 /datum/crafting_recipe/roguetown/leather/cloak_bandolier_inq
-	name = "inquisitorial bandolier"
+	name = "审判庭斜挎带"
 	result = /obj/item/clothing/cloak/bandolier/inq
 	reqs = list(/obj/item/natural/hide/cured = 1, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/leather/gloves_roguetown_fingerless_shadowgloves_spymaster
-	name = "hand's gloves"
+	name = "执政之手的手套"
 	result = /obj/item/clothing/gloves/roguetown/fingerless/shadowgloves/spymaster
 	reqs = list(/obj/item/natural/hide/cured = 1, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/leather/gloves_roguetown_rosa
-	name = "ivory gloves"
+	name = "象牙白手套"
 	result = /obj/item/clothing/gloves/roguetown/rosa
 	reqs = list( /obj/item/natural/hide/cured = 1, /obj/item/natural/silk = 2 )
 	tools = list(/obj/item/needle)
@@ -289,7 +289,7 @@
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/leather/gloves_roguetown_rosa_eight
-	name = "courtly gloves"
+	name = "宫廷手套"
 	result = /obj/item/clothing/gloves/roguetown/rosa/eight
 	reqs = list( /obj/item/natural/hide/cured = 1, /obj/item/natural/silk = 2 )
 	tools = list(/obj/item/needle)
@@ -299,7 +299,7 @@
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/leather/gloves_roguetown_rosa_five
-	name = "sable gloves"
+	name = "墨黑手套"
 	result = /obj/item/clothing/gloves/roguetown/rosa/five
 	reqs = list( /obj/item/natural/hide/cured = 1, /obj/item/natural/silk = 2 )
 	tools = list(/obj/item/needle)
@@ -309,7 +309,7 @@
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/leather/gloves_roguetown_rosa_four
-	name = "obsidian gloves"
+	name = "曜黑手套"
 	result = /obj/item/clothing/gloves/roguetown/rosa/four
 	reqs = list( /obj/item/natural/hide/cured = 1, /obj/item/natural/silk = 2 )
 	tools = list(/obj/item/needle)
@@ -319,7 +319,7 @@
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/leather/gloves_roguetown_rosa_nine
-	name = "royal gloves"
+	name = "王室手套"
 	result = /obj/item/clothing/gloves/roguetown/rosa/nine
 	reqs = list( /obj/item/natural/hide/cured = 1, /obj/item/natural/silk = 2 )
 	tools = list(/obj/item/needle)
@@ -329,7 +329,7 @@
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/leather/gloves_roguetown_rosa_seven
-	name = "regal gloves"
+	name = "华贵手套"
 	result = /obj/item/clothing/gloves/roguetown/rosa/seven
 	reqs = list( /obj/item/natural/hide/cured = 1, /obj/item/natural/silk = 2 )
 	tools = list(/obj/item/needle)
@@ -339,7 +339,7 @@
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/leather/gloves_roguetown_rosa_six
-	name = "maroon gloves"
+	name = "栗红手套"
 	result = /obj/item/clothing/gloves/roguetown/rosa/six
 	reqs = list( /obj/item/natural/hide/cured = 1, /obj/item/natural/silk = 2 )
 	tools = list(/obj/item/needle)
@@ -349,7 +349,7 @@
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/leather/gloves_roguetown_rosa_ten
-	name = "stately gloves"
+	name = "庄重手套"
 	result = /obj/item/clothing/gloves/roguetown/rosa/ten
 	reqs = list( /obj/item/natural/hide/cured = 1, /obj/item/natural/silk = 2 )
 	tools = list(/obj/item/needle)
@@ -359,7 +359,7 @@
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/leather/gloves_roguetown_rosa_three
-	name = "silvered gloves"
+	name = "银饰手套"
 	result = /obj/item/clothing/gloves/roguetown/rosa/three
 	reqs = list( /obj/item/natural/hide/cured = 1, /obj/item/natural/silk = 2 )
 	tools = list(/obj/item/needle)
@@ -369,7 +369,7 @@
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/leather/head_roguetown_headband_fur
-	name = "fur headband"
+	name = "毛皮头带"
 	result = /obj/item/clothing/head/roguetown/headband/fur
 	reqs = list(/obj/item/natural/hide/cured = 1)
 	tools = list(/obj/item/needle)
@@ -378,14 +378,14 @@
 	display_category = ITEM_CAT_ARMOR_HELMETS
 
 /datum/crafting_recipe/roguetown/leather/shoes_roguetown_boots_hammerhold_boots
-	name = "hammerhold boots"
+	name = "铁锤堡靴"
 	result = /obj/item/clothing/shoes/roguetown/boots/hammerhold_boots
 	reqs = list(/obj/item/natural/hide/cured = 1, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/leather/shoes_roguetown_courtphysician
-	name = "sanguine shoes"
+	name = "绯红皮鞋"
 	result = /obj/item/clothing/shoes/roguetown/courtphysician
 	reqs = list( /obj/item/natural/hide/cured = 2 )
 	tools = list(/obj/item/needle)
@@ -395,7 +395,7 @@
 	display_category = ITEM_CAT_ARMOR_BOOTS
 
 /datum/crafting_recipe/roguetown/leather/shoes_roguetown_courtphysician_female
-	name = "sanguine heels"
+	name = "绯红高跟鞋"
 	result = /obj/item/clothing/shoes/roguetown/courtphysician/female
 	reqs = list( /obj/item/natural/hide/cured = 2 )
 	tools = list(/obj/item/needle)
@@ -405,14 +405,14 @@
 	display_category = ITEM_CAT_ARMOR_BOOTS
 
 /datum/crafting_recipe/roguetown/leather/shoes_roguetown_hammerhold_shoes
-	name = "hammerhold shoes"
+	name = "铁锤堡鞋"
 	result = /obj/item/clothing/shoes/roguetown/hammerhold_shoes
 	reqs = list(/obj/item/natural/hide/cured = 1, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/leather/shoes_roguetown_rosa
-	name = "ivory shoes"
+	name = "象牙白鞋"
 	result = /obj/item/clothing/shoes/roguetown/rosa
 	reqs = list( /obj/item/natural/hide/cured = 1, /obj/item/natural/silk = 2 )
 	tools = list(/obj/item/needle)
@@ -422,7 +422,7 @@
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/leather/shoes_roguetown_rosa_eight
-	name = "courtly shoes"
+	name = "宫廷鞋"
 	result = /obj/item/clothing/shoes/roguetown/rosa/eight
 	reqs = list( /obj/item/natural/hide/cured = 1, /obj/item/natural/silk = 2 )
 	tools = list(/obj/item/needle)
@@ -432,7 +432,7 @@
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/leather/shoes_roguetown_rosa_five
-	name = "sable shoes"
+	name = "墨黑鞋"
 	result = /obj/item/clothing/shoes/roguetown/rosa/five
 	reqs = list( /obj/item/natural/hide/cured = 1, /obj/item/natural/silk = 2 )
 	tools = list(/obj/item/needle)
@@ -442,7 +442,7 @@
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/leather/shoes_roguetown_rosa_four
-	name = "obsidian shoes"
+	name = "曜黑鞋"
 	result = /obj/item/clothing/shoes/roguetown/rosa/four
 	reqs = list( /obj/item/natural/hide/cured = 1, /obj/item/natural/silk = 2 )
 	tools = list(/obj/item/needle)
@@ -452,7 +452,7 @@
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/leather/shoes_roguetown_rosa_nine
-	name = "royal shoes"
+	name = "王室鞋"
 	result = /obj/item/clothing/shoes/roguetown/rosa/nine
 	reqs = list( /obj/item/natural/hide/cured = 1, /obj/item/natural/silk = 2 )
 	tools = list(/obj/item/needle)
@@ -462,7 +462,7 @@
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/leather/shoes_roguetown_rosa_seven
-	name = "regal shoes"
+	name = "华贵鞋"
 	result = /obj/item/clothing/shoes/roguetown/rosa/seven
 	reqs = list( /obj/item/natural/hide/cured = 1, /obj/item/natural/silk = 2 )
 	tools = list(/obj/item/needle)
@@ -472,7 +472,7 @@
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/leather/shoes_roguetown_rosa_ten
-	name = "stately shoes"
+	name = "庄重鞋"
 	result = /obj/item/clothing/shoes/roguetown/rosa/ten
 	reqs = list( /obj/item/natural/hide/cured = 1, /obj/item/natural/silk = 2 )
 	tools = list(/obj/item/needle)
@@ -482,7 +482,7 @@
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/leather/shoes_roguetown_rosa_three
-	name = "silvered shoes"
+	name = "银饰鞋"
 	result = /obj/item/clothing/shoes/roguetown/rosa/three
 	reqs = list( /obj/item/natural/hide/cured = 1, /obj/item/natural/silk = 2 )
 	tools = list(/obj/item/needle)
@@ -492,7 +492,7 @@
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/leather/suit_roguetown_shirt_tunic_rosacoat
-	name = "regal coat"
+	name = "华贵外套"
 	result = /obj/item/clothing/suit/roguetown/shirt/tunic/rosacoat
 	reqs = list( /obj/item/natural/hide/cured = 2, /obj/item/natural/silk = 2, /obj/item/alch/rosa = 1 )
 	tools = list(/obj/item/needle)
@@ -502,7 +502,7 @@
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/leather/suit_roguetown_shirt_tunic_rosacoat_four
-	name = "stately coat"
+	name = "庄重外套"
 	result = /obj/item/clothing/suit/roguetown/shirt/tunic/rosacoat/four
 	reqs = list( /obj/item/natural/hide/cured = 2, /obj/item/natural/silk = 2, /obj/item/alch/rosa = 1 )
 	tools = list(/obj/item/needle)
@@ -512,7 +512,7 @@
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/leather/suit_roguetown_shirt_tunic_rosacoat_two
-	name = "courtly coat"
+	name = "宫廷外套"
 	result = /obj/item/clothing/suit/roguetown/shirt/tunic/rosacoat/two
 	reqs = list( /obj/item/natural/hide/cured = 2, /obj/item/natural/silk = 2, /obj/item/alch/rosa = 1 )
 	tools = list(/obj/item/needle)
@@ -522,21 +522,21 @@
 	display_category = ITEM_CAT_GARMENT_FINE
 
 /datum/crafting_recipe/roguetown/leather/belt_rogue_leather_belthooks
-	name = "belt hooks"
+	name = "腰带挂钩"
 	result = /obj/item/storage/belt/rogue/leather/belthooks
 	reqs = list(/obj/item/natural/hide/cured = 1, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/leather/belt_rogue_leather_hammerhold_sash
-	name = "hammerhold sash"
+	name = "铁锤堡腰带"
 	result = /obj/item/storage/belt/rogue/leather/hammerhold_sash
 	reqs = list(/obj/item/natural/hide/cured = 1, /obj/item/natural/fibers = 1)
 	craftdiff = 2
 	display_category = ITEM_CAT_GARMENT_COMMON
 
 /datum/crafting_recipe/roguetown/leather/belt_rogue_leather_iron
-	name = "iron belt"
+	name = "铁片腰带"
 	result = /obj/item/storage/belt/rogue/leather/iron
 	reqs = list(/obj/item/natural/hide/cured = 1, /obj/item/natural/fibers = 1)
 	craftdiff = 2

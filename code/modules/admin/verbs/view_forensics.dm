@@ -1,8 +1,8 @@
 /// Right-click admin verb. Opens an empty window; nothing is read until the admin presses Generate Logs.
 /client/proc/view_forensics(obj/O as obj in view())
 	set category = null
-	set name = "View Forensics"
-	set desc = "List the players who have opened, locked, picked, broken or touched this."
+	set name = "查看取证记录"
+	set desc = "列出曾打开、上锁、撬锁、破坏或触碰此物的玩家。"
 	if(!check_rights(R_ADMIN))
 		return
 	if(QDELETED(O))
@@ -27,7 +27,7 @@
 /datum/forensics_viewer/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "ViewForensics", "Forensics: [target_name]")
+		ui = new(user, src, "ViewForensics", "取证：[target_name]")
 		ui.set_autoupdate(FALSE)
 		ui.open()
 
@@ -49,7 +49,7 @@
 		if("generate")
 			var/atom/target = target_ref.resolve()
 			if(QDELETED(target))
-				to_chat(user, span_warning("[target_name] no longer exists."))
+				to_chat(user, span_warning("[target_name]已不存在。"))
 				return TRUE
 			log_admin("[key_name(user)] generated the forensics of [target] at [AREACOORD(target)].")
 			report = forensics_report(target)
@@ -59,7 +59,7 @@
 			var/atom/target = target_ref.resolve()
 			var/turf/T = get_turf(target)
 			if(!T)
-				to_chat(user, span_warning("[target_name] no longer exists."))
+				to_chat(user, span_warning("[target_name]已不存在。"))
 				return FALSE
 			// Mirror the behaviour of the adminplayerobservecoodjump href
 			var/client/C = user.client
@@ -75,7 +75,7 @@
 			var/target_ckey = ckey(params["ckey"])
 			var/mob/target_mob = get_mob_by_ckey(target_ckey)
 			if(!target_mob)
-				to_chat(user, span_warning("[target_ckey] has no mob in the round."))
+				to_chat(user, span_warning("[target_ckey]在本回合中没有角色。"))
 				return FALSE
 			// Mirror the behaviour of the adminplayerobservefollow href
 			var/client/C = user.client
@@ -91,7 +91,7 @@
 			var/target_ckey = ckey(params["ckey"])
 			var/mob/target_mob = get_mob_by_ckey(target_ckey)
 			if(!target_mob)
-				to_chat(user, span_warning("[target_ckey] has no mob in the round."))
+				to_chat(user, span_warning("[target_ckey]在本回合中没有角色。"))
 				return FALSE
 			user.client.holder.show_player_panel(target_mob)
 			return FALSE

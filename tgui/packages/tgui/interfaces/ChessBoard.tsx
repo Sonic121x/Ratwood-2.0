@@ -10,7 +10,7 @@ import { Button, Section } from 'tgui-core/components';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
-
+import { BOARD_DISPLAY } from './common/displayNames';
 type ChessSquare = {
   index: number;
   file: number;
@@ -189,16 +189,16 @@ const NARDS_DICE_ROLL: Record<number, string> = {
 };
 
 const NARDS_MODE_FALLBACK: ModeOption[] = [
-  { key: 'chess', label: 'Chess' },
-  { key: 'checkers', label: 'Checkers' },
-  { key: 'nards', label: 'Backgammon' },
+  { key: 'chess', label: '国际象棋' },
+  { key: 'checkers', label: '西洋跳棋' },
+  { key: 'nards', label: '双陆棋' },
 ];
 
 const PROMOTION_LABELS: Record<string, string> = {
-  queen: 'Queen',
-  rook: 'Rook',
-  bishop: 'Bishop',
-  knight: 'Knight',
+  queen: '后',
+  rook: '车',
+  bishop: '象',
+  knight: '马',
 };
 
 const boardWrapStyle: CSSProperties = {
@@ -426,12 +426,12 @@ export const ChessBoard = () => {
 
   const whiteSeatButtonLabel =
     data.white_player_name === 'Available'
-      ? 'Join as White'
-      : 'Leave White seat';
+      ? '执白入座'
+      : '离开白方座位';
   const blackSeatButtonLabel =
     data.black_player_name === 'Available'
-      ? 'Join as Black'
-      : 'Leave Black seat';
+      ? '执黑入座'
+      : '离开黑方座位';
 
   const handleWhiteSeatButton = () => {
     if (data.white_player_name === 'Available') {
@@ -449,7 +449,7 @@ export const ChessBoard = () => {
     act('release_side', { color: 'b' });
   };
 
-  const pauseResumeLabel = data.paused ? 'Resume' : 'Pause';
+  const pauseResumeLabel = data.paused ? '继续' : '暂停';
   const pauseResumeDisabled =
     !hasMode || (data.paused ? !data.can_resume : false);
 
@@ -671,23 +671,23 @@ export const ChessBoard = () => {
     }
 
     const chessLabel =
-      modeOptions.find((option) => option.key === 'chess')?.label || 'Chess';
+      modeOptions.find((option) => option.key === 'chess')?.label || '国际象棋';
     const checkersLabel =
       modeOptions.find((option) => option.key === 'checkers')?.label ||
-      'Checkers';
+      '西洋跳棋';
     const nardsLabel =
       modeOptions.find((option) => option.key === 'nards')?.label ||
-      'Backgammon';
+      '双陆棋';
 
     let title = 'Choose a mode';
-    let description = 'Select a game mode for this board.';
+    let description = '为棋盘选择游戏模式。';
 
     if (modePickerStep === 'checkers_rules') {
       title = 'Checkers rules';
-      description = 'Choose how kings can move.';
+      description = '选择王棋的移动规则。';
     } else if (modePickerStep === 'nards_rules') {
       title = 'Backgammon rules';
-      description = 'Choose long or short backgammon.';
+      description = '选择长式或短式双陆棋。';
     }
 
     return (
@@ -714,7 +714,7 @@ export const ChessBoard = () => {
             gap: '10px',
           }}
         >
-          <div style={{ fontSize: '18px' }}>{title}</div>
+          <div style={{ fontSize: '18px' }}>{BOARD_DISPLAY[title] || title}</div>
           <div style={{ opacity: 0.85 }}>{description}</div>
 
           {modePickerStep === 'root' && (
@@ -731,7 +731,7 @@ export const ChessBoard = () => {
               <Button onClick={() => setModePickerStep('nards_rules')}>
                 {nardsLabel}
               </Button>
-              <Button onClick={closeModePicker}>Close</Button>
+              <Button onClick={closeModePicker}>关闭</Button>
             </>
           )}
 
@@ -746,7 +746,7 @@ export const ChessBoard = () => {
                   requestModeSwitch('checkers', { checkersFlyingKings: false });
                 }}
               >
-                Short-range kings
+                短距离王棋
               </Button>
               <Button
                 disabled={
@@ -757,9 +757,9 @@ export const ChessBoard = () => {
                   requestModeSwitch('checkers', { checkersFlyingKings: true });
                 }}
               >
-                Flying kings
+                长距离王棋
               </Button>
-              <Button onClick={() => setModePickerStep('root')}>Back</Button>
+              <Button onClick={() => setModePickerStep('root')}>返回</Button>
             </>
           )}
 
@@ -772,7 +772,7 @@ export const ChessBoard = () => {
                   requestModeSwitch('nards', { nardsLongRules: false });
                 }}
               >
-                Short backgammon
+                短式双陆棋
               </Button>
               <Button
                 disabled={data.game_mode === 'nards' && !!data.nards_long_rules}
@@ -781,9 +781,9 @@ export const ChessBoard = () => {
                   requestModeSwitch('nards', { nardsLongRules: true });
                 }}
               >
-                Long backgammon
+                长式双陆棋
               </Button>
-              <Button onClick={() => setModePickerStep('root')}>Back</Button>
+              <Button onClick={() => setModePickerStep('root')}>返回</Button>
             </>
           )}
         </div>
@@ -1292,7 +1292,7 @@ export const ChessBoard = () => {
             disabled={!nards?.can_roll}
             onClick={() => act('roll_nards_dice')}
           >
-            Roll dice
+            掷骰
           </Button>
           <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
             {diceFaces[0] ? (
@@ -1321,19 +1321,19 @@ export const ChessBoard = () => {
             ) : null}
           </div>
           <div style={{ fontSize: '12px', opacity: 0.8 }}>
-            Available dice: {availableRollsText}
+            可用骰点：{availableRollsText}
           </div>
           <div style={{ fontSize: '12px', opacity: 0.8 }}>
-            White borne off: {nards?.off_white || 0}
+            白方已收子：{nards?.off_white || 0}
           </div>
           <div style={{ fontSize: '12px', opacity: 0.8 }}>
-            Black borne off: {nards?.off_black || 0}
+            黑方已收子：{nards?.off_black || 0}
           </div>
           <Button
             disabled={!nards?.legal_targets?.includes(0)}
             onClick={handleNardsBearOffClick}
           >
-            Bear off
+            收子
           </Button>
         </div>
       </div>
@@ -1341,13 +1341,13 @@ export const ChessBoard = () => {
   };
 
   return (
-    <Window width={920} height={780} title={data.board_title || 'Chessboard'}>
+    <Window width={920} height={780} title={data.board_title || 'Chessboard'} display_title={BOARD_DISPLAY.Chessboard}>
       <Window.Content scrollable>
         <div style={{ position: 'relative' }}>
           {renderModePicker()}
           <div style={panelStyle}>
             <div>
-              <Section title="Board">
+              <Section title={BOARD_DISPLAY.Board}>
                 <div
                   style={{
                     marginBottom: '8px',
@@ -1356,24 +1356,24 @@ export const ChessBoard = () => {
                   }}
                 >
                   <div>
-                    <b>Mode:</b> {data.game_mode_label}
+                    <b>模式：</b> {data.game_mode_label}
                   </div>
                   {!!data.current_rules_text && (
                     <div>
-                      <b>Rules:</b> {data.current_rules_text}
+                      <b>规则：</b> {data.current_rules_text}
                     </div>
                   )}
                   <div>
-                    <b>White:</b> {data.white_player_name}
+                    <b>白方：</b> {data.white_player_name === 'Available' ? BOARD_DISPLAY.Available : data.white_player_name}
                   </div>
                   <div>
-                    <b>Black:</b> {data.black_player_name}
+                    <b>黑方：</b> {data.black_player_name === 'Available' ? BOARD_DISPLAY.Available : data.black_player_name}
                   </div>
                   <div>
-                    <b>You:</b> {data.my_side}
+                    <b>你：</b> {data.my_side}
                   </div>
                   <div>
-                    <b>Turn:</b> {data.turn}
+                    <b>当前回合：</b> {data.turn}
                   </div>
                 </div>
                 {data.game_mode === 'nards'
@@ -1383,18 +1383,18 @@ export const ChessBoard = () => {
                   <div
                     style={{ marginTop: '8px', fontSize: '12px', opacity: 0.8 }}
                   >
-                    No game mode selected. Use the mode switch button.
+                    尚未选择游戏模式，请使用切换模式按钮。
                   </div>
                 )}
               </Section>
             </div>
 
             <div>
-              <Section title="Status">
+              <Section title={BOARD_DISPLAY.Status}>
                 <div style={{ marginBottom: '8px' }}>{data.status_text}</div>
                 {!!data.result_text && (
                   <div style={{ marginBottom: '8px', color: '#ff9f9f' }}>
-                    <b>{data.result_text}</b>
+                    <b>{BOARD_DISPLAY[data.result_text] || data.result_text}</b>
                   </div>
                 )}
                 {!!data.last_message && (
@@ -1414,7 +1414,7 @@ export const ChessBoard = () => {
                 )}
               </Section>
 
-              <Section title="Seats and controls">
+              <Section title={BOARD_DISPLAY['Seats and controls']}>
                 <div style={buttonGroupStyle}>
                   <Button onClick={handleWhiteSeatButton}>
                     {whiteSeatButtonLabel}
@@ -1433,56 +1433,56 @@ export const ChessBoard = () => {
                   </Button>
                   {!!data.can_resign && (
                     <Button onClick={resignGame}>
-                      {confirmResign ? 'Confirm resignation' : 'Resign'}
+                      {confirmResign ? '确认认输' : '认输'}
                     </Button>
                   )}
                   {confirmResign && (
                     <Button onClick={() => setConfirmResign(false)}>
-                      Cancel
+                      取消
                     </Button>
                   )}
                   <Button onClick={resetBoard}>
-                    {confirmReset ? 'Confirm reset' : 'Reset board'}
+                    {confirmReset ? '确认重置' : '重置棋盘'}
                   </Button>
                   {confirmReset && (
                     <Button onClick={() => setConfirmReset(false)}>
-                      Cancel
+                      取消
                     </Button>
                   )}
                   {!!data.can_confirm_reset_request && (
                     <Button onClick={() => act('confirm_reset_board')}>
-                      Confirm reset
+                      确认重置
                     </Button>
                   )}
                   {!!data.can_cancel_reset_request && (
                     <Button onClick={() => act('cancel_reset_board')}>
-                      Cancel reset request
+                      取消重置请求
                     </Button>
                   )}
                   <Button
                     disabled={!data.can_pack}
                     onClick={() => act('pack_board')}
                   >
-                    Pack board
+                    收起棋盘
                   </Button>
                   <Button
                     disabled={!data.can_flip_board}
                     onClick={() => act('flip_board')}
                   >
-                    Flip board
+                    掀翻棋盘
                   </Button>
                 </div>
 
                 <div style={{ ...buttonGroupStyle, marginTop: '8px' }}>
-                  <Button onClick={openModePicker}>Change mode</Button>
+                  <Button onClick={openModePicker}>切换模式</Button>
                   {!!data.can_confirm_mode_switch && (
                     <Button onClick={() => act('confirm_mode_switch')}>
-                      Confirm mode change
+                      确认切换模式
                     </Button>
                   )}
                   {!!data.can_cancel_mode_switch && (
                     <Button onClick={() => act('cancel_mode_switch')}>
-                      Cancel request
+                      取消请求
                     </Button>
                   )}
                 </div>
@@ -1490,15 +1490,15 @@ export const ChessBoard = () => {
                 <div
                   style={{ marginTop: '8px', fontSize: '12px', opacity: 0.8 }}
                 >
-                  During an active game, pause before changing players. Changing
-                  modes after a game has started requires both players' consent.
+                  对局中更换玩家前请先暂停。对局开始后切换模式，
+                  需要双方玩家同意。
                 </div>
               </Section>
 
               {!!pendingPromotion && data.game_mode === 'chess' && (
-                <Section title="Pawn promotion">
+                <Section title={BOARD_DISPLAY['Pawn promotion']}>
                   <div style={{ marginBottom: '8px' }}>
-                    Choose a piece to promote the pawn to.
+                    选择兵要升变为哪种棋子。
                   </div>
                   <div style={buttonGroupStyle}>
                     {promotionChoices.map((choice) => (
@@ -1510,14 +1510,14 @@ export const ChessBoard = () => {
                       </Button>
                     ))}
                     <Button onClick={() => setPendingPromotion(null)}>
-                      Cancel
+                      取消
                     </Button>
                   </div>
                 </Section>
               )}
 
-              <Section title="Move history">
-                {!history.length && <div>No moves have been made yet.</div>}
+              <Section title={BOARD_DISPLAY['Move history']}>
+                {!history.length && <div>尚无行棋记录。</div>}
                 {!!history.length && (
                   <table
                     style={{
@@ -1532,10 +1532,10 @@ export const ChessBoard = () => {
                           #
                         </th>
                         <th style={{ textAlign: 'left', paddingBottom: '4px' }}>
-                          White
+                          白方
                         </th>
                         <th style={{ textAlign: 'left', paddingBottom: '4px' }}>
-                          Black
+                          黑方
                         </th>
                       </tr>
                     </thead>

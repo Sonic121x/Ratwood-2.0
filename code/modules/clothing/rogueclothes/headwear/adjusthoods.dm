@@ -57,8 +57,8 @@
 	color = CLOTHING_RED
 
 /obj/item/clothing/head/roguetown/roguehood/bogman
-	name = "bogman's hood"
-	desc = "A head's best friend, worn and proven by aeon's grip, its once-vibrant colors long worn out after its former owner deserted their post."
+	name = "沼泽人的兜帽"
+	desc = "脑袋最好的伙伴，历经岁月磨损而依然可靠。自前任主人擅离职守以来，原本鲜艳的颜色早已褪去。"
 	color = "#7a8138"
 
 /obj/item/clothing/head/roguetown/roguehood/bogman/black
@@ -382,7 +382,7 @@
 	nudist_approved = FALSE // armored
 
 /obj/item/clothing/head/roguetown/roguehood/bishop
-	name = "bishop hood"
+	name = "主教兜帽"
 	desc = ""
 	color = null
 	icon_state = "bishop_hood"
@@ -405,8 +405,8 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_CHOSEN, "VISAGE")
 
 /obj/item/clothing/head/roguetown/roguehood/burgerhood
-	name = "noble hood"
-	desc = "A silk hood that shows its owner's high status. At the very least, it looks passable."
+	name = "贵族兜帽"
+	desc = "彰显主人高贵身份的丝绸兜帽。至少看起来还过得去。"
 	color = null
 	icon_state = "burgerhood"
 	item_state = "burgerhood"
@@ -426,8 +426,8 @@
 	salvage_amount = 1
 
 /obj/item/clothing/head/roguetown/roguehood/eorahood
-	name = "opera hood"
-	desc = "An opera mask worn by the faithful of Eora, usually during their rituals. Comes with a hood that can be pulled up for warmth."
+	name = "戏剧兜帽"
+	desc = "伊欧拉信徒通常在仪式中佩戴的戏剧面具，附有可拉起保暖的兜帽。"
 	color = null
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/head.dmi'
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/64x64/head.dmi'
@@ -446,8 +446,8 @@
 	salvage_amount = 1
 
 /obj/item/clothing/head/roguetown/roguehood/ravox
-	name = "ravox hood"
-	desc = "A hood of those devoted to upholding Justicar's will. Justice might be blind but not it's servants."
+	name = "拉沃克斯兜帽"
+	desc = "维护审判官意志之人的兜帽。正义或许蒙着双眼，其仆从却不会。"
 	color = null
 	icon_state = "ravoxhood"
 	item_state = "ravoxhood"
@@ -466,8 +466,8 @@
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/head.dmi'
 
 /obj/item/clothing/head/roguetown/roguehood/see
-	name = "see hood"
-	desc = "A hood of those devoted to upholding the Ten in their dae to dae duties."
+	name = "教廷兜帽"
+	desc = "在日常职责中虔诚侍奉十神者的兜帽。"
 	color = null
 	icon_state = "undividedhood"
 	item_state = "undividedhood"

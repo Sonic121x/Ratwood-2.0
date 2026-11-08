@@ -14,7 +14,7 @@
 
 /obj/item/clothing/wrists/roguetown/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Middle-clicking adjusts its layer, so it can be worn either above-or-below any armor and gloves.")
+	. += span_info("中键点击可调整穿戴层次，将其戴在护甲和手套外面或下面。")
 
 /obj/item/clothing/wrists/roguetown/MiddleClick(mob/user, params)
 	. = ..()
@@ -305,8 +305,8 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "护甲")
 
 /obj/item/clothing/wrists/roguetown/bracers/graggar
-	name = "vicious bracers"
-	desc = "Oh, to plunge hands into cold water; to play a melody upon an ivory-keyed piano; to watch steam rise from boiling, twisting entrails.."
+	name = "凶暴护臂"
+	desc = "啊，将双手浸入冷水；在象牙琴键上奏出旋律；看蒸汽从沸腾扭曲的内脏中升起……"
 	icon_state = "graggarbracers"
 	item_state = "graggarbracers"
 	max_integrity = ARMOR_INT_SIDE_ANTAG - 100
@@ -317,11 +317,11 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "ARMOR")
 
 /obj/item/clothing/wrists/roguetown/bracers/graggar/heavy
-	name = "vicious wristguards"
-	desc = "Swaying chains, padded with a mixture of twine, leather and entrails. Steel and bone on the outside. It won't survive the onslaught - but it's \
-	not meant to. </br>Everything He did, He did for Ravox. To see them squander such power in favor of mortality's chains - it broke Him. Yils of resentment, \
-	of jealousy and frustration; released all at once. Through flowing tears, He disemboweled the divine filament and shattered His chains once and for all.. \
-	for if He would not be loved, then He would settle for hatred instead."
+	name = "凶暴护腕"
+	desc = "摇曳的锁链内衬麻绳、皮革与内脏，外覆钢铁与骨骼。它经不起猛攻，但它\
+	本就不是为此而造。</br>祂所做的一切，都是为了拉沃克斯。眼见对方为凡人的枷锁舍弃这般力量，祂崩溃了。多年积蓄的怨恨、\
+	嫉妒与挫败一并倾泻而出。泪流满面之中，祂剖开神性之丝，彻底击碎自身的锁链……\
+	既然得不到爱，那便以恨替代。"
 	icon_state = "graggarplatebracer_heavy"
 	max_integrity = ARMOR_INT_SIDE_ANTAG
 	armor = ARMOR_PLATE_BSTEEL

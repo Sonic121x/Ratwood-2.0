@@ -665,7 +665,7 @@
 	verbage = "建造"
 
 /datum/crafting_recipe/roguetown/structure/wooden_spit
-	name = "wooden spit"
+	name = "木制烤架"
 	result = /obj/machinery/light/rogue/hearth/wooden_spit
 	reqs = list(/obj/item/grown/log/tree/stick = 2)
 	structurecraft = /obj/machinery/light/rogue/campfire

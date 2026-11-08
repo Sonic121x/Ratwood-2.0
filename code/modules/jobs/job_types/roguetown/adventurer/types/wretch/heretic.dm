@@ -239,7 +239,7 @@
 			helmets += list("Ravox Helmet" = /obj/item/clothing/head/roguetown/helmet/heavy/ravoxhelm)
 			if(H.mind)
 				var/cloaks = list("Tabard", "Cloak")
-				var/cloakchoice = input(H,"Choose your covering", "TAKE UP FASHION") as anything in cloaks
+				var/cloakchoice = input_updated_loadout_display(H, cloaks, "选择你的外搭。")
 				switch(cloakchoice)
 					if("Tabard")
 						H.equip_to_slot_or_del(new /obj/item/clothing/cloak/templar/ravox, SLOT_CLOAK, TRUE)
@@ -294,7 +294,7 @@
 					H.equip_to_slot_or_del(new /obj/item/clothing/shoes/roguetown/boots/leather/reinforced/short, SLOT_SHOES, TRUE)
 					H.equip_to_slot_or_del(new /obj/item/clothing/cloak/reformtabard, SLOT_CLOAK, TRUE)
 	if(H.mind)
-		var/helmchoice = input(H, "Choose your Helm.", "TAKE UP HELMS") as anything in helmets
+		var/helmchoice = input_updated_loadout_display(H, helmets, "选择你的头盔。")
 		if(helmchoice != "None")
 			var/helmet_path = helmets[helmchoice]
 			H.equip_to_slot_or_del(new helmet_path(H), SLOT_HEAD, TRUE)

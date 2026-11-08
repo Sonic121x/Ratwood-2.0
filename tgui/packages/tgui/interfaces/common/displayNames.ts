@@ -1,3 +1,31 @@
+export const CARD_DISPLAY: Record<string, string> = {
+  'Card Battle': '阿莱特对战', 'Card Table': '牌桌', Invitation: '邀请',
+  Hand: '手牌', cards: '张', Match: '对局', Draw: '牌库', Discard: '弃牌堆',
+  Rules: '规则', Xylix: '赛利克斯', Game: '游戏', Seat: '座位', Round: '回合',
+  Watching: '观战', 'Game over': '游戏结束',
+};
+
+export const BOARD_DISPLAY: Record<string, string> = {
+  'Checkmate. 白方 wins.': '将死，白方获胜。',
+  'Checkmate. 黑方 wins.': '将死，黑方获胜。',
+  Chessboard: '棋盘', Board: '棋盘', Status: '状态',
+  'Seats and controls': '座位与操作', 'Pawn promotion': '兵的升变', 'Move history': '棋谱',
+  'Choose a mode': '选择模式', 'Checkers rules': '西洋跳棋规则', 'Backgammon rules': '双陆棋规则',
+  Available: '空座位',
+  'The board has been flipped. Reset it to put the pieces back in place.': '棋盘已被掀翻，请重置棋盘以归位棋子。',
+};
+
+export const ADMIN_PANEL_LABELS: Record<string, string> = {
+  'Disconnected Players': '离线玩家',
+  Disconnected: '离线玩家',
+  Forensics: '取证',
+  'Touched by hand': '手部接触记录',
+  Contents: '内容物',
+  'Picked up and dropped': '拾取与丢弃',
+  'Opened, closed and locked': '开关与上锁',
+  'Suspicious actions': '可疑操作',
+};
+
 export const NAVIGATOR_CATEGORY_LABELS: Record<string, string> = {
   Weapons: '武器',
   'Light Armor': '轻甲',

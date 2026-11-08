@@ -55,26 +55,26 @@
 	contains = list(/obj/item/storage/pill_bottle/dice/dice_poker)
 
 /datum/supply_pack/rogue/games/chessboard
-	name = "Foldable Chessboard"
+	name = "折叠棋盘"
 	cost = 25
 	contains = list(/obj/item/chessboard_folded)
 
 /datum/supply_pack/rogue/games/arlette_starter
-	name = "Arlette Starter Deck (Random Faction)"
+	name = "阿莱特起始套牌（随机阵营）"
 	cost = 30
 	contains = list(/obj/item/ccg_deck/starter/random)
 
 /datum/supply_pack/rogue/games/arlette_deckbox
-	name = "Empty Arlette Deck Box"
+	name = "空阿莱特牌盒"
 	cost = 5
 	contains = list(/obj/item/ccg_deck)
 
 /datum/supply_pack/rogue/games/arlette_booster
-	name = "Arlette Card Booster"
+	name = "阿莱特卡牌补充包"
 	cost = 20
 	contains = list(/obj/item/ccg_card_booster)
 
 /datum/supply_pack/rogue/games/arlette_booster_premium
-	name = "Premium Arlette Card Booster"
+	name = "高级阿莱特卡牌补充包"
 	cost = 45
 	contains = list(/obj/item/ccg_card_booster/premium)

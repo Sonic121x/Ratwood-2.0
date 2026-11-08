@@ -281,10 +281,10 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "盾")
 
 /obj/item/rogueweapon/shield/iron/graggar
-	name = "vicious targe"
-	desc = "A decorated targe, splattered and sanctified with the trophies of Psydonia's most dangerous hunters. No matter the icy rains, \
-	no matter the scorching heat – no matter the wrath of their enemies, Graggar never faltered in His arms. When Ravox broke their oath and \
-	rescinded their claim to Godhood, grief could not describe what He had felt."
+	name = "凶暴圆盾"
+	desc = "一面华饰圆盾，普赛多尼亚最危险猎手的战利品泼洒其上，为它献圣。无论冰雨，\
+	无论酷暑，亦无论仇敌的怒火，格拉加尔从未动摇手中兵刃。当拉沃克斯背弃誓言、\
+	放弃神格时，祂的感受已非悲痛二字可以形容。"
 	icon_state = "graggarshield"
 	unenchantable = TRUE
 	max_integrity = 300

@@ -25,37 +25,37 @@
 	var/list/rules = list()
 	switch(game_type)
 		if(CARD_TABLE_GAME_BLACKJACK)
-			rules += "Goal: get as close to 21 as you can without going over."
-			rules += "Hit takes a card, Stand locks in your hand."
-			rules += "The dealer is always one of the players. [dealer_rotation_label()]."
+			rules += "目标：在不超过21点的前提下，尽可能接近21点。"
+			rules += "要牌会抽取一张牌，停牌则锁定当前手牌。"
+			rules += "庄家始终由一名玩家担任。[dealer_rotation_label()]。"
 			switch(blackjack_variant)
 				if(CARD_TABLE_BLACKJACK_GRON)
-					rules += "Gronnic: aces count as 1; jacks, queens and kings count as 11."
+					rules += "格隆恩式：A计1点，J、Q、K计11点。"
 				if(CARD_TABLE_BLACKJACK_VALORIA)
-					rules += "Valorian: aces, jacks, queens and kings all count as 10."
+					rules += "瓦洛里亚式：A、J、Q、K均计10点。"
 				if(CARD_TABLE_BLACKJACK_GRENZELHOFT)
-					rules += "Grenzelhoftian: aces count as 10, but two aces make 21; jacks, queens and kings count as 10."
+					rules += "格伦泽尔霍夫特式：A计10点，但两张A合计21点；J、Q、K计10点。"
 				if(CARD_TABLE_BLACKJACK_KAZENGUN)
-					rules += "Kazengunite: aces, jacks, queens and kings all count as 1."
+					rules += "风郡式：A、J、Q、K均计1点。"
 				else
-					rules += "Rockhillian: aces count as 11, but two aces make 21; jacks, queens and kings count as 10."
+					rules += "岩丘式：A计11点，但两张A合计21点；J、Q、K计10点。"
 		if(CARD_TABLE_GAME_POKER)
-			rules += "Goal: make the best hand."
-			rules += "Betting: enter an amount. If it is no higher than the current bet, Bet checks or calls; if it is higher, it raises. All In bets everything, Fold throws away your hand."
+			rules += "目标：组成最强的牌型。"
+			rules += "下注：输入金额。若不高于当前注额，点击下注会过牌或跟注；若高于当前注额，则会加注。全押会押上所有筹码，弃牌则放弃手牌。"
 			switch(poker_variant)
 				if(CARD_TABLE_POKER_TEXAS)
-					rules += "Raneshi: each player holds 2 cards, with 5 community cards on the table."
+					rules += "拉涅申式：每位玩家持2张牌，桌上有5张公共牌。"
 				if(CARD_TABLE_POKER_OMAHA)
-					rules += "Valorian: each player holds 4 cards, with 5 community cards on the table."
+					rules += "瓦洛里亚式：每位玩家持4张牌，桌上有5张公共牌。"
 				if(CARD_TABLE_POKER_STUD)
-					rules += "Giza: each player gets 5 personal cards with no swaps."
+					rules += "吉萨式：每位玩家获得5张个人手牌，不可换牌。"
 				else
-					rules += "Rockhillian: each player gets 5 cards and may swap one card once."
-			rules += "The dealer is always one of the players. [dealer_rotation_label()]."
+					rules += "岩丘式：每位玩家获得5张牌，可换牌一次，每次一张。"
+			rules += "庄家始终由一名玩家担任。[dealer_rotation_label()]。"
 			if(poker_uses_community_cards())
-				rules += "Raneshi, Valorian and Giza: community cards are revealed one per round, with a new betting round after each card."
+				rules += "拉涅申式、瓦洛里亚式与吉萨式：每轮翻开一张公共牌，每次翻牌后开始新一轮下注。"
 			else
-				rules += "Rockhillian: there are no community cards; only the players' hands are compared."
+				rules += "岩丘式：没有公共牌，只比较玩家手牌。"
 	return rules
 
 /datum/card_table_session/proc/build_ui_data(mob/user) as /list

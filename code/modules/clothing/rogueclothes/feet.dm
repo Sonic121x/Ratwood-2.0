@@ -758,7 +758,7 @@
 // horseshoes!
 
 /obj/item/clothing/shoes/roguetown/boots/hammerhold_boots
-	name = "hammerhold boots"
+	name = "铁锤堡靴"
 	desc = ""
 	icon_state = "boots"
 	item_state = "boots"
@@ -767,8 +767,8 @@
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/boots.dmi'
 
 /obj/item/clothing/shoes/roguetown/courtphysician
-	name = "sanguine shoes"
-	desc = "Leather shoes, the solemn tap of these bears grim news, or salvation."
+	name = "绯红皮鞋"
+	desc = "皮鞋沉重的足音，带来的或是噩耗，或是救赎。"
 	icon_state = "docshoes"
 	item_state = "docshoes"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/special/courtphys.dmi'
@@ -778,8 +778,8 @@
 	sewrepair = TRUE
 
 /obj/item/clothing/shoes/roguetown/courtphysician/female
-	name = "sanguine heels"
-	desc = "Leather heels, the solemn tap of these bears grim news, or salvation."
+	name = "绯红高跟鞋"
+	desc = "皮制高跟鞋沉重的足音，带来的或是噩耗，或是救赎。"
 	icon_state = "docheels"
 	item_state = "docheels"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/special/courtphys.dmi'
@@ -807,7 +807,7 @@
 		add_overlay(pic)
 
 /obj/item/clothing/shoes/roguetown/hammerhold_shoes
-	name = "hammerhold shoes"
+	name = "铁锤堡鞋"
 	desc = ""
 	icon_state = "shoes"
 	item_state = "shoes"
@@ -816,37 +816,37 @@
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/boots.dmi'
 
 /obj/item/clothing/shoes/roguetown/rosa
-	name = "ivory shoes"
-	desc = "Finely crafted shoes of silk and leather."
+	name = "象牙白鞋"
+	desc = "以丝绸与皮革精制的鞋子。"
 	icon_state = "rosashoes1"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/special/rosewood.dmi'
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/special/onmob/rosewood.dmi'
 	sleeved = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/special/onmob/rosewood.dmi'
 
 /obj/item/clothing/shoes/roguetown/rosa/eight
-	name = "courtly shoes"
+	name = "宫廷鞋"
 	icon_state = "rosashoes8"
 
 /obj/item/clothing/shoes/roguetown/rosa/five
-	name = "sable shoes"
+	name = "墨黑鞋"
 	icon_state = "rosashoes5"
 
 /obj/item/clothing/shoes/roguetown/rosa/four
-	name = "obsidian shoes"
+	name = "曜黑鞋"
 	icon_state = "rosashoes4"
 
 /obj/item/clothing/shoes/roguetown/rosa/nine
-	name = "royal shoes"
+	name = "王室鞋"
 	icon_state = "rosashoes9"
 
 /obj/item/clothing/shoes/roguetown/rosa/seven
-	name = "regal shoes"
+	name = "华贵鞋"
 	icon_state = "rosashoes7"
 
 /obj/item/clothing/shoes/roguetown/rosa/ten
-	name = "stately shoes"
+	name = "庄重鞋"
 	icon_state = "rosashoes10"
 
 /obj/item/clothing/shoes/roguetown/rosa/three
-	name = "silvered shoes"
+	name = "银饰鞋"
 	icon_state = "rosashoes3"

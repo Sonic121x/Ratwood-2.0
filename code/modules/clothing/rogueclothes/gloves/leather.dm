@@ -133,16 +133,16 @@
 	color = null
 
 /obj/item/clothing/gloves/roguetown/fingerless/shadowgloves/spymaster
-	name = "hand's gloves"
-	desc = "Supple silk, cut at the fingertips to ensure absolute precision."
+	name = "执政之手的手套"
+	desc = "柔韧的丝绸，指尖开口，确保动作绝对精准。"
 	icon_state = "handgloves"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/gloves.dmi'
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/gloves.dmi'
 	sleeved = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/gloves.dmi'
 
 /obj/item/clothing/gloves/roguetown/rosa
-	name = "ivory gloves"
-	desc = "Finely crafted gloves of silk and leather."
+	name = "象牙白手套"
+	desc = "以丝绸与皮革精制的手套。"
 	icon_state = "rosagloves1"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/special/rosewood.dmi'
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/special/onmob/rosewood.dmi'
@@ -150,33 +150,33 @@
 	salvage_result = /obj/item/natural/hide/cured
 
 /obj/item/clothing/gloves/roguetown/rosa/eight
-	name = "courtly gloves"
+	name = "宫廷手套"
 	icon_state = "rosagloves8"
 
 /obj/item/clothing/gloves/roguetown/rosa/five
-	name = "sable gloves"
+	name = "墨黑手套"
 	icon_state = "rosagloves5"
 
 /obj/item/clothing/gloves/roguetown/rosa/four
-	name = "obsidian gloves"
+	name = "曜黑手套"
 	icon_state = "rosagloves4"
 
 /obj/item/clothing/gloves/roguetown/rosa/nine
-	name = "royal gloves"
+	name = "王室手套"
 	icon_state = "rosagloves9"
 
 /obj/item/clothing/gloves/roguetown/rosa/seven
-	name = "regal gloves"
+	name = "华贵手套"
 	icon_state = "rosagloves7"
 
 /obj/item/clothing/gloves/roguetown/rosa/six
-	name = "maroon gloves"
+	name = "栗红手套"
 	icon_state = "rosagloves6"
 
 /obj/item/clothing/gloves/roguetown/rosa/ten
-	name = "stately gloves"
+	name = "庄重手套"
 	icon_state = "rosagloves10"
 
 /obj/item/clothing/gloves/roguetown/rosa/three
-	name = "silvered gloves"
+	name = "银饰手套"
 	icon_state = "rosagloves3"

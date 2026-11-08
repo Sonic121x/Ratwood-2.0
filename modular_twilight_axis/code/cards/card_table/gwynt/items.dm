@@ -1,6 +1,6 @@
 /obj/item/ccg_deck
-	name = "Arlette deck"
-	desc = "A deck box for a round-based game of Arlette. Slot cards into it to build a deck."
+	name = "阿莱特牌组"
+	desc = "用于回合制阿莱特卡牌游戏的牌盒。将卡牌放入其中即可组建牌组。"
 	icon = 'modular_twilight_axis/icons/obj/gwynt_objs.dmi'
 	icon_state = "gwint_deck"
 	w_class = WEIGHT_CLASS_SMALL
@@ -36,14 +36,14 @@
 	. = ..()
 	var/datum/ccg_faction/faction = ccg_faction(faction_id)
 	var/datum/ccg_leader/leader = ccg_leader(leader_id)
-	. += span_info("Faction: [faction ? faction.name : "None"]. Leader: [leader ? leader.name : "None"].")
-	. += span_info("It holds [card_ids.len]/[CCG_DECK_SIZE] cards. A deck needs at least [CCG_MIN_DECK_SIZE] to play.")
+	. += span_info("阵营：[faction ? faction.name : "无"]。领袖：[leader ? leader.name : "无"]。")
+	. += span_info("内含[card_ids.len]/[CCG_DECK_SIZE]张牌。至少需要[CCG_MIN_DECK_SIZE]张牌才能对战。")
 
 /obj/item/ccg_deck/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Use the deck in hand to look through it, take a card out, or change its faction or leader.")
-	. += span_info("Hit the deck with a loose card to slot it in. Right-click the deck in hand to take a card out.")
-	. += span_info("To play, set your deck down on a table, then have another player hit it with their own deck.")
+	. += span_info("在手中使用牌组，可浏览卡牌、取出卡牌，或更改阵营与领袖。")
+	. += span_info("用散卡点击牌组即可加入卡牌。右键点击手中的牌组可取出卡牌。")
+	. += span_info("将牌组放在桌上，再让另一位玩家用自己的牌组点击它，即可对战。")
 
 /obj/item/ccg_deck/proc/set_cards(list/new_cards)
 	card_ids = list()
@@ -87,20 +87,20 @@
 /obj/item/ccg_deck/proc/show_card_list(mob/user)
 	var/datum/ccg_faction/faction = ccg_faction(faction_id)
 	var/datum/ccg_leader/leader = ccg_leader(leader_id)
-	var/list/lines = list("<b>[name]</b>: [card_ids.len]/[CCG_DECK_SIZE] cards. Faction: [faction ? faction.name : "None"]. Leader: [leader ? leader.name : "None"].")
+	var/list/lines = list("<b>[name]</b>：[card_ids.len]/[CCG_DECK_SIZE]张牌。阵营：[faction ? faction.name : "无"]。领袖：[leader ? leader.name : "无"]。")
 	if(leader?.desc)
 		lines += "<i>[leader.desc]</i>"
 	var/list/card_lines = ccg_describe_card_list(card_ids)
 	if(length(card_lines))
 		lines += card_lines
 	else
-		lines += "The deck is empty."
+		lines += "牌组为空。"
 	to_chat(user, span_info(jointext(lines, "<br>")))
 
 /// Pulls one copy of a chosen card out of the deck and puts it in the user's hands.
 /obj/item/ccg_deck/proc/take_card_out(mob/user)
 	if(!length(card_ids))
-		to_chat(user, span_warning("The deck is empty."))
+		to_chat(user, span_warning("牌组为空。"))
 		return FALSE
 	var/list/choices = list()
 	for(var/card_id in card_ids)
@@ -109,7 +109,7 @@
 			continue
 		var/label = "[card.name] ([ccg_row_label(card.row)], [ccg_rarity_label(card.rarity)]) x[ccg_card_count_in_list(card_ids, card_id)]"
 		choices[label] = card_id
-	var/choice = tgui_input_list(user, "Which card do you take out?", "[name]", sortList(choices))
+	var/choice = tgui_input_list(user, "取出哪张卡牌？", "[name]", sortList(choices))
 	if(!choice || QDELETED(src) || !user.is_holding(src) || in_active_match())
 		return FALSE
 	var/card_id = choices[choice]
@@ -119,7 +119,7 @@
 	var/obj/item/ccg_card_single/single = new(get_turf(user))
 	single.set_card(card_id)
 	user.put_in_hands(single)
-	to_chat(user, span_notice("I take [single.name] out of the deck."))
+	to_chat(user, span_notice("我从牌组中取出了[single.name]。"))
 	return TRUE
 
 /// Changes the deck's faction. Cards that don't belong to the new faction fall out as loose cards.
@@ -130,7 +130,7 @@
 	for(var/id in GLOB.ccg_factions_by_id)
 		var/datum/ccg_faction/faction = GLOB.ccg_factions_by_id[id]
 		choices[faction.name] = faction.id
-	var/choice = tgui_input_list(user, "Pick the deck's faction. Cards from other factions will fall out.", "[name]", sortList(choices))
+	var/choice = tgui_input_list(user, "选择牌组阵营。其他阵营的卡牌将被移出。", "[name]", sortList(choices))
 	if(!choice || QDELETED(src) || !user.is_holding(src) || in_active_match())
 		return FALSE
 	if(!set_faction(choices[choice]))
@@ -145,7 +145,7 @@
 		single.set_card(card_id)
 		dropped++
 	card_ids = kept
-	to_chat(user, span_notice("The deck now plays as [choice][dropped ? ". [dropped] card\s from other factions fall out" : ""]."))
+	to_chat(user, span_notice("牌组阵营现为[choice][dropped ? "，已移出[dropped]张其他阵营的卡牌" : ""]。"))
 	return TRUE
 
 /obj/item/ccg_deck/proc/choose_leader(mob/user)
@@ -160,13 +160,13 @@
 		choices[leader.name] = leader.id
 		descriptions[leader.name] = leader.desc
 	if(!length(choices))
-		to_chat(user, span_warning("This faction has no leaders to choose from."))
+		to_chat(user, span_warning("该阵营没有可选领袖。"))
 		return FALSE
-	var/choice = tgui_input_list(user, "Pick the deck's leader.", "[name]", sortList(choices), descriptions = descriptions)
+	var/choice = tgui_input_list(user, "选择牌组领袖。", "[name]", sortList(choices), descriptions = descriptions)
 	if(!choice || QDELETED(src) || !user.is_holding(src) || in_active_match())
 		return FALSE
 	set_faction(faction_id, choices[choice])
-	to_chat(user, span_notice("[choice] now leads the deck."))
+	to_chat(user, span_notice("[choice]现已成为牌组领袖。"))
 	return TRUE
 
 /obj/item/ccg_deck/attack_self(mob/user)
@@ -178,18 +178,18 @@
 		return TRUE
 	if(active_match)
 		release_finished_match()
-	var/list/options = list("Look through the deck", "Take a card out", "Change faction", "Change leader")
-	var/choice = tgui_input_list(user, "What do you do with the deck?", "[name]", options)
+	var/list/options = list("浏览牌组", "取出卡牌", "更改阵营", "更改领袖")
+	var/choice = tgui_input_list(user, "你想对牌组做什么？", "[name]", options)
 	if(!choice || QDELETED(src) || !user.is_holding(src))
 		return TRUE
 	switch(choice)
-		if("Look through the deck")
+		if("浏览牌组")
 			show_card_list(user)
-		if("Take a card out")
+		if("取出卡牌")
 			take_card_out(user)
-		if("Change faction")
+		if("更改阵营")
 			choose_faction(user)
-		if("Change leader")
+		if("更改领袖")
 			choose_leader(user)
 	return TRUE
 
@@ -260,7 +260,7 @@
 		inviter_ckey = user?.ckey
 		inviter_name = user?.real_name ? user.real_name : user?.name
 		if(user)
-			to_chat(user, span_notice("You place the deck as an Arlette invitation."))
+			to_chat(user, span_notice("你摆出牌组，邀请他人进行阿莱特对战。"))
 	else
 		clear_invitation()
 
@@ -342,27 +342,27 @@
 	if(!user || !single)
 		return FALSE
 	if(in_active_match())
-		to_chat(user, span_warning("Finish the card match before changing this deck."))
+		to_chat(user, span_warning("请先结束对战，再修改牌组。"))
 		return FALSE
 	var/datum/ccg_card/card = ccg_card(single.card_id)
 	if(!card)
-		to_chat(user, span_warning("This card cannot be added to the deck."))
+		to_chat(user, span_warning("这张卡牌无法加入牌组。"))
 		return FALSE
 	if(!ccg_card_allowed_for_faction(single.card_id, faction_id))
 		var/datum/ccg_faction/card_faction = ccg_faction(card.faction)
-		to_chat(user, span_warning("[card.name] belongs to [card_faction ? card_faction.name : "another faction"], not this deck's faction."))
+		to_chat(user, span_warning("[card.name]属于[card_faction ? card_faction.name : "其他阵营"]，与此牌组阵营不符。"))
 		return FALSE
 	if(card_ids.len >= CCG_DECK_SIZE)
-		to_chat(user, span_warning("The deck is full ([CCG_DECK_SIZE] cards)."))
+		to_chat(user, span_warning("牌组已满（[CCG_DECK_SIZE]张）。"))
 		return FALSE
 	var/limit = ccg_card_deck_limit(card)
 	if(ccg_card_count_in_list(card_ids, single.card_id) >= limit)
-		to_chat(user, span_warning("A deck can only hold [limit] cop[limit == 1 ? "y" : "ies"] of [card.name]."))
+		to_chat(user, span_warning("一副牌组最多只能放入[limit]张[card.name]。"))
 		return FALSE
 	if(user.is_holding(single) && !user.temporarilyRemoveItemFromInventory(single))
 		return FALSE
 	card_ids += single.card_id
-	to_chat(user, span_notice("I slot [card.name] into the deck ([card_ids.len]/[CCG_DECK_SIZE])."))
+	to_chat(user, span_notice("我将[card.name]加入牌组（[card_ids.len]/[CCG_DECK_SIZE]）。"))
 	qdel(single)
 	return TRUE
 
@@ -370,20 +370,20 @@
 	if(!user || !challenger_deck || challenger_deck == src)
 		return FALSE
 	if(get_active_match() || challenger_deck.get_active_match())
-		to_chat(user, span_warning("One of these decks is already in a match."))
+		to_chat(user, span_warning("其中一副牌组已经在对战中。"))
 		return FALSE
 	if(!inviter_ckey)
-		to_chat(user, span_warning("This deck is not offering a match."))
+		to_chat(user, span_warning("这副牌组尚未发出对战邀请。"))
 		return FALSE
 	if(inviter_ckey == user.ckey)
-		to_chat(user, span_warning("You need another player for this match."))
+		to_chat(user, span_warning("需要另一位玩家才能进行对战。"))
 		return FALSE
 	if(card_ids.len < CCG_MIN_DECK_SIZE || challenger_deck.card_ids.len < CCG_MIN_DECK_SIZE)
-		to_chat(user, span_warning("Both decks need at least [CCG_MIN_DECK_SIZE] cards to play."))
+		to_chat(user, span_warning("双方牌组都至少需要[CCG_MIN_DECK_SIZE]张牌才能对战。"))
 		return FALSE
 	var/mob/player_one = ccg_find_mob_by_ckey(inviter_ckey)
 	if(!player_one)
-		to_chat(user, span_warning("The player who offered this match is not here."))
+		to_chat(user, span_warning("发出对战邀请的玩家不在这里。"))
 		return FALSE
 	if(!user.dropItemToGround(challenger_deck))
 		return FALSE
@@ -474,11 +474,11 @@
 	return FALSE
 
 /obj/item/ccg_deck/starter
-	name = "Arlette starter deck"
+	name = "阿莱特起始套牌"
 
 /obj/item/ccg_deck/starter/random
-	name = "Arlette starter deck"
-	desc = "A sealed starter deck for a round-based game of Arlette. Which faction is inside is anyone's guess."
+	name = "阿莱特起始套牌"
+	desc = "用于回合制阿莱特卡牌游戏的未拆封起始套牌。里面属于哪个阵营，全凭运气。"
 
 /obj/item/ccg_deck/starter/random/Initialize(mapload)
 	var/static/list/faction_names = list(
@@ -491,40 +491,40 @@
 		CCG_FACTION_KAZENGUN = "Kazengun",
 	)
 	starter_faction = pick(faction_names)
-	name = "Arlette starter deck ([faction_names[starter_faction]])"
+	name = "阿莱特起始套牌（[ccg_faction(starter_faction)?.name || faction_names[starter_faction]]）"
 	return ..()
 
 /obj/item/ccg_deck/starter/azuria
-	name = "Arlette starter deck (Rockhill)"
+	name = "阿莱特起始套牌（岩丘）"
 	starter_faction = CCG_FACTION_AZURIA
 
 /obj/item/ccg_deck/starter/enigma
-	name = "Arlette starter deck (Enigma)"
+	name = "阿莱特起始套牌（恩尼格玛）"
 	starter_faction = CCG_FACTION_ENIGMA
 
 /obj/item/ccg_deck/starter/naledi
-	name = "Arlette starter deck (Naledi)"
+	name = "阿莱特起始套牌（纳莱迪）"
 	starter_faction = CCG_FACTION_NALEDI
 
 /obj/item/ccg_deck/starter/grenzelhoft
-	name = "Arlette starter deck (Grenzelhoft)"
+	name = "阿莱特起始套牌（格伦泽尔霍夫特）"
 	starter_faction = CCG_FACTION_GRENZELHOFT
 
 /obj/item/ccg_deck/starter/raneshi
-	name = "Arlette starter deck (Raneshi)"
+	name = "阿莱特起始套牌（拉涅申）"
 	starter_faction = CCG_FACTION_RANESHI
 
 /obj/item/ccg_deck/starter/gronn
-	name = "Arlette starter deck (Gronn)"
+	name = "阿莱特起始套牌（格隆恩）"
 	starter_faction = CCG_FACTION_GRONN
 
 /obj/item/ccg_deck/starter/kazengun
-	name = "Arlette starter deck (Kazengun)"
+	name = "阿莱特起始套牌（风郡）"
 	starter_faction = CCG_FACTION_KAZENGUN
 
 /obj/item/ccg_card_single
-	name = "collectible card"
-	desc = "A single collectible card."
+	name = "收藏卡牌"
+	desc = "一张可收藏的卡牌。"
 	icon = 'modular_twilight_axis/icons/obj/gwynt_objs.dmi'
 	icon_state = "gwint_card"
 	w_class = WEIGHT_CLASS_TINY
@@ -548,9 +548,9 @@
 	if(!card)
 		return
 	var/datum/ccg_faction/faction = ccg_faction(card.faction)
-	var/power_text = (card.row == CCG_ROW_WEATHER || card.row == CCG_ROW_SPECIAL) ? "" : ", strength [card.power]"
-	. += span_info("[ccg_rarity_label(card.rarity)] [faction ? faction.name : "Neutral"] card. [ccg_row_label(card.row)][power_text][card.hero ? ", hero" : ""].")
-	. += span_info("Hit an Arlette deck with this card to slot it in. A deck holds up to [ccg_card_deck_limit(card)] of these.")
+	var/power_text = (card.row == CCG_ROW_WEATHER || card.row == CCG_ROW_SPECIAL) ? "" : "，战力[card.power]"
+	. += span_info("[ccg_rarity_label(card.rarity)]卡牌，阵营：[faction ? faction.name : "中立"]。[ccg_row_label(card.row)][power_text][card.hero ? "，英雄" : ""]。")
+	. += span_info("用此卡点击阿莱特牌组即可将其加入。一副牌组最多可放入[ccg_card_deck_limit(card)]张此卡。")
 
 /obj/item/ccg_card_single/attack_self(mob/user)
 	user.examinate(src)
@@ -563,8 +563,8 @@
 	return ..()
 
 /obj/item/ccg_card_generator
-	name = "sealed card packet"
-	desc = "A sealed packet containing a random collectible card."
+	name = "密封卡包"
+	desc = "内含一张随机收藏卡牌的密封卡包。"
 	icon = 'modular_twilight_axis/icons/obj/gwynt_objs.dmi'
 	icon_state = "gwint_card"
 	w_class = WEIGHT_CLASS_TINY
@@ -593,23 +593,23 @@
 	return pick(candidates)
 
 /obj/item/ccg_card_generator/common
-	name = "creased common card packet"
-	desc = "A battered packet containing a random common collectible card."
+	name = "皱褶普通卡包"
+	desc = "破旧的卡包，内含一张随机普通收藏卡牌。"
 	card_rarity = CCG_RARITY_BASE
 
 /obj/item/ccg_card_generator/rare
-	name = "sealed rare card packet"
-	desc = "A sealed packet containing a random rare collectible card."
+	name = "密封稀有卡包"
+	desc = "内含一张随机稀有收藏卡牌的密封卡包。"
 	card_rarity = CCG_RARITY_RARE
 
 /obj/item/ccg_card_generator/unique
-	name = "sealed unique card packet"
-	desc = "A sealed packet containing a random unique collectible card."
+	name = "密封独特卡包"
+	desc = "内含一张随机独特收藏卡牌的密封卡包。"
 	card_rarity = CCG_RARITY_UNIQUE
 
 /obj/item/ccg_card_booster
-	name = "sealed card booster"
-	desc = "A sealed booster containing three random collectible cards."
+	name = "密封卡牌补充包"
+	desc = "内含三张随机收藏卡牌的密封补充包。"
 	icon = 'modular_twilight_axis/icons/obj/gwynt_objs.dmi'
 	icon_state = "gwint_card"
 	w_class = WEIGHT_CLASS_SMALL
@@ -630,7 +630,7 @@
 			continue
 		var/obj/item/ccg_card_single/single = new(drop_turf)
 		single.set_card(card_id)
-		to_chat(user, span_notice("A [single.name] slips out of [src]."))
+		to_chat(user, span_notice("一张[single.name]从[src]中滑出。"))
 	qdel(src)
 
 /obj/item/ccg_card_booster/proc/pick_random_card()
@@ -668,8 +668,8 @@
 	return FALSE
 
 /obj/item/ccg_card_booster/premium
-	name = "premium sealed card booster"
-	desc = "A premium sealed booster containing three random collectible cards."
+	name = "高级密封卡牌补充包"
+	desc = "内含三张随机收藏卡牌的高级密封补充包。"
 	card_weights = list(
 		"common_repeatable" = 5,
 		"common_limited" = 8,

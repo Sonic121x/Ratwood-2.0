@@ -167,8 +167,8 @@
 	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/suit/roguetown/shirt/robe/physician/plaguebearer
-	name = "reinforced plague coat"
-	desc = "Medicum morbo adhibere."
+	name = "加固瘟疫医师外套"
+	desc = "施医以治疾。"
 	icon_state = "physcoat"
 	slot_flags = ITEM_SLOT_ARMOR
 	flags_inv = HIDEBOOB|HIDETAIL

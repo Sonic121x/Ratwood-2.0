@@ -1335,9 +1335,9 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_COMMIE, "面甲")
 
 /obj/item/clothing/head/roguetown/helmet/heavy/graggar/skull
-	name = "vicious skullhelm"
-	desc = "Nigh lyke a crushed skull worn with pride; as sturdy as one that has seen fractures.. and survived them, too. Godliness \
-	was never meant to be tainted with minds so fragile and passionate."
+	name = "凶暴颅盔"
+	desc = "仿佛一颗被骄傲戴起的碎颅；如同历经骨折却仍幸存的头骨一般坚固。神性\
+	本不该被如此脆弱而炽烈的心灵玷污。"
 	icon_state = "graggarplatehelm_heavy"
 	max_integrity = ARMOR_INT_HELMET_ANTAG
 	armor = ARMOR_PLATE_BSTEEL

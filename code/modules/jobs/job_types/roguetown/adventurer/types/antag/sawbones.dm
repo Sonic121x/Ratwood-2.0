@@ -58,7 +58,7 @@
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
 		var/armor_options = list("Light Armor", "Medium Armor")
-		var/armor_choice = input(H, "Choose your armor.", "TAKE UP ARMS") as anything in armor_options
+		var/armor_choice = input_updated_loadout_display(H, armor_options, "选择你的护甲。")
 
 		switch(armor_choice)
 			if("Light Armor")

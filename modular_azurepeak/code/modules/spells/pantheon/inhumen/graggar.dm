@@ -30,13 +30,13 @@
 
 //Roar of the Gorebound Star - frightens nearby enemies, making their dodges unsteady.
 /obj/effect/proc_holder/spell/self/graggar_roar
-	name = "Roar of the Gorebound Star"
-	desc = "Unleash a terrifying warcry that weakens nearby enemies' will. Those who dodge while afraid are knocked to the ground."
+	name = "缚血之星的咆哮"
+	desc = "发出骇人的战吼，削弱附近敌人的意志。受恐惧影响者闪避时会被击倒。"
 	overlay_icon = 'icons/mob/actions/graggarmiracles.dmi'
 	action_icon = 'icons/mob/actions/graggarmiracles.dmi'
 	overlay_state = "fear"
 	recharge_time = 3 MINUTES
-	invocations = list("COWER BEFORE THE GOREBOUND STAR!")
+	invocations = list("在缚血之星面前颤抖吧！")
 	invocation_type = "shout"
 	sound = 'sound/magic/graggar_rage.ogg'
 	releasedrain = 30
@@ -54,8 +54,8 @@
 #define GRAGGAR_FEAR_FILTER "graggar_fear"
 
 /atom/movable/screen/alert/status_effect/debuff/graggar_fear
-	name = "Graggar's Terror"
-	desc = "A primal fear saps your will. Dodging an attack will send you sprawling."
+	name = "格拉加尔的恐怖"
+	desc = "原始的恐惧侵蚀着你的意志。闪避攻击会让你摔倒在地。"
 	icon_state = "fear"
 
 /datum/status_effect/debuff/graggar_fear
@@ -81,8 +81,8 @@
 
 //Berserk Body - trade strength and will for repeated healing.
 /obj/effect/proc_holder/spell/self/graggar_regenerate
-	name = "Berserk Body"
-	desc = "Grants temporary health regeneration at the cost of strength, will, and devotion."
+	name = "狂战之躯"
+	desc = "以力量、意志和虔诚为代价，暂时获得生命再生能力。"
 	action_icon = 'icons/mob/actions/graggarmiracles.dmi'
 	overlay_icon = 'icons/mob/actions/graggarmiracles.dmi'
 	overlay_state = "regenerate"
@@ -109,7 +109,7 @@
 		return TRUE
 
 	user.emote("warcry")
-	user.visible_message(span_danger("[user] mutters an incantation as their skin begins to regenerate."))
+	user.visible_message(span_danger("[user]低声念咒，皮肤开始再生。"))
 	user.apply_status_effect(STATUS_EFFECT_GRAGGAR_REGENERATE)
 	return TRUE
 
@@ -126,13 +126,13 @@
 	return ..()
 
 /atom/movable/screen/alert/status_effect/buff/graggar_regenerate
-	name = "Berserk Body"
-	desc = "My flesh regrows, my bones mend, and my muscles recover at the cost of strength and will."
+	name = "狂战之躯"
+	desc = "我的血肉再生、骨骼愈合、肌肉恢复，代价是力量与意志。"
 	icon_state = "fire"
 
 /datum/status_effect/buff/graggar_regenerate
 	id = "graggar_regenerate"
-	examine_text = "<font color='red'>Their flesh regrows!</font>"
+	examine_text = "<font color='red'>血肉正在再生！</font>"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/graggar_regenerate
 	effectedstats = list(STATKEY_WIL = -3, STATKEY_STR = -3)
 	duration = 6 SECONDS
@@ -156,11 +156,11 @@
 			cost = 25
 
 	if(!user.devotion || user.devotion.devotion < cost)
-		to_chat(user, span_warning("I do not have enough devotion to sustain this regeneration!"))
+		to_chat(user, span_warning("我的虔诚不足以维持再生！"))
 		return
 
 	user.devotion.update_devotion(-cost)
-	to_chat(user, span_purple("I lose [cost] devotion!"))
+	to_chat(user, span_purple("我消耗了[cost]点虔诚！"))
 	user.adjustBruteLoss(-5 * skill)
 	user.adjustFireLoss(-5 * skill)
 	user.heal_wounds(3 * skill)
@@ -572,8 +572,8 @@
 //////////////////////////
 
 /obj/effect/proc_holder/spell/invoked/graggar_avatar
-	name = "Avatar of Rage"
-	desc = "Unleash your true rage for two minutes, granting pain immunity, infinite stamina (unless you have Dodge Expert), immunity to grabs, uncapped strength, and +2 strength. Removes stun-adjacent and stun effects, and can be cast while incapacitated."
+	name = "狂怒化身"
+	desc = "释放真正的怒火，持续两分钟。获得痛觉免疫、无限体力（拥有闪避专家时除外）、抓取免疫、力量上限解除及力量+2。清除眩晕与类似控制效果，可在失能时施放。"
 	overlay_icon = 'icons/mob/actions/graggarmiracles.dmi'
 	action_icon = 'icons/mob/actions/graggarmiracles.dmi'
 	overlay_state = "avatar"
@@ -582,7 +582,7 @@
 	chargedrain = 0
 	chargetime = 1 SECONDS
 	recharge_time = 10 MINUTES
-	invocations = list("I WILL TEAR YOU LIMB FROM LIMB!!")
+	invocations = list("我要把你撕成碎片！！")
 	sound = 'sound/magic/graggar_rage.ogg'
 	chargedloop = /datum/looping_sound/invokeascendant
 	associated_skill = /datum/skill/magic/holy
@@ -611,8 +611,8 @@
 #define AVATAR_FILTER "avatar"
 
 /atom/movable/screen/alert/status_effect/buff/avatar
-	name = "SLAUGHTER INCARNATE"
-	desc = span_bloody("GRAGGAR! GRAGGAR! GRAGGAR!")
+	name = "屠戮化身"
+	desc = span_bloody("格拉加尔！格拉加尔！格拉加尔！")
 	icon_state = "bloodrage"
 
 /datum/status_effect/buff/avatar
@@ -631,7 +631,7 @@
 		ADD_TRAIT(owner, TRAIT_INFINITE_STAMINA, TRAIT_MIRACLE)
 	ADD_TRAIT(owner, TRAIT_GRABIMMUNE, TRAIT_MIRACLE)
 	shake_camera(owner, 5, 2) //Aura
-	to_chat(owner, span_userdanger(pick("KILL, FUCKING KILL! SLAUGHTER THEM!", "BLOOD, FUCKING SPILL THE BLOOD!", "BLOOD AND FURY, SPLITTING MY SKULL!", "I'LL KILL ANYTHING THAT MOVES!", "I'M FUCKING UNSTOPPABLE, I'LL BREAK THEM!", "GRAGGAR MAKE A WORLD OF BLOODSHED!", "GRAGGAR FEAST UPON MY SLAUGHTER!")))
+	to_chat(owner, span_userdanger(pick("杀，他妈的杀！宰光他们！", "血，让他们的血流出来！", "鲜血与怒火要撑裂我的头颅！", "会动的东西我都要杀！", "我他妈势不可挡，我要碾碎他们！", "格拉加尔，让世界血流成河！", "格拉加尔，享用我献上的屠戮吧！")))
 	var/filter = owner.get_filter(AVATAR_FILTER)
 	if(!filter)
 		owner.add_filter(AVATAR_FILTER, 2, list("type" = "outline", "color" = outline_color, "alpha" = 60, "size" = 2))
@@ -644,7 +644,7 @@
 	REMOVE_TRAIT(owner, TRAIT_NOPAIN, TRAIT_MIRACLE)
 	REMOVE_TRAIT(owner, TRAIT_INFINITE_STAMINA, TRAIT_MIRACLE)
 	REMOVE_TRAIT(owner, TRAIT_GRABIMMUNE, TRAIT_MIRACLE)
-	owner.visible_message(span_warning("[owner] wavers, their rage simmering down."))
+	owner.visible_message(span_warning("[owner]晃了晃身子，怒火逐渐平息。"))
 	owner.OffBalance(3 SECONDS)
 	owner.remove_filter(AVATAR_FILTER)
 	owner.emote("breathgasp", forced = TRUE)

@@ -65,7 +65,7 @@
 	if(!unseen.len)
 		return
 	seen += pick(unseen)
-	to_chat(user, span_notice("For a moment, Xylix shows you one of [target.name]'s cards."))
+	to_chat(user, span_notice("一瞬间，赛利克斯向你展示了[target.name]的一张手牌。"))
 
 /datum/card_table_session/proc/xylix_try_reveal_for_turn_holder(datum/card_table_player/turn_holder)
 	if(!turn_holder)
@@ -79,7 +79,7 @@
 /datum/card_table_session/proc/xylix_check_exposure(mob/user)
 	if(!user || !prob(xylix_caught_chance(user)))
 		return FALSE
-	var/msg = "[card_table_display_name(user)] is watching the deck a little too closely."
+	var/msg = "[card_table_display_name(user)]盯着牌组看得有些过于仔细了。"
 	for(var/datum/card_table_player/player in players)
 		if(player.left)
 			continue
@@ -90,5 +90,5 @@
 		var/mob/O = card_table_find_mob_by_ckey(ckey)
 		if(O && O != user)
 			to_chat(O, span_warning(msg))
-	to_chat(user, span_warning("Xylix's fingers slip. Someone may have noticed your cheating."))
+	to_chat(user, span_warning("赛利克斯失了手。可能有人发现你作弊了。"))
 	return TRUE

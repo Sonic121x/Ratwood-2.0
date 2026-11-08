@@ -693,10 +693,10 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "斧", "撕裂")
 
 /obj/item/rogueweapon/stoneaxe/woodcut/steel/graggar
-	name = "vicious tomahawk"
+	name = "凶暴手斧"
 	icon_state = "graggartomahawk"
-	desc = "A handaxe of greater stature, intricately decorated with the Sinistar's heraldry. Worshippers wield it to strengthen their soul's connection \
-	to the force of violence; a blessing, before they pursue the most dangerous game of all."
+	desc = "一柄硕大的手斧，精雕细琢着凶星的纹章。信徒挥舞它，以加深灵魂\
+	与暴力之力的联系；在追猎世间最危险的猎物之前，先领受这份祝福。"
 	possible_item_intents = list(/datum/intent/axe/cut, /datum/intent/axe/chop, /datum/intent/axe/bash)
 	force = 30
 	force_wielded = 35

@@ -220,7 +220,7 @@
 	//Worst case nuke this to 5 slots, or 4. If it becomes a problem.
 
 	subclass_stashed_items = list(
-		"Armor Plates" =	/obj/item/repair_kit/metal,
+		"护甲板片" =	/obj/item/repair_kit/metal,
 	)
 
 	cmode_music = 'sound/music/cmode/antag/combat_cutpurse.ogg' // same as regular bandits

@@ -42,13 +42,13 @@
 	ensure_card_table()
 	start_card_table_range_loop()
 	if(user)
-		user.visible_message(span_notice("[user] sets the deck up as a card table."), span_notice("I set the deck up as a card table."))
+		user.visible_message(span_notice("[user]用牌组摆出了一张牌桌。"), span_notice("我用牌组摆出了一张牌桌。"))
 
 /obj/item/toy/cards/deck/proc/leave_card_table_mode(mob/user)
 	if(!card_table_mode)
 		return FALSE
 	if(card_table && !card_table.can_pack())
-		to_chat(user, span_warning("The card table can only be packed up once everyone has left."))
+		to_chat(user, span_warning("必须等所有人离席后才能收起牌桌。"))
 		return FALSE
 	card_table_mode = FALSE
 	if(card_table_range_timer)
@@ -57,7 +57,7 @@
 	QDEL_NULL(card_table)
 	SStgui.close_uis(src)
 	if(user)
-		user.visible_message(span_notice("[user] packs the card table back into a normal deck."), span_notice("I pack the card table back into a normal deck."))
+		user.visible_message(span_notice("[user]收起牌桌，将其还原为普通牌组。"), span_notice("我收起牌桌，将其还原为普通牌组。"))
 	return TRUE
 
 /obj/item/toy/cards/deck/attack_right(mob/user, params)

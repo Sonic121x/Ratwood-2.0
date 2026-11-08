@@ -63,7 +63,7 @@
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/appraise/free)
 	var/weapons = list("Kriegmesser & Buckler","Falchion & Kite Shield","Sword & Crossbow")
 	if(H.mind)
-		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
+		var/weapon_choice = input_updated_loadout_display(H, weapons, "选择你的武器。")
 		H.set_blindness(0)
 		switch(weapon_choice)
 			if("Kriegmesser & Buckler") //Grenzel

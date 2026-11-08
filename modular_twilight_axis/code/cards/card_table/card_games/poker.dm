@@ -11,7 +11,7 @@
 	if(new_card)
 		player.hand += list(new_card)
 	player.draws_used = 1
-	message = "[player.name] swaps a card."
+	message = "[player.name]换了一张牌。"
 	return TRUE
 
 /datum/card_table_session/proc/poker_ready(mob/user)
@@ -19,7 +19,7 @@
 	if(stage != CARD_TABLE_STAGE_PLAYING || game_type != CARD_TABLE_GAME_POKER || !player)
 		return FALSE
 	player.ready = TRUE
-	message = "[player.name] is ready."
+	message = "[player.name]已准备就绪。"
 	for(var/datum/card_table_player/P in players)
 		if(P.left)
 			continue
@@ -78,7 +78,7 @@
 			break
 		community_cards += list(new_card)
 		if(poker_reset_betting_round())
-			message = "Community card [community_cards.len]/5 revealed. A new betting round begins."
+			message = "翻开公共牌（[community_cards.len]/5）。新一轮下注开始。"
 			return
 	poker_finish()
 
@@ -113,7 +113,7 @@
 	player.poker_total_bet += delta
 	player.poker_bet = poker_current_bet
 	player.ready = TRUE
-	message = poker_current_bet ? "[player.name] calls." : "[player.name] checks."
+	message = poker_current_bet ? "[player.name]跟注。" : "[player.name]过牌。"
 	poker_next_turn()
 	return TRUE
 
@@ -133,7 +133,7 @@
 			other.ready = FALSE
 	player.poker_bet = poker_current_bet
 	player.ready = TRUE
-	message = "[player.name] bets [amount]."
+	message = "[player.name]下注[amount]。"
 	poker_next_turn()
 	return TRUE
 
@@ -144,7 +144,7 @@
 	var/success = poker_bet(user, max(poker_current_bet + 100, player.poker_bet + 100))
 	if(success)
 		player.poker_all_in = TRUE
-		message = "[player.name] goes all in."
+		message = "[player.name]全押。"
 	return success
 
 /datum/card_table_session/proc/poker_fold(mob/user)
@@ -154,7 +154,7 @@
 	player.poker_folded = TRUE
 	player.ready = TRUE
 	player.result = "Fold"
-	message = "[player.name] folds."
+	message = "[player.name]弃牌。"
 	poker_next_turn()
 	return TRUE
 
@@ -171,7 +171,7 @@
 			player.hand += list(new_card)
 		player.draws_used = 1
 	player.ready = TRUE
-	message = "[player.name] ends their turn."
+	message = "[player.name]结束回合。"
 	for(var/datum/card_table_player/P in players)
 		if(P.left)
 			continue
@@ -244,5 +244,5 @@
 		else
 			P.result = (P == winner) ? "Winner" : "Lost"
 	stage = CARD_TABLE_STAGE_FINISHED
-	var/winner_name = winner ? winner.name : "Nobody"
-	message = "[winner_name] wins the hand."
+	var/winner_name = winner ? winner.name : "无人"
+	message = "[winner_name]赢得本局。"

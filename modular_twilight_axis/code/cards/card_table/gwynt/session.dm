@@ -166,24 +166,24 @@ GLOBAL_VAR_INIT(ccg_music_channel, null)
 		return
 	if(ccg_soundtrack_has_antag(player_one, /datum/antagonist/lich) || ccg_soundtrack_has_antag(player_two, /datum/antagonist/lich))
 		soundtrack_files[target_ckey] = CCG_SOUNDTRACK_LAST_SIEGE
-		soundtrack_titles[target_ckey] = "Last Siege"
+		soundtrack_titles[target_ckey] = "最后的围城"
 		soundtrack_repeats[target_ckey] = FALSE
 		return
 	if(ccg_soundtrack_is_open_vampire_lord(player_one) || ccg_soundtrack_is_open_vampire_lord(player_two))
 		soundtrack_files[target_ckey] = CCG_SOUNDTRACK_VAMPIRE_NEGOTIATIONS
-		soundtrack_titles[target_ckey] = "Vampire Negotiations"
+		soundtrack_titles[target_ckey] = "吸血鬼谈判"
 		soundtrack_repeats[target_ckey] = FALSE
 		return
 	if(ccg_soundtrack_has_antag(player_one, /datum/antagonist/bandit) || ccg_soundtrack_has_antag(player_two, /datum/antagonist/bandit))
 		soundtrack_files[target_ckey] = CCG_SOUNDTRACK_BANDIT_CONFRONTATION
-		soundtrack_titles[target_ckey] = "Bandit Confrontation"
+		soundtrack_titles[target_ckey] = "与强盗对峙"
 		soundtrack_repeats[target_ckey] = FALSE
 		return
 
 /datum/ccg_match/proc/soundtrack_title_for(mob/user)
 	if(user?.ckey && soundtrack_titles[user.ckey])
 		return soundtrack_titles[user.ckey]
-	return "Combat Music"
+	return "战斗音乐"
 
 /proc/ccg_soundtrack_has_antag(mob/player, antag_path)
 	return !!player?.mind?.has_antag_datum(antag_path)
@@ -323,7 +323,7 @@ GLOBAL_VAR_INIT(ccg_music_channel, null)
 			return L.cmode_music_override_name
 	if(user?.client?.prefs?.combat_music?.name && length(user.client.prefs.combat_music.musicpath))
 		return user.client.prefs.combat_music.name
-	return "Combat Music"
+	return "战斗音乐"
 
 /proc/ccg_pick_soundtrack_file(soundtrack_source)
 	if(islist(soundtrack_source))
@@ -358,10 +358,10 @@ GLOBAL_VAR_INIT(ccg_music_channel, null)
 			if(faction_has_effect(side, CCG_FACTION_EFFECT_OPENING_DRAW))
 				draw_cards(side, 1)
 		in_mulligan = TRUE
-		last_message = "Choose cards to redraw."
+		last_message = "选择要换掉的手牌。"
 	else
 		in_mulligan = FALSE
-		last_message = "Round [round_number] begins."
+		last_message = "第[round_number]小局开始。"
 		play_cue(CCG_SOUND_ROUND_START)
 		for(var/side in list(CCG_SIDE_ONE, CCG_SIDE_TWO))
 			for(var/card_id in carryover_cards[side])
@@ -407,7 +407,7 @@ GLOBAL_VAR_INIT(ccg_music_channel, null)
 	decks[side] = shuffle(deck)
 	draw_cards(side, 1)
 	mulligans_left[side]--
-	last_message = "[player_names[side]] redraws a card."
+	last_message = "[player_names[side]]换了一张牌。"
 	play_cue(CCG_SOUND_MULLIGAN)
 	return TRUE
 
@@ -416,10 +416,10 @@ GLOBAL_VAR_INIT(ccg_music_channel, null)
 	if(!side || !in_mulligan)
 		return FALSE
 	mulligan_ready[side] = TRUE
-	last_message = "[player_names[side]] is ready."
+	last_message = "[player_names[side]]已准备就绪。"
 	if(mulligan_ready[CCG_SIDE_ONE] && mulligan_ready[CCG_SIDE_TWO])
 		in_mulligan = FALSE
-		last_message = "Round [round_number] begins."
+		last_message = "第[round_number]小局开始。"
 		play_cue(CCG_SOUND_ROUND_START)
 	return TRUE
 
@@ -523,13 +523,13 @@ GLOBAL_VAR_INIT(ccg_music_channel, null)
 				return FALSE
 		apply_card_effect(card, side, play_side)
 		if(apply_combo_effect(card, side, play_side))
-			last_message = "[player_names[side]] plays [card.name]. A combo triggers."
+			last_message = "[player_names[side]]打出[card.name]，触发连携。"
 		else
-			last_message = "[player_names[side]] plays [card.name]."
+			last_message = "[player_names[side]]打出[card.name]。"
 		play_cue(CCG_SOUND_CARD_PLAY)
 	recalculate_board()
 	if(is_weather_card(card))
-		last_message = "[player_names[side]] plays [card.name]."
+		last_message = "[player_names[side]]打出[card.name]。"
 	turns_played++
 	advance_turn()
 	return TRUE
@@ -539,7 +539,7 @@ GLOBAL_VAR_INIT(ccg_music_channel, null)
 	if(!side || in_mulligan || side != turn || result_text)
 		return FALSE
 	passed[side] = TRUE
-	last_message = "[player_names[side]] passes."
+	last_message = "[player_names[side]]放弃本小局。"
 	turns_played++
 	advance_turn()
 	return TRUE
@@ -569,7 +569,7 @@ GLOBAL_VAR_INIT(ccg_music_channel, null)
 	else if(leader.effect == CCG_LEADER_EFFECT_DRAW)
 		draw_cards(side, 1)
 		play_cue(CCG_SOUND_SPECIAL)
-	last_message = "[player_names[side]] uses leader: [leader.name]."
+	last_message = "[player_names[side]]使用领袖能力：[leader.name]。"
 	recalculate_board()
 	turns_played++
 	advance_turn()
@@ -616,13 +616,13 @@ GLOBAL_VAR_INIT(ccg_music_channel, null)
 		if(!return_own_unit_to_hand(side, target_row, target_id))
 			return FALSE
 		discarded[side] += card.id
-		last_message = "[player_names[side]] plays [card.name]."
+		last_message = "[player_names[side]]打出[card.name]。"
 		return TRUE
 	if(card.effect == CCG_EFFECT_SCORCH_GLOBAL)
 		recalculate_board()
 		scorch_strongest_global()
 		discarded[side] += card.id
-		last_message = "[player_names[side]] plays [card.name]."
+		last_message = "[player_names[side]]打出[card.name]。"
 		return TRUE
 	if(card.effect == CCG_EFFECT_HORN || card.effect == CCG_EFFECT_MARDROEME)
 		var/target_row = card.target_row
@@ -632,10 +632,10 @@ GLOBAL_VAR_INIT(ccg_music_channel, null)
 			return FALSE
 		if(card.effect == CCG_EFFECT_HORN && row_has_effect(side, target_row, CCG_EFFECT_HORN))
 			discarded[side] += card.id
-			last_message = "[player_names[side]] plays [card.name], but that row already has a horn."
+			last_message = "[player_names[side]]打出[card.name]，但该列已有号角。"
 			return TRUE
 		add_row_effect(side, target_row, card.id, side)
-		last_message = "[player_names[side]] plays [card.name]."
+		last_message = "[player_names[side]]打出[card.name]。"
 		return TRUE
 	return FALSE
 
@@ -862,20 +862,20 @@ GLOBAL_VAR_INIT(ccg_music_channel, null)
 	var/draw_round = FALSE
 	if(score_one > score_two)
 		winning_side = CCG_SIDE_ONE
-		last_message = "[player_names[CCG_SIDE_ONE]] wins the round [score_one] to [score_two]."
+		last_message = "[player_names[CCG_SIDE_ONE]]以[score_one]比[score_two]赢下本小局。"
 	else if(score_two > score_one)
 		winning_side = CCG_SIDE_TWO
-		last_message = "[player_names[CCG_SIDE_TWO]] wins the round [score_two] to [score_one]."
+		last_message = "[player_names[CCG_SIDE_TWO]]以[score_two]比[score_one]赢下本小局。"
 	else
 		if(faction_has_effect(CCG_SIDE_ONE, CCG_FACTION_EFFECT_WIN_DRAWS) && !faction_has_effect(CCG_SIDE_TWO, CCG_FACTION_EFFECT_WIN_DRAWS))
 			winning_side = CCG_SIDE_ONE
-			last_message = "[player_names[CCG_SIDE_ONE]] wins the drawn round by faction claim."
+			last_message = "[player_names[CCG_SIDE_ONE]]凭阵营能力赢下平分的小局。"
 		else if(faction_has_effect(CCG_SIDE_TWO, CCG_FACTION_EFFECT_WIN_DRAWS) && !faction_has_effect(CCG_SIDE_ONE, CCG_FACTION_EFFECT_WIN_DRAWS))
 			winning_side = CCG_SIDE_TWO
-			last_message = "[player_names[CCG_SIDE_TWO]] wins the drawn round by faction claim."
+			last_message = "[player_names[CCG_SIDE_TWO]]凭阵营能力赢下平分的小局。"
 		else
 			draw_round = TRUE
-			last_message = "The round is a draw."
+			last_message = "本小局平局。"
 	if(winning_side)
 		round_wins[winning_side]++
 		if(faction_has_effect(winning_side, CCG_FACTION_EFFECT_ROUND_WIN_DRAW))
@@ -906,7 +906,7 @@ GLOBAL_VAR_INIT(ccg_music_channel, null)
 				discarded[played.owner_side] += played.card_id
 	if(round_wins[CCG_SIDE_ONE] >= 2 || round_wins[CCG_SIDE_TWO] >= 2)
 		var/winner = round_wins[CCG_SIDE_ONE] >= 2 ? CCG_SIDE_ONE : CCG_SIDE_TWO
-		result_text = "[player_names[winner]] wins the match."
+		result_text = "[player_names[winner]]赢得整场对局。"
 		play_cue(CCG_SOUND_GAME_END)
 		stop_soundtracks()
 		return

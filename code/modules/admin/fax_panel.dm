@@ -93,14 +93,14 @@ GLOBAL_LIST_EMPTY(player_letter_history)
 	if(kingsfield_mail.len > 200)
 		kingsfield_mail.Cut(1, 2)
 
-	message_admins("New [kind] delivered to Kingsfield from '[mail.mailer]', sent by [key_name_admin(sender)]. <a href='?src=[REF(src)];open_kingsfield=[id]'>(OPEN)</a>")
+	message_admins("王田收到来自“[mail.mailer]”的新[kind == "package" ? "包裹" : "信件"]，由[key_name_admin(sender)]寄出。<a href='?src=[REF(src)];open_kingsfield=[id]'>（打开）</a>")
 	log_admin("[key_name(sender)] sent a [kind] to Kingsfield from '[mail.mailer]'.")
 
 	var/sender_ckey = sender.ckey || "unknown"
 	if(world.time < kingsfield_popup_times[sender_ckey])
 		return
 	kingsfield_popup_times[sender_ckey] = world.time + 1 MINUTES
-	var/message = "[capitalize(kind)] from [mail.mailer]<br>Sent by [sender.real_name] ([sender_ckey])"
+	var/message = "来自[mail.mailer]的[kind == "package" ? "包裹" : "信件"]<br>寄件人：[sender.real_name]（[sender_ckey]）"
 	for(var/client/C in GLOB.admins)
 		if(check_rights_for(C, R_ADMIN))
 			show_kingsfield_popup(C.mob, id, message)
@@ -115,13 +115,13 @@ GLOBAL_LIST_EMPTY(player_letter_history)
 	for(var/obj/item/contained in package.contents)
 		if(contained != package.note)
 			item_names += html_encode(contained.name)
-	return "[note_text]<hr><b>Package contents:</b> [item_names.len ? jointext(item_names, ", ") : "nothing"]"
+	return "[note_text]<hr><b>包裹内容：</b>[item_names.len ? jointext(item_names, "、") : "无"]"
 
 /datum/fax_panel/proc/show_kingsfield_popup(mob/admin, id, message)
 	set waitfor = FALSE
 	SEND_SOUND(admin, 'sound/misc/mail.ogg')
 	window_flash(admin.client)
-	if(askuser(admin, message, "Message received at Kingsfield", "Okay", "Open now", StealFocus = FALSE, Width = 400, Height = 200) == 2)
+	if(askuser(admin, message, "王田收到邮件", "知道了", "立即打开", StealFocus = FALSE, Width = 400, Height = 200) == 2)
 		open_kingsfield_mail(admin, id)
 
 /// Shows an admin the saved copy, leaving the real letter sealed, and opens the Letter Panel.
@@ -130,9 +130,9 @@ GLOBAL_LIST_EMPTY(player_letter_history)
 		return
 	var/list/mail = kingsfield_mail[id]
 	if(!mail)
-		to_chat(user, span_warning("That Kingsfield mail is no longer on record."))
+		to_chat(user, span_warning("该王田邮件的记录已不存在。"))
 		return
-	message_admins("[key_name_admin(user)] has opened the [mail["kind"]] sent to Kingsfield from '[mail["sender"]]'.")
+	message_admins("[key_name_admin(user)]打开了“[mail["sender"]]”寄往王田的[mail["kind"] == "package" ? "包裹" : "信件"]。")
 	log_admin("[key_name(user)] opened the [mail["kind"]] sent to Kingsfield from '[mail["sender"]]'.")
 	user << browse_rsc('html/book.png')
 	user << browse("<html><head><meta charset='utf-8'><style type='text/css'>body { background-image:url('book.png');background-repeat: repeat; }</style></head><body scroll=yes>[mail["content"]]</body></html>", "window=kingsfield_mail;size=500x400;can_close=1;can_minimize=0;can_maximize=0;can_resize=1;titlebar=1;border=0")

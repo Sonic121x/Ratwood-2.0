@@ -637,8 +637,8 @@
 	altdetail_color = "#9c2525"
 
 /obj/item/clothing/head/roguetown/antlers
-	name = "old antlers"
-	desc = "Old antlers which you can wear on helmet, hood....or straight on your head!"
+	name = "旧鹿角"
+	desc = "可以装在头盔、兜帽上……也可以直接戴在头上的旧鹿角！"
 	icon_state = "antlers"
 	icon = 'modular_twilight_axis/icons/roguetown/clothing/head.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/head_48.dmi'
@@ -652,7 +652,7 @@
 /obj/item/clothing/head/roguetown/antlers/attack_right(mob/user)
 	..()
 	if(!picked)
-		var/chooseA = input(user, "What will you choose?", "Where you got it?") as anything in antler_styles
+		var/chooseA = input_updated_loadout_display(user, antler_styles, "选择鹿角款式。")
 		if(chooseA == "halo")
 			icon_state = "antlers"
 			antlers_final_icon = "antlers"
@@ -663,7 +663,7 @@
 		if(loc == user && ishuman(user))
 			var/mob/living/carbon/H = user
 			H.update_inv_head()
-		if(alert("Are you pleased with your antlers?", "Antlers", "Yes", "No") != "Yes")
+		if(alert("满意这副鹿角吗？", "鹿角", "是", "否") != "是")
 			icon_state = "antlers"
 			antlers_final_icon = "antlers"
 			update_icon()
@@ -688,16 +688,16 @@
 		update_icon()
 
 /obj/item/clothing/head/roguetown/circlet/carvedgem/porcelain
-	name = "porcelain circlet"
-	desc = "An ornate circlet made out of porcelain."
+	name = "瓷冠"
+	desc = "以瓷器制成的华丽头冠。"
 	icon_state = "circlet_porcelain"
 	toggle_icon_state = FALSE
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/head.dmi'
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/head.dmi'
 
 /obj/item/clothing/head/roguetown/courtphysician
-	name = "sanguine hat"
-	desc = "A hat for keeping the splattered blood out of your face, for when your trade is required."
+	name = "绯红宽檐帽"
+	desc = "施展手艺时，能挡住飞溅到脸上的鲜血。"
 	icon_state = "dochat1"
 	item_state = "dochat1"
 	detail_tag = "_detail"
@@ -721,8 +721,8 @@
 		add_overlay(pic)
 
 /obj/item/clothing/head/roguetown/courtphysician/female
-	name = "sanguine cap"
-	desc = "A cap for keeping the splattered blood out of your hair, for when your trade is required."
+	name = "绯红便帽"
+	desc = "施展手艺时，能挡住飞溅到头发上的鲜血。"
 	icon_state = "dochat2"
 	item_state = "dochat2"
 	detail_tag = "_detail"
@@ -742,8 +742,8 @@
 		add_overlay(pic)
 
 /obj/item/clothing/head/roguetown/deserthood
-	name = "desert hood"
-	desc = "If only it was this warm."
+	name = "沙漠兜帽"
+	desc = "要是这里也有那么暖和就好了。"
 	icon_state = "desert_hood"
 	item_state = "desert_hood"
 	sewrepair = TRUE
@@ -751,8 +751,8 @@
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/head.dmi'
 
 /obj/item/clothing/head/roguetown/doublehennin
-	name = "dual hennin"
-	desc = "A fancy hennin framed by two cones that sit atop ones head. Worn most commonly by the old-fashioned and elderly."
+	name = "双角尖顶帽"
+	desc = "头顶立着两座锥形帽冠的华丽帽子，常见于守旧者与年长者。"
 	icon_state = "hennin_double"
 	sewrepair = TRUE
 	detail_tag = "_detail"
@@ -762,8 +762,8 @@
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/head.dmi'
 
 /obj/item/clothing/head/roguetown/duelhat/etrhat
-	name = "wanderer's hat"
-	desc = "A comfortable hat that will make you look elegant and protect you from the weather."
+	name = "旅人帽"
+	desc = "舒适的帽子，既显优雅，又能遮风挡雨。"
 	icon = 'modular_twilight_axis/icons/roguetown/clothing/head.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/head.dmi'
 	icon_state = "etrhat"
@@ -771,8 +771,8 @@
 	color = null
 
 /obj/item/clothing/head/roguetown/duelhat/etrusca
-	name = "etruscan duelist hat"
-	desc = "A dainty looking feathered hat that is actually quite heavy and thick, Duelists from Etrusca are known to value winning fights without dirtying the white feather on top"
+	name = "伊特鲁斯卡决斗帽"
+	desc = "看似精巧的羽饰帽，实则颇为厚重。伊特鲁斯卡的决斗家以取胜而不弄脏帽顶白羽为荣。"
 	icon = 'modular_twilight_axis/icons/roguetown/clothing/head.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/head.dmi'
 	icon_state = "duelisthat"
@@ -780,16 +780,16 @@
 	color = null
 
 /obj/item/clothing/head/roguetown/durag
-	name = "durag"
-	desc = "A fashionable garment worn to protect one's hair."
+	name = "护发头巾"
+	desc = "用于保护头发的时髦头巾。"
 	icon_state = "durag"
 	sewrepair = TRUE
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/head.dmi'
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/head.dmi'
 
 /obj/item/clothing/head/roguetown/eaststrawhat
-	name = "worn rice hat"
-	desc = "A wicker rice hat."
+	name = "旧斗笠"
+	desc = "一顶柳编斗笠。"
 	icon = 'modular_twilight_axis/icons/roguetown/clothing/head.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/head.dmi'
 	icon_state = "eaststrawhat"
@@ -803,8 +803,8 @@
 	flags_inv = hides_ears ? HIDEEARS : null
 
 /obj/item/clothing/head/roguetown/explorerhat
-	name = "explorer's hat"
-	desc = "How many secrets can I uncover this week?"
+	name = "探险者帽"
+	desc = "这周我能揭开多少秘密？"
 	icon_state = "explorerhat"
 	item_state = "explorerhat"
 	sewrepair = TRUE
@@ -812,8 +812,8 @@
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/head.dmi'
 
 /obj/item/clothing/head/roguetown/flamboyant
-	name = "flamboyant hat"
-	desc = "A luxurious purple feathered hat with wide brim."
+	name = "华艳羽帽"
+	desc = "奢华的紫色宽檐羽饰帽。"
 	icon_state = "flamboyant"
 	item_state = "flamboyant"
 	sewrepair = TRUE
@@ -821,15 +821,15 @@
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/head.dmi'
 
 /obj/item/clothing/head/roguetown/flotsam
-	name = "flotsam bonnet"
-	desc = "A flexible cloth bonnet of elven fashion that holds a strong resemblance to a leaf. Worn oft by those who dwell in forests and swamps."
+	name = "浮叶软帽"
+	desc = "精灵式样的柔软布帽，形似叶片，常见于森林与沼泽的居民。"
 	icon_state = "flotsam"
 	sewrepair = TRUE
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/head.dmi'
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/head.dmi'
 
 /obj/item/clothing/head/roguetown/gasa
-	name = "gasa"
+	name = "笠帽"
 	flags_inv = HIDEEARS
 	icon_state = "gasa"
 	item_state = "gasa"
@@ -839,8 +839,8 @@
 	worn_y_dimension = 64
 
 /obj/item/clothing/head/roguetown/headband/fur
-	name = "fur headband"
-	desc = "A rough thick fur headband, worn by the more rugged folk."
+	name = "毛皮头带"
+	desc = "粗犷厚实的毛皮头带，常见于坚韧豪放之人。"
 	icon_state = "fur_headband"
 	item_state = "fur_headband"
 	body_parts_covered = HEAD|HAIR|EARS
@@ -849,8 +849,8 @@
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/head.dmi'
 
 /obj/item/clothing/head/roguetown/hscarf
-	desc = "A silk headscarf, most often found on the head of a sailor or a pirate!"
-	name = "head scarf"
+	desc = "丝绸头巾，最常戴在水手或海盗的头上！"
+	name = "头巾"
 	icon_state = "headscarf"
 	item_state = "headscarf"
 	icon = 'modular_twilight_axis/icons/clothing/kazengun_n_burger.dmi'
@@ -858,8 +858,8 @@
 	salvage_result = /obj/item/natural/silk
 
 /obj/item/clothing/head/roguetown/longveil
-	name = "long veil"
-	desc = "A long, trailing veil made of cloth meant to conceal ones hair. Often worn by soilbrides and the devout."
+	name = "长头纱"
+	desc = "遮住头发、垂曳而下的长布纱，常见于农妇与虔信者。"
 	icon_state = "headveil"
 	detail_tag = "_detail"
 	detail_color = CLOTHING_CHALK_WHITE
@@ -868,8 +868,8 @@
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/head.dmi'
 
 /obj/item/clothing/head/roguetown/maidhead
-	name = "maid headdress"
-	desc = "A decorative cloth headband clearly indicating the wearer as a maid."
+	name = "女仆头饰"
+	desc = "装饰性布头带，一眼便能看出佩戴者是女仆。"
 	icon_state = "maidhead"
 	item_state = "maidhead"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/special/maids.dmi'
@@ -877,22 +877,22 @@
 	sleeved = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/special/onmob/maids.dmi'
 
 /obj/item/clothing/head/roguetown/menacing/executioner
-	name = "executioners hood"
+	name = "刽子手兜帽"
 	icon_state = "dungeoneer"
 	color = null
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/head.dmi'
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/head.dmi'
 
 /obj/item/clothing/head/roguetown/nightcap
-	name = "nitecap"
-	desc = "A simple nightcap, used to keep the baldest of heads warm during the nite."
+	name = "睡帽"
+	desc = "简单的睡帽，即使是最光秃的脑袋也能在夜里保暖。"
 	icon_state = "link"
 	sewrepair = TRUE
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/head.dmi'
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/head.dmi'
 
 /obj/item/clothing/head/roguetown/nun_hood
-	name = "nun hood"
+	name = "修女兜帽"
 	desc = ""
 	icon_state = "nun_hood"
 	item_state = "nun_hood"
@@ -917,23 +917,23 @@
 	mob_overlay_icon = 'modular_twilight_axis/icons/clothing_port/roguetown/clothing/onmob/head.dmi'
 
 /obj/item/clothing/head/roguetown/onhelm/tw_d_basic
-	name = "helm's chaperon"
-	desc = "A simple but elegant cloth burlet worn over a helmet. It serves both to deflect the beating sun and to display the wearer's heraldic colors with pride."
+	name = "盔饰布巾"
+	desc = "戴在头盔上的布环巾，简单而优雅。既能遮挡烈日，也能自豪地展示佩戴者的纹章配色。"
 	icon = 'modular_twilight_axis/icons/roguetown/clothing/onhelm.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/32x48/onhelm.dmi'
 	icon_state = "d_basic"
 	item_state = "d_basic"
 
 /obj/item/clothing/head/roguetown/onhelm/tw_d_horns
-	name = "horns helmkleinod"
-	desc = "A pair of imposing iron horns designed to be mounted atop a helmet, giving the wearer a beastly silhouette to strike fear into the hearts of their enemies."
+	name = "铁角盔饰"
+	desc = "装在头盔顶上的威武铁角，让佩戴者呈现野兽般的轮廓，令敌人胆寒。"
 	icon = 'modular_twilight_axis/icons/roguetown/clothing/onhelm.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/32x48/onhelm.dmi'
 	icon_state = "d_horns"
 	item_state = "d_horns"
 
 /obj/item/clothing/head/roguetown/roningasa
-	name = "roningasa"
+	name = "浪人笠"
 	flags_inv = HIDEEARS
 	icon_state = "roningasa"
 	item_state = "roningasa"
@@ -943,7 +943,7 @@
 	worn_y_dimension = 64
 
 /obj/item/clothing/head/roguetown/sandogasa
-	name = "sandogasa"
+	name = "三度笠"
 	flags_inv = HIDEEARS
 	icon_state = "sandogasa"
 	item_state = "sandogasa"
@@ -953,7 +953,7 @@
 	worn_y_dimension = 64
 
 /obj/item/clothing/head/roguetown/stewardtophat
-	name = "top hat"
+	name = "高顶礼帽"
 	icon_state = "stewardtophat"
 	icon = 'modular_twilight_axis/icons/roguetown/clothing/special/noble.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/64x64/head.dmi'
@@ -961,15 +961,15 @@
 	worn_y_dimension = 64
 
 /obj/item/clothing/head/roguetown/tiyon
-	name = "tiyon"
-	desc = "A fancy cloth headdress."
+	name = "华饰布冠"
+	desc = "华丽的布制头饰。"
 	icon_state = "tiyon"
 	sewrepair = TRUE
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/head.dmi'
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/head.dmi'
 
 /obj/item/clothing/head/roguetown/torioigasa
-	name = "torioigasa"
+	name = "鸟追笠"
 	flags_inv = HIDEEARS
 	icon_state = "torioigasa"
 	item_state = "torioigasa"
@@ -979,15 +979,15 @@
 	worn_y_dimension = 64
 
 /obj/item/clothing/head/roguetown/elven_hat
-	name = "elven burka"
-	desc = "A warm hat, designed to protect long elven ears from cold northern winds."
+	name = "精灵护耳帽"
+	desc = "温暖的帽子，为精灵的长耳遮挡北方寒风。"
 	icon = 'modular_twilight_axis/icons/roguetown/clothing/head.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/head_48.dmi'
 	icon_state = "elven_hat"
 	flags_inv = HIDEEARS
 
 /obj/item/clothing/head/roguetown/hammerhold_hat
-	name = "kokoshnik"
+	name = "扇形冠帽"
 	desc = ""
 	icon = 'modular_twilight_axis/icons/roguetown/clothing/head.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/head_48.dmi'
@@ -1001,7 +1001,7 @@
 /obj/item/clothing/head/roguetown/hammerhold_hat/attack_right(mob/user)
 	..()
 	if(!picked)
-		var/choiceC = input(user, "Choose a color.", "Hammerhold colors") as anything in hammerhold_colors
+		var/choiceC = input_updated_loadout_display(user, hammerhold_colors, "选择颜色。")
 		if(choiceC == "white")
 			icon_state = "white_mage_headwear"
 		if(choiceC == "blue")
@@ -1010,7 +1010,7 @@
 		if(loc == user && ishuman(user))
 			var/mob/living/carbon/H = user
 			H.update_inv_head()
-		if(alert("Are you pleased with your kokoshnik?", "Kokoshnik", "Yes", "No") != "Yes")
+		if(alert("满意这顶扇形冠帽吗？", "扇形冠帽", "是", "否") != "是")
 			icon_state = "white_mage_headwear"
 			update_icon()
 			if(loc == user && ishuman(user))
@@ -1021,7 +1021,7 @@
 
 /obj/item/clothing/head/roguetown/hammerhold_hat/attack_right(mob/user)
 	if(!picked)
-		var/choiceV = input(user, "Choose a variant.", "Hammerhold colors") as anything in hammerhold_variants
+		var/choiceV = input(user, "选择款式。", "铁锤堡款式") as anything in hammerhold_variants
 		if(choiceV == "a")
 			icon_state = "headwear_a"
 			hammerhold_final_icon = "headwear_a"
@@ -1032,7 +1032,7 @@
 		if(loc == user && ishuman(user))
 			var/mob/living/carbon/H = user
 			H.update_inv_head()
-		if(alert("Are you pleased with your hat?", "hat", "Yes", "No") != "Yes")
+		if(alert("满意这顶帽子吗？", "帽子", "是", "否") != "是")
 			icon_state = "headwear_a"
 			hammerhold_final_icon = "headwear_a"
 			update_icon()
@@ -1057,7 +1057,7 @@
 		update_icon()
 
 /obj/item/clothing/head/roguetown/hammerhold_hat/peasant
-	name = "hammerhold hat"
+	name = "铁锤堡帽"
 	desc = ""
 	icon = 'modular_twilight_axis/icons/roguetown/clothing/head.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/head_48.dmi'
@@ -1068,8 +1068,8 @@
 	picked = FALSE
 
 /obj/item/clothing/head/roguetown/veiledhat
-	name = "veiled hat"
-	desc = "A luxurious, wide-brimmed hat defined by two flanking sheets of cloth sewn under the brim, it frames the face well."
+	name = "垂纱帽"
+	desc = "奢华的宽檐帽，帽檐两侧缝着垂布，很好地衬托出面容。"
 	icon_state = "veilhat"
 	sewrepair = TRUE
 	detail_tag = "_detail"

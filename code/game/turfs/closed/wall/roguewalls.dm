@@ -227,20 +227,20 @@
 		dir = get_dir(src, get_turf(user))
 
 /turf/closed/wall/mineral/rogue/tent/ShiftClick(mob/user)
-	to_chat(user, span_warning("I need a stake to take this wall down."))
+	to_chat(user, span_warning("我需要一根木桩才能拆下这面篷墙。"))
 	return TRUE
 
 /turf/closed/wall/mineral/rogue/tent/attackby(obj/item/I, mob/user, params, multiplier)
 	if(!istype(I, /obj/item/grown/log/tree/stake))
 		return ..()
 	if(get_dist(user, src) > 1 || get_dir(src, get_turf(user)) != dir)
-		to_chat(user, span_warning("I can only take this wall down from the side it was built on."))
+		to_chat(user, span_warning("我只能从搭建时所在的一侧拆下这面篷墙。"))
 		return TRUE
-	if(alert(user, "Take down this tent wall?", "Dismantle", "Yes", "No") != "Yes")
+	if(alert(user, "拆下这面篷墙？", "拆除", "是", "否") != "是")
 		return TRUE
 	if(get_dist(user, src) > 1 || get_dir(src, get_turf(user)) != dir)
 		return TRUE
-	user.visible_message(span_notice("[user] begins taking down [src]."))
+	user.visible_message(span_notice("[user]开始拆除[src]。"))
 	if(!do_after(user, 4 SECONDS, target = src))
 		return TRUE
 	var/turf/dismantled_turf = src

@@ -95,24 +95,24 @@
 /proc/ccg_row_label(row)
 	switch(row)
 		if(CCG_ROW_INFANTRY)
-			return "Infantry"
+			return "步兵"
 		if(CCG_ROW_ARCHERS)
-			return "Archers"
+			return "弓手"
 		if(CCG_ROW_SIEGE)
-			return "Siege"
+			return "攻城"
 		if(CCG_ROW_WEATHER)
-			return "Weather"
+			return "天气"
 		if(CCG_ROW_SPECIAL)
-			return "Special"
+			return "特殊"
 	return capitalize(row)
 
 /proc/ccg_rarity_label(rarity)
 	switch(rarity)
 		if(CCG_RARITY_RARE)
-			return "Rare"
+			return "稀有"
 		if(CCG_RARITY_UNIQUE)
-			return "Unique"
-	return "Common"
+			return "独特"
+	return "普通"
 
 /proc/ccg_find_mob_by_ckey(ckey)
 	if(!ckey)

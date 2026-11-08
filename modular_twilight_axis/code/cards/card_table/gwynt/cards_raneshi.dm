@@ -2,8 +2,8 @@
 
 /datum/ccg_card/rare_raneshi_desert_janissary
 	id = "rare_raneshi_desert_janissary"
-	name = "Desert Rider Janissary"
-	desc = "Raneshi Desert Town cavalry in high-fantasy Gwent styling."
+	name = "沙海骑手耶尼切里"
+	desc = "具有奇幻昆特牌风格的拉涅申沙漠城骑兵。"
 	row = CCG_ROW_INFANTRY
 	power = 5
 	rarity = CCG_RARITY_RARE
@@ -13,8 +13,8 @@
 
 /datum/ccg_card/rare_raneshi_zeybek
 	id = "rare_raneshi_zeybek"
-	name = "Desert Rider Zeybek"
-	desc = "A swift Raneshi skirmisher who can join either line."
+	name = "沙海骑手泽贝克"
+	desc = "迅捷的拉涅申散兵，可加入任一战线。"
 	row = CCG_ROW_ARCHERS
 	power = 4
 	rarity = CCG_RARITY_RARE
@@ -24,8 +24,8 @@
 
 /datum/ccg_card/rare_raneshi_sahir
 	id = "rare_raneshi_sahir"
-	name = "Desert Rider Sahir"
-	desc = "A mirage-caster who strips weather from the field."
+	name = "沙海骑手幻术师"
+	desc = "施展蜃景幻术、驱散场上天气的法师。"
 	row = CCG_ROW_ARCHERS
 	power = 3
 	rarity = CCG_RARITY_RARE
@@ -35,8 +35,8 @@
 
 /datum/ccg_card/rare_raneshi_miragefen_rogue
 	id = "rare_raneshi_miragefen_rogue"
-	name = "Miragefen Rogue"
-	desc = "A masked Raneshi rogue; played as a spy for two cards."
+	name = "蜃沼游荡者"
+	desc = "蒙面的拉涅申游荡者；作为间谍出牌并抽两张牌。"
 	row = CCG_ROW_INFANTRY
 	power = 2
 	rarity = CCG_RARITY_RARE
@@ -46,8 +46,8 @@
 
 /datum/ccg_card/rare_raneshi_azeb_guard
 	id = "rare_raneshi_azeb_guard"
-	name = "Raneshi Azeb Guard"
-	desc = "Provincial desert infantry holding the line for the Sultanate."
+	name = "拉涅申阿塞卜卫士"
+	desc = "为苏丹国守住战线的地方沙漠步兵。"
 	row = CCG_ROW_INFANTRY
 	power = 2
 	rarity = CCG_RARITY_BASE
@@ -58,8 +58,8 @@
 
 /datum/ccg_card/rare_raneshi_slaver
 	id = "rare_raneshi_slaver"
-	name = "Ranesheni Slaver"
-	desc = "A brutal catcher who removes the strongest unit on the field."
+	name = "拉涅申奴贩"
+	desc = "残忍的捕奴者，移除场上最强的单位。"
 	row = CCG_ROW_INFANTRY
 	power = 3
 	rarity = CCG_RARITY_RARE
@@ -69,8 +69,8 @@
 
 /datum/ccg_card/rare_raneshi_forlorn_hope
 	id = "rare_raneshi_forlorn_hope"
-	name = "Forlorn Hope"
-	desc = "Ranesheni slave-revolt mercenaries who trade pain for freedom."
+	name = "绝望先锋"
+	desc = "出身拉涅申奴隶起义、以苦痛换取自由的佣兵。"
 	row = CCG_ROW_INFANTRY
 	power = 5
 	rarity = CCG_RARITY_RARE
@@ -80,8 +80,8 @@
 
 /datum/ccg_card/rare_raneshi_bronzeclad
 	id = "rare_raneshi_bronzeclad"
-	name = "Raneshen Bronzeclad"
-	desc = "Arena-born bronze warrior from the curtain courts."
+	name = "拉涅申青铜甲士"
+	desc = "来自帷幕宫廷、从竞技场中崛起的青铜战士。"
 	row = CCG_ROW_INFANTRY
 	power = 5
 	rarity = CCG_RARITY_RARE
@@ -91,8 +91,8 @@
 
 /datum/ccg_card/rare_raneshi_thespian_errant
 	id = "rare_raneshi_thespian_errant"
-	name = "Thespian-Errant"
-	desc = "Arena reenactor and curtain-court wanderer from the Raneshen circuit."
+	name = "巡游演员"
+	desc = "巡游拉涅申的竞技场历史表演者与帷幕宫廷旅人。"
 	row = CCG_ROW_INFANTRY
 	power = 5
 	rarity = CCG_RARITY_RARE
@@ -102,8 +102,8 @@
 
 /datum/ccg_card/rare_raneshi_mushir
 	id = "rare_raneshi_mushir"
-	name = "Mushir"
-	desc = "Desert Town marshal title. Doubles the siege row with command discipline."
+	name = "元帅"
+	desc = "沙漠城的元帅军衔。以严明号令使攻城列战力翻倍。"
 	row = CCG_ROW_SIEGE
 	power = 3
 	rarity = CCG_RARITY_RARE
@@ -114,8 +114,8 @@
 
 /datum/ccg_card/unique_raneshi_almah
 	id = "unique_raneshi_almah"
-	name = "Desert Rider Almah"
-	desc = "Hero. A Raneshi elite rider from the Desert Town legends."
+	name = "沙海骑手阿尔玛"
+	desc = "英雄。沙漠城传说中的拉涅申精锐骑手。"
 	row = CCG_ROW_INFANTRY
 	power = 8
 	rarity = CCG_RARITY_UNIQUE
@@ -126,8 +126,8 @@
 
 /datum/ccg_card/unique_raneshi_amir
 	id = "unique_raneshi_amir"
-	name = "Amir of Desert Town"
-	desc = "Hero. The desert court's sovereign hand and banner."
+	name = "沙漠城埃米尔"
+	desc = "英雄。沙漠宫廷至高权力的化身与旗帜。"
 	row = CCG_ROW_INFANTRY
 	power = 8
 	rarity = CCG_RARITY_UNIQUE
@@ -138,8 +138,8 @@
 
 /datum/ccg_card/unique_raneshi_spice_prince
 	id = "unique_raneshi_spice_prince"
-	name = "Spice Prince"
-	desc = "Hero. A silk-veiled patron whose coin moves armies."
+	name = "香料亲王"
+	desc = "英雄。以丝绸蒙面、凭财富调动军队的资助者。"
 	row = CCG_ROW_ARCHERS
 	power = 7
 	rarity = CCG_RARITY_UNIQUE

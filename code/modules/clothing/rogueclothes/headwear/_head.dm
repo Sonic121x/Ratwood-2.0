@@ -34,7 +34,7 @@
 
 /obj/item/clothing/head/roguetown/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Middle-clicking headwear cycles ears/horns/hair visual.")
+	. += span_info("中键点击头饰可切换耳朵、角和头发的显示状态。")
 
 /obj/item/clothing/head/roguetown/MiddleClick(mob/user)
 	if(!ishuman(user) || loc != user)
@@ -59,15 +59,15 @@
 	flags_inv = (flags_inv & ~(HIDE_HEADTOP|SHOWHORNS)) | next
 	switch(next)
 		if(HIDE_HEADTOP)
-			to_chat(user, span_info("I tuck my hair[hasears ? (hashorns ? ", ears and horns" : " and ears") : (hashorns ? " and horns" : "")] under \the [src]."))
+			to_chat(user, span_info("我将头发[hasears ? (hashorns ? "、耳朵和角" : "和耳朵") : (hashorns ? "和角" : "")]藏在[src]下面。"))
 		if(HIDEHAIR)
-			to_chat(user, span_info("I free my ears from under \the [src]."))
+			to_chat(user, span_info("我将耳朵从[src]下面露出来。"))
 		if(HIDE_HEADTOP|SHOWHORNS)
-			to_chat(user, span_info("I [hasears ? "tuck my ears back and " : ""]free my horns from under \the [src]."))
+			to_chat(user, span_info("我[hasears ? "将耳朵重新藏好，并" : ""]将角从[src]下面露出来。"))
 		if(HIDEHAIR|SHOWHORNS)
-			to_chat(user, span_info("I free my ears and horns from under \the [src]."))
+			to_chat(user, span_info("我将耳朵和角从[src]下面露出来。"))
 		else
-			to_chat(user, span_info("I pull my hair out from under \the [src]."))
+			to_chat(user, span_info("我将头发从[src]下面拉出来。"))
 	persist_inv_flags(HIDE_HEADTOP|SHOWHORNS)
 	user.update_inv_head()
 

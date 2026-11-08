@@ -105,8 +105,8 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "护甲")
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/graggar
-	name = "vicious hauberk"
-	desc = "The blessing of a Martyr is nothing, when put before the Sinistar's rage."
+	name = "凶暴长锁子甲"
+	desc = "在凶星的怒火面前，殉道者的祝福不值一提。"
 	icon_state = "graggarhauberk"
 	item_state = "graggarhauberk"
 	armor = ARMOR_PLATE_BSTEEL

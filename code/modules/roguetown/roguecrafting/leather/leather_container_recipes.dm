@@ -168,7 +168,7 @@
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/leather/container/backpack_rogue_backpack_trader
-	name = "trader's pack"
+	name = "行商背包"
 	result = /obj/item/storage/backpack/rogue/backpack/trader
 	reqs = list(/obj/item/natural/hide/cured = 3, /obj/item/natural/fibers = 1)
 	craftdiff = 3

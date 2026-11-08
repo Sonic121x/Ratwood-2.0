@@ -466,17 +466,17 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 
 /client/proc/set_admin_ghost_name()
 	set category = "-Admin-"
-	set name = "set ghost name"
+	set name = "设置幽灵名称"
 	if(!holder || !prefs)
 		return
-	var/new_name = input(src, "Choose the name your admin ghost takes instead of your character's. Leave it blank to keep your character's name.", "Set Ghost Name", prefs.admin_ghost_name) as text|null
+	var/new_name = input(src, "设置管理员幽灵使用的名称，留空则沿用角色姓名。", "设置幽灵名称", prefs.admin_ghost_name) as text|null
 	if(isnull(new_name))
 		return
 	new_name = trim(new_name)
 	if(new_name)
 		new_name = reject_bad_name(new_name, allow_numbers = TRUE)
 		if(!new_name)
-			to_chat(src, span_warning("That name isn't allowed. Use at most [MAX_NAME_LEN] letters, numbers, spaces and simple punctuation."))
+			to_chat(src, span_warning("该名称不符合要求。最多使用[MAX_NAME_LEN]个字母、数字、空格或简单标点。"))
 			return
 	prefs.admin_ghost_name = new_name || null
 	prefs.save_preferences()
@@ -484,9 +484,9 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	if(istype(admin_ghost))
 		admin_ghost.apply_admin_ghost_name()
 	if(new_name)
-		to_chat(src, span_notice("Your admin ghost will now be named [new_name]."))
+		to_chat(src, span_notice("你的管理员幽灵现在名为[new_name]。"))
 	else
-		to_chat(src, span_notice("Your admin ghost will now keep your character's name."))
+		to_chat(src, span_notice("你的管理员幽灵将沿用角色姓名。"))
 
 /client/proc/apply_admin_ghost_image()
 	var/mob/dead/observer/admin_ghost = mob

@@ -426,7 +426,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 				return FALSE
 			var/mob/living/carbon/human/H = ticket.initiator.mob
 			if(!istype(H))
-				to_chat(user, span_warning("[ticket.initiator.mob] is not a character whose preferences can be refreshed."))
+				to_chat(user, span_warning("[ticket.initiator.mob]不是可刷新偏好的角色。"))
 				return FALSE
 			H.admin_pref_refresh(user)
 			return TRUE

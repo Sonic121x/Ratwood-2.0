@@ -2,8 +2,8 @@
 
 /datum/ccg_card/rare_saboteur
 	id = "rare_saboteur"
-	name = "Saboteur"
-	desc = "Destroys the strongest enemy unit."
+	name = "破坏者"
+	desc = "摧毁敌方最强的单位。"
 	row = CCG_ROW_ARCHERS
 	power = 2
 	rarity = CCG_RARITY_RARE
@@ -13,8 +13,8 @@
 
 /datum/ccg_card/unique_avenger
 	id = "unique_avenger"
-	name = "Avenger"
-	desc = "When the round ends, calls a stronger warrior before leaving."
+	name = "复仇者"
+	desc = "小局结束时，在离场前召来更强的战士。"
 	row = CCG_ROW_INFANTRY
 	power = 6
 	rarity = CCG_RARITY_UNIQUE
@@ -26,8 +26,8 @@
 
 /datum/ccg_card/unique_enigma_revenant
 	id = "unique_enigma_revenant"
-	name = "Avenger Revenant"
-	desc = "A called Enigma champion."
+	name = "复仇亡魂"
+	desc = "应召而来的恩尼格玛勇士。"
 	row = CCG_ROW_INFANTRY
 	power = 10
 	rarity = CCG_RARITY_UNIQUE
@@ -37,8 +37,8 @@
 
 /datum/ccg_card/rare_enigma_royal_guard
 	id = "rare_enigma_royal_guard"
-	name = "Royal Guard"
-	desc = "Disciplined Enigma retinue infantry. Bonds with other Royal Guards."
+	name = "王家卫士"
+	desc = "纪律严明的恩尼格玛扈从步兵。与其他王家卫士建立连结。"
 	row = CCG_ROW_INFANTRY
 	power = 3
 	rarity = CCG_RARITY_BASE
@@ -49,8 +49,8 @@
 
 /datum/ccg_card/rare_enigma_vanguard_archer
 	id = "rare_enigma_vanguard_archer"
-	name = "Vanguard Archer"
-	desc = "Frontier archer trained to break enemy pushes."
+	name = "先锋弓手"
+	desc = "受训阻击敌军攻势的边境弓手。"
 	row = CCG_ROW_ARCHERS
 	power = 4
 	rarity = CCG_RARITY_RARE
@@ -60,8 +60,8 @@
 
 /datum/ccg_card/rare_enigma_standard_bearer
 	id = "rare_enigma_standard_bearer"
-	name = "Vanguard Standard Bearer"
-	desc = "A standard-bearer that doubles the infantry row."
+	name = "先锋旗手"
+	desc = "使步兵列战力翻倍的旗手。"
 	row = CCG_ROW_INFANTRY
 	power = 0
 	rarity = CCG_RARITY_RARE
@@ -72,8 +72,8 @@
 
 /datum/ccg_card/unique_enigma_overseer
 	id = "unique_enigma_overseer"
-	name = "Overseer"
-	desc = "Hero. An Enigma field commander who preserves order with iron discipline."
+	name = "督军"
+	desc = "英雄。以铁一般的纪律维持秩序的恩尼格玛战地指挥官。"
 	row = CCG_ROW_INFANTRY
 	power = 7
 	rarity = CCG_RARITY_UNIQUE
@@ -84,8 +84,8 @@
 
 /datum/ccg_card/unique_enigma_court_physician
 	id = "unique_enigma_court_physician"
-	name = "Court Physician"
-	desc = "Hero. Restores a fallen unit from the discard."
+	name = "宫廷医师"
+	desc = "英雄。从弃牌堆中复活一个阵亡单位。"
 	row = CCG_ROW_INFANTRY
 	power = 5
 	rarity = CCG_RARITY_UNIQUE

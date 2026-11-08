@@ -10,7 +10,7 @@
 	var/list/community_cards = list()
 	var/list/xylix_seen_cards = list()
 	var/list/xylix_cheat_used = list()
-	var/message = "Choose a game and take your seats."
+	var/message = "选择游戏并入座。"
 	var/poker_variant = CARD_TABLE_POKER_DRAW
 	var/blackjack_variant = CARD_TABLE_BLACKJACK_AZURE
 	var/dealer_rotates = TRUE
@@ -76,40 +76,40 @@
 		player.left = FALSE
 	if(dealer_index > players.len)
 		dealer_index = players.len ? 1 : 0
-	message = "The round has been reset. Players remain at the table."
+	message = "本局已重置，玩家仍留在牌桌上。"
 
 /datum/card_table_session/proc/game_label()
 	switch(game_type)
 		if(CARD_TABLE_GAME_BLACKJACK)
-			return "Blackjack"
+			return "二十一点"
 		if(CARD_TABLE_GAME_POKER)
-			return "Poker"
-	return "None selected"
+			return "扑克"
+	return "尚未选择"
 
 /datum/card_table_session/proc/poker_variant_label()
 	switch(poker_variant)
 		if(CARD_TABLE_POKER_TEXAS)
-			return "Raneshi"
+			return "拉涅申式"
 		if(CARD_TABLE_POKER_OMAHA)
-			return "Valorian"
+			return "瓦洛里亚式"
 		if(CARD_TABLE_POKER_STUD)
-			return "Giza"
-	return "Rockhillian"
+			return "吉萨式"
+	return "岩丘式"
 
 /datum/card_table_session/proc/blackjack_variant_label()
 	switch(blackjack_variant)
 		if(CARD_TABLE_BLACKJACK_GRON)
-			return "Gronnic"
+			return "格隆恩式"
 		if(CARD_TABLE_BLACKJACK_VALORIA)
-			return "Valorian"
+			return "瓦洛里亚式"
 		if(CARD_TABLE_BLACKJACK_GRENZELHOFT)
-			return "Grenzelhoftian"
+			return "格伦泽尔霍夫特式"
 		if(CARD_TABLE_BLACKJACK_KAZENGUN)
-			return "Kazengunite"
-	return "Rockhillian"
+			return "风郡式"
+	return "岩丘式"
 
 /datum/card_table_session/proc/dealer_rotation_label()
-	return dealer_rotates ? "Rotating dealer" : "Fixed dealer"
+	return dealer_rotates ? "轮流坐庄" : "固定庄家"
 
 /datum/card_table_session/proc/max_players()
 	return max_players_for_game(game_type)

@@ -334,8 +334,8 @@
 	AddComponent(/datum/component/cursed_item, TRAIT_CABAL, "护甲")
 
 /obj/item/clothing/neck/roguetown/gorget/steel/graggar
-	name = "vicious gorget"
-	desc = "Curled plate, cradling the neck. Once, they were chains - now, they've allowed you to break free."
+	name = "凶暴护喉"
+	desc = "弯曲的甲片护住脖颈。它们曾是锁链，如今却让你挣脱束缚。"
 	icon_state = "graggargorget"
 	item_state = "graggargorget"
 	max_integrity = ARMOR_INT_SIDE_ANTAG
@@ -1375,8 +1375,8 @@
 	sellprice = 50
 
 /obj/item/clothing/neck/roguetown/collar/fur
-	name = "fur collar"
-	desc = "A thick ruff of trapped fur, worn about the shoulders."
+	name = "毛皮领"
+	desc = "用猎获毛皮制成的厚领子，披在肩头。"
 	icon_state = "furscarf"
 	item_state = "furscarf"
 	salvage_result = /obj/item/natural/fur
@@ -1386,15 +1386,15 @@
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/neck.dmi'
 
 /obj/item/clothing/neck/roguetown/cravat
-	name = "cravat"
-	desc = "An otavan fashion, a strip of tied cloth that can be donned on the neck to make oneself look more sophisticated."
+	name = "领巾"
+	desc = "奥塔瓦的时尚。一条系在颈部的布巾，让人显得更为文雅。"
 	icon_state = "cravat"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/neck.dmi'
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/neck.dmi'
 
 /obj/item/clothing/neck/roguetown/ruffle
-	name = "ruffled collar"
-	desc = "A ridiculous lace collar typically worn by jesters."
+	name = "褶边领"
+	desc = "滑稽的蕾丝领子，通常由弄臣佩戴。"
 	icon_state = "ruffle"
 	icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/neck.dmi'
 	mob_overlay_icon = 'modular_azurepeak/icons/clothing_port/roguetown/clothing/onmob/neck.dmi'
