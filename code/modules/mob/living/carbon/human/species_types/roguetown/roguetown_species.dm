@@ -284,24 +284,26 @@
 	if(!initial?.len && !middle?.len && !prefix?.len && !repeat?.len)
 		return action_prefix ? "[action_prefix]*[message]" : message
 
-	var/list/words = splittext(message, " ")
+	// Character-based text procs are required here: copytext()/length() count bytes,
+	// so slicing a multi-byte (e.g. CJK) word cut a character in half and left a broken glyph.
+	var/list/words = splittext_char(message, " ")
 	for(var/index in 1 to length(words))
 		var/word = words[index]
 		if(prefix?.len && word != "" && prob(20))
 			words[index] = "[pick(prefix)][word]"
 			continue
-		if(repeat?.len && length(word) > 3 && prob(25))
-			var/initial_syllable = copytext(word, 1, 3)
+		if(repeat?.len && length_char(word) > 3 && prob(25))
+			var/initial_syllable = copytext_char(word, 1, 3)
 			words[index] = "[initial_syllable][pick(repeat)][initial_syllable]-[word]"
 			continue
 		if(initial?.len && prob(25))
-			var/first_letter = copytext(word, 1, 2)
+			var/first_letter = copytext_char(word, 1, 2)
 			if(first_letter && first_letter != "<")
 				words[index] = "[first_letter][pick(initial)][word]"
 				continue
-		if(middle?.len && length(word) > 3 && prob(20))
-			var/insertion_point = rand(2, length(word) - 1)
-			words[index] = "[copytext(word, 1, insertion_point)][pick(middle)][copytext(word, insertion_point)]"
+		if(middle?.len && length_char(word) > 3 && prob(20))
+			var/insertion_point = rand(2, length_char(word) - 1)
+			words[index] = "[copytext_char(word, 1, insertion_point)][pick(middle)][copytext_char(word, insertion_point)]"
 	message = jointext(words, " ")
 	return action_prefix ? "[action_prefix]*[message]" : message
 
