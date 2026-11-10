@@ -325,10 +325,12 @@
 // (the face-memory registry) so they can never remember or recognize anyone. Removing the vice
 // takes the trait back.
 #include "vices/facial_blindness.dm"
-// 自定义恶习：涨奶（被动）；持续泌乳使奶水不断胀满，涨到近满即胸口胀痛、心情变差（意志 -2）；
-// 用吸奶器/挤进容器/被人吸出把奶挤到低位即可缓解。无乳房者不生效。
-// Custom vice: Milk Engorgement (passive); constant lactation fills the breasts until near-full,
-// then they ache and mood drops (Willpower -2). Milking down below the relief threshold clears it.
+// 自定义恶习：涨奶（成瘾类）；持续泌乳每 40 分钟胀满一次，到点未挤奶即胸口胀痛、心情变差
+// （意志 -1、速度 -1）；用吸奶器/挤进容器/被人吸出使奶量下降即可满足成瘾、解除惩罚并重新计时。
+// 无乳房者不生效。
+// Custom vice: Milk Engorgement (addiction); lactation engorges the breasts every 40 minutes.
+// If unsated, they ache and mood drops (Willpower -1, Speed -1); milking in any way (milk_stored
+// decreasing) calls sate_addiction, clearing the penalties and restarting the timer.
 #include "vices/engorged_breasts.dm"
 // 自定义美德：地狱血脉后裔（仅限提夫林、消耗 29 凯旋点）；授予【地狱血脉】特性：
 // 免疫一切火焰/灼烧/高温伤害（不会被点燃），并习得火焰系法术（火球术/强效火球术/吐焰火球/生成营火）。
