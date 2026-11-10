@@ -198,17 +198,6 @@
 	. = ..()
 	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "护甲", "撕裂")
 
-/obj/item/clothing/suit/roguetown/armor/plate/fluted/graggar/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "ARMOR", "RENDERED ASUNDER")
-
-/obj/item/clothing/suit/roguetown/armor/plate/fluted/graggar/equipped(mob/living/user, slot)
-	. = ..()
-	if(slot != SLOT_ARMOR)
-		return
-
-	user.apply_status_effect(/datum/status_effect/buff/motive)
-
 /obj/item/clothing/suit/roguetown/armor/plate/full/graggar
 	name = "凶暴全身板甲"
 	desc = "手工雕琢的骨骼与韧带拼成甲片，在邪恶的暴力意志下结为一体。\
@@ -220,22 +209,6 @@
 /obj/item/clothing/suit/roguetown/armor/plate/full/graggar/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "ARMOR", "RENDERED ASUNDER")
-
-/obj/item/clothing/suit/roguetown/armor/plate/full/graggar/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/cursed_item, TRAIT_HORDE, "ARMOR", "RENDERED ASUNDER")
-
-/obj/item/clothing/suit/roguetown/armor/plate/full/graggar/equipped(mob/living/user, slot)
-	. = ..()
-	if(slot != SLOT_ARMOR)
-		return
-
-	user.apply_status_effect(/datum/status_effect/buff/motive)
-
-/obj/item/clothing/suit/roguetown/armor/plate/full/graggar/dropped(mob/living/carbon/human/user)
-	. = ..()
-	if(istype(user) && user.wear_armor == src)
-		user.remove_status_effect(/datum/status_effect/buff/motive)
 
 /obj/item/clothing/suit/roguetown/armor/plate/fluted/ornate
 	name = "普赛顿半身板甲"

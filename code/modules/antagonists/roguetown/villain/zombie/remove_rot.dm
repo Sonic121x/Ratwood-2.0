@@ -6,6 +6,9 @@
 	if(istype(target, /mob/living/carbon/human/species/skeleton) && method == "surgery")
 		to_chat(user, span_warning("想让这些骨头重新长回血肉，恐怕得靠奇迹。"))
 		return FALSE
+	if(istype(target, /mob/living/carbon/human/species/skeleton) && method == "alchemy")
+		return FALSE
+	
 
 	// Check if the target has rot
 	var/has_rot = FALSE

@@ -35,17 +35,22 @@
 	var/obj/item/rogue/instrument/conjured_instrument = null
 
 	var/list/instrument = list(
-		"竖琴" = /obj/item/rogue/instrument/harp,
-		"鲁特琴" = /obj/item/rogue/instrument/lute,
 		"手风琴" = /obj/item/rogue/instrument/accord,
+		"风笛" = /obj/item/rogue/instrument/bagpipe,
+		"班卓琴" = /obj/item/rogue/instrument/banjo,
+		"鼓" = /obj/item/rogue/instrument/drum,
+		"长笛" = /obj/item/rogue/instrument/flute,
 		"吉他" = /obj/item/rogue/instrument/guitar,
+		"口琴" = /obj/item/rogue/instrument/harmonica,
+		"竖琴" = /obj/item/rogue/instrument/harp,
 		"手摇琴" = /obj/item/rogue/instrument/hurdygurdy,
+		"口簧琴" = /obj/item/rogue/instrument/jawharp,
+		"鲁特琴" = /obj/item/rogue/instrument/lute,
+		"圣咏琴" = /obj/item/rogue/instrument/psyaltery,
+		"三味线" = /obj/item/rogue/instrument/shamisen,
+		"小号" = /obj/item/rogue/instrument/trumpet,
 		"中提琴" = /obj/item/rogue/instrument/viola,
 		"歌者护符" = /obj/item/rogue/instrument/vocals,
-		"圣咏琴" = /obj/item/rogue/instrument/psyaltery,
-		"长笛" = /obj/item/rogue/instrument/flute,
-		"鼓" = /obj/item/rogue/instrument/drum,
-		"三味线" = /obj/item/rogue/instrument/shamisen,
 	)
 
 /datum/action/cooldown/spell/conjure_instrument/cast(list/targets, mob/living/user = usr)

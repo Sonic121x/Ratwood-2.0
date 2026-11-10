@@ -21,19 +21,9 @@
 
 /obj/structure/handcart/examine(mob/user)
 	. = ..()
-	. += span_info("从你脚下那格把物品点住拖到手推车上，会尽量把那一格能装的东西都装进去。")
-	if(upgrade_level == 1)
-		. += span_notice("这辆手推车装有一个<i>1级</i>伐木工轮架。")
-	else if(upgrade_level == 2)
-		. += span_notice("这辆手推车装有一个<i>2级</i>伐木工轮架。")
-
-/obj/structure/handcart/proc/manage_upgrade()
-	switch(upgrade_level)
-		if(1)
-			maximum_capacity = 90
-		if(2)
-			maximum_capacity = 120
-	update_icon()
+	. += span_info("站在当前格子上，把该格子上的物品点击拖拽到手推车上，就会把你能够到的该格子所有物品都放进车里。")
+	if(upgrade_level > 0)
+		. += span_notice("这辆手推车已安装 <b>[upgrade]</b>。")
 
 /obj/structure/handcart/Initialize(mapload)
 	if(mapload)		// if closed, any item at the crate's loc is put in the contents
@@ -54,12 +44,16 @@
 /obj/structure/handcart/dump_contents()
 	var/atom/L = drop_location()
 	for(var/atom/movable/AM in src)
+		if(AM == upgrade)
+			continue
 		AM.forceMove(L)
 	stuff_shit = list()
 	current_capacity = 0
+	update_icon()
 
 /obj/structure/handcart/Destroy()
 	dump_contents()
+	QDEL_NULL(upgrade)
 	return ..()
 
 /obj/structure/handcart/MouseDrop_T(atom/movable/O, mob/living/user)
@@ -92,41 +86,16 @@
 /obj/structure/handcart/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/roguegear/wood))
 		var/obj/item/roguegear/wood/cog = I
-		if(cog.ulevel == 0)
-			upgrade = I
-			upgrade_level = cog.ulevel
-			maximum_capacity = cog.cart_capacity
-			qdel(cog)
-			playsound(src, pick('sound/combat/hits/onwood/fence_hit1.ogg', 'sound/combat/hits/onwood/fence_hit2.ogg', 'sound/combat/hits/onwood/fence_hit3.ogg'), 100, FALSE)
-			shake_camera(user, 1, 1)
-			to_chat(user, span_warning("[cog.name]已装入！"))
+		if(cog.ulevel < upgrade_level)
+			to_chat(user, span_warning("[I]已经过时了。"))
 			return
-		if(cog.ulevel == 1)
-			if(upgrade_level != 0)
-				to_chat(user, span_warning("这个[I]已经过时了。"))
-				return
-			else
-				upgrade = I
-				upgrade_level = cog.ulevel
-				maximum_capacity = cog.cart_capacity
-				qdel(cog)
-				playsound(src, pick('sound/combat/hits/onwood/fence_hit1.ogg', 'sound/combat/hits/onwood/fence_hit2.ogg', 'sound/combat/hits/onwood/fence_hit3.ogg'), 100, FALSE)
-				shake_camera(user, 1, 1)
-				to_chat(user, span_warning("[cog.name]已装入！"))
-				return
-		if(cog.ulevel == 2)
-			if(upgrade_level == 2)
-				to_chat(user, span_warning("这个[I]已经过时了。"))
-				return
-			else
-				upgrade = I
-				upgrade_level = cog.ulevel
-				maximum_capacity = cog.cart_capacity
-				qdel(cog)
-				playsound(src, pick('sound/combat/hits/onwood/fence_hit1.ogg', 'sound/combat/hits/onwood/fence_hit2.ogg', 'sound/combat/hits/onwood/fence_hit3.ogg'), 100, FALSE)
-				shake_camera(user, 1, 1)
-				to_chat(user, span_warning("[cog.name]已装入！"))
-				return
+		if(!user.transferItemToLoc(cog, src))
+			return
+		install_upgrade(cog)
+		playsound(src, pick('sound/combat/hits/onwood/fence_hit1.ogg', 'sound/combat/hits/onwood/fence_hit2.ogg', 'sound/combat/hits/onwood/fence_hit3.ogg'), 100, FALSE)
+		shake_camera(user, 1, 1)
+		to_chat(user, span_warning("[cog]已装入！"))
+		return
 	if(!user.cmode)
 		if(!insertion_allowed(I))
 			return
@@ -134,6 +103,14 @@
 			playsound(loc, 'sound/foley/cartadd.ogg', 100, FALSE, -1)
 		return
 	..()
+
+/obj/structure/handcart/proc/install_upgrade(obj/item/roguegear/wood/cog)
+	if(upgrade && upgrade != cog)
+		QDEL_NULL(upgrade)
+	upgrade = cog
+	upgrade_level = cog.ulevel + 1
+	maximum_capacity = cog.cart_capacity
+	update_icon()
 
 /obj/structure/handcart/attack_hand(mob/living/user)
 	. = ..()
@@ -183,9 +160,9 @@
 	. = ..()
 	cut_overlays()
 	if(upgrade_level)
-		if(upgrade_level == 1)
-			add_overlay("ov_upgrade")
 		if(upgrade_level == 2)
+			add_overlay("ov_upgrade")
+		if(upgrade_level == 3)
 			add_overlay("ov_upgrade2")
 	if(stuff_shit.len)
 		icon_state = "cart-full"

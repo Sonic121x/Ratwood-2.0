@@ -66,7 +66,7 @@
 										"<span class='danger'>我凌空接住了[I]！</span>")
 						throw_mode_off()
 						return 1
-	..()
+	return ..()
 
 
 /mob/living/carbon/check_projectile_wounding(obj/projectile/P, def_zone, blocked)
