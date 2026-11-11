@@ -32,27 +32,27 @@
 	if(GLOB.rogue_round_id)
 		to_chat(src, span_info("回合编号：[GLOB.rogue_round_id]"))
 
-	if(client.is_new_player())
-		to_chat(src, span_userdanger("由于有大批哥布林试图涌入ROGUETOWN，你需要绑定Discord账户，或在Patreon上赞助我们，才能加入。"))
-		to_chat(src, span_info("我们也不喜欢Discord，但这是必要的。要绑定Discord或Patreon，请点击窗口右上角的“Register”（注册）标签，再选择其中一个选项。"))
-	else
-		var/shown_patreon_level = client.patreonlevel()
-		if(!shown_patreon_level)
-			shown_patreon_level = "<font color='#617C46'><b>谷地居民</b></font>"
-		switch(shown_patreon_level)
-			if(1)
-				shown_patreon_level = "白银"
-			if(2)
-				shown_patreon_level = "黄金"
-			if(3)
-				shown_patreon_level = "秘银"
-			if(4)
-				shown_patreon_level = "商人"
-			if(5)
-				shown_patreon_level = "领主"
-		to_chat(src, span_info("赞助等级：[shown_patreon_level]"))
+//	if(client.is_new_player())
+//		to_chat(src, span_userdanger("由于有大批哥布林试图涌入ROGUETOWN，你需要绑定Discord账户，或在Patreon上赞助我们，才能加入。"))
+//		to_chat(src, span_info("我们也不喜欢Discord，但这是必要的。要绑定Discord或Patreon，请点击窗口右上角的“Register”（注册）标签，再选择其中一个选项。"))
+//	else
+	var/shown_patreon_level = client.patreonlevel()
+	if(!shown_patreon_level)
+		shown_patreon_level = "<font color='#617C46'><b>谷地居民</b></font>"
+	switch(shown_patreon_level)
+		if(1)
+			shown_patreon_level = "白银"
+		if(2)
+			shown_patreon_level = "黄金"
+		if(3)
+			shown_patreon_level = "秘银"
+		if(4)
+			shown_patreon_level = "商人"
+		if(5)
+			shown_patreon_level = "领主"
+	to_chat(src, span_info("赞助等级：[shown_patreon_level]"))
 	client.changelog()
-
+/*
 	var/primary_server = "byond://103.40.13.27:25388"
 	var/secondary_server = "byond://222.187.254.125:25388"
 	var/link_style = "color:#638500;text-decoration:underline;"
@@ -64,7 +64,7 @@
 	else
 		to_chat(src, "<span style='color:#638500;'>主服务器：[primary_server] <a href='?src=[REF(src)];join_server=primary' style='[link_style]'><b>（加入）</b></a></span>")
 		to_chat(src, "<span style='color:#638500;'>副服务器：[secondary_server] <a href='?src=[REF(src)];join_server=secondary' style='[link_style]'><b>（加入）</b></a></span>")
-
+*/
 	to_chat(src, "<a href='?src=[REF(src)];open_changelog=1' style='color:#638500;text-decoration:underline;'><b>查看更新日志</b></a>")
 
 	if(GLOB.admin_notice)
