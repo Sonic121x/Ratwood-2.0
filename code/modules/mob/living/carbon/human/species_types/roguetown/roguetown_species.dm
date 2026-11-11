@@ -70,6 +70,8 @@
 			return strings("lisp_replacement.json", type, convert_HTML = convert_HTML)
 		if("Hesitant")
 			return strings("hesitant_replacement.json", type, convert_HTML = convert_HTML)
+		if("Complex Stutter")
+			return strings("complex_stutter_replacement.json", type, convert_HTML = convert_HTML)
 
 /datum/species/proc/get_accent_list(mob/living/carbon/human/H, type, convert_HTML = TRUE)
 	return get_accent_list_for_name(H.char_accent, type, convert_HTML)
@@ -242,6 +244,77 @@
 /proc/apply_mannerism_preview(mannerism_name, message)
 	return apply_mannerism(message, mannerism_name)
 
+/// True if the supplied single character is a CJK ideograph, kana or Hangul syllable.
+/proc/mannerism_is_cjk_char(character)
+	var/code = text2ascii(character)
+	if(code >= 0x3400 && code <= 0x4DBF)
+		return TRUE
+	if(code >= 0x4E00 && code <= 0x9FFF)
+		return TRUE
+	if(code >= 0xF900 && code <= 0xFAFF)
+		return TRUE
+	if(code >= 0x3040 && code <= 0x30FF)
+		return TRUE
+	if(code >= 0xAC00 && code <= 0xD7AF)
+		return TRUE
+	return FALSE
+
+/// True for Latin letters and digits; used to skip punctuation and markup spans.
+/proc/mannerism_is_letter_char(character)
+	var/code = text2ascii(character)
+	if(code >= 0x41 && code <= 0x5A)
+		return TRUE
+	if(code >= 0x61 && code <= 0x7A)
+		return TRUE
+	if(code >= 0x30 && code <= 0x39)
+		return TRUE
+	return FALSE
+
+/**
+	Splits a speech message into mannerism units.
+
+	Latin words are kept whole and spaces become their own units, so the message rejoins
+	verbatim with an empty separator. CJK text has no spaces, so it is cut into units of
+	cjk_unit_size characters instead of being treated as one giant word; that is what lets
+	several characters of a Chinese/Japanese/Korean sentence stutter, rather than only the first.
+	Markup spans are kept whole and are skipped by apply_mannerism().
+*/
+/proc/split_mannerism_units(message, cjk_unit_size = 1)
+	var/list/units = list()
+	var/word = ""
+	var/cjk = ""
+	var/in_tag = FALSE
+
+	for(var/i = 1 to length_char(message))
+		var/character = copytext_char(message, i, i + 1)
+		if(!in_tag && mannerism_is_cjk_char(character))
+			if(word)
+				units += word
+				word = ""
+			cjk += character
+			if(length_char(cjk) >= cjk_unit_size)
+				units += cjk
+				cjk = ""
+			continue
+		if(cjk)
+			units += cjk
+			cjk = ""
+		if(character == "<")
+			in_tag = TRUE
+		else if(character == ">")
+			in_tag = FALSE
+		if(character == " " && !in_tag)
+			if(word)
+				units += word
+				word = ""
+			units += " "
+			continue
+		word += character
+	if(cjk)
+		units += cjk
+	if(word)
+		units += word
+	return units
 
 /datum/species/proc/handle_speech(datum/source, list/speech_args)
 	var/message = speech_args[SPEECH_MESSAGE]
@@ -281,30 +354,68 @@
 	var/list/middle = get_mannerism_list_for_name(mannerism, "middle")
 	var/list/prefix = get_mannerism_list_for_name(mannerism, "prefix")
 	var/list/repeat = get_mannerism_list_for_name(mannerism, "repeat")
-	if(!initial?.len && !middle?.len && !prefix?.len && !repeat?.len)
+	var/list/filler = get_mannerism_list_for_name(mannerism, "filler")
+	if(!initial?.len && !middle?.len && !prefix?.len && !repeat?.len && !filler?.len)
 		return action_prefix ? "[action_prefix]*[message]" : message
 
 	// Character-based text procs are required here: copytext()/length() count bytes,
 	// so slicing a multi-byte (e.g. CJK) word cut a character in half and left a broken glyph.
-	var/list/words = splittext_char(message, " ")
+	// CJK text has no spaces, so it is split into short units instead of one giant word.
+	var/cjk_unit_size = 1
+	if(middle?.len || repeat?.len)
+		cjk_unit_size = 2
+	var/list/words = split_mannerism_units(message, cjk_unit_size)
+	var/has_cjk = FALSE
 	for(var/index in 1 to length(words))
 		var/word = words[index]
-		if(prefix?.len && word != "" && prob(20))
-			words[index] = "[pick(prefix)][word]"
+		if(!word)
 			continue
-		if(repeat?.len && length_char(word) > 3 && prob(25))
+		var/lead_character = copytext_char(word, 1, 2)
+		if(!mannerism_is_cjk_char(lead_character) && !mannerism_is_letter_char(lead_character))
+			continue
+		var/cjk_word = mannerism_is_cjk_char(lead_character)
+		if(cjk_word)
+			has_cjk = TRUE
+		var/word_length = length_char(word)
+		if(prefix?.len && prob(20))
+			// Hesitant prefixes "..." before a word; CJK units are single characters, so it only
+			// goes in front of the first character of a run instead of before every one of them.
+			var/prefix_allowed = !cjk_word
+			if(cjk_word)
+				prefix_allowed = (index == 1) || !mannerism_is_cjk_char(copytext_char(words[index - 1], 1, 2))
+			if(prefix_allowed)
+				words[index] = "[pick(prefix)][word]"
+				continue
+		if(repeat?.len && (word_length > 3 || (cjk_word && word_length >= 2)) && prob(25))
 			var/initial_syllable = copytext_char(word, 1, 3)
 			words[index] = "[initial_syllable][pick(repeat)][initial_syllable]-[word]"
 			continue
 		if(initial?.len && prob(25))
-			var/first_letter = copytext_char(word, 1, 2)
-			if(first_letter && first_letter != "<")
-				words[index] = "[first_letter][pick(initial)][word]"
-				continue
-		if(middle?.len && length_char(word) > 3 && prob(20))
-			var/insertion_point = rand(2, length_char(word) - 1)
+			words[index] = "[lead_character][pick(initial)][word]"
+			continue
+		if(middle?.len && (word_length > 3 || (cjk_word && word_length >= 2)) && prob(20))
+			var/insertion_point = (word_length > 2) ? rand(2, word_length - 1) : 2
 			words[index] = "[copytext_char(word, 1, insertion_point)][pick(middle)][copytext_char(word, insertion_point)]"
-	message = jointext(words, " ")
+	// Hesitation sounds ("um", "uh") are dropped in between characters and wrapped in
+	// ellipses, so they read as a pause instead of an extra word.
+	if(filler?.len && has_cjk)
+		var/list/filler_points = list()
+		if(length(words) > 2)
+			for(var/index in 2 to length(words) - 1)
+				if(!mannerism_is_cjk_char(copytext_char(words[index], 1, 2)))
+					continue
+				if(!mannerism_is_cjk_char(copytext_char(words[index - 1], 1, 2)))
+					continue
+				filler_points += index
+		if(filler_points.len && prob(70))
+			var/point = pick(filler_points)
+			words[point] = "...[pick(filler)]...[words[point]]"
+		if(prob(50))
+			var/last_index = length(words)
+			if(last_index > 1 && !mannerism_is_cjk_char(copytext_char(words[last_index], 1, 2)))
+				last_index--
+			words[last_index] = "[words[last_index]]...[pick(filler)]"
+	message = jointext(words, "")
 	return action_prefix ? "[action_prefix]*[message]" : message
 
 /proc/apply_mannerism_pipeline(message, list/multiword, list/fullword, list/startword, list/endword, list/syllable)

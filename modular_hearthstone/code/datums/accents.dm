@@ -33,7 +33,8 @@ GLOBAL_LIST_INIT(character_mannerisms, list(
 	"Stutter",
 	"Heavy Stutter",
 	"Lisp",
-	"Hesitant"))
+	"Hesitant",
+	"Complex Stutter"))
 
 // Global mapping of accent names to their font span lists
 GLOBAL_LIST_INIT(accent_spans, list(
