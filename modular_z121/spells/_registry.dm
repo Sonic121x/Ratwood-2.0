@@ -16,7 +16,7 @@ GLOBAL_LIST_INIT(custom_learnable_spells, list(
 	/datum/action/cooldown/spell/z121/invoked/harmless_dismemberment,
 	/datum/action/cooldown/spell/z121/invoked/heal_pristine,
 	/datum/action/cooldown/spell/z121/invoked/insight_all_things,
-	/datum/action/cooldown/spell/z121/invoked/legilimency,
+//	/datum/action/cooldown/spell/z121/invoked/legilimency,
 	/datum/action/cooldown/spell/z121/invoked/clearwater_spring,
 	/datum/action/cooldown/spell/z121/invoked/cleaning,
 	/datum/action/cooldown/spell/z121/invoked/dash,
@@ -34,7 +34,7 @@ GLOBAL_LIST_INIT(custom_learnable_spells, list(
 	/datum/action/cooldown/spell/z121/invoked/thousand_arrows,
 	/datum/action/cooldown/spell/z121/self/void_clone,
 	/datum/action/cooldown/spell/z121/self/weather_control, // 自定义 T3：掌控天时（晴/雨/雪）
-	/datum/action/cooldown/spell/z121/invoked/xylix_laughter,
+//	/datum/action/cooldown/spell/z121/invoked/xylix_laughter,
 	/datum/action/cooldown/spell/z121/invoked/xray_vision,
 	/datum/action/cooldown/spell/z121/invoked/yixinghuanying,
 ))
