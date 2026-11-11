@@ -7,5 +7,6 @@
     "initial": [],
     "middle": [],
     "repeat": [],
-    "prefix": ["... "]
+    "prefix": ["... "],
+    "filler": []
 }
