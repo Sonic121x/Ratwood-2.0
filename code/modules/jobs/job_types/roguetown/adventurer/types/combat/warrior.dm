@@ -501,13 +501,17 @@
 	H.verbs |= /mob/living/carbon/human/proc/faith_test //Allows the Exorcist to interrogate others for their faith. Trait's agnostically worded, to allow more flexiable usage by Pantheoneers and Ascendants in this role.
 	H.verbs |= /mob/living/carbon/human/proc/torture_victim //Not as scary as it sounds. Mostly. Okay, just a little bit.
 	if(H.mind)
-		var/silver = list("银匕首","白银短剑","白银单手剑","白银刺剑","白银长剑","白银阔剑","银制行刑剑","白银钉头锤","白银战锤","白银晨星连枷","白银巨型连枷，最低13力量","银鞭","银软剑","白银战斧","白银长柄斧","银矛","银头长杖")
+		var/silver = list("银匕首","白银短刀","白银短剑","白银单手剑","白银小太刀","白银环刀","白银刺剑","白银长剑","白银阔剑","银制行刑剑","白银双手刀","白银钉头锤","白银战锤","白银晨星连枷","白银巨型连枷，最低13力量","银鞭","银软剑","白银战斧","白银长柄斧","银矛","银头长杖")
 		var/silver_choice = input(H, "选择你的武器。", "整备兵刃。") as anything in silver //Trim down to five or six choices, later? See what's the most popular, first. Gives people a chance to experiment with all of the new silver weapons.
 		switch(silver_choice)
 			if("银匕首")
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/huntingknife/idagger/silver
 				beltr = /obj/item/rogueweapon/scabbard/sheath
+			if("白银短刀")
+				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_JOURNEYMAN, TRUE)
+				r_hand = /obj/item/rogueweapon/huntingknife/idagger/silver/kazengun
+				beltr = /obj/item/rogueweapon/scabbard/sheath/kazengun
 			if("白银短剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/sword/short/silver
@@ -516,6 +520,14 @@
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/sword/silver
 				beltr = /obj/item/rogueweapon/scabbard/sword
+			if("白银小太刀")
+				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
+				r_hand = /obj/item/rogueweapon/sword/short/silver/kazengun
+				beltr = /obj/item/rogueweapon/scabbard/sword/kazengun/kodachi
+			if("白银环刀")
+				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
+				r_hand = /obj/item/rogueweapon/sword/sabre/mulyeog/silver
+				beltr = /obj/item/rogueweapon/scabbard/sword/kazengun
 			if("白银刺剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/sword/rapier/silver
@@ -531,6 +543,10 @@
 			if("银制行刑剑")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/sword/long/exe/silver
+			if("白银双手刀")
+				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
+				r_hand = /obj/item/rogueweapon/sword/long/kriegmesser/silver/ssangsudo
+				beltr = /obj/item/rogueweapon/scabbard/sword/kazengun/noparry
 			if("白银钉头锤")
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				r_hand = /obj/item/rogueweapon/mace/steel/silver

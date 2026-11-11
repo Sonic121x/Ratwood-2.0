@@ -697,6 +697,14 @@
 	sheathe_icon = "tanto"
 	picklvl = 1.2
 
+/obj/item/rogueweapon/huntingknife/idagger/silver/kazengun
+	name = "silver tanto"
+	desc = "A silver dagger imported from the Kazengunese archipelago. A sturdy blade bears a subtle curve, set into a decorated circular crossguard. A waxed \
+	wrapping of twisted cordage provides a secure grip."
+	icon_state = "silvereastdagger"
+	sheathe_icon = "silver_tanto"
+	picklvl = 1.2
+
 /obj/item/rogueweapon/huntingknife/idagger/steel/elvish
 	name = "精灵短剑"
 	desc = "一柄精灵设计的波浪刃匕首，其优雅的钢制工艺唯有那暗藏杀机的致命性堪与之匹敌。"
