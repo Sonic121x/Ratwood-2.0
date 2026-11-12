@@ -55,6 +55,7 @@
 #include "rites/pestra_plague_disaster.dm"
 #include "rites/victory_glow.dm"
 #include "spells/arcane/anti_spoil.dm"
+#include "spells/arcane/aphrodisiac_spell.dm"
 #include "spells/arcane/group_buffs.dm"
 #include "spells/arcane/shrink.dm"
 #include "spells/arcane/group_mindlink.dm"
