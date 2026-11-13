@@ -745,7 +745,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<br><b>豺狼人自定义:</b><a href='?_src_=prefs;preference=gnoll_prefs;task=input'>豺狼人偏好</a>"
 
 /*
-			dat += "<br><br><b>Special Names:</b><BR>"
+			dat += "<br><br><b>特殊名称：</b><BR>"
 			var/old_group
 			for(var/custom_name_id in GLOB.preferences_custom_names)
 				var/namedata = GLOB.preferences_custom_names[custom_name_id]
@@ -757,7 +757,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				dat += "<a href ='?_src_=prefs;preference=[custom_name_id];task=input'><b>[namedata["pref_name"]]:</b> [custom_names[custom_name_id]]</a> "
 			dat += "<br><br>"
 
-			dat += "<b>Custom Job Preferences:</b><BR>"
+			dat += "<b>自定义职业偏好：</b><BR>"
 			dat += "<a href='?_src_=prefs;preference=ai_core_icon;task=input'><b>偏好的 AI 核心外观：</b> [preferred_ai_core_display]</a><br>"
 			dat += "<a href='?_src_=prefs;preference=sec_dept;task=input'><b>偏好的安保部门：</b> [prefered_security_department]</a><BR></td>"
 */
@@ -820,7 +820,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<br><b>昵称颜色: </b> <a href='?_src_=prefs;preference=highlight_color;task=input'>更改</a>"
 			dat += "<br><b>语音音高: </b><a href='?_src_=prefs;preference=voice_pitch;task=input'>[voice_pitch]</a>"
 			dat += "<br><b>口音:</b> <a href='?_src_=prefs;preference=char_accent;task=input'>[char_accent == "No accent" ? "无口音" : char_accent]</a>"
-			dat += "<br><b>措辞习惯:</b> <a href='?_src_=prefs;preference=char_mannerism;task=input'>[char_mannerism == "No mannerism" ? "无特殊措辞习惯" : char_mannerism]</a>"
+			dat += "<br><b>措辞习惯:</b> <a href='?_src_=prefs;preference=char_mannerism;task=input'>[get_mannerism_display_name(char_mannerism)]</a>"
 			dat += "<br><b>特征:</b> <a href='?_src_=prefs;preference=customizers;task=menu'>更改</a>"
 			dat += "<br><b>图像缩放:</b><a href='?_src_=prefs;preference=body_size;task=input'>[(features["body_size"] * 100)]%</a>"
 			dat += "<br><b>斑纹:</b> <a href='?_src_=prefs;preference=markings;task=menu'>更改</a>"
@@ -943,11 +943,11 @@ GLOBAL_LIST_EMPTY(chosen_names)
 					if (p_map in config.maplist)
 						var/datum/map_config/VM = config.maplist[p_map]
 						if (!VM)
-							p_map += " (No longer exists)"
+							p_map += "（已不存在）"
 						else
 							p_map = VM.map_name
 					else
-						p_map += " (No longer exists)"
+						p_map += "（已不存在）"
 				if(CONFIG_GET(flag/preference_map_voting))
 					dat += "<b>偏好地图：</b> <a href='?_src_=prefs;preference=preferred_map;task=input'>[p_map]</a><br>"
 */
@@ -2722,7 +2722,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 					var/selectedaccent = tgui_input_list(user, "选择您角色的口音：", "角色偏好", GLOB.character_accents)
 					if(selectedaccent)
 						char_accent = selectedaccent
-						var/test_message = "Hello friend, yes this is good. My Lord rides through the Duchy with servants and soldiers; the captain and sergeant guard the church while archers and cavalry hold the north road. My sword and shield are sharp, the water flows refreshingly, and we thank the Duke before saying goodbye."
+						var/test_message = "你好，朋友，是的，这很好。我的领主带着仆从和士兵骑马穿过公国；队长和军士守卫教堂，弓箭手和骑兵把守北方道路。我的剑刃锋利，盾牌坚固，流水清凉。我们向公爵致谢，随后道别。"
 						var/preview = apply_accent_preview(selectedaccent, test_message)
 						var/preview_text
 						if(preview)
@@ -2739,10 +2739,10 @@ GLOBAL_LIST_EMPTY(chosen_names)
 						to_chat(user, span_info("<b>[selectedaccent] 预览：</b> [preview_text]"))
 
 				if("char_mannerism")
-					var/selected_mannerism = tgui_input_list(user, "选择你角色的说话习惯：", "角色偏好", GLOB.character_mannerisms)
+					var/selected_mannerism = input_mannerism_display(user, GLOB.character_mannerisms)
 					if(selected_mannerism)
 						char_mannerism = selected_mannerism
-						var/test_message = "Hello friend, yes this is good. My Lord rides through the Duchy with servants and soldiers; the captain and sergeant guard the church while archers and cavalry hold the north road. My sword and shield are sharp, the water flows refreshingly, and we thank the Duke before saying goodbye."
+						var/test_message = "你好，朋友，是的，这很好。我的领主带着仆从和士兵骑马穿过公国；队长和军士守卫教堂，弓箭手和骑兵把守北方道路。我的剑刃锋利，盾牌坚固，流水清凉。我们向公爵致谢，随后道别。"
 						var/accent_preview = apply_accent_preview(char_accent, test_message)
 						var/preview_message = accent_preview ? "[accent_preview]" : test_message
 						var/preview_text = apply_mannerism_preview(selected_mannerism, preview_message)
@@ -2753,7 +2753,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 							if(accent_preview_span)
 								preview_text = "<span class='[accent_preview_span]'>[preview_text]</span>"
 
-						to_chat(user, span_info("<b>[selected_mannerism] 预览：</b> [preview_text]"))
+						to_chat(user, span_info("<b>[get_mannerism_display_name(selected_mannerism)] 预览：</b> [preview_text]"))
 
 				if("ooccolor")
 					var/new_ooccolor = color_pick_sanitized(user, "选择您的 OOC 颜色：", "游戏偏好", ooccolor)

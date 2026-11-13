@@ -22,8 +22,8 @@
 		var/datum/antagonist/zombie/was_zombie = get_deadite_antag_for_body(M)
 		if(was_zombie)
 			if(remove_rot(target = M, user = M, method = "alchemy", damage = 0,
-			success_message = "The rot pours out from the pores of [M].",
-			fail_message = "The rot fail to leave the body.", lethal = FALSE))
+			success_message = "腐质从[M]的毛孔中涌出。",
+			fail_message = "腐质未能排出体外。", lethal = FALSE))
 				M.remove_status_effect(/datum/status_effect/debuff/rotted_zombie)
 		M.remove_status_effect(/datum/status_effect/zombie_infection) 
 		M.remove_status_effect(/datum/status_effect/debuff/rotted)	//Removes de-rot debuff

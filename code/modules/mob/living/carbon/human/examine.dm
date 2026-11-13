@@ -1052,6 +1052,9 @@
 			display1 = span_info("这是 <EM>[used_name]</EM>，[race_name]。")
 		. += "[display1] [display2]"
 
+		if(origin && origin != "Unknown")
+			. += span_info("[capitalize(m2)]祖籍是[origin]。")
+
 		if(HAS_TRAIT(src, TRAIT_WITCH))
 			if(HAS_TRAIT(user, TRAIT_NOBLE) || HAS_TRAIT(user, TRAIT_INQUISITION) || HAS_TRAIT(user, TRAIT_WITCH))
 				. += span_warning("一个女巫！她们的存在带来令人不安的气息。")
@@ -1164,8 +1167,8 @@
 					. += (user_side == mob_side) ? span_notice("同是[their_god.name]的支持者!") : span_userdanger("可耻的[their_god.name]支持者!")
 
 
-		if(origin && origin != "Unknown")
-			. += span_info("[capitalize(m2)]血统源自[origin].")
+		if(HAS_TRAIT(src, TRAIT_OVERWEIGHT))
+			. += span_info(span_yellow("[m1]挺胖的。"))
 
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user

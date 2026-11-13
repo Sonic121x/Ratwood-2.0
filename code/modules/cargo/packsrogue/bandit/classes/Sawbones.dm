@@ -220,7 +220,7 @@
 	contains = list(/obj/item/reagent_containers/glass/bottle/rogue/strong_antidote)
 
 /datum/supply_pack/rogue/Sawbones/rotcure
-	name = "Rot Cure Potion"
+	name = "腐坏解药"
 	cost = 100
 	contains = list(/obj/item/reagent_containers/glass/bottle/alchemical/rogue/rotcure)
 

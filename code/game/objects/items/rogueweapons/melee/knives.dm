@@ -698,9 +698,9 @@
 	picklvl = 1.2
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/kazengun
-	name = "silver tanto"
-	desc = "A silver dagger imported from the Kazengunese archipelago. A sturdy blade bears a subtle curve, set into a decorated circular crossguard. A waxed \
-	wrapping of twisted cordage provides a secure grip."
+	name = "白银短刀"
+	desc = "从风郡群岛进口的银制短刀。坚固的刀身微微弯曲，装配着精雕的圆形护手。\
+	缠绕在刀柄上的上蜡绞绳让握持更加稳固。"
 	icon_state = "silvereastdagger"
 	sheathe_icon = "silver_tanto"
 	picklvl = 1.2

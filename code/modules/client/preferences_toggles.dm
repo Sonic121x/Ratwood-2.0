@@ -402,16 +402,16 @@
 			to_chat(src, "你不再会连续尝试进食、饮用或喂食。")
 
 /client/verb/toggle_autoblooddrink()
-	set category = "Options"
-	set name = "Toggle Auto Blood Drinking"
+	set category = "选项"
+	set name = "切换自动吸血"
 	set hidden = 1
 	if(prefs)
 		prefs.autoblooddrink = !prefs.autoblooddrink
 		prefs.save_preferences()
 		if(prefs.autoblooddrink)
-			to_chat(src, "You will now automatically repeat blood drinking from a grabbed limb.")
+			to_chat(src, "你现在会自动反复吸取所抓肢体的血液。")
 		else
-			to_chat(src, "You will no longer automatically repeat blood drinking.")
+			to_chat(src, "你不再自动反复吸血。")
 
 /client/verb/toggle_autowoodcut()
 	set category = "选项"
@@ -709,7 +709,7 @@
 	to_chat(src, "其他玩家现在无法为你挤乳。")
 
 /client/verb/toggle_manticore_tail_messages_pref()
-	set category = "Options"
+	set category = "选项"
 	set name = "显示或隐藏尾口内容"
 	set hidden = 1
 	if(!prefs)

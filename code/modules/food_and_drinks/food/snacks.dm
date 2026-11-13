@@ -265,6 +265,15 @@ All foods are distributed among various categories. Use common sense.
 	if(!eater)
 		return
 
+	var/datum/charflaw/addiction/corpulent/gluttony = eater.get_flaw(/datum/charflaw/addiction/corpulent)
+	if(gluttony && !gluttony.sated)
+		gluttony.bites += 1 + (faretype >= FARE_FINE)
+		if(gluttony.bites >= gluttony.bites_needed)
+			gluttony.bites = 0
+			eater.sate_addiction(/datum/charflaw/addiction/corpulent)
+		else
+			to_chat(eater, span_warning("我还想再吃点……"))
+
 	if(HAS_TRAIT(eater, TRAIT_HEMOPHAGE)) //trait desc states that normal food would make them ill, adjusted accordingly
 		eater.adjustToxLoss(2)
 
@@ -391,18 +400,18 @@ All foods are distributed among various categories. Use common sense.
 
 		if(M == user)								//If you're eating it myself.
 /*			if(junkiness && M.satiety < -150 && M.nutrition > NUTRITION_LEVEL_STARVING + 50 && !HAS_TRAIT(user, TRAIT_VORACIOUS))
-				to_chat(M, span_warning("I don't feel like eating any more junk food at the moment!"))
+				to_chat(M, span_warning("我现在不想再吃垃圾食品了！"))
 				return FALSE
 			else if(fullness <= 50)
-				user.visible_message(span_notice("[user] hungrily [eatverb]s \the [src], gobbling it down!"), span_notice("I hungrily [eatverb] \the [src], gobbling it down!"))
+				user.visible_message(span_notice("[user]饥饿地[eatverb][src]，狼吞虎咽地吃了下去！"), span_notice("我饥饿地[eatverb][src]，狼吞虎咽地吃了下去！"))
 			else if(fullness > 50 && fullness < 150)
-				user.visible_message(span_notice("[user] hungrily [eatverb]s \the [src]."), span_notice("I hungrily [eatverb] \the [src]."))
+				user.visible_message(span_notice("[user]饥饿地[eatverb][src]。"), span_notice("我饥饿地[eatverb][src]。"))
 			else if(fullness > 150 && fullness < 500)
-				user.visible_message(span_notice("[user] [eatverb]s \the [src]."), span_notice("I [eatverb] \the [src]."))
+				user.visible_message(span_notice("[user][eatverb][src]。"), span_notice("我[eatverb][src]。"))
 			else if(fullness > 500 && fullness < 600)
-				user.visible_message(span_notice("[user] unwillingly [eatverb]s a bit of \the [src]."), span_notice("I unwillingly [eatverb] a bit of \the [src]."))
+				user.visible_message(span_notice("[user]不情愿地[eatverb]一点[src]。"), span_notice("我不情愿地[eatverb]一点[src]。"))
 			else if(fullness > (600 * (1 + M.overeatduration / 2000)))	// The more you eat - the more you can eat
-				user.visible_message(span_warning("[user] cannot force any more of \the [src] to go down [user.p_their()] throat!"), span_warning("I cannot force any more of \the [src] to go down your throat!"))
+				user.visible_message(span_warning("[user]再也咽不下[src]了！"), span_warning("我再也咽不下[src]了！"))
 				return FALSE
 			if(HAS_TRAIT(M, TRAIT_VORACIOUS))
 				M.changeNext_move(CLICK_CD_MELEE * 0.5)*/
@@ -415,11 +424,11 @@ All foods are distributed among various categories. Use common sense.
 					user.visible_message(span_notice("[user]饥饿地[eatverb]\the [src]，狼吞虎咽地吃了下去！"), span_notice("我饥饿地[eatverb]\the [src]，狼吞虎咽地吃了下去！"))
 					M.changeNext_move(CLICK_CD_MELEE * 0.5)
 /*			if(M.energy <= 50)
-				user.visible_message(span_notice("[user] hungrily [eatverb]s \the [src], gobbling it down!"), span_notice("I hungrily [eatverb] \the [src], gobbling it down!"))
+				user.visible_message(span_notice("[user]饥饿地[eatverb][src]，狼吞虎咽地吃了下去！"), span_notice("我饥饿地[eatverb][src]，狼吞虎咽地吃了下去！"))
 			else if(M.energy > 50 && M.energy < 500)
-				user.visible_message(span_notice("[user] hungrily [eatverb]s \the [src]."), span_notice("I hungrily [eatverb] \the [src]."))
+				user.visible_message(span_notice("[user]饥饿地[eatverb][src]。"), span_notice("我饥饿地[eatverb][src]。"))
 			else if(M.energy > 500 && M.energy < 1000)
-				user.visible_message(span_notice("[user] [eatverb]s \the [src]."), span_notice("I [eatverb] \the [src]."))
+				user.visible_message(span_notice("[user][eatverb][src]。"), span_notice("我[eatverb][src]。"))
 			if(HAS_TRAIT(M, TRAIT_VORACIOUS))
 			M.changeNext_move(CLICK_CD_MELEE * 0.5) nom nom nom*/
 		else
@@ -596,13 +605,13 @@ All foods are distributed among various categories. Use common sense.
 		var/obj/item/reagent_containers/food/snacks/S = W
 		if(custom_food_type && ispath(custom_food_type))
 			if(S.w_class > WEIGHT_CLASS_SMALL)
-				to_chat(user, span_warning("[S] is too big for [src]!"))
+				to_chat(user, span_warning("[S]太大了，[src]装不下！"))
 				return 0
 			if(!S.customfoodfilling || istype(W, /obj/item/reagent_containers/food/snacks/customizable) || istype(W, /obj/item/reagent_containers/food/snacks/pizzaslice/custom) || istype(W, /obj/item/reagent_containers/food/snacks/cakeslice/custom))
-				to_chat(user, span_warning("[src] can't be filled with [S]!"))
+				to_chat(user, span_warning("[src]不能填入[S]！"))
 				return 0
 			if(contents.len >= 20)
-				to_chat(user, span_warning("I can't add more ingredients to [src]!"))
+				to_chat(user, span_warning("我无法再往[src]里添加食材了！"))
 				return 0
 			var/obj/item/reagent_containers/food/snacks/customizable/C = new custom_food_type(get_turf(src))
 			C.initialize_custom_food(src, S, user)

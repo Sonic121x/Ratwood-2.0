@@ -2153,7 +2153,7 @@
 				defender.flash_fullscreen("whiteflash")
 				var/obj/item/I = defender.get_active_held_item()
 				defender.process_clash(attacker, I, null)
-				owner.visible_message("<span class='crit'><b>Critical hit!</b> [owner] catches [attacker]'s bare-handed strike and SNAPS [attacker.p_their()] [parse_zone(arm_zone)]!")
+				owner.visible_message("<span class='crit'><b>暴击！</b> [owner]挡住[attacker]的徒手攻击，折断了[attacker.p_their()]的[parse_zone(arm_zone)]！")
 		playsound(owner, 'sound/combat/limbguard_struck.ogg', 100, TRUE)
 		remove_self()
 		return COMPONENT_HAND_NO_ATTACK

@@ -1015,6 +1015,7 @@
 	min_cold_protection_temperature = BODYTEMP_COLD_LEVEL_ONE_MAX
 	heat_protection = HEAD
 	max_heat_protection_temperature = BODYTEMP_HEAT_LEVEL_ONE_MAX
+	
 /obj/item/clothing/cloak/raincloak/furcloak
 	name = "毛皮斗篷"
 	desc = "这件华美斗篷由兽皮制成，十分柔软而温暖。"
