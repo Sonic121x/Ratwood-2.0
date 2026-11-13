@@ -302,8 +302,8 @@
 	icon_state = "nymphomaniac"
 
 /datum/charflaw/addiction/corpulent
-	name = "Corpulent"
-	desc = "I've indulged deeply in lyfe's pleasures, and my waistline has taken a toll."
+	name = "臃肿"
+	desc = "我沉溺于人生的种种享乐，腰围也因此付出了代价。"
 	time = 50 MINUTES
 	needsate_text = "My stomach growls with hunger."
 	debuff = /datum/status_effect/debuff/addiction/corpulent
