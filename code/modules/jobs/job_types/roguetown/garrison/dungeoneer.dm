@@ -21,7 +21,7 @@
 	announce_latejoin = FALSE
 	outfit = /datum/outfit/job/roguetown/dungeoneer
 	give_bank_account = 25
-	min_pq = 15
+	min_pq = 9 //15
 	max_pq = null
 	round_contrib_points = 2
 	social_rank = SOCIAL_RANK_YEOMAN
