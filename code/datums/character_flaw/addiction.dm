@@ -300,3 +300,30 @@
 	name = "巴奥莎狂热"
 	desc = "那道遭诅咒的符印。它在我的血肉上灼灼发亮，把我下腹烧得满是痛苦而难耐的释放欲望。"
 	icon_state = "nymphomaniac"
+
+/datum/charflaw/addiction/corpulent
+	name = "Corpulent"
+	desc = "I've indulged deeply in lyfe's pleasures, and my waistline has taken a toll."
+	time = 50 MINUTES
+	needsate_text = "My stomach growls with hunger."
+	debuff = /datum/status_effect/debuff/addiction/corpulent
+	var/bites = 0
+	var/bites_needed = 12
+
+/datum/charflaw/addiction/corpulent/on_mob_creation(mob/user)
+	..()
+	ADD_TRAIT(user, TRAIT_OVERWEIGHT, TRAIT_GENERIC)
+
+/datum/charflaw/addiction/corpulent/on_removal(mob/user)
+	..()
+	REMOVE_TRAIT(user, TRAIT_OVERWEIGHT, TRAIT_GENERIC)
+
+/datum/status_effect/debuff/addiction/corpulent
+	id = "addiction_corpulent"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/addiction/corpulent
+	effectedstats = list(STATKEY_SPD = -2)
+
+/atom/movable/screen/alert/status_effect/debuff/addiction/corpulent
+	name = "Gluttony"
+	desc = "I'm really feeling my weight... So hungry."
+	icon_state = "debuff"

@@ -49,22 +49,6 @@
 			"[user]将灵辉注入[target]的脏腑。",
 			"[user]将灵辉注入[target]的脏腑。")
 		return FALSE
-	if(istype(user, /mob/living)) 
-		var/mob/living/LU = user
-		var/excomm_found = FALSE
-		for(var/excomm_name in GLOB.excommunicated_players)
-			var/clean_excomm = LOWER_TEXT(trim(excomm_name))
-			var/clean_target = LOWER_TEXT(trim(target.real_name))
-			if(clean_excomm == clean_target)
-				excomm_found = TRUE
-				break
-		if(ispath(LU.patron?.type, /datum/patron/divine) && excomm_found)
-			display_results(user, target,
-				span_warning("灵辉退缩了！内克拉不愿归还[target]的灵魂。"),
-				"[user]尝试向[target]注入灵辉，却遭到了排斥。",
-				"[user]尝试向[target]注入灵辉，却遭到了排斥。")
-			target.visible_message(span_danger("[target]的身体剧烈抽搐，排斥着光芒！"), span_warning("情况很不对劲……"))
-			return FALSE
 	target.adjustOxyLoss(-target.getOxyLoss()) //Ye Olde CPR
 	if(!target.revive(full_heal = FALSE))
 		display_results(user, target, span_notice("灵辉不愿与[target]的心脏融合。对方的伤势恐怕仍然太重。"),

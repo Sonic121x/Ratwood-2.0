@@ -12,6 +12,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	"粘人"=/datum/charflaw/clingy,
 	"色盲 (+2 特质点)"=/datum/charflaw/colorblind,
 	"顺从"=/datum/charflaw/compliant,
+	"臃肿"=/datum/charflaw/addiction/corpulent,
 	"致命脆弱 (+2 特质点)"=/datum/charflaw/critweakness,
 	"独眼 (左) (+2 特质点)"=/datum/charflaw/noeyel,
 	"独眼 (右) (+2 特质点)"=/datum/charflaw/noeyer,
@@ -771,7 +772,6 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	..()
 	REMOVE_TRAIT(user, TRAIT_HEMOPHAGE, TRAIT_GENERIC)
 	REMOVE_TRAIT(user, TRAIT_VAMPBITE, TRAIT_GENERIC)
-
 
 /datum/charflaw/weak
 	name = "体弱"

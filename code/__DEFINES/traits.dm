@@ -77,6 +77,7 @@
 /// Trait given only temporarily to prevent being able to Z fall (at all)
 #define TRAIT_PREVENT_Z_FALL "阻止Z轴坠落" // DO NOT GIVE THIS UNDER NORMAL CIRCUMSTANCES
 #define TRAIT_MISSING_NOSE "失鼻" //halved stamina regeneration
+#define TRAIT_OVERWEIGHT "臃肿"
 #define TRAIT_DISFIGURED "毁容"
 #define TRAIT_SPELLCOCKBLOCK "咒缚" //prevents spellcasting
 #define TRAIT_ANTIMAGIC	"反魔"
@@ -534,6 +535,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_GRABIMMUNE = span_warning("凭借惊人的蛮力，或滑不留手的灵巧，别人根本抓不住我！"),
 	TRAIT_DISFIGURED = span_warning("没人认得出我了……"),
 	TRAIT_MISSING_NOSE = span_warning("我连呼吸都很吃力。"),
+	TRAIT_OVERWEIGHT = span_warning("我沉溺于人生的种种享乐，腰围也因此付出了代价。"),
 	TRAIT_SPELLCOCKBLOCK = span_warning("我无法施展任何法术。"),
 	TRAIT_ANTIMAGIC = "大多数魔法都对我不起作用。",
 	TRAIT_ANTISCRYING = "大多数窥探类魔法都无法锁定我。",
