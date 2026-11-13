@@ -115,6 +115,7 @@
 
 	var/list/gameplay_entries = list(
 		list("id" = "autoconsume", "label" = "自动进食", "enabled" = !!owner.prefs.autoconsume, "desc" = "自动重复进食或喂食操作。"),
+		list("id" = "autoblooddrink", "label" = "自动吸血", "enabled" = !!owner.prefs.autoblooddrink, "desc" = "自动重复吸血。"),
 		list("id" = "autowoodcut", "label" = "自动伐木", "enabled" = !!owner.prefs.autowoodcut, "desc" = "首次挥砍后自动继续砍树。"),
 		list("id" = "autopicking", "label" = "自动采矿", "enabled" = !!owner.prefs.autopicking, "desc" = "手持镐点击或撞上岩壁后，自动继续采矿。"),
 		list("id" = "show_rolls", "label" = "显示掷骰", "enabled" = !!owner.prefs.showrolls, "desc" = "在聊天中显示战斗与检定的掷骰详情。"),
@@ -211,6 +212,8 @@
 				owner.toggle_xptext()
 			if("autoconsume")
 				owner.autoconsume()
+			if("autoblooddrink")
+				owner.toggle_autoblooddrink()
 			if("autowoodcut")
 				owner.toggle_autowoodcut()
 			if("autopicking")
@@ -397,6 +400,18 @@
 			to_chat(src, "你现在会连续尝试进食、饮用或喂食。")
 		else
 			to_chat(src, "你不再会连续尝试进食、饮用或喂食。")
+
+/client/verb/toggle_autoblooddrink()
+	set category = "Options"
+	set name = "Toggle Auto Blood Drinking"
+	set hidden = 1
+	if(prefs)
+		prefs.autoblooddrink = !prefs.autoblooddrink
+		prefs.save_preferences()
+		if(prefs.autoblooddrink)
+			to_chat(src, "You will now automatically repeat blood drinking from a grabbed limb.")
+		else
+			to_chat(src, "You will no longer automatically repeat blood drinking.")
 
 /client/verb/toggle_autowoodcut()
 	set category = "选项"

@@ -361,6 +361,7 @@
 #define TRAIT_SWIFTCAST "Spell Acceleration"
 #define TRAIT_COMBAT_AWARE	"战场警觉"
 #define TRAIT_SILVER_WEAK "惧银"
+#define TRAIT_BITENORECOIL "坚齿"
 /// Held while wearing a silver psycross in a valid slot. Wards off a vampire trying to drink from you.
 #define TRAIT_WORN_SILVER_PSICROSS "佩戴银质普赛圣十字"
 #define TRAIT_ASSASSIN	"刺客"
@@ -738,7 +739,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LOCAL_KNOWLEDGE = span_info("我在费伦提亚住得够久，足以避开此地的危险。"),
 	TRAIT_SOFT_FOOTED = span_info("在遥远的风郡，走路声响大是不礼貌的。我的脚步轻柔而轻巧。"),
 	TRAIT_ANCESTOR_GUARDIAN = span_info("在阿瓦尔，我们敬奉先祖，而他们护佑我们免遭危险。时不时的，他们会在战斗中指引我的手。"),
-	TRAIT_LIGHT_SENSITIVITY = span_info("住在幽暗地域昏暗的洞窟中，使我的眼睛有所适应。虽然我在黑暗中看得清楚，但强光对我而言是克星！")
+	TRAIT_LIGHT_SENSITIVITY = span_info("住在幽暗地域昏暗的洞窟中，使我的眼睛有所适应。虽然我在黑暗中看得清楚，但强光对我而言是克星！"),
+	TRAIT_BITENORECOIL = span_info("我的獠牙坚固，啃咬时不会因反冲而退缩。")
 ))
 
 // trait accessor defines

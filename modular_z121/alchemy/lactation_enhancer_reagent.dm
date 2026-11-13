@@ -20,8 +20,8 @@
 /datum/reagent/medicine/lactation_enhancer
 	// 中文：试剂显示名称（中文，贴合本分支的本地化）。
 	name = "催乳剂"											// In-game name shown to players.
-	// 中文：检视/说明文本，描述其“加速泌乳恢复”的功效。
-	description = "一种以骨粉与鲜奶熬煮的乳白色温润药液，能在一段时间内显著加快泌乳的恢复速度。"	// Flavour + mechanical hint.
+	// 中文：检视/说明文本，描述其“加速泌乳恢复”的功效；也提到对产奶牲畜的作用。
+	description = "一种以骨粉与鲜奶熬煮的乳白色温润药液，能在一段时间内显著加快泌乳的恢复速度；倾倒在奶牛等产奶牲畜身上，也能让它们短暂增产乳汁。"	// Flavour + mechanical hint.
 	// 中文：物理状态为液体，影响泼洒/容器表现。
 	reagent_state = LIQUID									// It is a drinkable liquid.
 	// 中文：颜色设为乳白色，锅中的药液也会因此染成乳白色。
@@ -94,3 +94,64 @@
 /obj/item/reagent_containers/glass/bottle/rogue/lactation_enhancer
 	// 中文：瓶子里预装 50 单位催乳剂（与其它药水瓶一致的容量）。
 	list_reagents = list(/datum/reagent/medicine/lactation_enhancer = 50)	// Pre-filled with the potion.
+
+// ============================================================================
+// 产奶牲畜效果 — 把催乳剂用在奶牛/山羊等有 udder 的牲畜身上
+// ----------------------------------------------------------------------------
+// WHY 不走试剂代谢：simple_animal 不是 carbon，Life() 不会调用 reagents.metabolize，
+// 所以药剂对牲畜不能靠饮用生效。这里改成“把药液直接倾倒在牲畜身上”触发：
+// 每次消耗 10 单位药液，挂一个 60 秒的限时状态，每 2 秒往 udder 里补 1 单位奶。
+// 平衡：
+//   · 一次 10 单位 → 整瓶 50 单位最多用 5 次；一次最多 +30 单位奶。
+//   · 状态为 REFRESH，不叠加，重复倾倒只会重置计时，避免瞬间灌满。
+//   · udder 容量 100，add_reagent 会自动截断，不会凭空溢出。
+// ============================================================================
+
+/// 每次倾倒消耗的催乳剂量。
+#define LACTATION_ANIMAL_DOSE 10
+/// 状态持续时间内每拍补入的奶量。
+#define LACTATION_ANIMAL_MILK_PER_TICK 1
+
+/datum/status_effect/buff/lactation_enhancer_animal
+	id = "lactation_enhancer_animal"
+	duration = 60 SECONDS
+	tick_interval = 2 SECONDS
+	status_type = STATUS_EFFECT_REFRESH
+	alert_type = null	// 牲畜没有 HUD，不需要状态图标。
+
+/datum/status_effect/buff/lactation_enhancer_animal/on_apply()
+	. = ..()
+	if(!. || !istype(owner, /mob/living/simple_animal/hostile/retaliate/rogue))
+		return FALSE
+	var/mob/living/simple_animal/hostile/retaliate/rogue/animal = owner
+	return !isnull(animal.udder)
+
+/datum/status_effect/buff/lactation_enhancer_animal/tick()
+	if(!istype(owner, /mob/living/simple_animal/hostile/retaliate/rogue))
+		qdel(src)
+		return
+	var/mob/living/simple_animal/hostile/retaliate/rogue/animal = owner
+	if(!animal.udder || QDELETED(animal.udder))
+		qdel(src)
+		return
+	animal.udder.reagents.add_reagent(/datum/reagent/consumable/milk, LACTATION_ANIMAL_MILK_PER_TICK)
+
+// 中文：pre_attack 在牲畜自身的 attackby(挤奶) 之前触发，用来拦截“对牲畜使用药瓶”这一操作。
+//       只有瓶里确实还有足量催乳剂时才拦截；其余情况交回原逻辑(仍可用它挤奶)。
+/obj/item/reagent_containers/glass/bottle/rogue/lactation_enhancer/pre_attack(atom/A, mob/living/user, params)
+	if(istype(A, /mob/living/simple_animal/hostile/retaliate/rogue))
+		var/mob/living/simple_animal/hostile/retaliate/rogue/animal = A
+		if(animal.stat != DEAD && animal.udder && reagents?.has_reagent(/datum/reagent/medicine/lactation_enhancer, LACTATION_ANIMAL_DOSE))
+			if(closed)
+				to_chat(user, span_warning("得先拔掉 [src] 的瓶塞。"))
+				return TRUE
+			reagents.remove_reagent(/datum/reagent/medicine/lactation_enhancer, LACTATION_ANIMAL_DOSE)
+			animal.apply_status_effect(/datum/status_effect/buff/lactation_enhancer_animal)
+			animal.visible_message(
+				span_notice("[user] 将 [src] 里的乳白药液倾倒到 [animal] 身上。"),
+				span_notice("[animal] 抖了抖身子，乳房明显胀了起来。"))
+			return TRUE
+	return ..()
+
+#undef LACTATION_ANIMAL_DOSE
+#undef LACTATION_ANIMAL_MILK_PER_TICK

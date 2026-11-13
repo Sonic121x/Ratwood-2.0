@@ -4,6 +4,8 @@
 	icon = 'modular_twilight_axis/icons/obj/gwynt_objs.dmi'
 	icon_state = "gwint_deck"
 	w_class = WEIGHT_CLASS_SMALL
+	grid_width = 32
+	grid_height = 32
 	var/list/card_ids = list()
 	var/faction_id = CCG_FACTION_AZURIA
 	var/leader_id = "azuria_ducal_marshal"
@@ -528,6 +530,8 @@
 	icon = 'modular_twilight_axis/icons/obj/gwynt_objs.dmi'
 	icon_state = "gwint_card"
 	w_class = WEIGHT_CLASS_TINY
+	grid_width = 32
+	grid_height = 32
 	var/card_id
 
 /obj/item/ccg_card_single/proc/set_card(new_card_id)
@@ -568,6 +572,8 @@
 	icon = 'modular_twilight_axis/icons/obj/gwynt_objs.dmi'
 	icon_state = "gwint_card"
 	w_class = WEIGHT_CLASS_TINY
+	grid_width = 32
+	grid_height = 32
 	var/card_rarity = CCG_RARITY_RARE
 	var/limited_only = FALSE
 
@@ -609,10 +615,12 @@
 
 /obj/item/ccg_card_booster
 	name = "密封卡牌补充包"
-	desc = "内含三张随机收藏卡牌的密封补充包。"
+	desc = "内含五张随机收藏卡牌的密封补充包。"
 	icon = 'modular_twilight_axis/icons/obj/gwynt_objs.dmi'
 	icon_state = "gwint_card"
 	w_class = WEIGHT_CLASS_SMALL
+	grid_width = 32
+	grid_height = 32
 	var/list/card_weights = list(
 		"common_repeatable" = 8,
 		"common_limited" = 5,
@@ -624,7 +632,7 @@
 	var/turf/drop_turf = get_turf(user)
 	if(!drop_turf)
 		return
-	for(var/i in 1 to 3)
+	for(var/i in 1 to 5)
 		var/card_id = pick_random_card()
 		if(!card_id)
 			continue
@@ -669,7 +677,7 @@
 
 /obj/item/ccg_card_booster/premium
 	name = "高级密封卡牌补充包"
-	desc = "内含三张随机收藏卡牌的高级密封补充包。"
+	desc = "内含五张随机收藏卡牌的高级密封补充包。"
 	card_weights = list(
 		"common_repeatable" = 5,
 		"common_limited" = 8,
@@ -685,4 +693,3 @@
 
 /obj/item/ccg_card_single/unique_spy
 	card_id = "unique_spy"
-

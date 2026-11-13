@@ -1,17 +1,17 @@
 GLOBAL_LIST_INIT(custom_learnable_spells, list(
 	/datum/action/cooldown/spell/z121/invoked/anti_spoil, // 自定义 T1：防腐净化（复原腐坏食物为新鲜）
-	/datum/action/cooldown/spell/z121/invoked/projectile/aphrodisiac, // 自定义 T2：催情术（命中施加催情与虚弱）
+	/datum/action/cooldown/spell/z121/invoked/projectile/aphrodisiac, // 自定义 T2：欲火咒（命中撩起欲望/燥热与虚弱）
 	/datum/action/cooldown/spell/z121/invoked/group_darkvision,
 	/datum/action/cooldown/spell/z121/invoked/group_enlarge,
 	/datum/action/cooldown/spell/z121/invoked/shrink,
 	/datum/action/cooldown/spell/z121/invoked/group_shrink,
-	/datum/action/cooldown/spell/z121/invoked/group_fortitude_spell,
-	/datum/action/cooldown/spell/z121/invoked/group_guidance,
-	/datum/action/cooldown/spell/z121/invoked/group_haste,
+//	/datum/action/cooldown/spell/z121/invoked/group_fortitude_spell,
+//	/datum/action/cooldown/spell/z121/invoked/group_guidance,
+//	/datum/action/cooldown/spell/z121/invoked/group_haste,
 	/datum/action/cooldown/spell/z121/invoked/group_longstrider,
 	/datum/action/cooldown/spell/z121/self/group_mindlink,
-	/datum/action/cooldown/spell/z121/invoked/group_stoneskin,
-	/datum/action/cooldown/spell/z121/invoked/group_giants_strength,
+//	/datum/action/cooldown/spell/z121/invoked/group_stoneskin,
+//	/datum/action/cooldown/spell/z121/invoked/group_giants_strength,
 	/datum/action/cooldown/spell/z121/invoked/group_leap,
 	/datum/action/cooldown/spell/z121/invoked/harmless_dismemberment,
 	/datum/action/cooldown/spell/z121/invoked/heal_pristine,
