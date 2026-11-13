@@ -1,5 +1,5 @@
 /datum/customizer/organ/belly
-	name = "Belly"
+	name = "腹部"
 	customizer_choices = list(/datum/customizer_choice/organ/belly)
 
 /datum/customizer/organ/belly/is_allowed(datum/preferences/prefs)
@@ -9,13 +9,13 @@
 	return FALSE
 
 /datum/customizer_choice/organ/belly
-	name = "Belly"
+	name = "腹部"
 	organ_type = /obj/item/organ/belly
 	organ_slot = ORGAN_SLOT_BELLY
 	sprite_accessories = list(/datum/sprite_accessory/belly/pair)
 
 /obj/item/organ/belly
-	name = "belly"
+	name = "腹部"
 	icon_state = "severedtail"
 	visible_organ = TRUE
 	zone = BODY_ZONE_CHEST
@@ -25,7 +25,7 @@
 /datum/sprite_accessory/belly
 	abstract_type = /datum/sprite_accessory/belly
 	icon = 'icons/mob/sprite_accessory/genitals/belly.dmi'
-	color_key_name = "Belly"
+	color_key_name = "腹部"
 	layer = BODY_BELLY_LAYER
 	color_key_defaults = list(KEY_CHEST_COLOR)
 
@@ -36,5 +36,5 @@
 	generic_gender_feature_adjust(appearance_list, organ, bodypart, owner, OFFSET_BELT, OFFSET_BELT_F)
 
 /datum/sprite_accessory/belly/pair
-	name = "Plump"
+	name = "丰腴"
 	icon_state = "belly_pair_1_FRONT"

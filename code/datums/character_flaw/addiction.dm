@@ -305,7 +305,7 @@
 	name = "臃肿"
 	desc = "我沉溺于人生的种种享乐，腰围也因此付出了代价。"
 	time = 50 MINUTES
-	needsate_text = "My stomach growls with hunger."
+	needsate_text = "我的肚子饿得咕咕直叫。"
 	debuff = /datum/status_effect/debuff/addiction/corpulent
 	var/bites = 0
 	var/bites_needed = 12
@@ -324,6 +324,6 @@
 	effectedstats = list(STATKEY_SPD = -2)
 
 /atom/movable/screen/alert/status_effect/debuff/addiction/corpulent
-	name = "Gluttony"
-	desc = "I'm really feeling my weight... So hungry."
+	name = "暴食"
+	desc = "我越发感到身体沉重……好饿。"
 	icon_state = "debuff"
