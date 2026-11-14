@@ -1105,8 +1105,8 @@
 	sheathe_icon = "kodachi"
 
 /obj/item/rogueweapon/sword/short/silver/kazengun
-	name = "silver kodachi"
-	desc = "A razor-edged sword with a wavy pattern weld apparent on its blade of pure silver."
+	name = "白银小太刀"
+	desc = "刀刃锋利如剃刀，纯银刀身上清晰可见波浪般的锻焊纹路。"
 	icon = 'icons/roguetown/weapons/swords32.dmi'
 	possible_item_intents = list(
 		/datum/intent/sword/cut/short,
@@ -2262,8 +2262,8 @@
 	gripped_intents = list(/datum/intent/sword/cut/krieg, /datum/intent/sword/thrust/long/deep, /datum/intent/sword/strike, /datum/intent/rend/krieg)
 
 /obj/item/rogueweapon/sword/long/kriegmesser/silver/ssangsudo
-	name = "silver ssangsudo"
-	desc = "A Kazengun style of long blade forged with pure silver. A weapon supremely skilled in the art of cutting."
+	name = "白银双手刀"
+	desc = "以纯银锻造的风郡式长刀，劈砍性能极为出众。"
 	icon = 'icons/roguetown/weapons/swords64.dmi'
 	icon_state = "silverssangsudo"
 	sheathe_icon = "silver_ssangsudo"
@@ -2291,8 +2291,8 @@
 /obj/item/rogueweapon/sword/sabre/mulyeog/silver
 	force = 22
 	minstr = 7
-	name = "silver hwando"
-	desc = "A foreign single-edged sword forged with pure silver. There's a red tassel on the hilt, said to bring about good fortune."
+	name = "白银环刀"
+	desc = "以纯银锻造的异国单刃刀。刀柄系着红色流苏，据说能带来好运。"
 	sheathe_icon = "silver_mulyeog"
 	icon_state = "silvereastsword"
 	smeltresult = /obj/item/ingot/silver

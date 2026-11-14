@@ -348,8 +348,8 @@
 /datum/emote/living/pant
 	key = "pant"
 	key_third_person = "pants"
-	message = "pants."
-	message_muffled = "makes a muffled pant."
+	message = "喘着粗气。"
+	message_muffled = "发出闷闷的喘息声。"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
 
@@ -359,8 +359,8 @@
 	key = "pant"
 
 /mob/living/carbon/human/verb/emote_pant()
-	set name = "Pant"
-	set category = "Noises"
+	set name = "喘气"
+	set category = "声音"
 
 	emote("pant", intentional = TRUE)
 

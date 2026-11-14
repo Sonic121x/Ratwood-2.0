@@ -1184,10 +1184,10 @@
 	if(user.used_intent.type != INTENT_HARM) //Gotta punch
 		return ..()
 	var/mob/living/living_user = user
-	user.visible_message(span_notice("[user] begins training on [src]..."))
+	user.visible_message(span_notice("[user]开始对着[src]练习……"))
 	while(do_after(user, 1 SECONDS, target = src))
 		if(!(living_user.mobility_flags & MOBILITY_STAND))
-			to_chat(user, span_warning("You are knocked down and stop training."))
+			to_chat(user, span_warning("你被击倒，停止了练习。"))
 			break
 		var/probby = (living_user.STALUC / 10) * 100
 		probby = min(probby, 99)
@@ -1196,16 +1196,16 @@
 		if(living_user.STAINT < 3)
 			probby = 0
 		if(!can_train_combat_skill(user, /datum/skill/combat/unarmed, SKILL_LEVEL_APPRENTICE))
-			to_chat(user, span_warning("I've learned all I can from doing this, it's time for the real thing."))
+			to_chat(user, span_warning("这样练习已经学不到更多东西了，该去实战了。"))
 			break
 		if(prob(probby) && !user.buckled)
-			user.visible_message(span_info("[user] trains on [src]!"))
+			user.visible_message(span_info("[user]对着[src]练习！"))
 			var/amt2raise = living_user.STAINT * 0.35
 			if(amt2raise > 0)
 				user.mind.add_sleep_experience(/datum/skill/combat/unarmed, amt2raise, FALSE)
 			playsound(loc,pick('sound/combat/hits/onwood/education1.ogg','sound/combat/hits/onwood/education2.ogg','sound/combat/hits/onwood/education3.ogg'), rand(50,100), FALSE)
 		else
-			user.visible_message(span_danger("[user] trains on [src], but [src] ripostes!"))
+			user.visible_message(span_danger("[user]对着[src]练习，却遭到了[src]的反击！"))
 			living_user.AdjustKnockdown(1)
 			living_user.throw_at(get_step(living_user, get_dir(src,living_user)), 2, 2, living_user, spin = FALSE)
 			playsound(loc, 'sound/combat/hits/kick/stomp.ogg', 100, TRUE, -1)
@@ -1536,7 +1536,7 @@
 							var/surname = reject_bad_name(input(user, "为这对新人输入一个姓氏：", "婚礼仪式") as text|null)
 							if(!surname || !length(trim(surname)))
 								surname = thegroom.dna.species.random_surname()
-							priority_announce("[thegroom.real_name]与[thebride.real_name]结为夫妻！", title = "Holy Union!", sound = 'sound/misc/bell.ogg')
+							priority_announce("[thegroom.real_name]与[thebride.real_name]结为夫妻！", title = "神圣婚礼！", sound = 'sound/misc/bell.ogg')
 							var/list/titles = list("Sir", "Ser", "Dame", "Lord", "Lady", "Knight-Captain", "Duke", "Duchess", "Father", "Mother", "Brother", "Sister", "Prelate", "Devotee", "Votary")
 							// Assign surname to groom
 							var/list/groom_name_parts = splittext(thegroom.real_name, " ")
