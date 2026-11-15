@@ -116,11 +116,7 @@
 	amt = z121_genius_experience(amt)
 
 	// 透传给基类完成真正的经验写入与后续处理（升级提示、学徒同步等均不受影响）。
-	var/datum/skill/skill_ref = GetSkillRef(skill)
-	var/before = ensure_skills().skill_experience[skill_ref]
 	. = ..(skill, amt, silent, check_apprentice)
-	// 记录实际结算的损失，不再次应用天才倍率。
-	z121_profession?.experience_settled(skill, before, ensure_skills().skill_experience[skill_ref])
 
 /mob/living/carbon/human/proc/z121_genius_experience(amount)
 	return amount > 0 && HAS_TRAIT(src, TRAIT_GENIUS) ? amount * GENIUS_XP_MULTIPLIER : amount

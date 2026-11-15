@@ -15,17 +15,17 @@
 	var/mob/living/carbon/human/H = user
 	if(removing)
 		if(z121_return_bonus_owner?.resolve() == H && (stat in z121_return_bonuses))
-			z121_parallel_stat_delta(H, stat, -z121_return_bonuses[stat])
+			z121_stat_delta(H, stat, -z121_return_bonuses[stat])
 			z121_return_bonuses -= stat
 			if(index)
 				H.statindex -= index
 				z121_return_bonus_indexes -= index
 		return
-	var/before = z121_parallel_stat_total(H, stat)
+	var/before = z121_stat_total(H, stat)
 	H.change_stat(stat, amount, index)
 	z121_return_bonus_owner = WEAKREF(H)
 	LAZYINITLIST(z121_return_bonuses)
-	z121_return_bonuses[stat] += z121_parallel_stat_total(H, stat) - before
+	z121_return_bonuses[stat] += z121_stat_total(H, stat) - before
 	if(index)
 		LAZYINITLIST(z121_return_bonus_indexes)
 		z121_return_bonus_indexes[index] = z121_return_copy(H.statindex[index])
@@ -79,17 +79,7 @@
 	if(removing)
 		if(z121_return_bonus_owner?.resolve() != user || !(key in z121_return_skill_bonuses))
 			return
-		var/datum/z121_profession_record/record
-		if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			record = H.z121_profession
-		if(record && !record.suspended)
-			record.settle_experience(key, before)
 		holder.adjust_experience(key, -z121_return_skill_bonuses[key], TRUE)
-		if(record && !record.suspended)
-			// 装备经验不是职业奖励，不能让撤销装备先扣掉职业部分。
-			record.independent_experience[key] = max(0, record.independent_experience[key] - (before - holder.skill_experience[key]))
-			record.observed_experience[key] = holder.skill_experience[key]
 		z121_return_skill_bonuses -= key
 		return
 	user.adjust_skillrank(key, 1, TRUE)

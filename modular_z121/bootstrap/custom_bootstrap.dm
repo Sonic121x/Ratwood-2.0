@@ -80,10 +80,6 @@ SUBSYSTEM_DEF(custom_bootstrap)
 	// player-visible GLOB.roguetraits, same rationale as the registrations above.
 	register_succubus_bloodline_trait()
 
-	// 在核心特性表初始化完成后登记平行存在，使玩家能够查看特性及说明。
-	// 登记接口与特性宏统一定义在 modular_z121/virtues/parallel_session.dm，保留原接口名以兼容既有引用。
-	register_martins_morning_trait()
-
 	// 登记自定义美德"地狱血脉后裔"的【地狱血脉】特性到玩家可见的特性表（GLOB.roguetraits）。
 	// 为什么放在这里：与上面同理——此刻核心表 roguetraits 已由 GLOBAL_LIST_INIT 完成初始化，
 	//   向其追加键值对后，提夫林玩家点开特性自检面板即可看到【地狱血脉】及其说明，满足"该特性

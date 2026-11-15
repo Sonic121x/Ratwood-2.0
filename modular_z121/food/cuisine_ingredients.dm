@@ -1,3 +1,11 @@
+// 胡萝卜原定义未提供营养成分，导致完整的新鲜胡萝卜被料理校验当作空食材。
+/obj/item/reagent_containers/food/snacks/grown/carrot
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+
+// 原料理模块把盐覆盖成面粉；每份仍保留一单位，只修正实际成分。
+/obj/item/reagent_containers/powder/salt
+	list_reagents = list(/datum/reagent/consumable/sodiumchloride = 1)
+
 // 基础材料不要求美食知识，种植和取种沿用原有农业规则。
 /obj/item/reagent_containers/food/snacks/grown/z121
 	name = "信义作物"
