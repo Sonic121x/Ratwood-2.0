@@ -157,7 +157,6 @@
 	var/list/losses
 	var/blood
 	var/chem_temp
-	var/datum/z121_return_profession/profession_values
 	var/saved_stress = 0
 	var/list/stress_records = list()
 
@@ -175,7 +174,7 @@
 	var/list/equipment = H.z121_return_equipment_stats()
 	var/list/equipment_stats = equipment["stats"]
 	for(var/stat in equipment_stats)
-		var/list/fields = z121_parallel_stat_fields(stat)
+		var/list/fields = z121_stat_fields(stat)
 		var/total = body_values.values[fields[1]] + body_values.values[fields[2]] - equipment_stats[stat]
 		body_values.values[fields[1]] = clamp(total, 1, 20)
 		body_values.values[fields[2]] = total - body_values.values[fields[1]]
@@ -239,14 +238,11 @@
 	var/datum/skill_holder/skills = H.ensure_skills()
 	known_skills = skills.known_skills.Copy()
 	skill_experience = skills.skill_experience.Copy()
-	profession_values = new(H)
 	var/list/equipment_skills = equipment["skills"]
 	for(var/datum/skill/skill as anything in equipment_skills)
 		var/removed = min(skill_experience[skill] || 0, equipment_skills[skill])
 		skill_experience[skill] = max(0, skill_experience[skill] - removed)
 		known_skills[skill] = z121_return_skill_level(skill_experience[skill])
-		profession_values.observed_experience[skill] = skill_experience[skill]
-		profession_values.independent_experience[skill] = max(0, profession_values.independent_experience[skill] - removed)
 	losses = list(H.getToxLoss(), H.getOxyLoss(), H.getCloneLoss(), H.getStaminaLoss())
 	blood = H.get_blood_volume()
 	saved_stress = H.oldstress
@@ -376,15 +372,13 @@
 	H.z121_return_equipment_symptoms(null, TRUE)
 	var/list/equipment_stats = equipment["stats"]
 	for(var/stat in equipment_stats)
-		z121_parallel_stat_delta(H, stat, equipment_stats[stat])
+		z121_stat_delta(H, stat, equipment_stats[stat])
 	var/list/equipment_indexes = equipment["indexes"]
 	for(var/index in equipment_indexes)
 		H.statindex[index] = z121_return_copy(equipment_indexes[index])
 	appearance_values.apply(H)
 	physiology_values.apply(H.physiology)
 	armor_values.apply(H.physiology.armor)
-	if(!preparing)
-		profession_values.restore(H, source_map)
 	restore_traits(H, source_map)
 	for(var/datum/status_effect/fire_handler/F as anything in H.status_effects)
 		F.cache_stacks()
@@ -411,10 +405,6 @@
 	for(var/datum/skill/skill as anything in equipment_skills)
 		skills.skill_experience[skill] += equipment_skills[skill]
 		skills.known_skills[skill] = z121_return_skill_level(skills.skill_experience[skill])
-		var/datum/z121_profession_record/record = H.z121_profession
-		if(record && !record.suspended)
-			record.independent_experience[skill] += equipment_skills[skill]
-			record.observed_experience[skill] = skills.skill_experience[skill]
 	// 直接写回感知不会经过属性入口，视野派生值必须独立重算。
 	H.see_override = initial(H.see_invisible) + H.STAPER / 3.25
 	H.update_sight()
@@ -580,7 +570,6 @@
 	QDEL_NULL(physiology_values)
 	QDEL_NULL(armor_values)
 	QDEL_NULL(rot_values)
-	QDEL_NULL(profession_values)
 	for(var/list/records as anything in list(organ_dna, limbs, organs))
 		for(var/key in records)
 			qdel(records[key])

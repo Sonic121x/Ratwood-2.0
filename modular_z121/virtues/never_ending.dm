@@ -406,7 +406,6 @@
 				var/datum/brain_trauma/personality = prepared_brain?.has_trauma_type(R.saved_type)
 				if(personality)
 					source_map[R.source_ref] = REF(personality)
-		pending_save.profession_values.restore(returned, source_map)
 		pending_save.restore_traits(returned, source_map)
 		// 准备可能经过外部回调，交接前再次核对，不能夺回已远行或独立转生的玩家。
 		if(!enabled || state != Z121_RETURN_RUNNING || expected_snapshot != pending_snapshot_id || !owns_player() || (M.current && !QDELETED(M.current) && M.current != return_origin && M.current != transfer_brain))
@@ -551,7 +550,6 @@
 	var/list/values = list()
 	var/list/accounts = list()
 	var/datum/skill_holder/skills
-	var/list/rollback_profession = list()
 	var/list/rollback_known_skills
 	var/list/rollback_skill_experience
 	var/list/rollback_aspect_config
@@ -575,10 +573,6 @@
 	rollback_known_skills = skills.known_skills.Copy()
 	rollback_skill_experience = skills.skill_experience.Copy()
 	rollback_aspect_config = owner_mind.mage_aspect_config?.Copy()
-	if(!QDELETED(original) && original.z121_profession)
-		for(var/field in list("stats", "experience", "independent_experience", "observed_experience", "removed_experience", "traits"))
-			var/list/record = original.z121_profession.vars[field]
-			rollback_profession[field] = record.Copy()
 	for(var/field in values)
 		// 等待落点期间仍可能发生管理调整、退团或身份变更，应以当前记录为准。
 		var/value = !QDELETED(original) ? original.vars[field] : values[field]
@@ -607,10 +601,6 @@
 		if(H in bank)
 			bank[original] = bank[H]
 			bank -= H
-	if(original.z121_profession)
-		for(var/field in rollback_profession)
-			var/list/record = rollback_profession[field]
-			original.z121_profession.vars[field] = record.Copy()
 	if(rollback_known_skills)
 		skills.known_skills = rollback_known_skills.Copy()
 		skills.skill_experience = rollback_skill_experience.Copy()

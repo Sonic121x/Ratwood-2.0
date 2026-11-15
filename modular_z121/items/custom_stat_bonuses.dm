@@ -90,7 +90,7 @@
 	var/index = source_key(stat_key)
 	if(ishuman(holder))
 		var/mob/living/carbon/human/H = holder
-		z121_parallel_stat_delta(H, stat_key, -(actual_bonuses[stat_key] || 0))
+		z121_stat_delta(H, stat_key, -(actual_bonuses[stat_key] || 0))
 		H.statindex -= index
 	else
 		holder.change_stat(stat_key, 0, index)
@@ -134,10 +134,10 @@
 		if(amount)
 			var/before = 0
 			if(ishuman(holder))
-				before = z121_parallel_stat_total(holder, stat_key)
+				before = z121_stat_total(holder, stat_key)
 			holder.change_stat(stat_key, amount, source_key(stat_key))
 			if(ishuman(holder))
-				actual_bonuses[stat_key] = z121_parallel_stat_total(holder, stat_key) - before
+				actual_bonuses[stat_key] = z121_stat_total(holder, stat_key) - before
 			applied_bonuses[stat_key] = amount
 		else
 			applied_bonuses -= stat_key

@@ -299,10 +299,10 @@
 	compose_bounty_obscure(new_bounty_obscure, get_bounty_epithet(target_mob, bandit_status)) // KUKU
 	GLOB.head_bounties += new_bounty_obscure
 	queue_bounty_portrait(target_realname)
-
-///Composes a random bounty banner based on the given bounty info.
-///@param new_bounty:  The bounty datum.
-/proc/compose_bounty(datum/bounty/new_bounty)
+/proc/get_bounty_epithet(mob/living/carbon/human/target_mob, bandit_status = FALSE) // 自定义修改：恢复悬赏称谓判断入口
+	if(istype(target_mob?.patron, /datum/patron/inhumen)) return "异端" // 自定义修改：仅将异端信徒称作异端
+	return (bandit_status || (target_mob && (target_mob.job == "Bandit" || (FACTION_BANDITS in target_mob.faction) || target_mob.mind?.has_antag_datum(/datum/antagonist/bandit)))) ? "匪徒" : "罪犯" // 自定义修改：按匪徒身份选择称谓，缺少目标时回退为罪犯
+/proc/compose_bounty(datum/bounty/new_bounty, target_epithet = "罪犯") // 自定义修改：接收悬赏称谓并提供默认值
 	switch(rand(1, 3))
 		if(1)
 			new_bounty.banner += "现对[new_bounty.target]发布严酷悬赏，缘由如下：'[new_bounty.reason]'。<BR>"

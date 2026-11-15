@@ -33,16 +33,16 @@
 						break
 		else if(owner.get_stat(stat) + effectedstats[stat] > 20)
 			effectedstats[stat] = 20 - owner.get_stat(stat)
-		var/before = ishuman(owner) ? z121_parallel_stat_total(owner, stat) : 0
+		var/before = ishuman(owner) ? z121_stat_total(owner, stat) : 0
 		owner.change_stat(stat, effectedstats[stat])
 		if(ishuman(owner))
-			z121_return_applied_stats[stat] += z121_parallel_stat_total(owner, stat) - before
+			z121_return_applied_stats[stat] += z121_stat_total(owner, stat) - before
 	return TRUE
 
 /datum/status_effect/proc/z121_return_remove_stats()
 	if(ishuman(owner) && !isnull(z121_return_applied_stats))
 		for(var/stat in z121_return_applied_stats)
-			z121_parallel_stat_delta(owner, stat, -z121_return_applied_stats[stat])
+			z121_stat_delta(owner, stat, -z121_return_applied_stats[stat])
 		z121_return_applied_stats.Cut()
 	else
 		for(var/stat in effectedstats)
@@ -269,8 +269,8 @@
 				E.linked_alert.attached_effect = E
 		var/list/applied_stats = isnull(E.z121_return_applied_stats) ? E.effectedstats : E.z121_return_applied_stats
 		for(var/stat in applied_stats)
-			z121_parallel_stat_delta(src, stat, -applied_stats[stat])
-			z121_parallel_stat_delta(replacement, stat, applied_stats[stat])
+			z121_stat_delta(src, stat, -applied_stats[stat])
+			z121_stat_delta(replacement, stat, applied_stats[stat])
 		for(var/filter_name in E.z121_return_filter_names())
 			if(filter_data?[filter_name])
 				var/list/current_parameters = filter_data[filter_name]

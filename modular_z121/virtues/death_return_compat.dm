@@ -1,54 +1,6 @@
 // 只迁移已审查的美德组件；物品、寄生关系及其他角色的组件不随新身体复制。
 /proc/z121_return_virtue_components()
-	return list(/datum/component/ancient_existence, /datum/component/hellblood_descendant, /datum/component/succubus_bloodline, /datum/component/life_potential, /datum/component/distortion_variant, /datum/component/martins_morning, /datum/component/z121_serpent_belly)
-
-// 只保存属性、经验和特性的撤销账本；岗位、法术、账户和职业实例仍属于当前世界。
-/datum/z121_return_profession
-	var/source_ref
-	var/list/stats = list()
-	var/list/experience = list()
-	var/list/independent_experience = list()
-	var/list/observed_experience = list()
-	var/list/traits = list()
-
-/datum/z121_return_profession/New(mob/living/carbon/human/H)
-	var/datum/skill_holder/skills = H.ensure_skills()
-	observed_experience = skills.skill_experience.Copy()
-	independent_experience = observed_experience.Copy()
-	var/datum/z121_profession_record/R = H.z121_profession
-	if(!R || R.suspended)
-		return
-	source_ref = REF(R)
-	stats = R.stats.Copy()
-	experience = R.experience.Copy()
-	traits = R.traits.Copy()
-	// 经验表以技能数据为键，必须保留键；不能用丢弃数据对象的通用复制函数。
-	for(var/datum/skill/skill as anything in experience)
-		var/total = observed_experience[skill] || 0
-		if(!(skill in R.observed_experience))
-			continue
-		var/previous = R.observed_experience[skill] || 0
-		var/independent = R.independent_experience[skill] || 0
-		var/delta = total - previous
-		if(delta > 0)
-			independent += delta
-		else if(delta < 0)
-			independent = max(0, independent - max(0, -delta - max(0, previous - independent)))
-		independent_experience[skill] = independent
-
-/datum/z121_return_profession/proc/restore(mob/living/carbon/human/H, list/source_map)
-	var/datum/z121_profession_record/R = H.z121_profession
-	if(!R)
-		return
-	// 当前职业承接存档中实际存在的身体加成，下一次转职只能扣除这些加成。
-	R.stats = stats.Copy()
-	R.experience = experience.Copy()
-	R.independent_experience = independent_experience.Copy()
-	R.observed_experience = observed_experience.Copy()
-	R.removed_experience.Cut()
-	R.traits = traits.Copy()
-	if(source_ref)
-		source_map[source_ref] = REF(R)
+	return list(/datum/component/ancient_existence, /datum/component/hellblood_descendant, /datum/component/succubus_bloodline, /datum/component/life_potential, /datum/component/distortion_variant, /datum/component/z121_serpent_belly)
 
 /proc/z121_return_subtract_sources(list/traits, list/excluded)
 	for(var/trait in excluded)
@@ -91,8 +43,6 @@
 	return result
 
 /mob/living/carbon/human/proc/z121_return_cancel_ability_sessions()
-	var/datum/component/martins_morning/parallel = GetComponent(/datum/component/martins_morning)
-	parallel?.cancel_session()
 	var/datum/component/distortion_variant/distortion = GetComponent(/datum/component/distortion_variant)
 	if(distortion)
 		for(var/datum/timedevent/T as anything in distortion.active_timers?.Copy())
@@ -119,13 +69,6 @@
 		if(ability in verbs)
 			replacement.verbs |= ability
 			verbs -= ability
-	if(z121_profession)
-		var/datum/z121_profession_record/record = z121_profession
-		record.UnregisterSignal(src, COMSIG_QDELETING)
-		record.body = WEAKREF(replacement)
-		record.RegisterSignal(replacement, COMSIG_QDELETING, TYPE_PROC_REF(/datum/z121_profession_record, on_body_deleted))
-		replacement.z121_profession = record
-		z121_profession = null
 	for(var/component_type in z121_return_virtue_components())
 		var/datum/component/ability = GetComponent(component_type)
 		if(ability)
@@ -164,13 +107,6 @@
 		return COMPONENT_INCOMPATIBLE
 	RegisterSignal(parent, COMSIG_MOB_NIGHTED, PROC_REF(on_nighted))
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
-
-/datum/component/martins_morning/PostTransfer()
-	// 仅重绑监听，保留原来的清晨编号与次数，不重新启动入场流程。
-	if(!ishuman(parent))
-		return COMPONENT_INCOMPATIBLE
-	RegisterSignal(parent, COMSIG_MOB_DAWNED, PROC_REF(on_dawned))
-	RegisterSignal(parent, list(COMSIG_LIVING_DEATH, COMSIG_MOB_LOGOUT, COMSIG_MIND_TRANSFER, COMSIG_QDELETING, SIGNAL_REMOVETRAIT(TRAIT_MARTINS_MORNING), SIGNAL_ADDTRAIT(TRAIT_NOSLEEP), SIGNAL_ADDTRAIT(TRAIT_SLEEPIMMUNE)), PROC_REF(on_invalidated))
 
 /datum/component/z121_serpent_belly/PreTransfer()
 	var/mob/living/carbon/human/host = parent

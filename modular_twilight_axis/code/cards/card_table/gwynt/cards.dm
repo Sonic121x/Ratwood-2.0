@@ -102,7 +102,7 @@ GLOBAL_LIST_EMPTY(ccg_leaders_by_id)
 			continue
 		GLOB.ccg_factions_by_id[faction.id] = faction
 
-/proc/ccg_faction(faction_id)
+/proc/ccg_faction(faction_id) as /datum/ccg_faction // 自定义修改：声明阵营返回类型，支持调用处静态检查名称字段
 	if(!length(GLOB.ccg_factions_by_id))
 		ccg_build_faction_registry()
 	return GLOB.ccg_factions_by_id[faction_id]
