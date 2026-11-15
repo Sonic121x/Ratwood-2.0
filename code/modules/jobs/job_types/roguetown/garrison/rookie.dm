@@ -4,8 +4,8 @@
 	flag = ROOKIE
 	department_flag = GARRISON
 	faction = "Station"
-	total_positions = 5
-	spawn_positions = 5
+	total_positions = 10
+	spawn_positions = 10
 	allowed_races = ACCEPTED_RACES
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_ADULT)
