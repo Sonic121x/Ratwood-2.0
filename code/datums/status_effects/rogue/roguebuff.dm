@@ -849,7 +849,7 @@
 
 //Self healing for Martyr.
 /datum/status_effect/buff/healing/prayer
-	id = "healing_prayers"
+	id = "healing_prayer_self"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/healing/prayer
 	examine_text = "SUBJECTPRONOUN 正燃烧着神圣辉光！"
 	outline_colour = "#b280df"
@@ -858,11 +858,10 @@
 /atom/movable/screen/alert/status_effect/buff/healing/prayer
 	name = "信念"
 	desc = "唯凭信仰，我亦能痊愈。"
-	icon_state = "buff"
 
 //BY FAITH ALONE. When Martyr heals via another Tennite praying.
 /datum/status_effect/buff/healing/prayer_power
-	id = "healing_prayers"
+	id = "healing_prayer_received"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/healing/prayer_power
 	examine_text = "SUBJECTPRONOUN 被神圣辉光照亮！"
 	outline_colour = "#b280df"
@@ -871,7 +870,19 @@
 /atom/movable/screen/alert/status_effect/buff/healing/prayer_power
 	name = "受福的歇息"
 	desc = "借由信仰，我得以活着。"
-	icon_state = "buff"
+
+/datum/status_effect/prayer_cooldown
+	id = "prayer_cooldown"
+	status_type = STATUS_EFFECT_REFRESH
+	duration = 1 MINUTES
+	tick_interval = -1
+	alert_type = /atom/movable/screen/alert/status_effect/prayer_cooldown
+
+/atom/movable/screen/alert/status_effect/prayer_cooldown
+	name = "祈祷恢复中"
+	desc = "我必须等待，才能让下一次祈祷得到回应。他人的祈祷仍能治愈我。"
+	icon_state = "lesser_heal"
+	color = "#b280df"
 
 // Lay hands orison effect - gentle, slow healing
 #define LAY_HANDS_FILTER "lay_hands_glow"

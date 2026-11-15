@@ -354,6 +354,18 @@
 				to_chat(user, span_danger("目标必须拥有神经锁账户！")) //no stunlocking antags sorry buddy
 				return
 
+			if(HAS_TRAIT(H, TRAIT_LUX_FREAK))
+				to_chat(src, span_warning("[H] resisted the divine punishment on their soul!"))
+				return
+			
+			if(HAS_TRAIT(H, TRAIT_INQUISITION))
+				to_chat(src, span_warning("Dammed octavian's runic arrays dampen divine punishment directed against their agents!"))
+				return
+
+			if(HAS_TRAIT(H, TRAIT_HERESIARCH))
+				to_chat(user, span_warning("The patron of this one shields them from being suppressed."))
+				return
+
 			if(istype(user.used_intent, /datum/intent/priest_smite))
 				HU.visible_message(span_warning("[HU]用[src]惩击了[H]！"))
 				user.Beam(target,icon_state="lightning[rand(1,12)]",time=5)

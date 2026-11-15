@@ -20,7 +20,6 @@ GLOBAL_VAR_INIT(adventurer_hugbox_duration_still, 3 MINUTES)
 	outfit_female = null
 
 	display_order = JDO_ADVENTURER
-	show_in_credits = FALSE
 	min_pq = 1 //0 萌新进来选冒险者然后就死了哎呀好难玩啊
 	max_pq = null
 

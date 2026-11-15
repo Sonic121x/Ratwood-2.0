@@ -396,6 +396,7 @@ GLOBAL_VAR_INIT(last_crown_announcement_time, -1000)
 		return FALSE
 	GLOB.outlawed_players += raw_message
 	ADD_TRAIT(found_human, TRAIT_OUTLAW, TRAIT_GENERIC)
+	SScrediticons.queue_wanted_capture(found_human)
 	priority_announce("[raw_message] 已被宣告为法外之徒，必须将其擒获或杀死。", "[SSticker.rulertype]颁令", 'sound/misc/royal_decree2.ogg', "Captain")
 	return TRUE
 
