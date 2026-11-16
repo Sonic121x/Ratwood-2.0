@@ -159,7 +159,7 @@
 	if(SStreasury.discretionary_fund.balance <50)
 		new /obj/item/coveter(loc)
 		loc.visible_message(span_warning("随着国库的最后一点钱从神经锁中涌出，王冠嘎然而止！"))
-		playsound(src, 'sound/misc/DrillDone.ogg', 70, TRUE)
+		playsoundtoken(src, 'sound/misc/DrillDone.ogg', 70, SOUND_RANGE + 1, vary = TRUE, sample_rate = 48000)
 		icon_state = "atm"
 		drilling = FALSE
 		has_reported = FALSE
@@ -167,7 +167,7 @@
 	if(mammonsiphoned >199) // The cap variable for siphoning.
 		new /obj/item/coveter(loc)
 		loc.visible_message(span_warning("达到最大提款限额！神经锁在哭泣。"))
-		playsound(src, 'sound/misc/DrillDone.ogg', 70, TRUE)
+		playsoundtoken(src, 'sound/misc/DrillDone.ogg', 70, SOUND_RANGE + 1, vary = TRUE, sample_rate = 48000)
 		icon_state = "atm_broken"
 		drilled = TRUE
 		drilling = FALSE
@@ -178,7 +178,7 @@
 		if(!has_reported)
 			send_ooc_note("有一名自由民的寄生虫正在榨取一台神经锁！位置：[location_tag ? location_tag : "未知"]", job = list("Grand Duke", "Steward", "Clerk"))
 			has_reported = TRUE
-		playsound(src, 'sound/misc/TheDrill.ogg', 70, TRUE)
+		playsoundtoken(src, 'sound/misc/TheDrill.ogg', 70, SOUND_RANGE + 1, vary = TRUE)
 		addtimer(CALLBACK(src, PROC_REF(drill_payout)), 100) // The time it takes to complete an interval. If you adjust this, please adjust the sound too. It's 'about' perfect at 100. Anything less It'll start overlapping.
 
 /obj/structure/roguemachine/atm/proc/drill_payout()
@@ -259,7 +259,7 @@
 						needed_cycles = 1
 					user.visible_message(span_warn("[user]猛地将[src]刺进了[H]的前额！"))
 					playsound(H, 'sound/combat/hits/pick/genpick (1).ogg', 100)
-					playsound(src, 'sound/misc/TheDrill.ogg', 70, TRUE)
+					playsoundtoken(src, 'sound/misc/TheDrill.ogg', 70, SOUND_RANGE + 1, vary = TRUE)
 					to_chat(H,span_info("<font color ='red'>锋利的爪钩刺进了你的头骨。有股温热的液体正顺着你的头往下淌。</font>"))
 					for(var/i = 1,i<=needed_cycles,i++)
 						if(do_after(user, 25))
@@ -276,7 +276,7 @@
 							if(prob(needed_cycles*2))
 								drain_effect_fast(H)
 							if(i == needed_cycles)	//Last cycle.
-								playsound(src, 'sound/misc/DrillDone.ogg', 70, TRUE)
+								playsoundtoken(src, 'sound/misc/DrillDone.ogg', 70, SOUND_RANGE + 1, vary = TRUE, sample_rate = 48000)
 								is_active = FALSE
 								to_chat(H,span_info("<font color ='red'>你感到自己被抽空了。</font>"))
 								send_ooc_note("有一名自由民的寄生虫从神经主 [H.real_name] 的血脉中抽走了 [sum]。", job = list("Grand Duke", "Steward", "Clerk"))

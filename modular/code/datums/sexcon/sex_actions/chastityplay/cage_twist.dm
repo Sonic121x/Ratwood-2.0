@@ -59,7 +59,7 @@
 			target.visible_message(span_userdanger("[user]以灾难性的力量将[target]的尖刺贞操笼硬生生扯下——[target.p_their()]肉棒还卡在里面，被整个撕断，其余腹股沟也被一并毁得不成样子。"))
 		else
 			target.visible_message(span_userdanger("随着最后一次灾难性的扭转，[target]的尖刺贞操笼彻底脱落——[target.p_their()]肉棒被整个撕断留在其中，脱离时碰触到的一切也都被毁坏。"))
-		playsound(drop_turf, pick('modular/sound/masomoans/agony/CBTScreamIntersex1.ogg', 'modular/sound/masomoans/agony/CBTScreamIntersex2.ogg'), 85, FALSE, 2)
+		playsound_erp(drop_turf, pick('modular/sound/masomoans/agony/CBTScreamIntersex1.ogg', 'modular/sound/masomoans/agony/CBTScreamIntersex2.ogg'), 85, FALSE, 2, travel = SOUND_TRAVEL_LEAKING)
 		target.add_splatter_floor(drop_turf)
 		penis_organ.Remove(target)
 		penis_organ.forceMove(drop_turf)
@@ -71,7 +71,7 @@
 			target.visible_message(span_userdanger("最后猛地一拽，[target]的尖刺贞操笼被整个扯下——[target.p_their()]肉棒仍卡在其中，自根部被连根撕断。"))
 		else
 			target.visible_message(span_userdanger("伴随着令人作呕的最后一圈扭转，[target]的尖刺贞操笼从固定处彻底撕脱——[target.p_their()]被困住的肉棒也随之被内侧尖刺整个拖断。"))
-		playsound(drop_turf, pick('modular/sound/masomoans/agony/CBTScreamMale1.ogg', 'modular/sound/masomoans/agony/CBTScreamMale2.ogg'), 85, FALSE, 2)
+		playsound_erp(drop_turf, pick('modular/sound/masomoans/agony/CBTScreamMale1.ogg', 'modular/sound/masomoans/agony/CBTScreamMale2.ogg'), 85, FALSE, 2, travel = SOUND_TRAVEL_LEAKING)
 		target.add_splatter_floor(drop_turf)
 		penis_organ.Remove(target)
 		penis_organ.forceMove(drop_turf)
@@ -81,7 +81,7 @@
 			target.visible_message(span_userdanger("[user]将[target]的尖刺[get_chastity_device_name(target)]整个撕了下来——它带着令人作呕的猛扯声从[target.p_their()]双腿间脱出，鲜血紧随其后。"))
 		else
 			target.visible_message(span_userdanger("随着最后一次凶狠的扭钻，[target]的尖刺[get_chastity_device_name(target)]被整个拧脱——它从[target.p_their()]体内撕裂而出，留下的只有一片狼藉。"))
-		playsound(drop_turf, pick('modular/sound/masomoans/agony/CBTScreamFemale1.ogg', 'modular/sound/masomoans/agony/CBTScreamFemale2.ogg'), 85, FALSE, 2)
+		playsound_erp(drop_turf, pick('modular/sound/masomoans/agony/CBTScreamFemale1.ogg', 'modular/sound/masomoans/agony/CBTScreamFemale2.ogg'), 85, FALSE, 2, travel = SOUND_TRAVEL_LEAKING)
 		target.add_splatter_floor(drop_turf)
 		chest.add_wound(/datum/wound/cbt)
 	else

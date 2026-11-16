@@ -99,6 +99,7 @@
 		do_game_over()
 
 	SEND_SIGNAL(src, COMSIG_MOB_LOGIN)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_PLAYER_LOGIN, src)
 	log_message("客户端 [key_name(src)] 已接管角色 [src]([src.type])", LOG_OWNERSHIP)
 	enable_client_mobs_in_contents(client)
 	SEND_SIGNAL(src, COMSIG_MOB_CLIENT_LOGIN, client)

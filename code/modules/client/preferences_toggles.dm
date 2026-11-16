@@ -134,11 +134,10 @@
 
 	var/list/audio_entries = list(
 		list("id" = "lobby_music", "label" = "大厅音乐", "enabled" = !!(owner.prefs.toggles & SOUND_LOBBY), "desc" = "在大厅中播放音乐。"),
-		list("id" = "hear_instruments", "label" = "听见乐器", "enabled" = !!(owner.prefs.toggles & SOUND_INSTRUMENTS), "desc" = "听见吟游诗人乐器、点唱机和音响。"),
 	)
 
 	var/list/content_entries = list(
-		list("id" = "animal_emotes", "label" = "动物发声音效", "enabled" = !!(!owner.prefs.mute_animal_emotes), "desc" = "播放动物表情动作的音效。"),
+		list("id" = "anthro_noises", "label" = "兽人发声音效", "enabled" = !!(!owner.prefs.mute_anthro_noises), "desc" = "播放兽人发声音效。"),
 		list("id" = "erp_panel", "label" = "启用成人互动面板", "enabled" = !!owner.prefs.sexable, "desc" = "允许他人通过成人互动面板与你互动。"),
 		list("id" = "erp_visuals", "label" = "启用成人互动视觉效果", "enabled" = !!owner.prefs.erp_visuals, "desc" = "启用成人互动中的爱心及画面叠加等视觉效果。"),
 		list("id" = "chastity", "label" = "启用贞操相关内容", "enabled" = !!owner.prefs.chastenable, "desc" = "显示并允许贞操相关内容。"),
@@ -240,15 +239,8 @@
 				owner.toggle_roleplay_ads()
 			if("lobby_music")
 				owner.toggle_lobby_music()
-			if("hear_instruments")
-				owner.prefs.toggles ^= SOUND_INSTRUMENTS
-				owner.prefs.save_preferences()
-				for(var/datum/looping_sound/persistent_loop in GLOB.persistent_sound_loops)
-					owner.update_persistent_sound_loop(persistent_loop)
-				owner.update_sounds()
-				owner.sync_instrument_audio_toggle()
-			if("animal_emotes")
-				owner.mute_animal_emotes()
+			if("anthro_noises")
+				owner.mute_anthro_noises()
 			if("erp_panel")
 				owner.toggle_ERP()
 			if("erp_visuals")
@@ -377,14 +369,14 @@
 		else
 			to_chat(src, "你的角色成人信息仅在裸体时可见。")
 
-/client/verb/mute_animal_emotes()
+/client/verb/mute_anthro_noises()
 	set category = "选项"
 	set name = "切换动物发声音效"
 	set hidden = 1
 	if(prefs)
-		prefs.mute_animal_emotes = !prefs.mute_animal_emotes
+		prefs.mute_anthro_noises = !prefs.mute_anthro_noises
 		prefs.save_preferences()
-		if(prefs.mute_animal_emotes)
+		if(prefs.mute_anthro_noises)
 			to_chat(src, "你不再能听到动物叫声。")
 		else
 			to_chat(src, "你现在能听到动物叫声。")
@@ -1039,24 +1031,6 @@ TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Sound, togglemidis)()
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Hearing Midis", "[usr.client.prefs.toggles & SOUND_MIDI ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 /datum/verbs/menu/Settings/Sound/togglemidis/Get_checked(client/C)
 	return C.prefs.toggles & SOUND_MIDI
-
-
-TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Sound, toggle_instruments)()
-	set name = "Hear/Silence Instruments"
-	set category = "偏好设置"
-	set desc = ""
-	set hidden = 1
-	usr.client.prefs.toggles ^= SOUND_INSTRUMENTS
-	usr.client.prefs.save_preferences()
-	usr.client.update_sounds()
-	usr.client.sync_instrument_audio_toggle()
-	if(usr.client.prefs.toggles & SOUND_INSTRUMENTS)
-		to_chat(usr, "你现在能听到他人演奏乐器。")
-	else
-		to_chat(usr, "你不再能听到乐器演奏。")
-	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Instruments", "[usr.client.prefs.toggles & SOUND_INSTRUMENTS ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-/datum/verbs/menu/Settings/Sound/toggle_instruments/Get_checked(client/C)
-	return C.prefs.toggles & SOUND_INSTRUMENTS
 
 
 TOGGLE_CHECKBOX(/datum/verbs/menu/Settings/Sound, Toggle_Soundscape)()

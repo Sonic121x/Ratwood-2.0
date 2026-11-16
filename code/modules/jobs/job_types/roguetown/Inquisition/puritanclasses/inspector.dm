@@ -41,7 +41,7 @@
 		/datum/skill/misc/reading = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/magic/holy = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/medicine = SKILL_LEVEL_JOURNEYMAN,
-		/datum/skill/craft/sewing = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/craft/sewing = SKILL_LEVEL_APPRENTICE
 	)
 	subclass_stashed_items = list(
 		"《普赛顿圣典》" = /obj/item/book/rogue/bibble/psy
@@ -55,12 +55,11 @@
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_miracles(H, cleric_tier = CLERIC_T2, passive_gain = CLERIC_REGEN_MINOR, devotion_limit = CLERIC_REQ_2) //Capped to T2 miracles.
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/inq
-	belt = /obj/item/storage/belt/rogue/leather/knifebelt/black/psydon
 	neck = /obj/item/clothing/neck/roguetown/gorget/steel
 	shoes = /obj/item/clothing/shoes/roguetown/boots/otavan/inqboots
 	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/otavan
-	backr =  /obj/item/storage/backpack/rogue/satchel/otavan
-	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow
+	cloak = /obj/item/storage/backpack/rogue/satchel/beltpack
+	backr = /obj/item/storage/backpack/rogue/satchel/otavan
 	head = /obj/item/clothing/head/roguetown/inqhat
 	mask = /obj/item/clothing/mask/rogue/spectacles/inq/spawnpair
 	gloves = /obj/item/clothing/gloves/roguetown/otavan/psygloves
@@ -83,7 +82,27 @@
 
 /datum/outfit/job/roguetown/puritan/inspector/choose_loadout(mob/living/carbon/human/H)
 	. = ..()
-	var/weapons = list("普赛顿长剑", "普赛顿刺剑", "破晓长鞭", "圣痕戟斧", "圣餐刺剑")
+	var/ranged_weapons = list("斯勒弩", "符文锁手枪")
+	var/ranged_choice = input(H, "选择你的远程武器。", "自远方打击。") as anything in ranged_weapons
+	switch(ranged_choice)
+		if("斯勒弩")
+			H.equip_to_slot_or_del(new /obj/item/storage/belt/rogue/leather/knifebelt/black/psydon, SLOT_BELT, TRUE)
+			H.equip_to_slot_or_del(new /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow, SLOT_BACK_L, TRUE)
+			var/quivers = list("弩矢 - 钢尖", "裂矢 - 银尖，伤害减半")
+			var/bolt_choice = input(H, "选择你的弹药。", "执起普赛顿的飞矢。") as anything in quivers
+			switch(bolt_choice)
+				if("弩矢 - 钢尖")
+					H.equip_to_slot_or_del(new /obj/item/quiver/bolts, SLOT_BELT_R, TRUE)
+				if("裂矢 - 银尖，伤害减半")
+					H.equip_to_slot_or_del(new /obj/item/quiver/holybolts, SLOT_BELT_R, TRUE)
+		if("符文锁手枪")
+			ADD_TRAIT(H, TRAIT_FUSILIER, TRAIT_GENERIC)
+			H.adjust_skillrank_up_to(/datum/skill/combat/firearms, SKILL_LEVEL_MASTER, TRUE)
+			H.equip_to_slot_or_del(new /obj/item/storage/belt/rogue/leather/twilight_holsterbelt, SLOT_BELT, TRUE)
+			H.put_in_hands(new /obj/item/gun/ballistic/revolver/rune/twilight_runelock(H), TRUE)
+			H.equip_to_slot_or_del(new /obj/item/quiver/twilight_bullet/runicbag, SLOT_BELT_R, TRUE)
+
+	var/weapons = list("普赛顿长剑", "普赛顿刺剑", "破晓长鞭", "圣痕戟斧", "圣餐刺剑", "圣约折叠军刀")
 	var/weapon_choice = input(H,"亮出你的银兵。", "以祂之名执兵。") as anything in weapons
 	switch(weapon_choice)
 		if("普赛顿长剑")
@@ -115,10 +134,9 @@
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, 5, TRUE)
 			H.change_stat(STATKEY_WIL, 1)
 			H.change_stat(STATKEY_SPD, 1)
-	var/quivers = list("铁弩矢箭袋", "银尖裂灭弩矢箭袋 — 伤害减半")
-	var/bolt_choice = input(H,"选择你的弹药。", "执起 普赛顿 的飞矢。") as anything in quivers
-	switch(bolt_choice)
-		if("铁弩矢箭袋")
-			H.equip_to_slot_or_del(new /obj/item/quiver/bolts, SLOT_BELT_R, TRUE)
-		if("银尖裂灭弩矢箭袋 — 伤害减半")
-			H.equip_to_slot_or_del(new /obj/item/quiver/holybolts, SLOT_BELT_R, TRUE)
+		if("圣约折叠军刀")
+			H.put_in_hands(new /obj/item/rogueweapon/sword/rapier/psy/folding/relic(H), TRUE)
+			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/sword, SLOT_BELT_L, TRUE)
+			H.adjust_skillrank_up_to(/datum/skill/combat/swords, 5, TRUE)
+			H.change_stat(STATKEY_WIL, 1)
+			H.change_stat(STATKEY_SPD, 1)

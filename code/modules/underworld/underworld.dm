@@ -34,37 +34,37 @@
 	if(!istype(user, /mob/living/carbon/spirit))
 		if(HAS_TRAIT(user, TRAIT_SOUL_EXAMINE)&& toll)
 			to_chat(user, "<br><font color=purple><span class='bold'>渡资易手，誓约退让，且自前行。</span></font>")
-			user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, 50)
+			user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, overall_volume(user, 50))
 			toll = FALSE
 			if(user.has_status_effect(/datum/status_effect/debuff/ritesexpended))
 				user.remove_status_effect(/datum/status_effect/debuff/ritesexpended)
 			return
 		if(HAS_TRAIT(user, TRAIT_SOUL_EXAMINE)&& !toll)
 			to_chat(user, "<br><font color=purple><span class='bold'>仪式难测，一日一誓——<br>交付渡资，誓约便退让。</span></font>")
-			user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, 50)
+			user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, overall_volume(user, 50))
 			return
 		to_chat(user, span_warning("车夫不理会活人。"))
 		return
 	var/mob/living/carbon/spirit/ghost = user
 	if(!ghost.paid)
-		user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, 50)
+		user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, overall_volume(user, 50))
 		to_chat(user, "<br><font color=purple><span class='bold'>取来渡资，方可登车。</span></font>")
 	else
 		to_chat(user, "<br><font color=purple><span class='bold'>渡资易手，且自前行。</span></font>")
-		user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, 50)
+		user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, overall_volume(user, 50))
 
 /obj/structure/underworld/carriageman/attackby(obj/item/W, mob/living/user)
 	if(!istype(user, /mob/living/carbon/spirit)&& !toll && HAS_TRAIT(user, TRAIT_SOUL_EXAMINE))
 		if(istype(W, /obj/item/thetoll))
 			qdel(W)
 			to_chat(user, "<br><font color=purple><span class='bold'>渡资已付，交易已成。</span></font>")
-			user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, 50)
+			user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, overall_volume(user, 50))
 			toll = TRUE
 			return
 	if(!istype(user, /mob/living/carbon/spirit)&& toll && HAS_TRAIT(user, TRAIT_SOUL_EXAMINE))
 		if(istype(W, /obj/item/thetoll))
 			to_chat(user, "<br><font color=purple><span class='bold'>一次只做一笔交易。</span></font>")
-			user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, 50)
+			user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, overall_volume(user, 50))
 			return
 	if(!istype(user, /mob/living/carbon/spirit) && !HAS_TRAIT(user, TRAIT_SOUL_EXAMINE))
 		to_chat(user, span_warning("车夫不理会活人。"))
@@ -73,15 +73,15 @@
 		if(!ghost.paid)
 			qdel(W)
 			to_chat(ghost, "<br><font color=purple><span class='bold'>渡资已付，登上马车，冥下侍女正在彼端等候。</span></font>")
-			user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, 50)
+			user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, overall_volume(user, 50))
 			ghost.paid = TRUE
 			return
 		if(ghost.paid)
 			to_chat(ghost, "<br><font color=purple><span class='bold'>再多的渡资也无法改变她的裁决。</span></font>")
-			user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, 50)
+			user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, overall_volume(user, 50))
 	else
 		to_chat(ghost, "<br><font color=purple><span class='bold'>我只收渡资。</span></font>")
-		user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, 50)
+		user << sound(pick('sound/misc/carriage1.ogg', 'sound/misc/carriage2.ogg', 'sound/misc/carriage3.ogg', 'sound/misc/carriage4.ogg'), 0, 0 ,0, overall_volume(user, 50))
 
 /obj/structure/underworld/barrier //Blocks sprite locations
 	name = "不要站在这里"

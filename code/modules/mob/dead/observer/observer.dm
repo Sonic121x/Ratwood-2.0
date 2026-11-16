@@ -629,7 +629,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 				source.plane = old_plane
 	to_chat(src, span_ghostalert("<a href=?src=[REF(src)];reenter=1>（点击返回身体）</a>"))
 	if(sound)
-		SEND_SOUND(src, sound(sound))
+		SEND_SOUND(src, sound(sound, volume = overall_volume(src)))
 
 /mob/dead/observer/proc/dead_tele()
 	set category = "幽灵"
@@ -876,7 +876,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(istype(src, /mob/dead/observer/rogue/arcaneeye))
 		return
 	var/bt = world.time
-	SEND_SOUND(src, sound('sound/misc/notice (2).ogg'))
+	SEND_SOUND(src, sound('sound/misc/notice (2).ogg', volume = overall_volume(src)))
 	if(alert(src, "你被召唤来大肆破坏！", "加入大军", "是", "否") == "是")
 		if(world.time > bt + 5 MINUTES)
 			to_chat(src, span_warning("已经太迟了。"))
