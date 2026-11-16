@@ -43,7 +43,7 @@
 		)
 	H.set_blindness(0)
 	if(H.mind)
-		var/weapons = list("薙刀","钢制四分杖","环刀")
+		var/weapons = list("薙刀","钢制四分杖","环刀","野太刀")
 		var/weapon_choice = input(H, "选择你的武器。", "执兵而起") as anything in weapons
 		switch(weapon_choice)
 			if("薙刀")
@@ -61,7 +61,11 @@
 				armor = /obj/item/clothing/suit/roguetown/armor/basiceast
 				H.adjust_skillrank_up_to(/datum/skill/combat/shields, 3, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
-
+			if("野太刀")
+				r_hand = /obj/item/rogueweapon/greatsword/nodachi
+				backr = /obj/item/rogueweapon/scabbard/gwstrap/nodachi
+				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
+				armor = /obj/item/clothing/suit/roguetown/armor/basiceast
 /datum/advclass/foreigner/yoruku
 	name = "东方刺客"
 	tutorial = "Yoruku 是 风郡 所培养出的特务，专精暗杀、破坏与非常规战斗。你配备的是匕首或短剑，最适合在城堡逼仄的走廊与后巷狭窄的阴影里出手。"

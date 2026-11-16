@@ -189,7 +189,7 @@
 
 /obj/effect/proc_holder/spell/invoked/necra_vow
 	name = "向内克拉立誓"
-	desc = "向内克拉立下誓言。你被复活或恢复断肢的可能性将大幅降低，但你将伤害不死者，并缓慢治疗自己。"
+	desc = "向内克拉立下誓言。你将永远无法被复活，且只有你自己的肢体能够恢复。你会伤害不死者并缓慢治疗自己，但当你处于濒死状态时，治疗会停止。"
 	overlay_icon = 'icons/mob/actions/necramiracles.dmi'
 	action_icon = 'icons/mob/actions/necramiracles.dmi'
 	range = 1
@@ -218,7 +218,7 @@
 			to_chat(user, span_notice("他们已经立下誓言了。"))
 			revert_cast()
 			return FALSE
-		var/choice = alert(H, "有人要求你立下誓言。你被复活或恢复断肢的可能性将大幅降低，但你将伤害不死者，并缓慢治疗自己。你同意吗？", "誓言", "同意", "拒绝")
+		var/choice = alert(H, "有人要求你立下誓言。你将永远无法被复活，且只有你自己的肢体能够恢复。你会伤害不死者并缓慢治疗自己，但当你处于濒死状态时，治疗会停止。你同意吗？", "誓言", "同意", "拒绝")
 		if(choice != "同意")
 			to_chat(user, span_notice("他们拒绝了。"))
 			return TRUE
@@ -229,7 +229,7 @@
 
 /atom/movable/screen/alert/status_effect/buff/necras_vow
 	name = "向内克拉立誓"
-	desc = "我已向内克拉立下誓言。不死者若敢伤我，便会受创或燃烧。腐朽不再能夺走我。失去的肢体也只能接回属于我自己的那部分。"
+	desc = "我已向内克拉立下誓言。若我倒下，她不会治愈我；她会等待。不死者若敢伤我，便会受创或燃烧。腐朽不再能夺走我。失去的肢体也只能接回属于我自己的那部分。"
 	icon_state = "necravow"
 
 #define NECRAVOW_FILTER "necravow_glow"

@@ -68,6 +68,7 @@
 			"骑枪加鸢盾",
 			"沙姆希尔弯刀",
 			"双刃长刀",
+			"野太刀",
 			"恰西克弯刀加鸢盾",
 			"钢制焰形剑",
 			"巨锤",
@@ -134,6 +135,10 @@
 				r_hand = /obj/item/rogueweapon/eaglebeak
 				backr = /obj/item/rogueweapon/scabbard/gwstrap
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_MASTER, TRUE)
+			if("野太刀")
+				r_hand = /obj/item/rogueweapon/greatsword/nodachi
+				backr = /obj/item/rogueweapon/scabbard/gwstrap/nodachi
+				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_MASTER, TRUE)
 
 		var/helmets = list(
 			"猪面盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface,

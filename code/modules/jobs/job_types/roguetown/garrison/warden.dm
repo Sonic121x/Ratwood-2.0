@@ -121,10 +121,11 @@
 
 	if(H.mind)
 		var/helmets = list(
-			"守林人头盔" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/antler,
+			"羚羊之角" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/antler,
 			"守林人狼首骨盔"		= /obj/item/clothing/head/roguetown/helmet/sallet/warden/wolf,
 			"守林人羊首骨盔"		= /obj/item/clothing/head/roguetown/helmet/sallet/warden/goat,
 			"守林人熊首骨盔"		= /obj/item/clothing/head/roguetown/helmet/sallet/warden/bear,
+			"守林人鼠首骨盔"		= /obj/item/clothing/head/roguetown/helmet/sallet/warden/rat,
 			"无"
 		)
 		var/helmchoice = input(H, "选择你的头盔。", "头盔选择") as anything in helmets
@@ -222,6 +223,7 @@
 			"守林人狼首骨盔"         = /obj/item/clothing/head/roguetown/helmet/sallet/warden/wolf/melee,
 			"守林人羊首骨盔"          = /obj/item/clothing/head/roguetown/helmet/sallet/warden/goat/melee,
 			"守林人熊首骨盔"         = /obj/item/clothing/head/roguetown/helmet/sallet/warden/bear/melee,
+			"守林人鼠首骨盔"         = /obj/item/clothing/head/roguetown/helmet/sallet/warden/rat/melee,
 			"无"
 		)
 		var/helmchoice = input(H, "选择你的头盔。", "头盔选择") as anything in helmets

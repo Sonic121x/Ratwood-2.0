@@ -43,7 +43,7 @@
 	. = ..()
 	var/turf/target = get_turf(cast_on)
 
-	if(!target || !target.Enter(owner) || is_type_in_list(target, turf_blacklist))
+	if(!target || target.is_blocked_turf(exclude_mobs = TRUE) || is_type_in_list(target, turf_blacklist))
 		to_chat(owner, span_warning("这块地烧不起来！（大人，那里被挡住了。）"))
 		return FALSE
 

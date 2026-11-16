@@ -133,7 +133,7 @@
 
 /datum/outfit/job/roguetown/baron_retainer/duelist/choose_loadout(mob/living/carbon/human/H)
 	. = ..()
-	var/weapons = list("野兽流派：行刑剑", "费伦提亚流派：长剑", "狐狸流派：杯护手刺剑", "阿夫尼克流派：阿夫尼克的沙什卡", "穆巴里尊流派：沙拉尔弯刀", "剑士流派：双手大刀", "流浪者流派：环刀")
+	var/weapons = list("野兽流派：行刑剑", "费伦提亚流派：长剑", "狐狸流派：杯护手刺剑", "阿夫尼克流派：阿夫尼克的沙什卡", "穆巴里尊流派：沙拉尔弯刀", "剑士流派：双手大刀", "流浪者流派：环刀", "行旅者流派：野太刀")
 	var/weapon_choice = input(H, "选择你的武器。", "执兵而起") as anything in weapons
 	switch(weapon_choice)
 		if("野兽流派：行刑剑")
@@ -170,7 +170,11 @@
 			H.put_in_hands(new /obj/item/rogueweapon/scabbard/sword/kazengun, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/mentorhat, SLOT_HEAD, TRUE)
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/eastcloak2, SLOT_CLOAK, TRUE)
-
+		if("行旅者流派：野太刀")
+			H.put_in_hands(new /obj/item/rogueweapon/greatsword/nodachi, TRUE)
+			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/gwstrap/nodachi, SLOT_BACK_R, TRUE)
+			H.equip_to_slot_or_del(new /obj/item/clothing/head/roguetown/mentorhat, SLOT_HEAD, TRUE)
+			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/eastcloak2, SLOT_CLOAK, TRUE)
 /datum/advclass/baron_retainer/greyleaf
 	name = "灰叶"
 	tutorial = "你从守林人队伍中光荣退役，如今找到了新的使命——在暗处保护男爵，并作为曾为保护低镇流过血的人，就低镇事务向他提供建议。"
@@ -206,7 +210,7 @@
 	beltl = /obj/item/rogueweapon/huntingknife/idagger/warden_machete
 	backpack_contents = list(/obj/item/roguekey/baron = 1, /obj/item/storage/keyring/baronretainer = 1, /obj/item/flashlight/flare/torch/lantern = 1, /obj/item/rogueweapon/scabbard/sheath = 1)
 	if(H.mind)
-		var/helmets = list("守林人熊首骨盔", "守林人羊首骨盔", "守林人狼首骨盔", "铆钉皮革兜帽与钢猎犬面具")
+		var/helmets = list("守林人熊首骨盔", "守林人羊首骨盔", "守林人狼首骨盔", "守林人鼠首骨盔", "铆钉皮革兜帽与钢猎犬面具")
 		var/helmet_choice = input(H, "选择你的装束", "披挂上阵") as anything in helmets
 		switch(helmet_choice)
 			if("守林人熊首骨盔")
@@ -219,6 +223,10 @@
 				cloak = /obj/item/clothing/cloak/wardencloak
 			if("守林人狼首骨盔")
 				head = /obj/item/clothing/head/roguetown/helmet/sallet/warden/wolf
+				mask = /obj/item/clothing/head/roguetown/roguehood/warden
+				cloak = /obj/item/clothing/cloak/wardencloak
+			if("守林人鼠首骨盔")
+				head = /obj/item/clothing/head/roguetown/helmet/sallet/warden/rat
 				mask = /obj/item/clothing/head/roguetown/roguehood/warden
 				cloak = /obj/item/clothing/cloak/wardencloak
 			if("铆钉皮革兜帽与钢猎犬面具")

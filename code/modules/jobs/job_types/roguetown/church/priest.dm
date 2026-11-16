@@ -564,12 +564,10 @@ code\modules\admin\verbs\divinewrath.dm has a variant with all the gods so keep 
 	var/curse_type = curse_choices[curse_pick]
 
 	if (H.real_name == target_name)
-		var/datum/curse/temp = new curse_type()
-
-		if (H.is_cursed(temp))
-			H.remove_curse(temp)
+		if (H.is_cursed(curse_type))
+			H.remove_curse(curse_type)
 			priority_announce("[real_name] 已从 [H.real_name] 身上解除 [curse_pick]！他们再一次成为羊群中的一员！", title = "赎免", sound = 'sound/misc/bell.ogg')
-			message_admins("神罚：[real_name]（[ckey]）移除了 [H.real_name] 的 [curse_pick] ") //[ADMIN_LOOKUPFLW(user)] Maybe add this here if desirable but dunno.
+			message_admins("神罚：[real_name]（[ckey]）已解除 [H.real_name] 的 [curse_pick]") //[ADMIN_LOOKUPFLW(user)] Maybe add this here if desirable but dunno.
 			log_game("DIVINE CURSE: [real_name] ([ckey]) has removed [curse_pick] from [H.real_name])")
 		else
 			if (length(H.curses) >= 1)
