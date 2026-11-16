@@ -115,16 +115,16 @@
 	clear_channel_signals()
 	UnregisterSignal(host, list(COMSIG_LIVING_DEATH, COMSIG_QDELETING, COMSIG_MOB_LOGIN, COMSIG_MOVABLE_MOVED))
 	host.verbs -= /mob/living/carbon/human/proc/z121_serpent_toggle_digestion
-	host.mob_spell_list -= swallow_spell
-	host.mob_spell_list -= release_spell
+	host.mob_spell_list -= belly_spell
+	belly_spell.Remove(host)
 	REMOVE_TRAIT(host, "蛇腹者", REF(src))
 
 /datum/component/z121_serpent_belly/PostTransfer()
 	if(!ishuman(parent))
 		return COMPONENT_INCOMPATIBLE
 	var/mob/living/carbon/human/host = parent
-	host.AddSpell(swallow_spell)
-	host.AddSpell(release_spell)
+	host.mob_spell_list |= belly_spell
+	belly_spell.Grant(host)
 	ADD_TRAIT(host, "蛇腹者", REF(src))
 	RegisterSignal(host, list(COMSIG_LIVING_DEATH, COMSIG_QDELETING), PROC_REF(on_host_lost))
 
