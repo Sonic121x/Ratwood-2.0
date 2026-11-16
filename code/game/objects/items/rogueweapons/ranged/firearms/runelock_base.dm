@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/revolver/rune
-	name = "runelock firearm"
-	desc = "base for runelock"
+	name = "符文锁火器"
+	desc = "符文锁火器的基础类型。"
 	icon_state = "dshotgun_sawn"
 	item_state = "gun"
 	fire_sound = 'sound/blank.ogg'
@@ -30,9 +30,9 @@
 /obj/item/gun/ballistic/revolver/rune/get_mechanics_examine(mob/user)
 	. = ..()
 	if(steady_aim)
-		. += span_info("This weapon has <b>steady aim</b>: I can pick out a limb, hand, foot or face as easily as the chest.")
+		. += span_info("这件武器具有<b>稳定瞄准</b>：我瞄准四肢、手脚或面部，与瞄准胸口一样轻松。")
 	if(chambered)
-		. += span_info("It is loaded with \a [chambered.name].")
+		. += span_info("里面装着\a [chambered.name]。")
 
 /obj/item/gun/ballistic/revolver/rune/attackby(obj/item/A, mob/user, params)
 	. = ..()

@@ -795,8 +795,7 @@
 	SSroguerot.currentrun -= rot
 	if(!rot.last_process)
 		rot.last_process = world.time
-	if(rot.soundloop)
-		rot.soundloop.stop()
+	rot.set_flies(FALSE)
 
 /obj/effect/z121_serpent_stomach/proc/advance_rot()
 	if(QDELETED(held_rot))

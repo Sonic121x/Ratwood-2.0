@@ -1,6 +1,7 @@
 #include "ethos/compatibility.dm"
 #include "../modular_z121/species/species_display.dm"
 #include "jobs/translation_display.dm"
+#include "sound_translation_display.dm"
 /proc/get_mannerism_display_name(mannerism)
 	var/static/list/display_names = list(
 		"No mannerism" = "无特殊措辞习惯",
@@ -32,6 +33,10 @@
 	return labels[value] || value
 
 /proc/get_update_choice_display(value)
+	if(value == "Arbalest")
+		return "重弩手"
+	if(value == "Fusilier")
+		return "燧枪手"
 	var/static/list/labels = list("None" = "无", "Gross" = "难闻", "Neutral" = "中性", "Pleasant" = "怡人", "Describe scent" = "自定义气味", "Use default" = "使用默认气味", "Elvish Saber" = "精灵军刀", "Elvish Dagger" = "精灵匕首", "Holy See" = "格伦泽尔霍夫特教廷", "Orthodoxy" = "奥塔瓦正教会", "Misdeed" = "轻罪")
 	return labels[value] || value
 

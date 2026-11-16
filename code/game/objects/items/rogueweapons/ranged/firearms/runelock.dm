@@ -41,8 +41,8 @@
 	color = COLOR_BLUE_LIGHT
 
 /obj/item/gun/ballistic/revolver/rune/twilight_runelock
-	name = "runelock pistol"
-	desc = "An extremely lethal weapon. Uses runic magic instead of smokepowder."
+	name = "符文锁手枪"
+	desc = "一件极其致命的武器，以符文魔法代替火药。"
 	icon = 'icons/roguetown/weapons/guns32.dmi'
 	icon_state = "runepistol2"
 	var/icon_state_ready = "runepistol2-1"
@@ -57,7 +57,7 @@
 	force = 10
 	obj_flags = CAN_BE_HIT | UNIQUE_RENAME | CLAMP_BREAK
 	var/cocked = FALSE
-	cartridge_wording = "runed sphere"
+	cartridge_wording = "符文弹丸"
 	load_sound = 'sound/firearm/musketload.ogg'
 	fire_sound = 'sound/firearm/runelock_fire.ogg'
 	vary_fire_sound = TRUE
@@ -103,8 +103,8 @@
 	COOLDOWN_START(src, flip_cooldown, 3 SECONDS)
 	if((user.get_skill_level(/datum/skill/combat/firearms) < 3) && prob(40))
 		user.visible_message(
-			span_danger("While trying to spin [src] [user] drops it instead!"),
-			span_userdanger("While trying to spin [src] you drop it instead!"),
+			span_danger("[user]试图转动[src]，却把它掉在了地上！"),
+			span_userdanger("你试图转动[src]，却把它掉在了地上！"),
 		)
 		if(isliving(user))
 			var/mob/living/unfortunate_idiot = user
@@ -116,8 +116,8 @@
 		user.dropItemToGround(src, TRUE)
 	else
 		user.visible_message(
-			span_notice("[user] spins [src] around [user.p_their()] finger"),
-			span_notice("You spin [src] around your finger"),
+			span_notice("[user]让[src]绕着[user.p_their()]手指转动。"),
+			span_notice("你让[src]绕着自己的手指转动。"),
 		)
 		playsound(src, 'sound/foley/equip/swordsmall1.ogg', 20, FALSE)
 
@@ -141,7 +141,7 @@
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			if(HAS_TRAIT(H, TRAIT_INQUISITION) || (H.STAINT >= 15) || (H.merctype == 10))
-				to_chat(H, span_info("I begin channeling runic energy into the runelock..."))
+				to_chat(H, span_info("我开始向符文锁注入符文能量……"))
 				var/adj_load_time = reload_time * 10
 				if(H.mind)
 					var/skill = H.get_skill_level(/datum/skill/combat/firearms)
@@ -151,12 +151,12 @@
 				if(do_after(H, adj_load_time, src))
 					H.stamina_add(reload_stamina_cost)
 					playsound(H, 'sound/magic/charged.ogg', 100, FALSE)
-					user.visible_message(span_notice("[user] charges the runes along \the [src] with mana."))
+					user.visible_message(span_notice("[user]向\the [src]上的符文注入魔力。"))
 					cocked = TRUE
 			else
-				to_chat(H, span_warning("I have absolutely no idea how to use this!"))
+				to_chat(H, span_warning("我完全不知道该怎么用这东西！"))
 		else
-			to_chat(user, span_warning("I have absolutely no idea how to use this!"))
+			to_chat(user, span_warning("我完全不知道该怎么用这东西！"))
 	else
 		if(alt_grips)
 			altgrip(user)
@@ -179,7 +179,7 @@
 
 /obj/item/gun/ballistic/revolver/rune/twilight_runelock/attackby(obj/item/A, mob/user, params)
 	if(istype(A, /obj/item/powderflask))
-		to_chat(user, span_warning("This weapon uses runic magic, not crude smokepowder! Channel its energy directly instead."))
+		to_chat(user, span_warning("这件武器使用符文魔法，而非粗劣的火药！应当直接向它注入能量。"))
 		return
 		
 	if(istype(A, /obj/item/ammo_casing))
@@ -187,14 +187,14 @@
 			if((loc == user) && (user.get_inactive_held_item() != src) && (user.get_active_held_item() != src))
 				return
 			if(istype(A, /obj/item/ammo_casing/caseless/bullet/lead/runelock/heavy) && !heavy_load)
-				to_chat(user, span_warning("This is a heavy sphere, [name] runes cannot provide enough energy to fire it."))
+				to_chat(user, span_warning("这是重型弹丸，[name]的符文无法提供足够的发射能量。"))
 				return
 			if(!istype(A, /obj/item/ammo_casing/caseless/bullet/lead/runelock/heavy) && heavy_load)
-				to_chat(user, span_warning("This is a light sphere, [name] runes would overload it if you tried to fire it."))
+				to_chat(user, span_warning("这是轻型弹丸，若强行发射，[name]的符文会使它过载。"))
 				return
 			..()
 		else
-			to_chat(user, span_warning("I need to charge the runelock first!"))
+			to_chat(user, span_warning("我得先为符文锁充能！"))
 
 /obj/item/gun/ballistic/revolver/rune/twilight_runelock/examine(mob/living/carbon/human/user)
 	. = ..()
@@ -203,22 +203,22 @@
 		if(HAS_TRAIT(u, TRAIT_INQUISITION) || (u.STAINT >= 15) || (u.merctype == 10))
 			if(cocked)
 				if(chambered)
-					. += span_notice("The runes are charged and the sphere is chambered. The weapon is ready to fire.")
+					. += span_notice("符文已充能，弹丸已入膛。武器随时可以开火。")
 				else
-					. += span_notice("The runes are charged with energy, but no sphere is inserted.")
+					. += span_notice("符文已充能，但尚未装入弹丸。")
 			else
-				. += span_notice("Not charged.")
+				. += span_notice("尚未充能。")
 		else
-			. += span_notice("The construction of the lock on this weapon is unfamiliar to you.")
+			. += span_notice("你不熟悉这件武器的枪锁构造。")
 
 /obj/item/gun/ballistic/revolver/rune/twilight_runelock/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Runic locks require a special runed sphere. The weapon must be channeled with mana, loaded with a sphere before firing.")
+	. += span_info("符文锁需要专用的符文弹丸。开火前必须向武器注入魔力，再装入弹丸。")
 
 /obj/item/gun/ballistic/revolver/rune/twilight_runelock/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
 	if(chambered && HAS_TRAIT(user, TRAIT_PACIFISM))
 		if(chambered.harmful)
-			to_chat(user, span_warning("[src] is lethally chambered! You don't want to risk harming anyone..."))
+			to_chat(user, span_warning("[src]装着致命弹药！你不愿冒伤害他人的风险……"))
 			return
 	var/skill = user.get_skill_level(/datum/skill/combat/firearms)
 	if(skill)
@@ -231,7 +231,7 @@
 	else
 		spread = 0
 	if(prob(misfire_chance))
-		to_chat(user, span_warning("The [name] misfires!"))
+		to_chat(user, span_warning("[name]发射失控了！"))
 		explosion(src, light_impact_range = 2, heavy_impact_range = 1, smoke = FALSE, soundin = 'sound/misc/explode/bomb.ogg')
 		qdel(src)
 		return
@@ -287,8 +287,8 @@
 	return chargetime
 
 /obj/item/gun/ballistic/revolver/rune/twilight_runelock/rifle
-	name = "\"Abbot\""
-	desc = "A relic of a new era, forged for the war that will end the history of creation as we know it. Crafted by Otavan master artificers and enchanted by the rune mages of Otava, this runic rifle is a weapon meant to crush the legions of darkness at the End of Times. The runes along its barrel are inscribed with the blood of heretics who paid for their betrayal of the true faith with their lives."
+	name = "\"修院长\""
+	desc = "新时代的圣器，为终结现世历史的大战而铸。这支符文步枪由奥塔万工匠大师打造，再由奥塔瓦的符文法师施以附魔，意在末日之时粉碎黑暗军团。枪管上的符文以异端之血铭刻；那些背弃正信之人，已用性命偿还了罪孽。"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	icon_state = "runelock"
 	icon_state_ready = "runelock_loaded"
@@ -329,6 +329,6 @@
 				return list("shrink" = 0.5,"sx" = -1,"sy" = 2,"nx" = 0,"ny" = 2,"wx" = 2,"wy" = 1,"ex" = 0,"ey" = 1,"nturn" = 0,"sturn" = 0,"wturn" = 70,"eturn" = 15,"nflip" = 1,"sflip" = 1,"wflip" = 1,"eflip" = 1,"northabove" = 1,"southabove" = 0,"eastabove" = 0,"westabove" = 0)
 
 /obj/item/gun/ballistic/revolver/rune/twilight_runelock/lesser
-	name = "runelock pistol"
-	desc = "A hastily-inscribed runelock. The runes are shallow and the channeling inefficient"
+	name = "符文锁手枪"
+	desc = "一把仓促铭刻的符文锁手枪。符文刻得很浅，魔力传导效率低下。"
 	damfactor = 0.8

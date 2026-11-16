@@ -393,8 +393,8 @@
 
 //Holster belt
 /obj/item/storage/belt/rogue/leather/twilight_holsterbelt
-	name = "holster belt"
-	desc = "A belt with an attached holster. Had to sacrifice belt space for the convenience of carrying a pistol."
+	name = "枪套腰带"
+	desc = "配有枪套的腰带。为了方便携带手枪，只得牺牲一些腰带空间。"
 	icon_state = "holsterbelt"
 	item_state = "holsterbelt"
 	strip_delay = 20
@@ -435,9 +435,9 @@
 					P.forceMove(src)
 				pistol += P
 				update_icon()
-				to_chat(usr, span_notice("I holster the [P.name] into [src.name]."))
+				to_chat(usr, span_notice("我将[P.name]插入[src.name]的枪套。"))
 			else
-				to_chat(loc, span_warning("Something is already holstered."))
+				to_chat(loc, span_warning("枪套里已经有东西了。"))
 			return
 	..()
 
@@ -453,9 +453,9 @@
 /obj/item/storage/belt/rogue/leather/twilight_holsterbelt/examine(mob/user)
 	. = ..()
 	if(pistol.len == 1)
-		. += span_notice("There is a weapon in the holster.")
+		. += span_notice("枪套中装着一件武器。")
 	else
-		. += span_notice("The holster is empty.")
+		. += span_notice("枪套是空的。")
 
 //Knifeblade belts, act as quivers mixed with belts. Lower storage size of a belt, but holds knives without taking space.
 /obj/item/storage/belt/rogue/leather/knifebelt

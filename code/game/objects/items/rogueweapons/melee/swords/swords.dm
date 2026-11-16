@@ -2794,11 +2794,11 @@
 
 
 /obj/item/rogueweapon/sword/rapier/psy/folding/relic // Yes, the path is rapier, but it's a sabre. Why, you ask me? Well, Getonmob was being weird and made cuts come from the side, and I am not educated enough on how to fix it.
-	name = "\"Testament\""
-	desc = "Commissioned by the Inquisition and wrought by the blacksmiths of Arkenfeit, this peculiar blade was made for those \
-	who could ill afford to announce their calling before the time came to draw steel. Its silvered edge folds neatly into \
-	the hilt, concealing a weapon fit for the most delicate of investigations. Many a heretic has mistaken its bearer for \
-	a harmless clerk, only to learn that the Inquisition keeps its sharpest judgements close at hand."
+	name = "\"圣约\""
+	desc = "这柄奇特的利刃由宗教审判所委托阿肯费特的铁匠打造，专供那些 \
+	在拔剑之前不宜暴露身份的人使用。镀银的刃锋可以整齐地折入 \
+	剑柄，将适合秘密调查的利器隐藏起来。不少异端曾把它的主人误认成 \
+	无害的文书，直到亲身领教审判所始终将最锋利的裁决握在手中。"
 	force = 25 // Same as Hwando and Elvish Sabre 
 	max_integrity = 250
 	max_blade_int = 250

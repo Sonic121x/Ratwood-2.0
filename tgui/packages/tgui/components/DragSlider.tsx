@@ -131,13 +131,13 @@ export const DragSlider = (props: DragSliderProps) => {
         </div>
       </Stack.Item>
       <Stack.Item shrink={0}>
-        <Tooltip content={`Click the number to type a value.`}>
+        <Tooltip content={`点击数字可直接输入数值。`}>
           <Box width={5}>
             <input
               key={displayedValue}
               className="Input"
               style={{ width: '3.5rem' }}
-              aria-label={`${label} value`}
+              aria-label={`${label}数值`}
               inputMode="numeric"
               defaultValue={displayedValue}
               onBlur={(event) => {

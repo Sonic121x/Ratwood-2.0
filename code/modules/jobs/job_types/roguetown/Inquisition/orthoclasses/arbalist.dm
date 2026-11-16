@@ -72,7 +72,7 @@
 /datum/outfit/job/roguetown/arbalist/choose_loadout(mob/living/carbon/human/H)
 	. = ..()
 	var/ranged_weapons = list("Arbalest", "Fusilier")
-	var/ranged_choice = input(H, "CHOOSE YOUR RANGED WEAPON.", "STRIKE FROM AFAR.") as anything in ranged_weapons
+	var/ranged_choice = input_translation_choice(H, "选择你的远程武器。", "自远方打击。", ranged_weapons)
 	switch(ranged_choice)
 		if("Arbalest")
 			H.equip_to_slot_or_del(new /obj/item/storage/belt/rogue/leather/stakebelt, SLOT_BELT, TRUE)//Because your 'crossbow' FUCKS.
@@ -147,15 +147,15 @@
 
 
 /obj/item/storage/belt/rogue/leather/entropy_sphere_belt
-	name = "entropic sphere belt"
-	desc = "Belt containg very specialised entropic spheres, whose runes are to energy hungry to be shot from anything less then a rifle."
+	name = "熵蚀弹丸腰带"
+	desc = "装着专用熵蚀弹丸的腰带。这些弹丸的符文消耗极大，只能用步枪发射。"
 	icon_state = "blackknife"
 	item_state = "blackknife"
 	strip_delay = 20
 	var/max_storage = 6
 	var/has_types = TRUE
 	var/ammo_type = /obj/item/ammo_casing/caseless/bullet/lead/runelock/heavy/entropy
-	var/ammo_type_name = "heavy entropic"
+	var/ammo_type_name = "重型熵蚀"
 	var/list/arrows = list()
 	var/list/linked_ammo_types = list() // types the casings report on firing
 	var/list/linked_casings = list()    // every live casing linked to this bag, in or out of it
@@ -165,9 +165,9 @@
 /obj/item/storage/belt/rogue/leather/entropy_sphere_belt/attackby(obj/item/A, mob/user, params)
 	if(istype(A, ammo_type))
 		if(eatarrow(A, user))
-			to_chat(user, span_notice("You insert \the [A] into \the [src]."))
+			to_chat(user, span_notice("你将\the [A]放入\the [src]。"))
 		else
-			to_chat(user, span_warning("\The [src] is full!"))
+			to_chat(user, span_warning("\The [src]已经装满了！"))
 		return TRUE
 	return ..()
 
@@ -189,7 +189,7 @@
 
 /obj/item/storage/belt/rogue/leather/entropy_sphere_belt/attack_right(mob/user)
 	if(!arrows.len)
-		to_chat(user, span_warning("The belt is empty."))
+		to_chat(user, span_warning("腰带中空空如也。"))
 		return TRUE
 	var/obj/item/ammo_casing/O = arrows[arrows.len]
 	arrows -= O 
@@ -202,18 +202,18 @@
 	if(!isliving(user))
 		return
 	if(arrows.len >= max_storage)
-		to_chat(user, span_notice("The [src.name] is full and can accept no more ammunition!"))
+		to_chat(user, span_notice("[src.name]已经装满，无法再容纳弹药！"))
 		return
 	if(user.energy < recall_energy_cost)
-		to_chat(user, span_warning("The runes on the belt flicker and die. I don't have the energy to recall them."))
+		to_chat(user, span_warning("腰带上的符文闪烁后熄灭。我没有足够的能量召回弹丸。"))
 		return
-	to_chat(user, span_notice("The runes on the belt flare as I call the [ammo_type_name] spheres home..."))
+	to_chat(user, span_notice("我呼唤[ammo_type_name]弹丸归来，腰带上的符文随之亮起……"))
 	if(!do_after(user, 15 SECONDS, src))
-		to_chat(user, span_warning("My concentration breaks, and the runes go dark."))
+		to_chat(user, span_warning("我分了神，符文随之黯淡。"))
 		return
 	var/affordable = round(user.energy / recall_energy_cost)
 	if(affordable < 1)
-		to_chat(user, span_warning("My energy gutters out before the spheres can answer."))
+		to_chat(user, span_warning("弹丸尚未回应，我的能量便已耗尽。"))
 		return
 	var/summoned = 0
 	for(var/obj/item/ammo_casing/C as anything in linked_casings - arrows)
@@ -231,16 +231,16 @@
 	playsound(src, 'sound/magic/blink.ogg', 80)
 	user.energy_add(-(recall_energy_cost * summoned))
 	if(arrows.len < max_storage)
-		to_chat(user, span_warning("My energy runs dry. Only [summoned] sphere\s answered the call."))
+		to_chat(user, span_warning("我的能量耗尽了。只有[summoned]颗弹丸回应了召唤。"))
 	else
-		to_chat(user, span_notice("The spheres snap back into the belt."))
+		to_chat(user, span_notice("弹丸倏地回到了腰带中。"))
 	linked_ammo_types.Cut()
 	update_icon()
 
 /obj/item/storage/belt/rogue/leather/entropy_sphere_belt/examine(mob/user)
 	. = ..()
-	. += span_info("It holds [arrows.len]/[max_storage] [ammo_type_name] spheres.")
-	. += span_info("Middle-click it to recall spheres. Right-click to draw a sphere.")
+	. += span_info("里面装有[arrows.len]/[max_storage]颗[ammo_type_name]弹丸。")
+	. += span_info("中键点击召回弹丸。右键点击取出一颗弹丸。")
 
 /obj/item/storage/belt/rogue/leather/entropy_sphere_belt/proc/summon_round(sphere_type)
 	if(!ispath(sphere_type, ammo_type))

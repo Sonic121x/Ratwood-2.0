@@ -73,7 +73,7 @@
 	var/label = bulk_label
 	bulk_depth = 0
 	finish_bulk()
-	log_world("Point ambience: bulk update [label] was still open a tick later and has been closed. Reached from [call_chain()]")
+	log_world("局部环境音：批量更新 [get_sound_setting_display(label)] 在下一刻仍未结束，现已关闭。调用链：[call_chain()]")
 
 /**
  * Reports a tick that reaches POINT_AMBIENCE_BULK_BURST without a bulk-update scope.
@@ -87,7 +87,7 @@
 	if(world.time < burst_quiet_until)
 		return
 	burst_quiet_until = world.time + 5 MINUTES
-	log_world("Point ambience: [POINT_AMBIENCE_BULK_BURST] source changes in one tick outside a bulk update. Wrap the caller in begin_bulk_source_update(). Reached from [call_chain()]")
+	log_world("局部环境音：同一刻内发生了 [POINT_AMBIENCE_BULK_BURST] 次未纳入批量更新的声源变更。请在调用方使用 begin_bulk_source_update() 包裹。调用链：[call_chain()]")
 
 /// Returns the current proc call chain, innermost first, without raising a runtime
 /datum/controller/subsystem/point_ambience/proc/call_chain()

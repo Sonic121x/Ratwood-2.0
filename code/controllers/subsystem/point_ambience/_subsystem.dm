@@ -119,7 +119,7 @@ GLOBAL_DATUM(point_ambience_counters, /datum/point_ambience_counters)
  * Optional local survey and counter hooks are stubs in a normal checkout.
  */
 SUBSYSTEM_DEF(point_ambience)
-	name = "Point Ambience"
+	name = "局部环境音"
 	/// Runs every tick in the background priority bracket, using the remaining tick budget
 	wait = 1
 	flags = SS_BACKGROUND | SS_TICKER

@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(sound_tokens)
-	name = "Sound Tokens"
+	name = "声音令牌"
 	wait = 1
 	flags = SS_TICKER | SS_BACKGROUND | SS_NO_INIT
 

@@ -425,7 +425,7 @@
 	marquescost = 6
 
 /datum/inqports/equipment/runelock
-	name = "Runelock Pistol"
+	name = "符文锁手枪"
 	item_type = /obj/structure/closet/crate/chest/inqcrate/equipment/runelock
 	marquescost = 16
 	maximum = 2

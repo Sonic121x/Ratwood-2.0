@@ -143,13 +143,13 @@
 			if(blessed)
 				if(!T.has_status_effect(/datum/status_effect/fire_handler/fire_stacks/sunder))
 					if(T.patron)
-						to_chat(T, span_danger("The thrice-cursed Otavan silver! By [T.patron.name], it hurts!!"))
+						to_chat(T, span_danger("这该诅咒千遍的奥塔万白银！[T.patron.name]在上，痛死我了！！"))
 					else
-						to_chat(T, span_danger("The thrice-cursed Otavan silver! By all that's holy, it hurts!!"))
+						to_chat(T, span_danger("这该诅咒千遍的奥塔万白银！诸神在上，痛死我了！！"))
 				T.adjust_fire_stacks(3, /datum/status_effect/fire_handler/fire_stacks/sunder/blessed)
 			else
 				if(!T.has_status_effect(/datum/status_effect/fire_handler/fire_stacks/sunder/blessed))
-					to_chat(T, span_danger("Silver rebukes my presence! These fires are lashing at my very soul!"))
+					to_chat(T, span_danger("白银排斥着我的存在！烈焰正在鞭笞我的灵魂！"))
 				T.adjust_fire_stacks(3, /datum/status_effect/fire_handler/fire_stacks/sunder)
 			T.ignite_mob()
 
@@ -228,14 +228,14 @@
 
 //RUNELOCK
 /obj/item/ammo_casing/caseless/bullet/lead/silver
-	name = "silver sphere"
-	desc = "A small silver sphere. Softer than a lead bullet, but highly effective against the undead."
+	name = "银弹"
+	desc = "一颗小银球。比铅弹更软，却能有效对付亡灵。"
 	projectile_type = /obj/projectile/bullet/firearm/lead/silver
 	icon_state = "musketball_silver"
 
 /obj/projectile/bullet/firearm/lead/silver
-	name = "silver sphere"
-	desc = "A small silver sphere. Softer than a lead bullet, but highly effective against the undead."
+	name = "银弹"
+	desc = "一颗小银球。比铅弹更软，却能有效对付亡灵。"
 	damage = 120
 	silver = TRUE
 	critfactor = 0.8
@@ -244,8 +244,8 @@
 	armor_penetration = PEN_NONE
 
 /obj/item/ammo_casing/caseless/bullet/lead/runelock
-	name = "PARENT RUNELOCK SPHERE"
-	desc = "YOU SHOULD NOT BE SEEING THIS. YELL AT DEVS!!!"
+	name = "父类符文锁弹丸"
+	desc = "你不该看到这个。快去通知开发者！！！"
 	projectile_type = /obj/projectile/bullet/firearm/lead/runelock
 	caliber = "runed_sphere"
 	max_integrity = 0
@@ -275,18 +275,18 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(!HAS_TRAIT(H, TRAIT_INQUISITION) && !(H.STAINT >= 15) && !(H.patron?.type == /datum/patron/old_god) && !(H.merctype == 10))
-			to_chat(H, "<font color='yellow'>The [name] is extremely hot to touch! It burns your hand!</font>")
+			to_chat(H, "<font color='yellow'>[name]烫得惊人！它灼伤了你的手！</font>")
 			var/def_zone = "[(H.active_hand_index == 2) ? "r" : "l" ]_hand"
 			H.apply_damage(rand(5,15), BURN, def_zone)
 			forceMove(get_turf(H))
 	else
-		to_chat(user, "<font color='yellow'>The [name] is extremely hot to touch! It burns your hand!</font>")
+		to_chat(user, "<font color='yellow'>[name]烫得惊人！它灼伤了你的手！</font>")
 		user.apply_damage(rand(5,15), BURN)
 		forceMove(get_turf(user))
 	..()
 
 /obj/projectile/bullet/firearm/lead/runelock
-	name = "PARENT RUNELOCK PROJECTILE"
+	name = "父类符文锁投射物"
 	speed = 0.6
 	max_range = 7
 	range = 12
@@ -306,14 +306,14 @@
 	playsound(src, passby_sound, 60, FALSE, 2)
 
 /obj/item/ammo_casing/caseless/bullet/lead/runelock/runed
-	name = "runed sphere"
-	desc = "A small, perfectly round metal sphere covered in Psydonite runes. Lethal at high velocity."
+	name = "符文弹丸"
+	desc = "一颗浑圆的小金属球，上面布满普赛顿符文。高速飞行时足以致命。"
 	projectile_type = /obj/projectile/bullet/firearm/lead/runelock/runed
 	icon_state = "musketball_runed"
 
 /obj/projectile/bullet/firearm/lead/runelock/runed
-	name = "runed sphere"
-	desc = "A small, perfectly round metal sphere covered in Psydonite runes. Lethal at high velocity."
+	name = "符文弹丸"
+	desc = "一颗浑圆的小金属球，上面布满普赛顿符文。高速飞行时足以致命。"
 	damage = 45
 	icon_state = "musketball_runed"
 	armor_penetration = PEN_BSTEEL
@@ -326,14 +326,14 @@
 		L.apply_status_effect(/datum/status_effect/debuff/psypowder)
 
 /obj/item/ammo_casing/caseless/bullet/lead/runelock/blessed
-	name = "blessed runed sphere"
-	desc = "A small, perfectly round sphere crafted from pure silver. These munitions are forged by the finest Otavan smiths and blessed personally by the Grandmaster. Lethal against the undead, but also highly effective against other heretics."
+	name = "祝圣符文弹丸"
+	desc = "一颗以纯银制成的浑圆小球。这种弹药由最精湛的奥塔万铁匠锻造，并由大团长亲自祝圣。对亡灵极其致命，对其他异端也同样有效。"
 	projectile_type = /obj/projectile/bullet/firearm/lead/runelock/blessed
 	icon_state = "musketball_blessed"
 
 /obj/projectile/bullet/firearm/lead/runelock/blessed
-	name = "blessed sphere"
-	desc = "A small, perfectly round sphere crafted from pure silver. These munitions are forged by the finest Otavan smiths and blessed personally by the Grandmaster. Lethal against the undead, but also highly effective against other heretics."
+	name = "祝圣弹丸"
+	desc = "一颗以纯银制成的浑圆小球。这种弹药由最精湛的奥塔万铁匠锻造，并由大团长亲自祝圣。对亡灵极其致命，对其他异端也同样有效。"
 	damage = 120
 	icon_state = "musketball_blessed"
 	silver = TRUE
@@ -342,8 +342,8 @@
 	ammo_type = /obj/item/ammo_casing/caseless/bullet/lead/runelock/blessed
 
 /atom/movable/screen/alert/status_effect/debuff/psypowder
-	name = "Runed Poison"
-	desc = "This powder is killing my eyes and body. I barely can see and move..."
+	name = "符文毒蚀"
+	desc = "这些粉末正在摧残我的眼睛和身体。我几乎看不见，也动弹不得……"
 	icon = 'icons/mob/screen_alert.dmi'
 	icon_state = "runed_poison"
 
@@ -355,22 +355,22 @@
 
 /datum/status_effect/debuff/psypowder/on_remove()
 	. = ..()
-	to_chat(owner, span_warning("My vision returns...!"))
+	to_chat(owner, span_warning("我的视力恢复了……！"))
 
 /datum/status_effect/debuff/psypowder/heavy
 	duration = 30 SECONDS
 
 /obj/item/ammo_casing/caseless/bullet/lead/runelock/heavy
-	name = "heavy runed sphere"
-	desc = "You shoudnt be seeing this."
+	name = "重型符文弹丸"
+	desc = "你不该看到这个。"
 	projectile_type = /obj/projectile/bullet/firearm/lead/runelock/heavy
 	caliber = "runed_sphere"
 	icon_state = "musketball_runed"
 	max_integrity = 0
 
 /obj/projectile/bullet/firearm/lead/runelock/heavy // only shot by the rifle
-	name = "heavy runed sphere"
-	desc = "You shoudnt be seeing this."
+	name = "重型符文弹丸"
+	desc = "你不该看到这个。"
 	damage = 100
 	speed = 0.4 // a bit faster
 	icon_state = "musketball_runed"
@@ -382,14 +382,14 @@
 	armor_penetration = PEN_BSTEEL
 
 /obj/item/ammo_casing/caseless/bullet/lead/runelock/heavy/blessed
-	name = "heavy blessed runed sphere"
-	desc = "A large, perfectly round sphere crafted from pure silver. These munitions are forged by the finest Otavan smiths and blessed personally by the Grandmaster. The expanded runework nessesites firing it from a rifle."
+	name = "重型祝圣符文弹丸"
+	desc = "一颗以纯银制成的浑圆大球。这种弹药由最精湛的奥塔万铁匠锻造，并由大团长亲自祝圣。扩展的符文结构使它只能由步枪发射。"
 	projectile_type = /obj/projectile/bullet/firearm/lead/runelock/heavy/blessed
 	icon_state = "musketball_blessed"
 
 /obj/projectile/bullet/firearm/lead/runelock/heavy/blessed
-	name = "heavy blessed runed sphere"
-	desc = "A large, perfectly round sphere crafted from pure silver. These munitions are forged by the finest Otavan smiths and blessed personally by the Grandmaster. The expanded runework nessesites firing it from a rifle."
+	name = "重型祝圣符文弹丸"
+	desc = "一颗以纯银制成的浑圆大球。这种弹药由最精湛的奥塔万铁匠锻造，并由大团长亲自祝圣。扩展的符文结构使它只能由步枪发射。"
 	damage = 240
 	icon_state = "musketball_blessed"
 	silver = TRUE
@@ -398,15 +398,15 @@
 	ammo_type = /obj/item/ammo_casing/caseless/bullet/lead/runelock/heavy/blessed
 
 /obj/item/ammo_casing/caseless/bullet/lead/runelock/heavy/runed
-	name = "heavy runed sphere"
-	desc = "A large, perfectly round metal sphere covered in Psydonite runes. Lethal at high velocity."
+	name = "重型符文弹丸"
+	desc = "一颗浑圆的大金属球，上面布满普赛顿符文。高速飞行时足以致命。"
 	projectile_type = /obj/projectile/bullet/firearm/lead/runelock/heavy/runed
 	caliber = "runed_sphere"
 	icon_state = "musketball_runed"
 
 /obj/projectile/bullet/firearm/lead/runelock/heavy/runed
-	name = "heavy runed sphere"
-	desc = "A large, perfectly round metal sphere covered in Psydonite runes. Lethal at high velocity."
+	name = "重型符文弹丸"
+	desc = "一颗浑圆的大金属球，上面布满普赛顿符文。高速飞行时足以致命。"
 	damage = 90
 	icon_state = "musketball_runed"
 	armor_penetration = PEN_BSTEEL
@@ -419,15 +419,15 @@
 		L.apply_status_effect(/datum/status_effect/debuff/psypowder/heavy) // 2 times duration
 
 /obj/item/ammo_casing/caseless/bullet/lead/runelock/heavy/entropy
-	name = "sphere of entropy"
-	desc = "Looking at the complex runework on this sphere makes you feel somehow lesser."
+	name = "熵蚀弹丸"
+	desc = "凝视这颗弹丸上的繁复符文，你莫名感到自身仿佛被削弱了。"
 	projectile_type = /obj/projectile/bullet/firearm/lead/runelock/heavy/entropy
 	caliber = "runed_sphere"
 	icon_state = "musketball_blessed"
 
 /obj/projectile/bullet/firearm/lead/runelock/heavy/entropy
-	name = "entrophy sphere"
-	desc = "You feel lesser for even gazing at this."
+	name = "熵蚀弹丸"
+	desc = "仅仅看着它，你就感觉自身受到了削弱。"
 	damage = 120
 	icon_state = "musketball_blessed"
 	hitsound = 'sound/combat/hits/hi_bolt (2).ogg'
@@ -446,19 +446,19 @@
 			L.devotion.update_devotion(-100) 
 		if(L.get_bloodpool())
 			L.adjust_bloodpool(-100) 
-		to_chat(L, span_danger("You feel as if you somehow became lesser!"))
+		to_chat(L, span_danger("你感到自己仿佛被某种力量削弱了！"))
 		
 
 /obj/item/ammo_casing/caseless/bullet/lead/runelock/heavy/tracker
-	name = "mark"
-	desc = "A highly specialised and expensive tracking sphere. Victim will leave a trail of silver dust as they escape, and will bleed more as they move around."
+	name = "追猎印记弹"
+	desc = "一种昂贵的专用追踪弹丸。中弹者逃跑时会留下银粉痕迹，移动还会加剧出血。"
 	projectile_type = /obj/projectile/bullet/firearm/lead/runelock/heavy/tracker
 	caliber = "runed_sphere"
 	icon_state = "musketball_silver"
 
 /obj/projectile/bullet/firearm/lead/runelock/heavy/tracker
-	name = "mark"
-	desc = "You can't escape the hunters mark."
+	name = "追猎印记弹"
+	desc = "你逃不脱猎人的印记。"
 	damage = 80
 	icon_state = "musketball_silver"
 	hitsound = 'sound/combat/hits/hi_bolt (2).ogg'
@@ -474,8 +474,8 @@
 		L.apply_status_effect(/datum/status_effect/debuff/arbalest_hunt)
 
 /obj/effect/decal/cleanable/blood/footprints/arbalest_trail
-	name = "silver dust"
-	desc = "A trail of silvery dust created by a marking sphere buried in some poor heretic."
+	name = "银粉"
+	desc = "一串银粉痕迹，来自嵌在某个可怜异端体内的追猎印记弹。"
 	blood_state = BLOOD_STATE_XENO
 	alpha = 240
 
@@ -488,8 +488,8 @@
 	
 
 /atom/movable/screen/alert/status_effect/debuff/arbalest_hunt
-	name = "Hunters Mark"
-	desc = "There is something burrowing inside me! The more I move the worse it becomes! I need to stand still and extract it (click the popup)."
+	name = "猎人印记"
+	desc = "有什么东西正在钻进我的身体！我越动就越严重！我得站稳不动，把它取出来（点击此提示）。"
 	icon = 'icons/mob/screen_alert.dmi'
 	icon_state = "embed"
 
@@ -547,16 +547,16 @@
 	INVOKE_ASYNC(src, TYPE_PROC_REF(/datum/status_effect/debuff/arbalest_hunt, handle_move))
 
 /obj/item/quiver/twilight_bullet/runicbag
-	name = "pharetra"
-	desc = "A leather pouch designed to store runic bullets. The rune inscribed on the lock binds to the ammunition stored inside, and upon activation, returns spent runic bullets to the pouch for reuse."
+	name = "召弹囊"
+	desc = "用于存放符文弹丸的皮囊。囊扣上的符文会与囊中弹药绑定，激活后可将射出的符文弹丸召回囊内，再次使用。"
 	icon_state = "runebag"
 	item_state = "runebag"
 	max_storage = 12
 	var/has_types = TRUE
 	var/ammo_type1 = /obj/item/ammo_casing/caseless/bullet/lead/runelock/runed 
 	var/ammo_type2 = /obj/item/ammo_casing/caseless/bullet/lead/runelock/blessed 
-	var/ammo_type_name1 = "runed"
-	var/ammo_type_name2 = "blessed"
+	var/ammo_type_name1 = "符文"
+	var/ammo_type_name2 = "祝圣"
 	var/selected_type // what the pouch is currently attuned to
 	var/list/linked_ammo_types = list() // types the casings report on firing
 	var/list/linked_casings = list()    // every live casing linked to this bag, in or out of it
@@ -585,19 +585,19 @@
 
 /obj/item/quiver/twilight_bullet/runicbag/attack_self(mob/living/user)
 	if(arrows.len >= max_storage)
-		to_chat(user, span_notice("The [src.name] is full and can accept no more ammunition!"))
+		to_chat(user, span_notice("[src.name]已经装满，无法再容纳弹药！"))
 		return
 	if(user.energy < recall_energy_cost)
-		to_chat(user, span_warning("The runes on the lock flicker and die. I don't have the energy to recall them."))
+		to_chat(user, span_warning("囊扣上的符文闪烁后熄灭。我没有足够的能量召回弹丸。"))
 		return
 	var/type_name = (selected_type == ammo_type2) ? ammo_type_name2 : ammo_type_name1
-	to_chat(user, span_notice("The runes on the lock flare as I call the [type_name] spheres home..."))
+	to_chat(user, span_notice("我呼唤[type_name]弹丸归来，囊扣上的符文随之亮起……"))
 	if(!do_after(user, 15 SECONDS, src))
-		to_chat(user, span_warning("My concentration breaks, and the runes go dark."))
+		to_chat(user, span_warning("我分了神，符文随之黯淡。"))
 		return
 	var/affordable = round(user.energy / recall_energy_cost)
 	if(affordable < 1)
-		to_chat(user, span_warning("My energy gutters out before the spheres can answer."))
+		to_chat(user, span_warning("弹丸尚未回应，我的能量便已耗尽。"))
 		return
 	var/summoned = 0
 	for(var/obj/item/ammo_casing/C as anything in linked_casings - arrows)
@@ -615,22 +615,22 @@
 	playsound(src, 'sound/magic/blink.ogg', 80)
 	user.energy_add(-(recall_energy_cost * summoned))
 	if(arrows.len < max_storage)
-		to_chat(user, span_warning("My energy runs dry. Only [summoned] sphere\s answered the call."))
+		to_chat(user, span_warning("我的能量耗尽了。只有[summoned]颗弹丸回应了召唤。"))
 	else
-		to_chat(user, span_notice("The spheres snap back into the pharetra."))
+		to_chat(user, span_notice("弹丸倏地回到了召弹囊中。"))
 	linked_ammo_types.Cut()
 	update_icon()
 
 /obj/item/quiver/twilight_bullet/runicbag/MiddleClick(mob/user, params)
 	if(!has_types)
-		to_chat(user, span_warning("The spheres in this pouch cannot be converted."))
+		to_chat(user, span_warning("这个囊中的弹丸无法转换类型。"))
 		return TRUE
 	if(selected_type == ammo_type1)
 		selected_type = ammo_type2
-		to_chat(user, span_notice("The spheres in the pouch shimmer and turn <b>[ammo_type_name2]</b>."))
+		to_chat(user, span_notice("囊中的弹丸微微发光，变成了<b>[ammo_type_name2]</b>弹丸。"))
 	else
 		selected_type = ammo_type1
-		to_chat(user, span_notice("The spheres in the pouch darken and turn <b>[ammo_type_name1]</b>."))
+		to_chat(user, span_notice("囊中的弹丸黯淡下来，变成了<b>[ammo_type_name1]</b>弹丸。"))
 	convert_spheres(selected_type)
 	playsound(src, 'sound/magic/charged.ogg', 40, FALSE)
 	return TRUE
@@ -649,7 +649,7 @@
 
 /obj/item/quiver/twilight_bullet/runicbag/attack_right(mob/user)
 	if(!arrows.len)
-		to_chat(user, span_warning("The pouch is empty."))
+		to_chat(user, span_warning("囊中空空如也。"))
 		return TRUE
 	var/obj/item/ammo_casing/O = arrows[arrows.len]
 	arrows -= O 
@@ -666,19 +666,19 @@
 		type_name = (selected_type == ammo_type2) ? ammo_type_name2 : ammo_type_name1
 	else
 		type_name = ammo_type_name1
-	. += span_info("It holds [arrows.len]/[max_storage] [type_name] spheres.")
+	. += span_info("里面装有[arrows.len]/[max_storage]颗[type_name]弹丸。")
 	if(has_types)
-		. += span_info("Use it in hand to recall spheres of the attuned type. Middle-click to convert the spheres inside. Right-click to draw a sphere.")
+		. += span_info("握在手中使用可召回当前绑定类型的弹丸。中键点击转换囊中弹丸类型。右键点击取出一颗弹丸。")
 	else
-		. += span_info("Use it in hand to recall spheres. Right-click to draw a sphere.")
+		. += span_info("握在手中使用可召回弹丸。右键点击取出一颗弹丸。")
 	
 
 /obj/item/quiver/twilight_bullet/runicbag/attackby(obj/item/A, mob/user, params)
 	if((has_types && istype(A, ammo_type2)) || istype(A, ammo_type1))
 		if(eatarrow(A, user))
-			to_chat(user, span_notice("You insert \the [A] into \the [src]."))
+			to_chat(user, span_notice("你将\the [A]放入\the [src]。"))
 		else
-			to_chat(user, span_warning("\The [src] is full!"))
+			to_chat(user, span_warning("\The [src]已经装满了！"))
 		return TRUE
 	return ..()
 
@@ -720,21 +720,21 @@
 
 //Smaller, 8-sphere pharetras for the Arbalist's Fusilier option.
 /obj/item/quiver/twilight_bullet/runicbag/arbalist
-	name = "Fusilier's pharetra"
-	desc = "A leather pouch designed to store runic bullets. The rune inscribed on the lock binds to the ammunition stored inside, and upon activation, returns spent runic bullets to the pouch for reuse. This version is meant for the heavier rifle ammo of the Fusilier"
+	name = "燧枪手召弹囊"
+	desc = "用于存放符文弹丸的皮囊。囊扣上的符文会与囊中弹药绑定，激活后可将射出的符文弹丸召回囊内，再次使用。这一款用于容纳燧枪手使用的重型步枪弹丸。"
 	max_storage = 8
 	ammo_type1 = /obj/item/ammo_casing/caseless/bullet/lead/runelock/heavy/runed 
 	ammo_type2 = /obj/item/ammo_casing/caseless/bullet/lead/runelock/heavy/blessed 
-	ammo_type_name1 = "heavy runed"
-	ammo_type_name2 = "heavy blessed"
+	ammo_type_name1 = "重型符文"
+	ammo_type_name2 = "重型祝圣"
 
 /obj/item/quiver/twilight_bullet/runicbag/arbalist/mark
-	name = "Markers pouch"
-	desc = "A small rune-inscribed pouch for storing and recaling a single marking sphere."
+	name = "追猎印记弹囊"
+	desc = "刻有符文的小囊，可存放并召回一颗追猎印记弹。"
 	max_storage = 1
 	has_types = FALSE
 	ammo_type1 = /obj/item/ammo_casing/caseless/bullet/lead/runelock/heavy/tracker
-	ammo_type_name1 = "hunters mark"
+	ammo_type_name1 = "追猎印记"
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = ITEM_SLOT_NECK|ITEM_SLOT_RING
 	recall_energy_cost = 100 // special ammo

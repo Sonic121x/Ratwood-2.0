@@ -92,7 +92,7 @@ export const NowPlayingWidget = (props) => {
       <Flex.Item mx={0.5} fontSize="0.9em">
         <Button
           color="transparent"
-          tooltip="Volume"
+          tooltip="音量"
           icon="sliders-h"
           onClick={() => Byond.sendMessage('audio/openSettings')}
         />

@@ -76,7 +76,7 @@ const ToggleRow = ({ label, enabled, id, hint }: ToggleRowProps) => {
           selected={enabled}
           onClick={() => act('toggle', { id })}
         >
-          {enabled ? 'On' : 'Off'}
+          {enabled ? '开启' : '关闭'}
         </Button>
       </Stack.Item>
     </Stack>
@@ -99,10 +99,10 @@ export const VolumePowerMenu = () => {
     ? pointAmbienceIndependent &&
       (data.point_ambience ?? true) &&
       (data.point_ambience_volume ?? 100) > 0
-      ? 'Master Volume is muted, but independent Point Ambience remains active. Use Stop Sounds for any other continuing loops.'
-      : 'You have muted your game. Some loops may continue; use Stop Sounds or wait for them to end.'
+      ? '主音量已静音，但独立音量的局部环境音仍在播放。其他持续循环的声音可用“停止声音”关闭。'
+      : '游戏已静音。部分循环音可能继续播放；请使用“停止声音”，或等待它们结束。'
     : lowPointVolume
-      ? 'Effective Point Ambience volume is below 50%. Point ambience may not work as intended at this level.'
+      ? '局部环境音的实际音量低于 50%，可能无法呈现预期效果。'
       : null;
   useEffect(() => {
     if (!content) return;
@@ -151,15 +151,15 @@ export const VolumePowerMenu = () => {
     <Window width={440} height={height}>
       <Window.Content scrollable>
         <div ref={setContent} className="AudioSettings">
-          <Section title="Master Volume" className="AudioSettings__panel">
+          <Section title="主音量" className="AudioSettings__panel">
             <VolumeRow
-              label="Master"
+              label="主音量"
               value={master ?? 100}
               id="master"
-              hint="Scales all sounds except independent Point Ambience."
+              hint="调整所有声音的音量比例，使用独立音量的局部环境音除外。"
             />
             <Box fontSize="0.85em">
-              Adminhelp and admin PM alerts still play at 0%.
+              设为 0% 时，管理员求助和管理员私信提示音仍会播放。
             </Box>
           </Section>
           <Section className="AudioSettings__panel">
@@ -169,42 +169,42 @@ export const VolumePowerMenu = () => {
                 selected={tab === 0}
                 onClick={() => setTab(0)}
               >
-                Gameplay Audio
+                游戏音效
               </Tabs.Tab>
               <Tabs.Tab
                 icon="music"
                 selected={tab === 1}
                 onClick={() => setTab(1)}
               >
-                Other Audio
+                其他音频
               </Tabs.Tab>
               <Tabs.Tab
                 icon="fire"
                 selected={tab === 2}
                 onClick={() => setTab(2)}
               >
-                Point Ambience
+                局部环境音
               </Tabs.Tab>
             </Tabs>
             {tab === 0 && (
               <Box mt={1}>
                 <VolumeRow
-                  label="Sound Effects"
+                  label="音效"
                   value={effects ?? 50}
                   id="effects"
-                  hint="Sounds in the world: combat, footsteps, items, doors."
+                  hint="游戏世界中的声音：战斗、脚步、物品和门。"
                 />
                 <VolumeRow
-                  label="Area Ambience"
+                  label="区域环境音"
                   value={ambience ?? 100}
                   id="ambience"
-                  hint="The loop for the area you are in, and rain."
+                  hint="所在区域的循环环境音和雨声。"
                 />
                 <VolumeRow
-                  label="Instruments"
+                  label="乐器"
                   value={instruments ?? 50}
                   id="instruments"
-                  hint="Bards, music boxes, and wax music devices."
+                  hint="吟游诗人、音乐盒和蜡筒音乐装置。"
                 />
                 <Box ml={1} mt={-0.5} mb={0.5}>
                   <Button.Checkbox
@@ -212,79 +212,79 @@ export const VolumePowerMenu = () => {
                     color="transparent"
                     compact
                     fontSize="0.85em"
-                    tooltip="For lower bandwidth: replaces player-uploaded instrument and music-box songs with built-in songs. The uploaded file is not sent to you."
+                    tooltip="节省带宽：用内置曲目替代玩家上传的乐器和音乐盒曲目，不向你传输上传的文件。"
                     tooltipPosition="right"
                     onClick={() =>
                       act('toggle', { id: 'replace_uploaded_songs' })
                     }
                   >
-                    Use In-Game Songs Instead
+                    改用游戏内置曲目
                   </Button.Checkbox>
                 </Box>
                 <VolumeRow
-                  label="World Music"
+                  label="世界音乐"
                   value={music ?? 100}
                   id="music"
-                  hint="The world's own music."
+                  hint="游戏世界自带的背景音乐。"
                 />
                 <VolumeRow
-                  label="Combat Music"
+                  label="战斗音乐"
                   value={combat ?? 50}
                   id="combat"
-                  hint="Music while in combat mode."
+                  hint="战斗模式下的音乐。"
                 />
               </Box>
             )}
             {tab === 1 && (
               <Box mt={1}>
                 <VolumeRow
-                  label="Streamed Music"
+                  label="流媒体音乐"
                   value={streamedmusic ?? 50}
                   id="streamedmusic"
-                  hint="Music streamed into your chat panel."
+                  hint="在聊天面板中播放的流媒体音乐。"
                 />
                 <VolumeRow
-                  label="Admin-Played Sounds"
+                  label="管理员播放的声音"
                   value={adminmusic ?? 50}
                   id="adminmusic"
-                  hint="Sounds played by admins. Does not affect adminhelp alerts."
+                  hint="管理员播放的声音。不影响管理员求助提示音。"
                 />
                 <VolumeRow
-                  label="Lobby Music"
+                  label="大厅音乐"
                   value={lobby ?? 100}
                   id="lobby"
-                  hint="The title screen."
+                  hint="标题画面的音乐。"
                 />
               </Box>
             )}
             {tab === 2 && (
               <Box mt={1}>
                 <Box mb={1}>
-                  Nearby fires, fountains, rivers, and other ambient sounds.
+                  附近的火焰、喷泉、河流等环境声音。
                 </Box>
                 <VolumeRow
-                  label="Volume"
+                  label="音量"
                   value={point_ambience_volume ?? 100}
                   id="point_ambience_volume"
-                  hint="Nearby ambient sounds."
+                  hint="附近环境声音的音量。"
                 />
                 <ToggleRow
-                  label="Independent Volume"
+                  label="独立音量"
                   enabled={point_ambience_independent ?? true}
                   id="point_ambience_independent"
-                  hint="Keeps Point Ambience at its chosen volume when Master Volume changes. Recommended for the intended ambience balance."
+                  hint="改变主音量时，局部环境音仍保持所选音量。建议开启，以获得预期的环境音平衡。"
                 />
                 <ToggleRow
-                  label="Point Ambience"
+                  label="局部环境音"
                   enabled={point_ambience ?? true}
                   id="point_ambience"
-                  hint="All of it, on or off."
+                  hint="开启或关闭全部局部环境音。"
                 />
                 <ToggleRow
-                  label="Torchlight"
+                  label="火炬环境音"
                   enabled={point_ambience_torch ?? true}
                   id="point_ambience_torch"
-                  hint="Wall sconces, standing firebowls and a torch in your own hand."
+                  hint="壁灯、立式火盆，以及你手中的火炬。"
                 />
               </Box>
             )}
@@ -300,7 +300,7 @@ export const VolumePowerMenu = () => {
             textAlign="center"
             style={{ opacity: 0.7 }}
           >
-            Hover over a setting to see its tooltip.
+            将鼠标悬停在设置上可查看说明。
           </Box>
         </div>
       </Window.Content>

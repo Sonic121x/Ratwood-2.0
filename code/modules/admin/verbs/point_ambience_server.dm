@@ -21,33 +21,33 @@ GLOBAL_DATUM(point_ambience_server_window, /datum/point_ambience_server_window)
  * source-index changes outside fire() are not included.
  */
 /client/proc/point_ambience_server()
-	set category = "Debug"
-	set name = "Point Ambience Server"
+	set category = "调试"
+	set name = "局部环境音服务器统计"
 	if(!check_rights(R_DEBUG))
 		return
 	var/datum/point_ambience_server_window/window = GLOB.point_ambience_server_window
 	if(!window)
-		if(alert(src, "Marks a start, then each run reports the stretch since it. Nothing is switched on: the subsystem keeps these counts anyway, so an open window costs nothing.", "Point Ambience Server", "Start", "Cancel") != "Start")
+		if(alert_sound_display("记录起点，此后每次运行都会报告从起点至今的统计。不会启用额外功能：子系统本就记录这些计数，保留统计窗口不增加开销。", "局部环境音服务器统计", "Start", "Cancel") != "Start")
 			return
 		GLOB.point_ambience_server_window = new
-		to_chat(src, span_notice("Point ambience server: <b>start marked.</b> Nothing is switched on. Clear closes the window. Run the verb again whenever you want the stretch since now."))
+		to_chat(src, span_notice("局部环境音服务器统计：<b>已记录起点。</b>未启用额外功能。清除可关闭统计窗口。再次运行此指令可查看从现在开始的统计。"))
 		return
 	var/seconds = (world.time - window.time) / 10
 	if(seconds < 10)
-		to_chat(src, span_warning("Point ambience server: only [round(seconds)] s since the start. Give it longer."))
+		to_chat(src, span_warning("局部环境音服务器统计：距起点仅 [round(seconds)] 秒，请再等一会儿。"))
 		return
 	if(SSpoint_ambience.started_at > window.time)
 		GLOB.point_ambience_server_window = new
-		to_chat(src, span_warning("Point ambience server: the subsystem restarted since the start. Taken again from now."))
+		to_chat(src, span_warning("局部环境音服务器统计：记录起点后子系统曾重启。现已从当前时刻重新开始统计。"))
 		return
 	to_chat(src, point_ambience_server_report(window))
-	switch(alert(src, "Keep: report from the same start, so the window keeps growing.\nRestart: start a fresh window from now.\nClear: close the window until someone runs this again.\n\nNothing is switched on either way: the subsystem keeps these counts anyway.", "Point Ambience Server", "Keep", "Restart", "Clear"))
+	switch(alert_sound_display("保留：继续从原起点统计，统计时段持续增长。\n重新开始：从现在起开启新的统计时段。\n清除：关闭统计窗口，直到有人再次运行此指令。\n\n无论如何选择，都不会启用额外功能：子系统本就记录这些计数。", "局部环境音服务器统计", "Keep", "Restart", "Clear"))
 		if("Restart")
 			GLOB.point_ambience_server_window = new
-			to_chat(src, span_notice("Point ambience server: new start marked."))
+			to_chat(src, span_notice("局部环境音服务器统计：已记录新的起点。"))
 		if("Clear")
 			GLOB.point_ambience_server_window = null
-			to_chat(src, span_notice("Point ambience server: <b>cleared.</b> The next run marks a fresh start."))
+			to_chat(src, span_notice("局部环境音服务器统计：<b>已清除。</b>下次运行会记录新的起点。"))
 
 /// Every count a report reads, by name
 /proc/point_ambience_server_counts()
@@ -131,14 +131,14 @@ GLOBAL_DATUM(point_ambience_server_window, /datum/point_ambience_server_window)
 		shares += "[batch_names[i]] [round((drain_size_services_total[i] - was_services[i]) / max(batched_services, 1) * 100)]%"
 	var/lookups = delta["hits"] + delta["misses"]
 	var/list/lines = list()
-	lines += "<b>Point ambience server</b>, [round(seconds)] s, [listening] listening, [muted] muted, [moving_now] moving now, [round(delta["steps"] / seconds / max(listening, 1), 0.01)] steps/s a player"
-	lines += "muted: [muted] players hear nothing by choice | services that reached one [delta["muted_refused"]]"
-	lines += "cost ms/s: [round(total_ms, 0.001)] | drain [round(drain_ms, 0.001)] | standing [round(walk_ms, 0.001)] | fades [round(fade_ms, 0.001)] | doors [round(door_ms, 0.001)] | river fill [round(river_fill_ms, 0.001)] | [round(total_ms / 10, 0.01)]% of the server[ambience.use_queue ? "" : " | queue off, moving services not in cost"]"
-	lines += "services/s: moving [round(delta["moving"] / seconds, 0.01)] | standing skipped [round(delta["skipped"] / seconds, 0.01)], cached [round(delta["cached"] / seconds, 0.01)], walked [round(delta["walked"] / seconds, 0.01)]"
-	lines += "moving silent: [round(delta["silent"] / max(delta["moving"], 1) * 100, 0.1)]%, [round(delta["silent"] / seconds, 0.01)]/s"
-	lines += "per ranked service: sends [round(delta["sends"] / max(ranked, 1), 0.01)] | wall checks [round(checks / max(ranked, 1), 0.01)] | blocked [round(delta["blocked"] / max(checks, 1) * 100, 0.1)]%"
-	lines += "batching: drains/s [round(delta["drains"] / seconds, 0.01)] | services a drain [round(batched_services / max(batch_drain_total, 1), 0.01)] | services by batch size: [shares.Join(", ")]"
-	lines += "queue: wait avg [round(delta["waited"] / max(delta["served"], 1) / world.tick_lag, 0.01)] ticks, max [round(ambience.metrics.queue_wait_window_max / world.tick_lag)] | budget hit [round(delta["deferred"] / max(delta["drains"], 1) * 100, 0.1)]% of drains | paused [delta["paused"]] | dropped [delta["dropped"]]"
-	lines += "fades/s [round(delta["fade_packets"] / seconds, 0.01)] | tile cache hit [round(delta["hits"] / max(lookups, 1) * 100, 0.1)]% | index changes/min [round(delta["index"] / seconds * 60, 0.1)] | door tile changes/s [round(delta["doors"] / seconds, 0.01)], re-served/s [round(delta["reserved"] / seconds, 0.01)] | speed silenced/s [round(delta["speed"] / seconds, 0.01)]"
-	lines += "river fill: [ambience.river_fill.done ? "[ambience.river_fill.marked_tiles] tiles marked from [length(ambience.river_fill.seeds)] water seeds, boot [round(ambience.river_fill.boot_ms, 0.1)] ms | boxes rebuilt [delta["river_fill_rebuilds"]]" : "pending initial fill"]"
+	lines += "<b>局部环境音服务器统计</b>，[round(seconds)] 秒，[listening] 人收听，[muted] 人静音，[moving_now] 人正在移动，平均每人每秒 [round(delta["steps"] / seconds / max(listening, 1), 0.01)] 步"
+	lines += "静音：[muted] 名玩家主动关闭声音 | 到达静音玩家的处理请求 [delta["muted_refused"]]"
+	lines += "开销（毫秒/秒）：[round(total_ms, 0.001)] | 出队 [round(drain_ms, 0.001)] | 静止检查 [round(walk_ms, 0.001)] | 渐变 [round(fade_ms, 0.001)] | 门 [round(door_ms, 0.001)] | 河声填充 [round(river_fill_ms, 0.001)] | 占服务器时间 [round(total_ms / 10, 0.01)]%[ambience.use_queue ? "" : " | 队列已关闭，开销不含移动更新"]"
+	lines += "处理次数/秒：移动 [round(delta["moving"] / seconds, 0.01)] | 静止检查跳过 [round(delta["skipped"] / seconds, 0.01)]，缓存命中 [round(delta["cached"] / seconds, 0.01)]，遍历 [round(delta["walked"] / seconds, 0.01)]"
+	lines += "移动时无声：[round(delta["silent"] / max(delta["moving"], 1) * 100, 0.1)]%，[round(delta["silent"] / seconds, 0.01)] 次/秒"
+	lines += "每次声源排序更新：发送 [round(delta["sends"] / max(ranked, 1), 0.01)] | 墙体检查 [round(checks / max(ranked, 1), 0.01)] | 阻挡率 [round(delta["blocked"] / max(checks, 1) * 100, 0.1)]%"
+	lines += "批量处理：每秒出队 [round(delta["drains"] / seconds, 0.01)] 批 | 每批处理 [round(batched_services / max(batch_drain_total, 1), 0.01)] 次 | 各批次规模的处理占比：[shares.Join(", ")]"
+	lines += "队列：平均等待 [round(delta["waited"] / max(delta["served"], 1) / world.tick_lag, 0.01)] 刻，最长 [round(ambience.metrics.queue_wait_window_max / world.tick_lag)] 刻 | [round(delta["deferred"] / max(delta["drains"], 1) * 100, 0.1)]% 的出队批次触及预算 | 暂停 [delta["paused"]] | 丢弃 [delta["dropped"]]"
+	lines += "每秒渐变包 [round(delta["fade_packets"] / seconds, 0.01)] | 地块缓存命中率 [round(delta["hits"] / max(lookups, 1) * 100, 0.1)]% | 每分钟索引变化 [round(delta["index"] / seconds * 60, 0.1)] | 每秒门地块变化 [round(delta["doors"] / seconds, 0.01)]，重新处理 [round(delta["reserved"] / seconds, 0.01)] | 每秒超速静音 [round(delta["speed"] / seconds, 0.01)]"
+	lines += "河声填充：[ambience.river_fill.done ? "从 [length(ambience.river_fill.seeds)] 个水域种子标记了 [ambience.river_fill.marked_tiles] 个地块，启动耗时 [round(ambience.river_fill.boot_ms, 0.1)] 毫秒 | 重建区域数 [delta["river_fill_rebuilds"]]" : "等待初始填充"]"
 	return lines.Join("<br>")
