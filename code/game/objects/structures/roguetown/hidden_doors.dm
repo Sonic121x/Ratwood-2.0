@@ -441,7 +441,7 @@ GLOBAL_LIST_EMPTY(secret_walls_with_access)
 			var/area/A = get_area(W)
 			area_by_phrase[phrase] = A?.name
 		if(W.secret_door_locale)
-			locales_by_phrase[phrase] |= W.secret_door_locale
+			locales_by_phrase[phrase] |= get_update_map_display(W.secret_door_locale)
 	if(!length(locales_by_phrase))
 		to_chat(src, span_notice("我一时想不起任何口令。"))
 		return

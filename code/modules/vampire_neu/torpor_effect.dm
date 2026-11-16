@@ -60,7 +60,7 @@
 	if(mode == TORPOR_DEATH)
 		apply_death_torpor()
 	else
-		to_chat(vampire, span_notice("I sink into the horrible slumber of deathless Torpor. To any eye I am a corpse, and I will mend what hurts me. I wake when I open my eyes."))
+		to_chat(vampire, span_notice("我陷入了不死休眠的可怖沉睡。在旁人眼中，我已是一具尸体，但我的伤势会自行恢复。睁开双眼，我便能醒来。"))
 	vampire.update_stat()
 
 /datum/status_effect/vampire_torpor/on_remove()
@@ -107,20 +107,20 @@
 
 /datum/status_effect/vampire_torpor/proc/on_staked(mob/living/source, mob/living/user, obj/item/stake)
 	SIGNAL_HANDLER
-	source.visible_message(span_danger("[source] lets out a final, wretched howl as [source.p_their()] body crumbles to ash!"))
-	torpor_comp.notify(span_userdanger("THE STAKE! MY HEART! NO-"))
+	source.visible_message(span_danger("[source]发出最后一声凄厉的哀嚎，身躯随之化为灰烬！"))
+	torpor_comp.notify(span_userdanger("木桩！我的心脏！不——"))
 	INVOKE_ASYNC(torpor_comp, TYPE_PROC_REF(/datum/component/vampire_torpor, die_for_good), TRUE)
 	return COMPONENT_STAKE_HANDLED
 
 // A vampire succumbing just ashes you, end of the line kiddo
 /datum/status_effect/vampire_torpor/proc/on_get_succumb_warnings(mob/living/source, list/warnings)
 	SIGNAL_HANDLER
-	warnings += "If I give up, I let go of the Curse for good: my body will crumble to ASH, and I will NEVER rise again."
+	warnings += "若我放弃，便会永远舍弃诅咒：我的身躯将化为灰烬，再也无法复起。"
 
 /datum/status_effect/vampire_torpor/proc/on_succumbed(mob/living/source)
 	SIGNAL_HANDLER
 	torpor_comp.final_death = TRUE
-	to_chat(source, span_userdanger("I let go of the Curse. There will be no waking from this."))
+	to_chat(source, span_userdanger("我舍弃了诅咒。这一次，我不会再醒来。"))
 
 /datum/status_effect/vampire_torpor/proc/enter_death_torpor()
 	if(mode == TORPOR_DEATH)
@@ -135,7 +135,7 @@
 	ADD_TRAIT(owner, TRAIT_DEATHS_DOOR, id)
 	set_eyes_closed(TRUE)
 	INVOKE_ASYNC(owner, TYPE_PROC_REF(/mob, emote), "deathgasp")
-	torpor_comp.notify(span_userdanger("My body fails, but the Curse will not let me go. I sink into a death torpor..."))
+	torpor_comp.notify(span_userdanger("我的肉身已然崩溃，诅咒却不肯放我离去。我陷入了死亡休眠……"))
 	owner.update_stat()
 	owner.update_damage_hud()
 	update_alert()
@@ -181,7 +181,7 @@
 
 /// "head" or "brain", whichever they've lost, for telling them about it
 /datum/status_effect/vampire_torpor/proc/lost_vital_name()
-	return owner.get_bodypart(BODY_ZONE_HEAD) ? "brain" : "head"
+	return owner.get_bodypart(BODY_ZONE_HEAD) ? "大脑" : "头颅"
 
 /// Holy fire stops flesh from mending, but only while it actually burns, same as for anyone else
 /datum/status_effect/vampire_torpor/proc/is_sundered()
@@ -202,7 +202,7 @@
 			return
 		if(!is_mended())
 			mend(delta_time)
-		notify_on_change("restored", is_mended() ? "My body is whole again. I can open my eyes whenever I wish." : null, "notice")
+		notify_on_change("restored", is_mended() ? "我的身体已经完好如初。我随时可以睁开双眼。" : null, "notice")
 		return
 
 	if(vampire.get_bodypart(BODY_ZONE_HEAD))
@@ -217,7 +217,7 @@
 			try_rise_early()
 		dormant_progress += delta_time * dormant_rate()
 		if(!is_dormant())
-			torpor_comp.notify(span_notice("The dormancy lifts. My body begins to mend itself."))
+			torpor_comp.notify(span_notice("沉眠消退了。我的身体开始自行恢复。"))
 		update_alert()
 		return
 
@@ -237,7 +237,7 @@
 	if(is_mended())
 		wake()
 		return
-	notify_on_change("can_rise", can_rise() ? "I am whole enough to rise. I can open my eyes to rise now, or keep mending until I am fully restored." : null, "notice")
+	notify_on_change("can_rise", can_rise() ? "我的身体已恢复到足以起身。我现在就能睁眼苏醒，也可以继续休养，直到彻底恢复。" : null, "notice")
 
 /// Puts this tick's mending into a new head, telling the vampire and anyone watching as it takes shape
 /datum/status_effect/vampire_torpor/proc/grow_head(mended)
@@ -254,14 +254,14 @@
 		return
 	switch(new_stage)
 		if(1)
-			vampire.visible_message(span_danger("The stump of [vampire]'s neck writhes as raw flesh begins to bud from it!"))
-			torpor_comp.notify(span_notice("Flesh begins to bud from the stump of my neck. A new head is forming."))
+			vampire.visible_message(span_danger("[vampire]的断颈蠕动起来，鲜嫩的血肉开始从断口萌生！"))
+			torpor_comp.notify(span_notice("血肉开始从我的断颈萌生。新的头颅正在成形。"))
 		if(2)
-			vampire.visible_message(span_danger("Bone and sinew twist up from [vampire]'s neck into the shape of a skull!"))
-			torpor_comp.notify(span_notice("Bone and sinew knit themselves into a skull. My new head is half grown."))
+			vampire.visible_message(span_danger("骨骼与筋腱从[vampire]的颈部扭曲生长，逐渐形成头骨的形状！"))
+			torpor_comp.notify(span_notice("骨骼与筋腱交织成头骨。我的新头颅已长成一半。"))
 		if(3)
-			vampire.visible_message(span_danger("A raw, unfinished face pushes its way out of the flesh atop [vampire]'s neck!"))
-			torpor_comp.notify(span_notice("A face forms on my new skull. It is nearly whole."))
+			vampire.visible_message(span_danger("一张鲜嫩而尚未成形的脸，从[vampire]颈上的血肉中挤了出来！"))
+			torpor_comp.notify(span_notice("新的头骨上长出了面容。它几乎完整了。"))
 
 /datum/status_effect/vampire_torpor/proc/get_head_regrow_percent()
 	return round(100 * head_regrow_progress / TORPOR_HEAD_REGROW_AMOUNT)
@@ -290,13 +290,13 @@
 	if(istype(severed_head))
 		lost_head_features = severed_head.bodypart_features?.Copy()
 	if(can_regrow())
-		notify_on_change("vitals", "My [lost] has been taken! My body will grow it anew as it mends, and draw me back into it.", "userdanger")
+		notify_on_change("vitals", "我的[lost]被取走了！身体恢复时会重新长出它，并将我拉回体内。", "userdanger")
 		return TRUE
 	if(torpor_comp.get_mind() && !get_mind_vessel())
-		torpor_comp.notify(span_userdanger("My [lost] is destroyed... and with it, the last of the Curse. I am truly dead."))
+		torpor_comp.notify(span_userdanger("我的[lost]毁了……诅咒最后的残余也随之消散。我真正死去了。"))
 		torpor_comp.die_for_good(ash = FALSE)
 		return FALSE
-	notify_on_change("vitals", "My [lost] has been taken! My blood is too thin to grow it anew - I will not rise unless it is returned to me.", "userdanger")
+	notify_on_change("vitals", "我的[lost]被取走了！我的血脉过于稀薄，无法重新长出它——只有将它归还，我才能复起。", "userdanger")
 	return TRUE
 
 /datum/status_effect/vampire_torpor/proc/regrow_vitals()
@@ -321,7 +321,7 @@
 
 	if(old_vessel && !QDELETED(old_vessel))
 		var/turf/vessel_turf = get_turf(old_vessel)
-		vessel_turf?.visible_message(span_danger("[old_vessel] withers and crumbles to ash!"))
+		vessel_turf?.visible_message(span_danger("[old_vessel]枯萎，化为了灰烬！"))
 		if(vessel_turf)
 			new /obj/item/ash(vessel_turf)
 		qdel(old_vessel)
@@ -330,11 +330,11 @@
 	if(regrew_head)
 		vampire.update_body()
 		vampire.update_hair()
-		vampire.visible_message(span_danger("The last of the flesh atop [vampire]'s neck knits closed into a whole new head!"))
-		to_chat(vampire, span_notice("My new head is whole. I am back in my body, and I can feel it mending around me."))
+		vampire.visible_message(span_danger("[vampire]颈上最后的血肉合拢，长成了一颗完整的新头颅！"))
+		to_chat(vampire, span_notice("我的新头颅已长成。我回到了身体里，能感到它正在恢复。"))
 	else
-		vampire.visible_message(span_danger("Something wet and dark swells to fill the hollow of [vampire]'s skull..."))
-		to_chat(vampire, span_notice("A new brain swells to fill my skull. I am back in my body, and I can feel it mending around me."))
+		vampire.visible_message(span_danger("某种湿润而暗沉的东西膨胀起来，填满了[vampire]空荡的颅腔……"))
+		to_chat(vampire, span_notice("新的大脑长满了我的颅腔。我回到了身体里，能感到它正在恢复。"))
 
 /datum/status_effect/vampire_torpor/proc/regrow_head_features(obj/item/old_vessel)
 	var/obj/item/bodypart/head/new_head = owner.get_bodypart(BODY_ZONE_HEAD)
@@ -385,7 +385,7 @@
 	var/list/remaining_wounds = vampire.get_wounds()
 	for(var/datum/wound/wound as anything in crippling_names)
 		if(QDELETED(wound) || !(wound in remaining_wounds))
-			torpor_comp.notify(span_notice("My [crippling_names[wound]] knits itself closed."))
+			torpor_comp.notify(span_notice("我的[crippling_names[wound]]自行愈合了。"))
 	restore_organs()
 	expel_embedded()
 	return heal_amount
@@ -395,7 +395,7 @@
 	for(var/obj/item/bodypart/bodypart as anything in vampire.bodyparts)
 		for(var/obj/item/embedded as anything in bodypart.embedded_objects)
 			if(bodypart.remove_embedded_object(embedded))
-				vampire.visible_message(span_warning("[vampire]'s flesh writhes and forces [embedded] out of [vampire.p_their()] [bodypart.name]!"))
+				vampire.visible_message(span_warning("[vampire]的血肉蠕动着，将[embedded]从[bodypart.name]中挤了出来！"))
 
 /datum/status_effect/vampire_torpor/proc/restore_organs(allow_brain = FALSE)
 	var/mob/living/carbon/human/vampire = owner
@@ -443,19 +443,19 @@
 /datum/status_effect/vampire_torpor/proc/get_blocker()
 	var/mob/living/carbon/human/vampire = owner
 	if(in_sunlight())
-		return "The sun scorches me, and I cannot mend beneath it."
+		return "阳光灼烧着我，我无法在日照下恢复。"
 	if(is_sundered())
-		return "Holy fire burns in my flesh, and my wounds will not close while it does."
+		return "圣火在我的血肉中燃烧，火焰不灭，伤口便无法愈合。"
 	if(!isnull(last_health) && vampire.health < last_health)
-		return "I am being harmed faster than I can mend."
+		return "我受伤的速度超过了恢复的速度。"
 	switch(get_phase())
 		if(TORPOR_PHASE_REGROWING)
-			return "My new [lost_vital_name()] is still forming."
+			return "我的新[lost_vital_name()]仍在生长。"
 		if(TORPOR_PHASE_AWAITING)
-			return "My [lost_vital_name()] must be returned to me before I can rise."
+			return "必须归还我的[lost_vital_name()]，我才能复起。"
 	var/datum/wound/crippling = get_crippling_wound()
 	if(crippling)
-		return "My [crippling.name] must close before I can rise."
+		return "我的[crippling.name]必须愈合，我才能复起。"
 	return null
 
 /datum/status_effect/vampire_torpor/proc/update_blocker()
@@ -478,9 +478,9 @@
 		if(TORPOR_PHASE_RESTING)
 			return null
 		if(TORPOR_PHASE_DORMANT)
-			return "My eyes will not open. The torpor holds me for [DisplayTimeText(dormant_time_left(), 1)] yet."
+			return "我无法睁开双眼。休眠还将困住我[DisplayTimeText(dormant_time_left(), 1)]。"
 	if(!can_rise())
-		return get_blocker() || "My body is still too broken to rise."
+		return get_blocker() || "我的身体仍然伤得太重，无法复起。"
 	return null
 
 /datum/status_effect/vampire_torpor/proc/try_rise_early()
@@ -506,12 +506,12 @@
 	if(mode == TORPOR_DEATH)
 		set_eyes_closed(FALSE)
 		vampire.visible_message(
-			span_danger("[vampire]'s corpse suddenly jolts, and rises once more!"),
-			span_userdanger("Death releases its grip upon me. I rise again!"),
+			span_danger("[vampire]的尸体突然一颤，再次站了起来！"),
+			span_userdanger("死亡松开了对我的钳制。我再次复起！"),
 		)
 		playsound(vampire, 'sound/misc/vampirespell.ogg', 50, TRUE)
 	else
-		to_chat(vampire, span_warning("I have recovered from Torpor."))
+		to_chat(vampire, span_warning("我已从休眠中恢复。"))
 		vampire.playsound_local(vampire, 'sound/misc/vampirespell.ogg', 50, TRUE)
 	qdel(src)
 
@@ -536,43 +536,43 @@
 			linked_alert.name = initial(linked_alert.name)
 			linked_alert.desc = initial(linked_alert.desc)
 		if(TORPOR_PHASE_DORMANT)
-			linked_alert.name = "Torpor (Dormant)"
-			linked_alert.desc = "The Curse holds me under. My body will begin to mend once this passes[in_resting_place() ? ", sooner for resting in a proper place" : ""]."
+			linked_alert.name = "休眠（沉眠中）"
+			linked_alert.desc = "诅咒使我沉眠。待这阶段过去，我的身体便会开始恢复[in_resting_place() ? "；在合适的地方安息可以加快这一过程" : ""]。"
 			countdown = dormant_time_left()
 		if(TORPOR_PHASE_REGROWING)
-			linked_alert.name = "Torpor (Regrowing [capitalize(lost_vital_name())])"
-			linked_alert.desc = owner.get_bodypart(BODY_ZONE_HEAD) ? "A new brain is forming within my skull." : "A new head is forming atop my neck: [get_head_regrow_percent()]% grown."
+			linked_alert.name = "休眠（再生[lost_vital_name()]）"
+			linked_alert.desc = owner.get_bodypart(BODY_ZONE_HEAD) ? "新的大脑正在我的颅腔中生长。" : "新的头颅正在我的颈上生长：已完成 [get_head_regrow_percent()]%。"
 		if(TORPOR_PHASE_AWAITING)
-			linked_alert.name = "Torpor (Awaiting [capitalize(lost_vital_name())])"
-			linked_alert.desc = "My [lost_vital_name()] has been taken. My blood is too thin to grow it anew, and I cannot rise until it is returned to me."
+			linked_alert.name = "休眠（等待[lost_vital_name()]）"
+			linked_alert.desc = "我的[lost_vital_name()]被取走了。我的血脉过于稀薄，无法重新长出它；只有将它归还，我才能复起。"
 		if(TORPOR_PHASE_MENDING)
-			linked_alert.name = "Torpor (Mending)"
-			linked_alert.desc = "My flesh knits itself back together. [can_rise() ? "I am whole enough to rise - I can open my eyes to do so now, or rest until I am fully restored." : "I will rise once fully restored."]"
+			linked_alert.name = "休眠（恢复中）"
+			linked_alert.desc = "我的血肉正在重新愈合。[can_rise() ? "我的身体已足以复起——现在可以睁眼苏醒，也可以休息至彻底恢复。" : "彻底恢复后，我便能复起。"]"
 	if(phase != TORPOR_PHASE_RESTING && phase != TORPOR_PHASE_DORMANT)
 		var/blocker = last_notices["blocker"]
-		linked_alert.desc += "[blocker ? "<br><br>[blocker]" : ""]<br><br>If I give up at death's door, I will crumble to ash."
+		linked_alert.desc += "[blocker ? "<br><br>[blocker]" : ""]<br><br>若我在死亡之门前放弃，便会化为灰烬。"
 	linked_alert.update_countdown(countdown)
 
 /datum/status_effect/vampire_torpor/proc/get_examine_text()
 	var/they = owner.p_they(TRUE)
 	switch(get_phase())
 		if(TORPOR_PHASE_RESTING)
-			return span_artery("[they] [owner.p_are()] resting in torpor.")
+			return span_artery("[they]正在休眠中休养。")
 		if(TORPOR_PHASE_DORMANT)
-			return span_artery("[they] [owner.p_are()] in a <b>death torpor</b>, lying dormant. [they] will begin to mend in [DisplayTimeText(dormant_time_left(), 1)].")
+			return span_artery("[they]陷入了<b>死亡休眠</b>，正在沉眠。[DisplayTimeText(dormant_time_left(), 1)]后将开始恢复。")
 		if(TORPOR_PHASE_REGROWING)
 			if(owner.get_bodypart(BODY_ZONE_HEAD))
-				return span_artery("[they] [owner.p_are()] in a <b>death torpor</b>, and a new brain is forming within [owner.p_their()] skull.")
-			return span_artery("This headless body lies in a <b>death torpor</b>, and a new head is growing from its neck: [get_head_regrow_percent()]% formed.")
+				return span_artery("[they]陷入了<b>死亡休眠</b>，新的大脑正在颅腔中生长。")
+			return span_artery("这具无头躯体陷入了<b>死亡休眠</b>，新的头颅正在颈上生长：已完成 [get_head_regrow_percent()]%。")
 		if(TORPOR_PHASE_AWAITING)
 			if(owner.get_bodypart(BODY_ZONE_HEAD))
-				return span_artery("[they] [owner.p_are()] in a <b>death torpor</b>, [owner.p_their()] skull hollowed out, awaiting the return of [owner.p_their()] brain.")
-			return span_artery("This headless body lies in a <b>death torpor</b>, awaiting the return of its head.")
-	return span_artery("[they] [owner.p_are()] in a <b>death torpor</b>, and [owner.p_are()] mending.")
+				return span_artery("[they]陷入了<b>死亡休眠</b>，颅腔空荡，正等待大脑被归还。")
+			return span_artery("这具无头躯体陷入了<b>死亡休眠</b>，正等待头颅被归还。")
+	return span_artery("[they]陷入了<b>死亡休眠</b>，正在恢复。")
 
 /atom/movable/screen/alert/status_effect/vampire_torpor
-	name = "Torpor"
-	desc = "The deathless slumber. To any eye I am a corpse, and my body mends itself while I rest. I wake when I open my eyes."
+	name = "休眠"
+	desc = "不死者的沉睡。在旁人眼中，我已是一具尸体；休息时，我的身体会自行恢复。睁开双眼，我便能醒来。"
 	icon_state = "debuff"
 
 #undef TORPOR_PHASE_RESTING

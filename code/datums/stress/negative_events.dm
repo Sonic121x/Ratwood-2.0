@@ -605,10 +605,10 @@
 	desc = span_red("是谁把风郡裔请到费伦提亚来的？")
 
 /datum/stressevent/prejudice/avar
-	desc = span_red("Aavnics are always so dour, so mirthless.")
+	desc = span_red("阿夫尼克人总是那么阴沉，毫无趣味。")
 
 /datum/stressevent/prejudice/gronn
-	desc = span_red("I just saw a Gronnite! How uncivilized!")
+	desc = span_red("我刚看见一个格隆恩人！真是野蛮！")
 
 /datum/stressevent/prejudice/underdark
 	desc = span_red("那个地底居民就该待在地下，那才是它该待的地方。")

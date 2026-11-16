@@ -9,7 +9,7 @@
 	var/phalanx_btn = "咏唱方阵武士之章"
 	var/mace_btn = "咏唱执锤者之章"
 	if(faction == "undead")
-		title = "MEMORIES"
+		title = "回忆"
 		blade_btn = "醒来"
 		phalanx_btn = "醒来"
 		mace_btn = "醒来"
@@ -57,23 +57,23 @@
 		container_width = 1300
 		sagittary_column = {"<div class="column">
 <div class="column-content">
-<h3>— Sagittary —</h3>
+<h3>— 射手 —</h3>
 <div class="chant-text">
 [get_sagittary_chant_text(faction, H)]
 </div>
 <div class="abilities">
-<h4>Abilities</h4>
+<h4>能力</h4>
 <ul>
-<li><b>Leyline Nock</b> — Loose an arrow of arcyne light, costing no arrows. When it strikes, a leyline bolt bursts through the target and those behind along its path. Empowered (3 momentum): longer, harder-hitting bolt with light penetration.</li>
-<li><b>Thornfall</b> — Rain arcyne thorns on a 3x3 area up to 7 tiles away after a short telegraph. Costs no arrows. Empowered: doubles damage.</li>
-<li><b>Withdraw</b> — Leap 3 tiles away from your target, passing through enemies. Empowered: leave a burst behind that batters and hurls back anyone adjacent.</li>
-<li><b>Skyrend</b> — Loose a volley of arcyne arrows that follow your target. 7 Momentum: 5 arrows. At 10: 8 arrows. Arrows can be caught by shields or anyone in the way!</li>
-<li><b>Bound Bow</b> — Each arrow hit builds 1 Momentum. Empower Weapon makes your next arrow strike exactly where you aimed and punch through armor like a bodkin.</li>
+<li><b>地脉引弦</b> — 射出奥术光箭，不消耗箭矢。命中时，地脉光束沿弹道贯穿目标及后方的人。强化（3层动量）：光束更长、伤害更高，并获得轻度穿透。</li>
+<li><b>荆棘之雨</b> — 短暂预警后，在最远7格内的3×3区域降下奥术荆棘。不消耗箭矢。强化：伤害翻倍。</li>
+<li><b>抽身撤步</b> — 向远离目标的方向跃出3格，可穿过敌人。强化：在原地留下爆发，打击并击退相邻目标。</li>
+<li><b>裂空箭雨</b> — 连续射出追击目标的奥术箭矢。7层动量：5支箭；10层：8支箭。盾牌或弹道上的人都能挡下箭矢！</li>
+<li><b>绑定弓</b> — 每次箭矢命中积累1层动量。武器赋能使下一箭精准命中瞄准部位，并如破甲箭般穿透护甲。</li>
 </ul>
 </div>
-<p class="weapon-info">Woad Recurve Bow & Quiver / Elvish Saber or Elvish Dagger</p>
+<p class="weapon-info">靛纹反曲弓与箭袋 / 精灵军刀或精灵匕首</p>
 </div>
-<a class="choose-btn" href='?src=\ref[caller];subclass=sagittary'>Chant the Sagittary Verse</a>
+<a class="choose-btn" href='?src=\ref[caller];subclass=sagittary'>咏唱射手之章</a>
 </div>
 "}
 
@@ -538,12 +538,12 @@ a.choose-btn:hover {
 <p><em>蒙她恩典，我将征服！</em></p>"}
 
 /proc/get_sagittary_chant_text(faction, mob/living/carbon/human/H)
-	return {"<p><em>I am a bow of Tarichea — Ferentia, her name reborn!</em></p>
-<p><em>The bow is my law! Blood my ink!</em></p>
-<p><em>Far is my sight! True is my aim!</em></p>
-<p><em>With a dozen arrows I shall thin their ranks.</em></p>
-<p><em>Five hundred yils, unbowed!</em></p>
-<p><em>By blood and steel, five hundred more!</em></p>"}
+	return {"<p><em>我是塔里凯亚之弓——费伦提亚，她重生之名！</em></p>
+<p><em>弓为我法！血为我墨！</em></p>
+<p><em>我目光远及！我箭无虚发！</em></p>
+<p><em>十二支箭，足以削薄敌阵。</em></p>
+<p><em>五百年来，不曾屈服！</em></p>
+<p><em>以鲜血与钢铁，再续五百年！</em></p>"}
 
 /proc/get_preamble_closing(faction)
 	switch(faction)

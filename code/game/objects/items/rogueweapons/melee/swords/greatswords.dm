@@ -99,8 +99,8 @@
 	force_wielded = 35
 
 /obj/item/rogueweapon/greatsword/nodachi
-	name = "nodachi"
-	desc = "A single-edged blade of great length, from the overseas land of Kazengun. Known as the bane of cavalry, to use this weapon in pitched combat takes immense skill."
+	name = "野太刀"
+	desc = "来自海外风郡的超长单刃刀，以骑兵克星闻名。想在激烈的正面交战中运用此刀，需要极为高超的技艺。"
 	icon_state = "snodachi"
 	smeltresult = /obj/item/ingot/steel
 	smelt_bar_num = 3
@@ -129,8 +129,8 @@
 
 // Iron GS stats
 /obj/item/rogueweapon/greatsword/nodachi/iron
-	name = "western nodachi"
-	desc = "A single-edged blade of great length, a butchered recreation of the nodachi from the overseas land of Kazengun that has seen better days... Its worse than the original, but it still does the job."
+	name = "西式野太刀"
+	desc = "一柄超长单刃刀，是海外风郡野太刀的粗劣仿制品，且早已不复往日……虽不及原版，却仍堪使用。"
 	icon_state = "nodachi"
 	smeltresult = /obj/item/ingot/iron
 	max_blade_int = 200
@@ -141,7 +141,7 @@
 	. = ..()
 	if(!ishuman(user) || !istype(user.client?.prefs?.origin, /datum/origin/kazengun))
 		return
-	.[2] = span_info("What the fuck is this? The westerners have stolen and butchered our sacred crafts! The smith who forged this should be punished for this monstrosity!")
+	.[2] = span_info("这他妈是什么？西方人偷走了我们神圣的工艺，还把它糟蹋成这样！锻造这件怪胎的铁匠理应受到惩罚！")
 
 /obj/item/rogueweapon/greatsword/grenz
 	name = "双手剑"

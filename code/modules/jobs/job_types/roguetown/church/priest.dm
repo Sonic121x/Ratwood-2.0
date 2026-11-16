@@ -368,11 +368,11 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
 		return FALSE
 
 	if(HAS_TRAIT(H, TRAIT_LUX_FREAK))
-		to_chat(src, span_warning("The curse is undone before it could take root in [H] lux!"))
+		to_chat(src, span_warning("诅咒还未在[H]的灵辉中扎根，就已被解除！"))
 		return
 
 	if(HAS_TRAIT(H, TRAIT_INQUISITION))
-		to_chat(src, span_warning("Dammed octavian's runic arrays dampen divine punishment directed against their agents!"))
+		to_chat(src, span_warning("该死的奥塔瓦符文阵削弱了施加于其使者的神罚！"))
 		return FALSE
 		
 	//Let's not curse heretical antags.

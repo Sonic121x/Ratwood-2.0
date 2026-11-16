@@ -11,7 +11,7 @@
 	return list("司法厅" = "[SSmapping.map_adjustment?.realm_name]司法厅", "Holy See" = "格伦泽尔霍夫特教廷", "Orthodoxy" = "奥塔瓦正教会")
 
 /datum/charflaw/lawless/config_summary()
-	return "<b>面容</b>: [face_known]<br><b>悬赏发布者</b>: [bounty_poster]<br><b>严重程度</b>: [bounty_severity]<br><b>罪名</b>: [my_crime || "冒犯王权之罪"]"
+	return "<b>面容</b>: [face_known]<br><b>悬赏发布者</b>: [poster_options()[bounty_poster] || bounty_poster]<br><b>严重程度</b>: [get_update_choice_display(bounty_severity)]<br><b>罪名</b>: [my_crime || "冒犯王权之罪"]"
 
 /datum/charflaw/lawless/save_config()
 	return list("face_known" = face_known, "bounty_poster" = bounty_poster, "bounty_severity" = bounty_severity, "my_crime" = my_crime)
@@ -31,7 +31,7 @@
 	var/choice = tgui_input_list(user, "当局知道你的长相吗？", "暴露程度", list("他们认得我的脸", "他们只知道我的体貌特征"), face_known)
 	if(choice)
 		face_known = choice
-	choice = tgui_input_list(user, "是谁悬赏缉拿你？", "悬赏发布者", poster_options(), bounty_poster)
+	choice = input_translation_choice(user, "是谁悬赏缉拿你？", "悬赏发布者", poster_options())
 	if(choice)
 		bounty_poster = choice
 	choice = tgui_input_list(user, "你的罪行有多严重？", "悬赏金额", list("轻罪", "伤人害命", "骇人暴行"), bounty_severity)

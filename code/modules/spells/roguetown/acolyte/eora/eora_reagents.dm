@@ -13,10 +13,10 @@
 
 /obj/item/reagent_containers/glass/bottle/revival/attack(mob/living/M, mob/living/user)
 	if(!M.looks_dead())
-		to_chat(user, "They're not dead!")
+		to_chat(user, "他们还没死！")
 		return FALSE
 	if(!M.mind || M.stat < DEAD)
-		to_chat(user, "[M]'s heart is inert.")
+		to_chat(user, "[M]的心脏毫无生机。")
 		return FALSE
 
 	. = ..()

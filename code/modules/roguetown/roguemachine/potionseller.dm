@@ -26,11 +26,11 @@
 
 /obj/structure/roguemachine/potionseller
 	parent_type = /obj/structure/roguemachine/shop
-	name = "POTION SELLER"
-	desc = "The stomach of this thing can been stuffed with fluids for you to buy."
+	name = "药剂商"
+	desc = "这东西的肚子里可以装满液体供你购买。"
 	debris = list(/obj/item/grown/log/tree/small, /obj/item/roguegear, /obj/item/natural/glass)
 	tgui_id = "PotionSeller"
-	key_name = "potion seller key"
+	key_name = "药剂商钥匙"
 	key_icon_state = "greenkey"
 	/// The container in the slot, bought into or poured from
 	var/obj/item/reagent_containers/inserted
@@ -54,8 +54,8 @@
 
 /obj/structure/roguemachine/potionseller/Initialize(mapload)
 	. = ..()
-	shelves += new /datum/potion_shelf("bottle", /obj/item/reagent_containers/glass/bottle/rogue, 10, max_bottles)
-	shelves += new /datum/potion_shelf("vial", /obj/item/reagent_containers/glass/bottle/alchemical, 5, max_vials)
+	shelves += new /datum/potion_shelf("药瓶", /obj/item/reagent_containers/glass/bottle/rogue, 10, max_bottles)
+	shelves += new /datum/potion_shelf("小药瓶", /obj/item/reagent_containers/glass/bottle/alchemical, 5, max_vials)
 	for(var/i in 1 to POTIONSELLER_TANKS)
 		var/datum/reagents/tank = new(tank_volume, NO_REACT)
 		tank.my_atom = src
@@ -97,7 +97,7 @@
 		shelf.stock -= gone
 
 /obj/structure/roguemachine/potionseller/proc/default_tank_label(index)
-	return "Tank [index]"
+	return "储液罐 [index]"
 
 /obj/structure/roguemachine/potionseller/proc/tank_label(index)
 	return tank_labels[index] || default_tank_label(index)
@@ -139,10 +139,10 @@
 
 /obj/structure/roguemachine/potionseller/proc/stock_bottle(obj/item/I, datum/potion_shelf/shelf, mob/user)
 	if(shelf.is_full())
-		to_chat(user, span_warning("The [shelf.name] shelf is full."))
+		to_chat(user, span_warning("[shelf.name]货架已满。"))
 		return FALSE
 	if(!user.transferItemToLoc(I, src))
-		to_chat(user, span_warning("[I] is stuck to your hand!"))
+		to_chat(user, span_warning("[I]黏在你的手上了！"))
 		return FALSE
 	shelf.stock += I
 	playsound(loc, 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
@@ -180,18 +180,18 @@
 		playsound(loc, 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
 		var/list/parts = list()
 		if(poured)
-			parts += "pours [round(poured)] dram\s into [tank_label(loading_tank)]"
+			parts += "将[round(poured)]打兰液体倒入[tank_label(loading_tank)]"
 		if(shelved)
-			parts += "shelves [shelved] container\s"
-		to_chat(user, span_notice("\The [src] [english_list(parts)]."))
+			parts += "将[shelved]个容器放上货架"
+		to_chat(user, span_notice("[src][jointext(parts, "，并")]。"))
 		update_icon()
 		SStgui.update_uis(src)
 	if(tank_full)
-		to_chat(user, span_warning("[tank_label(loading_tank)] is full."))
+		to_chat(user, span_warning("[tank_label(loading_tank)]已满。"))
 	for(var/datum/potion_shelf/shelf as anything in full_shelves)
-		to_chat(user, span_warning("The [shelf.name] shelf is full."))
+		to_chat(user, span_warning("[shelf.name]货架已满。"))
 	if(!poured && !shelved && !tank_full && !length(full_shelves))
-		to_chat(user, span_warning("There is nothing \the [src] can take."))
+		to_chat(user, span_warning("没有[src]能收下的物品。"))
 
 /obj/structure/roguemachine/potionseller/refuses_unowned(obj/item/I)
 	return ..() || is_liquid_container(I)
@@ -203,17 +203,17 @@
 			stock_bottle(I, shelf, user)
 			return TRUE
 		if(inserted)
-			to_chat(user, span_warning("Something is already inside!"))
+			to_chat(user, span_warning("里面已经有东西了！"))
 			return TRUE
 		if(!user.transferItemToLoc(I, src))
-			to_chat(user, span_warning("[I] is stuck to your hand!"))
+			to_chat(user, span_warning("[I]黏在你的手上了！"))
 			return TRUE
 		inserted = I
 		playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
 		SStgui.update_uis(src)
 		return TRUE
 	if(!locked)
-		to_chat(user, span_warning("Not a container."))
+		to_chat(user, span_warning("这不是容器。"))
 		return TRUE
 	return FALSE
 
@@ -310,7 +310,7 @@
 				return
 			if(locked)
 				cost = CEILING(round(cost, 0.1), 1)
-				if(!charge(cost, "MY POTIONS ARE TOO EXPENSIVE FOR YOU, TRAVELER"))
+				if(!charge(cost, "旅人，你买不起我的药剂！"))
 					return TRUE
 			for(var/i in 1 to length(tanks))
 				if(draws[i])
@@ -325,15 +325,15 @@
 			var/datum/potion_shelf/shelf = shelf_from_param(params["shelf"])
 			if(!shelf)
 				return
-			var/shouted = uppertext("[shelf.name]s")
+			var/shouted = shelf.name
 			if(!length(shelf.stock))
-				say("MY [shouted] ARE ALL SOLD OUT, TRAVELER")
+				say("旅人，我的[shouted]已经卖光了！")
 				return TRUE
 			// a bought container goes into the slot, so it has to be free
 			if(locked && inserted)
-				say("TAKE YOUR CONTAINER FIRST, TRAVELER")
+				say("旅人，先取走你的容器！")
 				return TRUE
-			if(locked && !charge(shelf.price, "MY [shouted] ARE TOO EXPENSIVE FOR YOU, TRAVELER"))
+			if(locked && !charge(shelf.price, "旅人，你买不起我的[shouted]！"))
 				return TRUE
 			var/obj/item/B = shelf.stock[length(shelf.stock)]
 			shelf.stock -= B
@@ -354,7 +354,7 @@
 				return
 			var/datum/reagents/tank = tanks[index]
 			if(tank.total_volume >= tank.maximum_volume)
-				to_chat(H, span_warning("[tank_label(index)] is full."))
+				to_chat(H, span_warning("[tank_label(index)]已满。"))
 				return TRUE
 			if(!pour_into_tank(inserted, index, amount, H))
 				return TRUE
@@ -415,7 +415,7 @@
 	if(!tank.total_volume)
 		return
 	var/turf/T = get_turf(src)
-	visible_message(span_warning("\The [src] gushes liquid all over the floor!"))
+	visible_message(span_warning("[src]喷出的液体洒满了地板！"))
 	playsound(T, 'sound/foley/water_land1.ogg', 100, TRUE)
 	tank.reaction(T, TOUCH)
 	tank.clear_reagents()
@@ -431,23 +431,23 @@
 	var/index = pick(stocked)
 	var/label = capitalize(tank_label(index))
 	if(tank_prices[index])
-		say("[label] for sale! [tank_prices[index]] mammon\s a dram!")
+		say("出售[label]！每打兰[tank_prices[index]]玛蒙！")
 	else
-		say("Free [label]! Bring a bottle!")
+		say("免费供应[label]！带上瓶子来吧！")
 
 /obj/structure/roguemachine/potionseller/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Strike it with a container to put it in the slot. Drag a tank's level, or use + and -, to draw from as many tanks as you like, then POUR. Prices are per dram.")
-	. += span_info("It sells empty bottles and vials from separate shelves. One bought goes straight into the slot, so take your own container out first.")
-	. += span_info("While it's UNLOCKED, pour the slotted container into a tank, flush a tank onto the floor, or set a tank's label and price. Empty bottles and vials struck into it go on their shelves.")
-	. += span_info("While it's UNLOCKED, right-click with a bag to empty its filled containers into the loading tank and shelve its empty bottles and vials.")
-	. += span_info("If it breaks, its tanks spill across the floor.")
+	. += span_info("用容器点击可将其放入槽位。拖动储液罐液位或使用加减按钮，选择从各罐取出的量，再点击倒出。价格按每打兰计算。")
+	. += span_info("空药瓶和小药瓶分架出售。买下的瓶子会直接进入槽位，请先取走原有容器。")
+	. += span_info("解锁后，可将槽中容器的液体倒入储液罐、将储液罐排空到地上，或设置罐名和价格。用空药瓶或小药瓶点击可将其放上货架。")
+	. += span_info("解锁后，用袋子右键点击，可将袋中容器的液体倒入指定装填罐，并将空药瓶和小药瓶上架。")
+	. += span_info("损坏后，储液罐中的液体会洒满地面。")
 
 // POTION CARTS
 
 /obj/structure/roguemachine/potionseller/mobile
-	name = "potion cart"
-	desc = "A smaller, wheeled POTION SELLER that can be moved around."
+	name = "药剂推车"
+	desc = "带有车轮、可以移动的小型药剂售货机。"
 	icon_state = "svendorcart1"
 	icon_prefix = "svendorcart"
 	anchored = FALSE
@@ -459,7 +459,7 @@
 	max_vials = 10
 	// no owner until it's claimed, or crafted with its key
 	keycontrol = null
-	key_name = "potion cart key"
+	key_name = "药剂推车钥匙"
 
 /obj/structure/roguemachine/potionseller/mobile/crafted
 	is_crafted = TRUE

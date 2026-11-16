@@ -3,7 +3,7 @@
 		return
 
 	if(!ishuman(H))
-		to_chat(usr, span_warning("Target must be human!"))
+		to_chat(usr, span_warning("目标必须是人形生物！"))
 		return
 
 	var/list/curse_choices = list(
@@ -31,18 +31,18 @@
 
 	if(H.is_cursed(curse_type))
 		H.remove_curse(curse_type)
-		priority_announce("诸神解除了 [H.real_name] 身上的[curse_pick]！", title = "DIVINE MERCY", sound = 'sound/misc/bell.ogg')
-		message_admins("ADMIN DIVINE WRATH: ([ckey]) has lifted [curse_pick] from [H.real_name] ([H.ckey])")
-		log_game("ADMIN DIVINE WRATH: ([ckey]) has lifted [curse_pick] from [H.real_name] ([H.ckey])")
+		priority_announce("诸神解除了 [H.real_name] 身上的[curse_pick]！", title = "神之慈悲", sound = 'sound/misc/bell.ogg')
+		message_admins("管理员神罚：([ckey]) 解除了 [H.real_name] ([H.ckey]) 身上的[curse_pick]")
+		log_game("管理员神罚：([ckey]) 解除了 [H.real_name] ([H.ckey]) 身上的[curse_pick]")
 		return
 
 	if(length(H.curses) >= 1)
 		to_chat(src, span_syndradio("[H.real_name] 已受另一种诅咒影响。"))
-		message_admins("ADMIN DIVINE WRATH: ([ckey]) has attempted to strike [H.real_name] ([H.ckey]) with [curse_pick]")
-		log_game("ADMIN DIVINE WRATH: ([ckey]) has attempted to strike [H.real_name] ([H.ckey]) with [curse_pick]")
+		message_admins("管理员神罚：([ckey]) 尝试向 [H.real_name] ([H.ckey]) 施加[curse_pick]")
+		log_game("管理员神罚：([ckey]) 尝试向 [H.real_name] ([H.ckey]) 施加[curse_pick]")
 		return
 
 	H.add_curse(curse_type)
-	priority_announce("诸神向 [H.real_name] 降下了[curse_pick]！", title = "DIVINE PUNISHMENT", sound = 'sound/misc/excomm.ogg')
-	message_admins("ADMIN DIVINE WRATH: ([ckey]) has stricken [H.real_name] ([H.ckey]) with [curse_pick]")
-	log_game("ADMIN DIVINE WRATH: ([ckey]) has stricken [H.real_name] ([H.ckey]) with [curse_pick]")
+	priority_announce("诸神向 [H.real_name] 降下了[curse_pick]！", title = "神罚", sound = 'sound/misc/excomm.ogg')
+	message_admins("管理员神罚：([ckey]) 向 [H.real_name] ([H.ckey]) 施加了[curse_pick]")
+	log_game("管理员神罚：([ckey]) 向 [H.real_name] ([H.ckey]) 施加了[curse_pick]")

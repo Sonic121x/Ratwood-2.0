@@ -28,7 +28,7 @@
 	display_category = ITEM_CAT_ENG_MACHINERY
 
 /datum/crafting_recipe/roguetown/engineering/peddlercart
-	name = "peddler cart"
+	name = "货郎推车"
 	result = /obj/structure/roguemachine/vendor/mobile/crafted
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/ingot/iron = 1,
@@ -41,7 +41,7 @@
 	display_category = ITEM_CAT_ENG_MACHINERY
 
 /datum/crafting_recipe/roguetown/engineering/potioncart
-	name = "potion cart"
+	name = "药剂推车"
 	result = /obj/structure/roguemachine/potionseller/mobile/crafted
 	reqs = list(/obj/item/grown/log/tree/small = 1,
 				/obj/item/ingot/iron = 1,

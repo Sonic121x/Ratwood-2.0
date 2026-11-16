@@ -199,7 +199,7 @@
 			H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_JOURNEYMAN, TRUE)
 			H.change_stat(STATKEY_PER, 2)
 			var/sidearms = list("Elvish Saber", "Elvish Dagger")
-			var/sidearm_choice = input(H, "Choose your SIDEARM.", "THE HIDDEN THORN") as anything in sidearms
+			var/sidearm_choice = input_translation_choice(H, "选择你的副武器。", "隐秘荆棘", sidearms)
 			switch(sidearm_choice)
 				if("Elvish Saber")
 					l_hand = /obj/item/rogueweapon/sword/sabre/elf

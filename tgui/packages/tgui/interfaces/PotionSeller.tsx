@@ -210,7 +210,7 @@ const TankColumn = (props: {
       {owner ? (
         <PriceField
           value={tank.price}
-          unit="m/dram"
+          unit="玛蒙/打兰"
           canRead={canRead}
           step={0.1}
           width="64px"
@@ -220,7 +220,7 @@ const TankColumn = (props: {
       ) : (
         <div style={{ color: INK_SOFT, fontSize: FONT_LEAD }}>
           {starsIfIlliterate(
-            tank.price ? `${tank.price}m a dram` : 'Free',
+            tank.price ? `每打兰${tank.price}玛蒙` : '免费',
             canRead,
           )}
         </div>
@@ -243,7 +243,7 @@ const TankColumn = (props: {
           cursor: canDraw && tank.drawable > 0 ? 'ns-resize' : 'default',
           userSelect: 'none',
         }}
-        title={`${tank.volume} / ${tank.max} drams`}
+        title={`${tank.volume} / ${tank.max} 打兰`}
       >
         <div
           style={{
@@ -296,7 +296,7 @@ const TankColumn = (props: {
             -
           </button>
           <span style={{ minWidth: '56px', textAlign: 'center' }}>
-            {starsIfIlliterate(`${draw} dram${draw === 1 ? '' : 's'}`, canRead)}
+            {starsIfIlliterate(`${draw} 打兰`, canRead)}
           </span>
           <button
             type="button"
@@ -331,12 +331,12 @@ const TankColumn = (props: {
             }
             title={starsIfIlliterate(
               pourAmount
-                ? `Pour ${pourAmount} drams of the container into this tank`
-                : 'Pour the container into this tank',
+                ? `将容器中的${pourAmount}打兰液体倒入此罐`
+                : '将容器中的液体倒入此罐',
               canRead,
             )}
           >
-            {starsIfIlliterate('Pour in', canRead)}
+            {starsIfIlliterate('倒入', canRead)}
           </button>
           <button
             type="button"
@@ -355,7 +355,7 @@ const TankColumn = (props: {
             }}
             onMouseLeave={() => setConfirmFlush(false)}
           >
-            {starsIfIlliterate(confirmFlush ? 'Sure?' : 'Flush', canRead)}
+            {starsIfIlliterate(confirmFlush ? '确定？' : '排空', canRead)}
           </button>
           <button
             type="button"
@@ -364,11 +364,11 @@ const TankColumn = (props: {
             })}
             onClick={() => act('set_loading_tank', { tank: tankNumber })}
             title={starsIfIlliterate(
-              'Bags emptied into the machine pour into this tank',
+              '袋中容器倒入机器的液体将进入此罐',
               canRead,
             )}
           >
-            {starsIfIlliterate(isLoading ? 'Loading' : 'Load here', canRead)}
+            {starsIfIlliterate(isLoading ? '装填目标' : '装入此罐', canRead)}
           </button>
         </div>
       )}
@@ -431,7 +431,7 @@ const Vessel = (props: {
               background: PARCHMENT_DEEP,
               overflow: 'hidden',
             }}
-            title={`${container.volume} / ${container.max} drams`}
+            title={`${container.volume} / ${container.max} 打兰`}
           >
             <div
               style={{
@@ -466,19 +466,19 @@ const Vessel = (props: {
             style={compactButtonStyle()}
             onClick={() => act('eject')}
           >
-            {starsIfIlliterate('Eject', canRead)}
+            {starsIfIlliterate('取出', canRead)}
           </button>
           {owner && (
             <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
               <span style={{ color: INK_SOFT, fontSize: FONT_SMALL }}>
-                {starsIfIlliterate('Pour in', canRead)}
+                {starsIfIlliterate('倒入', canRead)}
               </span>
               <input
                 type="number"
                 min={1}
                 step={1}
                 value={pourAmount}
-                placeholder={starsIfIlliterate('all', canRead)}
+                placeholder={starsIfIlliterate('全部', canRead)}
                 onChange={(e) => setPourAmount(e.target.value)}
                 style={{ ...inkInputStyle, width: '52px' }}
               />
@@ -495,7 +495,7 @@ const Vessel = (props: {
             fontSize: FONT_BODY,
           }}
         >
-          {starsIfIlliterate('Insert a container to fill.', canRead)}
+          {starsIfIlliterate('放入容器以灌装。', canRead)}
         </div>
       )}
     </div>
@@ -532,7 +532,7 @@ const ShelfRow = (props: {
       }}
     >
       <span style={{ color: SEAL_AMBER, fontFamily: SERIF }}>
-        {starsIfIlliterate(`${capitalize(shelf.name)}s`, canRead)}
+        {starsIfIlliterate(capitalize(shelf.name), canRead)}
       </span>
       <span style={{ flex: 1, fontSize: FONT_TITLE, fontWeight: 'bold' }}>
         {shelf.stock} / {shelf.capacity}
@@ -540,7 +540,7 @@ const ShelfRow = (props: {
       {owner && (
         <PriceField
           value={shelf.price}
-          unit={`m/${shelf.name}`}
+          unit={`玛蒙/${shelf.name}`}
           canRead={canRead}
           width="52px"
           parse={parseWholeNumber}
@@ -556,16 +556,16 @@ const ShelfRow = (props: {
         onClick={() => act('buy_bottle', { shelf: shelfNumber })}
         title={
           blocked
-            ? starsIfIlliterate('Take your container out first', canRead)
+            ? starsIfIlliterate('请先取出你的容器', canRead)
             : undefined
         }
       >
         {starsIfIlliterate(
           owner
-            ? `Take a ${shelf.name}`
+            ? `取出${shelf.name}`
             : shelf.price
-              ? `Buy ${shelf.name} (${shelf.price}m)`
-              : `Take a free ${shelf.name}`,
+              ? `购买${shelf.name}（${shelf.price}玛蒙）`
+              : `免费领取${shelf.name}`,
           canRead,
         )}
       </button>
@@ -628,7 +628,7 @@ export const PotionSeller = () => {
     <Window width={560} height={900} theme="parchment">
       <Window.Content scrollable>
         <div style={pageStyle}>
-          <ShopHeader title="Potion Seller" />
+          <ShopHeader title="药剂商" />
           <div
             style={{
               display: 'flex',
@@ -676,12 +676,12 @@ export const PotionSeller = () => {
             }}
           >
             <span style={{ color: SEAL_AMBER, fontFamily: SERIF }}>
-              {starsIfIlliterate('Your draw', canRead)}
+              {starsIfIlliterate('取液量', canRead)}
             </span>
             <span style={{ flex: 1, fontSize: FONT_TITLE, fontWeight: 'bold' }}>
               {starsIfIlliterate(
-                `${totalDraw} dram${totalDraw === 1 ? '' : 's'}${
-                  locked ? ` for ${cost}m` : ''
+                `${totalDraw} 打兰${
+                  locked ? `，共${cost}玛蒙` : ''
                 }`,
                 canRead,
               )}
@@ -692,7 +692,7 @@ export const PotionSeller = () => {
               disabled={!totalDraw}
               onClick={() => setDraws(tanks.map(() => 0))}
             >
-              {starsIfIlliterate('Clear', canRead)}
+              {starsIfIlliterate('清空', canRead)}
             </button>
             <button
               type="button"
@@ -706,7 +706,7 @@ export const PotionSeller = () => {
                 setDraws(tanks.map(() => 0));
               }}
             >
-              {starsIfIlliterate('Pour', canRead)}
+              {starsIfIlliterate('倒出', canRead)}
             </button>
           </div>
           {data.shelves.map((shelf, i) => (

@@ -89,13 +89,13 @@
 			// we're greviously wounded OR we don't give a shit about two-stage death (guillotines, npcs, etc)
 			C.visible_message(span_danger("<B>[C]被[pick("残忍地","狂暴地","血淋淋地","惨烈地")]斩首了！</B>"))
 	else
-		C.visible_message(span_danger("<B>The [src.name] is [pick("torn off", "sundered", "severed", "separated", "unsewn")]!</B>"))
+		C.visible_message(span_danger("<B>[src.name]被[pick("扯掉", "劈断", "切断", "分离", "撕开")]了！</B>"))
 
 	var/obj/item/bodypart/affecting = C.get_bodypart(BODY_ZONE_CHEST)
 	if(affecting && dismember_wound && !isooze(C)) //OV EDIT - Oozes don't get wounds left behind when bits fall off
 		affecting.add_wound(dismember_wound)
 	else if(affecting && dismember_wound && isooze(C))
-		C.visible_message(span_danger("[C]'s wound closes rapidly to stem the flow of plasm."))
+		C.visible_message(span_danger("[C]的伤口迅速闭合，阻止了浆液流失。"))
 
 	//past the two stage decapitation returns, so a first stage neck sever is not logged as a limb loss;
 	//the casterless branch is player-only or NPC mobs eating a body would spam it
@@ -221,7 +221,7 @@
 			// we're greviously wounded OR we don't give a shit about two-stage death (guillotines, npcs, etc)
 			C.visible_message(span_danger("<B>[C]被[pick("残忍地","狂暴地","血淋淋地","惨烈地")]斩首了！</B>"))
 	else
-		C.visible_message(span_danger("<B>The [src.name] is [pick("torn off", "sundered", "severed", "separated", "unsewn")]!</B>"))
+		C.visible_message(span_danger("<B>[src.name]被[pick("扯掉", "劈断", "切断", "分离", "撕开")]了！</B>"))
 
 	var/obj/item/bodypart/affecting = C.get_bodypart(BODY_ZONE_CHEST)
 	if(affecting && dismember_wound)

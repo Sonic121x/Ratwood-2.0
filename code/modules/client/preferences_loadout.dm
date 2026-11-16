@@ -16,14 +16,14 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 /datum/preferences/proc/open_loadout_slots(mob/user)
 	if(!user || !user.client)
 		return
-	var/datum/browser/popup = new(user, "loadout_slots", "<div align='center'>Loadout</div>", 750, 500)
+	var/datum/browser/popup = new(user, "loadout_slots", "<div align='center'>开局装备</div>", 750, 500)
 	popup.set_content(get_loadout_slots_html(user))
 	popup.open(FALSE)
 
 /datum/preferences/proc/open_preset_menu(mob/user)
 	if(!user || !user.client)
 		return
-	var/datum/browser/popup = new(user, "loadout_presets", "<div align='center'>Presets</div>", 600, 250)
+	var/datum/browser/popup = new(user, "loadout_presets", "<div align='center'>预设</div>", 600, 250)
 	popup.set_content(get_loadout_slots_html(user, TRUE))
 	popup.open(FALSE)
 
@@ -47,21 +47,21 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 	if(show_presets)
 		html += "<table width='100%'><tr>"
 		for(var/i in 1 to PRESET_SLOTS)
-			html += "<td valign='top'><div class='slot'><b>Preset [i]</b><br><span class='small'>[get_preset_summary(i)]</span><br>"
-			html += "[preset_link("Save", "save", i, "select")] [preset_link("Load", "load", i, "customize")] [preset_link("Clear", "clear", i, "clear")]</div></td>"
+			html += "<td valign='top'><div class='slot'><b>预设 [i]</b><br><span class='small'>[get_preset_summary(i)]</span><br>"
+			html += "[preset_link("保存", "save", i, "select")] [preset_link("载入", "load", i, "customize")] [preset_link("清空", "clear", i, "clear")]</div></td>"
 		html += "</tr></table>"
 		return html
-	html += "<div class='sub'>Points: [get_remaining_points()] / [get_total_points()]</div>"
-	html += "<div class='small'>Loadout items sell for nothing. Armor rating is reduced by 90% with no crit prevention, and weapon damage is reduced by 25%.</div>"
+	html += "<div class='sub'>点数：[get_remaining_points()] / [get_total_points()]</div>"
+	html += "<div class='small'>开局装备无法卖钱。护甲防护降低90%，且无法防止重伤；武器伤害降低25%。</div>"
 	html += "<table width='100%'><tr>"
 	for(var/i in 1 to LOADOUT_SLOTS)
 		var/datum/loadout_item/current_item = vars[loadout_var(i)]
-		html += "<td width='50%' valign='top'><div class='slot'><div class='sub'>[current_item?.triumph_cost ? "<span class='cost'>[current_item.triumph_cost] Points</span>" : ""]Slot [i]</div>"
+		html += "<td width='50%' valign='top'><div class='slot'><div class='sub'>[current_item?.triumph_cost ? "<span class='cost'>[current_item.triumph_cost] 点</span>" : ""]栏位 [i]</div>"
 		if(current_item)
 			html += get_loadout_item_html(user, i, current_item)
-			html += "<br>[loadout_link("Change Item", "item", i, "select")] [loadout_link("Rename", "rename", i, "customize")] [loadout_link("Description", "describe", i, "customize")] [loadout_link("Color", "color", i, "color")] [loadout_link("Clear", "clear", i, "clear")]"
+			html += "<br>[loadout_link("更换物品", "item", i, "select")] [loadout_link("重命名", "rename", i, "customize")] [loadout_link("描述", "describe", i, "customize")] [loadout_link("颜色", "color", i, "color")] [loadout_link("清空", "clear", i, "clear")]"
 		else
-			html += "<div class='empty'>Empty Slot<br><br>[loadout_link("Select Item", "item", i, "select")]</div>"
+			html += "<div class='empty'>空栏位<br><br>[loadout_link("选择物品", "item", i, "select")]</div>"
 		html += "</div></td>"
 		if(i % 2 == 0)
 			html += "</tr><tr>"
@@ -94,9 +94,9 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 	html += "</div></td><td valign='top'><div class='name'>[custom_name || current_item.name]</div>"
 	html += "<div class='small'>[custom_desc || item_desc || current_item.desc]</div>"
 	if(custom_name || custom_desc)
-		html += "<div class='small' style='font-size: 0.7em;'>✎ Customized</div>"
+		html += "<div class='small' style='font-size: 0.7em;'>✎ 已自定义</div>"
 	if(item_color)
-		html += "<div class='small' style='font-size: 0.7em;'><span style='color: [item_color];'>●</span> Color: [item_color]</div>"
+		html += "<div class='small' style='font-size: 0.7em;'><span style='color: [item_color];'>●</span> 颜色：[item_color]</div>"
 	html += "</td></tr></table>"
 	return html
 
@@ -122,13 +122,13 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 		if("rename")
 			if(!current)
 				return
-			var/new_name = tgui_input_text(user, "Enter a custom name for this item (leave blank to use default):", "Rename Item", vars["loadout_[slot]_name"], MAX_NAME_LEN)
+			var/new_name = tgui_input_text(user, "输入物品的自定义名称（留空使用默认名称）：", "物品重命名", vars["loadout_[slot]_name"], MAX_NAME_LEN)
 			if(new_name != null)
 				vars["loadout_[slot]_name"] = new_name
 		if("describe")
 			if(!current)
 				return
-			var/new_desc = tgui_input_text(user, "Enter a custom description for this item (leave blank to use default):", "Describe Item", vars["loadout_[slot]_desc"], max_length = 500, multiline = TRUE)
+			var/new_desc = tgui_input_text(user, "输入物品的自定义描述（留空使用默认描述）：", "物品描述", vars["loadout_[slot]_desc"], max_length = 500, multiline = TRUE)
 			if(new_desc != null)
 				vars["loadout_[slot]_desc"] = new_desc
 		if("color")
@@ -137,7 +137,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 			var/list/color_choices = list("None")
 			for(var/color_name in GLOB.colorlist)
 				color_choices += color_name
-			var/new_color = tgui_input_list(user, "Choose a color for this item:", "Item Color", color_choices, vars["loadout_[slot]_hex"])
+			var/new_color = input_translation_choice(user, "选择物品颜色：", "物品颜色", color_choices)
 			if(new_color == "None")
 				vars["loadout_[slot]_hex"] = null
 			else if(new_color)
@@ -150,16 +150,16 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 	switch(action)
 		if("save")
 			save_preset(slot)
-			to_chat(user, span_notice("Saved current setup to Preset [slot]!"))
+			to_chat(user, span_notice("已将当前配置保存至预设 [slot]！"))
 		if("load")
 			if(!load_preset(slot))
-				to_chat(user, span_warning("Preset [slot] is empty or invalid."))
+				to_chat(user, span_warning("预设 [slot] 为空或无效。"))
 				return
 			validate_background()
-			to_chat(user, span_notice("Loaded Preset [slot]!"))
+			to_chat(user, span_notice("已载入预设 [slot]！"))
 		if("clear")
 			vars["loadout_preset_[slot]"] = null
-			to_chat(user, span_notice("Cleared Preset [slot]."))
+			to_chat(user, span_notice("已清空预设 [slot]。"))
 	save_character()
 	ShowChoices(user)
 	open_preset_menu(user)
@@ -244,7 +244,7 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 /datum/preferences/proc/get_preset_summary(preset_slot)
 	var/list/preset = vars["loadout_preset_[preset_slot]"]
 	if(!islist(preset) || !preset.len)
-		return "Empty"
+		return "空"
 	var/list/summary = list()
 	var/statpack_path = string_to_typepath(preset["statpack"])
 	if(ispath(statpack_path, /datum/statpack))
@@ -269,9 +269,9 @@ GLOBAL_LIST_EMPTY(cached_loadout_icons)
 		if(ispath(string_to_typepath(preset[loadout_var(i)]), /datum/loadout_item))
 			loadout_count++
 	if(quirk_count)
-		summary += "[quirk_count] quirk\s"
+		summary += "[quirk_count] 项怪癖"
 	if(vice_count)
-		summary += "[vice_count] vice\s"
+		summary += "[vice_count] 项恶习"
 	if(loadout_count)
-		summary += "[loadout_count] item\s"
+		summary += "[loadout_count] 件物品"
 	return summary.Join(" | ")

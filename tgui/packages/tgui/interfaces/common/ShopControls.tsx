@@ -149,12 +149,12 @@ const WheelsButton = (props: {
       onClick={onClick}
       title={starsIfIlliterate(
         secured
-          ? 'The cart can be pulled once its wheels are free'
-          : 'Secured wheels keep the cart from being moved',
+          ? '松开车轮后即可拉动推车'
+          : '锁住车轮可防止推车被移动',
         canRead,
       )}
     >
-      {starsIfIlliterate(secured ? 'Free wheels' : 'Secure wheels', canRead)}
+      {starsIfIlliterate(secured ? '松开车轮' : '锁住车轮', canRead)}
     </button>
   );
 };
@@ -173,9 +173,9 @@ export const ShopHeader = (props: { title: string }) => {
       <div style={rulerStyle} />
       {data.locked ? (
         <MoneyRow
-          label="Stored Mammon"
+          label="存入的玛蒙"
           amount={data.budget}
-          button="Change"
+          button="找零"
           canRead={canRead}
           onClick={() => act('change')}
         />
@@ -183,9 +183,9 @@ export const ShopHeader = (props: { title: string }) => {
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <div style={{ flex: 1, minWidth: 0 }}>
             <MoneyRow
-              label="Stored Profits"
+              label="累积收益"
               amount={data.profits}
-              button="Withdraw"
+              button="提取"
               canRead={canRead}
               onClick={() => act('withdraw_profits')}
             />

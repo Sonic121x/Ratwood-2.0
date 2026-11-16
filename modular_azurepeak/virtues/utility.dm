@@ -99,8 +99,8 @@
 	for(var/datum/language/L as anything in languages)
 		names += initial(L.name)
 	if(!length(names))
-		return "<b>Languages</b>: None chosen"
-	return "<b>Languages</b>: [names.Join(", ")]"
+		return "<b>语言</b>：尚未选择"
+	return "<b>语言</b>：[names.Join("、")]"
 
 /datum/virtue/utility/linguist/save_config()
 	return list("languages" = languages)
@@ -121,11 +121,11 @@
 	var/list/chosen = list()
 	for(var/i in 1 to 3)
 		var/list/choices = prefs.get_language_choices()
-		choices -= "None"
+		choices -= "无"
 		for(var/language_name in choices.Copy())
 			if(choices[language_name] in chosen)
 				choices -= language_name
-		var/choice = tgui_input_list(user, "Choose language [i] of 3:", "Intellectual", choices)
+		var/choice = tgui_input_list(user, "选择第 [i] 种语言（共3种）：", "学识渊博", choices)
 		if(!choice)
 			return
 		chosen += choices[choice]

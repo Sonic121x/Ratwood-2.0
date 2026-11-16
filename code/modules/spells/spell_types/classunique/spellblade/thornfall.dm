@@ -1,12 +1,12 @@
 /datum/action/cooldown/spell/thornfall
 	source_aspect = /datum/magic_aspect/pseudo/spellblade
-	name = "Thornfall"
+	name = "荆棘之雨"
 	expose_caster_on_deflect = FALSE
-	desc = "Loose an arrow skyward and let the leyline split it into a hail of arcyne thorns, falling on a 3x3 area up to 7 tiles away. \
-		The thorns fall after a short telegraph - aim where they will be. Costs no arrows. \
-		Builds 1 momentum on hit. \
-		At 3+ momentum: consumes 3 to double damage. \
-		Strikes your aimed bodypart. (25/50 damage, LIGHT PENETRATION)"
+	desc = "朝天空射出一箭，让地脉将其化为奥术荆棘之雨，落在最远7格内的3×3区域。\
+		短暂预警后荆棘落下——请预判目标位置。不消耗箭矢。\
+		命中时获得1层动量。\
+		动量不少于3层时：消耗3层，使伤害翻倍。\
+		攻击你瞄准的身体部位。（25/50点伤害，轻度穿透）"
 	button_icon = 'icons/mob/actions/classuniquespells/spellblade.dmi'
 	button_icon_state = "air_strike"
 	sound = 'sound/combat/Ranged/flatbow-shot-01.ogg'
@@ -18,7 +18,7 @@
 	primary_resource_type = SPELL_COST_STAMINA
 	primary_resource_cost = SPELLCOST_SB_POKE
 
-	invocations = list("Imber Spinarum!")
+	invocations = list("荆棘如雨！")
 	invocation_type = INVOCATION_SHOUT
 
 	charge_required = TRUE
@@ -48,12 +48,12 @@
 
 	var/obj/item/bow = arcyne_get_weapon(H)
 	if(!istype(bow, /obj/item/gun/ballistic/revolver/grenadelauncher/bow))
-		to_chat(H, span_warning("I need my bound bow in hand!"))
+		to_chat(H, span_warning("我必须手持绑定的弓！"))
 		return FALSE
 
 	var/turf/center = get_turf(cast_on)
 	if(!center || center.density)
-		to_chat(H, span_warning("I need open ground to rain upon!"))
+		to_chat(H, span_warning("我需要一片能让箭雨落下的空地！"))
 		return FALSE
 
 	var/empowered = FALSE
@@ -61,7 +61,7 @@
 	if(M && M.stacks >= momentum_cost)
 		M.consume_stacks(momentum_cost)
 		empowered = TRUE
-		to_chat(H, span_notice("[momentum_cost] momentum released - empowered thornfall!"))
+		to_chat(H, span_notice("释放了[momentum_cost]层动量——强化荆棘之雨！"))
 
 	var/def_zone = H.zone_selected || BODY_ZONE_CHEST
 	var/final_damage = empowered ? (damage * empowered_mult) : damage
@@ -73,8 +73,8 @@
 		affected_turfs += T
 		new /obj/effect/temp_visual/telegraph/thornfall(T)
 
-	H.visible_message(span_warning("[H] looses an arrow high into the sky, splintering into arcane light!"))
-	log_combat(H, cast_on, "used Thornfall on", zone=def_zone)
+	H.visible_message(span_warning("[H]向高空射出一箭，箭矢碎裂成奥术之光！"))
+	log_combat(H, cast_on, "对其使用了荆棘之雨", zone=def_zone)
 
 	addtimer(CALLBACK(src, PROC_REF(resolve_thornfall), H, bow, affected_turfs, final_damage, def_zone, empowered), fall_delay)
 	return TRUE
@@ -98,11 +98,11 @@
 				deflected = TRUE
 				continue
 			if(empowered)
-				var/first_strike = arcyne_strike(H, victim, bow, round(final_damage / 2), def_zone, BCLASS_PIERCE, armor_penetration = armor_pen, spell_name = "Thornfall", skip_animation = TRUE, skip_message = TRUE)
-				var/second_strike = arcyne_strike(H, victim, bow, round(final_damage / 2), def_zone, BCLASS_PIERCE, armor_penetration = armor_pen, spell_name = "Thornfall", skip_animation = TRUE)
+				var/first_strike = arcyne_strike(H, victim, bow, round(final_damage / 2), def_zone, BCLASS_PIERCE, armor_penetration = armor_pen, spell_name = "荆棘之雨", skip_animation = TRUE, skip_message = TRUE)
+				var/second_strike = arcyne_strike(H, victim, bow, round(final_damage / 2), def_zone, BCLASS_PIERCE, armor_penetration = armor_pen, spell_name = "荆棘之雨", skip_animation = TRUE)
 				if(first_strike != ARCYNE_STRIKE_WARDED || second_strike != ARCYNE_STRIKE_WARDED)
 					hit_count++
-			else if(arcyne_strike(H, victim, bow, final_damage, def_zone, BCLASS_PIERCE, armor_penetration = armor_pen, spell_name = "Thornfall", skip_animation = TRUE) != ARCYNE_STRIKE_WARDED)
+			else if(arcyne_strike(H, victim, bow, final_damage, def_zone, BCLASS_PIERCE, armor_penetration = armor_pen, spell_name = "荆棘之雨", skip_animation = TRUE) != ARCYNE_STRIKE_WARDED)
 				hit_count++
 
 	if(hit_count)

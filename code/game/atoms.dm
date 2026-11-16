@@ -166,7 +166,7 @@
 	SHOULD_CALL_PARENT(TRUE)
 	if(flags_1 & INITIALIZED_1)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
-	flags_1 |= INITIALIZED_1
+	flags_1 |= INITIALIZED_1; if(mapload) { name = get_update_map_display(name); desc = get_update_map_display(desc); }
 
 	//atom color stuff
 	if(color)

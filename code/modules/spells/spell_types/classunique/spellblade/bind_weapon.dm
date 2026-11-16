@@ -1,12 +1,12 @@
 /datum/action/cooldown/spell/bind_weapon
 	source_aspect = /datum/magic_aspect/pseudo/spellblade
-	name = "Bind Weapon"
-	desc = "Bind your held weapon as an arcyne conduit. Successful strikes with bound weapons build arcyne momentum, fueling your abilities. \
-		It can also be recalled to your hand from anywhere with Recall Weapon. \
-		The weapon must match your chant - Blade requires a sword or dagger, Phalangite a polearm, Macebearer a mace or warhammer, Sagittary a bow. \
-		A bound bow builds momentum from each arrow hit. \
-		You can rebind to restore a lost Arcyne Momentum status, or bind a new weapon if your old one was destroyed. \
-		Cast with empty hands to unbind your current weapon."
+	name = "武器绑定"
+	desc = "将手持武器绑定为奥术导体。绑定武器成功命中可积累奥术动量，为技能提供能量。\
+		也可使用召回武器，从任何地方将其唤回手中。\
+		武器必须符合你的战颂——剑刃需要剑或匕首，方阵武士需要长柄武器，执锤者需要钉锤或战锤，射手需要弓。\
+		绑定的弓每次以箭矢命中都可积累动量。\
+		重新绑定可恢复丢失的奥术动量状态；旧武器被毁后，也可绑定新武器。\
+		空手施放可解除当前武器的绑定。"
 	button_icon = 'icons/mob/actions/classuniquespells/spellblade.dmi'
 	button_icon_state = "bind_weapon"
 	sound = 'sound/magic/charged.ogg'

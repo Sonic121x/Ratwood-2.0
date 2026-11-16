@@ -49,7 +49,7 @@
 	display_category = ITEM_CAT_WEAPONS_SWORDS
 
 /datum/anvil_recipe/kazengunite/nodachi
-	name = "Nodachi (+2 Steel)"
+	name = "野太刀（+2 钢锭）"
 	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel)
 	appro_skill = /datum/skill/craft/weaponsmithing
 	i_type = "Weapons"

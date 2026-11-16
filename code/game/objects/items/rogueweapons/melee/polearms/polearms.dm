@@ -355,15 +355,15 @@
 				return
 
 			if(HAS_TRAIT(H, TRAIT_LUX_FREAK))
-				to_chat(src, span_warning("[H] resisted the divine punishment on their soul!"))
+				to_chat(src, span_warning("[H]抵抗了施加于灵魂的神罚！"))
 				return
 			
 			if(HAS_TRAIT(H, TRAIT_INQUISITION))
-				to_chat(src, span_warning("Dammed octavian's runic arrays dampen divine punishment directed against their agents!"))
+				to_chat(src, span_warning("该死的奥塔瓦符文阵削弱了施加于其使者的神罚！"))
 				return
 
 			if(HAS_TRAIT(H, TRAIT_HERESIARCH))
-				to_chat(user, span_warning("The patron of this one shields them from being suppressed."))
+				to_chat(user, span_warning("此人的守护神庇护着他们，使其免受压制。"))
 				return
 
 			if(istype(user.used_intent, /datum/intent/priest_smite))

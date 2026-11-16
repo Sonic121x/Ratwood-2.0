@@ -147,14 +147,14 @@
 			: "<div class='wanted-icon' style='background:#8B4513;'></div>"
 		var/bounty_html = ""
 		if(poster.amount > 0)
-			bounty_html += "<div class='wanted-bounty'>[poster.amount] MAMMONS</div>"
+			bounty_html += "<div class='wanted-bounty'>[poster.amount] 玛蒙</div>"
 		for(var/crime in poster.crimes)
 			bounty_html += "<div class='wanted-crime'>[crime]</div>"
 		html += {"
 		<div class='wanted-poster'>
-			<div class='wanted-header'>WANTED</div>
+			<div class='wanted-header'>通缉</div>
 			<div class='wanted-divider'></div>
-			<div class='wanted-footer'>DEAD OR ALIVE</div>
+			<div class='wanted-footer'>生死不论</div>
 			<div class='wanted-icon-container'>
 				[icon_html]
 			</div>

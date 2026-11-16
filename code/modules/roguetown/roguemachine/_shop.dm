@@ -19,7 +19,7 @@
 	/// Crafted shops come with their own key
 	var/is_crafted = FALSE
 	/// Name and icon of the key made for crafted or claimed shops
-	var/key_name = "shop key"
+	var/key_name = "商店钥匙"
 	var/key_icon_state = "brownkey"
 	/// Carts can be pulled around, and their owner can secure or free the wheels
 	var/is_cart = FALSE
@@ -122,7 +122,7 @@
 	if(istype(P, /obj/item/roguecoin/gilbranze) || istype(P, /obj/item/roguecoin/inqcoin))
 		return
 	if(!keycontrol && refuses_unowned(P))
-		to_chat(user, span_warning("\The [src] has no owner yet."))
+		to_chat(user, span_warning("[src]尚无主人。"))
 		return
 	if(istype(P, /obj/item/roguecoin))
 		budget += P.get_real_price()
@@ -137,7 +137,7 @@
 			return
 		// an open shop can take other keys as stock
 		if(locked)
-			to_chat(user, span_warning("Wrong key."))
+			to_chat(user, span_warning("钥匙不对。"))
 			return
 	if(handle_item(P, user))
 		return
@@ -233,7 +233,7 @@
 				return
 			anchored = !anchored
 			playsound(loc, 'sound/misc/beep.ogg', 100, FALSE, -1)
-			to_chat(H, span_notice("You [anchored ? "secure" : "free"] the wheels."))
+			to_chat(H, span_notice("你[anchored ? "锁住" : "松开"]了车轮。"))
 			return TRUE
 
 /obj/structure/roguemachine/shop/process()
@@ -254,17 +254,17 @@
 /obj/structure/roguemachine/shop/examine(mob/user)
 	. = ..()
 	if(!keycontrol)
-		. += span_info("It has no owner. Anyone could take ownership of it.")
+		. += span_info("它尚无主人，任何人都可以认领。")
 	if(is_cart && anchored)
-		. += span_info("Its wheels are secured.")
+		. += span_info("它的车轮已锁定。")
 
 /obj/structure/roguemachine/shop/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Strike it with coin to pay for what you buy. Whatever isn't spent comes back as CHANGE.")
-	. += span_info("Its owner can UNLOCK it with its key, or a keyring holding it, to restock it and withdraw the profits.")
+	. += span_info("用钱币点击它即可支付货款。未花完的钱可通过找零取回。")
+	. += span_info("主人可以用配套钥匙或装有钥匙的钥匙环解锁，以补充货物和提取收益。")
 	if(is_cart)
-		. += span_info("An unowned cart offers itself to the first to lay a hand on it, along with a fresh key. Keys can be passed on to whoever you like.")
-		. += span_info("While it's UNLOCKED, its owner can secure or free its wheels. Secured wheels can't be pulled or pushed.")
+		. += span_info("无主货车可由首位接触它的人认领，并提供一把新钥匙。钥匙可以转交给任何人。")
+		. += span_info("解锁后，主人可以锁住或松开车轮。车轮锁定时无法推拉。")
 
 // OWNERLESS SHOPS
 
@@ -276,13 +276,13 @@
 	return TRUE
 
 /obj/structure/roguemachine/shop/proc/offer_ownership(mob/living/carbon/human/user)
-	if(tgui_alert(user, "This [name] has no owner. Take ownership?", capitalize(name), list("Yes", "No")) != "Yes")
+	if(tgui_alert(user, "[name]尚无主人。要认领吗？", capitalize(name), list("是", "否")) != "是")
 		return
 	// someone else may have claimed it, or the user wandered off, while the prompt was up
 	if(keycontrol || obj_broken || QDELETED(src) || !user.Adjacent(src) || user.incapacitated())
 		return
 	user.put_in_hands(make_key(get_turf(user)))
-	to_chat(user, span_notice("You take ownership of \the [src]. Its key is yours."))
+	to_chat(user, span_notice("你认领了[src]，并取得了它的钥匙。"))
 	if(locked)
 		toggle_lock()
 	ui_interact(user)

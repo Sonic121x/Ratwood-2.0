@@ -1,11 +1,11 @@
 /datum/action/cooldown/spell/leyline_nock
 	source_aspect = /datum/magic_aspect/pseudo/spellblade
-	name = "Leyline Nock"
+	name = "地脉引弦"
 	expose_caster_on_deflect = FALSE
-	desc = "Nock an arrow of pure arcyne light and loose it at a target. Costs no arrows. \
-		When it strikes, a leyline bolt bursts from the wound and carries on along the arrow's path, striking the target and everyone in a line behind them. \
-		Builds 1 momentum on hit. \
-		At 3+ momentum: consumes 3 for a longer, more damaging bolt with light penetration."
+	desc = "搭起一道纯粹奥术之光凝成的箭矢，射向目标。不消耗箭矢。\
+		命中时，地脉光束从伤口迸出，沿箭矢轨迹继续前行，击中目标及其身后直线上的所有人。\
+		命中时获得1层动量。\
+		动量不少于3层时：消耗3层，使光束更长、伤害更高，并获得轻度穿透。"
 	button_icon = 'icons/mob/actions/classuniquespells/spellblade.dmi'
 	button_icon_state = "azurean_javelin"
 	sound = 'sound/combat/Ranged/flatbow-shot-01.ogg'
@@ -17,7 +17,7 @@
 	primary_resource_type = SPELL_COST_STAMINA
 	primary_resource_cost = SPELLCOST_SB_RANGED
 
-	invocations = list("Sagitta Lineae!")
+	invocations = list("地脉之箭！")
 	invocation_type = INVOCATION_SHOUT
 
 	charge_required = TRUE
@@ -48,12 +48,12 @@
 
 	var/obj/item/bow = arcyne_get_weapon(H)
 	if(!istype(bow, /obj/item/gun/ballistic/revolver/grenadelauncher/bow))
-		to_chat(H, span_warning("I need my bound bow in hand!"))
+		to_chat(H, span_warning("我必须手持绑定的弓！"))
 		return FALSE
 
 	var/turf/target_turf = get_turf(cast_on)
 	if(!target_turf || target_turf == get_turf(H))
-		to_chat(H, span_warning("Invalid target!"))
+		to_chat(H, span_warning("目标无效！"))
 		return FALSE
 
 	var/empowered = FALSE
@@ -61,7 +61,7 @@
 	if(M && M.stacks >= momentum_cost)
 		M.consume_stacks(momentum_cost)
 		empowered = TRUE
-		to_chat(H, span_notice("[momentum_cost] momentum released - empowered nock!"))
+		to_chat(H, span_notice("释放了[momentum_cost]层动量——强化引弦！"))
 
 	var/def_zone = H.zone_selected || BODY_ZONE_CHEST
 
@@ -78,10 +78,10 @@
 	P.fire()
 
 	H.visible_message(
-		span_warning("[H] draws a thread of arcyne light along [H.p_their()] bowstring and looses it!"),
-		span_notice("I loose a leyline arrow!"))
+		span_warning("[H]沿弓弦凝出一缕奥术之光，将其射了出去！"),
+		span_notice("我射出了一支地脉之箭！"))
 	playsound(get_turf(H), 'sound/combat/Ranged/flatbow-shot-01.ogg', 70, TRUE)
-	log_combat(H, cast_on, "used Leyline Nock[empowered ? " (empowered)" : ""] on", zone = def_zone)
+	log_combat(H, cast_on, "对其使用了地脉引弦[empowered ? "（强化）" : ""]", zone = def_zone)
 	return TRUE
 
 /datum/action/cooldown/spell/leyline_nock/proc/do_bolt(mob/living/carbon/human/user, mob/living/struck, empowered, turf/fired_turf)
@@ -137,7 +137,7 @@
 		if(spell_guard_check(struck, FALSE, user))
 			deflected = TRUE
 		else
-			if(arcyne_strike(user, struck, weapon, damage, def_zone, BCLASS_PIERCE, armor_penetration = ap, spell_name = "Leyline Nock", skip_animation = TRUE, allow_shield_check = TRUE) != ARCYNE_STRIKE_WARDED)
+			if(arcyne_strike(user, struck, weapon, damage, def_zone, BCLASS_PIERCE, armor_penetration = ap, spell_name = "地脉引弦", skip_animation = TRUE, allow_shield_check = TRUE) != ARCYNE_STRIKE_WARDED)
 				hit_count++
 			already_hit += struck
 
@@ -148,7 +148,7 @@
 			if(spell_guard_check(victim, FALSE, user, punish_caster = deflected ? FALSE : null))
 				deflected = TRUE
 				continue
-			arcyne_strike(user, victim, weapon, damage, def_zone, BCLASS_PIERCE, armor_penetration = ap, spell_name = "Leyline Nock", skip_animation = TRUE)
+			arcyne_strike(user, victim, weapon, damage, def_zone, BCLASS_PIERCE, armor_penetration = ap, spell_name = "地脉引弦", skip_animation = TRUE)
 			hit_count++
 			already_hit += victim
 
@@ -159,13 +159,13 @@
 	if(hit_count >= 2)
 		if(M)
 			M.add_stacks(1)
-			to_chat(user, span_notice("DOUBLE PIERCE! ARCYNE SURGE!"))
-		user.visible_message(span_danger("A leyline bolt bursts from [struck] and lances through those behind!"))
+			to_chat(user, span_notice("双重贯穿！奥术涌动！"))
+		user.visible_message(span_danger("一道地脉光束从[struck]身上迸出，贯穿了后方的人！"))
 	else if(hit_count)
-		user.visible_message(span_danger("A leyline bolt bursts from [struck]!"))
+		user.visible_message(span_danger("一道地脉光束从[struck]身上迸出！"))
 
 /obj/projectile/magic/leyline_arrow
-	name = "leyline arrow"
+	name = "地脉之箭"
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrow_proj"
 	color = "#88BFFF"
@@ -186,7 +186,7 @@
 	if(ismob(target))
 		var/mob/M = target
 		if(M.anti_magic_check())
-			visible_message(span_warning("[src] fizzles on contact with \the [target]!"))
+			visible_message(span_warning("[src]触及[target]时消散了！"))
 			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
 			qdel(src)
 			return BULLET_ACT_BLOCK

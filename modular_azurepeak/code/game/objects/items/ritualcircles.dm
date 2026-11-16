@@ -2259,7 +2259,7 @@
 	// Remove divine curses
 	for(var/datum/curse/C in target.curses)
 		target.remove_curse(C)
-		loc.visible_message(span_warning("With masterfull precision, the divine curse on [target] is unvowen."))
+		loc.visible_message(span_warning("[target]身上的神明诅咒被精妙而准确地解除了。"))
 		target.apply_status_effect(/datum/status_effect/debuff/devitalised)
 
 	var/datum/antagonist/werewolf/Were = target.mind.has_antag_datum(/datum/antagonist/werewolf/)

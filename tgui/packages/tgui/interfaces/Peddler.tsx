@@ -93,7 +93,7 @@ const ShopperRow = (props: {
       <PriceTag
         price={group.price}
         cantAfford={cantAfford}
-        title={qty > 1 ? `${qty} for ${total}m` : `${group.price}m`}
+        title={qty > 1 ? `${qty}件，共${total}玛蒙` : `${group.price}玛蒙`}
       />
       {group.count > 1 && (
         <input
@@ -110,9 +110,9 @@ const ShopperRow = (props: {
         style={compactButtonStyle({ disabled: cantAfford })}
         disabled={cantAfford}
         onClick={() => act('buy', { key: group.key, amount: qty })}
-        title={`Buy ${qty} for ${total}m`}
+        title={`购买${qty}件，共${total}玛蒙`}
       >
-        {starsIfIlliterate('Buy', canRead)}
+        {starsIfIlliterate('购买', canRead)}
       </button>
     </div>
   );
@@ -159,7 +159,7 @@ const OwnerRow = (props: {
         style={compactButtonStyle()}
         onClick={() => act('take', { key: group.key })}
       >
-        {starsIfIlliterate('Take', canRead)}
+        {starsIfIlliterate('取出', canRead)}
       </button>
       {group.count > 1 && (
         <button
@@ -167,7 +167,7 @@ const OwnerRow = (props: {
           style={compactButtonStyle()}
           onClick={() => act('take', { key: group.key, all: true })}
         >
-          {starsIfIlliterate('Take all', canRead)}
+          {starsIfIlliterate('全部取出', canRead)}
         </button>
       )}
     </div>
@@ -189,7 +189,7 @@ export const Peddler = () => {
     <Window width={560} height={620} theme="parchment">
       <Window.Content scrollable>
         <div style={pageStyle}>
-          <ShopHeader title="The Peddler, Third Iteration" />
+          <ShopHeader title="第三代货郎" />
           <div
             style={{
               display: 'flex',
@@ -202,7 +202,7 @@ export const Peddler = () => {
               <Input
                 value={search}
                 onChange={setSearch}
-                placeholder="Search wares..."
+                placeholder="搜索商品……"
                 width="240px"
               />
             )}
@@ -212,7 +212,7 @@ export const Peddler = () => {
                 style={inkButtonStyle()}
                 onClick={() => setSearch('')}
               >
-                Clear
+                清空
               </button>
             )}
             <div
@@ -235,8 +235,8 @@ export const Peddler = () => {
               }}
             >
               {needle
-                ? `Nothing matches "${search}".`
-                : starsIfIlliterate('Its stomach is empty.', canRead)}
+                ? `没有与“${search}”匹配的商品。`
+                : starsIfIlliterate('它的肚子空空如也。', canRead)}
             </div>
           ) : (
             groups.map((group) =>

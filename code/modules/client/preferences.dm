@@ -561,7 +561,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/used_title
 	switch(current_tab)
 		if (0) // Character Settings#
-			used_title = "Character Sheet"
+			used_title = "角色档案"
 			dat += get_character_page(user)
 
 		if (1) // Game Preferences
@@ -1915,7 +1915,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 						bark_variance = clamp(borkset, initial(B.minvariance), initial(B.maxvariance))
 
 				if("barkvolume")
-					var/borkset = input(user, "Choose your desired bark volume. Min: 10. Max: 70", "Character Preference") as null|num
+					var/borkset = input(user, "选择发声音量，最小10，最大70。", "角色偏好") as null|num
 					if(!isnull(borkset))
 						bark_volume = round(clamp(borkset, 10, 70), 1)
 

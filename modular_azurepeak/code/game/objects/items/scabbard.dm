@@ -503,8 +503,8 @@
 
 // Kazengun Greatsword strap //
 /obj/item/rogueweapon/scabbard/gwstrap/nodachi
-	name = "saya"
-	desc = "A well maintained strap connected to a lacquered wood scabbard with a metal finish. It appears designed to hold an exceptionally long blade."
+	name = "野太刀鞘"
+	desc = "保养良好的背带连接着漆木刀鞘，鞘上饰有金属包边，看起来专为收纳格外修长的刀刃而制。"
 
 	icon_state = "saya0"
 	item_state = "saya"

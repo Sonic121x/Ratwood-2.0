@@ -211,7 +211,7 @@
 	var/hide_desc
 
 /datum/virtue/combat/tough_hide/config_summary()
-	return "<b>Name</b>: [hide_name || "Default"]<br><b>Description</b>: [hide_desc || "Default"]"
+	return "<b>名称</b>：[hide_name || "默认"]<br><b>描述</b>：[hide_desc || "默认"]"
 
 /datum/virtue/combat/tough_hide/save_config()
 	return list("hide_name" = hide_name, "hide_desc" = hide_desc)
@@ -223,10 +223,10 @@
 	hide_desc = data["hide_desc"]
 
 /datum/virtue/combat/tough_hide/configure(mob/user)
-	var/new_name = tgui_input_text(user, "What would you like to name your hide?", "Natural Armor", hide_name, 200)
+	var/new_name = tgui_input_text(user, "你想给这层皮肤起什么名字？", "天然护甲", hide_name, 200)
 	if(!isnull(new_name))
 		hide_name = new_name
-	var/new_desc = tgui_input_text(user, "How would you describe your hide?", "Natural Armor", hide_desc, 200)
+	var/new_desc = tgui_input_text(user, "你会如何描述这层皮肤？", "天然护甲", hide_desc, 200)
 	if(!isnull(new_desc))
 		hide_desc = new_desc
 

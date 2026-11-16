@@ -43,20 +43,20 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 
 /datum/preferences/proc/yes_no(value)
 	if(value)
-		return "Yes"
-	return "No"
+		return "是"
+	return "否"
 
 /datum/preferences/proc/pref_link(label, preference, task = "input")
 	var/href = "?_src_=prefs;preference=[preference]"
 	if(task)
 		href += ";task=[task]"
-	return "<a href='[href]'>[label]</a>"
+	return "<a href='[href]'>[(preference in list("name", "nickname", "setspouse", "family")) ? label : get_preferences_label_display(label)]</a>"
 
 /datum/preferences/proc/bg_link(label, bg, slot)
-	return "<a href='?_src_=prefs;preference=background;bg=[bg];slot=[slot]'>[label]</a>"
+	return "<a href='?_src_=prefs;preference=background;bg=[bg];slot=[slot]'>[get_preferences_label_display(label)]</a>"
 
 /datum/preferences/proc/pref_item(label, value)
-	return "<b>[label]:</b> [value]"
+	return "<b>[get_preferences_label_display(label)]：</b> [value]"
 
 /datum/preferences/proc/pref_line(list/items)
 	return "<div class='r'>[items.Join("<br>")]</div>"
@@ -64,9 +64,9 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 /datum/preferences/proc/pref_box(header, body, details, key)
 	var/footer = ""
 	if(details)
-		var/label = "Expand Details"
+		var/label = "展开详情"
 		if(key in open_categories)
-			label = "Shrink Details"
+			label = "收起详情"
 			if(body)
 				body += "<br>"
 			body += details
@@ -74,7 +74,7 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 	return "<div class='box'>[header]<div>[body]</div>[footer]</div>"
 
 /datum/preferences/proc/pref_color_row(label, hex, preference)
-	return pref_line(list(pref_item(label, "<span style='border: 1px solid #161616; background-color: #[hex];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> [pref_link("Change", preference)]")))
+	return pref_line(list(pref_item(label, "<span style='border: 1px solid #161616; background-color: #[hex];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> [pref_link("更改", preference)]")))
 
 /datum/preferences/proc/pref_image(link)
 	if(link == null)
@@ -138,22 +138,22 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 				page = "<div class='cbox'>[page]</div>"
 			else
 				page = ""
-			html += "<div class='lab'><a href='?_src_=prefs;preference=category;name=[url_encode(category)]'>[arrow] [category]</a></div>[page]"
+			html += "<div class='lab'><a href='?_src_=prefs;preference=category;name=[url_encode(category)]'>[arrow] [get_preferences_label_display(category)]</a></div>[page]"
 		html += "</td>"
 		if(column == GLOB.pref_columns[1])
 			html += "<td width='25%'></td>"
 	return "[html]</tr></table><script>restore();</script>"
 
 /datum/preferences/proc/get_top_html(mob/user)
-	var/triumphs = "None"
+	var/triumphs = "无"
 	if(user.get_triumphs())
 		triumphs = "\Roman [user.get_triumphs()]"
 	var/html = "<center>"
-	html += "[pref_link("Change Character", "changeslot", "")] | [pref_link("Class Selection", "job", "menu")] | [pref_link("Villain Selection", "antag", "menu")] | [pref_link("Keybinds", "keybinds", "menu")]<br>"
-	html += "[pref_link("PQ:", "playerquality", "menu")] [get_playerquality(user.ckey, text = TRUE)] | [pref_link("TRIUMPHS:", "triumphs", "menu")] [triumphs]"
+	html += "[pref_link("切换角色", "changeslot", "")] | [pref_link("职业选择", "job", "menu")] | [pref_link("反派选择", "antag", "menu")] | [pref_link("按键绑定", "keybinds", "menu")]<br>"
+	html += "[pref_link("玩家评分：", "playerquality", "menu")] [get_playerquality(user.ckey, text = TRUE)] | [pref_link("凯旋点：", "triumphs", "menu")] [triumphs]"
 	if(SStriumphs.triumph_buys_enabled)
-		html += " [pref_link("Triumph Buy", "triumph_buy_menu", null)]"
-	html += "<br>[pref_link(get_ui_style_name(), "tgui_ui_prefs", "menu")] | [pref_link("Theme: [get_tgui_theme_display_name()]", "tgui_theme", "")] | [pref_link("Parchment: [get_parchment_skin_display_name()]", "parchment_skin", "")]<br>"
+		html += " [pref_link("凯旋点商店", "triumph_buy_menu", null)]"
+	html += "<br>[pref_link(get_ui_style_name(), "tgui_ui_prefs", "menu")] | [pref_link("主题：[get_tgui_theme_display_name()]", "tgui_theme", "")] | [pref_link("羊皮纸：[get_parchment_skin_display_name()]", "parchment_skin", "")]<br>"
 	html += get_preview_html()
 	html += "</center><hr>"
 	return html
@@ -161,7 +161,7 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 /datum/preferences/proc/get_ui_style_name()
 	if(tgui_pref)
 		return "TGUI"
-	return "Legacy"
+	return "传统界面"
 
 /datum/preferences/proc/get_preview_html()
 	var/html = ""
@@ -170,22 +170,22 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 		if(job_preferences[job] > highest_pref)
 			highest_pref = SSjob.GetJob(job)
 	if(!isnull(highest_pref) && !istype(highest_pref, /datum/job/roguetown/jester))
-		var/subclass_name = "None"
+		var/subclass_name = "无"
 		if(preview_subclass)
 			subclass_name = preview_subclass.name
-		html += "Subclass Preview: [pref_link(subclass_name, "subclassoutfit")] | "
+		html += "子职业预览：[pref_link(subclass_name, "subclassoutfit")] | "
 	else
 		preview_subclass = null
-	var/arousal_label = "None"
+	var/arousal_label = "无"
 	if(preview_erect_state == ERECT_STATE_PARTIAL)
-		arousal_label = "Partial"
+		arousal_label = "部分"
 	if(preview_erect_state == ERECT_STATE_HARD)
-		arousal_label = "Hard"
-	html += "Arousal Preview: [pref_link(arousal_label, "preview_erect_state", "")]"
+		arousal_label = "勃起"
+	html += "兴奋状态预览：[pref_link(arousal_label, "preview_erect_state", "")]"
 	return html
 
 /datum/preferences/proc/second_virtue_allowed()
-	return statpack.name == "Virtuous"
+	return istype(statpack, /datum/statpack/wildcard/virtuous) // 自定义修改：按类型识别德能属性组合，避免中文名称阻断第二美德
 
 // annoying shit that makes sure u ain't cheating, runs on like every refresh (IDK might change it to be more selective)
 /datum/preferences/proc/validate_background()
@@ -209,10 +209,10 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 /datum/preferences/proc/page_identity(mob/user)
 	var/html = ""
 	if(is_banned_from(user.ckey, "Appearance"))
-		html += "<b>Thou are banned from using custom names and appearances. Thou can continue to adjust thy characters, but thee will be randomised once thee joins the game.</b><br>"
+		html += "<b>你已被禁止使用自定义姓名与外观。你仍可调整角色，但进入游戏时将被随机化。</b><br>"
 	var/name_link = "[pref_link(real_name, "name")] [pref_link("\[R\]", "name", "random")]"
 	if(check_nameban(user.ckey))
-		name_link = pref_link("NAMEBANNED", "name")
+		name_link = pref_link("已禁止自定义姓名", "name")
 	html += pref_line(list(pref_item("Name", name_link)))
 	html += pref_line(list(pref_item("Nickname", pref_link(nickname || real_name, "nickname"))))
 	html += pref_line(list(pref_item("Nickname Color", pref_link("Change", "highlight_color"))))
@@ -220,7 +220,7 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 	var/race_flag = ""
 	if(!spec_check(user))
 		race_flag = " (!)"
-	var/list/race_items = list(pref_item("Race", "[pref_link(pref_species.name, "species")][race_flag]"))
+	var/list/race_items = list(pref_item("Race", "[pref_link(get_species_display_name(pref_species.name), "species")][race_flag]"))
 	if(pref_species.use_titles)
 		race_items += pref_item("Race Title", pref_link(selected_title || "None", "race_title"))
 	if(length(pref_species.custom_selection))
@@ -229,25 +229,25 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 			if(race_bonus && pref_species.custom_selection[bonus] == race_bonus)
 				race_bonus_display = bonus
 				break
-		race_items += pref_item("Race Bonus", pref_link(race_bonus_display, "race_bonus_select"))
+		race_items += pref_item("Race Bonus", pref_link(get_species_customization_display_name(race_bonus_display), "race_bonus_select"))
 	else
 		race_bonus = null
 	html += pref_line(race_items)
-	var/hand = "Right-handed"
+	var/hand = "右利手"
 	if(domhand == 1)
-		hand = "Left-handed"
+		hand = "左利手"
 	if(!(AGENDER in pref_species.species_traits))
-		var/body_type = "Other"
+		var/body_type = "其他"
 		if(gender == MALE)
-			body_type = "Masculine"
+			body_type = "男性化"
 		if(gender == FEMALE)
-			body_type = "Feminine"
+			body_type = "女性化"
 		html += pref_line(list(pref_item("Body Type", pref_link(body_type, "gender", ""))))
 	html += pref_line(list(pref_item("Dominance", pref_link(hand, "domhand", ""))))
 	if(!(AGENDER in pref_species.species_traits))
 		if(randomise[RANDOM_BODY] || randomise[RANDOM_BODY_ANTAG])
-			html += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER]'>Always Random Bodytype: [yes_no(randomise[RANDOM_GENDER])]</a> "
-			html += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER_ANTAG]'>When Antagonist: [yes_no(randomise[RANDOM_GENDER_ANTAG])]</a><br>"
+			html += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER]'>始终随机体型：[yes_no(randomise[RANDOM_GENDER])]</a> "
+			html += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER_ANTAG]'>担任反派时：[yes_no(randomise[RANDOM_GENDER_ANTAG])]</a><br>"
 	return html
 
 /datum/preferences/proc/page_origin(mob/user)
@@ -255,20 +255,20 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 	var/origin_name = "None"
 	if(origin)
 		origin_name = origin.name
-	html += pref_line(list(pref_item("Origin", pref_link(origin_name, "origin")), pref_item("Family", pref_link(family || "None", "family", ""))))
+	html += pref_line(list(pref_item("Origin", pref_link(origin_name, "origin")), pref_item("Family", pref_link(family || "无", "family", ""))))
 	if(family != FAMILY_NONE)
 		var/spousename = "Preferred Spouse"
 		if(family == FAMILY_PARTIAL)
 			spousename = "Preferred Parent"
-		var/species_text = "<font color='#1cb308'>Unrestricted</font>"
+		var/species_text = "<font color='#1cb308'>不限</font>"
 		if(xenophobe_pref == 1)
-			species_text = "<font color='#FFA500'>Same Race</font>"
+			species_text = "<font color='#FFA500'>相同种族</font>"
 		if(xenophobe_pref == 2 && restricted_species_pref)
-			species_text = "<font color='#aa0202'>[restricted_species_pref] Only</font>"
-		html += pref_line(list(pref_item(spousename, pref_link(setspouse || "None", "setspouse", "")), pref_item("Preferred Gender", pref_link(gender_choice || "Any Gender", "gender_choice", "")), pref_item("Restrict Species", pref_link(species_text, "species_choice", ""))))
+			species_text = "<font color='#aa0202'>仅限[get_species_display_name(restricted_species_pref)]</font>"
+		html += pref_line(list(pref_item(spousename, pref_link(setspouse || "无", "setspouse", "")), pref_item("Preferred Gender", pref_link(gender_choice || "Any Gender", "gender_choice", "")), pref_item("Restrict Species", pref_link(species_text, "species_choice", ""))))
 	var/datum/faith/selected_faith = GLOB.faithlist[selected_patron?.associated_faith]
 	html += pref_line(list(pref_item("Faith", pref_link(selected_faith?.name || "INVALID", "faith")), pref_item("Patron", pref_link(selected_patron?.name || "INVALID", "patron"))))
-	var/language_text = "Locked by origin"
+	var/language_text = "由出身决定"
 	if(!origin?.origin_language)
 		language_text = get_language_link(extra_language, "lang_free")
 	html += pref_line(list(pref_item("Language", language_text), pref_item("Food Preferences", pref_link("Change", "culinary", "menu"))))
@@ -286,7 +286,7 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 	html += get_virtue_html("Primary Virtue", virtue, 1)
 	if(second_virtue_allowed())
 		html += get_virtue_html("Second Virtue", virtuetwo, 2)
-	html += "<div class='lab'>Quirks</div>"
+	html += "<div class='lab'>怪癖</div>"
 	var/triumph_gain = get_quirk_points_remaining()
 	var/gain_color = "#e3c06f"
 	var/gain_text = "[triumph_gain]"
@@ -297,7 +297,7 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 		triumph_gain = -get_triumph_collateral()
 		gain_color = "#cf2a2a"
 		gain_text = "[triumph_gain]"
-	html += "<div class='r'><font color='#c9a96e'><b>Triumph Gain: <font color='[gain_color]'>[gain_text]</font></b></font></div>"
+	html += "<div class='r'><font color='#c9a96e'><b>凯旋点收益：<font color='[gain_color]'>[gain_text]</font></b></font></div>"
 	for(var/i in 1 to length(quirks))
 		var/datum/quirk/current_quirk = quirks[i]
 		var/quirk_header = "<b>[current_quirk.name]</b> ([current_quirk.point_cost]) [bg_link("\[Remove\]", "quirk_remove", i)]"
@@ -313,7 +313,7 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 			quirk_lines += "<font color='#f44336'>[current_quirk.warning_text]</font>"
 		html += pref_box(quirk_header, null, quirk_lines.Join("<br>"), current_quirk.name)
 	html += pref_line(list(bg_link("Add Quirk", "quirk_add")))
-	html += "<div class='lab'>Vices</div>"
+	html += "<div class='lab'>恶习</div>"
 	var/vice_count = 0
 	for(var/i in 1 to VICE_SLOTS)
 		var/datum/charflaw/vice = vars["vice[i]"]
@@ -328,7 +328,7 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 	return html
 
 /datum/preferences/proc/get_virtue_html(label, datum/virtue/V, slot)
-	var/html = "<b>[label]:</b> [bg_link(V.name, "virtue", slot)]"
+	var/html = "<b>[get_preferences_label_display(label)]：</b> [bg_link(V.name, "virtue", slot)]"
 	if(!istype(V, /datum/virtue/none))
 		html += " [bg_link("\[Clear\]", "virtue_clear", slot)]"
 	if(V.configurable)
@@ -340,20 +340,20 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 	if(T.custom_text)
 		lines += "<i>[T.custom_text]</i>"
 	if(LAZYLEN(T.added_traits))
-		lines += "<b>Traits granted:</b> [T.added_traits.Join(", ")]"
+		lines += "<b>获得特质：</b> [T.added_traits.Join("、")]"
 	var/list/skill_lines = list()
 	for(var/skill in T.added_skills)
 		if(islist(skill))
 			var/list/skill_block = skill
 			var/datum/skill/S = skill_block[1]
-			skill_lines += "[initial(S.name)] +[skill_block[2]] (max [skill_block[3]])"
+			skill_lines += "[initial(S.name)] +[skill_block[2]]（上限 [skill_block[3]]）"
 		else
 			var/datum/skill/S = skill
 			skill_lines += "[initial(S.name)] +[T.added_skills[skill]]"
 	if(length(skill_lines))
-		lines += "<b>Skills granted:</b> [skill_lines.Join(", ")]"
+		lines += "<b>获得技能：</b> [skill_lines.Join("、")]"
 	if(LAZYLEN(T.added_stashed_items))
-		lines += "<b>Stashed items:</b> [T.added_stashed_items.Join(", ")]"
+		lines += "<b>藏匿物品：</b> [T.added_stashed_items.Join("、")]"
 	return lines.Join("<br>")
 
 /datum/preferences/proc/get_language_link(language_path, bg)
@@ -363,7 +363,7 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 	return bg_link(initial(L.name), bg)
 
 /datum/preferences/proc/get_language_choices()
-	var/list/choices = list("None")
+	var/list/choices = list("无" = "None")
 	for(var/language in GLOB.selectable_languages)
 		if(language in pref_species.languages)
 			continue
@@ -388,7 +388,7 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 	var/html = pref_line(list(pref_item("Voice", pref_link(voice_type, "voicetype")), pref_item("Voice Pack", pref_link(voice_pack, "voicepack"))))
 	html += pref_line(list(pref_item("Voice Color", pref_link("Change", "voice")), pref_item("Voice Pitch", pref_link(voice_pitch, "voice_pitch"))))
 	html += pref_line(list(pref_item("Accent", pref_link(char_accent, "char_accent"))))
-	html += pref_line(list(pref_item("Speech Mannerism", pref_link(char_mannerism, "char_mannerism"))))
+	html += pref_line(list(pref_item("Speech Mannerism", pref_link(get_mannerism_display_name(char_mannerism), "char_mannerism"))))
 	html += pref_line(list(pref_item("Vocal Bark", pref_link(bark_name, "barksound")), pref_link("<b>Preview Bark</b>", "barkpreview")))
 	html += pref_line(list(pref_item("Vocal Bark Speed", pref_link(bark_speed, "barkspeed")), pref_item("Vocal Bark Pitch", pref_link(bark_pitch, "barkpitch")), pref_item("Vocal Bark Variance", pref_link(bark_variance, "barkvary"))))
 	html += pref_line(list(pref_item("Vocal Bark Volume", pref_link(bark_volume, "barkvolume"))))
@@ -422,12 +422,12 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 	return html
 
 /datum/preferences/proc/page_flavor_text(mob/user)
-	var/flavor_label = "Flavortext"
+	var/flavor_label = "外貌描述"
 	if(length(flavortext) < MINIMUM_FLAVOR_TEXT)
-		flavor_label = "<font color='#802929'>Flavortext</font>"
-	var/ooc_label = "OOC Notes"
+		flavor_label = "<font color='#802929'>外貌描述</font>"
+	var/ooc_label = "场外备注"
 	if(length(ooc_notes) < MINIMUM_OOC_NOTES)
-		ooc_label = "<font color='#802929'>OOC Notes</font>"
+		ooc_label = "<font color='#802929'>场外备注</font>"
 	var/help = pref_link("(?)", "formathelp")
 	var/html = pref_line(list(pref_item(flavor_label, "[help] [pref_link("Change", "flavortext")]")))
 	html += pref_line(list(pref_item("NSFW Flavortext", "[help] [pref_link("Change", "nsfwflavortext")]")))
@@ -463,15 +463,15 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 					display_name = "[SP.name] [stats]"
 				statpacks_available[display_name] = SP
 			statpacks_available = sort_list(statpacks_available)
-			var/choice = tgui_input_list(user, "Choose your statpack:", "Statpack Selection", statpacks_available)
+			var/choice = tgui_input_list(user, "选择你的属性组合：", "属性组合选择", statpacks_available)
 			if(choice)
 				var/datum/statpack/selected = statpacks_available[choice]
 				statpack = selected
-				to_chat(user, span_notice("Selected [choice] statpack."))
+				to_chat(user, span_notice("已选择属性组合：[choice]。"))
 				to_chat(user, "<span class='info'>[selected.description_string()]</span>")
 		if("virtue")
 			if(slot == 2 && !second_virtue_allowed())
-				to_chat(user, span_warning("Second virtue is not available!"))
+				to_chat(user, span_warning("无法选择第二美德！"))
 				return
 			var/datum/virtue/other = virtuetwo
 			if(slot == 2)
@@ -493,14 +493,14 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 					continue
 				available[V.name] = V
 			available = sort_list(available)
-			var/choice = tgui_input_list(user, "Choose your virtue:", "Virtue Selection", available)
+			var/choice = tgui_input_list(user, "选择你的美德：", "美德选择", available)
 			if(choice)
 				var/datum/virtue/selected = available[choice]
 				if(slot == 2)
 					virtuetwo = new selected.type()
 				else
 					virtue = new selected.type()
-				to_chat(user, span_notice("Selected [selected.name] as virtue."))
+				to_chat(user, span_notice("已选择美德：[selected.name]。"))
 				to_chat(user, "<span class='info'>[selected.desc]</span>")
 		if("virtue_config")
 			var/datum/virtue/V = virtue
@@ -523,22 +523,22 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 					continue
 				if(check_quirk_virtue_conflict(Q.type, TRUE, user) || check_pick_vice_conflict(Q.type, TRUE, user) || check_pick_quirk_conflict(Q.type, TRUE, user))
 					continue
-				available["[Q.name] ([Q.point_cost] point\s)"] = Q
+				available["[Q.name]（[Q.point_cost] 点）"] = Q
 			if(!length(available))
-				to_chat(user, span_warning("No quirks available to add - you already have everything that doesn't conflict with your virtues or vices."))
+				to_chat(user, span_warning("没有可添加的怪癖——所有与你的美德和恶习不冲突的怪癖均已拥有。"))
 				return
 			available = sort_list(available)
-			var/prompt_text = "Choose a quirk to add ([get_quirk_points_remaining()] point\s left)"
+			var/prompt_text = "选择要添加的怪癖（剩余 [get_quirk_points_remaining()] 点）"
 			var/triumph_collateral = get_triumph_collateral()
 			if(triumph_collateral)
-				prompt_text += "\n(Costs [triumph_collateral] TRIUMPHS)"
-			var/choice = tgui_input_list(user, prompt_text, "Quirk Selection", available)
+				prompt_text += "\n（花费 [triumph_collateral] 凯旋点）"
+			var/choice = tgui_input_list(user, prompt_text, "怪癖选择", available)
 			if(choice)
 				var/datum/quirk/selected = available[choice]
 				if(has_quirk(selected.type))
 					return
 				quirks += new selected.type()
-				to_chat(user, span_notice("Added [selected.name] as a quirk."))
+				to_chat(user, span_notice("已添加怪癖：[selected.name]。"))
 		if("quirk_remove")
 			if(slot && slot <= length(quirks))
 				quirks.Cut(slot, slot + 1)
@@ -557,7 +557,7 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 			if((/datum/charflaw/noflaw in current_types) || (/datum/charflaw/randflaw in current_types))
 				current_types = list()
 			var/list/all_vices = GLOB.character_flaws.Copy()
-			all_vices["No Flaw (-3 TRI)"] = /datum/charflaw/noflaw
+			all_vices["无缺陷（-3 凯旋点）"] = /datum/charflaw/noflaw
 			var/list/available = list()
 			for(var/vice_name in all_vices)
 				var/vice_type = all_vices[vice_name]
@@ -567,10 +567,10 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 					continue
 				available[vice_name] = vice_type
 			if(length(current_types) >= VICE_SLOTS || !length(available))
-				to_chat(user, span_warning("No vices available to add."))
+				to_chat(user, span_warning("没有可添加的恶习。"))
 				return
 			available = sort_list(available)
-			var/choice = tgui_input_list(user, "Choose a vice to add.", "Vice Selection", available)
+			var/choice = tgui_input_list(user, "选择要添加的恶习。", "恶习选择", available)
 			if(choice)
 				var/new_vice_type = available[choice]
 				if(!length(current_types))
@@ -581,7 +581,7 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 						vars["vice[i]"] = new new_vice_type()
 						break
 				charflaw = null
-				to_chat(user, span_notice("Added [choice] as a vice."))
+				to_chat(user, span_notice("已添加恶习：[choice]。"))
 		if("vice_config")
 			if(slot && slot <= VICE_SLOTS)
 				var/datum/charflaw/vice = vars["vice[slot]"]
@@ -597,7 +597,7 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 				charflaw = null
 		if("lang_free")
 			var/list/choices = get_language_choices()
-			var/chosen_language = tgui_input_list(user, "Choose your character's extra language:", "EXTRA LANGUAGE", choices)
+			var/chosen_language = tgui_input_list(user, "选择角色的额外语言：", "额外语言", choices)
 			if(chosen_language)
 				extra_language = choices[chosen_language] || "None"
 
@@ -631,13 +631,13 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 		for(var/t in existing_effective)
 			if(t in pick.incompatible_virtues)
 				if(show_message && user)
-					to_chat(user, span_warning("[pick.name] conflicts with [existing.name]!"))
+					to_chat(user, span_warning("[pick.name]与[existing.name]冲突！"))
 				return TRUE
 	if(length(existing.incompatible_virtues))
 		for(var/t in pick_effective)
 			if(t in existing.incompatible_virtues)
 				if(show_message && user)
-					to_chat(user, span_warning("[pick.name] conflicts with [existing.name]!"))
+					to_chat(user, span_warning("[pick.name]与[existing.name]冲突！"))
 				return TRUE
 	return FALSE
 
@@ -649,7 +649,7 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 		var/datum/charflaw/vice = vars["vice[i]"]
 		if(vice && (vice.type in pick.incompatible_vices))
 			if(show_message && user)
-				to_chat(user, span_warning("[pick.name] conflicts with [vice.name] vice!"))
+				to_chat(user, span_warning("[pick.name]与恶习[vice.name]冲突！"))
 			return TRUE
 	return FALSE
 
@@ -662,11 +662,11 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 			continue
 		if(length(pick.incompatible_quirks) && (Q.type in pick.incompatible_quirks))
 			if(show_message && user)
-				to_chat(user, span_warning("[pick.name] conflicts with [Q.name]!"))
+				to_chat(user, span_warning("[pick.name]与[Q.name]冲突！"))
 			return TRUE
 		if(length(Q.incompatible_quirks) && (pick_type in Q.incompatible_quirks))
 			if(show_message && user)
-				to_chat(user, span_warning("[pick.name] conflicts with [Q.name]!"))
+				to_chat(user, span_warning("[pick.name]与[Q.name]冲突！"))
 			return TRUE
 	return FALSE
 
@@ -683,7 +683,7 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 		if(length(pick.incompatible_vices) && (vice_type in pick.incompatible_vices))
 			if(show_message && user)
 				var/datum/charflaw/vice = GLOB.charflaw_singletons[vice_type]
-				to_chat(user, span_warning("[vice?.name || "This vice"] conflicts with [pick.name]!"))
+				to_chat(user, span_warning("[vice?.name || "此恶习"]与[pick.name]冲突！"))
 			return TRUE
 	return FALSE
 
@@ -705,6 +705,6 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 		if(vice && (other in vice.incompatible_vices))
 			if(show_message && user)
 				var/datum/charflaw/other_vice = GLOB.charflaw_singletons[other]
-				to_chat(user, span_warning("[vice.name] vice conflicts with [other_vice?.name] vice!"))
+				to_chat(user, span_warning("恶习[vice.name]与恶习[other_vice?.name]冲突！"))
 			return TRUE
 	return FALSE

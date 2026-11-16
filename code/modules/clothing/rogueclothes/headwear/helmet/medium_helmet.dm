@@ -840,8 +840,8 @@
 	icon_state = "skullmet_bear"
 
 /obj/item/clothing/head/roguetown/helmet/sallet/warden/rat
-	name = "warden's rouskull helm"
-	desc = "The large, intimidating skull of the rare giant rous, plated with steel on its inner side and given padding - paired together with a steel maille mask and worn with a linen shroud. Such trophies are associated with life-long sewer dwellers and their descendants."
+	name = "守林人鼠首骨盔"
+	desc = "罕见巨鼠的大型骇人头骨，内衬钢板与软垫，配以钢制锁甲面罩和亚麻头巾。这类战利品常见于终生居住在下水道的人及其后裔。"
 	icon = 'icons/roguetown/clothing/special/warden.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/warden.dmi'
 	icon_state = "skullmet_rat"
@@ -862,8 +862,8 @@
 	max_integrity = ARMOR_INT_HELMET_HEAVY_IRON + 50
 
 /obj/item/clothing/head/roguetown/helmet/sallet/warden/rat/melee
-	name = "forester's rouskull helm"
-	desc = "The large, intimidating skull of the rare giant rous, plated with extra steel reinforcement for front-line combat - paired together with a steel maille mask and worn with a linen shroud. Such trophies are associated with life-long sewer dwellers and their descendants."
+	name = "守林人鼠首骨盔"
+	desc = "罕见巨鼠的大型骇人头骨，为前线作战额外加固了钢板，配以钢制锁甲面罩和亚麻头巾。这类战利品常见于终生居住在下水道的人及其后裔。"
 	max_integrity = ARMOR_INT_HELMET_HEAVY_IRON + 50
 
 /obj/item/clothing/head/roguetown/roguehood/warden

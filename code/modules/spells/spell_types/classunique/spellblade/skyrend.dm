@@ -1,10 +1,10 @@
 /datum/action/cooldown/spell/skyrend
 	source_aspect = /datum/magic_aspect/pseudo/spellblade
-	name = "Skyrend"
-	desc = "Draw the leyline itself as your bowstring and loose a relentless volley of arcyne arrows at a target, \
-		each one re-aimed at them as they flee. Arrows can strike anyone who steps into their path. Costs no arrows. \
-		Requires 7 Momentum: 5 arrows at 22 damage each. \
-		Overcharged at 10 Momentum: 8 arrows at 22 damage each."
+	name = "裂空箭雨"
+	desc = "以地脉为弓弦，向目标连续射出奥术箭矢，\
+		每一箭都会重新瞄准逃跑中的目标。箭矢也会击中进入其飞行路径的人。不消耗箭矢。\
+		需要7层动量：射出5支箭，每支造成22点伤害。\
+		10层动量时过载：射出8支箭，每支造成22点伤害。"
 	button_icon = 'icons/mob/actions/classuniquespells/spellblade.dmi'
 	button_icon_state = "blade_storm" // Placeholder until bow sprites exist
 	sound = 'sound/combat/Ranged/flatbow-shot-01.ogg'
@@ -16,7 +16,7 @@
 	primary_resource_type = SPELL_COST_STAMINA
 	primary_resource_cost = SPELLCOST_SB_ULT
 
-	invocations = list("Caelum Scinde!")
+	invocations = list("撕裂苍穹！")
 	invocation_type = INVOCATION_SHOUT
 
 	charge_required = TRUE
@@ -57,17 +57,17 @@
 
 	var/obj/item/bow = arcyne_get_weapon(H)
 	if(!istype(bow, /obj/item/gun/ballistic/revolver/grenadelauncher/bow))
-		to_chat(H, span_warning("I need my bound bow in hand!"))
+		to_chat(H, span_warning("我必须手持绑定的弓！"))
 		return FALSE
 
 	var/turf/target_turf = get_turf(cast_on)
 	if(!target_turf)
-		to_chat(H, span_warning("Invalid target!"))
+		to_chat(H, span_warning("目标无效！"))
 		return FALSE
 
 	var/datum/status_effect/buff/arcyne_momentum/M = H.has_status_effect(/datum/status_effect/buff/arcyne_momentum)
 	if(!M || M.stacks < min_momentum)
-		to_chat(H, span_warning("Not enough momentum! I need at least [min_momentum] stacks!"))
+		to_chat(H, span_warning("动量不足！至少需要[min_momentum]层！"))
 		return FALSE
 
 	var/stacks = M.stacks
@@ -75,14 +75,14 @@
 	if(stacks >= empowered_momentum)
 		arrows += bonus_arrows
 	M.consume_all_stacks()
-	to_chat(H, span_notice("All [stacks] momentum released into the leyline!"))
+	to_chat(H, span_notice("全部[stacks]层动量已注入地脉！"))
 
 	var/def_zone = H.zone_selected || BODY_ZONE_CHEST
 	// lock on to someone or strike the ground
 	var/datum/weakref/target_ref = WEAKREF(isliving(cast_on) ? cast_on : target_turf)
 
-	H.visible_message(span_boldwarning("[H] draws back a bowstring of pure arcyne light, aimed at the [span_combatsecondarybp(parse_zone(def_zone))]!"))
-	log_combat(H, cast_on, "used Skyrend on", zone=def_zone)
+	H.visible_message(span_boldwarning("[H]拉开纯粹奥术之光凝成的弓弦，瞄准了[span_combatsecondarybp(parse_zone(def_zone))]！"))
+	log_combat(H, cast_on, "对其使用了裂空箭雨", zone=def_zone)
 
 	for(var/arrow_num in 1 to arrows)
 		addtimer(CALLBACK(src, PROC_REF(loose_arrow), H, target_ref, target_turf, def_zone), (arrow_num - 1) * arrow_delay)
@@ -108,7 +108,7 @@
 	playsound(get_turf(user), 'sound/combat/Ranged/flatbow-shot-01.ogg', 70, TRUE)
 
 /obj/projectile/magic/skyrend_arrow
-	name = "arcyne arrow"
+	name = "奥术之箭"
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "arrow_proj"
 	color = "#88BFFF"
@@ -127,7 +127,7 @@
 	if(ismob(target))
 		var/mob/M = target
 		if(M.anti_magic_check())
-			visible_message(span_warning("[src] fizzles on contact with \the [target]!"))
+			visible_message(span_warning("[src]触及[target]时消散了！"))
 			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
 			qdel(src)
 			return BULLET_ACT_BLOCK

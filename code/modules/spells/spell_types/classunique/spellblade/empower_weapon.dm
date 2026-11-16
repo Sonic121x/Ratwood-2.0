@@ -2,10 +2,10 @@
 
 /datum/action/cooldown/spell/empower_weapon
 	source_aspect = /datum/magic_aspect/pseudo/spellblade
-	name = "Empower Weapon"
-	desc = "Channel all accumulated momentum into your next strike, empowering it to bypass parry and dodge. Works with both weapons and unarmed attacks. \
-		With a bound bow, your next arrow instead flies true, striking exactly where you aimed and piercing armor like a bodkin. \
-		Requires 5+ momentum. Burns ALL momentum."
+	name = "武器赋能"
+	desc = "将积累的全部动量注入下一次攻击，使其无视招架与闪避。武器与徒手攻击均可生效。\
+		使用绑定的弓时，下一支箭会精准命中瞄准部位，并如破甲箭般穿透护甲。\
+		需要至少5层动量。消耗全部动量。"
 	button_icon = 'icons/mob/actions/classuniquespells/spellblade.dmi'
 	button_icon_state = "empower_weapon"
 	sound = 'sound/magic/antimagic.ogg'
@@ -116,8 +116,8 @@
 	arrow.armor_penetration = max(arrow.armor_penetration, PEN_HEAVY)
 	playsound(get_turf(owner), 'sound/magic/antimagic.ogg', 40, TRUE)
 	owner.visible_message(
-		span_danger("[owner]'s arrow streaks out wreathed in red arcyne light!"),
-		span_notice("My empowered arrow flies true!"))
+		span_danger("[owner]的箭矢裹着赤红奥术之光飞射而出！"),
+		span_notice("我赋能后的箭矢精准飞出！"))
 	owner.remove_status_effect(/datum/status_effect/buff/empowered_strike)
 
 /datum/status_effect/buff/empowered_strike/proc/on_attack(mob/living/source, mob/living/target, mob/living/user, obj/item/weapon)

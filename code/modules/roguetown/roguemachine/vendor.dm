@@ -73,10 +73,10 @@
 	if(P.w_class > WEIGHT_CLASS_BULKY)
 		return
 	if(is_full())
-		to_chat(user, span_warning("Full."))
+		to_chat(user, span_warning("装满了。"))
 		return
 	if(!user.transferItemToLoc(P, src))
-		to_chat(user, span_warning("[P] is stuck to your hand!"))
+		to_chat(user, span_warning("[P]黏在你的手上了！"))
 		return
 	store_item(P)
 	playsound(loc, 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
@@ -102,13 +102,13 @@
 
 	if(stored)
 		playsound(loc, 'sound/misc/machinevomit.ogg', 100, TRUE, -1)
-		to_chat(user, span_notice("\The [src] swallows [stored] item\s."))
+		to_chat(user, span_notice("[src]吞入了[stored]件物品。"))
 		update_icon()
 		SStgui.update_uis(src)
 	if(full)
-		to_chat(user, span_warning("\The [src] is full."))
+		to_chat(user, span_warning("[src]装满了。"))
 	else if(!stored)
-		to_chat(user, span_warning("There is nothing \the [src] can take."))
+		to_chat(user, span_warning("没有[src]能收下的物品。"))
 
 /obj/structure/roguemachine/vendor/proc/is_loadable(obj/item/I)
 	if(I.anchored || (I.item_flags & ABSTRACT))
@@ -159,7 +159,7 @@
 			groups[key] = list(
 				"key" = key,
 				// names are stored html-encoded for hawking; tgui escapes text itself
-				"name" = html_decode(held_items[I]["NAME"] || "thing"),
+				"name" = html_decode(held_items[I]["NAME"] || "物品"),
 				"price" = held_items[I]["PRICE"] || 0,
 				"count" = 0,
 				"desc" = I.desc,
@@ -206,7 +206,7 @@
 				return
 			var/amount = clamp(round(text2num("[params["amount"]]")), 1, length(matches))
 			var/price = held_items[matches[1]]["PRICE"] || 0
-			if(!charge(price * amount, "NO MONEY NO HONEY!"))
+			if(!charge(price * amount, "没钱就没货！"))
 				return TRUE
 			dispense(matches.Copy(1, amount + 1), H)
 			return TRUE
@@ -274,16 +274,16 @@
 			if(O == I)
 				continue
 			if(O.type == I.type && (held_items[O]["NAME"]) == held_items[I]["NAME"])
-				namer += "s" //add a plural s!
+				namer = held_items[I]["NAME"] //add a plural s!
 				break
 
-	say("[namer] for sale! [held_items[I]["PRICE"]] mammons!")
+	say("出售[namer]！只要[held_items[I]["PRICE"]]玛蒙！")
 
 /obj/structure/roguemachine/vendor/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("Left-click with an open hand to browse its wares. Several of one ware can be bought at once.")
-	. += span_info("While it's UNLOCKED, strike it with an item to stock it. Right-click with a bag to load what's inside, or with an open hand to load everything on the floor in front of it.")
-	. += span_info("Wares of the same kind and name are sold together at one price. Renaming wares to match another's name merges them at that ware's price.")
+	. += span_info("空手左键点击可浏览货物。同种商品可一次购买多件。")
+	. += span_info("解锁后，用物品点击即可上货。用袋子右键点击可装入袋中物品，空手右键点击可装入机器前方地上的所有物品。")
+	. += span_info("同类型且同名的商品会按同一价格合并出售。将商品改为另一组的名称，会合并到该组并采用其价格。")
 
 /obj/structure/roguemachine/vendor/centcom
 	name = "房东"
@@ -395,8 +395,8 @@
 // PEDDLER CARTS
 
 /obj/structure/roguemachine/vendor/mobile
-	name = "peddler cart"
-	desc = "A smaller, wheeled PEDDLER that can be moved around."
+	name = "货郎推车"
+	desc = "带有车轮、可以移动的小型货郎售货机。"
 	icon_state = "svendorcart1"
 	icon_prefix = "svendorcart"
 	anchored = FALSE
@@ -406,7 +406,7 @@
 	climbable = TRUE
 	// no owner until it's claimed, or crafted with its key
 	keycontrol = null
-	key_name = "peddler cart key"
+	key_name = "货郎推车钥匙"
 
 /obj/structure/roguemachine/vendor/mobile/crafted
 	is_crafted = TRUE

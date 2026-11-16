@@ -1,9 +1,9 @@
 /datum/action/cooldown/spell/withdraw
 	source_aspect = /datum/magic_aspect/pseudo/spellblade
-	name = "Withdraw"
-	desc = "Leap up to 3 tiles directly away from your target, passing through enemies. \
-		At 3+ momentum: consumes 3 to leave an arcyne burst where you stood, \
-		battering everyone adjacent and hurling them back 2 tiles. Can be deflected by Defend stance."
+	name = "抽身撤步"
+	desc = "沿远离目标的方向跃出最多3格，可穿过敌人。\
+		动量不少于3层时：消耗3层，在原地引发奥术爆发，\
+		打击所有相邻目标并将其击退2格。可被防御姿态偏转。"
 	button_icon = 'icons/mob/actions/classuniquespells/spellblade.dmi'
 	button_icon_state = "advance" 
 	sound = 'sound/combat/wooshes/bladed/wooshsmall (1).ogg'
@@ -45,17 +45,17 @@
 
 	var/obj/item/held_weapon = arcyne_get_weapon(H)
 	if(!held_weapon)
-		to_chat(H, span_warning("I need my bound weapon in hand!"))
+		to_chat(H, span_warning("我必须手持绑定的武器！"))
 		return FALSE
 
-	H.say("Recede!", forced = "spell", language = /datum/language/common)
+	H.say("退却！", forced = "spell", language = /datum/language/common)
 
 	var/turf/start = get_turf(H)
 	var/turf/target_turf = get_turf(cast_on)
 	var/facing = get_dir(target_turf, start) || REVERSE_DIR(H.dir)
 
 	if(!arcyne_can_leap_into(get_step(start, facing)))
-		to_chat(H, span_warning("There's no room to leap back!"))
+		to_chat(H, span_warning("没有向后跃开的空间！"))
 		return FALSE
 
 	var/empowered = FALSE
@@ -63,14 +63,14 @@
 	if(M && M.stacks >= momentum_cost)
 		M.consume_stacks(momentum_cost)
 		empowered = TRUE
-		to_chat(H, span_notice("[momentum_cost] momentum released - empowered withdraw!"))
+		to_chat(H, span_notice("释放了[momentum_cost]层动量——强化撤步！"))
 
 	if(H.buckled)
 		H.buckled.unbuckle_mob(H, TRUE)
 
 	H.visible_message(
-		span_warning("[H] springs backward in a flash of arcyne light!"),
-		span_notice("I withdraw!"))
+		span_warning("[H]在一闪而过的奥术之光中向后跃去！"),
+		span_notice("我抽身撤步！"))
 	playsound(start, pick('sound/combat/wooshes/bladed/wooshsmall (1).ogg', 'sound/combat/wooshes/bladed/wooshsmall (2).ogg'), 60, TRUE)
 
 	var/old_dir = H.dir
@@ -107,7 +107,7 @@
 	if(empowered)
 		do_burst(H, held_weapon, start)
 
-	log_combat(H, null, "used Withdraw[empowered ? " (empowered)" : ""]")
+	log_combat(H, null, "使用了抽身撤步[empowered ? "（强化）" : ""]")
 	return TRUE
 
 /datum/action/cooldown/spell/withdraw/proc/do_burst(mob/living/carbon/human/H, obj/item/weapon, turf/origin)
@@ -122,7 +122,7 @@
 		if(spell_guard_check(victim, FALSE, H, punish_caster = deflected ? FALSE : null))
 			deflected = TRUE
 			continue
-		if(arcyne_strike(H, victim, weapon, burst_damage, def_zone, BCLASS_BLUNT, spell_name = "Withdraw", skip_animation = TRUE) == ARCYNE_STRIKE_WARDED)
+		if(arcyne_strike(H, victim, weapon, burst_damage, def_zone, BCLASS_BLUNT, spell_name = "抽身撤步", skip_animation = TRUE) == ARCYNE_STRIKE_WARDED)
 			continue
 		var/push_dir = get_dir(origin, victim) || pick(GLOB.cardinals)
 		victim.safe_throw_at(get_ranged_target_turf(victim, push_dir, burst_push), burst_push, 1, H, force = MOVE_FORCE_STRONG)

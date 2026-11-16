@@ -90,6 +90,6 @@
 	triumph_cost = 2
 	added_traits = list(TRAIT_TOLERANT)
 	granted_virtues = list(/datum/virtue/utility/deadened)
-	custom_text = "Grants two virtues for the outcast:\n\
-	- Tolerant: No stress from certain species, broad acceptance\n\
-	- Deadened: Completely emotionless (NOMOOD trait)"
+	custom_text = "授予两项弃民美德：\n\
+	- 宽容：对某些种族不再产生压力，接受面更广\n\
+	- 麻木：完全失去情感（NOMOOD 特质）"

@@ -116,7 +116,7 @@ GLOBAL_LIST_EMPTY(prayers)
 
 	var/last_prayer = follower.mob_timers[MT_PSYPRAY]
 	if(!isnull(last_prayer) && world.time < last_prayer + 1 MINUTES)
-		to_chat(follower, span_warning("I must wait [DisplayTimeText(last_prayer + 1 MINUTES - world.time)] before another prayer can be answered."))
+		to_chat(follower, span_warning("我还须等待[DisplayTimeText(last_prayer + 1 MINUTES - world.time)]，下一次祈祷才会得到回应。"))
 		return FALSE
 
 	follower.mob_timers[MT_PSYPRAY] = world.time

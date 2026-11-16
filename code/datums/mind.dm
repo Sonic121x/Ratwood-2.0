@@ -1135,9 +1135,9 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 
 							// Add subtle examination text to indicate this is a loadout reproduction
 							if(I.desc)
-								I.desc += " The overall look and feel of the item suggests this may be a mere reproduction."
+								I.desc += " 从整体外观与质感来看，这件物品似乎只是仿制品。"
 							else
-								I.desc = "The overall look and feel of the item suggests this may be a mere reproduction."
+								I.desc = "从整体外观与质感来看，这件物品似乎只是仿制品。"
 
 							// Make quality suck
 							I.item_quality = ITEM_QUALITY_CRUDE 

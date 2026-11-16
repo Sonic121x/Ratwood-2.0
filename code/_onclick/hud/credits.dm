@@ -85,7 +85,7 @@
 	creditee = entry
 	var/voicecolor = entry.voice_color || "dc0174"
 	var/credit_name = entry.current_name()
-	var/credit_text = entry.title ? "[credit_name] the [entry.title]" : credit_name
+	var/credit_text = entry.title ? "[credit_name]（[entry.title]）" : credit_name
 	maptext = {"<span style='vertical-align:top; text-align:center;
 				color: #[voicecolor]; font-size: 100%;
 				text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em black;

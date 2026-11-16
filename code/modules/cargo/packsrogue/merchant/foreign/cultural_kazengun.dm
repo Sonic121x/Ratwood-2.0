@@ -19,7 +19,7 @@
 	ship_qty_max = 2
 
 /datum/supply_pack/rogue/kazengun/nodachi
-	name = "Nodachi"
+	name = "野太刀"
 	cost = 300
 	contains = list(/obj/item/rogueweapon/greatsword/nodachi)
 	ship_qty_min = 1

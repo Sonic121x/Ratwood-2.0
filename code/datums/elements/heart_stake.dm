@@ -35,8 +35,8 @@
 
 /datum/element/heart_stake/proc/drive_stake(obj/item/stake, mob/living/target, mob/living/user)
 	user.visible_message(
-		span_danger("[user] raises [stake] over [target]'s heart!"),
-		span_danger("I raise [stake] over [target]'s heart..."),
+		span_danger("[user]将[stake]举到[target]的心脏上方！"),
+		span_danger("我将[stake]举到[target]的心脏上方……"),
 	)
 	if(!do_after(user, drive_time, target = target))
 		return
@@ -44,8 +44,8 @@
 	if(!can_stake(target, user, stake))
 		return
 	user.visible_message(
-		span_danger("[user] drives [stake] through [target]'s heart!"),
-		span_danger("I drive [stake] through [target]'s heart!"),
+		span_danger("[user]将[stake]刺穿了[target]的心脏！"),
+		span_danger("我将[stake]刺穿了[target]的心脏！"),
 	)
 	playsound(target, pick('sound/combat/hits/bladed/genstab (1).ogg', 'sound/combat/hits/bladed/genstab (2).ogg', 'sound/combat/hits/bladed/genstab (3).ogg'), 100, TRUE)
 	log_combat(user, target, "staked", stake)

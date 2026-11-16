@@ -319,7 +319,7 @@
 		cast(user)
 		return TRUE
 	else
-		to_chat(H, span_warning("I lose my focus and control over my lux escapes me."))
+		to_chat(H, span_warning("我失去了专注，也失去了对灵辉的控制。"))
 		return FALSE
 
 
@@ -368,7 +368,7 @@
 			return FALSE
 		to_chat(user, span_warning("我试图以“赦免”将 [H] 拉回人世！"))
 		// Dramatic effect
-		user.visible_message(span_danger("[user] grabs [H] by the wrists, silvery lux thread pouring from their hands!"))
+		user.visible_message(span_danger("[user]抓住[H]的手腕，银色的灵辉之线从双手涌出！"))
 
 		if(alert(H, "对方想要赦免你。你愿意吗？", "赦免", "我愿接受", "我拒绝") != "我愿接受")
 			H.visible_message(span_notice("什么也没有发生。"))
@@ -376,7 +376,7 @@
 		// Create visual effects
 		H.apply_status_effect(/datum/status_effect/buff/psyvived)
 		// Kill the caster
-		user.say("MY LYFE FOR YOURS! LYVE, AS DOES HE!", forced = TRUE)
+		user.say("以我之命换你之生！活下去，如祂一般！", forced = TRUE)
 		// nu uh, immortality won't save you here
 		var/datum/component/vampire_torpor/caster_torpor = user.GetComponent(/datum/component/vampire_torpor)
 		if(caster_torpor)
@@ -394,7 +394,7 @@
 		ADD_TRAIT(H, TRAIT_IWASREVIVED, "[type]")
 		H.apply_status_effect(/datum/status_effect/buff/psyvived)
 		user.apply_status_effect(/datum/status_effect/buff/psyvived)
-		H.visible_message(span_notice("[H] is ABSOLVED!"), span_green("I awake from the void, covered in inert silver threads."))
+		H.visible_message(span_notice("[H]得到了赦免！"), span_green("我从虚无中醒来，身上覆满了失去活力的银丝。"))
 		H.mind.remove_antag_datum(/datum/antagonist/zombie)
 		H.remove_status_effect(/datum/status_effect/debuff/rotted_zombie)	//Removes the rotted-zombie debuff if they have it - Failsafe for it.
 		H.apply_status_effect(/datum/status_effect/debuff/revived)	//Temp debuff on revive, your stats get hit temporarily. Doubly so if having rotted.
@@ -438,13 +438,13 @@
 	if(HAS_TRAIT(H, TRAIT_INQUISITION)) // inqusition is used to it
 		to_chat(user, span_notice("你感到自己的灵魂被牵动，[user]赦免了你的苦痛。"))
 	else
-		to_chat(H, span_danger("You feel a terrible tear as a part of your soul is torn away by silver thread!")) // Someone just tore away something from your lux, that isn't calm
-		to_chat(H, span_notice("Your wounds seem to mysteriously vanish and your burderns lighten."))
+		to_chat(H, span_danger("银丝扯走了你的一部分灵魂，你感到一阵可怕的撕裂！")) // Someone just tore away something from your lux, that isn't calm
+		to_chat(H, span_notice("你的伤口似乎神秘地消失了，身上的负担也减轻了。"))
 	return TRUE
 
 // Weaker absolve for the Stigmata adventurer
 /obj/effect/proc_holder/spell/invoked/psydonamend
-	name = "AMEND"
+	name = "分担"
 	overlay_icon = 'icons/mob/actions/psydonmiracles.dmi'
 	action_icon = 'icons/mob/actions/psydonmiracles.dmi'
 	overlay_state = "ABSOLVE"
@@ -509,7 +509,7 @@
 	user.adjustCloneLoss(clone_transfer)
 
 	// Visual effects
-	user.visible_message(span_danger("Silvery thread of lux shoots from [user] and hits [H] AMENDING their suffering!"))
+	user.visible_message(span_danger("银色灵辉之线从[user]身上射出，击中[H]，分担了其苦痛！"))
 	new /obj/effect/temp_visual/psyheal_rogue(get_turf(H), "#aa1717")
 	new /obj/effect/temp_visual/psyheal_rogue(get_turf(H), "#aa1717")
 	new /obj/effect/temp_visual/psyheal_rogue(get_turf(H), "#aa1717")
@@ -523,7 +523,7 @@
 	if(HAS_TRAIT(H, TRAIT_INQUISITION)) // inqusition is used to it
 		to_chat(user, span_notice("你感到自己的灵魂被牵动，[user]分担了你的苦痛。"))
 	else
-		to_chat(H, span_danger("You feel a terrible tear as a part of your soul is torn away by silver thread!")) // someone just torn away something from your lux, that isn't calm
-		to_chat(H, span_notice("Your wounds seem to mysteriously vanish and your burdens lighten."))
+		to_chat(H, span_danger("银丝扯走了你的一部分灵魂，你感到一阵可怕的撕裂！")) // someone just torn away something from your lux, that isn't calm
+		to_chat(H, span_notice("你的伤口似乎神秘地消失了，身上的负担也减轻了。"))
 
 	return TRUE

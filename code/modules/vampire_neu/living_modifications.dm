@@ -119,8 +119,8 @@
 	bloodpool = CLAMP(newblood, 0, maxbloodpool)
 	if(bloodpool != old_bloodpool)
 		SEND_SIGNAL(src, COMSIG_LIVING_BLOODPOOL_CHANGED, bloodpool, old_bloodpool)
-	hud_used?.bloodpool?.name = "Bloodpool: [bloodpool]"
-	hud_used?.bloodpool?.desc = "Bloodpool: [bloodpool]/[maxbloodpool]"
+	hud_used?.bloodpool?.name = "血池：[bloodpool]"
+	hud_used?.bloodpool?.desc = "血池：[bloodpool]/[maxbloodpool]"
 	hud_used?.bloodpool?.set_value((100 / (maxbloodpool / bloodpool)) / 100, 1 SECONDS)
 
 /mob/living/proc/adjust_bloodpool(adjust, visible = TRUE)
