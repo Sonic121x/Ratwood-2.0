@@ -206,6 +206,29 @@
 	desc = "无论出于天生还是后天原因，我的皮肤都坚韧得足以抵御穿刺与切割。"
 	custom_text = "这会以一件会再生且无法卸下的护甲替换你的上衣栏位。"
 	added_traits = list(TRAIT_NATURALARMOR)
+	configurable = TRUE
+	var/hide_name
+	var/hide_desc
+
+/datum/virtue/combat/tough_hide/config_summary()
+	return "<b>Name</b>: [hide_name || "Default"]<br><b>Description</b>: [hide_desc || "Default"]"
+
+/datum/virtue/combat/tough_hide/save_config()
+	return list("hide_name" = hide_name, "hide_desc" = hide_desc)
+
+/datum/virtue/combat/tough_hide/load_config(list/data)
+	if(!islist(data))
+		return
+	hide_name = data["hide_name"]
+	hide_desc = data["hide_desc"]
+
+/datum/virtue/combat/tough_hide/configure(mob/user)
+	var/new_name = tgui_input_text(user, "What would you like to name your hide?", "Natural Armor", hide_name, 200)
+	if(!isnull(new_name))
+		hide_name = new_name
+	var/new_desc = tgui_input_text(user, "How would you describe your hide?", "Natural Armor", hide_desc, 200)
+	if(!isnull(new_desc))
+		hide_desc = new_desc
 
 /datum/virtue/combat/tough_hide/apply_to_human(mob/living/carbon/human/recipient)
 	. = ..()
@@ -218,34 +241,10 @@
 		qdel(shirt)
 
 	// Equip the skin armor
-	recipient.equip_to_slot_or_del(
-		new /obj/item/clothing/suit/roguetown/armor/regenerating/skin/weak(recipient),
-		SLOT_SHIRT,
-		TRUE
-	)
-	
-	if(alert(recipient, "你想更改这层皮肤的名称或描述吗？", "天然护甲", "就这么办", "我放弃") == "就这么办") // Query user
-		addtimer(CALLBACK(src, PROC_REF(customize_skin), recipient), 1 SECONDS)
-
-/datum/virtue/combat/tough_hide/proc/customize_skin(mob/living/carbon/human/recipient)
-	var/obj/item/clothing/hide = recipient.wear_shirt
-	var/vanished_hide = FALSE
-	if(!QDELETED(hide))
-		var/inputty = stripped_input(recipient, "你想给这层皮肤起什么名字？", "天然护甲", null, 200)
-		if(!QDELETED(hide))
-			if(inputty)
-				hide.name = inputty
-		else
-			vanished_hide = TRUE
-		inputty = stripped_input(recipient, "你会如何描述这层皮肤？", "天然护甲", null, 200)
-		if(!QDELETED(hide))
-			if(inputty)
-				hide.desc = inputty
-		else
-			vanished_hide = TRUE
-	else
-		vanished_hide = TRUE
-
-	if(vanished_hide) //failsafe
-		to_chat(recipient, span_warning("我的天然护甲消失了！也许需要某种神圣干预才能解决......"))
+	var/obj/item/clothing/suit/roguetown/armor/regenerating/skin/weak/hide = new(recipient)
+	if(hide_name)
+		hide.name = hide_name
+	if(hide_desc)
+		hide.desc = hide_desc
+	recipient.equip_to_slot_or_del(hide, SLOT_SHIRT, TRUE)
 

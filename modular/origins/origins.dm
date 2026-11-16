@@ -1,6 +1,7 @@
 /datum/origin
 	var/name = null
 	var/desc = ""
+	var/short_desc
 	var/origin_title = null
 	var/region_title = null
 	var/map_x = 0
@@ -20,8 +21,9 @@ GLOBAL_LIST_INIT(origins, build_origins())
 
 /datum/origin/otava
 	name = ORIGIN_OTAVA
-	desc = "一片严寒无情的高山地带，据说是普赛顿信仰的发源地。正统派审判庭便从奥塔瓦旧王朝的首都运作。"
-	origin_title = "奥塔瓦"
+	desc = "An unforgivingly cold alpine clime, said to be the birthplace of the Psydonic faith. The Orthodoxist Inquisition operates from the capital of Otava's old monarchy."
+	short_desc = "An unforgivingly cold alpine clime, said to be the birthplace of the Psydonic faith."
+	origin_title = "Otava"
 	origin_language = /datum/language/otavan
 	origin_traits = list(TRAIT_COLD_RESISTANCE, TRAIT_SLOW_METABOLISM)
 	hated_by = list(ORIGIN_GRENZELHOFT)
@@ -32,9 +34,10 @@ GLOBAL_LIST_INIT(origins, build_origins())
 
 /datum/origin/zybantine
 	name = ORIGIN_ZYBANTINE
-	desc = "兹班图帝国横跨诸国，囊括了费伦提亚的大片沙漠。这个帝国崇尚力量与财富；不过也流传着许多传言，\
-	说这个奢华帝国正是靠不那么光彩的手段聚敛财富。"
-	origin_title = "兹班图"
+	desc = "The Zybantine Empire spans across many countries, encompassing many of the deserts of Grimoria. The Empire favours strength and wealth; though rumours are abound \
+	that the opulent empire gathers its wealth through unsavoury means."
+	short_desc = "The Zybantine Empire spans across many countries, encompassing many of the deserts of Grimoria."
+	origin_title = "Zybantine"
 	origin_language = /datum/language/celestial
 	origin_traits = list(TRAIT_HEAT_RESISTANCE, TRAIT_WATCHFUL)
 	map_x = 364
@@ -42,8 +45,10 @@ GLOBAL_LIST_INIT(origins, build_origins())
 
 /datum/origin/naledi
 	name = ORIGIN_NALEDI
-	desc = "纳莱迪人曾建立过属于自己的繁荣帝国，并与恶魔——也就是当地人口中的灯灵——鏖战了数个世纪。他们的故土被齐佐撕裂，大约一百年前巴奥莎的升格又几乎将其彻底摧毁。据说最初的魔法便诞生于此。"
-	origin_title = "纳莱迪"
+	desc = "Once a thriving empire in its own right, the Naledi people have warred against demons (or djinn in the local tongue) on their island for centuries. Their homeland \
+	was sundered by Zizo and all but finished off by the Ascension of Baotha about 100 yils ago. It is said that the first magics were born here."
+	short_desc = "Once a thriving empire in its own right, the Naledi people have warred against demons (or djinn in the local tongue) on their island for centuries."
+	origin_title = "Naledi"
 	origin_language = /datum/language/celestial
 	origin_traits = list(TRAIT_HEAT_RESISTANCE, TRAIT_GOLD_AFFINITY)
 	map_x = 514
@@ -51,15 +56,20 @@ GLOBAL_LIST_INIT(origins, build_origins())
 
 /datum/origin/ferentia
 	name = ORIGIN_FERENTIA
-	desc = "位于格伦泽尔霍夫特与伊特鲁斯卡西岸外海的岛屿王国。费伦提亚人勤勉务实，劳作一天之后总爱畅饮作乐。过去，这个王国不得不同时提防奥塔瓦与格伦泽尔霍夫特，如今却成了两国之间的调停者。"
-	origin_title = "费伦提亚"
+	desc = "An island kingdom off of the western coast of Grenzelhoft and Etrusca. The Ferentian people are a hardworking sort, eager to drink and revel after a dae's worth \
+	of toil. In the past, the kingdom has had to defend against Otava and Grenzelhoft, but now it acts as a mediator between the two nations."
+	short_desc = "An island kingdom off of the western coast of Grenzelhoft and Etrusca."
+	origin_title = "Ferentia"
 	origin_traits = list(TRAIT_LOCAL_KNOWLEDGE, TRAIT_WATERLOVING)
 	map_x = 151
 	map_y = 200
 
 /datum/origin/underdark
 	name = ORIGIN_UNDERDARK
-	desc = "据说幽暗地域是遍布格里莫里亚地壳深处的庞大洞窟与隧道网络，那里既是黑暗精灵与狗头人的家园，也藏着神秘的弗卢维安城邦墨丘利安。幽暗地域的洞穴里危机四伏，从酸液河流到食人蜘蛛无所不有，甚至还流传着地底巨龙的夸张传闻。"
+	desc = "Said to be an immense network of caves and tunnels located all throughout the crust of Grimoria, the Underdark is home to the Dark Elves and the Kobolds, as well \
+	as the elusive Fluvian city-state of Mercuriam. The caverns of the Underdark are filled with many threats from rivers of acid to man-eating spiders; and even exaggerated \
+	reports of dragons beneath."
+	short_desc = "Said to be an immense network of caves and tunnels located all throughout the crust of Grimoria, the Underdark is home to the Dark Elves and the Kobolds, as well as the elusive Fluvian city-state of Mercuriam."
 	origin_title = ORIGIN_UNDERDARK
 	origin_traits = list(TRAIT_LIGHT_SENSITIVITY)
 	prejudice_stress = /datum/stressevent/prejudice/underdark
@@ -69,10 +79,11 @@ GLOBAL_LIST_INIT(origins, build_origins())
 
 /datum/origin/hammerhold
 	name = ORIGIN_HAMMERHOLD
-	desc = "铁锤堡半岛与群岛栖息着形形色色的族群，从半岛上崇信阿比索尔的维坦人，到鲁-耶尔蒙的红发民众，再到曾构成四季海域的诸岛。 \
-	这里既有白金矮人堡垒，也有一座辉煌大教堂的废墟，那里曾是北方十神信仰的中心； \
-	除此之外，还有各个零散的小王国，也就是所谓的雅尔领邦，它们都松散地服从于维坦领主持环者的意志。"
-	origin_title = "铁锤堡"
+	desc = "The Hammerhold Peninsula and Isles are home to a myriad of peoples, from the Abyssor-loving Witan of the peninsula, the red-heads of Ru-Yermon, or the isles that \
+	once made up the see of seasons. Within it lies the Platinum Dwarf Fortress, the ruins of a glorious cathedral that was once the seat of northern tennite faith, and various \
+	petty kingdoms, or Jarldoms, all loosely agreeing to the will of the Ringbearer, Lord of the Witan."
+	short_desc = "The Hammerhold Peninsula and Isles are home to a myriad of peoples, from the Abyssor-loving Witan of the peninsula, the red-heads of Ru-Yermon, or the isles that once made up the see of seasons."
+	origin_title = "Hammerhold"
 	origin_language = /datum/language/hammerholdian
 	origin_traits = list(TRAIT_HEARTY_DRINKER, TRAIT_COLD_RESISTANCE)
 	map_x = 90
@@ -80,8 +91,11 @@ GLOBAL_LIST_INIT(origins, build_origins())
 
 /datum/origin/grenzelhoft
 	name = ORIGIN_GRENZELHOFT
-	desc = "格伦泽尔霍夫特帝国是十神教廷的所在之地，也是格里莫里亚最主要的十神信仰中心。由于难以计数的亡者怪物肆虐帝国，许多宏伟都市与工匠城镇已被弃置，人们转而逃往海外或首都城内谋生。纵然如此，格伦泽尔霍夫特仍屹立不倒。"
-	origin_title = "格伦泽尔霍夫特"
+	desc = "The Grenzelhoft Empire is the seat of the Holy See of the Dieci, the main Ten-worshipping religion of Grimoria. Due to the unfathomable hordes of deadites plaguing \
+	the Empire, many of the grand cities and artisan towns have been abandoned in favour of a lyfe across the seas or within the capital city. Despite all, Grenzelhoft still \
+	stands tall."
+	short_desc = "The Grenzelhoft Empire is the seat of the Holy See of the Dieci, the main Ten-worshipping religion of Grimoria."
+	origin_title = "Grenzelhoft"
 	origin_language = /datum/language/grenzelhoftian
 	origin_traits = list(TRAIT_DEADITE_RESISTANCE, TRAIT_METICULOUS)
 	hated_by = list(ORIGIN_OTAVA)
@@ -92,26 +106,38 @@ GLOBAL_LIST_INIT(origins, build_origins())
 
 /datum/origin/avar
 	name = ORIGIN_AVAR
-	desc = "阿瓦尔是一片被北方群山、起伏草原与渐次逼近的针叶林分割开的土地。这里坐落着仅次于奥塔瓦的第二大普赛顿王国、东境最精锐的武装力量，以及格里莫里亚境内族群与文化最为多元的人民。"
-	origin_title = "阿瓦尔"
+	desc = "Avar is a land divided between the great Northern mountain ranges, the rolling grasslands of the Steppe, and the thick forests of the oncoming Taiga. It is home \
+	to the second greatest Psydonic kingdom behind Otava, the finest martial force of the Eastern ranges, and the most ethnically and culturally diverse peoples in Grimoria."
+	short_desc = "Avar is a land divided between the great Northern mountain ranges, the rolling grasslands of the Steppe, and the thick forests of the oncoming Taiga."
+	origin_title = "Avar"
 	origin_language = /datum/language/aavnic
 	origin_traits = list(TRAIT_STEPPE_RIDER, TRAIT_ANCESTOR_GUARDIAN)
+	hated_by = list(ORIGIN_GRONN)
+	prejudice_stress = /datum/stressevent/prejudice/avar
+	prejudice_examine = span_red("Humourless Aavnic! Pah!")
 	map_x = 417
 	map_y = 189
 
 /datum/origin/gronn
 	name = ORIGIN_GRONN
-	desc = "格隆恩草原是一片充斥流血与战争之地；格拉加尔的战帮肆虐格隆恩人民，同时觊觎南方阿瓦尔的霸权。不过草原并未彻底沉沦，仍有许多城镇与游牧家族在掠夺者的征服阴影下艰难求生。"
-	origin_title = "格隆恩"
+	desc = "The steppes of Gronn are a place of bloodshed and war; Graggarite warbands lay waste to the people of Gronn and vie for dominance over Avar to the south. \
+	Not all is lost in the steppes, however, with many towns and nomad families eking out an existence fraught with danger despite the ravagers' conquest."
+	short_desc = "The steppes of Gronn are a place of bloodshed and war; Graggarite warbands lay waste to the people of Gronn and vie for dominance over Avar to the south."
+	origin_title = "Gronn"
 	origin_language = /datum/language/gronnic
 	origin_traits = list(TRAIT_COLD_RESISTANCE, TRAIT_BATTLE_CRY)
+	hated_by = list(ORIGIN_AVAR)
+	prejudice_stress = /datum/stressevent/prejudice/gronn
+	prejudice_examine = span_red("Inhumen Gronnite! Pah!")
 	map_x = 445
 	map_y = 116
 
 /datum/origin/etrusca
 	name = ORIGIN_ETRUSCA
-	desc = "一个阳光明媚的贸易国，主要由风景秀美的群岛组成。伊特鲁斯卡以自身的武艺与烹饪传统为荣，格里莫里亚各地都有人努力学习这个商贸国度里牧侠与决斗者的技艺。"
-	origin_title = "伊特鲁斯卡"
+	desc = "A sunny trade nation comprised mostly of beautiful archipelagos. Etrusca prides itself on its martial and culinary traditions, with people all across Grimoria \
+	striving to learn the ways of the vaqueros and duellists of the trader state. "
+	short_desc = "A sunny trade nation comprised mostly of beautiful archipelagos."
+	origin_title = "Etrusca"
 	origin_language = /datum/language/etruscan
 	origin_traits = list(TRAIT_BLACKLEG, TRAIT_WATERLOVING)
 	map_x = 266
@@ -119,13 +145,13 @@ GLOBAL_LIST_INIT(origins, build_origins())
 
 /datum/origin/kazengun
 	name = ORIGIN_KAZENGUN
-	desc = "风郡并非单一国家，而是三个僵持了数世纪的王朝共同构成的土地。岛屿西侧是风郡幕府，东侧是普伊-梅恩王朝，北方则由信义氏族掌控。西方人常会远行至风郡，但到访者带回的故事，大多都是关于那里的武士与妖魔的夸张传闻。考虑到这些王朝与西方世界之间横亘的汪洋，风郡进口品自然格外昂贵。"
-	origin_title = "风郡"
+	desc = "Kazengun is not but one nation, but three dynasties that have been in stand-still for centuries. The Kazengun Shogunate to the west of the island, the \
+	Pui-Maen Dynasty to the east, and the Clan Xinyi to the north. Kazengun is oft travelled by the people of the west, but those who visit recount (mostly tall) \
+	tales of the warriors and monsters within. Kazengunese imports are particularly expensive considering the vast ocean between the dynasties and the western world."
+	short_desc = "Kazengun is not but one nation, but three dynasties that have been in stand-still for centuries."
+	origin_title = "Kazengun"
 	origin_language = /datum/language/kazengunese
 	origin_traits = list(TRAIT_SOFT_FOOTED)
-	hated_by = list(ORIGIN_FERENTIA)
-	prejudice_stress = /datum/stressevent/prejudice/kazengun
-	prejudice_examine = span_red("不请自来的风郡人！呸！")
 	map_x = 120
 	map_y = 374
 
@@ -134,6 +160,17 @@ GLOBAL_LIST_INIT(origins, build_origins())
 	user << browse_rsc(file("html/rwmap1.png"), "rwmap1.png")
 	user << browse(html, "window=origin_map;size=685x540")
 	onclose(user, "origin_map", src)
+
+/datum/preferences/proc/open_origin_info(mob/user, datum/origin/O)
+	var/html = "<html><body style='background:#1a1209;color:#e8dcc8;font-family:Georgia,serif;padding:10px;'>"
+	html += "<center><b style='color:#e8c87a;font-size:18px;'>[O.name]</b></center><hr>[O.desc]<br><br>"
+	if(length(O.origin_traits))
+		html += "<b style='color:#e8c87a;'>Origin Traits:</b>"
+		for(var/trait in O.origin_traits)
+			html += "<details><summary><i><font color='#ccbb82'>[trait]</font></i></summary>"
+			html += "<i><font color='#a3ffe0'>[GLOB.roguetraits[trait]]</font></i></details>"
+	html += "<br><center>Is [O.name] my homeland?<br><a href='byond://?src=\ref[src];preference=origin_select;type=[url_encode("[O.type]")]'>Affirm</a> | <a href='byond://?src=\ref[src];preference=origin_cancel'>Deny</a></center></body></html>"
+	user << browse(html, "window=origin_info;size=400x450")
 
 /datum/preferences/proc/build_origin_map_html()
 	var/html = ""
@@ -159,8 +196,8 @@ GLOBAL_LIST_INIT(origins, build_origins())
 		var/datum/origin/O = GLOB.origins[otype]
 		var/sel_cls = (origin == O) ? " selected" : ""
 		var/safe_name = replacetext(O.name, "'", "\\'")
-		var/safe_desc = replacetext(O.desc, "'", "\\'")
-		var/node_href = "byond://?src=\ref[src];preference=origin_select;type=[url_encode("[otype]")]"
+		var/safe_desc = replacetext(O.short_desc, "'", "\\'")
+		var/node_href = "byond://?src=\ref[src];preference=origin_view;type=[url_encode("[otype]")]"
 		html += "<div class='pin[sel_cls]' style='left:[O.map_x]px;top:[O.map_y]px;' "
 		html += "onclick=\"window.location.href='[node_href]'; return false;\" "
 		html += "onmouseenter=\"showTip(event,'[safe_name]','[safe_desc]')\" "

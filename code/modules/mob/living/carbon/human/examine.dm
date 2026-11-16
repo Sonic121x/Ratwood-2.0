@@ -1142,7 +1142,7 @@
 			var/mob/living/carbon/human/H = user
 			for(var/type in GLOB.origins)
 				var/datum/origin/O = GLOB.origins[type]
-				if(O.name == origin && O.prejudice_stress && H.origin != origin && (!O.hated_by || (H.origin in O.hated_by)))
+				if(O.name == origin && O.prejudice_stress && H.origin != origin && !HAS_TRAIT(H, TRAIT_TOLERANT) && (!O.hated_by || (H.origin in O.hated_by)))
 					. += O.prejudice_examine
 					user.add_stress(O.prejudice_stress)
 
@@ -1329,13 +1329,13 @@
 		// Shouldn't be able to tell they are unrevivable through a mask as a Necran
 		if(HAS_TRAIT(src, TRAIT_DNR) && src != user)
 			if(HAS_TRAIT(user, TRAIT_DEATHSIGHT))
-				. += span_danger("他们散发着苍白的灵光。他们的灵魂[stat == DEAD ? "不曾" : "并不"]纯净。他们已经完了。")
-			else if(stat == DEAD)
-				. += span_danger("这是他们此生唯一的机会。")
+				. += span_danger("他们散发着苍白的灵光。他们的灵魂[looks_dead() ? "不曾" : "并不"]纯净。他们已经完了。")
+			else if(looks_dead())
+				. += span_danger("这曾是他们此生唯一的机会。")
 
 	// Real medical role can tell at a glance it is a waste of time, but only if the Necra message don't come first.
 
-	if(user.get_skill_level(/datum/skill/misc/medicine) >= SKILL_LEVEL_EXPERT && src.stat == DEAD)
+	if(user.get_skill_level(/datum/skill/misc/medicine) >= SKILL_LEVEL_EXPERT && looks_dead())
 		if(HAS_TRAIT(src, TRAIT_DNR) && src != user && !HAS_TRAIT(user, TRAIT_DEATHSIGHT)) // A lot of conditional to avoid a redundant message, but we also want unknown DNRs to be covered.
 			. += span_danger("他们的身体已无丝毫生机。任何药物也无法使其复生。")
 

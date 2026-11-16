@@ -671,7 +671,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_EXPERT_HUNTER = span_greentext("我是名熟练的本地猎手；我的狩猎技能可精进至专家层次。"),
 	TRAIT_DEATHLESS = span_info("我无法以寻常手段真正死去。"),
 	TRAIT_NOWW = span_info("登多尔的疯狂无法侵入我的心智。"),
-	TRAIT_SILVER_WEAK = span_warning("银器是我生命中最大的威胁。银制武器会令我燃烧，压制我的再生，若再受过祝圣，甚至能直接摧毁我的躯壳。"),
+	TRAIT_SILVER_WEAK = span_warning("银器是我生命中最大的威胁。银制武器会令我燃烧，压制我的再生，若再受过祝圣，甚至能一击将我击倒。"),
 	TRAIT_DYES = span_notice("我精通颜料与色泽，在染缸前总能调出自己想要的准确颜色。"),
 	TRAIT_BLACKOAK = span_warning("黑橡树能一眼认出<b>任何</b>外来者与异乡人，无论他们在谷地住了多久。我一眼就能认出入侵者。"),
 	TRAIT_GOODWRITER = span_notice("我擅长写作。凡由我编写的技能书，都能让读者更快掌握其中知识。"),
@@ -849,6 +849,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_IGNOREDAMAGESLOWDOWN "忽略受伤减速"
 #define TRAIT_RIGIDMOVEMENT		"忽略自然伤势减速"
 #define TRAIT_DEATHCOMA			"死亡昏迷" //Causes death-like unconsciousness
+#define TRAIT_DEATHS_DOOR		"死亡之门" //Shows the death's door overlay and lets the mob succumb regardless of health
 #define TRAIT_RELAYING_ATTACKER "relaying_attacker"
 #define TRAIT_FAKEDEATH			"假死" //Makes the owner appear as dead to most forms of medical examination
 #define TRAIT_STUNIMMUNE		"stun_immunity"
@@ -922,6 +923,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_DRUQK				"druqk"
 #define TRAIT_BURIED_COIN_GIVEN "buried_coin_given" // prevents a human corpse from being used for a corpse multiple times
 #define TRAIT_BLOODLOSS_IMMUNE "失血致死免疫" // can bleed, but will never die from blood loss
+#define TRAIT_NO_BLEEDING "无出血" // bleeding wounds do not cause blood loss
+#define TRAIT_NO_BLOODLOSS_EFFECTS "无失血影响" // being low on blood does not have any effects
+#define TRAIT_NO_BLOOD_REGEN "无血液再生" // prevents blood regeneration for carbons and humans passively
 #define TRAIT_NO_BITE "no_bite" //prevents biting
 #define TRAIT_LEGENDARY_ALCHEMIST		"寻草专家"
 #define TRAIT_STUCKITEMS "stuck_items" // Prevents removing items except for hand slots

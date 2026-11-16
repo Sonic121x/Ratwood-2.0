@@ -708,7 +708,7 @@
 		return
 	if(!reaper)
 		return
-	if (InCritical() || health <= 0 || (blood_volume < BLOOD_VOLUME_SURVIVE))
+	if (InCritical() || health <= 0 || (blood_volume < BLOOD_VOLUME_SURVIVE) || HAS_TRAIT(src, TRAIT_DEATHS_DOOR))
 		log_message("在生命值为 [round(health, 0.1)] 的[InFullCritical() ? "重度":"轻度"]濒死状态下[whispered ? "低声说出了遗言" : "放弃挣扎而死"]！", LOG_ATTACK)
 
 		if(istype(src.loc, /turf/open/water) && !HAS_TRAIT(src, TRAIT_NOBREATH) && lying && client)
@@ -722,6 +722,7 @@
 		var/word_input = stripped_input(src, "你的临终遗言是什么？若不想说可留空。", "临终遗言")
 		if(word_input)
 			say(word_input)
+		SEND_SIGNAL(src, COMSIG_LIVING_SUCCUMBED)
 		death()
 
 /mob/living/incapacitated(ignore_restraints = FALSE, ignore_grab = TRUE, check_immobilized = FALSE, ignore_stasis = FALSE)
@@ -872,11 +873,18 @@
 	update_stat()
 	SEND_SIGNAL(src, COMSIG_LIVING_HEALTH_UPDATE)
 
+/mob/living/proc/is_burning_with(status_type)
+	var/datum/status_effect/fire_handler/fire_stacks/fire = has_status_effect(status_type)
+	return fire?.on_fire
+
+/mob/living/proc/looks_dead()
+	return stat == DEAD || HAS_TRAIT(src, TRAIT_FAKEDEATH)
+
 /mob/living/proc/check_revive(mob/living/user, bypass_foreign_brain_check = FALSE)
 	if(src == user)
 		return FALSE
 	if(stat < DEAD)
-		to_chat(user, span_warning("什么也没有发生。"))
+		to_chat(user, span_warning(looks_dead() ? "他们对我的尝试毫无反应。暂时如此。" : "什么也没有发生。"))
 		return FALSE
 	if(!mind)
 		return FALSE
@@ -1027,6 +1035,7 @@
 	slowdown = 0
 	update_mobility()
 	stop_sound_channel(CHANNEL_HEARTBEAT)
+	SEND_SIGNAL(src, COMSIG_LIVING_FULLY_HEALED, admin_revive)
 
 //proc called by revive(), to check if we can actually ressuscitate the mob (we don't want to revive him and have him instantly die again)
 /mob/living/proc/can_be_revived()
@@ -1135,7 +1144,7 @@
 		if(trail_type)
 			var/brute_ratio = round(getBruteLoss() / maxHealth, 0.1)
 			if(blood_volume && blood_volume > max(BLOOD_VOLUME_NORMAL*(1 - brute_ratio * 0.25), 0))//don't leave trail if blood volume below a threshold
-				blood_volume = max(blood_volume - max(1, brute_ratio * 2), 0) 					//that depends on our brute damage.
+				adjust_blood_volume(-max(1, brute_ratio * 2)) 					//that depends on our brute damage.
 				var/newdir = get_dir(target_turf, start)
 				if(newdir != direction)
 					newdir = newdir | direction

@@ -25,8 +25,8 @@
 
 /datum/surgery_step/infuse_tick/validate_target(mob/user, mob/living/carbon/target, target_zone, datum/intent/intent)
 	. = ..()
-	if(target.stat < DEAD)
-		to_chat(user, "对方还没死！")
+	if(!target.looks_dead())
+		to_chat(user, "They're not dead!")
 		return FALSE
 	var/obj/item/organ/heart/H = target.getorganslot(ORGAN_SLOT_HEART)
 	if(!H)

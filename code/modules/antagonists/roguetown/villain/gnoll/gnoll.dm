@@ -155,7 +155,7 @@
 	return "已追踪: [target_display]"
 
 /mob/living/carbon/human/proc/gnoll_can_feed_heal()
-	if(has_status_effect(/datum/status_effect/fire_handler/fire_stacks/sunder) || has_status_effect(/datum/status_effect/fire_handler/fire_stacks/sunder/blessed))
+	if(is_burning_with(/datum/status_effect/fire_handler/fire_stacks/sunder) || is_burning_with(/datum/status_effect/fire_handler/fire_stacks/sunder/blessed))
 		to_chat(src, span_notice("我的力量被削弱了，无法治疗自己！"))
 		return FALSE
 	return TRUE

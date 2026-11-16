@@ -12,11 +12,11 @@
 	list_reagents = list(/datum/reagent/medicine/revival_fluid = 48)
 
 /obj/item/reagent_containers/glass/bottle/revival/attack(mob/living/M, mob/living/user)
-	if(M.stat < DEAD)
-		to_chat(user, "他们还没死！")
+	if(!M.looks_dead())
+		to_chat(user, "They're not dead!")
 		return FALSE
-	if(!M.mind)
-		to_chat(user, "[M] 的心脏已经沉寂。")
+	if(!M.mind || M.stat < DEAD)
+		to_chat(user, "[M]'s heart is inert.")
 		return FALSE
 
 	. = ..()

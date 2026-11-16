@@ -1,7 +1,7 @@
-// WOE: SPELLBLADE DODGE EXPERT POLEARM BUILD UPON YE.
+// the trees are speaking elvish
 /datum/advclass/wretch/blackoakwyrm
 	name = "黑橡弃徒"
-	tutorial = "你的信念激进到连黑橡也无法容忍，于是你决定脱离组织，也远离所有人。这片土地曾经伟大……如今却任由一波又一波的怪物和外来者践踏家园。你的族人才是最早定居这里的人，可那受异邦扶持、虚伪傲慢的王室却剥夺了你们应得的回报！黑橡的长期训练让你兼通剑术与魔法。你早已做出足以被组织公开谴责的事，王室的悬赏也随之而来——那些同伴受金钱诱惑，根本不愿为事业献身。"
+	tutorial = "你的信念极端到连黑橡都无法容忍，于是你脱离了组织。他们一波又一波地涌来。你的族人才是最早定居这片土地的人，如今却眼看他们被怪物与外来者一同践踏。受异邦扶持的王室虚伪而傲慢，否认了你的族人如此勤恳耕耘应得的收成。你在黑橡所受的长期训练，赋予你精灵武器的技艺与奥术的敏锐。无论你是持剑明战，还是在树上以弓潜行，王室的悬赏都会紧随其后，昔日同伴的谴责与蔑视亦然。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
 		/datum/species/human/halfelf,
@@ -10,10 +10,10 @@
 	)
 	outfit = /datum/outfit/job/roguetown/wretch/blackoak
 	cmode_music = 'sound/music/combat_blackoak.ogg'
-	maximum_possible_slots = 1
+	maximum_possible_slots = 3
 	class_select_category = CLASS_CAT_RACIAL
 	category_tags = list(CTAG_WRETCH)
-	traits_applied = list(TRAIT_AZURENATIVE, TRAIT_OUTDOORSMAN, TRAIT_BLACKOAK, TRAIT_DODGEEXPERT, TRAIT_ARCYNE, TRAIT_WOODWALKER, TRAIT_EXPERT_HUNTER)
+	traits_applied = list(TRAIT_AZURENATIVE, TRAIT_OUTDOORSMAN, TRAIT_BLACKOAK, TRAIT_DODGEEXPERT, TRAIT_ARCYNE, TRAIT_WOODWALKER, TRAIT_EXPERT_HUNTER, TRAIT_LONGSTRIDER)
 	//lower-than-avg stats for wretch but their traits are insanely good
 	subclass_stats = list(
 		STATKEY_INT = 1,
@@ -88,7 +88,7 @@
 
 	subclass_selected = null
 	var/selection_html = get_spellblade_chant_html(src, H, "blackoak")
-	H << browse(selection_html, "window=spellblade_chant;size=1100x900")
+	H << browse(selection_html, "window=spellblade_chant;size=1400x900")
 	onclose(H, "spellblade_chant", src)
 
 	var/open_time = world.time
@@ -120,6 +120,11 @@
 				H.mind.AddSpell(new /datum/action/cooldown/spell/telegraphed_strike/spellblade/tremor)
 				H.mind.AddSpell(new /datum/action/cooldown/spell/charge)
 				H.mind.AddSpell(new /datum/action/cooldown/spell/cataclysm)
+			if("sagittary")
+				H.mind.AddSpell(new /datum/action/cooldown/spell/leyline_nock)
+				H.mind.AddSpell(new /datum/action/cooldown/spell/thornfall)
+				H.mind.AddSpell(new /datum/action/cooldown/spell/withdraw)
+				H.mind.AddSpell(new /datum/action/cooldown/spell/skyrend)
 
 		H.mind.AddSpell(new /datum/action/cooldown/spell/recall_weapon)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/empower_weapon)
@@ -185,5 +190,23 @@
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_EXPERT, TRUE)
 			else
 				H.adjust_skillrank_up_to(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT, TRUE)
+		if("sagittary")
+			r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve/blackoak
+			backr = /obj/item/quiver/arrows
+			backpack_contents[/obj/item/rogueweapon/huntingknife/idagger/steel/elvish] = 1
+			H.adjust_skillrank_up_to(/datum/skill/combat/bows, SKILL_LEVEL_MASTER, TRUE)
+			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
+			H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_JOURNEYMAN, TRUE)
+			H.change_stat(STATKEY_PER, 2)
+			var/sidearms = list("Elvish Saber", "Elvish Dagger")
+			var/sidearm_choice = input(H, "Choose your SIDEARM.", "THE HIDDEN THORN") as anything in sidearms
+			switch(sidearm_choice)
+				if("Elvish Saber")
+					l_hand = /obj/item/rogueweapon/sword/sabre/elf
+					beltr = /obj/item/rogueweapon/scabbard/sword
+				if("Elvish Dagger")
+					l_hand = /obj/item/rogueweapon/huntingknife/idagger/silver/elvish
+					beltr = /obj/item/rogueweapon/scabbard/sheath
+					H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_EXPERT, TRUE)
 
 	wretch_select_bounty(H)

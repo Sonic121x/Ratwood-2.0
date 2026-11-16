@@ -25,14 +25,10 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/tip_delay = 500 //tip delay in milliseconds
 	// Commend variable on prefs instead of client to prevent reconnect abuse (is persistant on prefs, opposed to not on client)
 	var/commendedsomeone = FALSE
-	// History tracking for character customization undo
-	var/list/customization_history = list()
 	// Loadout preset storage - 3 slots for saving/loading character customization
 	var/list/loadout_preset_1
 	var/list/loadout_preset_2
 	var/list/loadout_preset_3
-	// Temporary storage for loadout item selection (per-user to prevent race conditions)
-	var/list/temp_loadout_selection
 
 	//Antag preferences
 	var/list/be_special = list()		//Special role selection
@@ -107,8 +103,6 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/mutant_skin = FALSE			//Use mutant color as skin color instead of skin_tone
 	var/eye_color = "000"				//Eye color
 	var/extra_language = "None" // Extra language
-	var/extra_language_1 = "None" // Additional triumph language slot 1
-	var/extra_language_2 = "None" // Additional triumph language slot 2
 	var/voice_color = "a0a0a0"
 	var/voice_pitch = 1
 	var/detail_color = "000"
@@ -162,23 +156,36 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 	// 0 = character settings, 1 = game preferences
 	var/current_tab = 0
+	// skips char preview 4 lag purposes
+	var/skip_preview = FALSE
 
 // Point-buy system helpers
 // Base points available to every character
 /datum/preferences/proc/get_base_points()
 	return 10
 
-/datum/preferences/proc/get_default_redolent_scent(scent_type)
-	switch(scent_type)
-		if("Gross")
-			return "腐肉与酸臭的汗味"
-		if("Pleasant")
-			return "野花与清新雨水的气味"
-	return "泥土与汗水的气味"
+// quirks save config modularly per quirk
+/datum/preferences/proc/get_quirk_configs()
+	var/list/configs = list()
+	for(var/datum/quirk/Q in quirks)
+		if(Q.configurable)
+			configs["[Q.type]"] = Q.save_config()
+	return configs
 
-/// The leading text shown on examine before the custom scent, matching redolent_examine_text().
-/datum/preferences/proc/redolent_scent_leadin(scent_type)
-	return scent_type == "Gross" ? "对方身上散发着刺鼻的气味：" : "对方身上散发着"
+/datum/preferences/proc/get_vice_configs()
+	var/list/configs = list()
+	for(var/i = 1 to VICE_SLOTS)
+		var/datum/charflaw/vice = vars["vice[i]"]
+		if(vice?.configurable)
+			configs["[vice.type]"] = vice.save_config()
+	return configs
+
+/datum/preferences/proc/get_virtue_configs()
+	var/list/configs = list()
+	for(var/datum/virtue/V in list(virtue, virtuetwo))
+		if(V.configurable)
+			configs["[V.type]"] = V.save_config()
+	return configs
 
 // Points gained from additional selected vices (+1 per vice after slot one)
 /datum/preferences/proc/get_vice_points()
@@ -188,14 +195,16 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			points++
 	return points
 
-// Quirk points gained from selected vices. Your first vice doesn't give any at all.
+// Quirk points gained from selected vices.
 /datum/preferences/proc/get_quirk_points_earned()
 	var/points = 0
-	for(var/i = 2 to 6)
+	var/lowest = 1
+	for(var/i = 1 to 6)
 		var/datum/charflaw/vice = vars["vice[i]"]
 		if(vice)
 			points += vice.point_value
-	return points
+			lowest = min(lowest, vice.point_value)
+	return max(points - lowest, 0)
 
 /datum/preferences/proc/get_quirk_points_spent()
 	var/points = 0
@@ -234,16 +243,6 @@ GLOBAL_LIST_EMPTY(chosen_names)
 		var/datum/loadout_item/L = vars[i == 1 ? "loadout" : "loadout[i]"]
 		if(L && L.triumph_cost)
 			spent += L.triumph_cost
-	return spent
-
-// DEPRECATED - Languages now use actual triumph pool, not vice points
-// Kept for backwards compatibility but no longer used in calculations
-/datum/preferences/proc/get_language_points_spent()
-	var/spent = 0
-	if(extra_language_1 && extra_language_1 != "None")
-		spent += 2
-	if(extra_language_2 && extra_language_2 != "None")
-		spent += 4
 	return spent
 
 // Total points available = base + points from vices
@@ -322,8 +321,6 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/datum/charflaw/vice4
 	var/datum/charflaw/vice5
 	var/datum/charflaw/vice6
-	var/redolent_type = "Neutral"
-	var/redolent_scent = ""
 
 	var/setspouse = ""
 	var/gender_choice = ANY_GENDER
@@ -360,6 +357,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/bark_speed = 4
 	var/bark_pitch = 1
 	var/bark_variance = 0.2
+	var/bark_volume = 70
 	COOLDOWN_DECLARE(bark_previewing)
 	COOLDOWN_DECLARE(descriptor_preview)
 	var/hear_barks = TRUE
@@ -563,303 +561,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/used_title
 	switch(current_tab)
 		if (0) // Character Settings#
-			used_title = "角色卡"
-
-			// Top-level menu table
-			dat += "<table style='width: 100%; line-height: 20px;'>"
-			// NEXT ROW
-			dat += "<tr>"
-			dat += "<td style='width:33%;text-align:left'>"
-			dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=changeslot;'>切换角色</a>"
-			dat += "</td>"
-
-			dat += "<td style='width:33%;text-align:center'>"
-			dat += "<a href='?_src_=prefs;preference=job;task=menu'>职业选择</a>"
-			dat += "</td>"
-
-			dat += "<td style='width:33%;text-align:right'>"
-			dat += "<a href='?_src_=prefs;preference=keybinds;task=menu'>按键绑定</a>"
-			dat += "</td>"
-			dat += "</tr>"
-
-			// ANOTHA ROW
-			dat += "<tr style='padding-top: 0px;padding-bottom:0px'>"
-			dat += "<td style='width:33%;text-align:left'>"
-			dat += "<a href='?_src_=prefs;preference=tgui_ui_prefs;task=menu'>[tgui_pref ? "TGUI" : "传统"]</a>"
-			dat += "<br>"
-			dat += "<a href='?_src_=prefs;preference=tgui_theme'>主题：[get_tgui_theme_display_name()]</a>"
-			dat += "<br>"
-			dat += "<a href='?_src_=prefs;preference=parchment_skin'>羊皮纸：[get_parchment_skin_display_name()]</a>"
-			dat += "</td>"
-
-			dat += "<td style='width:33%;text-align:center'>"
-			dat += "<a href='?_src_=prefs;preference=antag;task=menu'>反派选择</a>"
-			dat += "</td>"
-
-			dat += "<td style='width:33%;text-align:right'>"
-			dat += "</td>"
-			dat += "</tr>"
-
-			// ANOTHER ROW HOLY SHIT WE FINALLY A GOD DAMN GRID NOW! WHOA!
-			dat += "<tr style='padding-top: 0px;padding-bottom:0px'>"
-			dat += "<td style='width:33%; text-align:left'>"
-			dat += "<a href='?_src_=prefs;preference=playerquality;task=menu'><b>玩家品质:</b></a> [get_playerquality(user.ckey, text = TRUE)]"
-			dat += "</td>"
-
-			dat += "<td style='width:33%;text-align:center'>"
-			dat += "<a href='?_src_=prefs;preference=triumphs;task=menu'><b>胜利点:</b></a> [user.get_triumphs() ? "\Roman [user.get_triumphs()]" : "无"]"
-			if(SStriumphs.triumph_buys_enabled)
-				dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=triumph_buy_menu'>胜利点购买</a>"
-			dat += "</td>"
-
-			if(CONFIG_GET(flag/roundstart_traits))
-				dat += "<center><h2>特质设置</h2>"
-				dat += "<a href='?_src_=prefs;preference=trait;task=menu'>配置特质</a><br></center>"
-				dat += "<center><b>当前特质:</b> [all_quirks.len ? all_quirks.Join(", ") : "无"]</center>"
-
-			// Encapsulating table
-			dat += "<table width = '100%'>"
-			// Only one Row
-			dat += "<tr>"
-			// Leftmost Column, 40% width
-			dat += "<td width=40% valign='top'>"
-
-// 			-----------START OF IDENT TABLE-----------
-			dat += "<h2>身份</h2>"
-			dat += "<table width='100%'><tr><td width='75%' valign='top'>"
-			if(is_banned_from(user.ckey, "Appearance"))
-				dat += "<b>您已被禁止使用自定义名称和外观。您仍可继续调整角色，但在加入游戏时会被随机化。</b><br>"
-//			dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_NAME]'>Always Random Name: [(randomise[RANDOM_NAME]) ? "Yes" : "No"]</a>"
-//			dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_NAME_ANTAG]'>When Antagonist: [(randomise[RANDOM_NAME_ANTAG]) ? "Yes" : "No"]</a>"
-			dat += "<b>姓名:</b> "
-			if(check_nameban(user.ckey))
-				dat += "<a href='?_src_=prefs;preference=name;task=input'>名称已被禁用</a><BR>"
-			else
-				dat += "<a href='?_src_=prefs;preference=name;task=input'>[real_name]</a> <a href='?_src_=prefs;preference=name;task=random'>\[R\]</a>"
-			dat += "<BR>"
-			dat += "<b>昵称:</b> "
-			dat += "<a href='?_src_=prefs;preference=nickname;task=input'>[nickname]</a><BR>"
-			// LETHALSTONE EDIT BEGIN: add pronoun prefs
-			dat += "<b>人称代词:</b> <a href='?_src_=prefs;preference=pronouns;task=input'>[pronouns]</a><BR>"
-			// LETHALSTONE EDIT END
-			if(!voice_pack)
-				voice_pack = "默认"
-			// LETHALSTONE EDIT BEGIN: add voice type prefs
-			dat += "<b>语音身份</b>: <a href='?_src_=prefs;preference=voicetype;task=input'>[voice_type]</a><BR>"
-			// LETHALSTONE EDIT END
-			dat += "<b>语音包</b>: <a href='?_src_=prefs;preference=voicepack;task=input'>[voice_pack == VOICE_PACK_CHOSEN ? "被选中者（男性）" : voice_pack]</a><BR>"
-
-			dat += "<BR>"
-			dat += "<b>种族:</b> <a href='?_src_=prefs;preference=species;task=input'>[get_species_display_name(pref_species.name)]</a>[spec_check(user) ? "" : " (!)"]<BR>"
-			if(pref_species.use_titles)
-				var/display_title = selected_title ? get_species_display_name(selected_title) : "无"
-				dat += "<b>种族头衔:</b> <a href='?_src_=prefs;preference=race_title;task=input'>[display_title]</a><BR>"
-			dat += "<b>家族:</b> <a href='?_src_=prefs;preference=family'>[family ? family : "无"]</a><BR>"
-			if(family != FAMILY_NONE)
-				var/spousename = "首选配偶"
-				if(family == FAMILY_PARTIAL)
-					spousename = "首选父母"
-				dat += "<b>[spousename]:</b> <a href='?_src_=prefs;preference=setspouse'>[setspouse ? setspouse : "无"]</a><BR>"
-				if(family != FAMILY_NONE)
-					dat += "<b>首选性别:</b> <a href='?_src_=prefs;preference=gender_choice'>[gender_choice ? gender_choice : "任意性别"]</a><BR>"
-					var/species_text
-					if(xenophobe_pref == 1)
-						species_text = "<font color='#FFA500'>同种族</font>"
-					else if(xenophobe_pref == 2 && restricted_species_pref)
-						species_text = "<font color='#aa0202'>仅[get_species_display_name(restricted_species_pref)]</font>"
-					else
-						species_text = "<font color='#1cb308'>不限制</font>"
-					dat += "<b>限制种族:</b> <a href='?_src_=prefs;preference=species_choice'>[species_text]</a><BR>"
-			if(length(pref_species.custom_selection))
-				var/race_bonus_display
-				if(race_bonus)
-					for(var/bonus in pref_species.custom_selection)
-						if(pref_species.custom_selection[bonus] == race_bonus)
-							race_bonus_display = get_species_customization_display_name(bonus)
-							break
-				dat += "<b>种族奖励:</b> <a href='?_src_=prefs;preference=race_bonus_select;task=input'>[race_bonus_display ? "[race_bonus_display]" : "无"]</a><BR>"
-			else
-				race_bonus = null
-				dat += "<BR>"
-
-//			dat += "<a href='?_src_=prefs;preference=species;task=random'>Random Species</A> "
-//			dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_SPECIES]'>Always Random Species: [(randomise[RANDOM_SPECIES]) ? "Yes" : "No"]</A><br>"
-
-			if(!(AGENDER in pref_species.species_traits))
-				var/dispGender
-				if(gender == MALE)
-					dispGender = "男性化" // LETHALSTONE EDIT: repurpose gender as bodytype, display accordingly
-				else if(gender == FEMALE)
-					dispGender = "女性化" // LETHALSTONE EDIT: repurpose gender as bodytype, display accordingly
-				else
-					dispGender = "其他"
-				dat += "<b>体型:</b> <a href='?_src_=prefs;preference=gender'>[dispGender]</a><BR>"
-				if(randomise[RANDOM_BODY] || randomise[RANDOM_BODY_ANTAG]) //doesn't work unless random body
-					dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER]'>总是随机体型: [(randomise[RANDOM_GENDER]) ? "是" : "否"]</A>"
-					dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER_ANTAG]'>反派时: [(randomise[RANDOM_GENDER_ANTAG]) ? "是" : "否"]</A>"
-
-			if(LAZYLEN(pref_species.allowed_taur_types))
-				var/obj/item/bodypart/taur/T = taur_type
-				var/name = ispath(T) ? T::name : "无"
-				dat += "<b>半兽体型:</b> <a href='?_src_=prefs;preference=taur_type;task=input'>[name]</a><BR>"
-				dat += "<b>半兽颜色:</b> <span style='border: 1px solid #161616; background-color: #[taur_color];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=taur_color;task=input'>更改</a><BR>"
-				dat += "<b>半兽斑纹:</b> <span style='border: 1px solid #161616; background-color: #[taur_markings];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=taur_markings;task=input'>更改</a><BR>"
-				dat += "<b>半兽第三色:</b> <span style='border: 1px solid #161616; background-color: #[taur_tertiary];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=taur_tertiary;task=input'>更改</a><BR>"
-
-			dat += "<b>年龄:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a><BR>"
-			dat += "<b>出身:</b> <a href='?_src_=prefs;preference=origin;task=input'>[origin ? origin.name : "无"]</a><BR>"
-
-//			dat += "<br><b>Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a>"
-//			if(randomise[RANDOM_BODY] || randomise[RANDOM_BODY_ANTAG]) //doesn't work unless random body
-//				dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_AGE]'>Always Random Age: [(randomise[RANDOM_AGE]) ? "Yes" : "No"]</A>"
-//				dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_AGE_ANTAG]'>When Antagonist: [(randomise[RANDOM_AGE_ANTAG]) ? "Yes" : "No"]</A>"
-
-//			dat += "<b><a href='?_src_=prefs;preference=name;task=random'>Random Name</A></b><BR>"
-			if(length(pref_species.restricted_virtues))
-				if(virtue.type in pref_species.restricted_virtues)
-					virtue = GLOB.virtues[/datum/virtue/none]
-				if(virtuetwo.type in pref_species.restricted_virtues)
-					virtuetwo = GLOB.virtues[/datum/virtue/none]
-			if(length(pref_species.restricted_quirks))
-				for(var/datum/quirk/Q in quirks)
-					if(Q.type in pref_species.restricted_quirks)
-						quirks -= Q
-			if(statpack.name != "德能")
-				virtuetwo = GLOB.virtues[/datum/virtue/none]
-			dat += "<b>角色自定义:</b> <a href='?_src_=prefs;preference=vices_menu;task=input'>配置全部</a><BR>"
-			var/datum/faith/selected_faith = GLOB.faithlist[selected_patron?.associated_faith]
-			dat += "<b>信仰:</b> <a href='?_src_=prefs;preference=faith;task=input'>[selected_faith?.name || "错误"]</a><BR>"
-			dat += "<b>庇护者:</b> <a href='?_src_=prefs;preference=patron;task=input'>[selected_patron?.name || "错误"]</a><BR>"
-			dat += "<b>惯用手:</b> <a href='?_src_=prefs;preference=domhand'>[domhand == 1 ? "左利手" : "右利手"]</a><BR>"
-			dat += "<b>食物偏好:</b> <a href='?_src_=prefs;preference=culinary;task=menu'>更改</a><BR>"
-
-			var/musicname = (combat_music.shortname ? combat_music.shortname : combat_music.name)
-			dat += "<b>战斗音乐:</b> <a href='?_src_=prefs;preference=combat_music;task=input'>[musicname || "错误"]</a><BR>"
-
-			dat += "<b>不可复活:</b> <a href='?_src_=prefs;preference=dnr;task=input'>[dnr_pref ? "是" : "否"]</a><BR>"
-
-			dat += "<b>成为魔宠:</b><a href='?_src_=prefs;preference=familiar_prefs;task=input'>魔宠偏好</a><br>"
-
-			dat += "<b>偏好地图:</b> <a href='?_src_=prefs;preference=preferred_map;task=input'>[preferred_map || "无偏好"]</a><br>"
-
-			dat += "<br><b>豺狼人自定义:</b><a href='?_src_=prefs;preference=gnoll_prefs;task=input'>豺狼人偏好</a>"
-
-/*
-			dat += "<br><br><b>特殊名称：</b><BR>"
-			var/old_group
-			for(var/custom_name_id in GLOB.preferences_custom_names)
-				var/namedata = GLOB.preferences_custom_names[custom_name_id]
-				if(!old_group)
-					old_group = namedata["group"]
-				else if(old_group != namedata["group"])
-					old_group = namedata["group"]
-					dat += "<br>"
-				dat += "<a href ='?_src_=prefs;preference=[custom_name_id];task=input'><b>[namedata["pref_name"]]:</b> [custom_names[custom_name_id]]</a> "
-			dat += "<br><br>"
-
-			dat += "<b>自定义职业偏好：</b><BR>"
-			dat += "<a href='?_src_=prefs;preference=ai_core_icon;task=input'><b>偏好的 AI 核心外观：</b> [preferred_ai_core_display]</a><br>"
-			dat += "<a href='?_src_=prefs;preference=sec_dept;task=input'><b>偏好的安保部门：</b> [prefered_security_department]</a><BR></td>"
-*/
-			var/datum/bark/B = GLOB.bark_list[bark_id]
-			dat += "<br>"
-			dat += "<b>叫声类型:</b><br>"
-			dat += "<a href='?_src_=prefs;preference=barksound;task=input'>[B ? initial(B.name) : "无效"]</a><br>"
-			dat += "<b>叫声速度:</b> <a href='?_src_=prefs;preference=barkspeed;task=input'>[bark_speed]</a><br>"
-			dat += "<b>叫声音高:</b> <a href='?_src_=prefs;preference=barkpitch;task=input'>[bark_pitch]</a><br>"
-			dat += "<b>叫声变调:</b> <a href='?_src_=prefs;preference=barkvary;task=input'>[bark_variance]</a><br>"
-			dat += "<b><a href='?_src_=prefs;preference=barkpreview;task=input'>预览叫声</a></b><br>"
-			dat += "</td>"
-			dat += "</tr></table>"
-// 			-----------END OF IDENT TABLE-----------
-
-
-			// Middle dummy Column, 20% width
-			dat += "</td>"
-			dat += "<td width=20% valign='top'>"
-			var/datum/job/highest_pref
-			for(var/job in job_preferences)
-				if(job_preferences[job] > highest_pref)
-					highest_pref = SSjob.GetJob(job)
-			if(!isnull(highest_pref) && !istype(highest_pref, /datum/job/roguetown/jester))
-				dat += "<div style='text-align: center'><br>子职业预览:<br> <a href='?_src_=prefs;preference=subclassoutfit;task=input'>[preview_subclass ? "[istype(preview_subclass, /datum/advclass/steward) ? "宫廷总管" : preview_subclass.name]" : "无"]</a></div>"
-			else
-				preview_subclass = null
-			var/arousal_preview_label
-			switch(preview_erect_state)
-				if(ERECT_STATE_PARTIAL)
-					arousal_preview_label = "半勃起"
-				if(ERECT_STATE_HARD)
-					arousal_preview_label = "勃起"
-				else
-					arousal_preview_label = "无"
-			dat += "<div style='text-align: center'><br>兴奋状态预览：<br> <a href='?_src_=prefs;preference=preview_erect_state'>[arousal_preview_label]</a></div>"
-			// Rightmost column, 40% width
-			dat += "<td width=40% valign='top'>"
-			dat += "<h2>身体</h2>"
-
-//			-----------START OF BODY TABLE-----------
-			dat += "<table width='100%'><tr><td width='1%' valign='top'>"
-			dat += "<b>更改时更新特征颜色:</b> <a href='?_src_=prefs;preference=update_mutant_colors;task=input'>[update_mutant_colors ? "是" : "否"]</a><BR>"
-			var/use_skintones = pref_species.use_skintones
-			if(use_skintones)
-
-				var/skin_tone_wording = pref_species.skin_tone_wording // Both the skintone names and the word swap here is useless fluff
-
-				dat += "<b>[skin_tone_wording]: </b><a href='?_src_=prefs;preference=s_tone;task=input'>更改</a><br>"
-				if(pref_species.mutant_skin_option)
-					dat += "<b>异变肤色：</b> <a href='?_src_=prefs;preference=mutant_skin;task=input'>[mutant_skin ? "是" : "否"]</a><br>"
-
-			if((MUTCOLORS in pref_species.species_traits) || (MUTCOLORS_PARTSONLY in pref_species.species_traits))
-
-				dat += "<b>突变颜色 #1:</b> <span style='border: 1px solid #161616; background-color: #[features["mcolor"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color;task=input'>更改</a><BR>"
-				dat += "<b>突变颜色 #2:</b> <span style='border: 1px solid #161616; background-color: #[features["mcolor2"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color2;task=input'>更改</a><BR>"
-				dat += "<b>突变颜色 #3:</b> <span style='border: 1px solid #161616; background-color: #[features["mcolor3"]];'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=mutant_color3;task=input'>更改</a><BR>"
-
-			dat += "<br><b>语音颜色: </b><a href='?_src_=prefs;preference=voice;task=input'>更改</a>"
-			dat += "<br><b>昵称颜色: </b> <a href='?_src_=prefs;preference=highlight_color;task=input'>更改</a>"
-			dat += "<br><b>语音音高: </b><a href='?_src_=prefs;preference=voice_pitch;task=input'>[voice_pitch]</a>"
-			dat += "<br><b>口音:</b> <a href='?_src_=prefs;preference=char_accent;task=input'>[char_accent == "No accent" ? "无口音" : char_accent]</a>"
-			dat += "<br><b>措辞习惯:</b> <a href='?_src_=prefs;preference=char_mannerism;task=input'>[get_mannerism_display_name(char_mannerism)]</a>"
-			dat += "<br><b>特征:</b> <a href='?_src_=prefs;preference=customizers;task=menu'>更改</a>"
-			dat += "<br><b>图像缩放:</b><a href='?_src_=prefs;preference=body_size;task=input'>[(features["body_size"] * 100)]%</a>"
-			dat += "<br><b>斑纹:</b> <a href='?_src_=prefs;preference=markings;task=menu'>更改</a>"
-			dat += "<br><b>描述词:</b> <a href='?_src_=prefs;preference=descriptors;task=menu'>更改</a>"
-
-			dat += "<br><b>头像:</b> <a href='?_src_=prefs;preference=headshot;task=input'>更改</a>"
-			if(headshot_link != null)
-				dat += "<br><img src='[headshot_link]' width='100px' height='100px'>"
-
-			dat += "<br><b>[(length(flavortext) < MINIMUM_FLAVOR_TEXT) ? "<font color = '#802929'>" : ""]风味文本:[(length(flavortext) < MINIMUM_FLAVOR_TEXT) ? "</font>" : ""]</b><a href='?_src_=prefs;preference=formathelp;task=input'>(?)</a><a href='?_src_=prefs;preference=flavortext;task=input'>更改</a>"
-			dat += "<br><b>NSFW风味文本:</b><a href='?_src_=prefs;preference=formathelp;task=input'>(?)</a><a href='?_src_=prefs;preference=nsfwflavortext;task=input'>更改</a>"
-			dat += "<br><b>[(length(ooc_notes) < MINIMUM_OOC_NOTES) ? "<font color = '#802929'>" : ""]OOC备注:[(length(ooc_notes) < MINIMUM_OOC_NOTES) ? "</font>" : ""]</b><a href='?_src_=prefs;preference=formathelp;task=input'>(?)</a><a href='?_src_=prefs;preference=ooc_notes;task=input'>更改</a>"
-
-			// Rumours / Gossip
-			dat += "<br><b>传闻与贵族流言:</b><a href='?_src_=prefs;preference=formathelp;task=input'>(?)</a><br><a href='?_src_=prefs;preference=rumour;task=input'>设置传闻</a><a href='?_src_=prefs;preference=gossip;task=input'>设置流言</a><a href='?_src_=prefs;preference=rumour_preview;task=input'><i>预览</i></a>"
-
-			dat += "<br><b>ERP偏好:</b><a href='?_src_=prefs;preference=formathelp;task=input'>(?)</a><a href='?_src_=prefs;preference=erpprefs;task=input'>更改</a>"
-			dat += "<br><b>歌曲:</b> <a href='?_src_=prefs;preference=ooc_extra;task=input'>更改URL</a>"
-			dat += "<a href='?_src_=prefs;preference=change_title;task=input'>更改标题</a>"
-			dat += "<a href='?_src_=prefs;preference=change_artist;task=input'>更改艺术家</a>"
-			dat += "<br><b>OOC额外图片/视频/GIF（风味文本）:</b> <a href='?_src_=prefs;preference=ooc_extra_img;task=input'>更改</a>"
-			if(ooc_extra_img_link != null)
-				dat += "<br><img src='[ooc_extra_img_link]' width='100px' height='100px'>"
-			dat += "<br><b>NSFW OOC额外图片/视频/GIF（风味文本）:</b> <a href='?_src_=prefs;preference=nsfw_ooc_extra_img;task=input'>更改</a>"
-			if(nsfw_ooc_extra_img_link != null)
-				dat += "<br><img src='[nsfw_ooc_extra_img_link]' width='100px' height='100px'>"
-			dat += "<br><B>图片库:</b> <a href='?_src_=prefs;preference=img_gallery;task=input'>添加</a>"
-			dat+= "<a href='?_src_=prefs;preference=clear_gallery;task=input'>清空图片库</a>"
-			dat += "<br><B>NSFW图片库:</b> <a href='?_src_=prefs;preference=nsfw_img_gallery;task=input'>添加</a>"
-			dat+= "<a href='?_src_=prefs;preference=clear_nsfw_gallery;task=input'>清空NSFW图片库</a>"
-			dat += "<br><a href='?_src_=prefs;preference=ooc_preview;task=input'><b>预览查看</b></a>"
-
-			dat += "</td>"
-
-			dat += "</tr></table>"
-//			-----------END OF BODY TABLE-----------
-			dat += "</td>"
-			dat += "</tr>"
-			dat += "</table>"
+			used_title = "Character Sheet"
+			dat += get_character_page(user)
 
 		if (1) // Game Preferences
 			used_title = "设置"
@@ -1132,13 +835,15 @@ GLOBAL_LIST_EMPTY(chosen_names)
 		dat = list("<center>请注册！</center>")
 
 	winshow(user, "preferencess_window", TRUE)
-	winset(user, "preferencess_window", "size=820x850")
-	winset(user, "preferencess_window", "pos=280,80")
+	winset(user, "preferencess_window", "size=820x850;pos=280,80")
 	var/datum/browser/noclose/popup = new(user, "preferences_browser", "<div align='center'>[used_title]</div>")
 	popup.set_window_options("can_close=0")
 	popup.set_content(dat.Join())
 	popup.open(FALSE)
-	update_preview_icon()
+	if(skip_preview)
+		skip_preview = FALSE
+	else
+		update_preview_icon()
 //	onclose(user, "preferencess_window", src)
 
 #undef APPEARANCE_CATEGORY_COLUMN
@@ -1590,6 +1295,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 /datum/preferences/Topic(href, href_list, hsrc)			//yeah, gotta do this I guess..
 	. = ..()
+	if(href_list["scroll"])
+		scroll_pos = text2num(href_list["scroll"])
 	if(href_list["close"])
 		var/client/C = usr.client
 		if(C)
@@ -1601,10 +1308,19 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			origin = GLOB.origins[chosen_type]
 			save_character()
 			user << browse(null, "window=origin_map")
+			user << browse(null, "window=origin_info")
+			skip_preview = TRUE
 			ShowChoices(user)
 			return
+	if(href_list["preference"] == "origin_cancel")
+		usr << browse(null, "window=origin_info")
+	if(href_list["preference"] == "origin_view")
+		var/chosen_type = text2path(href_list["type"])
+		if(chosen_type && (chosen_type in GLOB.origins))
+			open_origin_info(usr, GLOB.origins[chosen_type])
 
 /datum/preferences/proc/process_link(mob/user, list/href_list)
+	skip_preview = (href_list["preference"] in GLOB.no_preview_prefs)
 	if(href_list["bancheck"])
 		var/list/ban_details = is_banned_from_with_details(user.ckey, user.client.address, user.client.computer_id, href_list["bancheck"])
 		var/admin = FALSE
@@ -1680,6 +1396,22 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				SetAntag(user)
 			else
 				SetAntag(user)
+	else if(href_list["preference"] == "category")
+		if(href_list["name"] in open_categories)
+			open_categories -= href_list["name"]
+		else
+			open_categories += href_list["name"]
+	else if(href_list["preference"] == "background")
+		process_background_link(user, href_list)
+		validate_background()
+	else if(href_list["preference"] == "loadout")
+		if(href_list["task"] == "menu")
+			open_loadout_slots(user)
+		else if(href_list["task"] == "presets")
+			open_preset_menu(user)
+		else
+			process_loadout_link(user, href_list)
+		return
 	else if(href_list["preference"] == "tgui_ui_prefs")
 		tgui_pref = !tgui_pref
 	else if(href_list["preference"] == "triumphs")
@@ -2182,6 +1914,11 @@ GLOBAL_LIST_EMPTY(chosen_names)
 					if(!isnull(borkset))
 						bark_variance = clamp(borkset, initial(B.minvariance), initial(B.maxvariance))
 
+				if("barkvolume")
+					var/borkset = input(user, "Choose your desired bark volume. Min: 10. Max: 70", "Character Preference") as null|num
+					if(!isnull(borkset))
+						bark_volume = round(clamp(borkset, 10, 70), 1)
+
 				if("barkpreview")
 					if(SSticker.current_state == GAME_STATE_STARTUP) //Timers don't tick at all during game startup, so let's just give an error message
 						to_chat(user, "<span class='warning'>初始化期间无法播放吠叫预览！</span>")
@@ -2195,7 +1932,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 					barkbox.set_bark(bark_id)
 					var/total_delay = 0
 					for(var/i in 1 to (round((32 / bark_speed)) + 1))
-						addtimer(CALLBACK(barkbox, TYPE_PROC_REF(/atom/movable, bark), list(parent.mob), 7, 70, BARK_DO_VARY(bark_pitch, bark_variance)), total_delay)
+						addtimer(CALLBACK(barkbox, TYPE_PROC_REF(/atom/movable, bark), list(parent.mob), 7, bark_volume, BARK_DO_VARY(bark_pitch, bark_variance)), total_delay)
 						total_delay += rand(DS2TICKS(bark_speed/4), DS2TICKS(bark_speed/4) + DS2TICKS(bark_speed/4)) TICKS
 					QDEL_IN(barkbox, total_delay)
 
@@ -2625,10 +2362,6 @@ GLOBAL_LIST_EMPTY(chosen_names)
 						charflaw = C
 						if(charflaw.desc)
 							to_chat(user, "<span class='info'>[charflaw.desc]</span>")
-
-				if("vices_menu")
-					open_vices_menu(user)
-					return
 
 				if("race_bonus_select")
 					if(length(pref_species.custom_selection))
@@ -3355,10 +3088,6 @@ GLOBAL_LIST_EMPTY(chosen_names)
 		origin_lang = TRUE
 	if(!origin_lang && extra_language && extra_language != "None")
 		character.grant_language(extra_language)
-	if(extra_language_1 && extra_language_1 != "None")
-		character.grant_language(extra_language_1)
-	if(extra_language_2 && extra_language_2 != "None")
-		character.grant_language(extra_language_2)
 	character.voice_color = voice_color
 	character.voice_pitch = voice_pitch
 	var/obj/item/organ/eyes/organ_eyes = character.getorgan(/obj/item/organ/eyes)
@@ -3389,6 +3118,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 		var/datum/charflaw/vice = vars["vice[i]"]
 		if(vice)
 			var/datum/charflaw/new_vice = new vice.type()
+			new_vice.load_config(vice.save_config())
 			character.vices += new_vice
 			new_vice.on_mob_creation(character)
 			// Set first vice as the legacy charflaw for compatibility
@@ -3451,6 +3181,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	character.vocal_speed = bark_speed
 	character.vocal_pitch = bark_pitch
 	character.vocal_pitch_range = bark_variance
+	character.vocal_volume = bark_volume
 
 	//if(parent)
 	//	var/list/L = get_player_curses(parent.ckey)

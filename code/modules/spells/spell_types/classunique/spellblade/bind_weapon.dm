@@ -1,11 +1,12 @@
 /datum/action/cooldown/spell/bind_weapon
 	source_aspect = /datum/magic_aspect/pseudo/spellblade
-	name = "武器绑定"
-	desc = "将手持武器绑定为奥术导体。绑定武器成功打击时会积累奥术动量，为能力提供力量。\
-		也可用武器召回来将其从任意位置召回手中。\
-		武器必须符合你的战颂流派——剑刃需剑或匕首，方阵武士需长柄武器，执锤者需钉头锤或战锤。\
-		重新绑定可恢复丢失的奥术动量状态；旧武器被毁时也可绑定新武器。\
-		空手施放可解除当前武器的绑定。"
+	name = "Bind Weapon"
+	desc = "Bind your held weapon as an arcyne conduit. Successful strikes with bound weapons build arcyne momentum, fueling your abilities. \
+		It can also be recalled to your hand from anywhere with Recall Weapon. \
+		The weapon must match your chant - Blade requires a sword or dagger, Phalangite a polearm, Macebearer a mace or warhammer, Sagittary a bow. \
+		A bound bow builds momentum from each arrow hit. \
+		You can rebind to restore a lost Arcyne Momentum status, or bind a new weapon if your old one was destroyed. \
+		Cast with empty hands to unbind your current weapon."
 	button_icon = 'icons/mob/actions/classuniquespells/spellblade.dmi'
 	button_icon_state = "bind_weapon"
 	sound = 'sound/magic/charged.ogg'
@@ -74,6 +75,9 @@
 				valid_skills = list(/datum/skill/combat/polearms)
 			if("macebearer")
 				valid_skills = list(/datum/skill/combat/maces, /datum/skill/combat/axes)
+			if("sagittary")
+				// for some reason the skill doesn't work?
+				valid = istype(weapon, /obj/item/gun/ballistic/revolver/grenadelauncher/bow)
 		if(valid_skills)
 			valid = (weapon.associated_skill in valid_skills)
 		if(!valid)

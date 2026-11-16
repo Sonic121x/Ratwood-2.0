@@ -604,6 +604,12 @@
 /datum/stressevent/prejudice/kazengun
 	desc = span_red("是谁把风郡裔请到费伦提亚来的？")
 
+/datum/stressevent/prejudice/avar
+	desc = span_red("Aavnics are always so dour, so mirthless.")
+
+/datum/stressevent/prejudice/gronn
+	desc = span_red("I just saw a Gronnite! How uncivilized!")
+
 /datum/stressevent/prejudice/underdark
 	desc = span_red("那个地底居民就该待在地下，那才是它该待的地方。")
 

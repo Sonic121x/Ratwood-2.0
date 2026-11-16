@@ -15,16 +15,14 @@
 	added_traits = list(TRAIT_COMICSANS)
 
 /datum/quirk/deadnose
-	name = "嗅觉失灵"
-	desc = "我的鼻子对腐朽的气味毫无知觉。"
-	warning_text = "该特质不消耗点数；如果你扮演的角色本就嗅觉失灵，它不会生效！"
+	name = "Dead Nose"
+	desc = "My nose is numb to the smell of decay."
 	added_traits = list(TRAIT_NOSTINK)
 	incompatible_traits = list(TRAIT_NOSTINK)
 
 /datum/quirk/disgracednoble
-	name = "失势贵族"
-	desc = "很久以前，我也曾是某个贵族家族的后裔... 如今我只是一介平民，而我的姓氏反倒成了耻辱的源头。"
-	warning_text = "该特质不消耗点数；如果你扮演的角色本就出身贵族，它不会生效！"
+	name = "Disgraced Noble"
+	desc = "I was a scion of a noble house... long ago. Now I am a commoner, and my family name is a source of shame."
 	added_traits = list(TRAIT_DISGRACED_NOBLE)
 	incompatible_traits = list(TRAIT_NOBLE)
 
@@ -36,27 +34,24 @@
 	added_traits = list(TRAIT_DWARVEN_CHEF)
 
 /datum/quirk/empath
-	name = "共情者"
-	desc = "我能察觉出他人何时正身陷痛苦。"
-	warning_text = "该特质不消耗点数；如果你扮演的角色本就能共情他人，它不会生效！"
+	name = "Empath"
+	desc = "I can notice when people are in pain."
 	added_traits = list(TRAIT_EMPATH)
 	incompatible_virtues = list(/datum/virtue/utility/socialite)
 	incompatible_traits = list(TRAIT_EMPATH)
 
 /datum/quirk/fabledlover
-	name = "传奇情人"
-	desc = "能与我同床，是一种幸运。"
-	warning_text = "该特质不消耗点数；如果你扮演的角色本就是传奇情人，它不会生效！"
+	name = "Fabled Lover"
+	desc = "It's a lucky thing to share my bed."
 	point_cost = 2
 	added_traits = list(TRAIT_GOODLOVER)
 	incompatible_virtues = list(/datum/virtue/utility/socialite, /datum/virtue/utility/performer)
 	incompatible_traits = list(TRAIT_GOODLOVER)
 
 /datum/quirk/gossiper
-	name = "包打听"
-	desc = "尽管我出身低微，我却习惯与贵族们周旋厮混，打探他们的秘密。"
-	custom_text = "让你能查看贵族间的流言。"
-	warning_text = "该特质不消耗点数；如果你扮演的角色本就是贵族，它不会生效！"
+	name = "Gossiper"
+	desc = "Despite my lowborn blood, I've made a habit out of brushing shoulders with the nobility and learning their secrets."
+	custom_text = "Lets you view noble gossip."
 	point_cost = 2
 	added_traits = list(TRAIT_GOSSIPER)
 	incompatible_virtues = list(/datum/virtue/utility/tracker)
@@ -70,6 +65,91 @@
 
 /datum/quirk/hobbyistmusician/apply_to_human(mob/living/carbon/human/recipient)
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/customization_trait, pick_stashed_instrument), recipient), 50)
+
+/datum/quirk/linguist
+	name = "Trilingual"
+	desc = "Through education, travel, or circumstance, I have picked up a third language."
+	custom_text = "Start with one extra language of your choice."
+	configurable = TRUE
+	incompatible_quirks = list(/datum/quirk/quadrilingual)
+	var/language
+
+/datum/quirk/linguist/apply_to_human(mob/living/carbon/human/recipient)
+	if(ispath(language, /datum/language))
+		recipient.grant_language(language)
+
+/datum/quirk/linguist/config_summary()
+	if(!ispath(language, /datum/language))
+		return "<b>Language</b>: None chosen"
+	var/datum/language/L = language
+	return "<b>Language</b>: [initial(L.name)]"
+
+/datum/quirk/linguist/save_config()
+	return list("language" = language)
+
+/datum/quirk/linguist/load_config(list/data, savefile/S)
+	if(islist(data))
+		language = string_to_typepath(data["language"])
+
+/datum/quirk/linguist/configure(mob/user)
+	var/datum/preferences/prefs = user.client?.prefs
+	if(!prefs)
+		return
+	var/list/choices = prefs.get_language_choices()
+	choices -= "None"
+	var/choice = tgui_input_list(user, "Choose Language:", "Linguist", choices)
+	if(choice)
+		language = choices[choice]
+
+/datum/quirk/quadrilingual
+	name = "Quadrilingual"
+	desc = "I have an abundance of experience with different languages!"
+	custom_text = "Start with two extra languages of your choice."
+	point_cost = 2
+	configurable = TRUE
+	incompatible_quirks = list(/datum/quirk/linguist)
+	var/list/languages = list()
+
+/datum/quirk/quadrilingual/apply_to_human(mob/living/carbon/human/recipient)
+	for(var/language in languages)
+		recipient.grant_language(language)
+
+/datum/quirk/quadrilingual/config_summary()
+	var/list/names = list()
+	for(var/datum/language/L as anything in languages)
+		names += initial(L.name)
+	if(!length(names))
+		return "<b>Languages</b>: None chosen"
+	return "<b>Languages</b>: [names.Join(", ")]"
+
+/datum/quirk/quadrilingual/save_config()
+	return list("languages" = languages)
+
+/datum/quirk/quadrilingual/load_config(list/data, savefile/S)
+	languages = list()
+	if(!islist(data) || !islist(data["languages"]))
+		return
+	for(var/language in data["languages"])
+		var/language_path = string_to_typepath(language)
+		if(ispath(language_path, /datum/language) && !(language_path in languages))
+			languages += language_path
+
+/datum/quirk/quadrilingual/configure(mob/user)
+	var/datum/preferences/prefs = user.client?.prefs
+	if(!prefs)
+		return
+	var/list/chosen = list()
+	for(var/i in 1 to 2)
+		var/list/choices = prefs.get_language_choices()
+		choices -= "None"
+		for(var/language_name in choices.Copy())
+			if(choices[language_name] in chosen)
+				choices -= language_name
+		var/choice = tgui_input_list(user, "Choose language [i] of 2:", "Quadrilingual", choices)
+		if(!choice)
+			return
+		chosen += choices[choice]
+	languages = chosen
 
 /datum/quirk/largeframe
 	name = "骨架宽大"
@@ -88,10 +168,66 @@
 	desc = "我的体味浓重而独特。若不定期沐浴，旁人便会有所察觉……"
 	point_cost = 1
 	added_traits = list(TRAIT_REDOLENT)
+	configurable = TRUE
+	var/scent_type = "Neutral"
+	var/scent = ""
 
 /datum/quirk/redolent/apply_to_human(mob/living/carbon/human/recipient)
-	recipient.redolent_scent_type = recipient.client?.prefs?.redolent_type || "Neutral"
-	recipient.redolent_scent = recipient.client?.prefs?.redolent_scent || ""
+	recipient.redolent_scent_type = scent_type
+	recipient.redolent_scent = scent
+
+/datum/quirk/redolent/proc/default_scent(type)
+	switch(type)
+		if("Gross")
+			return "rotting meat and sour sweat"
+		if("Pleasant")
+			return "wildflowers and clean rain"
+	return "earth and sweat"
+
+/datum/quirk/redolent/config_summary()
+	return "<b>[scent_type]</b>: [scent || default_scent(scent_type)]"
+
+/datum/quirk/redolent/save_config()
+	return list("type" = scent_type, "scent" = scent)
+
+/datum/quirk/redolent/load_config(list/data, savefile/S)
+	if(islist(data))
+		scent_type = data["type"]
+		scent = data["scent"]
+	// ppl will get pissed if they have 2 rewrite their stink text
+	else if(S)
+		S["redolent_type"] >> scent_type
+		S["redolent_scent"] >> scent
+		if(isnull(scent_type))
+			S["malodorous_type"] >> scent_type
+			S["malodorous_scent"] >> scent
+	if(scent_type == "Positive")
+		scent_type = "Pleasant"
+	if(!(scent_type in list("Gross", "Neutral", "Pleasant")))
+		scent_type = "Neutral"
+	if(isnull(scent))
+		scent = ""
+
+/datum/quirk/redolent/configure(mob/user)
+	var/new_scent_type = tgui_input_list(user, "Choose how others perceive your scent:", "Redolent", list("Gross", "Neutral", "Pleasant"))
+	if(!new_scent_type)
+		return
+	var/scent_action = tgui_input_list(user, "Describe the scent:", "Redolent", list("Describe scent", "Use default"))
+	if(!scent_action)
+		return
+	var/new_scent = default_scent(new_scent_type)
+	if(scent_action == "Describe scent")
+		var/leadin = "They smell of"
+		if(new_scent_type == "Gross")
+			leadin = "They reek of"
+		new_scent = tgui_input_text(user, "Describe the scent:", "Redolent", scent, max_length = 100, multiline = TRUE, preview_leadin = leadin)
+		if(isnull(new_scent))
+			return
+		if(!length(trim(new_scent)))
+			new_scent = default_scent(new_scent_type)
+	scent_type = new_scent_type
+	scent = new_scent
+	to_chat(user, span_notice("Set my Redolent scent to [scent_type]."))
 
 // Redolent scent state and behavior. This is purely quirk-driven now: the quirk applies
 // TRAIT_REDOLENT, the mob holds the scent state, and life.dm drives handle_redolent_scent().
@@ -224,10 +360,9 @@
 // I guess we're saying that real nobility is people who are recognized by Astrata??????????
 // Who fucking cares, bro.
 /datum/quirk/noble
-	name = "贵族"
-	desc = "无论是凭出身、刀剑还是头脑，我身上都流着贵族的血，虽说只是一支无衔的低阶旁支。我机灵地藏起了一笔可观的财富，还有一件家传宝物。"
-	custom_text = "该特质授予你「低阶贵族」身份，这意味着你仍受《大敕令》与人头税的约束。"
-	warning_text = "该特质不消耗点数；如果你扮演的角色本就是贵族，它不会生效！"
+	name = "Noble"
+	desc = "By birth, blade or brain, I carry noble blood, if only a minor and untitled line of it. I've cleverly stashed away a healthy amount of coinage, alongside a familial heirloom."
+	custom_text = "This quirk grants you MINOR nobility, meaning you are still subjected to the Great Writ and poll tax."
 	point_cost = 4
 	added_traits = list(TRAIT_NOBLE)
 	added_skills = list(list(/datum/skill/misc/reading, 1, 6))
@@ -251,9 +386,8 @@
 	incompatible_virtues = list(/datum/virtue/utility/woodwalker)
 
 /datum/quirk/pretty
-	name = "相貌讨喜"
-	desc = "我算不上什么绝色美人，但人们似乎还挺乐意看我的脸。"
-	warning_text = "该特质不消耗点数；如果你扮演的角色本就是美人，它不会生效！"
+	name = "Pretty"
+	desc = "I'm no great beauty, but people seem to like looking at my face well enough."
 	point_cost = 2
 	added_traits = list(TRAIT_PRETTY)
 	incompatible_virtues = list(/datum/virtue/utility/socialite)
@@ -261,19 +395,17 @@
 	incompatible_traits = list(TRAIT_BEAUTIFUL)
 
 /datum/quirk/rawdiet
-	name = "生食癖"
-	desc = "不论是出于异于常人的身体构造，还是单纯有着古怪的耐受，我都能像吃寻常饭食一样吃生肉与未烹煮的食物。"
-	custom_text = "让你能吃生肉与未烹煮的食物而不中毒。腐烂的食物、内脏与脏水仍会让你中毒。"
-	warning_text = "该特质不消耗点数；如果你扮演的角色本就拥有异于常人的代谢，它不会生效！"
+	name = "Raw Diet"
+	desc = "Be it from unnatural anatomy or simply a bizarre tolerance, I can eat raw meat and uncooked food as if it were natural."
+	custom_text = "Lets you eat raw meat and uncooked food without getting poisoned. Rotten food, organs, and dirty water will still poison you."
 	point_cost = 2
 	added_traits = list(TRAIT_RAW_EATER)
 	incompatible_virtues = list(/datum/virtue/utility/feral_appetite)
 	incompatible_traits = list(TRAIT_NASTY_EATER, TRAIT_ORGAN_EATER, TRAIT_WILD_EATER)
 
 /datum/quirk/roughlover
-	name = "粗暴情人"
-	desc = "若我动了真意，我在床笫之间便会是个凶暴的伴侣，足以一并折断对方的骨盆与意志。"
-	warning_text = "该特质不消耗点数；如果你扮演的角色本就是床笫间的凶器，它不会生效！"
+	name = "Rough Lover"
+	desc = "With strong intent, I am a violent partner in bed. Breaking pelvis and spirit alike."
 	point_cost = 2
 	added_traits = list(TRAIT_DEATHBYSNUSNU)
 	incompatible_traits = list(TRAIT_DEATHBYSNUSNU)
@@ -293,6 +425,13 @@
 /datum/quirk/secondvoice/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.verbs += /mob/living/carbon/human/proc/changevoice
 	recipient.verbs += /mob/living/carbon/human/proc/swapvoice
+
+/datum/quirk/tolerant
+	name = "Tolerant"
+	desc = "Whether fostered through travel or care, you just don't see an issue with certain folks."
+	custom_text = "Prevents you from experiencing negative stress events or examine text when looking at select species and origins."
+	point_cost = 0
+	added_traits = list(TRAIT_TOLERANT)
 
 /datum/quirk/ugly
 	name = "丑陋"
@@ -317,8 +456,7 @@
 	incompatible_quirks = list(/datum/quirk/ugly, /datum/quirk/pretty)
 
 /datum/quirk/selfaware
-	name = "伤情自知"
-	desc = "我一直清楚自己的身体受伤有多严重。"
-	warning_text = "此特质无需花费点数；若你的职业已拥有伤情自知，则不会生效！"
+	name = "Self Aware"
+	desc = "I've always been conscious about how hurt my body can get."
 	added_traits = list(TRAIT_SELF_AWARE)
 	incompatible_traits = list(TRAIT_SELF_AWARE)

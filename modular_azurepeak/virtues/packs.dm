@@ -88,10 +88,8 @@
 	name = "破碎灵魂（-2 凯旋）"
 	desc = "生活待我残酷。我的外貌令旁人退避三舍，我学会了承受多数人无法承受之物，而我麻木得太久，几乎已记不起情感原本是什么样子。我是靠苦难存活至今的活生生证明。"
 	triumph_cost = 2
-	granted_virtues = list(
-		/datum/virtue/utility/tolerant,
-		/datum/virtue/utility/deadened
-	)
-	custom_text = "授予两项弃民美德：\n\
-	- 宽容：对某些种族不再产生压力，接受面更广\n\
-	- 麻木：完全失去情感（NOMOOD 特质）"
+	added_traits = list(TRAIT_TOLERANT)
+	granted_virtues = list(/datum/virtue/utility/deadened)
+	custom_text = "Grants two virtues for the outcast:\n\
+	- Tolerant: No stress from certain species, broad acceptance\n\
+	- Deadened: Completely emotionless (NOMOOD trait)"

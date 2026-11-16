@@ -3,8 +3,8 @@
 #define SECOND_PER_MOMENTUM (6 SECONDS) // Time between each stack lost during decay.
 
 /atom/movable/screen/alert/status_effect/buff/arcyne_momentum
-	name = "奥术动量（0）"
-	desc = "近战打击积蓄奥术力量。累积动量以释放强大能力。近战每 2 秒可提供 1 层，部分可命中多个目标的能力会提供额外动量。达到 7 层便会过载——尽快释放！若未使用便开始衰减，所有动量会同时泄出，令你承受反噬、短暂减速并陷入易伤。谨防失控。"
+	name = "Arcyne Momentum (0)"
+	desc = "Offensive strikes fuel arcyne power. Build momentum to unleash your power. Melee strikes grant 1 stack every 2 seconds; arrows from a bound bow grant 1 stack every second. Certain abilities capable of striking multiple targets grant bonus momentum. At 7+ the power overcharges - spend it! If it decays unspent, ALL momentum discharges at once, leaving you strained - briefly slowed and Vulnerable. Take care not to lose control."
 	icon_state = "buff"
 
 /datum/status_effect/buff/arcyne_momentum
