@@ -392,8 +392,8 @@ GLOBAL_LIST_EMPTY(instrument_band_lobbies)
 				if(file_ext != ".ogg")
 					to_chat(user, span_warning("曲目文件必须为 ogg。"))
 					return
-	            if(file_size > 512000) //原6mb 6485760
-		            to_chat(user, span_warning("文件太大，必须不超过 0.5 MB。")) //原6mb
+				if(file_size > 512000) //原6mb 6485760
+					to_chat(user, span_warning("文件太大，必须不超过 0.5 MB。")) //原6mb
 					return
 				lastfilechange = world.time
 				fcopy(infile,"[SONG_UPLOAD_FOLDER][user.ckey]/[filename]")
