@@ -15,6 +15,8 @@
 	return display_names[mannerism] || mannerism
 
 /proc/get_preferences_label_display(value)
+	if(!istext(value))
+		return value
 	var/static/list/labels = list(
 		"Identity" = "身份", "Origin" = "出身", "Customization" = "个性定制", "Character Settings" = "角色设置", "Voice" = "声音", "Body" = "身体", "Flavor Text" = "角色描述",
 		"Name" = "姓名", "Nickname" = "昵称", "Nickname Color" = "昵称颜色", "Pronouns" = "代词", "Age" = "年龄", "Race" = "种族", "Race Title" = "种族称谓", "Race Bonus" = "种族加成",
@@ -30,7 +32,27 @@
 		"NSFW Flavortext" = "成人外貌描述", "ERP Preferences" = "成人角色扮演偏好", "Headshot" = "头像", "Rumours & Noble Gossip" = "传闻与贵族秘闻", "Set Rumours" = "设置传闻", "Set Gossip" = "设置秘闻", "<i>Preview</i>" = "<i>预览</i>",
 		"Song" = "歌曲", "Change URL" = "更改链接", "Title" = "标题", "Artist" = "艺术家", "OOC Extra" = "场外附加信息", "NSFW OOC Extra" = "成人场外附加信息", "Image Gallery" = "图片集", "Nsfw Image Gallery" = "成人图片集", "Add" = "添加", "Clear Gallery" = "清空图片集", "Clear Nsfw Gallery" = "清空成人图片集", "<b>Preview Examine</b>" = "<b>预览打量信息</b>"
 	)
+	return labels[value] || get_character_identity_display(value)
+
+/proc/get_character_identity_display(value)
+	if(!istext(value))
+		return value
+	var/static/list/labels = list(
+		AGE_ADULT = "壮年", AGE_MIDDLEAGED = "中年", AGE_OLD = "老年", AGE_IMMORTAL = "永生",
+		HE_HIM = "他", SHE_HER = "她", THEY_THEM = "TA（男装）", THEY_THEM_F = "TA（女装）", IT_ITS = "它", HE_HIM_F = "他（女装）", SHE_HER_M = "她（男装）",
+		VOICE_TYPE_MASC = "男声", VOICE_TYPE_FEM = "女声", VOICE_TYPE_ANDR = "中性声音"
+	)
 	return labels[value] || value
+
+/proc/input_character_identity_choice(mob/user, prompt, title, list/values)
+	var/list/options = list()
+	for(var/value in values)
+		var/label = get_character_identity_display(value)
+		if(label in options)
+			label = "[label] ([value])"
+		options[label] = value
+	var/choice = tgui_input_list(user, prompt, title, options)
+	return isnull(choice) ? null : options[choice]
 
 /proc/get_update_choice_display(value)
 	if(value == "Arbalest")

@@ -1671,7 +1671,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 //						age = max(min( round(text2num(new_age)), AGE_MAX),AGE_MIN)
 
 				if("age")
-					var/new_age = tgui_input_list(user, "选择您角色的年龄（18-[pref_species.max_age]）", "已活年数", pref_species.possible_ages)
+					var/new_age = input_character_identity_choice(user, "选择您角色的年龄（18-[pref_species.max_age]）", "已活年数", pref_species.possible_ages)
 					if(new_age)
 						age = new_age
 						var/list/hairs
@@ -1713,19 +1713,19 @@ GLOBAL_LIST_EMPTY(chosen_names)
 					return
 				// LETHALSTONE EDIT: add pronouns
 				if ("pronouns")
-					var pronouns_input = tgui_input_list(user, "选择您角色的人称代词", "人称代词", GLOB.pronouns_list)
+					var pronouns_input = input_character_identity_choice(user, "选择您角色的人称代词", "人称代词", GLOB.pronouns_list)
 					if(pronouns_input)
 						pronouns = pronouns_input
 						ResetJobs()
-						to_chat(user, "<font color='red'>您角色的人称代词现在为 [pronouns]。</font>")
+						to_chat(user, "<font color='red'>您角色的人称代词现在为 [get_character_identity_display(pronouns)]。</font>")
 						to_chat(user, "<font color='red'><b>您的职业已重置。</b></font>")
 
 				// LETHALSTONE EDIT: add voice type selection
 				if ("voicetype")
-					var voicetype_input = tgui_input_list(user, "选择您角色的语音类型", "语音类型", GLOB.voice_types_list)
+					var voicetype_input = input_character_identity_choice(user, "选择您角色的语音类型", "语音类型", GLOB.voice_types_list)
 					if(voicetype_input)
 						voice_type = voicetype_input
-						to_chat(user, "<font color='red'>您的角色现在将以 [LOWER_TEXT(voice_type)] 的效果发声。</font>")
+						to_chat(user, "<font color='red'>您的角色现在将以 [get_character_identity_display(voice_type)] 的效果发声。</font>")
 
 				if ("voicepack")
 					var/voicepack_input = tgui_input_list(user, "选择您角色的表情语音包", "语音包", (GLOB.voice_packs_list - VOICE_PACK_CHOSEN) + list("被选中者（男性）"))

@@ -162,7 +162,7 @@ GLOBAL_LIST_INIT(origins, build_origins())
 	onclose(user, "origin_map", src)
 
 /datum/preferences/proc/open_origin_info(mob/user, datum/origin/O)
-	var/html = "<html><body style='background:#1a1209;color:#e8dcc8;font-family:Georgia,serif;padding:10px;'>"
+	var/html = "<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'></head><body style='background:#1a1209;color:#e8dcc8;font-family:Georgia,serif;padding:10px;'>" // 自定义修改：声明国家详情页编码，防止中文被浏览器按本地编码解析
 	html += "<center><b style='color:#e8c87a;font-size:18px;'>[O.name]</b></center><hr>[O.desc]<br><br>"
 	if(length(O.origin_traits))
 		html += "<b style='color:#e8c87a;'>出身特质：</b>"
@@ -174,7 +174,7 @@ GLOBAL_LIST_INIT(origins, build_origins())
 
 /datum/preferences/proc/build_origin_map_html()
 	var/html = ""
-	html += "<html><head><meta charset='utf-8'><style>"
+	html += "<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><style>" // 自定义修改：使用兼容内嵌浏览器的编码声明，防止国家地图中文乱码
 	html += {"body{margin:0;padding:0;background:#1a1209;color:#e8dcc8;font-family:Georgia,serif;overflow:hidden;user-select:none;}"}
 	html += {".map-wrap{position:relative;width:550px;height:400px;display:block;margin:0 auto;}"}
 	html += {".map-wrap img{width:550px;height:400px;display:block;pointer-events:none;}"}
