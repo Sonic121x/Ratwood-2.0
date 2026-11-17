@@ -53,6 +53,9 @@
 	. += span_smallnotice("匕首和撬锁器可以藏在里面。")
 
 /obj/item/clothing/shoes/roguetown/boots/attackby(obj/item/storing_item, mob/living/carbon/user, params)
+	if(user.used_intent?.type == /datum/intent/snip)
+		return ..()
+
 	if(istype(storing_item, /obj/item/rogueweapon/huntingknife))
 		if(!isnull(holdingknife))
 			to_chat(user, span_warning("我的靴子里已经藏着一把刀了。"))

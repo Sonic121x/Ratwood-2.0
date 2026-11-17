@@ -1,6 +1,0 @@
-author: "AlucardHellsingChapel"
-delete-after: True
-changes:
-  - rscadd: "新增符文锁手枪。"
-  - rscadd: "新增圣器武器“圣约”。"
-  - image: "新增图标和精灵图。"

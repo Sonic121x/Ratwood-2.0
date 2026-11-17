@@ -7,6 +7,7 @@
 	毕竟，在那段严酷的选拔期中，能活下来的人都寥寥无几，更别提成功入会了。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
+		/datum/species/arachnid,
 		/datum/species/elf/dark,
 		/datum/species/human/halfelf, // Because half-drows are half-elves, guh.
 	)
@@ -37,7 +38,7 @@
 		/datum/skill/combat/wrestling = SKILL_LEVEL_JOURNEYMAN,
 
 	)
-	extra_context = "该子职业可选种族为黑暗精灵和半精灵。 \
+	extra_context = "该子职业可选种族为黑暗精灵、半精灵与蛛民。 \
 	可选择闪避专家，总计获得 2 速度、2 意志与 1 感知， \
 	或选择中甲训练，总计获得 2 力量、2 体质与 1 意志。 \
 	女性卓尔获得碎卵者与破床者特质。男性卓尔 \
