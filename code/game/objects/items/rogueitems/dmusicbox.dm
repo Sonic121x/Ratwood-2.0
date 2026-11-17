@@ -107,8 +107,8 @@ GLOBAL_VAR_INIT(musicboxes_last_play, 0) //last time of the last played track, t
 	if(file_ext != ".ogg")
 		to_chat(user, span_warning("歌曲必须为 ogg 格式。"))
 		return
-	if(file_size > 6485760)
-		to_chat(user, span_warning("文件太大，必须不超过 6 MB。"))
+	if(file_size > 512000) //原6mb 6485760
+		to_chat(user, span_warning("文件太大，必须不超过 0.5 MB。")) //原6mb
 		return
 	lastfilechange = world.time
 	GLOB.musicboxes_last_upload = world.time
