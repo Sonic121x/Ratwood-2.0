@@ -76,12 +76,12 @@
 	new /obj/item/natural/bundle/cloth/bandage/full(src)
 
 /datum/inqports/supplies/hound
-	name = "HOUND DEVICE"
+	name = "猎犬装置"
 	item_type = /obj/item/inqhound
 	marquescost = 2
 
 /datum/inqports/supplies/scanner
-	name = "SNIFFER DEVICE"
+	name = "嗅探器"
 	item_type = /obj/item/inqscanner
 	marquescost = 2
 

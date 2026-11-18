@@ -269,7 +269,7 @@
 			for(var/job in long_job_lists[department])
 				if(break_counter > 0 && (break_counter % 10 == 0))
 					output += "<br>"
-				output += {"<label class='inputlabel checkbox'>[job]
+				output += {"<label class='inputlabel checkbox'>[get_special_role_display(job)]
 							<input type='checkbox' name='[job]' class='[department]' value='1'>
 							<div class='inputbox[(job in banned_from) ? " banned" : ""]'></div></label>
 				"}

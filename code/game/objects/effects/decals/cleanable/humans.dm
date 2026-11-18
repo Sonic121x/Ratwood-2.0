@@ -48,7 +48,7 @@
 	. = ..()
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		to_chat(H, "<span class='notice'>I get my hands bloody.</span>")
+		to_chat(H, "<span class='notice'>我把双手沾满鲜血。</span>")
 		H.bloody_hands++
 		H.update_inv_gloves()
 

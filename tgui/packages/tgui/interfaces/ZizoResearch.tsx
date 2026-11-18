@@ -52,7 +52,7 @@ const KnowledgeTree = () => {
           .map(([tier, nodes]) => (
           <Stack.Item key={tier}>
             <Box textAlign="center" fontSize="24px" color="red">
-              {tier}
+              {({ LESSER: '次级仪式', GREATER: '高等仪式', STRAND: '丝缕', PITCH: '漆黑', TOIL: '劳役', ROT: '腐朽', BLOOD: '鲜血', NOISE: '噪音', BITE: '噬咬' } as Record<string, string>)[tier] ?? tier}
             </Box>
             <Stack
               justify="center"
@@ -163,7 +163,7 @@ export const ZizoResearch = () => {
           color="white"
           style={{ zIndex: 1, borderRadius: '4px' }}
         >
-          SECRETS: {points}
+          秘闻：{points}
         </Box>
         <KnowledgeTree />
       </Window.Content>

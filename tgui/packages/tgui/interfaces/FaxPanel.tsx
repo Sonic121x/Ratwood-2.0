@@ -248,7 +248,7 @@ export const FaxPanel = (props) => {
 
           {activePage === 'archive' ? (
             <Stack.Item>
-              <Section title="Letter Archive">
+              <Section title="信件档案">
                 <Stack>
                   <Stack.Item>
                     <Button icon="sync" onClick={() => act('refresh')}>
@@ -281,7 +281,7 @@ export const FaxPanel = (props) => {
                 <Box mt={1}>
                   {filteredHistory.length === 0 ? (
                     <Box color="label" italic>
-                      尚无已发送的玩家信件。
+                      当前筛选条件下没有信件。
                     </Box>
                   ) : (
                     filteredHistory.map((entry) => (
@@ -304,12 +304,12 @@ export const FaxPanel = (props) => {
                             px={0.5}
                             color={entry.kind === 'admin' ? 'average' : 'good'}
                           >
-                            [{entry.kind === 'admin' ? 'Admin' : 'Player'}]
+                            [{entry.kind === 'admin' ? '管理员' : '玩家'}]
                           </Box>
-                          寄件人：{entry.sender || 'Anonymous'}
+                          寄件人：{entry.sender || '匿名'}
                         </Box>
                         <Box color="label" fontSize="0.85em">
-                          {entry.kind === 'admin' ? 'Sent by admin' : 'Sender ckey'}: {entry.sender_ckey || 'unknown'}
+                          {entry.kind === 'admin' ? '发件管理员' : '寄件人 ckey'}：{entry.sender_ckey || '未知'}
                         </Box>
                         <Box bold>
                           收件人：{entry.recipient || '未知'}
@@ -319,7 +319,7 @@ export const FaxPanel = (props) => {
                         </Box>
                         {entry.contents && (
                           <Box mt={0.5}>
-                            Package contents: {entry.contents.length > 0 ? entry.contents.join(', ') : 'nothing'}
+                            包裹内容：{entry.contents.length > 0 ? entry.contents.join('、') : '无'}
                             {entry.item_path && (
                               <Box inline ml={1} color="label" style={{ fontFamily: 'monospace' }}>
                                 ({entry.item_path})

@@ -218,8 +218,8 @@
 
 
 /obj/effect/proc_holder/spell/self/raise_skeleton
-	name = "Summon Skeleton"
-	desc = "Conjure an evil, devilish skeleton from the death realms of Bite. Maximum of two, don't be greedy!"
+	name = "召唤骷髅"
+	desc = "从噬咬的死者国度召来一具邪恶的骷髅。最多两具，可别贪心！"
 	overlay_icon = 'icons/mob/actions/zizomiracles.dmi'
 	action_icon = 'icons/mob/actions/zizomiracles.dmi'
 	overlay_state = "skeleton"
@@ -233,21 +233,21 @@
 		if(!W.resolve())
 			active_skeletons -= W
 	if(length(active_skeletons) >= 2)
-		to_chat(user, span_warning("I cannot command any more skeletons."))
+		to_chat(user, span_warning("我已无法指挥更多骷髅。"))
 		revert_cast()
 		return FALSE
-	var/task = input(user, "WHAT IS THY BIDDING?", "IN HER NAME") as null|anything in list("TOIL", "FIGHT", "GUARD", "SEEK")
+	var/task = input(user, "汝有何吩咐？", "以她之名") as null|anything in list("劳作", "战斗", "守卫", "搜寻")
 	if(!task || !do_after(user, 6 SECONDS))
 		revert_cast()
 		return FALSE
 	var/turf/T = get_step(user, user.dir)
 	if(!isopenturf(T))
-		to_chat(user, span_warning("The targeted location is blocked. My summon fails to come forth."))
+		to_chat(user, span_warning("目标位置被挡住了，我的召唤物无法现身。"))
 		revert_cast()
 		return FALSE
-	var/list/candidates = pollGhostCandidates("The veil splits! A hand reaches forth! Serve [user.real_name] in undeath as a Greater Skeleton? YOU WILL [task]", ROLE_NECRO_SKELETON, null, null, 10 SECONDS, POLL_IGNORE_NECROMANCER_SKELETON)
+	var/list/candidates = pollGhostCandidates("帷幕裂开，一只手从中伸出！你愿意化为高阶骷髅，侍奉[user.real_name]吗？你的使命是[task]。", ROLE_NECRO_SKELETON, null, null, 10 SECONDS, POLL_IGNORE_NECROMANCER_SKELETON)
 	if(!LAZYLEN(candidates))
-		to_chat(user, span_warning("The depths are hollow."))
+		to_chat(user, span_warning("深渊中无人应答。"))
 		revert_cast()
 		return FALSE
 	var/mob/C = pick(candidates)
@@ -258,10 +258,10 @@
 	target.crystal = WEAKREF(src)
 	target.key = C.key
 	SSjob.EquipRank(target, "Fortified Skeleton", TRUE)
-	target.visible_message(span_warning("[target]'s eyes light up with an eerie glow!"))
+	target.visible_message(span_warning("[target]的眼中亮起诡异的光！"))
 	active_skeletons += WEAKREF(target)
 	target.mind.AddSpell(new /obj/effect/proc_holder/spell/self/suicidebomb/lesser)
-	addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "FORTIFIED SKELETON"), 3 SECONDS)
+	addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "强化骷髅"), 3 SECONDS)
 	addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living/carbon/human, choose_pronouns_and_body)), 7 SECONDS)
 	target.faction |= list("[user.mind.current.real_name]_faction")
 	user.fullscreen_redflash("redflash1")
@@ -269,8 +269,8 @@
 	return TRUE
 
 /obj/effect/proc_holder/spell/invoked/raise_undead_formation/lesser
-	name = "Raise Lesser Undead"
-	desc = "Raises a simple minded undead skeleton. Inferior shamblers. Husks in everything but zeal."
+	name = "唤起次级亡灵"
+	desc = "唤起一具心智低下的骷髅。它步履蹒跚，空洞的躯壳里只剩狂热。"
 	cabal_affine = TRUE
 	is_summoned = TRUE
 	recharge_time = 15 SECONDS

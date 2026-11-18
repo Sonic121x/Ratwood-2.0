@@ -109,14 +109,14 @@ GLOBAL_DATUM_INIT(zizo_research, /datum/zizo_research, new)
 	addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living, apply_status_effect), /datum/status_effect/buff/healing, 70, TRUE), 4 MINUTES)
 	target.Jitter(4)
 	target.emote("scream")
-	target.visible_message(span_danger("[target]'s memory is wiped clean! They will completely forget what happened and who did it to them. In 4 minutes, they shall wake."))
+	target.visible_message(span_danger("[target]的记忆被抹去了！四分钟后醒来时，[target]会忘记这里发生的一切，也记不清是谁下的手。"))
 	var/obj/item/bodypart/chest/torso = target.get_bodypart(BODY_ZONE_CHEST)
 	if(torso)
 		torso.receive_damage(85)
 		torso.add_wound(/datum/wound/fracture)
 	playsound(target, 'sound/gore/flesh_eat_04.ogg', 60, TRUE)
 	target.purity = FALSE
-	to_chat(target, span_danger("THE LUX IS TORN FROM YOUR SOUL. YOUR MEMORY BECOMES A BLUR. YOU CAN'T REMEMBER WHO DID THIS TO YOU, OR ANY DETAILS ABOUT HOW IT HAPPENED."))
+	to_chat(target, span_danger("有人从你的灵魂里撕走了灵辉。记忆一片模糊。你记不起是谁下的手，也想不起事情的经过。"))
 	if(give_crystal)
 		new /obj/item/necro_relics/necro_crystal(T)
 	return TRUE
@@ -130,39 +130,39 @@ GLOBAL_DATUM_INIT(zizo_research, /datum/zizo_research, new)
 	for(var/obj/item/natural/worms/leech/L in center)
 		if(L.fed_from && !QDELETED(L.fed_from) && L.fed_from.stat != DEAD)
 			if(psydont(L.fed_from))
-				to_chat(user, span_danger("They are wearing silver, it resists the dark magick!"))
+				to_chat(user, span_danger("对方身上的白银抵挡了黑魔法！"))
 				return FALSE
 			return L
-	to_chat(user, span_warning("Empty."))
+	to_chat(user, span_warning("空无一物。"))
 
 /proc/zizo_target_error(mob/living/user, mob/living/carbon/human/target, list/wanted)
 	if(!target || target == user)
-		to_chat(user, span_warning("PLACE A SACRIFICE ON THE CENTER."))
+		to_chat(user, span_warning("将祭品放在中央。"))
 		return TRUE
 	if(is_zizo(target))
-		to_chat(user, span_warning("CAN'T SACRIFICE CULTIST."))
+		to_chat(user, span_warning("不能献祭同教成员。"))
 		return TRUE
 	if(!target.mind?.key)
-		to_chat(user, span_warning("THIS ONE HAS NO SOUL."))
+		to_chat(user, span_warning("此人没有灵魂。"))
 		return TRUE
 	if(!wanted && HAS_TRAIT(target, TRAIT_LUX_RIPPED))
-		to_chat(user, span_warning("THEIR LUX IS ALREADY TORN AWAY."))
+		to_chat(user, span_warning("此人的灵辉早已被夺走。"))
 		return TRUE
 	if(istype(target, /mob/living/carbon/human/species/skeleton) || is_species(target, /datum/species/gnoll))
-		to_chat(user, span_warning("THIS RITUAL IS NOT FOR THEM."))
+		to_chat(user, span_warning("此人不适合这个仪式。"))
 		return TRUE
 	var/datum/job/J = SSjob.GetJob(target.mind?.assigned_role)
 	if(!J || (J.type in list(KING_QUEEN_ROLES)) || J.type == /datum/job/roguetown/bandit || J.type == /datum/job/roguetown/wretch)
-		to_chat(user, span_warning("THIS RITUAL IS NOT FOR THEM."))
+		to_chat(user, span_warning("此人不适合这个仪式。"))
 		return TRUE
 	if(!wanted && (target in GLOB.gate_targets))
-		to_chat(user, span_warning("THIS RITUAL IS NOT FOR THEM."))
+		to_chat(user, span_warning("此人不适合这个仪式。"))
 		return TRUE
 	if(wanted && !(target in wanted))
-		to_chat(user, span_warning("THIS RITUAL IS NOT FOR THEM."))
+		to_chat(user, span_warning("此人不适合这个仪式。"))
 		return TRUE
 	if(psydont(target))
-		to_chat(user, span_warning("SILVER REPELS THE DARK MAGICK!"))
+		to_chat(user, span_warning("白银驱散了黑魔法！"))
 		return TRUE
 	return FALSE
 
@@ -270,21 +270,21 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 /proc/zizo_bestow_alert(area/where, final)
 	for(var/mob/living/carbon/human/H in GLOB.human_list)
 		if(H.mind && H.get_skill_level(/datum/skill/magic/arcane) > 0)
-			to_chat(H, span_userdanger("Vile magick ripples out from [where.name]! Something evil has happened!"))
+			to_chat(H, span_userdanger("邪术的波动从[where.name]传来！那边出事了！"))
 			if(!is_zizo(H))
 				zizo_wonder(H, FALSE)
 	for(var/obj/item/inqhound/hound in world)
-		hound.say("REALMATIC DESTABILIZATION DETECTED AT [uppertext(where.name)]. HERETICAL ACTIVITY: LIKELY.")
+		hound.say("侦测到[uppertext(where.name)]的界域不稳。疑有异端活动。")
 	if(!final)
 		return
-	priority_announce("THE GODS WEEP. ASCENSION IS NIGH.", title = "Omen", sound = 'sound/villain/dreamer_warning.ogg')
+	priority_announce("诸神垂泪。飞升将至。", title = "凶兆", sound = 'sound/villain/dreamer_warning.ogg')
 	var/datum/particle_weather/gentle = new /datum/particle_weather/blood_rain_gentle
 	SSParticleWeather.runningWeather = gentle
 	gentle.start()
 
 /obj/structure/reality_rend
-	name = "reality rend"
-	desc = "A wound in the world."
+	name = "现实裂隙"
+	desc = "世界身上的一道伤口。"
 	icon = 'icons/obj/tesla_engine/energy_ball.dmi'
 	icon_state = "energy_ball"
 	color = "#000000"
@@ -447,7 +447,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	for(var/turf/T in turf_data)
 		T.ChangeTurf(turf_data[T], flags = CHANGETURF_IGNORE_AIR)
 	turf_data.Cut()
-	visible_message(span_danger("Lux fills the barren stone and returns lyfe to the land!"))
+	visible_message(span_danger("灵辉渗入荒石，大地重获生机！"))
 	playsound(src, 'sound/foley/breaksound.ogg', 50, TRUE)
 	return ..()
 
@@ -486,8 +486,8 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	var/obj/structure/reality_rend/target_rend
 
 /atom/movable/screen/alert/status_effect/buff/zizo_gate_pull
-	name = "UNREAL WORLD"
-	desc = "THE REALMS BLEED."
+	name = "虚幻之境"
+	desc = "诸界正在流血。"
 	icon = 'icons/effects/eldritch.dmi'
 	icon_state = "eye_pulse"
 
@@ -499,12 +499,12 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	var/obj/structure/reality_rend/rend = pull.target_rend
 	var/atom/dest = rend
 	if(GLOB.zizo_fuges.len)
-		var/choice = tgui_input_list(mob_viewer, "TRANSPORT?", "THE PATH BACK", list("Reality Rend", "Fuge"))
+		var/choice = input_zizo_display(mob_viewer, "要传送到哪里？", list("Reality Rend", "Fuge"), "归途")
 		if(!choice)
 			return
 		if(choice == "Fuge")
 			dest = GLOB.zizo_fuges[1]
-	to_chat(mob_viewer, span_notice("I AM TRANSPORTING! ANYONE I GRAB SHALL COME WITH!"))
+	to_chat(mob_viewer, span_notice("我要传送了！我抓住的人会随我同行！"))
 	var/turf/origin = get_turf(mob_viewer)
 	var/poo = new /obj/effect/temp_visual/opengate(origin, 10 SECONDS)
 	playsound(mob_viewer, 'sound/villain/littlescary2.ogg', 60, TRUE)
@@ -514,7 +514,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	if(QDELETED(dest) || QDELETED(rend) || QDELETED(mob_viewer) || !isliving(mob_viewer))
 		return
 	if(zizo_dist(mob_viewer, rend) > ZIZO_GATE_PULL_RANGE)
-		to_chat(mob_viewer, span_warning("TOO FAR!"))
+		to_chat(mob_viewer, span_warning("太远了！"))
 		return
 	var/mob/living/L = mob_viewer
 	var/mob/living/grabbed = L.pulling
@@ -531,7 +531,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 /datum/ritual/servantry/aspect
 	name = "Open Gate"
 	icon_type = /obj/item/necro_relics/necro_crystal
-	desc = "REQUIRED TO UNLOCK ASCENSION. Activate the ritual to learn the locations it must be performed. It unlocks an Aspect that grants new research for the cult. MUST BE PERFORMED 3 TIMES TO UNLOCK ASCENSION."
+	desc = "启动仪式可得知施行地点。每开启一座界门，就会释放一种神相，供教徒研究新的仪式。开启三座界门后方可飞升。"
 	is_cultist_ritual = TRUE
 	var/gate_count
 
@@ -559,16 +559,16 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 
 /proc/print_gate_sacrifice_info(mob/user)
 	refill_bestow_areas()
-	to_chat(user, span_warning("PERFORM THE RITE AT:"))
+	to_chat(user, span_warning("前往下列地点举行仪式："))
 	for(var/atype in GLOB.zizo_bestow_areas)
 		var/area/A = atype
 		to_chat(user, span_notice("- [initial(A.name)]"))
 	if(GLOB.gate_targets.len)
-		to_chat(user, span_warning("SHE HUNGERS FOR:"))
+		to_chat(user, span_warning("她渴求以下祭品："))
 		for(var/mob/living/carbon/human/H in GLOB.gate_targets)
 			to_chat(user, span_notice("- [H.real_name]"))
 	else
-		to_chat(user, span_warning("NO SUITABLE SACRIFICE CAN BE FOUND YET."))
+		to_chat(user, span_warning("暂时找不到合适的祭品。"))
 
 /turf/closed/wall/proc/zizo_collapse()
 	var/datum/effect_system/smoke_spread/dust = new
@@ -583,13 +583,13 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 		for(var/datum/mind/M in SSmapping.retainer.cultists)
 			if(M.current)
 				ADD_TRAIT(M.current, TRAIT_RESISTCOLD, "zizocultist")
-		priority_announce("Inhumen cultists afflict Rockhill with Curse of Murk!", title = "Calamity", sound = 'sound/villain/dreamer_warning.ogg')
+		priority_announce("异民教徒向岩丘降下了阴霾之咒！", title = "灾厄", sound = 'sound/villain/dreamer_warning.ogg')
 	if(choice == "STRAND")
 		SSmapping.add_world_trait(/datum/world_trait/zizo_strand, 0)
-		priority_announce("Inhumen cultists afflict Rockhill with Curse of Nightmares!", title = "Calamity", sound = 'sound/villain/dreamer_warning.ogg')
+		priority_announce("异民教徒向岩丘降下了梦魇之咒！", title = "灾厄", sound = 'sound/villain/dreamer_warning.ogg')
 	if(choice == "TOIL")
 		SSmapping.add_world_trait(/datum/world_trait/zizo_toil, 0)
-		priority_announce("Inhumen cultists afflict Rockhill with Curse of Decay!", title = "Calamity", sound = 'sound/villain/dreamer_warning.ogg')
+		priority_announce("异民教徒向岩丘降下了衰败之咒！", title = "灾厄", sound = 'sound/villain/dreamer_warning.ogg')
 		var/list/town_walls = list()
 		for(var/turf/closed/wall/W in world)
 			if(istype(get_area(W), /area/rogue/indoors/town) || istype(get_area(W), /area/rogue/outdoors/town))
@@ -617,7 +617,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 		for(var/datum/mind/M in SSmapping.retainer.cultists)
 			if(M.current)
 				ADD_TRAIT(M.current, TRAIT_NOHUNGER, "zizocultist")
-		priority_announce("Inhumen cultists afflict Rockhill with Curse of Rot!", title = "Calamity", sound = 'sound/villain/dreamer_warning.ogg')
+		priority_announce("异民教徒向岩丘降下了腐朽之咒！", title = "灾厄", sound = 'sound/villain/dreamer_warning.ogg')
 		var/list/food = list()
 		for(var/obj/item/reagent_containers/food/snacks/F in world)
 			if(F.eat_effect != /datum/status_effect/debuff/rotfood && !prob(40))
@@ -628,10 +628,10 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 			CHECK_TICK
 	if(choice == "NOISE")
 		SSmapping.add_world_trait(/datum/world_trait/zizo_noise, 0)
-		priority_announce("Inhumen cultists afflict Rockhill with Curse of Madness!", title = "Calamity", sound = 'sound/villain/dreamer_warning.ogg')
+		priority_announce("异民教徒向岩丘降下了癫狂之咒！", title = "灾厄", sound = 'sound/villain/dreamer_warning.ogg')
 	if(choice == "BLOOD")
 		SSmapping.add_world_trait(/datum/world_trait/zizo_blood, 0)
-		priority_announce("Inhumen cultists afflict Rockhill with Curse of Blood!", title = "Calamity", sound = 'sound/villain/dreamer_warning.ogg')
+		priority_announce("异民教徒向岩丘降下了鲜血之咒！", title = "灾厄", sound = 'sound/villain/dreamer_warning.ogg')
 		for(var/turf/open/water/W in world)
 			W.water_reagent = /datum/reagent/blood
 			W.water_color = "#C80000"
@@ -642,7 +642,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 		GLOB.todoverride = "night"
 		settod()
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(reset_tod_override)), 20 MINUTES)
-		priority_announce("Inhumen cultists afflict Rockhill with Curse of Darkness!", title = "Calamity", sound = 'sound/villain/dreamer_warning.ogg')
+		priority_announce("异民教徒向岩丘降下了黑暗之咒！", title = "灾厄", sound = 'sound/villain/dreamer_warning.ogg')
 		for(var/obj/machinery/light/roguestreet/L in GLOB.streetlamp_list)
 			L.break_light_tube()
 			L.burn_out()
@@ -665,20 +665,20 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 			break
 
 	if(!valid_area)
-		to_chat(user, span_warning("THIS PLACE IS NOT RIGHT. SEEK:"))
+		to_chat(user, span_warning("地点不对。去下列地方寻找："))
 		for(var/atype in GLOB.zizo_bestow_areas)
 			var/area/A = atype
 			to_chat(user, span_notice("- [initial(A.name)]"))
-		if(gate_count > 0 && tgui_alert(user, "REROLL GATE TARGETS?", "ZIZO", list("Reroll", "Cancel")) == "Reroll")
+		if(gate_count > 0 && tgui_alert(user, "重新选定界门的祭品吗？", "齐佐", list("重选", "取消")) == "重选")
 			reroll_gate_targets(gate_count)
 			print_gate_sacrifice_info(user)
 			return
 		return
 	var/list/choices = list("PITCH", "TOIL", "STRAND", "ROT", "BLOOD", "NOISE", "BITE") - GLOB.zizo_bestowed
-	var/choice = tgui_input_list(user, "CHOOSE AN ASPECT TO BRING FORTH.","ZIZO", choices)
+	var/choice = input_zizo_display(user, "选择要释放的神相。", choices)
 	if(!choice)
 		return
-	to_chat(user, span_notice("The rite begins. Remain still.<BR>Some may be alerted to your location after it is complete."))
+	to_chat(user, span_notice("仪式开始了，保持不动。<BR>完成后可能有人会察觉你的位置。"))
 	var/poo = new /obj/effect/temp_visual/opengate(center, 25 SECONDS)
 	playsound(user, 'sound/villain/littlescary.ogg', 100, TRUE)
 	if(!do_after(user, 25 SECONDS))
@@ -689,7 +689,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	GLOB.zizo_bestowed += choice
 	if(gate_count > 0)
 		zizo_calamity(choice)
-	to_chat(user, span_boldnotice("The [choice] aspect has been unleashed upon Grimoria! Its rites may now be researched."))
+	to_chat(user, span_boldnotice("[zizo_display(choice)]神相已降临格里莫里亚！现在可以研究其仪式。"))
 	user.Jitter(4)
 	gate_count++
 
@@ -697,7 +697,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 		center_requirement = /mob/living/carbon/human
 
 	if(gate_count < 3)
-		to_chat(user, span_boldnotice("Gate opened! [3 - gate_count] more to unlock Ascension!"))
+		to_chat(user, span_boldnotice("界门已开！再开启 [3 - gate_count] 座即可举行飞升仪式！"))
 	if(gate_count == 3)
 		GLOB.zizo_researchable |= /datum/ritual/fleshcrafting/ascend
 		for(var/obj/item/clothing/cloak/cultrobe/robe as anything in GLOB.cult_robes)
@@ -710,12 +710,12 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 		reroll_gate_targets(gate_count)
 
 	if(gate_count == 1)
-		to_chat(user, span_userdanger("SHE DEMANDS A SACRIFICE FOR THE NEXT GATE."))
+		to_chat(user, span_userdanger("想开启下一座界门，就得向她献上祭品。"))
 		print_gate_sacrifice_info(user)
 		GLOB.zizo_researchable |= /datum/ritual/transmutation/summonfuge
 		if(user.mind)
 			user.mind.zizo_researched |= /datum/ritual/transmutation/summonfuge
-			to_chat(user, span_boldnotice("I CAN NOW TRANSMUTE A FUGE."))
+			to_chat(user, span_boldnotice("我如今可以炼成异界织机了。"))
 
 	if(target && !is_zizo(target))
 		absorb_lux(target, get_turf(target), FALSE)
@@ -753,21 +753,21 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	if(!owner_ref)
 		for(var/obj/effect/proc_holder/spell/self/recall_bound/old in H.mind?.spell_list)
 			if(!QDELETED(old.weapon))
-				to_chat(H, span_danger("[uppertext(weapon)] REFUSES ME. I AM ALREADY BOUND TO ANOTHER!"))
+				to_chat(H, span_danger("[uppertext(weapon)]排斥我。我已经与另一把武器绑定了！"))
 				H.dropItemToGround(weapon)
 				return
 		owner_ref = WEAKREF(H)
 		if(skill_path)
 			H.adjust_skillrank_up_to(skill_path, SKILL_LEVEL_MASTER)
-		to_chat(H, span_danger("I feel [weapon] bind itself to me!"))
+		to_chat(H, span_danger("我感觉[weapon]与我结下了契约！"))
 		var/obj/effect/proc_holder/spell/self/recall_bound/recall = new
 		recall.weapon = weapon
-		recall.name = "Recall [weapon.name]"
+		recall.name = "召回[weapon.name]"
 		H.mind?.AddSpell(recall)
 		return
 	if(owner_ref.resolve() == H)
 		return
-	to_chat(H, span_danger("[uppertext(weapon)] HATES ME!"))
+	to_chat(H, span_danger("[uppertext(weapon)]憎恶我！"))
 	H.dropItemToGround(weapon)
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/kris/zizo/conjured
@@ -777,11 +777,11 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	associated_skill = /datum/skill/combat/arcyne
 
 /datum/action/cooldown/spell/conjure_arcyne_ward/zizo
-	name = "Inhumen Ward"
-	desc = "Conjure an inhumen ward - an upgraded arcyne ward hardened with dark magic. \
-	This ward is entirely invisible until damaged, unlike other wards. 400 integrity. \
-	Otherwise functions as a standard arcyne ward - yields coverage to real armor, does not regenerate. \
-	Cast again to dismiss. Cooldown begins when dismissed or destroyed."
+	name = "异民护盾"
+	desc = "以黑魔法加固奥术护盾。\
+	护盾在受击前完全隐形，耐久为 400。\
+	与普通奥术护盾一样，已穿戴护甲的部位优先由护甲防护，护盾无法自行修复。\
+	再次施法可解除护盾。护盾解除或被击碎后开始冷却。"
 	button_icon = 'icons/mob/actions/zizomiracles.dmi'
 	button_icon_state = "ZIZO"
 	source_aspect = null
@@ -793,13 +793,13 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 /datum/action/cooldown/spell/conjure_arcyne_ward/zizo/before_cast(atom/cast_on)
 	var/mob/living/carbon/human/H = owner
 	if((!conjured_ward || QDELETED(conjured_ward)) && H.skin_armor)
-		to_chat(H, span_warning("Already warded!"))
+		to_chat(H, span_warning("已有护盾！"))
 		return SPELL_CANCEL_CAST
 	return ..()
 
 /obj/item/clothing/suit/roguetown/armor/manual/arcyne_ward/zizo
-	name = "inhumen ward"
-	desc = "An arcyne ward hardened with dark magic."
+	name = "异民护盾"
+	desc = "以黑魔法加固的奥术护盾。"
 	arcyne_armor_tier = ARCYNE_WARD_TIER_GREATER + 1
 	armor = ARMOR_BRIGANDINE
 	max_integrity = 400
@@ -823,8 +823,8 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	return ..()
 
 /datum/action/cooldown/spell/form_blade/avantyne
-	name = "Avantyne Blade"
-	desc = "Conjure an avantyne dagger or sword. Cycle the form with Shift+G. Cast again to dispel it."
+	name = "阿凡泰因之刃"
+	desc = "召出阿凡泰因匕首或剑。按 Shift+G 切换形态，再次施法可将其驱散。"
 	button_icon = 'icons/mob/actions/zizomiracles.dmi'
 	button_icon_state = "ZIZO"
 	attunement_school = null
@@ -838,21 +838,21 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	ignore_armor_penalty = TRUE
 	spell_requirements = SPELL_REQUIRES_HUMAN
 	forms = list(
-		list("label" = "Dagger", "weapon" = /obj/item/rogueweapon/huntingknife/idagger/steel/kris/zizo/conjured),
-		list("label" = "Sword", "weapon" = /obj/item/rogueweapon/sword/long/zizo/conjured),
+		list("label" = "匕首", "weapon" = /obj/item/rogueweapon/huntingknife/idagger/steel/kris/zizo/conjured),
+		list("label" = "剑", "weapon" = /obj/item/rogueweapon/sword/long/zizo/conjured),
 	)
 
 /datum/action/cooldown/spell/form_blade/avantyne/cast(atom/cast_on)
 	if(QDELETED(conjured_weapon))
 		return ..()
-	conjured_weapon.visible_message(span_warning("[conjured_weapon] crumbles away!"))
+	conjured_weapon.visible_message(span_warning("[conjured_weapon]碎裂消散了！"))
 	qdel(conjured_weapon)
 	conjured_weapon = null
 	return TRUE
 
 /obj/effect/proc_holder/spell/self/recall_bound
-	name = "Recall Weapon"
-	desc = "Call your bound weapon to your hand."
+	name = "召回武器"
+	desc = "将绑定的武器召回手中。"
 	overlay_icon = 'icons/mob/actions/zizomiracles.dmi'
 	action_icon = 'icons/mob/actions/zizomiracles.dmi'
 	overlay_state = "ZIZO"
@@ -863,11 +863,11 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 /obj/effect/proc_holder/spell/self/recall_bound/cast(list/targets, mob/user = usr)
 	. = ..()
 	if(QDELETED(weapon))
-		to_chat(user, span_warning("MY WEAPON IS GONE."))
+		to_chat(user, span_warning("我的武器不见了。"))
 		revert_cast()
 		return FALSE
 	if(weapon in user.held_items)
-		to_chat(user, span_warning("I'M ALREADY HOLDING IT."))
+		to_chat(user, span_warning("它已经在我手里了。"))
 		revert_cast()
 		return FALSE
 	var/obj/item/bodypart/part = weapon.loc
@@ -877,10 +877,10 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 		var/mob/M = weapon.loc
 		M.dropItemToGround(weapon)
 	weapon.forceMove(get_turf(weapon))
-	weapon.visible_message(span_warning("[weapon] suddenly disappears!"))
+	weapon.visible_message(span_warning("[weapon]突然消失了！"))
 	if(!user.put_in_hands(weapon))
 		weapon.forceMove(user.drop_location())
-	user.visible_message(span_warning("[weapon] suddenly appears in [user]'s hand!"))
+	user.visible_message(span_warning("[weapon]突然出现在[user]手中！"))
 	return TRUE
 
 /datum/intent/dagger/thrust/cult
@@ -896,7 +896,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	penfactor = PEN_BSTEEL
 
 /obj/item/rogueweapon/sword/long/noise
-	name = "madman blade"
+	name = "狂人之刃"
 	desc = ""
 	icon = 'icons/roguetown/cult/cultweapons64.dmi'
 	icon_state = "hagsword"
@@ -920,8 +920,8 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	return ..()
 
 /datum/special_intent/madman_delusion
-	name = "Cruelty"
-	desc = "Induce a maddened state in the foe. It drives them to commit unspeakable violence against ally and foe alike."
+	name = "暴虐"
+	desc = "使敌人陷入疯狂，不分敌我地痛下杀手。"
 	tile_coordinates = list(list(0,0))
 	use_clickloc = TRUE
 	respect_adjacency = FALSE
@@ -949,8 +949,8 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	var/inactive_intents = list()
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/blood
-	name = "slave knife"
-	desc = "A blade wielded by blood-pit slaves in the chaotic age after PSYDON's death. This one is permanently wet with blood."
+	name = "奴隶之刃"
+	desc = "普赛顿死后的乱世中，血坑里的奴隶用过这样的刀。刀上的血从未干过。"
 	icon = 'icons/roguetown/cult/cultweapons32.dmi'
 	icon_state = "graggardagger"
 	sheathe_icon = "graggardagger"
@@ -967,8 +967,8 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	AddComponent(/datum/component/soulbound_weapon, /datum/skill/combat/arcyne)
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/pitch
-	name = "astrata-touched dagger"
-	desc = "This dagger once pierced the Sun Queen's heart."
+	name = "阿斯特拉塔之触"
+	desc = "这柄匕首曾刺穿太阳女王的心脏。"
 	icon = 'icons/roguetown/cult/cultweapons32.dmi'
 	icon_state = "fdagger"
 	sheathe_icon = "fdagger"
@@ -985,14 +985,14 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	AddComponent(/datum/component/soulbound_weapon, /datum/skill/combat/arcyne)
 
 /datum/special_intent/ignite_dagger
-	name = "Ignite Dagger"
-	desc = "Channel the power of Pitch within the dagger to heat it to an incredible degree."
+	name = "点燃匕首"
+	desc = "引动匕首中的漆黑之力，使刀刃变得灼热无比。"
 	cooldown = 60 SECONDS
 	stamcost = 25
 
 /datum/special_intent/ignite_dagger/on_create()
 	. = ..()
-	howner.visible_message(span_warning("[iparent]'s blade begins to glow intensely in [howner]'s grasp!"))
+	howner.visible_message(span_warning("[howner]手中的[iparent]亮起刺目的光！"))
 	var/obj/item/rogueweapon/huntingknife/idagger/steel/W = iparent
 	active_timer = addtimer(CALLBACK(src, PROC_REF(effect_expire)), 30 SECONDS, TIMER_STOPPABLE)
 	W.damtype = BURN
@@ -1007,7 +1007,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	playsound(W.loc, 'sound/items/firelight.ogg', 100)
 
 /datum/special_intent/ignite_dagger/proc/effect_expire()
-	howner.visible_message(span_warning("[iparent]'s blade cools down!"))
+	howner.visible_message(span_warning("[iparent]的刀刃冷却了！"))
 	var/obj/item/rogueweapon/huntingknife/idagger/steel/W = iparent
 	W.damtype = BRUTE
 	W.force += 15
@@ -1019,8 +1019,8 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	playsound(W.loc, 'sound/items/firesnuff.ogg', 100)
 
 /obj/item/rogueweapon/sword/sabre/rot
-	name = "mortal blade"
-	desc = "Once a righteous blade wielded by a fair maiden. No longer."
+	name = "殒命之刃"
+	desc = "这曾是一位美貌少女手中的正义之刃。如今早已变了模样。"
 	icon = 'icons/roguetown/cult/cultweapons32.dmi'
 	icon_state = "poisonsabre"
 	force = 30
@@ -1040,14 +1040,14 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	AddComponent(/datum/component/soulbound_weapon, /datum/skill/combat/arcyne)
 
 /datum/special_intent/coat_blade
-	name = "Coat Blade"
-	desc = "Channel the power of Rot within this sabre to render it as toxic as it once was."
+	name = "刀刃淬毒"
+	desc = "引出军刀中的腐朽之力，使它重染昔日的剧毒。"
 	cooldown = 120 SECONDS
 	stamcost = 25
 
 /datum/special_intent/coat_blade/on_create()
 	. = ..()
-	howner.visible_message(span_warning("[iparent]'s blade forms a solid layer of poison in [howner]'s grasp!"))
+	howner.visible_message(span_warning("[howner]手中的[iparent]刃上凝出一层毒壳！"))
 	var/obj/item/rogueweapon/sword/sabre/rot/W = iparent
 	active_timer = addtimer(CALLBACK(src, PROC_REF(effect_expire)), 30 SECONDS, TIMER_STOPPABLE)
 	W.damtype = TOX
@@ -1061,7 +1061,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	playsound(W.loc, 'sound/misc/lava_death.ogg', 100)
 
 /datum/special_intent/coat_blade/proc/effect_expire()
-	howner.visible_message(span_warning("[iparent]'s coating of toxins falls to the dirt!"))
+	howner.visible_message(span_warning("[iparent]上的毒壳剥落，掉在地上！"))
 	var/obj/item/rogueweapon/sword/sabre/rot/W = iparent
 	W.damtype = BRUTE
 	W.force += 22
@@ -1072,8 +1072,8 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	playsound(W.loc, 'sound/magic/bladescrape.ogg', 100)
 
 /obj/item/rogueweapon/mace/maul/toil
-	name = "forgotten tool"
-	desc = "A wrench used by an artificer-thief in the the ancient age of Aeon."
+	name = "遗忘之械"
+	desc = "远古永世之时，一名以盗窃为生的工匠用过的扳手。"
 	icon_state = "bronzewrench"
 	icon = 'icons/roguetown/cult/cultweapons64.dmi'
 	force = 25
@@ -1122,8 +1122,8 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	user.mind.RemoveSpell(/obj/effect/proc_holder/spell/self/scrap_turrets)
 
 /obj/effect/proc_holder/spell/self/direct_turrets
-	name = "Direct Turrets"
-	desc = "Target a specific person with your turrets!"
+	name = "指定炮塔目标"
+	desc = "命令炮塔瞄准指定的人。"
 	recharge_time = 10 SECONDS
 	chargedloop = null
 
@@ -1131,17 +1131,17 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	. = ..()
 	var/obj/item/rogueweapon/mace/maul/toil/W = user.get_active_held_item()
 	if(!istype(W))
-		to_chat(user, span_warning("I must hold the Tool."))
+		to_chat(user, span_warning("我得拿着遗忘之械。"))
 		revert_cast()
 		return FALSE
 	var/list/possible = list()
 	for(var/mob/living/carbon/human/H in oview(7, user))
 		possible += H
 	if(!length(possible))
-		to_chat(user, span_warning("No one detected."))
+		to_chat(user, span_warning("没有发现目标。"))
 		revert_cast()
 		return FALSE
-	var/mob/living/carbon/human/target = input(user, "TARGET", "ZIZO") as null|anything in possible
+	var/mob/living/carbon/human/target = input(user, "选择目标", "齐佐") as null|anything in possible
 	if(!target)
 		revert_cast()
 		return FALSE
@@ -1150,12 +1150,12 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 			W.turrets -= existing
 			continue
 		existing.forced_target = target
-	to_chat(user, span_notice("TURRET LOCK: [target]."))
+	to_chat(user, span_notice("炮塔已锁定[target]。"))
 	return TRUE
 
 /obj/effect/proc_holder/spell/self/scrap_turrets
-	name = "Scrap Turrets"
-	desc = "Disassemble all sentries."
+	name = "拆除炮塔"
+	desc = "拆解所有哨戒炮塔。"
 	recharge_time = 5 SECONDS
 	chargedloop = null
 
@@ -1163,18 +1163,18 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	. = ..()
 	var/obj/item/rogueweapon/mace/maul/toil/W = user.get_active_held_item()
 	if(!istype(W))
-		to_chat(user, span_warning("I must hold the Tool."))
+		to_chat(user, span_warning("我得拿着遗忘之械。"))
 		revert_cast()
 		return FALSE
 	for(var/obj/structure/toilturret/existing as anything in W.turrets.Copy())
 		qdel(existing)
 	W.turrets = list()
-	to_chat(user, span_notice("My sentries have disassembled."))
+	to_chat(user, span_notice("我的哨戒炮塔都拆掉了。"))
 	return TRUE
 
 /datum/action/cooldown/spell/deploy_turret
-	name = "Deploy Turret"
-	desc = "Buildin' a Sentry."
+	name = "部署炮塔"
+	desc = "架起一座哨戒炮塔。"
 	button_icon = 'icons/mob/actions/zizomiracles.dmi'
 	button_icon_state = "toil"
 	click_to_activate = TRUE
@@ -1190,25 +1190,25 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	. = ..()
 	var/obj/item/rogueweapon/mace/maul/toil/W = owner.get_active_held_item()
 	if(!istype(W))
-		to_chat(owner, span_warning("I must hold the Tool."))
+		to_chat(owner, span_warning("我得拿着遗忘之械。"))
 		return FALSE
 	for(var/obj/structure/toilturret/existing as anything in W.turrets.Copy())
 		if(QDELETED(existing))
 			W.turrets -= existing
 	if(length(W.turrets) >= W.max_turrets)
-		to_chat(owner, span_warning("Too many sentries!"))
+		to_chat(owner, span_warning("炮塔数量已达上限！"))
 		return FALSE
 	var/turf/T = get_turf(cast_on)
 	if(!T || T.density || isopenspace(T))
-		to_chat(owner, span_warning("No room!"))
+		to_chat(owner, span_warning("这里放不下！"))
 		return FALSE
 	W.turrets += new /obj/structure/toilturret(T, owner, W)
-	to_chat(owner, span_notice("The turret whirs to life!"))
+	to_chat(owner, span_notice("炮塔嗡的一声启动了！"))
 	return TRUE
 
 /obj/structure/toilturret
-	name = "cog turret"
-	desc = "There's a horrible familiarity to its shape. You swore you haven't seen it before."
+	name = "齿轮炮塔"
+	desc = "你敢肯定从未见过这东西，它的轮廓却熟悉得令人心悸。"
 	icon = 'icons/obj/clockwork_objects.dmi'
 	icon_state = "ocular_warden"
 	density = TRUE
@@ -1265,7 +1265,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	if(!target)
 		return
 	cooldown = world.time + 20
-	visible_message(span_danger("[src] takes aim at [target]!"))
+	visible_message(span_danger("[src]瞄准了[target]！"))
 	var/turf/startloc = get_turf(src)
 	var/obj/projectile/P = new /obj/projectile/toilbolt(startloc)
 	playsound(src, 'sound/combat/hits/onmetal/metalimpact (1).ogg', 60, TRUE)
@@ -1278,7 +1278,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	P.fire()
 
 /obj/projectile/toilbolt
-	name = "bolt"
+	name = "弩矢"
 	icon = 'icons/roguetown/weapons/ammo.dmi'
 	icon_state = "musketball_proj"
 	damage = 15
@@ -1299,7 +1299,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 				return list("shrink" = 0.6,"sx" = 5,"sy" = -3,"nx" = -5,"ny" = -2,"wx" = -5,"wy" = -1,"ex" = 3,"ey" = -2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 7,"sturn" = -7,"wturn" = 16,"eturn" = -22,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
 
 /datum/intent/dream_beam
-	name = "dream beam"
+	name = "梦境射线"
 	blade_class = null
 	icon_state = "inshoot"
 	tranged = TRUE
@@ -1313,7 +1313,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	chargedloop = /datum/looping_sound/invokegen
 
 /datum/intent/dream_fling
-	name = "fling"
+	name = "抛掷"
 	blade_class = null
 	icon_state = "inmove"
 	tranged = TRUE
@@ -1331,7 +1331,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	return 0
 
 /obj/projectile/magic/dream_beam
-	name = "dream beam"
+	name = "梦境射线"
 	tracer_type = /obj/effect/projectile/tracer/bloodsteal
 	muzzle_type = null
 	impact_type = null
@@ -1356,7 +1356,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	if(ismob(target))
 		var/mob/M = target
 		if(M.anti_magic_check())
-			visible_message(span_warning("[src] fizzles on contact with [target]!"))
+			visible_message(span_warning("[src]一碰到[target]便消散了！"))
 			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
 			qdel(src)
 			return BULLET_ACT_BLOCK
@@ -1369,7 +1369,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 		qdel(src)
 
 /obj/projectile/energy/dream_shroom
-	name = "dream spore"
+	name = "梦境孢子"
 	icon = 'icons/obj/magic_projectiles.dmi'
 	icon_state = "arcyne_bolt"
 	guard_deflectable = TRUE
@@ -1390,8 +1390,8 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	QDEL_IN(shroom, 2 MINUTES)
 
 /datum/special_intent/dream_shroom
-	name = "Dream Shroom"
-	desc = "Shoot out a spore of Zizo's Bane!"
+	name = "梦菇"
+	desc = "射出一枚齐佐之灾的孢子！"
 	use_clickloc = TRUE
 	range = 7
 	cooldown = 30 SECONDS
@@ -1406,8 +1406,8 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	spore.fire()
 
 /obj/item/rogueweapon/zizowand
-	name = "witchwood"
-	desc = "A gift from a snow elf queen to an almighty wizard. Once used to quell the sea itself into slumber."
+	name = "巫木"
+	desc = "雪精灵女王送给一位大能巫师的礼物。它曾让翻腾的大海陷入沉睡。"
 	icon = 'icons/roguetown/cult/cultweapons32.dmi'
 	icon_state = "zizowand"
 	force = 15
@@ -1490,8 +1490,8 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	force_wielded = 30
 	possible_item_intents = list(SPEAR_BASH)
 	gripped_intents = list(/datum/intent/spear/cut/scythe, SPEAR_BASH, MACE_STRIKE)
-	name = "snow scythe"
-	desc = "An oversized scythe used to harvest giant mushrooms. Born to underdark farmers, she explored every nook and cranny of the ancient caverns."
+	name = "雪镰"
+	desc = "一柄收割巨菇的大镰刀。它的主人出身于幽暗地域的农家，曾走遍古老洞窟的每个角落。"
 	icon_state = "silverpeasantscythe"
 	icon = 'icons/roguetown/cult/cultweapons64.dmi'
 	pixel_y = -16
@@ -1520,8 +1520,8 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	AddComponent(/datum/component/soulbound_weapon, /datum/skill/combat/arcyne)
 
 /datum/special_intent/scythe_cone
-	name = "Snow Stance"
-	desc = "Use a strong attack to coat the earth with running frost."
+	name = "霜雪架势"
+	desc = "以重击令冰霜蔓过地面。"
 	tile_coordinates = list(
 		list(0,0),
 		list(-1,1), list(0,1), list(1,1),
@@ -1553,8 +1553,8 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 // STRAND
 
 /obj/effect/proc_holder/spell/invoked/dream_jaunt
-	name = "Dream Jaunt"
-	desc = "Bring yourself and whoever you hold into the dream."
+	name = "梦游"
+	desc = "带着你抓住的人一同进入梦境。"
 	overlay_icon = 'icons/mob/actions/zizomiracles.dmi'
 	action_icon = 'icons/mob/actions/zizomiracles.dmi'
 	overlay_state = "jaunt"
@@ -1585,7 +1585,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	if(!safe_turfs.len || !do_teleport(target, pick(safe_turfs)))
 		return
 	GLOB.players_in_dream |= target
-	origin.visible_message(span_danger("[target] vanishes!"))
+	origin.visible_message(span_danger("[target]消失了！"))
 	playsound(origin, 'sound/misc/area.ogg')
 	target.apply_status_effect(status_type, origin)
 
@@ -1619,7 +1619,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 /datum/ritual/strand/dream_jaunt
 	name = "Dream Jaunt"
 	icon_type = /mob/living/simple_animal/hostile/rogue/dreamfiend/nightmare
-	desc = "Learn a spell to teleport yourself and whoever you're holding into a pocket dimension for 30 seconds."
+	desc = "学会将自己和抓住的人传送到一处独立空间，停留 30 秒。"
 	passive = TRUE
 	research_cost = 3
 
@@ -1631,7 +1631,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	name = "Passage"
 	icon_type = /obj/effect/decal/cleanable/sigil
 	node_state = "strand2"
-	desc = "Perform a rite to create a teleportation sigil. Activating it will teleport everything on the sigil to another teleportation sigil."
+	desc = "举行仪式绘出传送符印。激活后，符印上的一切都会被传送至与之相连的另一枚符印。"
 	center_requirement = /mob/living/carbon/human
 
 /datum/ritual/strand/strandsend/invoke(mob/living/user, turf/center)
@@ -1644,13 +1644,13 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 		qdel(poo)
 		return
 	S.set_sigil_type("Portal")
-	to_chat(user, span_notice("AN EYE IS A PASSAGE."))
+	to_chat(user, span_notice("一只眼，就是一条通道。"))
 	S.choose_link(user)
 
 /datum/ritual/strand/strandrecall
 	name = "Curse of Recall"
 	icon_type = /obj/item/natural/worms/leech
-	desc = "Teleport yourself and your target into a pocket dimension for 3 minutes. Anyone you or your target grabs is brought with. Requires a leech that fed from your target."
+	desc = "将你和目标传送到一处独立空间，停留 3 分钟。双方抓住的人也会同行。需要一条吸过目标血液的水蛭。"
 	center_requirement = /obj/item/natural/worms/leech
 	keep_center = TRUE
 
@@ -1660,11 +1660,11 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 		return
 	var/mob/living/carbon/human/victim = remnant.fed_from
 	if(!curse_target(victim))
-		to_chat(user, span_warning("THEY ARE PROTECTED FROM FURTHER CURSES."))
+		to_chat(user, span_warning("目标受到了保护，无法再施加诅咒。"))
 		return
 	qdel(remnant)
-	to_chat(user, span_notice("ALL MEN OBEY THE DREAMCALL. I HAVE 1 MINUTE TO PREPARE. ANYONE I AM GRABBING WILL BE BROUGHT WITH ME."))
-	to_chat(victim, span_userdanger("I FEEL SOMETHING HORRIBLE COMING. I HAVE 1 MINUTE TO PREPARE. ANYONE I AM GRABBING WILL BE BROUGHT WITH ME."))
+	to_chat(user, span_notice("无人能抗拒梦的召唤。我有 1 分钟准备，届时我抓住的人将随我同行。"))
+	to_chat(victim, span_userdanger("我感觉有什么可怕的东西正在逼近。我有 1 分钟准备，届时我抓住的人将随我同行。"))
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(dreamcall), user, victim), 1 MINUTES)
 
 /proc/dreamcall(mob/living/user, mob/living/victim)
@@ -1678,8 +1678,8 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 // TOIL
 
 /obj/effect/proc_holder/spell/invoked/projectile/toil_mend
-	name = "Mend"
-	desc = "Shoot mending lightning that heals the target and fixes their equipment."
+	name = "修复术"
+	desc = "射出一道电光，治疗目标并修复其装备。"
 	clothes_req = FALSE
 	overlay_icon = 'icons/mob/actions/zizomiracles.dmi'
 	action_icon = 'icons/mob/actions/zizomiracles.dmi'
@@ -1692,7 +1692,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	chargedloop = null
 
 /obj/projectile/magic/mendbolt
-	name = "bolt of mending"
+	name = "愈合电光"
 	tracer_type = /obj/effect/projectile/tracer/disabler
 	color = "#ffb347"
 	hitscan_light_color_override = "#ffb347"
@@ -1712,7 +1712,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	if(ismob(target) && isliving(target))
 		var/mob/living/L = target
 		if(L.anti_magic_check())
-			visible_message(span_warning("[src] fizzles on contact with [target]!"))
+			visible_message(span_warning("[src]一碰到[target]便消散了！"))
 			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
 			qdel(src)
 			return BULLET_ACT_BLOCK
@@ -1721,14 +1721,14 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 			var/mob/living/carbon/human/H = L
 			for(var/obj/item/I in H.get_equipped_items())
 				I.obj_integrity = min(I.obj_integrity + (I.max_integrity * 0.2), I.max_integrity)
-		to_chat(L, span_notice("I AM MENDED!"))
+		to_chat(L, span_notice("我的伤口愈合了！"))
 		ysis_effect(L, 4)
 	qdel(src)
 
 /datum/ritual/toil/progress
 	name = "Mend"
 	icon_type = /obj/effect/proc_holder/spell/invoked/projectile/toil_mend
-	desc = "Learn a spell that heals others and repairs their equipment. Does not work on yourself."
+	desc = "学会治疗他人并修复其装备的法术。无法对自己使用。"
 	passive = TRUE
 	research_cost = 3
 
@@ -1739,7 +1739,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 /datum/ritual/toil/summonysis
 	name = "Summon Ysis"
 	icon_type = /obj/structure/ysis
-	desc = "Summon a machine that heals and mends the equipment of anyone who activates it."
+	desc = "召来一台愈合仪，任何人都能启动它来治疗自己并修复装备。"
 	center_requirement = /obj/item/bedsheet
 	research_cost = 5
 
@@ -1748,7 +1748,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	S.set_up(1, 1, center)
 	S.start()
 	new /obj/structure/ysis(center)
-	to_chat(user, span_notice("Erectin' a Ysis."))
+	to_chat(user, span_notice("架起愈合仪。"))
 
 /proc/ysis_effect(atom/movable/target, healings)
 	var/datum/effect_system/spark_spread/S = new(target)
@@ -1761,8 +1761,8 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	addtimer(CALLBACK(target, TYPE_PROC_REF(/atom/movable, remove_filter), "ysis_glow"), 2 SECONDS)
 
 /obj/structure/ysis
-	name = "Ysis"
-	desc = "It feels good to touch!"
+	name = "愈合仪"
+	desc = "摸上去很舒服！"
 	icon = 'icons/obj/clockwork_objects.dmi'
 	icon_state = "interdiction_lens"
 	density = TRUE
@@ -1775,7 +1775,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 /obj/structure/ysis/examine(mob/user)
 	. = ..()
 	if(world.time < ready_time)
-		. += span_warning("WAIT [round((ready_time - world.time) / 10)] SECONDS.")
+		. += span_warning("请等待 [round((ready_time - world.time) / 10)] 秒。")
 
 /obj/structure/ysis/update_icon()
 	. = ..()
@@ -1793,13 +1793,13 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	if(!ishuman(user) || user.stat == DEAD)
 		return
 	if(active)
-		to_chat(user, span_warning("[src] is already working on someone."))
+		to_chat(user, span_warning("[src]正在给别人治疗。"))
 		return
 	if(world.time < ready_time)
-		to_chat(user, span_warning("[src] is recovering!"))
+		to_chat(user, span_warning("[src]尚未恢复！"))
 		return
 	var/mob/living/carbon/human/H = user
-	to_chat(H, span_notice("THE YSIS WORKS UPON ME..."))
+	to_chat(H, span_notice("愈合仪开始为我治疗……"))
 	active = TRUE
 	update_icon()
 	set_light(3, 1, 1.5, l_color = "#ffb347")
@@ -1816,7 +1816,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 		heal.duration = world.time + 5 SECONDS
 	for(var/obj/item/I in H.get_equipped_items())
 		I.obj_integrity = min(I.obj_integrity + (I.max_integrity * 0.2), I.max_integrity)
-	to_chat(H, span_notice("YSIS MENDS ME."))
+	to_chat(H, span_notice("愈合仪治好了我。"))
 	playsound(src, 'sound/magic/lightning.ogg', 60, TRUE)
 	ysis_effect(H, 8)
 	flick("interdiction_lens_discharged", src)
@@ -1828,7 +1828,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 /datum/ritual/toil/fulmenor
 	name = "Curse of Fulmenor"
 	icon_type = /obj/item/natural/worms/leech
-	desc = "Transform the target into a horrific, yet extremely strong and regenerative monster. It attacks people at random. Lasts one minute. Requires a leech that fed from your target."
+	desc = "让目标变成力大无穷、能够再生的怪物，随机袭击他人，持续 1 分钟。需要一条吸过目标血液的水蛭。"
 	center_requirement = /obj/item/natural/worms/leech
 	keep_center = TRUE
 	research_cost = 5
@@ -1839,13 +1839,13 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 		return
 	var/mob/living/carbon/human/victim = remnant.fed_from
 	if(!curse_target(victim))
-		to_chat(user, span_warning("THEY ARE PROTECTED FROM FURTHER CURSES."))
+		to_chat(user, span_warning("目标受到了保护，无法再施加诅咒。"))
 		return
 	qdel(remnant)
 	victim.apply_status_effect(/datum/status_effect/fulmenor)
 	victim.emote("scream")
-	to_chat(victim, span_userdanger("WHAT A HORRIBLE NITE TO HAVE A CURSE."))
-	to_chat(user, span_notice("THEY SHALL WRECK HAVOC."))
+	to_chat(victim, span_userdanger("偏偏在这可怕的夜里遭了诅咒。"))
+	to_chat(user, span_notice("就让这怪物大闹一场吧。"))
 
 /datum/status_effect/fulmenor
 	id = "fulmenor"
@@ -1861,7 +1861,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	ADD_TRAIT(H, TRAIT_MONSTROUS, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_SILVER_WEAK, "fulmenor")
 	H.enter_frenzymod()
-	to_chat(H, span_notice("I WANT TO HURT PEOPLE!"))
+	to_chat(H, span_notice("我想伤人！"))
 	return TRUE
 
 /datum/status_effect/fulmenor/tick()
@@ -1876,14 +1876,14 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	H.change_stat(STATKEY_CON, -6)
 	REMOVE_TRAIT(H, TRAIT_MONSTROUS, TRAIT_GENERIC)
 	REMOVE_TRAIT(H, TRAIT_SILVER_WEAK, "fulmenor")
-	to_chat(H, span_notice("THE MONSTROUS HUNGER FADES FROM ME."))
+	to_chat(H, span_notice("那股怪物般的饥渴消退了。"))
 
 // BITE
 
 /datum/ritual/bite/necromancy
 	name = "Necromancy"
 	icon_type = /obj/item/natural/bone
-	desc = "Learn necromancy spells and the ability to use dark crystals to summon sentient skeletons."
+	desc = "习得死灵法术，并学会用黑暗水晶召唤有自主意识的骷髅。"
 	passive = TRUE
 	spells = list(/obj/effect/proc_holder/spell/invoked/gravemark, /obj/effect/proc_holder/spell/invoked/command_undead, /obj/effect/proc_holder/spell/invoked/raise_undead_formation/necromancer, /datum/action/cooldown/spell/bonechill, /datum/action/cooldown/spell/bonemend)
 
@@ -1895,14 +1895,14 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 /datum/ritual/bite/resurrection
 	name = "Resurrection"
 	icon_type = /obj/item/organ/heart
-	desc = "Place the target on the middle sigil to revive them. Requires a dark crystal on the north sigil, or else they come back as a Greater Deadite. Greater deadites are intelligent and capable of using items and weaponry, but suffer all the other drawbacks of being a deadite. They are not guaranteed to be loyal."
+	desc = "将死者置于中央符印，在北侧符印放一枚黑暗水晶，即可将其复活。缺少水晶时，死者将化作高阶尸鬼。它们有神智，能使用物品和武器，但仍有尸鬼的一切弱点，也未必忠于你。"
 	center_requirement = /mob/living/carbon/human
 	research_cost = 5
 
 /datum/ritual/bite/resurrection/invoke(mob/living/user, turf/center)
 	var/mob/living/carbon/human/corpse = locate() in center.contents
 	if(!corpse || corpse.stat != DEAD || !corpse.mind)
-		to_chat(user, span_warning("YOU NEED A CORPSE."))
+		to_chat(user, span_warning("你需要一具尸体。"))
 		return
 	playsound(get_turf(corpse), 'sound/magic/magnet.ogg', 80, TRUE)
 	var/obj/item/necro_relics/necro_crystal/crystal = locate() in get_step(center, NORTH)
@@ -1910,7 +1910,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 		qdel(crystal)
 		corpse.revive(full_heal = TRUE, admin_revive = TRUE)
 		ADD_TRAIT(corpse, TRAIT_ROTMAN, TRAIT_GENERIC)
-		corpse.visible_message(span_notice("[corpse] is returned to lyfe!"))
+		corpse.visible_message(span_notice("[corpse]死而复生了！"))
 		return
 	corpse.set_blood_volume(BLOOD_VOLUME_NORMAL)
 	corpse.setOxyLoss(0, updating_health = FALSE, forced = TRUE)
@@ -1925,12 +1925,12 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	REMOVE_TRAIT(corpse, TRAIT_CHUNKYFINGERS, "/datum/antagonist/zombie")
 	REMOVE_TRAIT(corpse, TRAIT_ZOMBIE_SPEECH, "/datum/antagonist/zombie")
 	corpse.emote("scream")
-	to_chat(corpse, span_userdanger("I FEEL MORE COMPETENT THAN THE AVERAGE DEADITE."))
+	to_chat(corpse, span_userdanger("我觉得自己比寻常尸鬼更有能耐。"))
 
 /datum/ritual/bite/thanatophobia
 	name = "Curse of Thanatophobia"
 	icon_type = /obj/item/natural/worms/leech
-	desc = "The target becomes extremely afraid of skeletons and corpses. Lasts 10 minutes. Requires a leech that fed from your target."
+	desc = "使目标极度畏惧骷髅和尸体，持续 10 分钟。需要一条吸过目标血液的水蛭。"
 	center_requirement = /obj/item/natural/worms/leech
 	keep_center = TRUE
 	research_cost = 5
@@ -1940,13 +1940,13 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	if(!remnant)
 		return
 	if(!curse_target(remnant.fed_from))
-		to_chat(user, span_warning("THEY ARE PROTECTED FROM FURTHER CURSES."))
+		to_chat(user, span_warning("目标受到了保护，无法再施加诅咒。"))
 		return
 	remnant.fed_from.apply_status_effect(/datum/status_effect/debuff/thanatophobia)
-	to_chat(remnant.fed_from, span_danger("WHAT A HORRIBLE NITE TO HAVE A CURSE."))
+	to_chat(remnant.fed_from, span_danger("偏偏在这可怕的夜里遭了诅咒。"))
 	remnant.fed_from.emote("scream")
 	qdel(remnant)
-	to_chat(user, span_notice("THEY SHALL FEAR MY DOMAIN!"))
+	to_chat(user, span_notice("他们必将畏惧我的领域！"))
 
 /datum/status_effect/debuff/thanatophobia
 	id = "thanatophobia"
@@ -1962,7 +1962,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 		if(L == H)
 			continue
 		if(L.stat == DEAD || L.mind?.has_antag_datum(/datum/antagonist/skeleton))
-			to_chat(H, span_userdanger("I MUST NOT DIE! I CAN NOT BEAR TO SEE THE DEAD!"))
+			to_chat(H, span_userdanger("我不能死！我受不了看见死人！"))
 			H.emote("scream")
 			H.adjustStaminaLoss(10)
 			step_away(H, L, 10)
@@ -1971,8 +1971,8 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 // ROT
 
 /obj/effect/proc_holder/spell/self/rot_transfuse
-	name = "Transfuse"
-	desc = "Transfuse all reagents in your bloodstream to the target you're holding."
+	name = "血液转注"
+	desc = "把自己血液中的所有试剂转移给抓住的人。"
 	overlay_icon = 'icons/mob/actions/zizomiracles.dmi'
 	action_icon = 'icons/mob/actions/zizomiracles.dmi'
 	overlay_state = "transfuse"
@@ -1983,19 +1983,19 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	. = ..()
 	var/obj/item/grabbing/G = user.get_active_held_item()
 	if(!istype(G) || !isliving(G.grabbed))
-		to_chat(user, span_warning("I need to be grabbing someone."))
+		to_chat(user, span_warning("我得先抓住一个人。"))
 		revert_cast()
 		return FALSE
 	var/mob/living/victim = G.grabbed
 	if(user.reagents && victim.reagents && user.reagents.total_volume)
 		user.reagents.trans_to(victim, user.reagents.total_volume, method = INJECT)
-	to_chat(user, span_notice("I transfuse into [victim]."))
+	to_chat(user, span_notice("我把血中的药物注入[victim]体内。"))
 	return TRUE
 
 /datum/ritual/rot/transfuse
 	name = "Rot Initiate"
 	icon_type = /obj/effect/proc_holder/spell/self/rot_transfuse
-	desc = "Learn to transfuse reagents into whoever you grab. Learn lesser blight. Makes you immune to poison."
+	desc = "学会将血中的药物注入你抓住的人体内，并习得次级腐化术。你将对毒素免疫。"
 	passive = TRUE
 	research_cost = 3
 
@@ -2006,8 +2006,8 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	return
 
 /turf/open/floor/rogue/naturalstone/rot
-	name = "nerve threads"
-	desc = "A pulsing mass of flesh. It shivers and writhes at any touch."
+	name = "神经丝束"
+	desc = "一团搏动的血肉，稍一触碰便颤抖扭动。"
 	icon = 'icons/roguetown/cult/blightfloor.dmi'
 	icon_state = "flesh_tile-0"
 	transform = matrix(1, 0, -16, 0, 1, -16)
@@ -2032,7 +2032,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	icon_state = "flesh_tile-[mask]"
 
 /turf/closed/mineral/rogue/blight
-	name = "flesh wall"
+	name = "血肉之墙"
 	icon = 'icons/roguetown/cult/blightwall.dmi'
 	smooth_icon = 'icons/roguetown/cult/blightwall.dmi'
 	icon_state = "blightwall"
@@ -2079,19 +2079,19 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 		H.energy_add(20)
 		new /obj/effect/temp_visual/heal(T, "#bf5252")
 		if(prob(10))
-			to_chat(H, span_notice("THE ROT'S AROMA REJUVENATES ME!"))
+			to_chat(H, span_notice("腐朽的芬芳令我重焕生机！"))
 		return
 	elapsed += 3
 	H.adjustOxyLoss(3)
 	H.adjustStaminaLoss(5)
 	if(prob(10))
-		to_chat(H, span_danger("IT SMELLS HORRIBLE! I CAN'T BREATHE!"))
+		to_chat(H, span_danger("臭死了！我喘不过气！"))
 	if(elapsed > 30 && prob(10))
 		H.vomit(50)
 
 /obj/structure/blight_pillar
-	name = "rotting pillar"
-	desc = "A pillar of fused bone and diseased flesh. Destroy it!"
+	name = "腐朽之柱"
+	desc = "病肉与白骨熔成的柱子。摧毁它！"
 	icon = 'icons/roguetown/maniac/creations.dmi'
 	icon_state = "creation1"
 	anchored = TRUE
@@ -2124,20 +2124,20 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	for(var/turf/T in turf_data)
 		T.ChangeTurf(turf_data[T], flags = CHANGETURF_IGNORE_AIR)
 	turf_data.Cut()
-	visible_message(span_danger("Lux fills the barren stone and returns lyfe to the land!"))
+	visible_message(span_danger("灵辉渗入荒石，大地重获生机！"))
 	playsound(src, 'sound/foley/breaksound.ogg', 50, TRUE)
 	return ..()
 
 /obj/structure/blight_pillar/lesser
-	name = "lesser rotting pillar"
+	name = "次级腐朽之柱"
 	icon_state = "creation3"
 	max_integrity = 150
 	radius = 1
 
 // weaker version of blight as spell, meant 2 emulate Rust heretic off TG. IDK if players will spam the terrain.
 /obj/effect/proc_holder/spell/self/lesser_blight
-	name = "Lesser Blight"
-	desc = "Raise a VILE totem before you to blight the land! The rotten flesh will harm any non-believers, yet strengthen fellow cultists."
+	name = "次级腐化术"
+	desc = "在面前竖起邪秽图腾，腐化大地。遍地的腐肉会伤害非信徒，却能滋养同教成员。"
 	overlay_icon = 'icons/mob/actions/zizomiracles.dmi'
 	action_icon = 'icons/mob/actions/zizomiracles.dmi'
 	overlay_state = "profane"
@@ -2148,17 +2148,17 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	. = ..()
 	var/turf/T = get_step(user, user.dir)
 	if(!T || T.density)
-		to_chat(user, span_warning("No space."))
+		to_chat(user, span_warning("没有空间。"))
 		revert_cast()
 		return FALSE
 	new /obj/structure/blight_pillar/lesser(T)
-	to_chat(user, span_notice("THE LAND ROTS."))
+	to_chat(user, span_notice("大地开始腐烂。"))
 	return TRUE
 
 /datum/ritual/rot/blight
 	name = "Blight"
 	icon_type = /obj/structure/blight_pillar
-	desc = "Perform a rite that petrifies the area around you. Non-cultists will take damage when stepping upon the petrified land. It transforms walls into mineable rock."
+	desc = "举行仪式，使周围的土地石化。非教徒踏上石化的土地便会受伤，墙壁则会变成可开采的岩石。"
 	center_requirement = /mob/living/carbon/human
 
 /datum/ritual/rot/blight/invoke(mob/living/user, turf/center)
@@ -2168,12 +2168,12 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 		qdel(poo)
 		return
 	new /obj/structure/blight_pillar(center)
-	to_chat(user, span_notice("THE LAND ROTS."))
+	to_chat(user, span_notice("大地开始腐烂。"))
 
 /datum/ritual/rot/plague
 	name = "Curse of Black Rot"
 	icon_type = /obj/item/natural/worms/leech
-	desc = "Curse your target with the black rot. Requires a leech that fed from your target."
+	desc = "使目标染上黑腐病。需要一条吸过目标血液的水蛭。"
 	center_requirement = /obj/item/natural/worms/leech
 	keep_center = TRUE
 
@@ -2182,13 +2182,13 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	if(!remnant)
 		return
 	if(!curse_target(remnant.fed_from))
-		to_chat(user, span_warning("THEY ARE PROTECTED FROM FURTHER CURSES."))
+		to_chat(user, span_warning("目标受到了保护，无法再施加诅咒。"))
 		return
 	remnant.fed_from.apply_status_effect(/datum/status_effect/black_rot)
-	to_chat(remnant.fed_from, span_danger("WHAT A HORRIBLE NITE TO HAVE A CURSE."))
+	to_chat(remnant.fed_from, span_danger("偏偏在这可怕的夜里遭了诅咒。"))
 	remnant.fed_from.emote("scream")
 	qdel(remnant)
-	to_chat(user, span_notice("THEY HAVE THE ROT WITHIN THEM, NOW."))
+	to_chat(user, span_notice("腐朽已在其体内生根。"))
 
 // NOISE
 
@@ -2202,7 +2202,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 
 /mob/living/simple_animal/spook_spirit
 	name = "???"
-	desc = "Don't look at this."
+	desc = "别盯着它看。"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "nothing"
 	invisibility = INVISIBILITY_OBSERVER
@@ -2223,16 +2223,16 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	return TRUE
 
 /mob/living/simple_animal/spook_spirit/verb/spirit_up()
-	set category = "Spook"
-	set name = "Move Up"
+	set category = "灵体出窍"
+	set name = "向上飘"
 	if(zMove(UP, TRUE))
-		to_chat(src, span_notice("I drift upwards."))
+		to_chat(src, span_notice("我向上飘去。"))
 
 /mob/living/simple_animal/spook_spirit/verb/spirit_down()
-	set category = "Spook"
-	set name = "Move Down"
+	set category = "灵体出窍"
+	set name = "向下飘"
 	if(zMove(DOWN, TRUE))
-		to_chat(src, span_notice("I drift downwards."))
+		to_chat(src, span_notice("我向下飘去。"))
 
 /mob/living/simple_animal/spook_spirit/ex_act()
 	return
@@ -2246,7 +2246,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 /datum/ritual/noise/thermalvis
 	name = "Spook"
 	icon_type = /obj/effect/proc_holder/spell/self/spook_scry
-	desc = "Learn a spell to phase-walk through walls, leaving your body behind. Your eyes now see the living through walls."
+	desc = "学会灵体出窍，穿墙而行。你的双眼也能透过墙壁看见活物。"
 	passive = TRUE
 	research_cost = 3
 
@@ -2256,8 +2256,8 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	return
 
 /obj/effect/proc_holder/spell/self/spook_scry
-	name = "Spook"
-	desc = "Leave your body behind and observe the world unhindered for 20 seconds."
+	name = "灵体出窍"
+	desc = "离开肉身，自由观察周围的世界，持续 20 秒。"
 	overlay_icon = 'icons/mob/actions/zizomiracles.dmi'
 	action_icon = 'icons/mob/actions/zizomiracles.dmi'
 	overlay_state = "zizocloud"
@@ -2277,7 +2277,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 		revert_cast()
 		return FALSE
 	var/mob/living/simple_animal/spook_spirit/spirit = new(get_turf(H))
-	H.visible_message(span_warning("[H] falls limp!"))
+	H.visible_message(span_warning("[H]瘫软倒地！"))
 	H.mind.transfer_to(spirit)
 	addtimer(CALLBACK(src, PROC_REF(end_spook), H, spirit), 20 SECONDS)
 	return TRUE
@@ -2318,7 +2318,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	. = ..()
 	if(istype(victim) && !is_zizo(victim) && victim.get_bleed_rate() > bleed_before && !(victim in bitten))
 		bitten += victim
-		to_chat(src, span_notice("I collect [victim]'s blood! The cat will drop a remnant leech after the spell ends."))
+		to_chat(src, span_notice("我采到了[victim]的血！法术结束时，黑猫会留下一条残魂水蛭。"))
 
 /mob/living/simple_animal/pet/cat/rogue/black/witch/Destroy()
 	if(mind)
@@ -2337,8 +2337,8 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	qdel(src)
 
 /obj/effect/proc_holder/spell/self/witch_possess
-	name = "Witchery"
-	desc = "Possess cat, or return to body. Biting people collects their blood for remnants."
+	name = "黑猫附身"
+	desc = "附身黑猫，或回到自己的身体。咬人可以采血，制成残魂水蛭。"
 	overlay_icon = 'icons/mob/actions/zizomiracles.dmi'
 	action_icon = 'icons/mob/actions/zizomiracles.dmi'
 	overlay_state = "tame_deadite"
@@ -2362,14 +2362,14 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 		return FALSE
 	cat = new(get_turf(user))
 	cat.body = user
-	user.visible_message(span_warning("[user] falls limp!"))
+	user.visible_message(span_warning("[user]瘫软倒地！"))
 	user.mind.transfer_to(cat)
 	return TRUE
 
 /datum/ritual/servantry/witchery
 	name = "Witchery"
 	icon_type = /mob/living/simple_animal/pet/cat/rogue/black/witch
-	desc = "Learn to summon a black cat. You are able to remotely possess it at any time and see through its eyes. Biting people collects their blood for remnants."
+	desc = "学会召唤黑猫。你可以随时从远处附身于它，借它的双眼观察四周。咬人可以采血，制成残魂水蛭。"
 	passive = TRUE
 	lesser = TRUE
 	research_cost = 3
@@ -2381,7 +2381,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 /datum/ritual/noise/forgettongue
 	name = "Curse of Babel"
 	icon_type = /obj/item/natural/worms/leech
-	desc = "Curse your target to forget the common tongue and become illiterate. Requires a leech that fed from your target."
+	desc = "诅咒目标，使其遗忘通用语，也不再识字。需要一条吸过目标血液的水蛭。"
 	center_requirement = /obj/item/natural/worms/leech
 	keep_center = TRUE
 
@@ -2390,14 +2390,14 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	if(!remnant)
 		return
 	if(!curse_target(remnant.fed_from))
-		to_chat(user, span_warning("THEY ARE PROTECTED FROM FURTHER CURSES."))
+		to_chat(user, span_warning("目标受到了保护，无法再施加诅咒。"))
 		return
 	remnant.fed_from.remove_language(/datum/language/common, source = LANGUAGE_SOURCE_ALL)
 	remnant.fed_from.adjust_skillrank(/datum/skill/misc/reading, -6, TRUE)
-	to_chat(remnant.fed_from, span_danger("WHAT A HORRIBLE NITE TO HAVE A CURSE."))
+	to_chat(remnant.fed_from, span_danger("偏偏在这可怕的夜里遭了诅咒。"))
 	remnant.fed_from.emote("scream")
 	qdel(remnant)
-	to_chat(user, span_notice("IT EATS AWAY MEANING AND LEAVES NOTHING BUT NOISE."))
+	to_chat(user, span_notice("言语的意义被吞噬了，只留下噪音。"))
 
 // PITCH
 
@@ -2419,7 +2419,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	if(T && T.get_lumcount() >= 0.75)
 		H.adjustFireLoss(burn_damage)
 		if(prob(30))
-			to_chat(H, span_danger("THE LIGHT BURNS!"))
+			to_chat(H, span_danger("光在灼烧我！"))
 
 /datum/status_effect/shadowform
 	id = "shadowform"
@@ -2454,13 +2454,13 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 			victim.adjustFireLoss(10)
 
 /atom/movable/screen/alert/status_effect/shadowform
-	name = "SCADUFORM"
+	name = "阴影化身"
 	desc = ""
 	icon_state = "buff"
 
 /obj/effect/proc_holder/spell/invoked/shadow_snuff
-	name = "Snuff"
-	desc = "Snuff out a fire or light."
+	name = "熄灯"
+	desc = "熄灭一处火焰或光源。"
 	range = 7
 	overlay_icon = 'icons/mob/actions/zizomiracles.dmi'
 	action_icon = 'icons/mob/actions/zizomiracles.dmi'
@@ -2483,13 +2483,13 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 /obj/effect/dummy/phased_mob/slaughter/shadow/relaymove(mob/user, direction)
 	var/turf/dest = get_step(src, direction)
 	if(!dest || dest.get_lumcount() >= 0.75)
-		to_chat(user, span_warning("THERE IS LIGHT THERE."))
+		to_chat(user, span_warning("那里有光。"))
 		return
 	forceMove(dest)
 
 /obj/effect/proc_holder/spell/self/shadow_jaunt
-	name = "Scadu Jaunt"
-	desc = "Turn invisible and move through walls. Only functions in darkness."
+	name = "潜影穿行"
+	desc = "隐去身形，穿墙而行。只能在黑暗中使用。"
 	overlay_icon = 'icons/mob/actions/zizomiracles.dmi'
 	action_icon = 'icons/mob/actions/zizomiracles.dmi'
 	overlay_state = "zizocloud"
@@ -2503,21 +2503,21 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 		return FALSE
 	var/turf/T = get_turf(user)
 	if(T.get_lumcount() >= 0.75)
-		to_chat(user, span_warning("IT'S TOO BRIGHT!"))
+		to_chat(user, span_warning("这里太亮了！"))
 		revert_cast()
 		return FALSE
 	var/obj/effect/dummy/phased_mob/slaughter/shadow/holder = new(T)
 	var/obj/effect/temp_visual/dir_setting/cult/phase/out/P = new(T, user.dir)
 	P.color = "#2b0a3d"
 	new /obj/effect/temp_visual/decoy/fading/halfsecond(T, user)
-	user.visible_message(span_warning("[user] melts into the shadows."))
+	user.visible_message(span_warning("[user]融入了阴影。"))
 	user.forceMove(holder)
 	addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living, end_jaunt), holder), 5 SECONDS)
 	return TRUE
 
 /obj/effect/proc_holder/spell/invoked/dark_grip
-	name = "Scadu Grip"
-	desc = "Requires an aggressive grab. Engulf your target in dark flame!"
+	name = "暗焰擒拿"
+	desc = "以强力抓握控制目标，再用暗焰将其吞没！"
 	recharge_time = 60 SECONDS
 	invocation_type = "emote"
 	overlay_icon = 'icons/mob/actions/vampspells.dmi'
@@ -2528,12 +2528,12 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 /obj/effect/proc_holder/spell/invoked/dark_grip/cast(list/targets, mob/living/user,)
 	var/mob/living/target = targets[1]
 	if(!target || target == user)
-		to_chat(user, span_warning("You need a valid target to begin the wrestling!"))
+		to_chat(user, span_warning("你需要一个可以擒拿的目标！"))
 		revert_cast()
 		return FALSE
 
 	if(user.pulling != target || user.grab_state < GRAB_AGGRESSIVE)
-		to_chat(user, span_warning("You must have an aggressive grab on [target] to begin the wrestling!"))
+		to_chat(user, span_warning("你必须先以强力抓握控制[target]，才能开始擒拿！"))
 		revert_cast()
 		return FALSE
 
@@ -2541,8 +2541,8 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	if(!tracker)
 		tracker = user.AddComponent(/datum/component/wrestle_combat_tracker)
 
-	to_chat(user, span_notice("Dark flame gathers in my palms!"))
-	to_chat(target, span_userdanger("[user]'s palms burn with dark flame!"))
+	to_chat(user, span_notice("暗焰在我掌心汇聚！"))
+	to_chat(target, span_userdanger("[user]的掌心燃起暗焰！"))
 	tracker.channeling_throw = TRUE
 	user.emote("attack")
 	if(!do_after(user, 1 SECONDS, target = target))
@@ -2554,7 +2554,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 		target.remove_status_effect(/datum/status_effect/buff/clash)
 		user.stop_pulling(TRUE)
 		user.Knockdown(2 SECONDS)
-		to_chat(user, span_notice("A reversal!"))
+		to_chat(user, span_notice("被反制了！"))
 		playsound(user, 'sound/combat/crowdcheer.ogg', 100, TRUE)
 	else
 		target.adjust_fire_stacks(8, /datum/status_effect/fire_handler/fire_stacks/dark)
@@ -2567,7 +2567,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 /datum/ritual/pitch/fireresist
 	name = "Fire Monk"
 	icon_type = /obj/effect/proc_holder/spell/invoked/dark_grip
-	desc = "Reach your physical capacity in martial arts. All grapple checks are maximized, and you learn master wrestling. Learn a move to engulf your grapple target in dark flame."
+	desc = "将武艺练至肉身极限。所有擒拿检定取最大值，并习得大师级摔跤术。你还将学会以暗焰吞没被你抓住的目标。"
 	passive = TRUE
 	research_cost = 3
 
@@ -2580,14 +2580,14 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 /datum/ritual/pitch/shadowform
 	name = "Scaduform"
 	icon_type = /obj/effect/proc_holder/spell/invoked/shadow_snuff
-	desc = "Transform into a dark shadow that takes damage in the light. You can jaunt through darkness and remotely snuff lights. Your body becomes inhumen, recognizably monstrous, but non-living and immune to bloodloss. Anything you touch is lit aflame, including equipment on the body. And people you grab."
+	desc = "化为见光便会受伤的阴影，能穿行黑暗、隔空熄灯。你的身体显出异民的怪物形貌，失去生机，也不再失血。你触碰的一切都会燃烧，包括身上的装备和抓住的人。"
 	center_requirement = /mob/living/carbon/human
 	n_req = /obj/item/clothing/cloak
 
 /datum/ritual/pitch/shadowform/invoke(mob/living/user, turf/center)
 	var/mob/living/carbon/human/target = locate() in center.contents
 	if(!target)
-		to_chat(user, span_warning("NOT FOR THEM."))
+		to_chat(user, span_warning("此人不适合这个仪式。"))
 		return
 	if(target.has_status_effect(/datum/status_effect/shadowform))
 		return
@@ -2640,12 +2640,12 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	target.dna.species.name = "???"
 	target.emote("scream")
 	target.Knockdown(5 SECONDS)
-	to_chat(target, span_danger("IT BURNS! IT BURNS! IT STICKS TO MY FLESH AND BURNS!"))
+	to_chat(target, span_danger("好烫！好烫！它黏在我的肉上烧个不停！"))
 
 /datum/ritual/pitch/lightcurse
 	name = "Curse of Radiance"
 	icon_type = /obj/item/natural/worms/leech
-	desc = "Curse a target to burn in the light. Requires a leech that fed from your target."
+	desc = "使目标在光下遭受灼烧。需要一条吸过目标血液的水蛭。"
 	center_requirement = /obj/item/natural/worms/leech
 	keep_center = TRUE
 
@@ -2654,19 +2654,19 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	if(!remnant)
 		return
 	if(!curse_target(remnant.fed_from))
-		to_chat(user, span_warning("THEY ARE PROTECTED FROM FURTHER CURSES."))
+		to_chat(user, span_warning("目标受到了保护，无法再施加诅咒。"))
 		return
 	remnant.fed_from.AddComponent(/datum/component/light_vulnerability, 10, 10 MINUTES)
-	to_chat(remnant.fed_from, span_danger("WHAT A HORRIBLE NITE TO HAVE A CURSE."))
+	to_chat(remnant.fed_from, span_danger("偏偏在这可怕的夜里遭了诅咒。"))
 	remnant.fed_from.emote("scream")
 	qdel(remnant)
-	to_chat(user, span_notice("THEY SHALL KNOW MY HATRED OF HIS LIGHT."))
+	to_chat(user, span_notice("他们会明白我有多憎恨他的光。"))
 
 // BLOOD
 
 /obj/structure/rune_ward/zizo
-	name = "bloody sigil"
-	desc = "Strange runics smeared in blood."
+	name = "血绘符印"
+	desc = "用血涂成的奇异符文。"
 	icon = 'icons/obj/sigils.dmi'
 	icon_state = "lesser"
 	alpha = 45
@@ -2695,17 +2695,17 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 		if("poison")
 			L.reagents?.add_reagent(/datum/reagent/berrypoison, 25)
 			L.Jitter(4)
-			to_chat(L, span_danger("<B>THE SIGIL SPRAYS FOUL BLOOD OVER ME!</B>"))
+			to_chat(L, span_danger("<B>符印喷了我一身污血！</B>"))
 		if("stun")
-			to_chat(L, span_danger("<B>THE SIGIL CRACKLES AND SEIZES MY LIMBS!</B>"))
+			to_chat(L, span_danger("<B>符印劈啪作响，缚住了我的四肢！</B>"))
 			L.electrocute_act(20, src)
 			L.Paralyze(60)
 		else
-			to_chat(L, span_danger("<B>BLOODY BLADES RISE FROM THE GROUND AND REND ME!</B>"))
+			to_chat(L, span_danger("<B>血刃破土而出，撕裂了我的身体！</B>"))
 			new /obj/effect/temp_visual/blade_burst(get_turf(src))
 			var/mob/living/carbon/human/owner = owner_ref?.resolve()
 			if(ishuman(owner) && ishuman(L))
-				arcyne_strike(owner, L, null, snare_damage, BODY_ZONE_CHEST, 					BCLASS_STAB, armor_penetration = PEN_HEAVY, spell_name = "Blood Snare", 					damage_type = BRUTE, skip_animation = TRUE)
+				arcyne_strike(owner, L, null, snare_damage, BODY_ZONE_CHEST, 					BCLASS_STAB, armor_penetration = PEN_HEAVY, spell_name = "鲜血陷阱", 					damage_type = BRUTE, skip_animation = TRUE)
 			else
 				L.adjustBruteLoss(snare_damage)
 
@@ -2713,7 +2713,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	name = "Sigil Expertise"
 	icon_type = /obj/effect/decal/cleanable/sigil
 	node_state = "center"
-	desc = "Draw sigils much faster, and without bloody hands."
+	desc = "大幅加快绘制符印的速度，双手无需沾血。"
 	passive = TRUE
 	research_cost = 2
 
@@ -2725,7 +2725,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	name = "Blood Snare"
 	icon_type = /obj/effect/decal/cleanable/sigil
 	node_state = "lesser"
-	desc = "Create a translucent sigil trap that harms whoever steps onto it. Organs create a poison trap, weapons create a stunning trap, and anything else creates a bleeding trap."
+	desc = "绘制半透明的符印陷阱，使踩中者受伤。用器官绘制可使人中毒，用武器可使人眩晕，其他材料则使人流血。"
 	center_requirement = /obj/item
 	keep_center = TRUE
 
@@ -2747,7 +2747,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	T.owner_ref = WEAKREF(user)
 	T.owner_name = user.real_name
 	T.owner_ckey = user.ckey || "no ckey"
-	to_chat(user, span_notice("THE SIGIL FADES. IT IS READY."))
+	to_chat(user, span_notice("符印渐渐隐去。陷阱布好了。"))
 
 /datum/status_effect/bloodlink
 	id = "bloodlink"
@@ -2762,7 +2762,7 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 
 /datum/status_effect/bloodlink/on_apply()
 	. = ..()
-	to_chat(owner, span_danger("WHAT A HORRIBLE NITE TO HAVE A CURSE."))
+	to_chat(owner, span_danger("偏偏在这可怕的夜里遭了诅咒。"))
 	owner.emote("scream")
 
 /datum/status_effect/bloodlink/tick()
@@ -2773,17 +2773,17 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 		owner.adjustOxyLoss(4)
 		owner.Jitter(4)
 		if(prob(30))
-			to_chat(owner, span_danger("My chest aches! Where is [partner.real_name]?!"))
+			to_chat(owner, span_danger("我心口好痛！[partner.real_name]在哪里？！"))
 
 /atom/movable/screen/alert/status_effect/bloodlink
-	name = "Blood Bond"
-	desc = "OUR HEARTS BEAT AS ONE. I MUST BE NEAR THEM."
+	name = "血契"
+	desc = "我们的心脏一同跳动。我必须待在对方身边。"
 	icon_state = "debuff"
 
 /datum/ritual/blood/bloodbond
 	name = "Curse of Blood"
 	icon_type = /obj/item/natural/worms/leech
-	desc = "Curse two targets to slowly die when apart from each other. Requires two leeches that fed from separate targets."
+	desc = "诅咒两名目标，使他们分开便会逐渐死去。需要两条水蛭，分别吸过两人的血。"
 	center_requirement = /obj/item/natural/worms/leech
 	keep_center = TRUE
 
@@ -2793,17 +2793,17 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 		if(L.fed_from && L.blood_storage > 0 && !QDELETED(L.fed_from) && L.fed_from.stat != DEAD)
 			found += L
 	if(found.len < 2)
-		to_chat(user, span_warning("This rite needs two leeches."))
+		to_chat(user, span_warning("这个仪式需要两条水蛭。"))
 		return
 	var/obj/item/natural/worms/leech/L1 = found[1]
 	var/obj/item/natural/worms/leech/L2 = found[2]
 	var/mob/living/carbon/human/A = L1.fed_from
 	var/mob/living/carbon/human/B = L2.fed_from
 	if(A == B)
-		to_chat(user, span_warning("You can not bind someone to theirself. Fool!"))
+		to_chat(user, span_warning("蠢货！怎么能让一个人和自己结契！"))
 		return
 	if(A.has_status_effect(/datum/status_effect/buff/curse_immunity) || B.has_status_effect(/datum/status_effect/buff/curse_immunity))
-		to_chat(user, span_warning("THEY ARE PROTECTED FROM FURTHER CURSES."))
+		to_chat(user, span_warning("目标受到了保护，无法再施加诅咒。"))
 		return
 	curse_target(A)
 	curse_target(B)
@@ -2811,4 +2811,4 @@ GLOBAL_LIST_EMPTY(zizo_bestow_areas)
 	B.apply_status_effect(/datum/status_effect/bloodlink, A)
 	qdel(L1)
 	qdel(L2)
-	to_chat(user, span_notice("I BIND [A] AND [B], THEIR HEARTS BEAT AS ONE."))
+	to_chat(user, span_notice("我将[A]和[B]缚在一起，从此两颗心将一同跳动。"))

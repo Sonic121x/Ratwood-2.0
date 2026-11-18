@@ -101,8 +101,8 @@
 	villain_events = list(/datum/round_event_control/antagonist/solo/dreamwalker)
 
 /datum/round_modifier/zizocult
-	name = "Cultists"
-	desc = "Vile heretics steal the power of gods!"
+	name = "密教徒"
+	desc = "邪恶的异端正在窃取诸神的权能！"
 	cost = 5
 	min_chaos = 2
 	weight = 20

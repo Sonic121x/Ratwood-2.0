@@ -1,5 +1,5 @@
 /datum/round_event_control/antagonist/solo/zizo_cult
-	name = "Zizo Cult"
+	name = "齐佐密教"
 	tags = list(
 		TAG_COMBAT,
 		TAG_VILLIAN,

@@ -590,7 +590,7 @@
 		return
 	var/mob/living/L = user
 	if(L?.has_status_effect(/datum/status_effect/debuff/zizo_knock))
-		to_chat(user, span_warning("The door is stuck fast."))
+		to_chat(user, span_warning("门卡死了。"))
 		door_rattle()
 		return
 	if(lockbroken)

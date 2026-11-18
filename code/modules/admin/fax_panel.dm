@@ -94,13 +94,13 @@ GLOBAL_LIST_EMPTY(player_letter_history)
 	if(!clean_recipient)
 		clean_recipient = "未知"
 
-	var/clean_sender_ckey = sanitize(copytext(sender_ckey || "unknown", 1, MAX_NAME_LEN))
+	var/clean_sender_ckey = sanitize(copytext(sender_ckey || "未知", 1, MAX_NAME_LEN))
 	if(!clean_sender_ckey)
-		clean_sender_ckey = "unknown"
+		clean_sender_ckey = "未知"
 
-	var/clean_recipient_ckey = sanitize(copytext(recipient_ckey || "unknown", 1, MAX_NAME_LEN))
+	var/clean_recipient_ckey = sanitize(copytext(recipient_ckey || "未知", 1, MAX_NAME_LEN))
 	if(!clean_recipient_ckey)
-		clean_recipient_ckey = "unknown"
+		clean_recipient_ckey = "未知"
 
 	add_archive_entry(list(
 		"kind" = "player",
@@ -120,8 +120,8 @@ GLOBAL_LIST_EMPTY(player_letter_history)
 		"is_html" = TRUE,
 		"sender" = sender,
 		"recipient" = recipient,
-		"sender_ckey" = user.ckey || "unknown",
-		"recipient_ckey" = recipient_ckey || "unknown",
+		"sender_ckey" = user.ckey || "未知",
+		"recipient_ckey" = recipient_ckey || "未知",
 		"body" = body || "",
 		"contents" = contents,
 		"item_path" = item_path ? "[item_path]" : null,
@@ -136,13 +136,13 @@ GLOBAL_LIST_EMPTY(player_letter_history)
 		kingsfield_mail.Cut(1, 2)
 
 	message_admins("王田收到来自“[mail.mailer]”的新[kind == "package" ? "包裹" : "信件"]，由[key_name_admin(sender)]寄出。<a href='?src=[REF(src)];open_kingsfield=[id]'>（打开）</a>")
-	log_admin("[key_name(sender)] sent a [kind] to Kingsfield from '[mail.mailer]'.")
+	log_admin("[key_name(sender)]以“[mail.mailer]”的名义向王田寄送了[kind == "package" ? "包裹" : "信件"]。")
 
 	var/sender_ckey = sender.ckey || "unknown"
 	if(world.time < kingsfield_popup_times[sender_ckey])
 		return
 	kingsfield_popup_times[sender_ckey] = world.time + 1 MINUTES
-	var/message = "来自[mail.mailer]的[kind == "package" ? "包裹" : "信件"]<br>寄件人：[sender.real_name]（[sender_ckey]）"
+	var/message = "来自[mail.mailer]的[kind == "package" ? "包裹" : "信件"]<br>寄件人：[sender.real_name]（[sender.ckey || "未知"]）"
 	for(var/client/C in GLOB.admins)
 		if(check_rights_for(C, R_ADMIN))
 			show_kingsfield_popup(C.mob, id, message)
@@ -174,7 +174,7 @@ GLOBAL_LIST_EMPTY(player_letter_history)
 		to_chat(user, span_warning("该王田邮件的记录已不存在。"))
 		return
 	message_admins("[key_name_admin(user)]打开了“[mail["sender"]]”寄往王田的[mail["kind"] == "package" ? "包裹" : "信件"]。")
-	log_admin("[key_name(user)] opened the [mail["kind"]] sent to Kingsfield from '[mail["sender"]]'.")
+	log_admin("[key_name(user)]打开了“[mail["sender"]]”寄往王田的[mail["kind"] == "package" ? "包裹" : "信件"]。")
 	user << browse_rsc('html/book.png')
 	user << browse("<html><head><meta charset='utf-8'><style type='text/css'>body { background-image:url('book.png');background-repeat: repeat; }</style></head><body scroll=yes>[mail["content"]]</body></html>", "window=kingsfield_mail;size=500x400;can_close=1;can_minimize=0;can_maximize=0;can_resize=1;titlebar=1;border=0")
 	ui_interact(user)
@@ -241,7 +241,7 @@ GLOBAL_LIST_EMPTY(player_letter_history)
 						recipient = H.real_name
 						break
 				if(!recipient)
-					to_chat(user, span_warning("That player is no longer available. The recipient list has been refreshed."))
+					to_chat(user, span_warning("该玩家已离线。收件人列表已刷新。"))
 					refresh_ui_cache(TRUE)
 					return TRUE
 
@@ -358,7 +358,7 @@ GLOBAL_LIST_EMPTY(player_letter_history)
 		return null
 	if(QDELETED(I) || I.loc != D)
 		I = delivered[1]
-		to_chat(user, span_warning("[item_type] 生成时替换了自身。包裹内装有：[english_list(package_item_names(D))]。名称与描述覆盖未生效。"))
+		to_chat(user, span_warning("[item_type] 生成时替换了自身。包裹内装有：[jointext(package_item_names(D), "、")]。名称与描述覆盖未生效。"))
 	else
 		if(item_name_override)
 			I.name = item_name_override
@@ -384,7 +384,7 @@ GLOBAL_LIST_EMPTY(player_letter_history)
 
 /// Admin-chat summary of what a parcel holds.
 /datum/fax_panel/proc/parcel_summary(obj/item/smallDelivery/D, item_type)
-	return "[D.name]内含[english_list(package_item_names(D))] ([item_type])[D.note ? "附有一封信" : ""]"
+	return "[D.name]内含[jointext(package_item_names(D), "、")]（[item_type]）[D.note ? "，附有一封信" : ""]"
 
 /// Routes a fax directly to a HERMES machine by number.
 /datum/fax_panel/proc/fax_send_to_hermes(mob/user, content, rim_css, sender, body, hermes_num)
@@ -402,7 +402,7 @@ GLOBAL_LIST_EMPTY(player_letter_history)
 	X.say("有新邮件！")
 	playsound(X, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 	register_admin_letter(user, sender, dest, null, body)
-	log_admin("[key_name(user)] sent admin letter to [dest] from '[sender]'.")
+	log_admin("[key_name(user)]以“[sender]”的名义向[dest]寄送了管理信件。")
 	message_admins("[key_name_admin(user)] 以‘[sender]’的名义向‘[dest]’发送了管理信件。信件放在机器下方的地面上。")
 	return TRUE
 
@@ -422,7 +422,7 @@ GLOBAL_LIST_EMPTY(player_letter_history)
 	deliver_to_mastermail(user, P)
 	notify_recipient(recipient, "信件", sender)
 	register_admin_letter(user, sender, recipient, recipient_ckey, body)
-	log_admin("[key_name(user)] sent admin letter to '[recipient]' ([recipient_ckey]) from '[sender]'.")
+	log_admin("[key_name(user)]以“[sender]”的名义向[recipient]（[recipient_ckey]）寄送了管理信件。")
 	message_admins("[key_name_admin(user)] 以‘[sender]’的名义向‘[recipient]’（[recipient_ckey]）发送了管理信件。信件正等待在邮件总管处")
 	return TRUE
 
@@ -445,7 +445,7 @@ GLOBAL_LIST_EMPTY(player_letter_history)
 	playsound(X, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 	var/summary = parcel_summary(D, item_type)
 	register_admin_letter(user, sender, dest, null, body, package_item_names(D), item_type)
-	log_admin("[key_name(user)] sent admin parcel to [dest] from '[sender]': [summary].")
+	log_admin("[key_name(user)]以“[sender]”的名义向[dest]寄送了管理包裹：[summary]。")
 	message_admins("[key_name_admin(user)] 以‘[sender]’的名义向[dest]发送了管理包裹：[summary]。包裹放在机器下方的地面上。")
 	return TRUE
 
@@ -466,7 +466,7 @@ GLOBAL_LIST_EMPTY(player_letter_history)
 	notify_recipient(recipient, "包裹", sender)
 	var/summary = parcel_summary(D, item_type)
 	register_admin_letter(user, sender, recipient, recipient_ckey, body, package_item_names(D), item_type)
-	log_admin("[key_name(user)] sent admin parcel to '[recipient]' ([recipient_ckey]) from '[sender]': [summary].")
+	log_admin("[key_name(user)]以“[sender]”的名义向[recipient]（[recipient_ckey]）寄送了管理包裹：[summary]。")
 	message_admins("[key_name_admin(user)] 以‘[sender]’的名义向‘[recipient]’（[recipient_ckey]）发送了管理包裹：[summary]。包裹正等待在邮件总管处。")
 	return TRUE
 

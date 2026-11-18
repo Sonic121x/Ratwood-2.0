@@ -687,16 +687,16 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 			for (var/i in GLOB.special_roles_rogue)
 				if(is_banned_from(user.ckey, i))
-					dat += "<b>[capitalize(i)]:</b> <a href='?_src_=prefs;bancheck=[i]'>已被封禁</a><br>"
+					dat += "<b>[get_special_role_display(i)]：</b> <a href='?_src_=prefs;bancheck=[i]'>已被封禁</a><br>"
 				else
 					var/days_remaining = null
 					if(ispath(GLOB.special_roles_rogue[i]) && CONFIG_GET(flag/use_age_restriction_for_jobs)) //If it's a game mode antag, check if the player meets the minimum age
 						days_remaining = get_remaining_days(user.client)
 
 					if(days_remaining)
-						dat += "<b>[capitalize(i)]:</b> <font color=red> \[[days_remaining] 天后解锁]</font><br>"
+						dat += "<b>[get_special_role_display(i)]：</b> <font color=red> \[[days_remaining] 天后解锁]</font><br>"
 					else
-						dat += "<b>[capitalize(i)]:</b> <a href='?_src_=prefs;preference=be_special;be_special_type=[i]'>[(i in be_special) ? "开启" : "关闭"]</a><br>"
+						dat += "<b>[get_special_role_display(i)]：</b> <a href='?_src_=prefs;preference=be_special;be_special_type=[i]'>[(i in be_special) ? "开启" : "关闭"]</a><br>"
 //			dat += "<br>"
 //			dat += "<b>Midround Antagonist:</b> <a href='?_src_=prefs;preference=allow_midround_antag'>[(toggles & MIDROUND_ANTAG) ? "Enabled" : "Disabled"]</a><br>"
 			dat += "</td></tr></table>"
@@ -1291,16 +1291,16 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 	for (var/i in GLOB.special_roles_rogue)
 		if(is_banned_from(user.ckey, i))
-			dat += "<b>[capitalize(i)]:</b> <a href='?_src_=prefs;bancheck=[i]'>已封禁</a><br>"
+			dat += "<b>[get_special_role_display(i)]：</b> <a href='?_src_=prefs;bancheck=[i]'>已封禁</a><br>"
 		else
 			var/days_remaining = null
 			if(ispath(GLOB.special_roles_rogue[i]) && CONFIG_GET(flag/use_age_restriction_for_jobs)) //If it's a game mode antag, check if the player meets the minimum age
 				days_remaining = get_remaining_days(user.client)
 
 			if(days_remaining)
-				dat += "<b>[capitalize(i)]:</b> <font color=red> \[剩余 [days_remaining] 天]</font><br>"
+				dat += "<b>[get_special_role_display(i)]：</b> <font color=red> \[剩余 [days_remaining] 天]</font><br>"
 			else
-				dat += "<b>[capitalize(i)]:</b> <a href='?_src_=prefs;preference=antag;task=be_special;be_special_type=[i]'>[(i in be_special) ? "启用" : "禁用"]</a><br>"
+				dat += "<b>[get_special_role_display(i)]：</b> <a href='?_src_=prefs;preference=antag;task=be_special;be_special_type=[i]'>[(i in be_special) ? "启用" : "禁用"]</a><br>"
 
 
 	dat += "</body>"

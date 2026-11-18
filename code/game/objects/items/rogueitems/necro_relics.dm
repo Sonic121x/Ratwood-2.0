@@ -49,7 +49,7 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(!H.mind.necro_crystal_cap())
-			to_chat(user, span_warning("I don't have the knowledge to use this!"))
+			to_chat(user, span_warning("我还没学会怎么用它！"))
 			return FALSE
 
 	if(length(active_skeletons) >= max_summons)
@@ -147,8 +147,8 @@
 	qdel(src)
 
 /obj/item/necro_relics/necro_crystal/cultist
-	name = "seed of zizo"
-	desc = "Horrible things will come of this."
+	name = "齐佐之种"
+	desc = "这粒种子会孕育出可怕的东西。"
 	icon_state = "necro_crystal_dormant"
 
 /obj/item/necro_relics/necro_crystal/cultist/attack_self(mob/living/user)
@@ -156,22 +156,22 @@
 		return FALSE
 	var/turf/T = get_step(user, user.dir)
 	if(!isopenturf(T))
-		to_chat(user, span_warning("The targeted location is blocked. My summon fails to come forth."))
+		to_chat(user, span_warning("目标位置被挡住了，我的召唤物无法现身。"))
 		return FALSE
 	if(!do_after(user, 60, src))
-		to_chat(user, span_warning("You lose your concentration."))
+		to_chat(user, span_warning("你分心了。"))
 		return FALSE
 	if(!HAS_TRAIT(user, TRAIT_CABAL))
-		to_chat(user, span_warning("The crystal rejects you! It shatters within your grasp!"))
+		to_chat(user, span_warning("水晶排斥你，在你手中碎裂了！"))
 		user.fullscreen_redflash("redflash1")
 		new /obj/item/natural/glass_shard(get_turf(src))
 		playsound(src, "glassbreak", 70, TRUE)
 		qdel(src)
 		return FALSE
 	var/necro_name = user.real_name ? user.real_name : user.name
-	var/list/candidates = pollGhostCandidates("The veil splits! A hand reaches forth! Join [necro_name]'s cult as a new Zizoid Cultist?", ROLE_NECRO_SKELETON, null, null, 10 SECONDS, POLL_IGNORE_NECROMANCER_SKELETON)
+	var/list/candidates = pollGhostCandidates("帷幕裂开，一只手从中伸出！你愿意加入[necro_name]的密教，成为齐佐教徒吗？", ROLE_NECRO_SKELETON, null, null, 10 SECONDS, POLL_IGNORE_NECROMANCER_SKELETON)
 	if(!LAZYLEN(candidates))
-		to_chat(user, span_warning("The depths are hollow."))
+		to_chat(user, span_warning("深渊中无人应答。"))
 		return FALSE
 	var/mob/C = pick(candidates)
 	if(!C || !istype(C, /mob/dead))
@@ -183,7 +183,7 @@
 	target.key = C.key
 	if(target.mind)
 		target.mind.add_antag_datum(/datum/antagonist/zizocultist)
-	addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "NEW CULTIST"), 3 SECONDS)
+	addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "新入教的信徒"), 3 SECONDS)
 	addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living/carbon/human, choose_pronouns_and_body)), 7 SECONDS)
 	user.fullscreen_redflash("redflash1")
 	playsound(src, "shatter", 50, TRUE)

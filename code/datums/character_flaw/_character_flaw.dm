@@ -705,12 +705,12 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	REMOVE_TRAIT(user, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
 
 /datum/charflaw/virgin
-	name = "Virgin"
-	desc = "Dark forces lust after my purity!"
+	name = "童贞"
+	desc = "黑暗势力觊觎着我的纯洁！"
 
 /datum/charflaw/virgin/apply_post_equipment(mob/user)
 	var/mob/living/carbon/human/H = user
-	to_chat(user, "You're a virgin!")
+	to_chat(user, "你仍保有童贞！")
 	H.virginity = TRUE
 	H.purity = TRUE
 

@@ -137,9 +137,9 @@
 	return TRUE
 
 /datum/surgery_step/cauterize/failure(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
-	display_results(user, target, span_notice("I'm carless and burn [target]'s [parse_zone(target_zone)]."),
-		span_notice("[user] is carless and burns [target]'s [parse_zone(target_zone)]."),
-		span_notice("[user] is carless and burns [target]'s [parse_zone(target_zone)]."))
+	display_results(user, target, span_notice("我一不小心烫伤了[target]的[parse_zone(target_zone)]。"),
+		span_notice("[user]一不小心烫伤了[target]的[parse_zone(target_zone)]。"),
+		span_notice("[user]一不小心烫伤了[target]的[parse_zone(target_zone)]。"))
 	var/obj/item/bodypart/bodypart = target.get_bodypart(check_zone(target_zone))
 	if(bodypart)
 		bodypart.receive_damage(burn = 50)

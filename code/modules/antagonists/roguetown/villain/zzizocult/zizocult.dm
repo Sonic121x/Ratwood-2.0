@@ -1,18 +1,18 @@
-#define LIST_PRAISE_ZIZO list("Praise Zizo!", "Hail Zizo!", "Glory to the Pale Lady!", "ZIZO! ZIZO! ZIZO!")
+#define LIST_PRAISE_ZIZO list("赞美齐佐！", "齐佐万岁！", "荣耀归于苍白女士！", "齐佐！齐佐！齐佐！")
 
 /datum/antagonist/zizocultist
-	name = "Zizoid Cultist"
-	roundend_category = "Zizoid Cultists"
-	antagpanel_category = "Zizoid Cult"
+	name = "齐佐教徒"
+	roundend_category = "齐佐教徒"
+	antagpanel_category = "齐佐密教"
 	rogue_enabled = TRUE
 	job_rank = ROLE_ZIZOIDCULTIST
 	antag_hud_type = ANTAG_HUD_ZIZO
 	antag_hud_name = "zcult_hud"
 	confess_lines = list(
-		"DEATH TO THE TEN!",
-		"PRAISE ZIZO!",
-		"I AM THE FUTURE!",
-		"NO GODS! ONLY MASTERS!",
+		"愿十神尽灭！",
+		"赞美齐佐！",
+		"我即是未来！",
+		"世上没有神，只有主宰！",
 	)
 	var/islesser = TRUE
 	var/start_budget = 20
@@ -30,7 +30,7 @@
 	start_points = 5
 
 /datum/antagonist/zizocultist/leader
-	name = "Zizoid Cultist"
+	name = "齐佐教徒"
 	islesser = FALSE
 	innate_traits = list(
 		TRAIT_DECEIVING_MEEKNESS,
@@ -114,20 +114,20 @@
 	return ..()
 
 /datum/antagonist/zizocultist/greet()
-	to_chat(owner, span_danger("I'm a cultist to the ALMIGHTY. They call it the UNSPEAKABLE. A new future begins."))
+	to_chat(owner, span_danger("我侍奉全能者。世人称她为不可言说者。新的时代开始了。"))
 	owner.announce_objectives()
 
 /datum/antagonist/zizocultist/leader/greet()
-	to_chat(owner, span_danger("I'm a cultist to the ALMIGHTY. They call it the UNSPEAKABLE. I require LACKEYS to make my RITUALS easier. I SHALL ASCEND."))
+	to_chat(owner, span_danger("我侍奉全能者。世人称她为不可言说者。我需要仆从协助我主持仪式。我必将飞升。"))
 	owner.announce_objectives()
 
 /datum/antagonist/zizocultist/examine_friendorfoe(datum/antagonist/examined_datum, mob/examiner, mob/examined)
 	if(istype(examined_datum, /datum/antagonist/zizocultist/leader))
-		return span_boldnotice("OUR LEADER!")
+		return span_boldnotice("我们的首领！")
 	if(istype(examined_datum, /datum/antagonist/zizocultist))
-		return span_boldnotice("A cultist of ZIZO.")
+		return span_boldnotice("一名齐佐教徒。")
 	if(istype(examined_datum, /datum/antagonist/assassin))
-		return span_boldnotice("A GRAGGAROID! A CULTIST OF GRAGGAR!")
+		return span_boldnotice("格拉加尔的信徒！格拉加尔的教徒！")
 
 /datum/antagonist/zizocultist/can_be_owned(datum/mind/new_owner)
 	. = ..()
@@ -144,9 +144,9 @@
 	objectives += new O
 
 /datum/objective/zizo
-	name = "ASCEND"
-	explanation_text = "Ensure that a member of the cult ASCENDS. You can look at your research menu to familiarize myself with your rituals."
-	team_explanation_text = "Ensure that a member of the cult ASCENDS. You can look at your research menu to familiarize myself with your rituals."
+	name = "飞升"
+	explanation_text = "让一名教徒成功飞升。打开研究菜单可查阅仪式。"
+	team_explanation_text = "让一名教徒成功飞升。打开研究菜单可查阅仪式。"
 	triumph_count = 5
 
 /datum/objective/zizo/check_completion()
@@ -154,14 +154,14 @@
 		return TRUE
 
 /mob/living/carbon/human/proc/praise()
-	set name = "Praise the Dark Lady!"
-	set category = "ZIZO"
+	set name = "赞美黑暗女士！"
+	set category = "齐佐"
 
 	if(stat >= UNCONSCIOUS || !can_speak_vocal())
 		return
 	say(pick(LIST_PRAISE_ZIZO), spans = list("god_zizo"), sanitize = FALSE, language = /datum/language/undead)
 	playsound(src, 'sound/vo/cult/praise.ogg', 45, 1)
-	log_say("[src] has praised zizo! (zizo cultist verb)")
+	log_say("[src]礼赞了齐佐！（密教徒指令）")
 	if(istype(get_area(src), /area/rogue/indoors/town/church))
 		complete_zgoal(src, /datum/zizogoal/worshipzizo_church)
 	if(istype(get_area(src), /area/rogue/indoors/town/garrison))
@@ -176,40 +176,40 @@
 		complete_zgoal(src, /datum/zizogoal/worshipzizo)
 
 /mob/living/carbon/human/proc/zizo_objectives()
-	set name = "Secret Objectives"
-	set category = "ZIZO"
+	set name = "秘闻任务"
+	set category = "齐佐"
 
 	if(!length(zizo_goals))
 		reroll_goals(src)
 	for(var/datum/zizogoal/gl in zizo_goals)
 		if(gl.complete)
-			to_chat(src, "<B>[gl.name]:</B> [gl.desc]<BR><B>COMPLETED.</B><BR>")
+			to_chat(src, "<B>[gl.name]：</B>[gl.desc]<BR><B>已完成。</B><BR>")
 		else
-			to_chat(src, "<B>[gl.name]:</B> [gl.desc]<BR><B>[gl.reward] SECRETS.</B><BR>")
+			to_chat(src, "<B>[gl.name]：</B>[gl.desc]<BR><B>奖励 [gl.reward] 点秘闻。</B><BR>")
 
 /mob/living/carbon/human/proc/zizo_targets_list()
-	set name = "Secrets"
-	set category = "ZIZO"
+	set name = "密教秘闻"
+	set category = "齐佐"
 
-	var/list/lines = list("<B>ANYONE CAN BE SACRIFICED OR CONVERTED</B>, except fellow cultists + bandits & wretches. The ruler may ONLY be sacrificed during the final ascension ritual.")
+	var/list/lines = list("除了同教成员、匪徒和恶徒，<B>任何人都可以献祭或招入教中</B>。统治者只能在最后的飞升仪式中献祭。")
 	if(length(GLOB.gate_targets))
-		lines += "<B>GATE TARGETS:</B>"
+		lines += "<B>开门仪式的祭品：</B>"
 		for(var/mob/living/carbon/human/T in GLOB.gate_targets)
-			lines += "- [T.real_name] ([T.mind?.assigned_role])"
+			lines += "- [T.real_name]（[SSjob.GetJob(T.mind?.assigned_role)?.display_title || T.mind?.assigned_role]）"
 		for(var/atype in GLOB.zizo_bestow_areas)
 			var/area/A = atype
-			lines += "GATE RITE LOCATION: [initial(A.name)]"
-	lines += "<B>GUIDE:</B> Place the sacrifice in the center of a servantry sigil. Sacrifice requires a fellow cultist holding a knife & standing upon the sigil. Conversion requires a fellow cultist on the sigil, if there is more than 3 members in the cult. Gate targets have a dark eye above them. Use heartaches to seek them."
+			lines += "开门仪式地点：[initial(A.name)]"
+	lines += "<B>仪式指南：</B>将祭品放在臣服符印中央。献祭时须有另一名教徒持刀站在符印上。若教中已有三人以上，招募新教徒时也须有另一名教徒站在符印上。开门仪式指定的祭品头顶会浮现一只黑眼，你可以循着心口的痛感寻找他们。"
 	to_chat(src, jointext(lines, "<BR>"))
 
 /mob/living/carbon/human/proc/communicate()
-	set name = "Communicate with Cult"
-	set category = "ZIZO"
+	set name = "向教徒传念"
+	set category = "齐佐"
 
 	if(stat >= UNCONSCIOUS || !can_speak_vocal())
 		return
 
-	var/speak = input("What do you speak of?", "ZIZO") as text|null
+	var/speak = input("你想说什么？", "齐佐") as text|null
 	if(!speak)
 		return
 	whisper("O schlet'a ty'schkotot ty'skvoro...")
@@ -219,14 +219,14 @@
 	whisper("[speak]")
 
 	for(var/datum/mind/V in SSmapping.retainer.cultists)
-		to_chat(V, "<span style = \"font-size:110%; font-weight:bold\"><span style = 'color:#8a13bd'>A message from </span><span style = 'color:#[voice_color]'>[real_name]</span>: [speak]</span>")
+		to_chat(V, "<span style = \"font-size:110%; font-weight:bold\"><span style = 'color:#8a13bd'>来自</span><span style = 'color:#[voice_color]'>[real_name]</span>的传念：[speak]</span>")
 		playsound_local(V.current, 'sound/vo/cult/skvor.ogg', 100)
 
-	log_say("[key_name(src)] used cultist telepathy to say: [speak]")
+	log_say("[key_name(src)]向教徒传念：[speak]")
 
 /mob/living/carbon/human/proc/release_minion()
-	set name = "Release Lackey"
-	set category = "ZIZO"
+	set name = "处决仆从"
+	set category = "齐佐"
 
 	if(stat == DEAD)
 		return
@@ -236,12 +236,12 @@
 		if(V.special_role == "Zizoid Lackey")
 			possible |= V.current
 
-	var/mob/living/carbon/human/choice = input(src, "Whom do you no longer have use for?", "ZIZO") as null|anything in possible
+	var/mob/living/carbon/human/choice = input(src, "哪个仆从对你已无用处？", "齐佐") as null|anything in possible
 	if(choice)
-		var/alert = tgui_alert(src, "Are you sure?", "ZIZO", list("Yes", "Cancel"))
-		if(alert == "Yes")
-			visible_message(span_danger("[src] reaches out, ripping up [choice]'s soul!"))
-			to_chat(choice, span_danger("I HAVE FAILED MY LEADER! I HAVE FAILED ZIZO! NOTHING ELSE BUT DEATH REMAINS FOR ME NOW!"))
+		var/alert = tgui_alert(src, "确定要撕碎这名仆从的灵魂吗？", "齐佐", list("确定", "取消"))
+		if(alert == "确定")
+			visible_message(span_danger("[src]伸出手，撕碎了[choice]的灵魂！"))
+			to_chat(choice, span_danger("我辜负了首领！我辜负了齐佐！如今只剩一死！"))
 			sleep(20)
 			choice.gib()
 			SSmapping.retainer.cultists -= choice.mind
@@ -249,6 +249,6 @@
 #undef LIST_PRAISE_ZIZO
 
 /mob/living/carbon/human/proc/zizo_lore()
-	set name = "Research"
-	set category = "ZIZO"
+	set name = "研究仪式"
+	set category = "齐佐"
 	GLOB.zizo_research.ui_interact(src)

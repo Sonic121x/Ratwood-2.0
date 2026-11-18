@@ -976,8 +976,8 @@
 			. += "ø ------------ ø"
 
 	if(HAS_TRAIT(src, TRAIT_MONSTROUS))
-		. += span_userdanger("A MONSTER! INHUMEN!")
-		to_chat(user, span_danger("[uppertext(m1)] IS INHUMEN! THE GODS DESPISE THIS HERESY!"))
+		. += span_userdanger("怪物！异民！")
+		to_chat(user, span_danger("[user == src ? "我" : "此人"]是异民！诸神憎恶这样的异端！"))
 
 	if(name in unknown_names)
 		. += span_info("这是<EM>[name]</EM>.")
@@ -1180,9 +1180,9 @@
 				. += span_love("这是我的配偶。")
 			if((H.patron.type == /datum/patron/inhumen/zizo) || (H.patron.type == /datum/patron/inhumen/baotha))
 				if(src.purity == TRUE)
-					. += span_greentext("<b>[capitalize(m2)]的灵辉纯净！</b>")
+					. += span_greentext("<b>灵辉纯净！</b>")
 				if(HAS_TRAIT(src, TRAIT_LUX_RIPPED))
-					. += span_danger("<b>[capitalize(m2)]的灵辉被撕裂了！</b>")
+					. += span_danger("<b>灵辉已被撕裂！</b>")
 				if(src.virginity == TRUE)
 					. += span_aiprivradio("童贞！")
 

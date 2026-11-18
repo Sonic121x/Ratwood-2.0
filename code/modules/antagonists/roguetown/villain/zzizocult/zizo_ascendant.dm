@@ -1,7 +1,7 @@
 //most of this is taken from TG heretic's star gazer
 /mob/living/simple_animal/hostile/retaliate/rogue/zizo_ascendant
-	name = "ASCENDANT"
-	desc = "THE FIFTH."
+	name = "飞升者"
+	desc = "第五位神祇。"
 	icon = 'icons/mob/zizo_gazer.dmi'
 	icon_state = "star_gazer"
 	icon_living = "star_gazer"
@@ -36,7 +36,7 @@
 	adjustBruteLoss(-20)
 
 /mob/living/simple_animal/hostile/retaliate/rogue/zizo_ascendant/death(gibbed)
-	visible_message(span_userdanger("THE NEWLY FORMED GOD DIES IN ITS CRADLE!"))
+	visible_message(span_userdanger("新生的神祇夭折了！"))
 	. = ..()
 	qdel(src)
 
@@ -54,8 +54,8 @@
 		new /obj/effect/temp_visual/cult/turf/floor(T)
 
 /datum/action/cooldown/spell/zizo_dominion
-	name = "Dominion"
-	desc = "Expand your domain!"
+	name = "神域"
+	desc = "扩张你的领地！"
 	button_icon = 'icons/effects/cult_effects.dmi'
 	button_icon_state = "wallglow"
 	sound = 'sound/magic/cosmic_expansion.ogg'
@@ -81,8 +81,8 @@
 		sleep(3)
 
 /datum/action/cooldown/spell/projectile/zizo_orb
-	name = "Orb"
-	desc = "Shoot it at people to kill them."
+	name = "暗星法球"
+	desc = "射出一颗暗星杀死敌人。"
 	button_icon = 'icons/effects/zizo_star_ball.dmi'
 	button_icon_state = "star_ball"
 	sound = 'sound/magic/cosmic_energy.ogg'
@@ -94,7 +94,7 @@
 	cooldown_time = 8 SECONDS
 
 /obj/projectile/magic/zizo_orb
-	name = "dark star"
+	name = "暗星"
 	icon = 'icons/effects/zizo_star_ball.dmi'
 	icon_state = "star_ball"
 	color = "#ff4040"
@@ -127,8 +127,8 @@
 	qdel(src)
 
 /datum/action/cooldown/spell/zizo_beam
-	name = "Beam"
-	desc = "IT'S ALL FUCKING OVER."
+	name = "毁灭光束"
+	desc = "全他妈完了。"
 	button_icon = 'icons/effects/beam.dmi'
 	button_icon_state = "gazer_beam"
 	click_to_activate = FALSE
@@ -222,7 +222,7 @@
 					continue
 				if(living_victim.stat > CONSCIOUS)
 					playsound(living_victim, 'sound/magic/cosmic_expansion.ogg', 80, TRUE)
-					living_victim.visible_message(span_danger("THE BEAM EVISCERATES [uppertext(living_victim.name)] TO A PILE OF ASH!"), span_userdanger("THE BEAM STRIPS YOUR FLESH TO DUST! YOU ARE GONE!"))
+					living_victim.visible_message(span_danger("光束将[uppertext(living_victim.name)]化为一堆灰烬！"), span_userdanger("光束将你的血肉碾成飞灰！你灰飞烟灭了！"))
 					living_victim.dust()
 					continue
 				living_victim.emote("scream")
@@ -233,7 +233,7 @@
 /datum/action/cooldown/spell/zizo_beam/proc/stop_beaming()
 	SIGNAL_HANDLER
 	if(targets && cycle_tracker <= 33)
-		to_chat(owner, span_warning("DON'T MOVE!"))
+		to_chat(owner, span_warning("别动！"))
 	sound_loop.stop()
 	UnregisterSignal(owner, list(COMSIG_MOVABLE_MOVED, COMSIG_ATOM_DIR_CHANGE))
 	deltimer(open_timer)

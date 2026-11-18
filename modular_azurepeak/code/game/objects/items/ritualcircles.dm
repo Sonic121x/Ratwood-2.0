@@ -25,12 +25,12 @@
 	var/datum/antagonist/zizocultist/cult = target?.mind?.has_antag_datum(/datum/antagonist/zizocultist)
 	if(!cult || target.loc != circle.loc || target.stat == DEAD)
 		return
-	if(!cult.islesser || alert(target, "Will you refuse the Dark Lady, and free your soul?", "CLEANSING", "YIELD", "RESIST") == "RESIST")
+	if(!cult.islesser || alert(target, "你愿意背弃黑暗女士，解放自己的灵魂吗？", "净化", "接受净化", "抵抗") == "抵抗")
 		return
-	to_chat(target, span_userdanger("I am free from the Dark Lady's service, and any chance for greater power..."))
+	to_chat(target, span_userdanger("我终于摆脱了黑暗女士的奴役，也放弃了获得更强力量的机会……"))
 	cult.on_removal()
 	target.set_patron(new patron_type)
-	target.say("Praise [target.patron.name]!", forced = "deconversion")
+	target.say("赞美[target.patron.name]！", forced = "deconversion")
 	target.emote("agony", forced = TRUE)
 	target.Stun(30)
 	target.Knockdown(30)

@@ -156,7 +156,7 @@
 /datum/stressevent/triumph_noise
 	timer = 10 MINUTES
 	stressadd = 3
-	desc = span_red("The memory of my triumph turns to rot!")
+	desc = span_red("曾经得胜的回忆，如今只剩腐臭！")
 
 /datum/stressevent/freakout
 	timer = 15 SECONDS
