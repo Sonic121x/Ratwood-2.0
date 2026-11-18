@@ -56,6 +56,7 @@
 		STATKEY_CON = 1,
 		STATKEY_WIL = 1,
 	)
+	pure_heart = TRUE
 	subclass_skills = list(
 		/datum/skill/combat/shields = 2,
 		/datum/skill/combat/maces = 3,
@@ -128,6 +129,7 @@
 		STATKEY_PER = 1,
 		STATKEY_WIL = 1,
 	)
+	pure_heart = TRUE
 	subclass_skills = list(
 		/datum/skill/combat/bows = 3,
 		/datum/skill/combat/crossbows = 3,

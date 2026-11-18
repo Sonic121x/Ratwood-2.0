@@ -2015,7 +2015,10 @@
 				to_chat(M, span_warning("我尚未取得凯旋。"))
 				return
 			if(alert("你想铭记一次凯旋吗？", "", "是", "否") == "是")
-				M.add_stress(/datum/stressevent/triumph)
+				if(has_world_trait(/datum/world_trait/zizo_noise) && !is_zizo(M))
+					M.add_stress(/datum/stressevent/triumph_noise)
+				else
+					M.add_stress(/datum/stressevent/triumph)
 				M.adjust_triumphs(-1)
 				M.playsound_local(M, 'sound/misc/notice (2).ogg', 100, FALSE)
 				if(M.sexcon)

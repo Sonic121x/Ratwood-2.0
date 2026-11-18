@@ -18,7 +18,6 @@
 	name = "少量豺狼人"
 	desc = "一群血兽中的残兵败将。"
 	cost = 1
-	weight = 20
 	job_slots = list("Gnoll" = 2)
 
 /datum/round_modifier/medium_gnolls
@@ -26,6 +25,7 @@
 	desc = "一群血兽。"
 	cost = 2
 	min_chaos = 1
+	weight = 20
 	incompatible = list(/datum/round_modifier/low_gnolls)
 	job_slots = list("Gnoll" = 4)
 
@@ -84,12 +84,14 @@
 	cost = 1
 	villain_events = list(/datum/round_event_control/antagonist/solo/assassins)
 
+/*
 /datum/round_modifier/rebel
 	name = "起义"
 	desc = "卑贱之人竟妄图自治！"
 	cost = 2
 	min_chaos = 1
 	villain_events = list(/datum/round_event_control/antagonist/solo/rebel)
+*/
 
 /datum/round_modifier/dreamwalker
 	name = "梦行者"
@@ -97,6 +99,15 @@
 	cost = 2
 	min_chaos = 2
 	villain_events = list(/datum/round_event_control/antagonist/solo/dreamwalker)
+
+/datum/round_modifier/zizocult
+	name = "Cultists"
+	desc = "Vile heretics steal the power of gods!"
+	cost = 5
+	min_chaos = 2
+	weight = 20
+	incompatible = list(/datum/round_modifier/high_wretches, /datum/round_modifier/vampire, /datum/round_modifier/vampirelord)
+	villain_events = list(/datum/round_event_control/antagonist/solo/zizo_cult)
 
 /*
 /datum/round_modifier/lich

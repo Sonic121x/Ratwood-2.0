@@ -122,7 +122,7 @@
 		用锤击碎乌合之众，用镐诛杀叛徒，用枪尖一并贯穿两者。</small>"
 
 /datum/intent/mace/warhammer/pick/ranged
-	penfactor = 50//-40% less.
+	penfactor = PEN_HEAVY
 	damfactor = 0.8//-10% less.
 	reach = 2
 	clickcd = CLICK_CD_HEAVY

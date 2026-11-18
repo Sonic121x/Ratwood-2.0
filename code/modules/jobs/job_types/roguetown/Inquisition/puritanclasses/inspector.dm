@@ -7,6 +7,7 @@
 	outfit = /datum/outfit/job/roguetown/puritan/inspector
 	subclass_languages = list(/datum/language/otavan)
 	cmode_music = 'sound/music/psydonite.ogg'
+	pure_heart = TRUE
 	category_tags = list(CTAG_PURITAN)
 	traits_applied = list(
 		TRAIT_STEELHEARTED,
@@ -44,7 +45,9 @@
 		/datum/skill/craft/sewing = SKILL_LEVEL_APPRENTICE
 	)
 	subclass_stashed_items = list(
-		"《普赛顿圣典》" = /obj/item/book/rogue/bibble/psy
+		"《普赛顿圣典》" = /obj/item/book/rogue/bibble/psy,
+		"猎犬" = /obj/item/inqhound,
+		"嗅探器" = /obj/item/inqscanner
 	)
 
 /datum/outfit/job/roguetown/puritan/inspector/pre_equip(mob/living/carbon/human/H)

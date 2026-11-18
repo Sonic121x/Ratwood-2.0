@@ -21,12 +21,26 @@
 		playsound(loc, 'sound/foley/cloth_wipe (1).ogg', 100, TRUE)
 		qdel(src)
 
+/proc/deconvert_zizo(mob/living/carbon/human/target, obj/structure/ritualcircle/circle, patron_type)
+	var/datum/antagonist/zizocultist/cult = target?.mind?.has_antag_datum(/datum/antagonist/zizocultist)
+	if(!cult || target.loc != circle.loc || target.stat == DEAD)
+		return
+	if(!cult.islesser || alert(target, "Will you refuse the Dark Lady, and free your soul?", "CLEANSING", "YIELD", "RESIST") == "RESIST")
+		return
+	to_chat(target, span_userdanger("I am free from the Dark Lady's service, and any chance for greater power..."))
+	cult.on_removal()
+	target.set_patron(new patron_type)
+	target.say("Praise [target.patron.name]!", forced = "deconversion")
+	target.emote("agony", forced = TRUE)
+	target.Stun(30)
+	target.Knockdown(30)
+
 // This'll be our tutorial ritual for those who want to make more later, let's go into details in comments, mm? - Onutsio
 /obj/structure/ritualcircle/astrata
 	name = "太阳符文" // defines name of the circle itself
 	icon_state = "astrata_chalky" // the icon state, so, the sprite the runes use on the floor. As of making, we have 6, each needs an active/inactive state.
 	desc = "阿斯特拉塔的神圣符文。温暖正从符文中散发出来。" // description on examine
-	var/solarrites = list("指引之光") // This is important - This is the var which stores every ritual option available to a ritualist - Ideally, we'd have like, 3 for each God. Right now, just 1.
+	var/solarrites = list("指引之光", "净化") // This is important - This is the var which stores every ritual option available to a ritualist - Ideally, we'd have like, 3 for each God. Right now, just 1.
 
 /obj/structure/ritualcircle/astrata/attack_hand(mob/living/user)
 	if(!..())
@@ -61,6 +75,25 @@
 						guidinglight(src) // Actually starts the proc for applying the buff
 						user.apply_status_effect(/datum/status_effect/debuff/ritesexpended)
 						addtimer(VARSET_CALLBACK(src, icon_state, "astrata_chalky"), 120)
+		if("净化")
+			var/list/valids_on_rune = list()
+			for(var/mob/living/carbon/human/peep in range(0, loc))
+				valids_on_rune += peep
+			var/mob/living/carbon/human/target = input(user, "解除皈依") as null|anything in valids_on_rune
+			if(!target || target.loc != loc)
+				return
+			if(!do_after(user, 5 SECONDS))
+				return
+			user.say("以太阳女王之名，以她的光辉之名，以她父亲的神圣遗体之名!!")
+			if(!do_after(user, 5 SECONDS))
+				return
+			user.say("阿斯特拉塔升起，憎恨她的人在她面前逃窜!!")
+			if(!do_after(user, 5 SECONDS))
+				return
+			user.say("正如蜡在她的火焰下熔化，大敌也将在她的光辉前消亡!!")
+			icon_state = "astrata_active"
+			deconvert_zizo(target, src, /datum/patron/divine/astrata)
+			addtimer(VARSET_CALLBACK(src, icon_state, "astrata_chalky"), 120)
 
 /obj/structure/ritualcircle/astrata/proc/guidinglight(src)
 	var/ritualtargets = view(7, loc) // Range of 7 from the source, which is the rune
@@ -1241,7 +1274,7 @@
 	name = "野心符文"
 	desc = "齐佐的神圣符文。不惜一切代价的野心。"
 	icon_state = "zizo_chalky"
-	var/zizorites = list("武备之仪式", "暗水晶之仪式", "皈依")
+	var/zizorites = list("武备之仪式", "皈依")
 
 /obj/structure/ritualcircle/zizo/attack_hand(mob/living/user)
 	if(!..())
@@ -1280,33 +1313,6 @@
 			icon_state = "zizo_active"
 			user.apply_status_effect(/datum/status_effect/debuff/ritesexpended)
 			zizoarmaments(target)
-			addtimer(VARSET_CALLBACK(src, icon_state, "zizo_chalky"), 120)
-		if("暗水晶之仪式")
-			if(!user.mind)
-				return
-			if(user.mind.necro_crystal_count() >= user.mind.necro_crystal_cap())
-				var/confirm = alert(user, "你与齐佐的契约规定，现有遗物仍受绑定时不能再造新的。是否断开最旧水晶及其所绑定亡者的联系，以铸造一枚新水晶？", "暗水晶之仪式", "断开并替换", "取消")
-				if(confirm != "断开并替换")
-					return
-			if(!do_after(user, 5 SECONDS))
-				return
-			user.say("齐佐！齐佐！野心女神！！")
-			if(!do_after(user, 5 SECONDS))
-				return
-			user.say("齐佐！齐佐！赐予秘会圣物！！")
-			if(!do_after(user, 5 SECONDS))
-				return
-			user.say("齐佐！齐佐！赐予号令亡者的暗水晶！！")
-			if(!do_after(user, 5 SECONDS))
-				return
-			// re-check cap right before committing, in case circumstances changed during the chant
-			if(user.mind.necro_crystal_count() >= user.mind.necro_crystal_cap())
-				user.mind.necro_retire_oldest_crystal()
-			icon_state = "zizo_active"
-			user.apply_status_effect(/datum/status_effect/debuff/ritesexpended)
-			var/obj/item/necro_relics/necro_crystal/new_crystal = new /obj/item/necro_relics/necro_crystal(loc)
-			user.mind.necro_register_crystal(new_crystal)
-			loc.visible_message(span_purple("一枚暗色水晶在仪式圆环中央显现，脉动着死灵能量！"))
 			addtimer(VARSET_CALLBACK(src, icon_state, "zizo_chalky"), 120)
 		if("皈依")
 			if(!Adjacent(user))
@@ -2117,7 +2123,7 @@
 	name = "坚忍符文"
 	desc = "普赛顿的神圣符文。其上刻有祂的圣徽，然而你心中毫无触动。"
 	icon_state = "psydon_chalky"
-	var/psydonrites = list("皈依", "训诫", "自由")
+	var/psydonrites = list("皈依", "训诫", "自由", "净化")
 
 /obj/structure/ritualcircle/psydon/attack_hand(mob/living/user)
 	if((user.patron?.type) != /datum/patron/old_god)
@@ -2214,6 +2220,27 @@
 						if(do_after(user, 5 SECONDS))
 							psydonstrip(target)
 							user.apply_status_effect(/datum/status_effect/debuff/ritesexpended_lesser)
+		if("净化")
+			var/list/valids_on_rune = list()
+			for(var/mob/living/carbon/human/peep in range(0, loc))
+				valids_on_rune += peep
+			var/mob/living/carbon/human/target = input(user, "解除皈依") as null|anything in valids_on_rune
+			if(!target || target.loc != loc)
+				return
+			if(!do_after(user, 5 SECONDS))
+				return
+			user.say("普赛顿之血命令你!")
+			if(!do_after(user, 5 SECONDS))
+				return
+			user.say("普赛顿之血命令你!!")
+			if(!do_after(user, 5 SECONDS))
+				return
+			user.say("普赛顿的力量命令你!!!")
+			user.emote("cry")
+			loc.visible_message(span_cult("[user]哭泣起来。"))
+			if(!do_after(user, 5 SECONDS))
+				return
+			deconvert_zizo(target, src, /datum/patron/old_god)
 
 /obj/structure/ritualcircle/psydon/proc/psydonconversion(mob/living/carbon/human/target, luxshield = FALSE)
 	if(!target || QDELETED(target) || target.loc != loc)

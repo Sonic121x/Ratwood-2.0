@@ -5,7 +5,8 @@
 	worshippers = "死灵法师、不死者、秘密结社、征服者与狂人"
 	virtues = "野心、支配、不死"
 	sins = "谦卑、无知、停滞"
-	mob_traits = list(TRAIT_CABAL, TRAIT_ZIZOSIGHT)
+	mob_traits = list(TRAIT_CABAL)
+	added_verbs = list(/mob/living/carbon/human/proc/draw_sigil, /mob/living/carbon/human/proc/praise, /mob/living/carbon/human/proc/zizo_lore, /mob/living/carbon/human/proc/zizo_objectives)
 	miracles = list(/obj/effect/proc_holder/spell/targeted/touch/orison					= CLERIC_ORI,
 					/obj/effect/proc_holder/spell/self/zizo_snuff						= CLERIC_T0,
 					/obj/effect/proc_holder/spell/invoked/tame_undead/miracle			= CLERIC_T0, //No idea why this was T3.

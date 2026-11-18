@@ -88,7 +88,7 @@
 			ZOMBIFICATION BY DEATH BEGINS HERE
 		*/
 		if(!has_world_trait(/datum/world_trait/necra_requiem))
-			if(!is_in_roguetown(src) || has_world_trait(/datum/world_trait/zizo_defilement))
+			if(!is_in_roguetown(src) || has_world_trait(/datum/world_trait/zizo_defilement) || has_world_trait(/datum/world_trait/zizo_bite))
 				if(!zombie_check_can_convert()) //Gives the dead unit the zombie antag flag
 					to_chat(src, span_userdanger("……这就是我的结局吗……？"))
 					to_chat(src, span_danger("寒冷吞噬了你胸中最后一丝暖意，开始渗入四肢……"))

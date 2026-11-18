@@ -87,6 +87,9 @@
 #define TRAIT_LUX_FREAK "灵辉畸变" // absolver and stigmata only. Dont give it to people unless they can freely manipulate lux of others (absolver, stigmata and gods so far)
 #define TRAIT_NOSLEEP "致命失眠"
 #define TRAIT_FASTSLEEP "速眠者"
+#define TRAIT_BLOODBOUND "血缚"
+#define TRAIT_MONSTROUS "怪物化"
+#define TRAIT_LUX_RIPPED "灵辉撕裂"
 #define TRAIT_GOODLOVER "传奇情人"
 #define TRAIT_SEEDKNOW "识种者"
 #define TRAIT_SQUIRE_REPAIR "侍从技艺"
@@ -561,6 +564,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_SQUIRE_REPAIR = span_info("我曾在师傅身旁受训，因此只要给我时间，我便能修复各种器械，还能把它们打磨得焕然如新。"),
 	TRAIT_WATERBREATHING = span_info("我在水中不会溺亡。"),
 	TRAIT_NUDE_SLEEPER = span_warning("若不赤身躺在床上，我便无法入睡。"),
+	TRAIT_MONSTROUS = span_warning("我的身体从根本上便是异民之躯。这一点无从遮掩。"),
 	TRAIT_LOOSE_STRAPS = span_warning("我的护甲绑带十分脆弱，容易断裂。若承受过多伤害，护甲很可能会被直接甩脱。"),
 	TRAIT_ABYSSOR_SWIM = span_info("游泳时，我比同伴们更不容易疲惫。"),
 	TRAIT_LONGSTRIDER = span_info("无论地形多么险恶，我的每一步都能稳稳踏准落点。"),
@@ -870,6 +874,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NODISMEMBER		"肢解免疫"
 #define TRAIT_FIRE_RESIST		"fire_resistance" // 50% fire damage/heating reduction + 2x stack decay - use this for player-accessible fire resistance
 #define TRAIT_NOFIRE			"nonflammable"
+#define TRAIT_PEAK_GRAPPLER		"peak_grappler"
 #define TRAIT_NOGUNS			"no_guns"
 #define TRAIT_NOMETABOLISM		"no_metabolism"
 #define TRAIT_LIMBATTACHMENT 	"limb_attach"

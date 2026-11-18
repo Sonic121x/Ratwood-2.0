@@ -97,6 +97,7 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
 		/datum/skill/magic/holy = SKILL_LEVEL_MASTER,
 		/datum/skill/craft/alchemy = SKILL_LEVEL_JOURNEYMAN,
 	)
+	pure_heart = TRUE
 	subclass_stashed_items = list(
 		"《十神箴行录》" = /obj/item/book/rogue/bibble,
 	)

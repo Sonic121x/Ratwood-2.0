@@ -425,8 +425,8 @@
 			str = "[m1]手腕上戴着什么东西！"
 		. += str
 
-	if(istype(skin_armor, /obj/item/clothing/suit/roguetown/armor/manual/arcyne_ward))
-		var/obj/item/clothing/suit/roguetown/armor/manual/arcyne_ward/ward = skin_armor
+	var/obj/item/clothing/suit/roguetown/armor/manual/arcyne_ward/ward = skin_armor
+	if(istype(ward) && !ward.hidden)
 		var/str = "[m3]<font color='[ward.ward_color]'>[ward.generate_tooltip(ward.get_examine_string(user))]在[user == src ? "我" : p_them()]周围闪烁。</font>"
 		str += ward.integrity_check(is_smart)
 		if (is_stupid)
@@ -975,6 +975,10 @@
 		else
 			. += "ø ------------ ø"
 
+	if(HAS_TRAIT(src, TRAIT_MONSTROUS))
+		. += span_userdanger("A MONSTER! INHUMEN!")
+		to_chat(user, span_danger("[uppertext(m1)] IS INHUMEN! THE GODS DESPISE THIS HERESY!"))
+
 	if(name in unknown_names)
 		. += span_info("这是<EM>[name]</EM>.")
 		if(HAS_TRAIT(user, TRAIT_HERETIC_SEER))
@@ -1174,6 +1178,13 @@
 			var/mob/living/carbon/human/H = user
 			if(H.marriedto == name)
 				. += span_love("这是我的配偶。")
+			if((H.patron.type == /datum/patron/inhumen/zizo) || (H.patron.type == /datum/patron/inhumen/baotha))
+				if(src.purity == TRUE)
+					. += span_greentext("<b>[capitalize(m2)]的灵辉纯净！</b>")
+				if(HAS_TRAIT(src, TRAIT_LUX_RIPPED))
+					. += span_danger("<b>[capitalize(m2)]的灵辉被撕裂了！</b>")
+				if(src.virginity == TRUE)
+					. += span_aiprivradio("童贞！")
 
 		var/gang_message = get_gang_text(user)
 		if (gang_message)

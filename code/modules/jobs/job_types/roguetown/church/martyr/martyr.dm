@@ -84,6 +84,7 @@
 		/datum/skill/misc/swimming = SKILL_LEVEL_NOVICE,
 		/datum/skill/misc/sneaking = SKILL_LEVEL_NOVICE,
 	)
+	pure_heart = TRUE
 	subclass_stashed_items = list(
 		"十神箴言与行传" = /obj/item/book/rogue/bibble,
 	)
