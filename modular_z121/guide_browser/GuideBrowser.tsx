@@ -126,7 +126,7 @@ export const GuideBrowser = () => {
                 <iframe
                   key={page_url}
                   src={page_url}
-                  title={selected_title}
+                  title={selected_title ?? '指南'}
                   style={{ border: 0, height: '100%', width: '100%' }}
                 />
               )}
