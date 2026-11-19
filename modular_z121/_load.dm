@@ -318,9 +318,9 @@
 // If unsated, they ache and mood drops (Willpower -1, Speed -1); milking in any way (milk_stored
 // decreasing) calls sate_addiction, clearing the penalties and restarting the timer.
 #include "vices/engorged_breasts.dm"
-// 自定义美德：地狱血脉后裔（仅限提夫林、消耗 29 凯旋点）；授予【地狱血脉】特性：
+// 自定义美德：地狱血脉后裔（仅限提夫林、消耗 666 凯旋点）；授予【地狱血脉】特性：
 // 免疫一切火焰/灼烧/高温伤害（不会被点燃），并习得火焰系法术（火球术/强效火球术/吐焰火球/生成营火）。
-// Custom virtue: Hell Bloody Descendants (Tiefling-only, costs 29 TRIUMPH); grants the "Hell Bloodline"
+// Custom virtue: Hell Bloody Descendants (Tiefling-only, costs 666 TRIUMPH); grants the "Hell Bloodline"
 // trait: immune to all fire/burn/heat damage (cannot be ignited) and learns the flame series of spells
 // (Fireball / Greater Fireball / Spitfire / Create Campfire)
 #include "virtues/hellblood_descendant.dm"
