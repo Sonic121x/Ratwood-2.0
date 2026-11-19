@@ -2111,7 +2111,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/clothing/suit/roguetown/shirt/dress/slit
 
 /datum/loadout_item/spellsinger_robe
-	name = "Spellsinger Robe"
+	name = "咒歌者长袍"
 	path = /obj/item/clothing/suit/roguetown/shirt/robe/spellcasterrobe
 	triumph_cost = 2
 
