@@ -356,7 +356,7 @@
 
 /mob/living/carbon/human/verb/emote_pant()
 	set name = "喘气"
-	set category = "声音"
+	set category = "发声"
 
 	emote("pant", intentional = TRUE)
 
