@@ -105,14 +105,14 @@
 	desc = "套在带垂片布里甘丁甲外、带有大肩甲的硬化皮革挽具，灌注了登多尔的精华。"
 	icon_state = "forestbrig"
 	armor = ARMOR_BRIGANDINE
-	max_integrity = ARMOR_INT_CHEST_PLATE_BRIGANDINE - 50
+	max_integrity = ARMOR_INT_CHEST_LIGHT_ELITE //It's light armor. It's an elite upgrade. 
 	equip_delay_self = 4 SECONDS
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/clothing/suit/roguetown/armor/leather/studded/warden/melee
 	name = "护林人胸甲"
 	desc = "带加强肩甲的硬化皮革挽具，罩在锁甲外衣之上。灌注了登多尔的精华，为前线作战而打造得更为坚固。"
-	armor = ARMOR_PLATE
+	armor = ARMOR_MAILLE //Worn over a MAILLE coat. 
 	armor_class = ARMOR_CLASS_MEDIUM
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_STEEL
 
@@ -121,6 +121,7 @@
 	desc = "以板甲与锁环加固的护林人胸甲，是精心锻造的成果。"
 	icon_state = "forestbrig"
 	armor = ARMOR_PLATE
+	body_parts_covered = COVERAGE_ALL_BUT_HANDFEET
 	max_integrity = ARMOR_INT_CHEST_PLATE_BRIGANDINE - 50
 	equip_delay_self = 4 SECONDS
 	smeltresult = /obj/item/ingot/steel
