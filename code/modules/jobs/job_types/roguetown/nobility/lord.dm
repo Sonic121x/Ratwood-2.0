@@ -37,6 +37,8 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	// Can't use the Throat when you can't talk properly or.. at all for that matter.
 	vice_restrictions = list(/datum/charflaw/mute, /datum/charflaw/unintelligible)
 	quirk_restrictions = list(/datum/quirk/hunted)
+	// 公爵一旦加冕/上任便无法再被复活，所有子职共用这一职业特性
+	job_traits = list(TRAIT_DNR)
 
 	job_subclasses = list(
 		/datum/advclass/lord/warrior,
