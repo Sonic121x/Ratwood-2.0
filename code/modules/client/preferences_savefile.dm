@@ -272,6 +272,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["no_language_icon"]	>> no_language_icon
 	S["hide_unavailable_emotes"] >> hide_unavailable_emotes
 	S["hide_tongue_noise_warnings"] >> hide_tongue_noise_warnings
+	S["z121_hide_guide_button"] >> z121_hide_guide_button
 	S["crt"]				>> crt
 	S["grain"]				>> grain
 	S["sexable"]			>> sexable
@@ -356,6 +357,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	tgui_theme		= sanitize_text(tgui_theme, initial(tgui_theme))
 	parchment_skin	= sanitize_parchment_skin(parchment_skin)
 	buttons_locked	= sanitize_integer(buttons_locked, 0, 1, initial(buttons_locked))
+	z121_hide_guide_button = z121_hide_guide_button == TRUE
 	windowflashing	= sanitize_integer(windowflashing, 0, 1, initial(windowflashing))
 	default_slot	= sanitize_integer(default_slot, 1, max_save_slots, initial(default_slot))
 	toggles			= sanitize_integer(toggles, 0, INFINITY, initial(toggles))
@@ -483,6 +485,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["no_language_icon"], no_language_icon)
 	WRITE_FILE(S["hide_unavailable_emotes"], hide_unavailable_emotes)
 	WRITE_FILE(S["hide_tongue_noise_warnings"], hide_tongue_noise_warnings)
+	WRITE_FILE(S["z121_hide_guide_button"], z121_hide_guide_button)
 	WRITE_FILE(S["crt"], crt)
 	WRITE_FILE(S["sexable"], sexable)
 	WRITE_FILE(S["erp_visuals"], erp_visuals)
