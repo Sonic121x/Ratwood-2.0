@@ -3,8 +3,14 @@
 	desc = "浏览服务器 Wiki 指南。"
 	button_icon_state = "round_end"
 	show_to_observers = FALSE
+	keep_at_end = TRUE
 
 	var/selected_page_id
+
+/datum/action/z121_guide_browser/GiveAction(mob/viewer)
+	if(viewer.client?.prefs?.z121_hide_guide_button)
+		return
+	return ..()
 
 /datum/action/z121_guide_browser/Remove(mob/remove_from)
 	if(!owner || owner != remove_from)
@@ -79,3 +85,37 @@
 		return FALSE
 	DIRECT_OUTPUT(user, link(page["url"]))
 	return TRUE
+
+/datum/preferences/var/z121_hide_guide_button = FALSE
+
+/client/verb/z121_toggle_guide_button()
+	set name = "切换指南按钮显示"
+	set category = "OOC"
+	set desc = "显示或隐藏动作栏上的指南浏览器按钮。"
+
+	if(!prefs)
+		return
+	prefs.z121_hide_guide_button = !prefs.z121_hide_guide_button
+	if(mob?.client == src)
+		var/datum/action/z121_guide_browser/guide = SSz121_guide_catalog.ensure_action(player_details, mob)
+		if(prefs.z121_hide_guide_button)
+			guide?.HideFrom(mob)
+		else
+			guide?.GiveAction(mob)
+	prefs.save_preferences()
+	var/notice = prefs.z121_hide_guide_button ? "指南按钮已隐藏。" : "指南按钮已设为显示。"
+	to_chat(src, span_notice(notice))
+
+/client/verb/z121_open_guide_browser()
+	set name = "打开指南浏览器"
+	set category = "OOC"
+	set desc = "直接打开服务器 Wiki 指南。"
+
+	if(mob?.client != src)
+		return
+	var/datum/action/z121_guide_browser/guide = SSz121_guide_catalog.ensure_action(player_details, mob)
+	if(!guide)
+		var/warning = SSz121_guide_catalog.reload_in_progress ? "指南目录正在加载，请稍后再试。" : "指南目录暂不可用。"
+		to_chat(src, span_warning(warning))
+		return
+	guide.Trigger()

@@ -156,9 +156,11 @@ SUBSYSTEM_DEF(z121_guide_catalog)
 
 /datum/controller/subsystem/z121_guide_catalog/proc/on_player_logout(datum/source, mob/player)
 	SIGNAL_HANDLER
-	for(var/datum/action/z121_guide_browser/action in player.actions)
-		action.Remove(player)
-		break
+	var/datum/player_details/details = player.canon_client?.player_details
+	if(!details)
+		return
+	var/datum/action/z121_guide_browser/action = locate() in details.player_actions
+	action?.Remove(player)
 
 /datum/controller/subsystem/z121_guide_catalog/proc/ensure_action(datum/player_details/details, mob/player)
 	if(!catalog || !details)

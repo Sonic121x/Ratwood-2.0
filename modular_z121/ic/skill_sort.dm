@@ -37,8 +37,9 @@
 		return data
 	var/mob/living/carbon/holder = parent
 	var/list/skills = data["skills"]
-	data["total"] = length(holder.actions)
-	for(var/index in 1 to length(holder.actions))
+	var/sortable_count = holder.get_sortable_action_count()
+	data["total"] = sortable_count
+	for(var/index in 1 to sortable_count)
 		var/datum/action/ability = holder.actions[index]
 		if(QDELETED(ability))
 			continue
@@ -54,10 +55,11 @@
 	if(!(action in list("up", "down", "move")) || !istext(params["id"]))
 		return FALSE
 	var/mob/living/carbon/holder = parent
+	var/sortable_count = holder.get_sortable_action_count()
 	var/datum/action/selected
 	var/current_position = 0
 	// 只在本人的现有能力中解析引用，避免同名能力混淆和过期请求。
-	for(var/index in 1 to length(holder.actions))
+	for(var/index in 1 to sortable_count)
 		var/datum/action/ability = holder.actions[index]
 		if(!QDELETED(ability) && ability.owner == holder && REF(ability) == params["id"])
 			selected = ability
@@ -73,7 +75,7 @@
 			target_position = current_position + 1
 		if("move")
 			target_position = params["position"]
-	if(!isnum(target_position) || target_position != round(target_position) || target_position < 1 || target_position > length(holder.actions))
+	if(!isnum(target_position) || target_position != round(target_position) || target_position < 1 || target_position > sortable_count)
 		return FALSE
 	if(target_position == current_position)
 		return FALSE
