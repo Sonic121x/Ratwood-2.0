@@ -107,6 +107,7 @@ export const DmTarget = new Juke.Target({
     "modular_rmh/**",
     "modular_stonehedge/**",
     "modular_twilight_axis/**",
+    "modular_z121/**",
     `${DME_NAME}.dme`,
     NamedVersionFile,
   ],
