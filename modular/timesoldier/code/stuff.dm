@@ -139,13 +139,18 @@
 	if(!message)
 		return FALSE
 
-	for(var/i = length(message), i >= 1, i--)
-		var/character = copytext(message, i, i + 1)
+	// 按字符而不是按字节倒着扫，全角标点与半角等权，
+	// 所以中文广播以 ！ 结尾也会被判定为喊叫。
+	var/static/list/yelling_marks = list("!", "！")
+	var/static/list/trailing_padding = list(" ", "\t", ".", "?", "？", "。", "\"", "'", ")", "]", "」", "』")
 
-		if(character == "!")
+	for(var/i = length_char(message), i >= 1, i--)
+		var/character = copytext_char(message, i, i + 1)
+
+		if(character in yelling_marks)
 			return TRUE
 
-		if(character in list (" ", "\t", ".", "?", "\"", "'", ")", "]"))
+		if(character in trailing_padding)
 			continue
 		return FALSE
 	return FALSE
