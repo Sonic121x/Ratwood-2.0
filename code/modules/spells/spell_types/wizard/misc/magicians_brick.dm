@@ -1,9 +1,9 @@
 /datum/action/cooldown/spell/magicians_brick
 	button_icon = 'icons/mob/actions/roguespells.dmi'
-	name = "Magician's Brick"
-	desc = "Conjure a magical brick in your hand. Its power scale up to your Intelligence\n\
-	The brick lasts until a new one is summoned or the spell is forgotten."
-	fluff_desc = "One of the oldest spell in creation - probably invented after Magician's Stone (now considered obsolete). It is one of the few spell considered completely foolproof against anti-magic defenses, probably because a brick is so absurdly mundane that the spell itself refuses to be considered magic, even if it is."
+	name = "魔法砖"
+	desc = "在你手中召唤一块魔法砖。它的力量与你的智力成正比。这块砖会一直存在，\n\
+	直到召唤出新的砖块或法术被遗忘。"
+	fluff_desc = "最古老的魔法之一，可能是在魔法石之后发明的（现在被认为已经过时）。它是少数被认为对反魔法防御完全无效的魔法之一，大概是因为一块砖头实在太平凡了，以至于魔法本身都拒绝被视为魔法，即使它真的是魔法。"
 	button_icon_state = "magicians_brick"
 	sound = 'sound/magic/whiteflame.ogg'
 	spell_color = GLOW_COLOR_ARCANE
@@ -46,14 +46,14 @@
 		var/int_scaling = user.STAINT - 10
 		R.force = R.force + int_scaling
 		R.throwforce = R.throwforce + int_scaling * 2 // 2x scaling for throwing. Let's go.
-		R.name = "magician's brick +[int_scaling]"
+		R.name = "魔法砖 +[int_scaling]"
 	user.put_in_hands(R)
 	src.conjured_brick = R
 	return TRUE
 
 /obj/item/rogueweapon/magicbrick
-	name = "magician's brick"
-	desc = "A brick formed out of arcane energy. Not a actual brick and cannot be used for construction. Makes for a very deadly melee and throwing weapon. Considered an implement for casting spell."
+	name = "魔法砖"
+	desc = "由奥术能量形成的砖块。不是实际的砖，不能用于建筑。可以作为非常致命的近战和投掷武器。被认为是施法用的工具。"
 	icon = 'icons/roguetown/items/cooking.dmi'
 	icon_state = "claybrickcook"
 	dropshrink = 0.75
