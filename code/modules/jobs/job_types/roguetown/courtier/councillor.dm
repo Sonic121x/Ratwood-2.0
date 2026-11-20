@@ -301,7 +301,7 @@ GLOBAL_LIST_INIT(ministry_charters, list(
 	name = "奥术部"
 	display_title = "奥术大臣"
 	ministry_keys = list(/obj/item/roguekey/tower)
-	archive_traits = list(TRAIT_ALCHEMY_EXPERT)
+	archive_traits = list(TRAIT_ARCYNE, TRAIT_ALCHEMY_EXPERT)
 	archive_skills = list(
 		/datum/skill/craft/alchemy = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/magic/arcane = SKILL_LEVEL_APPRENTICE
@@ -311,8 +311,7 @@ GLOBAL_LIST_INIT(ministry_charters, list(
 /datum/ministry/mage/archive_bonus(mob/living/carbon/human/H)
 	if(!H.mind)
 		return
-	if(!H.mind.has_spell(/datum/action/cooldown/spell/touch/prestidigitation))
-		H.mind.AddSpell(new /datum/action/cooldown/spell/touch/prestidigitation, H)
+	H.mind.setup_mage_aspects(list("mastery" = FALSE, "major" = 0, "minor" = 2, "utilities" = 4))
 	to_chat(H, span_notice("档案向我传授前任大臣的奥术秘法。我感到潜藏的力量在涌动。"))
 
 /datum/ministry/physician

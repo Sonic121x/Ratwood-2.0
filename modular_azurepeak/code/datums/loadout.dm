@@ -1980,7 +1980,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 
 /datum/loadout_item/tri_pontifex_gloves
 	name = "大祭长手套"
-	path = /obj/item/clothing/gloves/roguetown/angle/pontifex
+	path = /obj/item/clothing/gloves/roguetown/bandages/pontifex
 	triumph_cost = 2
 
 // BOOTS & SHOES (Alphabetically Ordered)

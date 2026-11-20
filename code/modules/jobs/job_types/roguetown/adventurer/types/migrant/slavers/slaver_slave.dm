@@ -156,8 +156,9 @@
 	name = "奥术奴隶"
 	tutorial = "你是不幸的奴隶，自故乡被掳走，带往 兹班图 接受奴工与顺从训练，久到你几乎只能模糊记得从前的自己……如今你正被从沙漠押往更残酷的土地，等待被售卖。"
 	outfit = /datum/outfit/job/roguetown/slaver/slave/arcyne
-	traits_applied = list(TRAIT_GOODLOVER, TRAIT_OUTLANDER)
+	traits_applied = list(TRAIT_ARCYNE, TRAIT_GOODLOVER, TRAIT_OUTLANDER)
 	category_tags = list(CTAG_SLAVER_SLAVE)
+	subclass_mage_aspects = list("mastery" = FALSE, "major" = 1, "minor" = 1, "utilities" = 4, "ward" = TRUE)
 
 	subclass_skills = list(
 		/datum/skill/combat/wrestling = SKILL_LEVEL_NOVICE,
