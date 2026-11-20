@@ -153,6 +153,11 @@
 		return FALSE
 	return TRUE
 
+/datum/stressevent/triumph_noise
+	timer = 10 MINUTES
+	stressadd = 3
+	desc = span_red("曾经得胜的回忆，如今只剩腐臭！")
+
 /datum/stressevent/freakout
 	timer = 15 SECONDS
 	stressadd = 2
@@ -603,6 +608,12 @@
 
 /datum/stressevent/prejudice/kazengun
 	desc = span_red("是谁把风郡裔请到费伦提亚来的？")
+
+/datum/stressevent/prejudice/avar
+	desc = span_red("阿夫尼克人总是那么阴沉，毫无趣味。")
+
+/datum/stressevent/prejudice/gronn
+	desc = span_red("我刚看见一个格隆恩人！真是野蛮！")
 
 /datum/stressevent/prejudice/underdark
 	desc = span_red("那个地底居民就该待在地下，那才是它该待的地方。")

@@ -425,8 +425,8 @@
 			str = "[m1]手腕上戴着什么东西！"
 		. += str
 
-	if(istype(skin_armor, /obj/item/clothing/suit/roguetown/armor/manual/arcyne_ward))
-		var/obj/item/clothing/suit/roguetown/armor/manual/arcyne_ward/ward = skin_armor
+	var/obj/item/clothing/suit/roguetown/armor/manual/arcyne_ward/ward = skin_armor
+	if(istype(ward) && !ward.hidden)
 		var/str = "[m3]<font color='[ward.ward_color]'>[ward.generate_tooltip(ward.get_examine_string(user))]在[user == src ? "我" : p_them()]周围闪烁。</font>"
 		str += ward.integrity_check(is_smart)
 		if (is_stupid)
@@ -975,6 +975,10 @@
 		else
 			. += "ø ------------ ø"
 
+	if(HAS_TRAIT(src, TRAIT_MONSTROUS))
+		. += span_userdanger("怪物！异民！")
+		to_chat(user, span_danger("[user == src ? "我" : "此人"]是异民！诸神憎恶这样的异端！"))
+
 	if(name in unknown_names)
 		. += span_info("这是<EM>[name]</EM>.")
 		if(HAS_TRAIT(user, TRAIT_HERETIC_SEER))
@@ -1051,6 +1055,9 @@
 		else
 			display1 = span_info("这是 <EM>[used_name]</EM>，[race_name]。")
 		. += "[display1] [display2]"
+
+		if(origin && origin != "Unknown")
+			. += span_info("[capitalize(m2)]祖籍是[origin]。")
 
 		if(HAS_TRAIT(src, TRAIT_WITCH))
 			if(HAS_TRAIT(user, TRAIT_NOBLE) || HAS_TRAIT(user, TRAIT_INQUISITION) || HAS_TRAIT(user, TRAIT_WITCH))
@@ -1139,7 +1146,7 @@
 			var/mob/living/carbon/human/H = user
 			for(var/type in GLOB.origins)
 				var/datum/origin/O = GLOB.origins[type]
-				if(O.name == origin && O.prejudice_stress && H.origin != origin && (!O.hated_by || (H.origin in O.hated_by)))
+				if(O.name == origin && O.prejudice_stress && H.origin != origin && !HAS_TRAIT(H, TRAIT_TOLERANT) && (!O.hated_by || (H.origin in O.hated_by)))
 					. += O.prejudice_examine
 					user.add_stress(O.prejudice_stress)
 
@@ -1164,13 +1171,20 @@
 					. += (user_side == mob_side) ? span_notice("同是[their_god.name]的支持者!") : span_userdanger("可耻的[their_god.name]支持者!")
 
 
-		if(origin && origin != "Unknown")
-			. += span_info("[capitalize(m2)]血统源自[origin].")
+		if(HAS_TRAIT(src, TRAIT_OVERWEIGHT))
+			. += span_info(span_yellow("[m1]挺胖的。"))
 
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			if(H.marriedto == name)
 				. += span_love("这是我的配偶。")
+			if((H.patron.type == /datum/patron/inhumen/zizo) || (H.patron.type == /datum/patron/inhumen/baotha))
+				if(src.purity == TRUE)
+					. += span_greentext("<b>灵辉纯净！</b>")
+				if(HAS_TRAIT(src, TRAIT_LUX_RIPPED))
+					. += span_danger("<b>灵辉已被撕裂！</b>")
+				if(src.virginity == TRUE)
+					. += span_aiprivradio("童贞！")
 
 		var/gang_message = get_gang_text(user)
 		if (gang_message)
@@ -1326,13 +1340,13 @@
 		// Shouldn't be able to tell they are unrevivable through a mask as a Necran
 		if(HAS_TRAIT(src, TRAIT_DNR) && src != user)
 			if(HAS_TRAIT(user, TRAIT_DEATHSIGHT))
-				. += span_danger("他们散发着苍白的灵光。他们的灵魂[stat == DEAD ? "不曾" : "并不"]纯净。他们已经完了。")
-			else if(stat == DEAD)
-				. += span_danger("这是他们此生唯一的机会。")
+				. += span_danger("他们散发着苍白的灵光。他们的灵魂[looks_dead() ? "不曾" : "并不"]纯净。他们已经完了。")
+			else if(looks_dead())
+				. += span_danger("这曾是他们此生唯一的机会。")
 
 	// Real medical role can tell at a glance it is a waste of time, but only if the Necra message don't come first.
 
-	if(user.get_skill_level(/datum/skill/misc/medicine) >= SKILL_LEVEL_EXPERT && src.stat == DEAD)
+	if(user.get_skill_level(/datum/skill/misc/medicine) >= SKILL_LEVEL_EXPERT && looks_dead())
 		if(HAS_TRAIT(src, TRAIT_DNR) && src != user && !HAS_TRAIT(user, TRAIT_DEATHSIGHT)) // A lot of conditional to avoid a redundant message, but we also want unknown DNRs to be covered.
 			. += span_danger("他们的身体已无丝毫生机。任何药物也无法使其复生。")
 

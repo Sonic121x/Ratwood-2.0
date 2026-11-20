@@ -20,7 +20,7 @@
 	outfit = /datum/outfit/job/roguetown/keeper
 	display_order = JDO_KEEPER
 	give_bank_account = 1
-	min_pq = 10
+	min_pq = 7 //10
 	max_pq = null
 	round_contrib_points = 5
 
@@ -79,6 +79,7 @@
 		/datum/skill/labor/butchering = SKILL_LEVEL_EXPERT,
 		/datum/skill/magic/holy = SKILL_LEVEL_MASTER,
 	)
+	pure_heart = TRUE
 	adv_stat_ceiling = list(STAT_STRENGTH = 6)
 
 /datum/job/roguetown/keeper/after_spawn(mob/living/L, mob/M, latejoin = TRUE)

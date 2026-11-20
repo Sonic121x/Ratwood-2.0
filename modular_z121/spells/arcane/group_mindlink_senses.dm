@@ -29,7 +29,6 @@
 	var/restoring_sounds = FALSE
 	var/list/local_loops = list()
 	var/list/remote_loops = list()
-	var/list/loop_templates = list()
 	var/list/one_shot_channels = list()
 	var/next_sound_channel = 1
 	var/list/ambient_sounds = list()
@@ -270,23 +269,12 @@
 	for(var/sound/playing in view_client.SoundQuery())
 		if(viewer.group_mindlink_scene_channels?["[playing.channel]"] == playing.file)
 			viewer.stop_sound_channel(playing.channel)
-	// 已在播放的本地循环声也需停止；退场时仅重新接入仍有效且可听到的来源。
-	for(var/datum/looping_sound/loop as anything in view_client.played_loops.Copy())
-		if(loop.direct && loop.channel != CHANNEL_WEATHER)
+	// 保留令牌监听关系，退场时重新发送仍有效的声音。
+	for(var/datum/sound_token/token as anything in viewer.sound_tokens)
+		if(findtext("[token.sound?.file]", "sound/music/"))
 			continue
-		var/list/entry = view_client.played_loops[loop]
-		var/sound/local_sound = entry["SOUND"]
-		if(findtext("[local_sound?.file]", "sound/music/"))
-			continue
-		local_loops |= loop
-		if(local_sound)
-			viewer.stop_sound_channel(local_sound.channel)
-		loop.thingshearing -= WEAKREF(viewer)
-		view_client.played_loops -= loop
-	// 切入时已存在的声音不必等待下一次循环回调。
-	for(var/datum/looping_sound/loop as anything in target.client.played_loops)
-		if(!loop.direct)
-			receive_loop(loop)
+		local_loops |= token
+		viewer.stop_sound_channel(token.sound_channel)
 	process_senses()
 
 /datum/group_mindlink_view/proc/stop_senses()
@@ -298,15 +286,14 @@
 			SEND_SOUND(view_client, sound(null, channel = channel))
 		for(var/channel_key in ambient_channels)
 			SEND_SOUND(view_client, sound(null, channel = ambient_channels[channel_key]))
-	for(var/datum/looping_sound/loop as anything in remote_loops.Copy())
+	for(var/datum/sound_token/loop as anything in remote_loops.Copy())
 		remove_loop(loop)
 	SSsounds.free_datum_channels(src)
 	if(view_client?.mob == viewer && !QDELETED(viewer))
 		restoring_sounds = TRUE
-		for(var/datum/looping_sound/loop as anything in local_loops)
-			if(QDELETED(loop) || loop.stopped || !loop_reaches(loop, viewer))
-				continue
-			viewer.playsound_local(loop.direct ? viewer : get_turf(loop.parent), loop.cursound, loop.volume, loop.vary, loop.frequency, loop.falloff, loop.channel, FALSE, null, loop)
+		for(var/datum/sound_token/token as anything in local_loops)
+			if(!QDELETED(token) && !isnull(token.listeners[viewer]))
+				token.update_listener(viewer, FALSE)
 		var/area/current_area = get_area(viewer)
 		SSdroning.kill_loop(view_client)
 		SSdroning.kill_rain(view_client)
@@ -316,15 +303,18 @@
 			SSambience.ambience_listening_clients[view_client] = max(world.time, saved_ambience_time)
 		restoring_sounds = FALSE
 	local_loops.Cut()
-	loop_templates.Cut()
 	ambient_sounds.Cut()
 	ambient_channels.Cut()
 	one_shot_channels.Cut()
 
 // 音效的原始接收名单已由 playsound 检查墙体和传播范围；只在真正的接收者上转发。
-/mob/living/playsound_local(atom/turf_source, soundin, vol as num, vary, frequency, falloff, channel, pressure_affected = TRUE, sound/S, repeat, muffled)
-	var/datum/looping_sound/loop = istype(repeat, /datum/looping_sound) ? repeat : null
-	var/scene_sound = (!channel || channel <= CHANNEL_HIGHEST_AVAILABLE) && (isturf(turf_source) || loop) && !loop?.direct
+/mob/living/playsound_local(turf/turf_source, soundin, vol as num, vary, frequency, falloff_exponent, channel = 0, pressure_affected = FALSE, sound/S, max_distance, falloff_distance = SOUND_DEFAULT_FALLOFF_DISTANCE, distance_multiplier = 1, use_reverb = TRUE, muffled = FALSE, min_volume = SOUND_DEFAULT_MIN_VOLUME, travel = SOUND_TRAVEL_UNRESTRICTED, floor_volume = null, erp = FALSE, volume_pref = null)
+	var/datum/sound_token/token
+	for(var/datum/sound_token/candidate as anything in sound_tokens)
+		if(candidate.sound_channel == channel)
+			token = candidate
+			break
+	var/scene_sound = (!channel || channel <= CHANNEL_HIGHEST_AVAILABLE) && isturf(turf_source)
 	var/sound_file = S?.file || soundin
 	if(istype(sound_file, /sound))
 		var/sound/file_sound = sound_file
@@ -332,138 +322,62 @@
 	if(findtext("[sound_file]", "sound/music/") || findtext("[sound_file]", "sound/misc/notice"))
 		scene_sound = FALSE
 	if(!QDELETED(group_mindlink_view) && !group_mindlink_view.restoring_sounds && (scene_sound || channel == CHANNEL_WEATHER))
-		if(loop)
-			group_mindlink_view.local_loops |= loop
+		if(token)
+			group_mindlink_view.local_loops |= token
 		return FALSE
 	if(!scene_sound || !client || !can_hear())
+		if(token)
+			for(var/datum/group_mindlink_view/view as anything in group_mindlink_sense_watchers)
+				view.remove_loop(token)
 		return ..()
-	// 防止共享的 sound 对象被父过程修改后，下一位观看者继承错误音量或方位。
-	var/sound/played_sound = S
-	if(!played_sound)
-		played_sound = istype(soundin, /sound) ? group_mindlink_copy_sound(soundin) : sound(get_sfx(soundin))
-	var/sound/raw_sound
-	if(length(group_mindlink_sense_watchers))
-		raw_sound = group_mindlink_copy_sound(played_sound)
-		played_sound = group_mindlink_copy_sound(raw_sound)
-	. = ..(turf_source, soundin, vol, vary, frequency, falloff, channel, pressure_affected, played_sound, repeat, muffled)
-	if(.)
-		LAZYINITLIST(group_mindlink_scene_channels)
-		group_mindlink_scene_channels["[played_sound.channel]"] = played_sound.file
-	if(!raw_sound)
+	// 复制每位听者的声音，沿用当前声音系统的衰减、楼层和混响。
+	var/sound/played_sound = S ? group_mindlink_copy_sound(S) : (istype(soundin, /sound) ? group_mindlink_copy_sound(soundin) : sound(get_sfx(soundin)))
+	. = ..(turf_source, soundin, vol, vary, frequency, falloff_exponent, channel, pressure_affected, played_sound, max_distance, falloff_distance, distance_multiplier, use_reverb, muffled, min_volume, travel, floor_volume, erp, volume_pref)
+	if(!.)
+		if(token)
+			for(var/datum/group_mindlink_view/view as anything in group_mindlink_sense_watchers)
+				view.remove_loop(token)
 		return
-	raw_sound.frequency = played_sound.frequency
-	for(var/datum/group_mindlink_view/view as anything in group_mindlink_sense_watchers.Copy())
-		if(loop)
-			view.receive_loop(loop, raw_sound)
-		else
-			view.receive_sound(turf_source, raw_sound, vol, falloff, muffled)
+	LAZYINITLIST(group_mindlink_scene_channels)
+	group_mindlink_scene_channels["[played_sound.channel]"] = played_sound.file
+	var/listener_volume = isnull(volume_pref) ? client.prefs.at_overall(client.prefs.mastervol) : volume_pref
+	for(var/datum/group_mindlink_view/view as anything in group_mindlink_sense_watchers)
+		view.receive_sound(played_sound, token, listener_volume)
 
-/datum/group_mindlink_view/proc/spatial_sound(atom/source, sound/template, volume, falloff, muffled)
-	if(!senses_valid() || !target.can_hear() || !template?.file)
-		return null
-	var/turf/listener_turf = get_turf(target)
-	var/turf/source_turf = get_turf(source)
-	if(!listener_turf || !source_turf)
-		return null
-	if(isdullahan(target))
-		var/mob/living/carbon/human/person = target
-		var/datum/species/dullahan/species = person.dna.species
-		if(species.headless && species.my_head)
-			listener_turf = get_turf(species.my_head)
-			muffled = istype(species.my_head.loc, /obj/structure/closet) || istype(species.my_head.loc, /obj/item/storage)
-	if(!listener_turf)
-		return null
-	var/sound/result = group_mindlink_copy_sound(template)
-	result.status = 0
-	result.wait = 0
-	result.repeat = FALSE
-	if(muffled)
-		volume *= 0.75
-		falloff = (falloff || FALLOFF_SOUNDS) * 1.5
-		result.environment = 11
-	var/area/listener_area = get_area(target)
-	if(listener_area && listener_area.soundenv != -1)
-		result.environment = listener_area.soundenv
-	result.volume = min(volume * (view_client.prefs.mastervol * 0.01), 100)
-	result.volume *= max(0, 1 - 0.1 * get_dist(listener_turf, source_turf))
-	if(result.volume <= 0)
-		return null
-	var/dx = source_turf.x - listener_turf.x
-	var/dz = source_turf.y - listener_turf.y
-	result.x = abs(dx) <= 1 ? 0 : dx
-	result.z = abs(dz) <= 1 ? 0 : dz
-	result.y = source_turf.z - listener_turf.z
-	result.falloff = falloff || FALLOFF_SOUNDS
-	return result
-
-/datum/group_mindlink_view/proc/receive_sound(atom/source, sound/template, volume, falloff, muffled)
-	var/sound/received = spatial_sound(source, template, volume, falloff, muffled)
-	if(!received)
+/datum/group_mindlink_view/proc/receive_sound(sound/template, datum/sound_token/token, listener_volume)
+	if(!senses_valid() || !target.can_hear() || !template?.file || listener_volume <= 0)
 		return
-	// 一次性音效使用有界通道池，不随十五分钟内的音效数量持续占用全局通道。
-	if(length(one_shot_channels) < 8)
-		var/channel = SSsounds.reserve_sound_channel(src)
-		if(channel)
-			one_shot_channels += channel
-	if(!length(one_shot_channels))
-		return
-	next_sound_channel = ((next_sound_channel - 1) % length(one_shot_channels)) + 1
-	received.channel = one_shot_channels[next_sound_channel++]
-	SEND_SOUND(view_client, received)
-
-/datum/group_mindlink_view/proc/loop_reaches(datum/looping_sound/loop, mob/living/listener)
-	if(QDELETED(loop) || loop.stopped || !loop.parent || !listener?.can_hear())
-		return FALSE
-	if(loop.direct)
-		return loop.parent == listener
-	var/turf/source_turf = get_turf(loop.parent)
-	if(!source_turf)
-		return FALSE
-	var/distance = world.view + (loop.extra_range || 1)
-	var/list/listeners
-	if(!loop.ignore_walls)
-		listeners = get_hearers_in_view(distance, source_turf, RECURSIVE_CONTENTS_CLIENT_MOBS)
-	else
-		listeners = get_hearers_in_range(distance, source_turf, RECURSIVE_CONTENTS_CLIENT_MOBS)
-		var/turf/above = GET_TURF_ABOVE(source_turf)
-		var/turf/below = GET_TURF_BELOW(source_turf)
-		if(above)
-			listeners |= get_hearers_in_range(distance, above, RECURSIVE_CONTENTS_CLIENT_MOBS)
-		if(below)
-			listeners |= get_hearers_in_range(distance, below, RECURSIVE_CONTENTS_CLIENT_MOBS)
-	return listener in listeners
-
-/datum/group_mindlink_view/proc/receive_loop(datum/looping_sound/loop, sound/template)
-	if(!senses_valid() || QDELETED(loop) || loop.direct || !loop_reaches(loop, target))
-		remove_loop(loop)
-		return
-	if(template)
-		loop_templates[loop] = group_mindlink_copy_sound(template)
-	else
-		template = loop_templates[loop] || loop.cursound
-	if(!istype(template))
-		template = sound(template)
-	if(findtext("[template?.file]", "sound/music/"))
-		return
-	var/sound/received = spatial_sound(loop.parent, template, loop.volume, loop.falloff, FALSE)
-	if(!received)
-		remove_loop(loop)
-		return
-	var/sound/previous = remote_loops[loop]
-	if(previous)
-		received.channel = previous.channel
-		if(previous.file == received.file && loop.repeat_sound)
-			received.status = SOUND_UPDATE
-	else
-		received.channel = SSsounds.reserve_sound_channel(src)
+	var/sound/received = group_mindlink_copy_sound(template)
+	var/preference = token?.respect_instrument_pref ? view_client.prefs.instrumentvol : view_client.prefs.mastervol
+	received.volume = min(100, received.volume / listener_volume * view_client.prefs.at_overall(preference))
+	if(token)
+		var/sound/previous = remote_loops[token]
+		received.channel = previous?.channel || SSsounds.reserve_sound_channel_for_datum(src)
 		if(!received.channel)
 			return
-	received.repeat = loop.repeat_sound
-	remote_loops[loop] = received
+		if(previous?.file != received.file)
+			received.status &= ~SOUND_UPDATE
+			var/duration = (token.stand_in?.file == template.file) ? token.stand_in_duration : token.sound_duration
+			received.offset = token.calculate_offset(duration)
+			if(isnull(received.offset))
+				SEND_SOUND(view_client, sound(null, channel = received.channel))
+				SSsounds.free_sound_channel(received.channel)
+				remote_loops -= token
+				return
+		remote_loops[token] = received
+	else
+		// 一次性音效使用有界通道池。
+		if(length(one_shot_channels) < 8)
+			var/channel = SSsounds.reserve_sound_channel_for_datum(src)
+			if(channel)
+				one_shot_channels += channel
+		if(!length(one_shot_channels))
+			return
+		next_sound_channel = ((next_sound_channel - 1) % length(one_shot_channels)) + 1
+		received.channel = one_shot_channels[next_sound_channel++]
 	SEND_SOUND(view_client, received)
 
-/datum/group_mindlink_view/proc/remove_loop(datum/looping_sound/loop)
-	loop_templates -= loop
+/datum/group_mindlink_view/proc/remove_loop(datum/sound_token/loop)
 	var/sound/previous = remote_loops[loop]
 	if(!previous)
 		return
@@ -481,11 +395,13 @@
 			SEND_SOUND(view_client, sound(null, channel = channel))
 	target_was_hearing = hearing
 	SSambience.remove_ambience_client(view_client)
-	for(var/datum/looping_sound/loop as anything in remote_loops.Copy())
-		if(QDELETED(loop) || !loop_reaches(loop, target))
+	// 从现有入口取得目标获准听到的声音，也覆盖切入前已开始的令牌。
+	for(var/datum/sound_token/token as anything in target.sound_tokens)
+		if(!QDELETED(token))
+			token.update_listener(target)
+	for(var/datum/sound_token/loop as anything in remote_loops.Copy())
+		if(QDELETED(loop) || !hearing || isnull(loop.listeners[target]) || (loop.listeners[target] & SOUND_MUTE) || !LAZYACCESS(loop.started_listeners, target))
 			remove_loop(loop)
-		else if(loop.repeat_sound)
-			receive_loop(loop)
 	// 环境底噪与雨声由专用通道直接发送，不经过 playsound_local；只同步这三个环境通道。
 	var/list/environment_channels = list(CHANNEL_AMBIENCE, CHANNEL_RAIN, CHANNEL_WEATHER)
 	for(var/channel in environment_channels)
@@ -500,7 +416,7 @@
 			var/sound/previous = ambient_sounds[key]
 			var/sound/received = group_mindlink_copy_sound(environment)
 			if(!ambient_channels[key])
-				ambient_channels[key] = SSsounds.reserve_sound_channel(src)
+				ambient_channels[key] = SSsounds.reserve_sound_channel_for_datum(src)
 			if(!ambient_channels[key])
 				continue
 			received.channel = ambient_channels[key]
@@ -509,10 +425,9 @@
 			received.volume = clamp(view_client.prefs.ambiencevol, 0, 100)
 			if(environment.channel == CHANNEL_WEATHER)
 				received.volume = clamp(view_client.prefs.mastervol, 0, 100)
-				for(var/datum/looping_sound/weather as anything in target.client.played_loops)
-					if(weather.direct && weather.channel == CHANNEL_WEATHER)
-						received.volume = clamp(weather.volume * view_client.prefs.mastervol * 0.01, 0, 100)
-						break
+				var/datum/looping_sound/weather = SSParticleWeather.runningWeather?.currentSounds[target]
+				if(weather?.sound_channel == CHANNEL_WEATHER)
+					received.volume = clamp(view_client.prefs.at_overall(weather.volume * view_client.prefs.mastervol * 0.01), 0, 100)
 			ambient_sounds[key] = received
 			SEND_SOUND(view_client, received)
 	for(var/key in ambient_sounds.Copy())

@@ -9,7 +9,7 @@
 	var/phalanx_btn = "咏唱方阵武士之章"
 	var/mace_btn = "咏唱执锤者之章"
 	if(faction == "undead")
-		title = "MEMORIES"
+		title = "回忆"
 		blade_btn = "醒来"
 		phalanx_btn = "醒来"
 		mace_btn = "醒来"
@@ -26,8 +26,8 @@
 			phalanx_weapons = "长戟 / 长柄战斧 / 猎猪矛 / 多利短矛与盾牌 / 薙刀"
 			mace_weapons = "钢钉头锤 / 钢战锤与盾牌 / 巨型钉头锤 / 战斧 / 钢巨斧"
 		if("noccite")
-			blade_weapons = "长剑 / 刺剑 / 军刀 / 钢巨剑 / 钢匕首与盾牌 / 暮光之牙"
-			phalanx_weapons = "长戟 / 长柄战斧 / 猎猪矛 / 多利短矛与盾牌 / 薙刀"
+			blade_weapons = "长剑 / 刺剑 / 军刀 / 钢巨剑 / 钢匕首与盾牌" // removed Twilight Fang as it does not exist.
+			phalanx_weapons = "长戟 / 长柄战斧 / 猎猪矛 / 多利短矛与盾牌"
 			mace_weapons = "钢钉头锤 / 钢战锤与盾牌 / 巨型钉头锤 / 战斧 / 钢巨斧"
 		if("almah")
 			blade_weapons = "双持舍施尔弯刀 / 沙拉尔军刀与盾牌"
@@ -49,6 +49,33 @@
 		phalanx_weapons = "[extra_phalanx_weapon] / [phalanx_weapons]"
 	if(extra_mace_weapon)
 		mace_weapons = "[extra_mace_weapon] / [mace_weapons]"
+
+	// bloakonly.. for now.
+	var/sagittary_column = ""
+	var/container_width = 960
+	if(faction == "blackoak")
+		container_width = 1300
+		sagittary_column = {"<div class="column">
+<div class="column-content">
+<h3>— 射手 —</h3>
+<div class="chant-text">
+[get_sagittary_chant_text(faction, H)]
+</div>
+<div class="abilities">
+<h4>能力</h4>
+<ul>
+<li><b>地脉引弦</b> — 射出奥术光箭，不消耗箭矢。命中时，地脉光束沿弹道贯穿目标及后方的人。强化（3层动量）：光束更长、伤害更高，并获得轻度穿透。</li>
+<li><b>荆棘之雨</b> — 短暂预警后，在最远7格内的3×3区域降下奥术荆棘。不消耗箭矢。强化：伤害翻倍。</li>
+<li><b>抽身撤步</b> — 向远离目标的方向跃出3格，可穿过敌人。强化：在原地留下爆发，打击并击退相邻目标。</li>
+<li><b>裂空箭雨</b> — 连续射出追击目标的奥术箭矢。7层动量：5支箭；10层：8支箭。盾牌或弹道上的人都能挡下箭矢！</li>
+<li><b>绑定弓</b> — 每次箭矢命中积累1层动量。武器赋能使下一箭精准命中瞄准部位，并如破甲箭般穿透护甲。</li>
+</ul>
+</div>
+<p class="weapon-info">靛纹反曲弓与箭袋 / 精灵军刀或精灵匕首</p>
+</div>
+<a class="choose-btn" href='?src=\ref[caller];subclass=sagittary'>咏唱射手之章</a>
+</div>
+"}
 
 	// Color palette per faction
 	var/col_bg			// body background
@@ -115,7 +142,7 @@ body {
 	padding: 20px;
 }
 .chant-container {
-	max-width: 960px;
+	max-width: [container_width]px;
 	margin: 0 auto;
 	text-align: center;
 }
@@ -339,7 +366,7 @@ a.choose-btn:hover {
 </div>
 <a class="choose-btn" href='?src=\ref[caller];subclass=macebearer'>[mace_btn]</a>
 </div>
-</div>
+[sagittary_column]</div>
 <div class="shared-info">
 <h4>共有能力</h4>
 <p>武器绑定 · 武器召回 · 武器赋能 · 修复术 · 4 点实用法术点</p>
@@ -509,6 +536,14 @@ a.choose-btn:hover {
 <p><em>以百击，将诸敌碎为尘埃。</em></p>
 <p><em>我身即兵，征服为归。</em></p>
 <p><em>蒙她恩典，我将征服！</em></p>"}
+
+/proc/get_sagittary_chant_text(faction, mob/living/carbon/human/H)
+	return {"<p><em>我是塔里凯亚之弓——费伦提亚，她重生之名！</em></p>
+<p><em>弓为我法！血为我墨！</em></p>
+<p><em>我目光远及！我箭无虚发！</em></p>
+<p><em>十二支箭，足以削薄敌阵。</em></p>
+<p><em>五百年来，不曾屈服！</em></p>
+<p><em>以鲜血与钢铁，再续五百年！</em></p>"}
 
 /proc/get_preamble_closing(faction)
 	switch(faction)

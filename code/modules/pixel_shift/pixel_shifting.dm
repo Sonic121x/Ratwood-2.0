@@ -93,8 +93,8 @@
 /datum/keybinding/mob/pixel_rotate_reset
 	hotkey_keys = list()
 	name = "pixel_rotate_reset"
-	full_name = "Pixel Rotate: Reset"
-	description = "Reset cosmetic rotation while keeping your pixel position."
+	full_name = "微调旋转：重置"
+	description = "重置外观旋转角度，同时保留微调后的位置。"
 
 /datum/keybinding/mob/pixel_rotate_reset/down(client/user)
 	var/mob/living/target = user.mob.get_pixel_shift_target()

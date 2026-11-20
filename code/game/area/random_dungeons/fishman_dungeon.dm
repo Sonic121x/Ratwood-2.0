@@ -9,6 +9,8 @@
 
 /area/rogue/under/cavewet/fishmandungeon
 	name = "深潜者巢穴"
+	// Keep dungeon water excluded from the wet-cave river opt-in.
+	river_ambience = FALSE
 	first_time_text = "南海岸洞穴"
 	first_time_text = "深潜者巢穴"
 	ceiling_protected = TRUE

@@ -20,7 +20,7 @@
 /datum/sex_action/spanking/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	var/force = user.sexcon.force
 	var/sound = pick('sound/foley/slap.ogg', 'sound/foley/smackspecial.ogg')
-	playsound(target, sound, 50, TRUE, -2, ignore_walls = FALSE)
+	playsound_erp(target, sound, 50, TRUE, -2)
 
 	var/msg = "[user] [user.sexcon.get_generic_force_adjective()]拍打着[target]的屁股。"
 	user.sexcon_action_message(user.sexcon.spanify_force(msg))

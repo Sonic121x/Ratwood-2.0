@@ -16,7 +16,7 @@
 	)
 	outfit = /datum/outfit/job/roguetown/slaver
 	give_bank_account = 50
-	min_pq = 25
+	min_pq = 13 //25
 	max_pq = null
 	round_contrib_points = 4
 	cmode_music = 'sound/music/cmode/towner/combat_towner3.ogg'

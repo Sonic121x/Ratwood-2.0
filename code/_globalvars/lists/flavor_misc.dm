@@ -208,4 +208,3 @@ GLOBAL_LIST_INIT(station_numerals, greek_letters + phonetic_alphabet + numbers_a
 
 GLOBAL_LIST_INIT(admiral_messages, list("你们知道这些空间站有多贵吗？","别再浪费我的时间。","我刚才在睡觉，真是谢谢你们。","站起来战斗，你们这些懦夫！","来之前你们就知道风险。","别再疑神疑鬼。","什么坏了就再造一个。","不。", "<i>无</i>","<i>错误：未提供回应。</i>", "今天是个赴死的好日子！"))
 
-GLOBAL_LIST_EMPTY(persistent_sound_loops) //Used in sound subsystem to keep track of persistent sounds (musicboxes and instruments mostly)

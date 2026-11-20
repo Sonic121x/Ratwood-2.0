@@ -14,7 +14,9 @@
 		STATKEY_WIL = 2,
 		STATKEY_CON = 1,
 	)
+	pure_heart = TRUE
 	subclass_skills = list(
+		/datum/skill/combat/staves = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/wrestling = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/unarmed = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/polearms = SKILL_LEVEL_APPRENTICE,
@@ -105,7 +107,7 @@
 				else
 					r_hand = /obj/item/clothing/gloves/roguetown/knuckles/bronze
 			if("长杖")
-				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 3, TRUE)
+				H.adjust_skillrank_up_to(/datum/skill/combat/staves, 3, TRUE)
 				r_hand = /obj/item/rogueweapon/woodstaff/quarterstaff/iron
 				l_hand = /obj/item/rogueweapon/scabbard/gwstrap
 				wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/heavy
@@ -211,6 +213,7 @@
 		STATKEY_CON = 2,
 		STATKEY_WIL = 1,
 	)
+	pure_heart = TRUE
 	subclass_skills = list(
 		/datum/skill/combat/shields = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/maces = SKILL_LEVEL_APPRENTICE,
@@ -353,7 +356,7 @@
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	if(H.mind)
 		if(!istype(H?.patron, /datum/patron/old_god)) //Psydonics are special.
-			C.grant_miracles(H, cleric_tier = CLERIC_T1, passive_gain = CLERIC_REGEN_WEAK, devotion_limit = CLERIC_REQ_1) //Capped to T1 miracles.
+			C.grant_miracles(H, cleric_tier = CLERIC_T2, passive_gain = CLERIC_REGEN_MINOR, devotion_limit = CLERIC_REQ_2)//Capped to T2 miracles. Devotion at T2.
 			var/oaths = list("司祭之路 - 医疗与欢宴","十字军之路 - 白银武器")
 			var/oath_choice = input(H, "选择你的誓约。", "宣示你的祝福") as anything in oaths
 			switch(oath_choice)
@@ -607,7 +610,9 @@
 		STATKEY_WIL = 1,
 		STATKEY_SPD = 1,
 	)
+	pure_heart = TRUE
 	subclass_skills = list(
+		/datum/skill/combat/staves = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/polearms = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/magic/holy = SKILL_LEVEL_EXPERT,
 		/datum/skill/combat/wrestling = SKILL_LEVEL_APPRENTICE,
@@ -769,6 +774,7 @@
 		STATKEY_SPD = 1,
 		STATKEY_STR = -2,
 	)
+	pure_heart = TRUE
 	subclass_skills = list(
 		/datum/skill/misc/athletics = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,

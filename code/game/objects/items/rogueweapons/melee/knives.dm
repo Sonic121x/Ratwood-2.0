@@ -697,6 +697,14 @@
 	sheathe_icon = "tanto"
 	picklvl = 1.2
 
+/obj/item/rogueweapon/huntingknife/idagger/silver/kazengun
+	name = "白银短刀"
+	desc = "从风郡群岛进口的银制短刀。坚固的刀身微微弯曲，装配着精雕的圆形护手。\
+	缠绕在刀柄上的上蜡绞绳让握持更加稳固。"
+	icon_state = "silvereastdagger"
+	sheathe_icon = "silver_tanto"
+	picklvl = 1.2
+
 /obj/item/rogueweapon/huntingknife/idagger/steel/elvish
 	name = "精灵短剑"
 	desc = "一柄精灵设计的波浪刃匕首，其优雅的钢制工艺唯有那暗藏杀机的致命性堪与之匹敌。"
@@ -741,6 +749,10 @@
 	equip_delay_self = 0 //No delay when stowing away, without a scabbard.
 	unequip_delay_self = 0 //No delay when drawing.
 	inv_storage_delay = 0 //No delay when retrieving from a storage slot.
+
+/obj/item/rogueweapon/huntingknife/idagger/silver/stake/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/heart_stake)
 
 /obj/item/rogueweapon/huntingknife/idagger/silver/stake/ComponentInitialize()
 	AddComponent(\

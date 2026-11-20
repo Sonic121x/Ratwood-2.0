@@ -391,6 +391,72 @@
 	icon_state = "stewardbelt"
 	item_state = "stewardbelt"
 
+//Holster belt
+/obj/item/storage/belt/rogue/leather/twilight_holsterbelt
+	name = "枪套腰带"
+	desc = "配有枪套的腰带。为了方便携带手枪，只得牺牲一些腰带空间。"
+	icon_state = "holsterbelt"
+	item_state = "holsterbelt"
+	strip_delay = 20
+	var/max_storage = 1
+	var/list/pistol = list()
+	sewrepair = TRUE
+	component_type = /datum/component/storage/concrete/roguetown/belt/holster_belt
+	grid_width = 96
+	grid_height = 96
+
+/obj/item/storage/belt/rogue/leather/twilight_holsterbelt/update_icon()
+	if(pistol.len)
+		icon_state = "holsterbelt_full"
+	else
+		icon_state = "holsterbelt"
+
+/obj/item/storage/belt/rogue/leather/twilight_holsterbelt/proc/eatpistol(obj/A)
+	if((A.type in typesof(/obj/item/gun/ballistic/revolver/rune/twilight_runelock)) || (A.type in typesof(/obj/item/gun/ballistic/firearm/arquebus_pistol)))
+		var/obj/item/gun/ballistic/P = A
+		if(!P.gripped_intents)
+			if(pistol.len < max_storage)
+				P.forceMove(src)
+				pistol += P
+				update_icon()
+				return TRUE
+			else
+				return FALSE
+
+/obj/item/storage/belt/rogue/leather/twilight_holsterbelt/attackby(obj/A, loc, params)
+	if((A.type in typesof(/obj/item/gun/ballistic/revolver/rune/twilight_runelock)) || (A.type in typesof(/obj/item/gun/ballistic/firearm/arquebus_pistol)))
+		var/obj/item/gun/ballistic/P = A
+		if(!P.gripped_intents)
+			if(pistol.len < max_storage)
+				if(ismob(loc))
+					var/mob/M = loc
+					M.doUnEquip(P, TRUE, src, TRUE, silent = TRUE)
+				else
+					P.forceMove(src)
+				pistol += P
+				update_icon()
+				to_chat(usr, span_notice("我将[P.name]插入[src.name]的枪套。"))
+			else
+				to_chat(loc, span_warning("枪套里已经有东西了。"))
+			return
+	..()
+
+/obj/item/storage/belt/rogue/leather/twilight_holsterbelt/attack_right(mob/user)
+	if(pistol.len)
+		var/obj/O = pistol[pistol.len]
+		pistol -= O
+		O.forceMove(user.loc)
+		user.put_in_hands(O)
+		update_icon()
+		return TRUE
+
+/obj/item/storage/belt/rogue/leather/twilight_holsterbelt/examine(mob/user)
+	. = ..()
+	if(pistol.len == 1)
+		. += span_notice("枪套中装着一件武器。")
+	else
+		. += span_notice("枪套是空的。")
+
 //Knifeblade belts, act as quivers mixed with belts. Lower storage size of a belt, but holds knives without taking space.
 /obj/item/storage/belt/rogue/leather/knifebelt
 	name = "飞刃腰带"

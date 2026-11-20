@@ -9,6 +9,26 @@
 		clash(user, IM, IU)
 		return
 	if(!IU)	//The opponent is trying to rawdog us with their bare hands while we have Guard up. We get a riposte window.
+		if(is_bite)	//They lunged in with their teeth -- rather than a hand or weapon, we give them an extra bonk to the head.
+			var/obj/item/bodypart/affecting = H.get_bodypart(BODY_ZONE_HEAD)
+			var/force = IM ? get_complex_damage(IM, src) : get_punch_dmg()
+			var/armor_block = H.run_armor_check(BODY_ZONE_PRECISE_MOUTH, "blunt", armor_penetration = PEN_NONE, damage = force)
+			if(IM)
+				visible_message(span_suicide("[src]挡住[H]的啃咬，将[IM]猛砸向[H.p_their()]的嘴！"))
+			else
+				visible_message(span_suicide("[src]挡住[H]的啃咬，一拳猛砸向[H.p_their()]的嘴！"))
+			if(affecting && H.apply_damage(force, BRUTE, affecting, armor_block))
+				affecting.bodypart_attacked_by(BCLASS_BLUNT, force, crit_message = TRUE, weapon = IM, zone_precise = BODY_ZONE_PRECISE_MOUTH)
+			H.apply_status_effect(/datum/status_effect/debuff/exposed, 3 SECONDS)
+			H.apply_status_effect(/datum/status_effect/debuff/clickcd, 3 SECONDS)
+			if(H.mind)
+				H.dodgetime = clamp(H.dodgetime + 5, 0, CLICK_CD_HEAVY)
+			H.Slowdown(3)
+			to_chat(src, span_notice("[H]露出了破绽！"))
+			playsound(src, 'sound/combat/clash_struck.ogg', 100)
+			remove_status_effect(/datum/status_effect/buff/clash)
+			apply_status_effect(/datum/status_effect/buff/adrenaline_rush)
+			return
 		if(!IM)
 			visible_message(span_suicide("[src]徒手还击了[H]的攻击！"))
 		else

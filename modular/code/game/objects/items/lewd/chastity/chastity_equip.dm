@@ -240,20 +240,20 @@
 					// still causes a CBT wound but stops short of full avulsion.
 					if(prob(20) && H.client?.prefs?.extreme_erp)
 						H.visible_message(span_userdanger("锁终于崩开的瞬间，[user]的凿子勾住了[H.p_their()]被困住的肉棒——锋刃撕开血肉与根部，随着坠落的装置一并将其扯了下来。"))
-						playsound(drop_turf, pick('modular/sound/masomoans/agony/CBTScreamMale1.ogg', 'modular/sound/masomoans/agony/CBTScreamMale2.ogg'), 85, FALSE, 2)
+						playsound_erp(drop_turf, pick('modular/sound/masomoans/agony/CBTScreamMale1.ogg', 'modular/sound/masomoans/agony/CBTScreamMale2.ogg'), 85, FALSE, 2, travel = SOUND_TRAVEL_LEAKING)
 						H.add_splatter_floor(drop_turf)
 						penis_organ.Remove(H)
 						penis_organ.forceMove(drop_turf)
 					else if(chest && !chest.has_wound(/datum/wound/cbt))
 						// Slip causes crushing/tearing internal groin injury but no avulsion.
 						H.visible_message(span_userdanger("锁崩开的瞬间，[user]的凿子狠狠咬进了[H.p_their()]睾丸——装置脱落时，扭拧的金属猛地绞过[H.p_their()]裆部。"))
-						playsound(drop_turf, pick('modular/sound/masomoans/agony/CBTScreamMale1.ogg', 'modular/sound/masomoans/agony/CBTScreamMale2.ogg'), 85, FALSE, 2)
+						playsound_erp(drop_turf, pick('modular/sound/masomoans/agony/CBTScreamMale1.ogg', 'modular/sound/masomoans/agony/CBTScreamMale2.ogg'), 85, FALSE, 2, travel = SOUND_TRAVEL_LEAKING)
 						H.add_splatter_floor(drop_turf)
 						chest.add_wound(/datum/wound/cbt)
 				else if(vagina_organ && chest && !chest.has_wound(/datum/wound/cbt))
 					// Slip rakes across exposed softer anatomy; no organ removal but severe tearing.
 					H.visible_message(span_userdanger("锁崩开的瞬间，凿子勾住了[H.p_their()]暴露在外的生殖缝——装置骤然脱落，带着锋刃划过柔嫩血肉，留下参差不齐的伤口。"))
-					playsound(drop_turf, pick('modular/sound/masomoans/agony/CBTScreamFemale1.ogg', 'modular/sound/masomoans/agony/CBTScreamFemale2.ogg'), 85, FALSE, 2)
+					playsound_erp(drop_turf, pick('modular/sound/masomoans/agony/CBTScreamFemale1.ogg', 'modular/sound/masomoans/agony/CBTScreamFemale2.ogg'), 85, FALSE, 2, travel = SOUND_TRAVEL_LEAKING)
 					H.add_splatter_floor(drop_turf)
 					chest.add_wound(/datum/wound/cbt)
 

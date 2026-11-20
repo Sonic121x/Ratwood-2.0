@@ -204,7 +204,7 @@
 	set category = "飞行形态"
 	set name = "鸦鸣"
 
-	emote("caw", intentional = TRUE, animal = TRUE)
+	emote("caw", intentional = TRUE, anthro_noise = TRUE)
 
 /datum/species/shapecrow
 	name = "crow"

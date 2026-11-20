@@ -85,9 +85,9 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
 		STATKEY_SPD = -1
 	)
 	subclass_skills = list(
+		/datum/skill/combat/staves = SKILL_LEVEL_MASTER,//Warrior Monk sorry
 		/datum/skill/combat/wrestling = SKILL_LEVEL_MASTER,
 		/datum/skill/combat/unarmed = SKILL_LEVEL_MASTER,
-		/datum/skill/combat/polearms = SKILL_LEVEL_MASTER,
 		/datum/skill/misc/reading = SKILL_LEVEL_LEGENDARY,
 		/datum/skill/misc/medicine = SKILL_LEVEL_EXPERT,
 		/datum/skill/craft/cooking = SKILL_LEVEL_APPRENTICE,
@@ -97,6 +97,7 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
 		/datum/skill/magic/holy = SKILL_LEVEL_MASTER,
 		/datum/skill/craft/alchemy = SKILL_LEVEL_JOURNEYMAN,
 	)
+	pure_heart = TRUE
 	subclass_stashed_items = list(
 		"《十神箴行录》" = /obj/item/book/rogue/bibble,
 	)
@@ -367,6 +368,14 @@ GLOBAL_LIST_EMPTY(priest_swap_timers)
 		to_chat(src, span_warning("此人与十神的联系太过浅薄。"))
 		return FALSE
 
+	if(HAS_TRAIT(H, TRAIT_LUX_FREAK))
+		to_chat(src, span_warning("诅咒还未在[H]的灵辉中扎根，就已被解除！"))
+		return
+
+	if(HAS_TRAIT(H, TRAIT_INQUISITION))
+		to_chat(src, span_warning("该死的奥塔瓦符文阵削弱了施加于其使者的神罚！"))
+		return FALSE
+		
 	//Let's not curse heretical antags.
 	if(HAS_TRAIT(H, TRAIT_HERESIARCH))
 		to_chat(src, span_warning("此人的神祇庇护着他，使其免受压制。"))
@@ -556,12 +565,10 @@ code\modules\admin\verbs\divinewrath.dm has a variant with all the gods so keep 
 	var/curse_type = curse_choices[curse_pick]
 
 	if (H.real_name == target_name)
-		var/datum/curse/temp = new curse_type()
-
-		if (H.is_cursed(temp))
-			H.remove_curse(temp)
+		if (H.is_cursed(curse_type))
+			H.remove_curse(curse_type)
 			priority_announce("[real_name] 已从 [H.real_name] 身上解除 [curse_pick]！他们再一次成为羊群中的一员！", title = "赎免", sound = 'sound/misc/bell.ogg')
-			message_admins("神罚：[real_name]（[ckey]）移除了 [H.real_name] 的 [curse_pick] ") //[ADMIN_LOOKUPFLW(user)] Maybe add this here if desirable but dunno.
+			message_admins("神罚：[real_name]（[ckey]）已解除 [H.real_name] 的 [curse_pick]") //[ADMIN_LOOKUPFLW(user)] Maybe add this here if desirable but dunno.
 			log_game("DIVINE CURSE: [real_name] ([ckey]) has removed [curse_pick] from [H.real_name])")
 		else
 			if (length(H.curses) >= 1)

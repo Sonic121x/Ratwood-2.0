@@ -185,7 +185,17 @@
 	var/mob/living/L = usr
 	if(L.stat == DEAD)
 		return
-	if(alert("你已不想再活下去了吗？", "", "是", "否") == "否")
+	var/list/warnings = list()
+	SEND_SIGNAL(L, COMSIG_LIVING_GET_SUCCUMB_WARNINGS, warnings)
+	var/prompt = "你已不想再活下去了吗？"
+	if(length(warnings))
+		prompt += "\n\n[jointext(warnings, "\n\n")]"
+	if(alert(prompt, "", "是", "否") == "否")
+		return
+	var/list/current_warnings = list()
+	SEND_SIGNAL(L, COMSIG_LIVING_GET_SUCCUMB_WARNINGS, current_warnings)
+	if(jointext(current_warnings, "") != jointext(warnings, ""))
+		to_chat(L, span_warning("有什么变了。我在门槛前迟疑了。"))
 		return
 	L.succumb(reaper = TRUE)
 

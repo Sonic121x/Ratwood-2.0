@@ -839,6 +839,13 @@
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/warden.dmi'
 	icon_state = "skullmet_bear"
 
+/obj/item/clothing/head/roguetown/helmet/sallet/warden/rat
+	name = "守林人鼠首骨盔"
+	desc = "罕见巨鼠的大型骇人头骨，内衬钢板与软垫，配以钢制锁甲面罩和亚麻头巾。这类战利品常见于终生居住在下水道的人及其后裔。"
+	icon = 'icons/roguetown/clothing/special/warden.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/warden.dmi'
+	icon_state = "skullmet_rat"
+
 /obj/item/clothing/head/roguetown/helmet/sallet/warden/wolf/melee
 	name = "守林人狼首骨盔"
 	desc = "一具巨大而骇人的白色沃尔夫头骨，以额外钢板加固用于前线作战，再配以钢制链甲面罩与亚麻罩巾一同穿戴。这类战利品常与终生猎人及其后裔联系在一起。"
@@ -852,6 +859,11 @@
 /obj/item/clothing/head/roguetown/helmet/sallet/warden/bear/melee
 	name = "守林人熊首骨盔"
 	desc = "一具巨大而骇人的恐熊头骨，以额外钢板加固用于前线作战，再配以钢制链甲面罩与亚麻罩巾一同穿戴。这类战利品常与终生猎人及其后裔联系在一起。"
+	max_integrity = ARMOR_INT_HELMET_HEAVY_IRON + 50
+
+/obj/item/clothing/head/roguetown/helmet/sallet/warden/rat/melee
+	name = "守林人鼠首骨盔"
+	desc = "罕见巨鼠的大型骇人头骨，为前线作战额外加固了钢板，配以钢制锁甲面罩和亚麻头巾。这类战利品常见于终生居住在下水道的人及其后裔。"
 	max_integrity = ARMOR_INT_HELMET_HEAVY_IRON + 50
 
 /obj/item/clothing/head/roguetown/roguehood/warden

@@ -3,7 +3,7 @@
 	tutorial = "你是一名走遍四方的学者，打算将一路见闻写成一本书。虽说你未必像某些人那般将求学看得至高无上，但你同样靠售卖旅途中积攒的故事与传闻谋生。"
 	outfit = /datum/outfit/job/roguetown/adventurer/scholar
 	subclass_social_rank = SOCIAL_RANK_YEOMAN
-	traits_applied = list(TRAIT_INTELLECTUAL, TRAIT_SEEPRICES_SHITTY, TRAIT_GOODWRITER, TRAIT_ALCHEMY_EXPERT, TRAIT_MEDICINE_EXPERT, TRAIT_SMITHING_EXPERT, TRAIT_SEWING_EXPERT, TRAIT_SURVIVAL_EXPERT, TRAIT_HOMESTEAD_EXPERT)
+	traits_applied = list(TRAIT_INTELLECTUAL, TRAIT_SEEPRICES_SHITTY, TRAIT_GOODWRITER, TRAIT_ALCHEMY_EXPERT, TRAIT_MEDICINE_EXPERT, TRAIT_SMITHING_EXPERT, TRAIT_SEWING_EXPERT, TRAIT_SURVIVAL_EXPERT, TRAIT_HOMESTEAD_EXPERT, TRAIT_MAGEDEXTERITY)
 	class_select_category = CLASS_CAT_TRADER
 	category_tags = list(CTAG_PILGRIM, CTAG_COURTAGENT)
 	cmode_music = 'sound/music/cmode/towner/combat_towner3.ogg'
@@ -30,6 +30,7 @@
 		STATKEY_CON = -1,
 		STATKEY_STR = -1,
 	)
+	subclass_mage_aspects = list("mastery" = FALSE, "major" = 1, "minor" = 1, "utilities" = 2, "ward" = TRUE)
 	subclass_skills = list(
 		/datum/skill/misc/reading = SKILL_LEVEL_LEGENDARY,
 		/datum/skill/misc/medicine = SKILL_LEVEL_APPRENTICE,

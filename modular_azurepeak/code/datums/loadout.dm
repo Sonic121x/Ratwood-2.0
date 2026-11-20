@@ -1980,7 +1980,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 
 /datum/loadout_item/tri_pontifex_gloves
 	name = "大祭长手套"
-	path = /obj/item/clothing/gloves/roguetown/angle/pontifex
+	path = /obj/item/clothing/gloves/roguetown/bandages/pontifex
 	triumph_cost = 2
 
 // BOOTS & SHOES (Alphabetically Ordered)
@@ -2109,6 +2109,11 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 /datum/loadout_item/slitteddress
 	name = "开衩长裙"
 	path = /obj/item/clothing/suit/roguetown/shirt/dress/slit
+
+/datum/loadout_item/spellsinger_robe
+	name = "咒歌者长袍"
+	path = /obj/item/clothing/suit/roguetown/shirt/robe/spellcasterrobe
+	triumph_cost = 2
 
 // POLEARMS & STAVES
 /datum/loadout_item/tri_naledi_staff

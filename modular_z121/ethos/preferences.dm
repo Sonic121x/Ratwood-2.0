@@ -36,7 +36,7 @@
 	return ..()
 
 // 改变年龄或种族后，出生前再次校验，不能领取不生效恶习的特质点。
-/datum/preferences/copy_to(mob/living/carbon/human/character, icon_updates = 1, roundstart_checks = TRUE, character_setup = FALSE, antagonist = FALSE, skip_normal_prefs = FALSE)
+/datum/preferences/copy_to(mob/living/carbon/human/character, icon_updates = 1, roundstart_checks = TRUE, character_setup = FALSE, antagonist = FALSE, skip_normal_prefs = FALSE, keep_name = FALSE)
 	for(var/i = 1 to 6)
 		var/datum/charflaw/vice = vars["vice[i]"]
 		if(istype(vice, /datum/charflaw/z121_sin) && check_vice_pick_conflict(vice.type))

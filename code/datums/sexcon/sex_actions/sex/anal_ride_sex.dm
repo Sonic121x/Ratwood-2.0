@@ -9,7 +9,7 @@
 
 /datum/sex_action/anal_ride_sex/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	user.visible_message(span_warning("[user]骑到了[target]身上，开始用[user.p_their()]屁股骑弄[target.p_them()]！"))
-	playsound(target, list('sound/misc/mat/insert (1).ogg','sound/misc/mat/insert (2).ogg'), 20, TRUE, ignore_walls = FALSE)
+	playsound_erp(target, list('sound/misc/mat/insert (1).ogg','sound/misc/mat/insert (2).ogg'), 20, TRUE, extrarange = 0, travel = SOUND_TRAVEL_LEAKING)
 
 /datum/sex_action/anal_ride_sex/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(!user.sexcon.do_knot_action_as_bottom)

@@ -314,6 +314,8 @@
 	. = ..()
 	owner.add_stress(/datum/stressevent/high)
 	SEND_SIGNAL(owner, COMSIG_LUX_TASTED)
+	if(ishuman(owner))
+		complete_zgoal(owner, /datum/zizogoal/drinklux)
 
 /datum/status_effect/buff/vitae/on_remove()
 	owner.remove_stress(/datum/stressevent/high)
@@ -636,6 +638,8 @@
 	examine_text = "SUBJECTPRONOUN 沐浴在恢复性的灵光之中！"
 	var/healing_on_tick = 1
 	var/tech_healing_modifier = 1
+	/// Wound types this healing effect must leave untouched.
+	var/list/excluded_wound_types
 	/// Color of the outline applied during the heal
 	var/outline_colour = "#c42424"
 
@@ -671,11 +675,11 @@
 	if(owner.get_blood_volume() < BLOOD_VOLUME_NORMAL)
 		owner.set_blood_volume(min(owner.get_blood_volume()+healing_on_tick, BLOOD_VOLUME_NORMAL))
 	if(wCount.len > 0)
-		owner.heal_wounds(healing_on_tick)
+		owner.heal_wounds(healing_on_tick, excluded_types = excluded_wound_types)
 		owner.update_damage_overlays()
 	if(HAS_TRAIT(owner, TRAIT_SIMPLE_WOUNDS))
 		if(wCount.len > 0)
-			owner.heal_wounds(healing_on_tick * 2)
+			owner.heal_wounds(healing_on_tick * 2, excluded_types = excluded_wound_types)
 		owner.bleed_rate = owner.get_bleed_rate()
 		if(!length(owner.get_wounds()) && !length(owner.get_embedded_objects()))
 			owner.simple_bleeding = 0
@@ -770,6 +774,7 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/healing/campfire
 	examine_text = null
 	duration = 10 SECONDS
+	excluded_wound_types = list(/datum/wound/slash/incision)
 
 /atom/movable/screen/alert/status_effect/buff/campfire_stamina
 	name = "营火休憩"
@@ -832,7 +837,8 @@
 		owner.set_blood_volume(min(owner.get_blood_volume()+healing_on_tick, BLOOD_VOLUME_OKAY))
 	var/list/wCount = owner.get_wounds()
 	if(length(wCount))
-		owner.heal_wounds(healing_on_tick, list(/datum/wound/slash, /datum/wound/puncture, /datum/wound/bite, /datum/wound/bruise, /datum/wound/dynamic, /datum/wound/dislocation))
+		// Surgical openings must remain open until deliberately closed.
+		owner.heal_wounds(healing_on_tick, list(/datum/wound/slash, /datum/wound/puncture, /datum/wound/bite, /datum/wound/bruise, /datum/wound/dynamic, /datum/wound/dislocation), list(/datum/wound/slash/incision))
 		owner.update_damage_overlays()
 	owner.adjustBruteLoss(-healing_on_tick, 0)
 	owner.adjustFireLoss(-healing_on_tick, 0)
@@ -845,7 +851,7 @@
 
 //Self healing for Martyr.
 /datum/status_effect/buff/healing/prayer
-	id = "healing_prayers"
+	id = "healing_prayer_self"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/healing/prayer
 	examine_text = "SUBJECTPRONOUN 正燃烧着神圣辉光！"
 	outline_colour = "#b280df"
@@ -854,11 +860,10 @@
 /atom/movable/screen/alert/status_effect/buff/healing/prayer
 	name = "信念"
 	desc = "唯凭信仰，我亦能痊愈。"
-	icon_state = "buff"
 
 //BY FAITH ALONE. When Martyr heals via another Tennite praying.
 /datum/status_effect/buff/healing/prayer_power
-	id = "healing_prayers"
+	id = "healing_prayer_received"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/healing/prayer_power
 	examine_text = "SUBJECTPRONOUN 被神圣辉光照亮！"
 	outline_colour = "#b280df"
@@ -867,7 +872,19 @@
 /atom/movable/screen/alert/status_effect/buff/healing/prayer_power
 	name = "受福的歇息"
 	desc = "借由信仰，我得以活着。"
-	icon_state = "buff"
+
+/datum/status_effect/prayer_cooldown
+	id = "prayer_cooldown"
+	status_type = STATUS_EFFECT_REFRESH
+	duration = 1 MINUTES
+	tick_interval = -1
+	alert_type = /atom/movable/screen/alert/status_effect/prayer_cooldown
+
+/atom/movable/screen/alert/status_effect/prayer_cooldown
+	name = "祈祷恢复中"
+	desc = "我必须等待，才能让下一次祈祷得到回应。他人的祈祷仍能治愈我。"
+	icon_state = "lesser_heal"
+	color = "#b280df"
 
 // Lay hands orison effect - gentle, slow healing
 #define LAY_HANDS_FILTER "lay_hands_glow"
@@ -997,23 +1014,21 @@
 	return TRUE
 
 /datum/status_effect/buff/healing/necras_vow/tick()
-	if (owner.stat > 0 && (!owner.get_blood_volume() || owner.health < owner.crit_threshold))
-		// OH SHIT. SHE'S CASHING IN ON THE VOW!!! YOU'RE FUCKED!!!
-		if (!oh_god_it_hurts)
-			to_chat(owner, span_boldwarning("永恒的黑暗笼罩了你。一切归于虚无。随后，你听见了。你听见了<i>祂</i>的声音。"))
+	// In crit (by damage or by blood loss), Necra stops mending you and waits.
+	// No self-revive and no extra damage from the Vow; someone else must save you.
+	if(owner.stat != CONSCIOUS && (owner.health <= owner.crit_threshold || (owner.get_blood_volume() <= BLOOD_VOLUME_SURVIVE && !HAS_TRAIT(owner, TRAIT_BLOODLOSS_IMMUNE))))
+		if(!oh_god_it_hurts)
+			to_chat(owner, span_boldwarning("永恒的黑暗笼罩了你。虚无。随后，你听见了。你听见了<i>祂</i>的声音。"))
 			to_chat(owner, span_crit("<B>\"你属于我。\"</B>"))
-			owner.visible_message(span_warning("昏迷的[owner]突然向后弓起身体，面容扭曲，发出无声的尖叫，蓝色光点从口中涌出！"))
+			owner.visible_message(span_warning("[owner]昏迷的身躯突然向后弓起，发出无声而狰狞的尖叫，蓝色光点从口中涌出！"))
 			oh_god_it_hurts = TRUE
-		
-		owner.adjustOxyLoss(healing_on_tick) // this is the part where she kills you.
 		var/obj/effect/temp_visual/heal/H = new /obj/effect/temp_visual/heal_rogue(get_turf(owner))
 		H.color = "#33cabc"
 		return
-	else if (oh_god_it_hurts)
+	if(oh_god_it_hurts)
+		// Saved. The vow's mending resumes.
 		oh_god_it_hurts = FALSE
-		to_chat(owner, span_warning("紧箍着你肉身的铁钳般的力量不情愿地松开了。可你依然感到空洞……"))
-		qdel(src) // clear the vow if someone somehow saves us
-		return
+		to_chat(owner, span_warning("紧箍着你肉身的铁钳般的力量不情愿地松开了。那么，还不是时候。"))
 	var/obj/effect/temp_visual/heal/H = new /obj/effect/temp_visual/heal_rogue(get_turf(owner))
 	H.color = "#a5a5a5"
 	var/list/wCount = owner.get_wounds()
@@ -1858,6 +1873,7 @@
 
 
 	RegisterSignal(new_owner, COMSIG_MOB_ATTACKED_BY_HAND, PROC_REF(process_touch))
+	RegisterSignal(new_owner, COMSIG_MOB_ATTACKED_BY_BITE, PROC_REF(process_bite))
 	RegisterSignal(new_owner, COMSIG_MOB_ON_KICK, PROC_REF(guard_on_kick))
 	RegisterSignal(new_owner, COMSIG_MOB_KICKED, PROC_REF(guard_kicked))
 	RegisterSignal(new_owner, COMSIG_LIVING_ONJUMP, PROC_REF(guard_disrupted))
@@ -1954,6 +1970,7 @@
 		owner.balloon_alert_to_viewers("<font color = '#ffffff'>格挡已失效!</font>")
 	UnregisterSignal(owner, COMSIG_ATOM_BULLET_ACT)
 	UnregisterSignal(owner, COMSIG_MOB_ATTACKED_BY_HAND)
+	UnregisterSignal(owner, COMSIG_MOB_ATTACKED_BY_BITE)
 	UnregisterSignal(owner, COMSIG_MOB_ITEM_ATTACK)
 	UnregisterSignal(owner, COMSIG_MOB_ITEM_BEING_ATTACKED)
 	UnregisterSignal(owner, COMSIG_MOB_ON_KICK)
@@ -2134,9 +2151,39 @@
 
 /datum/status_effect/buff/clash/limbguard/process_touch(mob/living/carbon/human/parent, mob/living/carbon/human/attacker, mob/living/carbon/human/defender)
 	if(attacker && check_zone(attacker.zone_selected) == protected_zone)
-		var/obj/item/I = defender.get_active_held_item()
-		defender.process_clash(attacker, I, null)	//This will strike at their hand, but not clear away the effect. They tried to grab the protected limb.
+		if(attacker.gloves?.obj_broken == FALSE)	//Gloved hands eat the punishment -- we shred their gloves against our guard instead of breaking their arm (for now).
+			attacker.gloves.take_damage(201, BRUTE) // Breaks regular leather gloves and unarmed knuckles. Does not break metal gloves instantly.
+			var/obj/item/I = defender.get_active_held_item()
+			defender.process_clash(attacker, I, null)
+		else	//Bare hands -- your bone is forfeit.
+			var/arm_zone = (attacker.active_hand_index % 2 == 0) ? BODY_ZONE_R_ARM : BODY_ZONE_L_ARM
+			var/obj/item/bodypart/arm = attacker.get_bodypart(arm_zone)
+			if(arm)
+				arm.add_wound(/datum/wound/fracture, crit_message = FALSE)
+				owner.flash_fullscreen("whiteflash")
+				defender.flash_fullscreen("whiteflash")
+				var/obj/item/I = defender.get_active_held_item()
+				defender.process_clash(attacker, I, null)
+				owner.visible_message("<span class='crit'><b>暴击！</b> [owner]挡住[attacker]的徒手攻击，折断了[attacker.p_their()]的[parse_zone(arm_zone)]！")
+		playsound(owner, 'sound/combat/limbguard_struck.ogg', 100, TRUE)
+		remove_self()
 		return COMPONENT_HAND_NO_ATTACK
+
+//Unlike a weapon strike, there's nothing to disarm here -- we just wrench the guarded limb free and rough them up for it.
+/datum/status_effect/buff/clash/limbguard/process_bite(mob/living/parent, mob/user)
+	if(!is_active || !istype(user, /mob/living/carbon/human))
+		return
+	if(check_zone(user.zone_selected) != protected_zone)
+		return
+	apply_debuffs(user)
+	counter_bite(user)
+	playsound(owner, 'sound/combat/limbguard_struck.ogg', 100, TRUE)
+	if(user.mind)
+		owner.stamina_add(-(owner.max_stamina / 3))
+		owner.energy_add((owner.max_energy / 5))
+	remove_self()
+	return COMPONENT_HAND_NO_ATTACK
+
 
 /datum/status_effect/buff/clash/limbguard/apply_cooldown()
 	owner.apply_status_effect(/datum/status_effect/debuff/specialcd, 60 SECONDS)
@@ -2154,16 +2201,6 @@
 	name = "普赛顿式坚忍"
 	desc = "我受到受祝普赛顿板甲的保护。"
 	icon_state = "buff"
-
-/datum/status_effect/buff/motive
-	id = "motive"
-	alert_type = /atom/movable/screen/alert/status_effect/buff/motive
-	effectedstats = list(STATKEY_STR = 1,STATKEY_CON = 1)
-
-/atom/movable/screen/alert/status_effect/buff/motive
-	name = "杀意"
-	desc = span_bloody("格拉加尔的武装召我屠戮！！杀戮！！撕裂！！吞噬！！")
-	icon_state = "call_to_slaughter"
 
 #define EORANAURA_FILTER "eoranaura"
 

@@ -37,7 +37,7 @@
 	if(z121_return_dialogue_valid(original_mind, controller, generation))
 		death()
 
-/mob/living/carbon/human/emote(act, m_type = null, message = null, intentional = FALSE, forced = FALSE, targetted = FALSE, custom_me = FALSE, animal = FALSE)
+/mob/living/carbon/human/emote(act, m_type = null, message = null, intentional = FALSE, forced = FALSE, targetted = FALSE, custom_me = FALSE, anthro_noise = FALSE, travel = null, erp = FALSE)
 	var/datum/component/z121_death_return/controller = z121_return_controller()
 	if(LOWER_TEXT(act) != "praysuicide" || !controller || !controller.enabled || custom_me)
 		return ..()

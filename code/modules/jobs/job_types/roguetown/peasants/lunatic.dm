@@ -15,7 +15,7 @@
 	outfit = /datum/outfit/job/roguetown/lunatic
 	bypass_lastclass = TRUE
 	bypass_jobban = FALSE
-	min_pq = 100 //the magic of an allowlist server.
+	min_pq = 30 //100 the magic of an allowlist server.
 	max_pq = null
 	tutorial = "你是疯子，是被社会唾弃、也最容易招来厄运的人。你的任务简单，却凶险万分：不择手段地活下去，因为你只要还存在于这世上，危险就会从四面八方自己找上门来。人们说，这片谷地最先逼疯的，永远是那些自以为最了解它的人。"
 	display_order = JDO_LUNATIC

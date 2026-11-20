@@ -35,19 +35,15 @@
 	//If God can hear your prayer (long enough, no bad words, etc.)
 	if(patron.hear_prayer(follower, prayer))
 		if(follower.has_flaw(/datum/charflaw/addiction/godfearing))
-			// Stops prayers if you don't meet your patron's requirements to pray.
-			if(!patron?.can_pray(follower))
-				return
-			else
-				follower.sate_addiction(/datum/charflaw/addiction/godfearing)
+			follower.sate_addiction(/datum/charflaw/addiction/godfearing)
 		if(HAS_TRAIT(follower, TRAIT_CONVICTION))
 			follower.apply_status_effect(/datum/status_effect/buff/healing/prayer, 2)//Mend those wounds.
 			follower.reagents.add_reagent(/datum/reagent/consumable/nutriment, 3)//Just a small sum.
 
 		//Can the Martyr hear this?
-		if(!(patron in ALL_INHUMEN_PATRONS))
+		if(!istype(patron, /datum/patron/inhumen))
 			for (var/mob/living/player in GLOB.player_list)
-				if (player.stat == DEAD || isbrain(player))
+				if (player == follower || player.stat == DEAD || isbrain(player))
 					continue
 				//Do they even have the boon/trait? If so, send it and heal them.
 				if (HAS_TRAIT(player, TRAIT_CONVICTION))
@@ -344,6 +340,25 @@
 	message = "大口喘着气！"
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = FALSE
+
+/datum/emote/living/pant
+	key = "pant"
+	key_third_person = "pants"
+	message = "喘着粗气。"
+	message_muffled = "发出闷闷的喘息声。"
+	emote_type = EMOTE_AUDIBLE
+	show_runechat = FALSE
+
+/datum/emote/living/pant/get_sound(mob/living/user)
+	key = "fatigue"
+	. = ..()
+	key = "pant"
+
+/mob/living/carbon/human/verb/emote_pant()
+	set name = "喘气"
+	set category = "发声"
+
+	emote("pant", intentional = TRUE)
 
 /datum/emote/living/giggle
 	key = "giggle"
@@ -887,7 +902,7 @@
 				to_chat(C, span_warning("我想尖叫，却发不出声音。"))
 				. = FALSE
 
-/datum/emote/living/scream/run_emote(mob/user, params, type_override, intentional, targetted)
+/datum/emote/living/scream/run_emote(mob/user, params, type_override, intentional, targetted, anthro_noise, travel, erp)
 	. = ..()
 	if(. && user.mind)
 		record_featured_stat(FEATURED_STATS_SCREAMERS, user)
@@ -1003,7 +1018,7 @@
 	show_runechat = FALSE
 	needs_emotion = TRUE
 
-/datum/emote/living/paincrit/run_emote(mob/user, params, type_override, intentional)
+/datum/emote/living/paincrit/run_emote(mob/user, params, type_override, intentional, targetted, anthro_noise, travel, erp)
 	. = ..()
 	if(.)
 		for(var/mob/living/carbon/human/L in viewers(7,user))
@@ -1551,7 +1566,7 @@
 	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 /mob/living/carbon/human/proc/update_tongue_noise_verbs()
 	var/static/list/all_tongue_noise_verbs = list(
@@ -1681,7 +1696,7 @@
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
 		set name = "猫叫"
 		set category = "发声"
-		emote("meow", intentional = TRUE, animal = TRUE)
+		emote("meow", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return
@@ -1694,13 +1709,13 @@
 	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 /mob/living/carbon/human/verb/emote_caw()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
 		set name = "鸦鸣"
 		set category = "发声"
-		emote("caw", intentional = TRUE, animal = TRUE)
+		emote("caw", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return
@@ -1713,13 +1728,13 @@
 	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 /mob/living/carbon/human/verb/emote_peep()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
 		set name = "啾鸣"
 		set category = "发声"
-		emote("peep", intentional = TRUE, animal = TRUE)
+		emote("peep", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return
@@ -1732,13 +1747,13 @@
 	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 /mob/living/carbon/human/verb/emote_hoot()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
 		set name = "枭鸣"
 		set category = "发声"
-		emote("hoot", intentional = TRUE, animal = TRUE)
+		emote("hoot", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return
@@ -1751,13 +1766,13 @@
 	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 /mob/living/carbon/human/verb/emote_squeak()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
 		set name = "吱叫"
 		set category = "发声"
-		emote("squeak", intentional = TRUE, animal = TRUE)
+		emote("squeak", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return
@@ -1770,13 +1785,13 @@
 	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 /mob/living/carbon/human/verb/emote_chirp()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
 		set name = "鸟啼"
 		set category = "发声"
-		emote("chirp", intentional = TRUE, animal = TRUE)
+		emote("chirp", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return
@@ -1789,13 +1804,13 @@
 	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 /mob/living/carbon/human/verb/emote_warble()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
 		set name = "婉转啼鸣"
 		set category = "发声"
-		emote("warble", intentional = TRUE, animal = TRUE)
+		emote("warble", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return
@@ -1808,13 +1823,13 @@
 	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 /mob/living/carbon/human/verb/emote_dove()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
 		set name = "鸽鸣"
 		set category = "发声"
-		emote("dove", intentional = TRUE, animal = TRUE)
+		emote("dove", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return
@@ -1827,13 +1842,13 @@
 	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 /mob/living/carbon/human/verb/emote_loudcaw()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
 		set name = "高声鸦鸣"
 		set category = "发声"
-		emote("loudcaw", intentional = TRUE, animal = TRUE)
+		emote("loudcaw", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return
@@ -1846,14 +1861,14 @@
 	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 
 /mob/living/carbon/human/verb/emote_raptor()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
 		set name = "猛禽鸣叫"
 		set category = "发声"
-		emote("raptor", intentional = TRUE, animal = TRUE)
+		emote("raptor", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return
@@ -1866,17 +1881,17 @@
 	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 /mob/living/carbon/human/verb/emote_hiss()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
 		set name = "嘶声"
 		set category = "发声"
-		emote("hiss", intentional = TRUE, animal = TRUE)
+		emote("hiss", intentional = TRUE, anthro_noise = TRUE)
 	else if (istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/lizard))
 		set name = "嘶声"
 		set category = "发声"
-		emote("hiss", intentional = TRUE, animal = TRUE)
+		emote("hiss", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return
@@ -1889,17 +1904,17 @@
 	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 /mob/living/carbon/human/verb/emote_phiss()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
 		set name = "嘶嘶声"
 		set category = "发声"
-		emote("phiss", intentional = TRUE, animal = TRUE)
+		emote("phiss", intentional = TRUE, anthro_noise = TRUE)
 	else if (istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/lizard))
 		set name = "嘶嘶声"
 		set category = "发声"
-		emote("hiss", intentional = TRUE, animal = TRUE)
+		emote("hiss", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return
@@ -1930,13 +1945,13 @@
 	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 /mob/living/carbon/human/verb/emote_howl()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
 		set name = "嚎叫"
 		set category = "发声"
-		emote("howl", intentional = TRUE, animal = TRUE)
+		emote("howl", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return
@@ -1949,13 +1964,13 @@
 	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 /mob/living/carbon/human/verb/emote_cackle()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
 		set name = "怪笑"
 		set category = "发声"
-		emote("cackle", intentional = TRUE, animal = TRUE)
+		emote("cackle", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return
@@ -1968,13 +1983,13 @@
 	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 /mob/living/carbon/human/verb/emote_whine()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
 		set name = "哀鸣"
 		set category = "发声"
-		emote("whine", intentional = TRUE, animal = TRUE)
+		emote("whine", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return
@@ -1987,13 +2002,13 @@
 	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 /mob/living/carbon/human/verb/emote_trill()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
 		set name = "颤鸣"
 		set category = "发声"
-		emote("trill", intentional = TRUE, animal = TRUE)
+		emote("trill", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return
@@ -2071,13 +2086,13 @@
 	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 /mob/living/carbon/human/verb/emote_purr()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
 		set name = "呼噜"
 		set category = "发声"
-		emote("purr", intentional = TRUE, animal = TRUE)
+		emote("purr", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return
@@ -2090,13 +2105,13 @@
 	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 /mob/living/carbon/human/verb/emote_moo()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
 		set name = "牛叫"
 		set category = "发声"
-		emote("moo", intentional = TRUE, animal = TRUE)
+		emote("moo", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return
@@ -2109,13 +2124,13 @@
 	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 /mob/living/carbon/human/verb/emote_bark()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
 		set name = "吠叫"
 		set category = "发声"
-		emote("bark", intentional = TRUE, animal = TRUE)
+		emote("bark", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return
@@ -2128,13 +2143,13 @@
 	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 /mob/living/carbon/human/verb/emote_growl()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
 		set name = "低吼"
 		set category = "发声"
-		emote("growl", intentional = TRUE, animal = TRUE)
+		emote("growl", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return
@@ -2147,13 +2162,13 @@
 	message_muffled = "发出一声闷响！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 /mob/living/carbon/human/verb/emote_bleat()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
 		set name = "咩叫"
 		set category = "发声"
-		emote("bleat", intentional = TRUE, animal = TRUE)
+		emote("bleat", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return
@@ -2166,17 +2181,17 @@
 	message_muffled = "发出闷闷的吱吱声！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 /mob/living/carbon/human/verb/emote_chitter()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/moth))
 		set name = "吱吱叫"
 		set category = "发声"
-		emote("chitter", intentional = TRUE, animal = TRUE)
+		emote("chitter", intentional = TRUE, anthro_noise = TRUE)
 	else if (istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue))
 		set name = "吱吱叫"
 		set category = "发声"
-		emote("chitter", intentional = TRUE, animal = TRUE)
+		emote("chitter", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return
@@ -2189,13 +2204,13 @@
 	message_muffled = "发出一阵闷闷的吱叫！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 /mob/living/carbon/human/verb/emote_msqueak()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/moth))
 		set name = "蛾族吱叫"
 		set category = "发声"
-		emote("msqueak", intentional = TRUE, animal = TRUE)
+		emote("msqueak", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return
@@ -2223,7 +2238,7 @@
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = TRUE
 
-/datum/emote/living/fsalute/run_emote(mob/living/user, params, type_override, intentional, targetted, animal)
+/datum/emote/living/fsalute/run_emote(mob/living/user, params, type_override, intentional, targetted, anthro_noise)
 	. = ..()
 	if(. && !isnull(user.patron))
 		user.play_overhead_indicator('icons/mob/overhead_effects.dmi', "stress", 15, MUTATIONS_LAYER, private = user.patron.type, soundin = 'sound/magic/holyshield.ogg', y_offset = 32)
@@ -2241,7 +2256,7 @@
 	emote_type = EMOTE_AUDIBLE
 	show_runechat = TRUE
 
-/datum/emote/living/ffsalute/run_emote(mob/living/user, params, type_override, intentional, targetted, animal)
+/datum/emote/living/ffsalute/run_emote(mob/living/user, params, type_override, intentional, targetted, anthro_noise)
 	if(HAS_TRAIT(user, TRAIT_XYLIX) || HAS_TRAIT(user, TRAIT_DECEIVING_MEEKNESS))
 		. = ..()
 
@@ -2257,7 +2272,7 @@
 	message = "短促地吠了一声！"
 	emote_type = EMOTE_AUDIBLE
 	message_muffled = "发出一声闷闷的短吠！"
-	is_animal = TRUE
+	anthro_noise = TRUE
 	show_runechat = FALSE
 
 /mob/living/carbon/human/verb/yip()
@@ -2272,7 +2287,7 @@
 	message = "尖声吠叫！"
 	emote_type = EMOTE_AUDIBLE
 	message_muffled = "发出闷闷的吠叫声！"
-	is_animal = TRUE
+	anthro_noise = TRUE
 	show_runechat = FALSE
 /mob/living/carbon/human/verb/yap()
 	set name = "尖声吠叫"
@@ -2411,7 +2426,7 @@
 	emote_type = EMOTE_VISIBLE
 	show_runechat = TRUE
 
-/datum/emote/living/carbon/human/hike/run_emote(mob/user, params, type_override, intentional = FALSE, targetted = FALSE, animal = FALSE)
+/datum/emote/living/carbon/human/hike/run_emote(mob/user, params, type_override, intentional = FALSE, targetted = FALSE, anthro_noise = FALSE, travel = null, erp = FALSE)
 	var/mob/living/carbon/human/H = user
 	if(!istype(H) || !can_run_emote(user, TRUE, intentional))
 		return FALSE
@@ -2865,13 +2880,13 @@
 	message_muffled = "闷闷地汪了一声！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 /mob/living/carbon/human/verb/emote_arf()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
 		set name = "轻吠"
 		set category = "发声"
-		emote("arf", intentional = TRUE, animal = TRUE)
+		emote("arf", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return
@@ -2884,13 +2899,13 @@
 	message_muffled = "闷闷地嗷呜叫了一声！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 /mob/living/carbon/human/verb/emote_awuff()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
 		set name = "低声汪叫"
 		set category = "发声"
-		emote("awuff", intentional = TRUE, animal = TRUE)
+		emote("awuff", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return
@@ -2903,13 +2918,13 @@
 	message_muffled = "发出一声闷闷的抱怨！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 /mob/living/carbon/human/verb/emote_dcomplain()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
 		set name = "犬类抱怨声"
 		set category = "发声"
-		emote("dcomplain", intentional = TRUE, animal = TRUE)
+		emote("dcomplain", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return
@@ -2922,13 +2937,13 @@
 	message_muffled = "发出一声闷闷的低吼！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 /mob/living/carbon/human/verb/emote_dgrowl()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
 		set name = "犬类低吼"
 		set category = "发声"
-		emote("dgrowl", intentional = TRUE, animal = TRUE)
+		emote("dgrowl", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return
@@ -2941,13 +2956,13 @@
 	message_muffled = "发出一声闷闷的哀鸣！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 /mob/living/carbon/human/verb/emote_dwhine()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
 		set name = "犬类哀鸣"
 		set category = "发声"
-		emote("dwhine", intentional = TRUE, animal = TRUE)
+		emote("dwhine", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return
@@ -2960,13 +2975,13 @@
 	message_muffled = "发出一声闷闷的嘶鸣！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 /mob/living/carbon/human/verb/emote_neigh()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
 		set name = "嘶鸣"
 		set category = "发声"
-		emote("neigh", intentional = TRUE, animal = TRUE)
+		emote("neigh", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return
@@ -2979,13 +2994,13 @@
 	message_muffled = "发出一阵闷闷的怪笑！"
 	vary = TRUE
 	show_runechat = FALSE
-	is_animal = TRUE
+	anthro_noise = TRUE
 
 /mob/living/carbon/human/verb/emote_ycackle()
 	if(istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/wild_tongue) || istype(usr.getorganslot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/harpy))
 		set name = "鬣狗怪笑"
 		set category = "发声"
-		emote("ycackle", intentional = TRUE, animal = TRUE)
+		emote("ycackle", intentional = TRUE, anthro_noise = TRUE)
 	else
 		show_tongue_noise_warning()
 		return

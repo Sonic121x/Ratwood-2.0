@@ -1,10 +1,11 @@
 /datum/action/cooldown/spell/bind_weapon
 	source_aspect = /datum/magic_aspect/pseudo/spellblade
 	name = "武器绑定"
-	desc = "将手持武器绑定为奥术导体。绑定武器成功打击时会积累奥术动量，为能力提供力量。\
-		也可用武器召回来将其从任意位置召回手中。\
-		武器必须符合你的战颂流派——剑刃需剑或匕首，方阵武士需长柄武器，执锤者需钉头锤或战锤。\
-		重新绑定可恢复丢失的奥术动量状态；旧武器被毁时也可绑定新武器。\
+	desc = "将手持武器绑定为奥术导体。绑定武器成功命中可积累奥术动量，为技能提供能量。\
+		也可使用召回武器，从任何地方将其唤回手中。\
+		武器必须符合你的战颂——剑刃需要剑或匕首，方阵武士需要长柄武器，执锤者需要钉锤或战锤，射手需要弓。\
+		绑定的弓每次以箭矢命中都可积累动量。\
+		重新绑定可恢复丢失的奥术动量状态；旧武器被毁后，也可绑定新武器。\
 		空手施放可解除当前武器的绑定。"
 	button_icon = 'icons/mob/actions/classuniquespells/spellblade.dmi'
 	button_icon_state = "bind_weapon"
@@ -74,6 +75,9 @@
 				valid_skills = list(/datum/skill/combat/polearms)
 			if("macebearer")
 				valid_skills = list(/datum/skill/combat/maces, /datum/skill/combat/axes)
+			if("sagittary")
+				// for some reason the skill doesn't work?
+				valid = istype(weapon, /obj/item/gun/ballistic/revolver/grenadelauncher/bow)
 		if(valid_skills)
 			valid = (weapon.associated_skill in valid_skills)
 		if(!valid)

@@ -17,7 +17,7 @@
 	tutorial = "凭借继承权、恩惠或权谋，你坐上了公国边陲男爵的位置。你向公爵宣誓效忠，并被授予相当大的自主权，可按自己的意愿治理低镇；你在低镇事务中拥有主导权，在没有更高权威在场时，当地驻军将听命于你。你指挥着低镇的驻军，不过，应王权要求，你的人也可能被征召加入更庞大的王国军队。"
 	whitelist_req = FALSE
 	give_bank_account = 40
-	min_pq = 9
+	min_pq = 7 // 9
 	max_pq = null
 	round_contrib_points = 3
 	cmode_music = 'sound/music/combat_noble.ogg'

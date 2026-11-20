@@ -193,6 +193,8 @@
 	if((target.mobility_flags & MOBILITY_STAND))
 		to_chat(user, span_info("目标必须倒在地上，我才能扯出他们的灵辉。"))
 		return
+	if(zizo_target_error(user, target))
+		return
 	if(target.has_status_effect(/datum/status_effect/debuff/devitalised) || (target.has_status_effect(/datum/status_effect/debuff/devitalised/lux_ripped) || target.mob_biotypes & MOB_UNDEAD)) //can't farm your skeletons
 		to_chat(user, span_notice("此人的灵辉已经被扰乱了！"))
 		return
@@ -215,7 +217,9 @@
 		target.add_stress(/datum/stressevent/myfuckingluxman)
 	playsound(src, 'sound/items/blackmirror_needle.ogg', 60, FALSE, 3)
 	user.visible_message(span_alert("[user]从[target]胸中硬生生扯出了一团灵辉！"))
-	new /obj/item/reagent_containers/lux_impure(target.loc)
+	new /obj/item/necro_relics/necro_crystal(target.loc)
+	zizo_award(user, 5)
+	ADD_TRAIT(target, TRAIT_LUX_RIPPED, TRAIT_GENERIC)
 	SEND_SIGNAL(user, COMSIG_LUX_EXTRACTED, target)
 	record_featured_stat(FEATURED_STATS_CRIMINALS, user)
 	record_round_statistic(STATS_LUX_HARVESTED)

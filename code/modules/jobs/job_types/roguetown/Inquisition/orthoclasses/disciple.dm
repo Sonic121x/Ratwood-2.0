@@ -9,6 +9,7 @@
 	subclass_languages = list(/datum/language/otavan)
 	cmode_music = 'sound/music/psydonite.ogg'
 	category_tags = list(CTAG_INQUISITION)
+	pure_heart = TRUE
 	traits_applied = list(
 		TRAIT_CIVILIZEDBARBARIAN,
 		TRAIT_CICERONE,//brewer monks and such, lets them see the booze they make.
@@ -81,7 +82,7 @@
 					if("普赛顿指虎")
 						r_hand = /obj/item/clothing/gloves/roguetown/knuckles/psydon
 			if("普赛顿长杖 - 专家长柄，+1感知/+1智力")//stave user but with no int and per malus so they dont get folded.
-				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
+				H.adjust_skillrank_up_to(/datum/skill/combat/staves, SKILL_LEVEL_EXPERT, TRUE)
 				r_hand = /obj/item/rogueweapon/woodstaff/quarterstaff/psy
 				gloves = /obj/item/clothing/gloves/roguetown/bandages/weighted//no pugulist gloves for you sire, you have a staff.
 				H.change_stat(STATKEY_PER, 1)

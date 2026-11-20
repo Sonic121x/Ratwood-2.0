@@ -152,7 +152,7 @@
 	to_chat(src, span_warning("我无法说话，我的另一重自我正在控制这具身体！"))
 	return FALSE
 
-/mob/living/split_personality/emote(act, m_type = null, message = null, intentional = FALSE, forced = FALSE, targetted = FALSE, custom_me = FALSE)
+/mob/living/split_personality/emote(act, m_type = null, message = null, intentional = FALSE, forced = FALSE, targetted = FALSE, custom_me = FALSE, anthro_noise = FALSE, travel = null, erp = FALSE)
 	return
 
 ///////////////BRAINWASHING////////////////////

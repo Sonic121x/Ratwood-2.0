@@ -173,7 +173,7 @@
 /obj/structure/roguemachine/scomm/MiddleClick(mob/living/carbon/human/user)
 	if(.)
 		return
-	if((HAS_TRAIT(user, TRAIT_GUARDSMAN) || (user.job == "Watchman") || (user.job == "Warden") || (user.job == "Master Warden") || (user.job == "Councillor") || (user.job == "Squire") || (user.job == "Marshal") || (user.job == "Grand Duke") || (user.job == "Knight Captain") || (user.job == "Grand Duchess") ||(user.job == "Hand") ||(user.job == "Vizier") || (user.job == "Sheikh") || (user.job == "Azeb") || (user.job == "Azebagha")))
+	if((HAS_TRAIT(user, TRAIT_GUARDSMAN) || (user.job == "Retainer") || (user.job == "Watchman") || (user.job == "Warden") || (user.job == "Master Warden") || (user.job == "Councillor") || (user.job == "Squire") || (user.job == "Marshal") || (user.job == "Grand Duke") || (user.job == "Knight Captain") || (user.job == "Grand Duchess") ||(user.job == "Hand") ||(user.job == "Vizier") || (user.job == "Sheikh") || (user.job == "Azeb") || (user.job == "Azebagha")))
 		if(alert("你想切换线路，还是接入密语线？",, "切换", "密语线") != "密语线")
 			garrisonline = !garrisonline
 			to_chat(user, span_info("我[garrisonline ? "接入驻军 SCOM 线路" : "接入常规 SCOM 线路"]。"))

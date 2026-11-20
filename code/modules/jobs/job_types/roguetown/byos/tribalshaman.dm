@@ -18,7 +18,7 @@
 	不要让任何人怀疑你的信仰：你是巨龙拣选之人，为了让格拉加的异象化作现实，无论多么疯狂的事，你都会去做。"
 	outfit = /datum/outfit/job/roguetown/tribalshaman
 	whitelist_req = TRUE
-	min_pq = 8 //High potential for abuse, lovepotion/killersice/greater fireball is not for the faint of heart
+	min_pq = 5 //8 High potential for abuse, lovepotion/killersice/greater fireball is not for the faint of heart
 	max_pq = null
 	round_contrib_points = 2
 	cmode_music = 'sound/music/combat_hornofthebeast.ogg'

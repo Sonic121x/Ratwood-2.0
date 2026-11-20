@@ -8,6 +8,7 @@
 	只要价钱合适，又能服务于他们更高的野心，卓尔便什么活都肯接。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
+		/datum/species/arachnid,
 		/datum/species/elf/dark,
 		/datum/species/human/halfelf, // Because half-drows are half-elves, guh.
 	)
@@ -43,7 +44,7 @@
 		/datum/skill/combat/wrestling = SKILL_LEVEL_EXPERT,
 
 	)
-	extra_context = "该子职业可选种族为黑暗精灵和半精灵。 \
+	extra_context = "该子职业可选种族为黑暗精灵、半精灵与蛛民。 \
 	女性卓尔获得碎卵者与破床者特质。男性卓尔 \
 	力量与幸运各降低 1，速度与意志各提高 1。"
 
@@ -173,6 +174,7 @@
 	tutorial = "蛛牙，字面意思即为“蜘蛛之牙”，是一支赫赫有名的雇佣团体，擅使刀剑、长鞭与坐骑，常受雇于庞大的卓尔地下城群，偶尔也会在地表活动。蛛牙之人因嗜战、残虐，以及驾驭蛛形坐骑的本领而恶名昭彰；在普赛多尼亚，他们称得上是最凶悍、也最残酷的一批战士。黑暗精灵说到底只真正忠于自己与自身利益，这也使他们意外地成了务实而直白的佣兵，只要价钱合适，又能服务于他们更高的野心，卓尔便什么活都肯接。"
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_races = list(
+		/datum/species/arachnid,
 		/datum/species/elf/dark,
 		/datum/species/human/halfelf, // Because half-drows are half-elves, guh.
 	)

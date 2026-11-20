@@ -17,6 +17,7 @@
 /area/rogue/under/town/sewer
 	name = "下水道"
 	icon_state = "sewer"
+	river_ambience = TRUE
 	ambientsounds = AMB_CAVEWATER
 	ambientnight = AMB_CAVEWATER
 	spookysounds = SPOOKY_RATS

@@ -7,9 +7,9 @@
 	hides_from_books = TRUE
 
 /datum/anvil_recipe/cannon/cannonstructure
-	name = "火炮（+1 黑钢锭，+3 钢锭，+2 齿轮，+2 小原木）"
-	additional_items = list(/obj/item/ingot/blacksteel, /obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/roguegear/, /obj/item/roguegear/bronze, /obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small,)
-	req_bar = /obj/item/ingot/blacksteel
+	name = "火炮（+2 钢锭，+2 齿轮，+2 小原木）"
+	additional_items = list(/obj/item/ingot/steel, /obj/item/ingot/steel, /obj/item/roguegear/bronze, /obj/item/roguegear/bronze, /obj/item/grown/log/tree/small, /obj/item/grown/log/tree/small,)
+	req_bar = /obj/item/ingot/steel
 	created_item = /obj/structure/cannon
 
 /datum/anvil_recipe/cannon/cannonball

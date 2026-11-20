@@ -113,6 +113,7 @@
 					l_hand = /obj/item/quiver/sling
 				if("魔法砖块")
 					H.adjust_skillrank_up_to(/datum/skill/magic/arcane, SKILL_LEVEL_EXPERT, TRUE)
+					H.mind.AddSpell(new /datum/action/cooldown/spell/magicians_brick)
 				if("撬锁工具环")
 					H.adjust_skillrank_up_to(/datum/skill/misc/sneaking, SKILL_LEVEL_EXPERT, TRUE)
 					H.adjust_skillrank_up_to(/datum/skill/misc/stealing, SKILL_LEVEL_EXPERT, TRUE)

@@ -3,6 +3,7 @@
 	icon_state = "cavewet"
 	warden_area = TRUE
 	first_time_text = "地下林泽"
+	river_ambience = TRUE
 	ambientsounds = AMB_CAVEWATER
 	ambientnight = AMB_CAVEWATER
 	spookysounds = SPOOKY_CAVE
@@ -76,9 +77,12 @@
 	deathsight_message = "被树根缠绕的洞窟"
 	detail_text = DETAIL_TEXT_SKELETON_CRYPT
 
+/**
+ * Flowing cave water, including Rockhill's moat below High Town.
+ *
+ * Uses wet-cave river ambience and retains AMB_CAVEWATER instead of surface recordings with birds.
+ */
 /area/rogue/under/cavewet/river
 	name = "洞窟河流"
 	icon_state = "river"
 	first_time_text = null
-	ambientsounds = AMB_RIVERDAY
-	ambientnight = AMB_RIVERNIGHT

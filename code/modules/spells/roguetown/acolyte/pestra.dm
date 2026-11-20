@@ -23,6 +23,11 @@
 	if(ishuman(targets[1]))
 		var/mob/living/carbon/human/human_target = targets[1]
 		human_target.check_for_injuries(user)
+		var/list/missing_organs = human_target.get_missing_organs()
+		if(length(missing_organs))
+			to_chat(user, span_boldwarning("缺失的器官：[jointext(missing_organs, "、")]。"))
+		else
+			to_chat(user, span_notice("未发现器官缺失。"))
 
 		if (human_target.reagents.has_reagent(/datum/reagent/infection/major))
 			to_chat(user, span_boldwarning("黑黄相间的条纹无疑表明忧郁液过盛。"))

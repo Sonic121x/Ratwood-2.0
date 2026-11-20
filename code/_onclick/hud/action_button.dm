@@ -86,7 +86,7 @@
 
 /atom/movable/screen/movable/action_button/MouseDrag(atom/over_object, src_location, over_location, src_control, over_control, params)
 	. = ..()
-	if(!can_use(usr) || !our_hud?.rearrange_mode)
+	if(!can_use(usr) || !our_hud?.rearrange_mode || linked_action?.keep_at_end)
 		return
 	var/atom/movable/screen/movable/action_button/old_button = last_hovored_ref?.resolve()
 	if(old_button == over_object)
@@ -96,6 +96,8 @@
 	last_hovored_ref = null
 	if(over_object != src && istype(over_object, /atom/movable/screen/movable/action_button))
 		var/atom/movable/screen/movable/action_button/target = over_object
+		if(target.linked_action?.keep_at_end)
+			return
 		target.set_drag_highlight(TRUE)
 		last_hovored_ref = WEAKREF(target)
 
@@ -111,7 +113,7 @@
 	if(!istype(over_object, /atom/movable/screen/movable/action_button))
 		return
 	var/atom/movable/screen/movable/action_button/B = over_object
-	if(B == src)
+	if(B == src || linked_action?.keep_at_end || B.linked_action?.keep_at_end)
 		return
 	moved = FALSE
 	B.moved = FALSE
@@ -212,8 +214,8 @@
 			var/atom/movable/screen/movable/action_button/B = A.viewers[hud_used]
 			if(!B)
 				continue
-			B.locked = !hud_used.rearrange_mode
-			if(hud_used.rearrange_mode)
+			B.locked = !hud_used.rearrange_mode || A.keep_at_end
+			if(!B.locked)
 				B.color = AB_REARRANGE_TINT
 			B.moved = FALSE
 			button_number++

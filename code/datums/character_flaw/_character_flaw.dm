@@ -12,6 +12,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	"粘人"=/datum/charflaw/clingy,
 	"色盲 (+2 特质点)"=/datum/charflaw/colorblind,
 	"顺从"=/datum/charflaw/compliant,
+	"臃肿"=/datum/charflaw/addiction/corpulent,
 	"致命脆弱 (+2 特质点)"=/datum/charflaw/critweakness,
 	"独眼 (左) (+2 特质点)"=/datum/charflaw/noeyel,
 	"独眼 (右) (+2 特质点)"=/datum/charflaw/noeyer,
@@ -48,6 +49,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	"蹒跚"=/datum/charflaw/slow,
 	"愚钝"=/datum/charflaw/dull,
 	"倒霉"=/datum/charflaw/unlucky,
+	"童贞"=/datum/charflaw/virgin,
 	))
 
 /datum/charflaw
@@ -55,8 +57,22 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	var/desc
 	var/ephemeral = FALSE // This flaw is currently disabled and will not process
 	var/point_value = 1 // Quirk points granted by this vice. Insignificant vices set this to zero.
+	var/list/incompatible_vices = list()
+	var/configurable = FALSE
 
 /datum/charflaw/proc/on_mob_creation(mob/user)
+	return
+
+/datum/charflaw/proc/configure(mob/user)
+	return
+
+/datum/charflaw/proc/config_summary()
+	return
+
+/datum/charflaw/proc/save_config()
+	return list()
+
+/datum/charflaw/proc/load_config(list/data)
 	return
 
 /datum/charflaw/proc/apply_post_equipment(mob/user)
@@ -158,6 +174,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	name = "视力不佳"
 	desc = "我这些年读书太多，得戴眼镜才能正常看清。"
 	point_value = 2
+	incompatible_vices = list(/datum/charflaw/noeyer, /datum/charflaw/noeyel, /datum/charflaw/noeyeall, /datum/charflaw/colorblind)
 
 /datum/charflaw/badsight/flaw_on_life(mob/user)
 	if(!ishuman(user))
@@ -285,6 +302,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	name = "独眼 (右)"
 	desc = "很久以前，我就失去了右眼。"
 	point_value = 2
+	incompatible_vices = list(/datum/charflaw/badsight, /datum/charflaw/noeyel, /datum/charflaw/noeyeall, /datum/charflaw/colorblind)
 
 /datum/charflaw/noeyer/on_mob_creation(mob/user)
 	..()
@@ -301,6 +319,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	name = "独眼 (左)"
 	desc = "很久以前，我就失去了左眼。"
 	point_value = 2
+	incompatible_vices = list(/datum/charflaw/badsight, /datum/charflaw/noeyer, /datum/charflaw/noeyeall, /datum/charflaw/colorblind)
 
 /datum/charflaw/noeyel/on_mob_creation(mob/user)
 	..()
@@ -317,6 +336,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	name = "失明"
 	desc = "很久以前，我就失去了双眼。"
 	point_value = 2
+	incompatible_vices = list(/datum/charflaw/badsight, /datum/charflaw/noeyer, /datum/charflaw/noeyel, /datum/charflaw/colorblind)
 
 /datum/charflaw/noeyeall/on_mob_creation(mob/user)
 	..()
@@ -334,6 +354,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	name = "色盲"
 	desc = "我生来便受诅咒，视力有缺，许多别人能分辨的东西我都看不出来。与夜眼美德不兼容。"
 	point_value = 2
+	incompatible_vices = list(/datum/charflaw/badsight, /datum/charflaw/noeyer, /datum/charflaw/noeyel, /datum/charflaw/noeyeall)
 
 /datum/charflaw/colorblind/on_mob_creation(mob/user)
 	..()
@@ -478,6 +499,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	name = "言语不通"
 	desc = "我不会说通用语！"
 	point_value = 2
+	incompatible_vices = list(/datum/charflaw/mute)
 
 /datum/charflaw/unintelligible/on_mob_creation(mob/user)
 	var/mob/living/carbon/human/recipient = user
@@ -578,6 +600,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	name = "嗜睡症"
 	desc = "我白天经常犯困，还会突然睡着，不过若我主动想睡，反倒更容易入眠；月尘也能帮我保持清醒。"
 	point_value = 2
+	incompatible_vices = list(/datum/charflaw/sleepless)
 	var/last_unconsciousness = 0
 	var/next_sleep = 0
 	var/concious_timer = (10 MINUTES)
@@ -647,6 +670,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	name = "失眠"
 	desc = "我不睡觉。我睡不着。什么法子我都试过了。"
 	point_value = 2
+	incompatible_vices = list(/datum/charflaw/narcoleptic)
 
 /datum/charflaw/sleepless/on_mob_creation(mob/user)
 	ADD_TRAIT(user, TRAIT_NOSLEEP, TRAIT_GENERIC)
@@ -659,6 +683,7 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	name = "哑巴"
 	desc = "我生来就无法开口说话。"
 	point_value = 2
+	incompatible_vices = list(/datum/charflaw/unintelligible)
 
 /datum/charflaw/mute/on_mob_creation(mob/user)
 	ADD_TRAIT(user, TRAIT_PERMAMUTE, TRAIT_GENERIC)
@@ -678,6 +703,16 @@ GLOBAL_LIST_INIT(character_flaws, list(
 /datum/charflaw/critweakness/on_removal(mob/user)
 	..()
 	REMOVE_TRAIT(user, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
+
+/datum/charflaw/virgin
+	name = "童贞"
+	desc = "黑暗势力觊觎着我的纯洁！"
+
+/datum/charflaw/virgin/apply_post_equipment(mob/user)
+	var/mob/living/carbon/human/H = user
+	to_chat(user, "你仍保有童贞！")
+	H.virginity = TRUE
+	H.purity = TRUE
 
 /datum/charflaw/silverweakness
 	name = "畏银"
@@ -771,7 +806,6 @@ GLOBAL_LIST_INIT(character_flaws, list(
 	..()
 	REMOVE_TRAIT(user, TRAIT_HEMOPHAGE, TRAIT_GENERIC)
 	REMOVE_TRAIT(user, TRAIT_VAMPBITE, TRAIT_GENERIC)
-
 
 /datum/charflaw/weak
 	name = "体弱"

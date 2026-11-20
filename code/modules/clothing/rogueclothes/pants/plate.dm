@@ -54,6 +54,7 @@
 	desc = "这副板甲腿铠涌动着推动世界运转的原初暴力。"
 	icon_state = "graggarplatelegs"
 	armor = ARMOR_PLATE_BSTEEL
+	armor_class = ARMOR_CLASS_MEDIUM
 	max_integrity = ARMOR_INT_LEG_ANTAG
 
 /obj/item/clothing/under/roguetown/platelegs/graggar/Initialize(mapload)

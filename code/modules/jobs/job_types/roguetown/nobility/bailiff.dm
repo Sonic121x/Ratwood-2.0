@@ -19,7 +19,7 @@
 
 	give_bank_account = 40
 	noble_income = 20
-	min_pq = 8
+	min_pq = 5 // 8
 	max_pq = null
 	round_contrib_points = 3
 	cmode_music = 'sound/music/combat_knight.ogg'
@@ -48,6 +48,8 @@
 		/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1,
 		/obj/item/rogueweapon/scabbard/sheath/royal = 1,
 		/obj/item/reagent_containers/glass/bottle/rogue/healthpot = 1,
+		/obj/item/inqhound = 1,
+		/obj/item/inqscanner = 1,
 		)
 	H.verbs |= /mob/proc/haltyell
 	H.verbs |= list(/mob/living/carbon/human/proc/request_outlaw, /mob/living/carbon/human/proc/request_law, /mob/living/carbon/human/proc/request_law_removal, /mob/living/carbon/human/proc/request_purge)

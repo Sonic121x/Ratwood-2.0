@@ -1,19 +1,25 @@
-/datum/looping_sound/musloop
+/// The wax music device's OLDSCHOOL list, name to file. The dwarven music box plays one in place of
+/// an upload for a listener who turned uploaded songs off
+GLOBAL_LIST_INIT(oldschool_songs, list(
+	"秋日航程" = 'sound/music/jukeboxes/oldschool/Autumn_Voyage.ogg',
+	"号角" = 'sound/music/jukeboxes/oldschool/Fanfare.ogg',
+	"伟业" = 'sound/music/jukeboxes/oldschool/Greatness.ogg',
+	"中古" = 'sound/music/jukeboxes/oldschool/Medieval.ogg',
+	"海上歌谣2" = 'sound/music/jukeboxes/oldschool/Sea_Shanty2.ogg',
+	"光辉" = 'sound/music/jukeboxes/oldschool/Shine.ogg',
+	"灵息" = 'sound/music/jukeboxes/oldschool/Spirit.ogg',
+	"静夜" = 'sound/music/jukeboxes/oldschool/Still_Night.ogg',
+	"远行" = 'sound/music/jukeboxes/oldschool/Venture.ogg',
+	"往昔" = 'sound/music/jukeboxes/oldschool/Yesteryear.ogg'
+))
+
+/datum/looping_sound/music/musloop
 	mid_sounds = list()
-	mid_length = 2400 // Whoever wrote this is giving me an aneurism
+	mid_length = 2400
 	volume = 70
 	extra_range = 8
-	falloff = 0
-	persistent_loop = TRUE
-	var/stress2give = /datum/stressevent/music
-	channel = CHANNEL_JUKEBOX
-
-/datum/looping_sound/musloop/on_hear_sound(mob/M)
-	. = ..()
-	if(stress2give)
-		if(isliving(M))
-			var/mob/living/carbon/L = M
-			L.add_stress(stress2give)
+	/// Uses a sound token for native repeating playback and listener tracking
+	use_sound_tokens = TRUE
 
 /obj/structure/roguemachine/musicbox
 	name = "蜡筒音乐机"
@@ -23,8 +29,20 @@
 	density = TRUE
 	anchored = TRUE
 	max_integrity = 0
-	var/datum/looping_sound/musloop/soundloop
-	var/list/init_curfile = list('sound/music/jukeboxes/gen/tavern1.ogg') // A list of songs that curfile is set to on init. MUST BE IN ONE OF THE MUSIC_TAVCAT_'s.
+	var/datum/looping_sound/music/musloop/soundloop
+	/// Recording selected once in Initialize(). Must belong to a MUSIC_TAVCAT_* set
+	var/list/init_curfile = list(
+		'sound/music/jukeboxes/oldschool/Autumn_Voyage.ogg',
+		'sound/music/jukeboxes/oldschool/Fanfare.ogg',
+		'sound/music/jukeboxes/oldschool/Greatness.ogg',
+		'sound/music/jukeboxes/oldschool/Medieval.ogg',
+		'sound/music/jukeboxes/oldschool/Sea_Shanty2.ogg',
+		'sound/music/jukeboxes/oldschool/Shine.ogg',
+		'sound/music/jukeboxes/oldschool/Spirit.ogg',
+		'sound/music/jukeboxes/oldschool/Still_Night.ogg',
+		'sound/music/jukeboxes/oldschool/Venture.ogg',
+		'sound/music/jukeboxes/oldschool/Yesteryear.ogg',
+	)
 	var/curfile // The current track that is playing right now
 	var/playing = FALSE // If music is playing or not. playmusic() deals with this don't mess with it.
 	var/curvol = 50 // The current volume at which audio is played. MAPPERS MAY TOUCH THIS.
@@ -47,29 +65,18 @@
 		"曲目二" = 'sound/music/jukeboxes/gen/tavern2.ogg',
 		"曲目三" = 'sound/music/jukeboxes/gen/tavern3.ogg'
 	)
-	var/list/static/songlist_oldschool = list(\
-		"秋日航程" = 'sound/music/jukeboxes/oldschool/Autumn_Voyage.ogg',
-		"号角" = 'sound/music/jukeboxes/oldschool/Fanfare.ogg',
-		"伟业" = 'sound/music/jukeboxes/oldschool/Greatness.ogg',
-		"中古" = 'sound/music/jukeboxes/oldschool/Medieval.ogg',
-		"海上歌谣2" = 'sound/music/jukeboxes/oldschool/Sea_Shanty2.ogg',
-		"光辉" = 'sound/music/jukeboxes/oldschool/Shine.ogg',
-		"灵息" = 'sound/music/jukeboxes/oldschool/Spirit.ogg',
-		"静夜" = 'sound/music/jukeboxes/oldschool/Still_Night.ogg',
-		"远行" = 'sound/music/jukeboxes/oldschool/Venture.ogg',
-		"往昔" = 'sound/music/jukeboxes/oldschool/Yesteryear.ogg'
-	)
 
 /obj/structure/roguemachine/musicbox/Initialize(mapload)
 	. = ..()
+	// Choose once per device. Changing the file during playback would restart the token
 	curfile = pick(init_curfile)
 	soundloop = new(src, FALSE)
 	if(playuponspawn)
 		start_playing()
 
 /obj/structure/roguemachine/musicbox/Destroy()
-	. = ..()
-	qdel(soundloop) //jesus fuck who is using hard dels in this day and age
+	QDEL_NULL(soundloop)
+	return ..()
 
 /obj/structure/roguemachine/musicbox/update_icon()
 	icon_state = "music[playing]"
@@ -85,7 +92,6 @@
 	soundloop.set_mid_sounds(list(curfile))
 	soundloop.volume = curvol
 	soundloop.start()
-	testing("Music: V[soundloop.volume] C[soundloop.cursound] T[soundloop.thingshearing]")
 	update_icon()
 
 /obj/structure/roguemachine/musicbox/proc/stop_playing()
@@ -123,8 +129,8 @@
 			if("通用")
 				chosen_songlists_selection = songlist_generic
 			if("旧式")
-				chosen_songlists_selection = songlist_oldschool
-		var/song_selection = input(user, "我要播放哪首曲子？", "[src]") as null | anything in chosen_songlists_selection
+				chosen_songlists_selection = GLOB.oldschool_songs
+		var/song_selection = input(user, "我要播放哪首曲子？", "\The [src]") as null | anything in chosen_songlists_selection
 		if(!Adjacent(user))
 			return
 		if(!song_selection)

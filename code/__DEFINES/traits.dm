@@ -77,6 +77,7 @@
 /// Trait given only temporarily to prevent being able to Z fall (at all)
 #define TRAIT_PREVENT_Z_FALL "阻止Z轴坠落" // DO NOT GIVE THIS UNDER NORMAL CIRCUMSTANCES
 #define TRAIT_MISSING_NOSE "失鼻" //halved stamina regeneration
+#define TRAIT_OVERWEIGHT "臃肿"
 #define TRAIT_DISFIGURED "毁容"
 #define TRAIT_SPELLCOCKBLOCK "咒缚" //prevents spellcasting
 #define TRAIT_ANTIMAGIC	"反魔"
@@ -86,6 +87,9 @@
 #define TRAIT_LUX_FREAK "灵辉畸变" // absolver and stigmata only. Dont give it to people unless they can freely manipulate lux of others (absolver, stigmata and gods so far)
 #define TRAIT_NOSLEEP "致命失眠"
 #define TRAIT_FASTSLEEP "速眠者"
+#define TRAIT_BLOODBOUND "血缚"
+#define TRAIT_MONSTROUS "怪物化"
+#define TRAIT_LUX_RIPPED "灵辉撕裂"
 #define TRAIT_GOODLOVER "传奇情人"
 #define TRAIT_SEEDKNOW "识种者"
 #define TRAIT_SQUIRE_REPAIR "侍从技艺"
@@ -361,6 +365,7 @@
 #define TRAIT_SWIFTCAST "Spell Acceleration"
 #define TRAIT_COMBAT_AWARE	"战场警觉"
 #define TRAIT_SILVER_WEAK "惧银"
+#define TRAIT_BITENORECOIL "坚齿"
 /// Held while wearing a silver psycross in a valid slot. Wards off a vampire trying to drink from you.
 #define TRAIT_WORN_SILVER_PSICROSS "佩戴银质普赛圣十字"
 #define TRAIT_ASSASSIN	"刺客"
@@ -533,6 +538,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_GRABIMMUNE = span_warning("凭借惊人的蛮力，或滑不留手的灵巧，别人根本抓不住我！"),
 	TRAIT_DISFIGURED = span_warning("没人认得出我了……"),
 	TRAIT_MISSING_NOSE = span_warning("我连呼吸都很吃力。"),
+	TRAIT_OVERWEIGHT = span_warning("我沉溺于人生的种种享乐，腰围也因此付出了代价。"),
 	TRAIT_SPELLCOCKBLOCK = span_warning("我无法施展任何法术。"),
 	TRAIT_ANTIMAGIC = "大多数魔法都对我不起作用。",
 	TRAIT_ANTISCRYING = "大多数窥探类魔法都无法锁定我。",
@@ -558,6 +564,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_SQUIRE_REPAIR = span_info("我曾在师傅身旁受训，因此只要给我时间，我便能修复各种器械，还能把它们打磨得焕然如新。"),
 	TRAIT_WATERBREATHING = span_info("我在水中不会溺亡。"),
 	TRAIT_NUDE_SLEEPER = span_warning("若不赤身躺在床上，我便无法入睡。"),
+	TRAIT_MONSTROUS = span_warning("我的身体从根本上便是异民之躯。这一点无从遮掩。"),
 	TRAIT_LOOSE_STRAPS = span_warning("我的护甲绑带十分脆弱，容易断裂。若承受过多伤害，护甲很可能会被直接甩脱。"),
 	TRAIT_ABYSSOR_SWIM = span_info("游泳时，我比同伴们更不容易疲惫。"),
 	TRAIT_LONGSTRIDER = span_info("无论地形多么险恶，我的每一步都能稳稳踏准落点。"),
@@ -668,7 +675,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_EXPERT_HUNTER = span_greentext("我是名熟练的本地猎手；我的狩猎技能可精进至专家层次。"),
 	TRAIT_DEATHLESS = span_info("我无法以寻常手段真正死去。"),
 	TRAIT_NOWW = span_info("登多尔的疯狂无法侵入我的心智。"),
-	TRAIT_SILVER_WEAK = span_warning("银器是我生命中最大的威胁。银制武器会令我燃烧，压制我的再生，若再受过祝圣，甚至能直接摧毁我的躯壳。"),
+	TRAIT_SILVER_WEAK = span_warning("银器是我生命中最大的威胁。银制武器会令我燃烧，压制我的再生，若再受过祝圣，甚至能一击将我击倒。"),
 	TRAIT_DYES = span_notice("我精通颜料与色泽，在染缸前总能调出自己想要的准确颜色。"),
 	TRAIT_BLACKOAK = span_warning("黑橡树能一眼认出<b>任何</b>外来者与异乡人，无论他们在谷地住了多久。我一眼就能认出入侵者。"),
 	TRAIT_GOODWRITER = span_notice("我擅长写作。凡由我编写的技能书，都能让读者更快掌握其中知识。"),
@@ -738,7 +745,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LOCAL_KNOWLEDGE = span_info("我在费伦提亚住得够久，足以避开此地的危险。"),
 	TRAIT_SOFT_FOOTED = span_info("在遥远的风郡，走路声响大是不礼貌的。我的脚步轻柔而轻巧。"),
 	TRAIT_ANCESTOR_GUARDIAN = span_info("在阿瓦尔，我们敬奉先祖，而他们护佑我们免遭危险。时不时的，他们会在战斗中指引我的手。"),
-	TRAIT_LIGHT_SENSITIVITY = span_info("住在幽暗地域昏暗的洞窟中，使我的眼睛有所适应。虽然我在黑暗中看得清楚，但强光对我而言是克星！")
+	TRAIT_LIGHT_SENSITIVITY = span_info("住在幽暗地域昏暗的洞窟中，使我的眼睛有所适应。虽然我在黑暗中看得清楚，但强光对我而言是克星！"),
+	TRAIT_BITENORECOIL = span_info("我的獠牙坚固，啃咬时不会因反冲而退缩。")
 ))
 
 // trait accessor defines
@@ -845,6 +853,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_IGNOREDAMAGESLOWDOWN "忽略受伤减速"
 #define TRAIT_RIGIDMOVEMENT		"忽略自然伤势减速"
 #define TRAIT_DEATHCOMA			"死亡昏迷" //Causes death-like unconsciousness
+#define TRAIT_DEATHS_DOOR		"死亡之门" //Shows the death's door overlay and lets the mob succumb regardless of health
 #define TRAIT_RELAYING_ATTACKER "relaying_attacker"
 #define TRAIT_FAKEDEATH			"假死" //Makes the owner appear as dead to most forms of medical examination
 #define TRAIT_STUNIMMUNE		"stun_immunity"
@@ -865,6 +874,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NODISMEMBER		"肢解免疫"
 #define TRAIT_FIRE_RESIST		"fire_resistance" // 50% fire damage/heating reduction + 2x stack decay - use this for player-accessible fire resistance
 #define TRAIT_NOFIRE			"nonflammable"
+#define TRAIT_PEAK_GRAPPLER		"peak_grappler"
 #define TRAIT_NOGUNS			"no_guns"
 #define TRAIT_NOMETABOLISM		"no_metabolism"
 #define TRAIT_LIMBATTACHMENT 	"limb_attach"
@@ -918,6 +928,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_DRUQK				"druqk"
 #define TRAIT_BURIED_COIN_GIVEN "buried_coin_given" // prevents a human corpse from being used for a corpse multiple times
 #define TRAIT_BLOODLOSS_IMMUNE "失血致死免疫" // can bleed, but will never die from blood loss
+#define TRAIT_NO_BLEEDING "无出血" // bleeding wounds do not cause blood loss
+#define TRAIT_NO_BLOODLOSS_EFFECTS "无失血影响" // being low on blood does not have any effects
+#define TRAIT_NO_BLOOD_REGEN "无血液再生" // prevents blood regeneration for carbons and humans passively
 #define TRAIT_NO_BITE "no_bite" //prevents biting
 #define TRAIT_LEGENDARY_ALCHEMIST		"寻草专家"
 #define TRAIT_STUCKITEMS "stuck_items" // Prevents removing items except for hand slots

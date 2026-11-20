@@ -45,13 +45,8 @@
 	icon_state = "freigloves"
 	item_state = "freigloves"
 
-/obj/item/clothing/gloves/roguetown/angle/pontifex
+/obj/item/clothing/gloves/roguetown/bandages/pontifex
 	name = "符文缠手"
-	desc = "以纸与布缠成的绷带，上面写满强大的纳雷迪符文。它们足以在战斗中好好保护佩戴者的双手。"
-	icon_state = "clothwraps"
-	item_state = "clothwraps"
+	desc = "以纸与布缠成的绷带，上面写满强大的纳莱迪符文。它们足以在战斗中好好保护佩戴者的双手。"
 	color = "#ffffff"
-
-/obj/item/clothing/gloves/roguetown/angle/pontifex/ComponentInitialize()
-	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FENCERDEXTERITY)
-	AddComponent(/datum/component/armour_filtering/positive, TRAIT_MAGEDEXTERITY)
+	unarmed_bonus = 5

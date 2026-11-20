@@ -74,7 +74,7 @@
 		)
 
 	if(H.mind)
-		var/weapons = list("双手刀 +2 体质", "铁包棒 +1 力量", "薙刀 +2 感知", "环刀 +2 智力", "钢小太刀 +1 速度")
+		var/weapons = list("双手刀 +2 体质", "铁包棒 +1 力量", "薙刀 +2 感知", "环刀 +2 智力", "钢小太刀 +1 速度", "野太刀 +2 感知")
 		var/weapon_choice = input(H, "选择你的武器。", "执兵而起") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
@@ -103,7 +103,11 @@
 				r_hand = /obj/item/rogueweapon/sword/short/kazengun
 				beltr = /obj/item/rogueweapon/scabbard/sword/kazengun/kodachi
 				H.change_stat(STATKEY_SPD, 1)
-
+			if("野太刀 +2 感知")
+				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
+				r_hand = /obj/item/rogueweapon/greatsword/nodachi
+				backr = /obj/item/rogueweapon/scabbard/gwstrap/nodachi
+				H.change_stat(STATKEY_PER, 2)
 		wretch_select_bounty(H)
 
 /obj/item/clothing/wrists/roguetown/bracers/black

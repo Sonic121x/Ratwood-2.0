@@ -217,6 +217,66 @@
 	to_spawn = 3
 
 
+/obj/effect/proc_holder/spell/self/raise_skeleton
+	name = "召唤骷髅"
+	desc = "从噬咬的死者国度召来一具邪恶的骷髅。最多两具，可别贪心！"
+	overlay_icon = 'icons/mob/actions/zizomiracles.dmi'
+	action_icon = 'icons/mob/actions/zizomiracles.dmi'
+	overlay_state = "skeleton"
+	recharge_time = 2 MINUTES
+	chargedloop = null
+	var/list/active_skeletons = list()
+
+/obj/effect/proc_holder/spell/self/raise_skeleton/cast(list/targets, mob/living/user = usr)
+	. = ..()
+	for(var/datum/weakref/W in active_skeletons.Copy())
+		if(!W.resolve())
+			active_skeletons -= W
+	if(length(active_skeletons) >= 2)
+		to_chat(user, span_warning("我已无法指挥更多骷髅。"))
+		revert_cast()
+		return FALSE
+	var/task = input(user, "汝有何吩咐？", "以她之名") as null|anything in list("劳作", "战斗", "守卫", "搜寻")
+	if(!task || !do_after(user, 6 SECONDS))
+		revert_cast()
+		return FALSE
+	var/turf/T = get_step(user, user.dir)
+	if(!isopenturf(T))
+		to_chat(user, span_warning("目标位置被挡住了，我的召唤物无法现身。"))
+		revert_cast()
+		return FALSE
+	var/list/candidates = pollGhostCandidates("帷幕裂开，一只手从中伸出！你愿意化为高阶骷髅，侍奉[user.real_name]吗？你的使命是[task]。", ROLE_NECRO_SKELETON, null, null, 10 SECONDS, POLL_IGNORE_NECROMANCER_SKELETON)
+	if(!LAZYLEN(candidates))
+		to_chat(user, span_warning("深渊中无人应答。"))
+		revert_cast()
+		return FALSE
+	var/mob/C = pick(candidates)
+	if(istype(C, /mob/dead/new_player))
+		var/mob/dead/new_player/N = C
+		N.close_spawn_windows()
+	var/mob/living/carbon/human/species/skeleton/no_equipment/target = new(T)
+	target.crystal = WEAKREF(src)
+	target.key = C.key
+	SSjob.EquipRank(target, "Fortified Skeleton", TRUE)
+	target.visible_message(span_warning("[target]的眼中亮起诡异的光！"))
+	active_skeletons += WEAKREF(target)
+	target.mind.AddSpell(new /obj/effect/proc_holder/spell/self/suicidebomb/lesser)
+	addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living/carbon/human, choose_name_popup), "强化骷髅"), 3 SECONDS)
+	addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living/carbon/human, choose_pronouns_and_body)), 7 SECONDS)
+	target.faction |= list("[user.mind.current.real_name]_faction")
+	user.fullscreen_redflash("redflash1")
+	playsound(user, "shatter", 50, TRUE)
+	return TRUE
+
+/obj/effect/proc_holder/spell/invoked/raise_undead_formation/lesser
+	name = "唤起次级亡灵"
+	desc = "唤起一具心智低下的骷髅。它步履蹒跚，空洞的躯壳里只剩狂热。"
+	cabal_affine = TRUE
+	is_summoned = TRUE
+	recharge_time = 15 SECONDS
+	chargetime = 3 SECONDS
+	to_spawn = 1
+
 /obj/effect/proc_holder/spell/invoked/tame_undead
 	name = "驯服亡灵"
 	desc = "行尸与空壳常常漫无目的地游荡，不知前路何在。与亡灵建立友谊。\

@@ -4,8 +4,8 @@
 	flag = ROOKIE
 	department_flag = GARRISON
 	faction = "Station"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 10
+	spawn_positions = 10
 	allowed_races = ACCEPTED_RACES
 	allowed_sexes = list(MALE, FEMALE)
 	allowed_ages = list(AGE_ADULT)
@@ -56,6 +56,7 @@
 		STATKEY_CON = 1,
 		STATKEY_WIL = 1,
 	)
+	pure_heart = TRUE
 	subclass_skills = list(
 		/datum/skill/combat/shields = 2,
 		/datum/skill/combat/maces = 3,
@@ -128,6 +129,7 @@
 		STATKEY_PER = 1,
 		STATKEY_WIL = 1,
 	)
+	pure_heart = TRUE
 	subclass_skills = list(
 		/datum/skill/combat/bows = 3,
 		/datum/skill/combat/crossbows = 3,

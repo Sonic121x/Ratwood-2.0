@@ -50,8 +50,8 @@
 		/obj/item/rogueweapon/scabbard/sheath = 1
 		)
 	if(H.mind)
-		var/grenzel_purpose = list("双手剑士","戟兵（戟斧）","弩手（十字弩 + 双手大刀）", "钢制卢塞恩锤")
-		var/weapon_choice = input(H, "选择你的惯用兵器。", "契约既毁，祸亦随之") as anything in grenzel_purpose
+		var/grenzel_purpose = list("双手剑士","戟兵（戟斧）","弩手（十字弩 + 战刀）", "钢制卢塞恩锤")
+		var/weapon_choice = input(H, "选择你的盟友。", "契约既毁，祸亦随之") as anything in grenzel_purpose
 		switch(weapon_choice)
 			if("双手剑士")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
@@ -59,12 +59,12 @@
 			if("戟兵（戟斧）")
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
 				r_hand = /obj/item/rogueweapon/halberd
-			if("弩手（十字弩 + 双手大刀）")
+			if("弩手（十字弩 + 战刀）")
 				H.adjust_skillrank_up_to(/datum/skill/combat/crossbows, 4, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/misc/tracking, 3, TRUE)
+				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 				l_hand = /obj/item/rogueweapon/sword/long/kriegmesser
-				r_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 				beltl = /obj/item/quiver/bolts
 				beltr = /obj/item/rogueweapon/scabbard
 				H.change_stat(STATKEY_STR, -1)

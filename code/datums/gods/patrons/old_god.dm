@@ -3,7 +3,7 @@
 	domain = "生命、创造、慈悲与坚忍"
 	desc = "独一者抵达了彗星西昂所载的普赛多尼亚，将那片荒芜世界重塑为祂的模样。祂被死灵魔女齐佐击倒；有人相信祂已经死去，也有人相信祂只是沉眠。愿我们以祂之名坚忍。"
 	worshippers = "古代矮人与精灵、兹班图人、奥塔万人、和平之梦者"
-	virtues = "和平、坚韧、顽强"
+	virtues = "慈悲、虔诚、兄弟情谊"
 	sins = "巫术、施虐、纵欲无度"
 	associated_faith = /datum/faith/old_god
 	mob_traits = list(TRAIT_PSYDONIAN_GRIT)

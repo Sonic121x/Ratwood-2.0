@@ -4,8 +4,8 @@
 	flag = APOTHECARY
 	department_flag = COURTIERS
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 5
+	spawn_positions = 5
 
 	allowed_races = RACES_ALL_KINDS
 
@@ -40,8 +40,8 @@
 		STATKEY_SPD = 1,
 	)
 	subclass_skills = list(
+		/datum/skill/combat/staves = SKILL_LEVEL_APPRENTICE, //enhances survival chances.
 		/datum/skill/combat/knives = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/polearms = SKILL_LEVEL_APPRENTICE, //enhances survival chances.
 		/datum/skill/combat/wrestling = SKILL_LEVEL_NOVICE,
 		/datum/skill/craft/crafting = SKILL_LEVEL_NOVICE,
 		/datum/skill/misc/athletics = SKILL_LEVEL_NOVICE,

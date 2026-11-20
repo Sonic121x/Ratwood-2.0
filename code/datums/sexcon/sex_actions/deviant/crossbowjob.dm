@@ -6,7 +6,7 @@
 	if(user == target)
 		return FALSE
 	var/obj/item/held_item = user.get_active_held_item()
-	if(!held_item || !istype(held_item, /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow))
+	if(!held_item || !istype(held_item, /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow) && !istype(held_item, /obj/item/gun/ballistic/revolver/rune/twilight_runelock/rifle))
 		return FALSE
 	return TRUE
 
@@ -17,11 +17,12 @@
 	if(user == target)
 		return FALSE
 	var/obj/item/held_item = user.get_active_held_item()
-	if(!held_item || !istype(held_item, /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow))
+	if(!held_item || !istype(held_item, /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow) && !istype(held_item, /obj/item/gun/ballistic/revolver/rune/twilight_runelock/rifle))
 		return FALSE
 	return TRUE
 
 /datum/sex_action/grind_crossbow/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	var/obj/item/held_item = user.get_active_held_item()
 	user.visible_message(span_warning("[user]开始用自己的弩托磨蹭[target]的胯部……"), vision_distance = (user.sexcon.do_subtle_action ? 1 : DEFAULT_MESSAGE_RANGE))
 	user.sexcon.show_progress = 0
 

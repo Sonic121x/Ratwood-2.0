@@ -47,6 +47,14 @@
 	sound = 'sound/magic/swap.ogg'
 	var/anti_spam
 
+/datum/action/cooldown/spell/zizo/rituos/can_cast_spell(feedback = TRUE)
+	if(owner?.advjob == "Lunacy Embracer")
+		if(feedback)
+			owner.balloon_alert(owner, "你的狂野天性使你无法举行此仪式。")
+		return FALSE
+
+	return ..()
+
 /datum/action/cooldown/spell/zizo/rituos/cast(atom/cast_on)
 	. = ..()
 

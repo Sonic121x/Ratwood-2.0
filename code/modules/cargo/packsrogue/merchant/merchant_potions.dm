@@ -7,15 +7,6 @@
 	crate_name = "商人公会货箱"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
-//Only two since that's 4 uses total; two sips each. You only need one sip for cure.
-/datum/supply_pack/rogue/potions/rotcure
-	name = "腐坏解药"
-	cost = 300
-	contains = list(
-					/obj/item/reagent_containers/glass/bottle/alchemical/rogue/rotcure,
-					/obj/item/reagent_containers/glass/bottle/alchemical/rogue/rotcure,
-				)
-
 /datum/supply_pack/rogue/potions/healthpot
 	name = "生命药水"
 	cost = 25

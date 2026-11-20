@@ -16,7 +16,7 @@
 	allowed_races = RACES_NO_CONSTRUCT
 	allowed_patrons = ALL_DIVINE_PATRONS
 	outfit = /datum/outfit/job/roguetown/martyr
-	min_pq = 10 //Cus it's a Martyr of the Ten. Get it.
+	min_pq = 7 //10 Cus it's a Martyr of the Ten. Get it.
 	max_pq = null
 	round_contrib_points = 4
 	total_positions = 1
@@ -84,6 +84,7 @@
 		/datum/skill/misc/swimming = SKILL_LEVEL_NOVICE,
 		/datum/skill/misc/sneaking = SKILL_LEVEL_NOVICE,
 	)
+	pure_heart = TRUE
 	subclass_stashed_items = list(
 		"十神箴言与行传" = /obj/item/book/rogue/bibble,
 	)

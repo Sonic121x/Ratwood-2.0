@@ -27,7 +27,7 @@
 
 /obj/structure/fluff/walldeco/wantedposter
 	name = "匪徒告示"
-	desc = "这里张贴着四处流窜的匪徒画像。看看这周有没有新的通缉吧……"
+	desc = "一块张贴着国度不法之徒及其悬赏金额的告示板。看看这周谁被通缉了……"
 	icon_state = "wanted1"
 	layer = BELOW_MOB_LAYER
 	pixel_y = 32
@@ -47,11 +47,32 @@
 /obj/structure/fluff/walldeco/wantedposter/examine(mob/user)
 	. = ..()
 	if(user.Adjacent(src))
-		if(SSrole_class_handler.bandits_in_round)
-			. += span_bold("我看到这片区域最近有匪徒活动。")
+		var/wanted_count = length(collect_wanted_posters())
+		var/bandits_active = SSrole_class_handler.bandits_in_round
+		var/wanted_text
+		switch(wanted_count)
+			if(0)
+				wanted_text = "目前无人被通缉"
+			if(1)
+				wanted_text = "有一人被国度通缉"
+			else
+				wanted_text = "有[wanted_count]人被国度通缉"
+		var/bandit_text = bandits_active ? "该地区有匪徒活动" : "没有匪徒活动的报告"
+		. += span_bold("[wanted_text]，且[bandit_text]。")
+		if(wanted_count || bandits_active)
 			user.playsound_local(user, 'sound/misc/notice (2).ogg', 100, FALSE)
-		else
-			. += span_bold("看起来最近没有匪徒活动的报告。")
+		. += "<a href='byond://?src=[REF(src)];read_notices=1'>阅读通缉告示。</a>"
+
+/obj/structure/fluff/walldeco/wantedposter/Topic(href, href_list)
+	. = ..()
+	if(!href_list["read_notices"])
+		return
+	var/mob/user = usr
+	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE))
+		return
+	var/datum/browser/popup = new(user, "wanted_notices", "<center>通缉</center>", 680, 620, src)
+	popup.set_content(render_wanted_posters(collect_wanted_posters(), "告示板空空如也。目前无人被通缉。"))
+	popup.open()
 
 /obj/structure/fluff/walldeco/innsign
 	name = "酒馆招牌"

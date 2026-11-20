@@ -138,16 +138,23 @@
 		return
 
 	var/obj/item/rogueweapon/W = user.get_active_held_item()
-	if(istype(W, /obj/item/rogueweapon) && W.special)
-		var/skillreq = W.associated_skill
-		if(W.special.custom_skill)
-			skillreq = W.special.custom_skill
-		if(user.get_skill_level(skillreq) < SKILL_LEVEL_JOURNEYMAN)
-			to_chat(user, span_info("我对这件武器的技艺还不够熟练，无法这样使用它。"))
-			return
-		if(W.special.check_range(user, target))
-			if(W.special.apply_cost(user))
-				W.special.deploy(user, W, target)
+	var/datum/special_intent/active_special = W?.special
+	var/skillreq = W?.associated_skill
+	if(!active_special && ishuman(user))
+		var/mob/living/carbon/human/HU = user
+		active_special = HU.unarmed_special
+		if(active_special)
+			skillreq = /datum/skill/combat/unarmed
+	if(!active_special)
+		return
+	if(active_special.custom_skill)
+		skillreq = active_special.custom_skill
+	if(skillreq && user.get_skill_level(skillreq) < SKILL_LEVEL_JOURNEYMAN)
+		to_chat(user, span_info("我对这件武器的技艺还不够熟练，无法这样使用它。"))
+		return
+	if(active_special.check_range(user, target))
+		if(active_special.apply_cost(user))
+			active_special.deploy(user, W || user, target)
 
 /datum/rmb_intent/swift
 	name = "迅捷"

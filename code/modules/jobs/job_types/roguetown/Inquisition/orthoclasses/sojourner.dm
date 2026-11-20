@@ -12,8 +12,10 @@
 	subclass_languages = list(/datum/language/otavan, /datum/language/celestial)//You're still Naledi. A learned one, atop that.
 	cmode_music = 'sound/music/psydonite.ogg'
 	category_tags = list(CTAG_INQUISITION)
+	pure_heart = TRUE
 	subclass_social_rank = SOCIAL_RANK_MINOR_NOBLE
 	traits_applied = list(
+		TRAIT_ARCYNE,
 		TRAIT_ALCHEMY_EXPERT,
 		TRAIT_NALEDI,
 		TRAIT_MAGEDEXTERITY, //THEY NEED THIS MORE THAN ANY OTHER MAGE IN THE GAME. 

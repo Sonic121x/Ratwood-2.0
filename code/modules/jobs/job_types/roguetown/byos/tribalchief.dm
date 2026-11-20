@@ -27,7 +27,7 @@
 
 	display_order = JDO_TRIBALCHIEFTAIN
 	whitelist_req = FALSE
-	min_pq = 10
+	min_pq = 7 //10
 	max_pq = null
 	round_contrib_points = 4
 	give_bank_account = 1000

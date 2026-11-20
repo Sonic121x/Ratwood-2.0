@@ -274,7 +274,7 @@
 	wdefense_wbonus = 8	//13 when wielded.
 	bigboy = TRUE
 	gripsprite = TRUE
-	associated_skill = /datum/skill/combat/polearms
+	associated_skill = /datum/skill/combat/staves
 	anvilrepair = /datum/skill/craft/carpentry
 	resistance_flags = FLAMMABLE
 
@@ -352,6 +352,18 @@
 
 			if(!(H in SStreasury.bank_accounts))
 				to_chat(user, span_danger("目标必须拥有神经锁账户！")) //no stunlocking antags sorry buddy
+				return
+
+			if(HAS_TRAIT(H, TRAIT_LUX_FREAK))
+				to_chat(src, span_warning("[H]抵抗了施加于灵魂的神罚！"))
+				return
+			
+			if(HAS_TRAIT(H, TRAIT_INQUISITION))
+				to_chat(src, span_warning("该死的奥塔瓦符文阵削弱了施加于其使者的神罚！"))
+				return
+
+			if(HAS_TRAIT(H, TRAIT_HERESIARCH))
+				to_chat(user, span_warning("此人的守护神庇护着他们，使其免受压制。"))
 				return
 
 			if(istype(user.used_intent, /datum/intent/priest_smite))
@@ -1080,9 +1092,9 @@
 	force = 15
 	force_wielded = 30
 	possible_item_intents = list(/datum/intent/spear/thrust/bad)
-	gripped_intents = list(/datum/intent/spear/bash/eaglebeak, /datum/intent/mace/smash/eaglebeak, /datum/intent/spear/thrust/bad)
-	name = "鹰喙枪"
-	desc = "一根加固长杆，顶端装有华饰钢制鹰首，以锋利的喙尖刺穿敌人，造成重创。"
+	gripped_intents = list(/datum/intent/spear/bash/eaglebeak, /datum/intent/mace/smash/eaglebeak, /datum/intent/spear/thrust/bad, /datum/intent/mace/warhammer/pick/ranged)
+	name = "钢制卢塞恩锤"
+	desc = "一柄坚固钢制的卢塞恩锤。厚重的锤头足以砸裂颅骨，尖刺能贯穿头盔，枪尖则能如任何长柄武器般突刺——全都装在加固的长杆之上。以正义之力粉碎骨骼与异见。这件器物能让任何贵族听着叛徒头骨碎裂的声响而倍感悦耳。"
 	icon_state = "eaglebeak"
 	icon = 'icons/roguetown/weapons/64.dmi'
 	pixel_y = -16
@@ -1119,7 +1131,7 @@
 	desc = "一柄华丽的黑钢卢塞恩锤。专为击杀板甲对手而造，它带有破甲锥尖与扩张的 \
 	锤头；分别擅长刺穿与震碎合金。 在柄上裹上一段布料以展示你的纹章。"
 	possible_item_intents = list(/datum/intent/spear/bash/eaglebeak, /datum/intent/mace/smash/eaglebeak, /datum/intent/spear/thrust/bad)
-	gripped_intents = list(/datum/intent/spear/bash/eaglebeak, /datum/intent/mace/smash/eaglebeak, /datum/intent/spear/thrust)
+	gripped_intents = list(/datum/intent/spear/bash/eaglebeak, /datum/intent/mace/smash/eaglebeak, /datum/intent/spear/thrust, /datum/intent/mace/warhammer/pick/ranged)
 	icon_state = "bs_eaglebeak"
 	icon = 'icons/roguetown/weapons/polearms64.dmi'
 	smeltresult = /obj/item/ingot/blacksteel
@@ -1329,6 +1341,7 @@
 	force_wielded = 20
 	gripped_intents = list(/datum/intent/spear/bash/ranged/quarterstaff, /datum/intent/spear/thrust/quarterstaff)
 	icon_state = "quarterstaff"
+	associated_skill = /datum/skill/combat/staves
 	max_integrity = 150
 
 /obj/item/rogueweapon/woodstaff/quarterstaff/iron

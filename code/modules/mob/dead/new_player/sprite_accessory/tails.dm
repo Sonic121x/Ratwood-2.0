@@ -308,6 +308,20 @@
 	color_key_names = list("尾巴", "条纹")
 	can_wag = TRUE
 
+/datum/sprite_accessory/tail/raccoon_new
+	name = "浣熊（蓬乱）"
+	icon_state = "racc2"
+	color_keys = 2
+	color_key_names = list("尾巴", "条纹")
+	can_wag = FALSE
+
+/datum/sprite_accessory/tail/raccoon_newer
+	name = "浣熊（整齐）"
+	icon_state = "racc3"
+	color_keys = 2
+	color_key_names = list("尾巴", "条纹")
+	can_wag = FALSE
+
 /datum/sprite_accessory/tail/sabresune
 	name = "剑阳"
 	icon_state = "sabresune"
