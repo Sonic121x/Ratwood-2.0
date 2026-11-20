@@ -183,7 +183,7 @@
 // 驱动组件：畸变变种
 // 为什么用组件：组件天然与宿主 mob 绑定，提供 Initialize / UnregisterFromParent 生命周期，
 //   能干净地完成"注册入夜信号、添加身份特性、注册检视信号"，并在宿主消失时反注册、移除特性，
-//   避免悬空回调与残留（与 martins_morning / hellblood_descendant 的做法一致）。
+//   避免悬空回调与残留（与 hellblood_descendant 的做法一致）。
 // 该组件集三职于一身：① 监听入夜信号驱动每日变种；② 提供检视可见性；③ 维护身份特性标签。
 // ----------------------------------------------------------------------------
 /datum/component/distortion_variant
@@ -415,7 +415,7 @@
 // 登记过程：把【畸变变种】特性写入玩家可见的特性自检表 GLOB.roguetraits。
 // 为什么需要：除了"被他人检视可见"（上面的检视回调）之外，本项目还有一张玩家自检面板
 //   （GLOB.roguetraits，screen_objects.dm 遍历它打印玩家"已拥有"的每个特性）。把特性登记进去，
-//   持有者才能在面板里看到【畸变变种】及其说明，与 hellblood_descendant / martins_morning 一致。
+//   持有者才能在面板里看到【畸变变种】及其说明，与 hellblood_descendant 一致。
 // 为什么用"运行时追加"而非直接改核心 GLOBAL_LIST_INIT(roguetraits)：
 //   硬性约束只能改动 modular_z121；核心表 roguetraits 定义在 code/__DEFINES/traits.dm
 //   （目录之外，禁止修改）。故在启动钩子里向这张已初始化的全局表追加键值对——这是本项目

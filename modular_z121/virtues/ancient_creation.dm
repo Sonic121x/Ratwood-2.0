@@ -71,11 +71,11 @@
 #define TRAIT_ANCIENT_EXISTENCE "ancient_existence"
 
 // 本美德给予的技能加成档数：+3 级。单独定义为常量，便于将来平衡性调整时只改这一处。
-#define ANCIENT_CREATION_SKILL_BONUS 3
+#define ANCIENT_CREATION_SKILL_BONUS 2 // 3 在特定搭配下开局单美德传奇过于超模
 
 // 技能可被提升到的最高等级：6 级（= SKILL_LEVEL_LEGENDARY / 传说级）。
 // 需求中"up to 6"与"上限设为 6"都对应这一数值，统一引用同一常量避免硬编码魔法数字。
-#define ANCIENT_CREATION_SKILL_CAP SKILL_LEVEL_LEGENDARY
+#define ANCIENT_CREATION_SKILL_CAP SKILL_LEVEL_MASTER //SKILL_LEVEL_LEGENDARY 在特定搭配下开局单美德传奇过于超模
 
 
 // ----------------------------------------------------------------------------
@@ -93,8 +93,8 @@
 	custom_text = "【仅限金属构装体获取】\n\
 	获得【亘古长存】特性：\n\
 	智力 +1、意志 +1；\n\
-	识字技能 +3（最高 6 级）；\n\
-	工匠系列全部技能 +3（最高 6 级），并将工匠系列技能的等级上限提升至 6 级（传说级）。"
+	识字技能 +2（最高 5 级）；\n\
+	工匠系列全部技能 +2（最高 5 级），并将工匠系列技能的等级上限提升至 5 级（大师级）。"
 	// 消耗 12 点凯旋点数。基类 New() 会自动把"Costs 12 TRIUMPH"追加到 desc。
 	// check_triumphs() 会在 apply_virtue 流程开头校验并扣除；若领取者非金属构装体，
 	//   apply_to_human 会把这笔点数全额退还（见下）。

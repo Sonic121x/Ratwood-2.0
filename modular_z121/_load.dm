@@ -2,6 +2,8 @@
 #include "virtues/small_size.dm"
 #include "spells/_registry.dm"
 #include "spells/action_support.dm"
+#include "spells/independent_rewards.dm"
+#include "stat_helpers.dm"
 #include "spells/patron_symbols.dm"
 #include "spells/upstream_type_bridges.dm"
 
@@ -291,22 +293,6 @@
 // "Ancient existence" trait: INT +1, WIL +1, Literacy +3 (cap 6), the whole Craftsman series +3
 // (cap 6) and raises the Craftsman series' level cap to 6; non-construct takers are refunded and get nothing)
 #include "virtues/ancient_creation.dm"
-// 平行存在：每天独立睡眠三十秒，按来源回收职业能力并同步岗位与名额。
-// 保留种族、美德、私人财物与独立成长；不重跑出生奖励。
-#include "virtues/parallel_session.dm"
-#include "virtues/parallel_state.dm"
-#include "virtues/parallel_aspects.dm"
-#include "virtues/parallel_outfits.dm"
-#include "virtues/parallel_equipment.dm"
-#include "virtues/parallel_birth.dm"
-#include "virtues/parallel_birth_equip.dm"
-#include "virtues/parallel_birth_outfits.dm"
-#include "virtues/parallel_birth_gear.dm"
-#include "virtues/parallel_birth_job.dm"
-#include "virtues/parallel_sleep.dm"
-#include "virtues/parallel_bard.dm"
-#include "virtues/parallel_devotion.dm"
-#include "virtues/parallel_stash.dm"
 // 自定义恶习：洁癖（被动）；当身上有污渍（赤手沾血 / 身上附着可清理污物）时，
 // 持续触发心情变差（压力事件）并施加意志 -2 减益；把身体清洗干净即可解除
 // Custom vice: Neat Freak (passive); while the body is stained (bloody hands /
@@ -332,9 +318,9 @@
 // If unsated, they ache and mood drops (Willpower -1, Speed -1); milking in any way (milk_stored
 // decreasing) calls sate_addiction, clearing the penalties and restarting the timer.
 #include "vices/engorged_breasts.dm"
-// 自定义美德：地狱血脉后裔（仅限提夫林、消耗 29 凯旋点）；授予【地狱血脉】特性：
+// 自定义美德：地狱血脉后裔（仅限提夫林、消耗 666 凯旋点）；授予【地狱血脉】特性：
 // 免疫一切火焰/灼烧/高温伤害（不会被点燃），并习得火焰系法术（火球术/强效火球术/吐焰火球/生成营火）。
-// Custom virtue: Hell Bloody Descendants (Tiefling-only, costs 29 TRIUMPH); grants the "Hell Bloodline"
+// Custom virtue: Hell Bloody Descendants (Tiefling-only, costs 666 TRIUMPH); grants the "Hell Bloodline"
 // trait: immune to all fire/burn/heat damage (cannot be ignited) and learns the flame series of spells
 // (Fireball / Greater Fireball / Spitfire / Create Campfire)
 #include "virtues/hellblood_descendant.dm"
@@ -401,3 +387,6 @@
 #include "ethos/preferences.dm"
 #include "ethos/experience.dm"
 #include "translation_display.dm"
+#include "guide_browser/guide_catalog.dm"
+#include "guide_browser/guide_browser.dm"
+#include "guide_browser/guide_catalog_admin.dm"

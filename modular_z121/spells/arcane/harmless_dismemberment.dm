@@ -445,13 +445,13 @@
 	if(harmless_live_head)
 		if(message_mode == MODE_WHISPER || message_mode == MODE_WHISPER_CRIT)
 			return "低低呢喃"
-		if(copytext(input, length(input) - 1) == "!!")
-			return "猛然尖啸"
-		var/ending = copytext(input, length(input))
-		if(ending == "?")
-			return "幽幽发问"
-		if(ending == "!")
-			return "突兀惊呼"
+		switch(say_tone(input))
+			if("3")
+				return "猛然尖啸"
+			if("2")
+				return "突兀惊呼"
+			if("1")
+				return "幽幽发问"
 		return "轻声开口"
 	return ..()
 

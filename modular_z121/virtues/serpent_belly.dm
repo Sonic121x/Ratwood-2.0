@@ -3,7 +3,7 @@
 	name = "蛇腹者（-5）"
 	desc = "蛇蜕去旧皮，你却将它的饥饿留在了血肉里。你的喉腹懂得一种古老的进食方式，连尚未止息的心跳，也能藏进温热的黑暗。"
 	triumph_cost = 5
-	custom_text = "获得【吞入】与【吐出】。握牢近旁的血肉，耐心完成吞咽；越是庞大的猎物，越难下咽，也越令步履沉重。腹中仅容一具躯体，金铁会伤及内里，腐败与死灵亦会留下恶浊。饥饿随着血肉消融而平息，放还的躯体却未必完好。隔着腹壁，唯有你听得清其中的话语；尚有余力者仍可【抵抗】。"
+	custom_text = "获得【蛇腹】法术。选中后，用替代模式快捷键（默认 Shift+G）切换吞入或吐出，中键施放。握牢近旁的血肉，耐心完成吞咽；越是庞大的猎物，越难下咽，也越令步履沉重。腹中仅容一具躯体，金铁会伤及内里，腐败与死灵亦会留下恶浊。饥饿随着血肉消融而平息，放还的躯体却未必完好。隔着腹壁，唯有你听得清其中的话语；尚有余力者仍可【抵抗】。"
 
 /datum/virtue/utility/serpent_belly/apply_to_human(mob/living/carbon/human/recipient)
 	. = ..()
@@ -220,8 +220,7 @@
 /datum/component/z121_serpent_belly
 	dupe_mode = COMPONENT_DUPE_UNIQUE
 	var/obj/effect/z121_serpent_stomach/stomach
-	var/datum/action/cooldown/spell/z121/self/z121_serpent_swallow/swallow_spell
-	var/datum/action/cooldown/spell/z121/self/z121_serpent_release/release_spell
+	var/datum/action/cooldown/spell/z121/invoked/z121_serpent_belly/belly_spell
 	var/channeling = FALSE
 	var/interrupted = FALSE
 	var/list/damage_snapshot
@@ -238,10 +237,9 @@
 	if(!ishuman(parent))
 		return COMPONENT_INCOMPATIBLE
 	var/mob/living/carbon/human/host = parent
-	swallow_spell = new
-	release_spell = new
-	host.AddSpell(swallow_spell)
-	host.AddSpell(release_spell)
+	belly_spell = new
+	host.mob_spell_list |= belly_spell
+	belly_spell.Grant(host)
 	ADD_TRAIT(host, "蛇腹者", REF(src))
 	GLOB.roguetraits["蛇腹者"] = span_info("我的饥饿有着蛇的耐性。握牢血肉，便能慢慢将其纳入腹中；庞然之物难咽，金铁与腐败更会留下苦楚。腹中只有一份余地，也未必困得住尚有力气的猎物。若愿放还，须稍稍停步，任喉腹翻涌。")
 	RegisterSignal(host, list(COMSIG_LIVING_DEATH, COMSIG_QDELETING), PROC_REF(on_host_lost))
@@ -286,10 +284,8 @@
 		UnregisterSignal(host, list(COMSIG_LIVING_DEATH, COMSIG_QDELETING, COMSIG_LIVING_HEALTH_UPDATE, COMSIG_MOB_LOGIN))
 		host.verbs -= /mob/living/carbon/human/proc/z121_serpent_toggle_digestion
 		REMOVE_TRAIT(host, "蛇腹者", REF(src))
-		host.mob_spell_list -= swallow_spell
-		host.mob_spell_list -= release_spell
-	QDEL_NULL(swallow_spell)
-	QDEL_NULL(release_spell)
+		host.mob_spell_list -= belly_spell
+	QDEL_NULL(belly_spell)
 	damage_snapshot = null
 	return ..()
 
@@ -795,8 +791,7 @@
 	SSroguerot.currentrun -= rot
 	if(!rot.last_process)
 		rot.last_process = world.time
-	if(rot.soundloop)
-		rot.soundloop.stop()
+	rot.set_flies(FALSE)
 
 /obj/effect/z121_serpent_stomach/proc/advance_rot()
 	if(QDELETED(held_rot))
@@ -1019,37 +1014,42 @@
 	controller = null
 	return ..()
 
-/datum/action/cooldown/spell/z121/self/z121_serpent_swallow
-	name = "吞入"
-	desc = "握牢近旁的血肉，缓缓将其纳入腹中。庞大的猎物更难下咽，疼痛与脱手足以打断吞咽。腹中仅有一份余地；双手各有所握时，先顾当前手中的猎物。"
-	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
+/datum/action/cooldown/spell/z121/invoked/z121_serpent_belly
+	name = "蛇腹：吞入"
+	desc = "选中后，用替代模式快捷键（默认 Shift+G）切换吞入或吐出，中键施放。吞入时须握牢近旁的血肉；双手各有所握时，优先当前手中的猎物。庞大的猎物更难下咽，疼痛与脱手足以打断吞咽，腹中仅有一份余地。吐出时须稍稍停步，余下的分量越沉，越难顺过这口气。"
 	spell_requirements = NONE
 	associated_skill = null
+	charge_required = FALSE
+	self_cast_possible = TRUE
 	cooldown_time = 1 SECONDS
 	button_icon_state = "bloodsteal"
+	var/release_mode = FALSE
 
-/datum/action/cooldown/spell/z121/self/z121_serpent_swallow/z121_apply(atom/cast_on)
-	var/mob/living/carbon/human/user = owner
-	var/datum/component/z121_serpent_belly/ability = user.GetComponent(/datum/component/z121_serpent_belly)
-	if(!ability?.swallow())
-		if(!QDELETED(src) && !QDELETED(user))
-			z121_cancel(user)
+/datum/action/cooldown/spell/z121/invoked/z121_serpent_belly/PreActivate(atom/target)
+	// 点击仅用于发动；吞吐对象仍由自身腹部和手中的抓取决定。
+	return ..(owner)
+
+/datum/action/cooldown/spell/z121/invoked/z121_serpent_belly/toggle_alt_mode(mob/user)
+	if(user != owner || QDELETED(owner))
 		return FALSE
+	var/datum/component/z121_serpent_belly/ability = owner.GetComponent(/datum/component/z121_serpent_belly)
+	if(!ability)
+		return FALSE
+	if(z121_casting || ability.channeling || ability.releasing)
+		to_chat(user, span_warning("喉腹仍在翻涌，暂时无法切换。"))
+		return TRUE
+	release_mode = !release_mode
+	name = release_mode ? "蛇腹：吐出" : "蛇腹：吞入"
+	button_icon_state = release_mode ? "fetch" : "bloodsteal"
+	build_all_button_icons()
+	to_chat(user, span_notice("已切换为[name]。"))
 	return TRUE
 
-/datum/action/cooldown/spell/z121/self/z121_serpent_release
-	name = "吐出"
-	desc = "稍稍停步，松开腹中的桎梏，任翻涌将其中的躯体与身外之物送回外间。余下的分量越沉，越难顺过这口气。"
-	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
-	spell_requirements = NONE
-	associated_skill = null
-	cooldown_time = 1 SECONDS
-	button_icon_state = "fetch"
-
-/datum/action/cooldown/spell/z121/self/z121_serpent_release/z121_apply(atom/cast_on)
+/datum/action/cooldown/spell/z121/invoked/z121_serpent_belly/z121_apply(atom/cast_on)
 	var/mob/living/carbon/human/user = owner
 	var/datum/component/z121_serpent_belly/ability = user.GetComponent(/datum/component/z121_serpent_belly)
-	if(!ability?.release())
+	var/success = release_mode ? ability?.release() : ability?.swallow()
+	if(!success)
 		if(!QDELETED(src) && !QDELETED(user))
 			z121_cancel(user)
 		return FALSE
