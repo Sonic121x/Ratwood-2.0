@@ -195,9 +195,18 @@
 		return
 
 	var/button_number = 0
+	// keep_at_end 的旧按钮（如指南浏览器）固定排在其它 action 之后。
+	var/list/ordered_actions = list()
+	var/list/end_actions = list()
+	for(var/datum/action/A as anything in actions)
+		if(A.keep_at_end)
+			end_actions += A
+		else
+			ordered_actions += A
+	ordered_actions += end_actions
 
 	if(hud_used.action_buttons_hidden)
-		for(var/datum/action/A as anything in actions)
+		for(var/datum/action/A as anything in ordered_actions)
 			A.build_all_button_icons()
 			var/atom/movable/screen/movable/action_button/B = A.viewers[hud_used]
 			if(!B)
@@ -207,7 +216,7 @@
 			if(reload_screen)
 				client.screen += B
 	else
-		for(var/datum/action/A as anything in actions)
+		for(var/datum/action/A as anything in ordered_actions)
 			A.build_all_button_icons()
 			var/atom/movable/screen/movable/action_button/B = A.viewers[hud_used]
 			if(!B)
