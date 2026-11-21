@@ -35,6 +35,6 @@ GLOBAL_LIST_INIT(custom_learnable_spells, list(
 	/datum/action/cooldown/spell/z121/self/void_clone,
 	/datum/action/cooldown/spell/z121/self/weather_control, // 自定义 T3：掌控天时（晴/雨/雪）
 //	/datum/action/cooldown/spell/z121/invoked/xylix_laughter,
-	/datum/action/cooldown/spell/z121/invoked/xray_vision,
-	/datum/action/cooldown/spell/z121/invoked/yixinghuanying,
+//	/datum/action/cooldown/spell/z121/invoked/xray_vision, // 暂时关闭获取途径：透视术
+//	/datum/action/cooldown/spell/z121/invoked/yixinghuanying, // 暂时关闭获取途径：移形换影
 ))
