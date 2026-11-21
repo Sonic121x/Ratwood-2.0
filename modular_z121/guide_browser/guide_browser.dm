@@ -3,6 +3,7 @@
 	desc = "浏览服务器 Wiki 指南。"
 	button_icon_state = "round_end"
 	show_to_observers = FALSE
+	keep_at_end = TRUE
 
 	var/selected_page_id
 
