@@ -390,3 +390,7 @@
 #include "guide_browser/guide_catalog.dm"
 #include "guide_browser/guide_browser.dm"
 #include "guide_browser/guide_catalog_admin.dm"
+#include "weapons/gunfire_collapse.dm"
+// 枪火击溃，未来作为boss掉落物
+#include "weapons/rabbit_watch.dm"
+// 兔子怀表，用来组合枪火击溃，作为弹匣，boss掉落物
