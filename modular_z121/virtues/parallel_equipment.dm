@@ -293,7 +293,7 @@
 	var/list/entries = GLOB.actors_list[department]
 	if(islist(entries))
 		entries["[H.mobid]"] = "[H.real_name]，饰演[P.profession.name]<BR>"
-	H.add_credit(TRUE)
+	SScrediticons.queue_capture(H)
 	SSrole_class_handler.adjust_class_amount(P.profession, 0)
 
 /datum/component/martins_morning/proc/remove_office_verbs(mob/living/carbon/human/H)
@@ -367,4 +367,4 @@
 			entries -= "[H.mobid]"
 			if(department in actor_entries)
 				entries["[H.mobid]"] = actor_entries[department]
-	H.add_credit(TRUE)
+	SScrediticons.queue_capture(H)

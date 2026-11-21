@@ -10,10 +10,12 @@
 /datum/advclass/guildsman/artificer/z121_gunsmith/New()
 	. = ..()
 	// 复制继承的列表，仅调整枪匠，不改动原工会工匠的特质和技能。
-	traits_applied = traits_applied.Copy()
+	var/list/base_traits = islist(traits_applied) ? traits_applied : list()
+	traits_applied = base_traits.Copy()
 	traits_applied -= list(TRAIT_ARCYNE, TRAIT_MASTER_CARPENTER, TRAIT_MASTER_MASON)
 	traits_applied |= TRAIT_Z121_GUNSMITH
-	subclass_skills = subclass_skills.Copy()
+	var/list/base_skills = islist(subclass_skills) ? subclass_skills : list()
+	subclass_skills = base_skills.Copy()
 	subclass_skills[/datum/skill/craft/masonry] = SKILL_LEVEL_JOURNEYMAN
 	subclass_skills[/datum/skill/craft/carpentry] = SKILL_LEVEL_JOURNEYMAN
 	subclass_skills[/datum/skill/craft/ceramics] = SKILL_LEVEL_JOURNEYMAN
@@ -57,7 +59,8 @@
 
 /datum/job/roguetown/guildsman/New()
 	. = ..()
-	job_subclasses = job_subclasses.Copy()
+	var/list/base_subclasses = islist(job_subclasses) ? job_subclasses : list()
+	job_subclasses = base_subclasses.Copy()
 	job_subclasses |= /datum/advclass/guildsman/artificer/z121_gunsmith
 
 /proc/register_z121_gunsmith_trait()

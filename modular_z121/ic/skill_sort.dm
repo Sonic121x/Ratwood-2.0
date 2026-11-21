@@ -93,3 +93,12 @@
 	holder.mind?.sync_spell_list_to_actions()
 	holder.update_action_buttons(TRUE)
 	return TRUE
+
+// 新版 action 系统移除了 get_sortable_action_count；按本人拥有的 action 数量重新实现。
+/mob/living/carbon/proc/get_sortable_action_count()
+	var/count = 0
+	for(var/datum/action/ability as anything in actions)
+		if(QDELETED(ability) || ability.owner != src)
+			continue
+		count++
+	return count

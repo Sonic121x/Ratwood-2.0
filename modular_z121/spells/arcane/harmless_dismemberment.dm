@@ -1257,3 +1257,19 @@
 
 #undef HARMLESS_REATTACH_GLOW_FILTER
 #undef HARMLESS_HEAD_HEARING_SOURCE
+
+// 新版核心移除了 say_tone 辅助过程；保留旧版按标点/音量判断语气的行为。
+/proc/say_tone(input)
+	if(!input)
+		return null
+	var/text = strip_html(input)
+	if(!length(text))
+		return null
+	var/trimmed = trim(text)
+	if(findtext(trimmed, "!!") || (trimmed == uppertext(trimmed) && length(trimmed) > 3))
+		return "3"
+	if(findtext(trimmed, "!"))
+		return "2"
+	if(findtext(trimmed, "?"))
+		return "1"
+	return null

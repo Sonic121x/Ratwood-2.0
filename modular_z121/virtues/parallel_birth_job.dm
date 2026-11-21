@@ -82,7 +82,7 @@
 			SStreasury.grant_estate_income(H, noble_income, TRUE)
 
 	if(show_in_credits)
-		SScrediticons.processing += H
+		SScrediticons.queue_capture(H)
 
 	if(cmode_music)
 		H.cmode_music = cmode_music
