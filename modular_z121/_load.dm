@@ -381,6 +381,7 @@
 #include "items/custom_stat_bonuses.dm"
 // 技能排序：同步调整能力栏顺序与数字快捷键对应位置。
 #include "ic/skill_sort.dm"
+#include "ic/action_keep_at_end.dm"
 // 七罪七德：日常机制、角色进度与现有事件适配。
 #include "ethos/definitions.dm"
 #include "ethos/acquisition.dm"
