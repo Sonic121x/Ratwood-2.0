@@ -401,3 +401,6 @@
 #include "ethos/preferences.dm"
 #include "ethos/experience.dm"
 #include "translation_display.dm"
+#include "guide_browser/guide_catalog.dm"
+#include "guide_browser/guide_browser.dm"
+#include "guide_browser/guide_catalog_admin.dm"
