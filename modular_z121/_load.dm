@@ -235,6 +235,8 @@
 #include "items/philosophers_stone.dm"
 #include "items/void_cube.dm"
 #include "crafting/void_cube_recipe.dm"
+// 飞天扫帚：手持右键起飞/落地，骑乘贴图与物品图标见 modular_z121/icon/。
+#include "items/flying_broom.dm"
 // 记忆之吻：手持点击铭刻他人气息，独处时重温记忆与感受（ERP 饰品）
 #include "items/memory_kiss_token.dm"
 // 记忆之吻制作配方：炼金台，宝石x1 + 水50 → 记忆之吻，炼金1级
@@ -347,6 +349,7 @@
 // Custom species: Shadekin, ported from S.P.L.U.R.T-Station-13. A shadow-dwelling anthro humanoid with
 // 3-tone mutant coloring + anthro tail/ears/snout, innate TRAIT_DARKVISION (glowing-eye night vision),
 // +1 PER / +1 SPD; plus its signature ability "Shadow Step" (blink into a shadowed tile).
+#include "species/harpy_tailmaw.dm"
 #include "species/shadekin.dm"
 #include "species/shadekin_shadow_step.dm"
 // 暗影裔贴图接入：把移植自 SPLURT 的尾巴/耳朵贴图登记为 Ratwood 原生精灵配件 + 自定义项。
