@@ -102,6 +102,12 @@
 		/datum/action/cooldown/spell/augment_buff/surge,
 		/datum/action/cooldown/spell/augment_buff/precognition,
 		/datum/action/cooldown/spell/augment_buff/grasp,
+		// 群体增益法术：由通用法术池改挂本相点买，费用沿用各自原有的 point_cost
+		/datum/action/cooldown/spell/z121/invoked/group_darkvision,
+		/datum/action/cooldown/spell/z121/invoked/group_enlarge,
+		/datum/action/cooldown/spell/z121/invoked/group_longstrider,
+		/datum/action/cooldown/spell/z121/invoked/group_leap,
+		/datum/action/cooldown/spell/z121/invoked/group_shrink,
 		// 1-cost utility filler
 		/datum/action/cooldown/spell/light,
 		/datum/action/cooldown/spell/mending,
