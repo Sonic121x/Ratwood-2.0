@@ -39,7 +39,15 @@
 	if(isnum(use_delay_override))
 		use_delay = use_delay_override
 
-/datum/component/squeak/proc/play_squeak()
+/datum/component/squeak/proc/play_squeak(datum/source, atom/movable/AM)
+	// 飞行/漂浮中的 mob 不触发地面 squeak（格栅、金属地板等）。
+	if(isliving(AM))
+		var/mob/living/flyer = AM
+		if(flyer.movement_type & (FLYING|FLOATING))
+			return
+	// 拖尾、骑乘贴图等纯视觉效果不应触发 squeak。
+	if(istype(AM, /obj/effect))
+		return
 	if(prob(squeak_chance))
 		if(!override_squeak_sounds)
 			playsound(parent, pickweight(default_squeak_sounds), volume, FALSE, -1)
@@ -66,6 +74,8 @@
 			if(P.original != parent)
 				return
 	if(istype(AM, /obj/effect/dummy/phased_mob)) //don't squeek if they're in a phased/jaunting container.
+		return
+	if(istype(AM, /obj/effect)) //纯视觉效果（拖尾、骑乘贴图、阴影等）不触发 squeak
 		return
 	if(ismob(AM))
 		var/mob/M = AM

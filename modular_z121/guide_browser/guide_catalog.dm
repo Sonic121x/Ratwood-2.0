@@ -18,7 +18,6 @@ SUBSYSTEM_DEF(z121_guide_catalog)
 	var/initial_load_requested = FALSE
 
 /datum/controller/subsystem/z121_guide_catalog/Initialize(timeofday)
-	// 首位玩家进入大厅时才请求目录，避免空服启动时访问 Wiki。
 	RegisterSignal(SSdcs, COMSIG_GLOB_PLAYER_LOGIN, PROC_REF(on_player_login))
 	RegisterSignal(SSdcs, COMSIG_GLOB_PLAYER_LOGOUT, PROC_REF(on_player_logout))
 	for(var/mob/dead/new_player/player in GLOB.player_list)
@@ -105,7 +104,6 @@ SUBSYSTEM_DEF(z121_guide_catalog)
 			var/title = catalog_text(node["title"], 255)
 			if(!title || title == "." || title == ".." || length(seen_ids) > 256)
 				return
-			// 页面标题来自目录；统一生成带 Vector 皮肤的浏览地址。
 			candidate.pages[id] = list("label" = label, "url" = "[wiki_base]/[url_encode(title)]?useskin=vector")
 			candidate.default_page_id ||= id
 		if("category")
@@ -142,7 +140,6 @@ SUBSYSTEM_DEF(z121_guide_catalog)
 	catalog = candidate
 	for(var/client/connected as anything in GLOB.clients)
 		ensure_action(connected.player_details, connected.mob)
-	// 热重载后修正已选页面，并让打开的窗口重新读取目录。
 	for(var/ckey in GLOB.player_details)
 		var/datum/player_details/details = GLOB.player_details[ckey]
 		var/datum/action/z121_guide_browser/action = locate() in details.player_actions

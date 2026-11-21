@@ -83,26 +83,22 @@ GLOBAL_LIST_INIT(z121_admin_learnable_spells, list(
 		z121_learner.z121_confirming_picker = null
 
 
-// 学习窗口绑定打开时的心智、职业记录与额度对象，切换后的旧窗口不能继续授法。
+// 学习窗口绑定打开时的心智与额度对象，切换后的旧窗口不能继续授法。
 /datum/aspect_picker
 	var/datum/mind/z121_learner
-	var/datum/z121_profession_record/z121_profession
 	var/list/z121_config
 
 /datum/aspect_picker/New(mob/living/new_owner, setup = TRUE, list/aspect_config)
 	. = ..()
 	z121_learner = new_owner?.mind
 	z121_config = z121_learner?.mage_aspect_config
-	if(ishuman(new_owner))
-		var/mob/living/carbon/human/H = new_owner
-		z121_profession = H.z121_profession
 
 /datum/aspect_picker/proc/z121_valid_learner()
 	if(!owner || owner.mind != z121_learner || z121_learner.current != owner || z121_learner.mage_aspect_config != z121_config)
 		return FALSE
 	if(ishuman(owner))
 		var/mob/living/carbon/human/H = owner
-		if(H.z121_profession != z121_profession || H.is_void_clone())
+		if(H.is_void_clone())
 			return FALSE
 	return TRUE
 

@@ -31,7 +31,6 @@
 /datum/action/z121_guide_browser/ui_interact(mob/user, datum/tgui/ui)
 	if(ui_status(user, null) != UI_INTERACTIVE)
 		return FALSE
-	// 旧版 BYOND 无法在 TGUI 中嵌入 Wiki，改为外部浏览器打开。
 	if(user.client.byond_version < 516)
 		return open_page_external(user, TRUE)
 	ui = SStgui.try_update_ui(user, src, ui)

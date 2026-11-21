@@ -66,6 +66,12 @@ with light edits to work with roguecode */
 	SIGNAL_HANDLER
 	if(last_move_tick == world.time)
 		return
+	// 飞行/静音脚步时不播放装备走动声（链甲、板甲、高跟鞋等）。
+	// 注意这个信号是注册在穿戴者身上的，source 实际是 mob。
+	if(isliving(source))
+		var/mob/living/wearer = source
+		if((wearer.movement_type & FLYING) || HAS_TRAIT(wearer, TRAIT_SILENT_FOOTSTEPS))
+			return
 	last_move_tick = world.time
 	/*if (source.moving_diagonally == FIRST_DIAG_STEP)   //you can uncomment these if someone ever implements diagonal movement
 		return*/

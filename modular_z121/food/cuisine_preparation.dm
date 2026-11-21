@@ -187,17 +187,24 @@ GLOBAL_LIST_INIT(z121_cuisine_recipes, z121_build_cuisine_recipes())
 	list_reagents = list()
 	var/datum/z121_cuisine_preparation_recipe/preparation_recipe
 	var/preparation_step = 1
+	/// 当前调味步骤已经实际消耗的用量，允许小份粉末分次添足。
+	var/preparation_reagent_amount = 0
 
 /obj/item/reagent_containers/food/snacks/rogue/z121_cuisine_preparation/examine(mob/user)
 	. = ..()
 	if(preparation_recipe)
 		var/list/step = preparation_recipe.steps[preparation_step]
 		. += span_notice("接下来还需[step["text"]]。")
+		if(step["kind"] == "reagent")
+			. += span_notice("这一步还需加入[step["amount"] - preparation_reagent_amount]单位。")
 
 /obj/item/reagent_containers/food/snacks/rogue/z121_cuisine_preparation/proc/step_valid(mob/living/user, obj/item/I)
 	if(QDELETED(src) || !preparation_recipe || !z121_cuisine_table_check(user, src, I, preparation_recipe.requires_knowledge))
 		return FALSE
 	var/list/step = preparation_recipe.steps[preparation_step]
+	if(step["kind"] == "reagent")
+		var/amount = min(step["amount"] - preparation_reagent_amount, I.reagents?.get_reagent_amount(step["item"]) || 0)
+		return amount > 0 && z121_cuisine_ingredient_check(I, step["item"], step["kind"], amount)
 	return z121_cuisine_ingredient_check(I, step["item"], step["kind"], step["amount"])
 
 /obj/item/reagent_containers/food/snacks/rogue/z121_cuisine_preparation/attackby(obj/item/I, mob/living/user, params)
@@ -217,7 +224,13 @@ GLOBAL_LIST_INIT(z121_cuisine_recipes, z121_build_cuisine_recipes())
 	if(!success || !step_valid(user, I))
 		return TRUE
 	if(step["kind"] == "reagent")
-		I.reagents.remove_reagent(step["item"], step["amount"])
+		var/amount = min(step["amount"] - preparation_reagent_amount, I.reagents.get_reagent_amount(step["item"]))
+		I.reagents.remove_reagent(step["item"], amount)
+		preparation_reagent_amount += amount
+		if(preparation_reagent_amount < step["amount"])
+			to_chat(user, span_notice("你添入了[amount]单位；还需[step["text"]]，差[step["amount"] - preparation_reagent_amount]单位。"))
+			return TRUE
+		preparation_reagent_amount = 0
 	else if(step["kind"] == "food")
 		z121_cuisine_transfer(I, src)
 		qdel(I)
