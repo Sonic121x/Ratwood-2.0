@@ -149,9 +149,9 @@ GLOBAL_LIST_INIT(freqtospan, list(
 					namepart = human.get_alt_name(TRUE)
 				else if(istype(speaker, /mob/living))
 					var/mob/living/L = speaker
-					namepart = "Unknown [(L.gender == FEMALE) ? "Woman" : "Man"]"
+					namepart = "陌生[(L.gender == FEMALE) ? "女子" : "男子"]"
 				else
-					namepart = "Unknown"
+					namepart = "陌生人"
 			spanpart1 = "<span class='smallyell'>"
 
 	var/languageicon = ""
@@ -196,22 +196,73 @@ GLOBAL_LIST_INIT(freqtospan, list(
 /atom/movable/proc/compose_job(atom/movable/speaker, message_langs, raw_message, radio_freq)
 	return ""
 
+/*
+ * 语气判定辅助函数。
+ *
+ * 中文输入法打出的是全角标点，所以 ！ 和 ？ 必须和 ! ? 参与同一套判定：
+ * 说话动词、YELL 放大样式、说话气泡、喊话传播范围都要跟着变化。
+ * 判定前会剥掉结尾的空白和收尾引号，这样「走开！！」也能被算作喊话。
+ */
+/proc/say_tone_padding(character)
+	switch(character)
+		if(" ", "\t", "\n", "\"", "'", "”", "’", "」", "』")
+			return TRUE
+	return FALSE
+
+/// 剥掉结尾用于修饰的空白与收尾引号，返回有效正文。
+/proc/say_strip_tone_padding(text)
+	var/len = length_char(text)
+	while(len > 0)
+		if(!say_tone_padding(copytext_char(text, len)))
+			break
+		len--
+	return len > 0 ? copytext_char(text, 1, len + 1) : ""
+
+/// 把全角标点收敛成半角：！->!、？->?。
+/proc/say_normalize_punct(character)
+	switch(character)
+		if("!", "！")
+			return "!"
+		if("?", "？")
+			return "?"
+	return ""
+
+/**
+ * 判定一句话结尾的语气：
+ * "3" = 大喊（!! / ！！ / ！！！），"2" = 惊呼，"1" = 问，"0" = 普通说话。
+ * 连续两枚感叹号才算大喊，单枚只算惊呼。
+ */
+/proc/say_tone(text)
+	if(!text)
+		return "0"
+	text = say_strip_tone_padding(text)
+	var/len = length_char(text)
+	if(len <= 0)
+		return "0"
+	var/last = say_normalize_punct(copytext_char(text, len))
+	if(last == "!")
+		if(len >= 2 && say_normalize_punct(copytext_char(text, len - 1, len)) == "!")
+			return "3"
+		return "2"
+	if(last == "?")
+		return "1"
+	return "0"
+//非模块代码结束
 /atom/movable/proc/say_mod(input, message_mode)
-	var/ending = copytext(input, length(input))
-	if(copytext(input, length(input) - 1) == "!!")
-		return verb_yell
-	else if(ending == "?")
-		return verb_ask
-	else if(ending == "!")
-		return verb_exclaim
-	else
-		return verb_say
+	switch(say_tone(input))//非模块代码
+		if("3")
+			return verb_yell
+		if("2")
+			return verb_exclaim
+		if("1")
+			return verb_ask
+	return verb_say
 
 /atom/movable/proc/say_quote(input, list/spans=list(speech_span), message_mode)
 	if(!input)
 		input = "..."
 
-	if(copytext(input, length(input) - 1) == "!!")
+	if(say_tone(input) == "3")//非模块代码
 		spans |= SPAN_YELL
 
 	input = parsemarkdown_basic(input, limited = TRUE, barebones = TRUE)
@@ -246,7 +297,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 		else
 			return no_quote ? speaker.quoteless_say_quote(raw_message, spans, message_mode) : speaker.say_quote(raw_message, spans, message_mode)
 	else
-		return "makes a strange sound."
+		return "发出奇怪的声音。"
 
 /proc/get_radio_span(freq)
 	var/returntext = GLOB.freqtospan["[freq]"]
@@ -272,14 +323,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	return output
 
 /proc/say_test(text)
-	if(copytext(text, length(text) - 1) == "!!")
-		return "3"
-	var/ending = copytext(text, length(text))
-	if (ending == "?")
-		return "1"
-	if (ending == "!")
-		return "2"
-	return "0"
+	return say_tone(text)//非模块代码
 
 /atom/movable/proc/GetVoice()
 	return "[src]"	//Returns the atom's name, prepended with 'The' if it's not a proper noun
