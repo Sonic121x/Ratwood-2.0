@@ -107,6 +107,7 @@ export const DmTarget = new Juke.Target({
     "modular_rmh/**",
     "modular_stonehedge/**",
     "modular_twilight_axis/**",
+    "modular_z121/**/*.dm",
     `${DME_NAME}.dme`,
     NamedVersionFile,
   ],
@@ -203,9 +204,10 @@ export const TgFontTarget = new Juke.Target({
 export const TguiTarget = new Juke.Target({
   dependsOn: [BunTarget],
   inputs: [
-    "tgui/rspack.config.mjs",
+    "tgui/rspack.config.ts",
     "tgui/**/package.json",
     "tgui/packages/**/*.+(js|cjs|ts|tsx|jsx|scss)",
+    "modular_z121/guide_browser/**/*.tsx",
   ],
   outputs: [
     "tgui/public/tgui.bundle.css",

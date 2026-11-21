@@ -1,7 +1,7 @@
 /client/proc/z121_reload_guide_catalog()
 	set name = "重新加载指南目录"
 	set desc = "从 HTTPS JSON 接口重新加载指南目录。"
-	set category = "-服务器-"
+	set category = "Server"
 
 	if(!check_rights(R_SERVER))
 		return

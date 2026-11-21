@@ -13,6 +13,8 @@
 	var/datum/target
 	/// Where any buttons we create should be by default. Accepts screen_loc and location defines
 	var/default_button_position = SCRN_OBJ_IN_LIST
+	/// Keeps this action after player-sortable actions in the action bar.
+	var/keep_at_end = FALSE
 	/// This is who currently owns the action, and most often, this is who is using the action if it is triggered
 	/// This can be the same as "target" but is not ALWAYS the same - this is set and unset with Grant() and Remove()
 	var/mob/owner
@@ -282,8 +284,22 @@
 	if(viewers[our_hud]) // Already have a copy of us? go away
 		return
 
-	LAZYOR(viewer.actions, src) // Move this in
+	LAZYINITLIST(viewer.actions)
+	if(keep_at_end)
+		viewer.actions |= src
+	else if(!(src in viewer.actions))
+		viewer.actions.Insert(viewer.get_sortable_action_count() + 1, src)
 	ShowTo(viewer)
+
+/// Actions fixed at the end share the same list so HUD numbering and hotkeys stay aligned.
+/mob/proc/get_sortable_action_count()
+	var/count = length(actions)
+	while(count)
+		var/datum/action/last_action = actions[count]
+		if(!last_action?.keep_at_end)
+			break
+		count--
+	return count
 
 /// Adds our action button to the screen of the passed viewer.
 /datum/action/proc/ShowTo(mob/viewer)
