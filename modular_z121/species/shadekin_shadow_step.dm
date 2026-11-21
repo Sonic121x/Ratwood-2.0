@@ -11,8 +11,8 @@
 	hold_drain = 1
 	// charge_time：蓄力时长。瞬移应当迅捷，故仅 0.5 秒。
 	charge_time = 0.5 SECONDS
-	// cooldown_time：冷却时间，防止无限连续瞬移。
-	cooldown_time = 8 SECONDS
+	// cooldown_time：冷却时间，防止无限连续瞬移。改为10分钟
+	cooldown_time = 600 SECONDS
 	// 施法资格要求人形，符合暗影裔的种族结构。
 	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
 	// spell_tier：能力强度分级，定为 1（基础种族能力）。

@@ -43,7 +43,7 @@
 	他们生有兽类般的尾巴与耳朵，瞳孔在黑暗中如鬼火般幽幽发亮，能在伸手不见五指的暗夜里行走自如。\
 	更为人所惧的是其与生俱来的'暗影穿行'之力——只需一念，便能化作一缕黑烟，自一片阴影瞬移至另一片阴影之中。\
 	正因如此，他们历来被光明信仰所猜忌，多隐居于洞窟、密林与无人问津的废墟，行踪如鬼魅。<br>\
-	(+1 感知, +1 速度, 暗视, 暗影穿行)"
+	(-2 力量, +2 速度, 暗视, 暗影穿行；有光照时力量/体质-2，感知 -3，白天时力量/体质-1，感知 -2)"
 
 	// expanded_desc 为更详尽的世界观文本（examine/百科用），解释其文化与被排斥的处境。
 	// expanded_desc is the longer lore text used by examine/codex screens.
@@ -114,9 +114,9 @@
 	// inherent_traits: innate traits. TRAIT_DARKVISION realizes the source's glowing-eye night vision
 	// (the base on_species_gain/on_species_loss apply and strip these automatically).
 	inherent_traits = list(TRAIT_DARKVISION)
-	// race_bonus：开局属性加成。暗影裔敏捷而警觉，故 +1 感知、+1 速度（与 desc 中说明一致）。
-	// race_bonus: starting stat bonuses. Shadekin are agile and alert: +1 PER, +1 SPD (matches desc).
-	race_bonus = list(STAT_PERCEPTION = 1, STAT_SPEED = 1)
+	// race_bonus：开局属性加成。暗影裔身形轻盈但体格较弱，故 -2 力量、+1 速度（与 desc 中说明一致）。
+	// race_bonus: starting stat bonuses. Shadekin are nimble but slight: -2 STR, +1 SPD (matches desc).
+	race_bonus = list(STAT_STRENGTH = -2, STAT_SPEED = 2)
 	// enflamed_icon：着火时的火焰覆盖贴图，沿用通用宽体火焰。
 	// enflamed_icon: fire overlay state when ablaze; use the generic wide fire.
 	enflamed_icon = "widefire"
@@ -240,6 +240,11 @@
 	// 注册说话信号，使本种族可走 RT 的口音替换管线（与提夫林/卢皮安等一致）。
 	// Register the say signal so this race flows through RT's accent pipeline (like tiefling/lupian).
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
+	// 获得种族时立即结算光照与昼夜惩罚，不必等待下一次生命循环。
+	// Apply the light and daytime penalties immediately on gaining the species.
+	if(ishuman(C))
+		var/mob/living/carbon/human/new_shadekin = C
+		update_light_sensitivity(new_shadekin)
 	// 新版影步本身就是动作；直接授予身体，无需 mind，并从动作列表去重。
 	// Shadow Step is an action: grant it to the body without a mind and deduplicate in actions.
 	for(var/datum/action/cooldown/spell/z121/invoked/shadow_step/existing in C.actions)
@@ -261,10 +266,81 @@
 	// 注销说话信号，停止口音处理。
 	// Unregister the say signal to stop accent handling.
 	UnregisterSignal(C, COMSIG_MOB_SAY)
+	// 移除种族专属的光照/昼间减益，防止变身或换种族后属性惩罚残留。
+	// Remove the species-specific penalties so they cannot persist through a species change.
+	C.remove_status_effect(/datum/status_effect/debuff/shadekin_light_sensitivity)
+	C.remove_status_effect(/datum/status_effect/debuff/shadekin_daytime_sensitivity)
 	// 删除动作会清理按钮、持有者和施法状态；遍历副本以免删除时改变原列表。
 	// Deleting the action cleans up its button, owner and casting state; iterate a copy during removal.
 	for(var/datum/action/cooldown/spell/z121/invoked/shadow_step/ability in C.actions.Copy())
 		qdel(ability)
+
+// 覆写环境处理：保留温度、天气等原有逻辑，再刷新暗影裔的光照敏感状态。
+// Extend environment handling: keep the base temperature/weather logic, then refresh light sensitivity.
+/datum/species/shadekin/handle_environment(mob/living/carbon/human/H)
+	. = ..()
+	update_light_sensitivity(H)
+
+// 光照阈值与暗影穿行的“阴影/强光”分界一致，避免同一族能力对光照产生两套标准。
+// Use the same light threshold as Shadow Step so the species has one consistent definition of light.
+#define SHADEKIN_LIGHT_SENSITIVITY_THRESHOLD 0.5
+
+// 刷新光照与昼间两套独立减益；二者同时存在时会叠加为各项 -4。
+// Refresh the two independent penalties; when both apply they stack to -4 in each stat.
+/datum/species/shadekin/proc/update_light_sensitivity(mob/living/carbon/human/H)
+	if(!istype(H) || QDELETED(H))
+		return
+	var/turf/current_turf = get_turf(H)
+	var/in_light = isturf(current_turf) && current_turf.get_lumcount() >= SHADEKIN_LIGHT_SENSITIVITY_THRESHOLD
+	if(in_light)
+		H.apply_status_effect(/datum/status_effect/debuff/shadekin_light_sensitivity)
+	else
+		H.remove_status_effect(/datum/status_effect/debuff/shadekin_light_sensitivity)
+	if(is_daytime())
+		H.apply_status_effect(/datum/status_effect/debuff/shadekin_daytime_sensitivity)
+	else
+		H.remove_status_effect(/datum/status_effect/debuff/shadekin_daytime_sensitivity)
+
+// 与“太阳的馈赠”保持一致，把黎明视作白昼的开端。
+// Match Gift of the Sun by treating dawn as the start of daytime.
+/datum/species/shadekin/proc/is_daytime()
+	return (GLOB.tod == "day" || GLOB.tod == "dawn")
+
+#undef SHADEKIN_LIGHT_SENSITIVITY_THRESHOLD
+
+// 光照敏感：有光照时力量、体质、意志各 -2。
+// Light sensitivity: -2 STR/CON/WIL while lit.
+/datum/status_effect/debuff/shadekin_light_sensitivity
+	id = "shadekin_light_sensitivity"
+	duration = -1
+	tick_interval = -1
+	status_type = STATUS_EFFECT_UNIQUE
+	needs_processing = FALSE
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/shadekin_light_sensitivity
+	effectedstats = list(STATKEY_STR = -2, STATKEY_CON = -2, STATKEY_PER = -3)
+	examine_text = "<span class='danger'>SUBJECTPRONOUN 在光照下显得虚弱而不适。</span>"
+
+/atom/movable/screen/alert/status_effect/debuff/shadekin_light_sensitivity
+	name = "畏光"
+	desc = "光线侵蚀着我的暗影血脉，力量、体质与感知都受到压制。"
+	icon_state = "shadow"
+
+// 昼间敏感：白天额外再使力量、体质、意志各 -2。
+// Daytime sensitivity: an additional -2 STR/CON/WIL during daytime.
+/datum/status_effect/debuff/shadekin_daytime_sensitivity
+	id = "shadekin_daytime_sensitivity"
+	duration = -1
+	tick_interval = -1
+	status_type = STATUS_EFFECT_UNIQUE
+	needs_processing = FALSE
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/shadekin_daytime_sensitivity
+	effectedstats = list(STATKEY_STR = -1, STATKEY_CON = -1, STATKEY_PER = -2)
+	examine_text = "<span class='danger'>白昼令 SUBJECTPRONOUN 的暗影血脉格外沉重。</span>"
+
+/atom/movable/screen/alert/status_effect/debuff/shadekin_daytime_sensitivity
+	name = "昼间不适"
+	desc = "白昼加重了光线对暗影血脉的压制，力量、体质与感知进一步衰减。"
+	icon_state = "shadow"
 
 // 为什么覆盖 check_roundstart_eligible：返回 TRUE 使本种族在角色创建界面可直接选择，
 // 无需依赖服务器配置白名单（与 anthromorph/lupian 等自定义种族做法一致）。
