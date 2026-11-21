@@ -235,7 +235,6 @@
 #include "crafting/void_cube_recipe.dm"
 // 飞天扫帚：手持右键起飞/落地，骑乘贴图与物品图标见 modular_z121/icon/。
 #include "items/flying_broom.dm"
-#include "items/flying_broom_statue.dm"
 // 记忆之吻：手持点击铭刻他人气息，独处时重温记忆与感受（ERP 饰品）
 #include "items/memory_kiss_token.dm"
 // 记忆之吻制作配方：炼金台，宝石x1 + 水50 → 记忆之吻，炼金1级
