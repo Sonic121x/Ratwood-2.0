@@ -11,10 +11,10 @@
 //0 test
 //12 minutes norma
 //#define ROUNDTIMERBOAT (300 MINUTES)
-#define INITIAL_ROUND_TIMER (300 MINUTES)//原数据:165
-#define ROUND_EXTENSION_TIME (60 MINUTES)//原数据:30
+#define INITIAL_ROUND_TIMER (240 MINUTES)//原数据:165
+#define ROUND_EXTENSION_TIME (30 MINUTES)
 #define ROUND_END_TIME (15 MINUTES)
-#define ROUND_END_TIME_VERBAL "15 minutes"
+#define ROUND_END_TIME_VERBAL "15 分钟后结束"
 //180 norma
 //60 test
 
