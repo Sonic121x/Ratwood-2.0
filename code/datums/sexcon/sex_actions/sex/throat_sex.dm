@@ -66,6 +66,7 @@
 
 /datum/sex_action/throat_sex/double
 	name = "用双根肉棒抽插对方喉咙"
+	uses_both_cocks = TRUE
 
 /datum/sex_action/throat_sex/double/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(!user.sexcon.double_penis_type())

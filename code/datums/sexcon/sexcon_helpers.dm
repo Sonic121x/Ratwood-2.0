@@ -206,6 +206,21 @@
 	breasts.lactating = TRUE
 	to_chat(src, span_love("我的乳房又胀又沉……"))
 
+/// Charges triumphs for a massive pintle if the buyer's prefs ask for one. Only called on lobby spawns.
+/// The body keeps TRAIT_MASSIVE_PINTLE, so organ rebuilds later this life stay massive.
+/mob/living/carbon/human/proc/try_buy_massive_pintle(client/buyer)
+	var/obj/item/organ/penis/penis = getorganslot(ORGAN_SLOT_PENIS)
+	if(!penis?.can_be_massive() || !buyer?.prefs?.wants_massive_pintle())
+		return
+	if(SStriumphs.get_triumphs(buyer.ckey) < MASSIVE_PENIS_TRIUMPH_COST)
+		to_chat(buyer, span_warning("我的凯旋点不足（需要 [MASSIVE_PENIS_TRIUMPH_COST] TRI），撑不起这份雄伟天赋。我只能退而求其次，当个普通的大号了。"))
+		return
+	buyer.adjust_triumphs(-MASSIVE_PENIS_TRIUMPH_COST, FALSE)
+	SStriumphs.record_triumph_sink(TRIUMPH_SINK_MASSIVE_PINTLE, MASSIVE_PENIS_TRIUMPH_COST)
+	ADD_TRAIT(src, TRAIT_MASSIVE_PINTLE, TRAIT_GENERIC)
+	penis.set_massive(TRUE)
+	update_body_parts(TRUE)
+
 /mob/living/carbon/human/proc/get_highest_grab_state_on(mob/living/carbon/human/victim)
 	var/grabstate = null
 	if(r_grab && r_grab.grabbed == victim)

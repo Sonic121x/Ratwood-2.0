@@ -1,5 +1,6 @@
 /datum/sex_action/double_penetration_sex
 	name = "同时操弄对方两处"
+	uses_both_cocks = TRUE
 	stamina_cost = 1.0
 	category = SEX_CATEGORY_PENETRATE
 	user_sex_part = SEX_PART_COCK

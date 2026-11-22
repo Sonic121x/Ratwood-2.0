@@ -652,6 +652,91 @@
 		revert_cast()
 		return FALSE
 
+/datum/action/cooldown/spell/projectile/fetch/miracle
+	name = "神圣取物"
+	primary_resource_type = SPELL_COST_DEVOTION
+	primary_resource_cost = 10
+	invocations = list()
+	cooldown_time = 5 SECONDS
+	ignore_armor_penalty = TRUE
+	associated_stat = null
+	associated_skill = /datum/skill/magic/holy
+	spell_tier = 0
+	point_cost = 0
+
+/datum/action/cooldown/spell/projectile/repel/miracle
+	name = "神圣斥退"
+	primary_resource_type = SPELL_COST_DEVOTION
+	primary_resource_cost = 14
+	invocations = list()
+	ignore_armor_penalty = TRUE
+	associated_stat = null
+	associated_skill = /datum/skill/magic/holy
+	spell_tier = 0
+	point_cost = 0
+
+/datum/action/cooldown/spell/slick_trick
+	abstract_type = /datum/action/cooldown/spell/slick_trick
+	background_icon = 'icons/mob/actions/xylixmiracles.dmi'
+	button_icon = 'icons/mob/actions/xylixmiracles.dmi'
+	sound = 'sound/foley/waterenter.ogg'
+
+	click_to_activate = TRUE
+
+	primary_resource_type = SPELL_COST_DEVOTION
+
+	invocations = list()
+
+	ignore_armor_penalty = TRUE
+	associated_stat = null
+	associated_skill = /datum/skill/magic/holy
+	spell_tier = 0
+
+	var/slip_radius
+
+/datum/action/cooldown/spell/slick_trick/cast(atom/cast_on)
+	..()
+	var/turf/center = get_turf(cast_on)
+	if(!(center in get_hear(cast_range, get_turf(owner))))
+		to_chat(owner, span_warning("我无法施放到看不见的地方！"))
+		return FALSE
+	if(slip_radius)
+		owner.visible_message(span_warning("[owner]在地面上制造出一片滑腻区域！"))
+	for(var/turf/open/slick_turf in range(slip_radius, center))
+		new /obj/effect/temp_visual/slick_warning(slick_turf)
+		addtimer(CALLBACK(slick_turf, TYPE_PROC_REF(/turf/open, MakeSlippery), TURF_WET_LUBE, 10 SECONDS, 0, 10 SECONDS), 0.5 SECONDS)
+	return TRUE
+
+/datum/action/cooldown/spell/slick_trick/small
+	name = "赛利克斯滑溜方"
+	desc = "制造一小片神圣的滑腻区域，绊倒不留神的人。"
+	button_icon_state = "slipsquare1"
+	cast_range = 6
+	primary_resource_cost = SPELLCOST_MIRACLE
+	charge_time = 0.5 SECONDS
+	cooldown_time = 30 SECONDS
+	slip_radius = 0
+
+/datum/action/cooldown/spell/slick_trick/grand
+	name = "赛利克斯大滑溜方"
+	desc = "用大片神圣的滑腻区域淹没一片区域，让受害者纷纷滑倒在地。"
+	button_icon_state = "slipsquare2"
+	cast_range = 4
+	primary_resource_cost = SPELLCOST_MIRACLE_MAJOR
+	charge_time = 1 SECONDS
+	cooldown_time = 90 SECONDS
+	slip_radius = 1 // 1 = 3x3
+
+/obj/effect/temp_visual/slick_warning
+	name = "滑腻区域"
+	desc = "小心脚下！"
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "purplesparkles"
+	color = "#0099FF" // Blue tint for water-like appearance
+	randomdir = FALSE
+	layer = MASSIVE_OBJ_LAYER
+	duration = 13 SECONDS //add a couple seconds because the slip lasts longer than intended for some freaking reason
+
 #define NOTHING "nothing"
 #define XYLIX "xylix"
 #define ASTRATA "astrata"

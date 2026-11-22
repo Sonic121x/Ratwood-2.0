@@ -3213,6 +3213,11 @@ GLOBAL_LIST_EMPTY(chosen_names)
 		// This should only ever ~do~ anything for previews
 		character.ensure_not_taur()
 
+	if(character_setup && istype(character, /mob/living/carbon/human/dummy))
+		// Preview mannequin only. Living mobs (e.g. Pestra fleshcraft) also pass character_setup, and must not get it free.
+		var/obj/item/organ/penis/preview_penis = character.getorganslot(ORGAN_SLOT_PENIS)
+		preview_penis?.set_massive(wants_massive_pintle())
+
 	if(icon_updates)
 		character.update_body()
 		character.update_hair()

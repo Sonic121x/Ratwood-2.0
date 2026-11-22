@@ -42,6 +42,13 @@
 		return FALSE
 	return TRUE
 
+/datum/mob_descriptor/penis/get_descriptor_color(mob/living/described, mob/watcher)
+	var/mob/living/carbon/human/H = described
+	var/obj/item/organ/penis/penis = H.getorganslot(ORGAN_SLOT_PENIS)
+	if(penis?.massive && user_allows_descriptor_color(watcher))
+		return MASSIVE_PENIS_DESCRIPTOR_COLOR
+	return ..()
+
 /datum/mob_descriptor/penis/get_description(mob/living/described)
 	return get_description_for_watcher(described, null)
 
@@ -59,6 +66,8 @@
 			adjective = "普通的"
 		if(MAX_PENIS_SIZE)
 			adjective = "硕大的"
+	if(penis.massive)
+		adjective = pick("硕大的", "庞大的", "大得令人不适的", "巨型", "肿胀得怪异的", "淫猥的", "大得不自然的")
 	if(H.sexcon)
 		switch(H.sexcon.arousal)
 			if(80 to INFINITY)
@@ -75,7 +84,9 @@
 	if(penis.erect_state != ERECT_STATE_HARD && penis.sheath_type != SHEATH_TYPE_NONE)
 		switch(penis.sheath_type)
 			if(SHEATH_TYPE_NORMAL)
-				if(penis.penis_size == MAX_PENIS_SIZE)
+				if(penis.massive)
+					used_name = "鼓胀的鞘皮"
+				else if(penis.penis_size == MAX_PENIS_SIZE)
 					used_name = "肥厚的鞘皮"
 				else if(penis.penis_size == MIN_PENIS_SIZE)
 					used_name = "极小的鞘皮"

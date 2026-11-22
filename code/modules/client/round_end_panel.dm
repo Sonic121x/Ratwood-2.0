@@ -743,7 +743,7 @@
 			data += "<div style='text-align: center; color: #ffd494; font-size: 1.2em; margin-bottom: 15px;'>通缉亡命之徒</div>"
 			data += "<div style='border-top: 1.5px solid #aa8a5a; margin: 0 auto 20px auto; width: 65%;'></div>"
 
-			data += render_wanted_posters(collect_wanted_posters(include_hidden = TRUE), "王国太平，臣民友善")
+			data += render_wanted_posters(collect_wanted_posters(include_hidden = TRUE), "王国太平，臣民友善", src, "azure_roundend")
 	data += "</div>"
 
 	src.mob << browse(null, "window=vanderlin_influences")

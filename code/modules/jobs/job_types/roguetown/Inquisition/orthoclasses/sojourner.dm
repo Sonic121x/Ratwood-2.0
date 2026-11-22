@@ -44,7 +44,7 @@
 	)
 	extra_context = "此分支拥有多种独特法术，包括一种奥术屏障。\
 	只要屏障持续生效，使用者便能免疫魔法，同时仍可施法。"
-	subclass_mage_aspects = list("mastery" = TRUE, "major" = 1, "minor" = 0, "utilities" = 4, ward = FALSE, "locked_aspects" = list(/datum/magic_aspect/cryomancy), "post_aspect_spells" = list(/datum/action/cooldown/spell/conjure_arcyne_ward/barrier))
+	subclass_mage_aspects = list("mastery" = FALSE, "major" = 0, "minor" = 1, "utilities" = 4, "ward" = FALSE, "allowed_minors" = list(/datum/magic_aspect/lesser_augmentation),"post_aspect_spells" = list(/datum/action/cooldown/spell/projectile/frost_bolt, /datum/action/cooldown/spell/projectile/rimecast, /datum/action/cooldown/spell/arrow_ward, /datum/action/cooldown/spell/bestow_ward, /datum/action/cooldown/spell/verglas, /datum/action/cooldown/spell/silence_field,/datum/action/cooldown/spell/conjure_arcyne_ward/barrier))
 
 /datum/outfit/job/roguetown/sojourner
 	job_bitflag = BITFLAG_HOLY_WARRIOR
