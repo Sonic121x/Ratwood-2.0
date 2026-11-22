@@ -17,7 +17,7 @@
 /obj/item/gun/ballistic/z121_gunfire_collapse
 	name = "枪火击溃"
 	desc = "一把沉重的霰弹枪，机匣侧面的凹槽正好卡住兔子怀表。你会用它拯救所有人吗，即使你并非英雄。"
-	icon = 'modular_z121/icon/Gunfire.dmi'
+	icon = 'modular_z121/icon/gunfire.dmi'
 	icon_state = "Gunfire Collapse"
 	item_state = "Gunfire Collapse"
 	force = 10
