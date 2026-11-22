@@ -247,9 +247,9 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	if(last == "?")
 		return "1"
 	return "0"
-
+//非模块代码结束
 /atom/movable/proc/say_mod(input, message_mode)
-	switch(say_tone(input))
+	switch(say_tone(input))//非模块代码
 		if("3")
 			return verb_yell
 		if("2")
@@ -262,7 +262,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	if(!input)
 		input = "..."
 
-	if(say_tone(input) == "3")
+	if(say_tone(input) == "3")//非模块代码
 		spans |= SPAN_YELL
 
 	input = parsemarkdown_basic(input, limited = TRUE, barebones = TRUE)
@@ -323,7 +323,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	return output
 
 /proc/say_test(text)
-	return say_tone(text)
+	return say_tone(text)//非模块代码
 
 /atom/movable/proc/GetVoice()
 	return "[src]"	//Returns the atom's name, prepended with 'The' if it's not a proper noun
