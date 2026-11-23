@@ -68,7 +68,7 @@
 	icon_state = "dendor_chalky"
 	patron_type = /datum/patron/divine/dendor
 	ritual_title = "登多尔的献祭仪式"
-	sacrifice_rites = list("龙魂觉醒")
+	//sacrifice_rites = list("龙魂觉醒") //由于平衡原因暂时禁用龙形态的获取
 
 /obj/structure/ritualcircle/sacrifice/dendor/perform_sacrifice_rite(riteselection, mob/living/user)
 	switch(riteselection)
