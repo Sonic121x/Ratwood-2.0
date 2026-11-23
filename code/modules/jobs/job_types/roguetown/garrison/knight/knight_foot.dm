@@ -70,6 +70,7 @@
 			"带吻部阿梅特盔"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/snouted,
 			"骑士大羽饰阿梅特盔" = /obj/item/clothing/head/roguetown/helmet/heavy/knight/greatplume,
 			"犬首盆盔"		= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull,
+			"锁甲垂领犬首盆盔" = /obj/item/clothing/head/roguetown/helmet/heavy/aventail,
 			"圆面盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface,
 			"带吻部圆面盆盔"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/snouted,
 			"伊特鲁里亚盆盔" = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan,
