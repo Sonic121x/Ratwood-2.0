@@ -85,28 +85,36 @@
 			decreaseUses(user)
 	return
 
-
-/obj/item/soap/attack(mob/target, mob/user)
+/obj/item/soap/attack(mob/living/carbon/human/target, mob/user)
+	if(!ishuman(target))
+		return
 	var/turf/bathspot = get_turf(target)
 	if(!istype(bathspot, /turf/open/water/bath) && !locate(/obj/structure/hotspring) in bathspot)
 		return
-	if(!ishuman(target))
+	user.visible_message(span_info("[user]开始用[src]给[target]洗澡。"))
+	if(!do_after(user, 5 SECONDS, target = target))
 		return
-	var/mob/living/carbon/human/H = target
-	visible_message(span_info("[user]开始用[src]给[H]洗澡。"))
-	if(do_after(user, 50))
-		wash_atom(target,CLEAN_MEDIUM)
-		if(HAS_TRAIT(user, TRAIT_GOODLOVER))
-			visible_message(span_info("[user]熟练地用[src]把[H]清洗得干干净净，令其浑身舒泰。"))
-			to_chat(H, span_love("我感觉好放松，好干净！"))
-			H.add_stress(/datum/stressevent/bathcleaned)
-		else
-			visible_message(span_info("[user]尽力用[src]给[H]擦洗了一番。"))
-			to_chat(H, span_warning("还行吧，确实舒服一点了。"))
-			H.add_stress(/datum/stressevent/bath)
-		if(HAS_TRAIT(H, TRAIT_REDOLENT))
-			H.redolent_on_bath()
-		H.remove_status_effect(/datum/status_effect/debuff/stinky_contact)
-		uses -= 1
-		if(uses == 0)
-			qdel(src)
+	wash_atom(target, CLEAN_MEDIUM)
+	if(HAS_TRAIT(user, TRAIT_GOODLOVER))
+		user.visible_message(span_info("[user] 熟练地用 [src]把[target]清洗得干干净净，令其浑身舒泰。"))
+		to_chat(target, span_love("我感觉好放松，好干净！"))
+		target.add_stress(/datum/stressevent/bathcleaned)
+	else
+		user.visible_message(span_info("[user]尽力用[src]给[target]擦洗了一番。"))
+		to_chat(target, span_warning("还行吧，确实舒服一点了。"))
+		target.add_stress(/datum/stressevent/bath)
+
+	var/datum/status_effect/redolent/strong_smell = target.has_status_effect(/datum/status_effect/redolent)
+	if(strong_smell && (HAS_TRAIT(user, TRAIT_GOODLOVER) || target == user)) // Either washing yourself, or washed by a good lover
+		strong_smell.on_wash(user)
+	var/datum/status_effect/redolent/stinky_contact/stained_smell = target.has_status_effect(/datum/status_effect/redolent/stinky_contact)
+	if(stained_smell && (HAS_TRAIT(user, TRAIT_GOODLOVER) || target == user)) // Either washing yourself, or washed by a good lover
+		// Do note, this only cleans a single instance.
+		// If they have multiple stains, they will need multiple washes.
+		// THATS AN INTENTIONAL DECISION, NOT A BUG.
+		// Keep scrubbing until they're clean!
+		stained_smell.on_wash(user)
+
+	uses -= 1
+	if(uses == 0)
+		qdel(src)

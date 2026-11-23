@@ -45,6 +45,9 @@
 
 /obj/structure/spider/stickyweb/CanPass(atom/movable/mover, turf/target)
 	if(isliving(mover))
+		var/mob/living/passenger = mover
+		if(passenger.get_mountable_mount())
+			return TRUE
 		if(prob(50) && !HAS_TRAIT(mover, TRAIT_WEBWALK))
 			to_chat(mover, "<span class='danger'>我被[src]绊住了一小会儿。</span>")
 			return FALSE

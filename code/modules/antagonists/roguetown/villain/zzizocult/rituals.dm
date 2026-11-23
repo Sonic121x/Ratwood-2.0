@@ -315,7 +315,9 @@ GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
 	if(lackeys > 3 && !assistant)
 		to_chat(user, span_warning("要招募更多信徒，须有另一名教徒站在符印上协助你举行仪式。"))
 		return
-	var/alert = tgui_alert(target, "你将得见真相。你要反抗吗？", "???", list("顺从", "反抗"))
+	var/alert = "Yield"
+	if(!istype(target.patron, /datum/patron/inhumen/zizo) && !(target.client && (ROLE_ZIZOIDCULTIST in target.client.prefs.be_special)))
+		alert = tgui_alert(target, "你将得见真相。你要反抗吗？", "???", list("顺从", "反抗"))
 	target.Immobilize(3 SECONDS)
 	if(alert == "顺从")
 		to_chat(target, span_notice("我看见真相了！一切都说得通了！他们不是异端，他们一心为我们着想！"))
@@ -2239,6 +2241,9 @@ GLOBAL_LIST_EMPTY(zizo_proxy)
 	cleric.death()
 	RULER.Unconscious(6 MINUTES)
 	priority_announce("难以名状的邪恶正在城堡中苏醒！拿起武器，末日将至！", title = "齐佐", sound = 'sound/villain/seen_wonder.ogg')
+	for(var/datum/mind/M in SSmapping.retainer.cultists)
+		var/datum/antagonist/zizocultist/Z = M.has_antag_datum(/datum/antagonist/zizocultist)
+		Z?.add_halo()
 	var/datum/particle_weather/storm = new /datum/particle_weather/blood_rain_storm
 	SSParticleWeather.runningWeather = storm
 	storm.start()

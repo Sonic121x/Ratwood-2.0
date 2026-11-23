@@ -1330,85 +1330,6 @@
 	desc = "可怕的甘甜淹没了我的感官。"
 	icon_state = "vampirebite"
 
-/datum/status_effect/debuff/redolent_stink
-	id = "redolent_stink"
-	duration = 999 MINUTES
-	alert_type = null
-
-	mob_effect_icon = 'icons/effects/effects.dmi'
-	mob_effect_icon_state = "mob_smell"
-	mob_effect_layer = ABOVE_MOB_LAYER
-
-/datum/status_effect/debuff/stinky_contact
-	id = "stinky_contact"
-	duration = 15 MINUTES
-	tick_interval = 5 SECONDS
-	status_type = STATUS_EFFECT_REFRESH
-	alert_type = /atom/movable/screen/alert/status_effect/debuff/stinky_contact
-	var/scent_type = "Gross"
-	var/scent = ""
-	var/last_aura_tick = 0
-
-/datum/status_effect/debuff/stinky_contact/on_creation(mob/living/new_owner, inherited_scent_type = "Gross", inherited_scent = "")
-	set_inherited_scent(inherited_scent_type, inherited_scent)
-	return ..()
-
-/datum/status_effect/debuff/stinky_contact/refresh(mob/living/new_owner, inherited_scent_type = "Gross", inherited_scent = "")
-	set_inherited_scent(inherited_scent_type, inherited_scent)
-	if(owner)
-		process_inherited_scent(TRUE)
-	return ..()
-
-/datum/status_effect/debuff/stinky_contact/proc/set_inherited_scent(inherited_scent_type, inherited_scent)
-	scent_type = inherited_scent_type
-	scent = inherited_scent
-	last_aura_tick = 0
-
-/datum/status_effect/debuff/stinky_contact/on_apply()
-	. = ..()
-	if(scent_type == "Pleasant")
-		to_chat(owner, span_notice("我身上也沾上了别人的宜人香气！"))
-	else if(scent_type == "Neutral")
-		to_chat(owner, span_notice("我身上沾上了别人的气味……"))
-	else
-		to_chat(owner, span_warning("我身上沾满了别人的恶臭……呕……"))
-	process_inherited_scent(TRUE)
-
-/datum/status_effect/debuff/stinky_contact/tick()
-	process_inherited_scent()
-
-/datum/status_effect/debuff/stinky_contact/proc/process_inherited_scent(force = FALSE)
-	if(!ishuman(owner))
-		return
-	var/mob/living/carbon/human/H = owner
-	if(!H.can_smell())
-		H.remove_status_effect(/datum/status_effect/debuff/redolent_stink)
-		return
-	if(scent_type != "Pleasant")
-		if(!H.has_status_effect(/datum/status_effect/debuff/redolent_stink))
-			H.apply_status_effect(/datum/status_effect/debuff/redolent_stink)
-	else if(H.has_status_effect(/datum/status_effect/debuff/redolent_stink))
-		H.remove_status_effect(/datum/status_effect/debuff/redolent_stink)
-	if(!force && world.time < last_aura_tick + redolent_aura_tick_delay(scent_type))
-		return
-	last_aura_tick = world.time
-	redolent_visual_effect(H, scent_type)
-	redolent_stink_aura(H, scent_type)
-
-/datum/status_effect/debuff/stinky_contact/on_remove()
-	to_chat(owner, span_notice("我身上残留的气味终于散去了。"))
-	if(!HAS_TRAIT(owner, TRAIT_REDOLENT))
-		owner.remove_status_effect(/datum/status_effect/debuff/redolent_stink)
-	return ..()
-
-/datum/status_effect/debuff/stinky_contact/proc/get_examine_text()
-	return redolent_examine_text(scent_type, scent)
-
-/atom/movable/screen/alert/status_effect/debuff/stinky_contact
-	name = "气味沾染"
-	desc = "我身上沾上了别人的臭味。我应该能把它洗掉，或者等它自行散去。"
-	icon_state = "debuff"
-
 /datum/status_effect/debuff/enchantmenttriggered
 	id = "enchantmenttriggered"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/enchantmenttriggered
@@ -1418,7 +1339,7 @@
 	if(new_dur)
 		duration = new_dur
 	return ..()
-	
+
 /atom/movable/screen/alert/status_effect/debuff/enchantmenttriggered
 	name = "附魔休眠"
 	desc = "我身上装备的附魔已被触发，暂时进入休眠状态！"

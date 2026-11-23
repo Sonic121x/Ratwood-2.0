@@ -532,7 +532,8 @@
 		icon_state = "fullgrass_[rand(1, 3)]"
 
 /obj/structure/flora/roguegrass/reedbush
-	name = "芦丛"
+	brushes_riders = TRUE
+	name = "芦苇丛"
 	icon = 'icons/obj/flora/ausflora.dmi'
 	icon_state = "reedbush_1"
 	max_integrity = 1
@@ -549,6 +550,7 @@
 	max_integrity = 5
 
 /obj/structure/flora/roguegrass/water/reeds
+	brushes_riders = TRUE
 	name = "芦苇"
 	desc = "这种植物在水中繁茂生长，掩藏着危险。"
 	icon_state = "reeds"
@@ -564,14 +566,20 @@
 /obj/structure/flora/roguegrass/water/reeds/update_icon()
 	dir = pick(GLOB.alldirs)
 
+/obj/structure/flora/roguegrass
+	/// Tall foliage still brushes against passengers above ground level.
+	var/brushes_riders = FALSE
+
 /datum/component/roguegrass/Initialize()
 	RegisterSignal(parent, list(COMSIG_MOVABLE_CROSSED), PROC_REF(Crossed))
 
 /datum/component/roguegrass/proc/Crossed(datum/source, atom/movable/AM)
-	var/atom/A = parent
+	var/obj/structure/flora/roguegrass/A = parent
 
 	if(isliving(AM))
 		var/mob/living/L = AM
+		if(!A.brushes_riders && L.get_mountable_mount())
+			return
 		if(L.m_intent == MOVE_INTENT_SNEAK)
 			return
 		else
@@ -586,6 +594,7 @@
 
 
 /obj/structure/flora/roguegrass/bush
+	brushes_riders = TRUE
 	name = "灌木丛"
 	desc = "一丛灌木。上面爬满了蜘蛛，但也许里面藏着什么有用的东西..."
 	icon_state = "bush2"
@@ -894,8 +903,9 @@
 //Thorn bush
 
 /obj/structure/flora/roguegrass/thorn_bush
+	brushes_riders = TRUE
 	name = "荆棘丛"
-	desc = "一丛带刺灌木。走路当心。"
+	desc = "一丛带刺灌木。走路当心！"
 	icon_state = "thornbush"
 	layer = ABOVE_ALL_MOB_LAYER
 	blade_dulling = DULLING_CUT
