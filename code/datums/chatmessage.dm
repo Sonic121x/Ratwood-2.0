@@ -136,12 +136,17 @@
 
 	if(extra_classes.Find("mindlink"))
 		font_size = 5
+	var/font_family = "\"Pterra\""
+	if(extra_classes.Find("fortress-warcry"))
+		font_family = "\"New Rocker\", \"Pterra\""
+		font_size = 8
+		tgt_color = "#eee2a0"
 	// Approximate text height
 	// Note we have to replace HTML encoded metacharacters otherwise MeasureText will return a zero height
 	// BYOND Bug #2563917
 	// Construct text
 	var/static/regex/html_metachars = new(@"&[A-Za-z]{1,7};", "g")
-	var/complete_text = "<span class='center maptext [extra_classes.Join(" ")]' style='color: [tgt_color]; font-size:[font_size]pt; font-family:\"Pterra\"; text-shadow:0 0 5px #000,0 0 5px #000,0 0 5px #000,0 0 5px #000;'>[text]</span>"
+	var/complete_text = "<span class='center maptext [extra_classes.Join(" ")]' style='color: [tgt_color]; font-size:[font_size]pt; font-family:[font_family]; text-shadow:0 0 5px #000,0 0 5px #000,0 0 5px #000,0 0 5px #000;'>[text]</span>"
 
 	var/mheight
 	WXH_TO_HEIGHT(owned_by.MeasureText(complete_text, null, CHAT_MESSAGE_WIDTH), mheight)

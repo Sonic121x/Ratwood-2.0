@@ -393,3 +393,4 @@
 #include "guide_browser/guide_catalog.dm"
 #include "guide_browser/guide_browser.dm"
 #include "guide_browser/guide_catalog_admin.dm"
+#include "kaiser_wilhelm/fortress.dm"
