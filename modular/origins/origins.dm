@@ -6,6 +6,7 @@
 	var/region_title = null
 	var/map_x = 0
 	var/map_y = 0
+	var/map_label
 	var/origin_language = null
 	var/list/origin_traits
 	var/list/hated_by
@@ -75,7 +76,8 @@ GLOBAL_LIST_INIT(origins, build_origins())
 	prejudice_stress = /datum/stressevent/prejudice/underdark
 	prejudice_examine = span_red("Squalid underdweller! Pah!")
 	map_x = 120
-	map_y = 344
+	map_y = 337
+	map_label = "Underdark"
 
 /datum/origin/hammerhold
 	name = ORIGIN_HAMMERHOLD
@@ -153,11 +155,13 @@ GLOBAL_LIST_INIT(origins, build_origins())
 	origin_language = /datum/language/kazengunese
 	origin_traits = list(TRAIT_SOFT_FOOTED)
 	map_x = 120
-	map_y = 374
+	map_y = 360
+	map_label = "Kazengun"
 
 /datum/preferences/proc/open_origin_map(mob/user)
 	var/html = build_origin_map_html()
 	user << browse_rsc(file("html/rwmap1.png"), "rwmap1.png")
+	user << browse_rsc('interface/fonts/newrocker.ttf', "origin-map-label.ttf")
 	user << browse(html, "window=origin_map;size=685x540")
 	onclose(user, "origin_map", src)
 
@@ -175,12 +179,20 @@ GLOBAL_LIST_INIT(origins, build_origins())
 /datum/preferences/proc/build_origin_map_html()
 	var/html = ""
 	html += "<html><head><meta charset='utf-8'><style>"
+	html += {"@font-face{font-family:OriginMap;src:url('origin-map-label.ttf') format('truetype');}"}
 	html += {"body{margin:0;padding:0;background:#1a1209;color:#e8dcc8;font-family:Georgia,serif;overflow:hidden;user-select:none;}"}
 	html += {".map-wrap{position:relative;width:550px;height:400px;display:block;margin:0 auto;}"}
 	html += {".map-wrap img{width:550px;height:400px;display:block;pointer-events:none;}"}
 	html += {".pin{position:absolute;width:18px;height:18px;border-radius:50%;background:#8b1a1a;border:2px solid #e8c87a;cursor:pointer;transform:translate(-50%,-50%);transition:all 0.15s ease;z-index:10;}"}
 	html += {".pin:hover,.pin.selected{background:#e8c87a;border-color:#fff;box-shadow:0 0 10px rgba(232,200,122,0.9);transform:translate(-50%,-50%) scale(1.3);z-index:20;}"}
 	html += {".pin.selected{background:#c8a020;}"}
+	// The original Outlying Lands names are baked into the map image.
+	html += {".outlying-labels{position:absolute;left:0;top:330px;width:107px;height:60px;background:#000;pointer-events:none;}"}
+	html += {".outlying-origin{position:absolute;left:4px;height:22px;transform:translateY(-50%);display:flex;align-items:center;color:#eee2a0;text-decoration:none;font:16px/1 OriginMap,Georgia,serif;}"}
+	html += {".outlying-origin .map-label{width:101px;}"}
+	html += {".outlying-origin .long-label{font-size:14px;line-height:1.05;}"}
+	html += {".outlying-origin .pin{top:50%;right:0;transform:translateY(-50%);}"}
+	html += {".outlying-origin:hover .pin,.outlying-origin:focus .pin{background:#e8c87a;border-color:#fff;box-shadow:0 0 10px rgba(232,200,122,0.9);}"}
 	html += {".tooltip{position:fixed;background:rgba(18,12,5,0.97);border:1px solid #8b6914;border-radius:4px;padding:10px 14px;max-width:240px;z-index:100;pointer-events:none;display:none;color:#e8dcc8;}"}
 	html += {".tooltip b{color:#e8c87a;font-size:14px;}"}
 	html += {".tooltip p{margin:4px 0 0 0;font-size:12px;line-height:1.4;}"}
@@ -192,12 +204,19 @@ GLOBAL_LIST_INIT(origins, build_origins())
 	html += "</style></head><body>"
 	html += "<div class='map-wrap'>"
 	html += "<img src='rwmap1.png' alt='Ratwood Map'>"
+	html += "<div class='outlying-labels'></div>"
 	for(var/otype as anything in GLOB.origins)
 		var/datum/origin/O = GLOB.origins[otype]
 		var/sel_cls = (origin == O) ? " selected" : ""
 		var/safe_name = replacetext(O.name, "'", "\\'")
 		var/safe_desc = replacetext(O.short_desc, "'", "\\'")
 		var/node_href = "byond://?src=\ref[src];preference=origin_view;type=[url_encode("[otype]")]"
+		if(O.map_label)
+			var/label_cls = length(O.map_label) > 14 ? " long-label" : ""
+			html += "<a class='outlying-origin' href='[node_href]' style='top:[O.map_y]px;width:[O.map_x + 7]px;' "
+			html += "onmouseenter=\"showTip(event,'[safe_name]','[safe_desc]')\" onmouseleave=\"hideTip()\">"
+			html += "<span class='map-label[label_cls]'>[O.map_label]</span><span class='pin[sel_cls]'></span></a>"
+			continue
 		html += "<div class='pin[sel_cls]' style='left:[O.map_x]px;top:[O.map_y]px;' "
 		html += "onclick=\"window.location.href='[node_href]'; return false;\" "
 		html += "onmouseenter=\"showTip(event,'[safe_name]','[safe_desc]')\" "
