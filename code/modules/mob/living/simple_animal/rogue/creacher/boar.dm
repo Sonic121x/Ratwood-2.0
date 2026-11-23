@@ -149,5 +149,5 @@
 	clickcd = BOAR_ATTACK_SPEED
 	name = "獠牙"
 	attack_verb = list("顶刺", "刺穿", "剖开")
-	penfactor = 50
+	penfactor = PEN_HEAVY
 	blade_class = BCLASS_STAB

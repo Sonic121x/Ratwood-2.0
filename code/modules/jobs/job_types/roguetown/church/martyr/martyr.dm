@@ -67,10 +67,10 @@
 	)
 	subclass_skills = list(
 	//No, they don't get any miracles. Their miracle is being able to use their weapon at all.
-		/datum/skill/combat/swords = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/axes = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/polearms = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/maces = SKILL_LEVEL_EXPERT,
+		/datum/skill/combat/swords = SKILL_LEVEL_MASTER,
+		/datum/skill/combat/axes = SKILL_LEVEL_MASTER,
+		/datum/skill/combat/polearms = SKILL_LEVEL_MASTER,
+		/datum/skill/combat/maces = SKILL_LEVEL_MASTER,
 		/datum/skill/combat/wrestling = SKILL_LEVEL_EXPERT,
 		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
 		/datum/skill/misc/tracking = SKILL_LEVEL_EXPERT,
@@ -111,7 +111,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	pants = /obj/item/clothing/under/roguetown/platelegs/holysee
 	cloak = /obj/item/clothing/cloak/holysee
-	id = /obj/item/clothing/neck/roguetown/psicross/undivided
+	id = /obj/item/clothing/neck/roguetown/psicross/silver/undivided
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/holysee
 	backpack_contents = list(
 		/obj/item/rogueweapon/huntingknife/idagger/silver = 1,
@@ -127,6 +127,16 @@
 				head = /obj/item/clothing/head/roguetown/helmet/heavy/holysee
 			if("圣银闭面盔")
 				head = /obj/item/clothing/head/roguetown/helmet/heavy/holysee/alt
+				
+	if(H.mind)
+		var/obj/effect/proc_holder/spell/targeted/martyr_select_weapon/sel = new
+		var/obj/effect/proc_holder/spell/invoked/martyr_summon_weapon/sum = new
+
+		sel.summon_weapon = sum
+		sum.weapon_select = sel
+
+		H.AddSpell(sel)
+		H.AddSpell(sum)
 
 /datum/outfit/job/roguetown/martyr/basic/choose_loadout(mob/living/carbon/human/H)
 	. = ..()
@@ -140,6 +150,5 @@
 			ADD_TRAIT(H, TRAIT_BREADY, TRAIT_GENERIC)
 		if("空壳")//Magic isn't real.
 			ADD_TRAIT(H, TRAIT_ANTIMAGIC, TRAIT_GENERIC)//While you're immune to it...
-			ADD_TRAIT(H, TRAIT_SPELLCOCKBLOCK, TRAIT_GENERIC)//... you may NEVER cast magic.
 			ADD_TRAIT(H, TRAIT_COUNTERCOUNTERSPELL, TRAIT_GENERIC)//Because it's funny.
 //Patron boons. LATER.

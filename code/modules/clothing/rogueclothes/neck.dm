@@ -530,6 +530,7 @@
 	ADD_TRAIT(src, TRAIT_NO_SELF_UNEQUIP, CURSED_ITEM_TRAIT)
 
 /obj/item/clothing/neck/roguetown/psicross
+	obj_flags = CAN_BE_HIT | UNIQUE_RENAME
 	name = "教十字"
 	desc = "'每断一根骨头，我都发誓自己仍活着！'"
 	icon_state = "psycross"

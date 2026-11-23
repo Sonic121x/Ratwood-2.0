@@ -1472,3 +1472,97 @@
 	desc = "我们的兵刃交缠在一起！那狡猾的家伙看穿了我的攻击方向！我无法再从兵刃交缠中获益！"
 	icon = 'icons/mob/combat_debuffs.dmi'
 	icon_state = "weapon_bind_debuff"
+
+
+/datum/status_effect/debuff/parasitized
+	id = "parasitized"
+	status_type = STATUS_EFFECT_UNIQUE
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/parasitized
+	tick_interval = 2 SECONDS
+	effectedstats = list(STATKEY_SPD = 0)
+	var/obj/item/organ/belly/egg_belly
+
+/datum/status_effect/debuff/parasitized/tick()
+	var/mob/living/carbon/human/H = owner
+	var/obj/item/organ/eggs/eggs = H.getorganslot(ORGAN_SLOT_EGGS)
+	if(egg_belly && (!eggs || eggs.quantity < 10))
+		egg_belly.Remove(H)
+		qdel(egg_belly)
+		egg_belly = null
+		H.update_body()
+	if(!eggs)
+		qdel(src)
+		return
+	H.adjust_nutrition(-0.05)
+	var/new_speed = -min(round(eggs.quantity / 2), 5)
+	H.change_stat(STATKEY_SPD, new_speed - effectedstats[STATKEY_SPD])
+	effectedstats[STATKEY_SPD] = new_speed
+	if(eggs.quantity >= 10 && !H.getorganslot(ORGAN_SLOT_BELLY))
+		egg_belly = new()
+		egg_belly.Insert(H)
+		egg_belly.build_colors_for_accessory(null)
+		H.update_body()
+	if(eggs.quantity >= 10 && H.wear_shirt)
+		to_chat(H, span_userdanger("卵太多了……我感觉肚子鼓了起来。我的上衣被撑破了！")) // fun !
+		var/obj/item/clothing/shirt = H.wear_shirt
+		H.dropItemToGround(shirt, TRUE)
+		shirt.obj_break()
+
+/datum/status_effect/egg_gestation
+	id = "egg_gestation"
+	status_type = STATUS_EFFECT_MULTIPLE
+	alert_type = null
+	var/egg_color
+	var/egg_name
+
+/datum/status_effect/egg_gestation/on_creation(mob/living/new_owner, mob/living/carbon/human/father)
+	duration = rand(10, 20) MINUTES
+	egg_color = "#[father.voice_color]"
+	egg_name = "[father.dna.species.name]卵"
+	return ..()
+
+/datum/status_effect/egg_gestation/on_remove()
+	. = ..()
+	var/mob/living/carbon/human/H = owner
+	if(!H || H.stat == DEAD)
+		return
+	var/obj/item/organ/eggs/eggs = H.getorganslot(ORGAN_SLOT_EGGS)
+	if(eggs)
+		eggs.quantity++
+	else
+		eggs = new /obj/item/organ/eggs()
+		eggs.Insert(H)
+	eggs.color = egg_color
+	eggs.name = egg_name
+	H.apply_status_effect(/datum/status_effect/debuff/parasitized)
+	to_chat(H, span_love("我感觉腹胀难受，肚子里好像有什么东西……"))
+
+/atom/movable/screen/alert/status_effect/debuff/parasitized
+	name = "寄生"
+	desc = "你体内正有什么东西在生长！点击将其排出。"
+	icon_state = "muscles"
+	alert_group = ALERT_DEBUFF
+
+/atom/movable/screen/alert/status_effect/debuff/parasitized/handle_click(location, control, params)
+	var/mob/living/carbon/human/H = usr
+	var/paramslist = params2list(params)
+	if(paramslist["shift"] && paramslist["left"])
+		examine_ui(H)
+		return FALSE
+	var/obj/item/organ/eggs/eggs = H.getorganslot(ORGAN_SLOT_EGGS)
+	if(!eggs)
+		return
+	to_chat(H, span_warning("我咬紧牙关，用力将卵从体内往外挤……"))
+	if(!do_after(H, 5 SECONDS) || eggs.owner != H)
+		return
+	var/pushed = min(max(3, round(ceil(eggs.quantity * 0.25))), eggs.quantity) // in case someone's got a LOTTA eggs
+	eggs.quantity -= pushed
+	to_chat(H, span_warning("我挤出了[pushed]枚卵！"))
+	playsound(H, 'sound/magic/slimesquish.ogg', 50, TRUE, -1)
+	var/obj/item/organ/eggs/dropped = new(get_turf(H))
+	dropped.quantity = pushed
+	dropped.color = eggs.color
+	dropped.name = eggs.name
+	if(eggs.quantity <= 0)
+		eggs.Remove(H)
+		qdel(eggs)

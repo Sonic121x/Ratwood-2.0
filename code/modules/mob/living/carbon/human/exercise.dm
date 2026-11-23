@@ -54,6 +54,20 @@ Exercise Verbs
 		var/number_words = "第[pushups_in_a_row]次"
 		balloon_alert_to_viewers(number_words, number_words, 7, y_offset = -12)
 		stamina_add(stamina_loss)
+
+		/// For healable skin armor.
+		if(pushups_in_a_row % 10 == 0 && !on_knees)
+			var/obj/item/clothing/suit/roguetown/armor/manual/pushups/skin_armor
+			if (istype(wear_shirt, /obj/item/clothing/suit/roguetown/armor/manual/pushups))
+				skin_armor = wear_shirt
+
+			else if (istype(wear_armor, /obj/item/clothing/suit/roguetown/armor/manual/pushups))
+				skin_armor = wear_armor
+
+			if (skin_armor)
+				skin_armor.armour_regen()
+
+
 	to_chat(src, span_warning("你累得瘫倒在地，没法再继续了。"))
 	stop_pushups()
 

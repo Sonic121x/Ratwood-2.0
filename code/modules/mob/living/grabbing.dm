@@ -238,7 +238,7 @@
 				bleed_suppressing = 0.5		//Better bleed suppression
 		if(/datum/intent/grab/choke)
 			if(HAS_TRAIT(user, TRAIT_PACIFISM))
-				to_chat(user, span_warning("我不想伤害[M]！"))
+				to_chat(user, span_warning("我为什么要这么做！我疯了吗？！"))
 				return FALSE
 			if(user.buckled)
 				to_chat(user, span_warning("我被固定住了，无法这样做！"))
@@ -333,6 +333,9 @@
 					user.stamina_add(rand(3,8))
 					twistlimb(user)
 		if(/datum/intent/grab/twistitem)
+			if(HAS_TRAIT(user, TRAIT_PACIFISM))
+				to_chat(user, span_warning("Why would I do this! Am I insane?!"))
+				return FALSE
 			if(user.buckled)
 				to_chat(user, span_warning("我被固定住了，无法这样做！"))
 				return FALSE
@@ -479,7 +482,7 @@
 					span_userdanger("[user]扭动了我的[parse_zone(sublimb_grabbed)]![C.next_attack_msg.Join()]"), span_hear("我听见一阵令人牙酸的扭打声!"), COMBAT_MESSAGE_RANGE, user)
 	to_chat(user, span_warning("我扭动了[C]的[parse_zone(sublimb_grabbed)].[C.next_attack_msg.Join()]"))
 	C.next_attack_msg.Cut()
-	log_combat(user, C, "扭伤了 [parse_zone(sublimb_grabbed)]，目标为")
+	log_combat(user, C, "扭伤了（义肢）[sublimb_grabbed] ")
 	if(limb_grabbed.status == BODYPART_ROBOTIC && armor_block == 0) //Twisting off prosthetics.
 		C.visible_message(span_danger("[C]的义体[parse_zone(sublimb_grabbed)]被拧下来了！[C.next_attack_msg.Join()]"), \
 					span_userdanger("我的义体[parse_zone(sublimb_grabbed)]被拧下来了！[C.next_attack_msg.Join()]"), span_hear("我听到令人牙酸的搏斗声！"), COMBAT_MESSAGE_RANGE, user)
@@ -547,6 +550,9 @@
 			user.put_in_active_hand(limb_grabbed)
 
 /obj/item/grabbing/proc/headbutt(mob/living/carbon/human/H)
+	if(HAS_TRAIT(H, TRAIT_PACIFISM))
+		to_chat(H, span_warning("Why would I do this! Am I insane?!"))
+		return FALSE
 	var/mob/living/carbon/C = grabbed
 	var/obj/item/bodypart/Chead = C.get_bodypart(BODY_ZONE_HEAD)
 	var/obj/item/bodypart/Hhead = H.get_bodypart(BODY_ZONE_HEAD)
@@ -570,6 +576,9 @@
 	log_combat(H, C, "用头撞击了")
 
 /obj/item/grabbing/proc/twistitemlimb(mob/living/user) //implies limb_grabbed and sublimb are things
+	if(HAS_TRAIT(user, TRAIT_PACIFISM))
+		to_chat(user, span_warning("Why would I do this! Am I insane?!"))
+		return FALSE
 	var/mob/living/M = grabbed
 	var/damage = rand(5,10)
 	var/obj/item/I = sublimb_grabbed
@@ -627,6 +636,9 @@
 			if(isturf(T))
 				user.Move_Pulled(T)
 		if(/datum/intent/grab/smash)
+			if(HAS_TRAIT(user, TRAIT_PACIFISM))
+				to_chat(user, span_warning("Why would I do this! Am I insane?!"))
+				return FALSE
 			if(!(user.mobility_flags & MOBILITY_STAND))
 				to_chat(user, span_warning("我得先站起来……"))
 				return
@@ -659,6 +671,9 @@
 		return
 	user.changeNext_move(CLICK_CD_GRABBING)
 	if(user.used_intent.type == /datum/intent/grab/smash)
+		if(HAS_TRAIT(user, TRAIT_PACIFISM))
+			to_chat(user, span_warning("Why would I do this! Am I insane?!"))
+			return FALSE
 		if(isstructure(O) && O.blade_dulling != DULLING_CUT)
 			if(!(user.mobility_flags & MOBILITY_STAND))
 				to_chat(user, span_warning("我得先站起来……"))
@@ -673,6 +688,9 @@
 
 
 /obj/item/grabbing/proc/smashlimb(atom/A, mob/living/user) //implies limb_grabbed and sublimb are things
+	if(HAS_TRAIT(user, TRAIT_PACIFISM))
+		to_chat(user, span_warning("Why would I do this! Am I insane?!"))
+		return FALSE
 	if(user.badluck(4))
 		badluckmessage(user)
 		user.stop_pulling()

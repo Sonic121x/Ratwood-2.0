@@ -30,9 +30,9 @@
 	display_category = ITEM_CAT_ARMOR_NECK
 
 /datum/anvil_recipe/kazengunite/samsibsa
-	name = "三十四鳞板甲，另需1件钢胸甲、1块钢锭、2张鞣制皮革"
-	additional_items = list(/obj/item/clothing/suit/roguetown/armor/plate, /obj/item/ingot/steel, /obj/item/natural/hide/cured, /obj/item/natural/hide/cured)
-	created_item = /obj/item/clothing/suit/roguetown/armor/plate/full/samsibsa
+	name = "三十四鳞板甲（+1 寒心海胸甲，+2 布料）"
+	additional_items = list(/obj/item/clothing/suit/roguetown/armor/brigandine/haraate, /obj/item/natural/cloth, /obj/item/natural/cloth)
+	created_item = /obj/item/clothing/suit/roguetown/armor/brigandine/samsibsa
 	display_category = ITEM_CAT_ARMOR_CHESTPIECES
 
 /datum/anvil_recipe/kazengunite/kote

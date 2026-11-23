@@ -308,22 +308,17 @@
 			H.change_stat(STATKEY_PER, 1) //Allows for more critical usage of the Whip's strengths.
 		if ("戒律 - 徒手")
 			H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT, TRUE)
-			ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)//gives them old crit resistance when stacked with blood resists 0.5x bleed
-			ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_WEAPONLESS, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_STRONGBITE, TRAIT_GENERIC)
-			H.change_stat(STATKEY_INT, 2)//no malus for pure unarmed
-			H.change_stat(STATKEY_WIL, 1)
+			ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
 			head = /obj/item/clothing/head/roguetown/helmet/leather/volfhelm
 			gloves = /obj/item/clothing/gloves/roguetown/bandages/weighted
-			armor = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/chest/barbarian
-			shirt = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/body/barbarian
-		if ("戒律 - 健美者")
-			ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
-			H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
-			armor = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/chest/bodybuilder
-			shirt = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/body/bodybuilder
-			r_hand = /obj/item/rogueweapon/sword/long/exe//gently nudging them to try for the berserker sword
+			armor = /obj/item/clothing/suit/roguetown/armor/manual/resting/chest/barbarian //a leather armor.
+			shirt = /obj/item/clothing/suit/roguetown/armor/manual/resting/body/barbarian //a gambeson. The skin armor options start better protected, but cannot upgrade. A basic gamby + leather armor will match them, and heavy gamby + light brig will eclipse them significantly.
+		if ("戒律 - 健美者") //Better starting protection than the bronze sword option, but cannot upgrade to brigandine.
+			H.adjust_skillrank_up_to(/datum/skill.combat/swords, SKILL_LEVEL_JOURNEYMAN, TRUE)
+			armor = /obj/item/clothing/suit/roguetown/armor/manual/resting/chest/barbarian //a leather armor.
+			shirt = /obj/item/clothing/suit/roguetown/armor/manual/pushups/barbarian //a fullbody leather armor.
+			r_hand = /obj/item/rogueweapon/greatsword/iron
+			backr = /obj/item/rogueweapon/scabbard/gwstrap
 	var/techniques = list("腾空飞踢 - 击退与额外伤害", "锁喉摔 - 体力伤害", "碎颚摔 - 眩晕减益", "头槌 - 易伤减益") // cool wrestling moves for non-magic guys.
 	var/technique_choice = input(H,"选择你的技法。", "把他们摔出去。") as anything in techniques
 	switch(technique_choice)
@@ -342,7 +337,7 @@
 		H.dna.species.soundpack_m = new /datum/voicepack/male/warrior()
 		pants = /obj/item/clothing/under/roguetown/chainlegs/skirt/bronze
 	if(should_wear_femme_clothes(H))
-		if(weapon_choice != "Discipline - Unarmed" && weapon_choice != "Discipline - Bodybuilder")//tits out
+		if(weapon_choice != "戒律 - 徒手" && weapon_choice != "戒律 - 健美者")//tits out
 			armor = /obj/item/clothing/suit/roguetown/armor/leather/bikini
 			shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/bikini/bronze
 		cloak = /obj/item/clothing/cloak/volfmantle/shoulderpad/lightleather

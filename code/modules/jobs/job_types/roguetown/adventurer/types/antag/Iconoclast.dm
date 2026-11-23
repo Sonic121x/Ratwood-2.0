@@ -49,6 +49,8 @@
 	r_hand = /obj/item/rogueweapon/woodstaff
 	shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	cloak = /obj/item/clothing/cloak/raincloak/furcloak/brown
+	armor = /obj/item/clothing/suit/roguetown/armor/plate
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/random
 	backr = /obj/item/storage/backpack/rogue/satchel
 	backpack_contents = list(
 					/obj/item/needle/thorn = 1,
@@ -59,16 +61,6 @@
 	head = /obj/item/clothing/head/roguetown/roguehood
 
 	id = /obj/item/mattcoin
-	var/list/armor_options = list("重甲", "鎏金之肤")
-	var/armor_choice = input(H, "选择你的护佑。", "以黄金加身。") as anything in armor_options
-	switch(armor_choice)
-		if("重甲")//classic icono
-			armor = /obj/item/clothing/suit/roguetown/armor/plate
-			shirt = /obj/item/clothing/suit/roguetown/shirt/shortshirt/random
-		if("鎏金之肤")//equivelant to bronze fullplate + brig chest. Low stab prot and no crit prot on either nat armor. Crucially, you CANNOT equip the gilded fullplate with this.
-			armor = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/chest/iconoclast
-			shirt = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/body/iconclast
-
 	var/weapons = list("拳套武器", "连枷与大型连枷", "纯粹徒手")
 	var/weapon_choice = input(H, "选择你的兵器。", "碾碎他们。") as anything in weapons
 	switch(weapon_choice)
@@ -81,7 +73,6 @@
 			beltr = /obj/item/rogueweapon/flail/sflail
 		if("纯粹徒手")
 			ADD_TRAIT(H, TRAIT_WEAPONLESS, TRAIT_GENERIC)
-			ADD_TRAIT(H, TRAIT_STRONGBITE, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_BADTRAINER, TRAIT_GENERIC)
 			ADD_TRAIT(H, TRAIT_THROWINGARM, TRAIT_GENERIC)//sorta like scarp letting you toss guns at people
 			ADD_TRAIT(H, TRAIT_BIGGUY, TRAIT_GENERIC)//way to breech doors without weapons
@@ -89,24 +80,17 @@
 			H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_LEGENDARY, TRUE)//pure unarmed parry is kinda terrible, matthios' best boy should punch like no other
 			gloves = /obj/item/clothing/gloves/roguetown/bandages/weighted/iconoclast
 
-	if(armor_choice == "鎏金之肤" && weapon_choice == "纯粹徒手")//committing to pecs out billy herrington icono grants you all the funny moves.
-		ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/dropkick)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/chokeslam)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/stunner)
-		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/headbutt)
-	else
-		var/techniques = list("腾空飞踢 - 击退与额外伤害", "锁喉摔 - 体力伤害", "碎颚摔 - 眩晕减益", "头槌 - 易伤减益") // cool wrestling moves
-		var/technique_choice = input(H,"选择你的招式。", "把他们摔出去。") as anything in techniques
-		switch(technique_choice)
-			if("腾空飞踢 - 击退与额外伤害")
-				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/dropkick)
-			if("锁喉摔 - 体力伤害")
-				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/chokeslam)
-			if("碎颚摔 - 眩晕减益")
-				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/stunner)
-			if("头槌 - 易伤减益")
-				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/headbutt)
+	var/techniques = list("腾空飞踢 - 击退与额外伤害", "锁喉摔 - 体力伤害", "碎颚摔 - 眩晕减益", "头槌 - 易伤减益") // cool wrestling moves
+	var/technique_choice = input(H,"选择你的招式。", "把他们摔出去。") as anything in techniques
+	switch(technique_choice)
+		if("腾空飞踢 - 击退与额外伤害")
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/dropkick)
+		if("锁喉摔 - 体力伤害")
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/chokeslam)
+		if("碎颚摔 - 眩晕减益")
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/stunner)
+		if("头槌 - 易伤减益")
+			H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/headbutt)
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_miracles(H, cleric_tier = CLERIC_T4, passive_gain = CLERIC_REGEN_MINOR, start_maxed = TRUE)	//Starts off maxed out.
 

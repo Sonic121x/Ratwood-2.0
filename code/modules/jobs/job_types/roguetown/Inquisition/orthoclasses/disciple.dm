@@ -52,10 +52,10 @@
 	if(H.has_flaw(/datum/charflaw/addiction/alcoholic))//THE LEADER OF THE EIGHT ENDURING FISTS SWAYED BACK AND FORTH TO TRICK THE HERETICS, DRUNK WITH INTERNAL FIRE. THEY WERE BUT FROGS IN A WELL LOOKING UP AT THE NIGHT SKY THINKING THEY HAD REACHED THE HEAVENS.
 		ADD_TRAIT(H, TRAIT_DRUNK_HEALING, TRAIT_GENERIC)
 	if(H.mind)
-		var/weapons = list("护教者 - 精通拳斗，戒武誓约且无减值", "拳斗士 - 精通运动，痛苦抵抗", "普赛顿长杖 - 专家长柄，+1感知/+1智力")
+		var/weapons = list("护教者 - 精通拳斗，戒武誓约与智力", "拳斗士 - 精通运动，痛苦抵抗", "普赛顿长杖 - 专家长柄，+1感知/+1智力")
 		var/weapon_choice = input(H,"选择你的武器。", "执起普赛顿的兵刃。") as anything in weapons
 		switch(weapon_choice)
-			if("护教者 - 精通拳斗，戒武誓约且无减值")//the enduringest psychud. Weighted 12 stats but no weapons, period.
+			if("护教者 - 精通拳斗，戒武誓约与智力")//the enduringest psychud. Weighted 12 stats but no weapons, period.
 				devotion_gain = CLERIC_REGEN_MINOR
 				devotion_limit = CLERIC_REQ_2
 				H.adjust_skillrank_up_to(/datum/skill/misc/athletics, SKILL_LEVEL_MASTER, TRUE)
@@ -63,17 +63,17 @@
 				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_MASTER, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/magic/holy, SKILL_LEVEL_JOURNEYMAN, TRUE)
 				gloves = /obj/item/clothing/gloves/roguetown/bandages/abboteer//lets you sunder
+				ADD_TRAIT(H, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 				ADD_TRAIT(H, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_GENERIC)
-				ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
 				ADD_TRAIT(H, TRAIT_WEAPONLESS, TRAIT_GENERIC)
-				ADD_TRAIT(H, TRAIT_STRONGBITE, TRAIT_GENERIC)//bite the necromancer's nose and ears off for Psydon.
-				H.change_stat(STATKEY_INT, 1)
-				H.change_stat(STATKEY_SPD, 1)
+				ADD_TRAIT(H, TRAIT_STRONGBITE, TRAIT_GENERIC)
+				H.change_stat(STATKEY_INT, 3) //Abbotteers primarily struggle with getting constantly feinted. They need a leg-up or they'll suffer.
 			if("拳斗士 - 精通运动，痛苦抵抗")//classic disciple but with the weapon choices not being a noob trap that debuffs you for grabbing a weapon you can make with 1 bullion roundstart.
 				H.adjust_skillrank_up_to(/datum/skill/misc/athletics, SKILL_LEVEL_MASTER, TRUE)
+				H.adjust_skillrank_up_to(/datum/skill/misc/swimming, SKILL_LEVEL_EXPERT, TRUE)
 				gloves = /obj/item/clothing/gloves/roguetown/bandages/pugilist
 				ADD_TRAIT(H, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_GENERIC)
-				ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
+				ADD_TRAIT(H, TRAIT_NOPAINSTUN, TRAIT_GENERIC)
 				var/pugtype = list("普赛顿拳刃", "普赛顿指虎")
 				var/pug_choice = input(H,"选择你的拳斗武器。", "执起普赛顿的兵刃。") as anything in pugtype
 				switch(pug_choice)
@@ -105,8 +105,8 @@
 	neck = /obj/item/clothing/neck/roguetown/psicross/silver
 	id = /obj/item/clothing/ring/signet/silver/inqscomm
 	shoes = /obj/item/clothing/shoes/roguetown/boots/psydonboots
-	armor = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/chest/disciple
-	shirt = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/body/disciple
+	armor = /obj/item/clothing/suit/roguetown/armor/manual/tool/needle/chest/disciple //a leather armor.
+	shirt = /obj/item/clothing/suit/roguetown/armor/manual/tool/needle/body/disciple //a heavy gambeson.
 	backl = /obj/item/storage/backpack/rogue/satchel/otavan
 	backpack_contents = list(/obj/item/roguekey/inquisition = 1,
 	/obj/item/paper/inqslip/arrival/ortho = 1)

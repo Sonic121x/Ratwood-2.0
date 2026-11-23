@@ -2556,6 +2556,21 @@
 	desc = "我的身体前所未有地舒畅！"
 	icon_state = "buff"
 
+/datum/status_effect/buff/ravox_vow
+	id = "ravox_vow"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/ravox_vow
+	effectedstats = list(STATKEY_WIL = 1)
+	status_type = STATUS_EFFECT_UNIQUE
+	duration = 30 MINUTES
+	tick_interval = -1
+
+/datum/status_effect/buff/ravox_vow/proc/on_life()
+	owner.heal_wounds(0.6)
+
+/atom/movable/screen/alert/status_effect/buff/ravox_vow
+	name = "拉沃克斯之誓"
+	desc = "我已向拉沃克斯起誓，必将为格里莫里亚带来正义。"
+
 
 /datum/status_effect/buff/refocus
 	id = "refocus"

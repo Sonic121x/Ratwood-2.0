@@ -47,21 +47,10 @@
 
 /datum/outfit/job/roguetown/wretch/mistwalker/pre_equip(mob/living/carbon/human/H)
 	..()
-	
-	if(H.dna.species.type in NON_DWARVEN_RACE_TYPES)
-		armor = /obj/item/clothing/suit/roguetown/armor/basiceast/mentorsuit
-		pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/eastpants1
-	else
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/jacket/black
-		pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/kazengun/black
+	to_chat(H, span_warning("Failed in your duty, outcast from whence you came you wander. Only the steel in your hand can be trusted."))
 
 	head = /obj/item/clothing/head/roguetown/mentorhat
-	gloves = /obj/item/clothing/gloves/roguetown/eastgloves1
-	neck = /obj/item/clothing/neck/roguetown/gorget/steel/kazengun //eh could be a regular one too
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/black
 	mask = /obj/item/clothing/mask/rogue/facemask/steel/kazengun //let them have this
-	wrists = /obj/item/clothing/wrists/roguetown/bracers/black
-	shoes = /obj/item/clothing/shoes/roguetown/boots
 	belt = /obj/item/storage/belt/rogue/leather/black
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/poor
 	backl = /obj/item/storage/backpack/rogue/satchel
@@ -74,9 +63,40 @@
 		)
 
 	if(H.mind)
+		var/armor_options = list("仪礼长袍", "附魔刺青")
+		var/armor_choice = input(H, "选择你的护甲。", "整备甲胄") as anything in armor_options
 		var/weapons = list("双手刀 +2 体质", "铁包棒 +1 力量", "薙刀 +2 感知", "环刀 +2 智力", "钢小太刀 +1 速度", "野太刀 +2 感知")
 		var/weapon_choice = input(H, "选择你的武器。", "执兵而起") as anything in weapons
 		H.set_blindness(0)
+		switch(armor_choice)
+			if("仪礼长袍")
+				neck = /obj/item/clothing/neck/roguetown/gorget/steel/kazengun
+				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/black
+				wrists = /obj/item/clothing/wrists/roguetown/bracers/black
+				if(H.dna.species.type in NON_DWARVEN_RACE_TYPES)
+					armor = /obj/item/clothing/suit/roguetown/armor/basiceast/mentorsuit
+					pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/kazengun/black
+					gloves = /obj/item/clothing/gloves/roguetown/eastgloves1
+					shoes = /obj/item/clothing/shoes/roguetown/armor/rumaclan
+				else
+					armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/jacket/black
+					pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
+					gloves = /obj/item/clothing/gloves/roguetown/angle
+					shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced //dwarves like to blow up my patience
+			if("附魔刺青")
+				neck = /obj/item/clothing/neck/roguetown/leather
+				armor = /obj/item/clothing/suit/roguetown/armor/manual/meditation/body/easttats/mistwalker //a full-body leather armor with 150% integ.
+				shirt = /obj/item/clothing/suit/roguetown/armor/manual/meditation/chest/easttats/mistwalker //another chest-only leather armor.
+				wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/heavy
+				cloak = /obj/item/clothing/cloak/kazengun
+				if(H.dna.species.type in NON_DWARVEN_RACE_TYPES)
+					pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/kazengun/black
+					gloves = /obj/item/clothing/gloves/roguetown/eastgloves1
+					shoes = /obj/item/clothing/shoes/roguetown/armor/rumaclan
+				else
+					pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
+					gloves = /obj/item/clothing/gloves/roguetown/angle
+					shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
 		switch(weapon_choice)
 			if("双手刀 +2 体质")
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)

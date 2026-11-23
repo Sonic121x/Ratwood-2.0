@@ -619,3 +619,13 @@
 	desc = span_red("那个地底居民就该待在地下，那才是它该待的地方。")
 
 // this generally only happens if you're below 10 FOR, this is a little nudge to work on your luck stat
+
+/datum/stressevent/remorse
+	timer = 5 MINUTES
+	stressadd = 3
+	desc = list(span_artery("我殴打了一个从未想过要伤害我的人。"), span_artery("我忍不住反复想起自己对一个手无寸铁之人挥出的那一击。"), span_artery("袭击了一个拒绝暴力的人，这让我的良心倍感沉重。"), span_artery("我后悔对一个永远不会向我挥拳的人动了手。"), span_artery("他们眼中流露出的不是仇恨，而是恐惧，这眼神在我的脑海中挥之不去。"), span_artery("伤害了一个选择和平的人，我感到无地自容。"), span_artery("我本可以一走了之，但我却选择了暴力。"), span_artery("袭击一个无助灵魂的负罪感深深折磨着我。"), span_artery("我的脑海里不断重演着我殴打那个绝不还手之人的瞬间。"), span_artery("每当想起那个被我袭击的毫无防备之人，我的心就愈发沉重。"))
+
+/datum/stressevent/remorse_evil
+	timer = 5 MINUTES
+	stressadd = 1
+	desc = list(span_artery("就连我也无法从殴打如此温顺的人身上找到丝毫快感。"), span_artery("他们剥夺了我享受一场真正搏斗的刺激感。"), span_artery("他们拒绝反抗的态度让我心里很不是滋味。"), span_artery("没有挣扎……只有逆来顺受。简直疯了。"), span_artery("我预想过他们会恐惧、会仇恨，怎么都行……唯独没料到他们会坦然接受。"), span_artery("一个毫无防备的受害者根本不值得记住，可这念头却偏偏挥之不去。"), span_artery("为什么他们那副无助的模样就是无法从我脑海里消失？"))

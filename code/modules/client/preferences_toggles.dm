@@ -144,6 +144,7 @@
 		list("id" = "permanent_binding", "label" = "启用永久束缚", "enabled" = (owner.prefs.chastity_hardmode == CHASTITY_HARDMODE_ENABLED), "desc" = "启用不可逆、仅能用钥匙开启的贞操锁机制。"),
 		list("id" = "extreme_erp", "label" = "启用极端成人互动", "enabled" = !!owner.prefs.extreme_erp, "desc" = "允许极端成人互动内容。"),
 		list("id" = "edging", "label" = "启用高潮边缘控制", "enabled" = !!owner.prefs.edging, "desc" = "允许高潮边缘控制相关的成人互动。"),
+		list("id" = "oviposition", "label" = "启用产卵相关内容", "enabled" = !!owner.prefs.oviposition, "desc" = "他人可以在你体内产卵！同时也允许你看到怀卵的腹部描述。"),
 		list("id" = "free_use_default", "label" = "默认允许自由使用", "enabled" = !!owner.prefs.free_use_default, "desc" = "默认开启自由使用。可随时在成人互动面板中手动关闭。"),
 		list("id" = "facial_branding", "label" = "启用面部烙印", "enabled" = !!owner.prefs.facial_brands, "desc" = "允许他人在你的脸上烙印。"),
 		list("id" = "sensitive_branding", "label" = "启用敏感部位烙印", "enabled" = !!owner.prefs.sensitive_brands, "desc" = "允许他人在你的生殖器与乳房上烙印（若有）。"),
@@ -253,6 +254,8 @@
 				owner.toggle_extreme_ERP()
 			if("edging")
 				owner.toggle_edging()
+			if("oviposition")
+				owner.toggle_oviposition()
 			if("free_use_default")
 				owner.toggle_free_use_default()
 			if("facial_branding")
@@ -627,6 +630,18 @@
 			to_chat(src, "现在显示生殖器与体毛描述的颜色。")
 		else
 			to_chat(src, "不再显示生殖器与体毛描述的颜色。")
+
+/client/verb/toggle_oviposition()
+	set category = "Options"
+	set name = "Toggle Oviposition Content"
+	set hidden = 1
+	if(prefs)
+		prefs.oviposition = !prefs.oviposition
+		prefs.save_preferences()
+		if(prefs.oviposition)
+			to_chat(src, "Oviposition content enabled.")
+		else
+			to_chat(src, "Oviposition content disabled.")
 
 /client/verb/toggle_edging() // Toggles edging content in the ERP panel, for psydonites who clearly can't ENDURE.
 	set category = "选项"

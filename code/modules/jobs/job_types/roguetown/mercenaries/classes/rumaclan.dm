@@ -36,9 +36,7 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/rogueweapon/scabbard/sword/kazengun/steel
 	beltl = /obj/item/rogueweapon/sword/sabre/mulyeog/rumahench
-	shirt = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/body/ruma
 	cloak = /obj/item/clothing/cloak/eastcloak1
-	armor = /obj/item/clothing/suit/roguetown/shirt/undershirt/eastshirt2
 	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/eastpants2
 	shoes = /obj/item/clothing/shoes/roguetown/armor/rumaclan
 	gloves = /obj/item/clothing/gloves/roguetown/eastgloves2
@@ -51,6 +49,29 @@
 
 		)
 	H.merctype = 9
+
+/datum/outfit/job/roguetown/mercenary/rumaclan/pre_equip(mob/living/carbon/human/H, visualsOnly)
+	..()
+	if(H.mind)
+		var/tattoos = list("桀骜（黑钢，脆弱）","和谐（板甲，均衡）","坚忍（衬垫，耐久）")
+		var/tattoo_choice = input(H, "选择你的刺青", "你承载着何种印记？") as anything in tattoos
+		switch(tattoo_choice)
+			if("桀骜（黑钢，脆弱）")
+				armor = /obj/item/clothing/suit/roguetown/armor/manual/meditation/body/easttats/ruma/blacksteel //200 blacksteel
+			if("和谐（板甲，均衡）")
+				armor = /obj/item/clothing/suit/roguetown/armor/manual/meditation/body/easttats/ruma //250 plate
+			if("坚忍（衬垫，耐久）")
+				armor = /obj/item/clothing/suit/roguetown/armor/manual/meditation/body/easttats/ruma/padded //300 padded
+				H.adjust_skillrank_up_to(/datum/skill/misc/medicine, SKILL_LEVEL_NOVICE, TRUE) //you're going to need it.
+		var/clothing = list("白衬衫","深色衬衫", "赤裸上身")
+		var/clothing_choice = input(H, "选择你的装束。", "何种丝绸裹覆你身？") as anything in clothing
+		switch(clothing_choice)
+			if("白衬衫")
+				l_hand = /obj/item/clothing/suit/roguetown/shirt/undershirt/eastshirt2
+			if("深色衬衫")
+				l_hand = /obj/item/clothing/suit/roguetown/shirt/undershirt/eastshirt1
+			if("赤裸上身")
+				shirt = /obj/item/clothing/suit/roguetown/armor/manual/meditation/chest/easttats/ruma //light brigadine.
 
 /datum/advclass/mercenary/rumaclan/sasu
 	name = "流马氏族射手"
@@ -84,9 +105,7 @@
 	belt = /obj/item/storage/belt/rogue/leather
 	beltr = /obj/item/quiver/arrows
 	beltl = /obj/item/flashlight/flare/torch/lantern
-	shirt = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/body/ruma
 	cloak = /obj/item/clothing/cloak/eastcloak1
-	armor = /obj/item/clothing/suit/roguetown/shirt/undershirt/eastshirt2
 	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/eastpants2
 	shoes = /obj/item/clothing/shoes/roguetown/armor/rumaclan
 	gloves = /obj/item/clothing/gloves/roguetown/eastgloves2
@@ -99,3 +118,26 @@
 		/obj/item/rogueweapon/scabbard/sheath/kazengun = 1,
 		)
 	H.merctype = 9
+
+/datum/outfit/job/roguetown/mercenary/rumaclan_sasu/pre_equip(mob/living/carbon/human/H, visualsOnly)
+	..()
+	if(H.mind)
+		var/tattoos = list("桀骜（黑钢，脆弱）","和谐（板甲，均衡）","坚忍（衬垫，耐久）")
+		var/tattoo_choice = input(H, "选择你的刺青", "你承载着何种印记？") as anything in tattoos
+		switch(tattoo_choice)
+			if("桀骜（黑钢，脆弱）")
+				armor = /obj/item/clothing/suit/roguetown/armor/manual/meditation/body/easttats/ruma/blacksteel //200 blacksteel
+			if("和谐（板甲，均衡）")
+				armor = /obj/item/clothing/suit/roguetown/armor/manual/meditation/body/easttats/ruma //250 plate
+			if("坚忍（衬垫，耐久）")
+				armor = /obj/item/clothing/suit/roguetown/armor/manual/meditation/body/easttats/ruma/padded //300 padded
+				H.adjust_skillrank_up_to(/datum/skill/misc/medicine, SKILL_LEVEL_NOVICE, TRUE) //you're going to need it.
+		var/clothing = list("白衬衫","深色衬衫", "赤裸上身")
+		var/clothing_choice = input(H, "选择你的装束。", "何种丝绸裹覆你身？") as anything in clothing
+		switch(clothing_choice)
+			if("白衬衫")
+				l_hand = /obj/item/clothing/suit/roguetown/shirt/undershirt/eastshirt2
+			if("深色衬衫")
+				l_hand = /obj/item/clothing/suit/roguetown/shirt/undershirt/eastshirt1
+			if("赤裸上身")
+				shirt = /obj/item/clothing/suit/roguetown/armor/manual/meditation/chest/easttats/ruma //light brigadine.

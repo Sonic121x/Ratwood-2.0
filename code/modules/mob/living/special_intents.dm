@@ -1224,6 +1224,160 @@ SPECIALS START HERE
 	playsound(T, sfx_post_delay, 100, TRUE)
 	..()
 
+/obj/effect/temp_visual/dendor_vines_begin
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "vines_begin"
+	layer = BELOW_MOB_LAYER
+	duration = 1.5 SECONDS
+	alpha = 255
+	pixel_y = 0
+
+/obj/effect/temp_visual/dendor_vines_mid
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "vines_mid"
+	layer = ABOVE_MOB_LAYER
+	duration = 7 SECONDS
+	alpha = 255
+	pixel_y = 0
+
+/obj/effect/temp_visual/dendor_vines_end
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "vines_end"
+	layer = ABOVE_MOB_LAYER
+	duration = 0.3 SECONDS
+	alpha = 255
+	pixel_y = 0
+
+/datum/special_intent/martyr_dendor_vine_reap
+	name = "登多尔藤蔓收割"
+	desc = "你在身前挥动镰刀，登多尔的藤蔓随即破土而出。它们缠住受害者的双腿，将其牢牢束缚在原地片刻。"
+	tile_coordinates = list(
+		list(-1,0), list(0,0), list(1,0),
+		list(-2,1), list(-1,1), list(0,1), list(1,1), list(2,1)
+	)
+
+	use_clickloc = FALSE
+	respect_adjacency = TRUE
+	respect_dir = TRUE
+
+	delay = 0.5 SECONDS
+	fade_delay = 0.4 SECONDS
+
+	pre_icon_state = "trap"
+	post_icon_state = "sweep_fx"
+
+	sfx_pre_delay = 'sound/combat/parry/bladed/bladedsmall (3).ogg'
+	sfx_post_delay = 'sound/misc/vines.ogg'
+
+	cooldown = 45 SECONDS
+	stamcost = 25
+
+	var/base_dam = 0
+	var/constrict_dam = 0
+	var/list/entangled_targets = list()
+
+	var/self_commit = 0.7 SECONDS
+
+	var/vine_begin_delay = 1.5 SECONDS
+	var/vine_mid_duration = 7 SECONDS
+	var/vine_end_duration = 0.3 SECONDS
+	var/entangle_dur = 7.3 SECONDS
+
+	var/exposed_dur = 4 SECONDS
+	var/vulnerable_dur = 5 SECONDS
+
+	var/list/dendor_cries = list(
+		"登多尔啊，以根与藤缠住他们！",
+		"让登多尔的密林自你面前拔地而起！",
+		"登多尔，以森林的意志束缚他们！",
+		"愿登多尔的藤蔓将你缠紧！"
+	)
+
+/datum/special_intent/martyr_dendor_vine_reap/_reset()
+	entangled_targets = list()
+	. = ..()
+
+/datum/special_intent/martyr_dendor_vine_reap/process_attack()
+	var/obj/item/rogueweapon/W = iparent
+	var/scalemod = max(((howner.STASTR + howner.STAPER + howner.STAWIL) / 30), 1)
+
+	base_dam = W.force_dynamic * scalemod * 0.8
+	constrict_dam = W.force_dynamic * scalemod * 1.05
+
+	. = ..()
+
+/datum/special_intent/martyr_dendor_vine_reap/on_create()
+	. = ..()
+	howner.Immobilize(self_commit)
+	howner.say(pick(dendor_cries))
+
+/datum/special_intent/martyr_dendor_vine_reap/apply_hit(turf/T)
+	for(var/mob/living/L in get_hearers_in_view(0, T))
+		if(L == howner)
+			continue
+		if(L in entangled_targets)
+			continue
+
+		entangled_targets += L
+
+		if(L.mobility_flags & MOBILITY_STAND)
+			apply_generic_weapon_damage(L, base_dam, "slash", BODY_ZONE_CHEST, bclass = BCLASS_CUT)
+
+		L.apply_status_effect(/datum/status_effect/debuff/exposed, exposed_dur)
+
+		var/turf/mark_turf = get_turf(L)
+		if(mark_turf)
+			new /obj/effect/temp_visual/dendor_vines_begin(mark_turf)
+
+		L.visible_message(
+			span_warning("登多尔的藤蔓在[L]脚下迅速破土而出！"),
+			span_userdanger("藤蔓正在我脚下破土而出！")
+		)
+
+		addtimer(CALLBACK(src, PROC_REF(begin_entangle), L), vine_begin_delay)
+
+	..()
+
+/datum/special_intent/martyr_dendor_vine_reap/proc/begin_entangle(mob/living/L)
+	if(!howner || QDELETED(howner))
+		return
+	if(!L || QDELETED(L))
+		return
+	if(L.stat == DEAD)
+		return
+
+	var/turf/T = get_turf(L)
+	if(T)
+		new /obj/effect/temp_visual/dendor_vines_mid(T)
+
+	L.Immobilize(entangle_dur)
+	L.apply_status_effect(/datum/status_effect/debuff/vulnerable, vulnerable_dur)
+	L.apply_status_effect(/datum/status_effect/debuff/exposed, exposed_dur)
+
+	if(L.mobility_flags & MOBILITY_STAND)
+		apply_generic_weapon_damage(L, constrict_dam, "slash", BODY_ZONE_CHEST, bclass = BCLASS_CHOP)
+
+	L.visible_message(
+		span_danger("登多尔的藤蔓骤然缠紧[L]！"),
+		span_userdanger("藤蔓猛地收紧，将我牢牢缚住！")
+	)
+
+	if(T)
+		playsound(T, sfx_post_delay, 70, TRUE)
+
+	addtimer(CALLBACK(src, PROC_REF(begin_release), L), vine_mid_duration)
+
+/datum/special_intent/martyr_dendor_vine_reap/proc/begin_release(mob/living/L)
+	if(!L || QDELETED(L))
+		return
+	if(L.stat == DEAD)
+		return
+
+	var/turf/T = get_turf(L)
+	if(T)
+		new /obj/effect/temp_visual/dendor_vines_end(T)
+
+
 /* 				EXAMPLES
 /datum/special_intent/another_example_cast
 	name = "Expanding Rectangle Pattern"
@@ -1252,8 +1406,8 @@ tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0)
 #define GRAGGAR_BREAK_RANKS_WAVE2_DELAY 1 SECONDS
 
 /datum/special_intent/graggar_break_the_ranks
-	name = "Break the Ranks"
-	desc = "Two powerful swings of the axe forward in a semicircle. The second wave deals double damage."
+	name = "破阵"
+	desc = "向前方半圆形范围内挥出两记势大力沉的斧击。第二道冲击波造成双倍伤害。"
 	tile_coordinates = list(
 		list(-1,-1), list(1,-1), list(-1,0), list(0,0), list(1,0),
 		list(-2,-1, GRAGGAR_BREAK_RANKS_WAVE2_DELAY), list(-2,0, GRAGGAR_BREAK_RANKS_WAVE2_DELAY), list(-1,1, GRAGGAR_BREAK_RANKS_WAVE2_DELAY),

@@ -558,7 +558,7 @@
 	craftdiff = 4 //Expert
 
 /datum/crafting_recipe/roguetown/survival/head_roguetown_onhelm_tw_d_basic
-	name = "helm's chaperon"
+	name = "盔饰布巾"
 	result = /obj/item/clothing/head/roguetown/onhelm/tw_d_basic
 	reqs = list(/obj/item/natural/cloth = 3)
 	tools = list(/obj/item/needle)

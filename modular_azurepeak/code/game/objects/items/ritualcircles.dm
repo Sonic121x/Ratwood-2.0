@@ -220,6 +220,42 @@
 	name = "正义符文"
 	icon_state = "ravox_chalky"
 	desc = "拉沃克斯的神圣符文。象征着守护弱者之刃。"
+	var/ravoxrites = list("向拉沃克斯起誓")
+
+/obj/structure/ritualcircle/ravox/attack_hand(mob/living/user)
+	if(!..())
+		return
+	if((user.patron?.type) != /datum/patron/divine/ravox)
+		to_chat(user,span_warning("我感到一道鄙夷的目光投来。这枚符文并非为我而设。"))
+		return
+	if(!HAS_TRAIT(user, TRAIT_RITUALIST))
+		to_chat(user,span_warning("我不懂得施行此物的正统仪轨……"))
+		return
+	if(user.has_status_effect(/datum/status_effect/debuff/ritesexpended))
+		to_chat(user,span_warning("我今日施行的仪式已经够多了……必须先歇息片刻，方能再次通神。"))
+		return
+	var/riteselection = input(user, "正义之仪", src) as null|anything in ravoxrites
+	switch(riteselection)
+		if("向拉沃克斯起誓") // Ideally stick to this style for rites. Early returns + negatives. Minimises the "pyramid" shape you can see in Astrata, which I've left untouched for now -- CODEATHON
+			var/target = user
+			if(!do_after(user, 5 SECONDS))
+				return
+			user.say("吾锋锐利，吾心赤诚！")
+			if(!do_after(user, 5 SECONDS))
+				return
+			user.say("为护弱者，拔剑出鞘！")
+			if(!do_after(user, 5 SECONDS))
+				return
+			user.say("正义之敌，且受吾威！")
+			if(!do_after(user, 3 SECONDS))
+				return
+			user.say("拉沃克斯啊，指引吾手，行此义战！")
+			playsound(loc, 'sound/magic/holyshield.ogg', 80, FALSE, -1)
+			ravoxvow(target)
+			user.apply_status_effect(/datum/status_effect/debuff/ritesexpended)
+
+/obj/structure/ritualcircle/ravox/proc/ravoxvow(mob/living/carbon/human/target)
+	target.apply_status_effect(/datum/status_effect/buff/ravox_vow)
 
 /obj/structure/ritualcircle/pestra
 	name = "疫病符文"

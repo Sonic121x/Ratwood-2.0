@@ -76,7 +76,12 @@
 
 /datum/emote/living/meditate/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
-	if(do_after(user, 1 MINUTES))
+	to_chat(user, span_green("我向内凝神……"))
+	for(var/cycle in 1 to 4)
+		if(!do_after(user, 10 SECONDS))
+			return
+		SEND_SIGNAL(user, COMSIG_MOB_MEDITATED)
+	if(do_after(user, 20 SECONDS))
 		user.add_stress(/datum/stressevent/meditation)
 		to_chat(user, span_green("这次冥想让我获益良多。"))
 

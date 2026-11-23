@@ -13,6 +13,7 @@
 	drop_sound = 'sound/foley/dropsound/armor_drop.ogg'
 	pickup_sound = 'sound/foley/equip/equip_armor_plate.ogg'
 	equip_sound = 'sound/foley/equip/equip_armor_plate.ogg'
+	hit_sound = list('sound/items/hit_plateobj1.ogg', 'sound/items/hit_plateobj2.ogg', 'sound/items/hit_plateobj3.ogg')
 	anvilrepair = /datum/skill/craft/armorsmithing
 	smeltresult = /obj/item/ingot/steel
 	equip_delay_self = 4 SECONDS
@@ -243,20 +244,21 @@
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = ARMOR_INT_CHEST_PLATE_IRON
 
-/obj/item/clothing/suit/roguetown/armor/plate/full/samsibsa
+/obj/item/clothing/suit/roguetown/armor/brigandine/samsibsa
 	name = "三十四鳞板甲"
-	desc = "远方风郡的寇肯所穿的重型护甲。不同于普赛多尼亚与西方常见的板甲，它由三十四排复合鳞片构成，每片都是镀覆黑钢的超薄钢片。 </br> 在单独鳞片上刻字极为常见，比如“幸运”、“荣耀”或“天命”。"
+	desc = "远方风郡的公卿所穿的重型护甲。不同于普赛多尼亚与西方常见的板甲，三十四铁板由三十四排复合鳞片构成，每片都是镀覆黑钢的超薄钢片。 </br> 在单独鳞片上刻字极为常见，比如“幸运”、“荣耀”或“天命”。"
 	icon_state = "kazengunheavy"
 	item_state = "kazengunheavy"
 	detail_tag = "_detail"
 	boobed_detail = FALSE
 	color = null
+	armor_class = ARMOR_CLASS_HEAVY
 	detail_color = CLOTHING_WHITE
-	body_parts_covered = COVERAGE_ALL_BUT_HANDLEGS
-	max_integrity = ARMOR_INT_CHEST_PLATE_STEEL - 50 //slightly worse
+	body_parts_covered = COVERAGE_ALL_BUT_HANDFEET
+	max_integrity = ARMOR_INT_CHEST_PLATE_STEEL - 75 //heavy brig
 	var/picked = FALSE
 
-/obj/item/clothing/suit/roguetown/armor/plate/full/samsibsa/attack_right(mob/user)
+/obj/item/clothing/suit/roguetown/armor/brigandine/samsibsa/attack_right(mob/user)
 	..()
 	if(!picked)
 		var/choice = input(user, "选择颜色。", "制服配色") as anything in GLOB.colorlist
@@ -270,11 +272,11 @@
 			H.update_inv_armor()
 			H.update_icon()
 
-/obj/item/clothing/suit/roguetown/armor/plate/full/samsibsa/Initialize(mapload)
+/obj/item/clothing/suit/roguetown/armor/brigandine/samsibsa/Initialize(mapload)
 	. = ..()
 	update_icon()
 
-/obj/item/clothing/suit/roguetown/armor/plate/full/samsibsa/update_icon()
+/obj/item/clothing/suit/roguetown/armor/brigandine/samsibsa/update_icon()
 	cut_overlays()
 	if(get_detail_tag())
 		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))

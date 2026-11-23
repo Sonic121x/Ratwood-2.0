@@ -576,10 +576,8 @@
 	subclass_stats = list(
 		STATKEY_STR = 3,
 		STATKEY_CON = 2,
-		STATKEY_WIL = 1,
-		STATKEY_SPD = 1,
-		STATKEY_INT = -1,
-		STATKEY_PER = -1
+		STATKEY_WIL = 3,
+		STATKEY_SPD = -1,
 	)
 	subclass_skills = list(
 		/datum/skill/magic/holy = SKILL_LEVEL_EXPERT,
@@ -676,8 +674,8 @@
 				to_chat(H, span_warning("你曾侍奉凡人与他们的典籍。而从今往后，你只侍奉祂，唯独侍奉祂。"))
 				head = /obj/item/clothing/head/roguetown/roguehood/psydon
 				mask = /obj/item/clothing/head/roguetown/helmet/blacksteel/psythorns
-				armor = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/chest/disciple
-				shirt = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/body/disciple
+				armor = /obj/item/clothing/suit/roguetown/armor/manual/tool/needle/chest/disciple //a leather armor. Sewing repair.
+				shirt = /obj/item/clothing/suit/roguetown/armor/manual/tool/needle/body/disciple //a gambeson.
 				pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/otavan
 				wrists = /obj/item/clothing/wrists/roguetown/bracers/psythorns
 				shoes = /obj/item/clothing/shoes/roguetown/boots/psydonboots
@@ -699,9 +697,7 @@
 			if("纯粹徒手，禁用武器")
 				ADD_TRAIT(H, TRAIT_CIVILIZEDBARBARIAN, TRAIT_GENERIC)
 				ADD_TRAIT(H, TRAIT_WEAPONLESS, TRAIT_GENERIC)
-				ADD_TRAIT(H, TRAIT_STRONGBITE, TRAIT_GENERIC)
 				ADD_TRAIT(H, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_GENERIC)
-				ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
 				H.change_stat(STATKEY_INT, 1)//true unarmed gets no stat malus
 				H.change_stat(STATKEY_PER, 1)
 				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 5, TRUE)

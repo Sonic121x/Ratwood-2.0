@@ -7,7 +7,7 @@
 	cmode_music = 'sound/music/cmode/antag/combat_darkstar.ogg'
 	class_select_category = CLASS_CAT_WARRIOR
 	category_tags = list(CTAG_WRETCH)
-	traits_applied = list(TRAIT_STRONGBITE, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_NOPAINSTUN, TRAIT_RAGE)
+	traits_applied = list(TRAIT_STRONGBITE, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_NOPAINSTUN, TRAIT_BLOOD_RESISTANCE, TRAIT_RAGE)
 	maximum_possible_slots = 2 //Obligatory people-pleasing slot limitation. Master skills is scawwy. 
 	// Literally same stat spread as Atgervi Shaman
 	subclass_stats = list(
@@ -66,11 +66,9 @@
 		switch(armor_choice)
 			if("轻甲")
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
-				ADD_TRAIT(H, TRAIT_BLOOD_RESISTANCE, TRAIT_GENERIC)
 			if("不摧之肤")
-				armor = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/chest/berzerker
-				shirt = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/body/berzerker
-				ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
+				armor = /obj/item/clothing/suit/roguetown/armor/manual/resting/chest/berzerker //light steel maille
+				shirt = /obj/item/clothing/suit/roguetown/armor/manual/resting/body/berzerker //fullbody leather armor
 		var/list/main_choices = list("徒手大师", "武艺专家") // Unarmed focuses on master punching and wrestling moves, Martial gives you two expert weapon skills to be flexible
 		var/category_choice = input(H, "选择你的施暴手段。", "砸碎还是劈开！！") as anything in main_choices
 		switch(category_choice)
@@ -91,10 +89,10 @@
 						H.adjust_skillrank_up_to(/datum/skill/combat/wrestling, SKILL_LEVEL_MASTER, TRUE)
 						ADD_TRAIT(H, TRAIT_WEAPONLESS, TRAIT_GENERIC)
 						H.change_stat(STATKEY_INT, 2)//no stat malus for pure unarmed
-						H.change_stat(STATKEY_WIL, 1)//nice little bonus for our fist only chuds
-						H.change_stat(STATKEY_CON, 1)
+						H.change_stat(STATKEY_WIL, 2)//nice little bonus for our fist only chuds
+						H.change_stat(STATKEY_SPD, -1) //We are not COMPLETELY breaking the 9 weighted rule for "pure fists".
 						if(armor_choice == "不摧之肤")
-							ADD_TRAIT(H, TRAIT_BLOOD_RESISTANCE, TRAIT_GENERIC)//you'll need it if you're going pure unarmed.
+							H.change_stat(STATKEY_CON, 2)//nice little bonus for our fist only chuds
 				var/techniques = list("腾空飞踢 - 击退与额外伤害", "锁喉摔 - 体力伤害", "碎颚摔 - 眩晕减益", "头槌 - 易伤减益") // cool wrestling moves
 				var/technique_choice = input(H,"选择你的技法。", "把他们摔出去。") as anything in techniques
 				switch(technique_choice)

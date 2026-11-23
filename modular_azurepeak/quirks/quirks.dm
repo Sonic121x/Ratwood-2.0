@@ -66,6 +66,14 @@
 /datum/quirk/hobbyistmusician/apply_to_human(mob/living/carbon/human/recipient)
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/customization_trait, pick_stashed_instrument), recipient), 50)
 
+/datum/quirk/ovipositor
+	name = "卵生"
+	desc = "我的种族通过产卵繁殖。受孕会使我体内充满卵。若我有阴茎，我会在射精时把卵注入伴侣体内。"
+	point_cost = 0
+	added_traits = list(TRAIT_OVIPOSITOR)
+	// there MUSTN'T be egg-laying humens. I shan't stand for it !
+	allowed_species = list(/datum/species/anthromorph, /datum/species/kobold, /datum/species/harpy, /datum/species/akula, /datum/species/anthromorphsmall, /datum/species/lamia, /datum/species/arachnid, /datum/species/dullahan, /datum/species/ooze, /datum/species/moth)
+
 /datum/quirk/linguist
 	name = "通晓三语"
 	desc = "通过求学、旅行或机缘巧合，我学会了第三种语言。"

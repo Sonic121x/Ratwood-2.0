@@ -83,21 +83,38 @@
 	C.grant_miracles(H, cleric_tier = CLERIC_T1, passive_gain = CLERIC_REGEN_DEVOTEE, devotion_limit = CLERIC_REQ_1)
 
 	if(H.mind)
-		var/weapons = list("苦修 - 无甲","戒律 - 徒手","拳刃","指虎","长杖")
+		var/monk_vow = list("慰藉之誓 | +2速度，闪避专家","苦行之誓 | +2力量，失血抗性")
+		var/vow_choice = input(H, "选择你的誓约", "印证你的过失") as anything in monk_vow
+		switch(vow_choice)
+			if("慰藉之誓 | +2速度，闪避专家")
+				H.change_stat(STATKEY_SPD, 2)
+				ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+			if("苦行之誓 | +2力量，失血抗性")
+				ADD_TRAIT(H, TRAIT_BLOOD_RESISTANCE, TRAIT_GENERIC)
+				H.change_stat(STATKEY_STR, 2)
+
+		var/weapons = list("苦修 - 无甲","拳斗士","拳刃","指虎","长杖")
 		var/weapon_choice = input(H, "选择你的武器。", "执兵而起") as anything in weapons
 		switch(weapon_choice)
-			if("苦修 - 无甲") // Skin armor, +1 con because this locks you out of holy monk vestments and the associated stamina boost
+			if("苦修 - 无甲") // Loses Dodge Expert, gains Enduring, swaps light armor for skin armor.
 				ADD_TRAIT(H, TRAIT_NOPAINSTUN, JOB_TRAIT)
+				REMOVE_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 				H.change_stat(STATKEY_CON, 1)
-				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 4, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 4, TRUE)
+				if(HAS_TRAIT(H, TRAIT_PSYDONIAN_GRIT))
+					armor = /obj/item/clothing/suit/roguetown/armor/manual/tool/needle/chest/monke //a leather armor. Sewing repair.
+					shirt = /obj/item/clothing/suit/roguetown/armor/manual/tool/needle/body/monke //a gambeson.
+					H.adjust_skillrank_up_to(/datum/skill/craft/sewing, SKILL_LEVEL_NOVICE, TRUE) //since enduring makes psydonic willpower redundant.
+					H.adjust_skillrank_up_to(/datum/skill/misc/medicine, SKILL_LEVEL_NOVICE, TRUE)
+				else
+					armor = /obj/item/clothing/suit/roguetown/armor/manual/meditation/chest/monk //a leather armor. Meditation repair.
+					shirt = /obj/item/clothing/suit/roguetown/armor/manual/meditation/body/monk //a gambeson.
+				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT, TRUE)
+				H.adjust_skillrank_up_to(/datum/skill/combat/wrestling, SKILL_LEVEL_EXPERT, TRUE)
 				gloves = /obj/item/clothing/gloves/roguetown/bandages/pugilist
-				armor = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/chest/monk //a leather armor
-				shirt = /obj/item/clothing/suit/roguetown/armor/regenerating/skin/body/monk //a gambeson
-			if("戒律 - 徒手")
-				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, 4, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/combat/wrestling, 4, TRUE)
-				gloves = /obj/item/clothing/gloves/roguetown/bandages/pugilist//Just this and disciple, effectively.
+			if("拳斗士")
+				H.adjust_skillrank_up_to(/datum/skill/combat/unarmed, SKILL_LEVEL_EXPERT, TRUE)
+				H.adjust_skillrank_up_to(/datum/skill/combat/wrestling, SKILL_LEVEL_EXPERT, TRUE)
+				gloves = /obj/item/clothing/gloves/roguetown/bandages/pugilist
 			if("拳刃")
 				beltl = /obj/item/rogueweapon/katar/bronze
 				gloves = /obj/item/clothing/gloves/roguetown/bandages
@@ -112,34 +129,6 @@
 				l_hand = /obj/item/rogueweapon/scabbard/gwstrap
 				wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/heavy
 				gloves = /obj/item/clothing/gloves/roguetown/bandages
-
-		//Wow, these sure are long!
-		if(weapon_choice == "苦修 - 无甲" || weapon_choice == "戒律 - 徒手")
-			var/monk_vow = list("慰藉之誓 | +2 速度，闪避专家","壮举之誓 | +2 力量，重创抗性", "苦行之誓 | +2 速度，+2 力量，重创抗性，禁用武器")
-			var/vow_choice = input(H, "选择你的誓愿。", "立誓承戒") as anything in monk_vow
-			switch(vow_choice)
-				if("慰藉之誓 | +2 速度，闪避专家")
-					H.change_stat(STATKEY_SPD, 2)
-					ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
-				if("壮举之誓 | +2 力量，重创抗性")
-					ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
-					H.change_stat(STATKEY_STR, 2)
-				if("苦行之誓 | +2 速度，+2 力量，重创抗性，禁用武器")
-					ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
-					ADD_TRAIT(H, TRAIT_WEAPONLESS, TRAIT_GENERIC)
-					ADD_TRAIT(H, TRAIT_BLOOD_RESISTANCE, TRAIT_GENERIC)
-					H.change_stat(STATKEY_STR, 2)
-					H.change_stat(STATKEY_SPD, 2)
-		else
-			var/monk_vow = list("慰藉之誓 | +2 速度，闪避专家","壮举之誓 | +2 力量，重创抗性")
-			var/vow_choice = input(H, "选择你的誓愿。", "立誓承戒") as anything in monk_vow
-			switch(vow_choice)
-				if("慰藉之誓 | +2 速度，闪避专家")
-					H.change_stat(STATKEY_SPD, 2)
-					ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
-				if("壮举之誓 | +2 力量，重创抗性")
-					ADD_TRAIT(H, TRAIT_CRITICAL_RESISTANCE, TRAIT_GENERIC)
-					H.change_stat(STATKEY_STR, 2)
 	H.cmode_music = 'sound/music/combat_holy.ogg'
 
 	switch(H.patron?.type)

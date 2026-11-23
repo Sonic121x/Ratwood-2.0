@@ -11,7 +11,7 @@
 	name = "殉道之剑"
 	desc = "一件出自圣座金库的圣遗物。其上翻涌着神性能量，只会向立下誓约之人屈服。"
 	max_blade_int = 200
-	max_integrity = 300
+	max_integrity = 9999  //Same as other weapons; not sure why this one was skipped.
 	parrysound = "bladedmedium"
 	swingsound = BLADEWOOSH_LARGE
 	pickup_sound = 'sound/foley/equip/swordlarge2.ogg'
@@ -26,7 +26,7 @@
 	throwforce = 15
 	thrown_bclass = BCLASS_CUT
 	dropshrink = 1
-	smeltresult = /obj/item/ingot/gold
+	smeltresult = null
 	is_silver = TRUE
 	toggle_state = null
 	is_important = TRUE
@@ -427,6 +427,113 @@
 		martyr.ClearFromParent()
 	return ..()
 
+/obj/item/rogueweapon/halberd/bardiche/scythe/martyr
+	force = 22
+	force_wielded = 35
+	possible_item_intents = list(/datum/intent/spear/thrust/bad, /datum/intent/spear/bash)
+	gripped_intents = list(/datum/intent/spear/cut/bardiche, /datum/intent/spear/cut/bardiche/cleave, /datum/intent/spear/cut/glaive/sweep, /datum/intent/axe/chop/scythe)
+	icon_state = "martyrscyth"
+	icon = 'icons/roguetown/weapons/polearms64.dmi'
+	item_state = "martyrscyth"
+	name = "神赐镰刀"
+	desc = "一件出自教廷秘库的圣物；一柄受祝的银镰，其上刻着阿斯特拉塔无上威能的十尖圣印。</br>它翻涌着神圣之力，只服从于立下誓约之人的手。"
+	max_blade_int = 250
+	max_integrity = 9999
+	bigboy = 1
+	wlength = WLENGTH_LONG
+	associated_skill = /datum/skill/combat/polearms
+	smeltresult = null
+	is_silver = TRUE
+	is_important = TRUE
+	special = /datum/special_intent/martyr_dendor_vine_reap
+
+/obj/item/rogueweapon/halberd/bardiche/scythe/martyr/ComponentInitialize()
+	AddComponent(\
+		/datum/component/silverbless,\
+		pre_blessed = BLESSING_TENNITE,\
+		silver_type = SILVER_TENNITE,\
+		added_force = 0,\
+		added_blade_int = 0,\
+		added_int = 0,\
+		added_def = 0,\
+	)
+
+/datum/intent/spear/cut/bardiche/martyr
+		item_d_type = "fire"
+		blade_class = BCLASS_CUT
+
+/datum/intent/spear/cut/bardiche/cleave/martyr
+		item_d_type = "fire"
+		blade_class = BCLASS_CUT
+
+/datum/intent/spear/cut/glaive/sweep/martyr
+		item_d_type = "fire"
+		blade_class = BCLASS_CHOP
+
+/datum/intent/axe/chop/scythe/martyr
+		item_d_type = "fire"
+		blade_class = BCLASS_CHOP
+		swingdelay = 5
+
+/datum/intent/spear/thrust/bad/martyr
+		item_d_type = "fire"
+		blade_class = BCLASS_PICK
+
+/obj/item/rogueweapon/halberd/bardiche/scythe/martyr/Initialize(mapload)
+	. = ..(mapload)
+	if(SSroguemachine.martyrweapon)
+		qdel(src)
+	else
+		SSroguemachine.martyrweapon = src
+	if(!gc_destroyed)
+		var/list/active_intents = list(/datum/intent/spear/thrust/bad/martyr, /datum/intent/spear/bash/martyr)
+		var/list/active_intents_wielded = list(/datum/intent/spear/cut/bardiche/martyr, /datum/intent/spear/cut/bardiche/cleave/martyr, /datum/intent/spear/cut/glaive/sweep/martyr, /datum/intent/axe/chop/scythe/martyr)
+		var/safe_damage = 15
+		var/safe_damage_wielded = 35
+		AddComponent(/datum/component/martyrweapon, active_intents, active_intents_wielded, safe_damage, safe_damage_wielded)
+
+/obj/item/rogueweapon/halberd/bardiche/scythe/martyr/proc/anti_stall()
+	src.visible_message(span_danger("殉道者之镰化作闪光的尘埃，随即升腾而起，被风卷走。"))
+	SSroguemachine.martyrweapon = null
+	qdel(src)
+
+/obj/item/rogueweapon/halberd/bardiche/scythe/martyr/attack_hand(mob/user)
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		var/datum/job/J = SSjob.GetJob(H.mind?.assigned_role)
+		if(J.title == "Bishop" || J.title == "Martyr")
+			return ..()
+		else if (H.job in GLOB.church_positions)
+			to_chat(user, span_warning("你感到一阵神圣能量的冲击，只持续了一瞬，随后镰刀便从你手中滑脱！你还不够虔诚。"))
+			return FALSE
+		else if(istype(H.patron, /datum/patron/inhumen))
+			var/datum/component/martyrweapon/marty = GetComponent(/datum/component/martyrweapon)
+			to_chat(user, span_warning("你这蠢货！这东西对你而言是诅咒！撒开！"))
+			H.Stun(40)
+			H.Knockdown(40)
+			if(marty.is_active) //Inhumens are touching this while it's active, very fucking stupid of them
+				visible_message(span_warning("[H]发出一声痛苦的尖啸，镰刀猛地抽打在其身上！"))
+				H.emote("agony")
+				H.adjust_fire_stacks(5)
+				H.ignite_mob()
+			return FALSE
+		else	//Everyone else
+			to_chat(user, span_warning("一阵剧痛传遍全身，将你击倒在地。你碰不了这东西。"))
+			H.emote("groan")
+			H.Stun(10)
+			return FALSE
+	else
+		return FALSE
+
+/obj/item/rogueweapon/halberd/bardiche/scythe/martyr/Destroy()
+	SSroguemachine.martyrweapon = null
+	var/datum/component/martyr = GetComponent(/datum/component/martyrweapon)
+	if(martyr)
+		martyr.ClearFromParent()
+	return ..()
+
+
+
 /obj/item/clothing/cloak/martyr
 	name = "殉道披风"
 	desc = "一件采用 阿斯特拉塔 配色的优雅披风，看起来只适合人类体型的人穿着。"
@@ -642,6 +749,7 @@
 	worn_y_dimension = 64
 	icon_state = "silverbascinet"
 	item_state = "silverbascinet"
+	armor = ARMOR_PLATE
 	sellprice = 1000
 	smeltresult = null
 
@@ -697,6 +805,7 @@
 	worn_y_dimension = 64
 	icon_state = "silverarmet"
 	item_state = "silverarmet"
+	armor = ARMOR_PLATE
 	smeltresult = null
 
 /obj/item/clothing/cloak/holysee

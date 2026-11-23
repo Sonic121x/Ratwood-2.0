@@ -1135,6 +1135,9 @@
 							. += span_aiprivradio("[m1]正[is_long ? "从[m2]两个穴口大量流出" : "从[m2]两个穴口滴落精液"]！")
 						else
 							. += span_aiprivradio("[m1]正[is_long ? "大量漏出" : "从[m2]下体滴落精液"]！")
+		var/obj/item/organ/eggs/belly_eggs = getorganslot(ORGAN_SLOT_EGGS)
+		if(user.client?.prefs?.oviposition && belly_eggs?.quantity >= 10 && get_location_accessible(src, BODY_ZONE_PRECISE_STOMACH))
+			. += span_aiprivradio("[capitalize(m2)]肚子鼓胀起来，表面凹凸不平！")
 		var/list/modular_lines = human_modular_examine_lines(user, observer_privilege, m1, m2, m3)
 		if(length(modular_lines))
 			. += modular_lines

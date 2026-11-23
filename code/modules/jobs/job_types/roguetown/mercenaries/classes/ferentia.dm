@@ -264,6 +264,15 @@
 	..()
 	to_chat(H, span_warning("佣兵行会里挤满了像你这样吃壮了身板、只会靠一把子蛮力挣马蒙的莽汉。头脑简单这词用来形容你最贴切，但你也确实拥有蛮横的力气和一根沉重棍棒。有时候，解决问题就只需要这些。"))
 	if(H.mind)
+		var/armor_options = list("普通护甲", "皮甲")
+		var/armor_choice = input(H, "选择你的护甲。", "保护好自己") as anything in armor_options
+		switch(armor_choice)
+			if("普通护甲")
+				armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
+				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
+			if("皮甲")
+				armor = /obj/item/clothing/suit/roguetown/armor/manual/resting/chest/thug //a leather armor.
+				shirt = /obj/item/clothing/suit/roguetown/armor/manual/resting/body/thug //a gambeson.
 		var/weapons = list("钢钉头锤", "钢战锤", "要什么棍棒？老子有这双手！")
 		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
 		switch(weapon_choice)
@@ -293,8 +302,6 @@
 	head = /obj/item/clothing/neck/roguetown/chaincoif/iron
 	mask = /obj/item/clothing/mask/rogue/facemask
 	neck = /obj/item/clothing/neck/roguetown/gorget
-	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
-	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
 	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
 	gloves = /obj/item/clothing/gloves/roguetown/plate

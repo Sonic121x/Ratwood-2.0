@@ -23,7 +23,7 @@
 			mace_weapons = "钢钉头锤 / 钢战锤与盾牌 / 巨型钉头锤 / 战斧 / 钢巨斧"
 		if("zizite")
 			blade_weapons = "双手大刀 / 长剑 / 刺剑 / 军刀 / 钢巨剑 / 钢匕首与盾牌"
-			phalanx_weapons = "长戟 / 长柄战斧 / 猎猪矛 / 多利短矛与盾牌 / 薙刀"
+			phalanx_weapons = "长戟 / 长柄战斧 / 猎猪矛 / 多利短矛与盾牌 / 薙刀 / 阿凡泰因钩镰"
 			mace_weapons = "钢钉头锤 / 钢战锤与盾牌 / 巨型钉头锤 / 战斧 / 钢巨斧"
 		if("noccite")
 			blade_weapons = "长剑 / 刺剑 / 军刀 / 钢巨剑 / 钢匕首与盾牌" // removed Twilight Fang as it does not exist.

@@ -178,7 +178,7 @@
 
 /obj/effect/proc_holder/spell/invoked/tug_of_war
 	name = "角力之链"
-	desc = "放出一条锁链，试图将目标拖拽到更近处。"
+	desc = "掷出一条锁链将目标拉近。神圣技能可提升其施放距离；更高的属性则能增强拖拽力度。"
 	overlay_icon = 'icons/mob/actions/ravoxmiracles.dmi'
 	action_icon = 'icons/mob/actions/ravoxmiracles.dmi'
 	overlay_state = "ravox_tug"
@@ -196,51 +196,33 @@
 	antimagic_allowed = FALSE
 	miracle = TRUE
 	devotion_cost = 25
-	var/pull_distance = 1
-	var/slowdown = 1
-
 /obj/effect/proc_holder/spell/invoked/tug_of_war/cast(list/targets, mob/living/user)
-	if(isliving(targets[1]))
-		var/mob/living/target = targets[1]
-		var/chance = 0
-		if(target.mob_biotypes & MOB_UNDEAD)
-			pull_distance++
-			chance += 20
-		if(ishuman(target))
-			var/mob/living/carbon/human/H = target
-			var/strdiff = user.STASTR - H.STASTR
-			var/enddiff = user.STAWIL - H.STAWIL
-			var/condiff = user.STACON - H.STACON
-			var/spddiff = user.STASPD - H.STASPD
-			var/fordiff = user.STALUC - H.STALUC
-
-			var/list/statdiffs = list(strdiff, enddiff, condiff, spddiff, fordiff)
-			var/count = 0
-			for(var/diff in statdiffs)
-				if(diff > 0)
-					chance += 10
-					count++
-				else if(diff < 0)
-					chance -= 10
-			var/holymod = user.get_skill_level(/datum/skill/magic/holy) * 10
-			pull_distance += floor((user.get_skill_level(/datum/skill/magic/holy) - 1) / 2)	//+1 pull dist at Jman and Master Holy skill
-			chance += holymod
-			user.visible_message(span_boldwarning("[user] 猛地一扯，从 [target] 身上延伸出的半透明锁链随之绷紧！"))
-			if(count > 3)	//More than half of the stats are in our favor.
-				pull_distance++
-				slowdown++
-			if(prob(chance))
-				H.throw_at(user, pull_distance, 1, H, FALSE)
-				H.visible_message(span_warning("[H] 的身体不受控制地被拖动了！"))
-				user.Beam(target,icon_state="chain",time=5)
-			else
-				H.visible_message(span_warning("[H] 硬生生稳住了身形！"))
-			H.Slowdown(slowdown)
-			return TRUE
+	if(!isliving(targets[1]) || targets[1] == user)
 		revert_cast()
 		return FALSE
-	revert_cast()
-	return FALSE
+	var/mob/living/target = targets[1]
+	var/pull_distance = 1 + max(0, floor((user.get_skill_level(/datum/skill/magic/holy) - 1) / 2))
+	var/slowdown = 1
+	if(target.mob_biotypes & MOB_UNDEAD)
+		pull_distance++
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
+		var/list/statdiffs = list(user.STASTR - H.STASTR, user.STAWIL - H.STAWIL, user.STACON - H.STACON, user.STASPD - H.STASPD, user.STALUC - H.STALUC)
+		var/count = 0
+		for(var/diff in statdiffs)
+			if(diff > 0)
+				count++
+		if(count >= 3) // More than half of the five stats are in our favor.
+			pull_distance++
+			slowdown++
+	user.visible_message(span_boldwarning("[user]猛拽着插在[target]身上的半透明锁链！"))
+	if(target.throw_at(user, pull_distance, 1, user, FALSE))
+		target.visible_message(span_warning("[target]的身体不由自主地动了起来！"))
+		user.Beam(target, icon_state = "chain", time = 5)
+	else
+		target.visible_message(span_warning("[target]稳住了身形！"))
+	target.Slowdown(slowdown)
+	return TRUE
 
 
 /obj/effect/proc_holder/spell/invoked/challenge

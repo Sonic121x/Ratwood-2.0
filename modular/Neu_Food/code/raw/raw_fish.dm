@@ -29,7 +29,7 @@
 	attack_verb = list("拍打", "猛击", "痛殴", "教训")
 	hitsound = list('sound/foley/slap.ogg', 'modular/Neu_Food/sound/meatslap.ogg')
 	chargetime = 1
-	penfactor = 0
+	penfactor = PEN_NONE
 	swingdelay = 0
 	icon_state = "fish"
 	item_d_type = "blunt"

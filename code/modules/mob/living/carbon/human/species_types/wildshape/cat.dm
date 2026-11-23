@@ -108,7 +108,7 @@
 	attack_verb = list("爪击", "划伤", "抓挠")
 	animname = "cut"
 	hitsound = "genslash"
-	penfactor = 10
+	penfactor = PEN_LIGHT
 	miss_text = "挥爪划过空气！"
 	miss_sound = "bluntswoosh"
 	item_d_type = "slash"

@@ -162,7 +162,7 @@
 	attack_verb = list("啃咬、噬咬")
 	animname = "cut"
 	hitsound = "genslash"
-	penfactor = 5
+	penfactor = PEN_LIGHT
 	miss_text = "用尖牙咬了个空！"
 	miss_sound = "bluntswoosh"
 	item_d_type = "slash"

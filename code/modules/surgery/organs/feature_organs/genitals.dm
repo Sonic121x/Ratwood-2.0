@@ -187,12 +187,26 @@
 		return FALSE
 	if(owner.stat == DEAD)
 		return FALSE
+	if(HAS_TRAIT(father, TRAIT_OVIPOSITOR))
+		owner.apply_status_effect(/datum/status_effect/egg_gestation, father)
+		to_chat(owner, span_love("我感到腹中涌起一股暖意，有什么东西正在我体内生长……"))
+		return FALSE
 	if(pregnant)
 		to_chat(owner, span_love("我再次感到腹中涌起一股暖意……"))
 		return FALSE
 	to_chat(owner, span_love("我感到腹中涌起一股暖意，我一定是怀孕了！"))
 	pregnant = TRUE
 	return TRUE
+
+/obj/item/organ/eggs
+	name = "卵"
+	desc = "可怕又黏滑的卵。"
+	icon = 'icons/obj/surgery.dmi'
+	icon_state = "ovieggs"
+	dropshrink = 0.8
+	zone = BODY_ZONE_PRECISE_GROIN
+	slot = ORGAN_SLOT_EGGS
+	var/quantity = 1
 
 /obj/item/organ/breasts
 	name = "乳房"

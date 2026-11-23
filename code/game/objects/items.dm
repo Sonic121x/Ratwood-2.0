@@ -566,7 +566,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		to_chat(usr, output)
 
 	if(href_list["explainshieldcoverage"])
-		var/output = span_info("从正面被动格挡来袭投射物的几率。\n盾牌格挡投射物时承受四分之一伤害，招架近战时承受固定耐久伤害。\n重型武器会对盾牌造成更多耐久伤害，取攻击者的对物破坏系数与护甲破坏系数中较高者作为倍率。")
+		var/output = span_info("被动格挡来袭投射物的几率。仅对正面有效。\n盾牌格挡投射物时承受四分之一伤害，招架近战时承受固定耐久伤害。\n重型武器会对盾牌造成更多耐久伤害——取攻击者的对物破坏系数与护甲破坏系数中较高者作为倍率。")
+		output += span_info("\n招架劈砍攻击时，盾牌将承受额外的耐久伤害。")
 		if(!usr.client.prefs.no_examine_blocks)
 			output = examine_block(output)
 		to_chat(usr, output)
@@ -1875,7 +1876,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		obj_destroyed = TRUE
 		burn()
 		return TRUE
-	if (!always_destroy && (ismob(loc) || isclothing(src) || istype(src, /obj/item/rogueweapon)))
+	if (ismob(loc) && !always_destroy)
 		return FALSE
 
 	obj_destroyed = TRUE

@@ -1,6 +1,7 @@
 /obj/effect/proc_holder/spell/invoked/fleshcraft
 	name = "血肉塑形"
-	desc = "以神术重塑血肉。"
+	desc = "通过操纵现有血肉，暂时重塑所选目标的外貌特征——任何凭空塑出的血肉都会在一周结束时自行脱落。\n\
+	此术最初是佩斯特拉的新进信徒用来制造人造人器官以供解剖研习的手段，后来一些头脑活络的佩斯特拉信徒从中发掘出了临时义体与容貌修饰的用途。" //The code here is so messy that I cannot fathomably arrange an actual in-game timer for the fleshcrafting to wear off. 
 	overlay_state = "fleshcraft"
 	overlay_icon = 'icons/mob/actions/pestramiracles.dmi'
 	action_icon = 'icons/mob/actions/pestramiracles.dmi'
@@ -82,7 +83,7 @@
 		caster.visible_message(span_notice("[caster]的血肉开始软化、移位。"), span_notice("你开始重塑自己的血肉……"))
 	else
 		caster.visible_message(span_notice("[caster]开始重塑[target]的血肉。"), span_notice("你开始重塑[target]的血肉……"))
-		to_chat(target, span_notice("你的血肉开始在皮肤下蠕动……"))
+		to_chat(target, span_notice("你的血肉开始在皮肤下蠕动——你明白这种改变并非长久之计。"))
 
 	if(!do_after(caster, 10 SECONDS, target = target))
 		to_chat(caster, span_warning("你的血肉塑形被打断了。"))

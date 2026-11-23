@@ -115,7 +115,7 @@
 	attack_verb = list("啃咬", "刺穿", "贯穿")
 	animname = "stab"
 	hitsound = "genslash"
-	penfactor = 20
+	penfactor = PEN_LIGHT
 	miss_text = "咬了个空！"
 	miss_sound = "bluntswoosh"
 	item_d_type = "stab"

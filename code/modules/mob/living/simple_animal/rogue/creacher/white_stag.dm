@@ -153,7 +153,7 @@
 	attack_verb = list("顶刺", "冲撞", "贯穿")
 	animname = "stab"
 	hitsound = 'sound/combat/rend_hit.ogg'
-	penfactor = 50
+	penfactor = PEN_BSTEEL
 	miss_text = "胡乱地用鹿角猛刺！"
 	miss_sound = "bladewooshmed"
 
