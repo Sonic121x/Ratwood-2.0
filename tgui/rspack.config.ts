@@ -119,12 +119,13 @@ export default defineConfig({
     }),
   ],
   resolve: {
-    // Modular TGUI sources can live outside the TGUI workspace.
+    //鼠木编辑开始 - 指南 Modular TGUI sources can live outside the TGUI workspace.
     modules: [
       'node_modules',
       path.resolve(dirname, 'packages/tgui/node_modules'),
       path.resolve(dirname, 'node_modules'),
     ],
+    //鼠木编辑结束
     extensions: ['.tsx', '.ts', '.js', '.jsx'],
     alias: {
       tgui: path.resolve(dirname, './packages/tgui'),

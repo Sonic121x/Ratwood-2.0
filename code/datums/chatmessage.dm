@@ -136,6 +136,7 @@
 
 	if(extra_classes.Find("mindlink"))
 		font_size = 5
+	//鼠木编辑开始 - 威廉皇帝堡和德意志战吼
 	var/font_family = "\"Pterra\""
 	if(extra_classes.Find("fortress-warcry"))
 		font_family = "\"New Rocker\", \"Pterra\""
@@ -147,7 +148,7 @@
 	// Construct text
 	var/static/regex/html_metachars = new(@"&[A-Za-z]{1,7};", "g")
 	var/complete_text = "<span class='center maptext [extra_classes.Join(" ")]' style='color: [tgt_color]; font-size:[font_size]pt; font-family:[font_family]; text-shadow:0 0 5px #000,0 0 5px #000,0 0 5px #000,0 0 5px #000;'>[text]</span>"
-
+	//鼠木编辑结束
 	var/mheight
 	WXH_TO_HEIGHT(owned_by.MeasureText(complete_text, null, CHAT_MESSAGE_WIDTH), mheight)
 	if(!VERB_SHOULD_YIELD)

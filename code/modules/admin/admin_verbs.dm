@@ -179,7 +179,7 @@ GLOBAL_LIST_INIT(admin_verbs_server, world.AVerbsServer())
 GLOBAL_PROTECT(admin_verbs_server)
 /world/proc/AVerbsServer()
 	return list(
-	/client/proc/z121_reload_guide_catalog,
+	/client/proc/z121_reload_guide_catalog, //鼠木编辑 - 指南
 	/datum/admins/proc/startnow,
 	/datum/admins/proc/restart,
 	/datum/admins/proc/end_round,
