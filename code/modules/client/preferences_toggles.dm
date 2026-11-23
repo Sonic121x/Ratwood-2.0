@@ -522,7 +522,7 @@
 			var/mob/living/carbon/human/H = mob
 			H.chastity_device?.sync_generated_key_metadata(H, mob)
 		to_chat(src, span_boldwarning("你已接受永久束缚的条款。唯有钥匙才能带来自由。"))
-		log_game("[key_name(src)] enabled permanent chastity binding.")
+		log_game("[key_name(src)]启用了永久贞操束缚。")
 		message_admins("[key_name_admin(src)] 启用了永久贞操束缚。")
 	else
 		// Disabling requires the humiliation prayer
@@ -543,7 +543,7 @@
 			to_chat(src, span_warning("伊欧拉拒绝了你不完整的祷文。你必须逐字照原文诵念。"))
 			to_chat(src, span_notice("你输入了：\"[prayer_attempt]\""))
 			to_chat(src, span_notice("所需祷文：\"[sacred_prayer]\""))
-			log_game("[key_name(src)] failed the humiliation prayer (incorrect text).")
+			log_game("[key_name(src)]念错了羞辱祷词，祈祷失败。")
 			return
 
 		// They did it! The humiliation is complete
@@ -554,7 +554,7 @@
 			H.chastity_device?.sync_generated_key_metadata(H)
 		to_chat(src, span_boldnotice("伊欧拉听到了你可怜的恳求，怜悯了你。永久束缚已被解除。"))
 		to_chat(src, span_notice("你已撤销永久束缚。现在可以再次用凡俗手段尝试解锁。"))
-		log_game("[key_name(src)] disabled permanent chastity binding via humiliation prayer.")
+		log_game("[key_name(src)]通过念诵羞辱祷词解除了永久贞操束缚。")
 		message_admins("[key_name_admin(src)] 通过念诵羞辱祷词解除了永久贞操束缚。")
 
 /client/verb/toggle_extreme_ERP()// toggles gore, ryona, and other extreme content in the ERP panel. This is separate from the regular ERP toggle for users who want to avoid just the extreme content but are okay with milder stuff.
@@ -632,16 +632,16 @@
 			to_chat(src, "不再显示生殖器与体毛描述的颜色。")
 
 /client/verb/toggle_oviposition()
-	set category = "Options"
-	set name = "Toggle Oviposition Content"
+	set category = "选项"
+	set name = "切换产卵相关内容"
 	set hidden = 1
 	if(prefs)
 		prefs.oviposition = !prefs.oviposition
 		prefs.save_preferences()
 		if(prefs.oviposition)
-			to_chat(src, "Oviposition content enabled.")
+			to_chat(src, "已启用产卵相关内容。")
 		else
-			to_chat(src, "Oviposition content disabled.")
+			to_chat(src, "已关闭产卵相关内容。")
 
 /client/verb/toggle_edging() // Toggles edging content in the ERP panel, for psydonites who clearly can't ENDURE.
 	set category = "选项"

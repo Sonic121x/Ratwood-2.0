@@ -118,14 +118,14 @@
 	icon_state = "fenbig"
 	name = "耳廓狐(大)"
 	color_keys = 3
-	color_key_names = list("Ears", "Inner", "Fluff")
+	color_key_names = list("耳朵", "内耳", "绒毛")
 	relevant_layers = list(BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/ears/big/fennec_bigger
 	icon_state = "fenbig2"
 	name = "耳廓狐(更大)"
 	color_keys = 3
-	color_key_names = list("Ears", "Inner", "Fluff")
+	color_key_names = list("耳朵", "内耳", "绒毛")
 	relevant_layers = list(BODY_ADJ_LAYER)
 
 /datum/sprite_accessory/ears/fish

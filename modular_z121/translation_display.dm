@@ -55,6 +55,19 @@
 	return isnull(choice) ? null : options[choice]
 
 /proc/get_update_choice_display(value)
+	var/static/list/weapons = list(
+		"Dual Shamshirs" = "双持沙姆希尔弯刀",
+		"Shalal sabre & Shield" = "沙拉尔弯刀与盾牌",
+		"Spear" = "长矛",
+		"Dory & Shield" = "多利短矛与盾牌",
+		"Steel Mace" = "钢钉头锤",
+		"Steel Warhammer & Shield" = "钢战锤与盾牌",
+		"Grand Mace" = "巨型钉头锤",
+		"Battle Axe" = "战斧",
+		"Steel Greataxe" = "钢巨斧"
+	)
+	if(value in weapons)
+		return weapons[value]
 	if(value == "Arbalest")
 		return "重弩手"
 	if(value == "Fusilier")
@@ -80,6 +93,18 @@
 			label = "[label] ([value])"
 		options[label] = value
 	var/choice = tgui_input_list(user, prompt, title, options)
+	return choice ? options[choice] : null
+
+/proc/input_branding_zone(mob/user, prompt, list/zones, timeout)
+	var/list/options = list()
+	var/list/buttons = list()
+	for(var/zone in zones)
+		var/label = GLOB.branding_zone_display_names[zone] || zone
+		if(label in options)
+			label = "[label] ([zone])"
+		options[label] = zone
+		buttons += label
+	var/choice = tgui_alert(user, prompt, "请于[DisplayTimeText(timeout)]内选择！", buttons, timeout)
 	return choice ? options[choice] : null
 
 /proc/input_mannerism_display(mob/user, list/mannerisms)

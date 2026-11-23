@@ -139,9 +139,9 @@
 /obj/item/rogueweapon/surgery/cautery/examine(mob/user)
 	. = ..()
 	if(maxfuel)
-		. += span_notice("[name] has [fuel] out of [maxfuel] fuel avaliable.")
+		. += span_notice("[name]的燃料还剩 [fuel]/[maxfuel]。")
 	if(!firedust)
-		. += span_notice("[name] can be made to keep the heat longer with help of some fire dust.")
+		. += span_notice("加入火之精质可以让[name]保温更久。")
 	if(heated)
 		. += span_warning("尖端摸起来很烫。")
 
@@ -178,7 +178,7 @@
 	if(fuel >= 1 && !heated)
 		fuel = fuel - 1
 		fire_act(1)
-		to_chat(user, span_notice("I use some of the fuel to heat up the caughtery. Caughtery has [fuel] fuel left."))
+		to_chat(user, span_notice("我用燃料加热了烙铁，还剩 [fuel] 份燃料。"))
 
 /obj/item/rogueweapon/surgery/cautery/pre_attack(atom/A, mob/living/user, params)
 	if(!istype(user.a_intent, /datum/intent/use))
@@ -570,24 +570,24 @@ GLOBAL_LIST_INIT(branding_zone_display_names, list("Head" = "头部", "Chest" = 
 	switch(action_type)
 		if("attempt")
 			if(remove_existing_brand)
-				log_combat(user, target, "Brand removal attempt on [final_answer] ([branding_delay]s), ownership before: [ownership_state]")
+				log_combat(user, target, "尝试去除[GLOB.branding_zone_display_names[final_answer] || final_answer]的烙印（[DisplayTimeText(branding_delay)]），操作前：[ownership_state]")
 			else
-				log_combat(user, target, "Branding attempt: \"[branding_text]\" on [final_answer] ([branding_delay]s), requested slave mark: [enslave], ownership before: [ownership_state]")
+				log_combat(user, target, "尝试在[GLOB.branding_zone_display_names[final_answer] || final_answer]烙上「[branding_text]」（[DisplayTimeText(branding_delay)]），要求添加奴隶印记：[enslave ? "是" : "否"]，操作前：[ownership_state]")
 		if("aborted")
 			if(remove_existing_brand)
-				log_combat(user, target, "Brand removal aborted on [final_answer], ownership at abort: [ownership_state]")
+				log_combat(user, target, "中止去除[GLOB.branding_zone_display_names[final_answer] || final_answer]的烙印，中止时：[ownership_state]")
 			else
-				log_combat(user, target, "Branding aborted: \"[branding_text]\" on [final_answer], ownership at abort: [ownership_state]")
+				log_combat(user, target, "中止在[GLOB.branding_zone_display_names[final_answer] || final_answer]烙上「[branding_text]」，中止时：[ownership_state]")
 		if("part_destroyed")
 			if(remove_existing_brand)
-				log_combat(user, target, "Brand removal failed (part destroyed) on [final_answer], ownership at abort: [ownership_state]")
+				log_combat(user, target, "未能去除烙印（[GLOB.branding_zone_display_names[final_answer] || final_answer]已损毁），中止时：[ownership_state]")
 			else
-				log_combat(user, target, "Branding part destroyed: \"[branding_text]\" on [final_answer], ownership at abort: [ownership_state]")
+				log_combat(user, target, "未能烙上「[branding_text]」（[GLOB.branding_zone_display_names[final_answer] || final_answer]已损毁），中止时：[ownership_state]")
 		if("success")
 			if(remove_existing_brand)
-				log_combat(user, target, "Brand removal successful on [final_answer], ownership after: [ownership_state]")
+				log_combat(user, target, "已去除[GLOB.branding_zone_display_names[final_answer] || final_answer]的烙印，完成后：[ownership_state]")
 			else
-				log_combat(user, target, "Branded successful: \"[branding_text]\" on [final_answer], ownership after: [ownership_state]")
+				log_combat(user, target, "已在[GLOB.branding_zone_display_names[final_answer] || final_answer]烙上「[branding_text]」，完成后：[ownership_state]")
 
 /obj/item/rogueweapon/surgery/cautery/branding/pre_attack(atom/A, mob/living/user, params)
 	if(!istype(user.a_intent, /datum/intent/use))
@@ -644,7 +644,7 @@ GLOBAL_LIST_INIT(branding_zone_display_names, list("Head" = "头部", "Chest" = 
 	var/final_answer // String. The button the user clicks on when prompted which part to brand.
 
 	// Prompt before do_after
-	final_answer = tgui_alert(user, "你想要[remove_existing_brand ? "移除" : "烙印"]什么？", "请于[DisplayTimeText(10 SECONDS)]内选择！", zone_options, 10 SECONDS)
+	final_answer = input_branding_zone(user, remove_existing_brand ? "要去除哪个部位的烙印？" : "要在哪个部位烙印？", zone_options, 10 SECONDS)
 
 	if(!final_answer || final_answer == "取消")
 		return TRUE
@@ -655,22 +655,22 @@ GLOBAL_LIST_INIT(branding_zone_display_names, list("Head" = "头部", "Chest" = 
 			if("Breasts", "Dick", "Vagina", "Testes")
 				if(!target.client)
 					to_chat(user, span_warning("[target]现在无法在这里接受烙印。"))
-					log_combat(user, target, "Branding on offline mob blocked: \"[branding_text]\" on [final_answer]")
+					log_combat(user, target, "目标离线，已阻止在[GLOB.branding_zone_display_names[final_answer] || final_answer]烙上「[branding_text]」")
 					return TRUE
 				if(!target.client.prefs?.sensitive_brands)
 					to_chat(user, span_warning("[target]已禁用敏感部位烙印。"))
 					to_chat(target, span_warning("一次对我[GLOB.branding_zone_display_names[final_answer] || final_answer]的烙印尝试被偏好设置阻止了。"))
-					log_combat(user, target, "Branding prefblocked: \"[branding_text]\" on [final_answer]")
+					log_combat(user, target, "目标的偏好设置阻止了在[GLOB.branding_zone_display_names[final_answer] || final_answer]烙上「[branding_text]」")
 					return TRUE
 			if("Head")
 				if(!target.client)
 					to_chat(user, span_warning("[target]现在无法在这里接受烙印。"))
-					log_combat(user, target, "Branding on offline mob blocked: \"[branding_text]\" on [final_answer]")
+					log_combat(user, target, "目标离线，已阻止在[GLOB.branding_zone_display_names[final_answer] || final_answer]烙上「[branding_text]」")
 					return TRUE
 				if(!target.client.prefs?.facial_brands)
 					to_chat(user, span_warning("[target]已禁用面部烙印。"))
 					to_chat(target, span_warning("一次对我[GLOB.branding_zone_display_names[final_answer] || final_answer]的烙印尝试被偏好设置阻止了。"))
-					log_combat(user, target, "Branding prefblocked: \"[branding_text]\" on [final_answer]")
+					log_combat(user, target, "目标的偏好设置阻止了在[GLOB.branding_zone_display_names[final_answer] || final_answer]烙上「[branding_text]」")
 					return TRUE
 
 	if(!remove_existing_brand && enslave && target_has_active_ownership_mark(target))
@@ -690,7 +690,7 @@ GLOBAL_LIST_INIT(branding_zone_display_names, list("Head" = "头部", "Chest" = 
 			branding_delay -= 4 SECONDS // quicker to brand yourself using a good tool
 	send_branding_attempt_messages(user, target, final_answer, branding_self)
 
-	var/ownership_state_before = target_has_active_ownership_mark(target) ? "owned" : "not owned"
+	var/ownership_state_before = target_has_active_ownership_mark(target) ? "有归属印记" : "无归属印记"
 	log_branding_action(user, target, "attempt", final_answer, branding_text, branding_delay, ownership_state_before, enslave)
 
 	if(!do_after(user, branding_delay, target = target))
@@ -751,7 +751,7 @@ GLOBAL_LIST_INIT(branding_zone_display_names, list("Head" = "头部", "Chest" = 
 
 	target.branded = target_has_any_branding(target) // makes examine check for branding marks
 	update_slave_mark_trait(target)
-	var/ownership_state_after = target_has_active_ownership_mark(target) ? "owned" : "not owned"
+	var/ownership_state_after = target_has_active_ownership_mark(target) ? "有归属印记" : "无归属印记"
 	target.apply_damage(branding_damage, BURN, branding_part)
 	if(!branding_self && apply_knockdown)
 		target.Knockdown(1 SECONDS)

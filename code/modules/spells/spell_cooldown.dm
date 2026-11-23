@@ -1165,7 +1165,7 @@
 	next_hold_shake = 0
 	if(owner)
 		if(owner.ckey)
-			owner.log_message("started charging [name].", LOG_ATTACK)
+			owner.log_message("开始为[name]蓄力。", LOG_ATTACK)
 		owner.tempfixeye = TRUE
 		if(!owner.fixedeye)
 			owner.nodirchange = TRUE

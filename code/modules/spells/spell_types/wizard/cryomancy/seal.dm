@@ -20,7 +20,7 @@
 	primary_resource_type = SPELL_COST_STAMINA
 	primary_resource_cost = SPELLCOST_MAJOR_AOE
 
-	invocations = list("Gelu Silentium!")
+	invocations = list("寒霜，封声！")
 	invocation_type = INVOCATION_WHISPER
 	ignore_can_speak = TRUE
 
@@ -107,7 +107,7 @@
 	return TRUE
 
 /obj/effect/seal_field
-	name = "silence"
+	name = "静默力场"
 	anchored = TRUE
 	density = FALSE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

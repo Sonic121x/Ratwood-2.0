@@ -1340,13 +1340,13 @@
 		if(L.cmode)
 			visible_message(span_warning("[src]猛地挣脱，将[L]摔倒在地！"), \
 				span_warning("我猛地挣脱，将[L]摔倒在地！"), null, null, L)
-			log_combat(src, L, "broke pacifist grab & combat punished")
+			log_combat(src, L, "挣脱和平主义者的抓握，并将对方摔倒")
 			playsound(src.loc, 'sound/combat/tf2crit.ogg', 50, TRUE, -1) // free dopamine shot for ruining a grappler pacifist's day
 			L.Knockdown(20)
 		else
 			visible_message(span_warning("[src]轻而易举地从[L]小心谨慎的抓握中滑脱！"), \
 				span_warning("我轻而易举地从[L]小心谨慎的抓握中滑脱！"), null, null, L)
-			log_combat(src, L, "broke pacifist grab")
+			log_combat(src, L, "挣脱了和平主义者的抓握")
 
 		L.changeNext_move(CLICK_CD_GRABBING)
 		playsound(src.loc, 'sound/combat/grabbreak.ogg', 50, TRUE, -1)

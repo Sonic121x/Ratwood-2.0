@@ -98,5 +98,5 @@
 		chain += "[frame.proc.type][frame.file ? " ([frame.file]:[frame.line])" : ""]"
 	return chain.Join(", ")
 #else
-	return "unknown (call chain needs BYOND 516.1661+)"
+	return "未知（查看调用链需要 BYOND 516.1661 或更高版本）"
 #endif

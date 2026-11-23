@@ -315,7 +315,7 @@ GLOBAL_LIST_INIT(ritualslist, build_zizo_rituals())
 	if(lackeys > 3 && !assistant)
 		to_chat(user, span_warning("要招募更多信徒，须有另一名教徒站在符印上协助你举行仪式。"))
 		return
-	var/alert = "Yield"
+	var/alert = "顺从"
 	if(!istype(target.patron, /datum/patron/inhumen/zizo) && !(target.client && (ROLE_ZIZOIDCULTIST in target.client.prefs.be_special)))
 		alert = tgui_alert(target, "你将得见真相。你要反抗吗？", "???", list("顺从", "反抗"))
 	target.Immobilize(3 SECONDS)
@@ -2613,7 +2613,7 @@ GLOBAL_LIST_EMPTY(zizo_proxy)
 		if(A.light_on && A.light_outer_range)
 			zizo_flicker(A)
 	user.playsound_local(user, 'sound/vo/cult/tesa.ogg', 25)
-	user.whisper("O'vena tesa...")
+	user.whisper("奥维纳·泰萨……")
 	pickritual.invoke(user, loc)
 
 /obj/effect/decal/cleanable/sigil/N

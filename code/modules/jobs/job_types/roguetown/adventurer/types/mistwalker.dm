@@ -47,7 +47,7 @@
 
 /datum/outfit/job/roguetown/wretch/mistwalker/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("Failed in your duty, outcast from whence you came you wander. Only the steel in your hand can be trusted."))
+	to_chat(H, span_warning("你没能守住神社，被故乡放逐，从此四处漂泊。如今你唯一信得过的，只有手中的刀。"))
 
 	head = /obj/item/clothing/head/roguetown/mentorhat
 	mask = /obj/item/clothing/mask/rogue/facemask/steel/kazengun //let them have this
@@ -132,13 +132,13 @@
 
 /obj/effect/proc_holder/spell/self/bloodlet
 	source_aspect = /datum/magic_aspect/pseudo/mistwalker
-	name = "Red Tides"
-	desc = "Take a brief moment to open yourself up to the flow of battle, both in body and mynd. Allow the raging tides of blood to wash through you and embrace the current driven by its dissipation. Teetering on the edge of sanity and heresy, Gaiyuke will find no joy in your suffering, only the resolve to see it through."
+	name = "血潮"
+	desc = "片刻凝神，将身心交给战局的起落。任血潮冲过全身，退去时顺势出招。你徘徊在理智与异端的边缘，盖尤克无意欣赏你的痛苦，只看你有没有撑到底的决心。"
 	antimagic_allowed = TRUE
 	clothes_req = FALSE
 	chargetime = 3 SECONDS
 	recharge_time = 5 MINUTES
-	invocations = list("surrenders their lyfeblood to the tide of battle!")
+	invocations = list("将自己的鲜血献给汹涌的战潮！")
 	invocation_type = "emote"
 
 /obj/effect/proc_holder/spell/self/bloodlet/cast(mob/living/carbon/human/user)
@@ -148,16 +148,16 @@
 		revert_cast()
 		return FALSE
 	if(user.get_blood_volume() <= BLOOD_VOLUME_OKAY) //336
-		to_chat(user, span_warning("I can't let go of more willingly!"))
+		to_chat(user, span_warning("我已经没有多余的血可放了！"))
 		revert_cast()
 		return FALSE
 	if(!do_after(user, 3 SECONDS, TRUE, null, TRUE, null, FALSE, FALSE, TRUE))
-		to_chat(user, span_warning("Action interrupted!"))
+		to_chat(user, span_warning("我凝神时被打断了！"))
 		revert_cast()
 		return FALSE
 	user.set_blood_volume(max(user.get_blood_volume()-150, 0)) //226
 	user.apply_status_effect(/datum/status_effect/buff/empowered_strike, bloodbuff_duration)
-	to_chat(user, span_notice("Calm as the mountain lake. Inevitable as the raging tides."))
+	to_chat(user, span_notice("心如山中静湖，势如怒潮难挡。"))
 	playsound(user, 'sound/combat/hits/bladed/genthrust (1).ogg', 100, TRUE)
 	return TRUE
 

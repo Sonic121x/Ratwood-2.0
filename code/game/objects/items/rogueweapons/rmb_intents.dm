@@ -184,7 +184,7 @@
 	if(user.has_status_effect(/datum/status_effect/debuff/feintcd))
 		return
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_warning(pick("I will not invite violence with false intent.", "I will not provoke bloodshed through trickery.", "I cannot bring myself to threaten another, even falsely.", "I will not pretend to attack another.")))
+		to_chat(user, span_warning(pick("我不愿用佯攻挑起争斗。", "我不愿用诡计引人流血。", "就算只是虚张声势，我也做不到出手威胁别人。", "我不愿假装攻击别人。")))
 		return
 	var/mob/living/L = target
 	if (L.client && !L.cmode && !L.has_status_effect(/datum/status_effect/buff/clash))
