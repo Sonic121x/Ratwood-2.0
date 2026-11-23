@@ -334,7 +334,7 @@
 					twistlimb(user)
 		if(/datum/intent/grab/twistitem)
 			if(HAS_TRAIT(user, TRAIT_PACIFISM))
-				to_chat(user, span_warning("Why would I do this! Am I insane?!"))
+				to_chat(user, span_warning("我为什么要这么做？我疯了吗？！"))
 				return FALSE
 			if(user.buckled)
 				to_chat(user, span_warning("我被固定住了，无法这样做！"))
@@ -551,7 +551,7 @@
 
 /obj/item/grabbing/proc/headbutt(mob/living/carbon/human/H)
 	if(HAS_TRAIT(H, TRAIT_PACIFISM))
-		to_chat(H, span_warning("Why would I do this! Am I insane?!"))
+		to_chat(H, span_warning("我为什么要这么做？我疯了吗？！"))
 		return FALSE
 	var/mob/living/carbon/C = grabbed
 	var/obj/item/bodypart/Chead = C.get_bodypart(BODY_ZONE_HEAD)
@@ -577,7 +577,7 @@
 
 /obj/item/grabbing/proc/twistitemlimb(mob/living/user) //implies limb_grabbed and sublimb are things
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_warning("Why would I do this! Am I insane?!"))
+		to_chat(user, span_warning("我为什么要这么做？我疯了吗？！"))
 		return FALSE
 	var/mob/living/M = grabbed
 	var/damage = rand(5,10)
@@ -637,7 +637,7 @@
 				user.Move_Pulled(T)
 		if(/datum/intent/grab/smash)
 			if(HAS_TRAIT(user, TRAIT_PACIFISM))
-				to_chat(user, span_warning("Why would I do this! Am I insane?!"))
+				to_chat(user, span_warning("我为什么要这么做？我疯了吗？！"))
 				return FALSE
 			if(!(user.mobility_flags & MOBILITY_STAND))
 				to_chat(user, span_warning("我得先站起来……"))
@@ -672,7 +672,7 @@
 	user.changeNext_move(CLICK_CD_GRABBING)
 	if(user.used_intent.type == /datum/intent/grab/smash)
 		if(HAS_TRAIT(user, TRAIT_PACIFISM))
-			to_chat(user, span_warning("Why would I do this! Am I insane?!"))
+			to_chat(user, span_warning("我为什么要这么做？我疯了吗？！"))
 			return FALSE
 		if(isstructure(O) && O.blade_dulling != DULLING_CUT)
 			if(!(user.mobility_flags & MOBILITY_STAND))
@@ -689,7 +689,7 @@
 
 /obj/item/grabbing/proc/smashlimb(atom/A, mob/living/user) //implies limb_grabbed and sublimb are things
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		to_chat(user, span_warning("Why would I do this! Am I insane?!"))
+		to_chat(user, span_warning("我为什么要这么做？我疯了吗？！"))
 		return FALSE
 	if(user.badluck(4))
 		badluckmessage(user)

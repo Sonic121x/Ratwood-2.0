@@ -65,7 +65,7 @@
 /// 备用落地入口：右键扫帚图标不方便时，也可以从物品右键菜单里选“落地”。
 /obj/item/broom/flying/verb/land()
 	set name = "落地"
-	set category = "Object"
+	set category = "物品"
 	set src in usr
 	var/mob/living/carbon/human/H = usr
 	if(istype(H) && flyer_ref?.resolve() == H)

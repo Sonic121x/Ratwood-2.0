@@ -15,7 +15,7 @@
 	primary_resource_type = SPELL_COST_STAMINA
 	primary_resource_cost = SPELLCOST_MINOR_PROJECTILE
 
-	invocations = list("Valtarem!")
+	invocations = list("瓦尔塔雷姆！")
 	invocation_type = INVOCATION_SHOUT
 
 	charge_required = FALSE

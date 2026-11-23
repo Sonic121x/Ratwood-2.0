@@ -205,7 +205,7 @@
 	name = "狂战士"
 
 /datum/magic_aspect/pseudo/mistwalker
-	name = "Mistwalker"
+	name = "雾行者"
 
 GLOBAL_LIST_INIT(magic_aspects_major, init_magic_aspects(ASPECT_MAJOR))
 GLOBAL_LIST_INIT(magic_aspects_minor, init_magic_aspects(ASPECT_MINOR))

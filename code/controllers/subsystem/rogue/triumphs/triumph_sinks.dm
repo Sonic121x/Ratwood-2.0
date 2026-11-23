@@ -50,7 +50,7 @@
 	dat += " <a href='byond://?_src_=holder;[HrefToken()];triumph_sinks=1'>刷新</a><hr>"
 	dat += "<table style='width: 100%;'><tr><th style='text-align: left;'>来源</th><th style='text-align: right;'>已消耗凯旋点</th></tr>"
 	for(var/source in totals)
-		dat += "<tr><td>[source]</td><td style='text-align: right;'>[totals[source]]</td></tr>"
+		dat += "<tr><td>[source == TRIUMPH_SINK_MASSIVE_PINTLE ? "巨根" : source]</td><td style='text-align: right;'>[totals[source]]</td></tr>"
 	dat += "</table>"
 	var/datum/browser/popup = new(src, "triumph_sinks", "凯旋点消耗", 400, 400)
 	popup.set_content(dat.Join())

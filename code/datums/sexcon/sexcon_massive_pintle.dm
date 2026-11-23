@@ -43,7 +43,7 @@ GLOBAL_LIST_INIT(massive_pintle_mouth_panic_lines, list(
 		names += "裂鞘"
 	if(part & SEX_PART_JAWS)
 		names += "嘴"
-	return english_list(names, nothing_text = "身体")
+	return english_list(names, nothing_text = "身体", and_text = "和", comma_text = "、")
 
 /// For action between us and our target: whoever a massive pintle is going into, or null.
 /// The receiver is the target when our cock goes in, or us when we ride or suck theirs.
@@ -94,7 +94,7 @@ GLOBAL_LIST_INIT(massive_pintle_mouth_panic_lines, list(
 	else
 		user.visible_message(span_warning("[user]想把[target]那根巨大的[cock_word]纳入自己的[orifice]，可它实在太大了！"), vision_distance = vision)
 	to_chat(receiver, span_warning("塞不进去……！"))
-	log_combat(user, target, "Failed to start sex action (massive pintle too big): [action.name]")
+	log_combat(user, target, "因巨根过大，无法开始互动：[action.name]")
 	return TRUE
 
 /// Each thrust, maybe gives the receiver of a massive pintle a private thought. The pool depends on our force and on whether it's their mouth.

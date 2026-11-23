@@ -267,7 +267,7 @@
 	switch(subclass_selected)
 		if("blade")
 			var/blade_weapons = list("Dual Shamshirs", "Shalal sabre & Shield")
-			var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in blade_weapons
+			var/weapon_choice = input_translation_choice(H, "选择你的武器。", "执兵而起", blade_weapons)
 			switch(weapon_choice)
 				if("Dual Shamshirs")
 					ADD_TRAIT(H, TRAIT_DUALWIELDER, TRAIT_GENERIC)
@@ -281,7 +281,7 @@
 					backl = /obj/item/rogueweapon/shield/tower/metal
 		if("phalangite")
 			var/polearm_weapons = list("Spear", "Dory & Shield")
-			var/polearm_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in polearm_weapons
+			var/polearm_choice = input_translation_choice(H, "选择你的武器。", "执兵而起", polearm_weapons)
 			switch(polearm_choice)
 				if("Spear")
 					r_hand = /obj/item/rogueweapon/spear
@@ -291,7 +291,7 @@
 					backl = /obj/item/rogueweapon/shield/tower/metal
 		if("macebearer")
 			var/mace_weapons = list("Steel Mace", "Steel Warhammer & Shield", "Grand Mace", "Battle Axe", "Steel Greataxe")
-			var/mace_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in mace_weapons
+			var/mace_choice = input_translation_choice(H, "选择你的武器。", "执兵而起", mace_weapons)
 			var/picked_axe = FALSE
 			switch(mace_choice)
 				if("Steel Mace")

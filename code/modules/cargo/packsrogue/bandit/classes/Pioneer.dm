@@ -111,7 +111,7 @@
 	contains = list(/obj/item/rogueweapon/stoneaxe/woodcut/pick)
 
 /datum/supply_pack/rogue/Pioneer/saperka
-	name = "Saperka"
+	name = "萨佩尔卡"
 	cost = 30
 	contains = list(/obj/item/rogueweapon/shovel/saperka)
 
@@ -349,37 +349,37 @@
 // construction supplies
 
 /datum/supply_pack/rogue/Pioneer/iron
-	name = "Iron bar"
+	name = "铁锭"
 	cost = 3
 	contains = list(/obj/item/ingot/iron)
 
 /datum/supply_pack/rogue/Pioneer/bronze
-	name = "Bronze bar"
+	name = "青铜锭"
 	cost = 7
 	contains = list(/obj/item/ingot/bronze)
 
 /datum/supply_pack/rogue/Pioneer/rocks
-	name = "A bunch of rocks"
+	name = "一堆石块"
 	cost = 10
 	contains = list(/obj/item/natural/stone, /obj/item/natural/stone, /obj/item/natural/stone, /obj/item/natural/stone, /obj/item/natural/stone, /obj/item/natural/rock,
 	/obj/item/natural/stone, /obj/item/natural/stone, /obj/item/natural/stone, /obj/item/natural/stone, /obj/item/natural/stone, /obj/item/natural/rock)
 
 /datum/supply_pack/rogue/Pioneer/logs
-	name = "A bunch of logs"
+	name = "一堆原木"
 	cost = 10
 	contains = list(/obj/item/grown/log/tree, /obj/item/grown/log/tree, /obj/item/grown/log/tree, /obj/item/grown/log/tree, /obj/item/grown/log/tree, /obj/item/grown/log/tree)
 
 /datum/supply_pack/rogue/Pioneer/fibers
-	name = "A bunch of fibers"
+	name = "一捆纤维"
 	cost = 10
 	contains = list(/obj/item/natural/bundle/fibers/full, /obj/item/natural/bundle/fibers/full, /obj/item/natural/bundle/fibers/full, /obj/item/natural/bundle/fibers/full)
 
 /datum/supply_pack/rogue/Pioneer/coal
-	name = "A bunch of coal"
+	name = "一堆煤"
 	cost = 10
 	contains = list(/obj/item/rogueore/coal, /obj/item/rogueore/coal, /obj/item/rogueore/coal, /obj/item/rogueore/coal)
 
 /datum/supply_pack/rogue/Pioneer/cart
-	name = "A cart to carry all that"
+	name = "运料手推车"
 	cost = 15
 	contains = list(/obj/structure/handcart)
