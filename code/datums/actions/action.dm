@@ -13,8 +13,8 @@
 	var/datum/target
 	/// Where any buttons we create should be by default. Accepts screen_loc and location defines
 	var/default_button_position = SCRN_OBJ_IN_LIST
-	/// Keeps this action after player-sortable actions in the action bar.
-	var/keep_at_end = FALSE
+	/// Keeps this action after player-sortable actions in the action bar. 
+	var/keep_at_end = FALSE //鼠木编辑 - 指南
 	/// This is who currently owns the action, and most often, this is who is using the action if it is triggered
 	/// This can be the same as "target" but is not ALWAYS the same - this is set and unset with Grant() and Remove()
 	var/mob/owner
@@ -283,7 +283,7 @@
 	var/datum/hud/our_hud = viewer.hud_used
 	if(viewers[our_hud]) // Already have a copy of us? go away
 		return
-
+	//鼠木编辑开始 - 指南
 	LAZYINITLIST(viewer.actions)
 	if(keep_at_end)
 		viewer.actions |= src
@@ -300,7 +300,7 @@
 			break
 		count--
 	return count
-
+//鼠木编辑结束
 /// Adds our action button to the screen of the passed viewer.
 /datum/action/proc/ShowTo(mob/viewer)
 	var/datum/hud/our_hud = viewer.hud_used

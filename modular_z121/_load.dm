@@ -397,3 +397,4 @@
 // 枪火击溃，未来作为boss掉落物
 #include "weapons/rabbit_watch.dm"
 // 兔子怀表，用来组合枪火击溃，作为弹匣，boss掉落物
+#include "kaiser_wilhelm/fortress.dm"
