@@ -1052,7 +1052,7 @@
 		. += "[display1] [display2]"
 
 		if(origin && origin != "Unknown")
-			. += span_info("[capitalize(m2)]祖籍是[origin]。")
+			. += span_info("[capitalize(m2)]祖籍是[get_origin_display_name(origin)]。")
 
 		if(HAS_TRAIT(src, TRAIT_WITCH))
 			if(HAS_TRAIT(user, TRAIT_NOBLE) || HAS_TRAIT(user, TRAIT_INQUISITION) || HAS_TRAIT(user, TRAIT_WITCH))

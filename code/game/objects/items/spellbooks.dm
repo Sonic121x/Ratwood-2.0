@@ -147,9 +147,9 @@ Intended to be a reward or a goal for pure mage, allowing them to rebind their a
 
 /obj/item/rogueweapon/spellbook/attack_right(mob/user)
 	if(!picked)
-		var/list/designlist = list("green", "yellow", "brown", "steel", "gem", "skin", "mimic", "wyrdbark", "sunfire", "abyssal", "cinder", "vessel", "edgebound", "sovereign")
+		var/list/designlist = get_spellbook_design_names()
 		var/the_time = world.time
-		var/design = tgui_input_list(user, "选择一种样式。","奥术秘典样式", designlist)
+		var/design = input_translation_choice(user, "选择法典的外观。", "奥术法典样式", designlist, designlist)
 		if(!design)
 			return
 		if(world.time > (the_time + 30 SECONDS))
@@ -188,7 +188,7 @@ Intended to be a reward or a goal for pure mage, allowing them to rebind their a
 				desc = "粗犷、结实而实用；战斗法师还能奢求什么？可用于解除法术绑定。"
 			if ("sovereign")
 				desc = "庄严华贵，令你忍不住想用某种敬称来称呼它。可用于解除法术绑定。"
-		name = "\improper [design]法典"
+		name = "\improper [designlist[design] || design]法典"
 		return
 	if(!open)
 		open = TRUE

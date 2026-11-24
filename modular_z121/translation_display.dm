@@ -2,6 +2,7 @@
 #include "../modular_z121/species/species_display.dm"
 #include "jobs/translation_display.dm"
 #include "sound_translation_display.dm"
+#include "scom_tag_display.dm"
 /proc/get_mannerism_display_name(mannerism)
 	var/static/list/display_names = list(
 		"No mannerism" = "无特殊措辞习惯",
@@ -13,6 +14,13 @@
 		"Complex Stutter" = "复合口吃"
 	)
 	return display_names[mannerism] || mannerism
+
+/proc/get_origin_display_name(origin_title)
+	for(var/origin_type as anything in GLOB.origins)
+		var/datum/origin/origin = GLOB.origins[origin_type]
+		if(origin.origin_title == origin_title)
+			return origin.name || origin_title
+	return origin_title
 
 /proc/get_preferences_label_display(value)
 	if(!istext(value))
@@ -85,10 +93,19 @@
 	)
 	return labels[value] || value
 
-/proc/input_translation_choice(mob/user, prompt, title, list/values)
+/proc/get_spellbook_design_names()
+	var/static/list/names = list(
+		"green" = "绿色", "yellow" = "黄色", "brown" = "棕色",
+		"steel" = "钢铁", "gem" = "宝石", "skin" = "血肉", "mimic" = "宝箱怪",
+		"wyrdbark" = "妖木", "sunfire" = "日焰", "abyssal" = "深渊", "cinder" = "余烬",
+		"vessel" = "奥术容器", "edgebound" = "刃装", "sovereign" = "君王"
+	)
+	return names
+
+/proc/input_translation_choice(mob/user, prompt, title, list/values, list/display_names)
 	var/list/options = list()
 	for(var/value in values)
-		var/label = get_update_choice_display(value)
+		var/label = display_names ? (display_names[value] || value) : get_update_choice_display(value)
 		if(label in options)
 			label = "[label] ([value])"
 		options[label] = value

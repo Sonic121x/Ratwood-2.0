@@ -10,7 +10,7 @@
 	origin_traits = list(TRAIT_GERMANY_WARCRY, TRAIT_COLD_RESISTANCE)
 	map_x = 120
 	map_y = 384
-	map_label = "Kaiser Wilhelm Fortress"
+	map_label = ORIGIN_KAISER_WILHELM_FORTRESS
 
 /datum/stressevent/prejudice/fortress_against_kazengun
 	desc = span_red("我刚看见一个风郡人！")

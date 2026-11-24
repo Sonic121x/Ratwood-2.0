@@ -77,7 +77,7 @@ GLOBAL_LIST_INIT(origins, build_origins())
 	prejudice_examine = span_red("肮脏的地底居民！呸！")
 	map_x = 120
 	map_y = 337 //鼠木编辑 - 威廉皇帝堡和德意志战吼
-	map_label = "Underdark" //鼠木编辑 - 威廉皇帝堡和德意志战吼
+	map_label = ORIGIN_UNDERDARK //鼠木编辑 - 威廉皇帝堡和德意志战吼
 
 /datum/origin/hammerhold
 	name = ORIGIN_HAMMERHOLD
@@ -156,7 +156,7 @@ GLOBAL_LIST_INIT(origins, build_origins())
 	origin_traits = list(TRAIT_SOFT_FOOTED)
 	map_x = 120
 	map_y = 360 //鼠木编辑 - 威廉皇帝堡和德意志战吼
-	map_label = "Kazengun" //鼠木编辑 - 威廉皇帝堡和德意志战吼
+	map_label = ORIGIN_KAZENGUN //鼠木编辑 - 威廉皇帝堡和德意志战吼
 
 /datum/preferences/proc/open_origin_map(mob/user)
 	var/html = build_origin_map_html()
