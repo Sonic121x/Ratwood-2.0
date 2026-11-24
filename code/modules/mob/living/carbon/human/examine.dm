@@ -58,8 +58,8 @@
 	var/t_He = p_they(TRUE)
 	var/t_his = p_their()
 	var/t_him = p_them()
-	var/t_has = p_have()
-	var/t_is = p_are()
+	var/t_has = "有"
+	var/t_is = ""
 	var/obscure_name = FALSE
 	var/race_name = "<a href='?src=[REF(src)];species_lore=1'><u>[get_species_display_name(dna.species.name)]</u></A>"
 	var/datum/antagonist/maniac/maniac = user.mind?.has_antag_datum(/datum/antagonist/maniac)
@@ -69,9 +69,9 @@
 	if(skeleton && (user != src))
 		race_name = "[pick("步履蹒跚", "筋骨紧绷", "衰朽不堪")]"
 
-	var/m1 = "[t_He] [t_is]"
+	var/m1 = "[t_He][t_is]"
 	var/m2 = "[t_his]"
-	var/m3 = "[t_He] [t_has]"
+	var/m3 = "[t_He][t_has]"
 	if(user == src)
 		m1 = "我"
 		m2 = "我的"
@@ -198,7 +198,7 @@
 					. += span_smallred("穷困潦倒……")
 
 	if(wear_shirt && !(SLOT_SHIRT in obscured))
-		var/str = "[m3] [wear_shirt.generate_tooltip(wear_shirt.get_examine_string(user))]. "
+		var/str = "[m1]穿着[wear_shirt.generate_tooltip(wear_shirt.get_examine_string(user))]。"
 		str += "[wear_shirt.integrity_check(is_smart, guarded)]"
 		if(is_stupid)
 			str = "[m3]某种衬衫！"
@@ -212,7 +212,7 @@
 			var/obj/item/clothing/under/U = wear_pants
 			if(U.attached_accessory)
 				accessory_msg += "，配着[icon2html(U.attached_accessory, user)][U.attached_accessory]"
-		var/str = "[m3] [wear_pants.generate_tooltip(wear_pants.get_examine_string(user))][accessory_msg]. "
+		var/str = "[m1]穿着[wear_pants.generate_tooltip(wear_pants.get_examine_string(user))][accessory_msg]。"
 		str += wear_pants.integrity_check(is_smart, guarded)
 		if(is_stupid)
 			str = "[m3]一条什么裤子！"
@@ -221,7 +221,7 @@
 
 	//head
 	if(head && !(SLOT_HEAD in obscured))
-		var/str = "[m3] [head.generate_tooltip(head.get_examine_string(user))]戴在[m2]头上。"
+		var/str = "[m1]头上戴着[head.generate_tooltip(head.get_examine_string(user))]。"
 		var/head_condition = head.integrity_check(is_smart, guarded)
 		str += head_condition
 		if(is_stupid)
@@ -235,7 +235,7 @@
 
 	//suit/armor
 	if(wear_armor && !(SLOT_ARMOR in obscured))
-		var/str = "[m3] [wear_armor.generate_tooltip(wear_armor.get_examine_string(user))]. "
+		var/str = "[m1]身上穿着[wear_armor.generate_tooltip(wear_armor.get_examine_string(user))]。"
 		var/armor_condition = wear_armor.integrity_check(is_smart, guarded)
 		if(is_smart || is_normal)
 			str += armor_condition
@@ -269,7 +269,7 @@
 		var/str
 		if(istype(cloak, /obj/item/clothing))
 			var/obj/item/clothing/CL = cloak
-			str = "[m3] [CL.generate_tooltip(CL.get_examine_string(user))]披在[m2]肩上。"
+			str = "[m1]肩上披着[CL.generate_tooltip(CL.get_examine_string(user))]。"
 		else
 			str = "[m1]肩上披着[get_examine_item_name_with_hover(user, cloak)]。"
 		str += cloak.integrity_check(is_smart, guarded)
@@ -300,7 +300,7 @@
 	var/datum/component/forensics/FR = GetComponent(/datum/component/forensics)
 	//gloves
 	if(gloves && !(SLOT_GLOVES in obscured))
-		var/str = "[m3] [gloves.generate_tooltip(gloves.get_examine_string(user))]戴在[m2]手上。"
+		var/str = "[m1]手上戴着[gloves.generate_tooltip(gloves.get_examine_string(user))]。"
 		str += gloves.integrity_check(is_smart, guarded)
 		if(is_stupid)
 			str = "[m3]某种手套！"
@@ -311,7 +311,7 @@
 			if(is_stupid)
 				. += "[capitalize(m2)]手好奇怪！看起来不对劲！"
 			else
-				. += "[m3][hand_number > 1 ? "双" : "一只"]<span class='bloody'>沾满鲜血的</span>手！"
+				. += "[m2][hand_number > 1 ? "双手" : "一只手"]<span class='bloody'>沾满了鲜血</span>！"
 	
 	//belt
 	if(belt && !(SLOT_BELT in obscured))
@@ -352,7 +352,7 @@
 
 	//shoes
 	if(shoes && !(SLOT_SHOES in obscured))
-		var/str = "[m3] [shoes.generate_tooltip(shoes.get_examine_string(user))]穿在[m2]脚上。"
+		var/str = "[m1]脚上穿着[shoes.generate_tooltip(shoes.get_examine_string(user))]。"
 		str += shoes.integrity_check(is_smart, guarded)
 		if(is_stupid)
 			str = "[m1]脚上穿着某种鞋子！"
@@ -360,7 +360,7 @@
 
 	//mask
 	if(wear_mask && !(SLOT_WEAR_MASK in obscured))
-		var/str = "[m3] [wear_mask.generate_tooltip(wear_mask.get_examine_string(user))]戴在[m2]脸上。"
+		var/str = "[m1]脸上戴着[wear_mask.generate_tooltip(wear_mask.get_examine_string(user))]。"
 		str += wear_mask.integrity_check(is_smart, guarded)
 		if(is_stupid)
 			str = "[m1]脸上戴着什么东西！"
@@ -371,9 +371,9 @@
 		var/str
 		if(istype(mouth, /obj/item/clothing))
 			var/obj/item/clothing/CM = mouth
-			str = "[m3] [CM.generate_tooltip(CM.get_examine_string(user))]含在[m2]嘴里。"
+			str = "[m1]嘴里含着[CM.generate_tooltip(CM.get_examine_string(user))]。"
 		else
-			"[m3] [get_examine_item_name_with_hover(user, mouth)] in [m2] mouth. "
+			str = "[m1]嘴里含着[get_examine_item_name_with_hover(user, mouth)]。" // 自定义修改：将非服饰口含物的描述写入检查结果
 		str += mouth.integrity_check(is_smart, guarded)
 		if(is_stupid)
 			str = "[m1]嘴里含着什么东西！"
@@ -400,7 +400,7 @@
 
 	//ring
 	if(wear_ring && !(SLOT_RING in obscured) && !HAS_TRAIT(wear_ring, TRAIT_EXAMINE_SKIP))
-		var/str = "[m3] [wear_ring.generate_tooltip(wear_ring.get_examine_string(user))]戴在[m2]手上。"
+		var/str = "[m1]手上戴着[wear_ring.generate_tooltip(wear_ring.get_examine_string(user))]。"
 		if(is_smart && istype(wear_ring, /obj/item/clothing/ring/active))
 			var/obj/item/clothing/ring/active/AR = wear_ring
 			if(AR.cooldowny)
@@ -414,7 +414,7 @@
 
 	//wrists
 	if(wear_wrists && !(SLOT_WRISTS in obscured))
-		var/str = "[m3] [wear_wrists.generate_tooltip(wear_wrists.get_examine_string(user))]戴在[m2]手腕上。"
+		var/str = "[m1]手腕上戴着[wear_wrists.generate_tooltip(wear_wrists.get_examine_string(user))]。"
 		str += wear_wrists.integrity_check(is_smart, guarded)
 		if (is_stupid)
 			str = "[m1]手腕上戴着什么东西！"
@@ -422,10 +422,10 @@
 
 	var/obj/item/clothing/suit/roguetown/armor/manual/arcyne_ward/ward = skin_armor
 	if(istype(ward) && !ward.hidden)
-		var/str = "[m3]<font color='[ward.ward_color]'>[ward.generate_tooltip(ward.get_examine_string(user))]在[user == src ? "我" : p_them()]周围闪烁。</font>"
+		var/str = "<font color='[ward.ward_color]'>[ward.generate_tooltip(ward.get_examine_string(user))]在[m1]周围闪烁。</font>"
 		str += ward.integrity_check(is_smart)
 		if (is_stupid)
-			str = "[m3]有个奇怪的发光玩意！"
+			str = "[m1]身边有个奇怪的发光玩意！"
 		. += str
 
 	//handcuffed?
@@ -525,9 +525,9 @@
 				bleeding_limbs += parse_zone(bleeder.body_zone)
 			if(length(bleeding_limbs))
 				if(bleed_rate >= 5)
-					msg += span_bloody("<B>[capitalize(m2)]的[english_list(bleeding_limbs)][bleed_wording]！</B>")
+					msg += span_bloody("<B>[m2][english_list(bleeding_limbs, and_text = "和", comma_text = "、")][bleed_wording]！</B>")
 				else
-					msg += span_bloody("[capitalize(m2)]的[english_list(bleeding_limbs)][bleed_wording]！")
+					msg += span_bloody("[m2][english_list(bleeding_limbs, and_text = "和", comma_text = "、")][bleed_wording]！")
 			else
 				if(bleed_rate >= 5)
 					msg += span_bloody("<B>[m1] [bleed_wording]</B>!")
@@ -1082,7 +1082,7 @@
 				. += span_notice("一位贵族!")
 
 		if(ministry_active?.active)
-			. += span_notice("[m3]任职[ministry_active.display_title].")
+			. += span_notice("[m1]担任[ministry_active.display_title]。")
 		// Leashed pet status effect message
 		if(has_status_effect(/datum/status_effect/leash_pet))
 			. += span_warning("一条牵绳系在她们的项圈上。她们正像宠物一样被牵着。")

@@ -133,11 +133,11 @@
 
 	triggering = TRUE
 	if (alert_observers)
-		message_admins("随机事件将在 10 秒后触发：[name]（<a href='?src=[REF(src)];cancel=1'>取消</a>）")
+		message_admins("随机事件将在 10 秒后触发：[get_display_name()]（<a href='?src=[REF(src)];cancel=1'>取消</a>）")
 		sleep(100)
 		var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
 		if(!canSpawnEvent(players_amt, null, fake_check = TRUE))
-			message_admins("[name] 的第二次前置条件检查失败，正在跳过……")
+			message_admins("[get_display_name()] 的第二次前置条件检查失败，正在跳过……")
 			return EVENT_INTERRUPTED
 
 	if(!triggering)
@@ -160,7 +160,7 @@
 			to_chat(usr, span_admin("已来不及取消该事件"))
 			return
 		triggering = FALSE
-		message_admins("[key_name_admin(usr)] 取消了事件 [name]。")
+		message_admins("[key_name_admin(usr)] 取消了事件 [get_display_name()]。")
 		log_admin_private("[key_name(usr)] cancelled event [name].")
 		SSblackbox.record_feedback("tally", "event_admin_cancelled", 1, typepath)
 
@@ -363,15 +363,15 @@
 		return
 	switch(href_list["action"])
 		if("schedule")
-			message_admins("[key_name_admin(usr)] 安排了事件 [src.name]。")
+			message_admins("[key_name_admin(usr)] 安排了事件 [get_display_name()]。")
 			log_admin_private("[key_name(usr)] scheduled [src.name].")
 			SSgamemode.current_storyteller.buy_event(src, src.track)
 		if("force_next")
-			message_admins("[key_name_admin(usr)] 强制安排了事件 [src.name]。")
+			message_admins("[key_name_admin(usr)] 强制安排了事件 [get_display_name()]。")
 			log_admin_private("[key_name(usr)] forced scheduled event [src.name].")
 			SSgamemode.forced_next_events[src.track] = src
 		if("fire")
-			message_admins("[key_name_admin(usr)] 触发了事件 [src.name]。")
+			message_admins("[key_name_admin(usr)] 触发了事件 [get_display_name()]。")
 			log_admin_private("[key_name(usr)] fired event [src.name].")
 			runEvent(random = FALSE, admin_forced = TRUE)
 

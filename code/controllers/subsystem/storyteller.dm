@@ -267,7 +267,7 @@ SUBSYSTEM_DEF(gamemode)
 		else if(!sch_event.alerted_admins && world.time >= sch_event.start_time - 1 MINUTES)
 			///Alert admins 1 minute before running and allow them to cancel or refund the event, once again.
 			sch_event.alerted_admins = TRUE
-			message_admins("计划事件：[sch_event.event] 将在 [(sch_event.start_time - world.time) / 10] 秒后执行。（<a href='byond://?src=[REF(sch_event)];action=cancel'>取消</a>）（<a href='byond://?src=[REF(sch_event)];action=refund'>退还点数</a>）")
+			message_admins("计划事件：[sch_event.event.get_display_name()] 将在 [(sch_event.start_time - world.time) / 10] 秒后执行。（<a href='byond://?src=[REF(sch_event)];action=cancel'>取消</a>）（<a href='byond://?src=[REF(sch_event)];action=refund'>退还点数</a>）")
 
 	if(!halted_storyteller && next_storyteller_process <= world.time && current_storyteller)
 		// We update crew information here to adjust population scalling and event thresholds for the storyteller.
@@ -471,9 +471,9 @@ SUBSYSTEM_DEF(gamemode)
 	var/datum/scheduled_event/scheduled = new (passed_event, world.time + passed_time, passed_cost, passed_ignore, passed_announce)
 	var/round_started = SSticker.HasRoundStarted()
 	if(round_started)
-		message_admins("事件：[passed_event] 已安排在 [passed_time / 10] 秒后执行。（<a href='byond://?src=[REF(scheduled)];action=cancel'>取消</a>）（<a href='byond://?src=[REF(scheduled)];action=refund'>退还点数</a>）")
+		message_admins("事件：[passed_event.get_display_name()] 已安排在 [passed_time / 10] 秒后执行。（<a href='byond://?src=[REF(scheduled)];action=cancel'>取消</a>）（<a href='byond://?src=[REF(scheduled)];action=refund'>退还点数</a>）")
 	else //Only roundstart events can be scheduled before round start
-		message_admins("事件：[passed_event] 已安排在回合开始时执行。（<a href='byond://?src=[REF(scheduled)];action=cancel'>取消</a>）")
+		message_admins("事件：[passed_event.get_display_name()] 已安排在回合开始时执行。（<a href='byond://?src=[REF(scheduled)];action=cancel'>取消</a>）")
 	scheduled_events += scheduled
 
 /datum/controller/subsystem/gamemode/proc/update_crew_infos()
@@ -753,25 +753,25 @@ SUBSYSTEM_DEF(gamemode)
 			dat += "<BR><b>点数获取倍率（仅影响随时间获取）：</b>"
 			dat += "<BR><font color='#888888'><i>影响各事件轨道随时间积累、用于安排新事件的点数。</i></font>"
 			for(var/track in event_tracks)
-				dat += "<BR>[track]: <a href='byond://?src=[REF(src)];panel=main;action=vars;var=pts_multiplier;track=[track]'>[point_gain_multipliers[track]]</a>"
+				dat += "<BR>[get_event_track_display(track)]：<a href='byond://?src=[REF(src)];panel=main;action=vars;var=pts_multiplier;track=[track]'>[point_gain_multipliers[track]]</a>"
 			dat += "<HR>"
 
 			dat += "<b>回合开始点数倍率：</b>"
 			dat += "<BR><font color='#888888'><i>影响为回合开始事件和反派生成的点数。</i></font>"
 			for(var/track in event_tracks)
-				dat += "<BR>[track]: <a href='byond://?src=[REF(src)];panel=main;action=vars;var=roundstart_pts;track=[track]'>[roundstart_point_multipliers[track]]</a>"
+				dat += "<BR>[get_event_track_display(track)]：<a href='byond://?src=[REF(src)];panel=main;action=vars;var=roundstart_pts;track=[track]'>[roundstart_point_multipliers[track]]</a>"
 			dat += "<HR>"
 
 			dat += "<b>各事件轨道的最低人数：</b>"
 			dat += "<BR><font color='#888888'><i>事件能够执行所需的最低人数。</i></font>"
 			for(var/track in event_tracks)
-				dat += "<BR>[track]: <a href='byond://?src=[REF(src)];panel=main;action=vars;var=min_pop;track=[track]'>[min_pop_thresholds[track]]</a>"
+				dat += "<BR>[get_event_track_display(track)]：<a href='byond://?src=[REF(src)];panel=main;action=vars;var=min_pop;track=[track]'>[min_pop_thresholds[track]]</a>"
 			dat += "<HR>"
 
 			dat += "<b>点数阈值：</b>"
 			dat += "<BR><font color='#888888'><i>各事件轨道的点数达到此阈值时会生成事件。</i></font>"
 			for(var/track in event_tracks)
-				dat += "<BR>[track]: <a href='byond://?src=[REF(src)];panel=main;action=vars;var=pts_threshold;track=[track]'>[point_thresholds[track]]</a>"
+				dat += "<BR>[get_event_track_display(track)]：<a href='byond://?src=[REF(src)];panel=main;action=vars;var=pts_threshold;track=[track]'>[point_thresholds[track]]</a>"
 
 		if(GAMEMODE_PANEL_MAIN)
 			var/even = TRUE
@@ -796,11 +796,11 @@ SUBSYSTEM_DEF(gamemode)
 				if(last_points)
 					next = round(((upper - lower) / last_points / STORYTELLER_WAIT_TIME))
 				dat += "<tr style='vertical-align:top; background-color: [background_cl];'>"
-				dat += "<td>[track] - 每次处理 [last_points] 点。</td>" //Track
+				dat += "<td>[get_event_track_display(track)] - 每次处理 [last_points] 点。</td>" //Track
 				dat += "<td>[percent]% ([lower]/[upper])</td>" //Progress
 				dat += "<td>约 [next] 秒</td>" //Next
 				var/datum/round_event_control/forced_event = forced_next_events[track]
-				var/forced = forced_event ? "[forced_event.name] <a href='byond://?src=[REF(src)];panel=main;action=track_action;track_action=remove_forced;track=[track]'>X</a>" : ""
+				var/forced = forced_event ? "[forced_event.get_display_name()] <a href='byond://?src=[REF(src)];panel=main;action=track_action;track_action=remove_forced;track=[track]'>移除</a>" : ""
 				dat += "<td>[forced]</td>" //Forced
 				dat += "<td><a href='byond://?src=[REF(src)];panel=main;action=track_action;track_action=set_pts;track=[track]'>设置点数</a> <a href='byond://?src=[REF(src)];panel=main;action=track_action;track_action=next_event;track=[track]'>下一事件</a></td>" //Actions
 				dat += "</tr>"
@@ -823,8 +823,8 @@ SUBSYSTEM_DEF(gamemode)
 				even = !even
 				var/background_cl = even ? "#17191C" : "#23273C"
 				dat += "<tr style='vertical-align:top; background-color: [background_cl];'>"
-				dat += "<td>[scheduled.event.name]</td>" //Name
-				dat += "<td>[scheduled.event.track]</td>" //Severity
+				dat += "<td>[scheduled.event.get_display_name()]</td>" //Name
+				dat += "<td>[get_event_track_display(scheduled.event.track)]</td>" //Severity
 				var/time = (scheduled.event.roundstart && !round_started) ? "回合开始" : "[(scheduled.start_time - world.time) / (1 SECONDS)] 秒"
 				dat += "<td>[time]</td>" //Time
 				dat += "<td>[scheduled.get_href_actions()]</td>" //Actions
@@ -842,7 +842,7 @@ SUBSYSTEM_DEF(gamemode)
 				even = !even
 				var/background_cl = even ? "#17191C" : "#23273C"
 				dat += "<tr style='vertical-align:top; background-color: [background_cl];'>"
-				dat += "<td>[event.control.name]</td>" //Name
+				dat += "<td>[event.control.get_display_name()]</td>" //Name
 				dat += "<td>-待实现-</td>" //Actions
 				dat += "</tr>"
 			dat += "</table>"
@@ -861,7 +861,7 @@ SUBSYSTEM_DEF(gamemode)
 		if(current_storyteller.tag_multipliers)
 			dat += "<BR>标签倍率："
 			for(var/tag in current_storyteller.tag_multipliers)
-				dat += "[tag]:[current_storyteller.tag_multipliers[tag]] | "
+				dat += "[get_event_tag_display(tag)]：[current_storyteller.tag_multipliers[tag]] | "
 		current_storyteller.calculate_weights(statistics_track_page)
 	else
 		dat += "叙述者：无<BR>当前没有叙述者，因此权重和概率统计不准确。"
@@ -870,10 +870,10 @@ SUBSYSTEM_DEF(gamemode)
 	for(var/track in event_tracks)
 		if(last_point_gains[track])
 			var/est_time = round(point_thresholds[track] / last_point_gains[track] / STORYTELLER_WAIT_TIME * 40 / 6) / 10
-			dat += "[track]：约 [est_time] 分钟 | "
+			dat += "[get_event_track_display(track)]：约 [est_time] 分钟 | "
 	dat += "<HR>"
 	for(var/track in EVENT_PANEL_TRACKS)
-		dat += "<a href='byond://?src=[REF(src)];panel=stats;action=set_cat;cat=[track]'[(statistics_track_page == track) ? "class='linkOn'" : ""]>[track]</a>"
+		dat += "<a href='byond://?src=[REF(src)];panel=stats;action=set_cat;cat=[track]'[(statistics_track_page == track) ? "class='linkOn'" : ""]>[get_event_track_display(track)]</a>"
 	dat += "<HR>"
 	/// Create event info and stats table
 	dat += "<table align='center'; width='100%'; height='100%'; style='background-color:#13171C'>"
@@ -914,10 +914,10 @@ SUBSYSTEM_DEF(gamemode)
 		even = !even
 		var/background_cl = even ? "#17191C" : "#23273C"
 		dat += "<tr style='vertical-align:top; background-color: [background_cl];'>"
-		dat += "<td>[event.name]</td>" //Name
+		dat += "<td>[event.get_display_name()]</td>" //Name
 		dat += "<td>" //Tags
 		for(var/tag in event.tags)
-			dat += "[tag] "
+			dat += "[get_event_tag_display(tag)] "
 		dat += "</td>"
 		var/occurence_string = "[event.occurrences]"
 		if(event.shared_occurence_type)
@@ -972,25 +972,25 @@ SUBSYSTEM_DEF(gamemode)
 							var/new_value = input(usr, "新数值：", "设置新值") as num|null
 							if(isnull(new_value) || new_value < 0)
 								return
-							message_admins("[key_name_admin(usr)] 将 [track] 轨道的点数获取倍率设为 [new_value]。")
+							message_admins("[key_name_admin(usr)] 将[get_event_track_display(track)]轨道的点数获取倍率设为 [new_value]。")
 							point_gain_multipliers[track] = new_value
 						if("roundstart_pts")
 							var/new_value = input(usr, "新数值：", "设置新值") as num|null
 							if(isnull(new_value) || new_value < 0)
 								return
-							message_admins("[key_name_admin(usr)] 将 [track] 轨道的回合开始点数倍率设为 [new_value]。")
+							message_admins("[key_name_admin(usr)] 将[get_event_track_display(track)]轨道的回合开始点数倍率设为 [new_value]。")
 							roundstart_point_multipliers[track] = new_value
 						if("min_pop")
 							var/new_value = input(usr, "新数值：", "设置新值") as num|null
 							if(isnull(new_value) || new_value < 0)
 								return
-							message_admins("[key_name_admin(usr)] 将 [track] 轨道的最低人数设为 [new_value]。")
+							message_admins("[key_name_admin(usr)] 将[get_event_track_display(track)]轨道的最低人数设为 [new_value]。")
 							min_pop_thresholds[track] = new_value
 						if("pts_threshold")
 							var/new_value = input(usr, "新数值：", "设置新值") as num|null
 							if(isnull(new_value) || new_value < 0)
 								return
-							message_admins("[key_name_admin(usr)] 将 [track] 轨道的点数阈值设为 [new_value]。")
+							message_admins("[key_name_admin(usr)] 将[get_event_track_display(track)]轨道的点数阈值设为 [new_value]。")
 							point_thresholds[track] = new_value
 				if("reload_config_vars")
 					message_admins("[key_name_admin(usr)] 重新加载了游戏模式配置变量。")
@@ -1009,17 +1009,17 @@ SUBSYSTEM_DEF(gamemode)
 						if("remove_forced")
 							if(forced_next_events[track])
 								var/datum/round_event_control/event = forced_next_events[track]
-								message_admins("[key_name_admin(usr)] 从 [track] 轨道移除了强制事件 [event.name]。")
+								message_admins("[key_name_admin(usr)] 从[get_event_track_display(track)]轨道移除了强制事件「[event.get_display_name()]」。")
 								forced_next_events -= track
 						if("set_pts")
-							var/set_pts = input(usr, "新的点数（达到 [point_thresholds[track]] 或以上会触发事件）：", "设置 [track] 的点数") as num|null
+							var/set_pts = input(usr, "新的点数（达到 [point_thresholds[track]] 或以上会触发事件）：", "设置[get_event_track_display(track)]轨道的点数") as num|null
 							if(isnull(set_pts))
 								return
 							event_track_points[track] = set_pts
-							message_admins("[key_name_admin(usr)] 将 [track] 轨道的点数设为 [set_pts]。")
+							message_admins("[key_name_admin(usr)] 将[get_event_track_display(track)]轨道的点数设为 [set_pts]。")
 							log_admin_private("[key_name(usr)] set points of [track] track to [set_pts].")
 						if("next_event")
-							message_admins("[key_name_admin(usr)] 触发了 [track] 轨道的下一事件。")
+							message_admins("[key_name_admin(usr)] 触发了[get_event_track_display(track)]轨道的下一事件。")
 							log_admin_private("[key_name(usr)] invoked next event for [track] track.")
 							event_track_points[track] = point_thresholds[track]
 							if(current_storyteller)

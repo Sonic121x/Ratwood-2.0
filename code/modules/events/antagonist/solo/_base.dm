@@ -97,7 +97,7 @@
 /datum/round_event/antagonist/solo/setup()
 	var/datum/round_event_control/antagonist/solo/cast_control = control
 	antag_count = cast_control.get_antag_amount()
-	message_admins("STORYTELLER:[cast_control.name] spawning [antag_count].")
+	message_admins("叙述者：事件「[cast_control.get_display_name()]」计划选出 [antag_count] 名反派。")
 	antag_flag = cast_control.antag_flag
 	antag_datum = cast_control.antag_datum
 	restricted_roles = cast_control.restricted_roles
@@ -132,7 +132,7 @@
 	var/list/picked_mobs = list()
 	for(var/i in 1 to antag_count)
 		if(!length(candidates))
-			message_admins("角色组事件获得的反派人数少于 antag_count 设定值，可能无法正常运行。")
+			message_admins("事件「[cast_control.get_display_name()]」选出的反派少于预定的 [antag_count] 人，可能无法正常运行。")
 			break
 
 		var/mob/candidate = pick_n_take(candidates)

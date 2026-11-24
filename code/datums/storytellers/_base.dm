@@ -154,7 +154,7 @@
 		mode.update_crew_infos()
 		var/pop_required = mode.min_pop_thresholds[track]
 		if(mode.active_players < pop_required)
-			message_admins("Storyteller failed to pick an event for track of [track] due to insufficient population. (required: [pop_required] active pop for [track]. Current: [mode.active_players])")
+			message_admins("叙述者未能为[get_event_track_display(track)]轨道选取事件。需要 [pop_required] 名活跃玩家，当前有 [mode.active_players] 名。")
 			mode.event_track_points[track] *= TRACK_FAIL_POINT_PENALTY_MULTIPLIER
 			return
 		calculate_weights(track)
@@ -164,17 +164,17 @@
 			var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
 			if(forced)
 				if(QDELETED(event))
-					message_admins("[event.name] was deleted!")
+					message_admins("事件[event?.get_display_name()]已被移除！")
 					continue
 				valid_events[event] = round(event.calculated_weight * 10)
 			else if(event.canSpawnEvent(players_amt))
 				if(QDELETED(event))
-					message_admins("[event.name] was deleted!")
+					message_admins("事件[event?.get_display_name()]已被移除！")
 					continue
 				valid_events[event] = round(event.calculated_weight * 10) //multiply weight by 10 to get first decimal value
 		///If we didn't get any events, remove the points inform admins and dont do anything
 		if(!length(valid_events))
-			message_admins("Storyteller failed to pick an event for track of [track].")
+			message_admins("叙述者未能为[get_event_track_display(track)]轨道选取事件。")
 			mode.event_track_points[track] *= TRACK_FAIL_POINT_PENALTY_MULTIPLIER
 			return
 		picked_event = pickweight(valid_events)
@@ -187,7 +187,7 @@
 				shuffle_inplace(valid_events)
 				picked_event = valid_events[1]
 			else
-				message_admins("WARNING: Storyteller picked a null from event pool. Aborting event roll.")
+				message_admins("警告：叙述者从事件池抽到了空值，本次抽取已中止。")
 				stack_trace("WARNING: Storyteller picked a null from event pool.")
 				SSgamemode.event_track_points[track] = 0
 				return
@@ -220,7 +220,7 @@
 	if(!bought_event.roundstart)
 		total_cost *= (1 + (rand(-cost_variance, cost_variance)/100)) //Apply cost variance if not roundstart event
 	mode.event_track_points[track] = max(mode.event_track_points[track] - total_cost, 0)
-	message_admins("Storyteller purchased and triggered [bought_event] event, on [track] track, for [total_cost] cost.")
+	message_admins("叙述者在[get_event_track_display(track)]轨道花费 [total_cost] 点触发了事件「[bought_event.get_display_name()]」。")
 	if(bought_event.roundstart)
 		SSgamemode.ran_roundstart = TRUE
 		SSgamemode.current_roundstart_event = bought_event

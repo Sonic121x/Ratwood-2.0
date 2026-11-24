@@ -3,6 +3,7 @@
 #include "jobs/translation_display.dm"
 #include "sound_translation_display.dm"
 #include "scom_tag_display.dm"
+#include "event_display.dm"
 /proc/get_mannerism_display_name(mannerism)
 	var/static/list/display_names = list(
 		"No mannerism" = "无特殊措辞习惯",

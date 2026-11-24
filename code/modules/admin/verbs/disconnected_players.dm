@@ -43,7 +43,7 @@ GLOBAL_DATUM_INIT(disconnected_players_panel, /datum/disconnected_players_panel,
 			"slots_open" = job ? job.total_positions - job.current_positions : null,
 			"slots_total" = job?.total_positions,
 			"time_away" = time_away,
-			"time_away_text" = DisplayTimeText(time_away, 1),
+			"time_away_text" = DisplayTimeText(time_away, 1, TRUE),
 		))
 	return list("players" = players)
 
@@ -118,9 +118,9 @@ GLOBAL_DATUM_INIT(disconnected_players_panel, /datum/disconnected_players_panel,
 	slumbering &= resolve_targets(targets)
 	var/list/fartraveled = list()
 	for(var/mob/living/L as anything in slumbering)
-		var/time_away = DisplayTimeText(world.time - L.last_logout_time, 1)
+		var/time_away = DisplayTimeText(world.time - L.last_logout_time, 1, TRUE)
 		// Logged before deletion so the record survives a runtime partway through the batch.
-		log_admin("[key_name(user)] has fartraveled slumbering [key_name(L)] after [time_away] in a deep slumber.")
+		log_admin("[key_name(user)]让已深度沉睡[time_away]的[key_name(L)]远行。")
 		fartraveled += "[L.ckey] ([time_away])"
 		L.admin_fartravel(user)
 	if(!length(fartraveled))

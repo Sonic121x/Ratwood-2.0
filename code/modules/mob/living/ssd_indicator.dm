@@ -12,10 +12,10 @@ GLOBAL_LIST_INIT(disconnected_admin_alert_role_times, list(
 		cut_overlay(GLOB.ssd_indicator)
 	return state
 
-/mob/living/proc/get_ssd_examine_text(m3)
+/mob/living/proc/get_ssd_examine_text(subject)
 	if(!is_disconnected_player())
 		return
-	return span_warning("[m3]已沉睡了[DisplayTimeText(world.time - last_logout_time, 1, TRUE)]。")
+	return span_warning("[subject]已沉睡了[DisplayTimeText(world.time - last_logout_time, 1, TRUE)]。")
 
 /// Examine line for a living body whose player is looking out from a ghost they will come back from, such as scrying.
 /// Those bodies get no slumber indicator, as their player is still in the round.
@@ -94,7 +94,7 @@ GLOBAL_LIST_INIT(disconnected_admin_alert_role_times, list(
 		return
 	disconnected_admin_alert_sent = TRUE
 	var/fartravel_link = "(<a href='?_src_=holder;[HrefToken(TRUE)];ssd_sendbacktolobby=[REF(src)];ssd_ckey=[ckey]'>远行</a>)"
-	message_admins(span_adminnotice("[ADMIN_LOOKUPFLW(src)]（[get_disconnected_admin_alert_job_name()]）已深度沉睡[DisplayTimeText(world.time - last_logout_time, 1)]。[fartravel_link]"))
+	message_admins(span_adminnotice("[ADMIN_LOOKUPFLW(src)]（[get_disconnected_admin_alert_job_name()]）已深度沉睡[DisplayTimeText(world.time - last_logout_time, 1, TRUE)]。[fartravel_link]"))
 
 /mob/living/proc/get_disconnected_admin_alert_time()
 	var/role_name = get_disconnected_admin_alert_role_name()
@@ -107,13 +107,13 @@ GLOBAL_LIST_INIT(disconnected_admin_alert_role_times, list(
 
 /mob/living/proc/get_disconnected_admin_alert_job_name()
 	var/role_name = get_disconnected_admin_alert_role_name()
-	if(advjob && role_name && advjob != role_name)
-		return "[role_name] / [advjob]"
-	if(role_name)
-		return role_name
-	if(advjob)
-		return advjob
-	return "Unknown job"
+	var/datum/job/role = role_name ? SSjob.GetJob(role_name) : null
+	var/role_title = role?.display_title || role_name
+	if(!advjob || advjob == role_name)
+		return role_title || "未知职业"
+	var/datum/advclass/subclass = SSrole_class_handler.get_advclass_by_name(advjob)
+	var/subclass_title = subclass?.examine_name || advjob
+	return role_title ? "[role_title] / [subclass_title]" : subclass_title
 
 #undef DEFAULT_DISCONNECTED_ADMIN_ALERT_TIME
 
