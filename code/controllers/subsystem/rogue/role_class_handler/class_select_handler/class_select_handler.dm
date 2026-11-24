@@ -3,6 +3,7 @@
 */
 /datum/class_select_handler
 	var/client/linked_client //the ss will link it!
+	var/menu_job_override // 自定义修改：记录事件指定的菜单职业，不改变角色本职
 	//Well, we basically need to fill out our options
 
 /*
@@ -229,9 +230,10 @@
 	data += "<div id='class_select_box_div'>"
 
 	var/mob/living/carbon/human/H = linked_client.mob
-	if(!H.job)
+	var/menu_job = menu_job_override ? menu_job_override : H.job // 自定义修改：优先按事件指定的职业显示候选项
+	if(!menu_job) // 自定义修改：使用本次菜单的职业检查布局是否可用
 		return
-	if(H.job == "Drifter" && !showing_combat_classes)
+	if(menu_job == "Drifter" && !showing_combat_classes) // 自定义修改：仅流浪者菜单筛选冒险职业
 		for(var/datum/advclass/datums in rolled_classes)
 			if(!(CTAG_ADVENTURER in datums.category_tags))
 				continue
@@ -243,7 +245,7 @@
 					plus_str += "+" */
 			data += "<div class='class_bar_div'><a class='vagrant' href='?src=\ref[src];class_selected=1;selected_class=\ref[datums];'><img class='ninetysskull' src='gragstar.gif' width=32 height=32>[istype(datums, /datum/advclass/steward) ? "宫廷总管" : datums.name]<span id='green_plussa'>[plus_str]</span><img class='ninetysskull' src='gragstar.gif' width=32 height=32></a></div>\n"
 	else if(!showing_combat_classes)
-		var/datum/job/selected_job = SSjob.GetJob(H.job)
+		var/datum/job/selected_job = SSjob.GetJob(menu_job) // 自定义修改：按候选职业所属的菜单布局决定是否分组
 		if(selected_job.class_categories == TRUE)
 			var/list/class_cat_list = list()
 
@@ -289,7 +291,7 @@
 	<div class='footer'>
 	"}
 
-	if(H.job == "Drifter")
+	if(menu_job == "Drifter") // 自定义修改：仅流浪者菜单显示朝圣者切换按钮
 		data += {"
 			<a class='mo_bottom_buttons' href='?src=\ref[src];show_combat_class=1'>[showing_combat_classes ? "显示战斗职业" : "显示朝圣者职业"]</a>
 		</div>

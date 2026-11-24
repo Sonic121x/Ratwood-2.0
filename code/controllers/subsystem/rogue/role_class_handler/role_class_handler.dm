@@ -80,7 +80,7 @@ SUBSYSTEM_DEF(role_class_handler)
 	We setup the class handler here, aka the menu
 	We will cache it per server session via an assc list with a ckey leading to the datum.
 */
-/datum/controller/subsystem/role_class_handler/proc/setup_class_handler(mob/living/carbon/human/H, advclass_rolls_override = null, register_id = null)
+/datum/controller/subsystem/role_class_handler/proc/setup_class_handler(mob/living/carbon/human/H, advclass_rolls_override = null, register_id = null, menu_job_override = null) // 自定义修改：允许事件指定本次选职菜单使用的职业布局
 	if(!H?.client)
 		return
 	var/client_ckey = H.client.ckey
@@ -97,6 +97,7 @@ SUBSYSTEM_DEF(role_class_handler)
 
 	var/datum/class_select_handler/XTRA_MEATY = new()
 	XTRA_MEATY.linked_client = H.client
+	XTRA_MEATY.menu_job_override = menu_job_override // 自定义修改：菜单刷新时沿用事件指定的职业布局
 
 		// Hack for Migrants
 	if(advclass_rolls_override)

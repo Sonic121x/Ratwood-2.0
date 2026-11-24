@@ -66,7 +66,7 @@
 		SSmapping.retainer.assassins |= antag_mind.current
 		antag_mind.add_antag_datum(/datum/antagonist/assassin)
 
-		SSrole_class_handler.setup_class_handler(antag_mind.current, list(CTAG_ASSASSIN = 20))
+		SSrole_class_handler.setup_class_handler(antag_mind.current, list(CTAG_ASSASSIN = 20), menu_job_override = /datum/job/roguetown/assassin::title) // 自定义修改：按刺客布局平铺候选专精，避免沿用原职业分类导致空窗
 		antag_mind.current:advsetup = TRUE
 		antag_mind.current.hud_used?.set_advclass()
 
