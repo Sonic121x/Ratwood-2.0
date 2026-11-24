@@ -80,6 +80,55 @@
 	is_recipe_node = TRUE
 	prerequisites = list("FLESH_DECOYS")
 
+/datum/chimeric_tech_node/flesh_node
+	name = "血肉节点"
+	description = "允许制造血肉节点，用于塑形器官与肢体。"
+	string_id = "FLESH_NODE"
+	required_tier = 1
+	cost = 5
+	selection_weight = 1
+	is_recipe_node = TRUE
+
+/datum/chimeric_tech_node/simple_organs
+	name = "基础器官"
+	description = "允许借助血肉节点与心血制造器官。"
+	string_id = "BASIC_ORGANS"
+	required_tier = 2
+	cost = 40
+	selection_weight = 1
+	is_recipe_node = TRUE
+	prerequisites = list("FLESH_NODE")
+
+/datum/chimeric_tech_node/simple_limbs
+	name = "基础肢体"
+	description = "允许在心血的辅助下将血肉节点塑造成手臂与腿部。"
+	string_id = "BASIC_BODYPARTS"
+	required_tier = 2
+	cost = 40
+	selection_weight = 1
+	is_recipe_node = TRUE
+	prerequisites = list("FLESH_NODE")
+
+/datum/chimeric_tech_node/advanced_body
+	name = "进阶肢体"
+	description = "允许利用血肉节点制造更为进阶的躯体部位。"
+	string_id = "ADVANCED_BODYPARTS"
+	required_tier = 3
+	cost = 80
+	selection_weight = 1
+	is_recipe_node = TRUE
+	prerequisites = list("BASIC_BODYPARTS", "BASIC_ORGANS")
+
+/datum/chimeric_tech_node/life_creation
+	name = "造物创生"
+	description = "在少数目睹过此景的非佩斯特拉信徒眼中，这堪称纯粹的异端——将灵辉与真正登峰造极的塑肉之术结合，便能创造出真正的活物。"
+	string_id = "LIFE_CREATION"
+	required_tier = 4 // sits up there with rose
+	cost = 120
+	selection_weight = 1
+	is_recipe_node = TRUE
+	prerequisites = list("ADVANCED_BODYPARTS")
+
 /datum/chimeric_tech_node/black_rose
 	name = "黑玫瑰合成"
 	description = "允许用腐化血肉与兽血制作黑玫瑰。人们相信，心兽某种程度上正是由佩斯特拉亲手塑造，以压制这些玫瑰中潜伏的黑腐。"

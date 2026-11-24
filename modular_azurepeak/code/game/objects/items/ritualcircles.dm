@@ -2228,7 +2228,7 @@
 						user.emote("cry")
 						loc.visible_message(span_cult("[user]流下银色的泪水。"))
 						if(do_after(user, 5 SECONDS))
-							psydonadmonishment(target)
+							psydonadmonishment(target, user)
 							user.apply_status_effect(/datum/status_effect/debuff/ritesexpended_lesser)
 		if("自由")//Strip folks in rite armour.
 			if(!HAS_TRAIT(user, TRAIT_LUX_FREAK))
@@ -2306,7 +2306,7 @@
 		to_chat(target, span_warning("你绷紧身体。为什么要绷紧身体？什么都没有发生。"))
 		loc.visible_message(span_cult("[target]毫发无损地站着，拒绝了祂的意志。"))
 
-/obj/structure/ritualcircle/psydon/proc/psydonadmonishment(mob/living/carbon/human/target)
+/obj/structure/ritualcircle/psydon/proc/psydonadmonishment(mob/living/carbon/human/target, mob/living/carbon/human/user)
 	if(!target || QDELETED(target) || target.loc != loc)
 		to_chat(usr, "所选目标不在符文上！[target.p_they(TRUE)]必须正站在符文中心，才能承受那位唯一者的告诫。")
 		return
@@ -2321,9 +2321,13 @@
 
 	// Remove divine curses
 	for(var/datum/curse/C in target.curses)
-		target.remove_curse(C)
-		loc.visible_message(span_warning("[target]身上的神明诅咒被精妙而准确地解除了。"))
-		target.apply_status_effect(/datum/status_effect/debuff/devitalised)
+		if(target.remove_curse(C))
+			target.apply_status_effect(/datum/status_effect/debuff/devitalised)
+			if(HAS_TRAIT(user, TRAIT_INQUISITION)) // aka absolver
+				loc.visible_message(span_warning("[target]身上的神明诅咒被精妙而准确地解除了。"))
+			else
+				loc.visible_message(span_warning("[target]身上的神明诅咒转移到了[user]身上。"))
+				user.add_curse(C.type)
 
 	var/datum/antagonist/werewolf/Were = target.mind.has_antag_datum(/datum/antagonist/werewolf/)
 	var/datum/antagonist/werewolf/lesser/Wereless = target.mind.has_antag_datum(/datum/antagonist/werewolf/lesser/)
@@ -2616,10 +2620,6 @@
 	target.remove_status_effect(/datum/status_effect/debuff/excomm)
 	target.remove_stress(/datum/stressevent/apostasy)
 	target.remove_stress(/datum/stressevent/excommunicated)
-
-	// Remove divine curses
-	for(var/datum/curse/C in target.curses)
-		target.remove_curse(C)
 	
 	if(target.devotion == null)
 		target.set_patron(new /datum/patron/old_god)

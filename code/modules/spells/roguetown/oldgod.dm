@@ -436,7 +436,7 @@
 	// Notify the user and target
 	to_chat(user, span_warning("我牵动[H]的灵辉，赦免了他们的伤势！"))
 	if(HAS_TRAIT(H, TRAIT_INQUISITION)) // inqusition is used to it
-		to_chat(user, span_notice("你感到自己的灵魂被牵动，[user]赦免了你的苦痛。"))
+		to_chat(H, span_notice("你感到自己的灵魂被牵动，[user]赦免了你的苦痛。"))
 	else
 		to_chat(H, span_danger("银丝扯走了你的一部分灵魂，你感到一阵可怕的撕裂！")) // Someone just tore away something from your lux, that isn't calm
 		to_chat(H, span_notice("你的伤口似乎神秘地消失了，身上的负担也减轻了。"))
@@ -521,9 +521,90 @@
 	// Notify the user and target
 	to_chat(user, span_warning("我牵动[H]的灵辉，修补了他们的伤势！"))
 	if(HAS_TRAIT(H, TRAIT_INQUISITION)) // inqusition is used to it
-		to_chat(user, span_notice("你感到自己的灵魂被牵动，[user]分担了你的苦痛。"))
+		to_chat(H, span_notice("你感到自己的灵魂被牵动，[user]分担了你的苦痛。"))
 	else
 		to_chat(H, span_danger("银丝扯走了你的一部分灵魂，你感到一阵可怕的撕裂！")) // someone just torn away something from your lux, that isn't calm
 		to_chat(H, span_notice("你的伤口似乎神秘地消失了，身上的负担也减轻了。"))
 
 	return TRUE
+
+
+/obj/effect/proc_holder/spell/self/psydonluxextract
+	name = "赐予"
+	desc = "通过小心操控自身的灵辉，我能抽离出部分灵辉，或影响体内之外已存在的灵辉。"
+	overlay_icon = 'icons/mob/actions/psydonmiracles.dmi'
+	action_icon = 'icons/mob/actions/psydonmiracles.dmi'
+	overlay_state = "INSPIRE"
+	releasedrain = 20
+	chargedrain = 0
+	chargetime = 0
+	range = 2
+	warnie = "sydwarning"
+	movement_interrupt = FALSE
+	sound = null
+	associated_skill = /datum/skill/magic/holy
+	antimagic_allowed = TRUE
+	recharge_time = 5 MINUTES
+	miracle = TRUE
+	devotion_cost = 100
+
+/obj/effect/proc_holder/spell/self/psydonluxextract/cast(mob/living/carbon/human/user) // It's a very tame self-heal. Nothing too special.
+	. = ..()
+	var/extractcast = FALSE
+	var/luxcast = FALSE
+	var/imluxcast = FALSE
+	if(!ishuman(user))
+		revert_cast()
+		return FALSE
+	var/mob/living/carbon/human/H = user
+	
+	var/hand_item = H.get_active_held_item()
+	if(!hand_item)
+		extractcast = TRUE
+	else if (istype(hand_item, /obj/item/reagent_containers/lux))
+		luxcast = TRUE
+	else if (istype(hand_item, /obj/item/reagent_containers/lux_impure))
+		imluxcast = TRUE
+	else
+		to_chat(H, span_notice("我需要空出一只手来抽离纯净灵辉、分裂不纯灵辉，或是将其净化。"))
+		revert_cast()
+		return FALSE
+
+	if(extractcast)
+		if(H.has_status_effect(/datum/status_effect/debuff/devitalised) || H.has_status_effect(/datum/status_effect/debuff/devitalised/lux_ripped))
+			to_chat(H, span_notice("我的灵辉正处于紧绷状态，暂时无法再抽离了。"))
+			revert_cast()
+			return FALSE
+		to_chat(H, span_silver("一缕又一缕，将自身从心间引向掌心……"))
+
+	if(luxcast)
+		to_chat(H, span_silver("埋下一颗火种，让它呼唤更多，将意志注入空无之物……"))
+	if(imluxcast)
+		to_chat(H, span_silver("探入其中，剔除杂质，抹去残存的意志……"))
+
+	if(!do_after(H, 5 SECONDS))
+		to_chat(H, span_notice("这门工序极其精细，我需要保持专注。"))
+		revert_cast()
+		return FALSE
+
+	if(extractcast)
+		to_chat(H, span_silver("在掌中聚拢缕缕灵辉，抽离自身的印记——愿它们如侍奉我一般，去侍奉他人。"))
+		H.apply_status_effect(/datum/status_effect/debuff/devitalised)
+		new /obj/item/reagent_containers/lux(H.loc)
+		return TRUE
+
+	if(luxcast)
+		to_chat(H, span_silver("生长、盘绕、分裂——随我的意志蜕变，让火种滋长成另一份存在。"))
+		new /obj/item/reagent_containers/lux_impure(H.loc)
+		new /obj/item/reagent_containers/lux_impure(H.loc)
+		qdel(hand_item)
+		return TRUE
+
+	if(imluxcast)
+		to_chat(H, span_silver("杂质已尽，残存的意志已然消亡。这份灵辉如今可以与其他灵辉融合了。"))
+		new /obj/item/reagent_containers/lux(H.loc)
+		qdel(hand_item)
+		return TRUE
+
+	revert_cast()
+	return FALSE

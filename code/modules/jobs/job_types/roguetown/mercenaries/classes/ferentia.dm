@@ -16,7 +16,6 @@
 	class_select_category = CLASS_CAT_FERENTIA
 	category_tags = list(CTAG_MERCENARY)
 	cmode_music = 'sound/music/combat_fullplate.ogg'
-	traits_applied = list(TRAIT_HEAVYARMOR)
 	subclass_stats = list( //Roughly equivalent to the Doppelsoldner, but without their unique sword or blacksteel armor, in exchange they're basically a regular guy in plate armor
 		STATKEY_CON = 3,
 		STATKEY_WIL = 3,
@@ -30,31 +29,62 @@
 		/datum/skill/combat/maces = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/combat/wrestling = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/unarmed = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/swords = SKILL_LEVEL_EXPERT, //Sword and board kinda guy
+		/datum/skill/combat/swords = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/combat/shields = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/combat/knives = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
 		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
 	)
+	extra_context = "在板甲与中甲之间选择（若选择了刺剑与小圆盾）。"
 
 /datum/outfit/job/roguetown/mercenary/ferentia_sellknight/pre_equip(mob/living/carbon/human/H)
 	..()
 	to_chat(H, span_warning("战斗经验与武艺可付不起食宿，真能买单的是马蒙。你只是看起来像个骑士，于是投身佣兵行会，把自己这副持剑卖力的身板卖给出价最高的人。"))
 	if(H.mind)
-		var/weapons = list("大剑", "长剑与鸢盾", "刺剑与小圆盾")
+		var/weapons = list("大剑", "穿甲刺剑", "长剑与鸢盾", "刺剑与小圆盾 - +速度/感知，-力量/体质", "战斧与鸢盾", "战锤与鸢盾", "连枷与鸢盾")
 		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
 		switch(weapon_choice)
 			if("大剑")
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				r_hand = /obj/item/rogueweapon/greatsword
+				H.adjust_skillrank(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
+				ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+			if("穿甲刺剑")
+				backl = /obj/item/rogueweapon/scabbard/gwstrap
+				r_hand = /obj/item/rogueweapon/estoc
+				H.adjust_skillrank(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
+				ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 			if("长剑与鸢盾")
 				beltl = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/long
 				backl = /obj/item/rogueweapon/shield/tower/metal
-			if("刺剑与小圆盾")
+				H.adjust_skillrank(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
+				ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+			if("刺剑与小圆盾 - +速度/感知，-力量/体质")
 				beltl = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/rapier
 				backl = /obj/item/rogueweapon/shield/buckler
+				H.change_stat(STATKEY_STR, -1)
+				H.change_stat(STATKEY_PER, 1)
+				H.change_stat(STATKEY_CON, -1)
+				H.change_stat(STATKEY_SPD, 1)
+				H.adjust_skillrank(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
+				ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
+			if("战斧与鸢盾")
+				r_hand = /obj/item/rogueweapon/stoneaxe/battle
+				backl = /obj/item/rogueweapon/shield/tower/metal
+				H.adjust_skillrank(/datum/skill/combat/axes, SKILL_LEVEL_EXPERT, TRUE)
+				ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+			if("战锤与鸢盾")
+				r_hand = /obj/item/rogueweapon/mace/warhammer/steel
+				backl = /obj/item/rogueweapon/shield/tower/metal
+				H.adjust_skillrank(/datum/skill/combat/maces, SKILL_LEVEL_EXPERT, TRUE)
+				ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+			if("连枷与鸢盾")
+				r_hand = /obj/item/rogueweapon/flail/sflail
+				backl = /obj/item/rogueweapon/shield/tower/metal
+				H.adjust_skillrank(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
+				ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
 		var/helmets = list(
 			"猪面盆盔" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface,
 			"萨伏依盔"		= /obj/item/clothing/head/roguetown/helmet/heavy/guard,
@@ -128,7 +158,7 @@
 	..()
 	to_chat(H, span_warning("像你这样无名而众多的人，正塞满了整座佣兵行会。锁子甲与长柄武器既适合未经细训的人使用，也同样足够有效。"))
 	if(H.mind)
-		var/weapons = list("戟斧", "帕提赞长戟", "钢制卢塞恩锤", "钩镰枪")
+		var/weapons = list("戟斧", "帕提赞长戟", "钢制卢塞恩锤", "钩镰枪", "巨型连枷 - +力量，-速度")
 		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
 		switch(weapon_choice)
 			if("戟斧")
@@ -139,6 +169,10 @@
 				r_hand = /obj/item/rogueweapon/eaglebeak
 			if("钩镰枪")
 				r_hand =/obj/item/rogueweapon/spear/billhook
+			if("巨型连枷 - +力量，-速度")
+				r_hand = /obj/item/rogueweapon/flail/peasantwarflail/steel
+				H.change_stat(STATKEY_STR, 1)
+				H.change_stat(STATKEY_SPD, -1)
 		var/helmets = list(
 			"简易头盔" 	= /obj/item/clothing/head/roguetown/helmet,
 			"锅盔" 	= /obj/item/clothing/head/roguetown/helmet/kettle,
@@ -188,12 +222,13 @@
 	)
 	subclass_skills = list(
 		/datum/skill/misc/swimming = SKILL_LEVEL_APPRENTICE, //No lockpicking or pickpocketing, you're a shady as fuck shanker, not a thief role
+		/datum/skill/misc/lockpicking = SKILL_LEVEL_APPRENTICE, //Yes lockpicking (a little bit)
 		/datum/skill/misc/climbing = SKILL_LEVEL_EXPERT,
 		/datum/skill/misc/sneaking = SKILL_LEVEL_EXPERT,
 		/datum/skill/combat/wrestling = SKILL_LEVEL_APPRENTICE, //Your bane is being grabbed, you're an assassin, not a grappler
 		/datum/skill/combat/unarmed = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/swords = SKILL_LEVEL_APPRENTICE,
-		/datum/skill/combat/knives = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/combat/swords = SKILL_LEVEL_JOURNEYMAN, //a little buff
+		/datum/skill/combat/knives = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/reading = SKILL_LEVEL_NOVICE,
 		/datum/skill/misc/athletics = SKILL_LEVEL_EXPERT,
 	)
@@ -203,17 +238,29 @@
 	..()
 	to_chat(H, span_warning("你既精于刀刃，又步伐轻捷，像你这样的人在佣兵行会里算得上少见。可一旦融入阴影，为他人干那些见不得光的脏活时，你依旧高效得可怕，出手又快又致命。"))
 	if(H.mind)
-		var/weapons = list("刺剑", "钢匕首")
+		var/weapons = list("刺剑", "匕首", "战刀", "长剑")
 		var/weapon_choice = input(H, "选择你的武器。", "整备武装") as anything in weapons
 		switch(weapon_choice)
 			if("刺剑")
 				r_hand = /obj/item/rogueweapon/sword/rapier
 				beltl = /obj/item/rogueweapon/scabbard/sword
+				belt = /obj/item/storage/belt/rogue/leather
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
-			if("钢匕首")
+			if("匕首")
 				r_hand = /obj/item/rogueweapon/huntingknife/idagger/steel
 				beltl = /obj/item/rogueweapon/scabbard/sheath
+				belt = /obj/item/storage/belt/rogue/leather/knifebelt
 				H.adjust_skillrank_up_to(/datum/skill/combat/knives, SKILL_LEVEL_EXPERT, TRUE)
+			if("战刀")
+				beltl = /obj/item/rogueweapon/scabbard/sword
+				belt = /obj/item/storage/belt/rogue/leather
+				r_hand = /obj/item/rogueweapon/sword/long/kriegmesser
+				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
+			if("长剑")
+				r_hand = /obj/item/rogueweapon/sword/long
+				beltl = /obj/item/rogueweapon/scabbard/sword
+				belt = /obj/item/storage/belt/rogue/leather
+				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/leather/heavy
 	belt = /obj/item/storage/belt/rogue/leather
 	head = /obj/item/clothing/head/roguetown/roguehood/reinforced

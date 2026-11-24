@@ -1193,6 +1193,9 @@
 
 		if(HAS_TRAIT(src, TRAIT_EXCOMMUNICATED))
 			. += span_userdanger("绝罚者！耻辱！")//Temporary, probably going to get rid of the trait since it doesn't fit for us.
+		
+		if(length(curses) >= 1)
+			. += span_userdanger("受神明诅咒！")
 /*
 		if(name in GLOB.excommunicated_players)
 			var/mob/living/carbon/human/H = src

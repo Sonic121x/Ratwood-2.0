@@ -31,6 +31,9 @@
 	if(target.stat == DEAD)
 		to_chat(user, "对方已经死了！")
 		return FALSE
+	if(HAS_TRAIT(target, TRAIT_LUX_FREAK))
+		to_chat(user, "他们的灵辉翻涌着抗拒被割裂！")
+		return FALSE
 
 /datum/surgery_step/extract_lux/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
 	display_results(user, target, span_notice("我开始从[target]的心脏上刮取灵辉……"),

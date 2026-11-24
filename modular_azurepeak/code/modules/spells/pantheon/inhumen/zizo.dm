@@ -198,6 +198,9 @@
 	if(target.has_status_effect(/datum/status_effect/debuff/devitalised) || (target.has_status_effect(/datum/status_effect/debuff/devitalised/lux_ripped) || target.mob_biotypes & MOB_UNDEAD)) //can't farm your skeletons
 		to_chat(user, span_notice("此人的灵辉已经被扰乱了！"))
 		return
+	if(HAS_TRAIT(target, TRAIT_LUX_FREAK))
+		to_chat(user, span_notice("他们游移不定的灵辉从我指间滑脱了！"))
+		return
 	else
 		to_chat(user, span_alert("我开始把手伸向[target]，准备将其灵辉从体内扯出......"))
 		user.visible_message(span_alert("[user]将手探向[target]的胸膛，[user.p_their()]的手被异端火焰缠绕着......"))
