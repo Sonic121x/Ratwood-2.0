@@ -12,6 +12,10 @@
 	if(HAS_TRAIT(src, TRAIT_CURSE_RESIST))
 		C.resist = 0.5
 	C.on_gain(src, C.resist)
+	if(HAS_TRAIT(src, TRAIT_LUX_FREAK))
+		var/time = 30 
+		to_chat(src, span_userdanger("一道神明诅咒深深嵌入了我的灵辉之中，我需要[time]分钟才能将其解除。"))
+		addtimer(CALLBACK(src, PROC_REF(remove_curse), C), time MINUTES)
 	return TRUE
 
 /mob/living/carbon/human/proc/remove_curse(datum/curse/C)

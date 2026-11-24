@@ -1726,6 +1726,10 @@
 	name = "鲁莽"
 	icon_state = "indigo_zap"
 
+/datum/sprite_accessory/hair/head/indigozapalt
+	name = "鲁莽（变体）"
+	icon_state = "indigo_zapalt"
+
 /datum/sprite_accessory/hair/head/rainbowdash
 	name = "忠诚"
 	icon_state = "rainbow_dash"
