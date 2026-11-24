@@ -16,10 +16,20 @@
 /datum/mind/proc/z121_grand_config(list/config)
 	if(!z121_grand_utility_budget)
 		return config
-	var/list/result = config?.Copy() || list("major" = 0, "minor" = 0)
+	var/list/result = config?.Copy() || list()
 	result["mastery"] = TRUE
+	result["major"] = 9
+	result["minor"] = 9
 	result["utilities"] = max(result["utilities"] || 0, z121_grand_utility_budget)
 	return result
+
+/datum/mind/proc/get_aspect_reset_limit()
+	return z121_grand_utility_budget ? 99 : ASPECT_RESET_BUDGET
+
+/datum/mind/get_aspect_reset_remaining()
+	if(!z121_grand_utility_budget)
+		return ..()
+	return get_aspect_reset_limit() - aspect_resets_used
 
 // 改选法相奖励不能删除独立奖励。
 /datum/mind/swap_choice_spell(datum/magic_aspect/aspect, new_choice)

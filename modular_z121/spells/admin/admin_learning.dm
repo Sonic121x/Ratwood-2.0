@@ -128,6 +128,7 @@ GLOBAL_LIST_INIT(z121_admin_learnable_spells, list(
 	if(!islist(.) || !owner?.mind)
 		return
 	var/list/data = .
+	data["reset_budget_max"] = owner.mind.get_aspect_reset_limit()
 	for(var/path in GLOB.z121_admin_learnable_spells)
 		if(!owner.mind.has_spell(path))
 			continue
