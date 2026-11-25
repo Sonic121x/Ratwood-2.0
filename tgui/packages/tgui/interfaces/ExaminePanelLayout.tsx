@@ -41,7 +41,7 @@ export const ExamineContent = (props: {
                 page={ExaminePage.FlavorText}
                 setPage={tabs.setPage}
               >
-                Flavor Text
+                角色描述
               </PageButton>
             </Stack.Item>
             <Stack.Item grow>
@@ -51,7 +51,7 @@ export const ExamineContent = (props: {
                   page={ExaminePage.ImageGallery}
                   setPage={tabs.setPage}
                 >
-                  Image Gallery
+                  图片画廊
                 </PageButton>
               </div>
             </Stack.Item>

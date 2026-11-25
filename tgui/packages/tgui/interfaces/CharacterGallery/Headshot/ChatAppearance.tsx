@@ -19,15 +19,15 @@ export const ChatAppearance = (props: {
   const { form, framing, retry, busy } = props;
   const original = usePictureSize(form.headshot);
   return (
-    <Section title="Chat Appearance">
+    <Section title="聊天栏头像">
       <Box color="label" mb={1}>
-        Choose how your headshot appears in the chat examine only. Examine
-        Closer always uses the square portrait.
+        选择在聊天栏检视角色时显示的头像样式。
+        详细检视面板始终使用方形头像。
       </Box>
       <div className="CharacterGallery__chatOptions">
         {[false, true].map((useFraming) => {
           const chosen = !!data.headshot_frame_chat === useFraming;
-          const title = useFraming ? 'Square Portrait' : 'Original Proportions';
+          const title = useFraming ? '方形头像' : '原图比例';
           return (
             <Button
               key={String(useFraming)}
@@ -60,7 +60,7 @@ export const ChatAppearance = (props: {
                       key={retry}
                       className="CharacterGallery__chatOriginal"
                       src={resolveAsset(form.headshot!)}
-                      alt="Chat headshot with original proportions"
+                      alt="保留原图比例的聊天栏头像"
                     />
                   )
                 )}
@@ -71,8 +71,8 @@ export const ChatAppearance = (props: {
               </Box>
               <Box color="label" mt={0.5}>
                 {useFraming
-                  ? 'Matches the portrait above.'
-                  : 'Keeps the original shape.'}
+                  ? '与上方的头像取景一致。'
+                  : '保留图片原有的宽高比。'}
               </Box>
             </Button>
           );

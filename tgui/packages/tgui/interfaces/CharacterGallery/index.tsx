@@ -48,8 +48,8 @@ const UNHELD_ACTIONS = new Set(['select_form', 'preview', 'cancel_urls']);
 const IMAGE_UPDATE_TIMEOUT_MS = 10000;
 
 const FORM_TABS: Record<FormId, string> = {
-  character: 'Character',
-  gnoll: 'Gnoll Form',
+  character: '角色',
+  gnoll: '豺狼人形态',
 };
 
 export const CharacterGallery = () => {
@@ -219,7 +219,7 @@ const CharacterGalleryContent = () => {
 
   return (
     <Window
-      title={`Character Gallery: ${form.name || FORM_TABS[form.id]}`}
+      title={`角色画廊：${form.name || FORM_TABS[form.id]}`}
       width={680}
       height={860}
       onBeforeClose={() => {
@@ -267,7 +267,7 @@ const CharacterGalleryContent = () => {
                 </div>
                 {expanded && (
                   <GalleryLedgerDivider
-                    label="Collapse Headshot Editor"
+                    label="收起头像编辑器"
                     onClick={collapseHeadshot}
                   />
                 )}
@@ -324,10 +324,10 @@ const FormTabs = (props: {
         <Stack.Item>
           <Button
             icon="eye"
-            tooltip="Open your examine panel as others see it"
+            tooltip="预览其他玩家检视你时看到的面板"
             onClick={() => act('preview', { form: form.id })}
           >
-            Preview
+            预览
           </Button>
         </Stack.Item>
       </Stack>
@@ -338,7 +338,7 @@ const FormTabs = (props: {
           className="CharacterGallery__busyStatus"
         >
           <Icon name="spinner" spin mr={0.5} />
-          Updating images…
+          正在更新图片……
         </div>
       )}
     </Stack.Item>
@@ -351,7 +351,7 @@ const OverviewPage = (props: { form: ImageForm } & EditorToggle) => {
     <div className="CharacterGallery__workspace">
       <ImageGuidelines scope="all" />
       <HeadshotSummary {...props} />
-      <Section title="OOC Extras">
+      <Section title="OOC 附件">
         {[false, true].map((nsfw) => (
           <ExtraRow
             key={`${form.id}-${nsfw ? 'nsfw' : 'sfw'}`}
@@ -384,12 +384,12 @@ const HeadshotSummary = (props: { form: ImageForm } & EditorToggle) => {
   return (
     <Section>
       <div className="CharacterGallery__summary">
-        <Thumbnail label="Headshot Overview" url={form.headshot} />
+        <Thumbnail label="头像概览" url={form.headshot} />
         <div>
           <Box bold fontSize="1.15em">
-            Headshot
+            头像
           </Box>
-          {!form.headshot && <Box color="label">No image added</Box>}
+          {!form.headshot && <Box color="label">尚未添加图片</Box>}
         </div>
         <div>
           <Button
@@ -402,11 +402,11 @@ const HeadshotSummary = (props: { form: ImageForm } & EditorToggle) => {
               // button is always as wide as the longer label. Rendering only the current label changes the button's width on
               // each expand or collapse and shifts the controls below it
               <span className="CharacterGallery__stableLabel">
-                <span aria-hidden={editorOpen}>Expand Headshot Editor</span>
-                <span aria-hidden={!editorOpen}>Collapse Headshot Editor</span>
+                <span aria-hidden={editorOpen}>展开头像编辑器</span>
+                <span aria-hidden={!editorOpen}>收起头像编辑器</span>
               </span>
             ) : (
-              'Edit Headshot'
+              '编辑头像'
             )}
           </Button>
           <Box mt={0.5}>
@@ -417,10 +417,10 @@ const HeadshotSummary = (props: { form: ImageForm } & EditorToggle) => {
               aria-disabled={sideBySide && editorOpen}
               onClick={onToggleView}
             >
-              Side-by-Side Editor
+              并排编辑
             </Button.Checkbox>
           </Box>
-          <SourceSwitch form={form} image={HEADSHOT_SLOT} label="Headshot" />
+          <SourceSwitch form={form} image={HEADSHOT_SLOT} label="头像" />
         </div>
       </div>
     </Section>
@@ -440,7 +440,7 @@ const ClearFormControls = (props: { form: ImageForm }) => {
             disabled={busy}
             onClick={() => act('swap_all_urls', { form: form.id })}
           >
-            Swap All Images
+            对调所有主图和备用图
           </Button>
         </Box>
       )}
@@ -448,16 +448,16 @@ const ClearFormControls = (props: { form: ImageForm }) => {
         icon="trash"
         color="bad"
         disabled={busy || !formHasImages(form)}
-        tooltip={`Remove every image of your ${form.id === 'gnoll' ? 'gnoll form' : 'character'}`}
+        tooltip={`移除${form.id === 'gnoll' ? '豺狼人形态' : '角色'}的全部图片`}
         onClick={() => act('clear_all', { form: form.id })}
       >
-        Clear All Images
+        清空全部图片
       </Button>
       {!!form.undo_clear && (
         <Button
           icon="undo"
           disabled={busy}
-          tooltip="Bring back the images the last Clear removed"
+          tooltip="恢复上次清空的图片"
           onClick={() =>
             act('undo_image', {
               form: form.id,
@@ -465,7 +465,7 @@ const ClearFormControls = (props: { form: ImageForm }) => {
             })
           }
         >
-          Undo Clear
+          撤销清空
         </Button>
       )}
     </Box>
@@ -481,7 +481,7 @@ const HeadshotEditorPage = (props: {
   return (
     <>
       <GalleryLedgerHeader
-        title="Headshot Editor"
+        title="头像编辑器"
         sideBySide={sideBySide}
         onClose={sideBySide ? undefined : onClose}
       />
@@ -502,11 +502,11 @@ const SaveFooter = () => {
     <Stack.Item shrink={0} className="CharacterGallery__footer">
       <div className="CharacterGallery__save">
         <Box color="label">
-          Saves the entire character slot.{' '}
+          保存此存档槽中的全部角色资料。{' '}
           <span role="status" aria-live="polite">
             {(sendingEdits || !!data.gallery_dirty) && (
               <Box inline color="average">
-                Unsaved changes.
+                有未保存的更改。
               </Box>
             )}
           </span>
@@ -516,10 +516,10 @@ const SaveFooter = () => {
           icon="save"
           bold
           disabled={busy}
-          tooltip={busy ? 'Waiting for the image update.' : undefined}
+          tooltip={busy ? '正在等待图片更新。' : undefined}
           onClick={() => act('save')}
         >
-          Save Character
+          保存角色
         </Button>
       </div>
       <div role="status" aria-live="polite">

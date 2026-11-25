@@ -47,8 +47,8 @@ export const ExtraRow = (props: { form: ImageForm; nsfw: boolean }) => {
           <DragSlider
             // Its own pending value only clears when the server sends that same value, which an Undo may not
             key={form.revision}
-            label="Maximum Width"
-            hint="Percent of the text column. Small images keep their size."
+            label="最大宽度"
+            hint="按文字栏宽度的百分比设置。小图保持原尺寸。"
             value={
               nsfw ? form.nsfw_ooc_extra_img_size : form.ooc_extra_img_size
             }
@@ -134,7 +134,7 @@ export const ArtSection = (props: { form: ImageForm; nsfw: boolean }) => {
   const removedRow = (position: number) =>
     removedAt === position && (
       <RemovedRow
-        text={`${artLabel(nsfw, position)} removed`}
+        text={`已移除${artLabel(nsfw, position)}`}
         busy={busy}
         onUndo={() =>
           act('undo_image', { form: form.id, image: removedPoint(scope) })
@@ -144,7 +144,7 @@ export const ArtSection = (props: { form: ImageForm; nsfw: boolean }) => {
 
   return (
     <Section
-      title={`${galleryLabel(nsfw)} (${shown.length} of ${data.gallery_max})`}
+      title={`${galleryLabel(nsfw)}（${shown.length}/${data.gallery_max}）`}
     >
       {shown.map((url, index) => {
         const position = index + 1;
@@ -152,7 +152,7 @@ export const ArtSection = (props: { form: ImageForm; nsfw: boolean }) => {
         const background = form.card_backgrounds?.[sourceSlot] ?? CARD_DEFAULT;
         const backgroundLabel =
           cardBackgroundLabel(data.card_background_options, background) ??
-          'Transparent';
+          '透明';
         return (
           <Fragment key={keys[index]}>
             {removedRow(position)}
@@ -161,7 +161,7 @@ export const ArtSection = (props: { form: ImageForm; nsfw: boolean }) => {
               artworkLimits
               label={artLabel(nsfw, position)}
               url={url}
-              setText="Edit"
+              setText="编辑"
               tone={index % 2 === 0 ? 'light' : 'dark'}
               flash={flashed === keys[index]}
               onSet={() => act('set_art', { ...params, index: position })}
@@ -217,13 +217,13 @@ export const BlockedLinks = (props: { form: ImageForm }) => {
       title={
         <Box inline color="average">
           <Icon name="exclamation-triangle" mr={0.5} />
-          Hidden from Others
+          仅自己可见
         </Box>
       }
     >
       <Box color="label" mb={1}>
-        Your links are hidden, as either the image hosting site is not allowed
-        or the gallery is full.
+        如果图片托管网站不在允许名单内，或画廊已满，
+        相应链接就只对你可见。
       </Box>
       {blocked.map((entry, index) => (
         <Box key={`${entry.url}#${index}`} mb={0.5}>
@@ -231,7 +231,7 @@ export const BlockedLinks = (props: { form: ImageForm }) => {
             {entry.label}
           </Box>
           <LinkControls
-            label={`Hidden ${entry.label} Link ${index + 1}`}
+            label={`隐藏链接 ${index + 1}（${entry.label}）`}
             disabled={busy}
             url={entry.url}
             onClear={() =>
@@ -242,7 +242,7 @@ export const BlockedLinks = (props: { form: ImageForm }) => {
       ))}
       {canUndo && (
         <RemovedRow
-          text="Hidden link removed"
+          text="已移除隐藏链接"
           busy={busy}
           onUndo={() =>
             act('undo_image', { form: form.id, image: removedPoint('blocked') })
@@ -261,7 +261,7 @@ const RemovedRow = (props: {
   <div className="CharacterGallery__removedRow">
     <Box color="label">{props.text}</Box>
     <Button icon="undo" disabled={props.busy} onClick={props.onUndo}>
-      Undo
+      撤销
     </Button>
   </div>
 );

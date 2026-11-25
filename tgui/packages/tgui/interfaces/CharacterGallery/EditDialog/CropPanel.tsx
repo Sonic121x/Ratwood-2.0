@@ -65,9 +65,9 @@ export const CropPanel = (props: {
       {!panelUrl && (
         <>
           <div className="CharacterGallery__framingPlaceholder">
-            <strong>Framing</strong>
+            <strong>取景</strong>
             <Box color="label">
-              Enter a direct image link to preview and frame your artwork.
+              输入图片直链即可预览作品并调整取景。
             </Box>
           </div>
           {props.children}

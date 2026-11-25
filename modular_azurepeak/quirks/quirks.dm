@@ -186,7 +186,7 @@
 	strong_smell.redolent_scent = recipient.client?.prefs?.redolent_scent || ""
 
 /datum/quirk/redolent/config_summary()
-	return "<b>[scent_type]</b>: [scent || get_default_redolent_scent(scent_type)]"
+	return "<b>[get_update_choice_display(scent_type)]</b>：[scent || get_default_redolent_scent(scent_type)]"
 
 /datum/quirk/redolent/save_config()
 	return list("scent_type" = scent_type, "scent" = scent)
@@ -202,15 +202,15 @@
 		if(isnull(scent_type))
 			S["malodorous_type"] >> scent_type
 			S["malodorous_scent"] >> scent
-	if(scent_type == "Positive")
-		scent_type = REDOLENT_SMELL_GOOD
+	if(scent_type in list("Positive", "舒适", "正常", "恶心")) // 自定义修改：读取旧存档时还原气味类型的内部键
+		scent_type = scent_type == "恶心" ? REDOLENT_SMELL_BAD : (scent_type == "正常" ? REDOLENT_SMELL_NEUTRAL : REDOLENT_SMELL_GOOD)
 	if(!(scent_type in REDOLENT_SMELLS))
 		scent_type = REDOLENT_SMELL_NEUTRAL
 	if(isnull(scent))
 		scent = ""
 
 /datum/quirk/redolent/configure(mob/user)
-	var/new_scent_type = tgui_input_list(user, "选择他人对你气味的感受：", "体味浓郁", REDOLENT_SMELLS)
+	var/new_scent_type = input_translation_choice(user, "选择他人对你气味的感受：", "体味浓郁", REDOLENT_SMELLS)
 	if(!new_scent_type)
 		return
 	var/scent_action = input_translation_choice(user, "描述气味：", "体味浓郁", list("Describe scent", "Use default"))

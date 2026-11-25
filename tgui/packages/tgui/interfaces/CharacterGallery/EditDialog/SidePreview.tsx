@@ -60,7 +60,7 @@ export const SidePreview = (props: {
       ref={ref}
       className="CharacterGallery__sidePreview"
       style={{ left }}
-      aria-label="Artwork Preview"
+      aria-label="作品预览"
       onMouseDown={(event) => event.preventDefault()}
     >
       <div className="CharacterGallery__artPreviewViewport">
@@ -81,7 +81,7 @@ export const SidePreview = (props: {
           />
         ) : (
           <Box color="label">
-            Enter a direct image link to preview this artwork.
+            输入图片直链即可预览作品。
           </Box>
         )}
       </div>

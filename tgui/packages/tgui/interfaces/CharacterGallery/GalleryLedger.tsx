@@ -69,7 +69,7 @@ export const GalleryLedgerHeader = (props: {
         onMouseDown={onMouseDown}
         onClick={onClose}
       >
-        {sideBySide ? 'Collapse' : 'Back to Gallery'}
+        {sideBySide ? '收起' : '返回画廊'}
       </Button>
     </Stack.Item>
   );

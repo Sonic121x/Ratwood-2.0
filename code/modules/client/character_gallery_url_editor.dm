@@ -156,7 +156,7 @@
 	if(!url_editor || params["editor_id"] != url_editor["id"])
 		return FALSE
 	if(!COOLDOWN_FINISHED(src, url_save_cooldown))
-		url_editor["error"] = "Wait a moment before applying again."
+		url_editor["error"] = "请稍候再应用更改。"
 		return FALSE
 	var/form = url_editor["form"]
 	var/list/urls = validate_urls(user, params)
@@ -169,10 +169,10 @@
 	var/image = url_editor["image"]
 	for(var/field in list("main_view_settings", "alternate_view_settings"))
 		if((field in params) && (!is_gallery_art_slot(image) || !is_art_view_settings(params[field])))
-			url_editor["error"] = "Choose a valid opening view, lock and framing for each artwork source."
+			url_editor["error"] = "请为每个图片来源选择有效的初始视图、锁定方式和取景范围。"
 			return FALSE
 	if(url_editor["sources"] != sources_snapshot(form))
-		url_editor["error"] = "These images changed while the editor was open. Cancel and reopen it."
+		url_editor["error"] = "编辑期间图片已变更。请取消并重新打开编辑器。"
 		return FALSE
 	var/list/backgrounds
 	var/backgrounds_changed = FALSE
@@ -237,42 +237,42 @@
 		alternates[image] = source
 	var/materials = ""
 	if(backgrounds)
-		materials = length(alternate) ? ", card materials main '[backgrounds[1]]', alternate '[backgrounds[2]]'" : ", card material '[backgrounds[1]]'"
+		materials = length(alternate) ? "，主图卡片底色 '[backgrounds[1]]'，备用图卡片底色 '[backgrounds[2]]'" : "，卡片底色 '[backgrounds[1]]'"
 	if(settings)
-		materials += ", artwork view settings main '[json_encode(settings[1])]', alternate '[json_encode(settings[2])]'"
+		materials += "，主图查看设置 '[json_encode(settings[1])]'，备用图查看设置 '[json_encode(settings[2])]'"
 	COOLDOWN_START(src, url_save_cooldown, CHARACTER_GALLERY_LOGGED_COOLDOWN)
-	log_game("[user] has set [describe(form, FALSE, url_editor["label"])] URLs to main '[main]', alternate '[alternate]', using [active_alternate ? "alternate" : "main"][materials].")
+	log_game("[user] 设置了[describe(form, FALSE, url_editor["label"])]的主链接 '[main]' 和备用链接 '[alternate]'，当前使用[active_alternate ? "备用链接" : "主链接"][materials]。")
 	close_url_editor()
 	return TRUE
 
 /datum/character_gallery/proc/validate_urls(mob/user, list/params)
 	if(!istext(params["main"]) || !istext(params["alternate"]))
-		url_editor["error"] = "Enter a current image URL and an optional alternate image URL."
+		url_editor["error"] = "请输入当前图片链接，也可以填写备用图片链接。"
 		return null
 	var/main = trim(params["main"])
 	var/alternate = trim(params["alternate"])
 	var/active_alternate = !!params["active_alternate"]
 	if(!length(active_alternate ? alternate : main))
-		url_editor["error"] = "Enter a current image URL."
+		url_editor["error"] = "请输入当前图片链接。"
 		return null
 	var/promote_alternate = active_alternate && !length(main)
 	if(promote_alternate)
 		main = alternate
 		alternate = ""
 		active_alternate = FALSE
-	var/main_name = active_alternate ? "Alternate" : "Current"
-	var/alternate_name = active_alternate ? "Current" : "Alternate"
+	var/main_name = active_alternate ? "备用" : "当前"
+	var/alternate_name = active_alternate ? "当前" : "备用"
 	var/error = new_url_error(main, main_name) || new_url_error(alternate, alternate_name)
 	if(error)
 		url_editor["error"] = error
 		return null
 	var/list/extensions = gallery_image_extensions(url_editor["image"])
-	var/invalid_text = "image link is invalid. Make sure it's a direct https link from a valid host, ending in [english_list(extensions, and_text = " or ")]."
+	var/invalid_text = "图片链接无效。请使用允许的托管网站提供的 HTTPS 直链，文件扩展名须为 [english_list(extensions, and_text = " 或 ", comma_text = "、")]。"
 	if(!valid_headshot_link(user, main, TRUE, extensions))
-		url_editor["error"] = "[main_name] [invalid_text]"
+		url_editor["error"] = "[main_name][invalid_text]"
 		return null
 	if(length(alternate) && !valid_headshot_link(user, alternate, TRUE, extensions))
-		url_editor["error"] = "[alternate_name] [invalid_text]"
+		url_editor["error"] = "[alternate_name][invalid_text]"
 		return null
 	return list(
 		"main" = main,
@@ -286,10 +286,10 @@
 	if(link == url_editor["main"] || link == url_editor["alternate"])
 		return null
 	if(length(link) > IMAGE_LINK_MAX_LENGTH)
-		return "[name] image URL must be [IMAGE_LINK_MAX_LENGTH] characters or fewer."
+		return "[name]图片链接最多可输入 [IMAGE_LINK_MAX_LENGTH] 个字符。"
 	var/static/regex/whitespace = regex(@"\s")
 	if(findtext(link, whitespace))
-		return "[name] image URL can't contain spaces or line breaks."
+		return "[name]图片链接不能含有空格或换行。"
 	return null
 
 /**

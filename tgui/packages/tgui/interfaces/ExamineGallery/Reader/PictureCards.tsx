@@ -141,7 +141,7 @@ export const PictureCards = (props: {
                 crop={crops[index]}
                 image={{
                   ...pictures.imageProps(url),
-                  alt: `Picture ${index + 1}`,
+                  alt: `第 ${index + 1} 张图片`,
                 }}
               />
               {!plain && <span className="ExamineGallery__frame" />}

@@ -13,49 +13,49 @@ export const guidelineScope = (image: string): GuidelineScope => {
 
 export const ImageGuidelines = (props: { scope: GuidelineScope }) => (
   <details className="CharacterGallery__guidelines">
-    <summary>Read Image Guidelines</summary>
+    <summary>查看图片使用规范</summary>
     <Box mt={1}>
-      <Box bold>General</Box>
+      <Box bold>通用要求</Box>
       <ul>
         <li>
-          Characters must be unquestionably adult in both appearance and age.
+          角色的实际年龄和外貌都必须明确为成年人。
         </li>
         <li>
-          Keep characters consistent with the setting’s aesthetic. We allow
-          flexibility within reason.
+          角色形象应符合游戏设定的风格，
+          在合理范围内可以自由发挥。
         </li>
         <li>
-          Respect removal requests from artists and the owners of depicted
-          characters.
+          如果画师或画中角色的所有者要求撤下图片，
+          请尊重对方的意愿。
         </li>
       </ul>
       {(props.scope === 'all' || props.scope === 'headshot') && (
         <>
-          <Box bold>Headshot</Box>
+          <Box bold>头像</Box>
           <p>
-            Keep portraits non-explicit and avoid excessive sexualization.
-            Cleavage and thigh-up compositions are acceptable; nipple slips or
-            compositions dominated by sexual body parts are not. While we do
-            allow suggestive/risqué headshots, it should be within reason.
+            头像应避免露骨内容或过度性化。
+            可以露出乳沟，也可以采用大腿以上的构图。
+            不可露点，也不可让性部位成为画面的焦点。
+            带有暗示意味的头像请把握分寸。
           </p>
         </>
       )}
       {(props.scope === 'all' || props.scope === 'sfw') && (
         <>
-          <Box bold>SFW Gallery and OOC Extra</Box>
+          <Box bold>全年龄画廊与 OOC 附件</Box>
           <ul>
             <li>
-              Risqué artwork, suggestive poses, mild blood/gore, and tasteful
-              nudity are allowed within reason.
+              可酌情使用略带挑逗意味的作品或姿势、轻微血腥场面，
+              以及表达克制的裸体画作。
             </li>
             <li>
-              No clearly visible genitals, arousal, anatomically explicit
-              bulges, or visible nipples on breasts. Avoid excessive viscera,
-              dismemberment, and overtly sexual poses.
+              不可清楚露出生殖器、性兴奋状态、勾勒出生殖器细节的凸起，
+              或乳房上的乳头。请避免大量展现内脏、
+              肢解场面或明显带有性意味的姿势。
             </li>
             <li>
-              When unsure, use the NSFW gallery or ahelp.{' '}
-              <b>We aim to be reasonable, not strict.</b>
+              拿不准时，请使用成人向画廊，或通过 ahelp 询问管理员。{' '}
+              <b>我们会按实际情况合理判断。</b>
             </li>
           </ul>
         </>
@@ -65,7 +65,7 @@ export const ImageGuidelines = (props: { scope: GuidelineScope }) => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        Source: Server Rules
+        出处：服务器规则
       </a>
     </Box>
   </details>

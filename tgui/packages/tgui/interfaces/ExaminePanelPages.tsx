@@ -175,10 +175,10 @@ export const FlavorTextPage = (props: FlavorTextPageProps) => {
                       <Button
                         compact
                         icon={showOriginal ? 'crop' : 'image'}
-                        tooltip="Admins only. Switches between the framed headshot players see and the whole picture it crops."
+                        tooltip="仅管理员可用。在玩家看到的头像取景和完整原图之间切换。"
                         onClick={() => setShowOriginal(!showOriginal)}
                       >
-                        {showOriginal ? 'Framed' : 'Original'}
+                        {showOriginal ? '查看取景' : '查看原图'}
                       </Button>
                     </Box>
                   )}

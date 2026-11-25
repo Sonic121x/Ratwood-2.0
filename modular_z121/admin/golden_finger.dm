@@ -3,7 +3,7 @@
 
 // 管理身份可在同一具身体上解除或恢复。只查这一个连接，不遍历在线玩家。
 SUBSYSTEM_DEF(z121_golden_finger)
-	name = "Golden Finger"
+	name = "金手指"
 	flags = SS_NO_INIT
 	wait = 1 SECONDS
 	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME

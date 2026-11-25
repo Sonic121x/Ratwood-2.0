@@ -101,15 +101,15 @@
 		list("id" = "nsfw_examine", "label" = "始终显示成人检视信息", "enabled" = !!owner.prefs.nsfw_examine_always, "desc" = "即使穿着衣物，也显示成人检视信息。"),
 	)
 
-	var/plain_note = owner.prefs.gallery_plain ? "off while Plain Gallery is on" : null
+	var/plain_note = owner.prefs.gallery_plain ? "简洁画廊开启时暂停使用" : null
 	var/list/gallery_entries = list(
-		list("id" = "gallery_plain", "label" = "Plain Gallery", "enabled" = !!owner.prefs.gallery_plain, "desc" = "The I Hate Whimsy toggle or the My Poor Computer toggle. Shows only the artwork and basic navigation: no cards, frames, backdrops, gallery animations, sounds or candle flicker. Your appearance and effects settings are kept for when you turn it off."),
-		list("id" = "gallery_backdrop", "label" = "Gallery Backdrop", "enabled" = !!owner.prefs.gallery_backdrop, "desc" = "Show the backdrop each character's owner chose behind the art card in the examine Image Gallery. Turn it off if the gallery stutters.", "override_note" = plain_note),
-		list("id" = "gallery_card_deal", "label" = "Art Card Deal", "enabled" = !!owner.prefs.gallery_card_deal, "desc" = "Deal the art cards in like a hand of cards in the examine Image Gallery. Turned off, they fade instead.", "override_note" = plain_note),
-		list("id" = "gallery_image_sounds", "label" = "Art Card Sounds", "enabled" = !!owner.prefs.gallery_image_sounds, "desc" = "Play a sound when changing art cards in the examine Image Gallery.", "override_note" = plain_note),
-		list("id" = "gallery_image_tilt", "label" = "Art Card Tilt", "enabled" = !!owner.prefs.gallery_image_tilt, "desc" = "Lean the art card toward your mouse in the examine Image Gallery.", "override_note" = plain_note),
-		list("id" = "gallery_candle_flicker", "label" = "Candle Flicker", "enabled" = !!owner.prefs.gallery_candle_flicker, "desc" = "Make the candle glow flicker while your mouse moves over the examine Image Gallery, and anything in its backdrop blink now and then.", "override_note" = plain_note),
-		list("id" = "gallery_easter_eggs", "label" = "Easter Eggs", "enabled" = !!owner.prefs.gallery_easter_eggs, "desc" = "A few surprises hidden in the Image Gallery. Your other gallery settings stay as they are.", "override_note" = plain_note),
+		list("id" = "gallery_plain", "label" = "简洁画廊", "enabled" = !!owner.prefs.gallery_plain, "desc" = "嫌特效花哨，或想给电脑减负？开启后只显示作品和翻页按钮，隐藏卡片、边框、布景、动画、音效和烛光。关闭后恢复之前的外观与特效设置。"),
+		list("id" = "gallery_backdrop", "label" = "画廊布景", "enabled" = !!owner.prefs.gallery_backdrop, "desc" = "检视角色时，在作品卡片后显示该角色选用的布景。画廊卡顿时可关闭。", "override_note" = plain_note),
+		list("id" = "gallery_card_deal", "label" = "发牌动画", "enabled" = !!owner.prefs.gallery_card_deal, "desc" = "打开画廊时，作品会像扑克牌一样依次发出。关闭后改为淡入。", "override_note" = plain_note),
+		list("id" = "gallery_image_sounds", "label" = "卡片音效", "enabled" = !!owner.prefs.gallery_image_sounds, "desc" = "在画廊中切换作品时播放音效。", "override_note" = plain_note),
+		list("id" = "gallery_image_tilt", "label" = "卡片倾斜", "enabled" = !!owner.prefs.gallery_image_tilt, "desc" = "画廊中的作品卡片会向鼠标指针倾斜。", "override_note" = plain_note),
+		list("id" = "gallery_candle_flicker", "label" = "烛光摇曳", "enabled" = !!owner.prefs.gallery_candle_flicker, "desc" = "鼠标在画廊中移动时，烛光会摇曳，布景中的动物也会偶尔眨眼。", "override_note" = plain_note),
+		list("id" = "gallery_easter_eggs", "label" = "画廊彩蛋", "enabled" = !!owner.prefs.gallery_easter_eggs, "desc" = "启用画廊里藏着的小惊喜。其他画廊设置照常生效。", "override_note" = plain_note),
 	)
 
 	var/list/visual_entries = list(
@@ -171,7 +171,7 @@
 		list("name" = "角色", "entries" = character_entries),
 		list("name" = "画面", "entries" = graphics_entries, "selects" = graphics_selects),
 		list("name" = "视觉效果", "entries" = visual_entries),
-		list("name" = "Character Gallery", "entries" = gallery_entries),
+		list("name" = "角色画廊", "entries" = gallery_entries),
 		list("name" = "游戏操作", "entries" = gameplay_entries),
 		list("name" = "音频", "entries" = audio_entries),
 		list("name" = "内容", "entries" = content_entries),
@@ -387,88 +387,88 @@
 			to_chat(src, "鼠标悬停时，玩家姓名下方不再显示职业。")
 
 /client/verb/toggle_gallery_plain()
-	set category = "Options"
-	set name = "Toggle Plain Gallery"
+	set category = "选项"
+	set name = "切换简洁画廊"
 	set hidden = 1
 	if(prefs)
 		prefs.gallery_plain = !prefs.gallery_plain
 		prefs.save_preferences()
 		if(prefs.gallery_plain)
-			to_chat(src, "The Image Gallery will show only artwork and basic navigation the next time you open it, with no cards, frames, backdrops, gallery animations or sounds.")
+			to_chat(src, "下次打开画廊时只显示作品和翻页按钮，隐藏卡片、边框、布景、动画和音效。")
 		else
-			to_chat(src, "The Image Gallery will follow your other gallery settings the next time you open it.")
+			to_chat(src, "下次打开画廊时将恢复你选用的外观和特效。")
 
 /client/verb/toggle_gallery_backdrop()
-	set category = "Options"
-	set name = "Toggle Gallery Backdrop"
+	set category = "选项"
+	set name = "切换画廊布景"
 	set hidden = 1
 	if(prefs)
 		prefs.gallery_backdrop = !prefs.gallery_backdrop
 		prefs.save_preferences()
 		if(prefs.gallery_backdrop)
-			to_chat(src, "Gallery backdrops enabled.")
+			to_chat(src, "已开启画廊布景。")
 		else
-			to_chat(src, "Gallery backdrops disabled.")
+			to_chat(src, "已关闭画廊布景。")
 
 /client/verb/toggle_gallery_card_deal()
-	set category = "Options"
-	set name = "Toggle Art Card Deal"
+	set category = "选项"
+	set name = "切换发牌动画"
 	set hidden = 1
 	if(prefs)
 		prefs.gallery_card_deal = !prefs.gallery_card_deal
 		prefs.save_preferences()
 		if(prefs.gallery_card_deal)
-			to_chat(src, "Art cards will now be dealt in.")
+			to_chat(src, "作品卡片将随发牌动画入场。")
 		else
-			to_chat(src, "Art cards will now fade in.")
+			to_chat(src, "作品卡片将淡入画面。")
 
 /client/verb/toggle_gallery_image_sounds()
-	set category = "Options"
-	set name = "Toggle Art Card Sounds"
+	set category = "选项"
+	set name = "切换卡片音效"
 	set hidden = 1
 	if(prefs)
 		prefs.gallery_image_sounds = !prefs.gallery_image_sounds
 		prefs.save_preferences()
 		if(prefs.gallery_image_sounds)
-			to_chat(src, "Art card sounds enabled.")
+			to_chat(src, "已开启卡片音效。")
 		else
-			to_chat(src, "Art card sounds disabled.")
+			to_chat(src, "已关闭卡片音效。")
 
 /client/verb/toggle_gallery_image_tilt()
-	set category = "Options"
-	set name = "Toggle Art Card Tilt"
+	set category = "选项"
+	set name = "切换卡片倾斜"
 	set hidden = 1
 	if(prefs)
 		prefs.gallery_image_tilt = !prefs.gallery_image_tilt
 		prefs.save_preferences()
 		if(prefs.gallery_image_tilt)
-			to_chat(src, "Art card tilt enabled.")
+			to_chat(src, "已开启卡片倾斜效果。")
 		else
-			to_chat(src, "Art card tilt disabled.")
+			to_chat(src, "已关闭卡片倾斜效果。")
 
 /client/verb/toggle_gallery_candle_flicker()
-	set category = "Options"
-	set name = "Toggle Gallery Candle Flicker"
+	set category = "选项"
+	set name = "切换画廊烛光摇曳"
 	set hidden = 1
 	if(prefs)
 		prefs.gallery_candle_flicker = !prefs.gallery_candle_flicker
 		prefs.save_preferences()
 		if(prefs.gallery_candle_flicker)
-			to_chat(src, "Gallery candle flicker enabled.")
+			to_chat(src, "已开启画廊烛光摇曳效果。")
 		else
-			to_chat(src, "Gallery candle flicker disabled.")
+			to_chat(src, "已关闭画廊烛光摇曳效果。")
 
 /client/verb/toggle_gallery_easter_eggs()
-	set category = "Options"
-	set name = "Toggle Gallery Easter Eggs"
+	set category = "选项"
+	set name = "切换画廊彩蛋"
 	set hidden = 1
 	if(prefs)
 		prefs.gallery_easter_eggs = !prefs.gallery_easter_eggs
 		prefs.save_preferences()
 		if(prefs.gallery_easter_eggs)
-			to_chat(src, "Gallery easter eggs enabled.")
+			to_chat(src, "已开启画廊彩蛋。")
 		else
-			to_chat(src, "Gallery easter eggs disabled.")
+			to_chat(src, "已关闭画廊彩蛋。")
 
 /client/verb/nsfw_examine_always()
 	set category = "选项"

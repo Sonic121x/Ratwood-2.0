@@ -8,14 +8,14 @@ export const BackdropSection = (props: { form: ImageForm }) => {
   const { form } = props;
   const busy = isBusy(form.id);
   return (
-    <Section title="Image Gallery Backdrop">
+    <Section title="画廊布景">
       <Box color="label" mb={1}>
-        What viewers see behind your pictures in the Image Gallery.
+        选择其他玩家浏览你的作品时看到的布景。
       </Box>
       <div
         className="CharacterGallery__actions"
         role="group"
-        aria-label="Image Gallery Backdrop"
+        aria-label="画廊布景"
       >
         {data.backdrop_options.map((option) => {
           const chosen = option.value === form.image_backdrop;

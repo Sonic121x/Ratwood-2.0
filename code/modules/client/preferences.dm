@@ -2045,8 +2045,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 					popup.open(FALSE)
 				if("flavortext")
 					skip_preview = FALSE
-					to_chat(user, "<span class='notice'>["<span class='bold'>Flavortext should not include nonphysical nonsensory attributes such as backstory or the character's internal thoughts.</span>"]</span>")
-					var/new_flavortext = tgui_input_text(user, "Input your character description:", "Flavortext", flavortext, multiline = TRUE,  encode = FALSE, bigmodal = TRUE)
+					to_chat(user, "<span class='notice'>["<span class='bold'>请只描述旁人能感知的特征。角色的身世和内心想法不应写入外貌描述。</span>"]</span>")
+					var/new_flavortext = tgui_input_text(user, "请输入角色的外貌描述：", "外貌描述", flavortext, multiline = TRUE,  encode = FALSE, bigmodal = TRUE)
 					if(isnull(new_flavortext))
 						return
 					var/previous_flavor_label = flavor_text_label()
@@ -2054,8 +2054,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 						flavortext = null
 					else
 						flavortext = new_flavortext
-						to_chat(user, "<span class='notice'>Successfully updated flavortext</span>")
-						log_game("[user] has set their flavortext'.")
+						to_chat(user, "<span class='notice'>外貌描述已更新。</span>")
+						log_game("[user] 设置了角色的外貌描述。")
 					if(slot_randomized)
 						skip_preview = TRUE
 						ShowChoices(user)
@@ -2113,18 +2113,18 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 				if("nsfwflavortext")
 					skip_preview = FALSE
-					to_chat(user, "<span class='notice'>["<span class='bold'>NSFW Flavortext can be used for setting things like body descriptions and other physical details that may be conisdered explicit.</span>"]</span>")
-					to_chat(user, "<font color = '#d6d6d6'>Leave blank to clear.</font>")
-					var/new_nsfwflavortext = tgui_input_text(user, "Input your character description:", "NSFW Flavortext", nsfwflavortext, multiline = TRUE,  encode = FALSE, bigmodal = TRUE)
+					to_chat(user, "<span class='notice'>["<span class='bold'>成人外貌描述可用于描写裸露部位或其他较为露骨的身体细节。</span>"]</span>")
+					to_chat(user, "<font color = '#d6d6d6'>留空即可清除。</font>")
+					var/new_nsfwflavortext = tgui_input_text(user, "请输入角色的成人外貌描述：", "成人外貌描述", nsfwflavortext, multiline = TRUE,  encode = FALSE, bigmodal = TRUE)
 					if(new_nsfwflavortext == null)
 						return
 					if(new_nsfwflavortext == "")
 						nsfwflavortext = null
-						to_chat(user, "<span class='notice'>Successfully deleted NSFW Flavor Text.</span>")
+						to_chat(user, "<span class='notice'>成人外貌描述已清除。</span>")
 					else
 						nsfwflavortext = new_nsfwflavortext
-						to_chat(user, "<span class='notice'>Successfully updated NSFW flavortext</span>")
-						log_game("[user] has set their NSFW flavortext'.")
+						to_chat(user, "<span class='notice'>成人外貌描述已更新。</span>")
+						log_game("[user] 设置了角色的成人外貌描述。")
 					if(slot_randomized)
 						skip_preview = TRUE
 						ShowChoices(user)
@@ -2796,7 +2796,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 						COOLDOWN_START(src, savefile_cooldown, SAVEFILE_COOLDOWN_TIME)
 						save_preferences()
 						save_character()
-						to_chat(user, span_notice("CHARACTER SAVED."))
+						to_chat(user, span_notice("角色已保存。"))
 
 				if("load")
 					if(savefile_ready(user, "undoing"))
@@ -2806,7 +2806,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 				if("changeslot")
 					if(!COOLDOWN_FINISHED(src, slot_choice_cooldown))
-						to_chat(user, span_warning("Wait a moment before changing character again."))
+						to_chat(user, span_warning("请稍候再切换角色。"))
 						ShowChoices(user)
 						return 1
 					COOLDOWN_START(src, slot_choice_cooldown, SAVEFILE_COOLDOWN_TIME)
@@ -2843,7 +2843,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 /datum/preferences/proc/savefile_ready(mob/user, action_text)
 	if(COOLDOWN_FINISHED(src, savefile_cooldown))
 		return TRUE
-	to_chat(user, span_warning("Wait a moment before [action_text] again."))
+	to_chat(user, span_warning("请稍候再[action_text == "saving" ? "保存" : "撤销"]。"))
 	return FALSE
 
 /datum/preferences/proc/resolve_loadout_to_color(item_path)
@@ -3228,7 +3228,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	// Text after a ? or # would let the link end in an allowed extension that is not the file's own
 	if(findtext(value, "?") || findtext(value, "#"))
 		if(!silent)
-			to_chat(user, "<span class='warning'>The link must be a direct link to the file, without '?' or '#'!</span>")
+			to_chat(user, "<span class='warning'>请输入文件直链，链接中不能含有“?”或“#”。</span>")
 		return FALSE
 	var/list/value_split = splittext(value, ".")
 

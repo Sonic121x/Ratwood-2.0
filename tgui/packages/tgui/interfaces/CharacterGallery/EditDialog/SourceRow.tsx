@@ -10,9 +10,9 @@ import { Thumbnail } from '../Thumbnail';
 import { useMediaStatus } from '../useMediaStatus';
 import { ROW_NAMES, type SourceDraft } from './useSourceDrafts';
 
-export const ALTERNATE_TOOLTIP = 'A backup link you can swap to.';
+export const ALTERNATE_TOOLTIP = '需要时可以切换到这个备用链接。';
 
-const SCROLLING_ONLY_TEXT = `This picture is taller than 1:${PICTURE_RATIO_TALL_MAX}, so it always opens in ${ART_VIEW_LABELS.scroll}.`;
+const SCROLLING_ONLY_TEXT = `图片高度超过宽度的 ${PICTURE_RATIO_TALL_MAX} 倍，只能以“${ART_VIEW_LABELS.scroll}”视图打开。`;
 
 /** One link of the Edit dialog, row 0 being whichever of main and alternate is in use */
 export const SourceRow = (props: {
@@ -40,7 +40,7 @@ export const SourceRow = (props: {
     scrollingOnly,
   } = props.source;
   const media = useMediaStatus(isArt ? previewUrl : null, true);
-  const label = index === 0 ? 'Current Image URL' : 'Alternate Image URL';
+  const label = index === 0 ? '当前图片链接' : '备用图片链接';
   const heading = (
     <div className="CharacterGallery__sourceHeading">
       {index === 0 ? (
@@ -48,7 +48,7 @@ export const SourceRow = (props: {
       ) : (
         <Tooltip content={ALTERNATE_TOOLTIP}>
           <span tabIndex={0}>
-            {'Alternate Image (Optional)'} <Icon name="circle-question" />
+            {'备用图片（可选）'} <Icon name="circle-question" />
           </span>
         </Tooltip>
       )}
@@ -72,13 +72,13 @@ export const SourceRow = (props: {
       icon="copy"
       disabled={!value.trim()}
       onClick={() =>
-        copier.copy(value, `${label} copied.`, () => {
+        copier.copy(value, `已复制${label}。`, () => {
           inputRef.current?.focus();
           inputRef.current?.select();
         })
       }
     >
-      Copy
+      复制
     </Button>
   );
 
@@ -101,7 +101,7 @@ export const SourceRow = (props: {
         />
         <div className="CharacterGallery__artUrl">
           <label>
-            Image URL
+            图片链接
             {input}
           </label>
           {copy}

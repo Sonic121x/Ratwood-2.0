@@ -10,7 +10,7 @@
 /datum/preferences/proc/character_gallery_headshot_thumbnail()
 	if(!headshot_link)
 		return ""
-	return "<div style='display: inline-block; vertical-align: top; text-align: center; margin: 4px 6px 0 0;'><div style='width: 100px; height: 100px; overflow: hidden; border: 1px solid #555;'><img src='[GALLERY_ATTRIBUTE_LINK(headshot_link)]' style='width: 100%; height: 100%; [headshot_picture_style(headshot_zoom, headshot_x, headshot_y)]'></div><div style='font-size: 85%;'>Headshot</div></div>"
+	return "<div style='display: inline-block; vertical-align: top; text-align: center; margin: 4px 6px 0 0;'><div style='width: 100px; height: 100px; overflow: hidden; border: 1px solid #555;'><img src='[GALLERY_ATTRIBUTE_LINK(headshot_link)]' style='width: 100%; height: 100%; [headshot_picture_style(headshot_zoom, headshot_x, headshot_y)]'></div><div style='font-size: 85%;'>头像</div></div>"
 
 /// Updates the open character sheet when closing the gallery changes what it shows
 /datum/preferences/proc/refresh_gallery_preferences_menu(mob/user)
@@ -141,14 +141,14 @@
 	var/datum/gnoll_prefs/gnoll = gnoll_prefs
 	var/character_framing = headshot_framing_text(headshot_link, headshot_framed, headshot_zoom, headshot_x, headshot_y)
 	var/gnoll_framing = headshot_framing_text(gnoll?.headshot_link, gnoll?.headshot_framed, gnoll?.headshot_zoom, gnoll?.headshot_x, gnoll?.headshot_y)
-	var/framing = "[character_framing], gnoll form [gnoll_framing]"
+	var/framing = "角色：[character_framing]，豺狼人形态：[gnoll_framing]"
 	if(framing == last_logged_framing)
 		return
 	var/first = isnull(last_logged_framing)
 	last_logged_framing = framing
 	if(first && !headshot_framed && !gnoll?.headshot_framed)
 		return
-	log_game("[key_name(parent)] [action] slot [default_slot] with headshot framing: [framing].")
+	log_game("[key_name(parent)] [action == "saved" ? "保存了角色" : "生成了角色"]，存档槽 [default_slot]，头像取景为[framing]。")
 
 /datum/preferences/proc/open_character_gallery(mob/user, form)
 	if(!character_gallery)

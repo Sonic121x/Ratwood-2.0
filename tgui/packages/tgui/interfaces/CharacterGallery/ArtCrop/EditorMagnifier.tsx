@@ -19,11 +19,11 @@ export const EditorMagnifier = (props: {
   return (
     <div className="CharacterGallery__cropControls">
       <div className="CharacterGallery__cropControlGroup">
-        <Box color="label">Magnify Editor</Box>
+        <Box color="label">编辑器放大倍率</Box>
         <Button
           compact
-          aria-label="Magnify Editor Less"
-          tooltip="Magnify the editing picture less to see more of it. Viewers never see this."
+          aria-label="缩小编辑画面"
+          tooltip="缩小编辑画面以看到更多区域。此调整仅对编辑者可见。"
           disabled={!ready || zoom <= 1}
           onClick={() => onZoom(-1)}
         >
@@ -32,8 +32,8 @@ export const EditorMagnifier = (props: {
         <span className="CharacterGallery__cropZoom">{zoom.toFixed(1)}×</span>
         <Button
           compact
-          aria-label="Magnify Editor More"
-          tooltip="Magnify the editing picture to place the framing box more precisely. Viewers never see this."
+          aria-label="放大编辑画面"
+          tooltip="放大编辑画面以精确放置取景框。此调整仅对编辑者可见。"
           disabled={!ready || zoom >= zoomMax}
           onClick={() => onZoom(1)}
         >
@@ -51,12 +51,12 @@ export const EditorMagnifier = (props: {
           disabled={!crop}
           tooltip={
             view === 'scroll'
-              ? 'Back to the full width at the top of the picture.'
-              : 'Back to the whole picture.'
+              ? '回到图片顶部并恢复完整宽度。'
+              : '恢复显示整张图片。'
           }
           onClick={() => onReset()}
         >
-          Reset
+          重置
         </Button>
       </div>
     </div>

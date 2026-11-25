@@ -310,7 +310,7 @@ const GalleryModes = (props: {
         onClick={() => onSwitch('SFW')}
         textAlign="center"
       >
-        SFW
+        全年龄
       </Button>
       <Button
         selected={nsfw}
@@ -319,7 +319,7 @@ const GalleryModes = (props: {
         onClick={() => onSwitch('NSFW')}
         textAlign="center"
       >
-        NSFW
+        成人向
       </Button>
     </>
   );

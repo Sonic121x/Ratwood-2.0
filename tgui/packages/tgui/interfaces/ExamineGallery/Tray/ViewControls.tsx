@@ -84,12 +84,12 @@ export const ViewControls = (props: {
               first={{
                 shown: canAdvance,
                 icon: <GalleryMouseIcon action="next" />,
-                label: 'Next image',
+                label: '下一张',
               }}
               second={{
                 shown: canPan,
                 icon: <GalleryMouseIcon action="pan" />,
-                label: 'Drag to pan',
+                label: '拖动平移',
               }}
             />
           )}
@@ -98,7 +98,7 @@ export const ViewControls = (props: {
           ref={triggerRef}
           type="button"
           className={`ExamineGallery__trayToggle ${BUTTON}`}
-          aria-label="Gallery controls"
+          aria-label="画廊控件"
           aria-controls={id}
           aria-expanded={visible}
           {...hoverControls}
@@ -112,9 +112,9 @@ export const ViewControls = (props: {
             first={{
               shown: canPan,
               icon: <GalleryMouseIcon action="scroll" />,
-              label: 'Scroll',
+              label: '滚动',
             }}
-            second={{ shown: canZoom, icon: zoomShortcut, label: 'Zoom' }}
+            second={{ shown: canZoom, icon: zoomShortcut, label: '缩放' }}
           />
         )}
       </div>
@@ -155,8 +155,8 @@ export const ViewControls = (props: {
                 ref={helpRef}
                 type="button"
                 className={`ExamineGallery__helpToggle ${BUTTON}`}
-                title="Contextual help"
-                aria-label="Contextual help"
+                title="当前视图帮助"
+                aria-label="当前视图帮助"
                 aria-expanded={panel === 'help'}
                 aria-controls={helpId}
                 aria-haspopup="dialog"
@@ -171,8 +171,8 @@ export const ViewControls = (props: {
                   BUTTON,
                   pinned && 'Button--selected',
                 ])}
-                title="Keep controls visible"
-                aria-label="Keep controls visible"
+                title="固定显示控件"
+                aria-label="固定显示控件"
                 aria-pressed={pinned}
                 onClick={() => {
                   show();

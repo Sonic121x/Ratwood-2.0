@@ -327,19 +327,19 @@
 
 	dat += "<h3>豺狼人风味文本（可选）</h3>"
 
-	dat += "<b>Character Gallery:</b> <a href='byond://?_src_=gnoll_prefs;action=character_gallery'>Change</a>"
+	dat += "<b>角色画廊：</b> <a href='byond://?_src_=gnoll_prefs;action=character_gallery'>编辑</a>"
 
-	dat += "<br><b>Flavortext: </b><a href='?_src_=gnoll_prefs;action=formathelp'>(?)</a><a href='byond://?_src_=gnoll_prefs;action=flavortext'>Change</a>"
-	dat += "<br><b>NSFW Flavortext: </b><a href='?_src_=gnoll_prefs;action=formathelp'>(?)</a><a href='byond://?_src_=gnoll_prefs;action=nsfwflavortext'>Change</a>"
-	dat += "<br><b>OOC Notes: </b><a href='?_src_=gnoll_prefs;action=formathelp'>(?)</a><a href='?_src_=gnoll_prefs;action=ooc_notes'>Change</a>"
+	dat += "<br><b>外貌描述：</b><a href='?_src_=gnoll_prefs;action=formathelp'>(?)</a><a href='byond://?_src_=gnoll_prefs;action=flavortext'>编辑</a>"
+	dat += "<br><b>成人外貌描述：</b><a href='?_src_=gnoll_prefs;action=formathelp'>(?)</a><a href='byond://?_src_=gnoll_prefs;action=nsfwflavortext'>编辑</a>"
+	dat += "<br><b>场外备注：</b><a href='?_src_=gnoll_prefs;action=formathelp'>(?)</a><a href='?_src_=gnoll_prefs;action=ooc_notes'>编辑</a>"
 
 	dat += "<br><b>传闻与贵族闲话:</b><a href='?_src_=gnoll_prefs;action=formathelp'>(?)</a><br><a href='?_src_=gnoll_prefs;action=rumour'>设置传闻</a><a href='?_src_=gnoll_prefs;action=gossip'>设置闲话</a><a href='?_src_=gnoll_prefs;action=rumour_preview'><i>预览</i></a>"
 
-	dat += "<br><b>ERP Preferences:</b><a href='?_src_=gnoll_prefs;action=formathelp'>(?)</a><a href='?_src_=gnoll_prefs;action=erpprefs'>Change</a>"
-	dat += "<br><b>Song:</b> <a href='?_src_=gnoll_prefs;action=ooc_extra'>Change URL</a>"
-	dat += "<a href='?_src_=gnoll_prefs;action=change_title'>Change Title</a>"
-	dat += "<a href='?_src_=gnoll_prefs;action=change_artist'>Change Artist</a>"
-	dat += "<br><a href='?_src_=gnoll_prefs;action=ooc_preview'><b>Preview Examine</b></a>"
+	dat += "<br><b>成人角色扮演偏好：</b><a href='?_src_=gnoll_prefs;action=formathelp'>(?)</a><a href='?_src_=gnoll_prefs;action=erpprefs'>编辑</a>"
+	dat += "<br><b>歌曲：</b> <a href='?_src_=gnoll_prefs;action=ooc_extra'>更改链接</a>"
+	dat += "<a href='?_src_=gnoll_prefs;action=change_title'>更改曲名</a>"
+	dat += "<a href='?_src_=gnoll_prefs;action=change_artist'>更改艺人</a>"
+	dat += "<br><a href='?_src_=gnoll_prefs;action=ooc_preview'><b>预览检查面板</b></a>"
 
 	dat += "<center><a href='?_src_=gnoll_prefs;action=close'>关闭</a></center>"
 	dat += "</body></html>"

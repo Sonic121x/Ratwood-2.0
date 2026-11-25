@@ -30,16 +30,16 @@ const POSITION_AXES = [
   {
     axis: 0,
     field: 'x',
-    label: 'Horizontal',
-    hint: '0 shows the left edge of the picture, 100 its right edge.',
-    direction: 'horizontally',
+    label: '水平位置',
+    hint: '0 对应图片左端，100 对应右端。',
+    direction: '水平',
   },
   {
     axis: 1,
     field: 'y',
-    label: 'Vertical',
-    hint: '0 shows the top edge of the picture, 100 its bottom edge.',
-    direction: 'vertically',
+    label: '垂直位置',
+    hint: '0 对应图片顶端，100 对应底端。',
+    direction: '垂直',
   },
 ] as const;
 
@@ -66,7 +66,7 @@ export const HeadshotSection = (props: { form: ImageForm }) => {
     media.ready && framing.zoom > sharpZoom * BLUR_WARNING_ENLARGEMENT;
   const sharpNote =
     sharpZoom >= data.zoom_min
-      ? ` Sharp up to ${Math.min(sharpZoom, data.zoom_max)}%.`
+      ? ` 放大至 ${Math.min(sharpZoom, data.zoom_max)}% 以内仍可保持清晰。`
       : '';
   // Given to FramingSlider as busy, which keeps each slider in place but inert and dimmed, never folded into enabled,
   // whose false swaps the slider for its unavailable note. Folded in, the sliders flip to the note and back while a
@@ -82,17 +82,17 @@ export const HeadshotSection = (props: { form: ImageForm }) => {
         disabled={busy}
         onClick={() => act('set_headshot', { form: form.id })}
       >
-        {form.headshot ? 'Change Headshot URL' : 'Add Headshot URL'}
+        {form.headshot ? '更改头像链接' : '添加头像链接'}
       </Button>
     </Box>
   );
 
   if (!form.headshot) {
     return (
-      <Section title="Headshot">
+      <Section title="头像">
         <div className="CharacterGallery__headshot">
           <div className="CharacterGallery__headshotColumn">
-            <div className="CharacterGallery__headshotEmpty">No headshot</div>
+            <div className="CharacterGallery__headshotEmpty">暂无头像</div>
             {urlButton}
             {form.undo.includes(HEADSHOT_SLOT) && (
               <Box mt={0.5}>
@@ -105,7 +105,7 @@ export const HeadshotSection = (props: { form: ImageForm }) => {
                     act('undo_image', { form: form.id, image: HEADSHOT_SLOT })
                   }
                 >
-                  Undo
+                  撤销
                 </Button>
               </Box>
             )}
@@ -117,7 +117,7 @@ export const HeadshotSection = (props: { form: ImageForm }) => {
 
   return (
     <>
-      <Section title="Frame Headshot">
+      <Section title="头像取景">
         <div className="CharacterGallery__headshot">
           <div
             inert={busy}
@@ -137,66 +137,66 @@ export const HeadshotSection = (props: { form: ImageForm }) => {
               <Box color="label" mt={0.5} textAlign="center">
                 {media.ready
                   ? `${media.size[0]} × ${media.size[1]}`
-                  : 'Loading…'}
+                  : '正在加载……'}
               </Box>
             )}
             {blurry && (
               <Box color="average" mt={0.5} textAlign="center">
                 <Icon name="exclamation-triangle" mr={0.5} />
-                May look blurry in Examine Closer
+                在详细检视面板中可能模糊
               </Box>
             )}
             <Box color="label" mt={1} textAlign="center">
-              Examine Closer always uses this square portrait.
+              详细检视面板始终使用此方形头像。
             </Box>
           </div>
           <div className="CharacterGallery__framing">
             <MediaStatus
               media={media}
               statusMt={0.5}
-              loading="Loading headshot…"
-              retrying="Retrying headshot…"
-              error="Couldn't load the image. Check the link."
-              retryText="Retry Headshot"
+              loading="正在加载头像……"
+              retrying="正在重新加载头像……"
+              error="图片加载失败，请检查链接。"
+              retryText="重新加载头像"
             />
             <Box mt={1}>
               <FramingSlider
                 key={draft.discards}
-                label="Zoom"
+                label="缩放"
                 busy={slidersLocked}
-                hint={`Enlarges the picture around the point being framed.${sharpNote}`}
+                hint={`以当前取景位置为中心放大图片。${sharpNote}`}
                 value={framing.zoom}
                 minValue={data.zoom_min}
                 maxValue={zoomCeiling(committed.zoom, zoomLimit)}
                 enabled={!!size}
-                unavailable={unloaded ?? 'Load the image before zooming it.'}
+                unavailable={unloaded ?? '加载图片后即可缩放。'}
                 onDrag={(zoom) => follow({ zoom })}
                 onChange={(zoom) => commit({ zoom })}
                 onAbandon={abandon}
               />
             </Box>
             <div className="CharacterGallery__headshotControlRow">
-              <Box color="label">Framing</Box>
+              <Box color="label">取景</Box>
               <div className="CharacterGallery__framingActions">
                 <Button
                   icon={showSliders ? 'chevron-up' : 'chevron-down'}
                   selected={showSliders}
                   aria-expanded={showSliders}
-                  tooltip="Shows sliders for moving the picture, instead of dragging it."
+                  tooltip="使用滑块调整图片位置，无需拖动图片。"
                   onClick={() => setShowSliders(!showSliders)}
                 >
-                  Position Controls
+                  位置调节
                 </Button>
                 <Button
                   icon="undo"
                   disabled={busy}
-                  tooltip="Back to the default square, framed from the top of the picture."
+                  tooltip="恢复默认方形取景框，从图片顶部取景。"
                   onClick={() => {
                     discard();
                     act('reset_framing', { form: form.id });
                   }}
                 >
-                  Reset Framing
+                  重置取景
                 </Button>
               </div>
             </div>
@@ -212,8 +212,8 @@ export const HeadshotSection = (props: { form: ImageForm }) => {
                     enabled={overflowsAxis(size, framing.zoom, slider.axis)}
                     unavailable={
                       !size
-                        ? (unloaded ?? 'Load the image before positioning it.')
-                        : `Zoom in to move ${slider.direction}.`
+                        ? (unloaded ?? '加载图片后即可调整位置。')
+                        : `放大后可${slider.direction}移动。`
                     }
                     onDrag={(value) => follow({ [slider.field]: value })}
                     onChange={(value) => commit({ [slider.field]: value })}
@@ -223,9 +223,9 @@ export const HeadshotSection = (props: { form: ImageForm }) => {
               </Box>
             )}
             <div className="CharacterGallery__headshotControlRow">
-              <Box color="label">Image</Box>
+              <Box color="label">图片</Box>
               <LinkControls
-                label="Headshot"
+                label="头像"
                 disabled={busy}
                 url={form.headshot}
                 onClear={() => act('clear_headshot', { form: form.id })}
@@ -235,21 +235,21 @@ export const HeadshotSection = (props: { form: ImageForm }) => {
               />
             </div>
             <details className="CharacterGallery__details">
-              <summary>Precise Keyboard Controls</summary>
+              <summary>键盘微调</summary>
               <div className="CharacterGallery__keyboardHelp">
                 <dl>
-                  <dt>Move</dt>
+                  <dt>移动</dt>
                   <dd>{arrowKeys}</dd>
-                  <dt>Larger Steps</dt>
+                  <dt>加大步幅</dt>
                   <dd>
                     <kbd>Shift</kbd> + {arrowKeys}
                   </dd>
-                  <dt>Zoom</dt>
+                  <dt>缩放</dt>
                   <dd>
                     <kbd>−</kbd> <kbd>+</kbd>
                   </dd>
                 </dl>
-                Focus the portrait to start. Click outside to finish.
+                选中头像即可开始微调，点击头像外部结束。
               </div>
             </details>
           </div>

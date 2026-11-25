@@ -1450,7 +1450,7 @@
 		eggs = new /obj/item/organ/eggs()
 		eggs.Insert(H)
 	eggs.color = "#[H.voice_color]"
-	eggs.name = "[H.dna.species.name]卵"
+	eggs.name = "[get_species_display_name(H.dna.species.name)]卵"
 	H.apply_status_effect(/datum/status_effect/debuff/parasitized)
 	to_chat(H, span_love("我感觉腹胀难受，肚子里好像有什么东西……"))
 

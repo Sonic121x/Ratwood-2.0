@@ -92,9 +92,9 @@ export const BACKDROPS: Backdrop[] = [
       {
         id: 'cat',
         label: {
-          title: 'Mammon, Lord of All He Sits Upon',
+          title: '玛门，坐到哪儿就统治哪儿的领主',
           description:
-            'Mammon to those who feed him. Pazuzu in texts best left unread.',
+            '喂他的人叫他玛门。有些书里称他为帕祖祖，那些书最好别翻。',
           left: 684,
           top: 108,
           width: 190,
@@ -117,8 +117,8 @@ export const BACKDROPS: Backdrop[] = [
       {
         id: 'dog',
         label: {
-          title: 'Sir Guinefort, A Very Good Dog',
-          description: 'On this, the entire tavern is agreed.',
+          title: '吉讷福爵士，一条好狗',
+          description: '这点，酒馆里的人一致赞同。',
           left: 669,
           top: 105,
           width: 237,

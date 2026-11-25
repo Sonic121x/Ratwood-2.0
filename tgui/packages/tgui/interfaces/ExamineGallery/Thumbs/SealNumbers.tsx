@@ -20,7 +20,7 @@ export const SealNumbers = (props: {
             marker,
             index === selected && `${marker}--current`,
           ])}
-          aria-label={`Picture ${index + 1}`}
+          aria-label={`第 ${index + 1} 张图片`}
           aria-current={index === selected}
           onClick={() => props.onPick(index)}
         >

@@ -16,12 +16,12 @@ export const BUTTON = 'Button Button--color--default';
 const ZOOM_BUTTON_STEP = 1.25;
 
 const VIEW_HELP = {
-  whole: 'Shows the artwork as a framed card.',
+  whole: '以带框卡片展示作品。',
   fitted: ART_VIEW_HELP.fitted,
-  scroll: `${ART_VIEW_HELP.scroll} Pan or scroll to see beyond the frame.`,
+  scroll: `${ART_VIEW_HELP.scroll}可平移或滚动查看框外的画面。`,
 } satisfies Record<ReaderState['view'], string>;
 
-const SCROLLING_ONLY_TEXT = `Tall pictures always open in ${ART_VIEW_LABELS.scroll}`;
+const SCROLLING_ONLY_TEXT = `长图始终以“${ART_VIEW_LABELS.scroll}”视图打开`;
 
 /** The tray's view button and the menu it opens */
 export const ViewMenu = (props: {
@@ -52,7 +52,7 @@ export const ViewMenu = (props: {
           lockedView
             ? props.scrollingOnly
               ? SCROLLING_ONLY_TEXT
-              : 'View locked by owner'
+              : '作者已锁定视图'
             : undefined
         }
         aria-expanded={panel === 'view'}
@@ -68,13 +68,13 @@ export const ViewMenu = (props: {
           id={viewId}
           className="ExamineGallery__viewMenu"
           role="dialog"
-          aria-label="Image view"
+          aria-label="图片视图"
         >
           {lockedView ? (
             <span className="ExamineGallery__viewHelp">
               {props.scrollingOnly
                 ? `${SCROLLING_ONLY_TEXT}.`
-                : 'View is locked by the owner.'}
+                : '作者已锁定视图。'}
             </span>
           ) : (
             Object.entries(ART_VIEW_LABELS).map(([view, label]) => (
@@ -103,7 +103,7 @@ export const ViewMenu = (props: {
               closeView();
             }}
           >
-            Reset view
+            重置视图
           </button>
         </div>
       )}
@@ -121,13 +121,13 @@ export const ZoomButtons = (props: {
   <div
     className="ExamineGallery__zoomControls"
     role="group"
-    aria-label="Image zoom"
-    title={props.lockedZoom ? 'Zoom locked by owner' : undefined}
+    aria-label="图片缩放"
+    title={props.lockedZoom ? '作者已锁定缩放' : undefined}
   >
     <button
       type="button"
       className={BUTTON}
-      aria-label="Zoom out"
+      aria-label="缩小"
       disabled={props.lockedZoom || props.zoom <= props.zoomMin}
       onClick={() => props.onZoom(1 / ZOOM_BUTTON_STEP)}
     >
@@ -137,7 +137,7 @@ export const ZoomButtons = (props: {
     <button
       type="button"
       className={BUTTON}
-      aria-label="Zoom in"
+      aria-label="放大"
       disabled={props.lockedZoom || props.zoom >= props.zoomMax}
       onClick={() => props.onZoom(ZOOM_BUTTON_STEP)}
     >
@@ -179,17 +179,17 @@ export const HelpPanel = (props: {
       role="dialog"
       aria-labelledby={helpTitleId}
     >
-      <strong id={helpTitleId}>Contextual help</strong>
-      <div>Updates with your view and available controls.</div>
+      <strong id={helpTitleId}>当前视图帮助</strong>
+      <div>此处显示当前视图可用的操作。</div>
       <div className="ExamineGallery__helpContext">
         {viewLabel}
-        {props.view === 'whole' && reading && ' (zoomed)'}
+        {props.view === 'whole' && reading && '（已放大）'}
       </div>
       <div>{VIEW_HELP[props.view]}</div>
       <dl className="ExamineGallery__helpActions">
         {canAdvance && (
           <>
-            <dt>Next image</dt>
+            <dt>下一张</dt>
             <dd>
               <GalleryMouseIcon action="next" />
             </dd>
@@ -197,11 +197,11 @@ export const HelpPanel = (props: {
         )}
         {canPan && (
           <>
-            <dt>Pan</dt>
+            <dt>平移</dt>
             <dd>
-              <GalleryMouseIcon action="pan" /> Hold and drag
+              <GalleryMouseIcon action="pan" /> 按住并拖动
             </dd>
-            <dt>Scroll</dt>
+            <dt>滚动</dt>
             <dd>
               <GalleryMouseIcon action="scroll" />
             </dd>
@@ -209,27 +209,27 @@ export const HelpPanel = (props: {
         )}
         {(canZoom || lockedZoom) && (
           <>
-            <dt>Zoom</dt>
+            <dt>缩放</dt>
             <dd>
               {canZoom ? (
                 <>
-                  {zoomShortcut} or <kbd>−</kbd> <kbd>+</kbd>
+                  {zoomShortcut} 或 <kbd>−</kbd> <kbd>+</kbd>
                 </>
               ) : (
-                'Locked by owner'
+                '作者已锁定'
               )}
             </dd>
           </>
         )}
         {canAdvance && (
           <>
-            <dt>Change image</dt>
+            <dt>切换图片</dt>
             <dd>
-              <GalleryMouseIcon action="thumbnails" /> Over thumbnails
+              <GalleryMouseIcon action="thumbnails" /> 在缩略图上滚动
               {!reading && (
                 <>
                   {' '}
-                  or <kbd>←</kbd> <kbd>→</kbd>
+                  或 <kbd>←</kbd> <kbd>→</kbd>
                 </>
               )}
             </dd>
@@ -244,7 +244,7 @@ export const HelpPanel = (props: {
             props.onShowMouseControls(event.currentTarget.checked)
           }
         />
-        Show mouse controls
+        显示鼠标操作提示
       </label>
     </div>
   );

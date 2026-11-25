@@ -31,7 +31,7 @@ const ThumbnailBadge = (props: { text: string }) => (
   </Box>
 );
 
-export const BrokenBadge = () => <ThumbnailBadge text="Couldn't Load" />;
+export const BrokenBadge = () => <ThumbnailBadge text="加载失败" />;
 
 /** The shares of a box's width and height a shape takes when fitted inside it */
 const fittedShape = (aspect: number) => ({
@@ -92,7 +92,7 @@ export const Thumbnail = (props: {
       )}
       {video && (
         <video
-          aria-label={`${label} Video Thumbnail`}
+          aria-label={`${label}视频缩略图`}
           className="CharacterGallery__thumbnailMedia"
           src={url}
           muted
@@ -109,7 +109,7 @@ export const Thumbnail = (props: {
       {picture.drawable && (
         <span className="CharacterGallery__thumbnailCrop" style={shown}>
           <img
-            alt={`${label} Thumbnail`}
+            alt={`${label}缩略图`}
             className="CharacterGallery__thumbnailPicture"
             src={url!}
             style={cropImageStyle(crop)}
@@ -117,9 +117,9 @@ export const Thumbnail = (props: {
           />
         </span>
       )}
-      {picture.tooLarge && <ThumbnailBadge text="Too Large" />}
+      {picture.tooLarge && <ThumbnailBadge text="尺寸过大" />}
       {picture.tooExtreme && !picture.tooLarge && (
-        <ThumbnailBadge text="Extreme Shape" />
+        <ThumbnailBadge text="宽高比超限" />
       )}
       {broken && <BrokenBadge />}
     </Box>

@@ -181,5 +181,5 @@
 	var/list/point = points[point_name]
 	points -= point_name
 	restore(form, point["scope"], point["before"])
-	log_game("[user] has undone [describe(form, FALSE, point_name)].")
+	log_game("[user] 撤销了[describe(form, FALSE, get_gallery_label_display(point_name))]的更改。")
 	return TRUE

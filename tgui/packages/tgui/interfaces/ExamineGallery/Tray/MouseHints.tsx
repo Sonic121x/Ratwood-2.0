@@ -3,11 +3,11 @@ import type { ReactNode } from 'react';
 import { MouseControlIcon } from '../../common/MouseControlIcon';
 
 const MOUSE_CONTROLS = {
-  next: ['left', 'Left-click the artwork for the next image'],
-  pan: ['right', 'Hold the right mouse button and drag to pan oversized art'],
-  scroll: ['wheel', 'Scroll the mouse wheel to move up or down'],
-  zoom: ['wheel', 'Hold Ctrl and scroll the mouse wheel to zoom'],
-  thumbnails: ['wheel', 'Scroll over a thumbnail to change images'],
+  next: ['left', '左键点击作品可查看下一张'],
+  pan: ['right', '按住右键拖动可平移超出窗口的作品'],
+  scroll: ['wheel', '滚动滚轮可上下浏览'],
+  zoom: ['wheel', '按住 Ctrl 并滚动滚轮可缩放'],
+  thumbnails: ['wheel', '在缩略图上滚动可切换图片'],
 } as const;
 
 export const GalleryMouseIcon = (props: {

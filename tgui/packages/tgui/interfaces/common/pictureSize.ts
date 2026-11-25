@@ -99,9 +99,9 @@ export const pictureSizeLimitText = (width: number, height: number) => {
     exact = false;
   }
   const ratio = `${shown[0]}:${shown[1]}`;
-  const named = `${exact ? '' : 'about '}${RATIO_NAMES[ratio] ?? ratio}`;
+  const named = `${exact ? '' : '约 '}${RATIO_NAMES[ratio] ?? ratio}`;
   const [fitWidth, fitHeight] = largestFittingSize(width, height, x, y, exact);
-  return `The image size limit is ${PICTURE_PIXELS_MAX / 1_000_000} MP. At ${named}, the largest size you can use is ${fitWidth.toLocaleString('en-US')} × ${fitHeight.toLocaleString('en-US')} px.`;
+  return `图片最多可有 ${PICTURE_PIXELS_MAX / 1_000_000} 百万像素。宽高比为${named}时，最大可用尺寸为 ${fitWidth.toLocaleString('zh-CN')} × ${fitHeight.toLocaleString('zh-CN')} 像素。`;
 };
 
 export const PICTURE_RATIO_TALL_MAX = 8;
@@ -110,7 +110,7 @@ export const ARTWORK_RATIO_TALL_MAX = 20;
 export const PICTURE_RATIO_WIDE_MAX = 12;
 
 export const PICTURE_SHAPE_TEXT =
-  "This picture's shape is too extreme to show.";
+  '图片的宽高比超出显示范围。';
 
 export const pictureShapeTooExtreme = (width: number, height: number) =>
   height > width * PICTURE_RATIO_TALL_MAX ||
@@ -129,7 +129,7 @@ export const opensOnlyInScrolling = (width: number, height: number) =>
 
 export const artworkLimitText = (width: number, height: number) => {
   const shapeLimit = artworkShapeTooExtreme(width, height)
-    ? `Artwork can be up to 1:${ARTWORK_RATIO_TALL_MAX} tall or ${PICTURE_RATIO_WIDE_MAX}:1 wide. Past 1:${PICTURE_RATIO_TALL_MAX} tall it opens in Scrolling only.`
+    ? `作品最窄为 1:${ARTWORK_RATIO_TALL_MAX}，最宽为 ${PICTURE_RATIO_WIDE_MAX}:1。高度超过宽度的 ${PICTURE_RATIO_TALL_MAX} 倍时只能滚动查看。`
     : null;
   if (!fitsPixelCap(width, height)) {
     const sizeLimit = pictureSizeLimitText(width, height);
@@ -232,7 +232,7 @@ export const guardPictures = (container: HTMLElement) => {
         if (!fitsPixelCap(width, height)) {
           const sizeLimit = pictureSizeLimitText(width, height);
           const shapeLimit = pictureShapeTooExtreme(width, height)
-            ? ` OOC Extras allow up to 1:${PICTURE_RATIO_TALL_MAX} tall or ${PICTURE_RATIO_WIDE_MAX}:1 wide.`
+            ? ` OOC 附件最窄为 1:${PICTURE_RATIO_TALL_MAX}，最宽为 ${PICTURE_RATIO_WIDE_MAX}:1。`
             : '';
           replaceWithText(media, sizeLimit + shapeLimit);
         } else if (pictureShapeTooExtreme(width, height)) {

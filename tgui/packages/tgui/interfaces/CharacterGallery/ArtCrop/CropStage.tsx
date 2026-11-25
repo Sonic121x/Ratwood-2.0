@@ -51,7 +51,7 @@ export const CropStage = (props: {
     <div
       ref={stageRef}
       tabIndex={0}
-      aria-label={`${label} Framing Box`}
+      aria-label={`${label}取景框`}
       className={classes([
         'CharacterGallery__cropStage',
         active && 'CharacterGallery__cropStage--active',

@@ -17,32 +17,32 @@ export type ArtViewSettings = {
 };
 
 export const ART_VIEW_LABELS = {
-  whole: 'Card',
-  fitted: 'Fitted',
-  scroll: 'Scrolling',
+  whole: '卡片',
+  fitted: '适应窗口',
+  scroll: '滚动',
 } satisfies Record<ArtViewSettings['opening_view'], string>;
 
 export const ART_LOCK_LABELS = {
-  none: 'Unlocked',
-  view: 'Lock View',
-  zoom: 'Lock Zoom',
-  both: 'Lock Both',
+  none: '不锁定',
+  view: '锁定视图',
+  zoom: '锁定缩放',
+  both: '锁定视图和缩放',
 } satisfies Record<ArtViewSettings['lock'], string>;
 
 export const ART_VIEW_HELP = {
   whole:
-    'Shows the artwork as a card. With a framing box set, the card shows the part inside it.',
+    '以卡片展示作品。设置取景框后，卡片只显示框内的部分。',
   fitted:
-    'Fits the framed picture to the window, or the whole picture if no frame is set.',
+    '让取景框内的画面适应窗口大小。未设置取景框时显示整张图片。',
   scroll:
-    'Fits the width of the framed area and starts at its top. With no frame, it starts at the top of the full picture.',
+    '按取景框的宽度铺满窗口，从框的顶部开始浏览。未设置取景框时从原图顶部开始。',
 } satisfies Record<ArtViewSettings['opening_view'], string>;
 
 export const ART_LOCK_HELP = {
-  none: 'Viewers can switch views and zoom.',
-  view: 'Viewers stay in the opening view and can still zoom.',
-  zoom: 'Viewers can switch views. Zoom is disabled.',
-  both: 'Viewers stay in the opening view with zoom disabled.',
+  none: '查看者可以切换视图并缩放图片。',
+  view: '固定使用初始视图，查看者仍可缩放。',
+  zoom: '查看者可以切换视图，缩放已禁用。',
+  both: '固定使用初始视图，缩放已禁用。',
 } satisfies Record<ArtViewSettings['lock'], string>;
 
 /** Whether a lock keeps viewers in the opening view, as Lock View and Lock Both do */
@@ -91,8 +91,8 @@ export const tallLockChoice = (
 
 /** What each tallLockChoice leaves viewers able to do */
 export const TALL_LOCK_HELP = {
-  none: 'Viewers can zoom out to see the whole picture, and can always scroll.',
-  zoom: 'Viewers cannot zoom, and can always scroll.',
+  none: '查看者可以缩小以查看全图，也可以随时滚动。',
+  zoom: '查看者可以随时滚动，缩放已禁用。',
 } satisfies Record<ReturnType<typeof tallLockChoice>, string>;
 
 /** A crop's smallest side as a share of the picture, which must match GALLERY_ART_CROP_MIN in code/__DEFINES/character_gallery.dm */

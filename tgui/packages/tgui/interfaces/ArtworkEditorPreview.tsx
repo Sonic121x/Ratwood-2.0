@@ -43,7 +43,7 @@ const PreviewWindow = ({ data }: { data: Data }) => {
     <Window
       fitWorkArea
       besideWindow={data.gallery_window}
-      title="Artwork Preview"
+      title="作品预览"
       width={760}
       height={520}
     >
@@ -76,7 +76,7 @@ const PreviewWindow = ({ data }: { data: Data }) => {
               )
             ) : (
               <Box color="label">
-                Enter a direct image link to preview this artwork.
+                输入图片直链即可预览作品。
               </Box>
             )}
           </div>

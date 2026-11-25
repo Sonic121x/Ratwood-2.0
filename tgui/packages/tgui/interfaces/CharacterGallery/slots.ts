@@ -14,13 +14,13 @@ export const UNDO_CLEAR = 'clear_all';
 export const UNDO_ARTWORK_SETTINGS = 'artwork_settings';
 
 /** An art gallery's name as the window shows it */
-export const galleryLabel = (nsfw: boolean) => (nsfw ? 'NSFW Art' : 'SFW Art');
+export const galleryLabel = (nsfw: boolean) => (nsfw ? '成人向作品' : '全年龄作品');
 /** An art picture's name as the window shows it, its gallery's name then its position counted from 1 */
 export const artLabel = (nsfw: boolean, position: number) =>
   `${galleryLabel(nsfw)} ${position}`;
 /** An OOC extra picture's name as the window shows it */
 export const extraLabel = (nsfw: boolean) =>
-  nsfw ? 'NSFW OOC Extra' : 'OOC Extra';
+  nsfw ? '成人向 OOC 附件' : 'OOC 附件';
 
 /** Whether any slot of the form holds a picture or a hidden link, so Clear All Images has something to remove */
 export const formHasImages = (form: ImageForm) =>

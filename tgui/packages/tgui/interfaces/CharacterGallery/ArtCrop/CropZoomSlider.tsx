@@ -84,11 +84,11 @@ export const CropZoomSlider = (props: {
     >
       <DragSlider
         key={sliderKey}
-        label="Framing Zoom"
+        label="取景缩放"
         hint={
           scrolling
-            ? 'Changes the opening zoom while keeping the top of the frame in place.'
-            : 'Resizes the framing box around its center.'
+            ? '调整初始缩放比例，取景框顶部保持原位。'
+            : '以中心为基准调整取景框大小。'
         }
         value={Math.round(cropZoom(shown, scrolling))}
         minValue={100}

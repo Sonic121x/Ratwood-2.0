@@ -16,7 +16,7 @@ import { opensOnlyInScrolling } from '../common/pictureSize';
 import { GallerySelect } from './GallerySelect';
 
 const FRAMING_HELP =
-  'Viewers first see the part of the picture inside your framing box.';
+  '查看者打开图片时会先看到取景框内的画面。';
 
 const VIEW_OPTIONS = Object.entries(ART_VIEW_LABELS).map(([value, label]) => ({
   value,
@@ -54,7 +54,7 @@ export const ArtViewSummary = (props: {
       {!!crop && (
         <>
           <Tooltip content={FRAMING_HELP}>
-            <span>Custom Framing</span>
+            <span>自定义取景</span>
           </Tooltip>
           {' | '}
         </>
@@ -82,20 +82,20 @@ export const ArtViewControls = (props: {
   const helpId = useId();
   const { opening_view, lock } = props.value;
   const viewHelp = opening_view
-    ? `Sets how the artwork opens. ${ART_VIEW_HELP[opening_view]}`
-    : 'Keeps each image’s saved opening view.';
+    ? `设置作品打开时的视图。${ART_VIEW_HELP[opening_view]}`
+    : '保留每张图片已保存的初始视图。';
   // A stored lock stays as it is until the owner picks one of the two choices
   const tallLock = lock && props.scrollingOnly ? tallLockChoice(lock) : null;
   const lockHelp = lock
-    ? `Sets which controls viewers can change. ${tallLock ? TALL_LOCK_HELP[tallLock] : ART_LOCK_HELP[lock]}`
-    : 'Keeps each image’s saved viewer controls.';
+    ? `设置查看者可用的操作。${tallLock ? TALL_LOCK_HELP[tallLock] : ART_LOCK_HELP[lock]}`
+    : '保留每张图片已保存的查看权限。';
   return (
     <div className="CharacterGallery__viewFields">
       <Tooltip content={viewHelp}>
         <label>
-          Opening View
+          初始视图
           <GallerySelect
-            aria-label={`${props.label} Opening View`}
+            aria-label={`${props.label}初始视图`}
             aria-describedby={`${helpId}-view`}
             value={opening_view ?? ''}
             disabled={props.disabled || props.scrollingOnly}
@@ -113,9 +113,9 @@ export const ArtViewControls = (props: {
       </Tooltip>
       <Tooltip content={lockHelp}>
         <label>
-          Viewer Controls
+          查看权限
           <GallerySelect
-            aria-label={`${props.label} Viewer Controls`}
+            aria-label={`${props.label}查看权限`}
             aria-describedby={`${helpId}-lock`}
             value={tallLock ?? lock ?? ''}
             disabled={props.disabled}

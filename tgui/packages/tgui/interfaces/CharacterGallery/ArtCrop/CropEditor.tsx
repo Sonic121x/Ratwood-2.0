@@ -349,7 +349,7 @@ export const CropEditor = (props: {
       >
         <div className="CharacterGallery__framingHeader">
           <div className="CharacterGallery__framingTitle">
-            <strong>Framing</strong>
+            <strong>取景</strong>
             <FramingHelp view={view} />
           </div>
           <span>{framingStatus(view, !!crop)}</span>

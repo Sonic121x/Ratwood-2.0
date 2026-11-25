@@ -11,7 +11,7 @@ import { opensOnlyInScrolling, usePictureSize } from '../../common/pictureSize';
 import { isArtEditor, type UrlEditorData } from '../types';
 
 /** The Edit dialog's rows by name, row 0 being whichever of main and alternate is in use */
-export const ROW_NAMES = ['Current Image', 'Alternate Image'] as const;
+export const ROW_NAMES = ['当前图片', '备用图片'] as const;
 
 // Only load unsaved artwork from the direct image hosts accepted by valid_headshot_link().
 const artworkLink =

@@ -42,7 +42,7 @@ export const PlainThumbs = (props: {
             'ExamineGallery__plainThumb',
             index === selected && 'ExamineGallery__plainThumb--selected',
           ])}
-          aria-label={`Picture ${index + 1}`}
+          aria-label={`第 ${index + 1} 张图片`}
           aria-current={index === selected}
           onClick={() => onSelect(index)}
         >

@@ -54,12 +54,12 @@ import { useSourceDrafts } from './useSourceDrafts';
 const extensionList = (extensions: string[]) => {
   const names = extensions.map((extension) => extension.toUpperCase());
   const last = names.pop();
-  return names.length ? `${names.join(', ')} or ${last}.` : `${last}.`;
+  return names.length ? `${names.join('、')} 或 ${last}。` : `${last}。`;
 };
 
 const PREVIEW_LAYOUT_OPTIONS = [
-  { value: 'popup', label: 'Pop-up' },
-  { value: 'side', label: 'Side' },
+  { value: 'popup', label: '独立窗口' },
+  { value: 'side', label: '侧栏' },
 ];
 
 export const UrlEditor = (props: {
@@ -137,7 +137,7 @@ export const UrlEditor = (props: {
     }
   }, [editor.error, busy]);
   const cancel = () => act('cancel_urls', { editor_id: editor.id });
-  const dialogLabel = isArt ? `Edit ${editor.label}` : `${editor.label} URLs`;
+  const dialogLabel = isArt ? `编辑${editor.label}` : `${editor.label}链接`;
   if (awaitingWindow) {
     return (
       <div
@@ -205,9 +205,9 @@ export const UrlEditor = (props: {
       {isArt && (
         <>
           <label className="CharacterGallery__previewLayout">
-            Preview Layout
+            预览布局
             <GallerySelect
-              aria-label="Preview Layout"
+              aria-label="预览布局"
               value={placement}
               options={PREVIEW_LAYOUT_OPTIONS}
               onChange={(value) =>
@@ -219,7 +219,7 @@ export const UrlEditor = (props: {
               }
             />
           </label>
-          <Tooltip content="Show or hide the artwork as viewers see it.">
+          <Tooltip content="显示或隐藏其他玩家看到的作品预览。">
             <span>
               <Button
                 {...buttonRole}
@@ -235,14 +235,14 @@ export const UrlEditor = (props: {
                 onMouseDown={keepEditorFocus}
                 onClick={togglePreview}
               >
-                Preview
+                预览
               </Button>
             </span>
           </Tooltip>
         </>
       )}
       <Button compact onClick={cancel}>
-        Cancel
+        取消
       </Button>
       <Button
         compact
@@ -254,17 +254,17 @@ export const UrlEditor = (props: {
           )
         }
       >
-        Apply
+        应用
       </Button>
     </Stack>
   );
   const guidelines = <ImageGuidelines scope={guidelineScope(editor.image)} />;
   const linkRequirements = (
     <Box color="label" mb={1}>
-      Direct HTTPS links from {data.link_hosts}.{' '}
+      请使用 {data.link_hosts} 的 HTTPS 直链。支持的格式为{' '}
       {extensionList(editor.extensions)}
       {isArt &&
-        ` Artwork can be up to ${PICTURE_PIXELS_MAX / 1_000_000} MP, 1:${ARTWORK_RATIO_TALL_MAX} tall or ${PICTURE_RATIO_WIDE_MAX}:1 wide. Past 1:${PICTURE_RATIO_TALL_MAX} tall it opens in ${ART_VIEW_LABELS.scroll} only.`}
+        ` 作品最多可有 ${PICTURE_PIXELS_MAX / 1_000_000} 百万像素，最窄为 1:${ARTWORK_RATIO_TALL_MAX}，最宽为 ${PICTURE_RATIO_WIDE_MAX}:1。高度超过宽度的 ${PICTURE_RATIO_TALL_MAX} 倍时只能使用“${ART_VIEW_LABELS.scroll}”视图。`}
     </Box>
   );
   // Sits in the alternate's row, which would otherwise take the framing column on press or focus
@@ -286,7 +286,7 @@ export const UrlEditor = (props: {
           copier.clear();
         }}
       >
-        Swap Images
+        对调图片
       </Button>
     </span>
   );
@@ -304,7 +304,7 @@ export const UrlEditor = (props: {
         {busy && (
           <Box color="label" mb={0.5}>
             <Icon name="spinner" spin mr={0.5} />
-            Updating images…
+            正在更新图片……
           </Box>
         )}
       </div>
@@ -335,7 +335,7 @@ export const UrlEditor = (props: {
             onKeyDown={trapFocus}
           >
             <div className="CharacterGallery__urlEditor">
-              <Section title={isArt ? editor.label : `${editor.label} URLs`}>
+              <Section title={isArt ? editor.label : `${editor.label}链接`}>
                 <div className="CharacterGallery__urlBody">
                   <div className="CharacterGallery__urlColumns">
                     <div
@@ -381,14 +381,14 @@ export const UrlEditor = (props: {
                             disabled={busy}
                             onClick={() => setShowAlternate(true)}
                           >
-                            Add Alternate Image
+                            添加备用图片
                           </Button>
                         </Box>
                       )}
                       {!isArt && linkRequirements}
                       {isHeadshot && (
                         <Box color="label" mb={1}>
-                          Each link keeps its own framing.
+                          每个链接分别保存取景设置。
                         </Box>
                       )}
                       {isArt && guidelines}

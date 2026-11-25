@@ -48,15 +48,15 @@ const mainPictureStatus = (
   const selectedSize = pictures.sizeOf(selectedUrl);
   const limitText = selectedSize && artworkLimitText(...selectedSize);
   if (!images.length) {
-    status = 'No images available.';
+    status = '暂无图片。';
   } else if (pictures.hasFailed(selectedUrl)) {
-    status = 'This picture could not be loaded.';
+    status = '图片加载失败。';
   } else if (limitText) {
     status = limitText;
   } else if (!selectedArrived) {
     status = pictures.isSlow(selectedUrl)
-      ? 'This picture is taking a while to load.'
-      : 'Loading...';
+      ? '图片加载较慢，请稍候。'
+      : '正在加载……';
   } else if (!selectedShowable) {
     status = PICTURE_TOO_NARROW_TEXT;
   }
@@ -310,7 +310,7 @@ export const MainPicture = (props: {
       }}
       tabIndex={0}
       role="region"
-      aria-label="Gallery artwork"
+      aria-label="画廊作品"
       onPointerDown={(event) => {
         advance.clear();
         const reader =
@@ -400,8 +400,8 @@ export const MainPicture = (props: {
         role="region"
         aria-label={
           zoomLocked(owner)
-            ? 'Image viewer. Scroll to read or right-drag to pan. Zoom is locked by the owner.'
-            : 'Image viewer. Scroll to read or right-drag to pan. Control and wheel to zoom.'
+            ? '图片查看器。滚动以浏览，按住右键拖动以平移。作者已锁定缩放。'
+            : '图片查看器。滚动以浏览，按住右键拖动以平移。按住 Ctrl 并滚动滚轮可缩放。'
         }
         onScroll={(event) =>
           rememberPosition(
@@ -427,7 +427,7 @@ export const MainPicture = (props: {
           image={
             pictures.drawable(selectedUrl) && {
               ...pictures.imageProps(selectedUrl),
-              alt: `Picture ${selected + 1}`,
+              alt: `第 ${selected + 1} 张图片`,
               draggable: false,
             }
           }

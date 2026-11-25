@@ -36,7 +36,7 @@ export const SourceSwitch = (props: {
     <Button
       icon="exchange-alt"
       disabled={isBusy(form.id)}
-      aria-label={`Swap Images for ${label}`}
+      aria-label={`对调${label}的图片`}
       // Inline, as a class loses to the parchment theme's own Button margin
       style={keepMargin ? undefined : { margin: 0 }}
       onClick={() =>
@@ -47,7 +47,7 @@ export const SourceSwitch = (props: {
         })
       }
     >
-      Swap
+      对调
     </Button>
   );
 };
@@ -112,7 +112,7 @@ type MoveControls = {
   onMove: (direction: -1 | 1) => void;
 };
 
-const SHAPE_WARNING = `This picture's shape is too extreme to show: 1:${PICTURE_RATIO_TALL_MAX} tall or ${PICTURE_RATIO_WIDE_MAX}:1 wide at most`;
+const SHAPE_WARNING = `图片宽高比超限，无法显示。最窄为 1:${PICTURE_RATIO_TALL_MAX}，最宽为 ${PICTURE_RATIO_WIDE_MAX}:1。`;
 
 type LinkRowProps = PropsWithChildren<
   LinkControlsProps & {
@@ -171,7 +171,7 @@ export const LinkRow = (props: LinkRowProps) => {
               <Box color="label" fontSize="0.8em">
                 {media.ready
                   ? `${media.size[0]} × ${media.size[1]}`
-                  : 'Loading…'}
+                  : '正在加载……'}
               </Box>
             )}
             {!!summary && (
@@ -184,11 +184,11 @@ export const LinkRow = (props: LinkRowProps) => {
         </div>
         <MediaStatus
           media={media}
-          loading="Loading media…"
-          retrying="Retrying media…"
-          error="Couldn't load the media. Check the link."
-          retryText="Retry"
-          retryLabel={`Retry ${label}`}
+          loading="正在加载媒体……"
+          retrying="正在重新加载……"
+          error="媒体加载失败，请检查链接。"
+          retryText="重试"
+          retryLabel={`重新加载${label}`}
         />
         {shapeTooExtreme && (
           <div role="status">
@@ -206,8 +206,8 @@ export const LinkRow = (props: LinkRowProps) => {
             <Button
               compact
               icon="arrow-up"
-              tooltip={`Move ${label} Up`}
-              aria-label={`Move ${label} Up`}
+              tooltip={`上移${label}`}
+              aria-label={`上移${label}`}
               disabled={move.first}
               onClick={() => move.onMove(-1)}
             />
@@ -216,8 +216,8 @@ export const LinkRow = (props: LinkRowProps) => {
             <Button
               compact
               icon="arrow-down"
-              tooltip={`Move ${label} Down`}
-              aria-label={`Move ${label} Down`}
+              tooltip={`下移${label}`}
+              aria-label={`下移${label}`}
               disabled={move.last}
               onClick={() => move.onMove(1)}
             />
@@ -257,14 +257,14 @@ export const LinkControls = (props: LinkControlsProps) => {
     image,
     keepSwapMargin,
   } = props;
-  const changeLabel = setText ? `${setText} ${label}` : `Change ${label} URL`;
+  const changeLabel = setText ? `${setText}${label}` : `更改${label}链接`;
   return (
     <div className="CharacterGallery__links">
       <div className="CharacterGallery__url">
         {url ? (
           <HiddenUrl key={url} url={url} label={label} />
         ) : (
-          <Box color="label">No image added</Box>
+          <Box color="label">尚未添加图片</Box>
         )}
       </div>
       <div className="CharacterGallery__actions">
@@ -272,10 +272,10 @@ export const LinkControls = (props: LinkControlsProps) => {
           <Button
             icon={url ? 'pen' : 'plus'}
             disabled={disabled}
-            aria-label={url ? changeLabel : `Add ${label}`}
+            aria-label={url ? changeLabel : `添加${label}`}
             onClick={() => onSet()}
           >
-            {url ? (setText ?? 'Change') : 'Add'}
+            {url ? (setText ?? '更改') : '添加'}
           </Button>
         )}
         {!!form && !!image && (
@@ -290,21 +290,21 @@ export const LinkControls = (props: LinkControlsProps) => {
           <Button
             icon="times"
             color="bad"
-            aria-label={`Remove ${label}`}
+            aria-label={`移除${label}`}
             disabled={disabled}
             onClick={() => onClear()}
           >
-            Remove
+            移除
           </Button>
         )}
         {!!form && !!image && form.undo.includes(image) && (
           <Button
             icon="undo"
-            aria-label={`Undo ${label}`}
+            aria-label={`撤销${label}的更改`}
             disabled={disabled}
             onClick={() => act('undo_image', { form: form.id, image })}
           >
-            Undo
+            撤销
           </Button>
         )}
       </div>
@@ -331,7 +331,7 @@ const HiddenUrl = (props: { url: string; label: string }) => {
   }, [shown]);
 
   const copy = () =>
-    copier.copy(url, 'URL copied.', () => {
+    copier.copy(url, '已复制链接。', () => {
       if (!textRef.current) {
         focusOnShow.current = true;
         setShown(true);
@@ -345,21 +345,21 @@ const HiddenUrl = (props: { url: string; label: string }) => {
       <div className="CharacterGallery__actions">
         <Button
           icon={shown ? 'eye-slash' : 'eye'}
-          aria-label={`${shown ? 'Hide' : 'Show'} ${label} URL`}
+          aria-label={`${shown ? '隐藏' : '显示'}${label}链接`}
           onClick={() => setShown(!shown)}
         >
-          {shown ? 'Hide URL' : 'Show URL'}
+          {shown ? '隐藏链接' : '显示链接'}
         </Button>
-        <Button icon="copy" aria-label={`Copy ${label} URL`} onClick={copy}>
-          Copy
+        <Button icon="copy" aria-label={`复制${label}链接`} onClick={copy}>
+          复制
         </Button>
       </div>
       {shown && (
         <div
           ref={textRef}
           tabIndex={0}
-          aria-label={`${label} URL`}
-          title="Press Ctrl+C to copy"
+          aria-label={`${label}链接`}
+          title="按 Ctrl+C 复制"
           className="CharacterGallery__revealedUrl"
           {...gallerySelectEvents}
           onFocus={() => {

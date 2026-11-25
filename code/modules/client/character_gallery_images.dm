@@ -9,10 +9,10 @@
 
 /proc/headshot_framing_text(link, framed, zoom, x, y)
 	if(!link)
-		return "no headshot"
+		return "无头像"
 	if(!framed)
-		return "unframed on [link]"
-	return "[zoom]% at [x], [y] on [link]"
+		return "原图 [link]"
+	return "缩放 [zoom]%，位置（[x], [y]），图片 [link]"
 
 /proc/sanitize_headshot_position(value, default)
 	if(!isnum(value) || isnan(value))
@@ -35,7 +35,7 @@
 	return "[GALLERY_ART_PREFIX(nsfw)]_[index]"
 
 /proc/gallery_art_label(nsfw, index)
-	return "[nsfw ? "NSFW" : "SFW"] Art [index]"
+	return "[nsfw ? "成人向" : "全年龄"]作品 [index]"
 
 /proc/add_blocked_link(list/blocked, label, url)
 	if(!istext(url) || !length(url))
@@ -124,12 +124,12 @@
 /// The card materials, whose ids must match the list in tgui's common/CardBackground.tsx. Returns a static list, which callers must never change
 /proc/gallery_card_background_options()
 	var/static/list/options = list(
-		list("value" = "black", "label" = "Original Black"),
-		list("value" = "charcoal", "label" = "Charcoal"),
-		list("value" = "red", "label" = "Oxblood"),
-		list("value" = "green", "label" = "Deep Moss"),
-		list("value" = "transparent", "label" = "Transparent"),
-		list("value" = "glass", "label" = "Old Glass"),
+		list("value" = "black", "label" = "经典黑"),
+		list("value" = "charcoal", "label" = "炭灰"),
+		list("value" = "red", "label" = "深酒红"),
+		list("value" = "green", "label" = "深苔绿"),
+		list("value" = "transparent", "label" = "透明"),
+		list("value" = "glass", "label" = "旧玻璃"),
 	)
 	return options
 
@@ -554,9 +554,9 @@
 /// The examine Image Gallery's backdrops in the order the Character Gallery offers them, each id matching one in the gallery's backdrops.ts
 /proc/gallery_backdrop_options()
 	return list(
-		list("value" = GALLERY_BACKDROP_NONE, "label" = "None"),
-		list("value" = GALLERY_BACKDROP_PICTURE, "label" = "Blurred Picture"),
-		list("value" = GALLERY_BACKDROP_TAVERN, "label" = "Tavern"),
+		list("value" = GALLERY_BACKDROP_NONE, "label" = "无"),
+		list("value" = GALLERY_BACKDROP_PICTURE, "label" = "模糊原图"),
+		list("value" = GALLERY_BACKDROP_TAVERN, "label" = "酒馆"),
 	)
 
 /proc/is_gallery_backdrop(backdrop)

@@ -141,28 +141,28 @@ export const FramingCanvas = (props: {
       <FrameHint
         active={locked}
         editorRef={editorRef}
-        idleText="Click to adjust framing"
+        idleText="点击调整取景"
       >
         <span className="CharacterGallery__frameShortcut">
-          <MouseControlIcon control="left" label="Hold left mouse and drag" />
+          <MouseControlIcon control="left" label="按住左键拖动" />
           <span aria-hidden>/</span>
-          <MouseControlIcon control="right" label="Hold right mouse and drag" />
-          Drag
+          <MouseControlIcon control="right" label="按住右键拖动" />
+          拖动
         </span>
         <span aria-hidden>|</span>
         <span className="CharacterGallery__frameShortcut">
-          <MouseControlIcon control="wheel" label="Scroll to zoom" />
-          Zoom
+          <MouseControlIcon control="wheel" label="滚动滚轮可缩放" />
+          缩放
         </span>
         <span aria-hidden>|</span>
         <span className="CharacterGallery__frameShortcut">
-          <kbd>Esc</kbd> Finish
+          <kbd>Esc</kbd> 完成
         </span>
       </FrameHint>
       <div
         ref={editorRef}
         tabIndex={0}
-        aria-label="Headshot Framing"
+        aria-label="头像取景"
         className={classes([
           'CharacterGallery__frameCanvas',
           locked && 'CharacterGallery__frameCanvas--locked',

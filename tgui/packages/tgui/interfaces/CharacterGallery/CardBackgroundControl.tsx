@@ -21,7 +21,7 @@ export const BulkCardBackgroundSelect = (props: {
   return (
     <label>
       <span className="CharacterGallery__bulkBackdropLabel">
-        Card Backdrop
+        卡片底色
         {!!props.value && (
           <span className="CharacterGallery__materialSwatch">
             <CardBackground value={cardMaterial(props.value)} />
@@ -29,7 +29,7 @@ export const BulkCardBackgroundSelect = (props: {
         )}
       </span>
       <GallerySelect
-        aria-label="All Artwork Card Backdrop"
+        aria-label="所有作品的卡片底色"
         value={props.value}
         disabled={props.disabled}
         allowUnchanged
@@ -62,7 +62,7 @@ export const CardBackgroundDropdown = (props: {
   }));
   return (
     <Tooltip
-      content={`${label ?? 'Transparent'}. Visible through transparent areas of this card's image.`}
+      content={`${label ?? '透明'}。此底色会透过图片的透明区域显示。`}
     >
       {/* Dropdown drops the ref and hover handlers Tooltip gives its child */}
       <span style={{ display: 'inline-block' }}>
@@ -72,7 +72,7 @@ export const CardBackgroundDropdown = (props: {
           selected={value}
           displayText={
             <span className="CharacterGallery__materialOption">
-              Card Backdrop
+              卡片底色
               <span className="CharacterGallery__materialSwatch">
                 <CardBackground value={value} />
               </span>

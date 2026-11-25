@@ -20,7 +20,7 @@ export const TILT_MARGIN = 14;
 
 export const TILTED_CARD_MARGIN = FRAME_MARGIN + TILT_MARGIN;
 
-export const PICTURE_TOO_NARROW_TEXT = 'This picture is too narrow to show.';
+export const PICTURE_TOO_NARROW_TEXT = '图片过窄，无法显示。';
 
 /** An area with no room for PICTURE_SIDE_MIN at all, as before it is measured, never makes a picture too thin. */
 export const pictureTooThin = (aspect: number, area: Area, margin: number) => {

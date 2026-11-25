@@ -17,7 +17,7 @@
 #define IMAGE_BLOCKED_MAX 16
 #define IMAGE_LINK_MAX_LENGTH 512
 /// Must name the hosts valid_headshot_link() accepts
-#define IMAGE_LINK_HOSTS_TEXT "Gyazo, Lensdump, Imgbox, Catbox, ImgBB or File Garden"
+#define IMAGE_LINK_HOSTS_TEXT "Gyazo、Lensdump、Imgbox、Catbox、ImgBB 或 File Garden"
 #define CHARACTER_GALLERY_PROMPT_TIMEOUT (2 MINUTES)
 /// Largest edit_seq the Character Gallery accepts from its window, which counts up by 1 per debounced edit
 #define CHARACTER_GALLERY_EDIT_SEQ_MAX 1e7

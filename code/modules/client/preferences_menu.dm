@@ -101,7 +101,7 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 				return;
 			var open = !!content.firstElementChild;
 			toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-			toggle.innerHTML = (open ? '- ' : '+ ') + 'Flavor Text';
+			toggle.innerHTML = (open ? '- ' : '+ ') + '角色描述';
 		}
 		function stamp(e) {
 			e = e || window.event;
@@ -139,7 +139,7 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 		for(var/category in column)
 			if(category == "Flavor Text")
 				var/expanded = (category in open_categories)
-				html += "<div class='lab'><a id='preferences_flavor_toggle' href='byond://?_src_=prefs;preference=category;name=[url_encode(category)]' aria-controls='preferences_flavor_content' aria-expanded='[expanded ? "true" : "false"]'>[expanded ? "-" : "+"] [category]</a></div>"
+				html += "<div class='lab'><a id='preferences_flavor_toggle' href='byond://?_src_=prefs;preference=category;name=[url_encode(category)]' aria-controls='preferences_flavor_content' aria-expanded='[expanded ? "true" : "false"]'>[expanded ? "-" : "+"] [get_preferences_label_display(category)]</a></div>"
 				html += "<div id='preferences_flavor_content'>[expanded ? page_flavor_text() : ""]</div>"
 				continue
 			var/page = call(src, GLOB.pref_categories[category])(user)
@@ -434,15 +434,15 @@ GLOBAL_LIST_INIT(selectable_languages, list(
 
 /datum/preferences/proc/flavor_text_label()
 	if(length(flavortext) < MINIMUM_FLAVOR_TEXT)
-		return "<font color='#802929'>Flavortext</font>"
-	return "Flavortext"
+		return "<font color='#802929'>外貌描述</font>"
+	return "外貌描述"
 
 /datum/preferences/proc/page_flavor_text()
 	var/ooc_label = "场外备注"
 	if(length(ooc_notes) < MINIMUM_OOC_NOTES)
 		ooc_label = "<font color='#802929'>场外备注</font>"
 	var/help = pref_link("(?)", "formathelp")
-	var/html = pref_line(list(pref_item("Character Gallery", pref_link("Change", "character_gallery", byond_link = TRUE))))
+	var/html = pref_line(list(pref_item("角色画廊", pref_link("Change", "character_gallery", byond_link = TRUE))))
 	displayed_gallery_headshot = character_gallery_headshot_thumbnail()
 	html += "<div id='preferences_gallery_headshot'>[displayed_gallery_headshot]</div>"
 	html += pref_line(list(pref_item("<span id='preferences_flavortext_label'>[flavor_text_label()]</span>", "[help] [pref_link("Change", "flavortext", byond_link = TRUE)]")))

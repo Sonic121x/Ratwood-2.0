@@ -21,9 +21,9 @@ import { UNDO_ARTWORK_SETTINGS } from './slots';
 import type { ImageForm } from './types';
 
 const APPLY_TARGETS = [
-  { value: 'existing', label: 'Existing Artwork' },
-  { value: 'new', label: 'New Artwork Only' },
-  { value: 'both', label: 'Existing and New Artwork' },
+  { value: 'existing', label: '已有作品' },
+  { value: 'new', label: '仅新作品' },
+  { value: 'both', label: '已有作品和新作品' },
 ];
 
 export const ArtworkSettings = (props: { form: ImageForm }) => {
@@ -80,17 +80,17 @@ export const ArtworkSettings = (props: { form: ImageForm }) => {
       <Button
         compact
         icon={open ? 'chevron-up' : 'chevron-down'}
-        tooltip={`Bulk changes apply to current and alternate SFW and NSFW artwork for ${form.name}. Each image keeps its own framing box. Unchanged keeps saved artwork settings and defaults.`}
+        tooltip={`批量修改涵盖${form.name}的全年龄和成人向作品，包括当前图和备用图。每张图保留各自的取景框。选“保持原设置”可保留已保存的设置和默认值。`}
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => (open ? reset() : setOpen(true))}
       >
-        Artwork Display
+        作品显示设置
       </Button>
       {open && (
         <div id={panelId} className="CharacterGallery__artworkPanel">
           <ArtViewControls
-            label="All Artwork"
+            label="所有作品"
             allowUnchanged
             value={view}
             disabled={busy}
@@ -107,29 +107,29 @@ export const ArtworkSettings = (props: { form: ImageForm }) => {
               className="CharacterGallery__artworkDefaults"
               aria-live="polite"
             >
-              <strong>Current Defaults for New Artwork</strong>
+              <strong>新作品的默认设置</strong>
               <div className="CharacterGallery__defaultValues">
                 <Tooltip content={ART_VIEW_HELP[defaults.opening_view]}>
                   <span>
-                    View: <b>{ART_VIEW_LABELS[defaults.opening_view]}</b>
+                    视图：<b>{ART_VIEW_LABELS[defaults.opening_view]}</b>
                   </span>
                 </Tooltip>
                 <Tooltip content={ART_LOCK_HELP[defaults.lock]}>
                   <span>
-                    Controls: <b>{ART_LOCK_LABELS[defaults.lock]}</b>
+                    查看权限：<b>{ART_LOCK_LABELS[defaults.lock]}</b>
                   </span>
                 </Tooltip>
                 <span>
-                  Backdrop: <b>{defaultBackdrop ?? 'Transparent'}</b>
+                  卡片底色：<b>{defaultBackdrop ?? '透明'}</b>
                 </span>
               </div>
             </div>
             <div className="CharacterGallery__artworkActions">
               {hasArt && (
                 <label className="CharacterGallery__applyTarget">
-                  Apply To
+                  应用范围
                   <GallerySelect
-                    aria-label="Apply To"
+                    aria-label="应用范围"
                     value={target}
                     disabled={busy}
                     options={APPLY_TARGETS}
@@ -143,10 +143,10 @@ export const ArtworkSettings = (props: { form: ImageForm }) => {
                   disabled={actionDisabled}
                   onClick={applyChanges}
                 >
-                  {hasArt ? 'Apply' : 'Set Defaults for New Artwork'}
+                  {hasArt ? '应用' : '设为新作品的默认值'}
                 </Button>
                 <Button compact onClick={reset}>
-                  Cancel
+                  取消
                 </Button>
               </div>
             </div>
@@ -163,7 +163,7 @@ export const ArtworkSettings = (props: { form: ImageForm }) => {
               act('undo_image', { form: form.id, image: UNDO_ARTWORK_SETTINGS })
             }
           >
-            Undo Artwork Display Changes
+            撤销作品显示更改
           </Button>
         </div>
       )}

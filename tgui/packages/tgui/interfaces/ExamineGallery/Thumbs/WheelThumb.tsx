@@ -46,7 +46,7 @@ export const WheelThumb = (props: {
     <button
       type="button"
       className="ExamineGallery__thumb"
-      aria-label={`Picture ${index + 1}`}
+      aria-label={`第 ${index + 1} 张图片`}
       aria-current={isSelected}
       onClick={onSelect}
       onMouseEnter={() => hover('up')}

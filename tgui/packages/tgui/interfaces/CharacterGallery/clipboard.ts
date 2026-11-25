@@ -34,7 +34,7 @@ export const useCopyUrl = () => {
   ) => {
     const copied = await copyUrl(url);
     setMessage(
-      copied ? copiedMessage : 'Select the URL and press Ctrl+C to copy.',
+      copied ? copiedMessage : '请选中链接并按 Ctrl+C 复制。',
     );
     if (!copied) {
       onFail();

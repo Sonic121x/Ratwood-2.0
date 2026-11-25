@@ -18,7 +18,7 @@ export const GallerySelect = (props: {
     {...gallerySelectEvents}
     onChange={(event) => props.onChange(event.target.value)}
   >
-    {props.allowUnchanged && <option value="">Unchanged</option>}
+    {props.allowUnchanged && <option value="">保持原设置</option>}
     {props.options.map((option) => (
       <option key={option.value} value={option.value}>
         {option.label}

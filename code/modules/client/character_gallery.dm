@@ -161,7 +161,7 @@
 		alternates[image] = list("active_alternate" = source["active_alternate"])
 	var/artwork_message
 	if(artwork_feedback[form] == prefs.character_gallery_generation)
-		artwork_message = "Every artwork already has these settings."
+		artwork_message = "所有作品都已使用这些设置。"
 	var/list/art_links = gallery_art_links(owner)
 	return list(
 		"id" = form,
@@ -173,7 +173,7 @@
 		"undo_artwork_settings" = undo_available(form, GALLERY_UNDO_ARTWORK_SETTINGS, links),
 		"artwork_feedback" = artwork_message,
 		"artwork_defaults" = gallery_artwork_defaults(owner),
-		"blocked_links" = owner.vars["blocked_links"],
+		"blocked_links" = get_gallery_blocked_display(owner.vars["blocked_links"]),
 		"name" = name,
 		"headshot" = owner.vars["headshot_link"],
 		"headshot_zoom" = owner.vars["headshot_zoom"],
@@ -260,12 +260,12 @@
 		if("set_backdrop")
 			. = set_backdrop(form, params["backdrop"])
 		if("set_headshot")
-			return open_url_editor(user, form, "headshot", "Headshot")
+			return open_url_editor(user, form, "headshot", "头像")
 		if("clear_headshot")
 			. = clear_headshot(user, form)
 		if("set_extra")
 			var/slot = GALLERY_EXTRA_SLOT(nsfw)
-			return open_url_editor(user, form, slot, gallery_slot_label(slot))
+			return open_url_editor(user, form, slot, get_gallery_label_display(gallery_slot_label(slot)))
 		if("set_extra_size")
 			. = resize_extra(form, nsfw, params["size"])
 		if("clear_extra")
@@ -317,7 +317,7 @@
 	// check_revision = FALSE, as this save writes the whole slot rather than one form's images. An image edit on the
 	// form during the prompt must not refuse it, while a load during the prompt still does through character_gallery_generation
 	if(prefs.slot_randomized)
-		if(!confirm(user, form, "This character was randomized when it spawned. Saving now replaces your saved character and images with the random one. Save anyway?", "Save Randomized Character", list("Nae", "Yae"), check_revision = FALSE))
+		if(!confirm(user, form, "这个角色是在入场时随机生成的。保存会用随机角色及其图片覆盖原存档。仍要保存吗？", "保存随机角色", list("否", "是"), check_revision = FALSE))
 			return TRUE
 		// A Character Setup save during the prompt starts the same cooldown
 		if(!prefs.savefile_ready(user, "saving"))
@@ -328,10 +328,10 @@
 	var/preferences_saved = prefs.save_preferences()
 	var/character_saved = prefs.save_character()
 	if(!preferences_saved || !character_saved)
-		save_feedback = list("generation" = generation, "message" = "Couldn't save your character!")
-		to_chat(user, span_warning("Couldn't save your character!"))
+		save_feedback = list("generation" = generation, "message" = "角色保存失败！")
+		to_chat(user, span_warning("角色保存失败！"))
 		return TRUE
-	to_chat(user, span_notice("CHARACTER SAVED."))
+	to_chat(user, span_notice("角色已保存。"))
 	return TRUE
 
 /datum/character_gallery/proc/swap_all_urls(form)
@@ -424,7 +424,7 @@
 	else
 		remember_scope(form, GALLERY_UNDO_ARTWORK_SETTINGS, "artwork", before)
 	COOLDOWN_START(src, artwork_apply_cooldown, CHARACTER_GALLERY_LOGGED_COOLDOWN)
-	log_game("[user] has changed artwork settings for [length(changed_rows)] rows of their [describe(form, FALSE, "character")]: [json_encode(changes)].")
+	log_game("[user] 修改了[describe(form, FALSE, "角色")]的 [length(changed_rows)] 项作品设置：[json_encode(changes)]。")
 	return TRUE
 
 /**
@@ -443,9 +443,9 @@
 	return background
 
 /datum/character_gallery/proc/describe(form, nsfw, field_name)
-	return "[form == GALLERY_FORM_GNOLL ? "gnoll " : ""][nsfw ? "NSFW " : ""][field_name]"
+	return "[form == GALLERY_FORM_GNOLL ? "豺狼人" : ""][nsfw ? "成人向" : ""][field_name]"
 
-/datum/character_gallery/proc/confirm(mob/user, form, message, title, list/buttons = list("Yae", "Nae"), check_revision = TRUE)
+/datum/character_gallery/proc/confirm(mob/user, form, message, title, list/buttons = list("是", "否"), check_revision = TRUE)
 	if(prompt_open(user))
 		return FALSE
 	COOLDOWN_START(src, prompt_lock, CHARACTER_GALLERY_PROMPT_TIMEOUT)
@@ -453,17 +453,17 @@
 	var/revision = form_revisions[form]
 	var/answer = tgui_alert(user, message, title, buttons, timeout = CHARACTER_GALLERY_PROMPT_TIMEOUT)
 	COOLDOWN_RESET(src, prompt_lock)
-	if(answer != "Yae" || prefs.character_gallery_generation != generation)
+	if(answer != "是" || prefs.character_gallery_generation != generation)
 		return FALSE
 	if(check_revision && form_revisions[form] != revision)
-		to_chat(user, span_warning("These images changed while the prompt was open, so nothing was changed."))
+		to_chat(user, span_warning("确认期间图片已变更，本次操作已取消。"))
 		return FALSE
 	return TRUE
 
 /datum/character_gallery/proc/prompt_open(mob/user)
 	if(COOLDOWN_FINISHED(src, prompt_lock))
 		return FALSE
-	to_chat(user, span_warning("Finish the open prompt first."))
+	to_chat(user, span_warning("请先处理已打开的确认框。"))
 	return TRUE
 
 /datum/character_gallery/proc/get_headshot(form)
@@ -532,11 +532,11 @@
 /datum/character_gallery/proc/clear_headshot(mob/user, form)
 	if(!get_headshot(form))
 		return FALSE
-	if(!confirm(user, form, "Do you really want to remove your [describe(form, FALSE, "headshot")]?", "Remove Headshot"))
+	if(!confirm(user, form, "确定移除你的[describe(form, FALSE, "头像")]吗？", "移除头像"))
 		return FALSE
 	remember_image(form, "headshot", null)
 	set_headshot(form, null)
-	log_game("[user] has removed their [describe(form, FALSE, "Headshot image")].")
+	log_game("[user] 移除了自己的[describe(form, FALSE, "头像")]。")
 	return TRUE
 
 /datum/character_gallery/proc/resize_extra(form, nsfw, size)
@@ -549,23 +549,23 @@
 /datum/character_gallery/proc/clear_extra(mob/user, form, nsfw)
 	if(!get_extra(form, nsfw))
 		return FALSE
-	if(!confirm(user, form, "Do you really want to remove your [describe(form, nsfw, "OOC Extra Image/Video/Gif")]?", "Remove OOC Extra Image/Video/Gif"))
+	if(!confirm(user, form, "确定移除你的[describe(form, nsfw, "OOC 附图、视频或动图")]吗？", "移除 OOC 附件"))
 		return FALSE
 	remember_image(form, GALLERY_EXTRA_SLOT(nsfw), null)
 	set_extra(form, nsfw, null, OOC_EXTRA_SIZE_MAX)
-	log_game("[user] has removed their [describe(form, nsfw, "OOC Extra Image")].")
+	log_game("[user] 移除了自己的[describe(form, nsfw, "OOC 附件")]。")
 	return TRUE
 
 /datum/character_gallery/proc/remove_art(mob/user, form, nsfw, index)
 	if(!is_gallery_index(get_gallery(form, nsfw), index))
 		return FALSE
-	if(!confirm(user, form, "Remove image [index] from your [describe(form, nsfw, "gallery")]?", "Remove Image"))
+	if(!confirm(user, form, "从你的[describe(form, nsfw, "画廊")]中移除第 [index] 张图片吗？", "移除图片"))
 		return FALSE
 	// Checked again, as a purge can shorten the gallery during the prompt without moving the revision
 	if(!is_gallery_index(get_gallery(form, nsfw), index))
 		return FALSE
 	cut_art(form, nsfw, index)
-	log_game("[user] has removed image [index] from their [describe(form, nsfw, "gallery")].")
+	log_game("[user] 移除了自己[describe(form, nsfw, "画廊")]中的第 [index] 张图片。")
 	return TRUE
 
 /datum/character_gallery/proc/cut_art(form, nsfw, index)
@@ -580,13 +580,13 @@
 	var/datum/owner = image_owner(form)
 	if(!is_gallery_index(owner.vars["blocked_links"], index))
 		return FALSE
-	if(!confirm(user, form, "Remove this hidden link from your [describe(form, FALSE, "character")]? Nobody else can see it.", "Remove Link"))
+	if(!confirm(user, form, "从你的[describe(form, FALSE, "角色")]资料中移除这个隐藏链接吗？只有你能看见它。", "移除链接"))
 		return FALSE
 	// Checked again, as a purge can shorten the list during the prompt without moving the revision
 	if(!is_gallery_index(owner.vars["blocked_links"], index))
 		return FALSE
 	cut_blocked_link(form, index)
-	log_game("[user] has removed a blocked link from their [describe(form, FALSE, "character")].")
+	log_game("[user] 从自己的[describe(form, FALSE, "角色")]资料中移除了一个被屏蔽的链接。")
 	return TRUE
 
 /datum/character_gallery/proc/cut_blocked_link(form, index)
@@ -659,10 +659,10 @@
 	// leave a single Clear Undo that restores nothing in place of every row's Undo
 	if(!form_has_images(form))
 		return FALSE
-	if(!confirm(user, form, "Clear every image of your [describe(form, FALSE, "character")]? This removes the headshot, both OOC extras, both art galleries and any hidden links.", "Clear All", list("Nae", "Yae")))
+	if(!confirm(user, form, "清空你的[describe(form, FALSE, "角色")]的所有图片吗？头像、两项 OOC 附件、两个画廊的作品及所有隐藏链接都会被移除。", "全部清空", list("否", "是")))
 		return FALSE
 	wipe_form(form)
-	log_game("[user] has cleared every image of their [describe(form, FALSE, "character")].")
+	log_game("[user] 清空了自己[describe(form, FALSE, "角色")]的所有图片。")
 	return TRUE
 
 /datum/character_gallery/proc/form_has_images(form)
