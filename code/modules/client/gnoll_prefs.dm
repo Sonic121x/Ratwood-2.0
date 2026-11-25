@@ -18,11 +18,24 @@
 	var/datum/statpack/gnoll_statpack = new /datum/statpack/wildcard/fated()
 
 	var/headshot_link
+	var/list/gallery_alternates = list()
+	/// Links that fail validation or overflow their gallery, never shown to anyone but their owner
+	var/list/blocked_links = list()
+	var/headshot_zoom = HEADSHOT_ZOOM_MIN
+	var/headshot_x = HEADSHOT_X_DEFAULT
+	var/headshot_y = HEADSHOT_Y_DEFAULT
+	var/headshot_framed = FALSE
+	var/image_backdrop = GALLERY_BACKDROP_TAVERN
+	var/list/card_backgrounds = list()
+	var/list/art_view_settings = list()
+	/// Presentation inherited by new artwork for this form
+	var/list/artwork_defaults
 	var/flavortext
 	var/ooc_notes
 	var/ooc_extra
 	var/ooc_extra_img
 	var/ooc_extra_img_link
+	var/ooc_extra_img_size = OOC_EXTRA_SIZE_MAX
 	var/song_artist
 	var/song_title
 	var/rumour
@@ -30,6 +43,7 @@
 	var/nsfwflavortext
 	var/nsfw_ooc_extra_img
 	var/nsfw_ooc_extra_img_link
+	var/nsfw_ooc_extra_img_size = OOC_EXTRA_SIZE_MAX
 	var/erpprefs
 	var/list/img_gallery = list()
 	var/list/nsfw_img_gallery = list()
@@ -205,9 +219,17 @@
 
 	return TRUE
 
+/datum/gnoll_prefs/vv_edit_var(var_name, var_value)
+	. = ..()
+	for(var/client/client as anything in GLOB.clients)
+		if(client?.prefs?.gnoll_prefs == src)
+			client.prefs.refresh_character_gallery()
+			return
+
 /datum/gnoll_prefs/proc/gnoll_show_ui(mob/user)
 	if(!user.client)
 		return
+	user.client.prefs?.refresh_character_gallery(values_changed = FALSE)
 
 	var/list/dat = list()
 	dat += "<html><head><title>豺狼人自定义</title></head><body>"
@@ -305,32 +327,19 @@
 
 	dat += "<h3>豺狼人风味文本（可选）</h3>"
 
-	dat += "<b>头像:</b> "
-	dat += "<a href='?_src_=gnoll_prefs;action=headshot'>更改</a>"
-	if(headshot_link != null)
-		dat += "<br><img src='[headshot_link]' width='100px' height='100px'>"
+	dat += "<b>Character Gallery:</b> <a href='byond://?_src_=gnoll_prefs;action=character_gallery'>Change</a>"
 
-	dat += "<br><b>风味文本: </b><a href='?_src_=gnoll_prefs;action=formathelp'>(?)</a><a href='?_src_=gnoll_prefs;action=flavortext'>更改</a>"
-	dat += "<br><b>成人风味文本: </b><a href='?_src_=gnoll_prefs;action=formathelp'>(?)</a><a href='?_src_=gnoll_prefs;action=nsfwflavortext'>更改</a>"
-	dat += "<br><b>OOC 备注: </b><a href='?_src_=gnoll_prefs;action=formathelp'>(?)</a><a href='?_src_=gnoll_prefs;action=ooc_notes'>更改</a>"
+	dat += "<br><b>Flavortext: </b><a href='?_src_=gnoll_prefs;action=formathelp'>(?)</a><a href='byond://?_src_=gnoll_prefs;action=flavortext'>Change</a>"
+	dat += "<br><b>NSFW Flavortext: </b><a href='?_src_=gnoll_prefs;action=formathelp'>(?)</a><a href='byond://?_src_=gnoll_prefs;action=nsfwflavortext'>Change</a>"
+	dat += "<br><b>OOC Notes: </b><a href='?_src_=gnoll_prefs;action=formathelp'>(?)</a><a href='?_src_=gnoll_prefs;action=ooc_notes'>Change</a>"
 
 	dat += "<br><b>传闻与贵族闲话:</b><a href='?_src_=gnoll_prefs;action=formathelp'>(?)</a><br><a href='?_src_=gnoll_prefs;action=rumour'>设置传闻</a><a href='?_src_=gnoll_prefs;action=gossip'>设置闲话</a><a href='?_src_=gnoll_prefs;action=rumour_preview'><i>预览</i></a>"
 
-	dat += "<br><b>ERP 偏好:</b><a href='?_src_=gnoll_prefs;action=formathelp'>(?)</a><a href='?_src_=gnoll_prefs;action=erpprefs'>更改</a>"
-	dat += "<br><b>歌曲:</b> <a href='?_src_=gnoll_prefs;action=ooc_extra'>更改链接</a>"
-	dat += "<a href='?_src_=gnoll_prefs;action=change_title'>更改曲名</a>"
-	dat += "<a href='?_src_=gnoll_prefs;action=change_artist'>更改歌手</a>"
-	dat += "<br><b>OOC 附加图片/视频/动图（风味文本）:</b> <a href='?_src_=gnoll_prefs;action=ooc_extra_img'>更改</a>"
-	if(ooc_extra_img_link != null)
-		dat += "<br><img src='[ooc_extra_img_link]' width='100px' height='100px'>"
-	dat += "<br><b>成人 OOC 附加图片/视频/动图（风味文本）:</b> <a href='?_src_=gnoll_prefs;action=nsfw_ooc_extra_img'>更改</a>"
-	if(nsfw_ooc_extra_img_link != null)
-		dat += "<br><img src='[nsfw_ooc_extra_img_link]' width='100px' height='100px'>"
-	dat += "<br><B>图库:</b> <a href='?_src_=gnoll_prefs;action=img_gallery'>添加</a>"
-	dat+= "<a href='?_src_=gnoll_prefs;action=clear_gallery'>清空图库</a>"
-	dat += "<br><B>成人图库:</b> <a href='?_src_=gnoll_prefs;action=nsfw_img_gallery'>添加</a>"
-	dat+= "<a href='?_src_=gnoll_prefs;action=clear_nsfw_gallery'>清空成人图库</a>"
-	dat += "<br><a href='?_src_=gnoll_prefs;action=ooc_preview'><b>预览查看信息</b></a>"
+	dat += "<br><b>ERP Preferences:</b><a href='?_src_=gnoll_prefs;action=formathelp'>(?)</a><a href='?_src_=gnoll_prefs;action=erpprefs'>Change</a>"
+	dat += "<br><b>Song:</b> <a href='?_src_=gnoll_prefs;action=ooc_extra'>Change URL</a>"
+	dat += "<a href='?_src_=gnoll_prefs;action=change_title'>Change Title</a>"
+	dat += "<a href='?_src_=gnoll_prefs;action=change_artist'>Change Artist</a>"
+	dat += "<br><a href='?_src_=gnoll_prefs;action=ooc_preview'><b>Preview Examine</b></a>"
 
 	dat += "<center><a href='?_src_=gnoll_prefs;action=close'>关闭</a></center>"
 	dat += "</body></html>"
@@ -503,25 +512,6 @@
 					if(new_type in valid_expression)
 						descriptor_expression = new_type
 			gnoll_show_ui(user)
-		if("headshot")
-			to_chat(user, "<span class='notice'>请使用不含成人内容的头肩像，以保持沉浸感。最后，["<span class='bold'>请勿使用真人照片或不严肃的图片。</span>"]</span>")
-			to_chat(user, "<span class='notice'>如果图片在游戏中无法正常显示，请确认使用的是能在浏览器中正常打开的图片直链。</span>")
-			to_chat(user, "<span class='notice'>图片会缩小至 325x325 像素，因此越接近正方形，显示效果越好。</span>")
-			var/new_headshot_link = tgui_input_text(user, "输入头像链接（https，支持 gyazo、lensdump、imgbox、catbox、imgbb、filegarden）：", "头像", headshot_link,  encode = FALSE)
-			if(new_headshot_link == null)
-				return
-			if(new_headshot_link == "")
-				headshot_link = null
-				gnoll_show_ui(user)
-				return
-			if(!valid_headshot_link(user, new_headshot_link))
-				headshot_link = null
-				gnoll_show_ui(user)
-				return
-			headshot_link = new_headshot_link
-			to_chat(user, span_notice("已更新豺狼人头像"))
-			log_game("[user] has set their gnoll headshot image to '[headshot_link]'.")
-			gnoll_show_ui(user)
 		if("formathelp")
 			var/list/dat = list()
 			dat +="可以使用反斜杠（\\）转义特殊字符。<br>"
@@ -545,7 +535,6 @@
 				return
 			if(new_flavortext == "")
 				flavortext = null
-				gnoll_show_ui(user)
 				return
 			flavortext = new_flavortext
 			to_chat(user, "<span class='notice'>已更新豺狼人风味文本</span>")
@@ -605,7 +594,6 @@
 				new_nsfwflavortext = null
 				nsfwflavortext = null
 				to_chat(user, "<span class='notice'>已删除豺狼人成人风味文本。</span>")
-				gnoll_show_ui(user)
 				return
 			nsfwflavortext = new_nsfwflavortext
 			to_chat(user, "<span class='notice'>已更新豺狼人成人风味文本</span>")
@@ -626,93 +614,11 @@
 			to_chat(user, "<span class='notice'>已更新 ERP 偏好。</span>")
 			log_game("[user] has set their ERP preferences'.")
 
-		if("img_gallery")
-
-			if(img_gallery.len >= 3)
-				to_chat(user, "你的图库中已经有三张图片了！")
-				return
-
-			to_chat(user, "<span class='notice'>请使用["<span class='bold'>你的角色的图片</span>"]，以保持沉浸感。最后，["<span class='bold'>请勿使用真人照片或不严肃的图片。</span>"]</span>")
-			to_chat(user, "<span class='notice'>如果图片在游戏中无法正常显示，请确认使用的是能在浏览器中正常打开的图片直链。</span>")
-			to_chat(user, "<span class='notice'>三张图片会并排排列，填满横向的矩形区域，因此竖图的效果最好。</span>")
-			to_chat(user, "<span class='notice'>图库中同时最多只能有["<span class='bold'>三张图片</span>"]。</span>")
-
-			var/new_galleryimg = tgui_input_text(user, "输入图片链接（https，支持 gyazo、lensdump、imgbox、catbox、imgbb、filegarden）：", "图库图片",  encode = FALSE)
-
-			if(new_galleryimg == null)
-				return
-			if(new_galleryimg == "")
-				new_galleryimg = null
-				gnoll_show_ui(user)
-				return
-			if(!valid_headshot_link(user, new_galleryimg))
-				to_chat(user, "<span class='notice'>图片链接无效。请使用受支持网站（gyazo、lensdump、imgbox、catbox、imgbb、filegarden）的图片直链。</span>")
-				new_galleryimg = null
-				gnoll_show_ui(user)
-				return
-			img_gallery += new_galleryimg
-			to_chat(user, "<span class='notice'>已将图片加入豺狼人图库。</span>")
-			log_game("[user] has added an image to their gnoll gallery: '[new_galleryimg]'.")
-
-		if("nsfw_img_gallery")
-
-			if(nsfw_img_gallery.len >= 3)
-				to_chat(user, "你的图库中已经有三张图片了！")
-				return
-
-			to_chat(user, "<span class='notice'>请使用["<span class='bold'>你的角色的图片</span>"]，以保持沉浸感。最后，["<span class='bold'>请勿使用真人照片或不严肃的图片。</span>"]</span>")
-			to_chat(user, "<span class='notice'>如果图片在游戏中无法正常显示，请确认使用的是能在浏览器中正常打开的图片直链。</span>")
-			to_chat(user, "<span class='notice'>三张图片会并排排列，填满横向的矩形区域，因此竖图的效果最好。</span>")
-			to_chat(user, "<span class='notice'>图库中同时最多只能有["<span class='bold'>三张图片</span>"]。</span>")
-
-			var/new_galleryimg = tgui_input_text(user, "输入图片链接（https，支持 gyazo、lensdump、imgbox、catbox、imgbb、filegarden）：", "图库图片",  encode = FALSE)
-
-			if(new_galleryimg == null)
-				return
-			if(new_galleryimg == "")
-				new_galleryimg = null
-				gnoll_show_ui(user)
-				return
-			if(!valid_headshot_link(user, new_galleryimg))
-				to_chat(user, "<span class='notice'>图片链接无效。请使用受支持网站（gyazo、lensdump、imgbox、catbox、imgbb、filegarden）的图片直链。</span>")
-				new_galleryimg = null
-				gnoll_show_ui(user)
-				return
-			nsfw_img_gallery += new_galleryimg
-			to_chat(user, "<span class='notice'>已将图片加入豺狼人成人图库。</span>")
-			log_game("[user] has added an image to their gnoll nsfw gallery: '[new_galleryimg]'.")
-
-		if("clear_gallery")
-			if(!img_gallery.len)
-				to_chat(user, "豺狼人图库中没有可清除的图片！")
-				return
-			var/dachoice = tgui_alert(user, "确定清空你的豺狼人图库吗？", "清空图库", list("是", "否"))
-			if(dachoice == "否")
-				gnoll_show_ui(user)
-				return
-			img_gallery = list()
-			to_chat(user, "<span class='notice'>已清空豺狼人图库。</span>")
-			log_game("[user] has cleared their gnoll image gallery.")
-
-		if("clear_nsfw_gallery")
-			if(!nsfw_img_gallery.len)
-				to_chat(user, "豺狼人成人图库中没有可清除的图片！")
-				return
-			var/dachoice = tgui_alert(user, "确定清空你的豺狼人成人图库吗？", "清空成人图库", list("是", "否"))
-			if(dachoice == "否")
-				gnoll_show_ui(user)
-				return
-			nsfw_img_gallery = list()
-			to_chat(user, "<span class='notice'>已清空豺狼人成人图库。</span>")
-			log_game("[user] has cleared their gnoll nsfw image gallery.")
-
 		if("ooc_preview")
-			var/datum/examine_panel/preview_examine_panel = new(user)
-			preview_examine_panel.pref = user.client?.prefs
-			preview_examine_panel.holder = user
-			preview_examine_panel.viewing = user
-			preview_examine_panel.previewing = "gnoll"
-			preview_examine_panel.ui_interact(user)
+			user.client?.prefs?.open_examine_preview(user, GALLERY_FORM_GNOLL)
+
+		if("character_gallery")
+			user.client?.prefs?.open_character_gallery(user, GALLERY_FORM_GNOLL)
 
 		if("rumour_preview")
 			var/msg = ""
@@ -781,82 +687,6 @@
 			song_title = new_title
 			to_chat(user, "<span class='notice'>已更新豺狼人歌曲名称。</span>")
 			log_game("[user] has set their gnoll song title.")
-
-		if("ooc_extra_img")
-			to_chat(user, "<span class='notice'>添加图片或视频链接（jpg、png、gif、mp4），在你的风味文本中展示。</span>")
-			to_chat(user, "<span class='notice'>图片和视频会限制宽度，高度不限。支持的网站：catbox、discord、gyazo、lensdump、imgbox、imgbb、filegarden。</span>")
-			to_chat(user, "<font color='#d6d6d6'>留空以删除。</font>")
-			to_chat(user, "<font color='red'>滥用此功能将导致封禁。</font>")
-			var/link = tgui_input_text(user, "输入图片或视频链接（https）：", "OOC 附加图片", ooc_extra_img_link, encode = FALSE)
-			if(link == null)
-				return
-			if(link == "")
-				link = null
-				var/choice = tgui_alert(user, "确定清除豺狼人 OOC 附加图片、视频或动图吗？", "清除 OOC 附加媒体", list("是", "否"))
-				if(choice == "否")
-					gnoll_show_ui(user)
-					return
-				ooc_extra_img = null
-				ooc_extra_img_link = null
-				to_chat(user, "<span class='notice'>已删除豺狼人 OOC 附加图片。</span>")
-				gnoll_show_ui(user)
-				return
-			var/static/list/valid_ext = list("jpg", "jpeg", "png", "gif", "mp4")
-			if(!valid_headshot_link(user, link, FALSE, valid_ext))
-				link = null
-				gnoll_show_ui(user)
-				return
-			ooc_extra_img_link = link
-			var/ext = LOWER_TEXT(splittext(link, ".")[length(splittext(link, "."))])
-			var/info
-			switch(ext)
-				if("jpg", "jpeg", "png", "gif")
-					ooc_extra_img = "<div align='center'><br><img src='[link]' style='max-width: 100%;'/></div>"
-					info = "一张图片。"
-				if("mp4")
-					ooc_extra_img = "<div align='center'><br><video style='max-width: 100%;' controls><source src='[link]' type='video/mp4'></video></div>"
-					info = "一段视频。"
-			to_chat(user, "<span class='notice'>已将豺狼人 OOC 附加媒体更新为[info]</span>")
-			log_game("[user] has set their gnoll OOC Extra Image to '[link]'.")
-			gnoll_show_ui(user)
-
-		if("nsfw_ooc_extra_img")
-			to_chat(user, "<span class='notice'>添加成人图片或视频链接（jpg、png、gif、mp4），在你的成人风味文本中展示。</span>")
-			to_chat(user, "<span class='notice'>图片和视频会限制宽度，高度不限。支持的网站：catbox、discord、gyazo、lensdump、imgbox、imgbb、filegarden。</span>")
-			to_chat(user, "<font color='#d6d6d6'>留空以删除。</font>")
-			to_chat(user, "<font color='red'>滥用此功能将导致封禁。</font>")
-			var/link = tgui_input_text(user, "输入图片或视频链接（https）：", "成人 OOC 附加图片", nsfw_ooc_extra_img_link, encode = FALSE)
-			if(link == null)
-				return
-			if(link == "")
-				link = null
-				var/choice = tgui_alert(user, "确定清除豺狼人成人 OOC 附加图片、视频或动图吗？", "清除成人 OOC 附加媒体", list("是", "否"))
-				if(choice == "否")
-					gnoll_show_ui(user)
-					return
-				nsfw_ooc_extra_img = null
-				nsfw_ooc_extra_img_link = null
-				to_chat(user, "<span class='notice'>已删除豺狼人成人 OOC 附加图片。</span>")
-				gnoll_show_ui(user)
-				return
-			var/static/list/valid_ext = list("jpg", "jpeg", "png", "gif", "mp4")
-			if(!valid_headshot_link(user, link, FALSE, valid_ext))
-				link = null
-				gnoll_show_ui(user)
-				return
-			nsfw_ooc_extra_img_link = link
-			var/ext = LOWER_TEXT(splittext(link, ".")[length(splittext(link, "."))])
-			var/info
-			switch(ext)
-				if("jpg", "jpeg", "png", "gif")
-					nsfw_ooc_extra_img = "<div align='center'><br><img src='[link]' style='max-width: 100%;'/></div>"
-					info = "一张图片。"
-				if("mp4")
-					nsfw_ooc_extra_img = "<div align='center'><br><video style='max-width: 100%;' controls><source src='[link]' type='video/mp4'></video></div>"
-					info = "一段视频。"
-			to_chat(user, "<span class='notice'>已将豺狼人成人 OOC 附加媒体更新为[info]</span>")
-			log_game("[user] has set their gnoll NSFW OOC Extra Image to '[link]'.")
-			gnoll_show_ui(user)
 
 		if("gnoll_statpack")
 			// Build statpack list
@@ -931,34 +761,18 @@
 	if(color_hex2num("#" + sanitize_hexcolor(gnoll_voice_color)) < 230)
 		gnoll_voice_color = "a0a0a0"
 
-	S["gnoll_headshot_link"]	>> headshot_link
-	if(!valid_headshot_link(null, headshot_link, TRUE))
-		headshot_link = null
+	load_gallery_images(S, src, "gnoll_")
 
 	S["gnoll_flavortext"]			>> flavortext
 	S["gnoll_ooc_notes"]			>> ooc_notes
 	S["gnoll_ooc_extra"]			>> ooc_extra
-	S["gnoll_ooc_extra_img"]		>> ooc_extra_img
-	S["gnoll_ooc_extra_img_link"]	>> ooc_extra_img_link
-	if(!valid_headshot_link(null, ooc_extra_img_link, FALSE, list("jpg", "jpeg", "png", "gif", "mp4")))
-		ooc_extra_img = null
-		ooc_extra_img_link = null
 
 	S["gnoll_song_artist"] 			>> song_artist
 	S["gnoll_song_title"] 			>> song_title
 	S["gnoll_rumour"]				>> rumour
 	S["gnoll_noble_gossip"]			>> noble_gossip
 	S["gnoll_nsfwflavortext"]		>> nsfwflavortext
-	S["gnoll_nsfw_ooc_extra_img"]		>> nsfw_ooc_extra_img
-	S["gnoll_nsfw_ooc_extra_img_link"]	>> nsfw_ooc_extra_img_link
-	if(!valid_headshot_link(null, nsfw_ooc_extra_img_link, FALSE, list("jpg", "jpeg", "png", "gif", "mp4")))
-		nsfw_ooc_extra_img = null
-		nsfw_ooc_extra_img_link = null
 	S["gnoll_erpprefs"]			>> erpprefs
-	S["gnoll_img_gallery"]	>> img_gallery
-	img_gallery = SANITIZE_LIST(img_gallery)
-	S["gnoll_nsfw_img_gallery"]	>> nsfw_img_gallery
-	nsfw_img_gallery = SANITIZE_LIST(nsfw_img_gallery)
 
 	return TRUE
 
@@ -981,21 +795,15 @@
 		WRITE_FILE(S["gnoll_voice_color"] , gnoll_voice_color) 
 		WRITE_FILE(S["gnoll_statpack"] , preferences_typepath_or_null(gnoll_statpack))
 
-		WRITE_FILE(S["gnoll_headshot_link"] , headshot_link)
+		save_gallery_images(S, src, "gnoll_")
 		WRITE_FILE(S["gnoll_flavortext"] , html_decode(flavortext))
 		WRITE_FILE(S["gnoll_ooc_notes"] , html_decode(ooc_notes))
 		WRITE_FILE(S["gnoll_ooc_extra"] ,	ooc_extra)
-		WRITE_FILE(S["gnoll_ooc_extra_img"] , ooc_extra_img)
-		WRITE_FILE(S["gnoll_ooc_extra_img_link"] , ooc_extra_img_link)
 		WRITE_FILE(S["gnoll_song_artist"] , song_artist)
 		WRITE_FILE(S["gnoll_song_title"] , song_title)		
 		WRITE_FILE(S["gnoll_rumour"] , html_decode(rumour))
 		WRITE_FILE(S["gnoll_noble_gossip"] , html_decode(noble_gossip))
 		WRITE_FILE(S["gnoll_nsfwflavortext"] , html_decode(nsfwflavortext))
-		WRITE_FILE(S["gnoll_nsfw_ooc_extra_img"] , nsfw_ooc_extra_img)
-		WRITE_FILE(S["gnoll_nsfw_ooc_extra_img_link"] , nsfw_ooc_extra_img_link)
 		WRITE_FILE(S["gnoll_erpprefs"] , html_decode(erpprefs))
-		WRITE_FILE(S["gnoll_img_gallery"] , img_gallery)
-		WRITE_FILE(S["gnoll_nsfw_img_gallery"] , nsfw_img_gallery)
-	
+
 	return TRUE

@@ -302,6 +302,14 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/top_examine = FALSE
 	var/show_mouseover_role = FALSE
 	var/nsfw_examine_always = FALSE
+	var/gallery_plain = FALSE
+	var/gallery_backdrop = TRUE
+	var/gallery_card_deal = TRUE
+	var/gallery_image_sounds = TRUE
+	var/gallery_image_tilt = TRUE
+	var/gallery_candle_flicker = TRUE
+	var/gallery_easter_eggs = TRUE
+	var/gallery_artwork_preview_layout = "popup"
 	var/mute_anthro_noises = FALSE
 	var/autoconsume = FALSE
 	var/autoblooddrink = FALSE
@@ -361,10 +369,22 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/update_mutant_colors = TRUE
 
 	var/headshot_link
+	var/list/gallery_alternates = list()
+	var/list/blocked_links = list()
+	var/headshot_zoom = HEADSHOT_ZOOM_MIN
+	var/headshot_x = HEADSHOT_X_DEFAULT
+	var/headshot_y = HEADSHOT_Y_DEFAULT
+	var/headshot_framed = FALSE
+	var/headshot_frame_chat = FALSE
+	var/image_backdrop = GALLERY_BACKDROP_TAVERN
+	var/list/card_backgrounds = list()
+	var/list/art_view_settings = list()
+	var/list/artwork_defaults
 	var/chatheadshot = FALSE
 	var/ooc_extra
 	var/ooc_extra_img
 	var/ooc_extra_img_link
+	var/ooc_extra_img_size = OOC_EXTRA_SIZE_MAX
 	var/song_artist
 	var/song_title
 	var/list/descriptor_entries = list()
@@ -381,6 +401,10 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/bark_volume = 70
 	COOLDOWN_DECLARE(bark_previewing)
 	COOLDOWN_DECLARE(descriptor_preview)
+	/// Saves and Undo each open the whole savefile, which stalls the server for longer the more slots it holds
+	COOLDOWN_DECLARE(savefile_cooldown)
+	/// As savefile_cooldown for Change Character, apart from it so a save can be followed straight away by a change
+	COOLDOWN_DECLARE(slot_choice_cooldown)
 	var/hear_barks = TRUE
 
 	// PATREON
@@ -449,6 +473,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 	var/nsfw_ooc_extra_img
 	var/nsfw_ooc_extra_img_link
+	var/nsfw_ooc_extra_img_size = OOC_EXTRA_SIZE_MAX
 
 	var/erpprefs
 
@@ -560,12 +585,16 @@ GLOBAL_LIST_EMPTY(chosen_names)
 #define APPEARANCE_CATEGORY_COLUMN "<td valign='top' width='14%'>"
 #define MAX_MUTANT_ROWS 4
 
-/datum/preferences/proc/ShowChoices(mob/user, tabchoice)
+/datum/preferences/proc/ShowChoices(mob/user, tabchoice, refresh_only = FALSE)
 	if(!user || !user.client)
+		return
+	// winget sleeps, so the client may be gone by the time it answers
+	if(refresh_only && (winget(user, "preferencess_window", "is-visible") != "true" || !user?.client))
 		return
 	if(slot_randomized)
 		load_character(default_slot) // Reloads the character slot. Prevents random features from overwriting the slot if saved.
 		slot_randomized = FALSE
+	refresh_character_gallery(values_changed = FALSE)
 	var/list/dat = list("<center>")
 	if(tabchoice)
 		current_tab = tabchoice
@@ -855,8 +884,9 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	if(user.client?.is_new_player())
 		dat = list("<center>请注册！</center>")
 
-	winshow(user, "preferencess_window", TRUE)
-	winset(user, "preferencess_window", "size=820x850;pos=280,80")
+	if(!refresh_only)
+		winshow(user, "preferencess_window", TRUE)
+		winset(user, "preferencess_window", "size=820x850;pos=280,80")
 	var/datum/browser/noclose/popup = new(user, "preferences_browser", "<div align='center'>[used_title]</div>")
 	popup.set_window_options("can_close=0")
 	popup.set_content(dat.Join())
@@ -1316,6 +1346,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 /datum/preferences/Topic(href, href_list, hsrc)			//yeah, gotta do this I guess..
 	. = ..()
+	if(usr?.client != parent)
+		return
 	if(href_list["scroll"])
 		scroll_pos = text2num(href_list["scroll"])
 	if(href_list["close"])
@@ -1418,10 +1450,21 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			else
 				SetAntag(user)
 	else if(href_list["preference"] == "category")
-		if(href_list["name"] in open_categories)
-			open_categories -= href_list["name"]
+		var/category = href_list["name"]
+		if(category in open_categories)
+			open_categories -= category
 		else
-			open_categories += href_list["name"]
+			open_categories += category
+		if(category == "Flavor Text")
+			if(slot_randomized)
+				ShowChoices(user)
+				return 1
+			skip_preview = FALSE
+			if(current_tab != 0)
+				return 1
+			var/expanded = (category in open_categories)
+			send_byjax(user, "preferences_browser", "preferences_flavor_content", expanded ? page_flavor_text() : " ", "syncFlavorTextToggle")
+			return 1
 	else if(href_list["preference"] == "background")
 		process_background_link(user, href_list)
 		validate_background()
@@ -1962,24 +2005,6 @@ GLOBAL_LIST_EMPTY(chosen_names)
 					if(new_color)
 						highlight_color = sanitize_hexcolor(new_color)
 
-				if("headshot")
-					to_chat(user, "<span class='notice'>请使用相对无不良内容的头部和肩部区域图像，以保持沉浸感。最后，["<span class='bold'>不要使用真实照片或任何不够严肃的图像。</span>"]</span>")
-					to_chat(user, "<span class='notice'>如果照片在游戏内无法正常显示，请确保它是一个可以在浏览器中正常打开的直接图像链接。</span>")
-					to_chat(user, "<span class='notice'>请注意，照片将被缩小到 325x325 像素，因此照片越方正，效果越好。</span>")
-					var/new_headshot_link = tgui_input_text(user, "输入头像链接（https，支持的主机：gyazo, lensdump, imgbox, catbox, imgbb, filegarden）：", "头像", headshot_link,  encode = FALSE)
-					if(new_headshot_link == null)
-						return
-					if(new_headshot_link == "")
-						headshot_link = null
-						ShowChoices(user)
-						return
-					if(!valid_headshot_link(user, new_headshot_link))
-						headshot_link = null
-						ShowChoices(user)
-						return
-					headshot_link = new_headshot_link
-					to_chat(user, "<span class='notice'>成功更新头像图片</span>")
-					log_game("[user] 已将头像图片设置为 '[headshot_link]'.")
 				if("legacyhelp")
 					var/list/dat = list()
 					dat += "此槽位在主要的风味文本 / OOC 更改之前就已存在。<br>"
@@ -2019,17 +2044,26 @@ GLOBAL_LIST_EMPTY(chosen_names)
 					popup.set_content(dat.Join())
 					popup.open(FALSE)
 				if("flavortext")
-					to_chat(user, "<span class='notice'>["<span class='bold'>风味文本不应包含非物理、非感官的属性，例如背景故事或角色的内心想法。</span>"]</span>")
-					var/new_flavortext = tgui_input_text(user, "输入您的角色描述：", "风味文本", flavortext, multiline = TRUE,  encode = FALSE, bigmodal = TRUE)
-					if(new_flavortext == null)
+					skip_preview = FALSE
+					to_chat(user, "<span class='notice'>["<span class='bold'>Flavortext should not include nonphysical nonsensory attributes such as backstory or the character's internal thoughts.</span>"]</span>")
+					var/new_flavortext = tgui_input_text(user, "Input your character description:", "Flavortext", flavortext, multiline = TRUE,  encode = FALSE, bigmodal = TRUE)
+					if(isnull(new_flavortext))
 						return
+					var/previous_flavor_label = flavor_text_label()
 					if(new_flavortext == "")
 						flavortext = null
+					else
+						flavortext = new_flavortext
+						to_chat(user, "<span class='notice'>Successfully updated flavortext</span>")
+						log_game("[user] has set their flavortext'.")
+					if(slot_randomized)
+						skip_preview = TRUE
 						ShowChoices(user)
-						return
-					flavortext = new_flavortext
-					to_chat(user, "<span class='notice'>成功更新风味文本</span>")
-					log_game("[user] 已设置其风味文本。")
+						return 1
+					var/current_flavor_label = flavor_text_label()
+					if(current_flavor_label != previous_flavor_label && current_tab == 0 && ("Flavor Text" in open_categories))
+						send_byjax(user, "preferences_browser", "preferences_flavortext_label", current_flavor_label)
+					return 1
 				if("ooc_notes")
 					to_chat(user, "<span class='notice'>["<span class='bold'>OOC 备注应用于角色扮演钩子和关于您角色的一般信息。</span>"]</span>")
 					var/new_ooc_notes = tgui_input_text(user, "输入您的 OOC 偏好：", "OOC 备注", ooc_notes, multiline = TRUE,  encode = FALSE, bigmodal = TRUE)
@@ -2078,20 +2112,23 @@ GLOBAL_LIST_EMPTY(chosen_names)
 					log_game("[user] 已设置其贵族八卦。")
 
 				if("nsfwflavortext")
-					to_chat(user, "<span class='notice'>["<span class='bold'>NSFW 风味文本可用于设置身体描述和其他可能被视为露骨的身体细节。</span>"]</span>")
-					to_chat(user, "<font color = '#d6d6d6'>留空以清除。</font>")
-					var/new_nsfwflavortext = tgui_input_text(user, "输入您的角色描述：", "NSFW 风味文本", nsfwflavortext, multiline = TRUE,  encode = FALSE, bigmodal = TRUE)
+					skip_preview = FALSE
+					to_chat(user, "<span class='notice'>["<span class='bold'>NSFW Flavortext can be used for setting things like body descriptions and other physical details that may be conisdered explicit.</span>"]</span>")
+					to_chat(user, "<font color = '#d6d6d6'>Leave blank to clear.</font>")
+					var/new_nsfwflavortext = tgui_input_text(user, "Input your character description:", "NSFW Flavortext", nsfwflavortext, multiline = TRUE,  encode = FALSE, bigmodal = TRUE)
 					if(new_nsfwflavortext == null)
 						return
 					if(new_nsfwflavortext == "")
-						new_nsfwflavortext = null
 						nsfwflavortext = null
-						to_chat(user, "<span class='notice'>成功删除 NSFW 风味文本。</span>")
+						to_chat(user, "<span class='notice'>Successfully deleted NSFW Flavor Text.</span>")
+					else
+						nsfwflavortext = new_nsfwflavortext
+						to_chat(user, "<span class='notice'>Successfully updated NSFW flavortext</span>")
+						log_game("[user] has set their NSFW flavortext'.")
+					if(slot_randomized)
+						skip_preview = TRUE
 						ShowChoices(user)
-						return
-					nsfwflavortext = new_nsfwflavortext
-					to_chat(user, "<span class='notice'>成功更新 NSFW 风味文本</span>")
-					log_game("[user] 已设置其 NSFW 风味文本。")
+					return 1
 				if("erpprefs")
 					to_chat(user, "<span class='notice'>["<span class='bold'>色情角色扮演偏好。如果您在这里填写“什么都可以”或“无限制”，如果别人当真了，请不要感到惊讶。</span>"]</span>")
 					to_chat(user, "<font color = '#d6d6d6'>留空以清除。</font>")
@@ -2108,93 +2145,14 @@ GLOBAL_LIST_EMPTY(chosen_names)
 					to_chat(user, "<span class='notice'>成功更新 ERP 偏好。</span>")
 					log_game("[user] 已设置其 ERP 偏好。")
 
-				if("img_gallery")
-
-					if(img_gallery.len >= 3)
-						to_chat(user, "你的图库已经有三张图片了！")
-						return
-
-					to_chat(user, "<span class='notice'>请使用["<span class='bold'>您角色的图片</span>"]以保持沉浸感。最后，["<span class='bold'>不要使用真实照片或任何不够严肃的图像。</span>"]</span>")
-					to_chat(user, "<span class='notice'>如果照片在游戏内无法正常显示，请确保它是一个可以在浏览器中正常打开的直接图像链接。</span>")
-					to_chat(user, "<span class='notice'>请注意，三张图片并排显示并自适应填充水平矩形。因此，垂直图像效果最佳。</span>")
-					to_chat(user, "<span class='notice'>图库中同时最多只能保存["<span class='bold'>三张图片</span>"]。</span>")
-
-					var/new_galleryimg = tgui_input_text(user, "输入图片链接（须使用 https，支持 gyazo、lensdump、imgbox、catbox、imgbb、filegarden）：", "图库图像",  encode = FALSE)
-
-					if(new_galleryimg == null)
-						return
-					if(new_galleryimg == "")
-						new_galleryimg = null
-						ShowChoices(user)
-						return
-					if(!valid_headshot_link(user, new_galleryimg))
-						to_chat(user, "<span class='notice'>无效的图像链接。请确保它是来自有效主机(gyazo, lensdump, imgbox, catbox, imgbb, filegarden)的直接链接。</span>")
-						new_galleryimg = null
-						ShowChoices(user)
-						return
-					img_gallery += new_galleryimg
-					to_chat(user, "<span class='notice'>成功将图像添加到图库。</span>")
-					log_game("[user] 已向图库添加图像：'[new_galleryimg]'.")
-
-				if("nsfw_img_gallery")
-
-					if(nsfw_img_gallery.len >= 3)
-						to_chat(user, "你的图库已经有三张图片了！")
-						return
-
-					to_chat(user, "<span class='notice'>请使用["<span class='bold'>您角色的图片</span>"]以保持沉浸感。最后，["<span class='bold'>不要使用真实照片或任何不够严肃的图像。</span>"]</span>")
-					to_chat(user, "<span class='notice'>如果照片在游戏内无法正常显示，请确保它是一个可以在浏览器中正常打开的直接图像链接。</span>")
-					to_chat(user, "<span class='notice'>请注意，三张图片并排显示并自适应填充水平矩形。因此，垂直图像效果最佳。</span>")
-					to_chat(user, "<span class='notice'>图库中同时最多只能保存["<span class='bold'>三张图片</span>"]。</span>")
-
-					var/new_galleryimg = tgui_input_text(user, "输入图片链接（须使用 https，支持 gyazo、lensdump、imgbox、catbox、imgbb、filegarden）：", "图库图像",  encode = FALSE)
-
-					if(new_galleryimg == null)
-						return
-					if(new_galleryimg == "")
-						new_galleryimg = null
-						ShowChoices(user)
-						return
-					if(!valid_headshot_link(user, new_galleryimg))
-						to_chat(user, "<span class='notice'>无效的图像链接。请确保它是来自有效主机(gyazo, lensdump, imgbox, catbox, imgbb, filegarden)的直接链接。</span>")
-						new_galleryimg = null
-						ShowChoices(user)
-						return
-					nsfw_img_gallery += new_galleryimg
-					to_chat(user, "<span class='notice'>成功将图像添加到 NSFW 图库。</span>")
-					log_game("[user] 已向 NSFW 图库添加图像：'[new_galleryimg]'.")
-
-				if("clear_gallery")
-					if(!img_gallery.len)
-						to_chat(user, "您的图库中没有要清除的图像！")
-						return
-					var/dachoice = tgui_alert(user, "您真的要清除图像图库吗？", "清除图库", list("是", "否"))
-					if(dachoice == "否")
-						ShowChoices(user)
-						return
-					img_gallery = list()
-					to_chat(user, "<span class='notice'>成功清除图像图库。</span>")
-					log_game("[user] 已清除其图像图库。")
-
-				if("clear_nsfw_gallery")
-					if(!nsfw_img_gallery.len)
-						to_chat(user, "您的 NSFW 图库中没有要清除的图像！")
-						return
-					var/dachoice = tgui_alert(user, "您真的要清除 NSFW 图像图库吗？", "清除 NSFW 图库", list("是", "否"))
-					if(dachoice == "否")
-						ShowChoices(user)
-						return
-					nsfw_img_gallery = list()
-					to_chat(user, "<span class='notice'>成功清除 NSFW 图像图库。</span>")
-					log_game("[user] 已清除其 NSFW 图像图库。")
-
 				if("ooc_preview")
-					var/datum/examine_panel/preview_examine_panel = new(user)
-					preview_examine_panel.pref = src
-					preview_examine_panel.holder = user
-					preview_examine_panel.viewing = user
-					preview_examine_panel.previewing = "character"
-					preview_examine_panel.ui_interact(user)
+					open_examine_preview(user, GALLERY_FORM_CHARACTER)
+					return
+
+				if("character_gallery")
+					skip_preview = FALSE
+					open_character_gallery(user, GALLERY_FORM_CHARACTER)
+					return
 
 				if("rumour_preview")
 					var/msg = ""
@@ -2263,80 +2221,6 @@ GLOBAL_LIST_EMPTY(chosen_names)
 					song_title = new_title
 					to_chat(user, "<span class='notice'>成功更新歌曲标题。</span>")
 					log_game("[user] 已设置其歌曲标题。")
-
-				if("ooc_extra_img")
-					to_chat(user, "<span class='notice'>添加将显示在风味文本中的图像/视频链接（jpg, png, gif, mp4）。</span>")
-					to_chat(user, "<span class='notice'>图像/视频的宽度受限但高度不限。合适的主机：catbox, discord, gyazo, lensdump, imgbox, imgbb, filegarden。</span>")
-					to_chat(user, "<font color='#d6d6d6'>留一个空格以删除它。</font>")
-					to_chat(user, "<font color='red'>滥用此功能将导致你被禁止。</font>")
-					var/link = tgui_input_text(user, "输入图像/视频链接（https）：", "OOC 额外图像", ooc_extra_img_link, encode = FALSE)
-					if(link == null)
-						return
-					if(link == "")
-						link = null
-						var/choice = tgui_alert(user, "您真的要清除您的 OOC 额外图像/视频/GIF 吗？", "清除 OOC 额外图像/视频/GIF", list("是", "否"))
-						if(choice == "否")
-							ShowChoices(user)
-							return
-						ooc_extra_img = null
-						ooc_extra_img_link = null
-						to_chat(user, "<span class='notice'>成功删除 OOC 额外图像。</span>")
-						ShowChoices(user)
-						return
-					var/static/list/valid_ext = list("jpg", "jpeg", "png", "gif", "mp4")
-					if(!valid_headshot_link(user, link, FALSE, valid_ext))
-						link = null
-						ShowChoices(user)
-						return
-					ooc_extra_img_link = link
-					var/ext = LOWER_TEXT(splittext(link, ".")[length(splittext(link, "."))])
-					var/info
-					switch(ext)
-						if("jpg", "jpeg", "png", "gif")
-							ooc_extra_img = "<div align='center'><br><img src='[link]' style='max-width: 100%;'/></div>"
-							info = "一张图像。"
-						if("mp4")
-							ooc_extra_img = "<div align='center'><br><video style='max-width: 100%;' controls><source src='[link]' type='video/mp4'></video></div>"
-							info = "一个视频。"
-					to_chat(user, "<span class='notice'>成功使用 [info] 更新 OOC 额外图像。</span>")
-					log_game("[user] 已将其 OOC 额外图像设置为 '[link]'.")
-
-				if("nsfw_ooc_extra_img")
-					to_chat(user, "<span class='notice'>添加将显示在 NSFW 风味文本中的 NSFW 图像/视频链接（jpg, png, gif, mp4）。</span>")
-					to_chat(user, "<span class='notice'>图像/视频的宽度受限但高度不限。合适的主机：catbox, discord, gyazo, lensdump, imgbox, imgbb, filegarden。</span>")
-					to_chat(user, "<font color='#d6d6d6'>留一个空格以删除它。</font>")
-					to_chat(user, "<font color='red'>滥用此功能将导致你被禁止。</font>")
-					var/link = tgui_input_text(user, "输入图像/视频链接（https）：", "NSFW OOC 额外图像", nsfw_ooc_extra_img_link, encode = FALSE)
-					if(link == null)
-						return
-					if(link == "")
-						link = null
-						var/choice = tgui_alert(user, "您真的要清除您的 NSFW OOC 额外图像/视频/GIF 吗？", "清除 NSFW OOC 额外图像/视频/GIF", list("是", "否"))
-						if(choice == "否")
-							ShowChoices(user)
-							return
-						nsfw_ooc_extra_img = null
-						nsfw_ooc_extra_img_link = null
-						to_chat(user, "<span class='notice'>成功删除 NSFW OOC 额外图像。</span>")
-						ShowChoices(user)
-						return
-					var/static/list/valid_ext = list("jpg", "jpeg", "png", "gif", "mp4")
-					if(!valid_headshot_link(user, link, FALSE, valid_ext))
-						link = null
-						ShowChoices(user)
-						return
-					nsfw_ooc_extra_img_link = link
-					var/ext = LOWER_TEXT(splittext(link, ".")[length(splittext(link, "."))])
-					var/info
-					switch(ext)
-						if("jpg", "jpeg", "png", "gif")
-							nsfw_ooc_extra_img = "<div align='center'><br><img src='[link]' style='max-width: 100%;'/></div>"
-							info = "一张图像。"
-						if("mp4")
-							nsfw_ooc_extra_img = "<div align='center'><br><video style='max-width: 100%;' controls><source src='[link]' type='video/mp4'></video></div>"
-							info = "一个视频。"
-					to_chat(user, "<span class='notice'>成功使用 [info] 更新 NSFW OOC 额外图像。</span>")
-					log_game("[user] 已将其 NSFW OOC 额外图像设置为 '[link]'.")
 
 				if("familiar_prefs")
 					familiar_prefs.fam_show_ui()
@@ -2908,15 +2792,24 @@ GLOBAL_LIST_EMPTY(chosen_names)
 							preview_erect_state = ERECT_STATE_NONE
 
 				if("save")
-					save_preferences()
-					save_character()
-					to_chat(user, span_notice("角色已保存。"))
+					if(savefile_ready(user, "saving"))
+						COOLDOWN_START(src, savefile_cooldown, SAVEFILE_COOLDOWN_TIME)
+						save_preferences()
+						save_character()
+						to_chat(user, span_notice("CHARACTER SAVED."))
 
 				if("load")
-					load_preferences()
-					load_character()
+					if(savefile_ready(user, "undoing"))
+						COOLDOWN_START(src, savefile_cooldown, SAVEFILE_COOLDOWN_TIME)
+						load_preferences()
+						load_character()
 
 				if("changeslot")
+					if(!COOLDOWN_FINISHED(src, slot_choice_cooldown))
+						to_chat(user, span_warning("Wait a moment before changing character again."))
+						ShowChoices(user)
+						return 1
+					COOLDOWN_START(src, slot_choice_cooldown, SAVEFILE_COOLDOWN_TIME)
 					var/list/choices = list()
 					if(path)
 						var/savefile/S = new /savefile(path)
@@ -2941,6 +2834,17 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 	ShowChoices(user)
 	return 1
+
+/**
+ * Whether Save and Undo may open the savefile, warning the user while savefile_cooldown runs
+ *
+ * It never starts the cooldown, so each caller starts it once it goes ahead
+ */
+/datum/preferences/proc/savefile_ready(mob/user, action_text)
+	if(COOLDOWN_FINISHED(src, savefile_cooldown))
+		return TRUE
+	to_chat(user, span_warning("Wait a moment before [action_text] again."))
+	return FALSE
 
 /datum/preferences/proc/resolve_loadout_to_color(item_path)
 	if (loadout && (item_path == loadout.path) && loadout_1_hex && length(loadout_1_hex))
@@ -3016,6 +2920,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 
 /datum/preferences/proc/copy_to(mob/living/carbon/human/character, icon_updates = 1, roundstart_checks = TRUE, character_setup = FALSE, antagonist = FALSE, skip_normal_prefs = FALSE, keep_name = FALSE)
+	if(!character_setup)
+		log_headshot_framing("spawned")
 	if(skip_normal_prefs)
 		// For gnolls spawning from a non-gnoll base slot, we must not apply any base-slot state.
 		// Set species to gnoll immediately so advclass check_requirements can read dna.species.type.
@@ -3155,6 +3061,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	character.dna.real_name = character.real_name
 
 	character.headshot_link = headshot_link
+	COPY_GALLERY_PRESENTATION(character, src)
+	character.headshot_frame_chat = headshot_frame_chat
 
 	character.origin = origin ? origin.name : "未知"
 	for(var/trait in origin?.origin_traits)
@@ -3300,6 +3208,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 		reset_all_customizer_accessory_colors()
 
 /proc/valid_headshot_link(mob/user, value, silent = FALSE, list/valid_extensions = list("jpg", "png", "jpeg"))
+	// IMAGE_LINK_HOSTS_TEXT must name the same hosts
 	var/static/link_regex = regex(@"i\.gyazo\.com/|.\.l3n\.co/|(images2|thumbs2)\.imgbox\.com/|files\.catbox\.moe/|i\.ibb\.co/|file\.garden/") //gyazo, lensdump, imgbox, catbox, imgbb, filegarden
 
 	if(!length(value))
@@ -3314,6 +3223,12 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	if(!findtext(value, ".") || findtext(value, "<") || findtext(value, ">") || findtext(value, "]") || findtext(value, "\[") || findtext(value, "'") || findtext(value, "\""))	//there is no link in the world that would ever need < or >
 		if(!silent)
 			to_chat(user, "<span class='warning'>无效链接！</span>")
+		return FALSE
+
+	// Text after a ? or # would let the link end in an allowed extension that is not the file's own
+	if(findtext(value, "?") || findtext(value, "#"))
+		if(!silent)
+			to_chat(user, "<span class='warning'>The link must be a direct link to the file, without '?' or '#'!</span>")
 		return FALSE
 	var/list/value_split = splittext(value, ".")
 
