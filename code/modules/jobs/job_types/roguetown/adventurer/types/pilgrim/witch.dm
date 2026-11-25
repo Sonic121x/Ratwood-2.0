@@ -23,7 +23,7 @@
 	)
 	maximum_possible_slots = 20 // Should not fill, just a hack to make it shows what types of towners are in round
 
-/datum/outfit/job/roguetown/adventurer/witch/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/job/roguetown/adventurer/witch/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/witchhat
 	mask = /obj/item/clothing/head/roguetown/roguehood/black
@@ -54,7 +54,7 @@
 		var/classes = list("Old Magick", "Godsblood", "Mystagogue")
 		classchoice = input(H, "How do your powers manifest?", "THE OLD WAYS") as anything in classes
 	if(!shapeshiftchoice)
-		var/shapeshifts = list("Zad", "Cat", "Cat (Black)", "Bat", "Lesser Volf", "Cabbit", "Small Rous", "Lesser Venard", "Magic Broom")
+		var/shapeshifts = list("Zad", "Cat", "Cat (Black)", "Bat", "Lesser Volf", "Cabbit", "Small Rous", "Lesser Venard")
 		shapeshiftchoice = input(H, "What form does your second skin take?", "THE OLD WAYS") as anything in shapeshifts
 	if(!skillchoice)
 		var/skillsets = list("Herbalist", "Forager")
@@ -138,6 +138,8 @@
 				H.adjust_skillrank(/datum/skill/magic/arcane, SKILL_LEVEL_NOVICE, TRUE)
 				H.adjust_skillrank(/datum/skill/magic/holy, SKILL_LEVEL_NOVICE, TRUE)
 	if(H.mind)
+		// 每位女巫开局自带召唤魔法扫帚的法术（与第二形态无关，不再是变形术选项）。
+		H.mind.AddSpell(new /datum/action/cooldown/spell/z121/self/conjure_flying_broom)
 		switch (shapeshiftchoice)
 			if("Zad")
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/shapeshift/witch/crow)
@@ -155,15 +157,6 @@
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/shapeshift/witch/rous)
 			if("Cabbit")
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/shapeshift/witch/cabbit)
-			if("Magic Broom")
-				// 选择魔法扫帚的女巫不会获得任何变身法术，取而代之的是脚下生成一把可骑乘的扫帚。
-				// visualsOnly 用于角色预览，不能在那时真的刷出物品。
-				if(!visualsOnly)
-					var/turf/broom_turf = get_turf(H)
-					if(broom_turf)
-						new /obj/item/broom/flying(broom_turf)
-					else
-						H.put_in_hands(new /obj/item/broom/flying)
 		switch (classchoice)
 			if("Mystagogue")
 				grant_poke_spell(H)
