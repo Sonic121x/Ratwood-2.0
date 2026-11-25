@@ -41,6 +41,12 @@
 		return
 
 	ADD_TRAIT(H, TRAIT_CLERGYRADICAL, "job")
+	ADD_TRAIT(H, TRAIT_CRITICAL_WEAKNESS, TRAIT_GENERIC)
+	H.adjust_skillrank_down_to(/datum/skill/combat/unarmed, SKILL_LEVEL_APPRENTICE, TRUE)
+	H.adjust_skillrank_down_to(/datum/skill/combat/wrestling, SKILL_LEVEL_APPRENTICE, TRUE)
+	H.change_stat(STATKEY_CON, -1)
+	H.change_stat(STATKEY_WIL, 2)
+	H.change_stat(STATKEY_SPD, 1)
 	H.miracle_points += 3
 	H.church_favor += 1600
 	H.reset_clergy_devotion(CLERIC_T4, CLERIC_REGEN_MAJOR, TRUE, CLERIC_REQ_4)
@@ -52,7 +58,14 @@
 	if(!H || !H.client || !H.mind)
 		return
 
-	var/choice = alert(H, "选择你的道路。", "侍僧教义", "守旧派", "激进派")
+	var/choice = alert(H, {"选择你的道路。
+
+守旧派——献身于单一守护神，恪守其仪礼。
+
+激进派——在守护神的教诲之外寻求智慧。长年的钻研磨锐了你的心智，也让你的身体疲惫不堪。
+
+激进派效果：-1 体质，+2 意志，+1 速度，并获得重创弱点。
+摔跤与徒手格斗起始等级为 2。"}, "侍僧教义", "守旧派", "激进派")
 
 	if(choice == "激进派")
 		grant_radical_path(H)

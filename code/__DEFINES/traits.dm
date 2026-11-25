@@ -384,6 +384,7 @@
 #define TRAIT_OAR_PROPELLED "划桨推进"
 #define TRAIT_ALLOWS_BUCKLED_FACING "允许被束缚者面朝"
 #define CONTRACT_SPAWN_TRAIT "contract-spawn"
+#define TRAIT_FORBIDDEN_RESEARCH "禁忌研究"
 
 // ARMOR / CLOTHING GIVEN TRAITS (GIVEN BY WEARING CLOTHES/ARMOR PIECES)
 #define TRAIT_MONK_ROBE	"Holy Vestatures"
@@ -750,7 +751,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_SOFT_FOOTED = span_info("在遥远的风郡，走路声响大是不礼貌的。我的脚步轻柔而轻巧。"),
 	TRAIT_ANCESTOR_GUARDIAN = span_info("在阿瓦尔，我们敬奉先祖，而他们护佑我们免遭危险。时不时的，他们会在战斗中指引我的手。"),
 	TRAIT_LIGHT_SENSITIVITY = span_info("住在幽暗地域昏暗的洞窟中，使我的眼睛有所适应。虽然我在黑暗中看得清楚，但强光对我而言是克星！"),
-	TRAIT_BITENORECOIL = span_info("我的獠牙坚固，啃咬时不会因反冲而退缩。")
+	TRAIT_BITENORECOIL = span_info("我的獠牙坚固，啃咬时不会因反冲而退缩。"),
+	TRAIT_FORBIDDEN_RESEARCH = span_info("我正在研习升格诸神的禁忌知识。")
 ))
 
 // trait accessor defines

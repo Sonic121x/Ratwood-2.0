@@ -106,6 +106,9 @@
 		if(item)
 			. += span_notice("你觉得[m2]最值钱的财产是[item]。")
 
+	if(user != src && (HAS_TRAIT(user, TRAIT_PURITAN) || HAS_TRAIT(user, TRAIT_CHOSEN)) && HAS_TRAIT(src, TRAIT_CLERGYRADICAL) && HAS_TRAIT(src, TRAIT_FORBIDDEN_RESEARCH))
+		. += span_warning("[m1]显然正在研习禁忌知识。")
+
 	// Try to see if they smell
 	if(get_dist(user, src) <= 3 && !HAS_TRAIT(user, TRAIT_MISSING_NOSE) && !HAS_TRAIT(user, TRAIT_NOSTINK)) // Need to be close enough + able to smell
 		if(user != src) // You can't smell your own scent

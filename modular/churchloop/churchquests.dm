@@ -654,7 +654,7 @@ var/global/list/Q_WITNESS_EFFECTS = list(
 /obj/item/quest_token/skill_bless
 	name = "工艺印记"
 	desc = "寻找一名精通所列技能之一的目标。和平使用给予赐福，战斗模式使用则施加鄙斥。"
-	icon_state = "questflaw"
+	icon_state = "questbless"
 	var/list/required_skills = list()
 
 /obj/item/quest_token/skill_bless/attack(target, user)
@@ -736,7 +736,7 @@ var/global/list/Q_WITNESS_EFFECTS = list(
 /obj/item/quest_token/coin_chest
 	name = "什一奉献箱"
 	desc = "向其中投入玛门。只有在奉献完成时它才会被消耗。"
-	icon_state = "questbox"
+	icon_state = "questdonate"
 	var/sum = 0
 	var/required_sum = 250
 
@@ -770,7 +770,7 @@ var/global/list/Q_WITNESS_EFFECTS = list(
 /obj/item/quest_token/reliquary
 	name = "封印圣匣"
 	desc = "解开密码。它不会过期。"
-	icon_state = "questbox"
+	icon_state = "questcode"
 
 	var/code = "0000"
 	var/list/bonus_patron_names = list()
@@ -968,7 +968,7 @@ var/global/list/Q_WITNESS_EFFECTS = list(
 /obj/item/quest_token/sermon_minor
 	name = "布道信物"
 	desc = "对信奉所列主神之一的追随者使用。和平使用给予赐福，战斗模式使用则施加鄙斥。"
-	icon_state = "questflaw"
+	icon_state = "questbless"
 	var/list/required_patron_names = list()
 
 /obj/item/quest_token/sermon_minor/Initialize()

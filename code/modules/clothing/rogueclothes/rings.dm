@@ -349,6 +349,7 @@
 	name = "青铜婚戒"
 	desc = "一枚坚韧的青铜婚戒，上面精雕着恋人的名字纹样。"
 	icon_state = "b_ring_wedding"
+	is_silver = FALSE
 
 //blacksteel rings
 /obj/item/clothing/ring/emeraldbs

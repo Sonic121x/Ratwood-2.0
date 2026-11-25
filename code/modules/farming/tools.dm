@@ -295,6 +295,16 @@
 			return
 	. = ..()
 
+/datum/intent/reap
+	name = "收割"
+	desc = "收割你前方 3x2 区域内的所有成熟植物。战斗中毫无用处。"
+	icon_state = "inreap"
+	chargetime = 0
+	noaa = TRUE
+	no_attack = TRUE
+	dodgeable_intent = FALSE
+	misscost = 0
+
 /datum/intent/till
 	name = "翻耕"
 	icon_state = "inhoe"
