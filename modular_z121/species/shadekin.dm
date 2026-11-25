@@ -86,6 +86,38 @@
 	// (mutant-color tintable), which is the closest existing asset — avoids shipping new DMIs.
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/mta.dmi'
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/fma.dmi'
+	allowed_taur_types = list(
+		/obj/item/bodypart/taur/horse/shadekin,
+		/obj/item/bodypart/taur/horse,
+		/obj/item/bodypart/taur/deer,
+		/obj/item/bodypart/taur/goat,
+		/obj/item/bodypart/taur/otie,
+		/obj/item/bodypart/taur/canine,
+		/obj/item/bodypart/taur/venard,
+		/obj/item/bodypart/taur/redpanda,
+		/obj/item/bodypart/taur/rat,
+		/obj/item/bodypart/taur/skunk,
+		/obj/item/bodypart/taur/kitsune,
+		/obj/item/bodypart/taur/feline,
+		/obj/item/bodypart/taur/snep,
+		/obj/item/bodypart/taur/tiger,
+		/obj/item/bodypart/taur/drake,
+		/obj/item/bodypart/taur/dragon,
+		/obj/item/bodypart/taur/noodle,
+		/obj/item/bodypart/taur/lamia,
+		/obj/item/bodypart/taur/lamiastriped,
+		/obj/item/bodypart/taur/fatlamia,
+		/obj/item/bodypart/taur/mermaid,
+		/obj/item/bodypart/taur/orca,
+		/obj/item/bodypart/taur/tentacle,
+		/obj/item/bodypart/taur/spider,
+		/obj/item/bodypart/taur/spider/weaver,
+		/obj/item/bodypart/taur/centipede,
+		/obj/item/bodypart/taur/sloog,
+		/obj/item/bodypart/taur/ant,
+		/obj/item/bodypart/taur/wasp,
+		/obj/item/bodypart/taur/insect,
+	)
 	// dam_icon_*：受伤覆盖层贴图，沿用通用人形伤痕图。
 	// dam_icon_*: damage-overlay sprites; reuse the generic humanoid wound sheets.
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
@@ -143,7 +175,7 @@
 	// customizers: the chargen-editable parts. Reuses the generic anthro set, covering the source's
 	// shadekin tail / ears / snout via anthro equivalents.
 	customizers = list(
-		/datum/customizer/organ/eyes/humanoid,
+		/datum/customizer/organ/eyes/humanoid/shadekin,
 		/datum/customizer/bodypart_feature/hair/head/humanoid,
 		/datum/customizer/bodypart_feature/hair/facial/humanoid,
 		/datum/customizer/bodypart_feature/accessory,
@@ -156,7 +188,7 @@
 		// shadekin_ears.dmi), featured as the default; defined in modular_z121/species/shadekin_sprites.dm.
 		/datum/customizer/organ/tail/shadekin,
 		/datum/customizer/organ/tail_feature/anthro,
-		/datum/customizer/organ/snout/anthro,
+		/datum/customizer/organ/snout/anthro/shadekin,
 		/datum/customizer/organ/ears/shadekin,
 		/datum/customizer/organ/horns/anthro,
 		/datum/customizer/organ/neck_feature/anthro,

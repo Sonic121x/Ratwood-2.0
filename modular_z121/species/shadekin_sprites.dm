@@ -75,7 +75,10 @@
 // Why a dedicated customizer: so the species customizers list can reference it directly, making the
 // shadekin tail the featured default while still keeping the generic anthro tail as an extra option.
 /datum/customizer/organ/tail/shadekin
-	customizer_choices = list(/datum/customizer_choice/organ/tail/shadekin)
+	customizer_choices = list(
+		/datum/customizer_choice/organ/tail/shadekin,
+		/datum/customizer_choice/organ/tail/manticore,
+	)
 
 /datum/customizer_choice/organ/tail/shadekin
 	// name：该自定义条目的标题。
@@ -118,3 +121,60 @@
 		/datum/sprite_accessory/ears/fox,
 		/datum/sprite_accessory/ears/wolf,
 	)
+
+/obj/item/bodypart/taur/horse/shadekin
+	name = "半人马下身"
+	taur_icon_state = "horse_s"
+
+/datum/sprite_accessory/eyes/shadekin
+	name = "暗影裔眼睛"
+	icon = 'modular_z121/species/icons/shadekin_eyes.dmi'
+	icon_state = "shadekin"
+
+/datum/customizer/organ/eyes/humanoid/shadekin
+	customizer_choices = list(
+		/datum/customizer_choice/organ/eyes/humanoid,
+		/datum/customizer_choice/organ/eyes/moth,
+		/datum/customizer_choice/organ/eyes/shadekin,
+	)
+
+/datum/customizer_choice/organ/eyes/shadekin
+	name = "暗影裔眼睛"
+	sprite_accessories = list(/datum/sprite_accessory/eyes/shadekin)
+
+/datum/sprite_accessory/snout/shadekin
+	name = "暗影裔吻部（双色）"
+	icon = 'modular_z121/species/icons/shadekin_snouts.dmi'
+	icon_state = "m_snout_shadekin"
+	color_keys = 2
+	color_key_names = list("吻部", "下颚")
+
+/datum/sprite_accessory/snout/front/shadekin
+	name = "暗影裔吻部（单色）"
+	icon = 'modular_z121/species/icons/shadekin_snouts.dmi'
+	icon_state = "m_snout_shadekin"
+
+/datum/customizer/organ/snout/anthro/shadekin
+	customizer_choices = list(
+		/datum/customizer_choice/organ/snout/anthro,
+		/datum/customizer_choice/organ/snout/shadekin,
+	)
+
+/datum/customizer_choice/organ/snout/shadekin
+	name = "暗影裔吻部"
+	organ_type = /obj/item/organ/snout/anthro
+	sprite_accessories = list(
+		/datum/sprite_accessory/snout/shadekin,
+		/datum/sprite_accessory/snout/front/shadekin,
+	)
+
+// 旧角色使用通用定制器的类型路径；在校验前迁移路径，保留眼色、吻部样式和启用状态。
+/datum/preferences/validate_customizer_entries()
+	if(istype(pref_species, /datum/species/shadekin) && islist(customizer_entries))
+		for(var/datum/customizer_entry/entry in customizer_entries)
+			switch(entry.customizer_type)
+				if(/datum/customizer/organ/eyes/humanoid)
+					entry.customizer_type = /datum/customizer/organ/eyes/humanoid/shadekin
+				if(/datum/customizer/organ/snout/anthro)
+					entry.customizer_type = /datum/customizer/organ/snout/anthro/shadekin
+	return ..()
