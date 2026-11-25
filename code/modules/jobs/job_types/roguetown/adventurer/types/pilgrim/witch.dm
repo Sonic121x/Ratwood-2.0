@@ -23,7 +23,7 @@
 	)
 	maximum_possible_slots = 20 // Should not fill, just a hack to make it shows what types of towners are in round
 
-/datum/outfit/job/roguetown/adventurer/witch/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/adventurer/witch/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	..()
 	head = /obj/item/clothing/head/roguetown/witchhat
 	mask = /obj/item/clothing/head/roguetown/roguehood/black
@@ -54,7 +54,7 @@
 		var/classes = list("Old Magick", "Godsblood", "Mystagogue")
 		classchoice = input(H, "How do your powers manifest?", "THE OLD WAYS") as anything in classes
 	if(!shapeshiftchoice)
-		var/shapeshifts = list("Zad", "Cat", "Cat (Black)", "Bat", "Lesser Volf", "Cabbit", "Small Rous", "Lesser Venard")
+		var/shapeshifts = list("Zad", "Cat", "Cat (Black)", "Bat", "Lesser Volf", "Cabbit", "Small Rous", "Lesser Venard", "Magic Broom")
 		shapeshiftchoice = input(H, "What form does your second skin take?", "THE OLD WAYS") as anything in shapeshifts
 	if(!skillchoice)
 		var/skillsets = list("Herbalist", "Forager")
@@ -155,6 +155,15 @@
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/shapeshift/witch/rous)
 			if("Cabbit")
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/shapeshift/witch/cabbit)
+			if("Magic Broom")
+				// 选择魔法扫帚的女巫不会获得任何变身法术，取而代之的是脚下生成一把可骑乘的扫帚。
+				// visualsOnly 用于角色预览，不能在那时真的刷出物品。
+				if(!visualsOnly)
+					var/turf/broom_turf = get_turf(H)
+					if(broom_turf)
+						new /obj/item/broom/flying(broom_turf)
+					else
+						H.put_in_hands(new /obj/item/broom/flying)
 		switch (classchoice)
 			if("Mystagogue")
 				grant_poke_spell(H)

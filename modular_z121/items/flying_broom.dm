@@ -28,6 +28,15 @@
 	/// 当前正在骑着这把扫帚的人（弱引用，防止物品顶着已删除的 mob）
 	var/datum/weakref/flyer_ref
 
+/// 判断某人是否正骑着魔法扫帚。
+/// 骑扫帚期间禁止施法：核心的施法检查（`cast_check` / `can_cast` / `can_cast_spell`）
+/// 都会调用此函数拦截，扫帚自带的上下楼按钮除外。
+/proc/is_riding_flying_broom(mob/M)
+	if(!isliving(M))
+		return FALSE
+	var/mob/living/L = M
+	return istype(L.has_status_effect(/datum/status_effect/buff/fly), /datum/status_effect/buff/fly/broom)
+
 /obj/item/broom/flying/rmb_self(mob/user)
 	. = ..()
 	if(!ishuman(user))
