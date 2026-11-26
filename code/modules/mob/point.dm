@@ -70,6 +70,19 @@
 	pointed_atom_appearance.layer = FLOAT_LAYER
 	pointed_atom_appearance.pixel_x = 0
 	pointed_atom_appearance.pixel_y = 0
+	//鼠木编辑 - 盘子指向气泡显示食物
+	if(istype(pointed_atom, /obj/item/cooking/platter))
+		var/obj/item/cooking/platter/plate = pointed_atom
+		for(var/obj/item/reagent_containers/food/snacks/food in plate.vis_contents)
+			if(food.loc != plate || QDELETED(food))
+				continue
+			var/mutable_appearance/food_overlay = new(food)
+			food_overlay.plane = FLOAT_PLANE
+			food_overlay.layer = FLOAT_LAYER
+			food_overlay.appearance_flags |= RESET_COLOR
+			pointed_atom_appearance.overlays += food_overlay
+			break
+	//鼠木编辑 - 盘子指向气泡显示食物结束
 	thought_bubble.overlays += pointed_atom_appearance
 
 	/*
