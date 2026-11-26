@@ -11,7 +11,7 @@
 	outfit = null
 	outfit_female = null
 	display_order = JDO_WRETCH
-	min_pq = 15 //60>50>30. What a world. Fingers crossed that folks aren't as bad with it now.
+	min_pq = 50 //60>50>30. What a world. Fingers crossed that folks aren't as bad with it now.
 	max_pq = null
 	quirk_restrictions = list(/datum/quirk/assassintarget)
 

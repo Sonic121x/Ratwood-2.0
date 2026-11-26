@@ -17,7 +17,7 @@
 
 	display_order = JDO_BANDIT
 	announce_latejoin = FALSE
-	min_pq = 3
+	min_pq = 35
 	max_pq = null
 	round_contrib_points = 5
 	quirk_restrictions = list(/datum/quirk/assassintarget)
