@@ -902,16 +902,17 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 /datum/preferences/proc/CaptureKeybinding(mob/user, datum/keybinding/kb, old_key)
 	var/HTML = {"
-	<div id='focus' style="outline: 0;" tabindex=0>按键绑定: [kb.full_name]<br>[kb.description]<br><br><b>按下任意键进行更改<br>按下 ESC 键清除当前绑定</b></div>
+	<div id='focus' style="outline: 0;" tabindex=0>按键绑定: [kb.full_name]<br>[kb.description]<br><br><b>请按键盘按键或鼠标侧键 4 / 5<br>按 Esc 清除当前绑定</b></div>
+	<p><button type="button" onclick="captureKey(event, 'MOUSE4')">鼠标侧键 4</button> <button type="button" onclick="captureKey(event, 'MOUSE5')">鼠标侧键 5</button></p><!-- 自定义修改：浏览器拦截侧键时也能直接点选键位。 -->
 	<script>
 	var deedDone = false;
-	document.onkeyup = function(e) {
+	function captureKey(e, main_key) { // 自定义修改：键盘与鼠标侧键共用绑定保存逻辑。
 		if(deedDone){ return; }
 		var alt = e.altKey ? 1 : 0;
 		var ctrl = e.ctrlKey ? 1 : 0;
 		var shift = e.shiftKey ? 1 : 0;
-		var numpad = (95 < e.keyCode && e.keyCode < 112) ? 1 : 0;
-		var main_key = e.key;
+		var keyCode = e.keyCode || 0; // 自定义修改：鼠标事件没有键盘键码。
+		var numpad = (95 < keyCode && keyCode < 112) ? 1 : 0;
 		switch (main_key){
 			case '#':main_key = '%23';
 			break;
@@ -920,11 +921,18 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			case '=':main_key = '%3D';
 			break;
 		};
-		var escPressed = e.keyCode == 27 ? 1 : 0;
-		var url = 'byond://?_src_=prefs;preference=keybinds;task=keybindings_set;keybinding=[kb.name];old_key=[old_key];clear_key='+escPressed+';key='+main_key+';alt='+alt+';ctrl='+ctrl+';shift='+shift+';numpad='+numpad+';key_code='+e.keyCode;
+		var escPressed = keyCode == 27 ? 1 : 0;
+		var url = 'byond://?_src_=prefs;preference=keybinds;task=keybindings_set;keybinding=[kb.name];old_key=[old_key];clear_key='+escPressed+';key='+main_key+';alt='+alt+';ctrl='+ctrl+';shift='+shift+';numpad='+numpad+';key_code='+keyCode;
 		window.location=url;
 		deedDone = true;
 	}
+	document.onkeyup = function(e) { captureKey(e, e.key); };
+	document.onmousedown = function(e) {
+		if (e.button === 3 || e.button === 4) {
+			e.preventDefault();
+			captureKey(e, e.button === 3 ? 'MOUSE4' : 'MOUSE5');
+		}
+	}; // 自定义修改：直接录入两个鼠标侧键，并保留同时按下的修饰键。
 	document.getElementById('focus').focus();
 	</script>
 	"}

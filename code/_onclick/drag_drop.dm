@@ -74,8 +74,10 @@
 	var/blockscharging = FALSE
 
 /client/MouseDown(object, location, control, params)
-	charge_was_blocked_by_cooldown = FALSE
 	var/list/modifiers = params2list(params)
+	if(handle_mouse_side_binding(modifiers, TRUE))
+		return // 自定义修改：侧键优先触发快捷动作，避免开始或打断鼠标蓄力。
+	charge_was_blocked_by_cooldown = FALSE
 
 	if(mob.incapacitated())
 		return
@@ -200,6 +202,9 @@
 	var/obj/effect/spell_rune_under/spell_rune
 
 /client/MouseUp(object, location, control, params)
+	var/list/modifiers = params2list(params)
+	if(handle_mouse_side_binding(modifiers, FALSE))
+		return // 自定义修改：侧键松开只结束对应的快捷动作。
 	if(SEND_SIGNAL(src, COMSIG_CLIENT_MOUSEUP, object, location, control, params) & COMPONENT_CLIENT_MOUSEUP_INTERCEPT)
 		click_intercept_time = world.time
 
@@ -232,7 +237,6 @@
 	if(!mob.atkswinging)
 		return
 
-	var/list/modifiers = params2list(params)
 	if(modifiers["left"])
 		if(mob.atkswinging != "left")
 			mob.atkswinging = null
@@ -390,6 +394,8 @@
 		return
 
 	var/list/L = params2list(params)
+	if(mouse_side_key(L))
+		return // 自定义修改：按住侧键时移动鼠标不会开始游戏内拖动。
 	if (L["middle"])
 		if (src_object && src_location != over_location)
 			middragtime = world.time
@@ -415,6 +421,8 @@
 	return
 
 /client/MouseDrop(src_object, over_object, src_location, over_location, src_control, over_control, params)
+	if(mouse_side_key(params2list(params)))
+		return // 自定义修改：侧键拖动结束时不移动物件。
 	if (middragatom == src_object)
 		middragtime = 0
 		middragatom = null
