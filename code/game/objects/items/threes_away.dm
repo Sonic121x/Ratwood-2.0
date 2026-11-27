@@ -406,7 +406,7 @@
 	name = "三去无踪骰袋"
 	desc = "一个用来游玩三去无踪的骰袋。手持激活（Z）即可开始或加入一局游戏。"
 	var/datum/threes_away_game/active_game
-	var/static/threes_away_rules_text = {"<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><div style='padding:8px;font-family:Verdana,sans-serif;'>
+	var/static/threes_away_rules_text = z121_dice_rules_html({"<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><div style='padding:8px;font-family:Verdana,sans-serif;'>
 	<h2 style='text-align:center;margin:0 0 6px 0;'>三去无踪</h2>
 <br>
 <b>目标：</b>取得最低分。<br>
@@ -425,7 +425,7 @@
 将这一组的总分相加。<br>
 总分最低者赢得加赛。<br>
 如果加赛仍然平手，就会自动重复，直到只剩一名胜者。<br>
-</div>"}
+</div>"}) // 自定义修改：将骰袋规则中的中文转为 HTML 字符引用，避免窗口乱码。
 
 /obj/item/storage/pill_bottle/dice/threes_away/proc/show_rules(mob/living/user)
 	if(!user)

@@ -4,6 +4,18 @@
 #include "sound_translation_display.dm"
 #include "scom_tag_display.dm"
 #include "event_display.dm"
+
+/// browse() 只接收 ASCII 页面，由浏览器从数字字符引用还原骰袋规则中的中文。
+/proc/z121_dice_rules_html(rules_html)
+	var/list/parts = list()
+	var/byte_index = 1
+	while(byte_index <= length(rules_html))
+		var/codepoint = text2ascii(rules_html, byte_index)
+		var/character = ascii2text(codepoint)
+		parts += codepoint < 128 ? character : "&#[num2text(codepoint, 1, 10)];"
+		byte_index += length(character)
+	return parts.Join()
+
 /proc/get_mannerism_display_name(mannerism)
 	var/static/list/display_names = list(
 		"No mannerism" = "无特殊措辞习惯",

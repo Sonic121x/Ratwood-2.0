@@ -290,7 +290,7 @@
 	name = "骰子战争骰袋"
 	desc = "一个用来玩骰子战争的骰袋。手持激活（Z）即可开始或加入游戏。"
 	var/datum/dice_war_game/active_game
-	var/static/dice_war_rules_text = {"<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><div style='padding:8px;font-family:Verdana,sans-serif;'>
+	var/static/dice_war_rules_text = z121_dice_rules_html({"<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><div style='padding:8px;font-family:Verdana,sans-serif;'>
 	<h2 style='text-align:center;margin:0 0 6px 0;'>骰子战争</h2>
 <br>
 <b>目标：</b>将对手的生命降到 0。<br>
@@ -304,7 +304,7 @@
 - 高点为偶、低点为奇：强力一击，造成全部伤害。例如：若一方掷出 16（偶数），对手掷出 7（奇数），则造成 9 点完整伤害。<br>
 - 天生 1：恢复 10 点生命。<br>
 - 天生 20：额外再掷一个20面骰造成直接伤害（无视减半规则）。
-</div>"}
+</div>"}) // 自定义修改：将骰袋规则中的中文转为 HTML 字符引用，避免窗口乱码。
 
 /obj/item/storage/pill_bottle/dice/dice_war/proc/show_rules(mob/living/user)
 	if(!user)

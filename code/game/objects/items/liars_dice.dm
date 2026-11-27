@@ -530,7 +530,7 @@
 	name = "吹牛骰骰袋"
 	desc = "一个用来玩吹牛骰的骰袋。手持激活（Z）即可开始或加入游戏。"
 	var/datum/liars_dice_game/active_game
-	var/static/liars_dice_rules_text = {"<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><div style='padding:8px;font-family:Verdana,sans-serif;'>
+	var/static/liars_dice_rules_text = z121_dice_rules_html({"<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><div style='padding:8px;font-family:Verdana,sans-serif;'>
 	<h2 style='text-align:center;margin:0 0 6px 0;'>吹牛骰</h2>
 <br>
 <b>目标：</b>成为最后一名仍至少持有一颗骰子的玩家。<br>
@@ -558,7 +558,7 @@
 <b>淘汰：</b>失去最后一颗骰子的玩家会被淘汰。<br>
 <br>
 <b>下一轮：</b>本轮失败者在下一轮先手开叫，所有骰子重新掷出。<br>
-</div>"}
+</div>"}) // 自定义修改：将骰袋规则中的中文转为 HTML 字符引用，避免窗口乱码。
 
 /obj/item/storage/pill_bottle/dice/liars_dice/proc/show_rules(mob/living/user)
 	if(!user)
