@@ -138,6 +138,8 @@
 				H.adjust_skillrank(/datum/skill/magic/arcane, SKILL_LEVEL_NOVICE, TRUE)
 				H.adjust_skillrank(/datum/skill/magic/holy, SKILL_LEVEL_NOVICE, TRUE)
 	if(H.mind)
+		// 每位女巫开局自带召唤魔法扫帚的法术（与第二形态无关，不再是变形术选项）。
+		H.mind.AddSpell(new /datum/action/cooldown/spell/z121/self/conjure_flying_broom)
 		switch (shapeshiftchoice)
 			if("Zad")
 				H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/shapeshift/witch/crow)

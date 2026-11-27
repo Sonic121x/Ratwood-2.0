@@ -28,6 +28,15 @@
 	/// 当前正在骑着这把扫帚的人（弱引用，防止物品顶着已删除的 mob）
 	var/datum/weakref/flyer_ref
 
+/// 判断某人是否正骑着魔法扫帚。
+/// 骑扫帚期间禁止施法：核心的施法检查（`cast_check` / `can_cast` / `can_cast_spell`）
+/// 都会调用此函数拦截，扫帚自带的上下楼按钮除外。
+/proc/is_riding_flying_broom(mob/M)
+	if(!isliving(M))
+		return FALSE
+	var/mob/living/L = M
+	return istype(L.has_status_effect(/datum/status_effect/buff/fly), /datum/status_effect/buff/fly/broom)
+
 /obj/item/broom/flying/rmb_self(mob/user)
 	. = ..()
 	if(!ishuman(user))
@@ -111,6 +120,73 @@
 	var/datum/status_effect/S = L.has_status_effect(/datum/status_effect/buff/fly)
 	if(istype(S, /datum/status_effect/buff/fly/broom))
 		L.remove_status_effect(/datum/status_effect/buff/fly)
+
+// ---------------------------------------------------------------------------
+// 女巫召唤版魔法扫帚：只认召唤者，只能拿在手里或背在背上；
+// 一旦落地或被塞进任何容器，就会立刻消散。
+// 物品版 /obj/item/broom/flying 保留给 spawn 面板娱乐用，不受这些限制。
+// ---------------------------------------------------------------------------
+/obj/item/broom/flying/witch_bound
+	/// 召唤出这把扫帚的女巫（弱引用）
+	var/datum/weakref/summoner_ref
+
+/obj/item/broom/flying/witch_bound/proc/bind_to(mob/living/summoner)
+	if(!isliving(summoner))
+		return
+	summoner_ref = WEAKREF(summoner)
+
+/obj/item/broom/flying/witch_bound/proc/get_summoner()
+	return summoner_ref?.resolve()
+
+/obj/item/broom/flying/witch_bound/rmb_self(mob/user)
+	// 只有召唤者本人才能骑这把扫帚。
+	if(user != get_summoner())
+		to_chat(user, span_warning("[src]只听从它主人的召唤。"))
+		return
+	return ..()
+
+/obj/item/broom/flying/witch_bound/dropped(mob/user)
+	. = ..()
+	// 手↔背之间切换时也可能触发 dropped，因此延后一拍再检查最终位置，
+	// 以免把“背到背上”误判成“掉在地上”。
+	addtimer(CALLBACK(src, PROC_REF(validate_possession)), 0, TIMER_UNIQUE)
+
+/obj/item/broom/flying/witch_bound/equipped(mob/user, slot, initial = FALSE)
+	. = ..()
+	// 任何装备路径都复核一次，确保只有“手”和“背”两个合法位置。
+	addtimer(CALLBACK(src, PROC_REF(validate_possession)), 0, TIMER_UNIQUE)
+
+/// 复核扫帚是否仍在召唤者的手中或背上；否则立即消散。
+/obj/item/broom/flying/witch_bound/proc/validate_possession()
+	if(QDELETED(src))
+		return
+	if(item_flags & IN_STORAGE)
+		vanish()
+		return
+	if(!istype(loc, /mob/living))
+		vanish()
+		return
+	var/mob/living/holder = loc
+	if(holder != get_summoner())
+		vanish()
+		return
+	var/on_back = FALSE
+	if(istype(holder, /mob/living/carbon/human))
+		var/mob/living/carbon/human/human_holder = holder
+		on_back = (human_holder.backl == src || human_holder.backr == src)
+	if(!holder.is_holding(src) && !on_back)
+		vanish()
+
+/obj/item/broom/flying/witch_bound/on_enter_storage(datum/component/storage/concrete/S, mob/M)
+	. = ..()
+	vanish()
+
+/obj/item/broom/flying/witch_bound/proc/vanish()
+	if(QDELETED(src))
+		return
+	visible_message(span_warning("[src]化作点点青光，消散在空气中。"))
+	playsound(get_turf(src), 'sound/magic/magic_nulled.ogg', 50, TRUE)
+	qdel(src)
 
 // ---------------------------------------------------------------------------
 // 飞行状态：继承飞行的 FLYING/浮动/上下楼/落地逻辑，外加骑乘贴图。
@@ -363,3 +439,58 @@
 #undef FLYING_BROOM_TRAIT_SOURCE
 #undef FLYING_BROOM_OFFSET_ID
 #undef FLYING_BROOM_TRAIL_COOLDOWN
+
+// ---------------------------------------------------------------------------
+// 女巫专属召唤法术：开局自带，10 秒冷却，同时只能存在一把召唤扫帚。
+// ---------------------------------------------------------------------------
+/datum/action/cooldown/spell/z121/self/conjure_flying_broom
+	name = "召唤魔法扫帚"
+	desc = "召唤一把只服从于我的魔法扫帚。它只能拿在手里或背在背上；一旦落地或被收进任何容器，就会立刻消散。"
+	button_icon = 'modular_z121/icon/flying_broom.dmi'
+	button_icon_state = "broom"
+	sound = list('sound/magic/whiteflame.ogg')
+	invocation_type = "whisper"
+	invocations = list("扫帚，来。")
+	primary_resource_type = SPELL_COST_NONE
+	primary_resource_cost = 0
+	charge_time = 0
+	cooldown_time = 10 SECONDS
+	cooldown_min = 10 SECONDS
+	cast_range = -1
+	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z
+	// 不随属性/护甲变化，保证冷却恒为 10 秒。
+	associated_stat = null
+	ignore_armor_penalty = TRUE
+	miracle = FALSE
+	/// 当前已召唤的扫帚（弱引用）；只要它还活着，就不允许再召唤第二把。
+	var/datum/weakref/summoned_broom
+
+/datum/action/cooldown/spell/z121/self/conjure_flying_broom/z121_apply(atom/cast_on)
+	var/mob/living/carbon/human/caster = owner
+	if(!istype(caster))
+		z121_cancel()
+		return FALSE
+
+	var/obj/item/broom/flying/witch_bound/existing = summoned_broom?.resolve()
+	if(existing && !QDELETED(existing))
+		to_chat(caster, span_warning("我的魔法扫帚已经存在了。"))
+		z121_cancel(caster)
+		return FALSE
+
+	// 双手都被占用时不消耗冷却，避免扫帚刚召唤出来就因无处可放而消散。
+	if(!caster.get_empty_held_index_for_side(LEFT_HANDS) && !caster.get_empty_held_index_for_side(RIGHT_HANDS))
+		to_chat(caster, span_warning("我得先空出一只手。"))
+		z121_cancel(caster)
+		return FALSE
+
+	var/obj/item/broom/flying/witch_bound/broom = new(get_turf(caster))
+	broom.bind_to(caster)
+	// 复用原版“被召唤物”组件：蓝色光晕、鉴定描述，并在召唤者被删除时一并消散。
+	broom.AddComponent(/datum/component/conjured_item, GLOW_COLOR_ARCANE, FALSE, caster, null, TRUE)
+	if(!caster.put_in_hands(broom))
+		qdel(broom)
+		z121_cancel(caster)
+		return FALSE
+
+	summoned_broom = WEAKREF(broom)
+	return TRUE
