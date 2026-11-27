@@ -1294,10 +1294,10 @@ var/global/list/Q_WITNESS_EFFECTS = list(
 		if(!picked_jobs.len) continue
 
 		var/list/job_names = list()
-		for(var/JT in picked_jobs)
-			job_names += html_attr(_rt_job_display_name(JT))
-
-		var/jobs_desc_txt = jointext(job_names, ", ")
+		for(var/datum/job/job_type as anything in picked_jobs)
+			var/datum/job/job = SSjob.GetJobType(job_type)
+			job_names += html_attr(job?.display_title || initial(job_type.display_title) || initial(job_type.title))
+		var/jobs_desc_txt = jointext(job_names, "、")
 
 		ration_diffs[dn6] = list(
 			"diff"       = dn6,
