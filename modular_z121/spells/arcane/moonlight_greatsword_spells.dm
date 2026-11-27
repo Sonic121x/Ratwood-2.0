@@ -51,12 +51,14 @@
 	alpha = 220
 	var/datum/weakref/creator_ref
 	var/next_damage_tick = 0
+	var/wave_damage = 15
 
 /obj/effect/moonlight_wave_segment/Initialize(mapload, mob/living/maker, datum/z121_serpent_cast/context = null)
 	. = ..()
 	z121_serpent_cast = context
 	if(maker)
 		creator_ref = WEAKREF(maker)
+		wave_damage *= maker.z121_spell_damage_multiplier
 	set_light_range(1.5, 2)
 	set_light_power(2)
 	set_light_color("#77dfff")
@@ -80,10 +82,10 @@
 		if(target != z121_serpent_cast?.host() && target.anti_magic_check())
 			continue
 		var/def_zone = ran_zone()
-		var/slash_block = target.run_armor_check(def_zone, "slash", damage = 15, blade_dulling = BCLASS_CUT, intdamfactor = 1)
-		var/fire_block = target.run_armor_check(def_zone, "fire", damage = 15, intdamfactor = 1)
-		target.apply_damage(15, BRUTE, def_zone, slash_block)
-		target.apply_damage(15, BURN, def_zone, fire_block)
+		var/slash_block = target.run_armor_check(def_zone, "slash", damage = wave_damage, blade_dulling = BCLASS_CUT, intdamfactor = 1)
+		var/fire_block = target.run_armor_check(def_zone, "fire", damage = wave_damage, intdamfactor = 1)
+		target.apply_damage(wave_damage, BRUTE, def_zone, slash_block)
+		target.apply_damage(wave_damage, BURN, def_zone, fire_block)
 		to_chat(target, span_userdanger("幽蓝的月光洪流撕裂并灼烧着我的身体！"))
 
 /datum/action/cooldown/spell/z121/self/moonlight_weapon_spell
@@ -158,7 +160,7 @@
 		return FALSE
 
 	user.visible_message(span_notice("[user] 将月光大剑横在身前，幽蓝月华正沿着剑脊迅速汇聚。"), span_notice("我将月光大剑横在身前，任由月华在剑身之上奔涌汇聚。"))
-	var/completed = do_after(user, 2 SECONDS, target = user, extra_checks = CALLBACK(src, PROC_REF(can_continue_moonlight_cast), user))
+	var/completed = do_after(user, 2 SECONDS * user.z121_spell_charge_multiplier, target = user, extra_checks = CALLBACK(src, PROC_REF(can_continue_moonlight_cast), user))
 	if(QDELETED(src))
 		return FALSE
 	if(!completed)
@@ -245,7 +247,7 @@
 		return FALSE
 
 	user.visible_message(span_notice("[user] 双手稳住月光大剑，低声祈请夜空中的月辉降下赐福。"), span_notice("我稳住月光大剑，向月色献上祈请，让那股古老而清冷的力量缓缓汇入体内。"))
-	var/completed = do_after(user, 10 SECONDS, target = user, extra_checks = CALLBACK(src, PROC_REF(can_continue_moonlight_cast), user))
+	var/completed = do_after(user, 10 SECONDS * user.z121_spell_charge_multiplier, target = user, extra_checks = CALLBACK(src, PROC_REF(can_continue_moonlight_cast), user))
 	if(QDELETED(src))
 		return FALSE
 	if(!completed)

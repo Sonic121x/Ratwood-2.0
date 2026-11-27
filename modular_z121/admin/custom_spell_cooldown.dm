@@ -3,10 +3,16 @@
 	var/z121_spell_cooldown_multiplier = 1
 
 /mob/living/vv_edit_var(var_name, var_value)
-	if(var_name == NAMEOF(src, z121_spell_cooldown_multiplier))
+	var/is_multiplier = var_name in list(NAMEOF(src, z121_spell_charge_multiplier), NAMEOF(src, z121_spell_damage_multiplier), NAMEOF(src, z121_spell_cost_multiplier))
+	if(is_multiplier || var_name == NAMEOF(src, z121_spell_cooldown_multiplier))
 		if(!isnum(var_value) || var_value < 0)
 			return FALSE
-	return ..()
+	var/is_silence = var_name == NAMEOF(src, z121_spell_silent_cast)
+	if(is_silence && !(var_value in list(FALSE, TRUE)))
+		return FALSE
+	. = ..()
+	if(. && (is_multiplier || is_silence))
+		z121_update_casting_factors()
 
 /obj/effect/proc_holder/spell
 	// 保存缩放前的输入，防止重复启动时把本轮倍率再次乘入。
