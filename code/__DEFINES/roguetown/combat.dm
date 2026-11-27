@@ -47,6 +47,6 @@ Misc. Category. Spin it out if needed
 
 //Visible message presets.
 #define VISMSG_ARMOR_BLOCKED " <span class='armoralert'>护甲挡住了伤害。</span>"
-#define VISMSG_ARMOR_INT_STAGEONE "<span class='armoralert'><i> Dented.</i></span>"
-#define VISMSG_ARMOR_INT_STAGETWO "<span class='armoralert'> Damaged.</span>"
-#define VISMSG_ARMOR_INT_STAGETHREE "<span class='armoralert'><b> Crumbling!</b></span>"
+#define VISMSG_ARMOR_INT_STAGEONE "<span class='armoralert'><i> 护甲略有凹陷。</i></span>"
+#define VISMSG_ARMOR_INT_STAGETWO "<span class='armoralert'> 护甲已经破损。</span>"
+#define VISMSG_ARMOR_INT_STAGETHREE "<span class='armoralert'><b> 护甲快要散架了！</b></span>"
