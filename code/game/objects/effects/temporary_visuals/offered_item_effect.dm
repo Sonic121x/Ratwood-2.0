@@ -24,12 +24,33 @@
 	offered_to_weak_ref = WEAKREF(offered_to)
 	stealthy = _stealthy
 
+	//鼠木编辑 - 盘子视觉效果优化
+	var/mutable_appearance/food_overlay
+	if(istype(offered_thing, /obj/item/cooking/platter))
+		for(var/obj/item/reagent_containers/food/snacks/food in offered_thing.vis_contents)
+			if(food.loc != offered_thing || QDELETED(food))
+				continue
+			food_overlay = new(food)
+			food_overlay.layer = FLOAT_LAYER
+			food_overlay.plane = FLOAT_PLANE
+			food_overlay.appearance_flags |= RESET_COLOR
+			break
+	//鼠木编辑 - 盘子视觉效果优化结束
 	if(stealthy)
 		var/image/I = image(icon, src, icon_state)
 		I.override = TRUE
+	//鼠木编辑 - 盘子视觉效果优化	
+		if(food_overlay)
+			I.overlays += food_overlay
+	//鼠木编辑 - 盘子视觉效果优化结束		
 		icon = null
 		add_alt_appearance(/datum/atom_hud/alternate_appearance/basic/People, "offer", I, list(offerer, offered_to))
 
+	//鼠木编辑 - 盘子视觉效果优化	
+	
+	else if(food_overlay)
+		add_overlay(food_overlay)
+	//鼠木编辑 - 盘子视觉效果优化结束	
 	RegisterSignal(offerer, COMSIG_MOVABLE_MOVED, PROC_REF(someone_moved))
 	RegisterSignal(offered_to, COMSIG_MOVABLE_MOVED, PROC_REF(someone_moved))
 	RegisterSignal(offerer, COMSIG_LIVING_STOPPED_OFFERING_ITEM, PROC_REF(stopped_offering))

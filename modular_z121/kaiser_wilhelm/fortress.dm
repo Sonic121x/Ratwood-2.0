@@ -112,7 +112,7 @@
 	var/shout = format_warcry_message(user, speaker, message)
 	user.log_message(shout, LOG_EMOTE)
 
-	playsound(speaker, clip, 85, FALSE, -1, soundping = TRUE)
+	playsound(speaker, clip, snd_vol, FALSE, snd_range, soundping = soundping)
 	speaker.audible_message(shout, hearing_distance = world.view - 1, runechat_message = subtitle, log_seen = SEEN_LOG_EMOTE, log_seen_msg = shout, custom_spans = list("emote", "fortress-warcry"))
 	return TRUE
 
