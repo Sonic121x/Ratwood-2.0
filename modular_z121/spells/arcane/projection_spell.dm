@@ -142,7 +142,8 @@
 
 /datum/action/cooldown/spell/z121/self/projection_spell/get_spell_statistics(mob/living/user)
 	. = ..()
-	. += span_info("结构解析：3秒；投影引导：2秒。")
+	var/factor = user ? user.z121_spell_charge_multiplier : 1
+	. += span_info("结构解析：[DisplayTimeText(3 SECONDS * factor, chinese = TRUE)]，投影引导：[DisplayTimeText(2 SECONDS * factor, chinese = TRUE)]。")
 	. += span_info("记忆容量：12种；同时投影：4把；投影寿命：5分钟。")
 
 /datum/action/cooldown/spell/z121/self/projection_spell/z121_choose_targets(mob/user = usr)
@@ -200,8 +201,9 @@
 	analyzing_weapon = weapon
 	RegisterSignal(user, list(COMSIG_CARBON_SWAPHANDS, COMSIG_MOVABLE_MOVED, COMSIG_QDELETING), PROC_REF(interrupt_analysis))
 	RegisterSignal(weapon, list(COMSIG_MOVABLE_MOVED, COMSIG_QDELETING), PROC_REF(interrupt_analysis))
-	user.say("结构，解析。以目识其形，以心铭其骨。", forced = "spell")
-	var/completed = do_after(user, 3 SECONDS, target = weapon, extra_checks = CALLBACK(src, PROC_REF(analysis_continues), user, weapon))
+	if(!user.z121_spell_silent_cast)
+		user.say("结构，解析。以目识其形，以心铭其骨。", forced = "spell")
+	var/completed = do_after(user, 3 SECONDS * user.z121_spell_charge_multiplier, target = weapon, extra_checks = CALLBACK(src, PROC_REF(analysis_continues), user, weapon))
 	if(QDELETED(src))
 		return
 	clear_analysis()
@@ -227,7 +229,7 @@
 	if(!z121_check(TRUE, user))
 		return
 	invocation(user)
-	var/completed = do_after(user, 2 SECONDS, target = user, extra_checks = CALLBACK(src, PROC_REF(valid_projection_user), user))
+	var/completed = do_after(user, 2 SECONDS * user.z121_spell_charge_multiplier, target = user, extra_checks = CALLBACK(src, PROC_REF(valid_projection_user), user))
 	if(QDELETED(src))
 		return
 	if(!completed || !valid_projection_user(user))

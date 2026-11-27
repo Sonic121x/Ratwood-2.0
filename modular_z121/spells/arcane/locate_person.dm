@@ -73,8 +73,8 @@
 		span_notice("[user] 闭目凝神，以指尖拂过空气中残留的细微魔力波纹。"),
 		span_notice("我开始顺着 [found_person.real_name] 残留在记忆中的独特魔力轨迹进行追索。")
 	)
-	// 抵消通用动作速度系数，使引导本身保持三秒，仍保留移动、失能与换手中断。
-	var/channel_delay = Z121_LOCATE_CHANNEL / max(0.01, user.do_after_coefficent())
+	// 抵消通用动作速度系数，仅将施法者的引导倍率作用于基础三秒。
+	var/channel_delay = Z121_LOCATE_CHANNEL * user.z121_spell_charge_multiplier / max(0.01, user.do_after_coefficent())
 	if(!do_after(user, channel_delay, target = user, progress = TRUE, extra_checks = CALLBACK(src, PROC_REF(can_channel), user, casting_mind)))
 		if(!QDELETED(user))
 			to_chat(user, span_warning("我的引导被打断了，熟悉的魔力踪迹也随之散开。"))

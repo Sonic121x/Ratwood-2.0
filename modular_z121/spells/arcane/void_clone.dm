@@ -608,7 +608,7 @@
 		to_chat(user, span_warning("我必须始终握住那块 虚空石，才能维持分身塑造。"))
 		z121_cancel(user)
 		return FALSE
-	if(!do_after(user, wait_time, target = user, progress = TRUE))
+	if(!do_after(user, wait_time * user.z121_spell_charge_multiplier, target = user, progress = TRUE))
 		to_chat(user, span_warning("[fail_text]"))
 		z121_cancel(user)
 		return FALSE
