@@ -1166,7 +1166,7 @@
 		span_notice("[human_user] 将手轻轻按在自己的喉颈与腕骨之间，像在替一具尚未拆开的肉身丈量缝线。"),
 		span_notice("我开始维持那道漫长而古怪的拆解咒，引导即将降临的温柔断离。")
 	)
-	if(!do_after(human_user, 10 SECONDS * human_user.z121_spell_charge_multiplier, target = human_user, progress = TRUE))
+	if(!do_after(human_user, 10 SECONDS * human_user.z121_effective_charge_multiplier(), target = human_user, progress = TRUE))
 		if(!QDELETED(human_user))
 			to_chat(human_user, span_warning("我的拆解咒在成形前散掉了。"))
 		return revert_harmless_cast(human_user)
