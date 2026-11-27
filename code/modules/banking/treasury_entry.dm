@@ -15,16 +15,16 @@
 	reason = entry_reason
 	from_name = from_fund ? from_fund.name : (from_label || "void")
 	to_name = to_fund ? to_fund.name : "void"
-	var/datum/fund/source = from_fund || to_fund
-	currency = source?.currency
+	set_fund_display_names(from_fund, to_fund)
+	currency = from_fund ? from_fund.currency : to_fund?.currency
 
 /datum/treasury_entry/proc/format()
-	var/suffix = reason ? " ([reason])" : ""
+	var/suffix = reason ? "（[get_reason_display()]）" : ""
 	switch(kind)
 		if("mint")
-			return "向[to_name]入账+[amount][suffix]"
+			return "向[to_fund_label || to_name]入账+[amount][suffix]"
 		if("burn")
-			return "从[from_name]扣款-[amount][suffix]"
+			return "从[from_fund_label || from_name]扣款-[amount][suffix]"
 		if("transfer")
-			return "从[from_name]向[to_name]转账[amount][suffix]"
+			return "从[from_fund_label || from_name]向[to_fund_label || to_name]转账[amount][suffix]"
 	return "[kind == "micro" ? "零星汇款" : kind] [amount][suffix]"

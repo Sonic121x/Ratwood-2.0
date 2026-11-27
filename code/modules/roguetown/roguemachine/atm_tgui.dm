@@ -17,10 +17,10 @@
 		if(E.kind == "transfer")
 			if(E.from_name == account_name)
 				direction = "out"
-				counterparty = E.to_name
+				counterparty = E.to_fund_label || E.to_name
 			else
 				direction = "in"
-				counterparty = E.from_name
+				counterparty = E.from_fund_label || E.from_name
 		else if(E.kind == "mint" && E.to_name == account_name)
 			direction = "in"
 		else if(E.kind == "burn" && E.from_name == account_name)
@@ -30,7 +30,7 @@
 			"direction" = direction,
 			"counterparty" = counterparty,
 			"amount" = E.amount,
-			"reason" = E.reason || "",
+			"reason" = E.get_reason_display(),
 		))
 	return out
 
@@ -109,7 +109,7 @@
 		funds += list(list(
 			"id" = fid,
 			"label" = SStreasury.indenture_faction_label(F),
-			"name" = F.name,
+			"name" = F.get_institution_display_name() || F.name,
 			"can_issue" = (V && V.can_issue_loan(user)) ? TRUE : FALSE,
 			"can_withdraw" = (V && V.can_withdraw(user)) ? TRUE : FALSE,
 			"can_view" = (V && V.can_view(user)) ? TRUE : FALSE,
@@ -222,7 +222,7 @@
 			if(islist(roster))
 				V.prune_patron_roster(roster)
 				for(var/mob/living/carbon/human/HP in roster)
-					roster_data += list(list("ref" = REF(HP), "name" = HP.real_name, "job" = HP.job || ""))
+					roster_data += list(list("ref" = REF(HP), "name" = HP.real_name, "job" = SSjob.GetJob(HP.job)?.display_title || HP.job || ""))
 			patron_rosters[fid] = list(
 				"label" = V.get_patron_label(),
 				"cap" = V.get_patron_cap(),
@@ -322,8 +322,8 @@
 		else
 			msg = "浴场主 [H.real_name] 已打破浴场敕令上的印记。浴场抛弃教会的认可；其税赋重归王权。"
 	priority_announce(msg, title, pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain", strip_html = FALSE)
-	log_admin("ORDINANCE OF THE BATHS: [key_name(H)] toggled to [now_active ? "IN FORCE" : "BROKEN"].")
-	message_admins("[key_name_admin(H)] toggled the Ordinance of the Baths to [now_active ? "IN FORCE" : "BROKEN"].")
+	log_admin("[key_name(H)]已[now_active ? "恢复" : "废止"]浴场敕令。")
+	message_admins("[key_name_admin(H)]已[now_active ? "恢复" : "废止"]浴场敕令。")
 
 /obj/structure/roguemachine/atm/proc/handle_withdraw_personal(mob/living/carbon/human/H, list/params)
 	var/coin_amt = round(text2num("[params["amount"]]"))
@@ -405,7 +405,7 @@
 	var/outstanding = L.get_remaining_due()
 	pay_amt = min(pay_amt, outstanding, target.balance)
 	if(pay_amt < 1)
-		say("[target.name] 的库银太薄，无力付款。")
+		say("[target.get_institution_display_name() || target.name]的库银太薄，无力付款。")
 		playsound(src, 'sound/misc/machineno.ogg', 100, FALSE, -1)
 		return
 	var/paid = SStreasury.repay_indenture(L, pay_amt)
@@ -420,7 +420,7 @@
 			still_active = check
 			break
 	if(!still_active)
-		say("契约已全额偿还。[paid]m 已转至 [L.source_fund.name]。")
+		say("契约已全额偿还。[paid]m 已转至[L.source_fund.get_institution_display_name() || L.source_fund.name]。")
 	else
 		say("[paid]m 已转账。契约尚余 [still_active.get_remaining_due()]m。")
 
@@ -482,8 +482,8 @@
 		SStreasury.bathhouse_agent_daily_withdraw_limit = limit
 		say("浴场代理人现在每日最多可提取[limit]玛门。")
 	playsound(src, 'sound/misc/beep.ogg', 60, FALSE, -1)
-	log_admin("BATHHOUSE LIMIT: [key_name(H)] set the [group] daily withdrawal limit to [limit]m.")
-	message_admins("[key_name_admin(H)] set the Bathhouse [group] daily withdrawal limit to [limit]m.")
+	log_admin("[key_name(H)]将浴场[group == "worker" ? "员工" : "代理人"]的每日提款上限设为 [limit]m。")
+	message_admins("[key_name_admin(H)]将浴场[group == "worker" ? "员工" : "代理人"]的每日提款上限设为 [limit]m。")
 
 /// Lets the Bathmaster suspend (or resume) all withdrawals for either her workers or her
 /// agents, chosen via the "group" param. Suspended groups keep their tallies and caps -
@@ -504,8 +504,8 @@
 		state = SStreasury.bathhouse_agent_withdrawals_suspended ? "suspended" : "resumed"
 	playsound(src, 'sound/misc/beep.ogg', 60, FALSE, -1)
 	say("浴场[group == "worker" ? "员工" : "代理人"]的款项发放已[state == "suspended" ? "暂停" : "恢复"]。")
-	log_admin("BATHHOUSE SUSPENSION: [key_name(H)] [state] [group] withdrawals.")
-	message_admins("[key_name_admin(H)] [state] Bathhouse [group] withdrawals.")
+	log_admin("[key_name(H)]已[state == "suspended" ? "暂停" : "恢复"]浴场[group == "worker" ? "员工" : "代理人"]提款。")
+	message_admins("[key_name_admin(H)]已[state == "suspended" ? "暂停" : "恢复"]浴场[group == "worker" ? "员工" : "代理人"]提款。")
 
 /obj/structure/roguemachine/atm/proc/handle_issue_personal_for_fund(mob/living/carbon/human/H, list/params)
 	var/fund_id = "[params["fund_id"]]"
