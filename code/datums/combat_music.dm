@@ -699,3 +699,10 @@ GLOBAL_LIST_EMPTY(cmode_tracks_by_name)
 	shortname = "射杀恋人之日"
 	credits = "nohero"
 	musicpath = list('modular_z121/sound/music/nohero.ogg')
+
+/datum/combat_music/nohero
+	name = "黑兽卯战斗"
+	desc = "我们遵循着恩师贾丘教诲"
+	shortname = "黑兽卯"
+	credits = "边狱巴士"
+	musicpath = list('modular_z121/sound/music/zilu.ogg')
