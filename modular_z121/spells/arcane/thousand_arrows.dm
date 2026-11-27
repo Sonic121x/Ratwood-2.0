@@ -58,7 +58,7 @@
 /datum/action/cooldown/spell/z121/invoked/thousand_arrows/get_spell_statistics(mob/living/user)
 	var/list/stats = ..()
 	stats -= span_info("蓄力时间：无")
-	var/channel_time = THOUSAND_ARROWS_CHANNEL_TIME * (user ? user.z121_spell_charge_multiplier : 1)
+	var/channel_time = THOUSAND_ARROWS_CHANNEL_TIME * (user ? user.z121_effective_charge_multiplier() : 1)
 	stats += span_info("点选后引导：[DisplayTimeText(channel_time, chinese = TRUE)]")
 	if(user)
 		stats += span_info("最多驾驭武器：[clamp(user.get_skill_level(associated_skill), 0, 6)]把")
@@ -165,7 +165,7 @@
 	volley.begin_animation()
 	invocation(caster)
 	// 抵消通用动作速度系数，仅将施法者的引导倍率作用于基础两秒。
-	var/completed = do_after(caster, THOUSAND_ARROWS_CHANNEL_TIME * caster.z121_spell_charge_multiplier / action_coefficient, target = caster, progress = TRUE, extra_checks = CALLBACK(src, PROC_REF(channel_is_intact), caster))
+	var/completed = do_after(caster, THOUSAND_ARROWS_CHANNEL_TIME * caster.z121_effective_charge_multiplier() / action_coefficient, target = caster, progress = TRUE, extra_checks = CALLBACK(src, PROC_REF(channel_is_intact), caster))
 	if(QDELETED(src))
 		return FALSE
 	if(!completed || !channel_is_intact(caster))
@@ -309,7 +309,7 @@
 	flight = throwingdatum
 	var/mob/living/caster_mob = flight.thrower
 	if(istype(caster_mob))
-		flight.bonus_throwforce += flight.get_effective_throwforce() * (caster_mob.z121_spell_damage_multiplier - 1)
+		flight.bonus_throwforce += flight.get_effective_throwforce() * (caster_mob.z121_effective_damage_multiplier() - 1)
 	// 物品存在覆盖 throw_at 的实现；命中效果仍需要正确的投掷者归属。
 	source.thrownby = throwingdatum.thrower
 	UnregisterSignal(source, COMSIG_MOVABLE_POST_THROW)

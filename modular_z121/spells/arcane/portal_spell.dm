@@ -94,7 +94,7 @@
 		span_notice(channel_message)
 	)
 	// 抵消通用动作速度系数，仅将施法者的引导倍率作用于基础十秒。
-	var/completed = do_after(caster, Z121_PORTAL_CHANNEL * caster.z121_spell_charge_multiplier / action_coefficient, target = caster, progress = TRUE, extra_checks = CALLBACK(src, PROC_REF(can_channel_portal), caster, casting_mind, casting_client))
+	var/completed = do_after(caster, Z121_PORTAL_CHANNEL * caster.z121_effective_charge_multiplier() / action_coefficient, target = caster, progress = TRUE, extra_checks = CALLBACK(src, PROC_REF(can_channel_portal), caster, casting_mind, casting_client))
 	if(QDELETED(src))
 		return
 	if(!completed || !can_channel_portal(caster, casting_mind, casting_client) || !z121_check(TRUE, caster))

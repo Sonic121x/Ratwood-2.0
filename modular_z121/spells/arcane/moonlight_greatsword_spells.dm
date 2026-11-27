@@ -58,7 +58,7 @@
 	z121_serpent_cast = context
 	if(maker)
 		creator_ref = WEAKREF(maker)
-		wave_damage *= maker.z121_spell_damage_multiplier
+		wave_damage *= maker.z121_effective_damage_multiplier()
 	set_light_range(1.5, 2)
 	set_light_power(2)
 	set_light_color("#77dfff")
@@ -160,7 +160,7 @@
 		return FALSE
 
 	user.visible_message(span_notice("[user] 将月光大剑横在身前，幽蓝月华正沿着剑脊迅速汇聚。"), span_notice("我将月光大剑横在身前，任由月华在剑身之上奔涌汇聚。"))
-	var/completed = do_after(user, 2 SECONDS * user.z121_spell_charge_multiplier, target = user, extra_checks = CALLBACK(src, PROC_REF(can_continue_moonlight_cast), user))
+	var/completed = do_after(user, 2 SECONDS * user.z121_effective_charge_multiplier(), target = user, extra_checks = CALLBACK(src, PROC_REF(can_continue_moonlight_cast), user))
 	if(QDELETED(src))
 		return FALSE
 	if(!completed)
@@ -247,7 +247,7 @@
 		return FALSE
 
 	user.visible_message(span_notice("[user] 双手稳住月光大剑，低声祈请夜空中的月辉降下赐福。"), span_notice("我稳住月光大剑，向月色献上祈请，让那股古老而清冷的力量缓缓汇入体内。"))
-	var/completed = do_after(user, 10 SECONDS * user.z121_spell_charge_multiplier, target = user, extra_checks = CALLBACK(src, PROC_REF(can_continue_moonlight_cast), user))
+	var/completed = do_after(user, 10 SECONDS * user.z121_effective_charge_multiplier(), target = user, extra_checks = CALLBACK(src, PROC_REF(can_continue_moonlight_cast), user))
 	if(QDELETED(src))
 		return FALSE
 	if(!completed)
