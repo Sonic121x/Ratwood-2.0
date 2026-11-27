@@ -401,3 +401,4 @@
 #include "kaiser_wilhelm/fortress.dm"
 #include "spells/casting_factors_catalog.dm"
 #include "spells/casting_factors.dm"
+#include "virtues/metamagic.dm"

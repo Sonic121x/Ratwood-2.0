@@ -2,11 +2,12 @@
 	var/z121_spell_charge_multiplier = 1
 	var/z121_spell_silent_cast = FALSE
 	var/z121_spell_damage_multiplier = 1
+	/// 奥术使用 energy 支付的消耗倍率，体力仍由法术自身结算。
 	var/z121_spell_cost_multiplier = 1
 
 /mob/living/proc/z121_update_casting_factors()
 	var/datum/component/z121_casting_factors/factors = GetComponent(/datum/component/z121_casting_factors)
-	if(z121_spell_charge_multiplier == 1 && !z121_spell_silent_cast && z121_spell_damage_multiplier == 1 && z121_spell_cost_multiplier == 1)
+	if(!length(z121_active_metamagic) && z121_spell_charge_multiplier == 1 && !z121_spell_silent_cast && z121_spell_damage_multiplier == 1 && z121_spell_cost_multiplier == 1)
 		if(factors)
 			qdel(factors)
 	else if(factors)
@@ -14,7 +15,7 @@
 	else
 		AddComponent(/datum/component/z121_casting_factors)
 
-// 只在管理员启用因数的身体上监听。法术被移除或转交时归还原实例参数。
+// 只在启用 VV 因数或超魔的身体上监听。法术被移除或转交时归还原实例参数。
 /datum/component/z121_casting_factors
 	dupe_mode = COMPONENT_DUPE_UNIQUE
 	var/list/spells_by_action = list()
@@ -102,7 +103,7 @@
 /datum/component/z121_casting_factors/proc/track_firing_turf()
 	SIGNAL_HANDLER
 	var/mob/living/caster = parent
-	var/turf/new_turf = caster.z121_spell_damage_multiplier != 1 ? get_turf(caster) : null
+	var/turf/new_turf = caster.z121_effective_damage_multiplier() != 1 ? get_turf(caster) : null
 	if(firing_turf == new_turf)
 		return
 	if(firing_turf)
@@ -122,7 +123,7 @@
 		return
 	if(spell.primary_resource_type == SPELL_COST_DEVOTION || spell.secondary_resource_type == SPELL_COST_DEVOTION)
 		return
-	var/factor = caster.z121_spell_damage_multiplier
+	var/factor = caster.z121_effective_damage_multiplier()
 	if(projectile.damage > 0)
 		projectile.damage *= factor
 	if(istype(projectile, /obj/projectile/magic/aoe/fireball/rogue))
@@ -156,8 +157,9 @@
 	var/datum/action/cooldown/spell/action = spell
 	var/mob/living/caster = action.owner
 	if(istype(caster))
-		scale("charge_time", caster.z121_spell_charge_multiplier)
-		scale("primary_resource_cost", caster.z121_spell_cost_multiplier)
+		scale("charge_time", get_charge_multiplier(caster))
+		if(action.primary_resource_type == SPELL_COST_ENERGY)
+			scale("primary_resource_cost", caster.z121_effective_cost_multiplier())
 
 /datum/z121_spell_settings/proc/take_new_mode()
 	if(isnull(current_mode) || current_mode == spell.vars["current_mode"])
@@ -176,6 +178,12 @@
 	if(multiplier != 1 && (field in spell.vars) && isnum(spell.vars[field]) && spell.vars[field] > 0)
 		set_field(field, spell.vars[field] * multiplier)
 
+/datum/z121_spell_settings/proc/get_charge_multiplier(mob/living/caster)
+	// 焚天灾火的蓄力、咏唱和地面预警均沿用法术自身的时长。
+	if(istype(spell, /datum/action/cooldown/spell/projectile/pyroclasm))
+		return 1
+	return caster.z121_effective_charge_multiplier()
+
 /datum/z121_spell_settings/proc/restore(mob/living/caster)
 	if(!QDELETED(spell))
 		take_new_mode()
@@ -190,37 +198,37 @@
 	restore(caster)
 	if(QDELETED(spell))
 		return
-	if(caster.z121_spell_silent_cast && (spell.vars["invocation_type"] in list(INVOCATION_SHOUT, INVOCATION_WHISPER)))
-		set_field("invocation_type", INVOCATION_NONE)
-	if(caster.z121_spell_silent_cast)
+	if(caster.z121_effective_silent_cast())
+		if(spell.vars["invocation_type"] in list(INVOCATION_SHOUT, INVOCATION_WHISPER))
+			set_field("invocation_type", INVOCATION_NONE)
 		for(var/field in list("dismiss_invocation", "regen_invocation", "barrage_invocation"))
 			if((field in spell.vars) && spell.vars[field])
 				set_field(field, null)
+	var/charge_multiplier = get_charge_multiplier(caster)
+	var/damage_multiplier = caster.z121_effective_damage_multiplier()
 	if(istype(spell, /obj/effect/proc_holder/spell))
-		scale("chargetime", caster.z121_spell_charge_multiplier)
-		scale("chargedrain", caster.z121_spell_cost_multiplier)
-		scale("releasedrain", caster.z121_spell_cost_multiplier)
-		if(istype(spell, /obj/effect/proc_holder/spell/invoked/projectile) && caster.z121_spell_damage_multiplier != 1)
+		scale("chargetime", charge_multiplier)
+		if(istype(spell, /obj/effect/proc_holder/spell/invoked/projectile) && damage_multiplier != 1)
 			var/obj/effect/proc_holder/spell/invoked/projectile/legacy = spell
 			var/list/overrides = legacy.projectile_var_overrides.Copy()
 			var/damage = ("damage" in overrides) ? overrides["damage"] : initial(legacy.projectile_type.damage)
 			if(damage > 0)
-				overrides["damage"] = damage * caster.z121_spell_damage_multiplier
+				overrides["damage"] = damage * damage_multiplier
 				set_field("projectile_var_overrides", overrides)
 		update_legacy_intent(caster)
 		return
 	var/datum/action/cooldown/spell/action = spell
-	scale("charge_time", caster.z121_spell_charge_multiplier)
-	scale("chant_time", caster.z121_spell_charge_multiplier)
+	scale("charge_time", charge_multiplier)
+	scale("chant_time", charge_multiplier)
 	if(istype(action, /datum/action/cooldown/spell/augment_buff/grasp))
-		scale("channel_time", caster.z121_spell_charge_multiplier)
-	if(action.primary_resource_type in list(SPELL_COST_STAMINA, SPELL_COST_ENERGY))
-		scale("primary_resource_cost", caster.z121_spell_cost_multiplier)
-		scale("hold_drain", caster.z121_spell_cost_multiplier)
-	if(action.secondary_resource_type in list(SPELL_COST_STAMINA, SPELL_COST_ENERGY))
-		scale("secondary_resource_cost", caster.z121_spell_cost_multiplier)
-	scale("upfront_stamina_cost", caster.z121_spell_cost_multiplier)
-	if(caster.z121_spell_damage_multiplier != 1)
+		scale("channel_time", charge_multiplier)
+	var/cost_multiplier = caster.z121_effective_cost_multiplier()
+	if(action.primary_resource_type == SPELL_COST_ENERGY)
+		scale("primary_resource_cost", cost_multiplier)
+		scale("hold_drain", cost_multiplier)
+	if(action.secondary_resource_type == SPELL_COST_ENERGY)
+		scale("secondary_resource_cost", cost_multiplier)
+	if(damage_multiplier != 1)
 		// 这些实例字段直接提供伤害量。弹体的基础伤害统一在发射信号里处理。
 		var/static/list/damage_fields = list(
 			"cut_damage", "stab_damage", "blunt_damage", "pierce_damage", "empowered_pierce_damage",
@@ -231,17 +239,16 @@
 			"heave_damage", "drop_damage", "frag_damage", "fragment_damage",
 		)
 		for(var/field in damage_fields)
-			scale(field, caster.z121_spell_damage_multiplier)
+			scale(field, damage_multiplier)
 		if(istype(action, /datum/action/cooldown/spell/telegraphed_strike) || istype(action, /datum/action/cooldown/spell/cataclysm) || istype(action, /datum/action/cooldown/spell/thornfall))
-			scale("damage", caster.z121_spell_damage_multiplier)
-			scale("bonus_damage", caster.z121_spell_damage_multiplier)
-			scale("structure_damage", caster.z121_spell_damage_multiplier)
+			scale("damage", damage_multiplier)
+			scale("bonus_damage", damage_multiplier)
+			scale("structure_damage", damage_multiplier)
 		if(istype(action, /datum/action/cooldown/spell/advance))
-			scale("base_damage", caster.z121_spell_damage_multiplier)
+			scale("base_damage", damage_multiplier)
 
 /datum/z121_spell_settings/proc/update_legacy_intent(mob/living/caster)
 	if(!caster || caster.ranged_ability != spell || !istype(caster.mmb_intent, /datum/intent/spell))
 		return
 	var/obj/effect/proc_holder/spell/legacy = spell
 	caster.mmb_intent.chargetime = legacy.get_chargetime()
-	caster.mmb_intent.chargedrain = legacy.chargedrain

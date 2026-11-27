@@ -24,6 +24,7 @@ SUBSYSTEM_DEF(custom_bootstrap)
 	register_z121_combat_readiness()
 	// 将美德和缩小术共用的娇小特性加入玩家自检列表。
 	register_z121_petite_trait()
+	register_z121_metamagic()
 	register_z121_fortress()
 	if(GLOB.custom_learnable_spells?.len)
 		GLOB.utility_spells |= GLOB.custom_learnable_spells

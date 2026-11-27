@@ -116,7 +116,7 @@
 	// 投射物统一按胸口结算，避免弹道随机偏斜后出现“显示命中 A 处、疼痛却落在 B 处”的错位。
 	projectile.def_zone = BODY_ZONE_CHEST
 	projectile.target_zone = BODY_ZONE_CHEST
-	projectile.pain_amount = get_pain_amount(user) * user.z121_spell_damage_multiplier
+	projectile.pain_amount = get_pain_amount(user) * user.z121_effective_damage_multiplier()
 	projectile.casting_spell = src
 	projectile.z121_serpent_cast = z121_serpent_cast
 	// 沿用现有投射法术的命中修正，让奥术等级也能略微提高命中率。
@@ -131,7 +131,7 @@
 
 /datum/action/cooldown/spell/z121/invoked/pain/proc/apply_pain_effect(mob/living/target, mob/living/user, pain_amount = null, preferred_zone = null)
 	if(isnull(pain_amount))
-		pain_amount = get_pain_amount(user) * (user ? user.z121_spell_damage_multiplier : 1)
+		pain_amount = get_pain_amount(user) * (user ? user.z121_effective_damage_multiplier() : 1)
 
 	if(iscarbon(target))
 		var/mob/living/carbon/carbon_target = target
