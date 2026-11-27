@@ -290,7 +290,7 @@
 	name = "骰子战争骰袋"
 	desc = "一个用来玩骰子战争的骰袋。手持激活（Z）即可开始或加入游戏。"
 	var/datum/dice_war_game/active_game
-	var/static/dice_war_rules_text = z121_dice_rules_html({"<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><div style='padding:8px;font-family:Verdana,sans-serif;'>
+	var/static/dice_war_rules_text = z121_dice_rules_html({"<div style='padding:8px;font-family:Verdana,sans-serif;'>
 	<h2 style='text-align:center;margin:0 0 6px 0;'>骰子战争</h2>
 <br>
 <b>目标：</b>将对手的生命降到 0。<br>
@@ -309,7 +309,7 @@
 /obj/item/storage/pill_bottle/dice/dice_war/proc/show_rules(mob/living/user)
 	if(!user)
 		return
-	user << browse(dice_war_rules_text, "window=dice_war_rules;size=700x450")
+	user << browse(dice_war_rules_text, "window=dice_war_rules;file=dice_war_rules.html;size=700x450") // 自定义修改：指定 HTML 文件名，让客户端渲染规则页。
 
 /obj/item/storage/pill_bottle/dice/dice_war/PopulateContents()
 	new /obj/item/dice/d20(src)

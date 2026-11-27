@@ -25,7 +25,7 @@
 			else
 				if(ishuman(C.mob))
 					var/mob/living/carbon/human/H = C.mob
-					entry += " - 扮演 [C.mob.real_name][H.job ? " ([H.job])" : ""]"
+					entry += " - 扮演 [C.mob.real_name][H.job ? "（[SSjob.GetJob(H.job)?.display_title || H.job]）" : ""]"
 				else
 					entry += " - 扮演 [C.mob.real_name]"
 				switch(C.mob.stat)

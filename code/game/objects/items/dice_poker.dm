@@ -942,7 +942,7 @@
 	name = "骰子扑克骰袋"
 	desc = "一个用来玩骰子扑克的骰袋。手持激活（Z）即可开始或加入游戏。"
 	var/datum/dice_poker_game/active_game
-	var/static/dice_poker_rules_text = z121_dice_rules_html({"<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><div style='padding:8px;font-family:Verdana,sans-serif;'>
+	var/static/dice_poker_rules_text = z121_dice_rules_html({"<div style='padding:8px;font-family:Verdana,sans-serif;'>
 	<h2 style='text-align:center;margin:0 0 6px 0;'>骰子扑克</h2>
 <br>
 <b>目标：</b>在三局两胜中，以更强的牌型赢下 2 局。<br>
@@ -973,7 +973,7 @@
 /obj/item/storage/pill_bottle/dice/dice_poker/proc/show_rules(mob/living/user)
 	if(!user)
 		return
-	user << browse(dice_poker_rules_text, "window=dice_poker_rules;size=720x520")
+	user << browse(dice_poker_rules_text, "window=dice_poker_rules;file=dice_poker_rules.html;size=720x520") // 自定义修改：指定 HTML 文件名，让客户端渲染规则页。
 
 /obj/item/storage/pill_bottle/dice/dice_poker/PopulateContents()
 	for(var/i in 1 to 5)

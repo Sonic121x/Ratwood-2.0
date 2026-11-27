@@ -21,7 +21,7 @@
 //     效果由一个自定义【减益状态 /datum/status_effect/debuff/weakness_potion】承载，随药剂的代谢生命周期
 //     "同生共死"——代谢开始时施加、每代谢拍刷新其计时(令其贯穿整个消化过程)、代谢结束时解除。
 //     · 力量 -8：借用状态基类的 effectedstats 机制，以 STATKEY_STR ("strength") 为内部键。
-//       属性名称由 translation_display.dm 翻译，状态基类负责上下限与移除时的还原。
+//       属性名称由 get_stat_display_name() 翻译，状态基类负责上下限与移除时的还原。
 
 
 //     · 纯表演性质的小反馈(发软、踉跄的 emote / 上手与解除的提示文本)，仅作观感、不影响机制。

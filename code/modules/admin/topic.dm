@@ -37,23 +37,23 @@
 		if(!length(book))
 			return
 		var/static/list/amend_types = list("Title" = "book_title", "Author" = "author", "Cover" = "icon", "Category" = "category")
-		var/amend_choice = tgui_input_list(usr, "What do you want to amend?", "Amend Book", amend_types)
+		var/amend_choice = input_player_book_amend_choice(usr, "要修改哪一项？", amend_types)
 		if(!amend_choice)
 			return
 		var/amend_type = amend_types[amend_choice]
 		var/amend_text
 		if(amend_type == "icon")
-			amend_text = GLOB.player_book_icons[tgui_input_list(usr, "Choose a new cover", "Amend Book", GLOB.player_book_icons)]
+			amend_text = GLOB.player_book_icons[tgui_input_list(usr, "选择新封面", "修改书籍", GLOB.player_book_icons)]
 		else if(amend_type == "category")
-			amend_text = tgui_input_list(usr, "Choose a new category", "Amend Book", GLOB.player_book_categories)
+			amend_text = input_player_book_amend_choice(usr, "选择新分类", GLOB.player_book_categories)
 		else
-			amend_text = stripped_input(usr, "What do you want the [LOWER_TEXT(amend_choice)] to be?", "Amend Book", html_decode(book[amend_type]), MAX_NAME_LEN)
+			amend_text = stripped_input(usr, "请输入新的[get_player_archive_display(amend_choice)]：", "修改书籍", html_decode(book[amend_type]), MAX_NAME_LEN)
 		if(!amend_text)
 			return
 		if(!SSlibrarian.amend_player_book(file_name, amend_type, amend_text))
-			to_chat(usr, span_warning("The book could not be amended. Titles must be unique and must not begin with an underscore."))
+			to_chat(usr, span_warning("无法保存修改。书名不能重复，也不能以下划线开头。"))
 			return
-		message_admins("[key_name_admin(usr)] has amended player made book '[player_archive_display_text(book["book_title"], file_name)]': [LOWER_TEXT(amend_choice)] is now '[player_archive_display_text(amend_text)]'")
+		message_admins("[key_name_admin(usr)] 将玩家书籍《[player_archive_display_text(get_player_archive_field_display(book, "book_title"), file_name)]》的[get_player_archive_display(amend_choice)]改为“[player_archive_display_text(get_player_book_amend_value_display(amend_type, amend_text))]”。")
 		log_admin("[key_name(usr)] has amended player made book '[book["book_title"]]': [LOWER_TEXT(amend_choice)] is now '[amend_text]'")
 		owner.manage_player_archive(PLAYER_ARCHIVE_BOOKS)
 		return
@@ -64,12 +64,12 @@
 		if(!archive?.entries[file_name])
 			return
 		var/entry_title = archive.get_display_title(file_name)
-		if(tgui_alert(usr, "Are you sure you want to delete the [archive.entry_noun] '[html_decode(entry_title)]'?", "Confirm Deletion", list("Yes", "No")) != "Yes")
+		if(tgui_alert(usr, "确定删除[get_player_archive_display(archive.entry_noun)]《[html_decode(entry_title)]》吗？", "确认删除", list("删除", "取消")) != "删除")
 			return
 		if(!archive.delete_entry(file_name))
-			to_chat(usr, span_warning("The [archive.entry_noun] could not be deleted."))
+			to_chat(usr, span_warning("无法删除这份[get_player_archive_display(archive.entry_noun)]。"))
 			return
-		message_admins("[key_name_admin(usr)] has deleted player made [archive.entry_noun] called: '[entry_title]'")
+		message_admins("[key_name_admin(usr)] 删除了玩家创作的[get_player_archive_display(archive.entry_noun)]《[entry_title]》。")
 		log_admin("[key_name(usr)] has deleted player made [archive.entry_noun] called: '[html_decode(entry_title)]'")
 		owner.manage_player_archive(archive.kind)
 		return
@@ -89,19 +89,19 @@
 		var/kind = archive.kind
 		var/banned_ckey = href_list["ckey"]
 		if(!banned_ckey)
-			banned_ckey = tgui_input_text(usr, "Enter the ckey of the player to ban from adding [kind] to the archive.", "Archive Ban", max_length = MAX_NAME_LEN)
+			banned_ckey = tgui_input_text(usr, "请输入要禁止向档案库提交[get_player_archive_display(kind)]的玩家账号（ckey）。", "档案库封禁", max_length = MAX_NAME_LEN)
 		banned_ckey = ckey(banned_ckey)
 		if(!banned_ckey)
 			return
 		if(archive.is_banned(banned_ckey))
-			to_chat(usr, span_warning("[banned_ckey] is already banned from adding [kind] to the archive."))
+			to_chat(usr, span_warning("[banned_ckey] 已被禁止向档案库提交[get_player_archive_display(kind)]。"))
 			return
-		if(tgui_alert(usr, "Are you sure you want to ban [banned_ckey] from adding [kind] to the archive?", "Confirm Ban", list("Yes", "No")) != "Yes")
+		if(tgui_alert(usr, "确定禁止 [banned_ckey] 向档案库提交[get_player_archive_display(kind)]吗？", "确认封禁", list("封禁", "取消")) != "封禁")
 			return
 		if(!archive.ban(banned_ckey, usr.key))
-			to_chat(usr, span_warning("[banned_ckey] could not be banned from adding [kind] to the archive."))
+			to_chat(usr, span_warning("未能禁止 [banned_ckey] 向档案库提交[get_player_archive_display(kind)]。"))
 			return
-		message_admins("[key_name_admin(usr)] has banned [banned_ckey] from adding [kind] to the archive.")
+		message_admins("[key_name_admin(usr)] 禁止了 [banned_ckey] 向档案库提交[get_player_archive_display(kind)]。")
 		log_admin("[key_name(usr)] has banned [banned_ckey] from adding [kind] to the archive.")
 		owner.manage_player_archive(kind)
 		return
@@ -112,12 +112,12 @@
 		if(!archive?.is_banned(banned_ckey))
 			return
 		var/kind = archive.kind
-		if(tgui_alert(usr, "Are you sure you want to let [banned_ckey] add [kind] to the archive again?", "Confirm Unban", list("Yes", "No")) != "Yes")
+		if(tgui_alert(usr, "确定允许 [banned_ckey] 再次向档案库提交[get_player_archive_display(kind)]吗？", "确认解封", list("解封", "取消")) != "解封")
 			return
 		if(!archive.unban(banned_ckey))
-			to_chat(usr, span_warning("[banned_ckey] could not be unbanned from adding [kind] to the archive."))
+			to_chat(usr, span_warning("未能恢复 [banned_ckey] 向档案库提交[get_player_archive_display(kind)]的权限。"))
 			return
-		message_admins("[key_name_admin(usr)] has lifted [banned_ckey]'s ban from adding [kind] to the archive.")
+		message_admins("[key_name_admin(usr)] 已恢复 [banned_ckey] 向档案库提交[get_player_archive_display(kind)]的权限。")
 		log_admin("[key_name(usr)] has lifted [banned_ckey]'s ban from adding [kind] to the archive.")
 		owner.archive_bans()
 		return

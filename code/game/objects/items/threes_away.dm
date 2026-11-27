@@ -406,7 +406,7 @@
 	name = "三去无踪骰袋"
 	desc = "一个用来游玩三去无踪的骰袋。手持激活（Z）即可开始或加入一局游戏。"
 	var/datum/threes_away_game/active_game
-	var/static/threes_away_rules_text = z121_dice_rules_html({"<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><div style='padding:8px;font-family:Verdana,sans-serif;'>
+	var/static/threes_away_rules_text = z121_dice_rules_html({"<div style='padding:8px;font-family:Verdana,sans-serif;'>
 	<h2 style='text-align:center;margin:0 0 6px 0;'>三去无踪</h2>
 <br>
 <b>目标：</b>取得最低分。<br>
@@ -430,7 +430,7 @@
 /obj/item/storage/pill_bottle/dice/threes_away/proc/show_rules(mob/living/user)
 	if(!user)
 		return
-	user << browse(threes_away_rules_text, "window=threes_away_rules;size=700x450")
+	user << browse(threes_away_rules_text, "window=threes_away_rules;file=threes_away_rules.html;size=700x450") // 自定义修改：指定 HTML 文件名，让客户端渲染规则页。
 
 /obj/item/storage/pill_bottle/dice/threes_away/PopulateContents()
 	for(var/i in 1 to 5)

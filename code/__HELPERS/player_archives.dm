@@ -23,7 +23,7 @@
 	to_chat(user, success ? span_notice(message) : span_warning(message))
 
 /// Escapes player-supplied archive text for HTML output, without double-encoding text that was already encoded on input.
-/proc/player_archive_display_text(text, fallback = "Unknown")
+/proc/player_archive_display_text(text, fallback = "未知")
 	if(isnull(text) || text == "")
 		return html_encode(fallback)
 	return html_encode(html_decode("[text]"))
@@ -35,7 +35,7 @@
 /proc/write_player_archive_file(path, list/contents)
 	fdel(path)
 	if(!text2file(json_encode(contents), path))
-		message_admins("Unable to save archive file [path].")
+		message_admins("无法保存档案文件 [path]。")
 		return FALSE
 	return TRUE
 
@@ -105,7 +105,7 @@
 /// Returns the escaped title of an entry, falling back to its filename.
 /datum/player_archive/proc/get_display_title(file_name)
 	var/list/contents = get_entry(file_name)
-	return player_archive_display_text(contents[title_key], file_name)
+	return player_archive_display_text(get_player_archive_field_display(contents, title_key), file_name)
 
 /// Whether the entry stored under a filename is complete enough to place in the world or print.
 /datum/player_archive/proc/is_usable(file_name)
@@ -179,7 +179,7 @@
 	if(!save_entry(file_name, contents))
 		player_archive_feedback(user, "档案无法保存这份[get_player_archive_display(entry_noun)]。")
 		return FALSE
-	message_admins("[capitalize(entry_noun)] [get_display_title(file_name)] has been saved to the player [entry_noun] archive by [player_archive_display_text(contents["author_ckey"])]([player_archive_display_text(contents["author"])])")
+	message_admins("[player_archive_display_text(contents["author_ckey"])]（[player_archive_display_text(contents["author"], "未知作者")]）已将《[get_display_title(file_name)]》存入[get_player_archive_display(kind)]档案。")
 	player_archive_feedback(user, "你有一种感觉，这份[get_player_archive_display(entry_noun)]将在档案中留存很久、很久……", TRUE)
 	return TRUE
 
@@ -189,7 +189,7 @@
 	var/entry_path = get_entry_path(file_name)
 	fdel(entry_path)
 	if(fexists(entry_path))
-		message_admins("Unable to delete archived [entry_noun] [entry_path].")
+		message_admins("无法删除[get_player_archive_display(kind)]档案文件 [entry_path]。")
 		return FALSE
 	entries -= file_name
 	return TRUE

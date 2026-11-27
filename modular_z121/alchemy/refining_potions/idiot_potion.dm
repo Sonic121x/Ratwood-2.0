@@ -37,7 +37,7 @@
 //     所有效果统一由一个自定义【减益状态 /datum/status_effect/debuff/idiot_potion】承载，随药剂的代谢
 //     生命周期"同生共死"——代谢开始时施加、每代谢拍刷新其计时(令其贯穿整个消化过程)、代谢结束时解除。
 //     · 智力 -8：借用状态基类的 effectedstats 机制，以 STATKEY_INT ("intelligence") 为内部键。
-//       属性名称由 translation_display.dm 翻译，状态基类负责上下限与移除时的还原。
+//       属性名称由 get_stat_display_name() 翻译，状态基类负责上下限与移除时的还原。
 
 
 //     · 胡言乱语：见"修正二"——追加 aphasia 并切换默认发声语言；结束时精确还原(仅撤下我们追加的那份)。

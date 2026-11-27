@@ -411,7 +411,7 @@
 	name = "矮人骰骰袋"
 	desc = "一个用来玩矮人骰的骰袋。手持激活（Z）即可开始或加入游戏。"
 	var/datum/dwarven_dice_game/active_game
-	var/static/dwarven_rules_text = z121_dice_rules_html({"<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><div style='padding:8px;font-family:Verdana,sans-serif;'>
+	var/static/dwarven_rules_text = z121_dice_rules_html({"<div style='padding:8px;font-family:Verdana,sans-serif;'>
 	<h2 style='text-align:center;margin:0 0 6px 0;'>矮人骰</h2>
 <br>
 <b>目标：</b>在所有玩家都掷完三颗骰子后，成为总点数最高的玩家。<br>
@@ -427,7 +427,7 @@
 /obj/item/storage/pill_bottle/dice/dwarven/proc/show_rules(mob/living/user)
 	if(!user)
 		return
-	user << browse(dwarven_rules_text, "window=dwarven_dice_rules;size=700x450")
+	user << browse(dwarven_rules_text, "window=dwarven_dice_rules;file=dwarven_dice_rules.html;size=700x450") // 自定义修改：指定 HTML 文件名，让客户端渲染规则页。
 
 /obj/item/storage/pill_bottle/dice/dwarven/PopulateContents()
 	for(var/i in 1 to 3)

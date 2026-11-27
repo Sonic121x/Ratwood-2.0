@@ -24,6 +24,7 @@ type Skill = {
   effective: number;
 };
 type Data = {
+  items: { id: string; name: string; category: string }[]; // 自定义修改：展示服务端允许领取的物品。
   stats: { id: string; name: string; value: number }[];
   catalog: Trait[];
   owned: string[];
@@ -37,6 +38,7 @@ export function GoldenFinger() {
   const [traitQuery, setTraitQuery] = useState('');
   const [skillQuery, setSkillQuery] = useState('');
   const [category, setCategory] = useState('全部分类');
+  const [itemQuery, setItemQuery] = useState('');
   const { stats, skills, owned, catalog } = data;
   const ownedIds = new Set(owned);
   const symbols = new Map(catalog.map(({ id, symbol }) => [id, symbol]));
@@ -63,7 +65,7 @@ export function GoldenFinger() {
         <Stack fill vertical>
           <Stack.Item>
             <Tabs>
-              {['属性', '特性', '技能'].map((label) => (
+              {['属性', '特性', '技能', '获取物品'].map((label) => (
                 <Tabs.Tab
                   key={label}
                   selected={tab === label}
@@ -125,6 +127,13 @@ export function GoldenFinger() {
           )}
           <Stack.Item grow>
             <Section fill scrollable>
+              {tab === '获取物品' && (
+                <ItemCatalog
+                  items={data.items}
+                  query={itemQuery}
+                  onQuery={setItemQuery}
+                />
+              )}
               {tab === '属性' && (
                 <LabeledList>
                   {stats.map(({ id, name, value }) => (
@@ -228,5 +237,55 @@ export function GoldenFinger() {
         </Stack>
       </Window.Content>
     </Window>
+  );
+}
+
+// 自定义修改：按种类领取固定数量，并按名称筛选。
+function ItemCatalog({
+  items,
+  query,
+  onQuery,
+}: {
+  items: Data['items'];
+  query: string;
+  onQuery: (value: string) => void;
+}) {
+  const { act } = useBackend<Data>();
+  const matches = items.filter((item) =>
+    item.name.toLowerCase().includes(query.trim().toLowerCase()),
+  );
+  return (
+    <>
+      <Input
+        fluid
+        placeholder="搜索物品名称"
+        value={query}
+        onChange={onQuery}
+      />
+      {!matches.length && <Box color="label">没有符合条件的物品。</Box>}
+      {['钱币', '药水', '宝石'].map((category) => {
+        const rows = matches.filter((item) => item.category === category);
+        if (!rows.length) return null;
+        const amount =
+          category === '钱币' ? '20 枚' : category === '药水' ? '1 瓶' : '1 颗';
+        return (
+          <Section title={category} key={category} mt={1}>
+            {rows.map((item) => (
+              <Stack key={item.id} align="center" mb={0.5}>
+                <Stack.Item grow>{item.name}</Stack.Item>
+                <Stack.Item>
+                  <Button
+                    icon="hand"
+                    onClick={() => act('claim_item', { id: item.id })}
+                  >
+                    领取 {amount}
+                  </Button>
+                </Stack.Item>
+              </Stack>
+            ))}
+          </Section>
+        );
+      })}
+    </>
   );
 }

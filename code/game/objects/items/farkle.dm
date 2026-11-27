@@ -452,7 +452,7 @@
 /obj/item/storage/pill_bottle/dice/farkle
 	desc = "六颗用于法克尔的骰子。手持激活（Z）即可开始或加入游戏！"
 	var/datum/farkle_game/active_game
-	var/static/farkle_rules_text = z121_dice_rules_html({"<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><div style='padding:8px;font-family:Verdana,sans-serif;'>
+	var/static/farkle_rules_text = z121_dice_rules_html({"<div style='padding:8px;font-family:Verdana,sans-serif;'>
 	<h2 style='text-align:center;margin:0 0 6px 0;'>法克尔</h2>
 <br>
 <b>目标：</b>成为总分超过 10000 后分数最高的玩家。<br>
@@ -489,7 +489,7 @@
 /obj/item/storage/pill_bottle/dice/farkle/proc/show_rules(mob/living/user)
 	if(!user)
 		return
-	user << browse(farkle_rules_text, "window=farkle_rules;size=700x700")
+	user << browse(farkle_rules_text, "window=farkle_rules;file=farkle_rules.html;size=700x700") // 自定义修改：指定 HTML 文件名，让客户端渲染规则页。
 
 /obj/item/storage/pill_bottle/dice/farkle/attack_self(mob/living/user)
 	var/list/menu = list()

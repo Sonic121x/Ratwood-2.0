@@ -1016,10 +1016,10 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 		cells += actions.Join()
 		rows += list(cells)
 
-	var/dat = "<a href='byond://?_src_=holder;[HrefToken()];player_archive_ban=[kind]' style='margin-right: 10px;'>Ban a Player from [capitalize(kind)]</a>"
-	dat += "<a href='byond://?_src_=holder;[HrefToken()];player_archive_bans=1'>Archive Bans</a>"
-	dat += player_archive_admin_table(archive.get_admin_headers() + "Actions", rows, "No [kind] found")
-	var/datum/browser/popup = new(src, "[archive.entry_noun]_management", "[capitalize(archive.entry_noun)] Management", 800, 700)
+	var/dat = "<a href='byond://?_src_=holder;[HrefToken()];player_archive_ban=[kind]' style='margin-right: 10px;'>禁止玩家提交[get_player_archive_display(kind)]</a>"
+	dat += "<a href='byond://?_src_=holder;[HrefToken()];player_archive_bans=1'>档案库封禁名单</a>"
+	dat += player_archive_admin_table(archive.get_admin_headers() + "操作", rows, "暂无已归档的[get_player_archive_display(kind)]")
+	var/datum/browser/popup = new(src, "[archive.entry_noun]_management", "[get_player_archive_display(archive.entry_noun)]管理", 800, 700)
 	popup.set_content(dat)
 	popup.open()
 
@@ -1041,14 +1041,14 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 
 /// Returns the column headings of the admin panel listing this archive, before the actions column.
 /datum/player_archive/proc/get_admin_headers()
-	return list("Title", "Author", "Date")
+	return list("标题", "作者", "创作日期")
 
 /// Returns the escaped contents of an entry's row in the admin panel, before the actions column.
 /datum/player_archive/proc/get_admin_cells(file_name, client/viewer)
 	var/list/contents = get_entry(file_name)
 	return list(
 		get_display_title(file_name),
-		"[player_archive_display_text(contents["author"])] ([player_archive_display_text(contents["author_ckey"])])",
+		"[player_archive_display_text(get_player_archive_field_display(contents, "author"), "未知作者")]（[player_archive_display_text(get_player_archive_field_display(contents, "author_ckey"))]）",
 		player_archive_display_text(contents["ic_date"]),
 	)
 
@@ -1056,35 +1056,35 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 /datum/player_archive/proc/get_admin_actions(file_name)
 	var/list/contents = get_entry(file_name)
 	var/author_ckey = contents["author_ckey"]
-	. = list("<a href='byond://?_src_=holder;[HrefToken()];delete_player_archive_entry=[kind];file=[url_encode(file_name)]' style='margin-right: 10px;'>Delete</a>")
+	. = list("<a href='byond://?_src_=holder;[HrefToken()];delete_player_archive_entry=[kind];file=[url_encode(file_name)]' style='margin-right: 10px;'>删除</a>")
 	if(is_banned(author_ckey))
-		. += "Author banned"
+		. += "作者已被封禁"
 	else
-		. += "<a href='byond://?_src_=holder;[HrefToken()];player_archive_ban=[kind];ckey=[url_encode(author_ckey)]'>Ban Author</a>"
+		. += "<a href='byond://?_src_=holder;[HrefToken()];player_archive_ban=[kind];ckey=[url_encode(author_ckey)]'>封禁作者</a>"
 
 /datum/player_archive/books/get_admin_headers()
-	return list("Title", "Author", "Category", "Written")
+	return list("标题", "作者", "分类", "创作日期")
 
 /datum/player_archive/books/get_admin_cells(file_name, client/viewer)
 	var/list/cells = ..()
 	var/list/book = get_entry(file_name)
-	cells.Insert(3, player_archive_display_text(book["category"]))
+	cells.Insert(3, player_archive_display_text(get_player_archive_display(book["category"])))
 	return cells
 
 /datum/player_archive/books/get_admin_actions(file_name)
 	return list(
-		"<a href='byond://?_src_=holder;[HrefToken()];show_player_book=[url_encode(file_name)]' style='margin-right: 10px;'>View</a>",
-		"<a href='byond://?_src_=holder;[HrefToken()];amend_player_book=[url_encode(file_name)]' style='margin-right: 10px;'>Amend</a>",
+		"<a href='byond://?_src_=holder;[HrefToken()];show_player_book=[url_encode(file_name)]' style='margin-right: 10px;'>查看</a>",
+		"<a href='byond://?_src_=holder;[HrefToken()];amend_player_book=[url_encode(file_name)]' style='margin-right: 10px;'>修改</a>",
 	) + ..()
 
 /datum/player_archive/paintings/get_admin_headers()
-	return list("Preview", "Title", "Author", "Painted")
+	return list("预览", "标题", "作者", "创作日期")
 
 /datum/player_archive/paintings/get_admin_cells(file_name, client/viewer)
 	var/list/cells = ..()
 	var/image_path = get_image_path(file_name)
 	// Entries whose image is missing are still listed, so they can be cleaned up.
-	var/preview = "No image"
+	var/preview = "暂无图像"
 	if(fexists(image_path))
 		var/res_name = "painting_[md5(file_name)].png"
 		viewer << browse_rsc(file(image_path), res_name)
@@ -1095,13 +1095,13 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 /client/proc/show_book_content(file_name)
 	var/list/book = SSlibrarian.archive.get_entry(file_name)
 	if(!length(book))
-		to_chat(src, span_warning("Book not found!"))
+		to_chat(src, span_warning("未找到这本书。"))
 		return
 
 	src << browse_rsc('html/book.png')
 
 	// Book text is the formatted paper HTML that players see in-game; the metadata is escaped separately.
-	var/content = "<h3>[player_archive_display_text(book["book_title"], file_name)]</h3><p>By [player_archive_display_text(book["author"])] ([player_archive_display_text(book["author_ckey"])]), written [player_archive_display_text(book["ic_date"])]<br>Category: [player_archive_display_text(book["category"])]</p>[book["text"]]"
+	var/content = "<h3>[SSlibrarian.archive.get_display_title(file_name)]</h3><p>作者：[player_archive_display_text(get_player_archive_field_display(book, "author"), "未知作者")]（[player_archive_display_text(get_player_archive_field_display(book, "author_ckey"))]）<br>创作日期：[player_archive_display_text(book["ic_date"])]<br>分类：[player_archive_display_text(get_player_archive_display(book["category"]))]</p>[get_player_archive_field_display(book, "text")]"
 	var/dat = {"
 	<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">
 	<html>
@@ -1140,13 +1140,13 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 			var/list/ban = archive.upload_bans[banned_ckey]
 			rows += list(list(
 				player_archive_display_text(banned_ckey),
-				capitalize(kind),
+				get_player_archive_display(kind),
 				player_archive_display_text(ban["admin"]),
 				player_archive_display_text(ban["date"]),
-				"<a href='byond://?_src_=holder;[HrefToken()];player_archive_unban=[kind];ckey=[url_encode(banned_ckey)]'>Unban</a>",
+				"<a href='byond://?_src_=holder;[HrefToken()];player_archive_unban=[kind];ckey=[url_encode(banned_ckey)]'>解封</a>",
 			))
 
-	var/dat = player_archive_admin_table(list("Player", "Banned From", "Banned By", "Date", "Actions"), rows, "No one is banned from the archives")
-	var/datum/browser/popup = new(src, "archive_bans", "Archive Bans", 700, 500)
+	var/dat = player_archive_admin_table(list("玩家", "禁止提交的作品", "执行管理员", "封禁日期", "操作"), rows, "暂无档案库封禁记录")
+	var/datum/browser/popup = new(src, "archive_bans", "档案库封禁名单", 700, 500)
 	popup.set_content(dat)
 	popup.open()

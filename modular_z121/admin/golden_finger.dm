@@ -86,13 +86,95 @@ SUBSYSTEM_DEF(z121_golden_finger)
 		ui = new(user, src, "GoldenFinger", "金手指")
 		ui.open()
 
+// 目录既是界面数据来源，也是服务端领取白名单。配方使用稳定的类型路径区分同名药剂。
+/datum/z121_golden_finger/proc/item_catalog()
+	var/static/list/catalog
+	if(catalog)
+		return catalog
+	catalog = list()
+	var/coin = /obj/item/roguecoin/gold
+	catalog["[coin]"] = list("type" = coin, "name" = "泽纳里金币", "category" = "钱币")
+	for(var/datum/alch_cauldron_recipe/recipe as anything in GLOB.alch_cauldron_recipes)
+		if(length(recipe.output_reagents))
+			var/label = recipe.name
+			if(length(recipe.output_reagents) == 1)
+				var/datum/reagent/product = recipe.output_reagents[1]
+				var/product_name = get_stat_display_name(initial(product.name))
+				if(product_name != label)
+					label = "[label]（[product_name]）"
+			catalog["[recipe.type]"] = list("name" = label, "category" = "药水", "contents" = recipe.output_reagents)
+	for(var/datum/alch_refining_formula/formula as anything in get_alch_refining_formulas())
+		if(length(formula.output_reagents))
+			catalog["[formula.type]"] = list("name" = formula.name, "category" = "药水", "contents" = formula.output_reagents, "booze" = formula.get_boozepwr())
+	var/datum/reagent/vitae = /datum/reagent/medicine/vitae_essence
+	catalog["[vitae]"] = list("name" = initial(vitae.name), "category" = "药水", "contents" = list(/datum/reagent/medicine/vitae_essence = 1))
+
+	// 单独装瓶、台面调制和特殊交互的成品保留原物品类型与剂量。
+	var/list/bottles = list(
+		/obj/item/lovepotion,
+		/obj/item/reagent_containers/glass/bottle/revival,
+		/obj/item/reagent_containers/glass/bottle/frankenbrew,
+		/obj/item/reagent_containers/glass/bottle/sleep = /datum/reagent/sleep_powder,
+		/obj/item/reagent_containers/glass/bottle/rogue/poison = /datum/reagent/toxin/killersice,
+		/obj/item/reagent_containers/glass/bottle/rogue/gasification_body = /datum/reagent/gasification_body_potion,
+		/obj/item/reagent_containers/glass/bottle/rogue/blood_tonic = /datum/reagent/medicine/blood_tonic,
+		/obj/item/reagent_containers/glass/bottle/rogue/lactation_enhancer = /datum/reagent/medicine/lactation_enhancer,
+		/obj/item/reagent_containers/glass/bottle/alchemical/rogue/rotcure = /datum/reagent/rotcure,
+		/obj/item/reagent_containers/glass/bottle/alchemical/spidervenom_paralytic = /datum/reagent/toxin/spidervenom_paralytic,
+		/obj/item/reagent_containers/glass/bottle/alchemical/blessedwater = /datum/reagent/water/blessed,
+		/obj/item/reagent_containers/glass/bottle/alchemical/fermented_crab = /datum/reagent/fermented_crab,
+	)
+	for(var/obj/item/bottle as anything in bottles)
+		var/datum/reagent/filling = bottles[bottle]
+		catalog["[bottle]"] = list("type" = bottle, "name" = filling ? initial(filling.name) : initial(bottle.name), "category" = "药水")
+	var/list/gems = subtypesof(/obj/item/roguegem) - list(/obj/item/roguegem/random, /obj/item/roguegem/randomgeode)
+	gems += subtypesof(/obj/item/gem_device)
+	gems += typesof(/obj/item/pearl)
+	gems += list(/obj/item/riddleofsteel, /obj/item/carvedgem/rose/rawrose, /obj/item/carvedgem/shell/rawshell, /obj/item/carvedgem/chitin/rawchitin)
+	for(var/obj/item/gem as anything in gems)
+		catalog["[gem]"] = list("type" = gem, "name" = initial(gem.name), "category" = "宝石")
+	return catalog
+
+/datum/z121_golden_finger/proc/claim_item(id)
+	var/list/catalog = item_catalog()
+	var/list/entry = catalog[id]
+	var/turf/spot = get_turf(owner)
+	if(!entry || !spot)
+		return FALSE
+	var/obj/item/item
+	var/list/contents = entry["contents"]
+	var/item_type = entry["type"]
+	if(contents)
+		var/total = 0
+		for(var/reagent in contents)
+			total += contents[reagent]
+		if(total <= 0)
+			return FALSE
+		var/obj/item/reagent_containers/glass/bottle/rogue/bottle = new(spot)
+		for(var/reagent in contents)
+			var/list/data = entry["booze"] ? list("boozepwr" = entry["booze"]) : null
+			bottle.reagents.add_reagent(reagent, bottle.volume * contents[reagent] / total, data)
+		item = bottle
+	else if(item_type == /obj/item/roguecoin/gold)
+		item = new /obj/item/roguecoin/gold(spot, 20)
+	else
+		item = new item_type(spot)
+	var/held = owner.put_in_hands(item)
+	to_chat(owner, span_notice("已领取[entry["name"]]，[held ? "已放入手中" : "已放在脚边"]。"))
+	return TRUE
+
 /datum/z121_golden_finger/ui_static_data(mob/user)
 	if(!can_edit(user))
 		return list()
 	var/list/traits = list()
 	for(var/id in trait_catalog)
 		traits += list(list("id" = id, "symbol" = trait_catalog[id]))
-	return list("catalog" = traits)
+	var/list/items = list()
+	var/list/catalog = item_catalog()
+	for(var/id in catalog)
+		var/list/entry = catalog[id]
+		items += list(list("id" = id, "name" = entry["name"], "category" = entry["category"]))
+	return list("catalog" = traits, "items" = items)
 
 /datum/z121_golden_finger/ui_data(mob/user)
 	if(!can_edit(user))
@@ -120,6 +202,8 @@ SUBSYSTEM_DEF(z121_golden_finger)
 		return FALSE
 	var/value = params["value"]
 	switch(action)
+		if("claim_item")
+			return claim_item(id)
 		if("set_stat", "step_stat")
 			if(!(id in MOBSTATS) || !isnum(value))
 				return FALSE

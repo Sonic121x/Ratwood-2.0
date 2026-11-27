@@ -530,7 +530,7 @@
 	name = "吹牛骰骰袋"
 	desc = "一个用来玩吹牛骰的骰袋。手持激活（Z）即可开始或加入游戏。"
 	var/datum/liars_dice_game/active_game
-	var/static/liars_dice_rules_text = z121_dice_rules_html({"<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><div style='padding:8px;font-family:Verdana,sans-serif;'>
+	var/static/liars_dice_rules_text = z121_dice_rules_html({"<div style='padding:8px;font-family:Verdana,sans-serif;'>
 	<h2 style='text-align:center;margin:0 0 6px 0;'>吹牛骰</h2>
 <br>
 <b>目标：</b>成为最后一名仍至少持有一颗骰子的玩家。<br>
@@ -563,7 +563,7 @@
 /obj/item/storage/pill_bottle/dice/liars_dice/proc/show_rules(mob/living/user)
 	if(!user)
 		return
-	user << browse(liars_dice_rules_text, "window=liars_dice_rules;size=700x520")
+	user << browse(liars_dice_rules_text, "window=liars_dice_rules;file=liars_dice_rules.html;size=700x520") // 自定义修改：指定 HTML 文件名，让客户端渲染规则页。
 
 /obj/item/storage/pill_bottle/dice/liars_dice/PopulateContents()
 	for(var/i in 1 to 5)
