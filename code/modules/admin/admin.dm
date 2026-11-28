@@ -322,6 +322,9 @@
 		body += "<A href='?_src_=holder;[HrefToken()];heal_blood_sub100=[REF(M)]'>-100</A> | "
 		body += "<A href='?_src_=holder;[HrefToken()];heal_blood_set=[REF(M)]'>设置数值</A>"
 		body += "<br><br>"
+		//鼠木编辑 - 治疗面板显示
+		body += render_z121_heal_panel_conditions(H)
+		//鼠木编辑 - 治疗面板显示结束
 		
 		// Overall Damage (no label)
 		body += "毒素：<A href='?_src_=holder;[HrefToken()];heal_edit_overall=[REF(M)];damage_type=toxin'>[H.getToxLoss()]</A> | "
@@ -400,6 +403,12 @@
 		return TRUE
 	
 	switch(href_list["heal_action"])
+		//鼠木编辑 - 治疗面板
+		if("z121_vitals")
+			if(ishuman(target))
+				handle_z121_heal_panel_conditions(target, href_list)
+		//鼠木编辑 - 治疗面板结束
+
 		if("full_heal")
 			target.fully_heal(admin_revive = TRUE)
 			message_admins(span_danger("管理员 [key_name_admin(usr)] 完全治愈了 [key_name_admin(target)]！"))
