@@ -172,3 +172,11 @@
 	result = /obj/item/storage/backpack/rogue/backpack/trader
 	reqs = list(/obj/item/natural/hide/cured = 3, /obj/item/natural/fibers = 1)
 	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/leather/container/scabbard/gwstrap/nodachi
+	name = "野太刀鞘"
+	result = /obj/item/rogueweapon/scabbard/gwstrap/nodachi
+	reqs = list(
+		/obj/item/natural/hide/cured = 2,
+		/obj/item/natural/fibers = 1)
+	craftdiff = 2
