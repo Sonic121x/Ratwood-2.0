@@ -4,6 +4,7 @@
 /datum/species/anthromorphsmall
 	name = "Critterkin"
 	id = "anthromorphsmall"
+	race_groups = list("Beastvolk")
 	desc = "<b>小兽裔</b><br>\
 	一种与兽裔相似的种族，只是身型显著更小。\
 	有时被那些不尊重小个子的家伙用贬称\"害虫民\"来称呼。<br>\

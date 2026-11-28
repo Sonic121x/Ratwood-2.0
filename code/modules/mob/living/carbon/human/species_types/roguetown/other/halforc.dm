@@ -4,6 +4,7 @@
 /datum/species/halforc
 	name = "Half Orc"
 	id = "halforc"
+	race_groups = list("Humen", "Ogroid")
 	desc = "<b>半兽人</b><br>\
 	数世纪以来，铁面氏族走上了统一旗下所有兽人的征途，\
 	被击溃的兽人部落失去了他们的男丁，战争寡妇流散至边远之地。\

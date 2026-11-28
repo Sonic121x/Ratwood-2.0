@@ -222,12 +222,14 @@
 				if(WLENGTH_GREAT)
 					html += "巨长<br>"
 
-		if(bookweapon.has_altgrip_modes())
-			html += "\n<b>握法：变换握法（右键／B 键／Ctrl＋滚轮）</b><br>"
+		if(length(initial(bookweapon.alt_grips)))
+			html += "\n<b>握法：变换握法（右键／快捷键(B)／Ctrl＋滚轮）</b><br>"
+		/* Disabled: needs a real item, bookweapon is only a type path here.
 			var/list/alt_grip_lines = bookweapon.get_altgrip_lines(src, user)
 			if(length(alt_grip_lines))
 				for(var/alt_grip_line in alt_grip_lines)
 					html += "[alt_grip_line]<br>"
+		*/
 		if(bookweapon.gripped_intents)
 			html += "\n<b>双手：是</b><br>"
 

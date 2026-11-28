@@ -4,6 +4,7 @@
 /datum/species/dwarf/mountain
 	name = "Dwarf"
 	id = "dwarfm"
+	race_groups = list("Dwarf")
 	clothes_id = "dwarf"
 	desc = "<b>矮人</b><br>\
 	一个骄傲而强壮的矮个子山地种族，\

@@ -138,9 +138,9 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/voting_popup = TRUE
 	var/compliance_notifs = TRUE
 	var/skillcap_notifs = TRUE
-	var/restricted_species_pref = null
 	var/wildshape_name = TRUE
-	var/xenophobe_pref = 0
+	var/list/species_filter = list()
+	var/species_blacklist = TRUE
 
 	var/list/custom_names = list()
 	var/preferred_ai_core_display = "Blue"
@@ -351,14 +351,16 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/redolent_type = REDOLENT_SMELL_NEUTRAL
 	var/redolent_scent = ""
 
-	var/setspouse = ""
 	var/gender_choice = ANY_GENDER
+	var/list/random_match = list()
+	var/random_match_on = FALSE
+	var/take_house_name = FALSE
+	var/datum/family_board_menu/family_menu
 
 	var/static/default_cmusic_type = /datum/combat_music/default
 	var/datum/combat_music/combat_music
 	var/combat_music_helptext_shown = FALSE
 
-	var/family = FAMILY_NONE
 
 	var/crt = FALSE
 	var/grain = TRUE
@@ -1490,6 +1492,12 @@ GLOBAL_LIST_EMPTY(chosen_names)
 		else
 			to_chat(usr, span_love("- 您已成功<b>通过年龄验证！</b>"))
 
+	else if(href_list["preference"] == "family_board")
+		if(!family_menu)
+			family_menu = new(src)
+		family_menu.handle_topic(user, href_list)
+		family_menu.show(user)
+		return
 	else if(href_list["preference"] == "culinary")
 		show_culinary_ui(user)
 		return
@@ -1737,7 +1745,6 @@ GLOBAL_LIST_EMPTY(chosen_names)
 								to_chat(user, "在像普赛多尼亚这样致命的地方，老年人堪称奇迹……或者是惯常特权阶层的受益者。（-1 力量，-2 速度，-1 感知，-2 体质，+3 智力，+1 幸运）")
 						// LETHALSTONE EDIT END
 						ResetJobs()
-						family = FAMILY_NONE
 						to_chat(user, "<font color='red'>职业已重置。</font>")
 
 				if("map_preference")
@@ -2495,31 +2502,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 						domhand = 2
 					else
 						domhand = 1
-				if("family")
-					var/list/famtree_options_list = list(FAMILY_NONE, FAMILY_PARTIAL, FAMILY_NEWLYWED, "向我解释这个")
-					if(age != AGE_ADULT)
-						famtree_options_list = list(FAMILY_NONE, FAMILY_PARTIAL, FAMILY_NEWLYWED, FAMILY_FULL, "向我解释这个")
-					var/new_family = tgui_input_list(user, "选择您英雄的羁绊", "血浓于水", famtree_options_list, family)
-					if(new_family == "向我解释这个")
-						to_chat(user, span_purple("\
-						--[FAMILY_NONE] 将禁用此功能。<br>\
-						--[FAMILY_PARTIAL] 将根据您的物种将您分配为当地家族的后代。如果您年龄大于 ADULT，此功能将改为将您分配为当地家族的姑妈或叔父。<br>\
-						--[FAMILY_NEWLYWED] 为您分配一个配偶，而不将您添加到家族中。设置配偶将优先将您与另一个具有相同设置配偶名称的新婚配对。<br>\
-						--[FAMILY_FULL] 将尝试将您分配为王国/城镇中某个当地家族的女族长或族长。设置配偶将阻止 \
-						设置配偶 = 无的玩家与您匹配，除非他们的名称等于您的设置配偶。"))
-
-					else if(new_family)
-						family = new_family
-						setspouse = null
-						gender_choice = ANY_GENDER
-						xenophobe_pref = 0
 				//Setspouse is part of the family subsystem. It will check existing families for this character and attempt to place you in this family.
-				if("setspouse")
-					var/newspouse = tgui_input_text(user, "输入另一位英雄的身份", "至死不渝")
-					if(newspouse)
-						setspouse = newspouse
-					else
-						setspouse = null
 				//Gender_choice is part of the family subsytem. It will check existing families members with the same preference of this character and attempt to place you in this family.
 				if("gender_choice")
 					// If pronouns are neutral, lock to ANY_GENDER
@@ -2531,26 +2514,6 @@ GLOBAL_LIST_EMPTY(chosen_names)
 						var/new_gender_choice  = tgui_input_list(user, "选择您英雄的偏好", "相爱相惜", gender_choice_option_list, gender_choice)
 						if(new_gender_choice)
 							gender_choice = new_gender_choice
-				if("species_choice")
-					var/list/restriction_options = list("无限制", "同一种族", "选择特定种族")
-					var/choice = tgui_input_list(user, "选择配偶种族限制", "种族限制", restriction_options)
-					if(choice == "无限制")
-						xenophobe_pref = 0
-						restricted_species_pref = null
-						to_chat(user, "配偶种族无限制。")
-					else if(choice == "同一种族")
-						xenophobe_pref = 1
-						restricted_species_pref = null
-						to_chat(user, "配偶种族将限制为您的种族。")
-					else if(choice == "选择特定种族")
-						var/list/available_races = list()
-						for(var/race_name in GLOB.roundstart_races)
-							available_races[get_species_display_name(race_name)] = race_name
-						var/selected_race = tgui_input_list(user, "选择允许的配偶种族", "物种选择", available_races)
-						if(selected_race)
-							xenophobe_pref = 2
-							restricted_species_pref = available_races[selected_race]
-							to_chat(user, "配偶种族将限制为 [selected_race]。")
 				if("hotkeys")
 					hotkeys = !hotkeys
 					if(hotkeys)
@@ -2827,6 +2790,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 						if(!load_character(choice))
 							random_character(null, FALSE, FALSE)
 							save_character()
+						SSfamilytree.RestoreAd(src)
 
 				if("tab")
 					if (href_list["tab"])
@@ -3031,11 +2995,14 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	character.set_patron(selected_patron)
 	character.backpack = backpack
 
-	character.familytree_pref = family
 	character.gender_choice_pref = gender_choice
-	character.setspouse = setspouse
-	character.xenophobe = xenophobe_pref
-	character.restricted_species = restricted_species_pref
+	if(parent)
+		character.family_id = "[parent.ckey]/[default_slot]"
+	if(random_match_on)
+		character.random_match = random_match.Copy()
+	character.species_filter = species_filter.Copy()
+	character.species_blacklist = species_blacklist
+	character.take_house_name = take_house_name
 
 	character.jumpsuit_style = jumpsuit_style
 

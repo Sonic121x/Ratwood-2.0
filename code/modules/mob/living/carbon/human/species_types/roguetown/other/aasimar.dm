@@ -4,6 +4,7 @@
 /datum/species/aasimar
 	name = "Aasimar"
 	id = "aasimar"
+	race_groups = list("Humen")
 	desc = "<b>亚斯玛尔</b><br>\
 	亚斯玛尔诞生于人类与天使之间罕见的结合。\
 	他们身上多种多样的身体特征都标志着天界触碰的痕迹。\

@@ -4,6 +4,7 @@
 /datum/species/dwarf/gnome
 	name = "Gnome"
 	id = "gnome"
+	race_groups = list("Dwarf")
 	desc = "<b>侏儒</b><br>\
 	侏儒是身材矮小精致的生灵，以思维敏捷和机智著称。<br>\
 侏儒天生好奇心旺盛，倾向于奥术探索、工艺制造和教导他人。\

@@ -4,6 +4,7 @@
 /datum/species/elf/dark
 	name = "Dark Elf"
 	id = "elfd"
+	race_groups = list("Elf")
 	desc = "<b>黑暗精灵</b><br>\
 	\"精灵\"是一个泛称，指那些可将血脉追溯至古老神秘的\
 	雪精灵的高个子尖耳人形生物。\

@@ -4,6 +4,7 @@
 /datum/species/akula
 	name = "Axian"
 	id = "akula"
+	race_groups = list("Beastvolk")
 	desc = "<b>阿克西安</b><br>\
 	阿克西安人是骄傲的鲨形民族，其传承根植于海上贸易、逃税与海盗行当。\
 	他们以精神坚韧、崇尚繁荣的商业活动闻名，却也因对贵族和税收深恶痛绝而声名狼藉，\

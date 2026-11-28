@@ -4,6 +4,7 @@
 /datum/species/human/halfelf
 	name = "Half-Elf"
 	id = "helf"
+	race_groups = list("Humen", "Elf")
 	desc = "<b>半精灵</b><br>\
 	精灵与人类的子女，半精灵通常被保守观念者所排斥。\
 	然而随着种族间的紧张关系缓和，半精灵的出生率持续攀升。\

@@ -107,7 +107,7 @@
 	sew_threshold = 20
 	mob_overlay = "cut"
 	can_sew = TRUE
-	can_cauterize = FALSE
+	can_cauterize = TRUE
 	severity_names = list(
 		"浅层" = 2,
 		"深层" = 4,

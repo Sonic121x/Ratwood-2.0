@@ -1,6 +1,7 @@
 /datum/species/ooze
 	name = "Ooze"
 	id = "ooze"
+	race_groups = list("Construct")
 	desc = "<b>软泥</b><br>\
 	在岩丘公国的地牢与废墟中，古老与新鲜的尸体遍布地面。\
 	随着腐化出现在我们的领域，自然界形成了一种反应性物质——软泥。\

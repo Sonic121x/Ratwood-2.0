@@ -7,6 +7,7 @@
 /datum/species/dullahan
 	name = "Revenant"
 	id = "revenant"
+	race_groups = list("Humen", "Beastvolk")
 	desc = "<b>还魂者</b><br>\
 	还魂者乃是死后重返人世、以某种方式继续\"活着\"之人。他们的起源尚不为人知，但许多人坚信他们诞生于普赛多尼亚的腐朽与衰败。\
 	无法真正安息，却心智全然清醒。能够通过未知的奥术手段分离头颅，他们常常四处漂泊，因其来历不明且遭到教会和各地大众的排斥。"

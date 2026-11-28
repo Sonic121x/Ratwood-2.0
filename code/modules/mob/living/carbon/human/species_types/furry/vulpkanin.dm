@@ -4,6 +4,7 @@
 /datum/species/vulpkanin
 	name = "Venardine"
 	id = "vulpkanin"
+	race_groups = list("Beastvolk")
 	desc = "<b>维纳丁</b> <br>\
 	维纳丁是一个形似狐狸的兽裔种族，大多数来自\
 	与铁锤堡接壤的沃夫克海姆王国。不过也有一些维纳丁部落\

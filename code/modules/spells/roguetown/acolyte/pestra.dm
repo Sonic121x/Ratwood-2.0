@@ -49,6 +49,11 @@
 			if(150 to INFINITY)
 				to_chat(user, span_necrosis("这具身体已被毒素彻底摧残。"))
 
+		if(isconstruct(human_target) || isdoll(human_target))
+			to_chat(user, span_notice("Their body is that of metal and gears."))
+		if(isooze(human_target))
+			to_chat(user, span_notice("Their body is that of toxic goo."))
+
 		return TRUE
 	revert_cast()
 	return FALSE

@@ -4,6 +4,7 @@
 /datum/species/elf/wood
 	name = "Elf"
 	id = "elfw"
+	race_groups = list("Elf")
 	desc = "<b>精灵</b><br>\
 	\"精灵\"是一个泛称，指那些可将血脉追溯至古老神秘的雪精灵的高个子尖耳人形生物。\
 	这个特定的精灵亚种是大多数人在听到这个词时首先想到的形象，\

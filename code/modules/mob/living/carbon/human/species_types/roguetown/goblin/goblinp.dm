@@ -4,6 +4,7 @@
 /datum/species/goblinp
 	name = "Goblin"
 	id = "goblinp"
+	race_groups = list("Ogroid")
 	desc = "<b>哥布林</b><br>\
 	机灵与固执是哥布林为人称道的两种品质——阴谋诡计和自私自利则不太受欢迎。堕落诸神将他们用作恶意的化身，派出\
 	毫无心智、被奴役的哥布林大军从月之门中攻击文明世界。这使得普通的哥布林类人躲藏在隐秘的部落中，\

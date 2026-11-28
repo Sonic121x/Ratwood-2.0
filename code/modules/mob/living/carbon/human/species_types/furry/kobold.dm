@@ -4,6 +4,7 @@
 /datum/species/kobold
 	name = "Kobold"
 	id = "kobold"
+	race_groups = list("Reptilian")
 	desc = "<b>狗头人</b><br>\
 	狗头人是游牧部族，以身材矮小和行动迅捷著称。\
 	他们偏好山地或地下洞穴系统，但也能适应新环境。\

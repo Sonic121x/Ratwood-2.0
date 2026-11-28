@@ -4,6 +4,7 @@
 /datum/species/lamia
 	name = "Lamia"
 	id = "lamia"
+	race_groups = list("Reptilian")
 	desc = "<b>拉弥亚</b><br>\
 	阿比索尔的怪物后代，蛇与人类的融合体，深海族裔与人鱼族。\
 	塞壬、美人鱼、纳迦等众多族群皆属于拉弥亚的范畴。虽可认为她们归属于登多尔，但他并未参与她们的创造。\

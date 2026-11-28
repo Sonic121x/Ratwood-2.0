@@ -4,6 +4,7 @@
 /datum/species/tieberian
 	name = "Tiefling"
 	id = "tiefling"
+	race_groups = list("Humen")
 	desc = "<b>提夫林</b><br>\
 	恶魔与凡俗种族结合的后代，是恶魔入侵凡间与黑暗契约的产物。\
 	他们的起源可追溯至大魔君维瑟林的恶魔入侵，他在被普赛顿阻止之前蹂躏了凡间土地与人民。\

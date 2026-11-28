@@ -2,7 +2,7 @@
 /// The chance to damage an item when entirely unskilled.
 #define BASE_FAIL_CHANCE 60
 /// The (combined) skill level at or above which repairs can't fail.
-#define SKILL_NO_FAIL SKILL_LEVEL_APPRENTICE //原 SKILL_LEVEL_APPRENTICE
+#define SKILL_NO_FAIL SKILL_LEVEL_JOURNEYMAN
 /// Each level in tanning/sewing reduces the skill chance by this much, so that at SKILL_NO_FAIL you don't fail anymore.
 #define FAIL_REDUCTION_PER_LEVEL BASE_FAIL_CHANCE / SKILL_NO_FAIL
 /// The damage done to an item when sewing fails while entirely unskilled.
@@ -243,7 +243,7 @@
 		var/bleedreduction = max((doctor_skill / 2), 1)	//Half of medicine skill, or 1, whichever is higher.
 		target_wound.set_bleed_rate(max( (target_wound.bleed_rate - bleedreduction), 0))
 		if(target_wound.bleed_rate == 0 && !informed)
-			patient.visible_message(span_smallgreen("[patient]的[affecting.name]上那处[(target_wound.name)]在闭合前滴下最后一滴血。"), span_smallgreen("从[target_wound]涌出的温热搏动渐渐平息，不再流血了。"))
+			patient.visible_message(span_smallgreen("最后一滴血从[patient]的[affecting?.name || "身体"]上的[target_wound.name]渗出，随后伤口闭合。"), span_smallgreen("从[target_wound]涌出的温热搏动渐渐平息，不再流血了。"))
 			informed = TRUE
 		if(istype(target_wound, /datum/wound/dynamic))
 			var/datum/wound/dynamic/dynwound = target_wound

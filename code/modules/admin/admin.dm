@@ -292,7 +292,7 @@
 /datum/admins/proc/show_heal_panel(mob/living/M)
 	log_admin("[key_name(usr)] opened heal panel for [key_name(M)]")
 	
-	if(!M)
+	if(!isliving(M))
 		return
 
 	var/body = "<html><meta charset='UTF-8'><head><title>Heal - [M.name]</title>"

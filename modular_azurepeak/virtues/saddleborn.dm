@@ -3,7 +3,7 @@
 	desc = "我擅长驾驭各种动物，并与其中一只建立了格外深厚的联系，得以在远处呼唤它前来，也能在需要时将其遣走。若我珍爱的伙伴死去，我的心境将再也无法恢复。"
 	custom_text = "提供一项能力，可选择一种坐骑召到身边，并为其命名。贵族角色可以选择马匹。还会获得两项能力，用于将坐骑遣走并在需要时呼回（仅限户外）。若所选坐骑死亡，本轮剩余时间内心情-10（任何情况下都无法恢复）。"
 	added_traits = list(TRAIT_EQUESTRIAN)
-	added_stashed_items = list("马鞍" = /obj/item/natural/saddle)
+	added_stashed_items = list("马鞍" = /obj/item/natural/saddle, "苹果" = /obj/item/reagent_containers/food/snacks/grown/apple)
 	added_skills = list(
 		list(/datum/skill/misc/riding, SKILL_LEVEL_APPRENTICE, SKILL_LEVEL_APPRENTICE)
 	)

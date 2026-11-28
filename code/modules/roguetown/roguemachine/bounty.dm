@@ -78,7 +78,7 @@
 		var/datum/browser/popup = new(user, "悬赏名单", "", 500, 300, src)
 		popup.set_content(consult_menu)
 		popup.open()
-		RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(user_moved))
+		RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(user_moved), override = TRUE)
 	else
 		say("当前没有有效悬赏。")
 

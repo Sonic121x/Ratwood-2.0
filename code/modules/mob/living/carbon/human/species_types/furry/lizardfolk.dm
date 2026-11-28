@@ -4,6 +4,7 @@
 /datum/species/lizardfolk
 	name = "Sissean"
 	id = "lizardfolk"
+	race_groups = list("Reptilian")
 	desc = "<b>西塞亚</b><br>\
 	西塞亚人是坚韧的蜥形民族，由于长期以来成为其他种族——尤其是人类和龙裔——的压迫和奴役目标，\
 	他们在同族间拥有一种独特的羁绊。他们以自身的韧性和适应力为傲，\

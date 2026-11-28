@@ -49,7 +49,7 @@
 	backl = /obj/item/gun/ballistic/firearm/flintgonne/fusil
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 	belt = /obj/item/storage/belt/rogue/leather
-	beltl = /obj/item/rogueweapon/scabbard/sword/z121_otavan_musketeer
+	beltl = /obj/item/rogueweapon/scabbard/sword
 	beltr = /obj/item/powderflask
 	head = /obj/item/clothing/head/roguetown/duelhat
 	neck = /obj/item/clothing/neck/roguetown/fencerguard
@@ -59,6 +59,7 @@
 	gloves = /obj/item/clothing/gloves/roguetown/otavan
 	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/otavan
 	shoes = /obj/item/clothing/shoes/roguetown/boots/otavan
+	r_hand = /obj/item/rogueweapon/sword/short/falchion
 	// 背包中的备用火药瓶替换为一袋八发铅弹，腰间仍保留火药瓶。
 	backpack_contents = list(
 		/obj/item/roguekey/mercenary = 1,
@@ -74,9 +75,3 @@
 	if(!visualsOnly)
 		// 游骑火枪手使用通用佣兵勋章，不归入巡战骑士团。
 		H.merctype = 0
-
-// 法刀出生时已经入鞘，不占用双手，也不改变普通剑鞘的行为。
-/obj/item/rogueweapon/scabbard/sword/z121_otavan_musketeer/Initialize(mapload)
-	. = ..()
-	sheathed = new /obj/item/rogueweapon/sword/short/falchion(src)
-	update_icon()

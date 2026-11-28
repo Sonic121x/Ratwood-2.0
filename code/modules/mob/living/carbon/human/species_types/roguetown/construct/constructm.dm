@@ -5,6 +5,7 @@
 /datum/species/construct/metal
 	name = "Metal Construct"
 	id = "constructm"
+	race_groups = list("Construct")
 	desc = "<b>金属构装体</b><br>\
 	工艺巅顶之作，金属构装体正如其名——完全由凡人之手打造。他们并非血肉之躯，而是冰冷的金属与奥术的结晶。据说构装体起源于齐佐的造物，他们来自遥远的南方虚空——一座伟大的工艺之城，那里居住着唯一能够理解构装体制造之法的技匠。出于某种原因，近来他们开始走出虚空。共鸣虹吸之子。<br>\
 	(+1 意志, -2 速度)<br>\

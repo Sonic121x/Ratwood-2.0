@@ -4,6 +4,7 @@
 /datum/species/lupian
 	name = "Lupian"
 	id = "lupian"
+	race_groups = list("Beastvolk")
 	desc = "<b>卢皮安</b><br>\
 	卢皮安是诺克的儿女。他们是一种形似沃尔夫的民族，来自世界北方地区。\
 	他们坚韧、机敏且随时准备战斗，凭借坚韧的毛发、\

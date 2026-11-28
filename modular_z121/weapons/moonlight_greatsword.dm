@@ -183,9 +183,10 @@
 		if(holder)
 			to_chat(holder, span_notice("月光大剑似乎在吸收月光的力量，剑身愈发明亮。"))
 			moonlight_prompt_sent = TRUE
-
+/*
 // 巨型武器背带通常复制剑的物品图；月光大剑单独使用背挂图。
 /obj/item/rogueweapon/scabbard/gwstrap/getmoboverlay(tag, prop, behind = FALSE, mirrored = FALSE)
 	if(tag == "onback" && istype(sheathed, /obj/item/rogueweapon/greatsword/moonlight_greatsword))
 		return fcopy_rsc(sheathed.generateonmob(tag, prop, behind, mirrored, "moonlight3"))
 	return ..()
+*/

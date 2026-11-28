@@ -4,6 +4,7 @@
 /datum/species/dracon
 	name = "Drakian"
 	id = "dracon"
+	race_groups = list("Reptilian")
 	desc = "<b>龙裔</b><br>\
 	龙裔是一个骄傲而古老的种族，其血脉可追溯至远古巨龙。\
 	他们极力守护自己的血统，竭尽所能确保其不至扩散至本族之外，\

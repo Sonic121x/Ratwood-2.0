@@ -4,6 +4,7 @@
 /datum/species/demihuman
 	name = "Half-Kin"
 	id = "demihuman"
+	race_groups = list("Humen", "Beastvolk")
 	desc = "<b>半兽裔</b><br>\
 	半兽裔是一个高度多样化的族群。半兽裔的主要成因是\
 	兽裔种族与人类和精灵通婚，不过也有一些\

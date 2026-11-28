@@ -113,7 +113,12 @@
 	. = ..()
 	if(!.)
 		return
-	return length(bodypart.wounds)
+	var/can_help = FALSE
+	for(var/datum/wound/bleeder in bodypart.wounds)
+		if(bleeder.can_cauterize)
+			can_help = TRUE
+			break
+	return can_help
 
 /datum/surgery_step/cauterize/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)
 	display_results(user, target, span_notice("我开始烧灼[target][parse_zone(target_zone)]上的伤口……"),

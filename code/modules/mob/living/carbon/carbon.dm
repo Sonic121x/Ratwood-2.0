@@ -256,10 +256,9 @@
 								return
 						var/turf/start_T = get_turf(loc) //Get the start and target tile for the descriptors
 						var/turf/end_T = get_turf(target)
-						if(throwable_mob.cmode)
-							if(start_T.z != end_T.z && throwable_mob.mobility_flags & MOBILITY_STAND)
-								return
 						if(start_T && end_T)
+							if(throwable_mob.cmode && start_T.z != end_T.z && throwable_mob.mobility_flags & MOBILITY_STAND)
+								return
 							log_combat(src, throwable_mob, "投掷了", addition="从 [AREACOORD(start_T)] 的地块抓起，扔向 [AREACOORD(end_T)] 的地块")
 				else
 					thrown_thing = pulling

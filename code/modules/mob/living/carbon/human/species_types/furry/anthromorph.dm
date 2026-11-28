@@ -4,6 +4,7 @@
 /datum/species/anthromorph
 	name = "Wild-Kin"
 	id = "anthromorph"
+	race_groups = list("Beastvolk")
 	desc = "<b>兽裔</b><br>\
 	兽裔是一个高度多样化的族群，其中大多数是登多尔最初追随者的后裔，\
 	他们拒绝文明而选择深林生活。不过也有一部分起源于魔法异常或诅咒，无论是否神性所致。<br>\

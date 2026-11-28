@@ -346,14 +346,12 @@
 	var/static/list/burst_dirs = list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
 	for(var/i in 1 to charge_frag_count)
 		var/fdir = pick(burst_dirs)
-		var/turf/ftarget = get_ranged_target_turf(from, fdir, 4)
 		var/obj/projectile/magic/gravel_blast/frag = new(from)
 		frag.damage = charge_frag_damage
 		frag.range = 4
 		frag.ricochets_max = 0
 		frag.firer = H
-		frag.preparePixelProjectile(ftarget, from)
-		frag.fire()
+		frag.fire(dir2angle(fdir))
 
 /datum/action/cooldown/spell/tumult/proc/riposte_counter(mob/living/carbon/human/H, mob/living/L)
 	H.visible_message(span_warning("[L]稳住身形，拨开[H]的冲锋——[H]摔倒，露出了破绽！"), span_userdanger("[L]挡住了我的冲锋——我被甩开，露出了破绽！"))

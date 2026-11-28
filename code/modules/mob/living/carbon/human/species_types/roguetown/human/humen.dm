@@ -4,6 +4,7 @@
 /datum/species/human/northern
 	name = "Humen"
 	id = "humen"
+	race_groups = list("Humen")
 	desc = "<b>人类</b><br>\
 	人类（或称\"人族\"）是哭泣之神最古老的造物。他们以\
 	坚韧不拔和压倒性的人口数量著称，人类是这片土地上最常见的种族，\
