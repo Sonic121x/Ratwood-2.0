@@ -4,6 +4,7 @@
 #include "spells/action_support.dm"
 #include "spells/independent_rewards.dm"
 #include "stat_helpers.dm"
+#include "mouse_side_keybindings.dm"
 #include "spells/patron_symbols.dm"
 #include "spells/upstream_type_bridges.dm"
 

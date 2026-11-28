@@ -973,6 +973,8 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 
 	var/ab = FALSE
 	var/list/L = params2list(params)
+	if(mouse_side_key(L))
+		return // 自定义修改：侧键触发快捷动作后不再点击地图或 HUD。
 
 	var/dragged = L["drag"]
 	if(dragged && !L[dragged])

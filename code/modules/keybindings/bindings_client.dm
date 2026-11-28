@@ -3,7 +3,9 @@
 /client/verb/keyDown(_key as text)
 	set instant = TRUE
 	set hidden = TRUE
+	press_key(_key) // 自定义修改：键盘与鼠标侧键共用按下事件处理。
 
+/client/proc/press_key(_key, exact_binding = FALSE) // 自定义修改：侧键传入按下时已解析的组合键。
 	client_keysend_amount += 1
 
 	var/cache = client_keysend_amount
@@ -62,7 +64,7 @@
 		if("Alt", "Ctrl", "Shift")
 			full_key = "[AltMod][CtrlMod][ShiftMod]"
 		else
-			full_key = "[AltMod][CtrlMod][ShiftMod][_key]"
+			full_key = exact_binding ? _key : "[AltMod][CtrlMod][ShiftMod][_key]" // 自定义修改：避免给侧键组合重复添加修饰键。
 	var/movement = movement_keys[_key]
 	if(movement)
 		calculate_move_dir()
