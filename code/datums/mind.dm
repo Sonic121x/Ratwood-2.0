@@ -313,7 +313,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 		var/fjob = known_people[P]["FJOB"]
 		var/fgender = known_people[P]["FGENDER"]
 		var/fspecies = get_species_display_name(known_people[P]["FSPECIES"])
-		var/fage = known_people[P]["FAGE"]
+		var/fage = get_character_identity_display(known_people[P]["FAGE"])
 		var/fhouse = known_people[P]["FHOUSE"]
 		var/fheresy = known_people[P]["FHERESY"]
 		var/frank = known_people[P]["FRANK"]
@@ -329,7 +329,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 		if(fcolor && fjob)
 			if (fheresy)
 				contents +="<B><font color=#f1d669>[fheresy]</font></B> "
-			contents += "<B><font color=#[fcolor];text-shadow:0 0 10px #8d5958, 0 0 20px #8d5958, 0 0 30px #8d5958, 0 0 40px #8d5958, 0 0 50px #e60073, 0 0 60px #8d5958, 0 0 70px #8d5958;>[P]</font></B>[ficon]<BR>[fjob],[fspecies], [capitalize(fgender)], [fage][fhouse ? "<br><b>House [fhouse]</b>" : ""]"
+			contents += "<B><font color=#[fcolor];text-shadow:0 0 10px #8d5958, 0 0 20px #8d5958, 0 0 30px #8d5958, 0 0 40px #8d5958, 0 0 50px #e60073, 0 0 60px #8d5958, 0 0 70px #8d5958;>[P]</font></B>[ficon]<BR>[fjob]，[fspecies]，[fgender]，[fage][fhouse ? "<br><b>[trim(fhouse)]家族</b>" : ""]"
 			contents += "<BR>"
 	var/datum/browser/popup = new(user, "PEOPLEIKNOW", "", 260, 400)
 	popup.set_content(contents)
@@ -1138,7 +1138,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 		if(user_area?.no_special_item_retrieval) // area does not allow fetching special items, return
 			return
 		if(user.mind.special_items && user.mind.special_items.len)
-			var/item = input(user, "我要取出什么？", "储藏") as null|anything in user.mind.special_items
+			var/item = select_stashed_item(user, user.mind.special_items)
 			if(item)
 				if(user.Adjacent(host_object))
 					if(user.mind.special_items[item])

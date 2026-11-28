@@ -410,7 +410,7 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 
 	// 骑乘魔法扫帚时无法施法（扫帚本身不是坐骑，需单独拦截），见 modular_z121/items/flying_broom.dm。
 	if(is_riding_flying_broom(user))
-		to_chat(user, span_warning("I can't focus on casting while riding the broom!"))
+		to_chat(user, span_warning("骑着扫帚时，我没法集中精神施法！"))
 		return FALSE
 
 	if(HAS_TRAIT(user, TRAIT_CURSE_NOC))

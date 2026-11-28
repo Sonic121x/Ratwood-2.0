@@ -1238,7 +1238,7 @@ GLOBAL_LIST_INIT(loadout_items, init_subtypes(/datum/loadout_item))
 	path = /obj/item/clothing/ring/band
 
 /datum/loadout_item/bronze_wedding_band
-	name = "bronze wedding band"
+	name = "青铜婚戒"
 	path = /obj/item/clothing/ring/band/bronze
 
 /datum/loadout_item/chaperon

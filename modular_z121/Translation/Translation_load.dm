@@ -1,8 +1,10 @@
 #include "interface/choices.dm"
+#include "interface/combat_logs.dm"
 #include "interface/gallery.dm"
 #include "interface/sound_settings.dm"
 
 #include "character/preferences.dm"
+#include "character/relationships.dm"
 #include "character/mannerisms.dm"
 #include "character/stats.dm"
 #include "character/species.dm"

@@ -44,25 +44,25 @@
 /datum/component/holster/proc/examine_check(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 	if(sheathed)
-		examine_list += span_notice("The sheath is occupied by [sheathed]. Left-click to pull it out.")
+		examine_list += span_notice("鞘里装着[sheathed]。左键即可将它拔出。")
 
 /datum/component/holster/proc/weapon_check(mob/living/user, obj/A)
 	if(sheathed)
-		to_chat(user, span_warning("The sheath is occupied!"))
+		to_chat(user, span_warning("鞘里已经有东西了！"))
 		return FALSE
 	if(HAS_TRAIT(A, TRAIT_NODROP))
-		to_chat(user, span_warning("I cannot sheath [A] while it is bound."))
+		to_chat(user, span_warning("[A]还被束缚着，我无法将它收入鞘中。"))
 		return FALSE
 	if(valid_blade && !istype(A, valid_blade))
-		to_chat(user, span_warning("[A] won't fit in there."))
+		to_chat(user, span_warning("[A]塞不进去。"))
 		return FALSE
 	if(valid_blades)
 		if(!(A.type in valid_blades))
-			to_chat(user, span_warning("[A] won't fit in there."))
+			to_chat(user, span_warning("[A]塞不进去。"))
 			return FALSE
 	if(invalid_blades)
 		if(A.type in invalid_blades)
-			to_chat(user, span_warning("[A] won't fit in there."))
+			to_chat(user, span_warning("[A]塞不进去。"))
 			return FALSE
 	return TRUE
 
@@ -72,8 +72,8 @@
 	var/obj/item/I = parent
 	if(I.obj_broken)
 		user.visible_message(
-			span_warning("[user] begins to force [A] into [I]!"),
-			span_warningbig("I begin to force [A] into [I].")
+			span_warning("[user]开始把[A]硬塞进[I]！"),
+			span_warningbig("我开始把[A]硬塞进[I]。")
 		)
 		if(!move_after(user, 2 SECONDS, target = user))
 			return FALSE
@@ -92,8 +92,8 @@
 
 	if(!sheathing_from_belt)
 		user.visible_message(
-			span_notice("[user] sheathes [A] into [I]."),
-			span_notice("I sheathe [A] into [I].")
+			span_notice("[user]将[A]收入[I]中。"),
+			span_notice("我将[A]收入[I]中。")
 		)
 
 	playsound(I, sheathe_sound, 100, TRUE)
@@ -105,8 +105,8 @@
 	var/obj/item/I = parent
 	if(I.obj_broken)
 		user.visible_message(
-			span_warning("[user] begins to force [sheathed] out of [I]!"),
-			span_warningbig("I begin to force [sheathed] out of [I].")
+			span_warning("[user]开始把[sheathed]硬从[I]里拽出来！"),
+			span_warningbig("我开始把[sheathed]硬从[I]里拽出来。")
 		)
 		if(!move_after(user, 2 SECONDS, target = user))
 			return FALSE
@@ -123,8 +123,8 @@
 	I.update_icon(user)
 
 	user.visible_message(
-		span_warning("[user] draws out of [I]!"),
-		span_notice("I draw out of [I].")
+		span_warning("[user]从[I]中拔出了武器！"),
+		span_notice("我从[I]中拔出了武器。")
 	)
 	return TRUE
 

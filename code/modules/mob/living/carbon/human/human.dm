@@ -146,7 +146,7 @@
 	toggle_keen_ears()
 
 /mob/living/carbon/human/verb/relationship_board()
-	set name = "Relationship Board"
+	set name = "人际关系公告板"
 	set category = "IC"
 	if(!client)
 		return

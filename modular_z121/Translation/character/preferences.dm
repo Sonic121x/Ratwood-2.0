@@ -9,6 +9,7 @@
 	if(!istext(value))
 		return value
 	var/static/list/labels = list(
+		"Relationships" = "人际关系",
 		"Identity" = "身份", "Origin" = "出身", "Customization" = "个性定制", "Character Settings" = "角色设置", "Voice" = "声音", "Body" = "身体", "Flavor Text" = "角色描述",
 		"Name" = "姓名", "Nickname" = "昵称", "Nickname Color" = "昵称颜色", "Pronouns" = "代词", "Age" = "年龄", "Race" = "种族", "Race Title" = "种族称谓", "Race Bonus" = "种族加成",
 		"Body Type" = "体型", "Dominance" = "惯用手", "Family" = "家族", "Preferred Spouse" = "期望配偶", "Preferred Parent" = "期望父母", "Preferred Gender" = "期望性别", "Restrict Species" = "种族限制",
@@ -31,6 +32,7 @@
 	var/static/list/labels = list(
 		AGE_ADULT = "壮年", AGE_MIDDLEAGED = "中年", AGE_OLD = "老年", AGE_IMMORTAL = "永生",
 		HE_HIM = "他", SHE_HER = "她", THEY_THEM = "TA（男装）", THEY_THEM_F = "TA（女装）", IT_ITS = "它", HE_HIM_F = "他（女装）", SHE_HER_M = "她（男装）",
+		"they/them" = "TA",
 		VOICE_TYPE_MASC = "男声", VOICE_TYPE_FEM = "女声", VOICE_TYPE_ANDR = "中性声音"
 	)
 	return labels[value] || value

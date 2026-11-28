@@ -754,7 +754,7 @@
 	// 骑乘魔法扫帚时无法施法；扫帚自带的上下楼按钮（Fly Up / Fly Down）除外。
 	if(is_riding_flying_broom(owner) && !istype(src, /datum/action/cooldown/spell/fly_up) && !istype(src, /datum/action/cooldown/spell/fly_down))
 		if(feedback)
-			owner.balloon_alert(owner, "too distracted riding to cast!")
+			owner.balloon_alert(owner, "骑着扫帚，无法专心施法！")
 		return FALSE
 
 	if((spell_requirements & SPELL_REQUIRES_CMODE) && !owner.cmode)

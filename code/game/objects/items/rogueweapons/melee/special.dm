@@ -512,7 +512,7 @@
 				S.user_harvests(user)
 				reaped++
 	if(!reaped)
-		to_chat(user, span_warning("There is nothing to harvest!"))
+		to_chat(user, span_warning("前方没有可以收割的作物！"))
 		return
 	playsound(center, 'sound/items/seed.ogg', 100, FALSE)
 

@@ -1,6 +1,6 @@
 /datum/sex_action/perverse_earfuck
 	parent_type = /datum/sex_action/perverse
-	name = "Fuck their ear"
+	name = "耳交"
 	check_same_tile = FALSE
 	user_sex_part = SEX_PART_COCK
 	user_needs_functional = TRUE
@@ -8,7 +8,7 @@
 	var/wound_type = /datum/wound/fracture/head/ears
 
 /datum/sex_action/perverse_earfuck/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.sexcon_action_message(span_notice("[user] nestles [user.p_their()] cock against [target]'s ear, pressing forwards into [target.p_their()] ear canal with a firm push."))
+	user.sexcon_action_message(span_notice("[user]把阴茎抵在[target]的耳边，用力向前一挺，挤进了耳道。"))
 
 /datum/sex_action/perverse_earfuck/proc/apply_force_effects(mob/living/carbon/human/target, force)
 	var/obj/item/organ/ears/ears = target.getorganslot(ORGAN_SLOT_EARS)
@@ -49,13 +49,13 @@
 	var/message
 	switch(user.sexcon.force)
 		if(SEX_FORCE_LOW)
-			message = "A warm, wet feeling comes over [target]'s head as [user]'s cock [user.sexcon.get_generic_force_adjective()] slides through [target.p_their()] ear. The feeling is unnatural, like an unscratchable itch that slowly spreads through [target]'s head."
+			message = "[user]的阴茎[user.sexcon.get_generic_force_adjective()]滑入[target]的耳道。一股湿热漫过[target]的头，像是一阵挠不到的怪痒，在脑袋里慢慢散开。"
 		if(SEX_FORCE_MID)
-			message = "[target] abruptly shudders across [target.p_their()] entire body as [user]'s cock [user.sexcon.get_generic_force_adjective()] intrudes inside [target.p_their()] ear canal. A dizzying sense of delirium washes over [target] as [target.p_their()] eyelids involuntarily twitch."
+			message = "[user]的阴茎[user.sexcon.get_generic_force_adjective()]挤进[target]的耳道，[target]猛地浑身一颤，随即一阵头晕目眩，眼皮不由自主地抽动起来。"
 		if(SEX_FORCE_HIGH)
-			message = "[user] works [user.p_their()] cock through [target]'s eardrums, [user.sexcon.get_generic_force_adjective()] driving into the inner ear with a grinding pressure, snuffing out [target]'s hearing with a slick, wet noise."
+			message = "[user]的阴茎穿过[target]的耳膜，[user.sexcon.get_generic_force_adjective()]向内耳挤压、碾磨。一声湿响过后，[target]什么也听不见了。"
 		if(SEX_FORCE_EXTREME to SEX_FORCE_LUDICROUS)
-			message = "Overwhelming heat floods [target]'s head as [user] [user.sexcon.get_generic_force_adjective()] drills the ruined cavity. Anything coherent left in [target]'s brain drowns in the sensation of [user]'s cock using [target.p_their()] skull."
+			message = "[user][user.sexcon.get_generic_force_adjective()]钻入那残破的耳腔，灼热感涌遍了[target]的头。[target]只感觉到[user]的阴茎在颅内抽动，再也拼不出一个完整的念头。"
 	user.sexcon_action_message(user.sexcon.spanify_force(message))
 	user.sexcon.oralcourse_noise(target, TRUE)
 	user.sexcon.perform_sex_action(target, 2, 0, TRUE)
@@ -65,7 +65,7 @@
 	return TRUE
 
 /datum/sex_action/perverse_earfuck/on_finish(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.sexcon_action_message(span_notice("[user] pulls [user.p_their()] cock from [target]'s head, trailing bloodied wetness in its wake."))
+	user.sexcon_action_message(span_notice("[user]从[target]的耳中抽出阴茎，带出一道混着血的湿痕。"))
 
 /datum/sex_action/perverse_earfuck/is_finished(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	return user.sexcon.finished_check() || target.sexcon.finished_check()

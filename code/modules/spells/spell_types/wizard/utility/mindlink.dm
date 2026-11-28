@@ -77,7 +77,7 @@
 			second_target = HL
 
 	if(!first_target || !second_target) // a known name may have no living body to find
-		to_chat(user, span_warning("I cannot reach one of those minds!"))
+		to_chat(user, span_warning("我无法触及其中一人的心灵！"))
 		return FALSE
 
 	for(var/datum/mindlink/ML in GLOB.mindlinks)

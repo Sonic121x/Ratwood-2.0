@@ -465,7 +465,7 @@
 		return
 	var/turf/fire_turf = get_turf(src)
 	if(!fire_turf)
-		stack_trace("WARNING: Projectile [type] fired from nullspace!")
+		stack_trace("警告：投射物 [type] 从地图之外（nullspace）发射！")
 		qdel(src)
 		return
 	if(!starting)
@@ -486,7 +486,7 @@
 		setAngle(Angle + ((rand() - 0.5) * spread))
 	if(isnull(Angle))	//Try to resolve through offsets if there's no angle set.
 		if(isnull(xo) || isnull(yo))
-			stack_trace("WARNING: Projectile [type] deleted due to being unable to resolve a target after angle was null!")
+			stack_trace("警告：投射物 [type] 的发射角度为空，且无法确定目标，已删除该投射物！")
 			qdel(src)
 			return
 		var/turf/target = locate(CLAMP(fire_turf.x + xo, 1, world.maxx), CLAMP(fire_turf.y + yo, 1, world.maxy), fire_turf.z)
@@ -740,7 +740,7 @@
 		xo = targloc.x - curloc.x
 		setAngle(Get_Angle(src, targloc) + spread)
 	else
-		stack_trace("WARNING: Projectile [type] fired without either mouse parameters, or a target atom to aim at!")
+		stack_trace("警告：发射投射物 [type] 时，既没有鼠标参数，也没有可瞄准的目标！")
 		qdel(src)
 
 #undef BUCKLE_PENALTY

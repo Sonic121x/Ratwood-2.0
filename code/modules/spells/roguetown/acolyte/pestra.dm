@@ -50,9 +50,9 @@
 				to_chat(user, span_necrosis("这具身体已被毒素彻底摧残。"))
 
 		if(isconstruct(human_target) || isdoll(human_target))
-			to_chat(user, span_notice("Their body is that of metal and gears."))
+			to_chat(user, span_notice("这具身体由金属和齿轮构成。"))
 		if(isooze(human_target))
-			to_chat(user, span_notice("Their body is that of toxic goo."))
+			to_chat(user, span_notice("这具身体由有毒的黏液构成。"))
 
 		return TRUE
 	revert_cast()

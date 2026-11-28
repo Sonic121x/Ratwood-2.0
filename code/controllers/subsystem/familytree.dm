@@ -335,7 +335,7 @@ SUBSYSTEM_DEF(familytree)
 	if(!H.random_match.len)
 		viable_spouses -= H
 	if(unmatched.len)
-		to_chat(H, span_notice("No random match yet for: [unmatched.Join(", ")]."))
+		to_chat(H, span_notice("随机匹配暂未找到以下关系的人选：[format_family_relations(unmatched)]。"))
 
 /datum/controller/subsystem/familytree/proc/AgeOK(relation, poster_age, other_age)
 	if(relation == "Parent")

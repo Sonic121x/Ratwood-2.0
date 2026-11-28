@@ -22,3 +22,17 @@
 		options[names[value] || value] = value
 	var/choice = input(user, prompt, "选择装备") as anything in options
 	return options[choice]
+
+/proc/select_stashed_item(mob/user, list/items)
+	if(items["Spectacles"] != /obj/item/clothing/mask/rogue/spectacles || user.client?.prefs?.resolve_loadout_to_name(items["Spectacles"]) == "Spectacles")
+		return input(user, "我要取出什么？", "储藏") as null|anything in items
+	var/list/options = list()
+	for(var/key in items)
+		var/label = key
+		if(key == "Spectacles")
+			label = "眼镜"
+			while((label in items) || (label in options))
+				label = "[label]（[key]）"
+		options[label] = key
+	var/choice = input(user, "我要取出什么？", "储藏") as null|anything in options
+	return choice ? options[choice] : null

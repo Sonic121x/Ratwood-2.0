@@ -1115,9 +1115,9 @@
 	var/sdamtype = damtype ? " (DAMTYPE: [uppertext(damtype)])" : ""
 	var/szone = zone ? " (ZONE: [uppertext(zone)])" : ""
 
-	var/postfix = "[sobject][saddition][sintent][sdamtype][szone][hp]"
+	var/postfix = what_done == "poisoned" ? format_poison_log_details(living_target, addition, sobject, "[sintent][sdamtype][szone]") : "[sobject][saddition][sintent][sdamtype][szone][hp]"
 
-	var/message = "has [what_done] [starget][postfix]"
+	var/message = what_done == "poisoned" ? "给[starget][ismob(target) ? "下了毒" : "涂上了毒"][postfix]" : "has [what_done] [starget][postfix]"
 	// one id shared by all three writes below, so the panels can tell three renderings of one hit from three hits.
 	// Keep these server generated, never built from player input
 	var/static/combat_event_counter = 0
@@ -1134,7 +1134,7 @@
 		log_seen_viewers(user, target, message, SEEN_LOG_ATTACK, event = event_id)
 
 	if(user != target)
-		var/reverse_message = "has been [what_done] by [ssource][postfix]"
+		var/reverse_message = what_done == "poisoned" ? "被[ssource][ismob(target) ? "下毒" : "涂上了毒"][postfix]" : "has been [what_done] by [ssource][postfix]"
 		target?.log_message(reverse_message, LOG_ATTACK, color = severe ? LOG_COLOR_SEVERE : LOG_COLOR_RECEIPT, log_globally=FALSE, meta = list(LOG_META_EVENT = event_id, LOG_META_ATTACKER = user_ckey, LOG_META_RECEIPT = TRUE))
 
 /// Numpad direction from witness to event: 8 north, 6 east, 3 southeast. One char, appended to a name like ^ v ~

@@ -800,7 +800,7 @@
 	display_category = ITEM_CAT_ARMOR_LEGS
 
 /datum/anvil_recipe/armor/steel/kneelpad
-	name = "Poleyns, Steel (+1 Steel)"
+	name = "钢制护膝，另需1块钢锭"
 	additional_items = list(/obj/item/ingot/steel)
 	created_item = /obj/item/clothing/under/roguetown/splintlegs/kneelpad
 	display_category = ITEM_CAT_ARMOR_LEGS
@@ -1558,21 +1558,21 @@
 	display_category = ITEM_CAT_ARMOR_BOOTS
 
 /datum/anvil_recipe/armor/mask_rogue_facemask_xylixmask
-	name = "xylixian mask"
+	name = "赛利克斯面具"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/clothing/mask/rogue/facemask/xylixmask
 	craftdiff = 2
 	display_category = ITEM_CAT_ARMOR_MASKS
 
 /datum/anvil_recipe/armor/mask_rogue_spectacles_sglasses
-	name = "smokey onyxa spectacles"
+	name = "烟色缟玛瑙眼镜"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/clothing/mask/rogue/spectacles/sglasses
 	craftdiff = 2
 	display_category = ITEM_CAT_ARMOR_MASKS
 
 /datum/anvil_recipe/armor/mask_rogue_spectacles_thin
-	name = "thin-lensed spectacles"
+	name = "薄镜片眼镜"
 	req_bar = /obj/item/ingot/iron
 	created_item = /obj/item/clothing/mask/rogue/spectacles/thin
 	craftdiff = 2

@@ -336,14 +336,14 @@
 				family_member_datum.AddSibling(spouse.family_member_datum)
 				if(!length(dna.species.race_groups & spouse.dna.species.race_groups))
 					secondary_member.adoption_status = TRUE
-				to_chat(src, span_love("[spouse.real_name] is now my sibling."))
-				to_chat(spouse, span_love("[real_name] is now my sibling."))
+				to_chat(src, span_love("我和[spouse.real_name]现在是手足了。"))
+				to_chat(spouse, span_love("我和[real_name]现在是手足了。"))
 			if("parent")
 				family_member_datum.AddChild(spouse.family_member_datum)
 				if(!length(dna.species.race_groups & spouse.dna.species.race_groups))
 					spouse.family_member_datum.adoption_status = TRUE
-				to_chat(src, span_love("[spouse.real_name] is now my offspring."))
-				to_chat(spouse, span_love("[real_name] is now my parent."))
+				to_chat(src, span_love("[spouse.real_name]现在是我的孩子了。"))
+				to_chat(spouse, span_love("[real_name]现在是我的双亲之一了。"))
 			if("lover", "friend", "cousin")
 				family_member_datum.other_relations[spouse.family_member_datum] = relation
 				spouse.family_member_datum.other_relations[family_member_datum] = relation
@@ -352,8 +352,8 @@
 					spouse.family_member_datum.lover = family_member_datum
 				mind?.i_know_person(spouse)
 				spouse.mind?.i_know_person(src)
-				to_chat(src, span_love("[spouse.real_name] is now my [relation]."))
-				to_chat(spouse, span_love("[real_name] is now my [relation]."))
+				to_chat(src, span_love("[spouse.real_name]现在是我的[get_family_relation_display(relation)]了。"))
+				to_chat(spouse, span_love("[real_name]现在是我的[get_family_relation_display(relation)]了。"))
 
 	return primary_family
 
@@ -446,7 +446,7 @@
 		first_name = copytext(real_name, 1, space)
 	real_name = "[first_name] [trim(housename)]"
 	name = real_name
-	to_chat(src, span_notice("I am now known as [real_name]."))
+	to_chat(src, span_notice("从今往后，我的名字是[real_name]。"))
 	for(var/mob/living/carbon/human/M in GLOB.human_list)
 		if(M.mind?.known_people?[old_name])
 			M.mind.known_people -= old_name

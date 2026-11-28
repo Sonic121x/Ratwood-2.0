@@ -161,11 +161,11 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 				for(var/datum/family_member/R in family_datum.members)
 					var/relation = FM.GetRelationshipTo(R)
 					if(R.person && relation && relation != "distant relative")
-						if(R.adoption_status && (relation in list("son", "daughter", "child", "brother", "sister")))
-							relation += "（收养）"
-						relation_list += "[R.person.real_name] ([relation])"
+						var/adopted = R.adoption_status && (relation in list("son", "daughter", "child", "brother", "sister"))
+						var/label = get_family_relation_display(relation)
+						relation_list += "[R.person.real_name]（[label][adopted ? "，收养" : ""]）"
 				if(relation_list.len)
-					to_chat(usr, span_notice("亲属: [jointext(relation_list, ", ")]。"))
+					to_chat(usr, span_notice("亲友：[jointext(relation_list, "、")]。"))
 
 
 

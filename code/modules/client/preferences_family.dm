@@ -14,10 +14,10 @@
 	var/html = "<div class='box'><table width='100%'><tr>"
 	if(person["headshot"])
 		html += "<td width='72' valign='top'><img src='[html_encode(person["headshot"])]' width='64' height='64'></td>"
-	html += "<td valign='top'><b>[person["name"]]</b> - [person["species"]], [person["pronouns"]]<br>[label]<br>"
+	html += "<td valign='top'><b>[person["name"]]</b> · [get_species_display_name(person["species"])]，代词：[get_character_identity_display(person["pronouns"])]<br>[label]<br>"
 	if(text)
 		html += "<i>[text]</i><br>"
-	html += "<a href='[base]view;id=[SSfamilytree.Token(key)]'>View Character</a> [actions]</td></tr></table></div>"
+	html += "<a href='[base]view;id=[SSfamilytree.Token(key)]'>查看角色</a> [actions]</td></tr></table></div>"
 	return html
 
 /datum/family_board_menu/proc/show(mob/user)
@@ -43,13 +43,13 @@
 			continue
 		request_count++
 		var/rid = SSfamilytree.Token("[req["from"]]>[req["to"]]")
-		requests_html += person_box(req["info"], "[req["from"]]>[req["to"]]", "Answering your ad: <b>[req["relation"]]</b>", req["message"], "<a href='[base]accept;rid=[rid]'>Accept</a> <a href='[base]decline;rid=[rid]'>Decline</a> <a href='[base]block;rid=[rid]'>Decline and Block</a>")
+		requests_html += person_box(req["info"], "[req["from"]]>[req["to"]]", "回应你的招募，申请成为你的<b>[get_family_relation_display(req["relation"])]</b>", req["message"], "<a href='[base]accept;rid=[rid]'>接受</a> <a href='[base]decline;rid=[rid]'>拒绝</a> <a href='[base]block;rid=[rid]'>拒绝并屏蔽</a>")
 	if(!request_count)
-		requests_html = "No requests."
+		requests_html = "暂无申请。"
 
-	var/ad_html = "No ad posted. <a href='[base]post'>Post Ad</a>"
+	var/ad_html = "你还没有发布招募。<a href='[base]post'>发布招募</a>"
 	if(ad)
-		ad_html = person_box(ad, my_id, "Looking for: <b>[jointext(ad["relations"], ", ")]</b>", ad["blurb"], "<a href='[base]post'>Edit</a> <a href='[base]unpost'>Take Down</a>")
+		ad_html = person_box(ad, my_id, "正在寻找：<b>[format_family_relations(ad["relations"])]</b>", ad["blurb"], "<a href='[base]post'>编辑</a> <a href='[base]unpost'>撤下招募</a>")
 
 	var/board_html = ""
 	var/ad_count = 0
@@ -73,34 +73,34 @@
 		for(var/list/req in SSfamilytree.requests)
 			if(req["from"] == my_id && req["to"] == ad_id)
 				requested = TRUE
-		var/actions = "<a href='[base]request;id=[SSfamilytree.Token(ad_id)]'>Send Request</a>"
+		var/actions = "<a href='[base]request;id=[SSfamilytree.Token(ad_id)]'>发送申请</a>"
 		if(requested)
-			actions = "Requested <a href='[base]withdraw;rid=[SSfamilytree.Token("[my_id]>[ad_id]")]'>Withdraw</a>"
+			actions = "已申请 <a href='[base]withdraw;rid=[SSfamilytree.Token("[my_id]>[ad_id]")]'>撤回申请</a>"
 		ad_count++
-		board_html += person_box(other, ad_id, "Looking for: <b>[valid_relations.Join(", ")]</b>", other["blurb"], actions)
+		board_html += person_box(other, ad_id, "正在寻找：<b>[format_family_relations(valid_relations)]</b>", other["blurb"], actions)
 	if(!ad_count)
-		board_html = "No matching ads right now."
+		board_html = "目前没有符合条件的招募。"
 
-	var/mode = "Whitelist"
+	var/mode = "仅限所选种族"
 	if(prefs.species_blacklist)
-		mode = "Blacklist"
-	var/matching_html = pref_line_html("Preferred Species", "<a href='[base]blacklist'>[mode]</a> <a href='[base]species'>Edit List ([length(prefs.species_filter)])</a>")
-	var/random_state = "No"
+		mode = "排除所选种族"
+	var/matching_html = pref_line_html("种族偏好", "<a href='[base]blacklist'>[mode]</a> <a href='[base]species'>编辑名单（[length(prefs.species_filter)]）</a>")
+	var/random_state = "否"
 	if(prefs.random_match_on)
-		random_state = "Yes"
-	matching_html += "<div class='r'><b>Be Random Match?</b> <a href='[base]random_toggle'>[random_state]</a></div>"
+		random_state = "是"
+	matching_html += "<div class='r'><b>参与随机匹配？</b> <a href='[base]random_toggle'>[random_state]</a></div>"
 	if(prefs.random_match_on)
 		for(var/relation in SSfamilytree.relation_options)
-			var/state = "No"
+			var/state = "否"
 			if(relation in prefs.random_match)
-				state = "Yes"
-			matching_html += pref_line_html(relation, "<a href='[base]random;relation=[relation]'>[state]</a>")
+				state = "是"
+			matching_html += pref_line_html(get_family_relation_display(relation), "<a href='[base]random;relation=[relation]'>[state]</a>")
 		if(("Spouse" in prefs.random_match) || ("Lover" in prefs.random_match))
-			matching_html += pref_line_html("Preferred Gender", "<a href='[base]gender'>[prefs.gender_choice]</a>")
+			matching_html += pref_line_html("期望性别", "<a href='[base]gender'>[get_family_gender_display(prefs.gender_choice)]</a>")
 
-	var/house_state = "No"
+	var/house_state = "否"
 	if(prefs.take_house_name)
-		house_state = "Yes"
+		house_state = "是"
 	var/relations_html = ""
 	for(var/list/link in SSfamilytree.links)
 		if(link[1] != my_id && link[2] != my_id)
@@ -114,22 +114,22 @@
 		if(link[3] == "parent" && link[2] == my_id)
 			role = "Parent"
 		var/status = ""
-		var/toggle = "Disable"
+		var/toggle = "停用"
 		if(length(link) >= 6 && length(link[6]))
-			status = " (Off)"
+			status = "（已停用）"
 			if(my_id in link[6])
-				toggle = "Enable"
+				toggle = "启用"
 		var/rid = SSfamilytree.Token("[link[1]]>[link[2]]")
-		relations_html += "<b>[other_name]</b> - [role][status] <a href='[base]toggle_link;rid=[rid]'>[toggle]</a> <a href='[base]unlink;rid=[rid]'>Remove</a><br>"
+		relations_html += "<b>[other_name]</b> · [get_family_relation_display(role)][status] <a href='[base]toggle_link;rid=[rid]'>[toggle]</a> <a href='[base]unlink;rid=[rid]'>解除关系</a><br>"
 	if(!relations_html)
-		relations_html = "No relationships yet."
-	var/links_html = pref_line_html("Take House Name?", "<a href='[base]house_name'>[house_state]</a>") + relations_html
+		relations_html = "尚未建立任何关系。"
+	var/links_html = pref_line_html("随家族姓氏", "<a href='[base]house_name'>[house_state]</a>") + relations_html
 	if(length(SSfamilytree.blocks[my_ckey]))
-		links_html += "<br><a href='[base]unblock_all'>Clear Blocked Players</a>"
+		links_html += "<br><a href='[base]unblock_all'>解除对所有玩家的屏蔽</a>"
 
-	var/requests_label = "Requests"
+	var/requests_label = "收到的申请"
 	if(request_count)
-		requests_label = "Requests ([request_count])"
+		requests_label = "收到的申请（[request_count]）"
 	var/list/sections = list("Requests" = requests_html, "Character" = ad_html, "Matchmaking" = matching_html, "Board" = board_html, "Relationships" = links_html)
 	var/html = {"<style>
 		body { font-size: 14px; }
@@ -141,7 +141,7 @@
 		.cbox a, .box a { background: none; border-color: transparent; padding: 0; margin: 0 8px 0 0; }
 		</style><center><b>[prefs.real_name]</b></center><hr>"}
 	for(var/section in sections)
-		var/label = section
+		var/label = get_family_section_display(section)
 		if(section == "Requests")
 			label = requests_label
 		var/arrow = "+"
@@ -151,12 +151,12 @@
 			body = "<div class='cbox'>[sections[section]]</div>"
 		html += "<div class='lab'><a href='[base]section;name=[url_encode(section)]'>[arrow] [label]</a></div>[body]"
 
-	var/datum/browser/popup = new(user, "family_board", "<div align='center'>Relationships</div>", 560, 700)
+	var/datum/browser/popup = new(user, "family_board", "<div align='center'>人际关系公告板</div>", 560, 700)
 	popup.set_content(html)
 	popup.open(FALSE)
 
 /datum/family_board_menu/proc/pref_line_html(label, value)
-	return "<div class='r'><b>[label]:</b> [value]</div>"
+	return "<div class='r'><b>[label]：</b> [value]</div>"
 
 /datum/family_board_menu/proc/handle_topic(mob/user, list/href_list)
 	var/act = href_list["act"]
@@ -220,13 +220,13 @@
 			var/list/old_relations = list()
 			if(old_ad)
 				old_relations = old_ad["relations"]
-			var/list/relations = tgui_input_checkboxes(user, "Looking for", "Relationships", SSfamilytree.relation_options, min_checked = 1, max_checked = 6, default_checked = old_relations, strict_modern = TRUE, window_width = 300, window_height = 350)
+			var/list/relations = select_family_options(user, SSfamilytree.relation_options, old_relations)
 			if(!relations)
 				return
 			var/old_blurb = ""
 			if(old_ad)
 				old_blurb = old_ad["blurb"]
-			var/blurb = stripped_input(user, "Any extra information? (max 300 characters):", "Relationships", old_blurb, 300)
+			var/blurb = stripped_input(user, "有什么想补充的吗？（最多 300 个字符）", "人际关系", old_blurb, 300)
 			if(blurb == null)
 				return
 			var/list/new_ad = me.Copy()
@@ -250,7 +250,7 @@
 					SSfamilytree.requests -= list(req)
 		if("request")
 			if(world.time < request_cooldown)
-				to_chat(user, span_warning("TOO SOON! Wait [round((request_cooldown - world.time) / 10)] seconds."))
+				to_chat(user, span_warning("申请太频繁了！请再等 [round((request_cooldown - world.time) / 10)] 秒。"))
 				return
 			var/target_id
 			for(var/ad_id in SSfamilytree.board)
@@ -258,10 +258,10 @@
 					target_id = ad_id
 			var/list/target = SSfamilytree.board[target_id]
 			if(!target)
-				to_chat(user, span_warning("It is gone."))
+				to_chat(user, span_warning("这条招募已经撤下了。"))
 				return
 			if(target["ckey"] == my_ckey || SSfamilytree.Blocked(my_ckey, target["ckey"]) || !SSfamilytree.Compatible(me, target))
-				to_chat(user, span_warning("It cannot be done."))
+				to_chat(user, span_warning("你无法回应这条招募。"))
 				return
 			for(var/list/req in SSfamilytree.requests)
 				if(req["from"] == my_id && req["to"] == target_id)
@@ -271,14 +271,14 @@
 				if((option in SSfamilytree.relation_options) && SSfamilytree.AgeOK(option, target["age"], me["age"]))
 					valid_relations += option
 			if(!valid_relations.len)
-				to_chat(user, span_warning("It cannot be done."))
+				to_chat(user, span_warning("你无法回应这条招募。"))
 				return
 			var/chosen_relation = valid_relations[1]
 			if(valid_relations.len > 1)
-				chosen_relation = tgui_input_list(user, "Request as", "Relationships", valid_relations)
+				chosen_relation = select_family_option(user, valid_relations)
 			if(!chosen_relation)
 				return
-			var/message = stripped_input(user, "Any extra information? (max 200 characters):", "Relationships", "", 200)
+			var/message = stripped_input(user, "申请时想说些什么？（最多 200 个字符）", "人际关系", "", 200)
 			if(message == null)
 				return
 			request_cooldown = world.time + 30 SECONDS
@@ -286,7 +286,7 @@
 			var/client/target_client = GLOB.directory[target["ckey"]]
 			if(target_client)
 				SEND_SOUND(target_client.mob, sound('sound/misc/notice (2).ogg'))
-				to_chat(target_client, span_notice("You have received a relationship request for: [target["name"]]! <a href='?_src_=prefs;preference=family_board'>Open Relationships</a>."))
+				to_chat(target_client, span_notice("你的角色[target["name"]]收到了一份关系申请！<a href='?_src_=prefs;preference=family_board'>查看人际关系公告板</a>"))
 		if("withdraw")
 			for(var/list/req in SSfamilytree.requests.Copy())
 				if(req["from"] == my_id && SSfamilytree.Token("[req["from"]]>[req["to"]]") == rid)
@@ -318,7 +318,7 @@
 					var/client/from_client = GLOB.directory[from["ckey"]]
 					if(from_client)
 						SEND_SOUND(from_client.mob, sound('sound/misc/notice (2).ogg'))
-						to_chat(from_client, span_notice("[prefs.real_name] accepted the relationship request from [from["name"]]. <a href='?_src_=prefs;preference=family_board'>Open Relationships</a>"))
+						to_chat(from_client, span_notice("[prefs.real_name]接受了[from["name"]]的关系申请。<a href='?_src_=prefs;preference=family_board'>查看人际关系公告板</a>"))
 		if("unlink")
 			for(var/list/link in SSfamilytree.links.Copy())
 				if((link[1] == my_id || link[2] == my_id) && SSfamilytree.Token("[link[1]]>[link[2]]") == rid)
@@ -379,10 +379,10 @@
 			return
 		if("gender")
 			if(prefs.pronouns == THEY_THEM || prefs.pronouns == THEY_THEM_F || prefs.pronouns == IT_ITS)
-				to_chat(user, span_warning("THEY / THEMS MAY ONLY CHOOSE 'ANY GENDER'. SORRY!"))
+				to_chat(user, span_warning("使用中性代词的角色只能选择“不限性别”。"))
 				prefs.gender_choice = ANY_GENDER
 				return
-			var/new_gender = tgui_input_list(user, "Preferred Gender", "Relationships", list(ANY_GENDER, SAME_GENDER, DIFFERENT_GENDER), prefs.gender_choice)
+			var/new_gender = select_family_option(user, list(ANY_GENDER, SAME_GENDER, DIFFERENT_GENDER), TRUE)
 			if(new_gender)
 				prefs.gender_choice = new_gender
 				save_matching()
@@ -392,7 +392,7 @@
 			save_matching()
 			return
 		if("species")
-			var/list/chosen = tgui_input_checkboxes(user, "Species", "Preferred Species", get_selectable_species(), min_checked = 0, max_checked = 200, default_checked = prefs.species_filter, strict_modern = TRUE, window_width = 400, window_height = 600)
+			var/list/chosen = select_family_options(user, get_selectable_species(), prefs.species_filter, TRUE)
 			if(!isnull(chosen))
 				prefs.species_filter = chosen
 				save_matching()

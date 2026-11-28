@@ -146,7 +146,7 @@
 		if(FAMILY_FATHER, FAMILY_MOTHER)
 			pass()
 
-	to_chat(person, span_notice("我以[relationship_type]的身份加入了[housename]家族。"))
+	to_chat(person, span_notice("我以[get_family_relation_display(relationship_type)]的身份加入了[housename]家族。"))
 	return member
 
 /datum/heritage/proc/ConductWedding(datum/family_member/bride, datum/family_member/groom, mob/living/carbon/human/officiant)
@@ -384,15 +384,15 @@
 
 	// Direct relationships
 	if(other in parents)
-		return other.person?.pronouns == HE_HIM ? "父亲" : "母亲"
+		return other.person?.pronouns == HE_HIM ? "father" : "mother"
 	if(other in children)
-		return other.person?.pronouns == HE_HIM ? "儿子" : "女儿"
+		return other.person?.pronouns == HE_HIM ? "son" : "daughter"
 	if(other in spouses)
-		return other.person?.pronouns == HE_HIM ? "丈夫" : "妻子"
+		return other.person?.pronouns == HE_HIM ? "husband" : "wife"
 
 	// Sibling check
 	if(AreSiblings(other))
-		return other.person?.pronouns == HE_HIM ? "兄弟" : "姐妹"
+		return other.person?.pronouns == HE_HIM ? "brother" : "sister"
 
 	// Grandparent/Grandchild
 	var/grandparent_rel = GetGrandparentRelation(other)
@@ -427,7 +427,7 @@
 	if(inlaw_rel)
 		return inlaw_rel
 
-	return "远亲"
+	return "distant relative"
 
 /datum/family_member/proc/GetInLawRelation(datum/family_member/other)
 	for(var/datum/family_member/spouse in spouses)
@@ -512,7 +512,7 @@
 	for(var/datum/family_member/my_parent in parents)
 		for(var/datum/family_member/their_parent in other.parents)
 			if(my_parent.AreSiblings(their_parent))
-				return "堂表亲"
+				return "cousin"
 
 	// Second cousins, etc. could be added here
 	return null
@@ -648,12 +648,12 @@
 		return null
 
 	var/p_He = lookee.p_they(TRUE)
-	var/relationship_text = "[p_He]是我的[relationship]"
+	var/relationship_text = "[p_He]是我的[get_family_relation_display(relationship)]"
 
 	if(lookee_member.adoption_status && (relationship in list("son", "daughter", "child", "brother", "sister")))
 		relationship_text += "（收养）"
 
-	return span_love(span_bold("[relationship_text]."))
+	return span_love(span_bold("[relationship_text]。"))
 
 /datum/heritage/proc/FormatFamilyList(checker)
 	var/household = uppertext(housename)
@@ -683,13 +683,13 @@
 			if(checker_member)
 				relation_text = checker_member.GetRelationshipTo(member)
 				switch(relation_text)
-					if("父亲", "母亲")
+					if("father", "mother")
 						name_color = "4169E1"
-					if("儿子", "女儿")
+					if("son", "daughter")
 						name_color = "32CD32"
-					if("兄弟", "姐妹")
+					if("brother", "sister")
 						name_color = "FFD700"
-					if("丈夫", "妻子")
+					if("husband", "wife")
 						name_color = "FF69B4"
 					if("lover")
 						name_color = "DC143C"
@@ -706,7 +706,7 @@
 						spouse_names += ", "
 					spouse_names += spouse.person?.real_name
 				status_text += "（配偶：[spouse_names]）"
-			relation_text = uppertext(relation_text)
+			relation_text = get_family_relation_display(relation_text)
 
 			. += "<B><font color=#[name_color];text-shadow:0 0 10px #8d5958, 0 0 20px #8d5958, 0 0 30px #8d5958, 0 0 40px #8d5958, 0 0 50px #e60073, 0 0 60px #8d5958, 0 0 70px #8d5958;>\
 				[member.person?.real_name]</font></B> <B>[relation_text]</B> [status_text]<BR>"
@@ -827,11 +827,11 @@ GLOBAL_LIST_INIT(name_titles, list("Ser", "Dame", "Sister", "Brother", "Prelate"
 	set category = "IC"
 	if(spouse_mob)
 		var/role = spouse_mob.mind?.assigned_role
-		var/title = role
+		var/title = istext(role) ? (SSjob.GetJob(role)?.display_title || role) : role
 		if(istype(role, /datum/job))
 			var/datum/job/J = role
 			title = J.get_informed_title(spouse_mob)
-		to_chat(src, span_info("[spouse_mob.real_name]，那位[spouse_mob.dna?.species?.name]的[title]，是你的爱人。"))
+		to_chat(src, span_info("[spouse_mob.real_name]，那位[get_species_display_name(spouse_mob.dna?.species?.name)][title]，是你的爱人。"))
 	if(family_datum)
 		family_datum.ListFamily(src)
 	else
