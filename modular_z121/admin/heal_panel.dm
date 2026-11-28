@@ -16,6 +16,7 @@
 	else if(H.has_status_effect(/datum/status_effect/debuff/sleepytime))
 		sleep_deprivation = "疲倦（1/3）"
 	body += "<b>缺觉状态：</b><A href='[heal_href]set_sleep_deprivation' title='设置缺觉等级'>[sleep_deprivation]</A> | <A href='[heal_href]clear_sleep_deprivation'>消除</A> | <A href='[heal_href]award_sleep'>消除（获取技能点）</A> <A href='[heal_href]condition_help;condition=sleep' title='缺觉状态说明'>?</A><br>"
+	body += "<b>饱食度：</b><A href='[heal_href]set_nutrition'>[round(H.nutrition, 0.1)]</A>/[NUTRITION_LEVEL_FULL] | <A href='[heal_href]restore_nutrition'>恢复</A> | <b>水分：</b><A href='[heal_href]set_hydration'>[round(H.hydration, 0.1)]</A>/[HYDRATION_LEVEL_FULL] | <A href='[heal_href]restore_hydration'>恢复</A><br>"
 	return "[body]<br>"
 
 /datum/admins/proc/handle_z121_heal_panel_conditions(mob/living/carbon/human/H, list/href_list)
@@ -23,7 +24,7 @@
 		return
 	var/action = href_list["z121_vitals_action"]
 	switch(action)
-		if("restore_energy", "clear_fatigue", "clear_sleep_deprivation")
+		if("restore_energy", "restore_nutrition", "restore_hydration", "clear_fatigue", "clear_sleep_deprivation")
 			var/description
 			var/admin_notice
 			switch(action)
@@ -32,6 +33,20 @@
 					H.update_energy_hud()
 					description = "restored the energy of"
 					admin_notice = "恢复了 [key_name_admin(H)] 的精力"
+				if("restore_nutrition")
+					if(HAS_TRAIT(H, TRAIT_NOHUNGER))
+						to_chat(usr, span_notice("目标无需进食。"))
+						return
+					H.set_nutrition(NUTRITION_LEVEL_FULL)
+					description = "restored the nutrition of"
+					admin_notice = "恢复了 [key_name_admin(H)] 的饱食度"
+				if("restore_hydration")
+					if(HAS_TRAIT(H, TRAIT_NOHUNGER))
+						to_chat(usr, span_notice("目标无需饮水。"))
+						return
+					H.set_hydration(HYDRATION_LEVEL_FULL)
+					description = "restored the hydration of"
+					admin_notice = "恢复了 [key_name_admin(H)] 的水分"
 				if("clear_fatigue")
 					H.stamina_reset()
 					H.update_stamina_hud()
@@ -45,7 +60,7 @@
 			log_admin("[key_name(usr)] [description] [key_name(H)].")
 			show_heal_panel(H)
 
-		if("set_stamina", "set_energy", "set_fatigue", "set_sleep_deprivation", "award_sleep")
+		if("set_nutrition", "set_hydration", "set_stamina", "set_energy", "set_fatigue", "set_sleep_deprivation", "award_sleep")
 			edit_heal_panel_condition(H, action)
 
 		if("condition_help")
@@ -112,6 +127,12 @@
 		if("set_fatigue")
 			label = "累积疲劳"
 			current = H.stamina
+		if("set_nutrition")
+			label = "饱食度"
+			current = H.nutrition
+		if("set_hydration")
+			label = "水分"
+			current = H.hydration
 		if("set_sleep_deprivation")
 			label = "缺觉等级"
 			current = sleep_tier
@@ -131,6 +152,18 @@
 			if(!value && H.m_intent == MOVE_INTENT_RUN)
 				H.toggle_rogmove_intent(MOVE_INTENT_WALK)
 			H.update_energy_hud()
+		if("set_nutrition")
+			if(HAS_TRAIT(H, TRAIT_NOHUNGER))
+				to_chat(usr, span_notice("目标不受饥饿和口渴影响。"))
+				return
+			value = clamp(value, 0, NUTRITION_LEVEL_FULL)
+			H.set_nutrition(value)
+		if("set_hydration")
+			if(HAS_TRAIT(H, TRAIT_NOHUNGER))
+				to_chat(usr, span_notice("目标不受饥饿和口渴影响。"))
+				return
+			value = clamp(value, 0, HYDRATION_LEVEL_FULL)
+			H.set_hydration(value)
 		if("set_sleep_deprivation")
 			value = clamp(round(value), 0, length(sleep_statuses))
 			if(value && H.has_status_effect(/datum/status_effect/debuff/zizo_exhaustion))
