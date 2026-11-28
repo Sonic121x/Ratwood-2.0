@@ -266,6 +266,9 @@
 #include "admin/god.dm"
 #include "admin/cleanup_world.dm"
 #include "admin/integrated_commands.dm"
+//鼠木编辑 - 治疗面板模块加载
+#include "admin/heal_panel.dm"
+//鼠木编辑 - 治疗面板模块加载结束
 #include "storytellers/god_blessings.dm"
 // 自定义美德：死亡回归，按清晨保存身体、特性与积分，每日一次。
 #include "virtues/never_ending.dm"
